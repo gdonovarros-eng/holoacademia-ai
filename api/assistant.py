@@ -324,7 +324,8 @@ class NaturalAssistant:
                 continue
             seen.add(key)
             cleaned.append(normalized)
-        return (cleaned or [question])[:5]
+        max_queries = 3 if len(mentioned_courses) > 1 else 2
+        return (cleaned or [question])[:max_queries]
 
     def should_focus_primary_course(self, question: str) -> bool:
         lowered = self._normalize_text(question)
@@ -354,6 +355,7 @@ class NaturalAssistant:
         context = self._build_context(question, results, history, active_course, context_courses)
         if not context.strip():
             return None
+        is_complex_cross_course = len(context_courses) > 1 or len(context) > 7000
 
         instructions = SAEL_SYSTEM_PROMPT
         if want_visual and self._is_visual_request(question):
@@ -365,6 +367,11 @@ class NaturalAssistant:
             instructions += (
                 " Estructura normalmente la respuesta en 2 a 5 bloques claros cuando la pregunta lo amerite, "
                 "pero sin volverla pesada."
+            )
+        if is_complex_cross_course:
+            instructions += (
+                " Si la pregunta integra varios cursos o pide un protocolo/cuestionario largo, responde de forma compacta, "
+                "con pasos claros y sin explicación excesiva."
             )
 
         prompt = (
@@ -381,7 +388,7 @@ class NaturalAssistant:
             instructions=instructions,
             input=prompt,
             timeout=self.response_timeout,
-            max_output_tokens=900,
+            max_output_tokens=700 if is_complex_cross_course else 900,
         )
         last_prompt_used = prompt
         answer = self._polish_text(self._response_text(response))
@@ -391,7 +398,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=1400,
+                max_output_tokens=1000 if is_complex_cross_course else 1400,
             )
             answer = self._polish_text(self._response_text(response))
         if not answer and len(context_courses) > 1:
@@ -409,7 +416,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=focused_multi_prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=1200,
+                max_output_tokens=800,
             )
             last_prompt_used = focused_multi_prompt
             answer = self._polish_text(self._response_text(response))
@@ -419,7 +426,7 @@ class NaturalAssistant:
                     instructions=instructions,
                     input=focused_multi_prompt,
                     timeout=self.response_timeout,
-                    max_output_tokens=1800,
+                    max_output_tokens=1100,
                 )
                 answer = self._polish_text(self._response_text(response))
         if not answer and active_course is not None:
@@ -711,6 +718,8 @@ class NaturalAssistant:
     ) -> str:
         blocks: list[str] = []
         context_courses = context_courses or []
+        if len(context_courses) > 1:
+            context_courses = context_courses[:3]
         anchored_course = active_course or (context_courses[0] if context_courses else self._infer_course_from_memory(question))
 
         if context_courses:
