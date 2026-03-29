@@ -1,0 +1,7 @@
+{
+  "model": "text-embedding-3-small",
+  "chunks_path": "/Users/m2/Documents/New project/data/chunks/library_chunks.jsonl",
+  "vectors_path": "/Users/m2/Documents/New project/data/embeddings/library_vectors.npy",
+  "count": 8785,
+  "dimensions": 1536
+}

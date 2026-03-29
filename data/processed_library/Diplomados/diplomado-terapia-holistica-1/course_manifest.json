@@ -1,0 +1,282 @@
+{
+  "course_id": "diplomado-terapia-holistica-1",
+  "course_name": "Diplomado Terapia Holística 1",
+  "linea": "Diplomados",
+  "tipo": "Diplomado",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1",
+  "sources": [
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-001",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 1.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 1.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_1.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 374142
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-002",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 10.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 10.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_10.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 66586
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-003",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 11.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 11.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_11.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 115479
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-004",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 12.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 12.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_12.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 46063
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-005",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 2.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 2.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_2.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 592422
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-006",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 3.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 3.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_3.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 57500
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-007",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 4.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 4.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_4.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 133202
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-008",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 5.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 5.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_5.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 182324
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-009",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 6.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 6.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_6.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 183015
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-010",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 7.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 7.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_7.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 220463
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-011",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 8.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 8.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_8.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 339820
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-012",
+      "tipo": "manual",
+      "archivo_original": "Manual del Módulo 9.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Módulo 9.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_9.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 38715
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-013",
+      "tipo": "manual",
+      "archivo_original": "Manual del Propedéutico.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual del Propedéutico.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Propedéutico.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 371215
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-014",
+      "tipo": "protocolo",
+      "archivo_original": "Manual-Protocolos-de-rastreo-AlejandroLavn.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Manual-Protocolos-de-rastreo-AlejandroLavn.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual-Protocolos-de-rastreo-AlejandroLavn.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 17562
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-015",
+      "tipo": "manual",
+      "archivo_original": "Modulo2-Sistemadigestivo-AlejandroLavin.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo2-Sistemadigestivo-AlejandroLavin.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo2-Sistemadigestivo-AlejandroLavin.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 592422
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-016",
+      "tipo": "manual",
+      "archivo_original": "Modulo3-Problemasalimenticios-AlejandroLavn.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo3-Problemasalimenticios-AlejandroLavn.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo3-Problemasalimenticios-AlejandroLavn.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 57500
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-017",
+      "tipo": "manual",
+      "archivo_original": "Modulo4-Sistemaendcrinometablico-MtodoLavndeterapiaholsticaActualizado62efb040d4004.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo4-Sistemaendcrinometablico-MtodoLavndeterapiaholsticaActualizado62efb040d4004.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo4-Sistemaendcrinometablico-MtodoLavndeterapiaholsticaActualizado62efb040d4004.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 133202
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-018",
+      "tipo": "manual",
+      "archivo_original": "Modulo5-Sistemacardiovascularcompleto-MtodoLavnTerapiaHolstica63374ab36e7ff.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo5-Sistemacardiovascularcompleto-MtodoLavnTerapiaHolstica63374ab36e7ff.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo5-Sistemacardiovascularcompleto-MtodoLavnTerapiaHolstica63374ab36e7ff.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 182324
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-019",
+      "tipo": "manual",
+      "archivo_original": "Modulo6-Sistemaosteomuscularcompleto-MtodoLavnTerapiaHolstica6339a906cb02f.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo6-Sistemaosteomuscularcompleto-MtodoLavnTerapiaHolstica6339a906cb02f.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo6-Sistemaosteomuscularcompleto-MtodoLavnTerapiaHolstica6339a906cb02f.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 183015
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-020",
+      "tipo": "manual",
+      "archivo_original": "Modulo7-Sistemalipofascial-MtodoLavnTerapiaHolstica63668384e7a3b.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Modulo7-Sistemalipofascial-MtodoLavnTerapiaHolstica63668384e7a3b.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Modulo7-Sistemalipofascial-MtodoLavnTerapiaHolstica63668384e7a3b.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 220463
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-021",
+      "tipo": "manual",
+      "archivo_original": "Módulo1-Propedeutico-Terapia-Holistica.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Módulo1-Propedeutico-Terapia-Holistica.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Módulo1-Propedeutico-Terapia-Holistica.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 371215
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-022",
+      "tipo": "protocolo",
+      "archivo_original": "Protocolos de Rastreo - Módulo 1.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Protocolos de Rastreo - Módulo 1.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Protocolos_de_Rastreo_-_Módulo_1.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 17562
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-023",
+      "tipo": "protocolo",
+      "archivo_original": "Protocolos de Rastreo - Módulo 2.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Protocolos de Rastreo - Módulo 2.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Protocolos_de_Rastreo_-_Módulo_2.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 43910
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-024",
+      "tipo": "protocolo",
+      "archivo_original": "Protocolos de solución transgen - Alejandro Lavín (1).pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/Protocolos de solución transgen - Alejandro Lavín (1).pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Protocolos_de_solución_transgen_-_Alejandro_Lavín_(1).txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 9937
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-025",
+      "tipo": "manual",
+      "archivo_original": "equivalencia cartas de la corte.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/equivalencia cartas de la corte.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/equivalencia_cartas_de_la_corte.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 13616
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-026",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 4330
+    },
+    {
+      "source_id": "diplomado-terapia-holistica-1-source-027",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/TERAPIA_HOLISTICA_1/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 2448549
+    }
+  ]
+}

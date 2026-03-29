@@ -1,0 +1,42 @@
+{
+  "course_id": "curso-holobiomagnetismo-2021",
+  "course_name": "Curso Holobiomagnetismo 2021",
+  "linea": "Salud",
+  "tipo": "Curso",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_2021",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-2021",
+  "sources": [
+    {
+      "source_id": "curso-holobiomagnetismo-2021-source-001",
+      "tipo": "manual",
+      "archivo_original": "Holobiomagnetismo 2021.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_2021/Holobiomagnetismo 2021.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-2021/sources/Holobiomagnetismo_2021.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 1509903
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-2021-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_2021/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-2021/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 3041
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-2021-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_2021/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-2021/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 915907
+    }
+  ]
+}

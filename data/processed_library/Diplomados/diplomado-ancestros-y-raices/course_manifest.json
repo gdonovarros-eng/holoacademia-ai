@@ -1,0 +1,102 @@
+{
+  "course_id": "diplomado-ancestros-y-raices",
+  "course_name": "Diplomado Ancestros y Raíces",
+  "linea": "Diplomados",
+  "tipo": "Diplomado",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices",
+  "sources": [
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-001",
+      "tipo": "manual",
+      "archivo_original": "Ancestros y Raíces_Manual_Clase_1.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/Ancestros y Raíces_Manual_Clase_1.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/Ancestros_y_Raíces_Manual_Clase_1.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 5049
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-002",
+      "tipo": "manual",
+      "archivo_original": "Libro_Genogramas en la Evaluación Familiar.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/Libro_Genogramas en la Evaluación Familiar.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/Libro_Genogramas_en_la_Evaluación_Familiar.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 97
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-003",
+      "tipo": "manual",
+      "archivo_original": "Módulo 3 - Ancestros y Raíces.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/Módulo 3 - Ancestros y Raíces.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/Módulo_3_-_Ancestros_y_Raíces.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 13345
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-004",
+      "tipo": "manual",
+      "archivo_original": "diplomadoraices.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/diplomadoraices.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/diplomadoraices.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 5171
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-005",
+      "tipo": "manual",
+      "archivo_original": "diplomadoraices4.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/diplomadoraices4.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/diplomadoraices4.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 27835
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-006",
+      "tipo": "manual",
+      "archivo_original": "diplomadoraicesmodulo5.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/diplomadoraicesmodulo5.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/diplomadoraicesmodulo5.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 5349
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-007",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 9497
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-008",
+      "tipo": "manual",
+      "archivo_original": "modulo 6 ancestros y raices .pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/modulo 6 ancestros y raices .pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/modulo_6_ancestros_y_raices_.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 18797
+    },
+    {
+      "source_id": "diplomado-ancestros-y-raices-source-009",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/ANCESTROS_Y_RAICES/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 4045707
+    }
+  ]
+}

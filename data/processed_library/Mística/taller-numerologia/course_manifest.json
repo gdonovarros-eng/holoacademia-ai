@@ -1,0 +1,42 @@
+{
+  "course_id": "taller-numerologia",
+  "course_name": "Taller Numerología",
+  "linea": "Mística",
+  "tipo": "Taller",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Mística/TALLER_NUMEROLOGIA",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Mística/taller-numerologia",
+  "sources": [
+    {
+      "source_id": "taller-numerologia-source-001",
+      "tipo": "manual",
+      "archivo_original": "Taller Numerología 2020.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Mística/TALLER_NUMEROLOGIA/Taller Numerología 2020.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Mística/taller-numerologia/sources/Taller_Numerología_2020.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 70733
+    },
+    {
+      "source_id": "taller-numerologia-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Mística/TALLER_NUMEROLOGIA/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Mística/taller-numerologia/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 613
+    },
+    {
+      "source_id": "taller-numerologia-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Mística/TALLER_NUMEROLOGIA/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Mística/taller-numerologia/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 295895
+    }
+  ]
+}

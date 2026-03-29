@@ -1,0 +1,42 @@
+{
+  "course_id": "curso-holobiomagnetismo-parte-1",
+  "course_name": "Curso Holobiomagnetismo Parte 1",
+  "linea": "Salud",
+  "tipo": "Curso",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_1",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-1",
+  "sources": [
+    {
+      "source_id": "curso-holobiomagnetismo-parte-1-source-001",
+      "tipo": "manual",
+      "archivo_original": "HoloBiomagnetismo Parte 1 (Bioenergética) versión 2024 - Alejandro Lavín .pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_1/HoloBiomagnetismo Parte 1 (Bioenergética) versión 2024 - Alejandro Lavín .pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-1/sources/HoloBiomagnetismo_Parte_1_(Bioenergética)_versión_2024_-_Alejandro_Lavín_.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 2612615
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-parte-1-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_1/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-1/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 3004
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-parte-1-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_1/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-1/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 574874
+    }
+  ]
+}

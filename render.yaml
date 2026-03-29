@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: holoacademia-ai
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    autoDeployTrigger: commit
+    healthCheckPath: /health
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5
+      - key: OPENAI_IMAGE_MODEL
+        value: gpt-image-1
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: OPENAI_RESPONSE_TIMEOUT_SECONDS
+        value: "30"
+      - key: OPENAI_REASONING_EFFORT
+        value: high

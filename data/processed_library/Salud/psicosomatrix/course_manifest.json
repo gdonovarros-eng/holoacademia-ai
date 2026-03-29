@@ -1,0 +1,42 @@
+{
+  "course_id": "psicosomatrix",
+  "course_name": "Psicosomatrix",
+  "linea": "Salud",
+  "tipo": "Curso",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATRIX",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/psicosomatrix",
+  "sources": [
+    {
+      "source_id": "psicosomatrix-source-001",
+      "tipo": "manual",
+      "archivo_original": "Psicosomatrix - teoría del campo unificado.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATRIX/Psicosomatrix - teoría del campo unificado.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/psicosomatrix/sources/Psicosomatrix_-_teoría_del_campo_unificado.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 23242
+    },
+    {
+      "source_id": "psicosomatrix-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATRIX/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/psicosomatrix/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 400
+    },
+    {
+      "source_id": "psicosomatrix-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATRIX/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/psicosomatrix/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 214709
+    }
+  ]
+}
