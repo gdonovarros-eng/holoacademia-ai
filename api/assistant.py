@@ -20,7 +20,7 @@ from api.teacher_memory import CourseStudy, TeacherMemory, get_teacher_memory
 
 DEFAULT_MODEL = "gpt-5"
 DEFAULT_IMAGE_MODEL = "gpt-image-1"
-DEFAULT_RESPONSE_TIMEOUT = 30.0
+DEFAULT_RESPONSE_TIMEOUT = 20.0
 DEFAULT_REASONING_EFFORT = "high"
 DEFAULT_FALLBACK_MODELS = ("gpt-5-mini", "gpt-4.1")
 
@@ -299,15 +299,6 @@ class NaturalAssistant:
             course_name = active_course.course_name
             if self._normalize_text(course_name) not in self._normalize_text(question):
                 queries.append(f"{course_name}. {question}")
-            if self._is_teacher_identity_question(question):
-                queries.extend(
-                    [
-                        f"{course_name} ponente",
-                        f"{course_name} impartido por",
-                        f"{course_name} docente",
-                        f"{course_name} facilitador",
-                    ]
-                )
 
         cleaned: list[str] = []
         seen = set()
@@ -320,7 +311,7 @@ class NaturalAssistant:
                 continue
             seen.add(key)
             cleaned.append(normalized)
-        return cleaned or [question]
+        return (cleaned or [question])[:2]
 
     def should_focus_primary_course(self, question: str) -> bool:
         lowered = self._normalize_text(question)
@@ -373,7 +364,7 @@ class NaturalAssistant:
             instructions=instructions,
             input=prompt,
             timeout=self.response_timeout,
-            max_output_tokens=2200,
+            max_output_tokens=900,
         )
         answer = self._polish_text(self._response_text(response))
         if not answer and self._response_incomplete_max_tokens(response):
@@ -382,7 +373,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=4200,
+                max_output_tokens=1400,
             )
             answer = self._polish_text(self._response_text(response))
         if not answer and active_course is not None:
@@ -399,7 +390,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=focused_prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=2200,
+                max_output_tokens=900,
             )
             answer = self._polish_text(self._response_text(response))
             if not answer and self._response_incomplete_max_tokens(response):
@@ -408,7 +399,7 @@ class NaturalAssistant:
                     instructions=instructions,
                     input=focused_prompt,
                     timeout=self.response_timeout,
-                    max_output_tokens=4200,
+                    max_output_tokens=1400,
                 )
                 answer = self._polish_text(self._response_text(response))
         if not answer:
@@ -705,17 +696,17 @@ class NaturalAssistant:
         return "\n\n".join(block for block in blocks if block.strip())
 
     def _build_course_block(self, course: CourseStudy) -> str:
-        themes = self._join_items(course.core_themes[:6])
-        concepts = self._join_items(course.key_concepts[:8])
-        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:6]])
-        study_guide = self._join_items(course.study_guide[:4])
+        themes = self._join_items(course.core_themes[:4])
+        concepts = self._join_items(course.key_concepts[:5])
+        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:4]])
+        study_guide = self._join_items(course.study_guide[:2])
         return "\n".join(
             [
                 "[Curso activo]",
                 f"Curso: {course.course_name}",
                 f"Línea: {course.linea}",
                 f"Tipo: {course.tipo}",
-                f"Resumen docente: {self._compact_text(course.teacher_summary or course.summary, 900)}",
+                f"Resumen docente: {self._compact_text(course.teacher_summary or course.summary, 420)}",
                 f"Temas centrales: {themes}",
                 f"Conceptos clave: {concepts}",
                 f"Protocolos o secuencias destacadas: {protocols}",
@@ -729,11 +720,11 @@ class NaturalAssistant:
         query = question
         if active_course is not None:
             query = f"{active_course.course_name}. {question}"
-        hits = self.teacher_memory.search(query, limit=8)
+        hits = self.teacher_memory.search(query, limit=4)
         if active_course is not None:
             same_course = [hit for hit in hits if hit.course_id == active_course.course_id]
             hits = same_course or hits
-        return hits[:4]
+        return hits[:2]
 
     def _infer_course_from_memory(self, question: str) -> Optional[CourseStudy]:
         best_hit = self._best_memory_hit_for_question(question)
@@ -755,7 +746,7 @@ class NaturalAssistant:
             for item in filtered
             if "index_modulos" not in item.source_file.lower()
         ]
-        return useful[:4]
+        return useful[:2]
 
     def _extract_factual_hints(
         self,
