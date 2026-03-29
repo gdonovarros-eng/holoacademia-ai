@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import re
 import unicodedata
+from difflib import SequenceMatcher
 from dataclasses import dataclass
 from pathlib import Path
 import json
@@ -162,8 +163,12 @@ MANUAL_ALIASES = {
     "holobiomagnetismo 2021": "curso-holobiomagnetismo-2021",
     "holobiomagnetismo parte 1": "curso-holobiomagnetismo-parte-1",
     "holobiomagnetismo parte 2": "curso-holobiomagnetismo-parte-2",
+    "holobiomangetismo parte 1": "curso-holobiomagnetismo-parte-1",
+    "holobiomangetismo parte 2": "curso-holobiomagnetismo-parte-2",
     "psicosomatica y biodescodificacion 1": "curso-psicosomatica-y-biodescodificacion-1",
     "psicosomatica y biodescodificacion 2": "curso-psicosomatica-y-biodescodificacion-2",
+    "sicosomatica y biodescodificacion 1": "curso-psicosomatica-y-biodescodificacion-1",
+    "sicosomatica y biodescodificacion 2": "curso-psicosomatica-y-biodescodificacion-2",
     "psicosomatrix": "psicosomatrix",
     "holopsicosomatica": "holopsicosomatica-2020",
     "numerhologia": "curso-numerhologia",
@@ -289,11 +294,17 @@ class NaturalAssistant:
     ) -> list[str]:
         history = history or []
         active_course = self._resolve_active_course(question, history)
+        mentioned_courses = self._find_courses_in_text(question)
         queries = [question.strip()]
 
         last_user_question = self._last_user_question(history)
         if self._is_follow_up(question) and last_user_question:
             queries.append(f"{last_user_question}. Seguimiento: {question}")
+
+        for course in mentioned_courses[:4]:
+            course_name = course.course_name
+            if self._normalize_text(course_name) not in self._normalize_text(question):
+                queries.append(f"{course_name}. {question}")
 
         if active_course is not None:
             course_name = active_course.course_name
@@ -311,11 +322,13 @@ class NaturalAssistant:
                 continue
             seen.add(key)
             cleaned.append(normalized)
-        return (cleaned or [question])[:2]
+        return (cleaned or [question])[:5]
 
     def should_focus_primary_course(self, question: str) -> bool:
         lowered = self._normalize_text(question)
-        broad_terms = ["compara", "compar", "diferencia", "todos los cursos", "varios cursos"]
+        if len(self._find_courses_in_text(question)) > 1:
+            return False
+        broad_terms = ["compara", "compar", "diferencia", "todos los cursos", "varios cursos", "saga", "segun la saga"]
         return not any(term in lowered for term in broad_terms)
 
     def embed_query(self, text: str):
@@ -335,7 +348,8 @@ class NaturalAssistant:
         want_visual: bool,
     ) -> Optional[AssistantOutput]:
         active_course = self._resolve_active_course(question, history)
-        context = self._build_context(question, results, history, active_course)
+        context_courses = self._resolve_context_courses(question, history, active_course)
+        context = self._build_context(question, results, history, active_course, context_courses)
         if not context.strip():
             return None
 
@@ -354,7 +368,8 @@ class NaturalAssistant:
         prompt = (
             f"Pregunta del usuario:\n{question}\n\n"
             f"Historial reciente:\n{self._format_history(history)}\n\n"
-            f"Curso activo detectado:\n{active_course.course_name if active_course else 'Ninguno'}\n\n"
+            f"Curso activo detectado:\n{active_course.course_name if active_course else 'Ninguno'}\n"
+            f"Cursos integrados para responder:\n{self._format_course_list(context_courses)}\n\n"
             f"Contexto docente integrado:\n{context}\n\n"
             "Responde solo con la respuesta final para el alumno."
         )
@@ -366,6 +381,7 @@ class NaturalAssistant:
             timeout=self.response_timeout,
             max_output_tokens=900,
         )
+        last_prompt_used = prompt
         answer = self._polish_text(self._response_text(response))
         if not answer and self._response_incomplete_max_tokens(response):
             response = self._create_response(
@@ -376,6 +392,34 @@ class NaturalAssistant:
                 max_output_tokens=1400,
             )
             answer = self._polish_text(self._response_text(response))
+        if not answer and len(context_courses) > 1:
+            focused_multi_context = "\n\n".join(self._build_course_block(course) for course in context_courses[:4])
+            focused_multi_prompt = (
+                f"Pregunta del usuario:\n{question}\n\n"
+                f"Cursos integrados para responder:\n{self._format_course_list(context_courses)}\n\n"
+                f"Contexto docente resumido por curso:\n{focused_multi_context}\n\n"
+                "El usuario está pidiendo una síntesis transversal de la saga completa. "
+                "Integra los cursos en una sola secuencia práctica, clara y ordenada. "
+                "Responde solo con la respuesta final para el alumno."
+            )
+            response = self._create_response(
+                model=self.model,
+                instructions=instructions,
+                input=focused_multi_prompt,
+                timeout=self.response_timeout,
+                max_output_tokens=1200,
+            )
+            last_prompt_used = focused_multi_prompt
+            answer = self._polish_text(self._response_text(response))
+            if not answer and self._response_incomplete_max_tokens(response):
+                response = self._create_response(
+                    model=self.model,
+                    instructions=instructions,
+                    input=focused_multi_prompt,
+                    timeout=self.response_timeout,
+                    max_output_tokens=1800,
+                )
+                answer = self._polish_text(self._response_text(response))
         if not answer and active_course is not None:
             focused_context = self._build_course_block(active_course)
             focused_prompt = (
@@ -392,6 +436,7 @@ class NaturalAssistant:
                 timeout=self.response_timeout,
                 max_output_tokens=900,
             )
+            last_prompt_used = focused_prompt
             answer = self._polish_text(self._response_text(response))
             if not answer and self._response_incomplete_max_tokens(response):
                 response = self._create_response(
@@ -402,6 +447,8 @@ class NaturalAssistant:
                     max_output_tokens=1400,
                 )
                 answer = self._polish_text(self._response_text(response))
+        if not answer:
+            answer = self._try_text_model_fallback(instructions, last_prompt_used)
         if not answer:
             return None
         return AssistantOutput(answer=answer, visual=None, mode="reasoned_teacher")
@@ -658,11 +705,16 @@ class NaturalAssistant:
         results: list[SearchResult],
         history: list[dict],
         active_course: Optional[CourseStudy],
+        context_courses: Optional[list[CourseStudy]] = None,
     ) -> str:
         blocks: list[str] = []
-        anchored_course = active_course or self._infer_course_from_memory(question)
+        context_courses = context_courses or []
+        anchored_course = active_course or (context_courses[0] if context_courses else self._infer_course_from_memory(question))
 
-        if anchored_course is not None:
+        if context_courses:
+            for course in context_courses[:4]:
+                blocks.append(self._build_course_block(course))
+        elif anchored_course is not None:
             blocks.append(self._build_course_block(anchored_course))
 
         fact_hints = self._extract_factual_hints(question, results, anchored_course)
@@ -830,10 +882,31 @@ class NaturalAssistant:
         return None
 
     def _find_course_in_text(self, text: str) -> Optional[CourseStudy]:
+        courses = self._find_courses_in_text(text)
+        if courses:
+            return courses[0]
+
         if not self.teacher_memory:
             return None
 
+        if not self._has_specific_course_reference(text):
+            return None
+
+        return self.teacher_memory.find_course(text)
+
+    def _find_courses_in_text(self, text: str) -> list[CourseStudy]:
+        if not self.teacher_memory:
+            return []
+
         normalized = self._normalize_text(text)
+        found: list[CourseStudy] = []
+        seen = set()
+        for course_id in self._expand_group_course_references(normalized):
+            study = self._course_by_id.get(course_id)
+            if study is not None and study.course_id not in seen:
+                seen.add(study.course_id)
+                found.append(study)
+
         for alias, course_id in self._alias_to_course_id.items():
             if not alias:
                 continue
@@ -841,16 +914,77 @@ class NaturalAssistant:
                 pattern = rf"(?<![a-z0-9]){re.escape(alias)}(?![a-z0-9])"
                 matched = bool(re.search(pattern, normalized))
             else:
-                matched = alias in normalized
+                matched = alias in normalized or self._contains_fuzzy_phrase(normalized, alias)
             if matched:
                 study = self._course_by_id.get(course_id)
-                if study is not None:
-                    return study
+                if study is not None and study.course_id not in seen:
+                    seen.add(study.course_id)
+                    found.append(study)
 
-        if not self._has_specific_course_reference(text):
-            return None
+        return found
 
-        return self.teacher_memory.find_course(text)
+    def _expand_group_course_references(self, normalized_text: str) -> list[str]:
+        expanded: list[str] = []
+        if (
+            ("holobiomagnetismo parte 1 y 2" in normalized_text)
+            or ("holobiomangetismo parte 1 y 2" in normalized_text)
+        ):
+            expanded.extend(
+                [
+                    "curso-holobiomagnetismo-parte-1",
+                    "curso-holobiomagnetismo-parte-2",
+                ]
+            )
+        if (
+            ("psicosomatica y biodescodificacion 1 y 2" in normalized_text)
+            or ("sicosomatica y biodescodificacion 1 y 2" in normalized_text)
+        ):
+            expanded.extend(
+                [
+                    "curso-psicosomatica-y-biodescodificacion-1",
+                    "curso-psicosomatica-y-biodescodificacion-2",
+                ]
+            )
+        return expanded
+
+    def _contains_fuzzy_phrase(self, haystack: str, needle: str, threshold: float = 0.84) -> bool:
+        haystack_tokens = re.findall(r"[a-z0-9]+", haystack)
+        needle_tokens = re.findall(r"[a-z0-9]+", needle)
+        if not haystack_tokens or not needle_tokens:
+            return False
+        window = len(needle_tokens)
+        if len(haystack_tokens) < window:
+            return False
+        needle_text = " ".join(needle_tokens)
+        for index in range(0, len(haystack_tokens) - window + 1):
+            candidate = " ".join(haystack_tokens[index : index + window])
+            if SequenceMatcher(None, candidate, needle_text).ratio() >= threshold:
+                return True
+        return False
+
+    def _resolve_context_courses(
+        self,
+        question: str,
+        history: list[dict],
+        active_course: Optional[CourseStudy],
+    ) -> list[CourseStudy]:
+        current_courses = self._find_courses_in_text(question)
+        if current_courses:
+            return current_courses[:4]
+        if active_course is not None:
+            return [active_course]
+        history_course = self._resolve_active_course_from_history(history)
+        if history_course is not None:
+            return [history_course]
+        inferred = self._infer_course_from_memory(question)
+        if inferred is not None:
+            return [inferred]
+        return []
+
+    def _format_course_list(self, courses: list[CourseStudy]) -> str:
+        if not courses:
+            return "Ninguno"
+        return ", ".join(course.course_name for course in courses[:4])
 
     def _has_specific_course_reference(self, text: str) -> bool:
         normalized = self._normalize_text(text)
@@ -1048,6 +1182,25 @@ class NaturalAssistant:
         if isinstance(incomplete_details, dict):
             return incomplete_details.get("reason") == "max_output_tokens"
         return False
+
+    def _try_text_model_fallback(self, instructions: str, prompt: str) -> str:
+        fallback_model = next(
+            (model_name for model_name in self.fallback_models if not model_name.startswith("gpt-5")),
+            None,
+        )
+        if not fallback_model:
+            return ""
+        try:
+            response = self._create_response(
+                model=fallback_model,
+                instructions=instructions,
+                input=prompt,
+                timeout=self.response_timeout,
+                max_output_tokens=1200,
+            )
+        except Exception:
+            return ""
+        return self._polish_text(self._response_text(response))
 
     def _format_history(self, history: list[dict]) -> str:
         if not history:
