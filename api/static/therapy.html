@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Holoacademia · Asistente Terapéutico</title>
+    <link rel="stylesheet" href="/therapy-static/therapy.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Holoacademia</p>
+          <h1>Asistente Clínico-Holistico</h1>
+          <p class="hero-copy">
+            Entrevista, analiza, integra pares y construye una orientación terapéutica completa
+            desde el método y la biblioteca interna.
+          </p>
+        </div>
+        <div class="hero-badge">V1 · iframe-ready</div>
+      </header>
+
+      <nav class="tabbar" aria-label="Módulos">
+        <button class="tab active" data-tab="therapy">Asistente terapéutico</button>
+        <button class="tab" data-tab="courses">Dudas sobre cursos</button>
+      </nav>
+
+      <section class="tab-panel active" id="tab-therapy">
+        <div class="stepper">
+          <span class="step active" data-step="1">1. Entrevista</span>
+          <span class="step" data-step="2">2. Pares</span>
+          <span class="step" data-step="3">3. Reporte</span>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Formulario terapéutico</h2>
+            <p>El terapeuta llena esta entrevista junto con el paciente.</p>
+          </div>
+
+          <form id="therapy-form" class="therapy-form">
+            <div class="grid two">
+              <label>
+                Nombre del paciente
+                <input type="text" name="patient_name" />
+              </label>
+              <label>
+                Fecha de nacimiento
+                <input type="text" name="patient_birth_date" placeholder="DD/MM/AAAA" />
+              </label>
+            </div>
+
+            <div class="grid two">
+              <label>
+                Motivo de consulta
+                <textarea name="consultation_reason" rows="3"></textarea>
+              </label>
+              <label>
+                Objetivo de la sesión
+                <textarea name="session_goal" rows="3"></textarea>
+              </label>
+            </div>
+
+            <div class="grid three">
+              <label>
+                Emoción principal
+                <input type="text" name="main_emotion" />
+              </label>
+              <label>
+                Detonante reciente
+                <input type="text" name="recent_trigger" />
+              </label>
+              <label>
+                ¿Qué molesta hoy?
+                <input type="text" name="what_bothers_today" />
+              </label>
+            </div>
+
+            <div class="grid two">
+              <label>
+                Contexto emocional actual
+                <textarea name="current_emotional_context" rows="4"></textarea>
+              </label>
+              <label>
+                Contexto emocional al origen
+                <textarea name="emotional_context_at_onset" rows="4"></textarea>
+              </label>
+            </div>
+
+            <div class="grid two">
+              <label>
+                Conflictos familiares
+                <textarea name="family_conflicts_notes" rows="4"></textarea>
+              </label>
+              <label>
+                Patrones transgeneracionales
+                <textarea name="transgenerational_patterns_notes" rows="4"></textarea>
+              </label>
+            </div>
+
+            <div class="grid two">
+              <label>
+                Relaciones importantes
+                <textarea name="important_relationships_notes" rows="4"></textarea>
+              </label>
+              <label>
+                Observaciones libres
+                <textarea name="free_case_notes" rows="4"></textarea>
+              </label>
+            </div>
+
+            <section class="collection-block">
+              <div class="collection-head">
+                <div>
+                  <h3>Síntomas actuales</h3>
+                  <p>Agrega todos los síntomas relevantes del paciente.</p>
+                </div>
+                <button type="button" class="secondary-btn" id="add-symptom">Agregar síntoma</button>
+              </div>
+              <div id="symptoms-list" class="collection-list"></div>
+            </section>
+
+            <section class="collection-block">
+              <div class="collection-head">
+                <div>
+                  <h3>Antecedentes y recurrencias</h3>
+                  <p>Cirugías, síntomas antiguos, eventos repetitivos o antecedentes importantes.</p>
+                </div>
+                <button type="button" class="secondary-btn" id="add-history">Agregar antecedente</button>
+              </div>
+              <div id="history-list" class="collection-list"></div>
+            </section>
+
+            <div class="actions">
+              <button type="button" class="primary-btn" id="analyze-case">Analizar caso</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel hidden" id="analysis-panel">
+          <div class="panel-head">
+            <h2>Lectura inicial del caso</h2>
+            <p>Salida del primer análisis estructurado del formulario.</p>
+          </div>
+          <div id="analysis-output" class="stack"></div>
+        </section>
+
+        <section class="panel hidden" id="pairs-panel">
+          <div class="panel-head">
+            <h2>Captura de pares biomagnéticos</h2>
+            <p>Agrega los pares encontrados para integrarlos al análisis.</p>
+          </div>
+
+          <div class="collection-head compact">
+            <button type="button" class="secondary-btn" id="add-pair">Agregar par</button>
+            <button type="button" class="primary-btn" id="analyze-pairs">Interpretar pares</button>
+          </div>
+          <div id="pairs-list" class="collection-list"></div>
+          <div id="pairs-output" class="stack"></div>
+        </section>
+
+        <section class="panel hidden" id="report-panel">
+          <div class="panel-head">
+            <h2>Reporte terapéutico final</h2>
+            <p>Integración del caso, pares y protocolo sugerido.</p>
+          </div>
+          <div class="actions">
+            <button type="button" class="primary-btn" id="build-report">Construir reporte final</button>
+          </div>
+          <div id="report-output" class="stack"></div>
+        </section>
+      </section>
+
+      <section class="tab-panel" id="tab-courses">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Dudas sobre cursos</h2>
+            <p>Consulta conceptos, módulos, protocolos, maestros y contenidos.</p>
+          </div>
+          <label>
+            Pregunta
+            <textarea id="course-question" rows="4" placeholder="Ej. ¿Quién es el maestro del diplomado SEI?"></textarea>
+          </label>
+          <div class="actions">
+            <button type="button" class="primary-btn" id="ask-course">Consultar</button>
+          </div>
+          <div id="course-output" class="stack"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="symptom-template">
+      <article class="collection-item">
+        <div class="grid two">
+          <label>
+            Síntoma
+            <input type="text" data-field="symptom_name" />
+          </label>
+          <label>
+            Frecuencia
+            <input type="text" data-field="frequency" />
+          </label>
+        </div>
+        <div class="grid two">
+          <label>
+            Características
+            <textarea rows="3" data-field="symptom_characteristics"></textarea>
+          </label>
+          <label>
+            Notas del terapeuta
+            <textarea rows="3" data-field="therapist_notes"></textarea>
+          </label>
+        </div>
+        <div class="grid two">
+          <label>
+            Edad o fecha de origen
+            <input type="text" data-field="onset_age_or_date" />
+          </label>
+          <label>
+            Factores desencadenantes
+            <input type="text" data-field="triggering_factors" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
+
+    <template id="history-template">
+      <article class="collection-item">
+        <div class="grid two">
+          <label>
+            Evento / antecedente
+            <input type="text" data-field="event_name" />
+          </label>
+          <label>
+            Frecuencia
+            <input type="text" data-field="frequency" />
+          </label>
+        </div>
+        <div class="grid two">
+          <label>
+            Características
+            <textarea rows="3" data-field="event_characteristics"></textarea>
+          </label>
+          <label>
+            Notas
+            <textarea rows="3" data-field="event_notes"></textarea>
+          </label>
+        </div>
+        <div class="grid one">
+          <label>
+            Edad o fecha de origen
+            <input type="text" data-field="onset_age_or_date" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
+
+    <template id="pair-template">
+      <article class="collection-item">
+        <div class="grid two">
+          <label>
+            Par biomagnético
+            <input type="text" data-field="pair_name" placeholder="Ej. ANO - PILORO" />
+          </label>
+          <label>
+            Nota del terapeuta
+            <input type="text" data-field="therapist_note" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
+
+    <script src="/therapy-static/therapy.js"></script>
+  </body>
+</html>

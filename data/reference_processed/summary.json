@@ -1,0 +1,13 @@
+{
+  "input_root": "/Users/m2/Documents/New project/data/reference_library",
+  "output_root": "/Users/m2/Documents/New project/data/reference_processed",
+  "references_processed": 24,
+  "counts_by_category": {
+    "disease_dictionary": 8,
+    "belief_consciousness": 4,
+    "trauma_emotion_release": 6,
+    "transgenerational": 5,
+    "complementary_misc": 1
+  },
+  "catalog_path": "/Users/m2/Documents/New project/data/reference_processed/catalog.json"
+}

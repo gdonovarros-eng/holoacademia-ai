@@ -35,6 +35,7 @@ La API quedará disponible en:
 - `http://127.0.0.1:8000/health`
 - `http://127.0.0.1:8000/courses`
 - `http://127.0.0.1:8000/ask`
+- `http://127.0.0.1:8000/therapy/app`
 
 ## Despliegue estable en la nube
 
@@ -132,6 +133,24 @@ curl -X POST http://127.0.0.1:8000/ask \
 
 La consulta normal no genera una imagen real por defecto, porque eso puede volver lenta la respuesta en Wix. En su lugar, devuelve la idea visual y, si hace falta, despues se puede pedir la imagen en un segundo paso.
 
+## Interfaz terapéutica embebible
+
+El proyecto ya incluye una primera app web para `iframe`, servida por FastAPI en:
+
+- `/therapy/app`
+
+Esta app ya contiene:
+
+- formulario terapéutico
+- análisis inicial del caso
+- captura de pares biomagnéticos
+- interpretación con apoyo visual
+- reporte terapéutico final
+
+La guía está en:
+
+- [docs/THERAPY_IFRAME_APP_V1.md](/Users/m2/Documents/New%20project/docs/THERAPY_IFRAME_APP_V1.md)
+
 ## Nota importante
 
 Si quieres respuestas realmente conversacionales, con contexto, buenos resúmenes y ayudas visuales de calidad, necesitas crear un archivo `.env` real con tu clave:
@@ -149,3 +168,31 @@ OPENAI_IMAGE_MODEL=gpt-image-1
 ```
 
 Despues reinicia `uvicorn` para que la API cargue esa configuracion.
+
+## Extra: descargar tus propios videos de YouTube
+
+Si quieres bajar tus propios videos a tu Mac usando tu sesion del navegador:
+
+```bash
+./scripts/download_youtube_videos.sh "https://www.youtube.com/@TuCanal/videos" "$HOME/Movies/MisVideosYT"
+```
+
+Para guardarlos dentro de iCloud Drive:
+
+```bash
+./scripts/download_youtube_videos.sh "https://www.youtube.com/@TuCanal/videos" "icloud:Videos/MisVideosYT"
+```
+
+Si quieres solo la pestaña `En directo`:
+
+```bash
+./scripts/download_youtube_videos.sh "https://www.youtube.com/@TuCanal" "icloud:Videos/MisDirectosYT" streams
+```
+
+Si necesitas descargar una lista exacta de URLs de directos:
+
+```bash
+./scripts/download_youtube_videos.sh "/ruta/live_urls.txt" "icloud:Videos/MisDirectosYT" list
+```
+
+La guia rapida esta en [docs/YOUTUBE_DOWNLOAD.md](/Users/m2/Documents/New%20project/docs/YOUTUBE_DOWNLOAD.md).

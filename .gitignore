@@ -6,3 +6,11 @@ __pycache__/
 .pytest_cache/
 data/teacher_memory.partial.json
 data/teacher_memory.partial.backup.json
+Reporte Diario Autos/
+data/Reference_Library/
+data/manuals_raws/
+data/email_templates/
+data/ses_warmup_failures.csv
+data/ses_warmup_plan.json
+data/ses_warmup_runs.jsonl
+data/ses_warmup_state.json

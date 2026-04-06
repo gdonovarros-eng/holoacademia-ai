@@ -7,9 +7,14 @@ from typing import Optional
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_CHUNKS_PATH = BASE_DIR / "data" / "chunks" / "library_chunks.jsonl"
+THERAPY_STATIC_DIR = BASE_DIR / "api" / "static"
+PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 
 from fastapi import FastAPI
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import ConfigDict
 from pydantic import BaseModel, Field
 
 try:
@@ -22,6 +27,9 @@ if load_dotenv is not None:
 
 from api.assistant import AssistantOutput, NaturalAssistant, VisualAid
 from api.knowledge_base import KnowledgeBase, trim_excerpt
+from api.pair_engine import interpret_pairs
+from api.therapy_engine import analyze_case
+from api.therapy_report_engine import build_therapy_report
 from api.teacher_memory import get_teacher_memory
 
 
@@ -65,6 +73,79 @@ class AskResponse(BaseModel):
     sources: list[SourceItem]
 
 
+class CurrentSymptomItem(BaseModel):
+    symptom_name: str = ""
+    symptom_characteristics: str = ""
+    therapist_notes: str = ""
+    onset_age_or_date: str = ""
+    frequency: str = ""
+    triggering_factors: str = ""
+
+
+class HistoryEventItem(BaseModel):
+    event_name: str = ""
+    event_characteristics: str = ""
+    event_notes: str = ""
+    onset_age_or_date: str = ""
+    frequency: str = ""
+
+
+class TherapyCasePayload(BaseModel):
+    model_config = ConfigDict(extra="allow")
+
+    patient_name: str = ""
+    patient_birth_date: str = ""
+    consultation_reason: str = ""
+    session_goal: str = ""
+    main_emotion: str = ""
+    recent_trigger: str = ""
+    current_emotional_context: str = ""
+    emotional_context_at_onset: str = ""
+    what_bothers_today: str = ""
+    perceived_impediments: str = ""
+    family_conflicts_notes: str = ""
+    family_secrets_notes: str = ""
+    transgenerational_patterns_notes: str = ""
+    important_relationships_notes: str = ""
+    free_case_notes: str = ""
+    current_symptoms: list[CurrentSymptomItem] = Field(default_factory=list)
+    history_events: list[HistoryEventItem] = Field(default_factory=list)
+
+
+class PairInputItem(BaseModel):
+    pair_name: str = Field(..., min_length=2)
+    therapist_note: str = ""
+
+
+class TherapyAnalyzeRequest(BaseModel):
+    case_payload: TherapyCasePayload
+
+
+class TherapyPairsRequest(BaseModel):
+    case_payload: TherapyCasePayload
+    pairs: list[PairInputItem] = Field(default_factory=list)
+
+
+class TherapyReportRequest(BaseModel):
+    case_payload: TherapyCasePayload
+    pairs: list[PairInputItem] = Field(default_factory=list)
+
+
+class TherapyAnalyzeResponse(BaseModel):
+    ok: bool
+    analysis: dict
+
+
+class TherapyPairsResponse(BaseModel):
+    ok: bool
+    pair_analysis: dict
+
+
+class TherapyReportResponse(BaseModel):
+    ok: bool
+    report: dict
+
+
 def build_answer(question: str, sources: list[SourceItem]) -> str:
     if not sources:
         return (
@@ -81,6 +162,31 @@ def build_answer(question: str, sources: list[SourceItem]) -> str:
         parts.append(f"La sección detectada es {top.heading}.")
     parts.append(f"Extracto clave: {top.excerpt}")
     return " ".join(parts)
+
+
+def _pair_visual_path_to_url(path_value: str) -> str:
+    try:
+        relative = Path(path_value).resolve().relative_to(PAIR_VISUALS_DIR.resolve())
+        return f"/therapy-assets/{relative.as_posix()}"
+    except Exception:
+        return path_value
+
+
+def _rewrite_visual_asset_paths(value):
+    if isinstance(value, dict):
+        rewritten = {}
+        for key, item in value.items():
+            if key == "image_candidates" and isinstance(item, list):
+                rewritten[key] = [
+                    _pair_visual_path_to_url(candidate) if isinstance(candidate, str) else candidate
+                    for candidate in item
+                ]
+            else:
+                rewritten[key] = _rewrite_visual_asset_paths(item)
+        return rewritten
+    if isinstance(value, list):
+        return [_rewrite_visual_asset_paths(item) for item in value]
+    return value
 
 
 @lru_cache
@@ -107,6 +213,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+if THERAPY_STATIC_DIR.exists():
+    app.mount("/therapy-static", StaticFiles(directory=THERAPY_STATIC_DIR), name="therapy-static")
+
+if PAIR_VISUALS_DIR.exists():
+    app.mount("/therapy-assets", StaticFiles(directory=PAIR_VISUALS_DIR), name="therapy-assets")
 
 
 @app.on_event("startup")
@@ -142,6 +254,35 @@ async def health() -> dict:
 async def list_courses() -> dict:
     kb = get_knowledge_base()
     return {"ok": True, "courses": kb.catalog}
+
+
+@app.get("/therapy/app")
+async def therapy_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "therapy.html")
+
+
+@app.post("/therapy/analyze", response_model=TherapyAnalyzeResponse)
+async def therapy_analyze(payload: TherapyAnalyzeRequest) -> TherapyAnalyzeResponse:
+    analysis = analyze_case(payload.case_payload.model_dump())
+    return TherapyAnalyzeResponse(ok=True, analysis=analysis)
+
+
+@app.post("/therapy/pairs", response_model=TherapyPairsResponse)
+async def therapy_pairs(payload: TherapyPairsRequest) -> TherapyPairsResponse:
+    case_analysis = analyze_case(payload.case_payload.model_dump())
+    pairs_payload = [item.model_dump() for item in payload.pairs]
+    pair_analysis = interpret_pairs(case_analysis, pairs_payload)
+    return TherapyPairsResponse(ok=True, pair_analysis=_rewrite_visual_asset_paths(pair_analysis))
+
+
+@app.post("/therapy/report", response_model=TherapyReportResponse)
+async def therapy_report(payload: TherapyReportRequest) -> TherapyReportResponse:
+    pairs_payload = [item.model_dump() for item in payload.pairs]
+    report = build_therapy_report(
+        case_payload=payload.case_payload.model_dump(),
+        pairs_input=pairs_payload,
+    )
+    return TherapyReportResponse(ok=True, report=_rewrite_visual_asset_paths(report))
 
 
 @app.post("/ask", response_model=AskResponse)

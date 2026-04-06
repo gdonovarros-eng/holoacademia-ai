@@ -1,0 +1,228 @@
+{
+  "version": 1,
+  "description": "Selección inicial curada de enfermedades y síntomas prioritarios para el asistente terapéutico.",
+  "profiles": [
+    {
+      "canonical_name": "Asma",
+      "slug": "asma",
+      "system_name": "respiratorio",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Bronquitis crónica",
+      "slug": "bronquitis-cronica",
+      "system_name": "respiratorio",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Sinusitis",
+      "slug": "sinusitis",
+      "system_name": "respiratorio",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Resfriado común",
+      "slug": "resfriado-comun",
+      "system_name": "respiratorio",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Amigdalitis",
+      "slug": "amigdalitis",
+      "system_name": "respiratorio",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Gastritis",
+      "slug": "gastritis",
+      "system_name": "digestivo",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Acidez estomacal",
+      "slug": "acidez-estomacal",
+      "system_name": "digestivo",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Reflujo gastroesofágico (ERGE)",
+      "slug": "reflujo-gastroesofagico-erge",
+      "system_name": "digestivo",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Colitis ulcerosa",
+      "slug": "colitis-ulcerosa",
+      "system_name": "digestivo",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Síndrome del intestino irritable (SII)",
+      "slug": "sindrome-del-intestino-irritable-sii",
+      "system_name": "digestivo",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Diverticulitis",
+      "slug": "diverticulitis",
+      "system_name": "digestivo",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Pancreatitis",
+      "slug": "pancreatitis",
+      "system_name": "digestivo",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Cálculos biliares",
+      "slug": "calculos-biliares",
+      "system_name": "digestivo",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Diabetes",
+      "slug": "diabetes",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Hipoglucemia",
+      "slug": "hipoglucemia",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Hipertiroidismo",
+      "slug": "hipertiroidismo",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Síndrome de ovario poliquístico (SOP)",
+      "slug": "sindrome-de-ovario-poliquistico-sop",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Migraña",
+      "slug": "migrana",
+      "system_name": "neurosensorial",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Vértigo",
+      "slug": "vertigo",
+      "system_name": "neurosensorial",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Parálisis facial",
+      "slug": "paralisis-facial",
+      "system_name": "neurosensorial",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Glaucoma",
+      "slug": "glaucoma",
+      "system_name": "neurosensorial",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Cataratas",
+      "slug": "cataratas",
+      "system_name": "neurosensorial",
+      "priority_group": "baja"
+    },
+    {
+      "canonical_name": "Dermatitis",
+      "slug": "dermatitis",
+      "system_name": "dermatologico",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Urticaria",
+      "slug": "urticaria",
+      "system_name": "dermatologico",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Fibromialgia",
+      "slug": "fibromialgia",
+      "system_name": "osteomuscular",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Columna Vertebral",
+      "slug": "columna-vertebral",
+      "system_name": "osteomuscular",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Cuello o Tortícolis",
+      "slug": "cuello-o-torticolis",
+      "system_name": "osteomuscular",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Escoliosis",
+      "slug": "escoliosis",
+      "system_name": "osteomuscular",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Artritis reumatoide",
+      "slug": "artritis-reumatoide",
+      "system_name": "osteomuscular",
+      "priority_group": "media"
+    },
+    {
+      "canonical_name": "Osteoporosis",
+      "slug": "osteoporosis",
+      "system_name": "osteomuscular",
+      "priority_group": "baja"
+    },
+    {
+      "canonical_name": "Ansiedad",
+      "slug": "ansiedad",
+      "system_name": "emocional_mental",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Depresión",
+      "slug": "depresion",
+      "system_name": "emocional_mental",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Insomnio",
+      "slug": "insomnio",
+      "system_name": "emocional_mental",
+      "priority_group": "alta"
+    },
+    {
+      "canonical_name": "Trastorno bipolar",
+      "slug": "trastorno-bipolar",
+      "system_name": "emocional_mental",
+      "priority_group": "baja"
+    },
+    {
+      "canonical_name": "Trastorno obsesivo compulsivo (TOC)",
+      "slug": "trastorno-obsesivo-compulsivo-toc",
+      "system_name": "emocional_mental",
+      "priority_group": "baja"
+    },
+    {
+      "canonical_name": "Bulimia nerviosa",
+      "slug": "bulimia-nerviosa",
+      "system_name": "emocional_mental",
+      "priority_group": "baja"
+    },
+    {
+      "canonical_name": "Obesidad",
+      "slug": "obesidad",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "media"
+    }
+  ]
+}

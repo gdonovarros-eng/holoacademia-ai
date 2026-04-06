@@ -1,0 +1,348 @@
+{
+  "version": 1,
+  "description": "Perfiles terapéuticos curados iniciales para el asistente terapéutico.",
+  "profiles": [
+    {
+      "canonical_name": "Asma",
+      "slug": "asma",
+      "system_name": "respiratorio",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro respiratorio que en la referencia de biodescodificación se asocia a sofocación emocional, represión afectiva y sensación de limitación, con especial énfasis en vínculos asfixiantes o conflictos no expresados.",
+      "possible_conflicts": [
+        "sofocación emocional",
+        "amor asfixiante",
+        "represión afectiva",
+        "falta de autonomía",
+        "conflicto respiratorio por presión relacional"
+      ],
+      "guiding_questions": [
+        "¿Qué o quién te hace sentir sin espacio o sin aire en tu vida?",
+        "¿Hay una relación donde sientes amor mezclado con presión o control?",
+        "¿Qué emoción te cuesta expresar cuando aparece el síntoma?",
+        "¿Qué ocurría en tu vida cuando comenzaron los episodios?"
+      ],
+      "suggested_course_routes": [
+        "analisis_sistemico",
+        "rastreo_conflictologico_respiratorio",
+        "rastreo_de_masa_conflictual",
+        "transgeneracional_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "transgeneracional",
+        "sentimental_si_aplica"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Curso Holobiomagnetismo Parte 2",
+        "Diplomado Terapia Holística 1"
+      ]
+    },
+    {
+      "canonical_name": "Gastritis",
+      "slug": "gastritis",
+      "system_name": "digestivo",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro digestivo que se presta a revisar dificultad para digerir una situación, vínculos maternos o temas de nutrición afectiva, además de eventos que generan irritación sostenida o algo que el paciente siente que se tiene que tragar.",
+      "possible_conflicts": [
+        "indigestión emocional",
+        "irritación sostenida",
+        "tener que tragarse una situación",
+        "conflicto materno",
+        "falta de nutrición afectiva"
+      ],
+      "guiding_questions": [
+        "¿Qué situación sientes que no has podido digerir?",
+        "¿Qué te estás tragando en silencio hoy?",
+        "¿Qué relación tienes con el cuidado, la madre o la nutrición afectiva?",
+        "¿En qué periodo de tu vida apareció la irritación digestiva?"
+      ],
+      "suggested_course_routes": [
+        "analisis_sistemico",
+        "rastreo_conflictologico_digestivo",
+        "rastreo_de_masa_conflictual",
+        "analisis_madre_padre_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "transgeneracional_si_aplica"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Curso Holobiomagnetismo Parte 2"
+      ]
+    },
+    {
+      "canonical_name": "Reflujo gastroesofágico (ERGE)",
+      "slug": "reflujo-gastroesofagico-erge",
+      "system_name": "digestivo",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro digestivo de retorno o devolución, útil para revisar rechazo, dificultad para aceptar una experiencia o imposibilidad de integrar algo vivido.",
+      "possible_conflicts": [
+        "rechazo de experiencia",
+        "imposibilidad de integrar",
+        "dificultad para aceptar",
+        "retorno de contenido emocional"
+      ],
+      "guiding_questions": [
+        "¿Qué situación rechazas internamente aunque sigas en ella?",
+        "¿Qué no logras aceptar o integrar en este momento de tu vida?",
+        "¿El síntoma apareció después de una etapa de tensión o de algo difícil de tragar?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_digestivo",
+        "rastreo_de_masa_conflictual",
+        "analisis_sistemico"
+      ],
+      "release_protocol_routes": [
+        "sistemico"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2"
+      ]
+    },
+    {
+      "canonical_name": "Colitis ulcerosa",
+      "slug": "colitis-ulcerosa",
+      "system_name": "digestivo",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro intestinal que conviene leer como dificultad para procesar, eliminar o soltar conflicto acumulado, con sobrecarga emocional y tensión de larga data.",
+      "possible_conflicts": [
+        "conflicto acumulado",
+        "no poder eliminar",
+        "tensión digestiva sostenida",
+        "sobrecarga emocional"
+      ],
+      "guiding_questions": [
+        "¿Qué conflicto llevas arrastrando desde hace tiempo sin poder cerrar?",
+        "¿Qué no logras soltar o eliminar de tu vida?",
+        "¿Qué sucede emocionalmente antes de las crisis o empeoramientos?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_digestivo",
+        "rastreo_de_gota_y_vaso",
+        "analisis_sistemico",
+        "transgeneracional_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "transgeneracional_si_aplica"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2"
+      ]
+    },
+    {
+      "canonical_name": "Diabetes",
+      "slug": "diabetes",
+      "system_name": "endocrino_metabolico",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro metabólico que en la referencia se vincula con carencia afectiva, necesidad de dulzura, resistencia al cambio, tristeza arraigada y lucha interna por el control.",
+      "possible_conflicts": [
+        "carencia afectiva",
+        "resistencia al cambio",
+        "tristeza profunda",
+        "necesidad de dulzura",
+        "control excesivo",
+        "nostalgia por lo que pudo haber sido"
+      ],
+      "guiding_questions": [
+        "¿Dónde sientes carencia afectiva o falta de dulzura en tu vida?",
+        "¿Qué cambio te está costando aceptar?",
+        "¿Qué duelo, tristeza o nostalgia sigues cargando?",
+        "¿Qué intentas controlar constantemente para sentir seguridad?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_endocrino",
+        "analisis_sistemico",
+        "rastreo_de_masa_conflictual",
+        "transgeneracional_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "transgeneracional",
+        "sentimental_si_aplica"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Curso Holobiomagnetismo Parte 2"
+      ]
+    },
+    {
+      "canonical_name": "Migraña",
+      "slug": "migrana",
+      "system_name": "neurosensorial",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro neurosensorial asociado a sensación de limitación, presión, opresión y deseo de desconexión frente a un entorno vivido como controlador o invasivo.",
+      "possible_conflicts": [
+        "limitación",
+        "entorno opresivo",
+        "necesidad de desconexión",
+        "presión mental",
+        "lucha por recuperar control"
+      ],
+      "guiding_questions": [
+        "¿Qué situación te resulta opresiva o demasiado controladora?",
+        "¿En qué área de tu vida quisieras desconectarte o huir?",
+        "¿Qué presión estás sosteniendo mentalmente?",
+        "¿Qué estaba ocurriendo cuando comenzaron las migrañas?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_neurosensorial",
+        "analisis_sistemico",
+        "rastreo_de_masa_conflictual"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "estres_postraumatico_si_aplica"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2"
+      ]
+    },
+    {
+      "canonical_name": "Fibromialgia",
+      "slug": "fibromialgia",
+      "system_name": "osteomuscular",
+      "priority_group": "alta",
+      "orientation_summary": "Cuadro osteomuscular útil para explorar desvalorización, agotamiento por tensión sostenida, carga emocional crónica y conflicto mantenido en múltiples áreas.",
+      "possible_conflicts": [
+        "desvalorización",
+        "agotamiento crónico",
+        "carga emocional sostenida",
+        "conflicto repetitivo no resuelto"
+      ],
+      "guiding_questions": [
+        "¿En qué áreas de tu vida te sientes agotado o sin sostén?",
+        "¿Dónde te has sentido poco valorado o rebasado?",
+        "¿Qué conflictos se te repiten desde hace años?",
+        "¿Qué cargas sigues sosteniendo aunque ya te pesan?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_osteomuscular",
+        "analisis_sistemico",
+        "transgeneracional_si_aplica",
+        "rastreo_de_masa_conflictual"
+      ],
+      "release_protocol_routes": [
+        "sistemico",
+        "transgeneracional"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Diplomado Terapia Holística 1",
+        "Curso Psicosomática y Biodescodificación 2"
+      ]
+    },
+    {
+      "canonical_name": "Ansiedad",
+      "slug": "ansiedad",
+      "system_name": "emocional_mental",
+      "priority_group": "alta",
+      "orientation_summary": "Estado de alerta o tensión que conviene leer en relación con amenaza anticipada, miedo, control, incertidumbre y conflicto de movimiento o seguridad.",
+      "possible_conflicts": [
+        "amenaza anticipada",
+        "miedo a lo que viene",
+        "pérdida de control",
+        "inseguridad",
+        "hipervigilancia"
+      ],
+      "guiding_questions": [
+        "¿Qué es lo que sientes que puede pasar y te mantiene en alerta?",
+        "¿Qué necesitas controlar para sentirte seguro?",
+        "¿Qué movimiento o decisión te genera más angustia?",
+        "¿Desde cuándo vives esta tensión de fondo?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_general",
+        "analisis_sistemico",
+        "estres_postraumatico_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "estres_postraumatico_si_aplica",
+        "sistemico"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Diplomado Sanación Energética Integral"
+      ]
+    },
+    {
+      "canonical_name": "Depresión",
+      "slug": "depresion",
+      "system_name": "emocional_mental",
+      "priority_group": "alta",
+      "orientation_summary": "Estado de decaimiento o repliegue que orienta a revisar duelo, pérdida de sentido, tristeza congelada, desmotivación y desgaste prolongado.",
+      "possible_conflicts": [
+        "duelo bloqueado",
+        "pérdida de sentido",
+        "tristeza congelada",
+        "agotamiento vital",
+        "desconexión afectiva"
+      ],
+      "guiding_questions": [
+        "¿Qué pérdida o separación no ha terminado de elaborarse?",
+        "¿Desde cuándo sientes que perdiste motivación o sentido?",
+        "¿Qué parte de ti se fue apagando con el tiempo?",
+        "¿Qué te cuesta soltar o llorar?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_general",
+        "analisis_sistemico",
+        "transgeneracional_si_aplica",
+        "sentimental_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "sentimental_si_aplica",
+        "sistemico",
+        "transgeneracional"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Diplomado Sanación Energética Integral"
+      ]
+    },
+    {
+      "canonical_name": "Insomnio",
+      "slug": "insomnio",
+      "system_name": "emocional_mental",
+      "priority_group": "alta",
+      "orientation_summary": "Dificultad para descansar que conviene revisar desde hiperactividad mental, alerta sostenida, preocupación, miedo nocturno o imposibilidad de soltar el control.",
+      "possible_conflicts": [
+        "hipervigilancia",
+        "preocupación sostenida",
+        "miedo nocturno",
+        "imposibilidad de soltar",
+        "mente en alerta"
+      ],
+      "guiding_questions": [
+        "¿Qué pensamientos o preocupaciones se activan más por la noche?",
+        "¿Qué sientes que no puedes soltar al momento de dormir?",
+        "¿Hay miedo, culpa o tensión que se haga más fuerte en silencio?",
+        "¿Desde cuándo perdiste la sensación de descanso real?"
+      ],
+      "suggested_course_routes": [
+        "rastreo_conflictologico_general",
+        "analisis_sistemico",
+        "estres_postraumatico_si_aplica"
+      ],
+      "release_protocol_routes": [
+        "estres_postraumatico_si_aplica",
+        "sistemico"
+      ],
+      "sources_basis": [
+        "742661067-El-Gran-Diccionario-de-La-Biodescodificacion-50-Enfermedades-Emocionales",
+        "Curso Psicosomática y Biodescodificación 2",
+        "Diplomado Sanación Energética Integral"
+      ]
+    }
+  ]
+}
