@@ -9,15 +9,13 @@ const tabs = [...document.querySelectorAll(".tab")];
 const tabPanels = [...document.querySelectorAll(".tab-panel")];
 const steps = [...document.querySelectorAll(".step")];
 
-const consultantSection = document.getElementById("consultant-section");
-const grandparentsSection = document.getElementById("grandparents-section");
-const parentsSection = document.getElementById("parents-section");
-const siblingsSection = document.getElementById("siblings-section");
-const partnersSection = document.getElementById("partners-section");
-const childrenSection = document.getElementById("children-section");
+const significantPartnersList = document.getElementById("significant-partners-list");
+const childrenList = document.getElementById("children-list");
+const siblingsList = document.getElementById("siblings-list");
 const symptomList = document.getElementById("symptoms-list");
 const historyList = document.getElementById("history-list");
 const pairsList = document.getElementById("pairs-list");
+
 const analysisPanel = document.getElementById("analysis-panel");
 const pairsPanel = document.getElementById("pairs-panel");
 const reportPanel = document.getElementById("report-panel");
@@ -25,6 +23,9 @@ const analysisOutput = document.getElementById("analysis-output");
 const pairsOutput = document.getElementById("pairs-output");
 const reportOutput = document.getElementById("report-output");
 const courseOutput = document.getElementById("course-output");
+
+const consultantBirthDate = document.getElementById("consultant-birth-date");
+const consultantAge = document.getElementById("consultant-age");
 
 function setActiveTab(tabName) {
   tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
@@ -51,66 +52,95 @@ function addCollectionItem(container, templateId) {
   container.appendChild(node);
 }
 
-function createFieldMarkup(field) {
-  return `
-    <label>
-      ${field.label}
-      <input type="text" data-field="${field.key}" placeholder="${field.placeholder || ""}" />
-    </label>
-  `;
-}
-
-function createCard(title, fields, columns = "two") {
-  return `
-    <article class="collection-item">
-      <h3>${title}</h3>
-      <div class="grid ${columns}">
-        ${fields.map(createFieldMarkup).join("")}
-      </div>
-    </article>
-  `;
-}
-
-function appendCard(container, title, fields, columns = "two") {
-  container.insertAdjacentHTML("beforeend", createCard(title, fields, columns));
-}
-
 function readCollection(container) {
-  return [...container.children].map((item) => {
-    const payload = {};
-    item.querySelectorAll("[data-field]").forEach((field) => {
-      payload[field.dataset.field] = field.value?.trim() || "";
-    });
-    return payload;
-  }).filter((item) => Object.values(item).some(Boolean));
+  return [...container.children]
+    .map((item) => {
+      const payload = {};
+      item.querySelectorAll("[data-field]").forEach((field) => {
+        payload[field.dataset.field] = field.value?.trim() || "";
+      });
+      return payload;
+    })
+    .filter((item) => Object.values(item).some(Boolean));
 }
 
-function readSingleCard(container) {
-  return readCollection(container)[0] || {};
+function getText(name) {
+  return document.querySelector(`[name="${name}"]`)?.value?.trim() || "";
 }
+
+function calculateAge(value) {
+  if (!value) return "";
+  const birth = new Date(value);
+  if (Number.isNaN(birth.getTime())) return "";
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const monthDiff = today.getMonth() - birth.getMonth();
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+    age -= 1;
+  }
+  return age >= 0 ? String(age) : "";
+}
+
+consultantBirthDate?.addEventListener("change", () => {
+  consultantAge.value = calculateAge(consultantBirthDate.value);
+});
 
 function getCasePayload() {
-  return {
-    consultant: readSingleCard(consultantSection),
+  const payload = {
+    consultant: {
+      full_name: getText("consultant_full_name"),
+      birth_date: getText("consultant_birth_date"),
+      birth_time: getText("consultant_birth_time"),
+      age: getText("consultant_age"),
+    },
     grandparents: {
-      maternal_grandmother: readCollection(grandparentsSection)[0] || {},
-      maternal_grandfather: readCollection(grandparentsSection)[1] || {},
-      paternal_grandmother: readCollection(grandparentsSection)[2] || {},
-      paternal_grandfather: readCollection(grandparentsSection)[3] || {},
+      paternal_grandfather: {
+        full_name: getText("paternal_grandfather_full_name"),
+        birth_date: getText("paternal_grandfather_birth_date"),
+        death_date: getText("paternal_grandfather_death_date"),
+      },
+      paternal_grandmother: {
+        full_name: getText("paternal_grandmother_full_name"),
+        birth_date: getText("paternal_grandmother_birth_date"),
+        death_date: getText("paternal_grandmother_death_date"),
+      },
+      maternal_grandfather: {
+        full_name: getText("maternal_grandfather_full_name"),
+        birth_date: getText("maternal_grandfather_birth_date"),
+        death_date: getText("maternal_grandfather_death_date"),
+      },
+      maternal_grandmother: {
+        full_name: getText("maternal_grandmother_full_name"),
+        birth_date: getText("maternal_grandmother_birth_date"),
+        death_date: getText("maternal_grandmother_death_date"),
+      },
     },
     parents: {
-      mother: readCollection(parentsSection)[0] || {},
-      father: readCollection(parentsSection)[1] || {},
+      father: {
+        full_name: getText("father_full_name"),
+        birth_date: getText("father_birth_date"),
+        death_date: getText("father_death_date"),
+      },
+      mother: {
+        full_name: getText("mother_full_name"),
+        birth_date: getText("mother_birth_date"),
+        death_date: getText("mother_death_date"),
+      },
     },
-    siblings: readCollection(siblingsSection),
-    current_partner: readCollection(partnersSection)[0] || {},
-    significant_partners: readCollection(partnersSection).slice(1),
-    children: readCollection(childrenSection),
+    current_partner: {
+      full_name: getText("current_partner_full_name"),
+      birth_date: getText("current_partner_birth_date"),
+      relationship_years: getText("current_partner_relationship_years"),
+    },
+    significant_partners: readCollection(significantPartnersList),
+    children: readCollection(childrenList),
+    siblings: readCollection(siblingsList),
     current_symptoms: readCollection(symptomList),
     history_events: readCollection(historyList),
-    patient_name: readSingleCard(consultantSection).full_name || "",
-    patient_birth_date: readSingleCard(consultantSection).birth_date || "",
+    patient_name: getText("consultant_full_name"),
+    patient_birth_date: getText("consultant_birth_date"),
   };
+  return payload;
 }
 
 function getPairsPayload() {
@@ -304,6 +334,11 @@ function setStatus(container, message, isError = false) {
   container.innerHTML = `<p class="status ${isError ? "error" : ""}">${message}</p>`;
 }
 
+document.getElementById("add-significant-partner").addEventListener("click", () => addCollectionItem(significantPartnersList, "significant-partner-template"));
+document.getElementById("add-child").addEventListener("click", () => addCollectionItem(childrenList, "child-template"));
+document.getElementById("add-sibling").addEventListener("click", () => addCollectionItem(siblingsList, "sibling-template"));
+document.getElementById("add-symptom").addEventListener("click", () => addCollectionItem(symptomList, "symptom-template"));
+document.getElementById("add-history").addEventListener("click", () => addCollectionItem(historyList, "history-template"));
 document.getElementById("add-pair").addEventListener("click", () => addCollectionItem(pairsList, "pair-template"));
 
 document.getElementById("analyze-case").addEventListener("click", async () => {
@@ -375,79 +410,7 @@ document.getElementById("ask-course").addEventListener("click", async () => {
   }
 });
 
+addCollectionItem(childrenList, "child-template");
+addCollectionItem(symptomList, "symptom-template");
+addCollectionItem(historyList, "history-template");
 addCollectionItem(pairsList, "pair-template");
-
-appendCard(consultantSection, "Consultante", [
-  { key: "full_name", label: "Nombre completo del (a) consultante" },
-  { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-]);
-
-[
-  "Abuela materna",
-  "Abuelo materno",
-  "Abuela paterna",
-  "Abuelo paterno",
-].forEach((label) => {
-  appendCard(grandparentsSection, label, [
-    { key: "full_name", label: `Nombre completo de ${label.toLowerCase()}` },
-    { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-    { key: "death_date", label: "Fecha de muerte (día / mes / año)", placeholder: "DD/MM/AAAA" },
-  ], "three");
-});
-
-["Madre", "Padre"].forEach((label) => {
-  appendCard(parentsSection, label, [
-    { key: "full_name", label: `Nombre completo de ${label.toLowerCase()}` },
-    { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-    { key: "death_date", label: "Fecha de muerte (día / mes / año)", placeholder: "DD/MM/AAAA" },
-  ], "three");
-});
-
-for (let index = 1; index <= 5; index += 1) {
-  appendCard(siblingsSection, `Herman@ ${index}`, [
-    { key: "full_name", label: `Nombre completo herman@ ${index}` },
-    { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-  ]);
-}
-
-appendCard(partnersSection, "Pareja actual", [
-  { key: "full_name", label: "Nombre completo pareja actual" },
-  { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-  { key: "relationship_duration", label: "Tiempo de relación" },
-], "three");
-
-for (let index = 1; index <= 3; index += 1) {
-  appendCard(partnersSection, `Pareja significativa ${index}`, [
-    { key: "full_name", label: "Nombre pareja significativa" },
-    { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-    { key: "relationship_duration", label: "Tiempo de relación" },
-  ], "three");
-}
-
-for (let index = 1; index <= 5; index += 1) {
-  appendCard(childrenSection, `Hij@ ${index}`, [
-    { key: "full_name", label: "Nombre completo" },
-    { key: "birth_date", label: "Fecha de nacimiento (día / mes / año)", placeholder: "DD/MM/AAAA" },
-    { key: "death_date", label: "Fecha de muerte (día / mes / año)", placeholder: "DD/MM/AAAA" },
-    { key: "other_parent_name", label: "Nombre completo progenitor (a)" },
-    { key: "relationship_duration", label: "Tiempo de duración en la relación" },
-  ], "three");
-}
-
-for (let index = 1; index <= 4; index += 1) {
-  appendCard(symptomList, `Síntoma actual ${index}`, [
-    { key: "symptom_name", label: "Síntoma" },
-    { key: "onset_age_or_date", label: "Edad aproximada de aparición o diagnóstico" },
-    { key: "symptom_characteristics", label: "Características del síntoma" },
-    { key: "frequency", label: "Frecuencia de síntoma" },
-  ], "two");
-}
-
-for (let index = 1; index <= 3; index += 1) {
-  appendCard(historyList, `Antecedente / recurrente ${index}`, [
-    { key: "event_name", label: "Síntoma" },
-    { key: "onset_age_or_date", label: "Edad aproximada de aparición o diagnóstico" },
-    { key: "event_characteristics", label: "Características del síntoma" },
-    { key: "frequency", label: "Frecuencia de síntoma" },
-  ], "two");
-}

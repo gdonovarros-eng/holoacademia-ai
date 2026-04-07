@@ -1,131 +1,138 @@
 # Formulario Terapéutico Definitivo V1
 
-## Fuente real
+## Versión operativa aprobada
 
-Esta versión queda corregida **directamente** desde:
+Este formulario sigue la estructura definida directamente por operación, no una reconstrucción libre.
 
-- `/Users/m2/Library/Mobile Documents/com~apple~CloudDocs/Formulario registro círculo terapéutico.pptx`
-
-El formulario anterior estaba inferido y no respetaba el archivo original. Este sí.
+Debe verse y capturarse así:
 
 ---
 
-## Estructura general
+## 1. Información del consultante
 
-El PPT contiene **2 bloques**:
+- `Nombre completo`
+- `Fecha de nacimiento`
+- `Hora de nacimiento`
+- `Edad`
 
-1. `Genograma Básico: Abuelos, Progenitores, Pareja(s) y Descendiente(s)`
-2. `Historial Clínico Básico: Síntomas Actuales, Recurrentes y Cirugías`
-
-Todo debe ser visible desde el inicio y lo llena el terapeuta durante la entrevista.
-
----
-
-## Bloque 1. Genograma básico
-
-### 1. Consultante
-
-- `Nombre completo del (a) consultante`
-- `Fecha de nacimiento (día / mes / año)`
-
-### 2. Abuelos
-
-#### Abuela materna
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-#### Abuelo materno
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-#### Abuela paterna
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-#### Abuelo paterno
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-### 3. Progenitores
-
-#### Madre
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-#### Padre
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-
-### 4. Hermanos
-
-El formato trae `5` espacios:
-
-- `Herman@ 1`
-- `Herman@ 2`
-- `Herman@ 3`
-- `Herman@ 4`
-- `Herman@ 5`
-
-Cada uno con:
-- nombre completo
-- fecha de nacimiento
-
-### 5. Parejas
-
-#### Pareja actual
-- nombre completo
-- fecha de nacimiento
-- tiempo de relación
-
-#### Parejas significativas
-
-El formato trae `3` espacios de `Pareja significativa`.
-
-Cada una con:
-- nombre
-- fecha de nacimiento
-- tiempo de relación
-
-### 6. Descendientes
-
-El formato trae `5` espacios para `Hij@`.
-
-Cada uno con:
-- nombre completo
-- fecha de nacimiento
-- fecha de muerte
-- nombre completo del progenitor(a)
-- tiempo de duración en la relación
+La edad debe calcularse automáticamente a partir de la fecha de nacimiento.
 
 ---
 
-## Bloque 2. Historial clínico básico
+## 2. Genograma básico
 
-### A. Síntomas actuales a trabajar por orden de intensidad
+### Padre
+- `Nombre del Padre`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
 
-El formato trae `4` filas.
+### Abuelo paterno
+- `Nombre del Abuelo Paterno`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
 
-Cada fila incluye:
+### Abuela paterna
+- `Nombre de la Abuela Paterna`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
+
+### Madre
+- `Nombre de la Madre`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
+
+### Abuelo materno
+- `Nombre del Abuelo Materno`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
+
+### Abuela materna
+- `Nombre de la Abuela Materna`
+- `Fecha de Nacimiento`
+- `Fecha de Muerte`
+
+---
+
+## 3. Pareja actual
+
+- `Nombre Completo`
+- `Fecha de Nacimiento`
+- `Años de relación`
+
+---
+
+## 4. Más parejas significativas
+
+Debe iniciar vacío.
+
+Pregunta operativa:
+- `¿Hay más parejas significativas?`
+
+Si sí:
+- botón `Agregar`
+
+Cada pareja agregada incluye:
+- `Nombre completo`
+- `Fecha de nacimiento`
+- `Años de relación`
+
+Se repite hasta que ya no agreguen más.
+
+---
+
+## 5. Hijos
+
+Debe poder agregarse dinámicamente.
+
+Cada hijo incluye:
+- `Nombre completo`
+- `Fecha de nacimiento`
+- `Fecha de muerte`
+- `Nombre del padre o madre`
+- `Fecha de nacimiento`
+- `Fecha de muerte`
+- `Tiempo de relación en años`
+
+Debe haber botón:
+- `Agregar hijo`
+
+---
+
+## 6. Hermanos
+
+Cada hermano incluye:
+- `Nombre completo`
+- `Fecha de nacimiento`
+- `Fecha de muerte`
+
+Debe haber botón:
+- `Agregar hermano`
+
+---
+
+## 7. Historial clínico básico
+
+### Síntomas a trabajar por orden de intensidad
+
+Cada síntoma incluye:
 - `Síntoma`
 - `Edad aproximada de aparición o diagnóstico`
 - `Características del síntoma`
 - `Frecuencia de síntoma`
 
-### B. Síntomas recurrentes en el pasado, cirugías, etc.
+Debe haber botón:
+- `Agregar síntoma`
 
-El formato trae `3` filas.
+### Síntomas recurrentes del pasado como cirugías
 
-Cada fila incluye:
+Cada síntoma incluye:
 - `Síntoma`
 - `Edad aproximada de aparición o diagnóstico`
 - `Características del síntoma`
 - `Frecuencia de síntoma`
+
+Debe haber botón:
+- `Agregar síntoma`
 
 ---
 
@@ -135,68 +142,53 @@ Cada fila incluye:
 {
   "consultant": {
     "full_name": "",
-    "birth_date": ""
-  },
-  "grandparents": {
-    "maternal_grandmother": { "full_name": "", "birth_date": "", "death_date": "" },
-    "maternal_grandfather": { "full_name": "", "birth_date": "", "death_date": "" },
-    "paternal_grandmother": { "full_name": "", "birth_date": "", "death_date": "" },
-    "paternal_grandfather": { "full_name": "", "birth_date": "", "death_date": "" }
+    "birth_date": "",
+    "birth_time": "",
+    "age": ""
   },
   "parents": {
-    "mother": { "full_name": "", "birth_date": "", "death_date": "" },
-    "father": { "full_name": "", "birth_date": "", "death_date": "" }
+    "father": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    },
+    "mother": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    }
   },
-  "siblings": [
-    { "full_name": "", "birth_date": "" }
-  ],
+  "grandparents": {
+    "paternal_grandfather": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    },
+    "paternal_grandmother": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    },
+    "maternal_grandfather": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    },
+    "maternal_grandmother": {
+      "full_name": "",
+      "birth_date": "",
+      "death_date": ""
+    }
+  },
   "current_partner": {
     "full_name": "",
     "birth_date": "",
-    "relationship_duration": ""
+    "relationship_years": ""
   },
-  "significant_partners": [
-    { "full_name": "", "birth_date": "", "relationship_duration": "" }
-  ],
-  "children": [
-    {
-      "full_name": "",
-      "birth_date": "",
-      "death_date": "",
-      "other_parent_name": "",
-      "relationship_duration": ""
-    }
-  ],
-  "current_symptoms": [
-    {
-      "symptom_name": "",
-      "onset_age_or_date": "",
-      "symptom_characteristics": "",
-      "frequency": ""
-    }
-  ],
-  "history_events": [
-    {
-      "event_name": "",
-      "onset_age_or_date": "",
-      "event_characteristics": "",
-      "frequency": ""
-    }
-  ]
+  "significant_partners": [],
+  "children": [],
+  "siblings": [],
+  "current_symptoms": [],
+  "history_events": []
 }
 ```
-
----
-
-## Nota importante
-
-Este formulario **no trae** en el PPT original campos como:
-
-- motivo de consulta
-- objetivo de la sesión
-- emoción principal
-- detonante reciente
-- observaciones libres
-- conflictos familiares escritos como notas abiertas
-
-Si luego quieres añadirlos, deben entrar como una **versión extendida** del formulario, no como si vinieran del archivo original.

@@ -178,6 +178,10 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.grid.four {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 label {
   display: grid;
   gap: 8px;
@@ -260,20 +264,21 @@ textarea {
   gap: 14px;
 }
 
-.genogram-layout {
+.subsection {
   display: grid;
-  grid-template-columns: 1fr 1.25fr 1fr;
-  gap: 16px;
-  align-items: start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid rgba(31, 28, 23, 0.08);
 }
 
-.genogram-column {
-  display: grid;
-  gap: 14px;
+.subsection h4 {
+  margin: 0;
 }
 
-.genogram-column-center {
-  gap: 16px;
+.collection-block.nested {
+  margin-top: 4px;
 }
 
 .collection-item {
@@ -377,11 +382,8 @@ th {
 
 @media (max-width: 900px) {
   .grid.two,
-  .grid.three {
-    grid-template-columns: 1fr;
-  }
-
-  .genogram-layout {
+  .grid.three,
+  .grid.four {
     grid-template-columns: 1fr;
   }
 
