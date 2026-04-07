@@ -218,6 +218,22 @@ function renderSuggestedProtocols(items = []) {
   `).join("")}</div>`;
 }
 
+function renderTherapeuticGuide(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin guía terapéutica disponible todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || ""}</strong></p>
+      <p>${item.purpose || ""}</p>
+      <p><strong>Cuándo abrirlo:</strong> ${item.when_to_use || ""}</p>
+      <p><strong>Pasos sugeridos:</strong></p>
+      ${renderBulletList(item.steps || [])}
+      ${(item.pair_focus || []).length ? `<p><strong>Pares a validar desde aquí:</strong> ${(item.pair_focus || []).join(", ")}</p>` : ""}
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderSystemSweep(items = []) {
   if (!items.length) {
     return `<p class="status">Sin barrido sistémico disponible todavía.</p>`;
@@ -284,6 +300,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Hipótesis prioritarias</h3>
       ${renderHypotheses(analysis.prioritized_hypotheses || [])}
+    </article>
+    <article class="result-card">
+      <h3>Guía terapéutica inicial</h3>
+      ${renderTherapeuticGuide(analysis.therapeutic_guide || [])}
     </article>
     <article class="result-card">
       <h3>Sistemas probables</h3>

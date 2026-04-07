@@ -67,6 +67,21 @@ def _compact_conflict_text(value: str) -> str:
     return text
 
 
+def _protocol_steps(value: str) -> list[str]:
+    body = _safe_text(value)
+    if not body:
+        return []
+
+    normalized = body.replace("●", "\n●").replace("•", "\n•")
+    lines = [re.sub(r"\s+", " ", line).strip(" .") for line in normalized.splitlines()]
+    steps = [line.lstrip("●•- ").strip() for line in lines if line.strip().startswith(("●", "•", "-"))]
+    if steps:
+        return _dedupe_keep_order(steps[:6])
+
+    fragments = [fragment.strip() for fragment in re.split(r"\.\s+", body) if fragment.strip()]
+    return _dedupe_keep_order(fragments[:6])
+
+
 @dataclass
 class DiseaseProfile:
     canonical_name: str
@@ -260,6 +275,42 @@ def _load_raw_disease_entries() -> list[RawDiseaseEntry]:
 
 RAW_DISEASE_ENTRIES = _load_raw_disease_entries()
 TEACHER = TeacherKnowledge.from_cache(TEACHER_KNOWLEDGE_CACHE_PATH)
+
+
+PROTOCOL_GUIDE_LIBRARY: dict[str, dict[str, Any]] = {
+    "sistemico": {
+        "candidates": ["Protocolo para eliminar conflictos sistémicos"],
+        "purpose": "hacer consciente el conflicto sistémico principal y descargar la emoción que lo mantiene activo",
+    },
+    "sentimental": {
+        "candidates": ["Protocolo para rastreo sentimental", "Protocolo para eliminar conexiones sentimentales"],
+        "purpose": "abrir vínculo, sentimiento continuo, anclaje afectivo o carga relacional que siga disparando el síntoma",
+    },
+    "transgeneracional": {
+        "candidates": [
+            "Protocolo para liberar conflictos de tipo transgeneracional",
+            "PROTOCOLO DE RASTREO TRANSGENERACIONAL",
+            "PROTOCOLO DE SUBLIMACIÓN DE CONFLICTO TRANSGENERACIONAL",
+        ],
+        "purpose": "rastrear duelos, repeticiones, lealtades o cargas del árbol que puedan expresarse en el cuerpo",
+    },
+    "estres_postraumatico": {
+        "candidates": ["Protocolo para la liberación del estrés postraumático"],
+        "purpose": "liberar impacto, sobresalto o evento que dejó al sistema en alarma persistente",
+    },
+    "emociones_bloqueadas": {
+        "candidates": [
+            "PROTOCOLO PARA EMOCIONES BLOQUEADAS O NEGADAS",
+            "PROTOCOLO PARA EMOCIÓN-REACCIÓN",
+            "Protocolo para gestión de sensaciones",
+        ],
+        "purpose": "bajar carga emocional activa, sensaciones retenidas o respuestas emocionales que no terminan de descargarse",
+    },
+    "patogenos": {
+        "candidates": ["Protocolo para patógenos “ocultos”"],
+        "purpose": "validar si el cuadro requiere rastreo microbiológico complementario y qué par conviene impactar primero",
+    },
+}
 
 
 SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
@@ -1241,6 +1292,35 @@ def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]
     return [item for _, item in ranked[:8]]
 
 
+def _find_protocol_candidate(group_key: str) -> dict[str, Any] | None:
+    group = PROTOCOL_GUIDE_LIBRARY.get(group_key) or {}
+    for candidate in group.get("candidates", []):
+        entry = TEACHER.find_protocol(candidate)
+        if entry:
+            return {
+                "title": entry.title,
+                "body": _safe_text(entry.body),
+                "purpose": group.get("purpose", ""),
+            }
+    return None
+
+
+def _build_protocol_card(
+    title: str,
+    purpose: str,
+    when_to_use: str,
+    body: str,
+    pair_focus: list[str] | None = None,
+) -> dict[str, Any]:
+    return {
+        "title": title,
+        "purpose": purpose,
+        "when_to_use": when_to_use,
+        "steps": _protocol_steps(body)[:5],
+        "pair_focus": (pair_focus or [])[:5],
+    }
+
+
 def _build_opening_guidance(
     probable_systems: list[str],
     priority_symptoms: list[str],
@@ -1409,6 +1489,7 @@ def _build_course_reading(
     matched_names: list[str],
     prioritized_hypotheses: list[dict[str, Any]],
     opening_guidance: dict[str, Any],
+    organ_sweep_summary: list[dict[str, Any]],
 ) -> str:
     primary_system_label = opening_guidance.get("primary_system_label") or (
         _format_system_label(probable_systems[0]) if probable_systems else "el sistema prioritario"
@@ -1416,10 +1497,14 @@ def _build_course_reading(
     symptom_focus = opening_guidance.get("symptom_focus") or (
         matched_names[0] if matched_names else "el síntoma principal"
     )
+    organ_title = organ_sweep_summary[0]["title"].lower() if organ_sweep_summary else ""
     parts = [
         f"La puerta de entrada del caso es {primary_system_label} y conviene tomar {symptom_focus} como síntoma eje.",
-        opening_guidance.get("opening_focus", ""),
     ]
+    if organ_title:
+        parts.append(f"Lo primero es abrir entrevista y rastreo desde {organ_title}.")
+    elif opening_guidance.get("opening_focus", ""):
+        parts.append(opening_guidance.get("opening_focus", ""))
     if probable_conflicts:
         parts.append("La masa conflictual provisional apunta a " + ", ".join(probable_conflicts[:2]) + ".")
     if primary_family_axis:
@@ -1470,6 +1555,142 @@ def _build_protocol_suggestions(
             seen.add(bullet)
             suggestions.append({"title": bullet, "reason": "Conviene tenerlo presente desde la primera entrevista y el rastreo."})
     return suggestions[:6]
+
+
+def _build_therapeutic_guide(
+    probable_systems: list[str],
+    priority_symptoms: list[str],
+    family_axes: list[str],
+    probable_conflicts: list[str],
+    organ_sweep_summary: list[dict[str, Any]],
+    opening_guidance: dict[str, Any],
+    suggested_pairs: list[dict[str, Any]],
+    microbe_queries: list[str],
+) -> list[dict[str, Any]]:
+    guide: list[dict[str, Any]] = []
+    symptom_focus = priority_symptoms[0] if priority_symptoms else "el síntoma principal"
+    pair_focus = [item.get("pair_name", "") for item in suggested_pairs[:4] if item.get("pair_name")]
+    primary_system = probable_systems[0] if probable_systems else ""
+
+    guide.append(
+        {
+            "title": "Apertura clínica del caso",
+            "purpose": "ordenar la entrevista para que el síntoma deje de ser solo un dato y empiece a mostrar conflicto, sistema y puerta de rastreo",
+            "when_to_use": f"Úsalo al inicio, tomando {symptom_focus} como puerta principal.",
+            "steps": [
+                f"Precisar cuándo comenzó {symptom_focus} y qué estaba ocurriendo en la vida del consultante.",
+                "Ubicar el primer episodio claro, el detonante principal y la emoción dominante.",
+                *(opening_guidance.get("interview_targets", [])[:2]),
+            ],
+            "pair_focus": pair_focus[:3],
+        }
+    )
+
+    if organ_sweep_summary:
+        top_organ = organ_sweep_summary[0]
+        guide.append(
+            {
+                "title": top_organ["title"],
+                "purpose": "abrir la entrevista por la puerta anatómica más congruente con el síntoma eje",
+                "when_to_use": f"Conviene usarlo cuando {symptom_focus} domina el cuadro o marca claramente el sistema.",
+                "steps": top_organ.get("interview_points", [])[:4],
+                "pair_focus": top_organ.get("pair_focus", [])[:5],
+            }
+        )
+
+    systemic_protocol = _find_protocol_candidate("sistemico")
+    if systemic_protocol:
+        guide.append(
+            _build_protocol_card(
+                title=systemic_protocol["title"],
+                purpose=systemic_protocol["purpose"],
+                when_to_use="Úsalo cuando ya identificaste el conflicto dominante y quieres volverlo consciente para empezar a descargarlo.",
+                body=systemic_protocol["body"],
+                pair_focus=pair_focus[:3],
+            )
+        )
+
+    family_blob = " ".join(family_axes).lower()
+    if any(token in family_blob for token in ("pareja", "vínculo", "sentimental")):
+        sentimental_protocol = _find_protocol_candidate("sentimental")
+        if sentimental_protocol:
+            guide.append(
+                _build_protocol_card(
+                    title=sentimental_protocol["title"],
+                    purpose=sentimental_protocol["purpose"],
+                    when_to_use="Ábrelo cuando el síntoma se reactive con pareja, rechazo, dependencia afectiva o carga vincular.",
+                    body=sentimental_protocol["body"],
+                    pair_focus=pair_focus[:2],
+                )
+            )
+
+    if any(token in family_blob for token in ("transgeneracional", "duelo", "falleció", "árbol", "sistema familiar")):
+        trans_protocol = _find_protocol_candidate("transgeneracional")
+        if trans_protocol:
+            guide.append(
+                _build_protocol_card(
+                    title=trans_protocol["title"],
+                    purpose=trans_protocol["purpose"],
+                    when_to_use="Ábrelo cuando haya fechas de muerte, repeticiones, duelos o sensación de carga del árbol.",
+                    body=trans_protocol["body"],
+                    pair_focus=[],
+                )
+            )
+
+    conflict_blob = " ".join(probable_conflicts).lower()
+    if any(token in conflict_blob for token in ("trauma", "shock", "sobresalto", "terror", "miedo intenso")):
+        trauma_protocol = _find_protocol_candidate("estres_postraumatico")
+        if trauma_protocol:
+            guide.append(
+                _build_protocol_card(
+                    title=trauma_protocol["title"],
+                    purpose=trauma_protocol["purpose"],
+                    when_to_use="Conviene abrirlo cuando el cuadro cambió después de un evento abrupto o quedó una alarma persistente.",
+                    body=trauma_protocol["body"],
+                    pair_focus=pair_focus[:2],
+                )
+            )
+
+    if microbe_queries or (
+        primary_system in {"digestivo", "respiratorio", "renal_excretor", "reproductor", "dermatologico"}
+        and any(
+            any(token in _normalize_text(" ".join([item.get("pair_type", ""), item.get("related_condition", ""), item.get("pair_name", "")])) for token in ("bacteria", "virus", "hongo", "parasito", "parásito"))
+            for item in suggested_pairs[:6]
+        )
+    ):
+        pathogen_protocol = _find_protocol_candidate("patogenos")
+        if pathogen_protocol:
+            guide.append(
+                _build_protocol_card(
+                    title=pathogen_protocol["title"],
+                    purpose=pathogen_protocol["purpose"],
+                    when_to_use="Úsalo si el cuadro apunta a componente microbiológico o si el rastreo sugiere bacteria, hongo, virus o parásito.",
+                    body=pathogen_protocol["body"],
+                    pair_focus=pair_focus[:4],
+                )
+            )
+
+    emotional_protocol = _find_protocol_candidate("emociones_bloqueadas")
+    if emotional_protocol:
+        guide.append(
+            _build_protocol_card(
+                title=emotional_protocol["title"],
+                purpose=emotional_protocol["purpose"],
+                when_to_use="Sirve cuando el consultante entiende la historia, pero el cuerpo sigue cargado, negado o demasiado contenido.",
+                body=emotional_protocol["body"],
+                pair_focus=[],
+            )
+        )
+
+    deduped: list[dict[str, Any]] = []
+    seen_titles: set[str] = set()
+    for item in guide:
+        key = _normalize_text(item.get("title", ""))
+        if not key or key in seen_titles:
+            continue
+        seen_titles.add(key)
+        deduped.append(item)
+    return deduped[:6]
 
 
 def _build_system_sweep_summary(probable_systems: list[str]) -> list[dict[str, Any]]:
@@ -1604,6 +1825,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         heuristics=heuristics,
     )
     suggested_pairs_to_validate = _build_suggested_pairs(case_payload)
+    microbe_queries = _extract_microbe_queries(case_payload)
     prioritized_hypotheses = _build_prioritized_hypotheses(
         priority_symptoms=priority_symptoms,
         probable_systems=probable_systems,
@@ -1613,6 +1835,8 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         suggested_pairs=suggested_pairs_to_validate,
         opening_guidance=opening_guidance,
     )
+    system_sweep_summary = _build_system_sweep_summary(probable_systems)
+    organ_sweep_summary = _build_organ_sweep_summary(case_payload, probable_systems)
     reading = _build_course_reading(
         case_payload=case_payload,
         probable_systems=probable_systems,
@@ -1623,14 +1847,23 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         matched_names=matched_names,
         prioritized_hypotheses=prioritized_hypotheses,
         opening_guidance=opening_guidance,
+        organ_sweep_summary=organ_sweep_summary,
     )
     protocol_suggestions = _build_protocol_suggestions(
         probable_systems=probable_systems,
         priority_symptoms=priority_symptoms,
         opening_guidance=opening_guidance,
     )
-    system_sweep_summary = _build_system_sweep_summary(probable_systems)
-    organ_sweep_summary = _build_organ_sweep_summary(case_payload, probable_systems)
+    therapeutic_guide = _build_therapeutic_guide(
+        probable_systems=probable_systems,
+        priority_symptoms=priority_symptoms,
+        family_axes=family_axes,
+        probable_conflicts=probable_conflicts,
+        organ_sweep_summary=organ_sweep_summary,
+        opening_guidance=opening_guidance,
+        suggested_pairs=suggested_pairs_to_validate,
+        microbe_queries=microbe_queries,
+    )
 
     mass_conflict_hypothesis = ""
     if probable_conflicts:
@@ -1667,6 +1900,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "suggested_pairs_to_validate": suggested_pairs_to_validate,
         "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_protocols": protocol_suggestions,
+        "therapeutic_guide": therapeutic_guide,
         "system_sweep_summary": system_sweep_summary,
         "organ_sweep_summary": organ_sweep_summary,
         "suggested_course_routes": suggested_routes,
