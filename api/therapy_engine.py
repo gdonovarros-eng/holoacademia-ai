@@ -11,6 +11,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parent.parent
 CURATED_DISEASE_PROFILES_PATH = ROOT / "data" / "reference_processed" / "disease_profiles_curated_v1.json"
 DISEASE_PROFILES_PATH = ROOT / "data" / "reference_processed" / "disease_profiles.json"
+RAW_DISEASE_ENTRIES_PATH = ROOT / "data" / "reference_processed" / "disease_entries_raw.json"
 
 
 def _normalize_text(value: str) -> str:
@@ -66,6 +67,15 @@ class BroadDiseaseProfile:
     aliases: list[str]
 
 
+@dataclass
+class RawDiseaseEntry:
+    canonical_name: str
+    slug: str
+    summary: str
+    biodescodificacion: str
+    source_title: str
+
+
 @dataclass(frozen=True)
 class SymptomHeuristic:
     systems: tuple[str, ...]
@@ -75,6 +85,7 @@ class SymptomHeuristic:
     family_axes: tuple[str, ...] = ()
     course_routes: tuple[str, ...] = ()
     release_routes: tuple[str, ...] = ()
+    reference_causes: tuple[str, ...] = ()
 
 
 def _load_curated_profiles() -> list[DiseaseProfile]:
@@ -124,6 +135,25 @@ def _load_broad_profiles() -> list[BroadDiseaseProfile]:
 BROAD_PROFILES = _load_broad_profiles()
 
 
+def _load_raw_disease_entries() -> list[RawDiseaseEntry]:
+    payload = json.loads(RAW_DISEASE_ENTRIES_PATH.read_text(encoding="utf-8"))
+    entries = []
+    for item in payload.get("entries", []):
+        entries.append(
+            RawDiseaseEntry(
+                canonical_name=item.get("canonical_name", ""),
+                slug=item.get("slug", ""),
+                summary=_safe_text(item.get("summary")),
+                biodescodificacion=_safe_text(item.get("biodescodificacion")),
+                source_title=_safe_text(item.get("source_title")),
+            )
+        )
+    return entries
+
+
+RAW_DISEASE_ENTRIES = _load_raw_disease_entries()
+
+
 SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
     "cabello": SymptomHeuristic(
         systems=("dermatologico", "emocional_mental"),
@@ -141,6 +171,9 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         family_axes=("línea paterna y valoración personal a revisar",),
         course_routes=("analisis_sistemico", "rastreo_conflictologico_tegumentario", "rastreo_de_masa_conflictual"),
         release_routes=("sistemico",),
+        reference_causes=(
+            "Según el diccionario de biodescodificación, la pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
+        ),
     ),
     "alopecia": SymptomHeuristic(
         systems=("dermatologico", "emocional_mental"),
@@ -157,6 +190,9 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         family_axes=("línea paterna y valoración personal a revisar",),
         course_routes=("analisis_sistemico", "rastreo_conflictologico_tegumentario"),
         release_routes=("sistemico",),
+        reference_causes=(
+            "Según el diccionario de biodescodificación, la pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
+        ),
     ),
     "decision": SymptomHeuristic(
         systems=("emocional_mental", "neurosensorial"),
@@ -174,6 +210,9 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         family_axes=("vínculo con autoridad o aprobación a revisar", "línea paterna a revisar"),
         course_routes=("analisis_sistemico", "rastreo_de_masa_conflictual", "analisis_madre_padre_si_aplica"),
         release_routes=("sistemico", "sentimental_si_aplica"),
+        reference_causes=(
+            "La biblioteca de biodescodificación asocia la indecisión con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
+        ),
     ),
     "eleccion": SymptomHeuristic(
         systems=("emocional_mental", "neurosensorial"),
@@ -191,6 +230,9 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         family_axes=("vínculo con autoridad o aprobación a revisar", "línea paterna a revisar"),
         course_routes=("analisis_sistemico", "rastreo_de_masa_conflictual"),
         release_routes=("sistemico",),
+        reference_causes=(
+            "La biblioteca de biodescodificación asocia la indecisión con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
+        ),
     ),
     "ansiedad": SymptomHeuristic(
         systems=("emocional_mental",),
@@ -472,6 +514,74 @@ def _format_system_label(system_name: str) -> str:
     return COURSE_SYSTEM_LABELS.get(system_name, system_name.replace("_", " "))
 
 
+def _compact_reference_text(value: str) -> str:
+    value = re.sub(r"\s+", " ", value or "").strip()
+    return value[:320].rstrip(" ,;:.") + ("…" if len(value) > 320 else "")
+
+
+def _build_reference_emotional_causes(
+    case_payload: dict[str, Any],
+    heuristics: list[SymptomHeuristic],
+) -> list[dict[str, str]]:
+    results: list[dict[str, str]] = []
+    seen: set[tuple[str, str]] = set()
+
+    for heuristic in heuristics:
+        for cause in heuristic.reference_causes:
+            key = ("heuristic", _normalize_text(cause))
+            if key in seen:
+                continue
+            seen.add(key)
+            results.append(
+                {
+                    "source": "Biblioteca de referencia",
+                    "label": "Causa emocional probable",
+                    "body": cause,
+                }
+            )
+
+    symptom_names = [
+        _safe_text(item.get("symptom_name"))
+        for item in _safe_list(case_payload.get("current_symptoms"))
+        if _safe_text(item.get("symptom_name"))
+    ] + [
+        _safe_text(item.get("event_name"))
+        for item in _safe_list(case_payload.get("history_events"))
+        if _safe_text(item.get("event_name"))
+    ]
+    normalized_symptoms = [_normalize_text(name) for name in symptom_names]
+
+    for entry in RAW_DISEASE_ENTRIES:
+        entry_name = _normalize_text(entry.canonical_name)
+        if not entry_name:
+            continue
+        if not any(entry_name in symptom or symptom in entry_name for symptom in normalized_symptoms if symptom):
+            continue
+
+        body_parts = []
+        if entry.summary:
+            body_parts.append(_compact_reference_text(entry.summary))
+        if entry.biodescodificacion:
+            body_parts.append(_compact_reference_text(entry.biodescodificacion))
+        body = " ".join(body_parts).strip()
+        if not body:
+            continue
+
+        key = (entry.canonical_name, body)
+        if key in seen:
+            continue
+        seen.add(key)
+        results.append(
+            {
+                "source": entry.source_title or "Biblioteca de referencia",
+                "label": entry.canonical_name,
+                "body": body,
+            }
+        )
+
+    return results[:6]
+
+
 def _build_course_guiding_questions(
     case_payload: dict[str, Any],
     probable_systems: list[str],
@@ -591,6 +701,10 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
 
     matched_names = [item["canonical_name"] for item in top_matches]
     heuristic_hints = _dedupe_keep_order([heuristic.reading_hint for heuristic in heuristics])[:2]
+    reference_emotional_causes = _build_reference_emotional_causes(
+        case_payload=case_payload,
+        heuristics=heuristics,
+    )
     reading = _build_course_reading(
         case_payload=case_payload,
         probable_systems=probable_systems,
@@ -627,6 +741,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "matched_profiles": top_matches,
         "probable_systems": probable_systems,
         "probable_conflicts": probable_conflicts,
+        "reference_emotional_causes": reference_emotional_causes,
         "family_axes": family_axes,
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,

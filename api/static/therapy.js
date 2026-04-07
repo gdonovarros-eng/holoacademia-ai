@@ -174,6 +174,19 @@ function renderBulletList(values = []) {
   return `<ul class="bullet-list">${values.map((value) => `<li>${value}</li>`).join("")}</ul>`;
 }
 
+function renderReferenceCauses(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin causas emocionales referidas todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.label || "Referencia"}</strong></p>
+      <p>${item.body || ""}</p>
+      <p class="status">Fuente: ${item.source || "Biblioteca interna"}</p>
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderAnalysis(analysis) {
   analysisOutput.innerHTML = `
     <article class="result-card">
@@ -192,6 +205,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Conflictos probables</h3>
       ${renderBulletList(analysis.probable_conflicts || [])}
+    </article>
+    <article class="result-card">
+      <h3>Causas emocionales probables según biblioteca</h3>
+      ${renderReferenceCauses(analysis.reference_emotional_causes || [])}
     </article>
     <article class="result-card">
       <h3>Ejes familiares y transgeneracionales</h3>
