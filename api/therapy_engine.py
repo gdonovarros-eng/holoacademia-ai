@@ -172,7 +172,7 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         course_routes=("analisis_sistemico", "rastreo_conflictologico_tegumentario", "rastreo_de_masa_conflictual"),
         release_routes=("sistemico",),
         reference_causes=(
-            "Según el diccionario de biodescodificación, la pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
+            "La pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
         ),
     ),
     "alopecia": SymptomHeuristic(
@@ -191,7 +191,7 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         course_routes=("analisis_sistemico", "rastreo_conflictologico_tegumentario"),
         release_routes=("sistemico",),
         reference_causes=(
-            "Según el diccionario de biodescodificación, la pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
+            "La pérdida de cabello puede orientarse hacia conflicto de separación e injusticia, con falta de reconocimiento del padre y sensación de separación de las raíces.",
         ),
     ),
     "decision": SymptomHeuristic(
@@ -211,7 +211,7 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         course_routes=("analisis_sistemico", "rastreo_de_masa_conflictual", "analisis_madre_padre_si_aplica"),
         release_routes=("sistemico", "sentimental_si_aplica"),
         reference_causes=(
-            "La biblioteca de biodescodificación asocia la indecisión con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
+            "La indecisión suele relacionarse con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
         ),
     ),
     "eleccion": SymptomHeuristic(
@@ -231,7 +231,7 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         course_routes=("analisis_sistemico", "rastreo_de_masa_conflictual"),
         release_routes=("sistemico",),
         reference_causes=(
-            "La biblioteca de biodescodificación asocia la indecisión con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
+            "La indecisión suele relacionarse con no saber a dónde ir, no saber cuál es el sitio propio o qué posición adoptar.",
         ),
     ),
     "ansiedad": SymptomHeuristic(
@@ -534,7 +534,7 @@ def _build_reference_emotional_causes(
             seen.add(key)
             results.append(
                 {
-                    "source": "Biblioteca de referencia",
+                    "source": "",
                     "label": "Causa emocional probable",
                     "body": cause,
                 }
@@ -573,7 +573,7 @@ def _build_reference_emotional_causes(
         seen.add(key)
         results.append(
             {
-                "source": entry.source_title or "Biblioteca de referencia",
+                "source": "",
                 "label": entry.canonical_name,
                 "body": body,
             }

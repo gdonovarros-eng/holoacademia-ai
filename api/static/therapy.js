@@ -182,7 +182,6 @@ function renderReferenceCauses(items = []) {
     <article class="reference-card">
       <p><strong>${item.label || "Referencia"}</strong></p>
       <p>${item.body || ""}</p>
-      <p class="status">Fuente: ${item.source || "Biblioteca interna"}</p>
     </article>
   `).join("")}</div>`;
 }
@@ -214,7 +213,7 @@ function renderAnalysis(analysis) {
       ${renderBulletList(analysis.probable_conflicts || [])}
     </article>
     <article class="result-card">
-      <h3>Causas emocionales probables según biblioteca</h3>
+      <h3>Causas emocionales probables</h3>
       ${renderReferenceCauses(analysis.reference_emotional_causes || [])}
     </article>
     <article class="result-card">
@@ -242,7 +241,6 @@ function renderPairCard(pair) {
       </div>
       <p><strong>Punto A:</strong> ${pair.visual?.point_a?.label || ""} · ${pair.visual?.point_a?.region_hint || ""}</p>
       <p><strong>Punto B:</strong> ${pair.visual?.point_b?.label || ""} · ${pair.visual?.point_b?.region_hint || ""}</p>
-      <p><strong>Fuente:</strong> ${pair.source_file || "Sin fuente detectada"}</p>
       ${visualImages ? `<div class="pair-visual-grid">${visualImages}</div>` : `<p class="status">Sin referencia visual disponible.</p>`}
     </article>
   `;
