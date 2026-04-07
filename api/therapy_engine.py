@@ -610,6 +610,139 @@ SYSTEM_SWEEP_LIBRARY: dict[str, dict[str, Any]] = {
     },
 }
 
+ORGAN_SWEEP_LIBRARY: list[dict[str, Any]] = [
+    {
+        "organ_key": "estomago",
+        "system_name": "digestivo",
+        "keywords": ("gastritis", "estomago", "estómago", "ardor", "acidez", "agrura", "boca del estomago", "boca del estómago"),
+        "title": "Barrido de estómago",
+        "summary": "Tomarlo como conflicto de bocado difícil de digerir, irritación sostenida, enojo tragado y rechazo de algo que ya entró al sistema.",
+        "interview_points": [
+            "Precisar qué situación le cayó pesada o indigesta cuando empezó el síntoma.",
+            "Preguntar con quién se irrita pero se lo traga sin expresarlo.",
+            "Revisar si el ardor aparece con presión, enojo, ambiente hostil o sensación de invasión.",
+        ],
+        "pair_focus": ["estómago", "píloro", "helicobacter pylori", "gastritis"],
+    },
+    {
+        "organ_key": "esofago",
+        "system_name": "digestivo",
+        "keywords": ("reflujo", "esofag", "esófag", "hernia hiatal", "agruras"),
+        "title": "Barrido de esófago / entrada digestiva",
+        "summary": "Conviene revisarlo como dificultad para dejar bajar una situación, devolver lo que no se acepta o sostener irritación en la entrada del bocado.",
+        "interview_points": [
+            "Preguntar qué situación no logra pasar o aceptar del todo.",
+            "Explorar rechazo, defensa, regreso de enojo o sensación de invasión.",
+            "Revisar si el síntoma empeora con convivencia, presión o discusiones.",
+        ],
+        "pair_focus": ["esófago", "hernia hiatal", "reflujo"],
+    },
+    {
+        "organ_key": "colon_intestino",
+        "system_name": "digestivo",
+        "keywords": ("colitis", "colon", "colón", "intestin", "diarrea", "estren", "estreñ"),
+        "title": "Barrido de intestino / colon",
+        "summary": "Abrirlo como conflicto de eliminación, irritación del territorio interno y dificultad para soltar lo que ya no sirve o se percibe tóxico.",
+        "interview_points": [
+            "Preguntar qué quiere sacar de su vida y todavía no logra soltar.",
+            "Explorar irritación cotidiana, límite invadido o convivencia que intoxica.",
+            "Revisar si el cuerpo acelera o retiene según miedo, control o enojo.",
+        ],
+        "pair_focus": ["colon", "intestino", "parasito digestivo", "flora intestinal"],
+    },
+    {
+        "organ_key": "oido_vestibular",
+        "system_name": "neurosensorial",
+        "keywords": ("tinnitus", "tinittus", "tinitus", "zumbido", "oido", "oído", "vertigo", "vértigo", "mareo", "desequilibrio"),
+        "title": "Barrido de oído / sistema vestibular",
+        "summary": "Tomarlo como conflicto de vigilancia, alerta, desorientación o dificultad para sostener equilibrio y dirección ante una situación que desorganiza.",
+        "interview_points": [
+            "Precisar qué evento hizo perder seguridad, orientación o estabilidad.",
+            "Preguntar qué no puede dejar de escuchar o qué amenaza sigue sonando internamente.",
+            "Revisar si el mareo aparece con miedo, presión, conflicto de dirección o saturación nerviosa.",
+        ],
+        "pair_focus": ["oído", "mastoides", "temporal", "vértigo", "mareo", "tinnitus"],
+    },
+    {
+        "organ_key": "sueno_ritmo",
+        "system_name": "neurosensorial",
+        "keywords": ("insomnio", "sueño", "sueno", "desvelo", "despertar", "no puedo dormir", "no duerme"),
+        "title": "Barrido de sueño / ritmo nervioso",
+        "summary": "Abrirlo como hipervigilancia, miedo a soltar el control, conflicto no cerrado o necesidad de permanecer alerta aun cuando el cuerpo pide descanso.",
+        "interview_points": [
+            "Preguntar qué teme que ocurra si baja la guardia o deja de controlar.",
+            "Ubicar desde cuándo el cuerpo dejó de sentirse seguro para dormir.",
+            "Revisar pensamientos repetitivos, miedo nocturno, sobresalto o preocupación persistente.",
+        ],
+        "pair_focus": ["insomnio", "pineal", "hipófisis", "bulbo", "sistema nervioso"],
+    },
+    {
+        "organ_key": "cabeza_migrana",
+        "system_name": "neurosensorial",
+        "keywords": ("migraña", "migrana", "dolor de cabeza", "cefalea"),
+        "title": "Barrido de cabeza / migraña",
+        "summary": "Conviene abrirlo como sobrecarga, presión interna, exceso de control o conflicto de dirección que el consultante está sosteniendo mentalmente.",
+        "interview_points": [
+            "Preguntar qué presión, exigencia o control coincide con el dolor.",
+            "Explorar saturación sensorial, decisiones pendientes o irritación acumulada.",
+            "Revisar si el cuadro se dispara con autoridad, trabajo o sobreexigencia.",
+        ],
+        "pair_focus": ["migraña", "temporal", "cabeza", "vascular cerebral"],
+    },
+    {
+        "organ_key": "piel_cabello",
+        "system_name": "dermatologico",
+        "keywords": ("piel", "eczema", "dermat", "urtic", "alopecia", "cabello", "caida de cabello", "caída de cabello"),
+        "title": "Barrido de piel / cabello",
+        "summary": "Abrirlo como separación, identidad, autoimagen, exposición o pérdida de fuerza en el contacto con uno mismo y con el exterior.",
+        "interview_points": [
+            "Preguntar qué separación, herida de identidad o falta de reconocimiento coincide con el cuadro.",
+            "Explorar vergüenza, rechazo, exposición o sensación de no ser visto.",
+            "Revisar si el cuerpo está marcando un límite que la persona no ha podido poner.",
+        ],
+        "pair_focus": ["piel", "cabello", "hongos", "parásitos de piel"],
+    },
+    {
+        "organ_key": "bronquios_pulmon",
+        "system_name": "respiratorio",
+        "keywords": ("asma", "bronqu", "pulmon", "pulmón", "respirar", "falta de aire", "tos"),
+        "title": "Barrido de bronquios / pulmón",
+        "summary": "Tomarlo como conflicto de espacio vital, amenaza, miedo, tristeza o presencia del otro que impide respirar libremente.",
+        "interview_points": [
+            "Preguntar qué o quién no le deja respirar en paz.",
+            "Explorar amenaza, duelo, llanto retenido o invasión del territorio.",
+            "Revisar si el síntoma aparece con ciertas personas, lugares o recuerdos.",
+        ],
+        "pair_focus": ["asma", "bronquios", "pulmón", "sinusitis"],
+    },
+    {
+        "organ_key": "rinon_vejiga",
+        "system_name": "renal_excretor",
+        "keywords": ("riñ", "rin", "vejiga", "orina", "urinaria", "renal"),
+        "title": "Barrido de riñón / vejiga",
+        "summary": "Conviene revisarlo como miedo básico, amenaza, retención, necesidad de proteger territorio y dificultad para soltar alerta o líquidos.",
+        "interview_points": [
+            "Preguntar qué amenaza o miedo se volvió constante.",
+            "Explorar sensación de inseguridad, abandono o falta de soporte.",
+            "Revisar si el cuerpo retiene o descarga por alarma interna.",
+        ],
+        "pair_focus": ["riñón", "vejiga", "infección urinaria"],
+    },
+    {
+        "organ_key": "utero_ovario_prostata",
+        "system_name": "reproductor",
+        "keywords": ("ovario", "útero", "utero", "matriz", "próstata", "prostata", "vagina", "fertilidad", "sexual"),
+        "title": "Barrido de sistema reproductor íntimo",
+        "summary": "Abrirlo como conflicto de nido, pareja, sexualidad, reproducción, pérdida, fertilidad o invasión del territorio íntimo.",
+        "interview_points": [
+            "Preguntar qué ocurre en pareja, sexualidad, maternidad/paternidad o deseo.",
+            "Explorar pérdidas gestacionales, duelos, celos, rechazo o culpa sexual.",
+            "Revisar si el cuerpo está hablando de nido, vínculo o continuidad.",
+        ],
+        "pair_focus": ["útero", "ovario", "próstata", "vagina", "infección pélvica"],
+    },
+]
+
 
 def _collect_symptom_texts(case_payload: dict[str, Any]) -> list[str]:
     symptoms = []
@@ -1360,6 +1493,66 @@ def _build_system_sweep_summary(probable_systems: list[str]) -> list[dict[str, A
     return results
 
 
+def _build_organ_sweep_summary(case_payload: dict[str, Any], probable_systems: list[str]) -> list[dict[str, Any]]:
+    normalized_symptoms = " ".join(_normalize_text(text) for text in _collect_symptom_texts(case_payload))
+    results: list[tuple[int, dict[str, Any]]] = []
+    seen: set[str] = set()
+    for organ in ORGAN_SWEEP_LIBRARY:
+        organ_key = organ["organ_key"]
+        if organ_key in seen:
+            continue
+        system_name = organ["system_name"]
+        score = 0
+        keyword_hit = False
+        if system_name in probable_systems[:3]:
+            score += 2
+        for keyword in organ.get("keywords", ()):
+            if _normalize_text(keyword) in normalized_symptoms:
+                score += 3
+                keyword_hit = True
+        if not keyword_hit:
+            continue
+        if score <= 0:
+            continue
+        seen.add(organ_key)
+        results.append(
+            (
+                score,
+                {
+                    "organ_key": organ_key,
+                    "system_name": system_name,
+                    "system_label": _format_system_label(system_name),
+                    "title": organ["title"],
+                    "summary": organ["summary"],
+                    "interview_points": organ.get("interview_points", [])[:4],
+                    "pair_focus": organ.get("pair_focus", [])[:5],
+                },
+            )
+        )
+    if not results and probable_systems:
+        primary_system = probable_systems[0]
+        for organ in ORGAN_SWEEP_LIBRARY:
+            if organ["system_name"] != primary_system:
+                continue
+            results.append(
+                (
+                    1,
+                    {
+                        "organ_key": organ["organ_key"],
+                        "system_name": organ["system_name"],
+                        "system_label": _format_system_label(organ["system_name"]),
+                        "title": organ["title"],
+                        "summary": organ["summary"],
+                        "interview_points": organ.get("interview_points", [])[:4],
+                        "pair_focus": organ.get("pair_focus", [])[:5],
+                    },
+                )
+            )
+            break
+    results.sort(key=lambda item: (-item[0], item[1]["title"]))
+    return [item for _, item in results[:3]]
+
+
 def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     matches = _match_profiles(case_payload)
     broad_matches = _match_broad_profiles(case_payload)
@@ -1437,6 +1630,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         opening_guidance=opening_guidance,
     )
     system_sweep_summary = _build_system_sweep_summary(probable_systems)
+    organ_sweep_summary = _build_organ_sweep_summary(case_payload, probable_systems)
 
     mass_conflict_hypothesis = ""
     if probable_conflicts:
@@ -1474,6 +1668,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_protocols": protocol_suggestions,
         "system_sweep_summary": system_sweep_summary,
+        "organ_sweep_summary": organ_sweep_summary,
         "suggested_course_routes": suggested_routes,
         "release_protocol_routes": release_routes,
     }

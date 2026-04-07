@@ -234,6 +234,21 @@ function renderSystemSweep(items = []) {
   `).join("")}</div>`;
 }
 
+function renderOrganSweep(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin barrido por órgano disponible todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || ""}</strong></p>
+      <p>${item.summary || ""}</p>
+      <p><strong>Qué preguntar aquí:</strong></p>
+      ${renderBulletList(item.interview_points || [])}
+      ${(item.pair_focus || []).length ? `<p><strong>Pares a validar desde esta puerta:</strong> ${(item.pair_focus || []).join(", ")}</p>` : ""}
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderHypotheses(items = []) {
   if (!items.length) {
     return `<p class="status">Sin hipótesis priorizadas todavía.</p>`;
@@ -277,6 +292,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Barrido por sistema</h3>
       ${renderSystemSweep(analysis.system_sweep_summary || [])}
+    </article>
+    <article class="result-card">
+      <h3>Barrido por órgano</h3>
+      ${renderOrganSweep(analysis.organ_sweep_summary || [])}
     </article>
     <article class="result-card">
       <h3>Conflictos probables</h3>
