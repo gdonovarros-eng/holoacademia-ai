@@ -193,6 +193,19 @@ function renderOrderedList(values = []) {
   return `<ol class="bullet-list">${values.map((value) => `<li>${value}</li>`).join("")}</ol>`;
 }
 
+function renderSuggestedPairs(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin pares sugeridos en esta etapa.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.pair_name || ""}</strong></p>
+      <p>${item.pair_type || ""}${item.related_condition ? ` · ${item.related_condition}` : ""}</p>
+      <p>${item.why || ""}</p>
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderAnalysis(analysis) {
   analysisOutput.innerHTML = `
     <article class="result-card">
@@ -223,6 +236,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Preguntas guía</h3>
       ${renderBulletList(analysis.guiding_questions || [])}
+    </article>
+    <article class="result-card">
+      <h3>Pares sugeridos a validar</h3>
+      ${renderSuggestedPairs(analysis.suggested_pairs_to_validate || [])}
     </article>
   `;
 }

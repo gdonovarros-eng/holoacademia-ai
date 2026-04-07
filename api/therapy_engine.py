@@ -7,11 +7,14 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
+from api.domain_knowledge import TeacherKnowledge
+
 
 ROOT = Path(__file__).resolve().parent.parent
 CURATED_DISEASE_PROFILES_PATH = ROOT / "data" / "reference_processed" / "disease_profiles_curated_v1.json"
 DISEASE_PROFILES_PATH = ROOT / "data" / "reference_processed" / "disease_profiles.json"
 RAW_DISEASE_ENTRIES_PATH = ROOT / "data" / "reference_processed" / "disease_entries_raw.json"
+TEACHER_KNOWLEDGE_CACHE_PATH = ROOT / "data" / "teacher_knowledge_cache.json"
 
 
 def _normalize_text(value: str) -> str:
@@ -39,6 +42,27 @@ def _safe_list(value: Any) -> list[Any]:
 
 def _safe_text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
+
+
+def _first_sentence(value: str) -> str:
+    text = re.sub(r"\s+", " ", _safe_text(value))
+    if not text:
+        return ""
+    parts = re.split(r"(?<=[.!?])\s+", text)
+    return parts[0].strip().strip('"')
+
+
+def _compact_conflict_text(value: str) -> str:
+    raw = re.sub(r"\s+", " ", _safe_text(value))
+    for marker in ['" El ', ". El ", ". Esto ", ". Puede ", "; El ", "; Esto "]:
+        if marker in raw:
+            raw = raw.split(marker, 1)[0]
+            break
+    text = _first_sentence(raw)
+    text = re.sub(r"^[\"'“”]+|[\"'“”]+$", "", text).strip()
+    if len(text) > 160:
+        text = text[:157].rstrip(" ,;:.") + "..."
+    return text
 
 
 @dataclass
@@ -152,6 +176,7 @@ def _load_raw_disease_entries() -> list[RawDiseaseEntry]:
 
 
 RAW_DISEASE_ENTRIES = _load_raw_disease_entries()
+TEACHER = TeacherKnowledge.from_cache(TEACHER_KNOWLEDGE_CACHE_PATH)
 
 
 SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
@@ -421,7 +446,11 @@ def _match_broad_profiles(case_payload: dict[str, Any]) -> list[dict[str, Any]]:
                 "priority_group": "amplio",
                 "score": score,
                 "orientation_summary": profile.summary,
-                "possible_conflicts": profile.possible_origins[:5],
+                "possible_conflicts": [
+                    compacted
+                    for compacted in (_compact_conflict_text(value) for value in profile.possible_origins[:5])
+                    if compacted
+                ],
                 "guiding_questions": [],
                 "suggested_course_routes": ["analisis_sistemico", "rastreo_de_masa_conflictual"],
                 "release_protocol_routes": ["sistemico"],
@@ -441,8 +470,24 @@ def _detect_symptom_heuristics(case_payload: dict[str, Any]) -> list[SymptomHeur
     return found
 
 
+def _person_summary(person: dict[str, Any], fallback_label: str) -> str:
+    if not isinstance(person, dict):
+        return ""
+    name = _safe_text(person.get("full_name")) or fallback_label
+    birth = _safe_text(person.get("birth_date"))
+    death = _safe_text(person.get("death_date"))
+    details = []
+    if birth:
+        details.append(f"nació {birth}")
+    if death:
+        details.append(f"falleció {death}")
+    if details:
+        return f"{name} ({'; '.join(details)})"
+    return name
+
+
 def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
-    axes = []
+    axes: list[str] = []
     text_fields = [
         _safe_text(case_payload.get("family_conflicts_notes")),
         _safe_text(case_payload.get("family_secrets_notes")),
@@ -452,14 +497,6 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
         _safe_text(case_payload.get("emotional_context_at_onset")),
     ]
     blob = _normalize_text(" ".join(text_fields))
-    if any(term in blob for term in ("mama", "madre", "materna")):
-        axes.append("vínculo materno a revisar")
-    if any(term in blob for term in ("papa", "padre", "paterno")):
-        axes.append("vínculo paterno a revisar")
-    if any(term in blob for term in ("pareja", "relacion", "relación", "ex")):
-        axes.append("vínculos de pareja a revisar")
-    if any(term in blob for term in ("secreto", "injusticia", "abuelo", "abuela", "ancestro", "transgeneracional")):
-        axes.append("línea transgeneracional a revisar")
 
     parents = case_payload.get("parents") if isinstance(case_payload.get("parents"), dict) else {}
     grandparents = case_payload.get("grandparents") if isinstance(case_payload.get("grandparents"), dict) else {}
@@ -469,34 +506,85 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
 
     father = parents.get("father") if isinstance(parents.get("father"), dict) else {}
     mother = parents.get("mother") if isinstance(parents.get("mother"), dict) else {}
+    paternal_people = [
+        _person_summary(father, "padre"),
+        _person_summary(grandparents.get("paternal_grandfather") or {}, "abuelo paterno"),
+        _person_summary(grandparents.get("paternal_grandmother") or {}, "abuela paterna"),
+    ]
+    maternal_people = [
+        _person_summary(mother, "madre"),
+        _person_summary(grandparents.get("maternal_grandfather") or {}, "abuelo materno"),
+        _person_summary(grandparents.get("maternal_grandmother") or {}, "abuela materna"),
+    ]
+    paternal_people = [item for item in paternal_people if item]
+    maternal_people = [item for item in maternal_people if item]
 
-    if _safe_text(father.get("full_name")) or any(
-        _safe_text((grandparents.get(key) or {}).get("full_name"))
-        for key in ("paternal_grandfather", "paternal_grandmother")
-    ):
-        axes.append("línea paterna a revisar")
+    if paternal_people:
+        axes.append("Línea paterna implicada: " + ", ".join(paternal_people[:3]) + ".")
+    if maternal_people:
+        axes.append("Línea materna implicada: " + ", ".join(maternal_people[:3]) + ".")
 
-    if _safe_text(mother.get("full_name")) or any(
-        _safe_text((grandparents.get(key) or {}).get("full_name"))
-        for key in ("maternal_grandfather", "maternal_grandmother")
-    ):
-        axes.append("línea materna a revisar")
+    death_lines = []
+    for label, person in [
+        ("padre", father),
+        ("madre", mother),
+        ("abuelo paterno", grandparents.get("paternal_grandfather") or {}),
+        ("abuela paterna", grandparents.get("paternal_grandmother") or {}),
+        ("abuelo materno", grandparents.get("maternal_grandfather") or {}),
+        ("abuela materna", grandparents.get("maternal_grandmother") or {}),
+    ]:
+        if isinstance(person, dict) and _safe_text(person.get("death_date")):
+            name = _safe_text(person.get("full_name")) or label
+            death_lines.append(f"{name} falleció {person.get('death_date')}")
+    if death_lines:
+        axes.append("Duelos a revisar: " + "; ".join(death_lines[:4]) + ".")
 
-    if any(
-        _safe_text((person or {}).get("death_date"))
-        for person in list(parents.values()) + list(grandparents.values())
-        if isinstance(person, dict)
-    ):
-        axes.append("duelos o muertes del sistema familiar a revisar")
-
-    if significant_partners or _safe_text(((case_payload.get("current_partner") or {}) if isinstance(case_payload.get("current_partner"), dict) else {}).get("full_name")):
-        axes.append("vínculos de pareja a revisar")
+    current_partner = ((case_payload.get("current_partner") or {}) if isinstance(case_payload.get("current_partner"), dict) else {})
+    partner_lines = []
+    if _safe_text(current_partner.get("full_name")):
+        years = _safe_text(current_partner.get("relationship_years"))
+        detail = f"{current_partner.get('full_name')}" + (f" ({years} años de relación)" if years else "")
+        partner_lines.append(detail)
+    for partner in significant_partners[:4]:
+        if isinstance(partner, dict) and _safe_text(partner.get("full_name")):
+            detail = _safe_text(partner.get("full_name"))
+            if _safe_text(partner.get("relationship_years")):
+                detail += f" ({partner.get('relationship_years')} años)"
+            partner_lines.append(detail)
+    if partner_lines:
+        axes.append("Vínculos de pareja a revisar: " + ", ".join(partner_lines) + ".")
 
     if children:
-        axes.append("línea filial y rol de cuidado a revisar")
+        child_names = []
+        for child in children[:5]:
+            if isinstance(child, dict):
+                name = _safe_text(child.get("full_name"))
+                if not name:
+                    continue
+                parent_name = _safe_text(child.get("other_parent_name"))
+                if parent_name:
+                    name += f" con {parent_name}"
+                child_names.append(name)
+        if child_names:
+            axes.append("Línea filial y rol de cuidado: " + ", ".join(child_names) + ".")
 
     if siblings:
-        axes.append("lugar entre hermanos y dinámica fraterna a revisar")
+        sibling_names = []
+        for sibling in siblings[:5]:
+            if isinstance(sibling, dict) and _safe_text(sibling.get("full_name")):
+                name = _safe_text(sibling.get("full_name"))
+                if _safe_text(sibling.get("death_date")):
+                    name += f" (falleció {sibling.get('death_date')})"
+                sibling_names.append(name)
+        if sibling_names:
+            axes.append("Lugar entre hermanos y dinámica fraterna: " + ", ".join(sibling_names) + ".")
+
+    if any(term in blob for term in ("secreto", "injusticia", "ancestro", "transgeneracional")):
+        axes.append("Hay indicios de carga transgeneracional o secretos familiares que conviene abrir en entrevista.")
+    if any(term in blob for term in ("mama", "madre", "materna")) and not maternal_people:
+        axes.append("Aparece tema materno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
+    if any(term in blob for term in ("papa", "padre", "paterno")) and not paternal_people:
+        axes.append("Aparece tema paterno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
 
     return _dedupe_keep_order(axes)
 
@@ -582,6 +670,56 @@ def _build_reference_emotional_causes(
     return results[:6]
 
 
+def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]:
+    queries: list[str] = []
+    for item in _safe_list(case_payload.get("current_symptoms")):
+        if not isinstance(item, dict):
+            continue
+        queries.append(_safe_text(item.get("symptom_name")))
+    for item in _safe_list(case_payload.get("history_events")):
+        if isinstance(item, dict):
+            queries.append(_safe_text(item.get("event_name")))
+
+    suggestions: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for query in queries:
+        if len(_normalize_text(query)) < 4:
+            continue
+        query_tokens = {
+            token for token in re.findall(r"[a-z0-9]+", _normalize_text(query)) if len(token) >= 4
+        }
+        for entry in TEACHER.search_pairs(query, limit=8):
+            pair_blob = _normalize_text(f"{entry.pair_name} {entry.related_condition} {entry.pair_type}")
+            pair_tokens = {token for token in re.findall(r"[a-z0-9]+", pair_blob) if len(token) >= 4}
+            overlap = query_tokens & pair_tokens
+            if not overlap and query_tokens:
+                continue
+            if entry.normalized_pair_name in seen:
+                continue
+            seen.add(entry.normalized_pair_name)
+            suggestions.append(
+                {
+                    "pair_name": entry.pair_name,
+                    "pair_type": entry.pair_type,
+                    "related_condition": _compact_conflict_text(entry.related_condition),
+                    "why": f"Conviene validarlo en rastreo si el síntoma '{query}' sostiene este patrón.",
+                }
+            )
+    ranked = []
+    priority_tokens = ("bacteria", "hongo", "virus", "parasito", "parásito", "disfuncional", "emocional")
+    for item in suggestions:
+        score = 0
+        blob = _normalize_text(" ".join([item["pair_type"], item["related_condition"], item["pair_name"]]))
+        for token in priority_tokens:
+            if token in blob:
+                score += 2
+        if any(token in blob for token in ("oido", "mastoides", "temporal", "rinon", "riñon", "vertigo", "mareo", "tinnitus", "tinitus")):
+            score += 1
+        ranked.append((score, item))
+    ranked.sort(key=lambda row: (row[0], row[1]["pair_name"]), reverse=True)
+    return [item for _, item in ranked[:8]]
+
+
 def _build_course_guiding_questions(
     case_payload: dict[str, Any],
     probable_systems: list[str],
@@ -607,14 +745,19 @@ def _build_course_guiding_questions(
         ]
     )
 
-    if any("paterna" in axis or "paterno" in axis or "padre" in axis for axis in family_axes):
+    if any("paterna" in axis.lower() or "paterno" in axis.lower() or "padre" in axis.lower() for axis in family_axes):
         questions.append("¿Qué tema de protección, reconocimiento, autoridad o dirección se está moviendo con la línea paterna?")
-    if any("materna" in axis or "madre" in axis for axis in family_axes):
+    if any("materna" in axis.lower() or "madre" in axis.lower() for axis in family_axes):
         questions.append("¿Qué tema de cuidado, nutrición afectiva, hogar o recepción se está moviendo con la línea materna?")
-    if any("pareja" in axis for axis in family_axes):
+    if any("pareja" in axis.lower() for axis in family_axes):
         questions.append("¿Qué patrón de pareja se repite y qué busca reparar el consultante a través de ese vínculo?")
-    if any("transgeneracional" in axis or "duelos" in axis for axis in family_axes):
+    if any("transgeneracional" in axis.lower() or "duelos" in axis.lower() or "fallecio" in _normalize_text(axis) for axis in family_axes):
         questions.append("¿Hay carga transgeneracional, duelo o memoria familiar implicada en este síntoma, ciclo o drama?")
+    for axis in family_axes:
+        normalized_axis = _normalize_text(axis)
+        if "fallecio" in normalized_axis:
+            questions.append(f"¿Qué efecto dejó en el consultante este antecedente del sistema familiar: {axis}")
+            break
 
     if probable_systems:
         first_system = _format_system_label(probable_systems[0])
@@ -705,6 +848,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         case_payload=case_payload,
         heuristics=heuristics,
     )
+    suggested_pairs_to_validate = _build_suggested_pairs(case_payload)
     reading = _build_course_reading(
         case_payload=case_payload,
         probable_systems=probable_systems,
@@ -745,6 +889,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "family_axes": family_axes,
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
+        "suggested_pairs_to_validate": suggested_pairs_to_validate,
         "suggested_course_routes": suggested_routes,
         "release_protocol_routes": release_routes,
     }
