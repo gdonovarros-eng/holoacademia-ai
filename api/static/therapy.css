@@ -260,6 +260,22 @@ textarea {
   gap: 14px;
 }
 
+.genogram-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.genogram-column {
+  display: grid;
+  gap: 14px;
+}
+
+.genogram-column-center {
+  gap: 16px;
+}
+
 .collection-item {
   display: grid;
   gap: 12px;
@@ -362,6 +378,10 @@ th {
 @media (max-width: 900px) {
   .grid.two,
   .grid.three {
+    grid-template-columns: 1fr;
+  }
+
+  .genogram-layout {
     grid-template-columns: 1fr;
   }
 

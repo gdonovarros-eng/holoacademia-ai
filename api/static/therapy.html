@@ -39,94 +39,43 @@
           </div>
 
           <form id="therapy-form" class="therapy-form">
-            <div class="grid two">
-              <label>
-                Nombre del paciente
-                <input type="text" name="patient_name" />
-              </label>
-              <label>
-                Fecha de nacimiento
-                <input type="text" name="patient_birth_date" placeholder="DD/MM/AAAA" />
-              </label>
-            </div>
-
-            <div class="grid two">
-              <label>
-                Motivo de consulta
-                <textarea name="consultation_reason" rows="3"></textarea>
-              </label>
-              <label>
-                Objetivo de la sesión
-                <textarea name="session_goal" rows="3"></textarea>
-              </label>
-            </div>
-
-            <div class="grid three">
-              <label>
-                Emoción principal
-                <input type="text" name="main_emotion" />
-              </label>
-              <label>
-                Detonante reciente
-                <input type="text" name="recent_trigger" />
-              </label>
-              <label>
-                ¿Qué molesta hoy?
-                <input type="text" name="what_bothers_today" />
-              </label>
-            </div>
-
-            <div class="grid two">
-              <label>
-                Contexto emocional actual
-                <textarea name="current_emotional_context" rows="4"></textarea>
-              </label>
-              <label>
-                Contexto emocional al origen
-                <textarea name="emotional_context_at_onset" rows="4"></textarea>
-              </label>
-            </div>
-
-            <div class="grid two">
-              <label>
-                Conflictos familiares
-                <textarea name="family_conflicts_notes" rows="4"></textarea>
-              </label>
-              <label>
-                Patrones transgeneracionales
-                <textarea name="transgenerational_patterns_notes" rows="4"></textarea>
-              </label>
-            </div>
-
-            <div class="grid two">
-              <label>
-                Relaciones importantes
-                <textarea name="important_relationships_notes" rows="4"></textarea>
-              </label>
-              <label>
-                Observaciones libres
-                <textarea name="free_case_notes" rows="4"></textarea>
-              </label>
-            </div>
+            <section class="collection-block">
+              <div class="panel-head">
+                <h3>Genograma básico</h3>
+                <p>Captura basada en el archivo original: consultante, abuelos, progenitores, hermanos, pareja(s) y descendiente(s).</p>
+              </div>
+              <div class="genogram-layout">
+                <div class="genogram-column">
+                  <div id="children-section" class="collection-list"></div>
+                </div>
+                <div class="genogram-column genogram-column-center">
+                  <div id="grandparents-section" class="collection-list"></div>
+                  <div id="parents-section" class="collection-list"></div>
+                  <div id="consultant-section" class="collection-list"></div>
+                </div>
+                <div class="genogram-column">
+                  <div id="siblings-section" class="collection-list"></div>
+                  <div id="partners-section" class="collection-list"></div>
+                </div>
+              </div>
+            </section>
 
             <section class="collection-block">
-              <div class="collection-head">
+              <div class="panel-head">
                 <div>
                   <h3>Síntomas actuales</h3>
-                  <p>Agrega todos los síntomas relevantes del paciente.</p>
+                  <p>Según el formato original: síntomas a trabajar por orden de intensidad.</p>
                 </div>
-                <button type="button" class="secondary-btn" id="add-symptom">Agregar síntoma</button>
               </div>
               <div id="symptoms-list" class="collection-list"></div>
             </section>
 
             <section class="collection-block">
-              <div class="collection-head">
+              <div class="panel-head">
                 <div>
-                  <h3>Antecedentes y recurrencias</h3>
-                  <p>Cirugías, síntomas antiguos, eventos repetitivos o antecedentes importantes.</p>
+                  <h3>Síntomas recurrentes, cirugías y antecedentes</h3>
+                  <p>Bloque del historial clínico básico tal como aparece en la segunda diapositiva.</p>
                 </div>
-                <button type="button" class="secondary-btn" id="add-history">Agregar antecedente</button>
               </div>
               <div id="history-list" class="collection-list"></div>
             </section>
@@ -188,74 +137,6 @@
         </section>
       </section>
     </main>
-
-    <template id="symptom-template">
-      <article class="collection-item">
-        <div class="grid two">
-          <label>
-            Síntoma
-            <input type="text" data-field="symptom_name" />
-          </label>
-          <label>
-            Frecuencia
-            <input type="text" data-field="frequency" />
-          </label>
-        </div>
-        <div class="grid two">
-          <label>
-            Características
-            <textarea rows="3" data-field="symptom_characteristics"></textarea>
-          </label>
-          <label>
-            Notas del terapeuta
-            <textarea rows="3" data-field="therapist_notes"></textarea>
-          </label>
-        </div>
-        <div class="grid two">
-          <label>
-            Edad o fecha de origen
-            <input type="text" data-field="onset_age_or_date" />
-          </label>
-          <label>
-            Factores desencadenantes
-            <input type="text" data-field="triggering_factors" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
-
-    <template id="history-template">
-      <article class="collection-item">
-        <div class="grid two">
-          <label>
-            Evento / antecedente
-            <input type="text" data-field="event_name" />
-          </label>
-          <label>
-            Frecuencia
-            <input type="text" data-field="frequency" />
-          </label>
-        </div>
-        <div class="grid two">
-          <label>
-            Características
-            <textarea rows="3" data-field="event_characteristics"></textarea>
-          </label>
-          <label>
-            Notas
-            <textarea rows="3" data-field="event_notes"></textarea>
-          </label>
-        </div>
-        <div class="grid one">
-          <label>
-            Edad o fecha de origen
-            <input type="text" data-field="onset_age_or_date" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
 
     <template id="pair-template">
       <article class="collection-item">
