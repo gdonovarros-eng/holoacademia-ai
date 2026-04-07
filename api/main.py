@@ -9,6 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_CHUNKS_PATH = BASE_DIR / "data" / "chunks" / "library_chunks.jsonl"
 THERAPY_STATIC_DIR = BASE_DIR / "api" / "static"
 PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
+THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
 
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
@@ -259,6 +260,11 @@ async def list_courses() -> dict:
 @app.get("/therapy/app")
 async def therapy_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "therapy.html")
+
+
+@app.get("/therapy/logo")
+async def therapy_logo() -> FileResponse:
+    return FileResponse(THERAPY_LOGO_PATH)
 
 
 @app.post("/therapy/analyze", response_model=TherapyAnalyzeResponse)
