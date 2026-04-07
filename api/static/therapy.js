@@ -206,6 +206,18 @@ function renderSuggestedPairs(items = []) {
   `).join("")}</div>`;
 }
 
+function renderSuggestedProtocols(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin sugerencias adicionales en esta etapa.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || ""}</strong></p>
+      <p>${item.reason || ""}</p>
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderHypotheses(items = []) {
   if (!items.length) {
     return `<p class="status">Sin hipótesis priorizadas todavía.</p>`;
@@ -222,11 +234,17 @@ function renderHypotheses(items = []) {
 }
 
 function renderAnalysis(analysis) {
+  const opening = analysis.opening_guidance || {};
   analysisOutput.innerHTML = `
     <article class="result-card">
       <h3>Lectura inicial</h3>
       <p>${analysis.reading || ""}</p>
       <p><strong>Masa conflictual:</strong> ${analysis.mass_conflict_hypothesis || "Aún no definida."}</p>
+    </article>
+    <article class="result-card">
+      <h3>Por dónde empezar</h3>
+      <p>${opening.opening_focus || "Sin orientación inicial todavía."}</p>
+      ${renderBulletList(opening.interview_targets || [])}
     </article>
     <article class="result-card">
       <h3>Síntomas prioritarios</h3>
@@ -238,7 +256,7 @@ function renderAnalysis(analysis) {
     </article>
     <article class="result-card">
       <h3>Sistemas probables</h3>
-      ${renderChipList(analysis.probable_systems || [])}
+      ${renderChipList(analysis.probable_system_labels || analysis.probable_systems || [])}
     </article>
     <article class="result-card">
       <h3>Conflictos probables</h3>
@@ -259,6 +277,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Pares sugeridos a validar</h3>
       ${renderSuggestedPairs(analysis.suggested_pairs_to_validate || [])}
+    </article>
+    <article class="result-card">
+      <h3>Protocolos o aperturas sugeridas</h3>
+      ${renderSuggestedProtocols(analysis.suggested_protocols || [])}
     </article>
   `;
 }

@@ -59,6 +59,8 @@ def _compact_conflict_text(value: str) -> str:
             raw = raw.split(marker, 1)[0]
             break
     text = _first_sentence(raw)
+    if len(text) > 120 and "," in text:
+        text = text.split(",", 1)[0].strip()
     text = re.sub(r"^[\"'“”]+|[\"'“”]+$", "", text).strip()
     if len(text) > 160:
         text = text[:157].rstrip(" ,;:.") + "..."
@@ -110,6 +112,87 @@ class SymptomHeuristic:
     course_routes: tuple[str, ...] = ()
     release_routes: tuple[str, ...] = ()
     reference_causes: tuple[str, ...] = ()
+
+
+SYSTEM_OPENING_GUIDANCE: dict[str, dict[str, Any]] = {
+    "digestivo": {
+        "opening_focus": "Abrir por lo que el consultante no ha podido digerir, la irritación sostenida y la situación que se está tragando sin resolver.",
+        "interview_targets": [
+            "Preguntar qué persona, convivencia o situación le cae pesada.",
+            "Ubicar si el ardor aparece con enojo contenido, presión o mala digestión emocional.",
+            "Revisar tema materno, nutrición afectiva, hogar o sensación de no ser bien recibido.",
+        ],
+        "protocol_focus": [
+            "Abrir rastreo conflictológico digestivo.",
+            "Validar componente microbiano si hay gastritis, hiperacidez, hernia hiatal o mala digestión persistente.",
+            "Si el cuadro apunta a irritación sostenida, priorizar liberación sistémica después del rastreo.",
+        ],
+        "pair_queries": ["gastritis", "helicobacter pylori", "parasito digestivo"],
+    },
+    "neurosensorial": {
+        "opening_focus": "Abrir por desorientación, hipervigilancia, saturación sensorial o dificultad para sostener dirección y equilibrio.",
+        "interview_targets": [
+            "Preguntar qué estaba ocurriendo cuando el consultante perdió seguridad, orientación o estabilidad.",
+            "Explorar si el oído, el mareo o el vértigo se activan con presión, miedo o desorganización.",
+            "Revisar si existe conflicto con dirección vital, amenaza, decisiones o sobrecarga nerviosa.",
+        ],
+        "protocol_focus": [
+            "Abrir rastreo por sistema neurosensorial.",
+            "Si hay tinnitus, mareo o vértigo, validar pares de oído, mastoides, temporal, bulbo o riñón según el cuadro.",
+            "Si el evento fue abrupto o traumático, considerar liberación emocional o estrés postraumático.",
+        ],
+        "pair_queries": ["tinnitus", "vertigo", "mareo", "oido"],
+    },
+    "emocional_mental": {
+        "opening_focus": "Abrir por el drama dominante, la emoción que no ha sido expresada y la forma en que el consultante se está sosteniendo o rompiendo internamente.",
+        "interview_targets": [
+            "Pedir el evento que más pesa hoy y el primero que dejó huella similar.",
+            "Preguntar qué emoción no ha podido expresar con claridad.",
+            "Observar si el cuadro se organiza por miedo, culpa, rechazo, pérdida o exceso de control.",
+        ],
+        "protocol_focus": [
+            "Priorizar entrevista emocional estructurada antes de cerrar rastreo.",
+            "Si el cuerpo cambió después de un evento abrupto, considerar liberación emocional o estrés postraumático.",
+        ],
+        "pair_queries": [],
+    },
+    "dermatologico": {
+        "opening_focus": "Abrir por identidad, contacto, separación, autoimagen y sensación de exposición o desprotección.",
+        "interview_targets": [
+            "Preguntar qué separación, roce o herida de identidad acompañó el inicio.",
+            "Explorar rechazo, vergüenza, invasión o falta de reconocimiento.",
+        ],
+        "protocol_focus": [
+            "Abrir rastreo tegumentario y sistémico.",
+            "Cruzar el síntoma con estrés sostenido y valoración personal.",
+        ],
+        "pair_queries": [],
+    },
+    "respiratorio": {
+        "opening_focus": "Abrir por territorio, espacio vital, miedo, asfixia emocional y conflictos con aire, libertad o presencia de otros.",
+        "interview_targets": [
+            "Preguntar qué situación no le deja respirar en paz.",
+            "Explorar duelo, amenaza, tristeza o invasión del espacio.",
+        ],
+        "protocol_focus": [
+            "Abrir rastreo conflictológico respiratorio.",
+            "Cruzar con duelo, miedo o presión del entorno antes de ir al rastreo final.",
+        ],
+        "pair_queries": [],
+    },
+    "osteomuscular": {
+        "opening_focus": "Abrir por desvalorización, carga, esfuerzo sostenido y sensación de tener que sostener más de lo que puede.",
+        "interview_targets": [
+            "Preguntar qué carga, exigencia o desvalorización coincide con el dolor.",
+            "Explorar si el consultante se siente sin apoyo, sobrecargado o forzado.",
+        ],
+        "protocol_focus": [
+            "Abrir rastreo osteomuscular.",
+            "Cruzar el cuadro con carga física, emocional y rol de sostén dentro del sistema.",
+        ],
+        "pair_queries": [],
+    },
+}
 
 
 def _load_curated_profiles() -> list[DiseaseProfile]:
@@ -268,6 +351,57 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
         ),
         reading_hint="La ansiedad sugiere revisar alarma interna, hipervigilancia y temor a perder control.",
         course_routes=("analisis_sistemico", "rastreo_de_masa_conflictual"),
+        release_routes=("sistemico", "estres_postraumatico_si_aplica"),
+    ),
+    "gastritis": SymptomHeuristic(
+        systems=("digestivo",),
+        conflicts=("indigestión emocional", "irritación sostenida", "tener que tragarse una situación"),
+        questions=(
+            "¿Qué situación, persona o convivencia sientes que no has podido digerir?",
+            "¿Con quién estás guardando irritación, enojo o ardor contenido?",
+            "¿El ardor aparece cuando tragas algo que no quieres aceptar o tolerar?",
+        ),
+        reading_hint="Cuando el síntoma eje es gastritis conviene abrir por irritación sostenida, mala digestión emocional y tema materno o de convivencia.",
+        family_axes=("abrir línea materna y nutrición afectiva a revisar",),
+        course_routes=("analisis_sistemico", "rastreo_conflictologico_digestivo"),
+        release_routes=("sistemico",),
+    ),
+    "vertigo": SymptomHeuristic(
+        systems=("neurosensorial", "emocional_mental"),
+        conflicts=("confusión ante decisiones importantes", "pérdida de dirección", "desorganización o falta de punto de apoyo"),
+        questions=(
+            "¿Qué decisión o cambio fuerte te hizo sentir sin piso o sin dirección?",
+            "¿Qué estaba pasando cuando comenzó la sensación de perder equilibrio?",
+            "¿Con quién o ante qué situación te sientes desorientado o rebasado?",
+        ),
+        reading_hint="El vértigo suele pedir revisar orientación, decisiones, sobrecarga y sensación de no encontrar un punto estable.",
+        family_axes=("abrir línea paterna, dirección y seguridad a revisar",),
+        course_routes=("analisis_sistemico", "rastreo_conflictologico_neurosensorial"),
+        release_routes=("sistemico", "estres_postraumatico_si_aplica"),
+    ),
+    "mareo": SymptomHeuristic(
+        systems=("neurosensorial", "emocional_mental"),
+        conflicts=("desorganización interna", "sobrecarga nerviosa", "inseguridad o inestabilidad"),
+        questions=(
+            "¿Qué situación te rebasa o te deja sin centro?",
+            "¿Qué ocurre justo antes de que aparezca el mareo?",
+        ),
+        reading_hint="El mareo obliga a revisar sobrecarga, inseguridad y pérdida de centro.",
+        family_axes=("abrir dirección, amenaza y seguridad básica a revisar",),
+        course_routes=("analisis_sistemico", "rastreo_conflictologico_neurosensorial"),
+        release_routes=("sistemico",),
+    ),
+    "tinnitus": SymptomHeuristic(
+        systems=("neurosensorial", "emocional_mental"),
+        conflicts=("hipervigilancia", "ruido interno no resuelto", "sobrecarga o alerta sostenida"),
+        questions=(
+            "¿Qué no has podido dejar de escuchar internamente aunque afuera ya pasó?",
+            "¿Qué situación mantiene al cuerpo en alerta o tensión sostenida?",
+            "¿Qué cambió en tu vida cuando comenzaron los zumbidos?",
+        ),
+        reading_hint="El tinnitus conviene abrirlo por alerta sostenida, saturación auditiva y conflicto no resuelto que sigue sonando por dentro.",
+        family_axes=("abrir seguridad, amenaza y dirección a revisar",),
+        course_routes=("analisis_sistemico", "rastreo_conflictologico_neurosensorial"),
         release_routes=("sistemico", "estres_postraumatico_si_aplica"),
     ),
     "insomnio": SymptomHeuristic(
@@ -473,6 +607,8 @@ def _detect_symptom_heuristics(case_payload: dict[str, Any]) -> list[SymptomHeur
 def _person_summary(person: dict[str, Any], fallback_label: str) -> str:
     if not isinstance(person, dict):
         return ""
+    if not any(_safe_text(value) for value in person.values() if isinstance(value, str)):
+        return ""
     name = _safe_text(person.get("full_name")) or fallback_label
     birth = _safe_text(person.get("birth_date"))
     death = _safe_text(person.get("death_date"))
@@ -520,9 +656,17 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
     maternal_people = [item for item in maternal_people if item]
 
     if paternal_people:
-        axes.append("Línea paterna implicada: " + ", ".join(paternal_people[:3]) + ".")
+        axes.append(
+            "abrir línea paterna con "
+            + ", ".join(paternal_people[:3])
+            + " para revisar protección, dirección, exigencia, reconocimiento o distancia afectiva."
+        )
     if maternal_people:
-        axes.append("Línea materna implicada: " + ", ".join(maternal_people[:3]) + ".")
+        axes.append(
+            "abrir línea materna con "
+            + ", ".join(maternal_people[:3])
+            + " para revisar cuidado, nutrición afectiva, recepción, hogar o sensación de no ser bien recibido."
+        )
 
     death_lines = []
     for label, person in [
@@ -537,7 +681,7 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
             name = _safe_text(person.get("full_name")) or label
             death_lines.append(f"{name} falleció {person.get('death_date')}")
     if death_lines:
-        axes.append("Duelos a revisar: " + "; ".join(death_lines[:4]) + ".")
+        axes.append("cruzar el síntoma con estos duelos del sistema: " + "; ".join(death_lines[:4]) + ".")
 
     current_partner = ((case_payload.get("current_partner") or {}) if isinstance(case_payload.get("current_partner"), dict) else {})
     partner_lines = []
@@ -552,7 +696,7 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
                 detail += f" ({partner.get('relationship_years')} años)"
             partner_lines.append(detail)
     if partner_lines:
-        axes.append("Vínculos de pareja a revisar: " + ", ".join(partner_lines) + ".")
+        axes.append("explorar patrón de pareja con " + ", ".join(partner_lines) + " para ver si el síntoma se reactiva en vínculo, rechazo o carga afectiva.")
 
     if children:
         child_names = []
@@ -566,7 +710,7 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
                     name += f" con {parent_name}"
                 child_names.append(name)
         if child_names:
-            axes.append("Línea filial y rol de cuidado: " + ", ".join(child_names) + ".")
+            axes.append("revisar rol de cuidado y línea filial con " + ", ".join(child_names) + ".")
 
     if siblings:
         sibling_names = []
@@ -577,14 +721,14 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
                     name += f" (falleció {sibling.get('death_date')})"
                 sibling_names.append(name)
         if sibling_names:
-            axes.append("Lugar entre hermanos y dinámica fraterna: " + ", ".join(sibling_names) + ".")
+            axes.append("revisar lugar entre hermanos y dinámica fraterna con " + ", ".join(sibling_names) + ".")
 
     if any(term in blob for term in ("secreto", "injusticia", "ancestro", "transgeneracional")):
-        axes.append("Hay indicios de carga transgeneracional o secretos familiares que conviene abrir en entrevista.")
+        axes.append("hay indicios de carga transgeneracional o secretos familiares que conviene abrir de manera explícita en entrevista.")
     if any(term in blob for term in ("mama", "madre", "materna")) and not maternal_people:
-        axes.append("Aparece tema materno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
+        axes.append("aparece tema materno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
     if any(term in blob for term in ("papa", "padre", "paterno")) and not paternal_people:
-        axes.append("Aparece tema paterno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
+        axes.append("aparece tema paterno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
 
     return _dedupe_keep_order(axes)
 
@@ -605,6 +749,11 @@ def _format_system_label(system_name: str) -> str:
 def _compact_reference_text(value: str) -> str:
     value = re.sub(r"\s+", " ", value or "").strip()
     return value[:320].rstrip(" ,;:.") + ("…" if len(value) > 320 else "")
+
+
+def _compact_bullets(values: list[str], limit: int = 6) -> list[str]:
+    compacted = [_compact_conflict_text(value) for value in values if _safe_text(value)]
+    return _dedupe_keep_order([value for value in compacted if value])[:limit]
 
 
 def _build_reference_emotional_causes(
@@ -670,6 +819,23 @@ def _build_reference_emotional_causes(
     return results[:6]
 
 
+def _extract_microbe_queries(case_payload: dict[str, Any]) -> list[str]:
+    blob = " ".join(_collect_symptom_texts(case_payload))
+    normalized = _normalize_text(blob)
+    queries: list[str] = []
+    keyword_map = {
+        "helicobacter pylori": ("helicobacter pylori", "h pylori", "helicobacter"),
+        "parasito digestivo": ("parasito", "parásito", "ascaris", "tenia", "ameba", "amiba"),
+        "bacteria": ("bacteria", "bacteriana"),
+        "hongo": ("hongo", "candida", "micosis"),
+        "virus": ("virus", "viral"),
+    }
+    for query, aliases in keyword_map.items():
+        if any(alias in normalized for alias in aliases):
+            queries.append(query)
+    return queries
+
+
 def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]:
     queries: list[str] = []
     for item in _safe_list(case_payload.get("current_symptoms")):
@@ -680,6 +846,7 @@ def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]
         if isinstance(item, dict):
             queries.append(_safe_text(item.get("event_name")))
 
+    microbe_queries = _extract_microbe_queries(case_payload)
     suggestions: list[dict[str, str]] = []
     seen: set[str] = set()
     for query in queries:
@@ -705,6 +872,19 @@ def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]
                     "why": f"Conviene validarlo en rastreo si el síntoma '{query}' sostiene este patrón.",
                 }
             )
+    for query in microbe_queries:
+        for entry in TEACHER.search_pairs(query, limit=6):
+            if entry.normalized_pair_name in seen:
+                continue
+            seen.add(entry.normalized_pair_name)
+            suggestions.append(
+                {
+                    "pair_name": entry.pair_name,
+                    "pair_type": entry.pair_type,
+                    "related_condition": _compact_conflict_text(entry.related_condition),
+                    "why": f"Como el cuadro menciona {query}, conviene validar este par dentro del rastreo microbiológico.",
+                }
+            )
     ranked = []
     priority_tokens = ("bacteria", "hongo", "virus", "parasito", "parásito", "disfuncional", "emocional")
     for item in suggestions:
@@ -720,29 +900,61 @@ def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]
     return [item for _, item in ranked[:8]]
 
 
+def _build_opening_guidance(
+    probable_systems: list[str],
+    priority_symptoms: list[str],
+    case_payload: dict[str, Any],
+) -> dict[str, Any]:
+    primary_system = probable_systems[0] if probable_systems else ""
+    symptom_focus = priority_symptoms[0] if priority_symptoms else "el síntoma principal"
+    guidance = SYSTEM_OPENING_GUIDANCE.get(primary_system, {})
+    opening_focus = guidance.get(
+        "opening_focus",
+        f"Abrir la entrevista tomando {symptom_focus} como síntoma eje y ubicar el conflicto que lo activó.",
+    )
+    interview_targets = guidance.get(
+        "interview_targets",
+        [
+            f"Precisar desde cuándo comenzó {symptom_focus}.",
+            "Ubicar qué cambió en la vida del consultante cuando el cuadro empezó.",
+            "Definir qué emoción domina cuando el síntoma aparece o empeora.",
+        ],
+    )
+    protocol_focus = guidance.get("protocol_focus", [])
+    return {
+        "primary_system": primary_system,
+        "primary_system_label": _format_system_label(primary_system) if primary_system else "",
+        "symptom_focus": symptom_focus,
+        "opening_focus": opening_focus,
+        "interview_targets": interview_targets[:4],
+        "protocol_focus": protocol_focus[:4],
+        "pair_queries": guidance.get("pair_queries", []),
+    }
+
+
 def _build_prioritized_hypotheses(
     priority_symptoms: list[str],
     probable_systems: list[str],
     probable_conflicts: list[str],
     family_axes: list[str],
+    primary_family_axis: str,
     suggested_pairs: list[dict[str, str]],
+    opening_guidance: dict[str, Any],
 ) -> list[dict[str, Any]]:
     hypotheses: list[dict[str, Any]] = []
     top_symptom = priority_symptoms[0] if priority_symptoms else "el síntoma principal"
     top_system = _format_system_label(probable_systems[0]) if probable_systems else "el sistema principal"
     top_conflict = probable_conflicts[0] if probable_conflicts else ""
-    family_focus = family_axes[0] if family_axes else ""
+    family_focus = primary_family_axis or (family_axes[0] if family_axes else "")
     pair_focus = [item["pair_name"] for item in suggested_pairs[:3]]
 
     if top_system:
         hypotheses.append(
             {
                 "title": f"Predominio en {top_system}",
-                "summary": f"El caso parece abrir primero por {top_system} y conviene tomar {top_symptom} como puerta principal de entrevista.",
+                "summary": f"El caso parece abrir primero por {top_system}; toma {top_symptom} como puerta principal y abre la entrevista desde ahí.",
                 "verify": [
-                    f"Precisar desde cuándo comenzó {top_symptom}.",
-                    "Ubicar el primer evento con mayor carga emocional o desorganización.",
-                    f"Verificar si el cuerpo empeora en momentos de estrés, presión o desorientación relacionados con {top_system}.",
+                    *opening_guidance.get("interview_targets", [])[:3],
                 ],
                 "pairs_to_validate": pair_focus,
             }
@@ -752,7 +964,7 @@ def _build_prioritized_hypotheses(
         hypotheses.append(
             {
                 "title": "Hipótesis conflictual principal",
-                "summary": f"La carga dominante parece organizarse alrededor de {top_conflict}",
+                "summary": f"La carga dominante parece organizarse alrededor de {top_conflict}.",
                 "verify": [
                     "Explorar qué situación no resuelta sigue activa hoy.",
                     "Preguntar qué decisión, pérdida o presión coincide con el inicio del cuadro.",
@@ -777,6 +989,26 @@ def _build_prioritized_hypotheses(
         )
 
     return hypotheses[:3]
+
+
+def _select_primary_family_axis(probable_systems: list[str], family_axes: list[str]) -> str:
+    if not family_axes:
+        return ""
+    priority_order: list[str] = []
+    if probable_systems:
+        first_system = probable_systems[0]
+        if first_system == "digestivo":
+            priority_order = ["materna", "madre", "duelos", "pareja", "paterna", "padre"]
+        elif first_system in {"neurosensorial", "emocional_mental"}:
+            priority_order = ["paterna", "padre", "duelos", "pareja", "materna", "madre"]
+        elif first_system in {"respiratorio", "dermatologico"}:
+            priority_order = ["duelos", "pareja", "materna", "madre", "paterna", "padre"]
+    normalized_axes = [(_normalize_text(axis), axis) for axis in family_axes]
+    for token in priority_order:
+        for normalized, axis in normalized_axes:
+            if token in normalized:
+                return axis
+    return family_axes[0]
 
 
 def _build_course_guiding_questions(
@@ -831,41 +1063,72 @@ def _build_course_reading(
     probable_systems: list[str],
     probable_conflicts: list[str],
     family_axes: list[str],
+    primary_family_axis: str,
     heuristic_hints: list[str],
     matched_names: list[str],
     prioritized_hypotheses: list[dict[str, Any]],
+    opening_guidance: dict[str, Any],
 ) -> str:
-    symptom_blob = _collect_symptom_texts(case_payload)
-    symptom_phrase = ", ".join(symptom_blob[:2]) if symptom_blob else "los síntomas capturados"
-    systems_phrase = ", ".join(_format_system_label(system) for system in probable_systems[:3]) if probable_systems else "los sistemas con menor armonía"
-
+    primary_system_label = opening_guidance.get("primary_system_label") or (
+        _format_system_label(probable_systems[0]) if probable_systems else "el sistema prioritario"
+    )
+    symptom_focus = opening_guidance.get("symptom_focus") or (
+        matched_names[0] if matched_names else "el síntoma principal"
+    )
     parts = [
-        "El síntoma se toma como una estrategia de adaptación y no solo como un dato aislado.",
-        f"Con lo capturado hasta ahora, conviene empezar la lectura a partir de {symptom_phrase}.",
-        f"El análisis inicial sugiere abrir primero el rastreo por {systems_phrase}.",
+        f"La puerta de entrada del caso es {primary_system_label} y conviene tomar {symptom_focus} como síntoma eje.",
+        opening_guidance.get("opening_focus", ""),
     ]
-
-    if matched_names:
-        parts.append("El cuadro también se relaciona con estos ejes clínicos: " + ", ".join(matched_names[:3]) + ".")
-
     if probable_conflicts:
-        parts.append("La masa conflictual todavía debe afinarse, pero de entrada se mueve alrededor de " + ", ".join(probable_conflicts[:3]) + ".")
-
+        parts.append("La masa conflictual provisional apunta a " + ", ".join(probable_conflicts[:2]) + ".")
+    if primary_family_axis:
+        parts.append("En la entrevista conviene " + primary_family_axis.rstrip(".") + ".")
     if prioritized_hypotheses:
         top_hypothesis = prioritized_hypotheses[0]
-        parts.append("La primera hipótesis de trabajo es: " + _safe_text(top_hypothesis.get("summary")))
+        verify = top_hypothesis.get("verify") or []
+        if verify:
+            parts.append("Lo primero que conviene verificar es " + "; ".join(verify[:2]) + ".")
+    parts.append("Antes del rastreo final, ubica primer episodio, detonante principal, emoción dominante y qué cambió en la vida del consultante después de ese momento.")
+    return " ".join(part for part in parts if part)
 
-    if family_axes:
-        axis_phrase = ", ".join(family_axes[:3])
-        parts.append(f"En entrevista conviene revisar especialmente {axis_phrase}.")
 
-    if heuristic_hints:
-        parts.extend(heuristic_hints[:2])
-
-    parts.append(
-        "Antes de cerrar la lectura y pasar al rastreo, conviene revisar origen del conflicto, detalles significativos, conflicto crítico, vida post-conflicto, instante temporal y emoción principal."
-    )
-    return " ".join(parts)
+def _build_protocol_suggestions(
+    probable_systems: list[str],
+    priority_symptoms: list[str],
+    opening_guidance: dict[str, Any],
+) -> list[dict[str, str]]:
+    queries = []
+    if priority_symptoms:
+        queries.extend(priority_symptoms[:2])
+    queries.extend(opening_guidance.get("pair_queries", []))
+    suggestions: list[dict[str, str]] = []
+    seen: set[str] = set()
+    for query in queries:
+        for entry in TEACHER.search_protocols(query, limit=3):
+            if entry.normalized_title in seen:
+                continue
+            normalized_title = _normalize_text(entry.title)
+            if any(
+                blocked in normalized_title
+                for blocked in (
+                    "trabajar el sistema energetico",
+                    "armonia biodinamica",
+                    "chakras terciarios",
+                )
+            ):
+                continue
+            seen.add(entry.normalized_title)
+            suggestions.append(
+                {
+                    "title": entry.title,
+                    "reason": f"Puede servir como apoyo si al abrir por {query.lower()} el cuadro confirma ese patrón.",
+                }
+            )
+    for bullet in opening_guidance.get("protocol_focus", []):
+        if bullet not in seen:
+            seen.add(bullet)
+            suggestions.append({"title": bullet, "reason": "Conviene tenerlo presente desde la primera entrevista y el rastreo."})
+    return suggestions[:6]
 
 
 def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
@@ -887,10 +1150,10 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     probable_systems = _dedupe_keep_order(
         [item["system_name"] for item in top_matches] + _infer_course_systems(case_payload, heuristics)
     )[:6]
-    probable_conflicts = _dedupe_keep_order(
-        [conflict for item in top_matches for conflict in item.get("possible_conflicts", [])]
-        + [conflict for heuristic in heuristics for conflict in heuristic.conflicts]
-    )[:10]
+    probable_conflicts = _compact_bullets(_dedupe_keep_order(
+        [conflict for heuristic in heuristics for conflict in heuristic.conflicts]
+        + [conflict for item in top_matches for conflict in item.get("possible_conflicts", [])]
+    ), limit=8)
     heuristic_questions = _dedupe_keep_order(
         [question for item in top_matches for question in item.get("guiding_questions", [])]
     )[:10]
@@ -905,9 +1168,15 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     family_axes = _dedupe_keep_order(
         _detect_family_axes(case_payload) + [axis for heuristic in heuristics for axis in heuristic.family_axes]
     )
+    primary_family_axis = _select_primary_family_axis(probable_systems, family_axes)
 
     matched_names = [item["canonical_name"] for item in top_matches]
     heuristic_hints = _dedupe_keep_order([heuristic.reading_hint for heuristic in heuristics])[:2]
+    opening_guidance = _build_opening_guidance(
+        probable_systems=probable_systems,
+        priority_symptoms=priority_symptoms,
+        case_payload=case_payload,
+    )
     reference_emotional_causes = _build_reference_emotional_causes(
         case_payload=case_payload,
         heuristics=heuristics,
@@ -918,24 +1187,31 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         probable_systems=probable_systems,
         probable_conflicts=probable_conflicts,
         family_axes=family_axes,
+        primary_family_axis=primary_family_axis,
         suggested_pairs=suggested_pairs_to_validate,
+        opening_guidance=opening_guidance,
     )
     reading = _build_course_reading(
         case_payload=case_payload,
         probable_systems=probable_systems,
         probable_conflicts=probable_conflicts,
         family_axes=family_axes,
+        primary_family_axis=primary_family_axis,
         heuristic_hints=heuristic_hints,
         matched_names=matched_names,
         prioritized_hypotheses=prioritized_hypotheses,
+        opening_guidance=opening_guidance,
+    )
+    protocol_suggestions = _build_protocol_suggestions(
+        probable_systems=probable_systems,
+        priority_symptoms=priority_symptoms,
+        opening_guidance=opening_guidance,
     )
 
     mass_conflict_hypothesis = ""
     if probable_conflicts:
         mass_conflict_hypothesis = (
-            "Posible masa conflictual a explorar: "
-            + "; ".join(probable_conflicts[:3])
-            + "."
+            "Posible masa conflictual a explorar: " + "; ".join(probable_conflicts[:2]) + "."
         )
     elif probable_systems:
         mass_conflict_hypothesis = (
@@ -956,13 +1232,17 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "priority_symptoms": priority_symptoms,
         "matched_profiles": top_matches,
         "probable_systems": probable_systems,
+        "probable_system_labels": [_format_system_label(system) for system in probable_systems],
         "probable_conflicts": probable_conflicts,
+        "opening_guidance": opening_guidance,
         "reference_emotional_causes": reference_emotional_causes,
         "family_axes": family_axes,
+        "primary_family_axis": primary_family_axis,
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
         "suggested_pairs_to_validate": suggested_pairs_to_validate,
         "prioritized_hypotheses": prioritized_hypotheses,
+        "suggested_protocols": protocol_suggestions,
         "suggested_course_routes": suggested_routes,
         "release_protocol_routes": release_routes,
     }
