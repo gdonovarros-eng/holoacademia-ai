@@ -217,6 +217,37 @@ SYMPTOM_HEURISTICS: dict[str, SymptomHeuristic] = {
 }
 
 
+COURSE_SYSTEM_LABELS = {
+    "neurosensorial": "sistema neurosensorial",
+    "endocrino_metabolico": "sistema endócrino-metabólico",
+    "inmunologico": "sistema inmunológico",
+    "cardiovascular": "sistema cardiovascular",
+    "respiratorio": "sistema respiratorio",
+    "digestivo": "sistema digestivo",
+    "renal_excretor": "sistema renal / electrolítico-excretor",
+    "renal": "sistema renal / electrolítico-excretor",
+    "reproductor": "sistema reproductor",
+    "osteomuscular": "sistema osteomuscular",
+    "lipo_fascial": "sistema lipo-fascial",
+    "dermatologico": "sistema lipo-fascial / tegumentario",
+    "emocional_mental": "campo psicoemocional",
+}
+
+
+SYSTEM_KEYWORD_HINTS: dict[str, tuple[str, ...]] = {
+    "neurosensorial": ("migraña", "migraña", "dolor de cabeza", "mareo", "vértigo", "insomnio", "vista", "oido", "oído"),
+    "endocrino_metabolico": ("diabetes", "tiroid", "metab", "glucosa", "pancrea", "peso", "fatiga hormonal"),
+    "inmunologico": ("alerg", "defensas", "autoinm", "inmun"),
+    "cardiovascular": ("corazon", "corazón", "palpit", "presion", "presión", "pecho", "circul"),
+    "respiratorio": ("asma", "tos", "bronqu", "pulmon", "pulmón", "respira", "aire", "garganta"),
+    "digestivo": ("gastr", "reflujo", "colitis", "estreñ", "estren", "diarrea", "estom", "abdomen", "intestin"),
+    "renal_excretor": ("riñ", "rin", "vejiga", "orina", "urin", "renal", "excret"),
+    "reproductor": ("matriz", "ovario", "útero", "utero", "próstata", "prostata", "vagina", "sexual", "reproduct"),
+    "osteomuscular": ("dolor", "espalda", "rodilla", "hues", "musc", "fibromial", "columna", "articul"),
+    "lipo_fascial": ("piel", "cabello", "alopecia", "grasa", "fascia", "tejido"),
+}
+
+
 def _collect_symptom_texts(case_payload: dict[str, Any]) -> list[str]:
     symptoms = []
     for item in _safe_list(case_payload.get("current_symptoms")):
@@ -428,6 +459,98 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
     return _dedupe_keep_order(axes)
 
 
+def _infer_course_systems(case_payload: dict[str, Any], heuristics: list[SymptomHeuristic]) -> list[str]:
+    symptom_blob = " ".join(_normalize_text(text) for text in _collect_symptom_texts(case_payload))
+    systems = [system for heuristic in heuristics for system in heuristic.systems]
+    for system_name, keywords in SYSTEM_KEYWORD_HINTS.items():
+        if any(keyword in symptom_blob for keyword in keywords):
+            systems.append(system_name)
+    return _dedupe_keep_order(systems)
+
+
+def _format_system_label(system_name: str) -> str:
+    return COURSE_SYSTEM_LABELS.get(system_name, system_name.replace("_", " "))
+
+
+def _build_course_guiding_questions(
+    case_payload: dict[str, Any],
+    probable_systems: list[str],
+    family_axes: list[str],
+    heuristic_questions: list[str],
+) -> list[str]:
+    questions: list[str] = []
+    priority_symptoms = [
+        _safe_text(item.get("symptom_name"))
+        for item in _safe_list(case_payload.get("current_symptoms"))
+        if _safe_text(item.get("symptom_name"))
+    ]
+    first_symptom = priority_symptoms[0] if priority_symptoms else "este síntoma"
+
+    questions.extend(
+        [
+            f"¿Cuál fue el origen de {first_symptom} y qué estaba ocurriendo en la vida del consultante en ese momento?",
+            "¿Qué detalles significativos rodearon el inicio: personas, lugar, pérdida, presión, cambio o impacto emocional?",
+            "¿Cuál fue el conflicto crítico o el momento más intenso asociado al síntoma?",
+            "¿Cómo cambió la vida del consultante después de ese conflicto o desde que apareció el síntoma?",
+            "¿Cuál es la duración, frecuencia y relación de este síntoma con otros síntomas del cuadro?",
+            "¿Qué emoción principal sostiene hoy este conflicto y en qué parte del cuerpo se siente con más fuerza?",
+        ]
+    )
+
+    if any("paterna" in axis or "paterno" in axis or "padre" in axis for axis in family_axes):
+        questions.append("¿Qué tema de protección, reconocimiento, autoridad o dirección se está moviendo con la línea paterna?")
+    if any("materna" in axis or "madre" in axis for axis in family_axes):
+        questions.append("¿Qué tema de cuidado, nutrición afectiva, hogar o recepción se está moviendo con la línea materna?")
+    if any("pareja" in axis for axis in family_axes):
+        questions.append("¿Qué patrón de pareja se repite y qué busca reparar el consultante a través de ese vínculo?")
+    if any("transgeneracional" in axis or "duelos" in axis for axis in family_axes):
+        questions.append("¿Hay carga transgeneracional, duelo o memoria familiar implicada en este síntoma, ciclo o drama?")
+
+    if probable_systems:
+        first_system = _format_system_label(probable_systems[0])
+        questions.append(f"Si abres análisis sistémico, ¿qué porcentaje de armonía muestra primero {first_system}?")
+
+    questions.extend(heuristic_questions)
+    return _dedupe_keep_order(questions)[:10]
+
+
+def _build_course_reading(
+    case_payload: dict[str, Any],
+    probable_systems: list[str],
+    probable_conflicts: list[str],
+    family_axes: list[str],
+    heuristic_hints: list[str],
+    matched_names: list[str],
+) -> str:
+    symptom_blob = _collect_symptom_texts(case_payload)
+    symptom_phrase = ", ".join(symptom_blob[:2]) if symptom_blob else "los síntomas capturados"
+    systems_phrase = ", ".join(_format_system_label(system) for system in probable_systems[:3]) if probable_systems else "los sistemas con menor armonía"
+
+    parts = [
+        "Desde Psicosomática y Biodescodificación 1 y 2, el síntoma se toma como una estrategia de adaptación y no solo como un dato aislado.",
+        f"Con lo capturado hasta ahora, conviene empezar la lectura a partir de {symptom_phrase}.",
+        f"Desde Holobiomagnetismo Parte 1 y 2, el análisis inicial sugiere abrir primero el rastreo por {systems_phrase}.",
+    ]
+
+    if matched_names:
+        parts.append("Como referencia complementaria, el caso también roza estos perfiles: " + ", ".join(matched_names[:3]) + ".")
+
+    if probable_conflicts:
+        parts.append("La masa conflictual todavía debe afinarse, pero de entrada se mueve alrededor de " + ", ".join(probable_conflicts[:3]) + ".")
+
+    if family_axes:
+        axis_phrase = ", ".join(family_axes[:3])
+        parts.append(f"En entrevista conviene revisar especialmente {axis_phrase}.")
+
+    if heuristic_hints:
+        parts.extend(heuristic_hints[:2])
+
+    parts.append(
+        "La ruta correcta es: revisar origen del conflicto, detalles significativos, conflicto crítico, vida post-conflicto, instante temporal y emoción principal antes de cerrar la lectura y pasar al rastreo."
+    )
+    return " ".join(parts)
+
+
 def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     matches = _match_profiles(case_payload)
     broad_matches = _match_broad_profiles(case_payload)
@@ -444,17 +567,15 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     ]
     priority_symptoms = _dedupe_keep_order(priority_symptoms)[:6]
 
-    probable_systems = _dedupe_keep_order([item["system_name"] for item in top_matches])[:5]
     probable_systems = _dedupe_keep_order(
-        probable_systems + [system for heuristic in heuristics for system in heuristic.systems]
+        [item["system_name"] for item in top_matches] + _infer_course_systems(case_payload, heuristics)
     )[:6]
     probable_conflicts = _dedupe_keep_order(
         [conflict for item in top_matches for conflict in item.get("possible_conflicts", [])]
         + [conflict for heuristic in heuristics for conflict in heuristic.conflicts]
     )[:10]
-    guiding_questions = _dedupe_keep_order(
+    heuristic_questions = _dedupe_keep_order(
         [question for item in top_matches for question in item.get("guiding_questions", [])]
-        + [question for heuristic in heuristics for question in heuristic.questions]
     )[:10]
     suggested_routes = _dedupe_keep_order(
         [route for item in top_matches for route in item.get("suggested_course_routes", [])]
@@ -469,22 +590,15 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     )
 
     matched_names = [item["canonical_name"] for item in top_matches]
-    if matched_names:
-        reading = (
-            "La lectura inicial del caso sugiere priorizar "
-            + ", ".join(matched_names)
-            + " como ejes de observación, integrando síntomas, contexto emocional y antecedentes relacionales."
-        )
-    else:
-        symptom_blob = _collect_symptom_texts(case_payload)
-        symptom_phrase = ", ".join(symptom_blob[:2]) if symptom_blob else "los síntomas capturados"
-        heuristic_hints = _dedupe_keep_order([heuristic.reading_hint for heuristic in heuristics])[:2]
-        reading = (
-            f"El caso sugiere comenzar la lectura a partir de {symptom_phrase}, revisando su temporalidad, "
-            "el contexto relacional y la forma en que el paciente lo está sosteniendo hoy."
-        )
-        if heuristic_hints:
-            reading += " " + " ".join(heuristic_hints)
+    heuristic_hints = _dedupe_keep_order([heuristic.reading_hint for heuristic in heuristics])[:2]
+    reading = _build_course_reading(
+        case_payload=case_payload,
+        probable_systems=probable_systems,
+        probable_conflicts=probable_conflicts,
+        family_axes=family_axes,
+        heuristic_hints=heuristic_hints,
+        matched_names=matched_names,
+    )
 
     mass_conflict_hypothesis = ""
     if probable_conflicts:
@@ -500,13 +614,12 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
             + "."
         )
 
-    if not guiding_questions:
-        guiding_questions = [
-            "¿Cuándo comenzó exactamente el síntoma o cuándo se hizo más evidente?",
-            "¿Qué situación importante estaba viviendo el paciente en ese periodo?",
-            "¿Qué cambia, empeora o alivia el síntoma en la vida cotidiana?",
-            "¿Qué vínculo, decisión o presión emocional acompaña hoy este malestar?",
-        ]
+    guiding_questions = _build_course_guiding_questions(
+        case_payload=case_payload,
+        probable_systems=probable_systems,
+        family_axes=family_axes,
+        heuristic_questions=heuristic_questions,
+    )
 
     return {
         "reading": reading,
