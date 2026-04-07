@@ -637,13 +637,13 @@ def _build_course_reading(
     systems_phrase = ", ".join(_format_system_label(system) for system in probable_systems[:3]) if probable_systems else "los sistemas con menor armonía"
 
     parts = [
-        "Desde Psicosomática y Biodescodificación 1 y 2, el síntoma se toma como una estrategia de adaptación y no solo como un dato aislado.",
+        "El síntoma se toma como una estrategia de adaptación y no solo como un dato aislado.",
         f"Con lo capturado hasta ahora, conviene empezar la lectura a partir de {symptom_phrase}.",
-        f"Desde Holobiomagnetismo Parte 1 y 2, el análisis inicial sugiere abrir primero el rastreo por {systems_phrase}.",
+        f"El análisis inicial sugiere abrir primero el rastreo por {systems_phrase}.",
     ]
 
     if matched_names:
-        parts.append("Como referencia complementaria, el caso también roza estos perfiles: " + ", ".join(matched_names[:3]) + ".")
+        parts.append("El cuadro también se relaciona con estos ejes clínicos: " + ", ".join(matched_names[:3]) + ".")
 
     if probable_conflicts:
         parts.append("La masa conflictual todavía debe afinarse, pero de entrada se mueve alrededor de " + ", ".join(probable_conflicts[:3]) + ".")
@@ -656,7 +656,7 @@ def _build_course_reading(
         parts.extend(heuristic_hints[:2])
 
     parts.append(
-        "La ruta correcta es: revisar origen del conflicto, detalles significativos, conflicto crítico, vida post-conflicto, instante temporal y emoción principal antes de cerrar la lectura y pasar al rastreo."
+        "Antes de cerrar la lectura y pasar al rastreo, conviene revisar origen del conflicto, detalles significativos, conflicto crítico, vida post-conflicto, instante temporal y emoción principal."
     )
     return " ".join(parts)
 
