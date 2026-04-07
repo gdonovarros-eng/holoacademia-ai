@@ -449,6 +449,168 @@ SYSTEM_KEYWORD_HINTS: dict[str, tuple[str, ...]] = {
 }
 
 
+SYSTEM_SWEEP_LIBRARY: dict[str, dict[str, Any]] = {
+    "digestivo": {
+        "title": "Barrido del sistema digestivo",
+        "summary": "Se revisa como conflicto de bocado: qué entra, qué se traga, qué no se digiere, qué resulta tóxico, qué no se puede asimilar y qué no se logra eliminar.",
+        "review_points": [
+            "Aceptar o rechazar lo que viene del exterior.",
+            "Tema materno, nutrición afectiva, hogar y sensación de ser bien recibido o no.",
+            "Irritación, enojo contenido, ardor, gastritis, hiperacidez o mala digestión emocional.",
+            "Tránsito, absorción, eliminación, gases, estreñimiento o diarrea como forma de resolver lo indeseado.",
+        ],
+        "microbial_focus": [
+            "Si el cuadro es persistente, revisar componente bacteriano, parasitario, micótico o de flora intestinal.",
+            "Cruzar si hay gastritis, hiperacidez, hernia hiatal, reflujo, diarrea, estreñimiento o mala absorción.",
+        ],
+    },
+    "respiratorio": {
+        "title": "Barrido del sistema respiratorio",
+        "summary": "Se revisa como conflicto de peligro, invasión del espacio, miedo, duelo y necesidad de aire o libertad.",
+        "review_points": [
+            "Amenaza, susto, miedo o sensación de asfixia emocional.",
+            "Duelo, tristeza, pérdida de espacio o invasión del territorio.",
+            "Cómo entra el aire, qué no se puede inspirar o expulsar con tranquilidad.",
+        ],
+        "microbial_focus": [
+            "Si hay tos, flemas, bronquitis, asma o sinusitis, revisar componente microbiano y reservorios respiratorios.",
+        ],
+    },
+    "endocrino_metabolico": {
+        "title": "Barrido del sistema endocrino-metabólico",
+        "summary": "Se revisa como adaptación hormonal y metabólica a estrés, resistencia, impotencia, asco, supervivencia y ritmos biológicos alterados.",
+        "review_points": [
+            "Conflictos de resistencia, impotencia o no poder cambiar una situación.",
+            "Tema de glucosa, amor tóxico, asco, metabolismo y energía disponible.",
+            "Cambios de peso, tiroides, páncreas, suprarrenales, fatiga y ritmos internos.",
+        ],
+        "microbial_focus": [
+            "Si hay páncreas comprometido o síntomas digestivos asociados, cruzar microbiota y pares pancreáticos.",
+        ],
+    },
+    "cardiovascular": {
+        "title": "Barrido del sistema cardiovascular",
+        "summary": "Se revisa como territorio interno, familia sanguínea, hogar íntimo, competencia, presión vital y capacidad de sostener circulación y ritmo.",
+        "review_points": [
+            "Qué tan amenazado o presionado se siente el territorio interno del consultante.",
+            "Competencia, exigencia, hogar, sangre, lazos familiares y sobrecarga.",
+            "Corazón, vasos, circulación, hipertensión, hipotensión o arritmia como lenguaje adaptativo.",
+        ],
+        "microbial_focus": [
+            "Si el cuadro se acompaña de inflamación o síntomas sistémicos, cruzar con reservorios vasculares y digestivos.",
+        ],
+    },
+    "osteomuscular": {
+        "title": "Barrido del sistema osteomuscular",
+        "summary": "Se revisa como desvalorización, carga, estructura, soporte, rigidez, sobreesfuerzo y dificultad para moverse o sostenerse.",
+        "review_points": [
+            "Qué carga física o emocional está sosteniendo de más.",
+            "Desvalorización, impotencia, rigidez o miedo a quebrarse.",
+            "Dolor, columna, rodillas, articulaciones, músculos y postura vital.",
+        ],
+        "microbial_focus": [
+            "Si hay dolor errático, inflamación o desgaste persistente, revisar componente microbiano y disfuncional.",
+        ],
+    },
+    "lipo_fascial": {
+        "title": "Barrido del sistema lipo-fascial",
+        "summary": "Se revisa como contacto, separación, identidad, autoimagen, protección, envoltura y memoria en tejidos de recubrimiento.",
+        "review_points": [
+            "Separación, roce, vergüenza, invasión, protección y autoimagen.",
+            "Piel, cabello, fascia, tejido subcutáneo y sensación de exposición.",
+            "Cómo el cuerpo marca el límite entre adentro y afuera.",
+        ],
+        "microbial_focus": [
+            "Si hay brotes, caída de cabello o lesiones persistentes, cruzar con hongos, parásitos o bacterias de piel.",
+        ],
+    },
+    "dermatologico": {
+        "title": "Barrido del sistema lipo-fascial",
+        "summary": "Se revisa como contacto, separación, identidad, autoimagen, protección, envoltura y memoria en tejidos de recubrimiento.",
+        "review_points": [
+            "Separación, roce, vergüenza, invasión, protección y autoimagen.",
+            "Piel, cabello, fascia, tejido subcutáneo y sensación de exposición.",
+            "Cómo el cuerpo marca el límite entre adentro y afuera.",
+        ],
+        "microbial_focus": [
+            "Si hay brotes, caída de cabello o lesiones persistentes, cruzar con hongos, parásitos o bacterias de piel.",
+        ],
+    },
+    "reproductor": {
+        "title": "Barrido del sistema reproductor",
+        "summary": "Se revisa como reproducción, pareja, fertilidad, sexualidad, nido, maternaje, vínculo y continuidad de la especie.",
+        "review_points": [
+            "Conflictos de pareja, sexualidad, territorio íntimo, maternidad o paternidad.",
+            "Pérdidas gestacionales, celos, fertilidad, deseo, rechazo y vínculo con el cuerpo sexual.",
+            "Cómo se vive el nido, la pareja y la posibilidad de transmitir vida.",
+        ],
+        "microbial_focus": [
+            "Si hay infecciones, dolor pélvico o síntomas sexuales persistentes, revisar componente microbiano local.",
+        ],
+    },
+    "renal_excretor": {
+        "title": "Barrido del sistema electrolítico-excretor",
+        "summary": "Se revisa como filtración, límites, miedo, líquidos, territorialidad y capacidad de desechar o conservar.",
+        "review_points": [
+            "Miedo básico, seguridad, supervivencia y sensación de estar amenazado.",
+            "Retención o pérdida de líquidos, riñón, vejiga y equilibrio interno.",
+            "Qué no se logra soltar o qué se retiene por alarma interna.",
+        ],
+        "microbial_focus": [
+            "Si hay infección urinaria, dolor renal o alteración persistente, revisar componente bacteriano, parasitario o disfuncional.",
+        ],
+    },
+    "inmunologico": {
+        "title": "Barrido del sistema inmunológico",
+        "summary": "Se revisa como identidad, reconocimiento de lo propio y de lo extraño, defensa, alergia, reacción y memoria biológica.",
+        "review_points": [
+            "Quién soy y qué siento ajeno, invasivo o peligroso.",
+            "Tema de identidad, pertenencia, autoagresión, alergia o defensa exagerada.",
+            "Cómo reacciona el cuerpo ante lo extraño o ante lo que debería reconocer como propio.",
+        ],
+        "microbial_focus": [
+            "Cruzar si la respuesta está disparada por infección, parásito, alergia o terreno inflamatorio.",
+        ],
+    },
+    "neurosensorial": {
+        "title": "Barrido del sistema neurosensorial",
+        "summary": "Se revisa como procesamiento de realidad, orientación, control, disociación, sobrecarga sensorial, vigilancia y dirección.",
+        "review_points": [
+            "Confusión, pérdida de dirección, exceso de control o necesidad de mantenerse en alerta.",
+            "Oído, visión, equilibrio, migraña, vértigo, mareo, tinnitus, sueño y percepción.",
+            "Qué no puede dejar de escuchar, ver, pensar o controlar el consultante.",
+        ],
+        "microbial_focus": [
+            "Si hay oído, mastoides, temporal, bulbo o síntomas vestibulares, cruzar con pares locales y componentes disfuncionales o infecciosos.",
+        ],
+    },
+    "emocional_mental": {
+        "title": "Barrido psicoemocional",
+        "summary": "Se revisa el drama dominante, la emoción que sigue activa, la creencia que sostiene el síntoma y la forma de adaptación psíquica del consultante.",
+        "review_points": [
+            "Miedo, culpa, rechazo, abandono, pérdida, presión o hipercontrol.",
+            "Momento de origen, repetición del drama y emoción dominante en el presente.",
+            "Lo que el consultante expresa, lo que intenta decir y lo que no se atreve a decir.",
+        ],
+        "microbial_focus": [
+            "Aquí el énfasis principal es conflictológico y de liberación; el rastreo microbiano se usa como apoyo cuando el cuadro corporal lo pide.",
+        ],
+    },
+    "familiar": {
+        "title": "Barrido del sistema familiar",
+        "summary": "Se revisa como eco transgeneracional: historias repetidas, fechas, roles, secretos, duelos, oficios, pareja y lealtades invisibles.",
+        "review_points": [
+            "Repetición de historias, enfermedades, accidentes, separaciones, quiebras o muertes.",
+            "Roles familiares, exclusiones, secretos, yacentes y fechas que se repiten.",
+            "Qué del síntoma puede estar expresando una carga del sistema familiar.",
+        ],
+        "microbial_focus": [
+            "Aquí primero se ordena el árbol y la repetición; lo microbiano se cruza después si el cuadro somático lo exige.",
+        ],
+    },
+}
+
+
 def _collect_symptom_texts(case_payload: dict[str, Any]) -> list[str]:
     symptoms = []
     for item in _safe_list(case_payload.get("current_symptoms")):
@@ -1177,6 +1339,27 @@ def _build_protocol_suggestions(
     return suggestions[:6]
 
 
+def _build_system_sweep_summary(probable_systems: list[str]) -> list[dict[str, Any]]:
+    results: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for system_name in probable_systems[:3]:
+        sweep = SYSTEM_SWEEP_LIBRARY.get(system_name)
+        if not sweep or system_name in seen:
+            continue
+        seen.add(system_name)
+        results.append(
+            {
+                "system_name": system_name,
+                "system_label": _format_system_label(system_name),
+                "title": sweep["title"],
+                "summary": sweep["summary"],
+                "review_points": sweep.get("review_points", [])[:5],
+                "microbial_focus": sweep.get("microbial_focus", [])[:4],
+            }
+        )
+    return results
+
+
 def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     matches = _match_profiles(case_payload)
     broad_matches = _match_broad_profiles(case_payload)
@@ -1253,6 +1436,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         priority_symptoms=priority_symptoms,
         opening_guidance=opening_guidance,
     )
+    system_sweep_summary = _build_system_sweep_summary(probable_systems)
 
     mass_conflict_hypothesis = ""
     if probable_conflicts:
@@ -1289,6 +1473,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "suggested_pairs_to_validate": suggested_pairs_to_validate,
         "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_protocols": protocol_suggestions,
+        "system_sweep_summary": system_sweep_summary,
         "suggested_course_routes": suggested_routes,
         "release_protocol_routes": release_routes,
     }

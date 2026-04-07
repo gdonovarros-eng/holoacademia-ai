@@ -218,6 +218,22 @@ function renderSuggestedProtocols(items = []) {
   `).join("")}</div>`;
 }
 
+function renderSystemSweep(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin barrido sistémico disponible todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || item.system_label || ""}</strong></p>
+      <p>${item.summary || ""}</p>
+      <p><strong>Qué revisar:</strong></p>
+      ${renderBulletList(item.review_points || [])}
+      <p><strong>Componente complementario:</strong></p>
+      ${renderBulletList(item.microbial_focus || [])}
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderHypotheses(items = []) {
   if (!items.length) {
     return `<p class="status">Sin hipótesis priorizadas todavía.</p>`;
@@ -257,6 +273,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Sistemas probables</h3>
       ${renderChipList(analysis.probable_system_labels || analysis.probable_systems || [])}
+    </article>
+    <article class="result-card">
+      <h3>Barrido por sistema</h3>
+      ${renderSystemSweep(analysis.system_sweep_summary || [])}
     </article>
     <article class="result-card">
       <h3>Conflictos probables</h3>
