@@ -12,7 +12,9 @@ Unir en una sola salida:
 2. la interpretación de pares biomagnéticos
 3. el cuadro integrador del caso
 4. el protocolo principal sugerido
-5. la entrega resumida para el paciente
+5. la liberación sugerida
+6. el guion EFT aplicable al paciente
+7. la entrega resumida para el paciente
 
 ---
 
@@ -52,6 +54,8 @@ Devuelve un objeto con estos bloques:
 - `integrative_chart`
 - `pair_visual_summary`
 - `primary_protocol`
+- `liberation_plan`
+- `eft_script`
 - `next_steps`
 - `patient_delivery`
 
@@ -118,6 +122,37 @@ Luego se puede convertir a:
 - ficha imprimible
 - resumen en PDF
 - pantalla de cierre
+
+---
+
+## Liberación sugerida
+
+La salida `liberation_plan` organiza el protocolo elegido para que el terapeuta lo pueda aplicar sin tener que leer el texto crudo del manual.
+
+Incluye:
+
+- protocolo base
+- intención terapéutica
+- foco del caso
+- eje emocional
+- eje familiar
+- pasos concretos para el terapeuta
+- indicaciones de seguimiento
+
+---
+
+## Guion EFT
+
+La salida `eft_script` propone un guion de tapping aplicable al paciente como complemento de la liberación.
+
+Incluye:
+
+- foco a trabajar
+- frase de preparación
+- frases recordatorias
+- puntos básicos de tapping
+- rondas sugeridas
+- notas de uso para el terapeuta
 
 ---
 

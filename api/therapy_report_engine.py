@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from api.pair_engine import interpret_pairs
@@ -14,6 +15,14 @@ def _safe_text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
 
 
+def _first_non_empty(values: list[str]) -> str:
+    for value in values:
+        text = _safe_text(value)
+        if text:
+            return text
+    return ""
+
+
 def _dedupe_keep_order(values: list[str]) -> list[str]:
     seen: set[str] = set()
     result: list[str] = []
@@ -24,6 +33,29 @@ def _dedupe_keep_order(values: list[str]) -> list[str]:
         seen.add(normalized)
         result.append(value)
     return result
+
+
+def _first_sentence(text: str) -> str:
+    clean = re.sub(r"\s+", " ", _safe_text(text))
+    if not clean:
+        return ""
+    parts = re.split(r"(?<=[.!?])\s+", clean)
+    return parts[0].strip()
+
+
+def _protocol_steps(protocol_body: str) -> list[str]:
+    body = _safe_text(protocol_body)
+    if not body:
+        return []
+
+    normalized = body.replace("●", "\n●").replace("•", "\n•")
+    lines = [re.sub(r"\s+", " ", line).strip(" .") for line in normalized.splitlines()]
+    steps = [line.lstrip("●•- ").strip() for line in lines if line.strip().startswith(("●", "•", "-"))]
+    if steps:
+        return _dedupe_keep_order(steps)
+
+    fragments = [fragment.strip() for fragment in re.split(r"\.\s+", body) if fragment.strip()]
+    return _dedupe_keep_order(fragments[:6])
 
 
 def _select_primary_protocol(
@@ -63,6 +95,172 @@ def _select_primary_protocol(
             return protocol
 
     return protocols[0]
+
+
+def _build_liberation_plan(
+    case_analysis: dict[str, Any],
+    pair_analysis: dict[str, Any],
+    primary_protocol: dict[str, Any] | None,
+) -> dict[str, Any]:
+    protocol_title = _safe_text(primary_protocol.get("title")) if primary_protocol else ""
+    protocol_body = _safe_text(primary_protocol.get("body")) if primary_protocol else ""
+    protocol_steps = _protocol_steps(protocol_body)
+
+    focus_issue = _first_non_empty(
+        _safe_list(case_analysis.get("priority_symptoms"))
+        + _safe_list(pair_analysis.get("related_conditions"))
+        + _safe_list(case_analysis.get("probable_conflicts"))
+    )
+    emotional_axis = _first_non_empty(_safe_list(case_analysis.get("probable_conflicts")))
+    family_axis = _first_non_empty(_safe_list(case_analysis.get("family_axes")))
+
+    intention_parts = []
+    if focus_issue:
+        intention_parts.append(f"trabajar {focus_issue}")
+    if emotional_axis:
+        intention_parts.append(f"liberar la carga asociada a {emotional_axis}")
+    if family_axis:
+        intention_parts.append(f"manteniendo presente el eje {family_axis}")
+
+    patient_explanation = " ".join(
+        part for part in [
+            "El objetivo de esta liberación es ayudar al paciente a soltar la carga emocional que el cuerpo sigue sosteniendo.",
+            f"En este caso conviene {', '.join(intention_parts)}." if intention_parts else "",
+            f"El protocolo sugerido para empezar es {protocol_title}." if protocol_title else "",
+        ] if part
+    ).strip()
+
+    home_recommendations = [
+        "Aplicar el protocolo con presencia, sin forzar respuestas y verificando cada liberación antes de continuar.",
+        "Si una emoción o sensación cambia de intensidad, ajustar el lenguaje del trabajo a lo que el paciente siente en ese momento.",
+        "Si el caso sigue cargado, repetir el protocolo en días posteriores solo si el rastreo lo confirma.",
+    ]
+
+    return {
+        "protocol_title": protocol_title,
+        "protocol_source_file": _safe_text(primary_protocol.get("source_file")) if primary_protocol else "",
+        "route": _safe_text(primary_protocol.get("route")) if primary_protocol else "",
+        "therapeutic_intention": patient_explanation,
+        "focus_issue": focus_issue,
+        "emotional_axis": emotional_axis,
+        "family_axis": family_axis,
+        "therapist_steps": protocol_steps,
+        "patient_explanation": patient_explanation,
+        "home_recommendations": home_recommendations,
+    }
+
+
+EFT_TAPPING_POINTS = [
+    "Punto karate: lateral de la mano entre meñique y muñeca.",
+    "Coronilla.",
+    "Inicio de la ceja.",
+    "Lado del ojo.",
+    "Debajo del ojo.",
+    "Entre nariz y labio superior.",
+    "Debajo del labio, en la barbilla.",
+    "Clavícula.",
+    "Debajo de la axila.",
+]
+
+
+def _build_eft_script(
+    case_payload: dict[str, Any],
+    case_analysis: dict[str, Any],
+    pair_analysis: dict[str, Any],
+    liberation_plan: dict[str, Any],
+) -> dict[str, Any]:
+    patient_name = _safe_text(case_payload.get("patient_name")) or _safe_text(
+        case_payload.get("consultant", {}).get("full_name") if isinstance(case_payload.get("consultant"), dict) else ""
+    )
+    focus_issue = _first_non_empty(
+        [
+            _safe_text(liberation_plan.get("focus_issue")),
+            *_safe_list(case_analysis.get("priority_symptoms")),
+            *_safe_list(pair_analysis.get("related_conditions")),
+        ]
+    )
+    emotional_axis = _first_non_empty(
+        [
+            _safe_text(liberation_plan.get("emotional_axis")),
+            *_safe_list(case_analysis.get("probable_conflicts")),
+        ]
+    )
+    reference_causes = _safe_list(case_analysis.get("reference_emotional_causes"))
+    reference_line = ""
+    if reference_causes and isinstance(reference_causes[0], dict):
+        reference_line = _first_sentence(_safe_text(reference_causes[0].get("body")))
+
+    route = _safe_text(liberation_plan.get("route")).lower()
+    if "transgeneracional" in route:
+        route_phrase = "esta carga repetida de mi sistema familiar"
+    elif "sentimental" in route:
+        route_phrase = "este dolor vincular que sigo cargando"
+    elif "postraum" in route or "estres" in route:
+        route_phrase = "el impacto que esta situación dejó en mí"
+    else:
+        route_phrase = "este conflicto que mi cuerpo sigue sosteniendo"
+
+    setup_phrase = (
+        f"Aunque sigo cargando {route_phrase}"
+        + (f" y esto se expresa como {focus_issue}" if focus_issue else "")
+        + (f", especialmente en relación con {emotional_axis}" if emotional_axis else "")
+        + ", me abro a reconocerlo, liberarlo y darme permiso de estar en paz."
+    )
+
+    reminder_base = _first_non_empty(
+        [
+            focus_issue,
+            emotional_axis,
+            "esta carga emocional",
+        ]
+    )
+    reminder_phrases = _dedupe_keep_order(
+        [
+            f"Este {reminder_base}",
+            f"Lo que mi cuerpo sigue sosteniendo de {reminder_base}" if reminder_base else "",
+            f"Me permito reconocer {emotional_axis}" if emotional_axis else "",
+            "Me abro a soltar esta tensión paso a paso.",
+            "Puedo bajar la intensidad sin perder conciencia de lo que siento.",
+            "Le doy espacio a una respuesta más tranquila y clara.",
+        ]
+    )
+
+    rounds = [
+        {
+            "title": "Ronda 1: reconocer lo que está cargado",
+            "focus": f"Nombrar el problema tal como hoy se siente{f' en {patient_name}' if patient_name else ''}.",
+            "phrase": reminder_phrases[0] if reminder_phrases else "Este malestar.",
+        },
+        {
+            "title": "Ronda 2: contactar la emoción dominante",
+            "focus": emotional_axis or "explorar la emoción principal detrás del síntoma.",
+            "phrase": reminder_phrases[2] if len(reminder_phrases) > 2 else "Me permito sentirlo sin pelear con ello.",
+        },
+        {
+            "title": "Ronda 3: abrir espacio a la liberación",
+            "focus": "invitar al sistema a bajar intensidad y recuperar seguridad interna.",
+            "phrase": reminder_phrases[-1] if reminder_phrases else "Me doy permiso de estar en paz.",
+        },
+    ]
+
+    usage_notes = [
+        "Antes de empezar, pedir al paciente que ponga intensidad de 0 a 10 al malestar que se va a trabajar.",
+        "Hacer una ronda completa con la frase de preparación en punto karate y luego recorrer los puntos básicos con la frase recordatoria.",
+        "Después de cada ronda, volver a medir intensidad y ajustar la frase si el síntoma o la emoción cambian.",
+    ]
+    if reference_line:
+        usage_notes.append(f"Referencia útil para la entrevista: {reference_line}")
+
+    return {
+        "title": "Guion EFT sugerido para el paciente",
+        "focus_issue": focus_issue,
+        "emotional_axis": emotional_axis,
+        "setup_phrase": setup_phrase,
+        "reminder_phrases": reminder_phrases,
+        "tapping_points": EFT_TAPPING_POINTS,
+        "rounds": rounds,
+        "usage_notes": usage_notes,
+    }
 
 
 def _build_integrative_chart(
@@ -172,6 +370,8 @@ def build_therapy_report(
     case_analysis = analyze_case(case_payload)
     pair_analysis = interpret_pairs(case_analysis, pairs_input or [])
     primary_protocol = _select_primary_protocol(case_analysis, pair_analysis)
+    liberation_plan = _build_liberation_plan(case_analysis, pair_analysis, primary_protocol)
+    eft_script = _build_eft_script(case_payload, case_analysis, pair_analysis, liberation_plan)
     integrative_chart = _build_integrative_chart(case_analysis, pair_analysis)
 
     therapist_summary_parts = [
@@ -198,6 +398,8 @@ def build_therapy_report(
         "integrative_chart": integrative_chart,
         "pair_visual_summary": _build_pair_visual_summary(pair_analysis),
         "primary_protocol": primary_protocol,
+        "liberation_plan": liberation_plan,
+        "eft_script": eft_script,
         "next_steps": next_steps,
         "patient_delivery": _build_patient_delivery(
             case_payload=case_payload,

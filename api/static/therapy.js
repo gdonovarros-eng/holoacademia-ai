@@ -187,6 +187,13 @@ function renderReferenceCauses(items = []) {
   `).join("")}</div>`;
 }
 
+function renderOrderedList(values = []) {
+  if (!values.length) {
+    return `<p class="status">Sin elementos disponibles.</p>`;
+  }
+  return `<ol class="bullet-list">${values.map((value) => `<li>${value}</li>`).join("")}</ol>`;
+}
+
 function renderAnalysis(analysis) {
   analysisOutput.innerHTML = `
     <article class="result-card">
@@ -278,6 +285,8 @@ function renderReport(report) {
   `).join("");
 
   const protocol = report.primary_protocol;
+  const liberation = report.liberation_plan || {};
+  const eft = report.eft_script || {};
   const pairVisualCards = (report.pair_visual_summary || []).map((item) => `
     <article class="pair-card">
       <h3>${item.pair_name}</h3>
@@ -317,6 +326,35 @@ function renderReport(report) {
         <p>${protocol.body}</p>
       </article>
     ` : '<p class="status">Aún no hay protocolo principal sugerido.</p>'}
+    <article class="protocol-card">
+      <h3>Liberación sugerida</h3>
+      <p><strong>Intención terapéutica:</strong> ${liberation.therapeutic_intention || "Sin intención definida todavía."}</p>
+      <p><strong>Protocolo base:</strong> ${liberation.protocol_title || "Sin protocolo base detectado."}</p>
+      <p><strong>Eje emocional:</strong> ${liberation.emotional_axis || "Sin eje emocional definido."}</p>
+      <p><strong>Eje familiar:</strong> ${liberation.family_axis || "Sin eje familiar dominante."}</p>
+      <p><strong>Pasos para el terapeuta:</strong></p>
+      ${renderBulletList(liberation.therapist_steps || [])}
+      <p><strong>Indicaciones de seguimiento:</strong></p>
+      ${renderBulletList(liberation.home_recommendations || [])}
+    </article>
+    <article class="protocol-card">
+      <h3>Guion EFT para aplicar al paciente</h3>
+      <p><strong>Foco a trabajar:</strong> ${eft.focus_issue || "Sin foco definido."}</p>
+      <p><strong>Frase de preparación:</strong> ${eft.setup_phrase || "Sin frase sugerida todavía."}</p>
+      <p><strong>Puntos básicos de tapping:</strong></p>
+      ${renderOrderedList(eft.tapping_points || [])}
+      <p><strong>Frases recordatorias:</strong></p>
+      ${renderBulletList(eft.reminder_phrases || [])}
+      ${((eft.rounds || []).map((round) => `
+        <div class="reference-card">
+          <p><strong>${round.title || ""}</strong></p>
+          <p><strong>Enfoque:</strong> ${round.focus || ""}</p>
+          <p><strong>Frase:</strong> ${round.phrase || ""}</p>
+        </div>
+      `).join("")) || '<p class="status">Sin rondas sugeridas todavía.</p>'}
+      <p><strong>Uso sugerido:</strong></p>
+      ${renderBulletList(eft.usage_notes || [])}
+    </article>
     <article class="result-card">
       <h3>Entrega para el paciente</h3>
       <p>${report.patient_delivery?.patient_summary || ""}</p>
