@@ -720,6 +720,65 @@ def _build_suggested_pairs(case_payload: dict[str, Any]) -> list[dict[str, str]]
     return [item for _, item in ranked[:8]]
 
 
+def _build_prioritized_hypotheses(
+    priority_symptoms: list[str],
+    probable_systems: list[str],
+    probable_conflicts: list[str],
+    family_axes: list[str],
+    suggested_pairs: list[dict[str, str]],
+) -> list[dict[str, Any]]:
+    hypotheses: list[dict[str, Any]] = []
+    top_symptom = priority_symptoms[0] if priority_symptoms else "el síntoma principal"
+    top_system = _format_system_label(probable_systems[0]) if probable_systems else "el sistema principal"
+    top_conflict = probable_conflicts[0] if probable_conflicts else ""
+    family_focus = family_axes[0] if family_axes else ""
+    pair_focus = [item["pair_name"] for item in suggested_pairs[:3]]
+
+    if top_system:
+        hypotheses.append(
+            {
+                "title": f"Predominio en {top_system}",
+                "summary": f"El caso parece abrir primero por {top_system} y conviene tomar {top_symptom} como puerta principal de entrevista.",
+                "verify": [
+                    f"Precisar desde cuándo comenzó {top_symptom}.",
+                    "Ubicar el primer evento con mayor carga emocional o desorganización.",
+                    f"Verificar si el cuerpo empeora en momentos de estrés, presión o desorientación relacionados con {top_system}.",
+                ],
+                "pairs_to_validate": pair_focus,
+            }
+        )
+
+    if top_conflict:
+        hypotheses.append(
+            {
+                "title": "Hipótesis conflictual principal",
+                "summary": f"La carga dominante parece organizarse alrededor de {top_conflict}",
+                "verify": [
+                    "Explorar qué situación no resuelta sigue activa hoy.",
+                    "Preguntar qué decisión, pérdida o presión coincide con el inicio del cuadro.",
+                    "Medir qué emoción se activa cuando el paciente vuelve mentalmente al origen del síntoma.",
+                ],
+                "pairs_to_validate": pair_focus,
+            }
+        )
+
+    if family_focus:
+        hypotheses.append(
+            {
+                "title": "Hipótesis familiar o transgeneracional",
+                "summary": f"Hay un eje relacional que merece abrirse en entrevista: {family_focus}",
+                "verify": [
+                    "Pedir la historia breve del vínculo que más pesa hoy.",
+                    "Revisar si hubo pérdidas, duelos, lealtades o repeticiones alrededor del síntoma.",
+                    "Observar si el síntoma empeora al tocar temas de padre, madre, pareja o muertes del sistema.",
+                ],
+                "pairs_to_validate": pair_focus,
+            }
+        )
+
+    return hypotheses[:3]
+
+
 def _build_course_guiding_questions(
     case_payload: dict[str, Any],
     probable_systems: list[str],
@@ -774,6 +833,7 @@ def _build_course_reading(
     family_axes: list[str],
     heuristic_hints: list[str],
     matched_names: list[str],
+    prioritized_hypotheses: list[dict[str, Any]],
 ) -> str:
     symptom_blob = _collect_symptom_texts(case_payload)
     symptom_phrase = ", ".join(symptom_blob[:2]) if symptom_blob else "los síntomas capturados"
@@ -790,6 +850,10 @@ def _build_course_reading(
 
     if probable_conflicts:
         parts.append("La masa conflictual todavía debe afinarse, pero de entrada se mueve alrededor de " + ", ".join(probable_conflicts[:3]) + ".")
+
+    if prioritized_hypotheses:
+        top_hypothesis = prioritized_hypotheses[0]
+        parts.append("La primera hipótesis de trabajo es: " + _safe_text(top_hypothesis.get("summary")))
 
     if family_axes:
         axis_phrase = ", ".join(family_axes[:3])
@@ -849,6 +913,13 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         heuristics=heuristics,
     )
     suggested_pairs_to_validate = _build_suggested_pairs(case_payload)
+    prioritized_hypotheses = _build_prioritized_hypotheses(
+        priority_symptoms=priority_symptoms,
+        probable_systems=probable_systems,
+        probable_conflicts=probable_conflicts,
+        family_axes=family_axes,
+        suggested_pairs=suggested_pairs_to_validate,
+    )
     reading = _build_course_reading(
         case_payload=case_payload,
         probable_systems=probable_systems,
@@ -856,6 +927,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         family_axes=family_axes,
         heuristic_hints=heuristic_hints,
         matched_names=matched_names,
+        prioritized_hypotheses=prioritized_hypotheses,
     )
 
     mass_conflict_hypothesis = ""
@@ -890,6 +962,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
         "suggested_pairs_to_validate": suggested_pairs_to_validate,
+        "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_course_routes": suggested_routes,
         "release_protocol_routes": release_routes,
     }

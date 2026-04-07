@@ -206,6 +206,21 @@ function renderSuggestedPairs(items = []) {
   `).join("")}</div>`;
 }
 
+function renderHypotheses(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin hipótesis priorizadas todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || ""}</strong></p>
+      <p>${item.summary || ""}</p>
+      <p><strong>Qué verificar primero:</strong></p>
+      ${renderBulletList(item.verify || [])}
+      ${(item.pairs_to_validate || []).length ? `<p><strong>Pares a validar:</strong> ${(item.pairs_to_validate || []).join(", ")}</p>` : ""}
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderAnalysis(analysis) {
   analysisOutput.innerHTML = `
     <article class="result-card">
@@ -216,6 +231,10 @@ function renderAnalysis(analysis) {
     <article class="result-card">
       <h3>Síntomas prioritarios</h3>
       ${renderChipList(analysis.priority_symptoms || [])}
+    </article>
+    <article class="result-card">
+      <h3>Hipótesis prioritarias</h3>
+      ${renderHypotheses(analysis.prioritized_hypotheses || [])}
     </article>
     <article class="result-card">
       <h3>Sistemas probables</h3>
