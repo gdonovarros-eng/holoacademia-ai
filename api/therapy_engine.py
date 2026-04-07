@@ -748,7 +748,31 @@ def _format_system_label(system_name: str) -> str:
 
 def _compact_reference_text(value: str) -> str:
     value = re.sub(r"\s+", " ", value or "").strip()
-    return value[:320].rstrip(" ,;:.") + ("…" if len(value) > 320 else "")
+    return value
+
+
+def _clean_reference_body(value: str) -> str:
+    text = re.sub(r"\s+", " ", value or "").strip()
+    if not text:
+        return ""
+    text = re.sub(r"^[\"'“”]+|[\"'“”]+$", "", text).strip()
+    text = text.replace('" En el caso', ' En el caso').replace("” En el caso", " En el caso")
+    text = re.sub(r"(?i)^en el caso de [^,.:;]+[,.:;]?\s*", "", text).strip()
+    parts = [part.strip() for part in re.split(r"(?<=[.!?])\s+", text) if part.strip()]
+    if len(parts) >= 2:
+        first_normalized = _normalize_text(parts[0])
+        second_normalized = _normalize_text(parts[1])
+        if len(parts[0]) < 110 and ("en el caso" in second_normalized or "desde la biodescodificacion" in second_normalized):
+            parts = parts[1:]
+    deduped_parts: list[str] = []
+    seen_parts: set[str] = set()
+    for part in parts:
+        normalized_part = _normalize_text(part)
+        if not normalized_part or normalized_part in seen_parts:
+            continue
+        seen_parts.add(normalized_part)
+        deduped_parts.append(part)
+    return " ".join(deduped_parts).strip()
 
 
 def _compact_bullets(values: list[str], limit: int = 6) -> list[str]:
@@ -762,6 +786,7 @@ def _build_reference_emotional_causes(
 ) -> list[dict[str, str]]:
     results: list[dict[str, str]] = []
     seen: set[tuple[str, str]] = set()
+    grouped_entries: dict[str, dict[str, Any]] = {}
 
     for heuristic in heuristics:
         for cause in heuristic.reference_causes:
@@ -797,21 +822,42 @@ def _build_reference_emotional_causes(
 
         body_parts = []
         if entry.summary:
-            body_parts.append(_compact_reference_text(entry.summary))
+            cleaned = _clean_reference_body(_compact_reference_text(entry.summary))
+            if cleaned:
+                body_parts.append(cleaned)
         if entry.biodescodificacion:
-            body_parts.append(_compact_reference_text(entry.biodescodificacion))
+            cleaned = _clean_reference_body(_compact_reference_text(entry.biodescodificacion))
+            if cleaned:
+                body_parts.append(cleaned)
+        body_parts = _dedupe_keep_order(body_parts)
         body = " ".join(body_parts).strip()
         if not body:
             continue
 
-        key = (entry.canonical_name, body)
-        if key in seen:
-            continue
-        seen.add(key)
-        results.append(
+        label_key = _normalize_text(entry.canonical_name)
+        bucket = grouped_entries.setdefault(
+            label_key,
             {
                 "source": "",
                 "label": entry.canonical_name,
+                "body_parts": [],
+            },
+        )
+        for part in body_parts:
+            key = (entry.canonical_name, _normalize_text(part))
+            if key in seen:
+                continue
+            seen.add(key)
+            bucket["body_parts"].append(part)
+
+    for item in grouped_entries.values():
+        body = " ".join(_dedupe_keep_order(item["body_parts"])).strip()
+        if not body:
+            continue
+        results.append(
+            {
+                "source": item["source"],
+                "label": item["label"],
                 "body": body,
             }
         )
