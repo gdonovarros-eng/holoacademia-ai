@@ -15,6 +15,7 @@ except ImportError:  # pragma: no cover - optional dependency at runtime
     OpenAI = None
 
 from api.domain_knowledge import get_teacher_knowledge
+from api.course_reference_index import get_course_reference_index
 from api.knowledge_base import SearchResult, trim_excerpt
 from api.teacher_memory import CourseStudy, TeacherMemory, get_teacher_memory
 
@@ -264,6 +265,11 @@ class NaturalAssistant:
         }
         self._alias_to_course_id = self._build_alias_index()
         self._course_meta_by_id = self._load_course_metadata()
+        self.course_reference_index = get_course_reference_index()
+        self._global_term_answers = self.course_reference_index.get("global_term_answers", {})
+        self._global_protocol_answers = self.course_reference_index.get("global_protocol_answers", {})
+        self._course_term_answers = self.course_reference_index.get("course_term_answers", {})
+        self._course_protocol_answers = self.course_reference_index.get("course_protocol_answers", {})
         self._term_answers, self._protocol_answers = self._build_reference_indexes()
 
     def answer(
@@ -313,11 +319,11 @@ class NaturalAssistant:
         if supported_topics is not None:
             return supported_topics
 
-        protocol_definition = self._answer_protocol_definition(question)
+        protocol_definition = self._answer_protocol_definition(question, history)
         if protocol_definition is not None:
             return protocol_definition
 
-        defined_term = self._answer_defined_term(question)
+        defined_term = self._answer_defined_term(question, history)
         if defined_term is not None:
             return defined_term
 
@@ -423,7 +429,7 @@ class NaturalAssistant:
             return f"{tokens[0].upper()} - {tokens[1].upper()}"
         return None
 
-    def _answer_defined_term(self, question: str) -> Optional[AssistantOutput]:
+    def _answer_defined_term(self, question: str, history: list[dict]) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
         patterns = [
             r"^(?:que|qué)\s+es\s+(.+)$",
@@ -446,6 +452,10 @@ class NaturalAssistant:
         if not candidate or candidate in {"bmi", "sei"}:
             return None
 
+        preferred_course = self._resolve_active_course(question, history)
+        if preferred_course is None:
+            preferred_course = self._resolve_active_course_from_history(history)
+
         if "bioenergetica" in candidate and "biologica" not in candidate:
             answer = (
                 "Bioenergética es la línea de trabajo que observa el campo energético del consultante: "
@@ -454,6 +464,36 @@ class NaturalAssistant:
                 "exprese como descarga más densa en el cuerpo."
             )
             return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+        indexed_answer = self._lookup_course_reference_exact_answer(
+            candidate,
+            self._course_term_answers,
+            self._global_term_answers,
+            preferred_course.course_id if preferred_course else None,
+        )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_exact_answer(
+                candidate,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._course_term_answers,
+                self._global_term_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is not None:
+            return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
 
         if "bioenergetica" in candidate and "biologica" in candidate:
             answer = (
@@ -490,7 +530,7 @@ class NaturalAssistant:
             return AssistantOutput(answer=memory_answer, visual=None, mode="structured")
         return None
 
-    def _answer_protocol_definition(self, question: str) -> Optional[AssistantOutput]:
+    def _answer_protocol_definition(self, question: str, history: list[dict]) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
         patterns = [
             r"^(?:que|qué)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
@@ -508,7 +548,24 @@ class NaturalAssistant:
         if not candidate:
             return None
         candidate = re.sub(r"[?!.]+$", "", candidate).strip()
-        indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
+        preferred_course = self._resolve_active_course(question, history)
+        if preferred_course is None:
+            preferred_course = self._resolve_active_course_from_history(history)
+        indexed_answer = self._lookup_course_reference_exact_answer(
+            candidate,
+            self._course_protocol_answers,
+            self._global_protocol_answers,
+            preferred_course.course_id if preferred_course else None,
+        )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
         if indexed_answer is None:
             protocol_entry = self.teacher.find_protocol(candidate)
             if protocol_entry is None:
@@ -657,7 +714,7 @@ class NaturalAssistant:
         if not query_tokens:
             return None
 
-        ranked: list[tuple[float, str]] = []
+        ranked: list[tuple[float, int, str, str]] = []
         for key, answer in index.items():
             key_tokens = set(re.findall(r"[a-z0-9]+", key))
             overlap = query_tokens & key_tokens
@@ -668,11 +725,45 @@ class NaturalAssistant:
                 score += 4.0
             if query_tokens <= key_tokens:
                 score += 2.0
-            ranked.append((score, answer))
+            ranked.append((score, len(overlap), key, answer))
         ranked.sort(key=lambda item: item[0], reverse=True)
         if not ranked or ranked[0][0] < 2.0:
             return None
-        return ranked[0][1]
+        top_score, top_overlap, top_key, top_answer = ranked[0]
+        if len(query_tokens) >= 2 and top_overlap < 2 and normalized_candidate not in top_key:
+            return None
+        return top_answer
+
+    def _lookup_course_reference_answer(
+        self,
+        candidate: str,
+        course_index: dict[str, dict[str, str]],
+        global_index: dict[str, str],
+        preferred_course_id: Optional[str],
+    ) -> Optional[str]:
+        normalized_candidate = self._normalize_text(candidate)
+        if preferred_course_id:
+            preferred = course_index.get(preferred_course_id, {})
+            answer = self._lookup_indexed_answer(candidate, preferred)
+            if answer is not None:
+                return answer
+        if normalized_candidate in global_index:
+            return global_index[normalized_candidate]
+        return self._lookup_indexed_answer(candidate, global_index)
+
+    def _lookup_course_reference_exact_answer(
+        self,
+        candidate: str,
+        course_index: dict[str, dict[str, str]],
+        global_index: dict[str, str],
+        preferred_course_id: Optional[str],
+    ) -> Optional[str]:
+        normalized_candidate = self._normalize_text(candidate)
+        if preferred_course_id:
+            preferred = course_index.get(preferred_course_id, {})
+            if normalized_candidate in preferred:
+                return preferred[normalized_candidate]
+        return global_index.get(normalized_candidate)
 
     def _search_term_answer_from_memory(self, candidate: str) -> Optional[str]:
         if not self.teacher_memory:
