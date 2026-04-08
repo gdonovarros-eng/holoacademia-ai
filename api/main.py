@@ -29,6 +29,7 @@ if load_dotenv is not None:
 from api.assistant import AssistantOutput, NaturalAssistant, VisualAid
 from api.knowledge_base import KnowledgeBase, trim_excerpt
 from api.pair_engine import interpret_pairs
+from api.radionic_table import build_radionic_pair_table
 from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
 from api.teacher_memory import get_teacher_memory
@@ -278,6 +279,11 @@ async def therapy_pairs(payload: TherapyPairsRequest) -> TherapyPairsResponse:
     case_analysis = analyze_case(payload.case_payload.model_dump())
     pairs_payload = [item.model_dump() for item in payload.pairs]
     pair_analysis = interpret_pairs(case_analysis, pairs_payload)
+    pair_analysis["radionic_pair_table"] = build_radionic_pair_table(
+        payload.case_payload.model_dump(),
+        [item.get("pair_name", "") for item in pair_analysis.get("interpreted_pairs", [])],
+        title="Tabla radiónica para pares interpretados",
+    )
     return TherapyPairsResponse(ok=True, pair_analysis=_rewrite_visual_asset_paths(pair_analysis))
 
 

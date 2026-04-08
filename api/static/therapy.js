@@ -218,6 +218,32 @@ function renderSuggestedProtocols(items = []) {
   `).join("")}</div>`;
 }
 
+function renderRadionicTable(table) {
+  if (!table || !table.active) {
+    return `<p class="status">Sin tabla radiónica disponible todavía.</p>`;
+  }
+  const top = (table.top_circuit || []).map((item) => `<span>${item}</span>`).join("");
+  const bottom = (table.bottom_circuit || []).map((item) => `<span>${item}</span>`).join("");
+  return `
+    <article class="radionic-card">
+      <h4>${table.title || "Tabla radiónica"}</h4>
+      <div class="radionic-circuit">${top}</div>
+      <div class="radionic-line radionic-patient">${table.patient_line || ""}</div>
+      <div class="radionic-line radionic-intention">${table.intention_line || ""}</div>
+      <div class="radionic-pairs">
+        ${(table.pairs || []).length
+          ? `<ul class="bullet-list">${(table.pairs || []).map((pair) => `<li>${pair}</li>`).join("")}</ul>`
+          : `<p class="status">Sin pares capturados todavía.</p>`}
+      </div>
+      <div class="radionic-circuit">${bottom}</div>
+      <details class="radionic-copy">
+        <summary>Ver versión para copiar</summary>
+        <pre>${table.copy_text || ""}</pre>
+      </details>
+    </article>
+  `;
+}
+
 function renderTherapeuticGuide(items = []) {
   if (!items.length) {
     return `<p class="status">Sin guía terapéutica disponible todavía.</p>`;
@@ -338,6 +364,10 @@ function renderAnalysis(analysis) {
       ${renderSuggestedPairs(analysis.suggested_pairs_to_validate || [])}
     </article>
     <article class="result-card">
+      <h3>Tabla radiónica sugerida</h3>
+      ${renderRadionicTable(analysis.radionic_pair_table)}
+    </article>
+    <article class="result-card">
       <h3>Protocolos o aperturas sugeridas</h3>
       ${renderSuggestedProtocols(analysis.suggested_protocols || [])}
     </article>
@@ -385,6 +415,10 @@ function renderPairs(pairAnalysis) {
       <h3>Condiciones relacionadas</h3>
       ${renderBulletList(pairAnalysis.related_conditions || [])}
     </article>
+    <article class="result-card">
+      <h3>Tabla radiónica para pares interpretados</h3>
+      ${renderRadionicTable(pairAnalysis.radionic_pair_table)}
+    </article>
     ${(pairAnalysis.interpreted_pairs || []).map(renderPairCard).join("")}
     ${protocols || '<p class="status">Sin protocolos sugeridos todavía.</p>'}
   `;
@@ -418,6 +452,10 @@ function renderReport(report) {
     <article class="result-card">
       <h3>Resumen para terapeuta</h3>
       <p>${report.therapist_summary || ""}</p>
+    </article>
+    <article class="result-card">
+      <h3>Tabla radiónica del caso</h3>
+      ${renderRadionicTable(report.radionic_pair_table)}
     </article>
     <article class="result-card">
       <h3>Próximos pasos</h3>

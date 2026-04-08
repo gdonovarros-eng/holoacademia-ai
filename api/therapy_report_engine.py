@@ -4,6 +4,7 @@ import re
 from typing import Any
 
 from api.pair_engine import interpret_pairs
+from api.radionic_table import build_radionic_pair_table
 from api.therapy_engine import analyze_case
 
 
@@ -397,6 +398,12 @@ def build_therapy_report(
         "therapist_summary": therapist_summary,
         "integrative_chart": integrative_chart,
         "pair_visual_summary": _build_pair_visual_summary(pair_analysis),
+        "radionic_pair_table": build_radionic_pair_table(
+            case_payload,
+            [item.get("pair_name", "") for item in pair_analysis.get("interpreted_pairs", [])]
+            or [item.get("pair_name", "") for item in case_analysis.get("suggested_pairs_to_validate", [])],
+            title="Tabla radiónica del caso",
+        ),
         "primary_protocol": primary_protocol,
         "liberation_plan": liberation_plan,
         "eft_script": eft_script,

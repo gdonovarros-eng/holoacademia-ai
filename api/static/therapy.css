@@ -463,6 +463,75 @@ textarea {
   line-height: 1.7;
 }
 
+.radionic-card {
+  border: 1px dashed rgba(20, 61, 115, 0.22);
+  border-radius: 22px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(230, 239, 251, 0.7));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+.radionic-card h4 {
+  margin: 0 0 14px;
+  color: var(--accent-strong);
+  font-size: 1rem;
+  line-height: 1.4;
+  font-family: "Krona One", "Montserrat", sans-serif;
+}
+
+.radionic-circuit {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0;
+  color: var(--accent);
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.radionic-line {
+  margin: 10px auto;
+  max-width: 840px;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.radionic-patient {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.radionic-intention {
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.radionic-pairs {
+  margin: 18px 0;
+}
+
+.radionic-copy {
+  margin-top: 16px;
+}
+
+.radionic-copy summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.radionic-copy pre {
+  margin: 12px 0 0;
+  padding: 14px;
+  border-radius: 16px;
+  background: rgba(18, 48, 82, 0.06);
+  color: var(--ink);
+  white-space: pre-wrap;
+  font-family: "Montserrat", monospace;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 .meta-list,
 .chip-list {
   display: flex;

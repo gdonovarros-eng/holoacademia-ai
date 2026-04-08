@@ -8,6 +8,7 @@ from pathlib import Path
 from typing import Any
 
 from api.domain_knowledge import TeacherKnowledge
+from api.radionic_table import build_radionic_pair_table
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -1972,6 +1973,11 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
         "suggested_pairs_to_validate": suggested_pairs_to_validate,
+        "radionic_pair_table": build_radionic_pair_table(
+            case_payload,
+            [item.get("pair_name", "") for item in suggested_pairs_to_validate],
+            title="Tabla radiónica sugerida para pares a validar",
+        ),
         "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_protocols": protocol_suggestions,
         "therapeutic_guide": therapeutic_guide,
