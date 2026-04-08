@@ -24,6 +24,8 @@ DEFAULT_IMAGE_MODEL = "gpt-image-1"
 DEFAULT_RESPONSE_TIMEOUT = 20.0
 DEFAULT_REASONING_EFFORT = "high"
 DEFAULT_FALLBACK_MODELS = ("gpt-5-mini", "gpt-4.1")
+DEFAULT_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+DEFAULT_GROQ_MODEL = "openai/gpt-oss-20b"
 
 SAEL_SYSTEM_PROMPT = """
 Eres “Sael Sinodal”, un asistente experto en temas holísticos para Holoacademia.
@@ -222,8 +224,17 @@ class CourseMeta:
 
 class NaturalAssistant:
     def __init__(self) -> None:
-        api_key = os.getenv("OPENAI_API_KEY", "").strip()
-        self.model = os.getenv("OPENAI_MODEL", DEFAULT_MODEL).strip() or DEFAULT_MODEL
+        self.provider = (os.getenv("LLM_PROVIDER", "openai").strip() or "openai").lower()
+        if self.provider == "groq":
+            api_key = os.getenv("GROQ_API_KEY", "").strip()
+            self.base_url = os.getenv("LLM_BASE_URL", DEFAULT_GROQ_BASE_URL).strip() or DEFAULT_GROQ_BASE_URL
+            self.model = os.getenv("OPENAI_MODEL", DEFAULT_GROQ_MODEL).strip() or DEFAULT_GROQ_MODEL
+            fallback_raw = os.getenv("OPENAI_FALLBACK_MODELS", "")
+        else:
+            api_key = os.getenv("OPENAI_API_KEY", "").strip()
+            self.base_url = os.getenv("LLM_BASE_URL", "").strip() or None
+            self.model = os.getenv("OPENAI_MODEL", DEFAULT_MODEL).strip() or DEFAULT_MODEL
+            fallback_raw = os.getenv("OPENAI_FALLBACK_MODELS", ",".join(DEFAULT_FALLBACK_MODELS))
         self.image_model = os.getenv("OPENAI_IMAGE_MODEL", DEFAULT_IMAGE_MODEL).strip() or DEFAULT_IMAGE_MODEL
         self.response_timeout = float(
             os.getenv("OPENAI_RESPONSE_TIMEOUT_SECONDS", str(DEFAULT_RESPONSE_TIMEOUT))
@@ -232,10 +243,15 @@ class NaturalAssistant:
             os.getenv("OPENAI_REASONING_EFFORT", DEFAULT_REASONING_EFFORT).strip()
             or DEFAULT_REASONING_EFFORT
         )
-        fallback_raw = os.getenv("OPENAI_FALLBACK_MODELS", ",".join(DEFAULT_FALLBACK_MODELS))
         self.fallback_models = [item.strip() for item in fallback_raw.split(",") if item.strip()]
         self.enabled = bool(api_key and OpenAI is not None)
-        self.client = OpenAI(api_key=api_key) if self.enabled else None
+        if self.enabled:
+            client_kwargs = {"api_key": api_key}
+            if self.base_url:
+                client_kwargs["base_url"] = self.base_url
+            self.client = OpenAI(**client_kwargs)
+        else:
+            self.client = None
         self.last_model_error = ""
         self.teacher = get_teacher_knowledge()
         self.teacher_memory: Optional[TeacherMemory] = get_teacher_memory()

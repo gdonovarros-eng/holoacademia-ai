@@ -240,6 +240,7 @@ async def health() -> dict:
         "courses": len(kb.catalog),
         "chunks": len(kb.records),
         "llm_enabled": assistant.enabled,
+        "llm_provider": assistant.provider,
         "model": assistant.model,
         "teacher_pairs": assistant.teacher.pair_count_unique,
         "teacher_protocols": assistant.teacher.protocol_count,
