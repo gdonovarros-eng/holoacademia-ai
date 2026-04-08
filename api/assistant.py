@@ -312,6 +312,10 @@ class NaturalAssistant:
         if supported_topics is not None:
             return supported_topics
 
+        defined_term = self._answer_defined_term(question)
+        if defined_term is not None:
+            return defined_term
+
         for builder in (
             self._answer_teacher_identity,
             lambda q, r, h: self._answer_course_protocols(q, h),
@@ -412,6 +416,47 @@ class NaturalAssistant:
         tokens = [token for token in re.findall(r"[a-záéíóúüñ0-9]+", candidate, flags=re.IGNORECASE) if len(token) >= 3]
         if len(tokens) == 2:
             return f"{tokens[0].upper()} - {tokens[1].upper()}"
+        return None
+
+    def _answer_defined_term(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        patterns = [
+            r"^(?:que|qué)\s+es\s+(.+)$",
+            r"^(?:que|qué)\s+significa\s+(.+)$",
+            r"^significado\s+de\s+(.+)$",
+        ]
+        candidate = None
+        for pattern in patterns:
+            match = re.search(pattern, lowered, flags=re.IGNORECASE)
+            if match:
+                candidate = match.group(1).strip()
+                break
+        if not candidate:
+            return None
+
+        candidate = re.sub(r"^(?:el|la|los|las)\s+", "", candidate).strip()
+        candidate = re.sub(r"[?!.]+$", "", candidate).strip()
+        if not candidate or candidate in {"bmi", "sei"}:
+            return None
+
+        if "bioenergetica" in candidate:
+            answer = (
+                "Bioenergética es la línea de trabajo que observa el campo energético del consultante: "
+                "chakras, meridianos, prana, bloqueos y distorsiones funcionales. Dicho de forma práctica, "
+                "se usa para leer qué desequilibrio energético está sosteniendo el problema antes de que se "
+                "exprese como descarga más densa en el cuerpo. Dentro de esta formación suele contrastarse con "
+                "la línea biológica: la bioenergética trabaja más con campos y regulación energética, mientras "
+                "la biológica mira con más peso microbios, tejido, órgano y descarga celular."
+            )
+            return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+        concept_entry = self.teacher.find_concept(candidate)
+        if concept_entry is not None:
+            bullet_hint = ""
+            if concept_entry.bullet_points:
+                bullet_hint = f" Lo más importante para ubicarlo es {self._join_items(concept_entry.bullet_points[:3])}."
+            answer = f"{concept_entry.concept_name} se entiende así: {self._compact_text(concept_entry.summary, 420)}{bullet_hint}"
+            return AssistantOutput(answer=answer, visual=None, mode="structured")
         return None
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
