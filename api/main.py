@@ -242,6 +242,7 @@ async def health() -> dict:
         "llm_enabled": assistant.enabled,
         "llm_provider": assistant.provider,
         "model": assistant.model,
+        "course_assistant_use_model": assistant.course_use_model,
         "teacher_pairs": assistant.teacher.pair_count_unique,
         "teacher_protocols": assistant.teacher.protocol_count,
         "teacher_courses": assistant.teacher.course_count,

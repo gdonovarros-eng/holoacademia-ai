@@ -243,6 +243,9 @@ class NaturalAssistant:
             os.getenv("OPENAI_REASONING_EFFORT", DEFAULT_REASONING_EFFORT).strip()
             or DEFAULT_REASONING_EFFORT
         )
+        self.course_use_model = (
+            os.getenv("COURSE_ASSISTANT_USE_MODEL", "false").strip().lower() in {"1", "true", "yes", "on"}
+        )
         self.fallback_models = [item.strip() for item in fallback_raw.split(",") if item.strip()]
         self.enabled = bool(api_key and OpenAI is not None)
         if self.enabled:
@@ -276,6 +279,15 @@ class NaturalAssistant:
         structured = self._answer_known_concepts(question)
         if structured is not None:
             return structured
+
+        if self.course_use_model and self.enabled:
+            try:
+                reasoned = self._answer_with_model(question, results, history, want_visual)
+                if reasoned is not None:
+                    return reasoned
+            except Exception:
+                pass
+
         return self._answer_structured_course(question, results, history)
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
