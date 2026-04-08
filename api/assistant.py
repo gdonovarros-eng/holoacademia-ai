@@ -264,6 +264,7 @@ class NaturalAssistant:
         }
         self._alias_to_course_id = self._build_alias_index()
         self._course_meta_by_id = self._load_course_metadata()
+        self._term_answers, self._protocol_answers = self._build_reference_indexes()
 
     def answer(
         self,
@@ -311,6 +312,10 @@ class NaturalAssistant:
         supported_topics = self._answer_supported_topics(question)
         if supported_topics is not None:
             return supported_topics
+
+        protocol_definition = self._answer_protocol_definition(question)
+        if protocol_definition is not None:
+            return protocol_definition
 
         defined_term = self._answer_defined_term(question)
         if defined_term is not None:
@@ -424,6 +429,8 @@ class NaturalAssistant:
             r"^(?:que|qué)\s+es\s+(.+)$",
             r"^(?:que|qué)\s+significa\s+(.+)$",
             r"^significado\s+de\s+(.+)$",
+            r"^cual\s+es\s+la\s+diferencia\s+practica\s+entre\s+(.+)$",
+            r"^cu[aá]l\s+es\s+la\s+diferencia\s+pr[aá]ctica\s+entre\s+(.+)$",
         ]
         candidate = None
         for pattern in patterns:
@@ -439,14 +446,34 @@ class NaturalAssistant:
         if not candidate or candidate in {"bmi", "sei"}:
             return None
 
-        if "bioenergetica" in candidate:
+        if "bioenergetica" in candidate and "biologica" not in candidate:
             answer = (
                 "Bioenergética es la línea de trabajo que observa el campo energético del consultante: "
                 "chakras, meridianos, prana, bloqueos y distorsiones funcionales. Dicho de forma práctica, "
                 "se usa para leer qué desequilibrio energético está sosteniendo el problema antes de que se "
-                "exprese como descarga más densa en el cuerpo. Dentro de esta formación suele contrastarse con "
-                "la línea biológica: la bioenergética trabaja más con campos y regulación energética, mientras "
-                "la biológica mira con más peso microbios, tejido, órgano y descarga celular."
+                "exprese como descarga más densa en el cuerpo."
+            )
+            return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+        if "bioenergetica" in candidate and "biologica" in candidate:
+            answer = (
+                "La diferencia práctica entre la línea bioenergética y la biológica es esta: la bioenergética trabaja "
+                "más sobre campos, chakras, meridianos, prana y regulación del patrón energético; la biológica mira con "
+                "más peso el tejido, el órgano, la descarga somática y el componente microbiano. Dicho simple: una lee el "
+                "desequilibrio en el campo y la otra observa cómo eso ya se expresó en la materia viva del cuerpo."
+            )
+            return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+        indexed_answer = self._lookup_indexed_answer(candidate, self._term_answers)
+        if indexed_answer is not None:
+            return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+
+        if "radiestesia" in candidate:
+            answer = (
+                "Radiestesia es una herramienta de lectura sutil que se usa para explorar información energética o "
+                "simbólica mediante instrumentos como péndulo o tablas. Dicho de forma práctica, en esta formación se "
+                "toma como recurso complementario y opcional, no como sustituto de la observación clínica, la genealogía "
+                "ni la verificación terapéutica."
             )
             return AssistantOutput(answer=answer, visual=None, mode="structured")
 
@@ -457,6 +484,209 @@ class NaturalAssistant:
                 bullet_hint = f" Lo más importante para ubicarlo es {self._join_items(concept_entry.bullet_points[:3])}."
             answer = f"{concept_entry.concept_name} se entiende así: {self._compact_text(concept_entry.summary, 420)}{bullet_hint}"
             return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+        memory_answer = self._search_term_answer_from_memory(candidate)
+        if memory_answer is not None:
+            return AssistantOutput(answer=memory_answer, visual=None, mode="structured")
+        return None
+
+    def _answer_protocol_definition(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        patterns = [
+            r"^(?:que|qué)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^(?:en\s+que|en\s+qué)\s+consiste\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^(?:como|cómo)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^explicame\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^expl[ií]came\s+(?:el\s+)?protocolo\s+(.+)$",
+        ]
+        candidate = None
+        for pattern in patterns:
+            match = re.search(pattern, lowered, flags=re.IGNORECASE)
+            if match:
+                candidate = match.group(1).strip()
+                break
+        if not candidate:
+            return None
+        candidate = re.sub(r"[?!.]+$", "", candidate).strip()
+        indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
+        if indexed_answer is None:
+            protocol_entry = self.teacher.find_protocol(candidate)
+            if protocol_entry is None:
+                return None
+            body = self._compact_text(protocol_entry.body, 420)
+            indexed_answer = f"El protocolo {protocol_entry.title} se trabaja así: {body}"
+        return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+
+    def _build_reference_indexes(self) -> tuple[dict[str, str], dict[str, str]]:
+        term_answers: dict[str, str] = {}
+        protocol_answers: dict[str, str] = {}
+        if not self.teacher_memory:
+            return term_answers, protocol_answers
+
+        for course in self.teacher_memory.course_studies:
+            course_name = course.course_name
+            for item in course.common_questions:
+                question_text, answer_text = self._split_faq_entry(item)
+                if not question_text or not answer_text:
+                    continue
+                subject = self._extract_defined_subject(question_text)
+                if subject:
+                    normalized_subject = self._normalize_text(subject)
+                    term_answers.setdefault(
+                        normalized_subject,
+                        f"{subject.strip().rstrip(':')} se entiende así: {self._compact_text(answer_text, 420)}",
+                    )
+
+            for item in course.key_concepts:
+                label, body = self._split_label_and_body(item)
+                if not label:
+                    continue
+                descriptor = self._extract_parenthetical_descriptor(label)
+                if body:
+                    answer = f"{label} se entiende así: {self._compact_text(body, 360)}"
+                else:
+                    answer = (
+                        f"{label} es un concepto importante dentro de {course_name}. "
+                        "Si quieres, también te explico cómo se usa dentro del método."
+                    )
+                for alias in self._expand_label_aliases(label):
+                    alias_answer = answer
+                    if not body and self._normalize_text(alias) != self._normalize_text(label) and descriptor:
+                        alias_answer = (
+                            f"{alias} forma parte de las {descriptor} que se usan en {course_name} "
+                            "como preparación o apoyo dentro del método."
+                        )
+                    term_answers.setdefault(self._normalize_text(alias), alias_answer)
+
+            for item in course.protocols:
+                label, body = self._split_label_and_body(item)
+                if not label:
+                    continue
+                normalized_label = self._normalize_text(label)
+                if body:
+                    answer = f"El protocolo {label} se trabaja así: {self._compact_text(body, 420)}"
+                else:
+                    answer = (
+                        f"El protocolo {label} forma parte de {course_name}. "
+                        "Si quieres, te explico su objetivo o en qué momento se usa."
+                    )
+                protocol_answers.setdefault(normalized_label, answer)
+
+        return term_answers, protocol_answers
+
+    def _split_faq_entry(self, item: str) -> tuple[str, str]:
+        for separator in (" — ", " - ", " – "):
+            if separator in item:
+                left, right = item.split(separator, 1)
+                return left.strip("¿? ").strip(), right.strip()
+        return "", ""
+
+    def _extract_defined_subject(self, question_text: str) -> Optional[str]:
+        lowered = self._normalize_text(question_text)
+        patterns = [
+            r"^(?:que|qué)\s+es\s+(.+)$",
+            r"^(?:que|qué)\s+significa\s+(.+)$",
+            r"^cual\s+es\s+la\s+diferencia\s+practica\s+entre\s+(.+)$",
+            r"^cu[aá]l\s+es\s+la\s+diferencia\s+pr[aá]ctica\s+entre\s+(.+)$",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, lowered, flags=re.IGNORECASE)
+            if match:
+                candidate = match.group(1).strip()
+                candidate = re.sub(r"[?!.]+$", "", candidate).strip()
+                candidate = re.sub(r"\s+y\s+por\s+que.*$", "", candidate, flags=re.IGNORECASE).strip()
+                candidate = re.sub(r"\s+y\s+por\s+qué.*$", "", candidate, flags=re.IGNORECASE).strip()
+                return candidate
+        return None
+
+    def _split_label_and_body(self, item: str) -> tuple[str, str]:
+        cleaned = " ".join((item or "").split()).strip("• ")
+        if not cleaned:
+            return "", ""
+        for separator in (": ", " — ", " – ", " - "):
+            if separator in cleaned:
+                left, right = cleaned.split(separator, 1)
+                if 2 <= len(left) <= 120:
+                    return left.strip(), right.strip()
+        return cleaned.strip(), ""
+
+    def _expand_label_aliases(self, label: str) -> list[str]:
+        aliases = [label.strip()]
+        base = re.sub(r"\([^)]*\)", "", label).strip(" ,")
+        if base and base not in aliases:
+            aliases.append(base)
+        pending = list(aliases)
+        expanded: list[str] = []
+        while pending:
+            current = pending.pop(0).strip(" ,")
+            if not current:
+                continue
+            expanded.append(current)
+            for separator in (",", " y ", "/"):
+                if separator in current:
+                    pending.extend(part.strip() for part in current.split(separator) if part.strip())
+        deduped: list[str] = []
+        seen = set()
+        for alias in expanded:
+            alias = alias.strip(" ,")
+            if len(alias) < 2:
+                continue
+            norm = self._normalize_text(alias)
+            if norm in seen:
+                continue
+            seen.add(norm)
+            deduped.append(alias)
+        return deduped
+
+    def _extract_parenthetical_descriptor(self, label: str) -> str:
+        match = re.search(r"\(([^)]+)\)", label)
+        if not match:
+            return ""
+        return match.group(1).strip()
+
+    def _lookup_indexed_answer(self, candidate: str, index: dict[str, str]) -> Optional[str]:
+        normalized_candidate = self._normalize_text(candidate)
+        if normalized_candidate in index:
+            return index[normalized_candidate]
+
+        query_tokens = {
+            token
+            for token in re.findall(r"[a-z0-9]+", normalized_candidate)
+            if len(token) >= 3
+        }
+        if not query_tokens:
+            return None
+
+        ranked: list[tuple[float, str]] = []
+        for key, answer in index.items():
+            key_tokens = set(re.findall(r"[a-z0-9]+", key))
+            overlap = query_tokens & key_tokens
+            if not overlap:
+                continue
+            score = len(overlap) * 2.0
+            if normalized_candidate in key:
+                score += 4.0
+            if query_tokens <= key_tokens:
+                score += 2.0
+            ranked.append((score, answer))
+        ranked.sort(key=lambda item: item[0], reverse=True)
+        if not ranked or ranked[0][0] < 2.0:
+            return None
+        return ranked[0][1]
+
+    def _search_term_answer_from_memory(self, candidate: str) -> Optional[str]:
+        if not self.teacher_memory:
+            return None
+        hits = self.teacher_memory.search(candidate, limit=4)
+        if not hits:
+            return None
+        normalized_candidate = self._normalize_text(candidate)
+        for hit in hits:
+            title_lower = self._normalize_text(hit.title)
+            text_lower = self._normalize_text(hit.text)
+            if normalized_candidate in title_lower or normalized_candidate in text_lower:
+                compact = self._compact_text(hit.text, 320)
+                return f"{candidate.strip().capitalize()} se entiende así: {compact}"
         return None
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
