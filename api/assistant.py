@@ -260,41 +260,7 @@ class NaturalAssistant:
         structured = self._answer_known_concepts(question)
         if structured is not None:
             return structured
-
-        if not self.enabled:
-            return AssistantOutput(
-                answer=(
-                    "El razonamiento del modelo no está disponible en este momento. "
-                    "Esta versión del asistente está diseñada para responder solo con ChatGPT usando la memoria del sitio. "
-                    "Verifica la API key, la red y el modelo configurado."
-                ),
-                visual=None,
-                mode="model_unavailable",
-            )
-
-        try:
-            reasoned = self._answer_with_model(question, results, history, want_visual)
-            if reasoned is not None:
-                return reasoned
-            return AssistantOutput(
-                answer=(
-                    "El modelo no devolvió una respuesta utilizable con el contexto del sitio. "
-                    "Intenta de nuevo en unos segundos o formula la pregunta de forma más precisa."
-                ),
-                visual=None,
-                mode="model_empty",
-            )
-        except Exception as exc:
-            detail = self.last_model_error or f"{type(exc).__name__}: {exc}"
-            return AssistantOutput(
-                answer=(
-                    "No pude completar el razonamiento del modelo en este momento. "
-                    "Este asistente ya no está usando respuestas de respaldo ni búsquedas pegadas. "
-                    f"Detalle tecnico: {detail}"
-                ),
-                visual=None,
-                mode="model_error",
-            )
+        return self._answer_structured_course(question, results, history)
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
@@ -342,6 +308,129 @@ class NaturalAssistant:
                 mode="structured",
             )
         return None
+
+    def _answer_structured_course(
+        self,
+        question: str,
+        results: list[SearchResult],
+        history: list[dict],
+    ) -> AssistantOutput:
+        for builder in (
+            self._answer_teacher_identity,
+            lambda q, r, h: self._answer_course_protocols(q, h),
+            lambda q, r, h: self._answer_course_module_count(q, h),
+            lambda q, r, h: self._answer_course_systems(q, h),
+        ):
+            try:
+                structured = builder(question, results, history)
+            except TypeError:
+                structured = builder(question, history)  # pragma: no cover
+            if structured is not None:
+                return structured
+
+        active_course = self._resolve_active_course(question, history)
+        if active_course is None:
+            active_course = self._resolve_active_course_from_history(history)
+        if active_course is not None:
+            if self._is_summary_request(question):
+                return AssistantOutput(
+                    answer=self._build_course_summary_answer(active_course),
+                    visual=None,
+                    mode="structured",
+                )
+
+            course_memory_hits = self._select_memory_hits(question, active_course)
+            if course_memory_hits:
+                top_hit = course_memory_hits[0]
+                return AssistantOutput(
+                    answer=(
+                        f"Dentro de {active_course.course_name}, esto se trabaja así: "
+                        f"{self._compact_text(top_hit.text, 900)}"
+                    ),
+                    visual=None,
+                    mode="structured",
+                )
+
+            return AssistantOutput(
+                answer=self._build_course_summary_answer(active_course),
+                visual=None,
+                mode="structured",
+            )
+
+        best_hit = self._best_memory_hit_for_question(question)
+        if best_hit is not None:
+            return AssistantOutput(
+                answer=self._build_memory_hit_answer(question, best_hit),
+                visual=None,
+                mode="structured",
+            )
+
+        if results:
+            top = results[0]
+            return AssistantOutput(
+                answer=(
+                    f"Lo más cercano que encuentro para responder eso está en {top.course_name}. "
+                    f"Se trabaja así: {self._compact_text(top.text, 900)}"
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        return AssistantOutput(
+            answer=(
+                "No encuentro contexto suficiente para responder eso con claridad. "
+                "Intenta mencionar el curso, diplomado, concepto o tema principal."
+            ),
+            visual=None,
+            mode="structured",
+        )
+
+    def _is_summary_request(self, question: str) -> bool:
+        lowered = self._normalize_text(question)
+        return any(
+            phrase in lowered
+            for phrase in [
+                "de que trata",
+                "de qué trata",
+                "hablame",
+                "háblame",
+                "dame un resumen",
+                "resumen del curso",
+                "resumen del diplomado",
+                "que se ve",
+                "qué se ve",
+                "que incluye",
+                "qué incluye",
+                "de que va",
+                "de qué va",
+            ]
+        )
+
+    def _build_course_summary_answer(self, course: CourseStudy) -> str:
+        summary = self._compact_text(course.teacher_summary or course.summary, 520)
+        themes = self._join_items(course.core_themes[:4])
+        concepts = self._join_items(course.key_concepts[:4])
+        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:4]])
+        parts = [f"{course.course_name} trata de {summary}"]
+        if themes:
+            parts.append(f"Sus ejes principales son {themes}.")
+        if concepts:
+            parts.append(f"Los conceptos que más conviene ubicar son {concepts}.")
+        if protocols:
+            parts.append(f"También aparecen secuencias o protocolos como {protocols}.")
+        return " ".join(parts)
+
+    def _build_memory_hit_answer(self, question: str, hit) -> str:
+        lowered = self._normalize_text(question)
+        if any(phrase in lowered for phrase in ["que es", "qué es", "significa", "de que trata", "de qué trata"]):
+            return (
+                f"{hit.title} se entiende así dentro de la formación: "
+                f"{self._compact_text(hit.text, 900)}"
+            )
+        return (
+            f"Lo más claro que encuentro sobre eso es lo siguiente: "
+            f"{self._compact_text(hit.text, 900)}"
+        )
 
     def resolve_search_queries(
         self,

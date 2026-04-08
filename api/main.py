@@ -303,7 +303,7 @@ async def ask_question(payload: AskRequest) -> AskResponse:
     assistant = get_assistant()
     search_queries = assistant.resolve_search_queries(payload.question, payload.history)
     merged_by_chunk = {}
-    use_semantic_search = kb.semantic_ready and assistant.enabled
+    use_semantic_search = False
     for search_query in search_queries:
         if use_semantic_search:
             try:
