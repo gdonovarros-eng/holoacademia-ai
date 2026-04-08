@@ -345,6 +345,22 @@ function renderHypotheses(items = []) {
   `).join("")}</div>`;
 }
 
+function renderFamilyDateGuidance(items = []) {
+  if (!items.length) {
+    return `<p class="status">Sin guía específica de fechas todavía.</p>`;
+  }
+  return `<div class="reference-list">${items.map((item) => `
+    <article class="reference-card">
+      <p><strong>${item.title || ""}</strong></p>
+      <p>${item.interpretation || ""}</p>
+      <p><strong>Qué revisar:</strong></p>
+      ${renderBulletList(item.what_to_review || [])}
+      <p><strong>Cómo abrirlo:</strong></p>
+      ${renderBulletList(item.how_to_open || [])}
+    </article>
+  `).join("")}</div>`;
+}
+
 function renderAnalysis(analysis) {
   const opening = analysis.opening_guidance || {};
   analysisOutput.innerHTML = `
@@ -396,7 +412,7 @@ function renderAnalysis(analysis) {
     </article>
     <article class="result-card">
       <h3>Lectura de fechas del sistema</h3>
-      ${renderBulletList(analysis.family_date_insights || [])}
+      ${renderFamilyDateGuidance(analysis.family_date_guidance || [])}
     </article>
     <article class="result-card">
       <h3>Preguntas guía</h3>

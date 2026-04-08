@@ -1219,6 +1219,199 @@ def _collect_family_date_insights(case_payload: dict[str, Any]) -> list[str]:
     return _dedupe_similar_texts(insights, limit=8)
 
 
+def _build_family_date_guidance(case_payload: dict[str, Any]) -> list[dict[str, Any]]:
+    consultant = case_payload.get("consultant") if isinstance(case_payload.get("consultant"), dict) else {}
+    consultant_name = _safe_text(consultant.get("full_name")) or "el consultante"
+    consultant_birth = _parse_iso_date(_safe_text(consultant.get("birth_date")))
+    if not consultant_birth:
+        return []
+
+    relatives: list[dict[str, str]] = []
+    parents = case_payload.get("parents") if isinstance(case_payload.get("parents"), dict) else {}
+    grandparents = case_payload.get("grandparents") if isinstance(case_payload.get("grandparents"), dict) else {}
+    current_partner = case_payload.get("current_partner") if isinstance(case_payload.get("current_partner"), dict) else {}
+
+    fixed_relatives = [
+        ("padre", parents.get("father") or {}),
+        ("madre", parents.get("mother") or {}),
+        ("abuelo paterno", grandparents.get("paternal_grandfather") or {}),
+        ("abuela paterna", grandparents.get("paternal_grandmother") or {}),
+        ("abuelo materno", grandparents.get("maternal_grandfather") or {}),
+        ("abuela materna", grandparents.get("maternal_grandmother") or {}),
+        ("pareja actual", current_partner),
+    ]
+    for label, person in fixed_relatives:
+        if not isinstance(person, dict):
+            continue
+        relatives.append(
+            {
+                "relation": label,
+                "name": _safe_text(person.get("full_name")) or label,
+                "birth_date": _safe_text(person.get("birth_date")),
+                "death_date": _safe_text(person.get("death_date")),
+            }
+        )
+    for collection_name, relation in (
+        ("significant_partners", "pareja significativa"),
+        ("children", "hijo/hija"),
+        ("siblings", "hermano/hermana"),
+    ):
+        for item in _safe_list(case_payload.get(collection_name)):
+            if isinstance(item, dict) and _safe_text(item.get("full_name")):
+                relatives.append(
+                    {
+                        "relation": relation,
+                        "name": _safe_text(item.get("full_name")),
+                        "birth_date": _safe_text(item.get("birth_date")),
+                        "death_date": _safe_text(item.get("death_date")),
+                    }
+                )
+
+    cards: list[dict[str, Any]] = []
+    seen: set[str] = set()
+
+    def add_card(title: str, interpretation: str, what_to_review: list[str], how_to_open: list[str]) -> None:
+        key = _normalize_text(f"{title} {' '.join(what_to_review)} {' '.join(how_to_open)}")
+        if not key or key in seen:
+            return
+        seen.add(key)
+        cards.append(
+            {
+                "title": title,
+                "interpretation": interpretation,
+                "what_to_review": _dedupe_similar_texts(what_to_review, limit=4),
+                "how_to_open": _dedupe_similar_texts(how_to_open, limit=4),
+            }
+        )
+
+    for relative in relatives:
+        birth = _parse_iso_date(relative.get("birth_date", ""))
+        death = _parse_iso_date(relative.get("death_date", ""))
+        label = f"{relative['name']} ({relative['relation']})"
+        if birth:
+            same_day = birth.day == consultant_birth.day and birth.month == consultant_birth.month
+            close_birth = _days_between_month_day(consultant_birth, birth)
+            if same_day:
+                add_card(
+                    title="Doble simbólico probable",
+                    interpretation=f"{consultant_name} comparte día y mes con {label}. Esto puede marcar identificación, lealtad o intento inconsciente de repetir/reparar su historia.",
+                    what_to_review=[
+                        f"Qué destino, dolor o función tuvo {relative['name']} en el sistema.",
+                        "Si el consultante se parece a esa persona en carácter, síntomas, elecciones o lugar dentro de la familia.",
+                        "Si está cargando una misión de compensación, continuidad o reparación.",
+                    ],
+                    how_to_open=[
+                        f"Preguntar: ¿Qué sabes de la vida, pérdidas y conflictos de {relative['name']}?",
+                        "Explorar si el consultante siente que vive algo que no es del todo suyo.",
+                        "Cruzar si el síntoma aparece con temas asociados a esa persona.",
+                    ],
+                )
+            elif close_birth <= 10:
+                add_card(
+                    title="Resonancia de aniversario",
+                    interpretation=f"La fecha de {label} cae dentro de ±10 días del nacimiento del consultante. Esto puede señalar repetición de ciclo, lealtad o sensibilidad de aniversario.",
+                    what_to_review=[
+                        "Eventos críticos asociados a esa persona alrededor de esa fecha.",
+                        "Qué emoción o clima familiar se reactiva cada año en ese periodo.",
+                        "Si el síntoma empeora o cambia cerca de esas fechas.",
+                    ],
+                    how_to_open=[
+                        f"Preguntar: ¿Qué ocurría en tu familia alrededor de la fecha de {relative['name']}?",
+                        "Hacer línea de tiempo breve del mes o periodo donde coinciden las fechas.",
+                        "Ver si el consultante carga una expectativa o mandato ligado a esa temporada.",
+                    ],
+                )
+        if death:
+            close_death = _days_between_month_day(consultant_birth, death)
+            if close_death <= 10:
+                add_card(
+                    title="Duelo o reemplazo por aniversario de muerte",
+                    interpretation=f"El nacimiento del consultante queda cerca de la muerte de {label}. Esto puede apuntar a reemplazo, duelo heredado o carga emocional no elaborada en el clan.",
+                    what_to_review=[
+                        "Cómo se vivió esa muerte y quién no pudo procesarla.",
+                        "Si el consultante quedó ocupando el lugar emocional de esa persona.",
+                        "Si hay prohibición implícita de separarse, elegir distinto o vivir plenamente.",
+                    ],
+                    how_to_open=[
+                        f"Preguntar: ¿Qué se cuenta y qué no se cuenta sobre la muerte de {relative['name']}?",
+                        "Explorar si alguien dijo o sintió que el consultante 'vino a llenar un vacío'.",
+                        "Cruzar el inicio del síntoma con aniversarios, visitas al cementerio o recuerdos intensos de esa pérdida.",
+                    ],
+                )
+
+    death_events = []
+    for relative in relatives:
+        if _safe_text(relative.get("death_date")):
+            death_events.append(relative)
+    if len(death_events) >= 2:
+        months = defaultdict(list)
+        for item in death_events:
+            parsed = _parse_iso_date(item["death_date"])
+            if parsed:
+                months[parsed.month].append(item["name"])
+        for _, names in months.items():
+            if len(names) >= 2:
+                add_card(
+                    title="Clima de duelo repetido en el sistema",
+                    interpretation=f"Hay varias muertes concentradas en la misma época del año ({', '.join(names[:4])}). El cuerpo puede reactivar memoria de aniversario y sostener un tono emocional heredado en esa temporada.",
+                    what_to_review=[
+                        "Qué pasa cada año en esa época: ánimo, síntomas, crisis, conflictos o retraimiento.",
+                        "Quién recuerda, calla o se desorganiza cuando llegan esas fechas.",
+                        "Si el consultante se pone en alerta o se descompensa corporalmente en ese periodo.",
+                    ],
+                    how_to_open=[
+                        "Pedir una línea de tiempo anual con meses sensibles para el sistema familiar.",
+                        "Explorar rituales, silencios o repeticiones alrededor de esas muertes.",
+                        "Relacionar el síntoma con temporadas, no solo con eventos puntuales.",
+                    ],
+                )
+                break
+
+    sibling_order = _infer_sibling_order(_safe_list(case_payload.get("siblings")), consultant_birth)
+    if sibling_order:
+        add_card(
+            title="Posición fraterna y rol asumido",
+            interpretation=sibling_order,
+            what_to_review=[
+                "Si el consultante fue parentalizado, invisibilizado, usado como mediador o reemplazo.",
+                "Qué hermano recibió más carga, más cuidado o más expectativa.",
+                "Si su lugar en la fratría coincide con el rol que hoy sostiene en pareja, trabajo o familia.",
+            ],
+            how_to_open=[
+                "Pedir orden exacto entre hermanos y qué se esperaba de cada uno.",
+                "Preguntar quién cuidaba, quién resolvía y quién podía fallar dentro de la familia.",
+                "Cruzar si el síntoma aparece cuando el consultante vuelve a ocupar ese rol infantil.",
+            ],
+        )
+
+    child_births = []
+    for item in _safe_list(case_payload.get("children")):
+        if not isinstance(item, dict):
+            continue
+        birth = _parse_iso_date(item.get("birth_date", ""))
+        name = _safe_text(item.get("full_name"))
+        if birth and name:
+            child_births.append((birth, name))
+    for birth, name in child_births[:5]:
+        if _days_between_month_day(consultant_birth, birth) <= 10:
+            add_card(
+                title="Repetición de ciclo entre consultante e hijo/a",
+                interpretation=f"{name} nació cerca del aniversario del consultante. Esto puede intensificar reparaciones, repeticiones o activaciones del mismo drama familiar en dos generaciones.",
+                what_to_review=[
+                    "Qué cambió en la vida del consultante después de ese nacimiento.",
+                    "Si el hijo/hija carga un lugar simbólico dentro del árbol.",
+                    "Qué conflicto del consultante se activó o se hizo visible a partir de esa llegada.",
+                ],
+                how_to_open=[
+                    f"Preguntar: ¿Qué empezó o se complicó desde que nació {name}?",
+                    "Explorar si el consultante ve en ese hijo algo de sí mismo o de alguien del clan.",
+                    "Cruzar el síntoma con fechas de embarazo, parto y aniversarios compartidos.",
+                ],
+            )
+
+    return cards[:6]
+
+
 def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
     axes: list[str] = []
     text_fields = [
@@ -2269,6 +2462,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         _detect_family_axes(case_payload) + [axis for heuristic in heuristics for axis in heuristic.family_axes]
     )
     family_date_insights = _collect_family_date_insights(case_payload)
+    family_date_guidance = _build_family_date_guidance(case_payload)
     primary_family_axis = _select_primary_family_axis(probable_systems, family_axes)
 
     matched_names = [item["canonical_name"] for item in top_matches]
@@ -2382,6 +2576,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "reference_emotional_causes": reference_emotional_causes,
         "family_axes": family_axes,
         "family_date_insights": family_date_insights,
+        "family_date_guidance": family_date_guidance,
         "primary_family_axis": primary_family_axis,
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
