@@ -16,6 +16,7 @@ except ImportError:  # pragma: no cover - optional dependency at runtime
 
 from api.domain_knowledge import get_teacher_knowledge
 from api.course_reference_index import get_course_reference_index
+from api.manual_reference_index import get_manual_reference_index
 from api.knowledge_base import SearchResult, trim_excerpt
 from api.teacher_memory import CourseStudy, TeacherMemory, get_teacher_memory
 
@@ -270,6 +271,11 @@ class NaturalAssistant:
         self._global_protocol_answers = self.course_reference_index.get("global_protocol_answers", {})
         self._course_term_answers = self.course_reference_index.get("course_term_answers", {})
         self._course_protocol_answers = self.course_reference_index.get("course_protocol_answers", {})
+        self.manual_reference_index = get_manual_reference_index()
+        self._manual_global_term_answers = self.manual_reference_index.get("global_term_answers", {})
+        self._manual_global_protocol_answers = self.manual_reference_index.get("global_protocol_answers", {})
+        self._manual_course_term_answers = self.manual_reference_index.get("course_term_answers", {})
+        self._manual_course_protocol_answers = self.manual_reference_index.get("course_protocol_answers", {})
         self._term_answers, self._protocol_answers = self._build_reference_indexes()
 
     def answer(
@@ -467,15 +473,36 @@ class NaturalAssistant:
 
         indexed_answer = self._lookup_course_reference_exact_answer(
             candidate,
-            self._course_term_answers,
-            self._global_term_answers,
+            self._manual_course_term_answers,
+            self._manual_global_term_answers,
             preferred_course.course_id if preferred_course else None,
         )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_exact_answer(
                 candidate,
-                self._course_protocol_answers,
-                self._global_protocol_answers,
+                self._manual_course_protocol_answers,
+                self._manual_global_protocol_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_exact_answer(
+            candidate,
+            self._course_term_answers,
+            self._global_term_answers,
+            preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._manual_course_term_answers,
+                self._manual_global_term_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._manual_course_protocol_answers,
+                self._manual_global_protocol_answers,
                 preferred_course.course_id if preferred_course else None,
             )
         if indexed_answer is None:
@@ -553,10 +580,24 @@ class NaturalAssistant:
             preferred_course = self._resolve_active_course_from_history(history)
         indexed_answer = self._lookup_course_reference_exact_answer(
             candidate,
+            self._manual_course_protocol_answers,
+            self._manual_global_protocol_answers,
+            preferred_course.course_id if preferred_course else None,
+        )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_exact_answer(
+            candidate,
             self._course_protocol_answers,
             self._global_protocol_answers,
             preferred_course.course_id if preferred_course else None,
-        )
+            )
+        if indexed_answer is None:
+            indexed_answer = self._lookup_course_reference_answer(
+                candidate,
+                self._manual_course_protocol_answers,
+                self._manual_global_protocol_answers,
+                preferred_course.course_id if preferred_course else None,
+            )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_answer(
                 candidate,
