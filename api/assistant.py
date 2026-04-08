@@ -478,47 +478,17 @@ class NaturalAssistant:
                     mode="structured",
                 )
 
-            course_memory_hits = self._select_memory_hits(question, active_course)
-            if course_memory_hits:
-                top_hit = course_memory_hits[0]
-                return AssistantOutput(
-                    answer=(
-                        f"Dentro de {active_course.course_name}, esto se trabaja así: "
-                        f"{self._compact_text(top_hit.text, 900)}"
-                    ),
-                    visual=None,
-                    mode="structured",
-                )
-
             return AssistantOutput(
                 answer=self._build_course_summary_answer(active_course),
                 visual=None,
                 mode="structured",
             )
 
-        best_hit = self._best_memory_hit_for_question(question)
-        if best_hit is not None:
-            return AssistantOutput(
-                answer=self._build_memory_hit_answer(question, best_hit),
-                visual=None,
-                mode="structured",
-            )
-
-        if results:
-            top = results[0]
-            return AssistantOutput(
-                answer=(
-                    f"Lo más cercano que encuentro para responder eso está en {top.course_name}. "
-                    f"Se trabaja así: {self._compact_text(top.text, 900)}"
-                ),
-                visual=None,
-                mode="structured",
-            )
-
         return AssistantOutput(
             answer=(
-                "No encuentro contexto suficiente para responder eso con claridad. "
-                "Intenta mencionar el curso, diplomado, concepto o tema principal."
+                "Puedo responderte mucho mejor si me dices el curso, diplomado, taller o concepto exacto. "
+                "Por ejemplo: `que es BMI`, `de que trata SEI`, `que protocolos se ven en Holobiomagnetismo Parte 1` "
+                "o `significado del par ano-ano`."
             ),
             visual=None,
             mode="structured",
@@ -660,11 +630,11 @@ class NaturalAssistant:
         )
 
     def _build_course_summary_answer(self, course: CourseStudy) -> str:
-        summary = self._compact_text(course.teacher_summary or course.summary, 520)
+        summary = self._clean_course_summary_seed(course.teacher_summary or course.summary)
         themes = self._join_items(course.core_themes[:4])
         concepts = self._join_items(course.key_concepts[:4])
         protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:4]])
-        parts = [f"{course.course_name} trata de {summary}"]
+        parts = [f"{course.course_name} es una formación orientada a {summary}"]
         if themes:
             parts.append(f"Sus ejes principales son {themes}.")
         if concepts:
@@ -672,6 +642,26 @@ class NaturalAssistant:
         if protocols:
             parts.append(f"También aparecen secuencias o protocolos como {protocols}.")
         return " ".join(parts)
+
+    def _clean_course_summary_seed(self, text: str) -> str:
+        cleaned = " ".join((text or "").split())
+        cleaned = re.sub(
+            r"^(como\s+(?:facilitador|maestro|docente)\s*(?:diria|diría)?[:,]?\s*)",
+            "",
+            cleaned,
+            flags=re.IGNORECASE,
+        )
+        cleaned = re.sub(r"^te\s+diria\s+que\s+", "", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r"^te\s+diría\s+que\s+", "", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(
+            r"^(el\s+corazon|el\s+corazón)\s+del\s+(?:curso|diplomado|taller)\s+es\s+",
+            "",
+            cleaned,
+            flags=re.IGNORECASE,
+        )
+        cleaned = re.sub(r"^aprender\s+a\s+", "aprender a ", cleaned, flags=re.IGNORECASE)
+        cleaned = cleaned[:1].lower() + cleaned[1:] if cleaned else cleaned
+        return self._compact_text(cleaned, 280)
 
     def _build_memory_hit_answer(self, question: str, hit) -> str:
         lowered = self._normalize_text(question)
@@ -1128,23 +1118,6 @@ class NaturalAssistant:
         if fact_hints:
             blocks.append("[Hechos relevantes]\n" + "\n".join(f"- {item}" for item in fact_hints))
 
-        memory_hits = self._select_memory_hits(question, anchored_course)
-        if memory_hits:
-            lines = ["[Memoria compilada relevante]"]
-            for idx, hit in enumerate(memory_hits, start=1):
-                lines.append(f"{idx}. {hit.title} ({hit.course_name})")
-                lines.append(f"   {self._compact_text(hit.text, 520)}")
-            blocks.append("\n".join(lines))
-
-        snippet_results = self._select_results(results, anchored_course)
-        if snippet_results:
-            lines = ["[Evidencia textual complementaria]"]
-            for idx, item in enumerate(snippet_results, start=1):
-                lines.append(
-                    f"{idx}. {item.course_name} | {item.source_file} | {trim_excerpt(item.text, 280)}"
-                )
-            blocks.append("\n".join(lines))
-
         history_course = self._resolve_active_course_from_history(history)
         if anchored_course is None and history_course is not None:
             blocks.append(
@@ -1383,9 +1356,6 @@ class NaturalAssistant:
         history_course = self._resolve_active_course_from_history(history)
         if history_course is not None:
             return [history_course]
-        inferred = self._infer_course_from_memory(question)
-        if inferred is not None:
-            return [inferred]
         return []
 
     def _format_course_list(self, courses: list[CourseStudy]) -> str:
