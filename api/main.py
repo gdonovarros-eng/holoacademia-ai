@@ -303,37 +303,38 @@ async def therapy_report(payload: TherapyReportRequest) -> TherapyReportResponse
 async def ask_question(payload: AskRequest) -> AskResponse:
     kb = get_knowledge_base()
     assistant = get_assistant()
-    search_queries = assistant.resolve_search_queries(payload.question, payload.history)
     merged_by_chunk = {}
-    use_semantic_search = False
-    for search_query in search_queries:
-        if use_semantic_search:
-            try:
-                query_vector = assistant.embed_query(search_query)
-                partial_results = kb.semantic_search_by_vector(
-                    query_vector=query_vector,
-                    course_id=payload.course_id,
-                    linea=payload.linea,
-                    limit=payload.max_results,
-                )
-            except Exception:
+    if not assistant.should_skip_search(payload.question, payload.history):
+        search_queries = assistant.resolve_search_queries(payload.question, payload.history)
+        use_semantic_search = False
+        for search_query in search_queries:
+            if use_semantic_search:
+                try:
+                    query_vector = assistant.embed_query(search_query)
+                    partial_results = kb.semantic_search_by_vector(
+                        query_vector=query_vector,
+                        course_id=payload.course_id,
+                        linea=payload.linea,
+                        limit=payload.max_results,
+                    )
+                except Exception:
+                    partial_results = kb.search(
+                        question=search_query,
+                        course_id=payload.course_id,
+                        linea=payload.linea,
+                        limit=payload.max_results,
+                    )
+            else:
                 partial_results = kb.search(
                     question=search_query,
                     course_id=payload.course_id,
                     linea=payload.linea,
                     limit=payload.max_results,
                 )
-        else:
-            partial_results = kb.search(
-                question=search_query,
-                course_id=payload.course_id,
-                linea=payload.linea,
-                limit=payload.max_results,
-            )
-        for item in partial_results:
-            existing = merged_by_chunk.get(item.chunk_id)
-            if existing is None or item.score > existing.score:
-                merged_by_chunk[item.chunk_id] = item
+            for item in partial_results:
+                existing = merged_by_chunk.get(item.chunk_id)
+                if existing is None or item.score > existing.score:
+                    merged_by_chunk[item.chunk_id] = item
 
     results = sorted(merged_by_chunk.values(), key=lambda item: item.score, reverse=True)[: payload.max_results]
 

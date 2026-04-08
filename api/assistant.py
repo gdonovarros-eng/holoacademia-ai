@@ -280,6 +280,10 @@ class NaturalAssistant:
         if structured is not None:
             return structured
 
+        direct_structured = self._answer_direct_structured(question, results, history)
+        if direct_structured is not None:
+            return direct_structured
+
         if self.course_use_model and self.enabled:
             try:
                 reasoned = self._answer_with_model(question, results, history, want_visual)
@@ -289,6 +293,34 @@ class NaturalAssistant:
                 pass
 
         return self._answer_structured_course(question, results, history)
+
+    def _answer_direct_structured(
+        self,
+        question: str,
+        results: list[SearchResult],
+        history: list[dict],
+    ) -> Optional[AssistantOutput]:
+        catalog_answer = self._answer_course_catalog(question)
+        if catalog_answer is not None:
+            return catalog_answer
+
+        supported_topics = self._answer_supported_topics(question)
+        if supported_topics is not None:
+            return supported_topics
+
+        for builder in (
+            self._answer_teacher_identity,
+            lambda q, r, h: self._answer_course_protocols(q, h),
+            lambda q, r, h: self._answer_course_module_count(q, h),
+            lambda q, r, h: self._answer_course_systems(q, h),
+        ):
+            try:
+                structured = builder(question, results, history)
+            except TypeError:
+                structured = builder(question, history)  # pragma: no cover
+            if structured is not None:
+                return structured
+        return None
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
@@ -343,23 +375,6 @@ class NaturalAssistant:
         results: list[SearchResult],
         history: list[dict],
     ) -> AssistantOutput:
-        catalog_answer = self._answer_course_catalog(question)
-        if catalog_answer is not None:
-            return catalog_answer
-
-        for builder in (
-            self._answer_teacher_identity,
-            lambda q, r, h: self._answer_course_protocols(q, h),
-            lambda q, r, h: self._answer_course_module_count(q, h),
-            lambda q, r, h: self._answer_course_systems(q, h),
-        ):
-            try:
-                structured = builder(question, results, history)
-            except TypeError:
-                structured = builder(question, history)  # pragma: no cover
-            if structured is not None:
-                return structured
-
         active_course = self._resolve_active_course(question, history)
         if active_course is None:
             active_course = self._resolve_active_course_from_history(history)
@@ -419,32 +434,117 @@ class NaturalAssistant:
 
     def _answer_course_catalog(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
-        asks_catalog = any(
+        global_catalog_phrases = [
+            "de que cursos me puedes dar informacion",
+            "de que cursos me puedes dar info",
+            "de que cursos tienes informacion",
+            "sobre que cursos puedes responder",
+            "que cursos conoces",
+            "cuales cursos conoces",
+            "que cursos manejas",
+            "que cursos puedes responder",
+            "de que cursos puedes hablar",
+            "que diplomados y cursos conoces",
+            "que cursos hay",
+            "cuales son los cursos",
+            "que formaciones tienes",
+            "que formaciones manejas",
+        ]
+        asks_catalog = any(phrase in lowered for phrase in global_catalog_phrases) or any(
             phrase in lowered
             for phrase in [
-                "de que cursos me puedes dar informacion",
-                "de que cursos me puedes dar info",
-                "de que cursos tienes informacion",
-                "sobre que cursos puedes responder",
-                "que cursos conoces",
-                "cuales cursos conoces",
-                "que cursos manejas",
-                "que cursos puedes responder",
-                "de que cursos puedes hablar",
-                "que diplomados y cursos conoces",
+                "que diplomados tienes",
+                "cuales diplomados tienes",
+                "que talleres tienes",
+                "cuales talleres tienes",
+                "que cursos de salud tienes",
+                "que cursos de mistica tienes",
+                "que cursos de mística tienes",
             ]
         )
         if not asks_catalog or not self.teacher_memory:
             return None
 
-        course_names = [study.course_name for study in self.teacher_memory.course_studies]
+        studies = list(self.teacher_memory.course_studies)
+
+        if any(phrase in lowered for phrase in global_catalog_phrases):
+            intro = "Puedo darte información sobre estas formaciones de Holoacademia: "
+        elif "diplomado" in lowered or "diplomados" in lowered:
+            studies = [study for study in studies if self._normalize_text(study.tipo) == "diplomado"]
+            intro = "Puedo darte información sobre estos diplomados de Holoacademia: "
+        elif "taller" in lowered or "talleres" in lowered:
+            studies = [study for study in studies if self._normalize_text(study.tipo) == "taller"]
+            intro = "Puedo darte información sobre estos talleres de Holoacademia: "
+        elif "curso" in lowered or "cursos" in lowered:
+            if "salud" in lowered:
+                studies = [study for study in studies if self._normalize_text(study.linea) == "salud" and self._normalize_text(study.tipo) == "curso"]
+                intro = "Dentro de la línea de Salud, puedo darte información sobre estos cursos: "
+            elif "mistica" in lowered or "mística" in question.lower():
+                studies = [study for study in studies if self._normalize_text(study.linea) == "mistica"]
+                intro = "Dentro de la línea de Mística, puedo darte información sobre estas formaciones: "
+            else:
+                studies = [study for study in studies if self._normalize_text(study.tipo) == "curso"]
+                intro = "Puedo darte información sobre estos cursos de Holoacademia: "
+        elif "salud" in lowered:
+            studies = [study for study in studies if self._normalize_text(study.linea) == "salud"]
+            intro = "Dentro de la línea de Salud, puedo darte información sobre estas formaciones: "
+        elif "mistica" in lowered or "mística" in question.lower():
+            studies = [study for study in studies if self._normalize_text(study.linea) == "mistica"]
+            intro = "Dentro de la línea de Mística, puedo darte información sobre estas formaciones: "
+        else:
+            intro = "Puedo darte información sobre estos cursos y diplomados de Holoacademia: "
+
+        course_names = [study.course_name for study in studies]
+        if not course_names:
+            return None
+
         answer = (
-            "Puedo darte información sobre estos cursos y diplomados de Holoacademia: "
-            f"{self._join_items(course_names)}. "
+            f"{intro}{self._join_items(course_names)}. "
             "Si quieres, también puedo orientarte por tema; por ejemplo, protocolos, módulos, maestros, sistemas, "
             "pares biomagnéticos, cuestionarios o de qué trata cada formación."
         )
         return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+    def _answer_supported_topics(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        asks_scope = any(
+            phrase in lowered
+            for phrase in [
+                "que me puedes explicar",
+                "qué me puedes explicar",
+                "en que me puedes ayudar",
+                "en qué me puedes ayudar",
+                "que me puedes decir",
+                "qué me puedes decir",
+                "que tipo de preguntas puedo hacerte",
+                "qué tipo de preguntas puedo hacerte",
+                "para que sirves",
+                "para qué sirves",
+                "que cosas puedes responder",
+                "qué cosas puedes responder",
+            ]
+        )
+        if not asks_scope:
+            return None
+
+        return AssistantOutput(
+            answer=(
+                "Puedo ayudarte con dudas sobre cursos, diplomados y talleres; por ejemplo, de qué trata una formación, "
+                "qué módulos incluye, qué protocolos se ven, quién la imparte, qué sistemas trabaja, qué conceptos clave "
+                "conviene estudiar y cómo se relaciona un curso con otro. También puedo seguir la conversación si primero "
+                "hablamos de un curso y luego haces una pregunta corta como 'de qué trata' o 'qué protocolos trae'."
+            ),
+            visual=None,
+            mode="structured",
+        )
+
+    def should_skip_search(self, question: str, history: Optional[list[dict]] = None) -> bool:
+        history = history or []
+        if self._answer_known_concepts(question) is not None:
+            return True
+        if self._answer_direct_structured(question, [], history) is not None:
+            return True
+        return False
 
     def _is_summary_request(self, question: str) -> bool:
         lowered = self._normalize_text(question)
