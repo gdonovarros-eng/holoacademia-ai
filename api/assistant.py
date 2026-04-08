@@ -343,6 +343,10 @@ class NaturalAssistant:
         results: list[SearchResult],
         history: list[dict],
     ) -> AssistantOutput:
+        catalog_answer = self._answer_course_catalog(question)
+        if catalog_answer is not None:
+            return catalog_answer
+
         for builder in (
             self._answer_teacher_identity,
             lambda q, r, h: self._answer_course_protocols(q, h),
@@ -412,6 +416,35 @@ class NaturalAssistant:
             visual=None,
             mode="structured",
         )
+
+    def _answer_course_catalog(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        asks_catalog = any(
+            phrase in lowered
+            for phrase in [
+                "de que cursos me puedes dar informacion",
+                "de que cursos me puedes dar info",
+                "de que cursos tienes informacion",
+                "sobre que cursos puedes responder",
+                "que cursos conoces",
+                "cuales cursos conoces",
+                "que cursos manejas",
+                "que cursos puedes responder",
+                "de que cursos puedes hablar",
+                "que diplomados y cursos conoces",
+            ]
+        )
+        if not asks_catalog or not self.teacher_memory:
+            return None
+
+        course_names = [study.course_name for study in self.teacher_memory.course_studies]
+        answer = (
+            "Puedo darte información sobre estos cursos y diplomados de Holoacademia: "
+            f"{self._join_items(course_names)}. "
+            "Si quieres, también puedo orientarte por tema; por ejemplo, protocolos, módulos, maestros, sistemas, "
+            "pares biomagnéticos, cuestionarios o de qué trata cada formación."
+        )
+        return AssistantOutput(answer=answer, visual=None, mode="structured")
 
     def _is_summary_request(self, question: str) -> bool:
         lowered = self._normalize_text(question)
