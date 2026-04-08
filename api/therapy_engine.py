@@ -9,6 +9,8 @@ from typing import Any
 
 from api.domain_knowledge import TeacherKnowledge
 from api.radionic_table import build_radionic_pair_table
+from api.therapy_manual_index import get_therapy_manual_index
+from api.therapy_transcript_index import get_therapy_transcript_index
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -340,6 +342,10 @@ def _load_raw_disease_entries() -> list[RawDiseaseEntry]:
 
 RAW_DISEASE_ENTRIES = _load_raw_disease_entries()
 TEACHER = TeacherKnowledge.from_cache(TEACHER_KNOWLEDGE_CACHE_PATH)
+THERAPY_TRANSCRIPT_INDEX = get_therapy_transcript_index()
+THERAPY_TRANSCRIPTS = THERAPY_TRANSCRIPT_INDEX.get("transcripts", [])
+THERAPY_MANUAL_INDEX = get_therapy_manual_index()
+THERAPY_MANUALS = THERAPY_MANUAL_INDEX.get("manuals", [])
 
 
 PROTOCOL_GUIDE_LIBRARY: dict[str, dict[str, Any]] = {
@@ -1394,6 +1400,170 @@ def _build_protocol_card(
     }
 
 
+def _extract_focus_tags(
+    probable_systems: list[str],
+    family_axes: list[str],
+    microbe_queries: list[str],
+    probable_conflicts: list[str],
+) -> list[str]:
+    tags: list[str] = []
+    tags.extend(probable_systems[:3])
+    family_blob = _normalize_text(" ".join(family_axes))
+    conflict_blob = _normalize_text(" ".join(probable_conflicts))
+    if any(token in family_blob for token in ("pareja", "sentimental", "vinculo", "vínculo")):
+        tags.append("sentimental")
+    if any(token in family_blob for token in ("transgeneracional", "duelo", "fallecio", "linaje", "ancestro", "arbol", "árbol")):
+        tags.append("transgeneracional")
+    if microbe_queries:
+        tags.append("patogenos")
+    if any(token in conflict_blob for token in ("shock", "trauma", "miedo", "control", "creencia")):
+        tags.append("emocional_mental")
+    return _dedupe_keep_order(tags)
+
+
+def _select_relevant_transcripts(
+    case_payload: dict[str, Any],
+    probable_systems: list[str],
+    family_axes: list[str],
+    microbe_queries: list[str],
+    probable_conflicts: list[str],
+) -> list[dict[str, Any]]:
+    symptom_blob = _normalize_text(" ".join(_collect_symptom_texts(case_payload)))
+    symptom_tokens = {token for token in re.findall(r"[a-z0-9]+", symptom_blob) if len(token) >= 4}
+    focus_tags = _extract_focus_tags(probable_systems, family_axes, microbe_queries, probable_conflicts)
+
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for transcript in THERAPY_TRANSCRIPTS:
+        score = 0
+        transcript_systems = transcript.get("systems", [])
+        transcript_tags = transcript.get("tags", [])
+        search_blob = transcript.get("search_blob", "")
+        if probable_systems:
+            score += 3 * len(set(probable_systems[:3]) & set(transcript_systems))
+        if focus_tags:
+            score += 2 * len(set(focus_tags) & set(transcript_tags))
+        overlap = len(symptom_tokens & {token for token in re.findall(r"[a-z0-9]+", search_blob) if len(token) >= 4})
+        score += min(overlap, 4)
+        if transcript.get("course_id") in {
+            "curso-holobiomagnetismo-parte-1",
+            "curso-holobiomagnetismo-parte-2",
+            "curso-psicosomatica-y-biodescodificacion-1",
+            "curso-psicosomatica-y-biodescodificacion-2",
+            "diplomado-terapia-holistica-1",
+            "diplomado-sanacion-energetica-integral",
+            "diplomado-ancestros-y-raices",
+            "psicosomatrix",
+        }:
+            score += 1
+        if score <= 0:
+            continue
+        ranked.append((score, transcript))
+    ranked.sort(key=lambda item: (-item[0], item[1].get("course_name", ""), item[1].get("source_title", "")))
+    return [item for _, item in ranked[:4]]
+
+
+def _build_transcript_protocol_cards(
+    transcripts: list[dict[str, Any]],
+    symptom_focus: str,
+    pair_focus: list[str],
+) -> list[dict[str, Any]]:
+    cards: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for transcript in transcripts:
+        summary = _first_sentence(transcript.get("summary", ""))
+        for protocol in transcript.get("protocol_routes", [])[:4]:
+            title = _safe_text(protocol.get("title"))
+            body = _safe_text(protocol.get("body"))
+            normalized_title = _normalize_text(title)
+            if not title or normalized_title in seen:
+                continue
+            seen.add(normalized_title)
+            when_to_use = f"Conviene abrirlo cuando {symptom_focus} confirma esta puerta de trabajo en entrevista o rastreo."
+            purpose = summary or "Ruta práctica de rastreo, liberación o regulación tomada del material terapéutico."
+            cards.append(
+                _build_protocol_card(
+                    title=title,
+                    purpose=purpose,
+                    when_to_use=when_to_use,
+                    body=body,
+                    pair_focus=pair_focus[:4],
+                )
+            )
+            if len(cards) >= 5:
+                return cards
+    return cards
+
+
+def _select_relevant_manuals(
+    case_payload: dict[str, Any],
+    probable_systems: list[str],
+    family_axes: list[str],
+    microbe_queries: list[str],
+    probable_conflicts: list[str],
+) -> list[dict[str, Any]]:
+    symptom_blob = _normalize_text(" ".join(_collect_symptom_texts(case_payload)))
+    symptom_tokens = {token for token in re.findall(r"[a-z0-9]+", symptom_blob) if len(token) >= 4}
+    focus_tags = _extract_focus_tags(probable_systems, family_axes, microbe_queries, probable_conflicts)
+
+    ranked: list[tuple[int, dict[str, Any]]] = []
+    for manual in THERAPY_MANUALS:
+        score = 0
+        manual_systems = manual.get("systems", [])
+        manual_tags = manual.get("tags", [])
+        search_blob = manual.get("search_blob", "")
+        if probable_systems:
+            score += 3 * len(set(probable_systems[:3]) & set(manual_systems))
+        if focus_tags:
+            score += 2 * len(set(focus_tags) & set(manual_tags))
+        overlap = len(symptom_tokens & {token for token in re.findall(r"[a-z0-9]+", search_blob) if len(token) >= 4})
+        score += min(overlap, 4)
+        if manual.get("course_id") in {
+            "curso-holobiomagnetismo-parte-1",
+            "curso-holobiomagnetismo-parte-2",
+            "diplomado-terapia-holistica-1",
+            "diplomado-sanacion-energetica-integral",
+            "diplomado-ancestros-y-raices",
+        }:
+            score += 1
+        if score <= 0:
+            continue
+        ranked.append((score, manual))
+    ranked.sort(key=lambda item: (-item[0], item[1].get("course_name", ""), item[1].get("source_title", "")))
+    return [item for _, item in ranked[:4]]
+
+
+def _build_manual_protocol_cards(
+    manuals: list[dict[str, Any]],
+    symptom_focus: str,
+    pair_focus: list[str],
+) -> list[dict[str, Any]]:
+    cards: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for manual in manuals:
+        summary = _first_sentence(manual.get("summary", ""))
+        for protocol in manual.get("protocol_routes", [])[:4]:
+            title = _safe_text(protocol.get("title"))
+            body = _safe_text(protocol.get("body"))
+            normalized_title = _normalize_text(title)
+            if not title or normalized_title in seen:
+                continue
+            seen.add(normalized_title)
+            when_to_use = f"Úsalo como guía operativa cuando {symptom_focus} ya mostró puerta clínica clara y necesitas ordenar el trabajo terapéutico."
+            purpose = summary or "Ruta práctica tomada de los manuales terapéuticos para sostener entrevista, rastreo o liberación."
+            cards.append(
+                _build_protocol_card(
+                    title=title,
+                    purpose=purpose,
+                    when_to_use=when_to_use,
+                    body=body,
+                    pair_focus=pair_focus[:4],
+                )
+            )
+            if len(cards) >= 5:
+                return cards
+    return cards
+
+
 def _build_opening_guidance(
     probable_systems: list[str],
     priority_symptoms: list[str],
@@ -1640,6 +1810,8 @@ def _build_therapeutic_guide(
     opening_guidance: dict[str, Any],
     suggested_pairs: list[dict[str, Any]],
     microbe_queries: list[str],
+    transcript_cards: list[dict[str, Any]],
+    manual_cards: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
     guide: list[dict[str, Any]] = []
     symptom_focus = priority_symptoms[0] if priority_symptoms else "el síntoma principal"
@@ -1671,6 +1843,9 @@ def _build_therapeutic_guide(
                 "pair_focus": top_organ.get("pair_focus", [])[:5],
             }
         )
+
+    guide.extend(transcript_cards[:3])
+    guide.extend(manual_cards[:3])
 
     systemic_protocol = _find_protocol_candidate("sistemico")
     if systemic_protocol:
@@ -1901,6 +2076,30 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     )
     suggested_pairs_to_validate = _build_suggested_pairs(case_payload)
     microbe_queries = _extract_microbe_queries(case_payload)
+    relevant_transcripts = _select_relevant_transcripts(
+        case_payload=case_payload,
+        probable_systems=probable_systems,
+        family_axes=family_axes,
+        microbe_queries=microbe_queries,
+        probable_conflicts=probable_conflicts,
+    )
+    transcript_cards = _build_transcript_protocol_cards(
+        transcripts=relevant_transcripts,
+        symptom_focus=priority_symptoms[0] if priority_symptoms else "el síntoma principal",
+        pair_focus=[item.get("pair_name", "") for item in suggested_pairs_to_validate[:4] if item.get("pair_name")],
+    )
+    relevant_manuals = _select_relevant_manuals(
+        case_payload=case_payload,
+        probable_systems=probable_systems,
+        family_axes=family_axes,
+        microbe_queries=microbe_queries,
+        probable_conflicts=probable_conflicts,
+    )
+    manual_cards = _build_manual_protocol_cards(
+        manuals=relevant_manuals,
+        symptom_focus=priority_symptoms[0] if priority_symptoms else "el síntoma principal",
+        pair_focus=[item.get("pair_name", "") for item in suggested_pairs_to_validate[:4] if item.get("pair_name")],
+    )
     prioritized_hypotheses = _build_prioritized_hypotheses(
         priority_symptoms=priority_symptoms,
         probable_systems=probable_systems,
@@ -1938,6 +2137,8 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         opening_guidance=opening_guidance,
         suggested_pairs=suggested_pairs_to_validate,
         microbe_queries=microbe_queries,
+        transcript_cards=transcript_cards,
+        manual_cards=manual_cards,
     )
 
     mass_conflict_hypothesis = ""
@@ -1981,6 +2182,8 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "prioritized_hypotheses": prioritized_hypotheses,
         "suggested_protocols": protocol_suggestions,
         "therapeutic_guide": therapeutic_guide,
+        "therapy_transcript_routes": relevant_transcripts,
+        "therapy_manual_routes": relevant_manuals,
         "system_sweep_summary": system_sweep_summary,
         "organ_sweep_summary": organ_sweep_summary,
         "suggested_course_routes": suggested_routes,

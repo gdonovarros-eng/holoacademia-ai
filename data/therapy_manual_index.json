@@ -1,0 +1,1727 @@
+{
+  "manual_count": 17,
+  "manuals": [
+    {
+      "manual_id": "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "course_id": "taller-medicina-naturista",
+      "course_name": "Taller Medicina Naturista",
+      "source_title": "Manual_Taller_Medicina_Naturista",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Salud/taller-medicina-naturista/sources/Manual_Taller_Medicina_Naturista.txt",
+      "summary": "Manual del taller que plantea un enfoque naturista centrado en reforzar la autorregulación (homeostasis) mediante un ciclo práctico de cuatro pasos —lectura corporal, desintoxicación, nutrición y potenciación— e integra protocolos digestivos (caballito de limón, linaza activada, ciclos de 21 días), depuraciones más intensas (jugos de zanahoria “Agente Naranja”, enemas de café), lavados intestinales (Prankshalana) y ayunos terapéuticos con mucílagos, junto a pautas de suplementación (magnesio, vitaminas hidrosolubl…",
+      "key_points": [
+        "Visión terapéutica: fortalecer la capacidad autoreparadora (homeostasis).",
+        "Método en 4 fases: lectura corporal (captar), desintoxicar, nutrir y potenciar.",
+        "Lectura corporal práctica: lengua (color, saburra), uñas, dedos, planta del pie y estado de piel para orientar intervención nutricional y energética.",
+        "Higiene digestiva como eje: caballito de limón, linaza activada, ciclos de 21 días y reducción de lácteos/antinutrientes.",
+        "Protocolos depurativos: enemas de café, jugos de zanahoria (“Agente Naranja”), Prankshalana y ayuno/enema‑tónic para movilizar residuos y parásitos.",
+        "Criterios clínicos de sospecha de parasitosis: alergias cíclicas, fatiga crónica, problemas cutáneos, alteraciones digestivas y síntomas neurológicos/psiquiátricos; distinguir tipos de helmintos.   \nSuplementación focal: magnesio, vitaminas B y C, suero isotónico, espirulina (con contraindicaciones).  \nTécnicas de potenciación: digitoterapia, masaje de meridianos, estiramiento bioenergético y prácticas de rehidratación; mapas de puntos por medidas (dedo/palma).  \nProtocolos de urgencia y botiquín homeopático para manejo domiciliario de agudos (resaca, cefalea, traumatismos leves)."
+      ],
+      "key_concepts": [
+        "Homeostasis: autorregulación corporal y objetivo terapéutico.",
+        "Lectura corporal: interpretación funcional de lengua, uñas, piel, pies y manos.",
+        "Saburra: recubrimiento lingual indicativo de digestión/toxicidad.",
+        "Meridianos: canales energéticos reflejados en manos/pies para masaje y digitopuntura.",
+        "Digitoterapia: presión/manipulación en puntos reflejos para modular energía.",
+        "Enema de café: irrigación rectal con infusión para movilizar bilis/toxinas.",
+        "Prankshalana (Shank): lavado intestinal con agua salada y movimientos corporales.",
+        "Psyllium: fibra mucilaginosa usada en ayunos/enemas para arrastre mucoso.",
+        "Suero isotónico: solución casera para rehidratación y reposición electrolítica.",
+        "Biofilm: mucosidad gelatinosa expulsable ligada a residuos microbianos."
+      ],
+      "glossary": [
+        "Saburra: capa sobre la lengua que indica estado digestivo/toxinas.",
+        "Caballito de limón: sorbo corto de limón en ayunas para estimular digestión.",
+        "Agente Naranja: protocolo corto depurativo a base de jugo de zanahoria y restricción de ciertos alimentos.",
+        "Linaza (detox): semillas de lino activadas en agua para movilizar mucosidades intestinales.",
+        "Digitoterapia: presión/manipulación en puntos reflexos de dedos/manos para regular energía.",
+        "Meridianos: canales energéticos usados como guía para masaje y digitopuntura.",
+        "Suero isotónico: solución rehidratante casera con sales y azúcares naturales.",
+        "Enema de café: irrigación rectal con infusión de café para movilizar bilis/toxinas hepáticas y intestinales cuando procede.  \nPrankshalana (Shank): técnica de lavado intestinal con agua salada más movimientos corporales para limpiar el colon por peristalsis inducida.  \nPsyllium: fibra mucilaginosa que forma masa para ayudar el arrastre intestinal en ayunos/enemas.  \nBiofilm: capa mucosa expulsable que refleja residuos microbianos o mucosidad intestinal.  \nAuto‑hemoterapia: práctica complementaria que consiste en la reintroducción de sangre propia (mencionada con precaución).  \nSun gazing: exposición ocular/solar progresiva propuesta como práctica energizante (requiere precaución ocular y progresión gradual)."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Higiene digestiva (resumen)",
+          "body": "caballito de limón en ayunas; linaza activada (moler/activar 3 cda por ~250 ml, reposar 8 h) tomar mañana y noche; evitar lácteos; trabajar en ciclos de 21 días."
+        },
+        {
+          "title": "Agente Naranja (jugos de zanahoria)",
+          "body": "eliminar lácteos y cereales 10 días; extraer jugo (≈2.5 kg → ~1.5 L) y consumir 2–3 tomas/día mínimo 5 días; acompañar con enemas de café en días de jugos."
+        },
+        {
+          "title": "Enema de café",
+          "body": "hervir 2 cda de café orgánico en 700 ml agua 10 min; colar, enfriar; retener a temperatura ambiente ~10 min; repetir una vez al día durante 5 días; suspender si hay malestar intenso."
+        },
+        {
+          "title": "Shank Prankshalana",
+          "body": "beber series de agua tibia con sal (aprox. 1 cdita/ litro ajustado), combinar con movimientos corporales para provocar evacuación hasta que el agua salga clara; usar enema corto si falta peristalsis; seguir dieta blanda 48 h."
+        },
+        {
+          "title": "Ayuno/enema‑tónic (estilo taoísta, esquema en 3 cargas)",
+          "body": "cargas sucesivas con psyllium/espirulina/bicarbonato en gran volumen de agua tibia, ayuno controlado, enemas matutinos y nocturnos, suero isotónico de apoyo; repetir mínimo 3 días y dinamizar con movimiento; consultar antes de iniciar."
+        },
+        {
+          "title": "Suero isotónico casero",
+          "body": "agua + sal marina + miel o agave + bicarbonato + limón; ajustar al gusto y usar para rehidratación en cansancio o tras depuración."
+        },
+        {
+          "title": "Linaza detox",
+          "body": "moler o activar en seco, dosificar 3 cda por 250 ml, reposar 8 h y consumir am y pm durante el ciclo."
+        },
+        {
+          "title": "Digitopuntura básica (Tcheu‑tcheu)",
+          "body": "localizar punto sensible, presionar en movimientos circulares 15 s–1 min por lado; tonificar con giros horario, dispersar en sentido contrario; evitar sobreestimular y seguir precauciones clínicas locales. Estiramiento bioenergético breve: inspirar profundo, relajar, llevar al máximo sin forzar, mantener 3 respiraciones en la postura máxima y visualizar el flujo de Qi; repetir según tolerancia. Protocolos urgentes breves: resaca — B6 + rehidratación con suero isotónico + remedios homeopáticos según cuadro; cefalea…"
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "neurosensorial",
+        "emocional_mental",
+        "respiratorio",
+        "dermatologico",
+        "cardiovascular"
+      ],
+      "tags": [
+        "patogenos",
+        "rastreo",
+        "bioenergetico"
+      ],
+      "search_blob": "taller medicina naturista manual_taller_medicina_naturista manual del taller que plantea un enfoque naturista centrado en reforzar la autorregulacion (homeostasis) mediante un ciclo practico de cuatro pasos —lectura corporal, desintoxicacion, nutricion y potenciacion— e integra protocolos digestivos (caballito de limon, linaza activada, ciclos de 21 dias), depuraciones mas intensas (jugos de zanahoria “agente naranja”, enemas de cafe), lavados intestinales (prankshalana) y ayunos terapeuticos con mucilagos, junto a pautas de suplementacion (magnesio, vitaminas hidrosolubles, espirulina con contraindicaciones), tecnicas somatoenergeticas (digitoterapia, masaje de meridianos, estiramientos bioenergeticos), guias practicas para sospecha/tratamiento de parasitosis y un botiquin homeopatico y de primeros auxilios para cuadros agudos; incluye instrucciones de medidas corporales para localizar puntos, protocolos breves de urgencia (resaca, cefalea) y advertencias sobre practicas complementarias (sun gazing, auto‐hemoterapia). vision terapeutica: fortalecer la capacidad autoreparadora (homeostasis). metodo en 4 fases: lectura corporal (captar), desintoxicar, nutrir y potenciar. lectura corporal practica: lengua (color, saburra), unas, dedos, planta del pie y estado de piel para orientar intervencion nutricional y energetica. higiene digestiva como eje: caballito de limon, linaza activada, ciclos de 21 dias y reduccion de lacteos/antinutrientes. protocolos depurativos: enemas de cafe, jugos de zanahoria (“agente naranja”), prankshalana y ayuno/enema‐tonic para movilizar residuos y parasitos. criterios clinicos de sospecha de parasitosis: alergias ciclicas, fatiga cronica, problemas cutaneos, alteraciones digestivas y sintomas neurologicos/psiquiatricos; distinguir tipos de helmintos. suplementacion focal: magnesio, vitaminas b y c, suero isotonico, espirulina (con contraindicaciones). tecnicas de potenciacion: digitoterapia, masaje de meridianos, estiramiento bioenergetico y practicas de rehidratacion; mapas de puntos por medidas (dedo/palma). protocolos de urgencia y botiquin homeopatico para manejo domiciliario de agudos (resaca, cefalea, traumatismos leves). homeostasis: autorregulacion corporal y objetivo terapeutico. lectura corporal: interpretacion funcional de lengua, unas, piel, pies y manos. saburra: recubrimiento lingual indicativo de digestion/toxicidad. meridianos: canales energeticos reflejados en manos/pies para masaje y digitopuntura. digitoterapia: presion/manipulacion en puntos reflejos para modular energia. enema de cafe: irrigacion rectal con infusion para movilizar bilis/toxinas. prankshalana (shank): lavado intestinal con agua salada y movimientos corporales. psyllium: fibra mucilaginosa usada en ayunos/enemas para arrastre mucoso. suero isotonico: solucion casera para rehidratacion y reposicion electrolitica. biofilm: mucosidad gelatinosa expulsable ligada a residuos microbianos. higiene digestiva (resumen): caballito de limon en ayunas; linaza activada (moler/activar 3 cda por ~250 ml, reposar 8 h) tomar manana y noche; evitar lacteos; trabajar en ciclos de 21 dias. agente naranja (jugos de zanahoria): eliminar lacteos y cereales 10 dias; extraer jugo (≈2.5 kg → ~1.5 l) y consumir 2-3 tomas/dia minimo 5 dias; acompanar con enemas de cafe en dias de jugos. enema de cafe: hervir 2 cda de cafe organico en 700 ml agua 10 min; colar, enfriar; retener a temperatura ambiente ~10 min; repetir una vez al dia durante 5 dias; suspender si hay malestar intenso. shank prankshalana: beber series de agua tibia con sal (aprox. 1 cdita/ litro ajustado), combinar con movimientos corporales para provocar evacuacion hasta que el agua salga clara; usar enema corto si falta peristalsis; seguir dieta blanda 48 h. ayuno/enema‐tonic (estilo taoista, esquema en 3 cargas): cargas sucesivas con psyllium/espirulina/bicarbonato en gran volumen de agua tibia, ayuno controlado, enemas matutinos y nocturnos, suero isotonico de apoyo; repetir minimo 3 dias y dinamizar con movimiento; consultar antes de iniciar. suero isotonico casero: agua + sal marina + miel o agave + bicarbonato + limon; ajustar al gusto y usar para rehidratacion en cansancio o tras depuracion. linaza detox: moler o activar en seco, dosificar 3 cda por 250 ml, reposar 8 h y consumir am y pm durante el ciclo. digitopuntura basica (tcheu‐tcheu): localizar punto sensible, presionar en movimientos circulares 15 s-1 min por lado; tonificar con giros horario, dispersar en sentido contrario; evitar sobreestimular y seguir precauciones clinicas locales. estiramiento bioenergetico breve: inspirar profundo, relajar, llevar al maximo sin forzar, mantener 3 respiraciones en la postura maxima y visualizar el flujo de qi; repetir segun tolerancia. protocolos urgentes breves: resaca — b6 + rehidratacion con suero isotonico + remedios homeopaticos segun cuadro; cefalea — peinado de la linea vg (v. gobernador) y descontractura temporoccipital + estimulacion de puntos craneales (base del craneo, entrecejo, final de ceja, pc4). saburra: capa sobre la lengua que indica estado digestivo/toxinas. caballito de limon: sorbo corto de limon en ayunas para estimular digestion. agente naranja: protocolo corto depurativo a base de jugo de zanahoria y restriccion de ciertos alimentos. linaza (detox): semillas de lino activadas en agua para movilizar mucosidades intestinales. digitoterapia: presion/manipulacion en puntos reflexos de dedos/manos para regular energia. meridianos: canales energeticos usados como guia para masaje y digitopuntura. suero isotonico: solucion rehidratante casera con sales y azucares naturales. enema de cafe: irrigacion rectal con infusion de cafe para movilizar bilis/toxinas hepaticas y intestinales cuando procede. prankshalana (shank): tecnica de lavado intestinal con agua salada mas movimientos corporales para limpiar el colon por peristalsis inducida. psyllium: fibra mucilaginosa que forma masa para ayudar el arrastre intestinal en ayunos/enemas. biofilm: capa mucosa expulsable que refleja residuos microbianos o mucosidad intestinal. auto‐hemoterapia: practica complementaria que consiste en la reintroduccion de sangre propia (mencionada con precaucion). sun gazing: exposicion ocular/solar progresiva propuesta como practica energizante (requiere precaucion ocular y progresion gradual)."
+    },
+    {
+      "manual_id": "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "course_id": "diplomado-ancestros-y-raices",
+      "course_name": "Diplomado Ancestros y Raíces",
+      "source_title": "Ancestros_y_Raíces_Manual_Clase_1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-ancestros-y-raices/sources/Ancestros_y_Raíces_Manual_Clase_1.txt",
+      "summary": "Material introductorio del diplomado Raíces y Ancestros que presenta al equipo docente y la estructura del curso (6 meses, 96 h, sesiones bimensuales) y centra la primera clase en el genograma como herramienta clave para mapear la historia familiar: quién integra la familia, vínculos legales y biológicos, convivencia, datos demográficos, enfermedades, eventos estresantes y recursos. Señala la importancia de una simbología estandarizada, explica cómo el orden fraterno influye en roles y emociones y enumera temas tr…",
+      "key_points": [
+        "Curso de 6 meses (96 h), sesiones el segundo fin de semana de cada mes; enfoque en sanación transgeneracional y constelaciones familiares.",
+        "El genograma es la herramienta principal para registrar estructura, relaciones, eventos críticos y recursos del sistema familiar.",
+        "La simbología debe ser consistente para facilitar interpretación entre profesionales.",
+        "El análisis incluye composición del hogar y posición fraterna, que condicionan roles, responsabilidades y dinámicas emocionales.",
+        "Temas del diplomado: síndromes ancestrales, dobles (ancestral, espejo, simbólico), tablas transgeneracionales, heredero universal, pactos de vida/muerte, dones y reparación profesional del linaje.",
+        "El genograma incorpora tanto datos biográficos (nacimientos, muertes, matrimonios) como eventos psicosociales (enfermedad, cárcel, deudas, muertes)."
+      ],
+      "key_concepts": [
+        "Genograma: mapa gráfico de la familia y sus relaciones interpersonales y vitales.",
+        "Simbología estandarizada: conjunto de símbolos compartidos para interpretación profesional.",
+        "Constelación fraterna / orden fraterno: posición de cada hijo en la familia y su efecto en la identidad y rol.",
+        "Heredero universal: concepto de transmisión de destinos o cargas en el linaje.",
+        "Síndrome de aniversario: repetición de eventos o crisis en fechas significativas del sistema familiar.",
+        "Doble ancestral / doble espejo / gemelos simbólicos: figuras repetidas en generaciones que reflejan destinos o patrones.",
+        "Tablas y radiestecia transgeneracional: herramientas para detectar y mapear influencias heredadas.",
+        "Reparación del linaje: intervenciones para transformar profesiones, dones y heridas heredadas."
+      ],
+      "glossary": [
+        "Genograma: representación gráfica del árbol familiar que incorpora relaciones, eventos y datos relevantes para la intervención.",
+        "Simbología: signos convencionales usados en el genograma para identificar sexo, relaciones y calidad de vínculo.",
+        "Orden fraterno: posición de un individuo entre sus hermanos que influye en expectativas y comportamiento.",
+        "Síndrome de aniversario: fenómeno por el que sucesos traumáticos tienden a repetirse o reactivarse en fechas concretas.",
+        "Doble ancestral: persona en generaciones previas cuyo destino se repite o se proyecta en un descendiente.",
+        "Heredero universal (en enfoque transgeneracional): quien absorbe cargas, secretos o roles de la familia.",
+        "Tabla transgeneracional: matriz que organiza información heredada para detectar patrones a través de generaciones.",
+        "Radiestecia ancestral (en contexto del curso): uso de técnicas de sensibilidad o diagnóstico para localizar influencias energéticas o simbólicas heredadas."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Recolectar datos básicos",
+          "body": "nombres, fechas de nacimiento/fallecimiento, matrimonios y convivencia actual."
+        },
+        {
+          "title": "Registrar relaciones",
+          "body": "vínculos biológicos y legales (matrimonio, divorcio, adopciones, parejas de hecho)."
+        },
+        {
+          "title": "Anotar subsistemas y hogar",
+          "body": "identificar quién vive en el mismo domicilio y el subsistema fraterno."
+        },
+        {
+          "title": "Incluir eventos relevantes",
+          "body": "enfermedades, muertes, encarcelamientos, deudas, migraciones y otros estresores."
+        },
+        {
+          "title": "Identificar recursos familiares",
+          "body": "apoyos, alianzas, coaliciones y figuras protectoras."
+        },
+        {
+          "title": "Aplicar simbología estandarizada para todos los elementos registrados y documentar la leyenda.",
+          "body": ""
+        },
+        {
+          "title": "Analizar estructura",
+          "body": "revisar composición del hogar y la posición fraterna para inferir roles y cargas emocionales."
+        },
+        {
+          "title": "Extraer hipótesis transgeneracionales",
+          "body": "localizar repeticiones, dobles y patrones que explicarían síntomas actuales y planear intervenciones."
+        }
+      ],
+      "systems": [
+        "emocional_mental"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "rastreo",
+        "sistemico"
+      ],
+      "search_blob": "diplomado ancestros y raices ancestros_y_raices_manual_clase_1 material introductorio del diplomado raices y ancestros que presenta al equipo docente y la estructura del curso (6 meses, 96 h, sesiones bimensuales) y centra la primera clase en el genograma como herramienta clave para mapear la historia familiar: quien integra la familia, vinculos legales y biologicos, convivencia, datos demograficos, enfermedades, eventos estresantes y recursos. senala la importancia de una simbologia estandarizada, explica como el orden fraterno influye en roles y emociones y enumera temas transgeneracionales que se trabajaran durante el diplomado (sindromes, dobles, herencias, pactos, dones y reparacion de linajes). curso de 6 meses (96 h), sesiones el segundo fin de semana de cada mes; enfoque en sanacion transgeneracional y constelaciones familiares. el genograma es la herramienta principal para registrar estructura, relaciones, eventos criticos y recursos del sistema familiar. la simbologia debe ser consistente para facilitar interpretacion entre profesionales. el analisis incluye composicion del hogar y posicion fraterna, que condicionan roles, responsabilidades y dinamicas emocionales. temas del diplomado: sindromes ancestrales, dobles (ancestral, espejo, simbolico), tablas transgeneracionales, heredero universal, pactos de vida/muerte, dones y reparacion profesional del linaje. el genograma incorpora tanto datos biograficos (nacimientos, muertes, matrimonios) como eventos psicosociales (enfermedad, carcel, deudas, muertes). genograma: mapa grafico de la familia y sus relaciones interpersonales y vitales. simbologia estandarizada: conjunto de simbolos compartidos para interpretacion profesional. constelacion fraterna / orden fraterno: posicion de cada hijo en la familia y su efecto en la identidad y rol. heredero universal: concepto de transmision de destinos o cargas en el linaje. sindrome de aniversario: repeticion de eventos o crisis en fechas significativas del sistema familiar. doble ancestral / doble espejo / gemelos simbolicos: figuras repetidas en generaciones que reflejan destinos o patrones. tablas y radiestecia transgeneracional: herramientas para detectar y mapear influencias heredadas. reparacion del linaje: intervenciones para transformar profesiones, dones y heridas heredadas. recolectar datos basicos: nombres, fechas de nacimiento/fallecimiento, matrimonios y convivencia actual. registrar relaciones: vinculos biologicos y legales (matrimonio, divorcio, adopciones, parejas de hecho). anotar subsistemas y hogar: identificar quien vive en el mismo domicilio y el subsistema fraterno. incluir eventos relevantes: enfermedades, muertes, encarcelamientos, deudas, migraciones y otros estresores. identificar recursos familiares: apoyos, alianzas, coaliciones y figuras protectoras. aplicar simbologia estandarizada para todos los elementos registrados y documentar la leyenda. analizar estructura: revisar composicion del hogar y la posicion fraterna para inferir roles y cargas emocionales. extraer hipotesis transgeneracionales: localizar repeticiones, dobles y patrones que explicarian sintomas actuales y planear intervenciones. genograma: representacion grafica del arbol familiar que incorpora relaciones, eventos y datos relevantes para la intervencion. simbologia: signos convencionales usados en el genograma para identificar sexo, relaciones y calidad de vinculo. orden fraterno: posicion de un individuo entre sus hermanos que influye en expectativas y comportamiento. sindrome de aniversario: fenomeno por el que sucesos traumaticos tienden a repetirse o reactivarse en fechas concretas. doble ancestral: persona en generaciones previas cuyo destino se repite o se proyecta en un descendiente. heredero universal (en enfoque transgeneracional): quien absorbe cargas, secretos o roles de la familia. tabla transgeneracional: matriz que organiza informacion heredada para detectar patrones a traves de generaciones. radiestecia ancestral (en contexto del curso): uso de tecnicas de sensibilidad o diagnostico para localizar influencias energeticas o simbolicas heredadas."
+    },
+    {
+      "manual_id": "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "course_id": "diplomado-sanacion-energetica-integral",
+      "course_name": "Diplomado Sanación Energética Integral",
+      "source_title": "Manual_Diplomado_SEI_Módulo_2",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-sanacion-energetica-integral/sources/Manual_Diplomado_SEI_Módulo_2.txt",
+      "summary": "Este módulo aborda cómo el miedo y los conflictos (sentimentales, sistémicos y transgeneracionales) se manifiestan en sensaciones, emociones y síntomas corporales, y enseña procedimientos energéticos prácticos para detectarlos (test muscular), liberarlos (frases de intención + pases de imán, movimientos oculares para trauma) y verificar la remoción; incorpora la idea de nudo psórico/miasmas y modelos de cascada de somatización que conectan creencias, herencia y factores biodinámicos con enfermedad, y recomienda se…",
+      "key_points": [
+        "El miedo es una emoción adaptativa que puede volverse patológica (fobias, TEPT).",
+        "Diferencia entre miedos innatos, aprendidos y propios de etapas infantiles.",
+        "Conflictos sentimentales y sistémicos se somatizan: sensación→emoción→patrón relacional→síntoma.",
+        "La transgeneracionalidad transmite patrones y traumas que pueden requerir identificación en árbol familiar.",
+        "Concepto energético de nudo psórico/miasma como bloqueo emocional con posible origen ancestral.",
+        "Uso sistemático del test muscular como guía diagnóstica energética binaria (sí/no).  \nProtocolos prácticos combinan comando verbal, pases de imán y verificación; algunas liberaciones requieren repetición en días sucesivos o trabajo prolongado.  \nTraumas complejos y TEPT piden técnicas específicas (p. ej. estimulación ocular) y seguimiento programado."
+      ],
+      "key_concepts": [
+        "Miedo adaptativo vs patológico",
+        "Fobia",
+        "Trauma emocional y TEPT",
+        "Nudo psórico / miasma",
+        "Test muscular (kinesiología aplicada)",
+        "Imán (pases energéticos)",
+        "Comando de liberación (frase intencional)",
+        "Rastreo sentimental",
+        "Conflicto sistémico",
+        "Transgeneracionalidad / árbol familiar  \nCascada de somatización (tradicional, transgeneracional, etérica)"
+      ],
+      "glossary": [
+        "Test muscular: respuesta motora guiada que ofrece indicadores binarios para diagnóstico energético.",
+        "Imán (pases): gesto manual energético que acompaña la frase de liberación para disipar carga emocional.",
+        "Comando de liberación: frase intencional dirigida a soltar una emoción, trauma o patrón familiar.",
+        "Nudo psórico: bloqueo energético-emocional entendido como huella miasmática o ancestral.",
+        "Miasma / psora: noción de memoria energética o predisposición heredada que condiciona síntomas.",
+        "Rastreo sentimental: método para localizar y nombrar la emoción dominante en un conflicto amoroso.",
+        "Cascada de somatización: modelo que vincula creencias, biología y ambiente con la aparición de enfermedad.",
+        "Creencia contraria: afirmación reparadora utilizada para reprogramar la respuesta tras la liberación."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Protocolo de identificación",
+          "body": "usar test muscular para determinar presencia de miedo/trauma/conflicto antes de intervenir."
+        },
+        {
+          "title": "Liberación básica",
+          "body": "formular frase de intención para soltar la emoción, aplicar 10 pases de imán, comprobar con test y repetir hasta estabilizar."
+        },
+        {
+          "title": "Protocolo para fobias",
+          "body": "identificar con test, eliminar emociones/traumas relacionados con el comando y luego instalar creencia contraria reforzada varios días."
+        },
+        {
+          "title": "Liberación de trauma/TEPT",
+          "body": "combinar comando de liberación con técnica de movimiento ocular (zig‑zag) y/o 10 pases de imán; verificar y programar seguimiento si persiste."
+        },
+        {
+          "title": "Rastreo sentimental",
+          "body": "detectar emoción vinculada a relación con test, nombrarla y liberar con frase dirigida mientras se aplican pases; repetir si no remite."
+        },
+        {
+          "title": "Protocolo transgeneracional",
+          "body": "explorar tabla genealógica con test, localizar episodio/ancestro implicado, aplicar comando general de liberación sobre la línea familiar y verificar repetidamente."
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "osteomuscular",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "rastreo",
+        "pares",
+        "liberacion",
+        "sistemico",
+        "eft"
+      ],
+      "search_blob": "diplomado sanacion energetica integral manual_diplomado_sei_modulo_2 este modulo aborda como el miedo y los conflictos (sentimentales, sistemicos y transgeneracionales) se manifiestan en sensaciones, emociones y sintomas corporales, y ensena procedimientos energeticos practicos para detectarlos (test muscular), liberarlos (frases de intencion + pases de iman, movimientos oculares para trauma) y verificar la remocion; incorpora la idea de nudo psorico/miasmas y modelos de cascada de somatizacion que conectan creencias, herencia y factores biodinamicos con enfermedad, y recomienda seguimiento y reforzamiento de creencias sanas tras la intervencion. el miedo es una emocion adaptativa que puede volverse patologica (fobias, tept). diferencia entre miedos innatos, aprendidos y propios de etapas infantiles. conflictos sentimentales y sistemicos se somatizan: sensacion→emocion→patron relacional→sintoma. la transgeneracionalidad transmite patrones y traumas que pueden requerir identificacion en arbol familiar. concepto energetico de nudo psorico/miasma como bloqueo emocional con posible origen ancestral. uso sistematico del test muscular como guia diagnostica energetica binaria (si/no). protocolos practicos combinan comando verbal, pases de iman y verificacion; algunas liberaciones requieren repeticion en dias sucesivos o trabajo prolongado. traumas complejos y tept piden tecnicas especificas (p. ej. estimulacion ocular) y seguimiento programado. miedo adaptativo vs patologico fobia trauma emocional y tept nudo psorico / miasma test muscular (kinesiologia aplicada) iman (pases energeticos) comando de liberacion (frase intencional) rastreo sentimental conflicto sistemico transgeneracionalidad / arbol familiar cascada de somatizacion (tradicional, transgeneracional, eterica) protocolo de identificacion: usar test muscular para determinar presencia de miedo/trauma/conflicto antes de intervenir. liberacion basica: formular frase de intencion para soltar la emocion, aplicar 10 pases de iman, comprobar con test y repetir hasta estabilizar. protocolo para fobias: identificar con test, eliminar emociones/traumas relacionados con el comando y luego instalar creencia contraria reforzada varios dias. liberacion de trauma/tept: combinar comando de liberacion con tecnica de movimiento ocular (zig‐zag) y/o 10 pases de iman; verificar y programar seguimiento si persiste. rastreo sentimental: detectar emocion vinculada a relacion con test, nombrarla y liberar con frase dirigida mientras se aplican pases; repetir si no remite. protocolo transgeneracional: explorar tabla genealogica con test, localizar episodio/ancestro implicado, aplicar comando general de liberacion sobre la linea familiar y verificar repetidamente. test muscular: respuesta motora guiada que ofrece indicadores binarios para diagnostico energetico. iman (pases): gesto manual energetico que acompana la frase de liberacion para disipar carga emocional. comando de liberacion: frase intencional dirigida a soltar una emocion, trauma o patron familiar. nudo psorico: bloqueo energetico-emocional entendido como huella miasmatica o ancestral. miasma / psora: nocion de memoria energetica o predisposicion heredada que condiciona sintomas. rastreo sentimental: metodo para localizar y nombrar la emocion dominante en un conflicto amoroso. cascada de somatizacion: modelo que vincula creencias, biologia y ambiente con la aparicion de enfermedad. creencia contraria: afirmacion reparadora utilizada para reprogramar la respuesta tras la liberacion."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 1 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_1.txt",
+      "summary": "Material integrador que articula un enfoque psicosomático‑bioenergético para las afecciones respiratorias: plantea la enfermedad como adaptación conflictual (aguda o por saturación), propone una evaluación conflictológica y somatotópica que relaciona síntomas con niveles anatómicos y agentes microbianos, y ofrece un arsenal práctico (pares biomagnéticos, digitopuntura, auriculoterapia, acupuntura, homeopatía, Flores de Bach, Sales de Schüssler, medidas naturistas e indicaciones de derivación) para liberar la carga,",
+      "key_points": [
+        "Enfoque holístico: enfermedad = adaptación conflictual que requiere identificar y liberar la causa emocional/energética.",
+        "Dos modalidades de conflicto: psicoshock (evento agudo) y saturación acumulada (cronicidad).",
+        "Terapia en tres fases: historia conflictológica (consciente), rastreo/inventario inconsciente, ajuste bioenergético y psicoemocional.",
+        "Mapa funcional respiratorio: olfato→mucosa→faringe→laringe→tráquea→bronquios→alveolos para situar significado emocional y gravedad clínica.",
+        "Moco/tos = defensa pasiva; broncoespasmo = defensa activa; alveolos aluden a miedo a la hipoxia e intercambio afectivo.",
+        "Inventario microbiano amplio (79 agentes) y mapas somatotópicos para orientar sospechas y puntos biomagnéticos/diagnóstico energético. \",\"Pares biomagnéticos: herramienta práctica"
+      ],
+      "key_concepts": [
+        "Todo es energía y ritmo; mente modifica ritmos corporales",
+        "Masa conflictual: carga psicosomática acumulada",
+        "Homeostasis: capacidad restauradora del organismo",
+        "Umbral de tolerancia psíquica: paso de agudo a crónico",
+        "Espacio vital/territorio (metáfora para bronquios/tráquea)",
+        "Protección pasiva (mucosa, tos) vs activa (musculatura bronquial)",
+        "Reservorio anatómico: foco corporal persistente de microbio",
+        "Somatotopía microbio→sitio→síntoma",
+        "Pares biomagnéticos y lateralidad (HomoLAT/ContraLAT/RAS)",
+        "Dinámica homeopática: dilución/dinamización (ej. 6D)"
+      ],
+      "glossary": [
+        "Psicoshock: conflicto intenso y súbito que precipita síntoma",
+        "Saturación conflictiva: acumulación de conflictos similares que superan el umbral de tolerancia",
+        "Masa conflictual: carga psicosomática acumulada que mantiene la sintomatología",
+        "Pares biomagnéticos: parejas de puntos corporales usadas en diagnóstico/terapia energética",
+        "Digitopuntura: presión con dedos en puntos de acupuntura",
+        "Reservorio anatómico: tejido donde persiste un microbio",
+        "Bronquio: vía aérea que protege el espacio vital",
+        "Alveolo: unidad de intercambio gaseoso; vínculo con sensación de oxigenación/hipoxia emocionalmente relevante; Broncosp…"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Fase 1 (anamnesis)",
+          "body": "historia conflictológica detallada; mapear inicio, contexto emocional y nivel anatómico afectado."
+        },
+        {
+          "title": "Fase 2 (rastreo)",
+          "body": "inventario de conflictos y uso de pares biomagnéticos para localizar puntos y lateralidad; evaluar masa conflictual para distinguir agudo vs crónico."
+        },
+        {
+          "title": "Fase 3 (ajuste)",
+          "body": "intervenciones bioenergéticas combinadas (pares biomagnéticos, digitopuntura, auriculoterapia, acupuntura) + apoyo emocional (Flores de Bach, trabajo de duelo, ps-"
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "osteomuscular",
+        "cardiovascular",
+        "digestivo",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "bioenergetico",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 1 — diplomado terapia holistica 1 material integrador que articula un enfoque psicosomatico‐bioenergetico para las afecciones respiratorias: plantea la enfermedad como adaptacion conflictual (aguda o por saturacion), propone una evaluacion conflictologica y somatotopica que relaciona sintomas con niveles anatomicos y agentes microbianos, y ofrece un arsenal practico (pares biomagneticos, digitopuntura, auriculoterapia, acupuntura, homeopatia, flores de bach, sales de schussler, medidas naturistas e indicaciones de derivacion) para liberar la carga, enfoque holistico: enfermedad = adaptacion conflictual que requiere identificar y liberar la causa emocional/energetica. dos modalidades de conflicto: psicoshock (evento agudo) y saturacion acumulada (cronicidad). terapia en tres fases: historia conflictologica (consciente), rastreo/inventario inconsciente, ajuste bioenergetico y psicoemocional. mapa funcional respiratorio: olfato→mucosa→faringe→laringe→traquea→bronquios→alveolos para situar significado emocional y gravedad clinica. moco/tos = defensa pasiva; broncoespasmo = defensa activa; alveolos aluden a miedo a la hipoxia e intercambio afectivo. inventario microbiano amplio (79 agentes) y mapas somatotopicos para orientar sospechas y puntos biomagneticos/diagnostico energetico. \",\"pares biomagneticos: herramienta practica todo es energia y ritmo; mente modifica ritmos corporales masa conflictual: carga psicosomatica acumulada homeostasis: capacidad restauradora del organismo umbral de tolerancia psiquica: paso de agudo a cronico espacio vital/territorio (metafora para bronquios/traquea) proteccion pasiva (mucosa, tos) vs activa (musculatura bronquial) reservorio anatomico: foco corporal persistente de microbio somatotopia microbio→sitio→sintoma pares biomagneticos y lateralidad (homolat/contralat/ras) dinamica homeopatica: dilucion/dinamizacion (ej. 6d) fase 1 (anamnesis): historia conflictologica detallada; mapear inicio, contexto emocional y nivel anatomico afectado. fase 2 (rastreo): inventario de conflictos y uso de pares biomagneticos para localizar puntos y lateralidad; evaluar masa conflictual para distinguir agudo vs cronico. fase 3 (ajuste): intervenciones bioenergeticas combinadas (pares biomagneticos, digitopuntura, auriculoterapia, acupuntura) + apoyo emocional (flores de bach, trabajo de duelo, ps- psicoshock: conflicto intenso y subito que precipita sintoma saturacion conflictiva: acumulacion de conflictos similares que superan el umbral de tolerancia masa conflictual: carga psicosomatica acumulada que mantiene la sintomatologia pares biomagneticos: parejas de puntos corporales usadas en diagnostico/terapia energetica digitopuntura: presion con dedos en puntos de acupuntura reservorio anatomico: tejido donde persiste un microbio bronquio: via aerea que protege el espacio vital alveolo: unidad de intercambio gaseoso; vinculo con sensacion de oxigenacion/hipoxia emocionalmente relevante; broncosp..."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 2 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_2.txt",
+      "summary": "Módulo práctico sobre el sistema digestivo desde anatomía funcional y psicosomática (mapa conflicto→órgano) integrado con diagnóstico energético y etiológico (bacterias, virus, hongos, parásitos), uso de pares biomagnéticos/holobiomagnéticos, técnicas vibracionales y recursos complementarios (auriculoterapia, Flores de Bach, sales de Schüssler, homeopatía). Enseña rastreo sistemático: identificar conflicto emocional y grado, localizar reservorio microbiano y seleccionar herramienta terapéutica o derivación médica.",
+      "key_points": [
+        "Sistema digestivo: segmentos anatómicos (boca→esófago→estómago→intestino→colon) con funciones mecánicas y enzimáticas.",
+        "Psicosomática: 'el bocado' (aceptar/rechazar) y conflictos temáticos (vileza, rechazo, territorio, identidad, miedo) vinculados a segmentos concretos.",
+        "Mapa intestinal: cada tramo del colon tiene matices emocionales distintos (ascendente, transverso, descendente, sigmoides/recto).",
+        "Peritoneo y saco de Douglas: simbolizan miedo profundo y protección visceral en procesos agudos/crónicos.",
+        "Catálogo microbiano: listados de bacterias, virus, hongos y parásitos con reservorios anatómicos y manifestaciones locales/sistémicas.",
+        "Pares biomagnéticos: parejas punto–punto u órgano–órgano usadas para localizar y modular reservorios microbianos (lateralidad incluida)."
+      ],
+      "key_concepts": [
+        "Bocado (metáfora psicosomática)",
+        "Peristaltismo y mucosa protectora",
+        "Vileza (conflicto central colónico)",
+        "Reservorio anatómico (foco persistente)",
+        "Par biomagnético (diagnóstico/terapia)",
+        "Rastreo conflictológico (niveles 1–5)",
+        "Holobiomagnetismo y biomagnetismo",
+        "Mapas somatotópicos auriculares",
+        "Flores de Bach y sales de Schüssler como soporte emocional/mineral",
+        "Organotropismo microbiano (tropismo)"
+      ],
+      "glossary": [
+        "Peristaltismo: ondas musculares que desplazan el contenido digestivo.",
+        "Peritoneo: membrana que envuelve vísceras; reacciona ante agresión y miedo profundo.",
+        "Píloro/Cardias: esfínteres de salida/entrada gástrica con simbolismo de vigilancia/puerta.",
+        "Reservorio: órgano o tejido donde persiste un agente infeccioso.",
+        "Par biomagnético: pareja de puntos/órganos usada en terapia magnética.",
+        "Vileza: sensación de suciedad moral/física ligada a conflictos colónicos.",
+        "Rastreo conflictológico: evaluación por regiones digestivas con graduación 1–5.",
+        "Shen Men: punto auricular regulador para calma y preparación de la sesión."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Presentar objetivo funcional del sistema y distinguir digestión mecánica vs química en la clase inicial.",
+          "body": ""
+        },
+        {
+          "title": "Rastreo psicosomático",
+          "body": "preguntar tema emocional (vileza/territorio/rechazo/etc.), asignar grado 1–5 y mapear al segmento digestivo correspondiente."
+        },
+        {
+          "title": "Evaluación microbiana",
+          "body": "si hay sospecha, identificar tipo (bacteria/virus/hongo/parásito), localizar reservorio y comprobar signos sistémicos."
+        },
+        {
+          "title": "Pares biomagnéticos",
+          "body": "localizar pareja según tabla, verificar lateralidad, palpar reservorio y colocar imanes siguiendo criterio local/general."
+        },
+        {
+          "title": "Holobiomagnético/vibracional",
+          "body": "combinar pares magnéticos con remedios homeopáticos, esencias florales o sales según rastreo vibracional."
+        },
+        {
+          "title": "Bioenergético/auricular",
+          "body": "empezar por Shen Men, localizar puntos específicos (estómago, colon, píloro, puntos dentales) y decidir sedar/tonificar."
+        },
+        {
+          "title": "Intervención clínica y derivación",
+          "body": "derivar a consulta médica ante fiebre, signos de sepsis, sangrado, compromiso neurológico o sospecha de cisticercosis/lesión orgánica."
+        },
+        {
+          "title": "Registro docente",
+          "body": "documentar conflicto, grado, órgano afectado, microbio sospechado, par biomagnético aplicado y respuesta clínica en cada sesión."
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "neurosensorial",
+        "emocional_mental",
+        "osteomuscular",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "bioenergetico",
+        "pares",
+        "sistemico",
+        "liberacion"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 2 — diplomado terapia holistica 1 modulo practico sobre el sistema digestivo desde anatomia funcional y psicosomatica (mapa conflicto→organo) integrado con diagnostico energetico y etiologico (bacterias, virus, hongos, parasitos), uso de pares biomagneticos/holobiomagneticos, tecnicas vibracionales y recursos complementarios (auriculoterapia, flores de bach, sales de schussler, homeopatia). ensena rastreo sistematico: identificar conflicto emocional y grado, localizar reservorio microbiano y seleccionar herramienta terapeutica o derivacion medica. sistema digestivo: segmentos anatomicos (boca→esofago→estomago→intestino→colon) con funciones mecanicas y enzimaticas. psicosomatica: 'el bocado' (aceptar/rechazar) y conflictos tematicos (vileza, rechazo, territorio, identidad, miedo) vinculados a segmentos concretos. mapa intestinal: cada tramo del colon tiene matices emocionales distintos (ascendente, transverso, descendente, sigmoides/recto). peritoneo y saco de douglas: simbolizan miedo profundo y proteccion visceral en procesos agudos/cronicos. catalogo microbiano: listados de bacterias, virus, hongos y parasitos con reservorios anatomicos y manifestaciones locales/sistemicas. pares biomagneticos: parejas punto-punto u organo-organo usadas para localizar y modular reservorios microbianos (lateralidad incluida). bocado (metafora psicosomatica) peristaltismo y mucosa protectora vileza (conflicto central colonico) reservorio anatomico (foco persistente) par biomagnetico (diagnostico/terapia) rastreo conflictologico (niveles 1-5) holobiomagnetismo y biomagnetismo mapas somatotopicos auriculares flores de bach y sales de schussler como soporte emocional/mineral organotropismo microbiano (tropismo) presentar objetivo funcional del sistema y distinguir digestion mecanica vs quimica en la clase inicial. rastreo psicosomatico: preguntar tema emocional (vileza/territorio/rechazo/etc.), asignar grado 1-5 y mapear al segmento digestivo correspondiente. evaluacion microbiana: si hay sospecha, identificar tipo (bacteria/virus/hongo/parasito), localizar reservorio y comprobar signos sistemicos. pares biomagneticos: localizar pareja segun tabla, verificar lateralidad, palpar reservorio y colocar imanes siguiendo criterio local/general. holobiomagnetico/vibracional: combinar pares magneticos con remedios homeopaticos, esencias florales o sales segun rastreo vibracional. bioenergetico/auricular: empezar por shen men, localizar puntos especificos (estomago, colon, piloro, puntos dentales) y decidir sedar/tonificar. intervencion clinica y derivacion: derivar a consulta medica ante fiebre, signos de sepsis, sangrado, compromiso neurologico o sospecha de cisticercosis/lesion organica. registro docente: documentar conflicto, grado, organo afectado, microbio sospechado, par biomagnetico aplicado y respuesta clinica en cada sesion. peristaltismo: ondas musculares que desplazan el contenido digestivo. peritoneo: membrana que envuelve visceras; reacciona ante agresion y miedo profundo. piloro/cardias: esfinteres de salida/entrada gastrica con simbolismo de vigilancia/puerta. reservorio: organo o tejido donde persiste un agente infeccioso. par biomagnetico: pareja de puntos/organos usada en terapia magnetica. vileza: sensacion de suciedad moral/fisica ligada a conflictos colonicos. rastreo conflictologico: evaluacion por regiones digestivas con graduacion 1-5. shen men: punto auricular regulador para calma y preparacion de la sesion."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual_del_Módulo_3 — Psicosomática y abordaje alimentario",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_3.txt",
+      "summary": "Módulo que integra una lectura psicosomática de los trastornos de la conducta alimentaria (anorexia, bulimia, sobrepeso) con herramientas de evaluación clínica, protocolos terapéuticos (psicoeducación, técnicas simbólico‑conductuales, biomagnetismo y digitopresión) y propuestas prácticas de alimentación vegetal; organiza los conflictos en bloques relacionados con la función materna, la simbólica nutricional y la imagen/proyecto, y ofrece recetas y protocolos nutricionales para intervención práctica.",
+      "key_points": [
+        "IMC como herramienta básica: cálculo y registro en consulta.",
+        "Impronta oral: primera asociación alimento‑seguridad que condiciona la relación con la comida.",
+        "Diferencia nutrición afectiva vs orgánica: carencias tempranas aumentan riesgo de trastorno.",
+        "Bulimia y anorexia como polos de un mismo conflicto psíquico que pueden alternar.",
+        "Inversión emocional: emoción no satisfecha simbolizada por la conducta alimentaria.",
+        "Evaluar hasta 35 factores psicoemocionales (apego, culpa, duelos, fusión, perinatales)."
+      ],
+      "key_concepts": [
+        "IMC (Índice de Masa Corporal)",
+        "Impronta oral",
+        "Nutrición afectiva",
+        "Nutrición orgánica",
+        "Inversión psicológica",
+        "Fusión adulto‑bebé",
+        "Programas de 'amor tóxico'",
+        "Pares biomagnéticos",
+        "Periodo semilla (registro perinatal/duelos)",
+        "Conflictos A/B/C (materna/nutricional/imagen)"
+      ],
+      "glossary": [
+        "IMC: índice que relaciona peso y estatura para clasificar rango corporal.",
+        "Impronta oral: huella temprana que vincula la boca con seguridad y afecto.",
+        "Nutrición afectiva: cuidado emocional recibido que modela la relación con la comida.",
+        "Inversión: reacción opuesta que sustituye una necesidad afectiva insatisfecha.",
+        "Fusión: indistinción entre necesidades infantiles y decisiones adultas.",
+        "Par biomagnético: emparejamiento de polos magnéticos aplicado a puntos anatómicos con fines terapéuticos.",
+        "Periodo semilla: etapa perinatal/preconcepcional donde se registran duelos o programas tempranos.",
+        "Overnight oats: avena remojada en líquido para textura suave sin cocción prolongada."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Calcular y documentar IMC (kg/m²) en primera consulta; usar ejemplo práctico para explicar.",
+          "body": ""
+        },
+        {
+          "title": "Historia temprana",
+          "body": "indagar lactancia, cuidados, vivencias perinatales y percepción del deseo/aceptación parental."
+        },
+        {
+          "title": "Evaluación ampliada",
+          "body": "mapear factores clave (nutrición afectiva, culpa, duelos bloqueados, fusión, conflictos de imagen)."
+        },
+        {
+          "title": "Identificar gatillo actual, nivel de ansiedad y forma de descarga (atracón, restricción, sedentarismo).",
+          "body": ""
+        },
+        {
+          "title": "Intervención en 4 pasos",
+          "body": "informar al paciente, evidenciar la relación simbólica, promover toma de conciencia, activar acción adulta responsable."
+        },
+        {
+          "title": "Técnicas simbólico‑conductuales",
+          "body": "psicoeducación sobre simbolismo alimento/afecto y ejercicios de separación de roles infantiles."
+        },
+        {
+          "title": "Protocolo biomagnético básico",
+          "body": "1) definir objetivo corporal (p. ej. reducir grasa localizada), 2) seleccionar pares biomagnéticos a impactar, 3) decidir frecuencia/ritmo del campo,"
+        },
+        {
+          "title": "Digitopresión",
+          "body": "elegir puntos para tonificar o sedar según objetivo y aplicarla en secuencia prescrita (comando terapéutico corto)."
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "cardiovascular",
+        "digestivo",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "bioenergetico",
+        "pares",
+        "liberacion",
+        "rastreo",
+        "patogenos",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual_del_modulo_3 — psicosomatica y abordaje alimentario modulo que integra una lectura psicosomatica de los trastornos de la conducta alimentaria (anorexia, bulimia, sobrepeso) con herramientas de evaluacion clinica, protocolos terapeuticos (psicoeducacion, tecnicas simbolico‐conductuales, biomagnetismo y digitopresion) y propuestas practicas de alimentacion vegetal; organiza los conflictos en bloques relacionados con la funcion materna, la simbolica nutricional y la imagen/proyecto, y ofrece recetas y protocolos nutricionales para intervencion practica. imc como herramienta basica: calculo y registro en consulta. impronta oral: primera asociacion alimento‐seguridad que condiciona la relacion con la comida. diferencia nutricion afectiva vs organica: carencias tempranas aumentan riesgo de trastorno. bulimia y anorexia como polos de un mismo conflicto psiquico que pueden alternar. inversion emocional: emocion no satisfecha simbolizada por la conducta alimentaria. evaluar hasta 35 factores psicoemocionales (apego, culpa, duelos, fusion, perinatales). imc (indice de masa corporal) impronta oral nutricion afectiva nutricion organica inversion psicologica fusion adulto‐bebe programas de 'amor toxico' pares biomagneticos periodo semilla (registro perinatal/duelos) conflictos a/b/c (materna/nutricional/imagen) calcular y documentar imc (kg/m2) en primera consulta; usar ejemplo practico para explicar. historia temprana: indagar lactancia, cuidados, vivencias perinatales y percepcion del deseo/aceptacion parental. evaluacion ampliada: mapear factores clave (nutricion afectiva, culpa, duelos bloqueados, fusion, conflictos de imagen). identificar gatillo actual, nivel de ansiedad y forma de descarga (atracon, restriccion, sedentarismo). intervencion en 4 pasos: informar al paciente, evidenciar la relacion simbolica, promover toma de conciencia, activar accion adulta responsable. tecnicas simbolico‐conductuales: psicoeducacion sobre simbolismo alimento/afecto y ejercicios de separacion de roles infantiles. protocolo biomagnetico basico: 1) definir objetivo corporal (p. ej. reducir grasa localizada), 2) seleccionar pares biomagneticos a impactar, 3) decidir frecuencia/ritmo del campo, digitopresion: elegir puntos para tonificar o sedar segun objetivo y aplicarla en secuencia prescrita (comando terapeutico corto). imc: indice que relaciona peso y estatura para clasificar rango corporal. impronta oral: huella temprana que vincula la boca con seguridad y afecto. nutricion afectiva: cuidado emocional recibido que modela la relacion con la comida. inversion: reaccion opuesta que sustituye una necesidad afectiva insatisfecha. fusion: indistincion entre necesidades infantiles y decisiones adultas. par biomagnetico: emparejamiento de polos magneticos aplicado a puntos anatomicos con fines terapeuticos. periodo semilla: etapa perinatal/preconcepcional donde se registran duelos o programas tempranos. overnight oats: avena remojada en liquido para textura suave sin coccion prolongada."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 4 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_4.txt",
+      "summary": "Fragmentos del módulo 4 integran fundamentos endocrinos (hipotálamo‑hipófisis y principales glándulas), fisiología energética y metabolismo de la glucosa, psicosomática ligada a órganos (páncreas, suprarrenales, tiroides, etc.), y protocolos terapéuticos holísticos que combinan diagnóstico somático/energético (pares biomagnéticos, lateralidad, puntos RAS, auriculoterapia) con manejo nutricional (LCHF, ayuno intermitente), farmacológico cuando corresponde y abordaje emocional dirigido a los conflictos asociados a gl",
+      "key_points": [
+        "Sistema endocrino regula metabolismo, crecimiento, reproducción y adaptación mediante hormonas.",
+        "Hipotálamo‑hipófisis conecta emociones y homeostasis; eje central en retroalimentación hormonal.",
+        "Glándulas clave: tiroides, paratiroides, suprarrenales, páncreas y gónadas; cada una tiene conflictos psicosomáticos específicos.",
+        "Metabolismo de glucosa: ATP inmediato, almacenamiento en glucógeno (hígado/músculo) y triglicéridos a largo plazo.",
+        "Insulina y glucagón mantienen glucemia; diabetes diagnóstica clínica (≥126 mg/dl en ayunas) y diferencia con 'diabetes falsa' energética/infecciosa.",
+        "Páncreas procesa alimentos y emociones ('bocado tóxico'); suprarrenales gestionan estrés (cortisol, aldosterona, catecolaminas)."
+      ],
+      "key_concepts": [
+        "Retroalimentación hormonal (feedback) entre glándulas y receptores",
+        "Eje hipotálamo‑hipófisis como puente nervioso‑endocrino",
+        "Insulina vs glucagón: regulación de glucemia, glucogenólisis y gluconeogénesis",
+        "Almacenamiento energético: glucógeno y lipogénesis (triglicéridos)",
+        "Hormonas de estrés: cortisol, aldosterona y catecolaminas",
+        "Psicosomática: conflictos emocionales específicos asociados a cada glándula",
+        "Pares biomagnéticos y lateralidad (RAS/contralateral) para diagnóstico/terapia energética",
+        "Distinción clínica entre diabetes 'verdadera' (fallo insulínico) y 'diabetes falsa' (bloqueos/infecciones/pairs)",
+        "Auriculoterapia/endocrina y puntos RAS como herramientas regulatorias"
+      ],
+      "glossary": [
+        "Hormona: mensajero químico liberado al torrente sanguíneo que regula funciones celulares",
+        "Retroalimentación (feedback): mecanismo de control entre glándulas y receptores para mantener equilibrio",
+        "T3/T4: hormonas tiroideas que regulan metabolismo y crecimiento",
+        "TSH: hormona hipofisaria que estimula la tiroides",
+        "Insulina: hormona que facilita la entrada de glucosa y su almacenamiento",
+        "Glucagón: hormona que moviliza glucosa desde reservas (glucógeno)",
+        "ATP: moneda energética celular de vida corta producida por la oxidación de glucosa",
+        "Glucógeno: forma de almacenamiento rápido de glucosa en hígado y músculo; triglicéridos: reserva energética a largo plaz"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Enseñar ubicación y función de cada glándula con esquemas sencillos y ejemplos clínicos.",
+          "body": ""
+        },
+        {
+          "title": "Relacionar síntomas físicos con posibles desequilibrios hormonales y mapear conflicto psicosomático asociado.",
+          "body": ""
+        },
+        {
+          "title": "Diagnóstico de diabetes",
+          "body": "confirmar glucemia en ayunas ≥126 mg/dl en muestreos repetidos y monitorizar HbA1c."
+        },
+        {
+          "title": "Comprobar pares biomagnéticos bilateralmente; determinar lateralidad (RAS/contralat) y polaridad (normal/inv) antes de aplicar imanes.",
+          "body": ""
+        },
+        {
+          "title": "Evaluar signo/síntoma somático (dolor, pérdida de peso, fatiga) junto con historia emocional para páncreas y suprarrenales.",
+          "body": ""
+        },
+        {
+          "title": "Protocolizar intervenciones nutricionales",
+          "body": "eliminar fructosa y ultraprocesados; priorizar LCHF y alimentos enteros; programar ayuno intermitente progresivo con supervisión médica."
+        },
+        {
+          "title": "Usar ACTH auricular, acupuntura y homeopatía como complementos en estados inflamatorios crónicos y agotamiento suprarrenal.",
+          "body": ""
+        },
+        {
+          "title": "Si hay alteraciones neurológicas/conductuales, investigar metales pesados y reservorios infecciosos; tratar flora alterada cuando sea indicado.",
+          "body": ""
+        }
+      ],
+      "systems": [
+        "neurosensorial",
+        "emocional_mental",
+        "osteomuscular",
+        "endocrino_metabolico",
+        "renal_excretor",
+        "digestivo",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "pares",
+        "rastreo",
+        "patogenos",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 4 — diplomado terapia holistica 1 fragmentos del modulo 4 integran fundamentos endocrinos (hipotalamo‐hipofisis y principales glandulas), fisiologia energetica y metabolismo de la glucosa, psicosomatica ligada a organos (pancreas, suprarrenales, tiroides, etc.), y protocolos terapeuticos holisticos que combinan diagnostico somatico/energetico (pares biomagneticos, lateralidad, puntos ras, auriculoterapia) con manejo nutricional (lchf, ayuno intermitente), farmacologico cuando corresponde y abordaje emocional dirigido a los conflictos asociados a gl sistema endocrino regula metabolismo, crecimiento, reproduccion y adaptacion mediante hormonas. hipotalamo‐hipofisis conecta emociones y homeostasis; eje central en retroalimentacion hormonal. glandulas clave: tiroides, paratiroides, suprarrenales, pancreas y gonadas; cada una tiene conflictos psicosomaticos especificos. metabolismo de glucosa: atp inmediato, almacenamiento en glucogeno (higado/musculo) y trigliceridos a largo plazo. insulina y glucagon mantienen glucemia; diabetes diagnostica clinica (≥126 mg/dl en ayunas) y diferencia con 'diabetes falsa' energetica/infecciosa. pancreas procesa alimentos y emociones ('bocado toxico'); suprarrenales gestionan estres (cortisol, aldosterona, catecolaminas). retroalimentacion hormonal (feedback) entre glandulas y receptores eje hipotalamo‐hipofisis como puente nervioso‐endocrino insulina vs glucagon: regulacion de glucemia, glucogenolisis y gluconeogenesis almacenamiento energetico: glucogeno y lipogenesis (trigliceridos) hormonas de estres: cortisol, aldosterona y catecolaminas psicosomatica: conflictos emocionales especificos asociados a cada glandula pares biomagneticos y lateralidad (ras/contralateral) para diagnostico/terapia energetica distincion clinica entre diabetes 'verdadera' (fallo insulinico) y 'diabetes falsa' (bloqueos/infecciones/pairs) auriculoterapia/endocrina y puntos ras como herramientas regulatorias ensenar ubicacion y funcion de cada glandula con esquemas sencillos y ejemplos clinicos. relacionar sintomas fisicos con posibles desequilibrios hormonales y mapear conflicto psicosomatico asociado. diagnostico de diabetes: confirmar glucemia en ayunas ≥126 mg/dl en muestreos repetidos y monitorizar hba1c. comprobar pares biomagneticos bilateralmente; determinar lateralidad (ras/contralat) y polaridad (normal/inv) antes de aplicar imanes. evaluar signo/sintoma somatico (dolor, perdida de peso, fatiga) junto con historia emocional para pancreas y suprarrenales. protocolizar intervenciones nutricionales: eliminar fructosa y ultraprocesados; priorizar lchf y alimentos enteros; programar ayuno intermitente progresivo con supervision medica. usar acth auricular, acupuntura y homeopatia como complementos en estados inflamatorios cronicos y agotamiento suprarrenal. si hay alteraciones neurologicas/conductuales, investigar metales pesados y reservorios infecciosos; tratar flora alterada cuando sea indicado. hormona: mensajero quimico liberado al torrente sanguineo que regula funciones celulares retroalimentacion (feedback): mecanismo de control entre glandulas y receptores para mantener equilibrio t3/t4: hormonas tiroideas que regulan metabolismo y crecimiento tsh: hormona hipofisaria que estimula la tiroides insulina: hormona que facilita la entrada de glucosa y su almacenamiento glucagon: hormona que moviliza glucosa desde reservas (glucogeno) atp: moneda energetica celular de vida corta producida por la oxidacion de glucosa glucogeno: forma de almacenamiento rapido de glucosa en higado y musculo; trigliceridos: reserva energetica a largo plaz"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 5 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_5.txt",
+      "summary": "Síntesis pedagógica que integra anatomía y fisiología cardiovascular con una propuesta psicosomática y prácticas terapéuticas: describe estructura y control cardíaco, mapea significados emocionales por tejido vascular (miocardio, válvulas, arterias, venas, ritmo, membranas), relaciona conflictos (territorio, desvalorización, retorno, toxicidad, sexualidad) con lesiones clínicas, aporta correlaciones microbianas y reservorios anatómicos, y ofrece protocolos prácticos de evaluación (físicos y conflictológicos), dete­",
+      "key_points": [
+        "Corazón: bomba con cuatro cámaras, tres capas y doble circulación (pulmonar/sistémica).",
+        "Control cardíaco: intrínseco y autónomo (vago/simpático); baro y quimiorreceptores regulan respuesta.",
+        "Psicosomática: cada tejido vascular tiene un tema emocional recurrente (territorio, desvalorización, retorno, toxicidad, sexualidad).",
+        "Coronarias: conflictos de pérdida/defensa de territorio vinculados a angina, isquemia y arritmia; fases activo/solución cruciales.",
+        "Patologías venosas y de retorno asociadas a conflictos maternos/retorno al hogar; púrpura y problemas inmunes ligados a retención/contención.",
+        "Mapa microbiano: asociaciones reservorio→agente→síntoma para orientar sospecha clínica y pruebas microbiológicas. \",\"Terapias complementarias: protocolos homeopáticos de urgencia/"
+      ],
+      "key_concepts": [
+        "Sístole/diástole",
+        "Perfusión coronaria",
+        "Vagotonía vs simpaticotonía",
+        "Desvalorización psicosomática",
+        "Territorio/retorno parental",
+        "Ectodermo/endotelio/mesotelio (matices psíquicos)",
+        "Reservorio anatómico (microbios)",
+        "Señal bioenergética / impactar / emparejar",
+        "Simillimum (homeopatía)",
+        "CH (potencia centesimal)"
+      ],
+      "glossary": [
+        "Pericardio: membrana que rodea y lubrica el corazón.",
+        "Miocardio: músculo cardíaco encargado de la contracción.",
+        "Endocardio: revestimiento interno de las cavidades cardiacas.",
+        "Aurícula: cámara superior receptora de sangre.",
+        "Ventrículo: cámara inferior de expulsión sanguínea.",
+        "Arterias coronarias: vasos que nutren el corazón.",
+        "Endotelio: capa interna vascular, ligada a contacto/separación.",
+        "Reservorio anatómico: sitio corporal donde persiste un agente infeccioso o bioenergético.\" ]} Worcestershire truncated}”"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Ejercicio práctico",
+          "body": "mapear flujo sanguíneo y perfusión coronaria con diagrama y recorrido venoso→corazón→pulmón→aorta."
+        },
+        {
+          "title": "Auscultación",
+          "body": "enseñar localización de 1.º y 2.º ruidos y modelado de válvulas para identificar soplos."
+        },
+        {
+          "title": "Pulso y ejercicio",
+          "body": "medir pulso en reposo y tras esfuerzo para explicar sístole/diástole y respuesta autonómica."
+        },
+        {
+          "title": "Test vagal",
+          "body": "ejercicios respiratorios guiados para demostrar efecto del nervio vago sobre la FC."
+        },
+        {
+          "title": "Entrevista conflictológica",
+          "body": "recoger frase literal del paciente, localizar lesión y clasificar según sistema vascular (miocardio/válvulas/arterias/venas/ritmo/membranas)."
+        },
+        {
+          "title": "Coronarias",
+          "body": "determinar fase (activo=riesgo con esfuerzo; solución=riesgo en reposo) y evaluar factores coadyuvantes (grasas, embolia, espasmo)."
+        },
+        {
+          "title": "Microbiología clínica",
+          "body": "anamnesis de reservorios, vacunas y hospitalizaciones; solicitar cultivos/serología/PCR según sospecha; diferenciar imagen/biopsia si se sospecha tumor."
+        },
+        {
+          "title": "Bioenergética",
+          "body": "rastrear señal en puntos reservorio; si no aparece, 'impactar' el punto y emparejar piernas (Par Goiz o Pineal‑Sacro). Registrar reservorios positivos para plan. \""
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "osteomuscular",
+        "reproductor",
+        "cardiovascular",
+        "digestivo",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "bioenergetico",
+        "pares",
+        "sistemico",
+        "liberacion"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 5 — diplomado terapia holistica 1 sintesis pedagogica que integra anatomia y fisiologia cardiovascular con una propuesta psicosomatica y practicas terapeuticas: describe estructura y control cardiaco, mapea significados emocionales por tejido vascular (miocardio, valvulas, arterias, venas, ritmo, membranas), relaciona conflictos (territorio, desvalorizacion, retorno, toxicidad, sexualidad) con lesiones clinicas, aporta correlaciones microbianas y reservorios anatomicos, y ofrece protocolos practicos de evaluacion (fisicos y conflictologicos), dete­ corazon: bomba con cuatro camaras, tres capas y doble circulacion (pulmonar/sistemica). control cardiaco: intrinseco y autonomo (vago/simpatico); baro y quimiorreceptores regulan respuesta. psicosomatica: cada tejido vascular tiene un tema emocional recurrente (territorio, desvalorizacion, retorno, toxicidad, sexualidad). coronarias: conflictos de perdida/defensa de territorio vinculados a angina, isquemia y arritmia; fases activo/solucion cruciales. patologias venosas y de retorno asociadas a conflictos maternos/retorno al hogar; purpura y problemas inmunes ligados a retencion/contencion. mapa microbiano: asociaciones reservorio→agente→sintoma para orientar sospecha clinica y pruebas microbiologicas. \",\"terapias complementarias: protocolos homeopaticos de urgencia/ sistole/diastole perfusion coronaria vagotonia vs simpaticotonia desvalorizacion psicosomatica territorio/retorno parental ectodermo/endotelio/mesotelio (matices psiquicos) reservorio anatomico (microbios) senal bioenergetica / impactar / emparejar simillimum (homeopatia) ch (potencia centesimal) ejercicio practico: mapear flujo sanguineo y perfusion coronaria con diagrama y recorrido venoso→corazon→pulmon→aorta. auscultacion: ensenar localizacion de 1.o y 2.o ruidos y modelado de valvulas para identificar soplos. pulso y ejercicio: medir pulso en reposo y tras esfuerzo para explicar sistole/diastole y respuesta autonomica. test vagal: ejercicios respiratorios guiados para demostrar efecto del nervio vago sobre la fc. entrevista conflictologica: recoger frase literal del paciente, localizar lesion y clasificar segun sistema vascular (miocardio/valvulas/arterias/venas/ritmo/membranas). coronarias: determinar fase (activo=riesgo con esfuerzo; solucion=riesgo en reposo) y evaluar factores coadyuvantes (grasas, embolia, espasmo). microbiologia clinica: anamnesis de reservorios, vacunas y hospitalizaciones; solicitar cultivos/serologia/pcr segun sospecha; diferenciar imagen/biopsia si se sospecha tumor. bioenergetica: rastrear senal en puntos reservorio; si no aparece, 'impactar' el punto y emparejar piernas (par goiz o pineal‐sacro). registrar reservorios positivos para plan. \" pericardio: membrana que rodea y lubrica el corazon. miocardio: musculo cardiaco encargado de la contraccion. endocardio: revestimiento interno de las cavidades cardiacas. auricula: camara superior receptora de sangre. ventriculo: camara inferior de expulsion sanguinea. arterias coronarias: vasos que nutren el corazon. endotelio: capa interna vascular, ligada a contacto/separacion. reservorio anatomico: sitio corporal donde persiste un agente infeccioso o bioenergetico.\" ]} worcestershire truncated}”"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 6 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_6.txt",
+      "summary": "Síntesis pedagógica que integra anatomía del sistema locomotor, mapas psicosomáticos y reservorios microbianos para orientar evaluación e intervención holística: describe tejidos claves (hueso, periostio, articulaciones, ligamentos, tendones, músculos, fascias), vincula lesiones a conflictos emocionales centrados en la 'desvalorización' y ofrece protocolos prácticos para mapear síntoma↔conflicto y considerar presencia de focos infecciosos o crónicos.",
+      "key_points": [
+        "Sistema locomotor compuesto por hueso, periostio, médula, cartílago, articulaciones, ligamentos, tendones, músculos y fascias.",
+        "Funciones óseas: sostén, protección, reserva mineral y hematopoyesis; renovación por osteoblastos/osteoclastos.",
+        "Periostio: tejido muy sensible al contacto/trauma; cartílago y sinovial regulan movimiento y lubricación.",
+        "Eje psicosomático central: desvalorización en grados y matices (personal, sexual, anticipada, transgeneracional).",
+        "Mapeo simbólico: localización anatómica traduce roles/emociones (columna=pilar; hombro=apoyo; manos=acción; pies=vínculos maternos).",
+        "Tejidos como 'palabras clave': ligamento=unión/división; tendón=acción/vínculo; músculo=poder/impotencia; periostio=contacto doloroso. »Reservorios microbianos»: zonas anatómicas;"
+      ],
+      "key_concepts": [
+        "Desvalorización: sensación de poco valor que se somatiza en huesos/tejidos.",
+        "Osteoblasto / Osteoclasto: formación vs reabsorción ósea.",
+        "Periostio: membrana ósea vascular y sensible al trauma.",
+        "Médula ósea: función hematopoyética y símbolo relacional (núcleo familiar).",
+        "Fascia: envoltura con memoria tensional y rol en movilidad.",
+        "Reservorio microbiano: foco anatómico donde persiste un agente y produce síntomas locales o referidos.",
+        "Homolateral/Contralateral: patrón lateral que orienta diagnóstico manual.",
+        "Conflictología: método de mapear conflicto emocional según tejido/zona."
+      ],
+      "glossary": [
+        "Periostio: membrana externa del hueso, vascularizada y con osteoblastos.",
+        "Osteoblasto: célula formadora de matriz ósea.",
+        "Osteoclasto: célula que reabsorbe tejido óseo.",
+        "Médula ósea: tejido productor de sangre dentro del hueso.",
+        "Fascia: tejido conjuntivo que envuelve músculos y órganos, con capacidad de memoria tensional.",
+        "Reservorio: zona anatómica donde persiste un microorganismo y desde donde puede generar síntomas.",
+        "Desvalorización: sensación subjetiva de no valer que puede traducirse en síntomas físicos.",
+        "Ligamento: estructura que conecta huesos; en el mapa simboliza unión/división; capsulitis: inflamación de cápsula art. y"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Evaluación inicial",
+          "body": "observar postura, curvaturas, asimetrías y puntos dolorosos (columna, pelvis, hombros)."
+        },
+        {
+          "title": "Mapeo frase-clave",
+          "body": "pedir al paciente formular en primera persona la emoción central y situar tiempo (p.ej. “No valgo… desde…”)."
+        },
+        {
+          "title": "Asignar tejido→conflicto",
+          "body": "identificar si la lesión involucra hueso, periostio, ligamento, tendón, cápsula o músculo y usar su palabra-clave simbólica."
+        },
+        {
+          "title": "Historia relacional",
+          "body": "indagar pérdidas, rechazo, roles (pilar, abandono, sobrecarga) y relación materna si corresponden pies/miembros inferiores."
+        },
+        {
+          "title": "Evaluación microbiana",
+          "body": "palpar reservorios, buscar signos sistémicos; solicitar pruebas (cultivo, PCR, serología) si hay sospecha de foco activo o embarazo/neonato."
+        },
+        {
+          "title": "Intervención corporal",
+          "body": "carga mecánica progresiva, exposición controlada a vitamina D, movilización fascial/sinovial, masaje y estiramientos."
+        },
+        {
+          "title": "Intervención psicoemocional",
+          "body": "validar, explorar eventos concretos, trabajar expresión (asertividad, límites) y estrategias de reparación relacional."
+        },
+        {
+          "title": "Notas de seguridad",
+          "body": "derivar embarazadas/neonatos para estudio; investigar marcadores metabólicos si hay 'diabetes funcional' sospechada."
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "osteomuscular",
+        "endocrino_metabolico",
+        "reproductor",
+        "cardiovascular",
+        "digestivo",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "patogenos",
+        "pares",
+        "sistemico",
+        "rastreo",
+        "liberacion"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 6 — diplomado terapia holistica 1 sintesis pedagogica que integra anatomia del sistema locomotor, mapas psicosomaticos y reservorios microbianos para orientar evaluacion e intervencion holistica: describe tejidos claves (hueso, periostio, articulaciones, ligamentos, tendones, musculos, fascias), vincula lesiones a conflictos emocionales centrados en la 'desvalorizacion' y ofrece protocolos practicos para mapear sintoma↔conflicto y considerar presencia de focos infecciosos o cronicos. sistema locomotor compuesto por hueso, periostio, medula, cartilago, articulaciones, ligamentos, tendones, musculos y fascias. funciones oseas: sosten, proteccion, reserva mineral y hematopoyesis; renovacion por osteoblastos/osteoclastos. periostio: tejido muy sensible al contacto/trauma; cartilago y sinovial regulan movimiento y lubricacion. eje psicosomatico central: desvalorizacion en grados y matices (personal, sexual, anticipada, transgeneracional). mapeo simbolico: localizacion anatomica traduce roles/emociones (columna=pilar; hombro=apoyo; manos=accion; pies=vinculos maternos). tejidos como 'palabras clave': ligamento=union/division; tendon=accion/vinculo; musculo=poder/impotencia; periostio=contacto doloroso. »reservorios microbianos»: zonas anatomicas; desvalorizacion: sensacion de poco valor que se somatiza en huesos/tejidos. osteoblasto / osteoclasto: formacion vs reabsorcion osea. periostio: membrana osea vascular y sensible al trauma. medula osea: funcion hematopoyetica y simbolo relacional (nucleo familiar). fascia: envoltura con memoria tensional y rol en movilidad. reservorio microbiano: foco anatomico donde persiste un agente y produce sintomas locales o referidos. homolateral/contralateral: patron lateral que orienta diagnostico manual. conflictologia: metodo de mapear conflicto emocional segun tejido/zona. evaluacion inicial: observar postura, curvaturas, asimetrias y puntos dolorosos (columna, pelvis, hombros). mapeo frase-clave: pedir al paciente formular en primera persona la emocion central y situar tiempo (p.ej. “no valgo... desde...”). asignar tejido→conflicto: identificar si la lesion involucra hueso, periostio, ligamento, tendon, capsula o musculo y usar su palabra-clave simbolica. historia relacional: indagar perdidas, rechazo, roles (pilar, abandono, sobrecarga) y relacion materna si corresponden pies/miembros inferiores. evaluacion microbiana: palpar reservorios, buscar signos sistemicos; solicitar pruebas (cultivo, pcr, serologia) si hay sospecha de foco activo o embarazo/neonato. intervencion corporal: carga mecanica progresiva, exposicion controlada a vitamina d, movilizacion fascial/sinovial, masaje y estiramientos. intervencion psicoemocional: validar, explorar eventos concretos, trabajar expresion (asertividad, limites) y estrategias de reparacion relacional. notas de seguridad: derivar embarazadas/neonatos para estudio; investigar marcadores metabolicos si hay 'diabetes funcional' sospechada. periostio: membrana externa del hueso, vascularizada y con osteoblastos. osteoblasto: celula formadora de matriz osea. osteoclasto: celula que reabsorbe tejido oseo. medula osea: tejido productor de sangre dentro del hueso. fascia: tejido conjuntivo que envuelve musculos y organos, con capacidad de memoria tensional. reservorio: zona anatomica donde persiste un microorganismo y desde donde puede generar sintomas. desvalorizacion: sensacion subjetiva de no valer que puede traducirse en sintomas fisicos. ligamento: estructura que conecta huesos; en el mapa simboliza union/division; capsulitis: inflamacion de capsula art. y"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 7",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_7.txt",
+      "summary": "Síntesis: El módulo integra anatomía y funciones de la piel con su dimensión psicosomática; enfatiza la necesidad del contacto táctil temprano para el desarrollo afectivo y neurocutáneo; presenta mapas anatómicos de reservorios y patógenos para orientar diagnóstico diferencial y toma de muestras; y ofrece protocolos prácticos para evaluación clínica, cribado emocional, derivación médica y criterios para selección de recursos terapéuticos (incluyendo enfoques complementarios y remedios homeopáticos).",
+      "key_points": [
+        "La piel tiene tres capas: epidermis, dermis e hipodermis, cada una con funciones distintas.",
+        "Funciones principales: barrera, termorregulación, percepción sensorial, excreción y síntesis de vitamina D.",
+        "Contacto táctil temprano (piel a piel, masajes) es crucial para apego, identidad y maduración neurocutánea.",
+        "La epidermis registra caricias; la dermis guarda huellas de masajes y traumas más profundos.",
+        "Conflictos emocionales (separación, desvalorización, humillación, desprotección) pueden expresarse como dermatosis.",
+        "Mapas corporales vinculan zonas anatómicas con patógenos (hongos, bacterias, virus, parásitos) y patrones clínicos asociados."
+      ],
+      "key_concepts": [
+        "Epidermis como barrera y registro sensorial afectivo",
+        "Dermis como tejido de soporte, glándulas y memoria somática profunda",
+        "Hipodermis: tejido adiposo subcutáneo y reserva energética",
+        "Neurocutáneo: interacción desarrollo nervioso–piel por el tacto",
+        "Somatización cutánea: conflicto psíquico que se expresa en la piel",
+        "Reservorio anatómico: foco corporal persistente de agente microbiano",
+        "RAS (reserva anatómica señal): par anatómico usado en diagnóstico energético/estructural",
+        "Tipología de lesiones: vesícula, pústula, escama, úlcera, flictena",
+        "Modalidades: factores que agravan o alivian (calor/frío, movimiento, hora)",
+        "Constitución homeopática: rasgos psíquicos/físicos que orientan la prescripción"
+      ],
+      "glossary": [
+        "Epidermis: capa externa renovable que actúa como barrera y receptor táctil.",
+        "Dermis: tejido conjuntivo con vasos, colágeno, folículos y glándulas.",
+        "Hipodermis: capa subcutánea rica en adipocitos y aislante térmico.",
+        "Queratinocitos: células que forman la barrera córnea y producen queratina.",
+        "Melanocitos: células que generan melanina para protección frente a UV.",
+        "Células de Langerhans: células inmunitarias cutáneas.",
+        "Reservorio: sitio corporal donde persiste o se detecta un agente microbiano.",
+        "RAS: par anatómico usado para localizar y comprobar focos en diagnóstico energético/estructural."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Promover contacto piel a piel inmediato postparto y programas de masajes respetuosos en infancia temprana.",
+          "body": ""
+        },
+        {
+          "title": "Ante lesión cutánea",
+          "body": "describir morfología, exudado, olor, localización y cronología."
+        },
+        {
+          "title": "Registrar modalidades (qué empeora/mejora) y rasgos constitucionales para orientar terapias complementarias.",
+          "body": ""
+        },
+        {
+          "title": "Mapear la lesión en el mapa corporal y considerar reservorios homolateral/contralateral (RAS) para búsqueda del foco.",
+          "body": ""
+        },
+        {
+          "title": "Solicitar pruebas dirigidas según sospecha",
+          "body": "cultivo/biopsia superficial vs profunda, PCR/serologías e imágenes cuando proceda."
+        },
+        {
+          "title": "Evaluar exposición y antecedentes (vacunas, heridas, zoonosis, hospitalizaciones) y estado inmunitario.",
+          "body": ""
+        },
+        {
+          "title": "Explorar historial emocional",
+          "body": "duelos, rupturas, humillaciones o sensación de desprotección; registrar para derivación psicosomática."
+        },
+        {
+          "title": "Derivar a dermatología, infectología o salud mental si hay signos de infección grave, enfermedad sistémica, sospecha autoinmune o conflicto psíquico no resuelto.",
+          "body": ""
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "neurosensorial",
+        "emocional_mental",
+        "dermatologico",
+        "osteomuscular",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "pares",
+        "sistemico",
+        "liberacion"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 7 sintesis: el modulo integra anatomia y funciones de la piel con su dimension psicosomatica; enfatiza la necesidad del contacto tactil temprano para el desarrollo afectivo y neurocutaneo; presenta mapas anatomicos de reservorios y patogenos para orientar diagnostico diferencial y toma de muestras; y ofrece protocolos practicos para evaluacion clinica, cribado emocional, derivacion medica y criterios para seleccion de recursos terapeuticos (incluyendo enfoques complementarios y remedios homeopaticos). la piel tiene tres capas: epidermis, dermis e hipodermis, cada una con funciones distintas. funciones principales: barrera, termorregulacion, percepcion sensorial, excrecion y sintesis de vitamina d. contacto tactil temprano (piel a piel, masajes) es crucial para apego, identidad y maduracion neurocutanea. la epidermis registra caricias; la dermis guarda huellas de masajes y traumas mas profundos. conflictos emocionales (separacion, desvalorizacion, humillacion, desproteccion) pueden expresarse como dermatosis. mapas corporales vinculan zonas anatomicas con patogenos (hongos, bacterias, virus, parasitos) y patrones clinicos asociados. epidermis como barrera y registro sensorial afectivo dermis como tejido de soporte, glandulas y memoria somatica profunda hipodermis: tejido adiposo subcutaneo y reserva energetica neurocutaneo: interaccion desarrollo nervioso-piel por el tacto somatizacion cutanea: conflicto psiquico que se expresa en la piel reservorio anatomico: foco corporal persistente de agente microbiano ras (reserva anatomica senal): par anatomico usado en diagnostico energetico/estructural tipologia de lesiones: vesicula, pustula, escama, ulcera, flictena modalidades: factores que agravan o alivian (calor/frio, movimiento, hora) constitucion homeopatica: rasgos psiquicos/fisicos que orientan la prescripcion promover contacto piel a piel inmediato postparto y programas de masajes respetuosos en infancia temprana. ante lesion cutanea: describir morfologia, exudado, olor, localizacion y cronologia. registrar modalidades (que empeora/mejora) y rasgos constitucionales para orientar terapias complementarias. mapear la lesion en el mapa corporal y considerar reservorios homolateral/contralateral (ras) para busqueda del foco. solicitar pruebas dirigidas segun sospecha: cultivo/biopsia superficial vs profunda, pcr/serologias e imagenes cuando proceda. evaluar exposicion y antecedentes (vacunas, heridas, zoonosis, hospitalizaciones) y estado inmunitario. explorar historial emocional: duelos, rupturas, humillaciones o sensacion de desproteccion; registrar para derivacion psicosomatica. derivar a dermatologia, infectologia o salud mental si hay signos de infeccion grave, enfermedad sistemica, sospecha autoinmune o conflicto psiquico no resuelto. epidermis: capa externa renovable que actua como barrera y receptor tactil. dermis: tejido conjuntivo con vasos, colageno, foliculos y glandulas. hipodermis: capa subcutanea rica en adipocitos y aislante termico. queratinocitos: celulas que forman la barrera cornea y producen queratina. melanocitos: celulas que generan melanina para proteccion frente a uv. celulas de langerhans: celulas inmunitarias cutaneas. reservorio: sitio corporal donde persiste o se detecta un agente microbiano. ras: par anatomico usado para localizar y comprobar focos en diagnostico energetico/estructural."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual_del_Módulo_8 — Diplomado Terapia Holística 1",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_8.txt",
+      "summary": "Módulo centrado en la anatomía reproductiva y su lectura psicosomática, mapas microbianos y reservorios, y arsenal terapéutico integrador (auriculoterapia, acupuntura, homeopatía y medidas naturistas). Enseña a relacionar síntomas y órganos con conflictos emocionales, identificar patógenos locales/nosocomiales y aplicar protocolos diagnósticos y terapéuticos prácticos respetando límites médicos y de consentimiento.",
+      "key_points": [
+        "Anatomía reproductiva básica y asociación psicosomática órgano↔conflicto (ovarios, trompas, útero, cérvix, vagina; escroto, testículos, próstata).",
+        "Conflictos centrales: pérdida filial, maternidad/paternidad, seducción, castración/desvalorización y agresión sexual; cada conflicto tiene posibles expresiones orgánicas.",
+        "Mapas microbianos que vinculan bacterias, virus, hongos y parásitos a zonas anatómicas y reservorios (incluye patógenos nosocomiales y vacunales).",
+        "Coinfecciones virus→hongos frecuentes (ej. virus predisponiendo a candidiasis); importancia de sospechar micobacterias en cronicidad respiratoria.",
+        "Pares funcionales órgano–región: revisar estructuras relacionadas (p. ej. hígado–colon) para abordar coinfecciones y síntomas persistentes.",
+        "Homeopatía aplicada: criterios de elección (similitud, biotipo, radio de acción), potencias frecuentes (6C/12CH/30C), remedios y posologías prácticas para cuadros ginecológicos y u"
+      ],
+      "key_concepts": [
+        "Conflicto psicosomático",
+        "Reservorio (anatómico y vacunal)",
+        "Pares funcionales",
+        "Señal bioenergética e impacto (técnica para aumentar señal)",
+        "Biotipo y remedio plurivalente",
+        "Simillimum",
+        "Potencia homeopática (6C, 12CH, 30C)",
+        "Vaginismo / Dispareunia / Anorgasmia",
+        "Coinfección virus–hongo",
+        "Nosocomial (infección hospitalaria)"
+      ],
+      "glossary": [
+        "Ovario: glándula que produce óvulos y hormonas sexuales.",
+        "Folículo de Graaf: estructura ovárica que contiene el óvulo en maduración.",
+        "Cuerpo lúteo: remanente folicular que secreta progesterona tras la ovulación.",
+        "Endometriosis: presencia de tejido endometrial fuera del útero que causa dolor y alteraciones menstruales.",
+        "Reservorio: sitio corporal donde puede persistir un patógeno (incluye posibles focos vacunales).",
+        "Simillimum: remedio homeopático que mejor corresponde al conjunto de síntomas del paciente.",
+        "Biotipo: perfil constitutional y temperamental que orienta la elección terapéutica.",
+        "Vaginismo: contracción refleja de la musculatura vulvovaginal que dificulta la penetración sexualmente consentida o no."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Mapear síntoma → órgano → tipo de conflicto usando la lista conflictológica en la anamnesis clínica.",
+          "body": ""
+        },
+        {
+          "title": "Descartar causas orgánicas/infecciosas antes de plantear abordaje psicosomático (examen ginecológico, cultivos, frotis, pruebas serológicas, BK si tos crónica).",
+          "body": ""
+        },
+        {
+          "title": "Si hay secreción vaginal maloliente solicitar frotis, prueba de aminas y cultivo dirigido (buscar Gardnerella, Candida, Trichomonas, ureaplasma).",
+          "body": ""
+        },
+        {
+          "title": "Ante sospecha de patógeno nosocomial revisar historial hospitalario y considerar hemocultivos; inspeccionar sitio de vacunación como posible reservorio.",
+          "body": ""
+        },
+        {
+          "title": "Usar pares anatómicos y lateralidad para localizar reservorios; aplicar 'impacto' sólo si la señal bioenergética es débil y con precaución.",
+          "body": ""
+        },
+        {
+          "title": "Selección homeopática",
+          "body": "priorizar remédio por biotipo + síntomas psíquicos y físicos; potencias: 6C (similitud esencial), 12CH (modalidades), 30C (psique incluida); dosificación y"
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "emocional_mental",
+        "respiratorio",
+        "osteomuscular",
+        "reproductor",
+        "cardiovascular",
+        "bioenergetico"
+      ],
+      "tags": [
+        "patogenos",
+        "rastreo",
+        "bioenergetico",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual_del_modulo_8 — diplomado terapia holistica 1 modulo centrado en la anatomia reproductiva y su lectura psicosomatica, mapas microbianos y reservorios, y arsenal terapeutico integrador (auriculoterapia, acupuntura, homeopatia y medidas naturistas). ensena a relacionar sintomas y organos con conflictos emocionales, identificar patogenos locales/nosocomiales y aplicar protocolos diagnosticos y terapeuticos practicos respetando limites medicos y de consentimiento. anatomia reproductiva basica y asociacion psicosomatica organo↔conflicto (ovarios, trompas, utero, cervix, vagina; escroto, testiculos, prostata). conflictos centrales: perdida filial, maternidad/paternidad, seduccion, castracion/desvalorizacion y agresion sexual; cada conflicto tiene posibles expresiones organicas. mapas microbianos que vinculan bacterias, virus, hongos y parasitos a zonas anatomicas y reservorios (incluye patogenos nosocomiales y vacunales). coinfecciones virus→hongos frecuentes (ej. virus predisponiendo a candidiasis); importancia de sospechar micobacterias en cronicidad respiratoria. pares funcionales organo-region: revisar estructuras relacionadas (p. ej. higado-colon) para abordar coinfecciones y sintomas persistentes. homeopatia aplicada: criterios de eleccion (similitud, biotipo, radio de accion), potencias frecuentes (6c/12ch/30c), remedios y posologias practicas para cuadros ginecologicos y u conflicto psicosomatico reservorio (anatomico y vacunal) pares funcionales senal bioenergetica e impacto (tecnica para aumentar senal) biotipo y remedio plurivalente simillimum potencia homeopatica (6c, 12ch, 30c) vaginismo / dispareunia / anorgasmia coinfeccion virus-hongo nosocomial (infeccion hospitalaria) mapear sintoma → organo → tipo de conflicto usando la lista conflictologica en la anamnesis clinica. descartar causas organicas/infecciosas antes de plantear abordaje psicosomatico (examen ginecologico, cultivos, frotis, pruebas serologicas, bk si tos cronica). si hay secrecion vaginal maloliente solicitar frotis, prueba de aminas y cultivo dirigido (buscar gardnerella, candida, trichomonas, ureaplasma). ante sospecha de patogeno nosocomial revisar historial hospitalario y considerar hemocultivos; inspeccionar sitio de vacunacion como posible reservorio. usar pares anatomicos y lateralidad para localizar reservorios; aplicar 'impacto' solo si la senal bioenergetica es debil y con precaucion. seleccion homeopatica: priorizar remedio por biotipo + sintomas psiquicos y fisicos; potencias: 6c (similitud esencial), 12ch (modalidades), 30c (psique incluida); dosificacion y ovario: glandula que produce ovulos y hormonas sexuales. foliculo de graaf: estructura ovarica que contiene el ovulo en maduracion. cuerpo luteo: remanente folicular que secreta progesterona tras la ovulacion. endometriosis: presencia de tejido endometrial fuera del utero que causa dolor y alteraciones menstruales. reservorio: sitio corporal donde puede persistir un patogeno (incluye posibles focos vacunales). simillimum: remedio homeopatico que mejor corresponde al conjunto de sintomas del paciente. biotipo: perfil constitutional y temperamental que orienta la eleccion terapeutica. vaginismo: contraccion refleja de la musculatura vulvovaginal que dificulta la penetracion sexualmente consentida o no."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual_del_Módulo_9",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_9.txt",
+      "summary": "Módulo sobre el aparato urinario que combina anatomía y fisiología renal (estructura y función de riñones, nefronas, uréteres, vejiga y uretra), regulación hídrica-electrolítica y hormonal, una lectura psicosomática de conflictos emocionales vinculados a afecciones renales y vesicales, y opciones terapéuticas complementarias (homeopatía aguda/crónica, pautas dietéticas, acupuntura/auriculoterapia) con protocolos prácticos y recomendaciones de urgencia.",
+      "key_points": [
+        "Funciones básicas: filtración, eliminación de desechos y regulación de agua, electrolitos y pH.",
+        "Estructura clave: nefrona (glomérulo + túbulo) como unidad funcional; uréteres, vejiga y uretra.",
+        "Regulación hormonal y nerviosa: renina, eritropoyetina y control simpático/parasimpático del flujo y del esfínter.",
+        "Psicosomática: conflictos de pérdida de territorio, miedo a perder líquidos/huida y simbolismo del edema y lateralidad renal.",
+        "Patologías tratadas: infecciones urinarias, pielonefritis, glomerulonefritis, insuficiencia renal, litiasis, cólico nefrítico e incontinencia.",
+        "Microbiología urinaria: múltiples agentes (p. ej. E. coli, Proteus, Staphylococcus, Pseudomonas) implicados en infecciones agudas y crónicas."
+      ],
+      "key_concepts": [
+        "Filtración glomerular y modificación tubular del filtrado.",
+        "Balance hídrico-electrolítico y regulación ácido-base renal.",
+        "Secreción hormonal renal: renina y eritropoyetina.",
+        "Segmentación embryológica: mesodermo (glomérulos) vs ectodermo (pelvis) y su lectura simbólica.",
+        "Conflictos psicoemocionales: pérdida de territorio, desvalorización, miedo a líquidos, huida.",
+        "Litiasis oxálica y relación con dieta (alimentos ricos en oxalatos).",
+        "Tipos de incontinencia: esfuerzo, emocional y nocturna."
+      ],
+      "glossary": [
+        "Nefrona: unidad filtrante renal (glomérulo + túbulo).",
+        "Glomérulo: capilares que inician la filtración del plasma.",
+        "Túbulo renal: estructura que reabsorbe y secreta para formar la orina final.",
+        "Uréter: conducto que conduce la orina del riñón a la vejiga.",
+        "Uremia: acumulación de productos nitrogenados en sangre por fallo renal.",
+        "Proteinuria: presencia anómala de proteínas en orina.",
+        "Pielonefritis: inflamación/infección del riñón y pelvis renal.",
+        "Glomerulonefritis: inflamación de los glomérulos que altera la filtración renal."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Mostrar anatomía con un diagrama simple y explicar la nefrona por partes (glomérulo → túbulo).",
+          "body": ""
+        },
+        {
+          "title": "Explicar balance hídrico/electrolítico con ejemplos clínicos básicos (retención, edema, poliuria).",
+          "body": ""
+        },
+        {
+          "title": "Relacionar hallazgos físicos (edema, hematuria, orina turbia) con posibles interpretaciones psicosomáticas en ejercicios de caso, sin sustituir diagnóstico médico.",
+          "body": ""
+        },
+        {
+          "title": "Cantharis 12/30CH",
+          "body": "4 gránulos cada hora en cistitis con quemazón y urgencia intensa (agudo)."
+        },
+        {
+          "title": "Aconitum 6/12CH",
+          "body": "4 gránulos cada hora en inicio agudo con ansiedad y miedo intenso."
+        },
+        {
+          "title": "Mercurius corrosivus 6/12/30CH",
+          "body": "4 gránulos cada 30 min ante orina hemorrágica/purulenta (uso de urgencia y confirmar evolución)."
+        },
+        {
+          "title": "Colibacillinum 12/30CH",
+          "body": "4 gránulos diarios en colibacilosis crónica confirmada por análisis."
+        },
+        {
+          "title": "Litiasis",
+          "body": "acidificar orina si predominan oxalatos (sales de magnesio o cloruro amónico) y elegir homeopatía según sintomatología (Acidum benzoicum en cólico con orina maloliente; A"
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "dermatologico",
+        "osteomuscular",
+        "renal_excretor",
+        "cardiovascular",
+        "digestivo",
+        "bioenergetico"
+      ],
+      "tags": [
+        "patogenos",
+        "rastreo",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual_del_modulo_9 modulo sobre el aparato urinario que combina anatomia y fisiologia renal (estructura y funcion de rinones, nefronas, ureteres, vejiga y uretra), regulacion hidrica-electrolitica y hormonal, una lectura psicosomatica de conflictos emocionales vinculados a afecciones renales y vesicales, y opciones terapeuticas complementarias (homeopatia aguda/cronica, pautas dieteticas, acupuntura/auriculoterapia) con protocolos practicos y recomendaciones de urgencia. funciones basicas: filtracion, eliminacion de desechos y regulacion de agua, electrolitos y ph. estructura clave: nefrona (glomerulo + tubulo) como unidad funcional; ureteres, vejiga y uretra. regulacion hormonal y nerviosa: renina, eritropoyetina y control simpatico/parasimpatico del flujo y del esfinter. psicosomatica: conflictos de perdida de territorio, miedo a perder liquidos/huida y simbolismo del edema y lateralidad renal. patologias tratadas: infecciones urinarias, pielonefritis, glomerulonefritis, insuficiencia renal, litiasis, colico nefritico e incontinencia. microbiologia urinaria: multiples agentes (p. ej. e. coli, proteus, staphylococcus, pseudomonas) implicados en infecciones agudas y cronicas. filtracion glomerular y modificacion tubular del filtrado. balance hidrico-electrolitico y regulacion acido-base renal. secrecion hormonal renal: renina y eritropoyetina. segmentacion embryologica: mesodermo (glomerulos) vs ectodermo (pelvis) y su lectura simbolica. conflictos psicoemocionales: perdida de territorio, desvalorizacion, miedo a liquidos, huida. litiasis oxalica y relacion con dieta (alimentos ricos en oxalatos). tipos de incontinencia: esfuerzo, emocional y nocturna. mostrar anatomia con un diagrama simple y explicar la nefrona por partes (glomerulo → tubulo). explicar balance hidrico/electrolitico con ejemplos clinicos basicos (retencion, edema, poliuria). relacionar hallazgos fisicos (edema, hematuria, orina turbia) con posibles interpretaciones psicosomaticas en ejercicios de caso, sin sustituir diagnostico medico. cantharis 12/30ch: 4 granulos cada hora en cistitis con quemazon y urgencia intensa (agudo). aconitum 6/12ch: 4 granulos cada hora en inicio agudo con ansiedad y miedo intenso. mercurius corrosivus 6/12/30ch: 4 granulos cada 30 min ante orina hemorragica/purulenta (uso de urgencia y confirmar evolucion). colibacillinum 12/30ch: 4 granulos diarios en colibacilosis cronica confirmada por analisis. litiasis: acidificar orina si predominan oxalatos (sales de magnesio o cloruro amonico) y elegir homeopatia segun sintomatologia (acidum benzoicum en colico con orina maloliente; a nefrona: unidad filtrante renal (glomerulo + tubulo). glomerulo: capilares que inician la filtracion del plasma. tubulo renal: estructura que reabsorbe y secreta para formar la orina final. ureter: conducto que conduce la orina del rinon a la vejiga. uremia: acumulacion de productos nitrogenados en sangre por fallo renal. proteinuria: presencia anomala de proteinas en orina. pielonefritis: inflamacion/infeccion del rinon y pelvis renal. glomerulonefritis: inflamacion de los glomerulos que altera la filtracion renal."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 10",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_10.txt",
+      "summary": "Síntesis didáctica sobre el sistema inmune y su relación psicosomática: estructura y función (barreras, inmunidad innata y adaptativa, órganos linfoides y células efectoras), mapeo clínico‑emocional de órganos linfáticos (bazo, amígdalas, ganglios, timo) y patologías linfáticas; incluye criterios de evaluación clínica, protocolos de enseñanza paso a paso y medidas preventivas descritas en el manual (incluyendo remedios homeopáticos y auriculoterapia), con énfasis en la necesidad de derivación médica ante signos de:",
+      "key_points": [
+        "Funciones básicas: identificar, combatir y memorizar agentes externos.",
+        "Barreras y tejidos linfoides: piel, mucosas, anillo de Waldeyer, placas de Peyer; timo, bazo, ganglios y tejido linfoide difuso.",
+        "Transporte y drenaje: linfa traslada linfocitos, drena residuos y absorbe grasas intestinales.",
+        "Innata vs adaptativa: respuesta inmediata (horas) frente a respuesta específica con memoria (días/ semanas).",
+        "Células y correspondencias clínicas: neutrófilos (infecciones bacterianas), eosinófilos (alergias), monocitos/ macrófagos (limpieza), linfocitos (respuesta específica y memoria).",
+        "Organos y conflicto psíquico asociado: bazo (filtrado/reserva), amígdalas (defensa de vías aéreas), ganglios (centro de alarma), timo (vínculos parentales/autoestima)."
+      ],
+      "key_concepts": [
+        "Especificidad inmunológica",
+        "Memoria inmunológica (vacunas como ejemplo)",
+        "Diversidad de receptores",
+        "HLA / MHC (identidad y presentación antigénica)",
+        "Opsonización",
+        "Conflicto activo vs fase de reparación",
+        "Conflictos psicosomáticos: desvalorización, defensa, identidad, toxicidad/’pureza’",
+        "Linfa y drenaje linfático",
+        "Adenopatía / esplenomegalia",
+        "Reservorio viral / 'falso VIH'"
+      ],
+      "glossary": [
+        "HLA: proteínas de membrana que identifican 'yo' celular.",
+        "MHC: complejo que presenta antígenos a linfocitos T.",
+        "Linfa: líquido intersticial que circula por vasos linfáticos y transporta grasas y células.",
+        "Linfedema: hinchazón por obstrucción o daño linfático.",
+        "Linfangioma: malformación congénita de vasos linfáticos.",
+        "Linfoma de Hodgkin: tumor del tejido linfoide con destrucción ganglionar.",
+        "Adenopatía: ganglio inflamado o aumentado.",
+        "Esplenomegalia: agrandamiento del bazo (frecuente en fase de reparación).\",\"Falso VIH: cuadro infeccioso que clínico/ser"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Enseñar innata vs adaptativa con línea temporal (horas ↔ días) y ejemplos (vacunas, IgG).",
+          "body": ""
+        },
+        {
+          "title": "Explicar respuesta inmunitaria paso a paso",
+          "body": "barrera → inflamación → opsonización → eliminación y memoria."
+        },
+        {
+          "title": "Presentar función anatómica de cada órgano linfoide y signos clínicos vinculados a la narrativa emocional propuesta.",
+          "body": ""
+        },
+        {
+          "title": "Evaluación clínica psicosomática en 4 pasos",
+          "body": "1) identificar experiencia emocional predominante; 2) localizar órgano/sistema asociado; 3) valorar intensidad/cronicidad; 4) relaciona"
+        },
+        {
+          "title": "tipo celular implicada para orientar sospecha clínica.",
+          "body": ""
+        },
+        {
+          "title": "Derivar a evaluación médica ante linfadenopatía persistente, linfoma, linfangitis o sospecha de SIDA; manejo interdisciplinario.",
+          "body": ""
+        },
+        {
+          "title": "Protocolos del manual (descritos, no prescripción médica)",
+          "body": "Echinacea angustifolia 9CH 5 gránulos 2x/día por 3 meses estacional; Anas barbarie 200CH 10 glóbulos semanales (octubre‑m"
+        },
+        {
+          "title": "glossary",
+          "body": ""
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "emocional_mental",
+        "respiratorio",
+        "dermatologico",
+        "osteomuscular",
+        "cardiovascular",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 10 sintesis didactica sobre el sistema inmune y su relacion psicosomatica: estructura y funcion (barreras, inmunidad innata y adaptativa, organos linfoides y celulas efectoras), mapeo clinico‐emocional de organos linfaticos (bazo, amigdalas, ganglios, timo) y patologias linfaticas; incluye criterios de evaluacion clinica, protocolos de ensenanza paso a paso y medidas preventivas descritas en el manual (incluyendo remedios homeopaticos y auriculoterapia), con enfasis en la necesidad de derivacion medica ante signos de: funciones basicas: identificar, combatir y memorizar agentes externos. barreras y tejidos linfoides: piel, mucosas, anillo de waldeyer, placas de peyer; timo, bazo, ganglios y tejido linfoide difuso. transporte y drenaje: linfa traslada linfocitos, drena residuos y absorbe grasas intestinales. innata vs adaptativa: respuesta inmediata (horas) frente a respuesta especifica con memoria (dias/ semanas). celulas y correspondencias clinicas: neutrofilos (infecciones bacterianas), eosinofilos (alergias), monocitos/ macrofagos (limpieza), linfocitos (respuesta especifica y memoria). organos y conflicto psiquico asociado: bazo (filtrado/reserva), amigdalas (defensa de vias aereas), ganglios (centro de alarma), timo (vinculos parentales/autoestima). especificidad inmunologica memoria inmunologica (vacunas como ejemplo) diversidad de receptores hla / mhc (identidad y presentacion antigenica) opsonizacion conflicto activo vs fase de reparacion conflictos psicosomaticos: desvalorizacion, defensa, identidad, toxicidad/’pureza’ linfa y drenaje linfatico adenopatia / esplenomegalia reservorio viral / 'falso vih' ensenar innata vs adaptativa con linea temporal (horas ↔ dias) y ejemplos (vacunas, igg). explicar respuesta inmunitaria paso a paso: barrera → inflamacion → opsonizacion → eliminacion y memoria. presentar funcion anatomica de cada organo linfoide y signos clinicos vinculados a la narrativa emocional propuesta. evaluacion clinica psicosomatica en 4 pasos: 1) identificar experiencia emocional predominante; 2) localizar organo/sistema asociado; 3) valorar intensidad/cronicidad; 4) relaciona tipo celular implicada para orientar sospecha clinica. derivar a evaluacion medica ante linfadenopatia persistente, linfoma, linfangitis o sospecha de sida; manejo interdisciplinario. protocolos del manual (descritos, no prescripcion medica): echinacea angustifolia 9ch 5 granulos 2x/dia por 3 meses estacional; anas barbarie 200ch 10 globulos semanales (octubre‐m glossary hla: proteinas de membrana que identifican 'yo' celular. mhc: complejo que presenta antigenos a linfocitos t. linfa: liquido intersticial que circula por vasos linfaticos y transporta grasas y celulas. linfedema: hinchazon por obstruccion o dano linfatico. linfangioma: malformacion congenita de vasos linfaticos. linfoma de hodgkin: tumor del tejido linfoide con destruccion ganglionar. adenopatia: ganglio inflamado o aumentado. esplenomegalia: agrandamiento del bazo (frecuente en fase de reparacion).\",\"falso vih: cuadro infeccioso que clinico/ser"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 11",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_11.txt",
+      "summary": "Síntesis práctica para identificar y abordar conflictos emocionales que se somatizan en el sistema neurosensorial (vista, oído y SNC): clasifica modos de vivir el conflicto (encarnada, desencarnada, disociada), mapea síntomas neurológicos/visuales/auditivos a núcleos emocionales, propone protocolos de evaluación (línea del tiempo, frase‑núcleo, exploración sensorial y palpación de zonas calientes) y ofrece herramientas terapéuticas de apoyo (neuro‑biomagnetismo, puntos craneales homologados, acupuntura/auriculoter,",
+      "key_points": [
+        "Tres formas de somatización: encarnada, desencarnada y disociada, con distinto riesgo neurológico.",
+        "Personas disociadas suelen somatizar en sistema nervioso: migraña, epilepsia, enfermedades neurológicas.",
+        "La glía puede proliferar tras conflicto (edema, hiperfunción, tumores gliales) y requiere vigilancia por compresión.",
+        "Mapear síntoma → conflicto: ejemplos claros (epilepsia=control/miedo/abandono; hemiplejia=sometimiento/culpa; desprendimiento de retina=protección interior).",
+        "Conflictos sensoriales organizados en familias: visuales (aceleración, acercamiento, protección) y auditivos (pérdida/imposición, agresión, silencio).",
+        "Protocolo docente: priorizar urgencias (miedo/abandono, hemorragia/ictus), usar casos breves y role‑play para enseñanza práctica."
+      ],
+      "key_concepts": [
+        "Encarnada / Desencarnada / Disociada (modos de experimentar conflicto)",
+        "Glía (neuroglía) y proliferación glial",
+        "Edema cerebral (fase reparativa, vagotonía)",
+        "Bioshock (evento de estrés intenso)",
+        "Conflicto motriz, conflicto visual, conflicto auditivo",
+        "Desvalorización intelectual y abandono",
+        "Neuro‑biomagnetismo y puntos craneales homologados (vistas: superior/frontal/lateral)",
+        "Homeopatía de soporte (pot. 30CH) y posologías breves",
+        "Brodmann (mapa cortical funcional)"
+      ],
+      "glossary": [
+        "Glía: tejido de soporte neural que nutre y aísla neuronas; puede hiperproliferar.",
+        "Neurona: célula que transmite impulsos nerviosos.",
+        "Edema: acumulación de líquido local durante reparación tisular.",
+        "Bioshock: estrés emocional intenso que activa respuesta simpática aguda.",
+        "Vagotonía: fase vegetativa de reparación con predominio vagal.",
+        "Conflicto motriz: conflicto que afecta la capacidad de moverse o reaccionar.",
+        "Desprendimiento de retina: separación de capas retinianas que altera la visión.",
+        "Acúfenos: percepción de ruidos sin fuente externa (tinnitus)."
+      ],
+      "protocol_routes": [
+        {
+          "title": "Evaluar modo de vivir conflicto (encarnada/desencarnada/disociada) al inicio de la sesión.",
+          "body": ""
+        },
+        {
+          "title": "Registrar síntoma y momento de inicio (línea del tiempo) y formular frase‑núcleo en 1ª persona.",
+          "body": ""
+        },
+        {
+          "title": "Determinar modalidad sensorial principal (vista vs oído vs motriz) y mapear a categorías del manual.",
+          "body": ""
+        },
+        {
+          "title": "Palpar zonas craneales para detectar calor/edema; vigilar signos de compresión neurológica y derivar si necesario.",
+          "body": ""
+        },
+        {
+          "title": "Investigar posible conflicto renal ante edema cerebral persistente o voluminoso.",
+          "body": ""
+        },
+        {
+          "title": "Neuro‑biomagnético",
+          "body": "definir número de secuencias; por secuencia listar puntos con zona, nº, lado, polaridad y tamaño."
+        },
+        {
+          "title": "Uso de puntos craneales homologados relacionada con áreas de Brodmann para orientación de biomagnetismo.",
+          "body": ""
+        },
+        {
+          "title": "Homeopatía de soporte",
+          "body": "30CH según cuadro dominante; pauta general 1x/día o según protocolo específico (ictus derivar urgente)."
+        }
+      ],
+      "systems": [
+        "neurosensorial",
+        "emocional_mental",
+        "osteomuscular",
+        "renal_excretor",
+        "cardiovascular",
+        "digestivo",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "sentimental",
+        "pares",
+        "rastreo",
+        "patogenos",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 11 sintesis practica para identificar y abordar conflictos emocionales que se somatizan en el sistema neurosensorial (vista, oido y snc): clasifica modos de vivir el conflicto (encarnada, desencarnada, disociada), mapea sintomas neurologicos/visuales/auditivos a nucleos emocionales, propone protocolos de evaluacion (linea del tiempo, frase‐nucleo, exploracion sensorial y palpacion de zonas calientes) y ofrece herramientas terapeuticas de apoyo (neuro‐biomagnetismo, puntos craneales homologados, acupuntura/auriculoter, tres formas de somatizacion: encarnada, desencarnada y disociada, con distinto riesgo neurologico. personas disociadas suelen somatizar en sistema nervioso: migrana, epilepsia, enfermedades neurologicas. la glia puede proliferar tras conflicto (edema, hiperfuncion, tumores gliales) y requiere vigilancia por compresion. mapear sintoma → conflicto: ejemplos claros (epilepsia=control/miedo/abandono; hemiplejia=sometimiento/culpa; desprendimiento de retina=proteccion interior). conflictos sensoriales organizados en familias: visuales (aceleracion, acercamiento, proteccion) y auditivos (perdida/imposicion, agresion, silencio). protocolo docente: priorizar urgencias (miedo/abandono, hemorragia/ictus), usar casos breves y role‐play para ensenanza practica. encarnada / desencarnada / disociada (modos de experimentar conflicto) glia (neuroglia) y proliferacion glial edema cerebral (fase reparativa, vagotonia) bioshock (evento de estres intenso) conflicto motriz, conflicto visual, conflicto auditivo desvalorizacion intelectual y abandono neuro‐biomagnetismo y puntos craneales homologados (vistas: superior/frontal/lateral) homeopatia de soporte (pot. 30ch) y posologias breves brodmann (mapa cortical funcional) evaluar modo de vivir conflicto (encarnada/desencarnada/disociada) al inicio de la sesion. registrar sintoma y momento de inicio (linea del tiempo) y formular frase‐nucleo en 1a persona. determinar modalidad sensorial principal (vista vs oido vs motriz) y mapear a categorias del manual. palpar zonas craneales para detectar calor/edema; vigilar signos de compresion neurologica y derivar si necesario. investigar posible conflicto renal ante edema cerebral persistente o voluminoso. neuro‐biomagnetico: definir numero de secuencias; por secuencia listar puntos con zona, no, lado, polaridad y tamano. uso de puntos craneales homologados relacionada con areas de brodmann para orientacion de biomagnetismo. homeopatia de soporte: 30ch segun cuadro dominante; pauta general 1x/dia o segun protocolo especifico (ictus derivar urgente). glia: tejido de soporte neural que nutre y aisla neuronas; puede hiperproliferar. neurona: celula que transmite impulsos nerviosos. edema: acumulacion de liquido local durante reparacion tisular. bioshock: estres emocional intenso que activa respuesta simpatica aguda. vagotonia: fase vegetativa de reparacion con predominio vagal. conflicto motriz: conflicto que afecta la capacidad de moverse o reaccionar. desprendimiento de retina: separacion de capas retinianas que altera la vision. acufenos: percepcion de ruidos sin fuente externa (tinnitus)."
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Módulo 12 — Terapia Transgeneracional y Sanación Ancestral",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Módulo_12.txt",
+      "summary": "Módulo práctico para identificar y trabajar ecos transgeneracionales: cómo la historia familiar genera síntomas repetitivos con sentido biológico, qué factores y mecanismos los activan, y pasos terapéuticos para mapear el árbol, acceder a memorias, liberar emociones, reencuadrar historias y honrar/reparar antecesores mediante técnicas somático‑emocionales, oníricas y rituales.",
+      "key_points": [
+        "La familia transmite ecos transgeneracionales que pueden manifestarse como síntomas repetitivos.",
+        "Los síntomas pueden tener un sentido biológico relacionado con roles de supervivencia o lealtades familiares.",
+        "Factores de resonancia: fechas, nombres, parecido físico, expectativas y presiones familiares.",
+        "Mecanismos propuestos: epigenética, campos mórficos, holografía y entrelazamiento (modelos explicativos posibles).",
+        "Arquetipos influyentes: custodio de la cripta, doble, yacente/fantasma y niño‑síntoma.",
+        "Protocolo secuencial: abrir campo, detectar carga, identificar ancestro, fechar el suceso y registrar la línea. »,\"Técnicas clave: EFT adaptado, visualización guiada, trabajo onír"
+      ],
+      "key_concepts": [
+        "Eco transgeneracional: patrón emocional o funcional que se repite entre generaciones.",
+        "Resonancia transgen: coincidencias que activan memorias heredadas.",
+        "Genograma / metagenealogía: mapa estructural de la familia.",
+        "Cripta: secreto o trauma silenciado en la línea familiar.",
+        "Síndrome aniversario: repetición de fechas significativas que activan el eco.",
+        "Biodescodificación: búsqueda del sentido biológico del síntoma.",
+        "Custodio de la cripta: arquetipo que guarda secretos familiares.",
+        "Doble: persona que reproduce rasgos o destino de un antepasado.",
+        "Yacente / fantasma: presencia no procesada que condiciona al clan.",
+        "Niño‑síntoma: miembro que porta la carga para la familia sanar."
+      ],
+      "glossary": [
+        "Árbol espejo: dos linajes parecidos que tienden a atraerse para repararse mutuamente.",
+        "Proyecto sentido: expectativa familiar que orienta roles y decisiones.",
+        "Reparación transgen: acciones dirigidas a deshacer lealtades dañinas heredadas.",
+        "Pacto transgeneracional: acuerdos inconscientes que perpetúan patrones.",
+        "Heredero universal: vínculo simbólico marcado por una muerte/continuidad en el nacimiento.",
+        "Hilo de Ariadna: ruta terapéutica para salir del laberinto familiar.",
+        "Incesto simbólico: parejas que funcionan como dobles y reproducen dinámicas ancestrales.",
+        "Carta de la corte: asignación simbólica de un ancestro dentro del mapa terapéutico (tarot metafórico).\",\"Holograma: secu"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Mapeo generacional y asignación simbólica (cartas de la corte).",
+          "body": ""
+        },
+        {
+          "title": "Apertura de campo mórfico transgeneracional y sintonización inicial.",
+          "body": ""
+        },
+        {
+          "title": "Detección de carga",
+          "body": "preguntas dirigidas y verificación somato‑emocional (test muscular)."
+        },
+        {
+          "title": "Rastreo cronológico preciso",
+          "body": "generación, edad, trimestre, mes, semana y día."
+        },
+        {
+          "title": "Acceso a memoria por rutas conscientes (entrevista, genograma) y supraconscientes (sueño guiado, visualización).",
+          "body": ""
+        },
+        {
+          "title": "Secuencia terapéutica",
+          "body": "hacer consciente → liberar emoción → reencuadrar significado → honrar/reintegrar."
+        },
+        {
+          "title": "EFT transgeneracional y técnicas somáticas para descargar emoción e instalar nuevas narrativas.",
+          "body": ""
+        },
+        {
+          "title": "Ritual simbólico de despedida/agradecimiento y prácticas de inclusión/activación de recursos del árbol.",
+          "body": ""
+        }
+      ],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "osteomuscular",
+        "cardiovascular",
+        "digestivo",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "rastreo",
+        "eft",
+        "bioenergetico",
+        "liberacion",
+        "sistemico",
+        "pares",
+        "patogenos"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del modulo 12 — terapia transgeneracional y sanacion ancestral modulo practico para identificar y trabajar ecos transgeneracionales: como la historia familiar genera sintomas repetitivos con sentido biologico, que factores y mecanismos los activan, y pasos terapeuticos para mapear el arbol, acceder a memorias, liberar emociones, reencuadrar historias y honrar/reparar antecesores mediante tecnicas somatico‐emocionales, oniricas y rituales. la familia transmite ecos transgeneracionales que pueden manifestarse como sintomas repetitivos. los sintomas pueden tener un sentido biologico relacionado con roles de supervivencia o lealtades familiares. factores de resonancia: fechas, nombres, parecido fisico, expectativas y presiones familiares. mecanismos propuestos: epigenetica, campos morficos, holografia y entrelazamiento (modelos explicativos posibles). arquetipos influyentes: custodio de la cripta, doble, yacente/fantasma y nino‐sintoma. protocolo secuencial: abrir campo, detectar carga, identificar ancestro, fechar el suceso y registrar la linea. »,\"tecnicas clave: eft adaptado, visualizacion guiada, trabajo onir eco transgeneracional: patron emocional o funcional que se repite entre generaciones. resonancia transgen: coincidencias que activan memorias heredadas. genograma / metagenealogia: mapa estructural de la familia. cripta: secreto o trauma silenciado en la linea familiar. sindrome aniversario: repeticion de fechas significativas que activan el eco. biodescodificacion: busqueda del sentido biologico del sintoma. custodio de la cripta: arquetipo que guarda secretos familiares. doble: persona que reproduce rasgos o destino de un antepasado. yacente / fantasma: presencia no procesada que condiciona al clan. nino‐sintoma: miembro que porta la carga para la familia sanar. mapeo generacional y asignacion simbolica (cartas de la corte). apertura de campo morfico transgeneracional y sintonizacion inicial. deteccion de carga: preguntas dirigidas y verificacion somato‐emocional (test muscular). rastreo cronologico preciso: generacion, edad, trimestre, mes, semana y dia. acceso a memoria por rutas conscientes (entrevista, genograma) y supraconscientes (sueno guiado, visualizacion). secuencia terapeutica: hacer consciente → liberar emocion → reencuadrar significado → honrar/reintegrar. eft transgeneracional y tecnicas somaticas para descargar emocion e instalar nuevas narrativas. ritual simbolico de despedida/agradecimiento y practicas de inclusion/activacion de recursos del arbol. arbol espejo: dos linajes parecidos que tienden a atraerse para repararse mutuamente. proyecto sentido: expectativa familiar que orienta roles y decisiones. reparacion transgen: acciones dirigidas a deshacer lealtades daninas heredadas. pacto transgeneracional: acuerdos inconscientes que perpetuan patrones. heredero universal: vinculo simbolico marcado por una muerte/continuidad en el nacimiento. hilo de ariadna: ruta terapeutica para salir del laberinto familiar. incesto simbolico: parejas que funcionan como dobles y reproducen dinamicas ancestrales. carta de la corte: asignacion simbolica de un ancestro dentro del mapa terapeutico (tarot metaforico).\",\"holograma: secu"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual del Propedéutico — Método Lavín (Diplomado Terapia Holística 1)",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual_del_Propedéutico.txt",
+      "summary": "Memoria pedagógica compacta del propedéutico y diplomado Método Lavín: formación práctica de 12 meses con módulo introductorio, que combina biomagnetismo, auriculoterapia, neurobiomagnetismo, medicina biológica, trabajo nutricional y protocolos psicoemocionales (EFT, PNL, flores) para el rastreo y liberación de conflictos personales y transgeneracionales; el enfoque integra diagnóstico por meridianos/5 elementos, mapeos corticales (Brodmann) y herramientas terapéuticas aplicables en consulta.",
+      "key_points": [
+        "Estructura: 12 meses + propedéutico obligatorio de 16 h; 192 h totales (96 teóricas/96 prácticas).",
+        "Modalidades: clases en vivo, prácticas presenciales (Querétaro) y grabaciones según plan.",
+        "Modelos integrados: holobiomagnetismo, holopsicosomática, medicina biológica y bioenergética.",
+        "Contenidos clave: entrevista clínica, anatomía por sistemas, microbiología, pares biomagnéticos, auriculoterapia, neurobiomagnetismo, nutrición y protocolos de limpieza (jugos, en­",
+        "mismo ítem no repetir"
+      ],
+      "key_concepts": [
+        "Holobiomagnetismo",
+        "Holopsicosomática",
+        "Biomagnetopuntura / Par biomagnético",
+        "Auriculoterapia (mapa numérico Lavín)",
+        "Neurobiomagnetismo y homologación Brodmann↔puntos",
+        "Campo mórfico y holograma",
+        "Bioshock / DHS (choque desencadenante)",
+        "EFT / ANL (tapping y frase de anclaje)",
+        "Yin/Yang, Qi y 5 Elementos (diagnóstico y tratamiento)",
+        "Polo ± y Bloques A–D (selección de polos en meridianos)"
+      ],
+      "glossary": [
+        "Propedéutico: módulo introductorio presencial/virtual obligatorio (16 h).",
+        "Par biomagnético: dos puntos relacionados entre sí donde se aplican imanes para equilibrar campos.",
+        "Rastreo: método guiado para localizar patógenos, déficits o memorias energéticas.",
+        "Campo mórfico: campo energético/consciente usado para sintonizar memorias transgeneracionales.",
+        "Holograma: patrón emocional/imagen que sostiene una repetición de conflicto.",
+        "DHS / Bioshock: choque emocional inicial que desencadena adaptación orgánica.",
+        "ANL (Acuerdo Neurolingüístico): frase positiva utilizada como anclaje durante EFT.",
+        "EFT / Tapping: técnica de golpeteo en puntos para liberar carga emocional (incluye secuencia 'ida/gamma/vuelta').\",\"Polo"
+      ],
+      "protocol_routes": [
+        {
+          "title": "Estructura mensual",
+          "body": "1 módulo/sistema con teoría y práctica; registro de casos y certificación final."
+        },
+        {
+          "title": "Rastreo microbiológico",
+          "body": "solicitar manifestación (bacterias, hongos, parásitos, virus), verificar ‘programa’ antes de intervenir."
+        },
+        {
+          "title": "Colocación de pares biomagnéticos",
+          "body": "listar necesidades, confirmar puntos, colocar imanes ~20 min; retirar y reevaluar."
+        },
+        {
+          "title": "Jugoterapia (Agent Orange)",
+          "body": "eliminar lácteos/cereales 10 días; pauta de jugo de zanahoria 3–5 tomas diarias como soporte."
+        },
+        {
+          "title": "Enema de café",
+          "body": "protocolo de limpieza intestinal indicado en prácticas (seguir contraindicaciones)."
+        },
+        {
+          "title": "Auriculoterapia",
+          "body": "localizar punto por número; combinar puntos según síntoma (ej. cervicalgia 37+41; lumbago 38+54+52+57; hemorroides 81±81a)."
+        },
+        {
+          "title": "Rastreo neurobiomagnético",
+          "body": "determinar existencia de código, contar secuencias, anotar zona/número/lado/polaridad/tamaño y repetir."
+        },
+        {
+          "title": "Biomagnetopuntura meridianos",
+          "body": "identificar meridiano afectado, determinar si desequilibrio es yin/yang, ubicar polos −/+ y formar pares magnéticos correspondientes; evaluar pares ad"
+        }
+      ],
+      "systems": [
+        "digestivo",
+        "neurosensorial",
+        "emocional_mental",
+        "respiratorio",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "patogenos",
+        "rastreo",
+        "eft",
+        "bioenergetico",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual del propedeutico — metodo lavin (diplomado terapia holistica 1) memoria pedagogica compacta del propedeutico y diplomado metodo lavin: formacion practica de 12 meses con modulo introductorio, que combina biomagnetismo, auriculoterapia, neurobiomagnetismo, medicina biologica, trabajo nutricional y protocolos psicoemocionales (eft, pnl, flores) para el rastreo y liberacion de conflictos personales y transgeneracionales; el enfoque integra diagnostico por meridianos/5 elementos, mapeos corticales (brodmann) y herramientas terapeuticas aplicables en consulta. estructura: 12 meses + propedeutico obligatorio de 16 h; 192 h totales (96 teoricas/96 practicas). modalidades: clases en vivo, practicas presenciales (queretaro) y grabaciones segun plan. modelos integrados: holobiomagnetismo, holopsicosomatica, medicina biologica y bioenergetica. contenidos clave: entrevista clinica, anatomia por sistemas, microbiologia, pares biomagneticos, auriculoterapia, neurobiomagnetismo, nutricion y protocolos de limpieza (jugos, en­ mismo item no repetir holobiomagnetismo holopsicosomatica biomagnetopuntura / par biomagnetico auriculoterapia (mapa numerico lavin) neurobiomagnetismo y homologacion brodmann↔puntos campo morfico y holograma bioshock / dhs (choque desencadenante) eft / anl (tapping y frase de anclaje) yin/yang, qi y 5 elementos (diagnostico y tratamiento) polo ± y bloques a-d (seleccion de polos en meridianos) estructura mensual: 1 modulo/sistema con teoria y practica; registro de casos y certificacion final. rastreo microbiologico: solicitar manifestacion (bacterias, hongos, parasitos, virus), verificar ‘programa’ antes de intervenir. colocacion de pares biomagneticos: listar necesidades, confirmar puntos, colocar imanes ~20 min; retirar y reevaluar. jugoterapia (agent orange): eliminar lacteos/cereales 10 dias; pauta de jugo de zanahoria 3-5 tomas diarias como soporte. enema de cafe: protocolo de limpieza intestinal indicado en practicas (seguir contraindicaciones). auriculoterapia: localizar punto por numero; combinar puntos segun sintoma (ej. cervicalgia 37+41; lumbago 38+54+52+57; hemorroides 81±81a). rastreo neurobiomagnetico: determinar existencia de codigo, contar secuencias, anotar zona/numero/lado/polaridad/tamano y repetir. biomagnetopuntura meridianos: identificar meridiano afectado, determinar si desequilibrio es yin/yang, ubicar polos −/+ y formar pares magneticos correspondientes; evaluar pares ad propedeutico: modulo introductorio presencial/virtual obligatorio (16 h). par biomagnetico: dos puntos relacionados entre si donde se aplican imanes para equilibrar campos. rastreo: metodo guiado para localizar patogenos, deficits o memorias energeticas. campo morfico: campo energetico/consciente usado para sintonizar memorias transgeneracionales. holograma: patron emocional/imagen que sostiene una repeticion de conflicto. dhs / bioshock: choque emocional inicial que desencadena adaptacion organica. anl (acuerdo neurolinguistico): frase positiva utilizada como anclaje durante eft. eft / tapping: tecnica de golpeteo en puntos para liberar carga emocional (incluye secuencia 'ida/gamma/vuelta').\",\"polo"
+    },
+    {
+      "manual_id": "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn",
+      "course_id": "diplomado-terapia-holistica-1",
+      "course_name": "Diplomado Terapia Holística 1",
+      "source_title": "Manual-Protocolos-de-rastreo-AlejandroLavín (Diplomado Terapia Holística 1)",
+      "source_file": "/Users/m2/Documents/New project/data/processed_library/Diplomados/diplomado-terapia-holistica-1/sources/Manual-Protocolos-de-rastreo-AlejandroLavn.txt",
+      "summary": "Protocolo integral para síntomas respiratorios: empezar por rastreo conflictológico según niveles (nasal, laríngeo, tráqueal, bronquial, alveolar, diafragmático, gripa, tos, asma, apnea, tabaquismo, transgeneracional), seguir con rastreo microbiológico, biomagnético y holobiomagnético, luego vibracional y bioenergético; finalizar con sesión terapéutica (un conflicto por sesión) y seguimiento con técnicas complementarias.",
+      "key_points": [
+        "Rastrear primero si hay conflicto respiratorio implicado; si no, aplicar rastreo general.",
+        "Identificar nivel respiratorio afectado y conflictología específica (lista de conflictos por estructura).",
+        "Usar bloques por color y números para priorizar y ubicar conflictos/microbios.",
+        "Rastreo microbiológico: distinguir bacteria/virus/hongo/parasito y localizar por bloque.",
+        "Rastreo biomagnético: localizar par desintoxicante, colocar imanes 15–20 min.",
+        "Rastreo holobiomagnético: buscar pares adicionales y aplicar imanes según necesidad."
+      ],
+      "key_concepts": [
+        "Rastreo conflictológico: mapear emociones/traumas vinculados a respiración.",
+        "Niveles respiratorios: nasal, laríngeo, tráquea, bronquios, alvéolos, diafragma.",
+        "Bloques color/número: sistema de ubicación y prioridad.",
+        "Rastreo microbiológico (código patógeno): 79 microbios listados.",
+        "Rastreo biomagnético/holobiomagnético: pares y colocación de imanes.",
+        "Rastreo vibracional: remedios homeopáticos, flores, sales de Schüssler.",
+        "Rastreo bioenergético: acupuntura y auriculoterapia (empezar por Shen Men).",
+        "Sesión terapéutica: trabajar un conflicto por sesión con herramientas psicoterapéuticas."
+      ],
+      "glossary": [
+        "Bloque color/número: sistema de mapeo para ubicar conflicto o microbio.",
+        "MS (Manifiéstame): consigna para elicitar información durante rastreo",
+        "Par biomagnético: pareja de puntos donde colocar imanes para desintoxicar microbios.",
+        "Holobiomagnético: búsqueda de pares complementarios para equilibrio global.",
+        "Rastreo vibracional: selección de homeopatía, flores o sales según resonancia.",
+        "Shen Men: punto auricular inicial recomendado en auriculoterapia.",
+        "Escala Bovis: medida energética opcional para evaluar tejidos/órganos."
+      ],
+      "protocol_routes": [],
+      "systems": [
+        "emocional_mental",
+        "respiratorio",
+        "digestivo",
+        "bioenergetico"
+      ],
+      "tags": [
+        "transgeneracional",
+        "sentimental",
+        "patogenos",
+        "rastreo",
+        "bioenergetico",
+        "pares",
+        "liberacion",
+        "sistemico"
+      ],
+      "search_blob": "diplomado terapia holistica 1 manual-protocolos-de-rastreo-alejandrolavin (diplomado terapia holistica 1) protocolo integral para sintomas respiratorios: empezar por rastreo conflictologico segun niveles (nasal, laringeo, traqueal, bronquial, alveolar, diafragmatico, gripa, tos, asma, apnea, tabaquismo, transgeneracional), seguir con rastreo microbiologico, biomagnetico y holobiomagnetico, luego vibracional y bioenergetico; finalizar con sesion terapeutica (un conflicto por sesion) y seguimiento con tecnicas complementarias. rastrear primero si hay conflicto respiratorio implicado; si no, aplicar rastreo general. identificar nivel respiratorio afectado y conflictologia especifica (lista de conflictos por estructura). usar bloques por color y numeros para priorizar y ubicar conflictos/microbios. rastreo microbiologico: distinguir bacteria/virus/hongo/parasito y localizar por bloque. rastreo biomagnetico: localizar par desintoxicante, colocar imanes 15-20 min. rastreo holobiomagnetico: buscar pares adicionales y aplicar imanes segun necesidad. rastreo conflictologico: mapear emociones/traumas vinculados a respiracion. niveles respiratorios: nasal, laringeo, traquea, bronquios, alveolos, diafragma. bloques color/numero: sistema de ubicacion y prioridad. rastreo microbiologico (codigo patogeno): 79 microbios listados. rastreo biomagnetico/holobiomagnetico: pares y colocacion de imanes. rastreo vibracional: remedios homeopaticos, flores, sales de schussler. rastreo bioenergetico: acupuntura y auriculoterapia (empezar por shen men). sesion terapeutica: trabajar un conflicto por sesion con herramientas psicoterapeuticas. 1) preguntar si hay conflicto respiratorio ligado al sintoma x; si no, rastreo general. 2) identificar nivel respiratorio y localizar conflicto usando bloque color/numero. 3) verificar microbios tipicos implicados; localizar y priorizar por bloque/numero. 4) rastrear par biomagnetico mas desintoxicante; colocar imanes 15-20 min. 5) completar holobiomagnetico si procede; colocar pares adicionales. 6) rastreos vibracional y bioenergetico: elegir remedios y puntos; aplicar estimulo. 7) sesion terapeutica: explicar sentido del conflicto, planificar trabajo (1 conflicto/consulta). bloque color/numero: sistema de mapeo para ubicar conflicto o microbio. ms (manifiestame): consigna para elicitar informacion durante rastreo par biomagnetico: pareja de puntos donde colocar imanes para desintoxicar microbios. holobiomagnetico: busqueda de pares complementarios para equilibrio global. rastreo vibracional: seleccion de homeopatia, flores o sales segun resonancia. shen men: punto auricular inicial recomendado en auriculoterapia. escala bovis: medida energetica opcional para evaluar tejidos/organos."
+    }
+  ],
+  "course_index": {
+    "taller-medicina-naturista": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista"
+    ],
+    "diplomado-ancestros-y-raices": [
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1"
+    ],
+    "diplomado-sanacion-energetica-integral": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2"
+    ],
+    "diplomado-terapia-holistica-1": [
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ]
+  },
+  "system_index": {
+    "digestivo": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "neurosensorial": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico"
+    ],
+    "emocional_mental": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "respiratorio": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "dermatologico": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10"
+    ],
+    "cardiovascular": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12"
+    ],
+    "osteomuscular": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12"
+    ],
+    "bioenergetico": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "endocrino_metabolico": [
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6"
+    ],
+    "renal_excretor": [
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11"
+    ],
+    "reproductor": [
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8"
+    ]
+  },
+  "tag_index": {
+    "patogenos": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "rastreo": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "bioenergetico": [
+      "taller-medicina-naturista::Manual_Taller_Medicina_Naturista",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "transgeneracional": [
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "sentimental": [
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "sistemico": [
+      "diplomado-ancestros-y-raices::Ancestros_y_Raíces_Manual_Clase_1",
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "pares": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "liberacion": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_1",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_3",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_4",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_5",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_6",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_7",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_8",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_9",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_10",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_11",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico",
+      "diplomado-terapia-holistica-1::Manual-Protocolos-de-rastreo-AlejandroLavn"
+    ],
+    "eft": [
+      "diplomado-sanacion-energetica-integral::Manual_Diplomado_SEI_Módulo_2",
+      "diplomado-terapia-holistica-1::Manual_del_Módulo_12",
+      "diplomado-terapia-holistica-1::Manual_del_Propedéutico"
+    ]
+  }
+}
