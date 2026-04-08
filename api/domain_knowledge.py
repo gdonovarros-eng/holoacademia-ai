@@ -95,7 +95,7 @@ class TeacherKnowledge:
     def find_pair(self, query: str) -> PairCatalogEntry | None:
         normalized_query = self._normalize_text(query)
         normalized_query = re.sub(r"\s+", " ", normalized_query).strip()
-        normalized_query = normalized_query.replace(" – ", " - ").replace(" –", " -").replace("– ", "- ")
+        normalized_query = re.sub(r"\s*[-–]\s*", " - ", normalized_query).strip()
         if normalized_query in self._pair_by_name:
             return self._pair_by_name[normalized_query]
 

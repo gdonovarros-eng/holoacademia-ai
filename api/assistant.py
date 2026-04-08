@@ -300,6 +300,10 @@ class NaturalAssistant:
         results: list[SearchResult],
         history: list[dict],
     ) -> Optional[AssistantOutput]:
+        pair_answer = self._answer_pair_meaning(question)
+        if pair_answer is not None:
+            return pair_answer
+
         catalog_answer = self._answer_course_catalog(question)
         if catalog_answer is not None:
             return catalog_answer
@@ -320,6 +324,94 @@ class NaturalAssistant:
                 structured = builder(question, history)  # pragma: no cover
             if structured is not None:
                 return structured
+        return None
+
+    def _answer_pair_meaning(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        pair_hints = [
+            "que significa el par",
+            "qué significa el par",
+            "significado del par",
+            "significado de un par",
+            "que significa ano",
+            "qué significa ano",
+            "para que sirve el par",
+            "para qué sirve el par",
+            "interpretacion del par",
+            "interpretación del par",
+            "que significa este par",
+            "qué significa este par",
+        ]
+        looks_like_pair = bool(re.search(r"\b[a-záéíóúüñ]{3,}\s*[-–]\s*[a-záéíóúüñ]{3,}\b", question, flags=re.IGNORECASE))
+        duplicated_two_word_pair = bool(re.search(r"\b([a-záéíóúüñ]{3,})\s+\1\b", lowered))
+        asks_pair = ("par" in lowered and any(hint in lowered for hint in pair_hints)) or looks_like_pair or duplicated_two_word_pair
+        if not asks_pair:
+            return None
+
+        pair_query = question.strip()
+        extracted_pair = self._extract_pair_query(question)
+        if extracted_pair:
+            pair_query = extracted_pair
+        duplicate_match = re.search(r"\b([a-záéíóúüñ]{3,})\s+\1\b", lowered)
+        if duplicate_match:
+            token = duplicate_match.group(1).upper()
+            pair_query = f"{token} - {token}"
+
+        entry = self.teacher.find_pair(pair_query)
+        if entry is None:
+            ranked = self.teacher.search_pairs(question, limit=1)
+            entry = ranked[0] if ranked else None
+        if entry is None:
+            return None
+
+        description = self._compact_text(entry.related_condition, 700)
+        type_line = f"Es un par de tipo {entry.pair_type}. " if entry.pair_type and entry.pair_type.lower() != "sin tipo claro" else ""
+        answer = (
+            f"El par {entry.pair_name} se relaciona con {description} {type_line}"
+            "Dicho de forma práctica, ese es el eje que conviene tener presente cuando aparece en el rastreo."
+        ).strip()
+        return AssistantOutput(answer=answer, visual=None, mode="structured")
+
+    def _extract_pair_query(self, question: str) -> Optional[str]:
+        explicit_patterns = [
+            r"^(?:que|qué)\s+significa\s+(?:el\s+)?par\s+(.+)$",
+            r"^significado\s+del\s+par\s+(.+)$",
+            r"^significado\s+de\s+un\s+par\s+(.+)$",
+            r"^(?:para\s+que|para\s+qué)\s+sirve\s+(?:el\s+)?par\s+(.+)$",
+            r"^interpretaci[oó]n\s+del\s+par\s+(.+)$",
+            r"^(?:que|qué)\s+significa\s+este\s+par\s+(.+)$",
+        ]
+        candidate = question.strip()
+        for pattern in explicit_patterns:
+            match = re.search(pattern, candidate, flags=re.IGNORECASE)
+            if match:
+                candidate = match.group(1).strip()
+                break
+
+        candidate = re.sub(r"^(?:el\s+)?par\s+", "", candidate, flags=re.IGNORECASE).strip()
+        candidate = re.sub(r"[?!.]+$", "", candidate).strip()
+
+        duplicate_match = re.search(
+            r"\b([a-záéíóúüñ0-9 /().,]{2,})\s+\1\b",
+            self._normalize_text(candidate),
+        )
+        if duplicate_match:
+            token = duplicate_match.group(1).upper().strip()
+            return f"{token} - {token}"
+
+        hyphen_match = re.search(
+            r"([a-záéíóúüñ0-9 /().,]{2,}?)\s*[-–]\s*([a-záéíóúüñ0-9 /().,]{2,})",
+            candidate,
+            flags=re.IGNORECASE,
+        )
+        if hyphen_match:
+            left = hyphen_match.group(1).strip().upper()
+            right = hyphen_match.group(2).strip().upper()
+            return f"{left} - {right}"
+
+        tokens = [token for token in re.findall(r"[a-záéíóúüñ0-9]+", candidate, flags=re.IGNORECASE) if len(token) >= 3]
+        if len(tokens) == 2:
+            return f"{tokens[0].upper()} - {tokens[1].upper()}"
         return None
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
