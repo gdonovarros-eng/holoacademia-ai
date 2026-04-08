@@ -5,6 +5,8 @@ const state = {
   report: null,
 };
 
+const COURSE_HISTORY_STORAGE_KEY = "holoacademia_course_chat_v1";
+
 const tabs = [...document.querySelectorAll(".tab")];
 const tabPanels = [...document.querySelectorAll(".tab-panel")];
 const steps = [...document.querySelectorAll(".step")];
@@ -23,6 +25,7 @@ const analysisOutput = document.getElementById("analysis-output");
 const pairsOutput = document.getElementById("pairs-output");
 const reportOutput = document.getElementById("report-output");
 const courseOutput = document.getElementById("course-output");
+const courseQuestion = document.getElementById("course-question");
 
 const consultantBirthDate = document.getElementById("consultant-birth-date");
 const consultantAge = document.getElementById("consultant-age");
@@ -30,6 +33,42 @@ const consultantAge = document.getElementById("consultant-age");
 function setActiveTab(tabName) {
   tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
   tabPanels.forEach((panel) => panel.classList.toggle("active", panel.id === `tab-${tabName}`));
+}
+
+function escapeHtml(value = "") {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function formatMessageText(value = "") {
+  return escapeHtml(value)
+    .replace(/\n{2,}/g, "</p><p>")
+    .replace(/\n/g, "<br />");
+}
+
+function saveCourseHistory() {
+  try {
+    sessionStorage.setItem(COURSE_HISTORY_STORAGE_KEY, JSON.stringify(state.courseHistory));
+  } catch (error) {
+    console.warn("No se pudo guardar el historial del chat de cursos.", error);
+  }
+}
+
+function loadCourseHistory() {
+  try {
+    const raw = sessionStorage.getItem(COURSE_HISTORY_STORAGE_KEY);
+    if (!raw) return;
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      state.courseHistory = parsed.filter((item) => item && item.role && item.content);
+    }
+  } catch (error) {
+    console.warn("No se pudo cargar el historial del chat de cursos.", error);
+  }
 }
 
 function setStep(stepNumber) {
@@ -522,24 +561,69 @@ function renderReport(report) {
 
 function renderCourseAnswer(payload) {
   const visual = payload.visual?.content ? `
-    <article class="qa-card">
-      <h3>${payload.visual.title || "Apoyo visual"}</h3>
+    <div class="chat-visual-card">
+      <p class="chat-visual-title">${payload.visual.title || "Apoyo visual"}</p>
       <div>${payload.visual.content}</div>
-    </article>
+    </div>
   ` : "";
 
-  courseOutput.innerHTML = `
-    <article class="qa-card">
-      <h3>Respuesta</h3>
-      <p>${payload.answer || ""}</p>
-      <p class="status">Modo: ${payload.generation_mode || "n/a"}</p>
-    </article>
-    ${visual}
+  const modeLabel = payload.generation_mode ? `<p class="chat-meta">Modo: ${payload.generation_mode}</p>` : "";
+
+  return `
+    <div class="chat-bubble assistant">
+      <div class="chat-avatar">IA</div>
+      <div class="chat-message">
+        <p>${formatMessageText(payload.answer || "")}</p>
+        ${modeLabel}
+        ${visual}
+      </div>
+    </div>
   `;
 }
 
 function setStatus(container, message, isError = false) {
   container.innerHTML = `<p class="status ${isError ? "error" : ""}">${message}</p>`;
+}
+
+function renderCourseChat(loadingMessage = "") {
+  if (!state.courseHistory.length && !loadingMessage) {
+    courseOutput.innerHTML = `
+      <article class="qa-card course-empty-state">
+        <h3>Inicia una conversación</h3>
+        <p>Puedes preguntar por conceptos, maestros, protocolos, módulos o dar seguimiento natural a la respuesta anterior.</p>
+      </article>
+    `;
+    return;
+  }
+
+  const messages = state.courseHistory.map((item) => {
+    if (item.role === "assistant") {
+      return renderCourseAnswer({
+        answer: item.content,
+        visual: item.visual || null,
+        generation_mode: item.generation_mode || "",
+      });
+    }
+    return `
+      <div class="chat-bubble user">
+        <div class="chat-message">
+          <p>${formatMessageText(item.content)}</p>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const loading = loadingMessage ? `
+    <div class="chat-bubble assistant pending">
+      <div class="chat-avatar">IA</div>
+      <div class="chat-message">
+        <p>${escapeHtml(loadingMessage)}</p>
+      </div>
+    </div>
+  ` : "";
+
+  courseOutput.innerHTML = messages + loading;
+  courseOutput.scrollTop = courseOutput.scrollHeight;
 }
 
 document.getElementById("add-significant-partner").addEventListener("click", () => addCollectionItem(significantPartnersList, "significant-partner-template"));
@@ -592,33 +676,73 @@ document.getElementById("build-report").addEventListener("click", async () => {
   }
 });
 
-document.getElementById("ask-course").addEventListener("click", async () => {
-  const question = document.getElementById("course-question").value.trim();
+async function submitCourseQuestion() {
+  const question = courseQuestion.value.trim();
   if (!question) {
-    setStatus(courseOutput, "Escribe una pregunta primero.", true);
+    renderCourseChat();
+    courseOutput.insertAdjacentHTML("beforeend", `<p class="status error">Escribe una pregunta primero.</p>`);
     return;
   }
-  setStatus(courseOutput, "Consultando...");
+  const historyForRequest = state.courseHistory.map((item) => ({ role: item.role, content: item.content }));
+  state.courseHistory.push({ role: "user", content: question });
+  if (state.courseHistory.length > 20) {
+    state.courseHistory.splice(0, state.courseHistory.length - 20);
+  }
+  saveCourseHistory();
+  renderCourseChat("Pensando la respuesta...");
+  courseQuestion.value = "";
   try {
     const response = await postJson("/ask", {
       question,
-      history: state.courseHistory,
+      history: historyForRequest,
       want_visual: true,
       render_image: false,
       max_results: 2,
     });
-    state.courseHistory.push({ role: "user", content: question });
-    state.courseHistory.push({ role: "assistant", content: response.answer || "" });
-    if (state.courseHistory.length > 6) {
-      state.courseHistory.splice(0, state.courseHistory.length - 6);
+    state.courseHistory.push({
+      role: "assistant",
+      content: response.answer || "",
+      visual: response.visual || null,
+      generation_mode: response.generation_mode || "",
+    });
+    if (state.courseHistory.length > 20) {
+      state.courseHistory.splice(0, state.courseHistory.length - 20);
     }
-    renderCourseAnswer(response);
+    saveCourseHistory();
+    renderCourseChat();
+    const bubbles = courseOutput.querySelectorAll(".chat-bubble.assistant");
+    const lastBubble = bubbles[bubbles.length - 1];
+    if (lastBubble) {
+      lastBubble.outerHTML = renderCourseAnswer(response);
+      courseOutput.scrollTop = courseOutput.scrollHeight;
+    }
   } catch (error) {
-    setStatus(courseOutput, `Error al consultar cursos: ${error.message}`, true);
+    state.courseHistory.pop();
+    saveCourseHistory();
+    renderCourseChat();
+    courseOutput.insertAdjacentHTML("beforeend", `<p class="status error">Error al consultar cursos: ${escapeHtml(error.message)}</p>`);
   }
+}
+
+document.getElementById("ask-course").addEventListener("click", submitCourseQuestion);
+
+courseQuestion.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    submitCourseQuestion();
+  }
+});
+
+document.getElementById("clear-course-chat").addEventListener("click", () => {
+  state.courseHistory = [];
+  saveCourseHistory();
+  renderCourseChat();
+  courseQuestion.focus();
 });
 
 addCollectionItem(childrenList, "child-template");
 addCollectionItem(symptomList, "symptom-template");
 addCollectionItem(historyList, "history-template");
 addCollectionItem(pairsList, "pair-template");
+loadCourseHistory();
+renderCourseChat();

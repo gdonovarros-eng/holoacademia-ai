@@ -301,18 +301,25 @@
 
       <section class="tab-panel" id="tab-courses">
         <section class="panel">
-          <div class="panel-head">
-            <h2>Dudas sobre cursos</h2>
-            <p>Consulta conceptos, módulos, protocolos, maestros y contenidos.</p>
+          <div class="panel-head course-chat-head">
+            <div>
+              <h2>Dudas sobre cursos</h2>
+              <p>Conversa con seguimiento. Puedes hacer una pregunta y luego profundizar sobre la respuesta anterior.</p>
+            </div>
+            <button type="button" class="ghost-btn" id="clear-course-chat">Nueva conversación</button>
           </div>
-          <label>
-            Pregunta
-            <textarea id="course-question" rows="4" placeholder="Ej. ¿Quién es el maestro del diplomado SEI?"></textarea>
-          </label>
-          <div class="actions">
-            <button type="button" class="primary-btn" id="ask-course">Consultar</button>
+          <div class="course-chat-shell">
+            <div id="course-output" class="course-chat-log"></div>
+            <div class="course-composer">
+              <label class="course-composer-label">
+                Escribe tu pregunta
+                <textarea id="course-question" rows="3" placeholder="Ej. ¿Qué es BMI? Luego puedes preguntar: ¿de qué trata?"></textarea>
+              </label>
+              <div class="actions">
+                <button type="button" class="primary-btn" id="ask-course">Enviar</button>
+              </div>
+            </div>
           </div>
-          <div id="course-output" class="stack"></div>
         </section>
       </section>
     </main>
