@@ -395,6 +395,10 @@ function renderAnalysis(analysis) {
       ${renderBulletList(analysis.family_axes || [])}
     </article>
     <article class="result-card">
+      <h3>Lectura de fechas del sistema</h3>
+      ${renderBulletList(analysis.family_date_insights || [])}
+    </article>
+    <article class="result-card">
       <h3>Preguntas guía</h3>
       ${renderBulletList(analysis.guiding_questions || [])}
     </article>

@@ -3,7 +3,9 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
+from collections import defaultdict
 from dataclasses import dataclass
+from datetime import date
 from pathlib import Path
 from typing import Any
 
@@ -109,6 +111,16 @@ def _safe_list(value: Any) -> list[Any]:
 
 def _safe_text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
+
+
+def _parse_iso_date(value: str) -> date | None:
+    text = _safe_text(value)
+    if not text:
+        return None
+    try:
+        return date.fromisoformat(text)
+    except ValueError:
+        return None
 
 
 def _first_sentence(value: str) -> str:
@@ -1039,6 +1051,174 @@ def _person_summary(person: dict[str, Any], fallback_label: str) -> str:
     return name
 
 
+def _format_short_date(value: str) -> str:
+    parsed = _parse_iso_date(value)
+    if not parsed:
+        return _safe_text(value)
+    return parsed.strftime("%d/%m/%Y")
+
+
+def _days_between_month_day(left: date, right: date) -> int:
+    year = 2001
+    left_anchor = date(year, left.month, left.day)
+    right_anchor = date(year, right.month, right.day)
+    diff = abs((left_anchor - right_anchor).days)
+    return min(diff, 366 - diff)
+
+
+def _infer_sibling_order(children: list[dict[str, Any]], consultant_birth: date | None) -> str:
+    if not consultant_birth:
+        return ""
+    dated: list[tuple[date, str]] = []
+    for item in children:
+        if not isinstance(item, dict):
+            continue
+        birth = _parse_iso_date(item.get("birth_date", ""))
+        name = _safe_text(item.get("full_name"))
+        if birth and name:
+            dated.append((birth, name))
+    if not dated:
+        return ""
+    dated.sort(key=lambda row: row[0])
+    position = sum(1 for birth, _ in dated if birth < consultant_birth) + 1
+    total = len(dated) + 1
+    if total <= 1:
+        return ""
+    if position == 1:
+        label = "hijo mayor"
+    elif position == total:
+        label = "hijo menor"
+    else:
+        label = f"hijo en posición {position} de {total}"
+    return f"En orden fraterno, el consultante queda como {label}; conviene revisar si asumió responsabilidades, reemplazos o lugares que no le correspondían."
+
+
+def _collect_family_date_insights(case_payload: dict[str, Any]) -> list[str]:
+    consultant = case_payload.get("consultant") if isinstance(case_payload.get("consultant"), dict) else {}
+    consultant_name = _safe_text(consultant.get("full_name")) or "el consultante"
+    consultant_birth_raw = _safe_text(consultant.get("birth_date"))
+    consultant_birth = _parse_iso_date(consultant_birth_raw)
+    if not consultant_birth:
+        return []
+
+    relatives: list[dict[str, str]] = []
+    parents = case_payload.get("parents") if isinstance(case_payload.get("parents"), dict) else {}
+    grandparents = case_payload.get("grandparents") if isinstance(case_payload.get("grandparents"), dict) else {}
+    current_partner = case_payload.get("current_partner") if isinstance(case_payload.get("current_partner"), dict) else {}
+
+    fixed_relatives = [
+        ("padre", parents.get("father") or {}),
+        ("madre", parents.get("mother") or {}),
+        ("abuelo paterno", grandparents.get("paternal_grandfather") or {}),
+        ("abuela paterna", grandparents.get("paternal_grandmother") or {}),
+        ("abuelo materno", grandparents.get("maternal_grandfather") or {}),
+        ("abuela materna", grandparents.get("maternal_grandmother") or {}),
+        ("pareja actual", current_partner),
+    ]
+    for label, person in fixed_relatives:
+        if not isinstance(person, dict):
+            continue
+        relatives.append(
+            {
+                "relation": label,
+                "name": _safe_text(person.get("full_name")) or label,
+                "birth_date": _safe_text(person.get("birth_date")),
+                "death_date": _safe_text(person.get("death_date")),
+            }
+        )
+
+    for item in _safe_list(case_payload.get("significant_partners")):
+        if isinstance(item, dict) and _safe_text(item.get("full_name")):
+            relatives.append(
+                {
+                    "relation": "pareja significativa",
+                    "name": _safe_text(item.get("full_name")),
+                    "birth_date": _safe_text(item.get("birth_date")),
+                    "death_date": _safe_text(item.get("death_date")),
+                }
+            )
+    for item in _safe_list(case_payload.get("children")):
+        if isinstance(item, dict) and _safe_text(item.get("full_name")):
+            relatives.append(
+                {
+                    "relation": "hijo/hija",
+                    "name": _safe_text(item.get("full_name")),
+                    "birth_date": _safe_text(item.get("birth_date")),
+                    "death_date": _safe_text(item.get("death_date")),
+                }
+            )
+    for item in _safe_list(case_payload.get("siblings")):
+        if isinstance(item, dict) and _safe_text(item.get("full_name")):
+            relatives.append(
+                {
+                    "relation": "hermano/hermana",
+                    "name": _safe_text(item.get("full_name")),
+                    "birth_date": _safe_text(item.get("birth_date")),
+                    "death_date": _safe_text(item.get("death_date")),
+                }
+            )
+
+    insights: list[str] = []
+
+    for relative in relatives:
+        birth = _parse_iso_date(relative.get("birth_date", ""))
+        death = _parse_iso_date(relative.get("death_date", ""))
+        if birth:
+            same_day = birth.day == consultant_birth.day and birth.month == consultant_birth.month
+            close_birth = _days_between_month_day(consultant_birth, birth)
+            if same_day:
+                insights.append(
+                    f"{consultant_name} comparte día y mes de nacimiento con {relative['name']} ({relative['relation']}); conviene revisar posible doble simbólico, lealtad o reparación dentro de ese vínculo."
+                )
+            elif close_birth <= 10:
+                insights.append(
+                    f"La fecha de nacimiento de {relative['name']} ({relative['relation']}, {_format_short_date(relative['birth_date'])}) cae dentro de ±10 días del nacimiento del consultante; conviene explorar resonancia de aniversario, lealtad o repetición de historia."
+                )
+        if death:
+            close_death = _days_between_month_day(consultant_birth, death)
+            if close_death <= 10:
+                insights.append(
+                    f"El nacimiento del consultante queda cerca del aniversario de muerte de {relative['name']} ({relative['relation']}, {_format_short_date(relative['death_date'])}); conviene explorar duelo no cerrado, reemplazo o carga del sistema."
+                )
+
+    death_events = []
+    for relative in relatives:
+        if _safe_text(relative.get("death_date")):
+            death_events.append(relative)
+    if len(death_events) >= 2:
+        months = defaultdict(list)
+        for item in death_events:
+            parsed = _parse_iso_date(item["death_date"])
+            if parsed:
+                months[parsed.month].append(item["name"])
+        for month, names in months.items():
+            if len(names) >= 2:
+                insights.append(
+                    f"Hay varias muertes del sistema concentradas en el mismo periodo del año ({', '.join(names[:4])}); conviene revisar si el cuerpo reactiva memoria de aniversario o clima de duelo repetido."
+                )
+                break
+
+    sibling_order = _infer_sibling_order(_safe_list(case_payload.get("siblings")), consultant_birth)
+    if sibling_order:
+        insights.append(sibling_order)
+
+    child_births = []
+    for item in _safe_list(case_payload.get("children")):
+        if not isinstance(item, dict):
+            continue
+        birth = _parse_iso_date(item.get("birth_date", ""))
+        name = _safe_text(item.get("full_name"))
+        if birth and name:
+            child_births.append((birth, name))
+    for birth, name in child_births[:5]:
+        if _days_between_month_day(consultant_birth, birth) <= 10:
+            insights.append(
+                f"{name} nació cerca del aniversario del consultante; conviene revisar si se activó repetición de ciclo, reparación o intensificación del drama familiar a partir de esa fecha."
+            )
+
+    return _dedupe_similar_texts(insights, limit=8)
+
+
 def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
     axes: list[str] = []
     text_fields = [
@@ -1601,6 +1781,7 @@ def _build_prioritized_hypotheses(
     probable_systems: list[str],
     probable_conflicts: list[str],
     family_axes: list[str],
+    family_date_insights: list[str],
     primary_family_axis: str,
     suggested_pairs: list[dict[str, str]],
     opening_guidance: dict[str, Any],
@@ -1652,6 +1833,20 @@ def _build_prioritized_hypotheses(
             }
         )
 
+    if family_date_insights:
+        hypotheses.append(
+            {
+                "title": "Hipótesis por fechas del sistema",
+                "summary": family_date_insights[0],
+                "verify": [
+                    "Cruzar nacimientos, muertes y repeticiones de fechas dentro del árbol.",
+                    "Preguntar qué historia o duelo del sistema se activa alrededor de esas fechas.",
+                    "Explorar si el consultante funciona como doble, reemplazo o reparación de alguien del clan.",
+                ],
+                "pairs_to_validate": pair_focus,
+            }
+        )
+
     return hypotheses[:3]
 
 
@@ -1679,6 +1874,7 @@ def _build_course_guiding_questions(
     case_payload: dict[str, Any],
     probable_systems: list[str],
     family_axes: list[str],
+    family_date_insights: list[str],
     heuristic_questions: list[str],
 ) -> list[str]:
     questions: list[str] = []
@@ -1713,6 +1909,14 @@ def _build_course_guiding_questions(
         if "fallecio" in normalized_axis:
             questions.append(f"¿Qué efecto dejó en el consultante este antecedente del sistema familiar: {axis}")
             break
+    for insight in family_date_insights:
+        normalized = _normalize_text(insight)
+        if "aniversario" in normalized or "±10 dias" in normalized or "+-10 dias" in normalized:
+            questions.append("¿Qué pasó en el árbol alrededor de esas fechas y qué parece repetirse en el consultante?")
+        if "doble simbolico" in normalized or "doble simbólico" in normalized:
+            questions.append("¿Qué destino, emoción o tarea parece estar repitiendo el consultante respecto a esa persona?")
+        if "duelo" in normalized or "muerte" in normalized or "reemplazo" in normalized:
+            questions.append("¿El consultante pudo quedar cargando un duelo o tomando el lugar de alguien del sistema?")
 
     if probable_systems:
         first_system = _format_system_label(probable_systems[0])
@@ -1727,6 +1931,7 @@ def _build_course_reading(
     probable_systems: list[str],
     probable_conflicts: list[str],
     family_axes: list[str],
+    family_date_insights: list[str],
     primary_family_axis: str,
     heuristic_hints: list[str],
     matched_names: list[str],
@@ -1752,6 +1957,8 @@ def _build_course_reading(
         parts.append("La masa conflictual provisional apunta a " + ", ".join(probable_conflicts[:2]) + ".")
     if primary_family_axis:
         parts.append("En la entrevista conviene " + primary_family_axis.rstrip(".") + ".")
+    if family_date_insights:
+        parts.append("Además, hay fechas del sistema que sugieren revisar resonancias de aniversario, duelos o posibles reparaciones familiares.")
     if prioritized_hypotheses:
         top_hypothesis = prioritized_hypotheses[0]
         verify = top_hypothesis.get("verify") or []
@@ -2061,6 +2268,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
     family_axes = _dedupe_keep_order(
         _detect_family_axes(case_payload) + [axis for heuristic in heuristics for axis in heuristic.family_axes]
     )
+    family_date_insights = _collect_family_date_insights(case_payload)
     primary_family_axis = _select_primary_family_axis(probable_systems, family_axes)
 
     matched_names = [item["canonical_name"] for item in top_matches]
@@ -2105,6 +2313,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         probable_systems=probable_systems,
         probable_conflicts=probable_conflicts,
         family_axes=family_axes,
+        family_date_insights=family_date_insights,
         primary_family_axis=primary_family_axis,
         suggested_pairs=suggested_pairs_to_validate,
         opening_guidance=opening_guidance,
@@ -2116,6 +2325,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         probable_systems=probable_systems,
         probable_conflicts=probable_conflicts,
         family_axes=family_axes,
+        family_date_insights=family_date_insights,
         primary_family_axis=primary_family_axis,
         heuristic_hints=heuristic_hints,
         matched_names=matched_names,
@@ -2157,6 +2367,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         case_payload=case_payload,
         probable_systems=probable_systems,
         family_axes=family_axes,
+        family_date_insights=family_date_insights,
         heuristic_questions=heuristic_questions,
     )
 
@@ -2170,6 +2381,7 @@ def analyze_case(case_payload: dict[str, Any]) -> dict[str, Any]:
         "opening_guidance": opening_guidance,
         "reference_emotional_causes": reference_emotional_causes,
         "family_axes": family_axes,
+        "family_date_insights": family_date_insights,
         "primary_family_axis": primary_family_axis,
         "mass_conflict_hypothesis": mass_conflict_hypothesis,
         "guiding_questions": guiding_questions,
