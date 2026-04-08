@@ -154,6 +154,9 @@ GENERIC_COURSE_TOKENS = {
 }
 
 MANUAL_ALIASES = {
+    "bmi": "diplomado-sanacion-energetica-integral",
+    "biomagnetismo medico integral": "diplomado-sanacion-energetica-integral",
+    "biomagnetismo médico integral": "diplomado-sanacion-energetica-integral",
     "sei": "diplomado-sanacion-energetica-integral",
     "sanacion energetica integral": "diplomado-sanacion-energetica-integral",
     "diplomado sei": "diplomado-sanacion-energetica-integral",
@@ -254,6 +257,10 @@ class NaturalAssistant:
         del render_image
         history = history or []
 
+        structured = self._answer_known_concepts(question)
+        if structured is not None:
+            return structured
+
         if not self.enabled:
             return AssistantOutput(
                 answer=(
@@ -288,6 +295,31 @@ class NaturalAssistant:
                 visual=None,
                 mode="model_error",
             )
+
+    def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
+        lowered = self._normalize_text(question)
+        bmi_patterns = [
+            "que es bmi",
+            "qué es bmi",
+            "q es bmi",
+            "significa bmi",
+            "que significa bmi",
+            "qué significa bmi",
+            "bmi que es",
+            "bmi significado",
+        ]
+        if any(pattern in lowered for pattern in bmi_patterns) or lowered.strip() == "bmi":
+            return AssistantOutput(
+                answer=(
+                    "BMI significa Biomagnetismo Médico Integral. Dicho de forma simple, es un enfoque que trabaja con "
+                    "pares biomagnéticos, rastreo, testaje y lectura terapéutica para detectar desequilibrios "
+                    "bioenergéticos y orientar la intervención dentro del método. Si quieres, te explico también "
+                    "de qué trata, cómo se aplica o en qué parte de la formación aparece."
+                ),
+                visual=None,
+                mode="structured",
+            )
+        return None
 
     def resolve_search_queries(
         self,
