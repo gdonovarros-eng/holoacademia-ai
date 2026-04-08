@@ -319,6 +319,28 @@ class NaturalAssistant:
                 visual=None,
                 mode="structured",
             )
+
+        sei_patterns = [
+            "que es sei",
+            "qué es sei",
+            "q es sei",
+            "significa sei",
+            "que significa sei",
+            "qué significa sei",
+            "sei que es",
+            "sei significado",
+        ]
+        if any(pattern in lowered for pattern in sei_patterns) or lowered.strip() == "sei":
+            return AssistantOutput(
+                answer=(
+                    "SEI significa Diplomado de Sanación Energética Integral. Dicho de forma simple, es una formación "
+                    "orientada al trabajo con test muscular, liberación de conflictos, protocolos energéticos y lectura "
+                    "integral del consultante dentro del método. Si quieres, te explico también de qué trata, qué módulos "
+                    "incluye o qué protocolos se ven ahí."
+                ),
+                visual=None,
+                mode="structured",
+            )
         return None
 
     def resolve_search_queries(
