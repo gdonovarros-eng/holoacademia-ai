@@ -36,6 +36,70 @@ def _dedupe_keep_order(values: list[str]) -> list[str]:
     return result
 
 
+def _significant_tokens(value: str) -> set[str]:
+    tokens = {
+        token
+        for token in re.findall(r"[a-z0-9]+", _normalize_text(value))
+        if len(token) >= 4
+        and token
+        not in {
+            "para",
+            "como",
+            "desde",
+            "este",
+            "esta",
+            "estos",
+            "estas",
+            "donde",
+            "cuando",
+            "porque",
+            "sobre",
+            "conviene",
+            "abrir",
+            "revisar",
+            "sintoma",
+            "síntoma",
+            "sistema",
+            "caso",
+            "linea",
+            "línea",
+        }
+    }
+    return tokens
+
+
+def _texts_are_similar(left: str, right: str) -> bool:
+    left_norm = _normalize_text(left)
+    right_norm = _normalize_text(right)
+    if not left_norm or not right_norm:
+        return False
+    if left_norm == right_norm:
+        return True
+    if left_norm in right_norm or right_norm in left_norm:
+        return True
+
+    left_tokens = _significant_tokens(left)
+    right_tokens = _significant_tokens(right)
+    if not left_tokens or not right_tokens:
+        return False
+
+    overlap = left_tokens & right_tokens
+    smaller = min(len(left_tokens), len(right_tokens))
+    return smaller > 0 and len(overlap) / smaller >= 0.7
+
+
+def _dedupe_similar_texts(values: list[str], limit: int | None = None) -> list[str]:
+    results: list[str] = []
+    for value in values:
+        text = _safe_text(value)
+        if not text:
+            continue
+        if any(_texts_are_similar(text, existing) for existing in results):
+            continue
+        results.append(text)
+    return results[:limit] if limit is not None else results
+
+
 def _safe_list(value: Any) -> list[Any]:
     return value if isinstance(value, list) else []
 
@@ -1076,7 +1140,7 @@ def _detect_family_axes(case_payload: dict[str, Any]) -> list[str]:
     if any(term in blob for term in ("papa", "padre", "paterno")) and not paternal_people:
         axes.append("aparece tema paterno en el discurso y conviene profundizar cómo se vivió ese vínculo.")
 
-    return _dedupe_keep_order(axes)
+    return _dedupe_similar_texts(axes)
 
 
 def _infer_course_systems(case_payload: dict[str, Any], heuristics: list[SymptomHeuristic]) -> list[str]:
@@ -1123,7 +1187,7 @@ def _clean_reference_body(value: str) -> str:
 
 def _compact_bullets(values: list[str], limit: int = 6) -> list[str]:
     compacted = [_compact_conflict_text(value) for value in values if _safe_text(value)]
-    return _dedupe_keep_order([value for value in compacted if value])[:limit]
+    return _dedupe_similar_texts([value for value in compacted if value], limit=limit)
 
 
 def _build_reference_emotional_causes(
@@ -1197,7 +1261,7 @@ def _build_reference_emotional_causes(
             bucket["body_parts"].append(part)
 
     for item in grouped_entries.values():
-        body = " ".join(_dedupe_keep_order(item["body_parts"])).strip()
+        body = " ".join(_dedupe_similar_texts(item["body_parts"])).strip()
         if not body:
             continue
         results.append(
@@ -1208,7 +1272,15 @@ def _build_reference_emotional_causes(
             }
         )
 
-    return results[:6]
+    deduped_results: list[dict[str, str]] = []
+    for item in results:
+        if any(
+            _texts_are_similar(item.get("body", ""), existing.get("body", ""))
+            for existing in deduped_results
+        ):
+            continue
+        deduped_results.append(item)
+    return deduped_results[:6]
 
 
 def _extract_microbe_queries(case_payload: dict[str, Any]) -> list[str]:
@@ -1316,7 +1388,7 @@ def _build_protocol_card(
         "title": title,
         "purpose": purpose,
         "when_to_use": when_to_use,
-        "steps": _protocol_steps(body)[:5],
+        "steps": _dedupe_similar_texts(_protocol_steps(body), limit=5),
         "pair_focus": (pair_focus or [])[:5],
     }
 
@@ -1476,7 +1548,7 @@ def _build_course_guiding_questions(
         questions.append(f"Si abres análisis sistémico, ¿qué porcentaje de armonía muestra primero {first_system}?")
 
     questions.extend(heuristic_questions)
-    return _dedupe_keep_order(questions)[:10]
+    return _dedupe_similar_texts(questions, limit=10)
 
 
 def _build_course_reading(
@@ -1515,7 +1587,8 @@ def _build_course_reading(
         if verify:
             parts.append("Lo primero que conviene verificar es " + "; ".join(verify[:2]) + ".")
     parts.append("Antes del rastreo final, ubica primer episodio, detonante principal, emoción dominante y qué cambió en la vida del consultante después de ese momento.")
-    return " ".join(part for part in parts if part)
+    cleaned_parts = _dedupe_similar_texts([part for part in parts if part])
+    return " ".join(cleaned_parts)
 
 
 def _build_protocol_suggestions(
@@ -1689,6 +1762,7 @@ def _build_therapeutic_guide(
         if not key or key in seen_titles:
             continue
         seen_titles.add(key)
+        item["steps"] = _dedupe_similar_texts(_safe_list(item.get("steps")), limit=5)
         deduped.append(item)
     return deduped[:6]
 
