@@ -106,6 +106,18 @@ FOLLOW_UP_HINTS = {
     "amplíalo",
     "del diplomado",
     "del curso",
+    "de que trata",
+    "de qué trata",
+    "como funciona",
+    "cómo funciona",
+    "como se aplica",
+    "cómo se aplica",
+    "y eso",
+    "y ese",
+    "y esa",
+    "y ese tema",
+    "y esa parte",
+    "desarrolla",
 }
 
 COURSE_REFERENCE_HINTS = {
@@ -158,9 +170,6 @@ GENERIC_COURSE_TOKENS = {
 }
 
 MANUAL_ALIASES = {
-    "bmi": "diplomado-sanacion-energetica-integral",
-    "biomagnetismo medico integral": "diplomado-sanacion-energetica-integral",
-    "biomagnetismo médico integral": "diplomado-sanacion-energetica-integral",
     "sei": "diplomado-sanacion-energetica-integral",
     "sanacion energetica integral": "diplomado-sanacion-energetica-integral",
     "diplomado sei": "diplomado-sanacion-energetica-integral",
@@ -313,6 +322,10 @@ class NaturalAssistant:
         results: list[SearchResult],
         history: list[dict],
     ) -> Optional[AssistantOutput]:
+        follow_up_topic = self._answer_follow_up_topic(question, history)
+        if follow_up_topic is not None:
+            return follow_up_topic
+
         pair_answer = self._answer_pair_meaning(question)
         if pair_answer is not None:
             return pair_answer
@@ -345,6 +358,167 @@ class NaturalAssistant:
                 structured = builder(question, history)  # pragma: no cover
             if structured is not None:
                 return structured
+        return None
+
+    def _answer_follow_up_topic(self, question: str, history: list[dict]) -> Optional[AssistantOutput]:
+        if not self._is_follow_up(question):
+            return None
+        if self._find_course_in_text(question) is not None:
+            return None
+        if self._extract_defined_subject(question) is not None:
+            return None
+
+        topic = self._resolve_active_topic_from_history(history)
+        if not topic:
+            return None
+
+        if topic["kind"] == "course":
+            course = topic.get("course")
+            if isinstance(course, CourseStudy):
+                return AssistantOutput(
+                    answer=self._build_course_summary_answer(course),
+                    visual=None,
+                    mode="structured",
+                )
+
+        label = str(topic.get("label", "") or "").strip()
+        if not label:
+            return None
+
+        course = topic.get("course")
+        preferred_course_id = course.course_id if isinstance(course, CourseStudy) else None
+        explicit_course = course if isinstance(course, CourseStudy) else self._resolve_course_from_topic_text(label)
+
+        if topic["kind"] == "pair":
+            replay = self._answer_pair_meaning(f"significado del par {label}")
+            if replay is not None:
+                return replay
+
+        if topic["kind"] == "term" and isinstance(explicit_course, CourseStudy):
+            lowered_follow_up = self._normalize_text(question)
+            asks_protocols = any(
+                phrase in lowered_follow_up
+                for phrase in [
+                    "que protocolos",
+                    "qué protocolos",
+                    "protocolos trae",
+                    "protocolos incluye",
+                    "protocolo trae",
+                ]
+            )
+            asks_modules = ("modulo" in lowered_follow_up or "módulo" in question.lower()) and any(
+                phrase in lowered_follow_up
+                for phrase in [
+                    "cuantos",
+                    "cuántos",
+                    "cuantas",
+                    "cuántas",
+                    "tiene",
+                    "trae",
+                    "incluye",
+                ]
+            )
+            asks_systems = "sistema" in lowered_follow_up and any(
+                phrase in lowered_follow_up
+                for phrase in [
+                    "que",
+                    "qué",
+                    "cuantos",
+                    "cuántos",
+                    "cuales",
+                    "cuáles",
+                ]
+            )
+
+            if asks_protocols:
+                structured = self._answer_course_protocols(f"que protocolos trae {explicit_course.course_name}", history)
+                if structured is not None:
+                    return structured
+            if asks_modules:
+                structured = self._answer_course_module_count(f"cuantos modulos tiene {explicit_course.course_name}", history)
+                if structured is not None:
+                    return structured
+            if asks_systems:
+                structured = self._answer_course_systems(f"que sistemas trabaja {explicit_course.course_name}", history)
+                if structured is not None:
+                    return structured
+            if self._is_summary_request(question):
+                return AssistantOutput(
+                    answer=self._build_course_summary_answer(explicit_course),
+                    visual=None,
+                    mode="structured",
+                )
+
+        if topic["kind"] == "term":
+            replay = self._answer_known_concepts(f"que es {label}")
+            if replay is not None:
+                return replay
+            replay = self._answer_defined_term(f"que es {label}", [])
+            if replay is not None:
+                return replay
+            indexed_answer = self._lookup_course_reference_exact_answer(
+                label,
+                self._manual_course_term_answers,
+                self._manual_global_term_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_exact_answer(
+                label,
+                self._course_term_answers,
+                self._global_term_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_answer(
+                label,
+                self._manual_course_term_answers,
+                self._manual_global_term_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_answer(
+                label,
+                self._course_term_answers,
+                self._global_term_answers,
+                preferred_course_id,
+            ) or self._lookup_indexed_answer(label, self._term_answers)
+            if indexed_answer:
+                return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+
+            concept_entry = self.teacher.find_concept(label)
+            if concept_entry is not None:
+                bullet_hint = ""
+                if concept_entry.bullet_points:
+                    bullet_hint = f" En la práctica, lo importante es {self._join_items(concept_entry.bullet_points[:3])}."
+                return AssistantOutput(
+                    answer=f"{concept_entry.concept_name} se entiende así: {self._compact_text(concept_entry.summary, 520)}{bullet_hint}",
+                    visual=None,
+                    mode="structured",
+                )
+
+        if topic["kind"] == "protocol":
+            replay = self._answer_protocol_definition(f"en que consiste el protocolo {label}", history)
+            if replay is not None:
+                return replay
+            indexed_answer = self._lookup_course_reference_exact_answer(
+                label,
+                self._manual_course_protocol_answers,
+                self._manual_global_protocol_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_exact_answer(
+                label,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_answer(
+                label,
+                self._manual_course_protocol_answers,
+                self._manual_global_protocol_answers,
+                preferred_course_id,
+            ) or self._lookup_course_reference_answer(
+                label,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+                preferred_course_id,
+            ) or self._lookup_indexed_answer(label, self._protocol_answers)
+            if indexed_answer:
+                return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+
         return None
 
     def _answer_pair_meaning(self, question: str) -> Optional[AssistantOutput]:
@@ -558,20 +732,7 @@ class NaturalAssistant:
         return None
 
     def _answer_protocol_definition(self, question: str, history: list[dict]) -> Optional[AssistantOutput]:
-        lowered = self._normalize_text(question)
-        patterns = [
-            r"^(?:que|qué)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
-            r"^(?:en\s+que|en\s+qué)\s+consiste\s+(?:el\s+)?protocolo\s+(.+)$",
-            r"^(?:como|cómo)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
-            r"^explicame\s+(?:el\s+)?protocolo\s+(.+)$",
-            r"^expl[ií]came\s+(?:el\s+)?protocolo\s+(.+)$",
-        ]
-        candidate = None
-        for pattern in patterns:
-            match = re.search(pattern, lowered, flags=re.IGNORECASE)
-            if match:
-                candidate = match.group(1).strip()
-                break
+        candidate = self._extract_protocol_subject(question)
         if not candidate:
             return None
         candidate = re.sub(r"[?!.]+$", "", candidate).strip()
@@ -614,6 +775,21 @@ class NaturalAssistant:
             body = self._compact_text(protocol_entry.body, 420)
             indexed_answer = f"El protocolo {protocol_entry.title} se trabaja así: {body}"
         return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+
+    def _extract_protocol_subject(self, question: str) -> Optional[str]:
+        lowered = self._normalize_text(question)
+        patterns = [
+            r"^(?:que|qué)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^(?:en\s+que|en\s+qué)\s+consiste\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^(?:como|cómo)\s+es\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^explicame\s+(?:el\s+)?protocolo\s+(.+)$",
+            r"^expl[ií]came\s+(?:el\s+)?protocolo\s+(.+)$",
+        ]
+        for pattern in patterns:
+            match = re.search(pattern, lowered, flags=re.IGNORECASE)
+            if match:
+                return match.group(1).strip()
+        return None
 
     def _build_reference_indexes(self) -> tuple[dict[str, str], dict[str, str]]:
         term_answers: dict[str, str] = {}
@@ -1659,6 +1835,9 @@ class NaturalAssistant:
             course = self._find_course_in_text(content)
             if course is not None:
                 return course
+            topic_course = self._resolve_course_from_topic_text(content)
+            if topic_course is not None:
+                return topic_course
         for item in reversed(recent):
             if str(item.get("role", "")).lower() == "user":
                 continue
@@ -1666,7 +1845,101 @@ class NaturalAssistant:
             course = self._find_course_in_text(content)
             if course is not None:
                 return course
+            topic_course = self._resolve_course_from_topic_text(content)
+            if topic_course is not None:
+                return topic_course
         return None
+
+    def _resolve_active_topic_from_history(self, history: list[dict]) -> Optional[dict]:
+        recent = history[-12:]
+        user_items = [item for item in recent if str(item.get("role", "")).lower() == "user"]
+        assistant_items = [item for item in recent if str(item.get("role", "")).lower() != "user"]
+        for bucket in (list(reversed(user_items)), list(reversed(assistant_items))):
+            topic = self._scan_topic_bucket(bucket)
+            if topic is not None:
+                return topic
+        return None
+
+    def _scan_topic_bucket(self, items: list[dict]) -> Optional[dict]:
+        for item in items:
+            content = str(item.get("content", "") or "").strip()
+            if not content:
+                continue
+
+            protocol = self._extract_protocol_subject(content)
+            if protocol:
+                return {
+                    "kind": "protocol",
+                    "label": protocol,
+                    "course": self._resolve_course_for_reference_label(protocol),
+                }
+
+            subject = self._extract_defined_subject(content)
+            if subject:
+                return {
+                    "kind": "term",
+                    "label": subject,
+                    "course": self._resolve_course_from_topic_text(subject),
+                }
+
+            course = self._find_course_in_text(content)
+            if course is not None:
+                return {"kind": "course", "course": course, "label": course.course_name}
+
+            topic_course = self._resolve_course_from_topic_text(content)
+            if topic_course is not None:
+                return {"kind": "course", "course": topic_course, "label": topic_course.course_name}
+        return None
+
+    def _resolve_course_from_topic_text(self, text: str) -> Optional[CourseStudy]:
+        normalized = self._normalize_text(text)
+        if not normalized:
+            return None
+        if normalized in {"bmi", "biomagnetismo medico integral"}:
+            return None
+        for candidate in (normalized, normalized.replace(" de ", " ")):
+            course_id = self._alias_to_course_id.get(candidate)
+            if course_id:
+                study = self._course_by_id.get(course_id)
+                if study is not None:
+                    return study
+
+        subject = self._extract_defined_subject(text)
+        if subject:
+            normalized_subject = self._normalize_text(subject)
+            if normalized_subject in {"bmi", "biomagnetismo medico integral"}:
+                return None
+            for candidate in (normalized_subject, normalized_subject.replace(" de ", " ")):
+                course_id = self._alias_to_course_id.get(candidate)
+                if course_id:
+                    study = self._course_by_id.get(course_id)
+                    if study is not None:
+                        return study
+        return None
+
+    def _resolve_course_for_reference_label(self, label: str) -> Optional[CourseStudy]:
+        normalized = self._normalize_text(label)
+        if normalized in {"bmi", "biomagnetismo medico integral"}:
+            return None
+        matches: list[CourseStudy] = []
+        for mapping in (
+            self._manual_course_term_answers,
+            self._course_term_answers,
+            self._manual_course_protocol_answers,
+            self._course_protocol_answers,
+        ):
+            for course_id, answers in mapping.items():
+                if normalized in answers:
+                    study = self._course_by_id.get(course_id)
+                    if study is not None:
+                        matches.append(study)
+        deduped: list[CourseStudy] = []
+        seen = set()
+        for study in matches:
+            if study.course_id not in seen:
+                seen.add(study.course_id)
+                deduped.append(study)
+        return deduped[0] if len(deduped) == 1 else None
 
     def _find_course_in_text(self, text: str) -> Optional[CourseStudy]:
         courses = self._find_courses_in_text(text)
@@ -1686,6 +1959,8 @@ class NaturalAssistant:
             return []
 
         normalized = self._normalize_text(text)
+        if normalized in {"bmi", "biomagnetismo medico integral"}:
+            return []
         found: list[CourseStudy] = []
         seen = set()
         for course_id in self._expand_group_course_references(normalized):
@@ -1696,6 +1971,8 @@ class NaturalAssistant:
 
         for alias, course_id in self._alias_to_course_id.items():
             if not alias:
+                continue
+            if alias in {"bmi", "biomagnetismo medico integral"}:
                 continue
             if len(alias) <= 4:
                 pattern = rf"(?<![a-z0-9]){re.escape(alias)}(?![a-z0-9])"
@@ -1784,12 +2061,14 @@ class NaturalAssistant:
         for study in self.teacher_memory.course_studies:
             normalized_name = self._normalize_text(study.course_name)
             aliases.setdefault(normalized_name, study.course_id)
+            aliases.setdefault(normalized_name.replace(" de ", " "), study.course_id)
 
             stripped = normalized_name
             for prefix in ("diplomado ", "curso ", "taller "):
                 if stripped.startswith(prefix):
                     stripped = stripped[len(prefix) :].strip()
             aliases.setdefault(stripped, study.course_id)
+            aliases.setdefault(stripped.replace(" de ", " "), study.course_id)
 
             words = [token for token in re.findall(r"[a-z0-9]+", stripped) if token not in {"parte"}]
             if words:
