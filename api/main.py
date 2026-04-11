@@ -12,7 +12,7 @@ PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ConfigDict
@@ -260,9 +260,24 @@ async def list_courses() -> dict:
     return {"ok": True, "courses": kb.catalog}
 
 
+@app.get("/", include_in_schema=False)
+async def root_redirect() -> RedirectResponse:
+    return RedirectResponse(url="/therapy/app", status_code=307)
+
+
+@app.get("/therapy", include_in_schema=False)
+async def therapy_root_redirect() -> RedirectResponse:
+    return RedirectResponse(url="/therapy/app", status_code=307)
+
+
 @app.get("/therapy/app")
 async def therapy_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "therapy.html")
+
+
+@app.get("/cv")
+async def cv_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "cv.html")
 
 
 @app.get("/therapy/logo")
