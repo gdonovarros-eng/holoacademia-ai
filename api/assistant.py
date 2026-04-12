@@ -1666,7 +1666,7 @@ class NaturalAssistant:
         context = self._build_context(question, results, history, active_course, context_courses)
         if not context.strip():
             return None
-        is_complex_cross_course = len(context_courses) > 1 or len(context) > 7000
+        is_complex_cross_course = len(context_courses) > 1 or len(context) > 9000
 
         instructions = SAEL_SYSTEM_PROMPT
         if want_visual and self._is_visual_request(question):
@@ -1699,7 +1699,7 @@ class NaturalAssistant:
             instructions=instructions,
             input=prompt,
             timeout=self.response_timeout,
-            max_output_tokens=700 if is_complex_cross_course else 900,
+            max_output_tokens=900 if is_complex_cross_course else 1100,
         )
         last_prompt_used = prompt
         answer = self._polish_text(self._response_text(response))
@@ -2031,7 +2031,9 @@ class NaturalAssistant:
         context_courses = context_courses or []
         if len(context_courses) > 1:
             context_courses = context_courses[:3]
-        anchored_course = active_course or (context_courses[0] if context_courses else self._infer_course_from_memory(question))
+        anchored_course = active_course or (
+            context_courses[0] if context_courses else self._infer_course_from_memory(question)
+        )
 
         if context_courses:
             for course in context_courses[:4]:
@@ -2042,6 +2044,27 @@ class NaturalAssistant:
         fact_hints = self._extract_factual_hints(question, results, anchored_course)
         if fact_hints:
             blocks.append("[Hechos relevantes]\n" + "\n".join(f"- {item}" for item in fact_hints))
+
+        selected_results = self._select_results(results, anchored_course)
+        if selected_results:
+            result_blocks = [self._build_result_block(item) for item in selected_results]
+            blocks.append("\n\n".join(result_blocks))
+
+        memory_hits = self._select_memory_hits(question, anchored_course)
+        if memory_hits:
+            memory_blocks = []
+            for hit in memory_hits:
+                memory_blocks.append(
+                    "\n".join(
+                        [
+                            "[Memoria docente]",
+                            f"Título: {hit.title}",
+                            f"Curso: {hit.course_name}",
+                            f"Contenido útil: {self._compact_text(hit.text, 520)}",
+                        ]
+                    )
+                )
+            blocks.append("\n\n".join(memory_blocks))
 
         history_course = self._resolve_active_course_from_history(history)
         if anchored_course is None and history_course is not None:
@@ -2098,12 +2121,150 @@ class NaturalAssistant:
         if active_course is not None:
             same_course = [item for item in results if item.course_id == active_course.course_id]
             filtered = same_course or results
-        useful = [
-            item
-            for item in filtered
-            if "index_modulos" not in item.source_file.lower()
+
+        ranked: list[tuple[float, SearchResult]] = []
+        for item in filtered:
+            source_file = self._normalize_text(item.source_file)
+            heading = self._normalize_text(item.heading)
+            text = self._normalize_text(item.text)
+
+            if "index_modulos" in source_file:
+                continue
+
+            score = float(item.score)
+
+            source_type = self._infer_source_type_from_file(item.source_file)
+            if source_type == "manual":
+                score += 2.4
+            elif source_type == "transcripcion":
+                score -= 0.8
+            elif source_type == "indice":
+                score -= 2.0
+
+            if heading:
+                score += 1.2
+                if self._looks_like_good_heading(heading):
+                    score += 0.8
+            else:
+                score -= 0.8
+
+            if self._looks_like_noisy_transcript(text):
+                score -= 2.0
+
+            if self._looks_like_admin_or_frontmatter(text):
+                score -= 2.4
+
+            ranked.append((score, item))
+
+        ranked.sort(key=lambda pair: pair[0], reverse=True)
+
+        selected: list[SearchResult] = []
+        seen_texts: set[str] = set()
+        for _, item in ranked:
+            text_key = self._normalize_text(self._compact_text(item.text, 240))
+            if text_key in seen_texts:
+                continue
+            seen_texts.add(text_key)
+            selected.append(item)
+            if len(selected) >= 4:
+                break
+
+        return selected
+
+    def _infer_source_type_from_file(self, source_file: str) -> str:
+        lowered = self._normalize_text(source_file)
+        if lowered.endswith(".csv") or "index_modulos" in lowered or "indice" in lowered:
+            return "indice"
+        if lowered.endswith(".pdf"):
+            return "manual"
+        if lowered.endswith(".txt") or "transcripcion" in lowered:
+            return "transcripcion"
+        return ""
+
+    def _looks_like_good_heading(self, heading: str) -> bool:
+        heading = self._normalize_text(heading).strip()
+        if not heading:
+            return False
+        if len(heading) > 120:
+            return False
+        if any(
+            token in heading
+            for token in [
+                "modulo",
+                "módulo",
+                "tema",
+                "unidad",
+                "clase",
+                "capitulo",
+                "capítulo",
+                "sistema",
+                "protocolo",
+                "bloque",
+                "sesion",
+                "sesión",
+                "practica",
+                "práctica",
+                "parte",
+                "nivel",
+            ]
+        ):
+            return True
+        return heading.isupper() and len(heading.split()) <= 10
+
+    def _looks_like_noisy_transcript(self, text: str) -> bool:
+        text = self._normalize_text(text)
+        noisy_markers = [
+            "fecha de proceso",
+            "linea:",
+            "linea de",
+            "curso:",
+            "bloque:",
+            "modulo:",
+            "gary",
+            "ya estamos en clase",
+            "saluda a la camara",
+            "saluda a la cámara",
+            "considerense oficialmente en clase",
+            "considérense oficialmente en clase",
         ]
-        return useful[:2]
+        hits = sum(1 for marker in noisy_markers if marker in text)
+        return hits >= 2
+
+    def _looks_like_admin_or_frontmatter(self, text: str) -> bool:
+        text = self._normalize_text(text)
+        front_markers = [
+            "si vas a reproducir este material",
+            "1era edicion",
+            "primera edicion",
+            "actualizado",
+            "youtube",
+            "lista de reproduccion",
+            "lista de reproducción",
+            "por un mundo sano",
+            "curriculum",
+            "curriculum",
+            "semblanza",
+            "calendario",
+            "horario",
+            "inscripcion",
+            "inscripción",
+        ]
+        return any(marker in text for marker in front_markers)
+
+    def _build_result_block(self, item: SearchResult) -> str:
+        source_type = self._infer_source_type_from_file(item.source_file) or "fuente"
+        heading = item.heading.strip() if item.heading else "Sin heading claro"
+        excerpt = self._compact_text(item.text, 700)
+        return "\n".join(
+            [
+                "[Fragmento recuperado]",
+                f"Curso: {item.course_name}",
+                f"Fuente: {item.source_file}",
+                f"Tipo de fuente: {source_type}",
+                f"Heading: {heading}",
+                f"Contenido útil: {excerpt}",
+            ]
+        )
 
     def _extract_factual_hints(
         self,
