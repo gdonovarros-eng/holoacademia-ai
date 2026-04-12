@@ -15,6 +15,7 @@ except ImportError:  # pragma: no cover - optional dependency at runtime
     OpenAI = None
 
 from api.domain_knowledge import get_teacher_knowledge
+from api.course_dossiers import get_course_dossiers
 from api.course_reference_index import get_course_reference_index
 from api.manual_reference_index import get_manual_reference_index
 from api.knowledge_base import SearchResult, trim_excerpt
@@ -275,6 +276,12 @@ class NaturalAssistant:
         }
         self._alias_to_course_id = self._build_alias_index()
         self._course_meta_by_id = self._load_course_metadata()
+        self.course_dossiers = get_course_dossiers()
+        self._course_dossier_by_id = {
+            item.get("course_id"): item for item in self.course_dossiers.get("courses", []) if item.get("course_id")
+        }
+        self._dossier_global_term_answers = self.course_dossiers.get("global_term_answers", {})
+        self._dossier_global_protocol_answers = self.course_dossiers.get("global_protocol_answers", {})
         self.course_reference_index = get_course_reference_index()
         self._global_term_answers = self.course_reference_index.get("global_term_answers", {})
         self._global_protocol_answers = self.course_reference_index.get("global_protocol_answers", {})
@@ -444,12 +451,31 @@ class NaturalAssistant:
                     return structured
             if self._is_summary_request(question):
                 return AssistantOutput(
-                    answer=self._build_course_summary_answer(explicit_course),
+                    answer=self._build_term_follow_up_answer(label, explicit_course, preferred_course_id),
+                    visual=None,
+                    mode="structured",
+                )
+            if any(phrase in lowered_follow_up for phrase in ["como se aplica", "cómo se aplica", "como funciona", "cómo funciona"]):
+                return AssistantOutput(
+                    answer=self._build_term_application_answer(label, explicit_course, preferred_course_id),
                     visual=None,
                     mode="structured",
                 )
 
         if topic["kind"] == "term":
+            lowered_follow_up = self._normalize_text(question)
+            if self._is_summary_request(question):
+                return AssistantOutput(
+                    answer=self._build_term_follow_up_answer(label, explicit_course if isinstance(explicit_course, CourseStudy) else None, preferred_course_id),
+                    visual=None,
+                    mode="structured",
+                )
+            if any(phrase in lowered_follow_up for phrase in ["como se aplica", "cómo se aplica", "como funciona", "cómo funciona"]):
+                return AssistantOutput(
+                    answer=self._build_term_application_answer(label, explicit_course if isinstance(explicit_course, CourseStudy) else None, preferred_course_id),
+                    visual=None,
+                    mode="structured",
+                )
             replay = self._answer_known_concepts(f"que es {label}")
             if replay is not None:
                 return replay
@@ -641,6 +667,7 @@ class NaturalAssistant:
         preferred_course = self._resolve_active_course(question, history)
         if preferred_course is None:
             preferred_course = self._resolve_active_course_from_history(history)
+        preferred_course_id = preferred_course.course_id if preferred_course else None
 
         if "bioenergetica" in candidate and "biologica" not in candidate:
             answer = (
@@ -651,30 +678,34 @@ class NaturalAssistant:
             )
             return AssistantOutput(answer=answer, visual=None, mode="structured")
 
+        dossier_answer = self._lookup_dossier_term_answer(candidate, preferred_course_id)
+        if dossier_answer is not None:
+            return AssistantOutput(answer=dossier_answer, visual=None, mode="structured")
+
         indexed_answer = self._select_best_reference_answer(
             self._lookup_course_reference_exact_answer(
                 candidate,
                 self._course_term_answers,
                 self._global_term_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             ),
             self._lookup_course_reference_exact_answer(
                 candidate,
                 self._manual_course_term_answers,
                 self._manual_global_term_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             ),
             self._lookup_course_reference_answer(
                 candidate,
                 self._course_term_answers,
                 self._global_term_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             ),
             self._lookup_course_reference_answer(
                 candidate,
                 self._manual_course_term_answers,
                 self._manual_global_term_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             ),
         )
         if indexed_answer is not None:
@@ -714,32 +745,36 @@ class NaturalAssistant:
         preferred_course = self._resolve_active_course(question, history)
         if preferred_course is None:
             preferred_course = self._resolve_active_course_from_history(history)
+        preferred_course_id = preferred_course.course_id if preferred_course else None
+        dossier_answer = self._lookup_dossier_protocol_answer(candidate, preferred_course_id)
+        if dossier_answer is not None:
+            return AssistantOutput(answer=dossier_answer, visual=None, mode="structured")
         indexed_answer = self._lookup_course_reference_exact_answer(
             candidate,
             self._manual_course_protocol_answers,
             self._manual_global_protocol_answers,
-            preferred_course.course_id if preferred_course else None,
+            preferred_course_id,
         )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_exact_answer(
-            candidate,
-            self._course_protocol_answers,
-            self._global_protocol_answers,
-            preferred_course.course_id if preferred_course else None,
+                candidate,
+                self._course_protocol_answers,
+                self._global_protocol_answers,
+            preferred_course_id,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_answer(
                 candidate,
                 self._manual_course_protocol_answers,
                 self._manual_global_protocol_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_answer(
                 candidate,
                 self._course_protocol_answers,
                 self._global_protocol_answers,
-                preferred_course.course_id if preferred_course else None,
+                preferred_course_id,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
@@ -956,6 +991,147 @@ class NaturalAssistant:
             if normalized_candidate in preferred:
                 return preferred[normalized_candidate]
         return global_index.get(normalized_candidate)
+
+    def _lookup_dossier_term_answer(
+        self,
+        candidate: str,
+        preferred_course_id: Optional[str],
+    ) -> Optional[str]:
+        normalized = self._normalize_text(candidate)
+        if preferred_course_id:
+            dossier = self._course_dossier_by_id.get(preferred_course_id, {})
+            answers = dossier.get("term_answers", {})
+            payload = answers.get(normalized)
+            if isinstance(payload, dict):
+                return payload.get("answer")
+        payload = self._dossier_global_term_answers.get(normalized)
+        if isinstance(payload, dict):
+            return payload.get("answer")
+        return None
+
+    def _lookup_dossier_protocol_answer(
+        self,
+        candidate: str,
+        preferred_course_id: Optional[str],
+    ) -> Optional[str]:
+        normalized = self._normalize_text(candidate)
+        if preferred_course_id:
+            dossier = self._course_dossier_by_id.get(preferred_course_id, {})
+            answers = dossier.get("protocol_answers", {})
+            payload = answers.get(normalized)
+            if isinstance(payload, dict):
+                return payload.get("answer")
+        payload = self._dossier_global_protocol_answers.get(normalized)
+        if isinstance(payload, dict):
+            return payload.get("answer")
+        return None
+
+    def _build_term_follow_up_answer(
+        self,
+        label: str,
+        course: Optional[CourseStudy],
+        preferred_course_id: Optional[str],
+    ) -> str:
+        normalized_label = self._normalize_text(label)
+        if course is not None:
+            alias_course_id = self._alias_to_course_id.get(normalized_label)
+            if alias_course_id == course.course_id and len(normalized_label) <= 8:
+                return self._build_course_summary_answer(course)
+
+        known_concept = self._answer_known_concepts(f"que es {label}")
+        definition = (
+            known_concept.answer if known_concept is not None else None
+        ) or (
+            self._lookup_dossier_term_answer(label, preferred_course_id)
+            or self._select_best_reference_answer(
+                self._lookup_course_reference_exact_answer(
+                    label,
+                    self._course_term_answers,
+                    self._global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_exact_answer(
+                    label,
+                    self._manual_course_term_answers,
+                    self._manual_global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_answer(
+                    label,
+                    self._course_term_answers,
+                    self._global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_answer(
+                    label,
+                    self._manual_course_term_answers,
+                    self._manual_global_term_answers,
+                    preferred_course_id,
+                ),
+            )
+        )
+        concept_entry = self.teacher.find_concept(label)
+        if definition is None and concept_entry is not None:
+            definition = f"{concept_entry.concept_name} se entiende así: {self._compact_text(concept_entry.summary, 420)}"
+
+        clean_label = label.strip().capitalize()
+        parts: list[str] = []
+        if definition:
+            parts.append(definition)
+        else:
+            parts.append(f"{clean_label} se trabaja como un concepto operativo dentro del método.")
+
+        if course is not None:
+            course_name = self._strip_course_type_prefix(course.course_name)
+            dossier = self._course_dossier_by_id.get(course.course_id, {})
+            themes = self._join_items((dossier.get("core_themes") or course.core_themes)[:3])
+            protocols = self._join_items(
+                [self._protocol_label(item) for item in (dossier.get("protocols") or course.protocols)[:3]]
+            )
+            parts.append(
+                f"Dentro de {course_name}, este tema se usa para orientar la lectura del caso y tomar mejores decisiones en el rastreo o en la intervención."
+            )
+            if themes:
+                parts.append(f"Se conecta sobre todo con {themes}.")
+            if protocols:
+                parts.append(f"Suele aparecer junto con secuencias o protocolos como {protocols}.")
+        elif concept_entry is not None and concept_entry.bullet_points:
+            parts.append(
+                f"En la práctica conviene ubicarlo por {self._join_items(concept_entry.bullet_points[:3])}."
+            )
+
+        return " ".join(part for part in parts if part)
+
+    def _build_term_application_answer(
+        self,
+        label: str,
+        course: Optional[CourseStudy],
+        preferred_course_id: Optional[str],
+    ) -> str:
+        base = self._build_term_follow_up_answer(label, course, preferred_course_id)
+        normalized_label = self._normalize_text(label)
+        if normalized_label == "switching":
+            return (
+                f"{base} En la práctica se aplica como una maniobra breve de reorganización energética: "
+                "se trabaja con el ombligo, clavículas, puntos REN/DU y sacro, alternando estímulos para "
+                "sacar al consultante de desorganización o interferencia antes de testear o intervenir."
+            )
+        if normalized_label in {"bmi", "biomagnetismo medico integral"}:
+            return (
+                f"{base} En la práctica se aplica testando, rastreando y verificando con criterio terapéutico: "
+                "no se reduce a poner imanes, sino a leer el caso, discriminar el terreno y confirmar qué par o "
+                "qué secuencia realmente corresponde."
+            )
+        if course is not None:
+            course_name = self._strip_course_type_prefix(course.course_name)
+            return (
+                f"{base} En la práctica, este tema se aplica dentro de {course_name} como criterio de lectura, "
+                "como filtro para decidir preguntas y como apoyo para elegir mejor el protocolo o el rastreo."
+            )
+        return (
+            f"{base} En la práctica, se usa como criterio de lectura y como apoyo para decidir mejor "
+            "qué observar, qué preguntar y qué comprobar dentro del método."
+        )
 
     def _is_generic_reference_answer(self, answer: Optional[str]) -> bool:
         if not answer:
@@ -1268,11 +1444,31 @@ class NaturalAssistant:
         )
 
     def _build_course_summary_answer(self, course: CourseStudy) -> str:
+        dossier = self._course_dossier_by_id.get(course.course_id, {})
+        dossier_summary = str(dossier.get("dossier_summary", "") or "").strip()
+        teacher_summary = str(dossier.get("teacher_summary", "") or "").strip()
+        dossier_themes = dossier.get("core_themes", []) or []
+        dossier_concepts = dossier.get("key_concepts", []) or []
+        dossier_protocols = dossier.get("protocols", []) or []
         summary = self._clean_course_summary_seed(course.teacher_summary or course.summary)
-        themes = self._join_items(course.core_themes[:4])
-        concepts = self._join_items(course.key_concepts[:4])
-        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:4]])
-        parts = [f"{course.course_name} es una formación orientada a {summary}"]
+        themes = self._join_items((dossier_themes or course.core_themes)[:4])
+        concepts = self._join_items((dossier_concepts or course.key_concepts)[:4])
+        protocols = self._join_items([self._protocol_label(item) for item in (dossier_protocols or course.protocols)[:4]])
+        display_name = self._strip_course_type_prefix(course.course_name)
+        clean_dossier_summary = self._compact_text(self._clean_course_summary_seed(dossier_summary), 360) if dossier_summary else ""
+        clean_teacher_summary = self._compact_text(self._clean_course_summary_seed(teacher_summary), 360) if teacher_summary else ""
+        base_summary = clean_dossier_summary or f"{display_name} es una formación orientada a {summary}"
+        base_summary = base_summary[:1].upper() + base_summary[1:] if base_summary else base_summary
+        parts = [base_summary]
+        similarity = 0.0
+        if clean_teacher_summary:
+            similarity = SequenceMatcher(
+                None,
+                self._normalize_text(clean_teacher_summary),
+                self._normalize_text(parts[0]),
+            ).ratio()
+        if clean_teacher_summary and similarity < 0.72 and self._normalize_text(clean_teacher_summary) not in self._normalize_text(parts[0]):
+            parts.append(clean_teacher_summary)
         if themes:
             parts.append(f"Sus ejes principales son {themes}.")
         if concepts:
@@ -1280,6 +1476,10 @@ class NaturalAssistant:
         if protocols:
             parts.append(f"También aparecen secuencias o protocolos como {protocols}.")
         return " ".join(parts)
+
+    def _strip_course_type_prefix(self, course_name: str) -> str:
+        cleaned = re.sub(r"^(Diplomado|Curso|Taller)\s+", "", course_name, flags=re.IGNORECASE).strip()
+        return cleaned or course_name
 
     def _clean_course_summary_seed(self, text: str) -> str:
         cleaned = " ".join((text or "").split())
