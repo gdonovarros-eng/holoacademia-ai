@@ -315,6 +315,7 @@ class NaturalAssistant:
         self._manual_protocol_owner_counts = self._build_owner_counts(self._manual_course_protocol_answers)
         self._term_answers = {}
         self._protocol_answers = {}
+        self._term_lexicon = self._build_term_lexicon()
 
     def answer(
         self,
@@ -701,16 +702,14 @@ class NaturalAssistant:
 
         candidate = re.sub(r"^(?:el|la|los|las)\s+", "", candidate).strip()
         candidate = re.sub(r"[?!.]+$", "", candidate).strip()
-        corrected_candidate = self._resolve_known_term_candidate(candidate)
-        if corrected_candidate:
-            candidate = corrected_candidate
-        if not candidate or candidate in {"bmi", "sei"}:
-            return None
 
         preferred_course = self._resolve_active_course(question, history)
         if preferred_course is None:
             preferred_course = self._resolve_active_course_from_history(history)
         preferred_course_id = preferred_course.course_id if preferred_course else None
+        candidate = self._canonicalize_term_candidate(candidate, preferred_course_id)
+        if not candidate or candidate in {"bmi", "sei"}:
+            return None
 
         if "bioenergetica" in candidate and "biologica" not in candidate:
             answer = (
@@ -777,6 +776,7 @@ class NaturalAssistant:
         if preferred_course is None:
             preferred_course = self._resolve_active_course_from_history(history)
         preferred_course_id = preferred_course.course_id if preferred_course else None
+        candidate = self._canonicalize_term_candidate(candidate, preferred_course_id)
         dossier_answer = self._lookup_dossier_protocol_answer(candidate, preferred_course_id)
         if dossier_answer is not None:
             return AssistantOutput(answer=dossier_answer, visual=None, mode="structured")
@@ -1204,6 +1204,181 @@ class NaturalAssistant:
             return KNOWN_CONCEPT_CANONICALS[best_term]
         return None
 
+    def _build_term_lexicon(self) -> dict[str, dict]:
+        lexicon: dict[str, dict] = {}
+
+        def add_term(term: str, kind: str, course_id: Optional[str] = None) -> None:
+            normalized = self._normalize_text(term).strip()
+            if not normalized or len(normalized) < 2:
+                return
+            payload = lexicon.setdefault(
+                normalized,
+                {
+                    "term": term.strip(),
+                    "kind": kind,
+                    "course_ids": set(),
+                },
+            )
+            if course_id:
+                payload["course_ids"].add(course_id)
+
+        for key in self._global_term_answers.keys():
+            add_term(key, "term")
+        for key in self._global_protocol_answers.keys():
+            add_term(key, "protocol")
+        for key in self._manual_global_term_answers.keys():
+            add_term(key, "term")
+        for key in self._manual_global_protocol_answers.keys():
+            add_term(key, "protocol")
+
+        for course_id, index in self._course_term_answers.items():
+            if isinstance(index, dict):
+                for key in index.keys():
+                    add_term(key, "term", course_id)
+
+        for course_id, index in self._course_protocol_answers.items():
+            if isinstance(index, dict):
+                for key in index.keys():
+                    add_term(key, "protocol", course_id)
+
+        for course_id, index in self._manual_course_term_answers.items():
+            if isinstance(index, dict):
+                for key in index.keys():
+                    add_term(key, "term", course_id)
+
+        for course_id, index in self._manual_course_protocol_answers.items():
+            if isinstance(index, dict):
+                for key in index.keys():
+                    add_term(key, "protocol", course_id)
+
+        for course_id, index in self._course_question_answers.items():
+            if isinstance(index, dict):
+                for key in index.keys():
+                    add_term(key, "question", course_id)
+
+        for course in self.course_dossiers.get("courses", []):
+            course_id = course.get("course_id")
+            for key in (course.get("term_answers") or {}).keys():
+                add_term(key, "term", course_id)
+            for key in (course.get("protocol_answers") or {}).keys():
+                add_term(key, "protocol", course_id)
+
+        return lexicon
+
+    def _extract_query_subject_generic(self, question: str) -> Optional[str]:
+        subject = self._extract_defined_subject(question)
+        if subject:
+            return subject.strip()
+
+        protocol_subject = self._extract_protocol_subject(question)
+        if protocol_subject:
+            return protocol_subject.strip()
+
+        cleaned = self._normalize_text(question)
+        cleaned = re.sub(r"[?!.]+$", "", cleaned).strip()
+        cleaned = re.sub(r"^(como|cómo|que|qué|cual|cuál|de que|de qué|significado de)\s+", "", cleaned).strip()
+        return cleaned or None
+
+    def _rank_lexicon_candidates(
+        self,
+        candidate: str,
+        preferred_course_id: Optional[str] = None,
+        limit: int = 3,
+    ) -> list[dict]:
+        normalized_candidate = self._normalize_text(candidate).strip()
+        if not normalized_candidate:
+            return []
+
+        query_tokens = {
+            token
+            for token in re.findall(r"[a-z0-9]+", normalized_candidate)
+            if len(token) >= 3
+        }
+
+        ranked: list[tuple[float, dict]] = []
+        for key, payload in self._term_lexicon.items():
+            if len(key) > 90:
+                continue
+
+            score = 0.0
+
+            if key == normalized_candidate:
+                score += 10.0
+            elif normalized_candidate in key:
+                score += 5.0
+            elif key in normalized_candidate:
+                score += 3.0
+
+            key_tokens = {
+                token
+                for token in re.findall(r"[a-z0-9]+", key)
+                if len(token) >= 3
+            }
+            overlap = query_tokens & key_tokens
+            if overlap:
+                score += len(overlap) * 2.0
+                if query_tokens and query_tokens <= key_tokens:
+                    score += 2.0
+
+            ratio = SequenceMatcher(None, normalized_candidate, key).ratio()
+            score += ratio * 3.0
+
+            if preferred_course_id and preferred_course_id in payload.get("course_ids", set()):
+                score += 1.5
+
+            if payload.get("kind") == "question":
+                score -= 0.8
+
+            if len(key.split()) > 8:
+                score -= 1.2
+
+            if score >= 4.2:
+                ranked.append((score, payload))
+
+        ranked.sort(key=lambda item: item[0], reverse=True)
+
+        deduped: list[dict] = []
+        seen = set()
+        for score, payload in ranked:
+            term = self._normalize_text(payload["term"])
+            if term in seen:
+                continue
+            seen.add(term)
+            deduped.append(
+                {
+                    "term": payload["term"],
+                    "kind": payload["kind"],
+                    "score": score,
+                    "course_ids": sorted(payload.get("course_ids", set())),
+                }
+            )
+            if len(deduped) >= limit:
+                break
+
+        return deduped
+
+    def _canonicalize_term_candidate(
+        self,
+        candidate: Optional[str],
+        preferred_course_id: Optional[str] = None,
+    ) -> Optional[str]:
+        if not candidate:
+            return None
+
+        known = self._resolve_known_term_candidate(candidate)
+        if known:
+            return known
+
+        ranked = self._rank_lexicon_candidates(candidate, preferred_course_id=preferred_course_id, limit=1)
+        if not ranked:
+            return candidate
+
+        top = ranked[0]
+        if top["score"] >= 6.0:
+            return str(top["term"]).strip()
+
+        return candidate
+
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
         defined_subject = self._extract_defined_subject(question)
@@ -1608,21 +1783,49 @@ class NaturalAssistant:
         history = history or []
         active_course = self._resolve_active_course(question, history)
         mentioned_courses = self._find_courses_in_text(question)
+        preferred_course_id = active_course.course_id if active_course else None
+
         queries = [question.strip()]
 
         last_user_question = self._last_user_question(history)
         if self._is_follow_up(question) and last_user_question:
             queries.append(f"{last_user_question}. Seguimiento: {question}")
 
+        extracted_subject = self._extract_query_subject_generic(question)
+        subject_for_expansion = extracted_subject if extracted_subject and len(extracted_subject.split()) <= 5 else None
+        canonical_subject = self._canonicalize_term_candidate(subject_for_expansion, preferred_course_id)
+        ranked_subjects = (
+            self._rank_lexicon_candidates(
+                canonical_subject or subject_for_expansion or question,
+                preferred_course_id=preferred_course_id,
+                limit=2,
+            )
+            if subject_for_expansion
+            else []
+        )
+
+        if canonical_subject and self._normalize_text(canonical_subject) not in self._normalize_text(question):
+            queries.append(canonical_subject)
+
+        for item in ranked_subjects:
+            term = str(item["term"]).strip()
+            if self._normalize_text(term) not in self._normalize_text(question):
+                queries.append(term)
+                queries.append(f"{question}. {term}")
+
         for course in mentioned_courses[:4]:
             course_name = course.course_name
             if self._normalize_text(course_name) not in self._normalize_text(question):
                 queries.append(f"{course_name}. {question}")
+                if canonical_subject:
+                    queries.append(f"{course_name}. {canonical_subject}")
 
         if active_course is not None:
             course_name = active_course.course_name
             if self._normalize_text(course_name) not in self._normalize_text(question):
                 queries.append(f"{course_name}. {question}")
+            if canonical_subject:
+                queries.append(f"{course_name}. {canonical_subject}")
 
         cleaned: list[str] = []
         seen = set()
@@ -1635,8 +1838,7 @@ class NaturalAssistant:
                 continue
             seen.add(key)
             cleaned.append(normalized)
-        max_queries = 3 if len(mentioned_courses) > 1 else 2
-        return (cleaned or [question])[:max_queries]
+        return cleaned[:6]
 
     def should_focus_primary_course(self, question: str) -> bool:
         lowered = self._normalize_text(question)
