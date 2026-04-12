@@ -122,6 +122,20 @@ FOLLOW_UP_HINTS = {
     "desarrolla",
 }
 
+KNOWN_CONCEPT_CANONICALS = {
+    "biomagnetismo": "biomagnetismo",
+    "holobiomagnetismo": "holobiomagnetismo",
+    "radiestesia": "radiestesia",
+    "bioenergetica": "bioenergetica",
+    "reservorio": "reservorio",
+    "bmi": "bmi",
+    "sei": "sei",
+    "switching": "switching",
+    "marcha cruzada": "marcha cruzada",
+    "ganchos de cook": "ganchos de cook",
+    "r27": "r27",
+}
+
 COURSE_REFERENCE_HINTS = {
     "curso",
     "diplomado",
@@ -317,6 +331,18 @@ class NaturalAssistant:
         direct_structured = self._answer_direct_structured(question, results, history)
         if direct_structured is not None:
             return direct_structured
+
+        if self._extract_defined_subject(question) is not None:
+            return AssistantOutput(
+                answer=(
+                    "No ubico ese concepto con suficiente claridad como para responderte bien todavía. "
+                    "Si quieres, prueba con el término exacto o con una forma cercana; por ejemplo: "
+                    "`que es biomagnetismo`, `que es bioenergetica`, `que es radiestesia`, "
+                    "`que es BMI` o `que es SEI`."
+                ),
+                visual=None,
+                mode="structured",
+            )
 
         if self.course_use_model and self.enabled:
             try:
@@ -674,6 +700,9 @@ class NaturalAssistant:
 
         candidate = re.sub(r"^(?:el|la|los|las)\s+", "", candidate).strip()
         candidate = re.sub(r"[?!.]+$", "", candidate).strip()
+        corrected_candidate = self._resolve_known_term_candidate(candidate)
+        if corrected_candidate:
+            candidate = corrected_candidate
         if not candidate or candidate in {"bmi", "sei"}:
             return None
 
@@ -1232,8 +1261,30 @@ class NaturalAssistant:
                 return f"{candidate.strip().capitalize()} se entiende así: {compact}"
         return None
 
+    def _resolve_known_term_candidate(self, candidate: Optional[str]) -> Optional[str]:
+        if not candidate:
+            return None
+        normalized = self._normalize_text(candidate)
+        normalized = re.sub(r"^(?:el|la|los|las)\s+", "", normalized).strip()
+        if normalized in KNOWN_CONCEPT_CANONICALS:
+            return KNOWN_CONCEPT_CANONICALS[normalized]
+        best_term = None
+        best_ratio = 0.0
+        for term in KNOWN_CONCEPT_CANONICALS:
+            ratio = SequenceMatcher(None, normalized, term).ratio()
+            if ratio > best_ratio:
+                best_ratio = ratio
+                best_term = term
+        if best_term and best_ratio >= 0.84:
+            return KNOWN_CONCEPT_CANONICALS[best_term]
+        return None
+
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
+        defined_subject = self._extract_defined_subject(question)
+        resolved_subject = self._resolve_known_term_candidate(defined_subject) if defined_subject else None
+        if resolved_subject is not None:
+            lowered = f"que es {resolved_subject}"
         biomagnetism_patterns = [
             "que es biomagnetismo",
             "qué es biomagnetismo",
