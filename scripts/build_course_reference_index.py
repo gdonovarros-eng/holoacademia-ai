@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -16,6 +17,18 @@ def compact_text(text: str, limit: int = 420) -> str:
     if len(cleaned) <= limit:
         return cleaned
     return cleaned[: limit - 1].rstrip() + "…"
+
+
+def soft_trim(text: str, limit: int = 1200) -> str:
+    cleaned = " ".join((text or "").split())
+    if len(cleaned) <= limit:
+        return cleaned
+    cut = cleaned[:limit]
+    for marker in (". ", "; ", ": "):
+        idx = cut.rfind(marker)
+        if idx >= int(limit * 0.65):
+            return cut[: idx + 1].strip()
+    return cut.rstrip(" ,;:") + "…"
 
 
 def normalize_text(text: str) -> str:
@@ -70,6 +83,64 @@ def extract_parenthetical_descriptor(label: str) -> str:
     return match.group(1).strip() if match else ""
 
 
+@lru_cache(maxsize=256)
+def read_source_text(source_file: str) -> str:
+    path = Path(source_file)
+    if not path.exists():
+        return ""
+    try:
+        return path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+
+def split_passages(text: str) -> list[str]:
+    cleaned = (text or "").replace("\r", "\n")
+    chunks = [chunk.strip() for chunk in re.split(r"\n\s*\n+", cleaned) if chunk.strip()]
+    passages: list[str] = []
+    for chunk in chunks:
+        compact = " ".join(chunk.split())
+        if len(compact) >= 80:
+            passages.append(compact)
+    return passages or ([" ".join(cleaned.split())] if cleaned.strip() else [])
+
+
+@lru_cache(maxsize=256)
+def get_source_passages(source_file: str) -> list[tuple[str, str]]:
+    text = read_source_text(source_file)
+    if not text:
+        return []
+    return [(passage, normalize_text(passage)) for passage in split_passages(text)]
+
+
+def body_keywords(body: str, limit: int = 6) -> list[str]:
+    return [
+        token
+        for token in re.findall(r"[a-z0-9]+", normalize_text(body))
+        if len(token) >= 4
+    ][:limit]
+
+
+def find_source_excerpt(source_file: str, label: str, body: str) -> str:
+    passages = get_source_passages(source_file)
+    label_norm = normalize_text(label)
+    extra_terms = body_keywords(body)
+    ranked: list[tuple[int, int, str]] = []
+    for passage, normalized in passages:
+        score = 0
+        if label_norm and label_norm in normalized:
+            score += 12
+        for term in extra_terms:
+            if term in normalized:
+                score += 2
+        if score > 0:
+            ranked.append((score, len(passage), passage))
+    if not ranked:
+        return ""
+    ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    return soft_trim(ranked[0][2], 1200)
+
+
 def expand_label_aliases(label: str) -> list[str]:
     aliases = [label.strip()]
     base = re.sub(r"\([^)]*\)", "", label).strip(" ,")
@@ -82,7 +153,7 @@ def expand_label_aliases(label: str) -> list[str]:
         if not current:
             continue
         expanded.append(current)
-        for separator in (",", " y ", "/"):
+        for separator in ("/",):
             if separator in current:
                 pending.extend(part.strip() for part in current.split(separator) if part.strip())
     deduped: list[str] = []
@@ -127,7 +198,7 @@ def build_index() -> dict:
             if not subject:
                 continue
             normalized_subject = normalize_text(subject)
-            answer = f"{subject.strip().rstrip(':')} se entiende así: {compact_text(answer_text, 420)}"
+            answer = f"{subject.strip().rstrip(':')} se entiende así: {soft_trim(answer_text, 900)}"
             upsert_answer(term_index, normalized_subject, answer)
             upsert_answer(global_term_answers, normalized_subject, answer)
 
@@ -146,10 +217,15 @@ def build_index() -> dict:
                 if not label:
                     continue
                 descriptor = extract_parenthetical_descriptor(label)
+                source_excerpt = find_source_excerpt(source.get("source_file", ""), label, body)
                 answer = (
-                    f"{label} se entiende así: {compact_text(body, 360)}"
+                    f"{label} se entiende así: {soft_trim(body, 900)}"
                     if body
-                    else f"{label} es un concepto importante dentro de {course_name}."
+                    else (
+                        f"{label} se entiende así: {source_excerpt}"
+                        if source_excerpt
+                        else f"{label} se usa en {course_name} como criterio operativo dentro del método."
+                    )
                 )
                 source_record["concepts"].append({"term": label, "answer": answer})
                 for alias in expand_label_aliases(label):
@@ -167,10 +243,15 @@ def build_index() -> dict:
                 label, body = split_label_and_body(item)
                 if not label:
                     continue
+                source_excerpt = find_source_excerpt(source.get("source_file", ""), label, body)
                 answer = (
-                    f"{label} se entiende así: {compact_text(body, 360)}"
+                    f"{label} se entiende así: {soft_trim(body, 900)}"
                     if body
-                    else f"{label} es un término importante dentro de {course_name}."
+                    else (
+                        f"{label} se entiende así: {source_excerpt}"
+                        if source_excerpt
+                        else f"{label} se usa en {course_name} como criterio operativo dentro del método."
+                    )
                 )
                 source_record["concepts"].append({"term": label, "answer": answer})
                 for alias in expand_label_aliases(label):
@@ -182,10 +263,15 @@ def build_index() -> dict:
                 label, body = split_label_and_body(item)
                 if not label:
                     continue
+                source_excerpt = find_source_excerpt(source.get("source_file", ""), label, body)
                 answer = (
-                    f"El protocolo {label} se trabaja así: {compact_text(body, 420)}"
+                    f"El protocolo {label} se trabaja así: {soft_trim(body, 1000)}"
                     if body
-                    else f"El protocolo {label} forma parte de {course_name}."
+                    else (
+                        f"El protocolo {label} se trabaja así: {source_excerpt}"
+                        if source_excerpt
+                        else f"El protocolo {label} se usa dentro de {course_name} como una secuencia de intervención."
+                    )
                 )
                 source_record["protocols"].append({"term": label, "answer": answer})
                 for alias in expand_label_aliases(label):

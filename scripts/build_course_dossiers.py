@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import re
 from collections import defaultdict
+from functools import lru_cache
 from pathlib import Path
 
 
@@ -24,6 +25,18 @@ def compact_text(text: str, limit: int = 420) -> str:
     if len(cleaned) <= limit:
         return cleaned
     return cleaned[: limit - 1].rstrip(" ,;:") + "…"
+
+
+def soft_trim(text: str, limit: int = 1200) -> str:
+    cleaned = " ".join((text or "").split())
+    if len(cleaned) <= limit:
+        return cleaned
+    cut = cleaned[:limit]
+    for marker in (". ", "; ", ": "):
+        idx = cut.rfind(marker)
+        if idx >= int(limit * 0.65):
+            return cut[: idx + 1].strip()
+    return cut.rstrip(" ,;:") + "…"
 
 
 def split_label_and_body(item: str) -> tuple[str, str]:
@@ -52,7 +65,7 @@ def expand_label_aliases(label: str) -> list[str]:
         if not current:
             continue
         expanded.append(current)
-        for separator in (" y ", "/", ","):
+        for separator in ("/",):
             if separator in current:
                 pending.extend(part.strip() for part in current.split(separator) if part.strip())
     deduped: list[str] = []
@@ -121,6 +134,102 @@ def extract_parenthetical_aliases(text: str) -> list[str]:
     return aliases
 
 
+@lru_cache(maxsize=256)
+def read_source_text(source_file: str) -> str:
+    path = Path(source_file)
+    if not path.exists():
+        return ""
+    try:
+        return path.read_text(encoding="utf-8", errors="ignore")
+    except Exception:
+        return ""
+
+
+def split_passages(text: str) -> list[str]:
+    cleaned = (text or "").replace("\r", "\n")
+    chunks = [chunk.strip() for chunk in re.split(r"\n\s*\n+", cleaned) if chunk.strip()]
+    passages: list[str] = []
+    for chunk in chunks:
+        compact = " ".join(chunk.split())
+        if len(compact) < 80:
+            continue
+        passages.append(compact)
+    if passages:
+        return passages
+    return [" ".join(cleaned.split())] if cleaned.strip() else []
+
+
+@lru_cache(maxsize=256)
+def get_source_passages(source_file: str) -> list[tuple[str, str]]:
+    text = read_source_text(source_file)
+    if not text:
+        return []
+    return [(passage, normalize_text(passage)) for passage in split_passages(text)]
+
+
+def body_keywords(body: str, limit: int = 6) -> list[str]:
+    tokens = [
+        token
+        for token in re.findall(r"[a-záéíóúüñ0-9]+", normalize_text(body))
+        if len(token) >= 4
+    ]
+    deduped: list[str] = []
+    for token in tokens:
+        if token not in deduped:
+            deduped.append(token)
+    return deduped[:limit]
+
+
+def build_search_terms(label: str, body: str) -> list[str]:
+    terms: list[str] = []
+    for alias in expand_label_aliases(label) + extract_parenthetical_aliases(label):
+        normalized = normalize_text(alias)
+        if normalized and normalized not in terms:
+            terms.append(normalized)
+    for keyword in body_keywords(body):
+        if keyword not in terms:
+            terms.append(keyword)
+    return terms
+
+
+def find_source_excerpt(source_file: str, label: str, body: str) -> str:
+    passages = get_source_passages(source_file)
+    if not passages:
+        return ""
+    label_norm = normalize_text(label)
+    search_terms = build_search_terms(label, body)
+    ranked: list[tuple[int, int, str]] = []
+    for passage, normalized in passages:
+        score = 0
+        if label_norm and label_norm in normalized:
+            score += 12
+        for term in search_terms:
+            if term and term in normalized:
+                score += 3
+        if score <= 0:
+            continue
+        ranked.append((score, len(passage), passage))
+    if not ranked:
+        return ""
+    ranked.sort(key=lambda item: (item[0], item[1]), reverse=True)
+    return soft_trim(ranked[0][2], 1200)
+
+
+def add_global_payload(index: dict[str, list[dict]], key: str, payload: dict) -> None:
+    bucket = index.setdefault(key, [])
+    signature = (
+        payload.get("course_id"),
+        payload.get("source_title"),
+        payload.get("answer"),
+    )
+    existing = {
+        (item.get("course_id"), item.get("source_title"), item.get("answer"))
+        for item in bucket
+    }
+    if signature not in existing:
+        bucket.append(payload)
+
+
 def build_fallback_term_answer(
     alias: str,
     course_name: str,
@@ -156,8 +265,8 @@ def build_index() -> dict:
         sources_by_course[source["course_id"]].append(source)
 
     dossiers: list[dict] = []
-    global_term_answers: dict[str, dict] = {}
-    global_protocol_answers: dict[str, dict] = {}
+    global_term_answers: dict[str, list[dict]] = {}
+    global_protocol_answers: dict[str, list[dict]] = {}
 
     for course in courses:
         course_id = course["course_id"]
@@ -200,7 +309,7 @@ def build_index() -> dict:
                 normalize_text(subject),
                 {"term": subject, "answer": answer, "course_id": course_id, "course_name": course_name},
             )
-            upsert(
+            add_global_payload(
                 global_term_answers,
                 normalize_text(subject),
                 {"term": subject, "answer": answer, "course_id": course_id, "course_name": course_name},
@@ -235,7 +344,7 @@ def build_index() -> dict:
                     "source_title": course_name,
                 }
                 upsert(course_term_answers, normalized_alias, payload)
-                upsert(global_term_answers, normalized_alias, payload)
+                add_global_payload(global_term_answers, normalized_alias, payload)
 
         for source in sources_by_course.get(course_id, []):
             source_summary = source.get("summary", "")
@@ -244,9 +353,12 @@ def build_index() -> dict:
                     label, body = split_label_and_body(item)
                     if not label:
                         continue
+                    source_excerpt = find_source_excerpt(source.get("source_file", ""), label, body)
                     for alias in expand_label_aliases(label):
                         if body:
-                            answer = f"{alias} se entiende así: {compact_text(body, 360)}"
+                            answer = f"{alias} se entiende así: {soft_trim(body, 900)}"
+                        elif source_excerpt:
+                            answer = f"{alias} se entiende así: {source_excerpt}"
                         else:
                             answer = build_fallback_term_answer(
                                 alias=alias,
@@ -264,16 +376,21 @@ def build_index() -> dict:
                             "source_title": source.get("source_title", ""),
                         }
                         upsert(course_term_answers, normalized_alias, payload)
-                        upsert(global_term_answers, normalized_alias, payload)
+                        add_global_payload(global_term_answers, normalized_alias, payload)
 
             for item in source.get("protocols", []):
                 label, body = split_label_and_body(item)
                 if not label:
                     continue
+                source_excerpt = find_source_excerpt(source.get("source_file", ""), label, body)
                 answer = (
-                    f"El protocolo {label} se trabaja así: {compact_text(body, 420)}"
+                    f"El protocolo {label} se trabaja así: {soft_trim(body, 1000)}"
                     if body
-                    else build_fallback_protocol_answer(label, course_name, source_summary)
+                    else (
+                        f"El protocolo {label} se trabaja así: {source_excerpt}"
+                        if source_excerpt
+                        else build_fallback_protocol_answer(label, course_name, source_summary)
+                    )
                 )
                 for alias in expand_label_aliases(label):
                     normalized_alias = normalize_text(alias)
@@ -285,7 +402,7 @@ def build_index() -> dict:
                         "source_title": source.get("source_title", ""),
                     }
                     upsert(course_protocol_answers, normalized_alias, payload)
-                    upsert(global_protocol_answers, normalized_alias, payload)
+                    add_global_payload(global_protocol_answers, normalized_alias, payload)
 
         dossier_summary = (
             f"{strip_course_type_prefix(course_name)} es una formación orientada a "

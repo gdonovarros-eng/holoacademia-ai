@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import re
 import unicodedata
+from collections import defaultdict
 from difflib import SequenceMatcher
 from dataclasses import dataclass
 from pathlib import Path
@@ -287,11 +288,15 @@ class NaturalAssistant:
         self._global_protocol_answers = self.course_reference_index.get("global_protocol_answers", {})
         self._course_term_answers = self.course_reference_index.get("course_term_answers", {})
         self._course_protocol_answers = self.course_reference_index.get("course_protocol_answers", {})
+        self._course_term_owner_counts = self._build_owner_counts(self._course_term_answers)
+        self._course_protocol_owner_counts = self._build_owner_counts(self._course_protocol_answers)
         self.manual_reference_index = get_manual_reference_index()
         self._manual_global_term_answers = self.manual_reference_index.get("global_term_answers", {})
         self._manual_global_protocol_answers = self.manual_reference_index.get("global_protocol_answers", {})
         self._manual_course_term_answers = self.manual_reference_index.get("course_term_answers", {})
         self._manual_course_protocol_answers = self.manual_reference_index.get("course_protocol_answers", {})
+        self._manual_term_owner_counts = self._build_owner_counts(self._manual_course_term_answers)
+        self._manual_protocol_owner_counts = self._build_owner_counts(self._manual_course_protocol_answers)
         self._term_answers, self._protocol_answers = self._build_reference_indexes()
 
     def answer(
@@ -488,24 +493,28 @@ class NaturalAssistant:
                     self._course_term_answers,
                     self._global_term_answers,
                     preferred_course_id,
+                    self._course_term_owner_counts,
                 ),
                 self._lookup_course_reference_exact_answer(
                     label,
                     self._manual_course_term_answers,
                     self._manual_global_term_answers,
                     preferred_course_id,
+                    self._manual_term_owner_counts,
                 ),
                 self._lookup_course_reference_answer(
                     label,
                     self._course_term_answers,
                     self._global_term_answers,
                     preferred_course_id,
+                    self._course_term_owner_counts,
                 ),
                 self._lookup_course_reference_answer(
                     label,
                     self._manual_course_term_answers,
                     self._manual_global_term_answers,
                     preferred_course_id,
+                    self._manual_term_owner_counts,
                 ),
                 self._lookup_indexed_answer(label, self._term_answers),
             )
@@ -532,21 +541,25 @@ class NaturalAssistant:
                 self._manual_course_protocol_answers,
                 self._manual_global_protocol_answers,
                 preferred_course_id,
+                self._manual_protocol_owner_counts,
             ) or self._lookup_course_reference_exact_answer(
                 label,
                 self._course_protocol_answers,
                 self._global_protocol_answers,
                 preferred_course_id,
+                self._course_protocol_owner_counts,
             ) or self._lookup_course_reference_answer(
                 label,
                 self._manual_course_protocol_answers,
                 self._manual_global_protocol_answers,
                 preferred_course_id,
+                self._manual_protocol_owner_counts,
             ) or self._lookup_course_reference_answer(
                 label,
                 self._course_protocol_answers,
                 self._global_protocol_answers,
                 preferred_course_id,
+                self._course_protocol_owner_counts,
             ) or self._lookup_indexed_answer(label, self._protocol_answers)
             if indexed_answer:
                 return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
@@ -688,24 +701,28 @@ class NaturalAssistant:
                 self._course_term_answers,
                 self._global_term_answers,
                 preferred_course_id,
+                self._course_term_owner_counts,
             ),
             self._lookup_course_reference_exact_answer(
                 candidate,
                 self._manual_course_term_answers,
                 self._manual_global_term_answers,
                 preferred_course_id,
+                self._manual_term_owner_counts,
             ),
             self._lookup_course_reference_answer(
                 candidate,
                 self._course_term_answers,
                 self._global_term_answers,
                 preferred_course_id,
+                self._course_term_owner_counts,
             ),
             self._lookup_course_reference_answer(
                 candidate,
                 self._manual_course_term_answers,
                 self._manual_global_term_answers,
                 preferred_course_id,
+                self._manual_term_owner_counts,
             ),
         )
         if indexed_answer is not None:
@@ -754,13 +771,15 @@ class NaturalAssistant:
             self._manual_course_protocol_answers,
             self._manual_global_protocol_answers,
             preferred_course_id,
+            self._manual_protocol_owner_counts,
         )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_exact_answer(
                 candidate,
                 self._course_protocol_answers,
                 self._global_protocol_answers,
-            preferred_course_id,
+                preferred_course_id,
+                self._course_protocol_owner_counts,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_answer(
@@ -768,6 +787,7 @@ class NaturalAssistant:
                 self._manual_course_protocol_answers,
                 self._manual_global_protocol_answers,
                 preferred_course_id,
+                self._manual_protocol_owner_counts,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_course_reference_answer(
@@ -775,6 +795,7 @@ class NaturalAssistant:
                 self._course_protocol_answers,
                 self._global_protocol_answers,
                 preferred_course_id,
+                self._course_protocol_owner_counts,
             )
         if indexed_answer is None:
             indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
@@ -967,6 +988,7 @@ class NaturalAssistant:
         course_index: dict[str, dict[str, str]],
         global_index: dict[str, str],
         preferred_course_id: Optional[str],
+        owner_counts: Optional[dict[str, int]] = None,
     ) -> Optional[str]:
         normalized_candidate = self._normalize_text(candidate)
         if preferred_course_id:
@@ -974,8 +996,10 @@ class NaturalAssistant:
             answer = self._lookup_indexed_answer(candidate, preferred)
             if answer is not None:
                 return answer
-        if normalized_candidate in global_index:
+        if normalized_candidate in global_index and (owner_counts or {}).get(normalized_candidate, 0) <= 1:
             return global_index[normalized_candidate]
+        if (owner_counts or {}).get(normalized_candidate, 0) > 1 and not preferred_course_id:
+            return None
         return self._lookup_indexed_answer(candidate, global_index)
 
     def _lookup_course_reference_exact_answer(
@@ -984,13 +1008,25 @@ class NaturalAssistant:
         course_index: dict[str, dict[str, str]],
         global_index: dict[str, str],
         preferred_course_id: Optional[str],
+        owner_counts: Optional[dict[str, int]] = None,
     ) -> Optional[str]:
         normalized_candidate = self._normalize_text(candidate)
         if preferred_course_id:
             preferred = course_index.get(preferred_course_id, {})
             if normalized_candidate in preferred:
                 return preferred[normalized_candidate]
+        if (owner_counts or {}).get(normalized_candidate, 0) > 1 and not preferred_course_id:
+            return None
         return global_index.get(normalized_candidate)
+
+    def _build_owner_counts(self, course_index: dict[str, dict[str, str]]) -> dict[str, int]:
+        owners: dict[str, set[str]] = defaultdict(set)
+        for course_id, index in course_index.items():
+            if not isinstance(index, dict):
+                continue
+            for key in index.keys():
+                owners[str(key)].add(str(course_id))
+        return {key: len(value) for key, value in owners.items()}
 
     def _lookup_dossier_term_answer(
         self,
@@ -1005,8 +1041,9 @@ class NaturalAssistant:
             if isinstance(payload, dict):
                 return payload.get("answer")
         payload = self._dossier_global_term_answers.get(normalized)
-        if isinstance(payload, dict):
-            return payload.get("answer")
+        selected = self._select_dossier_global_payload(payload, preferred_course_id)
+        if isinstance(selected, dict):
+            return selected.get("answer")
         return None
 
     def _lookup_dossier_protocol_answer(
@@ -1022,8 +1059,31 @@ class NaturalAssistant:
             if isinstance(payload, dict):
                 return payload.get("answer")
         payload = self._dossier_global_protocol_answers.get(normalized)
+        selected = self._select_dossier_global_payload(payload, preferred_course_id)
+        if isinstance(selected, dict):
+            return selected.get("answer")
+        return None
+
+    def _select_dossier_global_payload(
+        self,
+        payload: object,
+        preferred_course_id: Optional[str],
+    ) -> Optional[dict]:
         if isinstance(payload, dict):
-            return payload.get("answer")
+            return payload
+        if not isinstance(payload, list) or not payload:
+            return None
+        if preferred_course_id:
+            for item in payload:
+                if isinstance(item, dict) and item.get("course_id") == preferred_course_id:
+                    return item
+        unique_courses = {
+            item.get("course_id")
+            for item in payload
+            if isinstance(item, dict) and item.get("course_id")
+        }
+        if len(unique_courses) <= 1:
+            return next((item for item in payload if isinstance(item, dict)), None)
         return None
 
     def _build_term_follow_up_answer(
@@ -1049,24 +1109,28 @@ class NaturalAssistant:
                     self._course_term_answers,
                     self._global_term_answers,
                     preferred_course_id,
+                    self._course_term_owner_counts,
                 ),
                 self._lookup_course_reference_exact_answer(
                     label,
                     self._manual_course_term_answers,
                     self._manual_global_term_answers,
                     preferred_course_id,
+                    self._manual_term_owner_counts,
                 ),
                 self._lookup_course_reference_answer(
                     label,
                     self._course_term_answers,
                     self._global_term_answers,
                     preferred_course_id,
+                    self._course_term_owner_counts,
                 ),
                 self._lookup_course_reference_answer(
                     label,
                     self._manual_course_term_answers,
                     self._manual_global_term_answers,
                     preferred_course_id,
+                    self._manual_term_owner_counts,
                 ),
             )
         )
@@ -1269,6 +1333,50 @@ class NaturalAssistant:
                     "orientada al trabajo con test muscular, liberación de conflictos, protocolos energéticos y lectura "
                     "integral del consultante dentro del método. Si quieres, te explico también de qué trata, qué módulos "
                     "incluye o qué protocolos se ven ahí."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        if any(pattern in lowered for pattern in ["que es switching", "qué es switching", "switching que es"]) or lowered.strip() == "switching":
+            return AssistantOutput(
+                answer=(
+                    "Switching es una maniobra breve de reorganización energética que se usa para sacar al consultante "
+                    "de interferencia o desorganización antes de testear o intervenir. En la práctica se trabaja con "
+                    "ombligo, clavículas, puntos REN/DU y sacro, alternando estímulos para recentrar el sistema."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        if any(pattern in lowered for pattern in ["que es marcha cruzada", "qué es marcha cruzada", "marcha cruzada que es"]) or lowered.strip() == "marcha cruzada":
+            return AssistantOutput(
+                answer=(
+                    "Marcha cruzada es un ejercicio de integración que coordina ambos hemisferios y ayuda a centrar la "
+                    "línea media del cuerpo. Dicho de forma práctica, se usa como preparación para mejorar respuesta al "
+                    "test muscular, enfoque y coherencia corporal."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        if any(pattern in lowered for pattern in ["que es ganchos de cook", "qué es ganchos de cook", "ganchos de cook que es"]) or lowered.strip() == "ganchos de cook":
+            return AssistantOutput(
+                answer=(
+                    "Ganchos de Cook es una posición corporal de integración que ayuda a estabilizar el sistema nervioso "
+                    "y el flujo energético antes de trabajar. Se usa como preparación cuando el consultante está disperso, "
+                    "sobrecargado o con respuesta inestable."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        if any(pattern in lowered for pattern in ["que es r27", "qué es r27", "r27 que es"]) or lowered.strip() == "r27":
+            return AssistantOutput(
+                answer=(
+                    "R27 es un punto subclavicular que se estimula para reorientar el flujo energético y ayudar a salir "
+                    "de desorganización. En la práctica suele masajearse con firmeza como parte de preparaciones como "
+                    "switching y otros protocolos de reorganización."
                 ),
                 visual=None,
                 mode="structured",
