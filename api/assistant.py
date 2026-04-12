@@ -1204,23 +1204,126 @@ class NaturalAssistant:
             return KNOWN_CONCEPT_CANONICALS[best_term]
         return None
 
+    def _sanitize_lexicon_term(self, term: Optional[str]) -> Optional[str]:
+        cleaned = " ".join(str(term or "").split()).strip(" -–—•'\"")
+        if not cleaned:
+            return None
+
+        cleaned = (
+            cleaned.replace("‐", "-")
+            .replace("‑", "-")
+            .replace("–", "-")
+            .replace("—", "-")
+            .replace("’", "'")
+            .replace("‘", "'")
+            .replace("“", '"')
+            .replace("”", '"')
+        )
+        cleaned = re.sub(r"\s*/\s*", " / ", cleaned)
+        cleaned = re.sub(r"\s*-\s*", " - ", cleaned)
+        cleaned = re.sub(r"\s{2,}", " ", cleaned).strip(" -/,'\"")
+        if not cleaned:
+            return None
+
+        if cleaned.count("(") != cleaned.count(")"):
+            cleaned = re.sub(r"\([^)]*$", "", cleaned).strip(" -/,'\"")
+        if not cleaned or re.match(r"^\d+\)", cleaned):
+            return None
+
+        normalized = self._normalize_text(cleaned)
+        if not normalized or len(normalized) < 2:
+            return None
+        if len(normalized) > 90 or len(normalized.split()) > 10:
+            return None
+        if (
+            re.match(r"^(que|como|cual|de que|significado de)\b", normalized)
+            and len(normalized.split()) > 4
+        ):
+            return None
+        if any(
+            marker in normalized
+            for marker in [
+                "es un concepto importante dentro de",
+                "forma parte de",
+                "si quieres te explico",
+            ]
+        ):
+            return None
+        return cleaned
+
+    def _expand_lexicon_aliases(self, term: Optional[str]) -> list[str]:
+        base = self._sanitize_lexicon_term(term)
+        if not base:
+            return []
+
+        aliases = [base]
+
+        without_parentheses = re.sub(r"\([^)]*\)", "", base).strip(" -/,")
+        if without_parentheses and without_parentheses != base:
+            aliases.append(without_parentheses)
+
+        dequoted = without_parentheses.replace("'", "").replace('"', "").strip()
+        if dequoted and dequoted not in aliases:
+            aliases.append(dequoted)
+
+        if "-" in without_parentheses:
+            hyphen_as_space = re.sub(r"\s*-\s*", " ", without_parentheses).strip()
+            if hyphen_as_space and hyphen_as_space not in aliases:
+                aliases.append(hyphen_as_space)
+
+        normalized = self._normalize_text(without_parentheses)
+        if normalized == "feed-back":
+            aliases.extend(["feedback"])
+        if normalized == "nino-sintoma":
+            aliases.extend(["nino sintoma", "niño síntoma"])
+        if normalized == "pareja-eco":
+            aliases.extend(["pareja eco"])
+        if normalized in {"4 in's", "4 ins", "4 in’s"}:
+            aliases.extend(["4 ins"])
+
+        deduped: list[str] = []
+        seen: set[str] = set()
+        for alias in aliases:
+            sanitized = self._sanitize_lexicon_term(alias)
+            if not sanitized:
+                continue
+            normalized_alias = self._normalize_text(sanitized)
+            if normalized_alias in seen:
+                continue
+            seen.add(normalized_alias)
+            deduped.append(sanitized)
+        return deduped
+
     def _build_term_lexicon(self) -> dict[str, dict]:
         lexicon: dict[str, dict] = {}
 
         def add_term(term: str, kind: str, course_id: Optional[str] = None) -> None:
-            normalized = self._normalize_text(term).strip()
-            if not normalized or len(normalized) < 2:
+            aliases = self._expand_lexicon_aliases(term)
+            if not aliases:
                 return
-            payload = lexicon.setdefault(
-                normalized,
-                {
-                    "term": term.strip(),
-                    "kind": kind,
-                    "course_ids": set(),
-                },
-            )
-            if course_id:
-                payload["course_ids"].add(course_id)
+            for alias in aliases:
+                normalized = self._normalize_text(alias).strip()
+                if not normalized or len(normalized) < 2:
+                    continue
+                payload = lexicon.setdefault(
+                    normalized,
+                    {
+                        "term": alias.strip(),
+                        "kind": kind,
+                        "course_ids": set(),
+                    },
+                )
+                current_term = str(payload.get("term", "")).strip()
+                current_kind = str(payload.get("kind", "")).strip()
+                if (
+                    not current_term
+                    or len(alias.strip()) < len(current_term)
+                    or current_kind == "question"
+                ):
+                    payload["term"] = alias.strip()
+                    payload["kind"] = kind
+                if course_id:
+                    payload["course_ids"].add(course_id)
 
         for key in self._global_term_answers.keys():
             add_term(key, "term")
@@ -1254,7 +1357,8 @@ class NaturalAssistant:
         for course_id, index in self._course_question_answers.items():
             if isinstance(index, dict):
                 for key in index.keys():
-                    add_term(key, "question", course_id)
+                    subject = self._extract_defined_subject(key) or self._extract_protocol_subject(key)
+                    add_term(subject or key, "question", course_id)
 
         for course in self.course_dossiers.get("courses", []):
             course_id = course.get("course_id")
@@ -1262,6 +1366,34 @@ class NaturalAssistant:
                 add_term(key, "term", course_id)
             for key in (course.get("protocol_answers") or {}).keys():
                 add_term(key, "protocol", course_id)
+
+        core_aliases = {
+            "biomagnetismo": (["biomagnetismo"], None),
+            "holobiomagnetismo": (
+                ["holobiomagnetismo"],
+                "curso-holobiomagnetismo-parte-1",
+            ),
+            "bioenergetica": (
+                ["bioenergetica", "bioenergética"],
+                "curso-holobiomagnetismo-parte-1",
+            ),
+            "radiestesia": (["radiestesia"], None),
+            "bmi": (
+                ["bmi", "biomagnetismo medico integral", "biomagnetismo médico integral"],
+                "curso-holobiomagnetismo-parte-1",
+            ),
+            "sei": (
+                ["sei", "sanacion energetica integral", "sanación energética integral"],
+                "diplomado-sanacion-energetica-integral",
+            ),
+            "switching": (["switching"], "diplomado-sanacion-energetica-integral"),
+            "ganchos de cook": (["ganchos de cook"], "diplomado-sanacion-energetica-integral"),
+            "marcha cruzada": (["marcha cruzada"], "diplomado-sanacion-energetica-integral"),
+            "r27": (["r27"], "medicina-energetica"),
+        }
+        for aliases, course_id in core_aliases.values():
+            for alias in aliases:
+                add_term(alias, "term", course_id)
 
         return lexicon
 
@@ -1794,15 +1926,20 @@ class NaturalAssistant:
         extracted_subject = self._extract_query_subject_generic(question)
         subject_for_expansion = extracted_subject if extracted_subject and len(extracted_subject.split()) <= 5 else None
         canonical_subject = self._canonicalize_term_candidate(subject_for_expansion, preferred_course_id)
-        ranked_subjects = (
-            self._rank_lexicon_candidates(
+        allow_related_expansion = True
+        if canonical_subject:
+            normalized_canonical = self._normalize_text(canonical_subject)
+            if normalized_canonical in KNOWN_CONCEPT_CANONICALS:
+                question_normalized = self._normalize_text(question)
+                allow_related_expansion = normalized_canonical not in question_normalized
+
+        ranked_subjects = []
+        if subject_for_expansion and allow_related_expansion:
+            ranked_subjects = self._rank_lexicon_candidates(
                 canonical_subject or subject_for_expansion or question,
                 preferred_course_id=preferred_course_id,
                 limit=2,
             )
-            if subject_for_expansion
-            else []
-        )
 
         if canonical_subject and self._normalize_text(canonical_subject) not in self._normalize_text(question):
             queries.append(canonical_subject)
