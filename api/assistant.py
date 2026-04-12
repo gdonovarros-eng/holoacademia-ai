@@ -456,27 +456,33 @@ class NaturalAssistant:
             replay = self._answer_defined_term(f"que es {label}", [])
             if replay is not None:
                 return replay
-            indexed_answer = self._lookup_course_reference_exact_answer(
-                label,
-                self._manual_course_term_answers,
-                self._manual_global_term_answers,
-                preferred_course_id,
-            ) or self._lookup_course_reference_exact_answer(
-                label,
-                self._course_term_answers,
-                self._global_term_answers,
-                preferred_course_id,
-            ) or self._lookup_course_reference_answer(
-                label,
-                self._manual_course_term_answers,
-                self._manual_global_term_answers,
-                preferred_course_id,
-            ) or self._lookup_course_reference_answer(
-                label,
-                self._course_term_answers,
-                self._global_term_answers,
-                preferred_course_id,
-            ) or self._lookup_indexed_answer(label, self._term_answers)
+            indexed_answer = self._select_best_reference_answer(
+                self._lookup_course_reference_exact_answer(
+                    label,
+                    self._course_term_answers,
+                    self._global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_exact_answer(
+                    label,
+                    self._manual_course_term_answers,
+                    self._manual_global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_answer(
+                    label,
+                    self._course_term_answers,
+                    self._global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_course_reference_answer(
+                    label,
+                    self._manual_course_term_answers,
+                    self._manual_global_term_answers,
+                    preferred_course_id,
+                ),
+                self._lookup_indexed_answer(label, self._term_answers),
+            )
             if indexed_answer:
                 return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
 
@@ -645,54 +651,32 @@ class NaturalAssistant:
             )
             return AssistantOutput(answer=answer, visual=None, mode="structured")
 
-        indexed_answer = self._lookup_course_reference_exact_answer(
-            candidate,
-            self._manual_course_term_answers,
-            self._manual_global_term_answers,
-            preferred_course.course_id if preferred_course else None,
-        )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_exact_answer(
-                candidate,
-                self._manual_course_protocol_answers,
-                self._manual_global_protocol_answers,
-                preferred_course.course_id if preferred_course else None,
-            )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_exact_answer(
-            candidate,
-            self._course_term_answers,
-            self._global_term_answers,
-            preferred_course.course_id if preferred_course else None,
-            )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_answer(
-                candidate,
-                self._manual_course_term_answers,
-                self._manual_global_term_answers,
-                preferred_course.course_id if preferred_course else None,
-            )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_answer(
-                candidate,
-                self._manual_course_protocol_answers,
-                self._manual_global_protocol_answers,
-                preferred_course.course_id if preferred_course else None,
-            )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_answer(
+        indexed_answer = self._select_best_reference_answer(
+            self._lookup_course_reference_exact_answer(
                 candidate,
                 self._course_term_answers,
                 self._global_term_answers,
                 preferred_course.course_id if preferred_course else None,
-            )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_course_reference_answer(
+            ),
+            self._lookup_course_reference_exact_answer(
                 candidate,
-                self._course_protocol_answers,
-                self._global_protocol_answers,
+                self._manual_course_term_answers,
+                self._manual_global_term_answers,
                 preferred_course.course_id if preferred_course else None,
-            )
+            ),
+            self._lookup_course_reference_answer(
+                candidate,
+                self._course_term_answers,
+                self._global_term_answers,
+                preferred_course.course_id if preferred_course else None,
+            ),
+            self._lookup_course_reference_answer(
+                candidate,
+                self._manual_course_term_answers,
+                self._manual_global_term_answers,
+                preferred_course.course_id if preferred_course else None,
+            ),
+        )
         if indexed_answer is not None:
             return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
 
@@ -708,15 +692,6 @@ class NaturalAssistant:
         indexed_answer = self._lookup_indexed_answer(candidate, self._term_answers)
         if indexed_answer is not None:
             return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
-
-        if "radiestesia" in candidate:
-            answer = (
-                "Radiestesia es una herramienta de lectura sutil que se usa para explorar información energética o "
-                "simbólica mediante instrumentos como péndulo o tablas. Dicho de forma práctica, en esta formación se "
-                "toma como recurso complementario y opcional, no como sustituto de la observación clínica, la genealogía "
-                "ni la verificación terapéutica."
-            )
-            return AssistantOutput(answer=answer, visual=None, mode="structured")
 
         concept_entry = self.teacher.find_concept(candidate)
         if concept_entry is not None:
@@ -982,6 +957,26 @@ class NaturalAssistant:
                 return preferred[normalized_candidate]
         return global_index.get(normalized_candidate)
 
+    def _is_generic_reference_answer(self, answer: Optional[str]) -> bool:
+        if not answer:
+            return False
+        normalized = self._normalize_text(answer)
+        return any(
+            marker in normalized
+            for marker in [
+                "es un concepto importante dentro de",
+                "forma parte de",
+                "si quieres te explico",
+            ]
+        )
+
+    def _select_best_reference_answer(self, *answers: Optional[str]) -> Optional[str]:
+        options = [answer for answer in answers if answer]
+        if not options:
+            return None
+        preferred = [answer for answer in options if not self._is_generic_reference_answer(answer)]
+        return preferred[0] if preferred else options[0]
+
     def _search_term_answer_from_memory(self, candidate: str) -> Optional[str]:
         if not self.teacher_memory:
             return None
@@ -999,6 +994,66 @@ class NaturalAssistant:
 
     def _answer_known_concepts(self, question: str) -> Optional[AssistantOutput]:
         lowered = self._normalize_text(question)
+        biomagnetism_patterns = [
+            "que es biomagnetismo",
+            "qué es biomagnetismo",
+            "que significa biomagnetismo",
+            "qué significa biomagnetismo",
+            "biomagnetismo que es",
+            "biomagnetismo significado",
+        ]
+        if any(pattern in lowered for pattern in biomagnetism_patterns) or lowered.strip() == "biomagnetismo":
+            return AssistantOutput(
+                answer=(
+                    "Biomagnetismo es el uso terapéutico de campos magnéticos para influir en procesos biológicos y "
+                    "bioenergéticos del consultante. Dicho de forma práctica, se trabaja con imanes o pares "
+                    "biomagnéticos para detectar desequilibrios funcionales, orientar el rastreo y apoyar la "
+                    "armonización del organismo dentro del método."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        holobiomagnetism_patterns = [
+            "que es holobiomagnetismo",
+            "qué es holobiomagnetismo",
+            "que significa holobiomagnetismo",
+            "qué significa holobiomagnetismo",
+            "holobiomagnetismo que es",
+            "holobiomagnetismo significado",
+        ]
+        if any(pattern in lowered for pattern in holobiomagnetism_patterns) or lowered.strip() == "holobiomagnetismo":
+            return AssistantOutput(
+                answer=(
+                    "Holobiomagnetismo es una ampliación del biomagnetismo que integra lectura bioenergética, "
+                    "rastreo por sistemas, pares biomagnéticos, reservorios y componentes emocionales o conflictuales. "
+                    "Dicho simple: no se queda solo en poner imanes, sino que articula la información del síntoma, el "
+                    "terreno energético y la historia del consultante para orientar mejor la intervención."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
+        radiesthesia_patterns = [
+            "que es radiestesia",
+            "qué es radiestesia",
+            "que significa radiestesia",
+            "qué significa radiestesia",
+            "radiestesia que es",
+            "radiestesia significado",
+        ]
+        if any(pattern in lowered for pattern in radiesthesia_patterns) or lowered.strip() == "radiestesia":
+            return AssistantOutput(
+                answer=(
+                    "Radiestesia es una herramienta de lectura sutil que se usa para explorar información energética "
+                    "mediante instrumentos como péndulo o tablas. Dicho de forma práctica, sirve como apoyo para "
+                    "verificar, discriminar o enfocar un rastreo, pero no sustituye la observación clínica ni el "
+                    "criterio terapéutico."
+                ),
+                visual=None,
+                mode="structured",
+            )
+
         bmi_patterns = [
             "que es bmi",
             "qué es bmi",
