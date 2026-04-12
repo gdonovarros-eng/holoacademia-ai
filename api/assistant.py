@@ -302,8 +302,10 @@ class NaturalAssistant:
         self._global_protocol_answers = self.course_reference_index.get("global_protocol_answers", {})
         self._course_term_answers = self.course_reference_index.get("course_term_answers", {})
         self._course_protocol_answers = self.course_reference_index.get("course_protocol_answers", {})
+        self._course_question_answers = self.course_reference_index.get("course_question_answers", {})
         self._course_term_owner_counts = self._build_owner_counts(self._course_term_answers)
         self._course_protocol_owner_counts = self._build_owner_counts(self._course_protocol_answers)
+        self._course_question_owner_counts = self._build_owner_counts(self._course_question_answers)
         self.manual_reference_index = get_manual_reference_index()
         self._manual_global_term_answers = self.manual_reference_index.get("global_term_answers", {})
         self._manual_global_protocol_answers = self.manual_reference_index.get("global_protocol_answers", {})
@@ -311,7 +313,8 @@ class NaturalAssistant:
         self._manual_course_protocol_answers = self.manual_reference_index.get("course_protocol_answers", {})
         self._manual_term_owner_counts = self._build_owner_counts(self._manual_course_term_answers)
         self._manual_protocol_owner_counts = self._build_owner_counts(self._manual_course_protocol_answers)
-        self._term_answers, self._protocol_answers = self._build_reference_indexes()
+        self._term_answers = {}
+        self._protocol_answers = {}
 
     def answer(
         self,
@@ -328,29 +331,27 @@ class NaturalAssistant:
         if structured is not None:
             return structured
 
-        direct_structured = self._answer_direct_structured(question, results, history)
-        if direct_structured is not None:
-            return direct_structured
-
-        if self._extract_defined_subject(question) is not None:
-            return AssistantOutput(
-                answer=(
-                    "No ubico ese concepto con suficiente claridad como para responderte bien todavía. "
-                    "Si quieres, prueba con el término exacto o con una forma cercana; por ejemplo: "
-                    "`que es biomagnetismo`, `que es bioenergetica`, `que es radiestesia`, "
-                    "`que es BMI` o `que es SEI`."
-                ),
-                visual=None,
-                mode="structured",
-            )
-
-        if self.course_use_model and self.enabled:
+        if self.course_use_model and self.enabled and results:
             try:
                 reasoned = self._answer_with_model(question, results, history, want_visual)
                 if reasoned is not None:
                     return reasoned
             except Exception:
                 pass
+
+        direct_structured = self._answer_direct_structured(question, results, history)
+        if direct_structured is not None:
+            return direct_structured
+
+        if self._extract_defined_subject(question) is not None and not results:
+            return AssistantOutput(
+                answer=(
+                    "No ubico ese concepto con suficiente claridad como para responderte bien todavía. "
+                    "Prueba con el término exacto, con el nombre del curso o con una formulación más completa."
+                ),
+                visual=None,
+                mode="structured",
+            )
 
         return self._answer_structured_course(question, results, history)
 
@@ -761,26 +762,10 @@ class NaturalAssistant:
             answer = (
                 "La diferencia práctica entre la línea bioenergética y la biológica es esta: la bioenergética trabaja "
                 "más sobre campos, chakras, meridianos, prana y regulación del patrón energético; la biológica mira con "
-                "más peso el tejido, el órgano, la descarga somática y el componente microbiano. Dicho simple: una lee el "
-                "desequilibrio en el campo y la otra observa cómo eso ya se expresó en la materia viva del cuerpo."
+                "más peso el tejido, el órgano, la descarga somática y el componente microbiano."
             )
             return AssistantOutput(answer=answer, visual=None, mode="structured")
 
-        indexed_answer = self._lookup_indexed_answer(candidate, self._term_answers)
-        if indexed_answer is not None:
-            return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
-
-        concept_entry = self.teacher.find_concept(candidate)
-        if concept_entry is not None:
-            bullet_hint = ""
-            if concept_entry.bullet_points:
-                bullet_hint = f" Lo más importante para ubicarlo es {self._join_items(concept_entry.bullet_points[:3])}."
-            answer = f"{concept_entry.concept_name} se entiende así: {self._compact_text(concept_entry.summary, 420)}{bullet_hint}"
-            return AssistantOutput(answer=answer, visual=None, mode="structured")
-
-        memory_answer = self._search_term_answer_from_memory(candidate)
-        if memory_answer is not None:
-            return AssistantOutput(answer=memory_answer, visual=None, mode="structured")
         return None
 
     def _answer_protocol_definition(self, question: str, history: list[dict]) -> Optional[AssistantOutput]:
@@ -826,15 +811,9 @@ class NaturalAssistant:
                 preferred_course_id,
                 self._course_protocol_owner_counts,
             )
-        if indexed_answer is None:
-            indexed_answer = self._lookup_indexed_answer(candidate, self._protocol_answers)
-        if indexed_answer is None:
-            protocol_entry = self.teacher.find_protocol(candidate)
-            if protocol_entry is None:
-                return None
-            body = self._compact_text(protocol_entry.body, 420)
-            indexed_answer = f"El protocolo {protocol_entry.title} se trabaja así: {body}"
-        return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+        if indexed_answer is not None:
+            return AssistantOutput(answer=indexed_answer, visual=None, mode="structured")
+        return None
 
     def _extract_protocol_subject(self, question: str) -> Optional[str]:
         lowered = self._normalize_text(question)
@@ -852,61 +831,7 @@ class NaturalAssistant:
         return None
 
     def _build_reference_indexes(self) -> tuple[dict[str, str], dict[str, str]]:
-        term_answers: dict[str, str] = {}
-        protocol_answers: dict[str, str] = {}
-        if not self.teacher_memory:
-            return term_answers, protocol_answers
-
-        for course in self.teacher_memory.course_studies:
-            course_name = course.course_name
-            for item in course.common_questions:
-                question_text, answer_text = self._split_faq_entry(item)
-                if not question_text or not answer_text:
-                    continue
-                subject = self._extract_defined_subject(question_text)
-                if subject:
-                    normalized_subject = self._normalize_text(subject)
-                    term_answers.setdefault(
-                        normalized_subject,
-                        f"{subject.strip().rstrip(':')} se entiende así: {self._compact_text(answer_text, 420)}",
-                    )
-
-            for item in course.key_concepts:
-                label, body = self._split_label_and_body(item)
-                if not label:
-                    continue
-                descriptor = self._extract_parenthetical_descriptor(label)
-                if body:
-                    answer = f"{label} se entiende así: {self._compact_text(body, 360)}"
-                else:
-                    answer = (
-                        f"{label} es un concepto importante dentro de {course_name}. "
-                        "Si quieres, también te explico cómo se usa dentro del método."
-                    )
-                for alias in self._expand_label_aliases(label):
-                    alias_answer = answer
-                    if not body and self._normalize_text(alias) != self._normalize_text(label) and descriptor:
-                        alias_answer = (
-                            f"{alias} forma parte de las {descriptor} que se usan en {course_name} "
-                            "como preparación o apoyo dentro del método."
-                        )
-                    term_answers.setdefault(self._normalize_text(alias), alias_answer)
-
-            for item in course.protocols:
-                label, body = self._split_label_and_body(item)
-                if not label:
-                    continue
-                normalized_label = self._normalize_text(label)
-                if body:
-                    answer = f"El protocolo {label} se trabaja así: {self._compact_text(body, 420)}"
-                else:
-                    answer = (
-                        f"El protocolo {label} forma parte de {course_name}. "
-                        "Si quieres, te explico su objetivo o en qué momento se usa."
-                    )
-                protocol_answers.setdefault(normalized_label, answer)
-
-        return term_answers, protocol_answers
+        return {}, {}
 
     def _split_faq_entry(self, item: str) -> tuple[str, str]:
         for separator in (" — ", " - ", " – "):
@@ -1575,9 +1500,12 @@ class NaturalAssistant:
 
     def should_skip_search(self, question: str, history: Optional[list[dict]] = None) -> bool:
         history = history or []
+
         if self._answer_known_concepts(question) is not None:
             return True
-        if self._answer_direct_structured(question, [], history) is not None:
+        if self._answer_course_catalog(question) is not None:
+            return True
+        if self._answer_supported_topics(question) is not None:
             return True
         return False
 
