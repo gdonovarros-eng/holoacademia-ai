@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Holoacademia · Asistente Terapéutico</title>
+    <title>Holoacademia · Asistentes IA</title>
     <link rel="stylesheet" href="/therapy-static/therapy.css" />
   </head>
   <body>
@@ -14,41 +14,84 @@
             <img class="brand-logo" src="/therapy/logo" alt="Logo del asistente IA de Holoacademia" />
             <div>
               <p class="eyebrow">Holoacademia</p>
-              <p class="brand-subtitle">Asistencia terapéutica y académica</p>
+              <p class="brand-subtitle">Asistente Académico, Asistente Terapéutico y Guía de Protocolos</p>
             </div>
           </div>
           <h1>Asistente Personal Holoacadem-iA</h1>
           <p class="hero-copy">
-            Tu asistente personal como sinodal y terepeuctico.
+            Una misma interfaz para aprender, analizar casos con prudencia y consultar protocolos sin mezclar funciones.
           </p>
         </div>
-        <div class="hero-badge">Version Beta</div>
+        <div class="hero-badge">Versión Beta</div>
       </header>
 
       <nav class="tabbar" aria-label="Módulos">
-        <button class="tab active" data-tab="therapy">Asistente terapéutico</button>
-        <button class="tab" data-tab="courses">Dudas sobre cursos</button>
+        <button class="tab active" data-tab="therapy">Asistente Terapéutico</button>
+        <button class="tab" data-tab="academic">Asistente Académico</button>
+        <button class="tab" data-tab="protocols">Guía de Protocolos</button>
       </nav>
 
       <section class="tab-panel active" id="tab-therapy">
-        <div class="stepper">
-          <span class="step active" data-step="1">1. Entrevista</span>
-          <span class="step" data-step="2">2. Pares</span>
-          <span class="step" data-step="3">3. Reporte</span>
-        </div>
-
         <section class="panel">
           <div class="panel-head">
-            <h2>Formulario terapéutico</h2>
-            <p>Versión simplificada y estética según tu estructura operativa real.</p>
+            <h2>Asistente Terapéutico</h2>
+            <p>Organiza el caso, detecta vacíos y devuelve una lectura prudente basada en el endpoint terapéutico actual.</p>
           </div>
 
           <form id="therapy-form" class="therapy-form">
             <section class="collection-block">
               <div class="panel-head">
-                <h3>Información del consultante</h3>
+                <h3>Consulta breve para el análisis terapéutico</h3>
+                <p>Estos campos alimentan directamente el endpoint <code>POST /therapeutic/analyze</code>.</p>
               </div>
-              <div class="grid four">
+              <div class="grid two">
+                <label>
+                  Motivo de consulta
+                  <input type="text" name="therapeutic_reason" placeholder="Ej. dolor lumbar, ansiedad, digestión" />
+                </label>
+                <label>
+                  Inicio del síntoma
+                  <input type="text" name="therapeutic_onset" placeholder="Ej. hace 3 meses, desde 2024, después de..." />
+                </label>
+              </div>
+              <div class="grid two">
+                <label>
+                  Duración del cuadro
+                  <input type="text" name="therapeutic_duration" placeholder="Ej. 3 meses, intermitente desde hace 1 año" />
+                </label>
+                <label>
+                  Frecuencia o recurrencia
+                  <input type="text" name="therapeutic_frequency" placeholder="Ej. diario, 2 veces por semana, vuelve cada mes" />
+                </label>
+              </div>
+              <div class="grid two">
+                <label>
+                  Contexto emocional
+                  <textarea rows="3" name="therapeutic_emotional_context" placeholder="Ej. estrés laboral, duelo, conflicto familiar"></textarea>
+                </label>
+                <label>
+                  Pregunta del terapeuta
+                  <textarea rows="3" name="therapeutic_question" placeholder="Ej. ¿qué me falta explorar?"></textarea>
+                </label>
+              </div>
+              <div class="grid two">
+                <label>
+                  Notas de genograma / familia
+                  <textarea rows="3" name="therapeutic_family_notes" placeholder="Ej. madre ausente, padre fallecido joven, conflicto con hermano, secreto familiar..."></textarea>
+                </label>
+                <label>
+                  Observaciones
+                  <textarea rows="3" name="therapeutic_observations" placeholder="Notas libres del caso para ayudar al análisis"></textarea>
+                </label>
+              </div>
+            </section>
+
+            <section class="collection-block">
+              <div class="panel-head">
+                <h3>Información del consultante</h3>
+                <p>Datos básicos de referencia para contextualizar la consulta sin volver pesada la captura.</p>
+              </div>
+              <div class="grid three">
                 <label>
                   Nombre completo
                   <input type="text" name="consultant_full_name" />
@@ -56,10 +99,6 @@
                 <label>
                   Fecha de nacimiento
                   <input type="date" name="consultant_birth_date" id="consultant-birth-date" />
-                </label>
-                <label>
-                  Hora de nacimiento
-                  <input type="time" name="consultant_birth_time" />
                 </label>
                 <label>
                   Edad
@@ -70,175 +109,8 @@
 
             <section class="collection-block">
               <div class="panel-head">
-                <h3>Genograma básico</h3>
-              </div>
-
-              <div class="subsection">
-                <h4>Padre</h4>
-                <div class="grid three">
-                  <label>
-                    Nombre del padre
-                    <input type="text" name="father_full_name" />
-                  </label>
-                  <label>
-                    Fecha de nacimiento
-                    <input type="date" name="father_birth_date" />
-                  </label>
-                  <label>
-                    Fecha de muerte
-                    <input type="date" name="father_death_date" />
-                  </label>
-                </div>
-              </div>
-
-              <div class="grid two">
-                <div class="subsection">
-                  <h4>Abuelo paterno</h4>
-                  <div class="grid three">
-                    <label>
-                      Nombre del abuelo paterno
-                      <input type="text" name="paternal_grandfather_full_name" />
-                    </label>
-                    <label>
-                      Fecha de nacimiento
-                      <input type="date" name="paternal_grandfather_birth_date" />
-                    </label>
-                    <label>
-                      Fecha de muerte
-                      <input type="date" name="paternal_grandfather_death_date" />
-                    </label>
-                  </div>
-                </div>
-
-                <div class="subsection">
-                  <h4>Abuela paterna</h4>
-                  <div class="grid three">
-                    <label>
-                      Nombre de la abuela paterna
-                      <input type="text" name="paternal_grandmother_full_name" />
-                    </label>
-                    <label>
-                      Fecha de nacimiento
-                      <input type="date" name="paternal_grandmother_birth_date" />
-                    </label>
-                    <label>
-                      Fecha de muerte
-                      <input type="date" name="paternal_grandmother_death_date" />
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="subsection">
-                <h4>Madre</h4>
-                <div class="grid three">
-                  <label>
-                    Nombre de la madre
-                    <input type="text" name="mother_full_name" />
-                  </label>
-                  <label>
-                    Fecha de nacimiento
-                    <input type="date" name="mother_birth_date" />
-                  </label>
-                  <label>
-                    Fecha de muerte
-                    <input type="date" name="mother_death_date" />
-                  </label>
-                </div>
-              </div>
-
-              <div class="grid two">
-                <div class="subsection">
-                  <h4>Abuelo materno</h4>
-                  <div class="grid three">
-                    <label>
-                      Nombre del abuelo materno
-                      <input type="text" name="maternal_grandfather_full_name" />
-                    </label>
-                    <label>
-                      Fecha de nacimiento
-                      <input type="date" name="maternal_grandfather_birth_date" />
-                    </label>
-                    <label>
-                      Fecha de muerte
-                      <input type="date" name="maternal_grandfather_death_date" />
-                    </label>
-                  </div>
-                </div>
-
-                <div class="subsection">
-                  <h4>Abuela materna</h4>
-                  <div class="grid three">
-                    <label>
-                      Nombre de la abuela materna
-                      <input type="text" name="maternal_grandmother_full_name" />
-                    </label>
-                    <label>
-                      Fecha de nacimiento
-                      <input type="date" name="maternal_grandmother_birth_date" />
-                    </label>
-                    <label>
-                      Fecha de muerte
-                      <input type="date" name="maternal_grandmother_death_date" />
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="subsection">
-                <h4>Pareja actual</h4>
-                <div class="grid three">
-                  <label>
-                    Nombre completo
-                    <input type="text" name="current_partner_full_name" />
-                  </label>
-                  <label>
-                    Fecha de nacimiento
-                    <input type="date" name="current_partner_birth_date" />
-                  </label>
-                  <label>
-                    Años de relación
-                    <input type="number" min="0" step="1" name="current_partner_relationship_years" />
-                  </label>
-                </div>
-              </div>
-
-              <section class="collection-block nested">
-                <div class="collection-head">
-                  <div>
-                    <h4>Más parejas significativas</h4>
-                    <p>Usa el botón solo si existen más parejas relevantes.</p>
-                  </div>
-                  <button type="button" class="secondary-btn" id="add-significant-partner">Agregar</button>
-                </div>
-                <div id="significant-partners-list" class="collection-list"></div>
-              </section>
-
-              <section class="collection-block nested">
-                <div class="collection-head">
-                  <div>
-                    <h4>Hijos</h4>
-                    <p>Empieza por el hijo mayor y agrega más si hace falta.</p>
-                  </div>
-                  <button type="button" class="secondary-btn" id="add-child">Agregar hijo</button>
-                </div>
-                <div id="children-list" class="collection-list"></div>
-              </section>
-
-              <section class="collection-block nested">
-                <div class="collection-head">
-                  <div>
-                    <h4>Hermanos</h4>
-                  </div>
-                  <button type="button" class="secondary-btn" id="add-sibling">Agregar hermano</button>
-                </div>
-                <div id="siblings-list" class="collection-list"></div>
-              </section>
-            </section>
-
-            <section class="collection-block">
-              <div class="panel-head">
                 <h3>Historial clínico básico</h3>
+                <p>Captura los síntomas actuales y los antecedentes relevantes que conviene considerar en la lectura inicial.</p>
               </div>
 
               <div class="collection-head">
@@ -266,156 +138,82 @@
 
         <section class="panel hidden" id="analysis-panel">
           <div class="panel-head">
-            <h2>Lectura inicial del caso</h2>
-            <p>Salida del primer análisis estructurado del formulario.</p>
+            <h2>Respuesta del Asistente Terapéutico</h2>
+            <p>Ruta sugerida del caso, evidencias principales, protocolo a seguir y puntos de validación.</p>
           </div>
           <div id="analysis-output" class="stack"></div>
         </section>
-
-        <section class="panel hidden" id="pairs-panel">
-          <div class="panel-head">
-            <h2>Captura de pares biomagnéticos</h2>
-            <p>Agrega los pares encontrados para integrarlos al análisis.</p>
-          </div>
-
-          <div class="collection-head compact">
-            <button type="button" class="secondary-btn" id="add-pair">Agregar par</button>
-            <button type="button" class="primary-btn" id="analyze-pairs">Interpretar pares</button>
-          </div>
-          <div id="pairs-list" class="collection-list"></div>
-          <div id="pairs-output" class="stack"></div>
-        </section>
-
-        <section class="panel hidden" id="report-panel">
-          <div class="panel-head">
-            <h2>Reporte terapéutico final</h2>
-            <p>Integración del caso, pares y protocolo sugerido.</p>
-          </div>
-          <div class="actions">
-            <button type="button" class="primary-btn" id="build-report">Construir reporte final</button>
-          </div>
-          <div id="report-output" class="stack"></div>
-        </section>
       </section>
 
-      <section class="tab-panel" id="tab-courses">
+      <section class="tab-panel" id="tab-academic">
         <section class="panel">
           <div class="panel-head course-chat-head">
             <div>
-              <h2>Dudas sobre cursos</h2>
-              <p>Conversa con seguimiento. Puedes hacer una pregunta y luego profundizar sobre la respuesta anterior.</p>
+              <h2>Asistente Académico</h2>
+              <p>Haz preguntas sobre conceptos, glosario, módulos y contenido del curso.</p>
             </div>
-            <button type="button" class="ghost-btn" id="clear-course-chat">Nueva conversación</button>
+            <button type="button" class="ghost-btn" id="clear-academic-chat">Nueva conversación</button>
           </div>
           <div class="course-chat-shell">
-            <div id="course-output" class="course-chat-log"></div>
+            <div id="academic-output" class="course-chat-log"></div>
             <div class="course-composer">
               <label class="course-composer-label">
                 Escribe tu pregunta
-                <textarea id="course-question" rows="3" placeholder="Ej. ¿Qué es BMI? Luego puedes preguntar: ¿de qué trata?"></textarea>
+                <textarea id="academic-question" rows="3" placeholder="Ej. ¿Qué es un par biomagnético?"></textarea>
               </label>
               <div class="actions">
-                <button type="button" class="primary-btn" id="ask-course">Enviar</button>
+                <button type="button" class="primary-btn" id="ask-academic">Enviar</button>
               </div>
             </div>
           </div>
         </section>
       </section>
+
+      <section class="tab-panel" id="tab-protocols">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Guía de Protocolos</h2>
+            <p>Busca un protocolo por nombre o id y recibe una guía clara, estructurada y ejecutable.</p>
+          </div>
+          <form id="protocol-form" class="therapy-form">
+            <section class="collection-block">
+              <div class="panel-head">
+                <h3>Búsqueda del protocolo</h3>
+                <p>Consulta el endpoint <code>POST /protocols/guide</code> por nombre o por id. Puedes agregar un contexto breve si ayuda a la consulta.</p>
+              </div>
+              <div class="grid two">
+                <label>
+                  Nombre del protocolo
+                  <input type="text" id="protocol-name" placeholder="Ej. Entrevista inicial de rastreo" />
+                </label>
+                <label>
+                  ID del protocolo
+                  <input type="text" id="protocol-id" placeholder="Ej. entrevista_inicial_de_rastreo" />
+                </label>
+              </div>
+              <div class="grid one">
+                <label>
+                  Contexto del caso opcional
+                  <textarea id="protocol-case-context" rows="4" placeholder="Opcional. Puedes pegar una breve nota o contexto del caso."></textarea>
+                </label>
+              </div>
+              <div class="actions">
+                <button type="button" class="primary-btn" id="ask-protocol">Consultar protocolo</button>
+              </div>
+              <div id="protocol-status" class="stack"></div>
+            </section>
+          </form>
+        </section>
+
+        <section class="panel" id="protocol-panel">
+          <div class="panel-head">
+            <h2>Resultado de la Guía de Protocolos</h2>
+            <p>Aquí verás el objetivo, cuándo usarlo, los prerequisitos, los pasos y las advertencias del protocolo consultado.</p>
+          </div>
+          <div id="protocol-output" class="stack"></div>
+        </section>
+      </section>
     </main>
-
-    <template id="pair-template">
-      <article class="collection-item">
-        <div class="grid two">
-          <label>
-            Par biomagnético
-            <input type="text" data-field="pair_name" placeholder="Ej. ANO - PILORO" />
-          </label>
-          <label>
-            Nota del terapeuta
-            <input type="text" data-field="therapist_note" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
-
-    <template id="significant-partner-template">
-      <article class="collection-item">
-        <div class="grid three">
-          <label>
-            Nombre completo
-            <input type="text" data-field="full_name" />
-          </label>
-          <label>
-            Fecha de nacimiento
-            <input type="date" data-field="birth_date" />
-          </label>
-          <label>
-            Años de relación
-            <input type="number" min="0" step="1" data-field="relationship_years" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
-
-    <template id="child-template">
-      <article class="collection-item">
-        <div class="grid four">
-          <label>
-            Nombre completo
-            <input type="text" data-field="full_name" />
-          </label>
-          <label>
-            Fecha de nacimiento
-            <input type="date" data-field="birth_date" />
-          </label>
-          <label>
-            Fecha de muerte
-            <input type="date" data-field="death_date" />
-          </label>
-          <label>
-            Nombre del padre o madre
-            <input type="text" data-field="other_parent_name" />
-          </label>
-        </div>
-        <div class="grid three">
-          <label>
-            Fecha de nacimiento del padre o madre
-            <input type="date" data-field="other_parent_birth_date" />
-          </label>
-          <label>
-            Fecha de muerte del padre o madre
-            <input type="date" data-field="other_parent_death_date" />
-          </label>
-          <label>
-            Tiempo de relación en años
-            <input type="number" min="0" step="1" data-field="relationship_years" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
-
-    <template id="sibling-template">
-      <article class="collection-item">
-        <div class="grid three">
-          <label>
-            Nombre completo
-            <input type="text" data-field="full_name" />
-          </label>
-          <label>
-            Fecha de nacimiento
-            <input type="date" data-field="birth_date" />
-          </label>
-          <label>
-            Fecha de muerte
-            <input type="date" data-field="death_date" />
-          </label>
-        </div>
-        <button type="button" class="ghost-btn remove-item">Eliminar</button>
-      </article>
-    </template>
 
     <template id="symptom-template">
       <article class="collection-item">

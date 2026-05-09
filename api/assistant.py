@@ -30,6 +30,7 @@ DEFAULT_REASONING_EFFORT = "high"
 DEFAULT_FALLBACK_MODELS = ("gpt-5-mini", "gpt-4.1")
 DEFAULT_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 DEFAULT_GROQ_MODEL = "openai/gpt-oss-20b"
+DEFAULT_EMBEDDING_PROVIDER = "disabled"
 
 SAEL_SYSTEM_PROMPT = """
 Eres “Sael Sinodal”, un asistente experto en temas holísticos para Holoacademia.
@@ -251,7 +252,7 @@ class CourseMeta:
 
 class NaturalAssistant:
     def __init__(self) -> None:
-        self.provider = (os.getenv("LLM_PROVIDER", "openai").strip() or "openai").lower()
+        self.provider = (os.getenv("LLM_PROVIDER", "groq").strip() or "groq").lower()
         if self.provider == "groq":
             api_key = os.getenv("GROQ_API_KEY", "").strip()
             self.base_url = os.getenv("LLM_BASE_URL", DEFAULT_GROQ_BASE_URL).strip() or DEFAULT_GROQ_BASE_URL
@@ -282,6 +283,26 @@ class NaturalAssistant:
             self.client = OpenAI(**client_kwargs)
         else:
             self.client = None
+
+        self.embedding_provider = (
+            os.getenv("EMBEDDING_PROVIDER", DEFAULT_EMBEDDING_PROVIDER).strip().lower()
+            or DEFAULT_EMBEDDING_PROVIDER
+        )
+        self.embedding_model = os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small").strip() or "text-embedding-3-small"
+        self.embedding_client = None
+        if OpenAI is not None and self.embedding_provider in {"openai", "groq"}:
+            if self.embedding_provider == "openai":
+                embedding_api_key = os.getenv("OPENAI_API_KEY", "").strip()
+                embedding_base_url = os.getenv("EMBEDDING_BASE_URL", "").strip() or None
+            else:
+                embedding_api_key = os.getenv("GROQ_API_KEY", "").strip()
+                embedding_base_url = os.getenv("EMBEDDING_BASE_URL", DEFAULT_GROQ_BASE_URL).strip() or DEFAULT_GROQ_BASE_URL
+
+            if embedding_api_key:
+                embedding_kwargs = {"api_key": embedding_api_key}
+                if embedding_base_url:
+                    embedding_kwargs["base_url"] = embedding_base_url
+                self.embedding_client = OpenAI(**embedding_kwargs)
         self.last_model_error = ""
         self.teacher = get_teacher_knowledge()
         self.teacher_memory: Optional[TeacherMemory] = get_teacher_memory()
@@ -1985,13 +2006,16 @@ class NaturalAssistant:
         return not any(term in lowered for term in broad_terms)
 
     def embed_query(self, text: str):
-        if self.client is None:
-            raise RuntimeError("OpenAI client is not configured")
-        response = self.client.embeddings.create(
-            model=os.getenv("OPENAI_EMBEDDING_MODEL", "text-embedding-3-small").strip() or "text-embedding-3-small",
+        if self.embedding_client is None:
+            raise RuntimeError("Embedding client is not configured")
+        response = self.embedding_client.embeddings.create(
+            model=self.embedding_model,
             input=text,
         )
         return response.data[0].embedding
+
+    def can_embed_queries(self) -> bool:
+        return self.embedding_client is not None and bool(self.embedding_model)
 
     def _answer_with_model(
         self,
@@ -2038,7 +2062,7 @@ class NaturalAssistant:
             instructions=instructions,
             input=prompt,
             timeout=self.response_timeout,
-            max_output_tokens=900 if is_complex_cross_course else 1100,
+            max_output_tokens=1400 if is_complex_cross_course else 1800,
         )
         last_prompt_used = prompt
         answer = self._polish_text(self._response_text(response))
@@ -2048,7 +2072,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=1000 if is_complex_cross_course else 1400,
+                max_output_tokens=1600 if is_complex_cross_course else 2000,
             )
             answer = self._polish_text(self._response_text(response))
         if not answer and len(context_courses) > 1:
@@ -2066,7 +2090,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=focused_multi_prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=800,
+                max_output_tokens=1400,
             )
             last_prompt_used = focused_multi_prompt
             answer = self._polish_text(self._response_text(response))
@@ -2076,7 +2100,7 @@ class NaturalAssistant:
                     instructions=instructions,
                     input=focused_multi_prompt,
                     timeout=self.response_timeout,
-                    max_output_tokens=1100,
+                    max_output_tokens=1800,
                 )
                 answer = self._polish_text(self._response_text(response))
         if not answer and active_course is not None:
@@ -2093,7 +2117,7 @@ class NaturalAssistant:
                 instructions=instructions,
                 input=focused_prompt,
                 timeout=self.response_timeout,
-                max_output_tokens=900,
+                max_output_tokens=1400,
             )
             last_prompt_used = focused_prompt
             answer = self._polish_text(self._response_text(response))
@@ -2103,7 +2127,7 @@ class NaturalAssistant:
                     instructions=instructions,
                     input=focused_prompt,
                     timeout=self.response_timeout,
-                    max_output_tokens=1400,
+                    max_output_tokens=1800,
                 )
                 answer = self._polish_text(self._response_text(response))
         if not answer:
@@ -2399,7 +2423,7 @@ class NaturalAssistant:
                             "[Memoria docente]",
                             f"Título: {hit.title}",
                             f"Curso: {hit.course_name}",
-                            f"Contenido útil: {self._compact_text(hit.text, 520)}",
+                            f"Contenido útil: {self._compact_text(hit.text, 1000)}",
                         ]
                     )
                 )
@@ -2415,17 +2439,17 @@ class NaturalAssistant:
         return "\n\n".join(block for block in blocks if block.strip())
 
     def _build_course_block(self, course: CourseStudy) -> str:
-        themes = self._join_items(course.core_themes[:4])
-        concepts = self._join_items(course.key_concepts[:5])
-        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:4]])
-        study_guide = self._join_items(course.study_guide[:2])
+        themes = self._join_items(course.core_themes[:8])
+        concepts = self._join_items(course.key_concepts[:8])
+        protocols = self._join_items([self._protocol_label(item) for item in course.protocols[:8]])
+        study_guide = self._join_items(course.study_guide[:4])
         return "\n".join(
             [
                 "[Curso activo]",
                 f"Curso: {course.course_name}",
                 f"Línea: {course.linea}",
                 f"Tipo: {course.tipo}",
-                f"Resumen docente: {self._compact_text(course.teacher_summary or course.summary, 420)}",
+                f"Resumen docente: {self._compact_text(course.teacher_summary or course.summary, 900)}",
                 f"Temas centrales: {themes}",
                 f"Conceptos clave: {concepts}",
                 f"Protocolos o secuencias destacadas: {protocols}",
@@ -2439,11 +2463,11 @@ class NaturalAssistant:
         query = question
         if active_course is not None:
             query = f"{active_course.course_name}. {question}"
-        hits = self.teacher_memory.search(query, limit=4)
+        hits = self.teacher_memory.search(query, limit=6)
         if active_course is not None:
             same_course = [hit for hit in hits if hit.course_id == active_course.course_id]
             hits = same_course or hits
-        return hits[:2]
+        return hits[:4]
 
     def _infer_course_from_memory(self, question: str) -> Optional[CourseStudy]:
         best_hit = self._best_memory_hit_for_question(question)

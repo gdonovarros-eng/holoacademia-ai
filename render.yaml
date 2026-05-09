@@ -18,6 +18,10 @@ services:
         value: https://api.groq.com/openai/v1
       - key: COURSE_ASSISTANT_USE_MODEL
         value: "true"
+      - key: ACADEMIC_ASSISTANT_USE_MODEL
+        value: "true"
+      - key: THERAPEUTIC_ASSISTANT_USE_MODEL
+        value: "true"
       - key: OPENAI_MODEL
         value: openai/gpt-oss-20b
       - key: OPENAI_IMAGE_MODEL

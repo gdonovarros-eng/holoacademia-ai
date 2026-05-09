@@ -1,34 +1,30 @@
 const state = {
-  courseHistory: [],
-  analysis: null,
-  pairAnalysis: null,
-  report: null,
+  academicHistory: [],
 };
 
-const COURSE_HISTORY_STORAGE_KEY = "holoacademia_course_chat_v1";
+const ACADEMIC_HISTORY_STORAGE_KEY = "holoacademia_academic_chat_v1";
 
 const tabs = [...document.querySelectorAll(".tab")];
 const tabPanels = [...document.querySelectorAll(".tab-panel")];
-const steps = [...document.querySelectorAll(".step")];
-
-const significantPartnersList = document.getElementById("significant-partners-list");
-const childrenList = document.getElementById("children-list");
-const siblingsList = document.getElementById("siblings-list");
-const symptomList = document.getElementById("symptoms-list");
-const historyList = document.getElementById("history-list");
-const pairsList = document.getElementById("pairs-list");
-
-const analysisPanel = document.getElementById("analysis-panel");
-const pairsPanel = document.getElementById("pairs-panel");
-const reportPanel = document.getElementById("report-panel");
-const analysisOutput = document.getElementById("analysis-output");
-const pairsOutput = document.getElementById("pairs-output");
-const reportOutput = document.getElementById("report-output");
-const courseOutput = document.getElementById("course-output");
-const courseQuestion = document.getElementById("course-question");
 
 const consultantBirthDate = document.getElementById("consultant-birth-date");
 const consultantAge = document.getElementById("consultant-age");
+
+const symptomList = document.getElementById("symptoms-list");
+const historyList = document.getElementById("history-list");
+
+const analysisPanel = document.getElementById("analysis-panel");
+const analysisOutput = document.getElementById("analysis-output");
+
+const academicOutput = document.getElementById("academic-output");
+const academicQuestion = document.getElementById("academic-question");
+
+const protocolOutput = document.getElementById("protocol-output");
+const protocolStatus = document.getElementById("protocol-status");
+const protocolPanel = document.getElementById("protocol-panel");
+const protocolNameInput = document.getElementById("protocol-name");
+const protocolIdInput = document.getElementById("protocol-id");
+const protocolCaseContextInput = document.getElementById("protocol-case-context");
 
 function setActiveTab(tabName) {
   tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
@@ -36,7 +32,7 @@ function setActiveTab(tabName) {
 }
 
 function escapeHtml(value = "") {
-  return value
+  return String(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
@@ -45,39 +41,61 @@ function escapeHtml(value = "") {
 }
 
 function formatMessageText(value = "") {
-  return escapeHtml(value)
-    .replace(/\n{2,}/g, "</p><p>")
-    .replace(/\n/g, "<br />");
+  return escapeHtml(value).replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br />");
 }
 
-function saveCourseHistory() {
+function safeText(value = "") {
+  return String(value ?? "").trim();
+}
+
+function compactStrings(values = []) {
+  return values.map((item) => safeText(item)).filter(Boolean);
+}
+
+function buildKeyValueLines(entries = []) {
+  return compactStrings(entries.map(([label, value]) => (safeText(value) ? `${label}: ${safeText(value)}` : "")));
+}
+
+function renderSimpleList(items = []) {
+  const values = compactStrings(items);
+  if (!values.length) return "";
+  return `<ul class="bullet-list">${values.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`;
+}
+
+function renderSectionCard(title, body) {
+  if (!safeText(body)) return "";
+  return `
+    <article class="reference-card">
+      <p><strong>${escapeHtml(title)}</strong></p>
+      ${body}
+    </article>
+  `;
+}
+
+function setStatus(container, message, isError = false) {
+  container.innerHTML = `<p class="status ${isError ? "error" : ""}">${escapeHtml(message)}</p>`;
+}
+
+function saveAcademicHistory() {
   try {
-    sessionStorage.setItem(COURSE_HISTORY_STORAGE_KEY, JSON.stringify(state.courseHistory));
+    sessionStorage.setItem(ACADEMIC_HISTORY_STORAGE_KEY, JSON.stringify(state.academicHistory));
   } catch (error) {
-    console.warn("No se pudo guardar el historial del chat de cursos.", error);
+    console.warn("No se pudo guardar el historial del Asistente Académico.", error);
   }
 }
 
-function loadCourseHistory() {
+function loadAcademicHistory() {
   try {
-    const raw = sessionStorage.getItem(COURSE_HISTORY_STORAGE_KEY);
+    const raw = sessionStorage.getItem(ACADEMIC_HISTORY_STORAGE_KEY);
     if (!raw) return;
     const parsed = JSON.parse(raw);
     if (Array.isArray(parsed)) {
-      state.courseHistory = parsed.filter((item) => item && item.role && item.content);
+      state.academicHistory = parsed.filter((item) => item && item.role && item.content);
     }
   } catch (error) {
-    console.warn("No se pudo cargar el historial del chat de cursos.", error);
+    console.warn("No se pudo cargar el historial del Asistente Académico.", error);
   }
 }
-
-function setStep(stepNumber) {
-  steps.forEach((step) => step.classList.toggle("active", Number(step.dataset.step) <= stepNumber));
-}
-
-tabs.forEach((tab) => {
-  tab.addEventListener("click", () => setActiveTab(tab.dataset.tab));
-});
 
 function attachRemoveButton(node) {
   node.querySelector(".remove-item")?.addEventListener("click", () => node.remove());
@@ -85,6 +103,7 @@ function attachRemoveButton(node) {
 
 function addCollectionItem(container, templateId) {
   const template = document.getElementById(templateId);
+  if (!container || !template) return;
   const fragment = template.content.cloneNode(true);
   const node = fragment.firstElementChild;
   attachRemoveButton(node);
@@ -92,11 +111,16 @@ function addCollectionItem(container, templateId) {
 }
 
 function readCollection(container) {
+  if (!container) return [];
   return [...container.children]
     .map((item) => {
       const payload = {};
       item.querySelectorAll("[data-field]").forEach((field) => {
-        payload[field.dataset.field] = field.value?.trim() || "";
+        if (field.dataset.type === "checkbox") {
+          payload[field.dataset.field] = Boolean(field.checked);
+        } else {
+          payload[field.dataset.field] = field.value?.trim() || "";
+        }
       });
       return payload;
     })
@@ -120,70 +144,61 @@ function calculateAge(value) {
   return age >= 0 ? String(age) : "";
 }
 
-consultantBirthDate?.addEventListener("change", () => {
-  consultantAge.value = calculateAge(consultantBirthDate.value);
-});
+function getTherapeuticPayload() {
+  const symptoms = readCollection(symptomList);
+  const historyEvents = readCollection(historyList);
+  const symptomNames = compactStrings(symptoms.map((item) => item.symptom_name));
+  const symptomDetails = compactStrings(
+    symptoms.map((item) =>
+      buildKeyValueLines([
+        ["síntoma", item.symptom_name],
+        ["inicio", item.onset_age_or_date],
+        ["características", item.symptom_characteristics],
+        ["frecuencia", item.frequency],
+      ]).join(" | "),
+    ),
+  );
+  const historyDetails = compactStrings(
+    historyEvents.map((item) =>
+      buildKeyValueLines([
+        ["antecedente", item.event_name],
+        ["inicio", item.onset_age_or_date],
+        ["características", item.event_characteristics],
+        ["frecuencia", item.frequency],
+      ]).join(" | "),
+    ),
+  );
+  const antecedentNames = compactStrings(historyEvents.map((item) => item.event_name));
+  const firstSymptom = symptoms[0] || {};
+  const observations = compactStrings([
+    getText("therapeutic_observations"),
+    symptomDetails.length ? `Detalle de síntomas: ${symptomDetails.join(" || ")}` : "",
+    historyDetails.length ? `Historial referido: ${historyDetails.join(" || ")}` : "",
+  ]).join("\n");
 
-function getCasePayload() {
-  const payload = {
-    consultant: {
-      full_name: getText("consultant_full_name"),
-      birth_date: getText("consultant_birth_date"),
-      birth_time: getText("consultant_birth_time"),
-      age: getText("consultant_age"),
-    },
-    grandparents: {
-      paternal_grandfather: {
-        full_name: getText("paternal_grandfather_full_name"),
-        birth_date: getText("paternal_grandfather_birth_date"),
-        death_date: getText("paternal_grandfather_death_date"),
-      },
-      paternal_grandmother: {
-        full_name: getText("paternal_grandmother_full_name"),
-        birth_date: getText("paternal_grandmother_birth_date"),
-        death_date: getText("paternal_grandmother_death_date"),
-      },
-      maternal_grandfather: {
-        full_name: getText("maternal_grandfather_full_name"),
-        birth_date: getText("maternal_grandfather_birth_date"),
-        death_date: getText("maternal_grandfather_death_date"),
-      },
-      maternal_grandmother: {
-        full_name: getText("maternal_grandmother_full_name"),
-        birth_date: getText("maternal_grandmother_birth_date"),
-        death_date: getText("maternal_grandmother_death_date"),
-      },
-    },
-    parents: {
-      father: {
-        full_name: getText("father_full_name"),
-        birth_date: getText("father_birth_date"),
-        death_date: getText("father_death_date"),
-      },
-      mother: {
-        full_name: getText("mother_full_name"),
-        birth_date: getText("mother_birth_date"),
-        death_date: getText("mother_death_date"),
-      },
-    },
-    current_partner: {
-      full_name: getText("current_partner_full_name"),
-      birth_date: getText("current_partner_birth_date"),
-      relationship_years: getText("current_partner_relationship_years"),
-    },
-    significant_partners: readCollection(significantPartnersList),
-    children: readCollection(childrenList),
-    siblings: readCollection(siblingsList),
-    current_symptoms: readCollection(symptomList),
-    history_events: readCollection(historyList),
-    patient_name: getText("consultant_full_name"),
-    patient_birth_date: getText("consultant_birth_date"),
+  return {
+    motivo_consulta: getText("therapeutic_reason") || symptomNames[0] || "",
+    sintomas: symptomNames,
+    inicio: getText("therapeutic_onset") || firstSymptom.onset_age_or_date || "",
+    duracion: getText("therapeutic_duration"),
+    frecuencia: getText("therapeutic_frequency") || firstSymptom.frequency || "",
+    antecedentes: compactStrings([...antecedentNames, ...historyDetails]),
+    contexto_emocional: getText("therapeutic_emotional_context"),
+    observaciones,
+    pregunta_del_terapeuta: getText("therapeutic_question"),
+    family_notes: getText("therapeutic_family_notes"),
   };
-  return payload;
 }
 
-function getPairsPayload() {
-  return readCollection(pairsList);
+function parseProtocolCaseContext(rawValue = "") {
+  const text = safeText(rawValue);
+  if (!text) return null;
+  try {
+    const parsed = JSON.parse(text);
+    return parsed && typeof parsed === "object" ? parsed : { notes: text };
+  } catch (error) {
+    return { notes: text };
+  }
 }
 
 async function postJson(url, body) {
@@ -192,577 +207,380 @@ async function postJson(url, body) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(body),
   });
+
   if (!response.ok) {
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+      const payload = await response.json().catch(() => null);
+      const detail =
+        (payload && typeof payload.detail === "string" && payload.detail.trim()) ||
+        (payload && typeof payload.message === "string" && payload.message.trim()) ||
+        "";
+      throw new Error(detail ? `${response.status} ${detail}` : `Error del servidor (${response.status}).`);
+    }
+
     const text = await response.text();
-    throw new Error(`${response.status} ${text}`);
+    const looksLikeHtml = contentType.includes("text/html") || /<!doctype html>|<html/i.test(text);
+    if (looksLikeHtml && [502, 503, 504].includes(response.status)) {
+      throw new Error(`Servicio temporalmente no disponible (${response.status}). Intenta de nuevo en unos minutos.`);
+    }
+    if (looksLikeHtml) {
+      throw new Error(`Error del servidor (${response.status}).`);
+    }
+
+    const compactText = String(text || "").replace(/\s+/g, " ").trim().slice(0, 240);
+    throw new Error(compactText ? `${response.status} ${compactText}` : `Error del servidor (${response.status}).`);
   }
+
   return response.json();
 }
 
-function renderChipList(values = []) {
-  if (!values.length) {
-    return `<p class="status">Sin elementos detectados todavía.</p>`;
+async function runViewRequest({ container, loadingMessage, request }) {
+  setStatus(container, loadingMessage);
+  try {
+    return await request();
+  } catch (error) {
+    setStatus(container, error.message || "Ocurrió un error inesperado.", true);
+    return null;
   }
-  return `<div class="chip-list">${values.map((value) => `<span class="chip">${value}</span>`).join("")}</div>`;
 }
 
-function renderBulletList(values = []) {
-  if (!values.length) {
-    return `<p class="status">Sin elementos sugeridos en esta etapa.</p>`;
-  }
-  return `<ul class="bullet-list">${values.map((value) => `<li>${value}</li>`).join("")}</ul>`;
-}
+function renderTherapeuticResponse(payload = {}) {
+  const protocol = payload.protocolo_principal || {};
+  const protocolSummary = protocol && Object.keys(protocol).length
+    ? `
+      <p><strong>${escapeHtml(protocol.nombre || "Protocolo principal")}</strong></p>
+      ${protocol.por_que ? `<p><strong>Por qué:</strong> ${escapeHtml(protocol.por_que)}</p>` : ""}
+      ${protocol.que_busca_resolver ? `<p><strong>Qué busca resolver:</strong> ${escapeHtml(protocol.que_busca_resolver)}</p>` : ""}
+      ${Array.isArray(protocol.validaciones) && protocol.validaciones.length ? `<p><strong>Validaciones del protocolo:</strong></p>${renderSimpleList(protocol.validaciones)}` : ""}
+      ${Array.isArray(protocol.pares_prioritarios) && protocol.pares_prioritarios.length ? `<p><strong>Pares prioritarios:</strong></p>${renderSimpleList(protocol.pares_prioritarios.slice(0, 3))}` : ""}
+      ${Array.isArray(protocol.microbios_relacionados) && protocol.microbios_relacionados.length ? `<p><strong>Microbios relevantes:</strong></p>${renderSimpleList(protocol.microbios_relacionados.slice(0, 2))}` : ""}
+    `
+    : `<p class="status">Todavía no hay un protocolo principal suficientemente sustentado.</p>`;
 
-function renderReferenceCauses(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin causas emocionales referidas todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.label || "Referencia"}</strong></p>
-      <p>${item.body || ""}</p>
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderOrderedList(values = []) {
-  if (!values.length) {
-    return `<p class="status">Sin elementos disponibles.</p>`;
-  }
-  return `<ol class="bullet-list">${values.map((value) => `<li>${value}</li>`).join("")}</ol>`;
-}
-
-function renderSuggestedPairs(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin pares sugeridos en esta etapa.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.pair_name || ""}</strong></p>
-      <p>${item.pair_type || ""}${item.related_condition ? ` · ${item.related_condition}` : ""}</p>
-      <p>${item.why || ""}</p>
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderSuggestedProtocols(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin sugerencias adicionales en esta etapa.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || ""}</strong></p>
-      <p>${item.reason || ""}</p>
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderRadionicTable(table) {
-  if (!table || !table.active) {
-    return `<p class="status">Sin tabla radiónica disponible todavía.</p>`;
-  }
-  const top = (table.top_circuit || []).map((item) => `<span>${item}</span>`).join("");
-  const bottom = (table.bottom_circuit || []).map((item) => `<span>${item}</span>`).join("");
-  return `
-    <article class="radionic-card">
-      <h4>${table.title || "Tabla radiónica"}</h4>
-      <div class="radionic-circuit">${top}</div>
-      <div class="radionic-line radionic-patient">${table.patient_line || ""}</div>
-      <div class="radionic-line radionic-intention">${table.intention_line || ""}</div>
-      <div class="radionic-pairs">
-        ${(table.pairs || []).length
-          ? `<ul class="bullet-list">${(table.pairs || []).map((pair) => `<li>${pair}</li>`).join("")}</ul>`
-          : `<p class="status">Sin pares capturados todavía.</p>`}
-      </div>
-      <div class="radionic-circuit">${bottom}</div>
-      <details class="radionic-copy">
-        <summary>Ver versión para copiar</summary>
-        <pre>${table.copy_text || ""}</pre>
-      </details>
-    </article>
-  `;
-}
-
-function renderTherapeuticGuide(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin guía terapéutica disponible todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || ""}</strong></p>
-      <p>${item.purpose || ""}</p>
-      <p><strong>Cuándo abrirlo:</strong> ${item.when_to_use || ""}</p>
-      <p><strong>Pasos sugeridos:</strong></p>
-      ${renderBulletList(item.steps || [])}
-      ${(item.pair_focus || []).length ? `<p><strong>Pares a validar desde aquí:</strong> ${(item.pair_focus || []).join(", ")}</p>` : ""}
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderSystemSweep(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin barrido sistémico disponible todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || item.system_label || ""}</strong></p>
-      <p>${item.summary || ""}</p>
-      <p><strong>Qué revisar:</strong></p>
-      ${renderBulletList(item.review_points || [])}
-      <p><strong>Componente complementario:</strong></p>
-      ${renderBulletList(item.microbial_focus || [])}
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderOrganSweep(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin barrido por órgano disponible todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || ""}</strong></p>
-      <p>${item.summary || ""}</p>
-      <p><strong>Qué preguntar aquí:</strong></p>
-      ${renderBulletList(item.interview_points || [])}
-      ${(item.pair_focus || []).length ? `<p><strong>Pares a validar desde esta puerta:</strong> ${(item.pair_focus || []).join(", ")}</p>` : ""}
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderHypotheses(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin hipótesis priorizadas todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || ""}</strong></p>
-      <p>${item.summary || ""}</p>
-      <p><strong>Qué verificar primero:</strong></p>
-      ${renderBulletList(item.verify || [])}
-      ${(item.pairs_to_validate || []).length ? `<p><strong>Pares a validar:</strong> ${(item.pairs_to_validate || []).join(", ")}</p>` : ""}
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderFamilyDateGuidance(items = []) {
-  if (!items.length) {
-    return `<p class="status">Sin guía específica de fechas todavía.</p>`;
-  }
-  return `<div class="reference-list">${items.map((item) => `
-    <article class="reference-card">
-      <p><strong>${item.title || ""}</strong></p>
-      <p>${item.interpretation || ""}</p>
-      <p><strong>Qué revisar:</strong></p>
-      ${renderBulletList(item.what_to_review || [])}
-      <p><strong>Cómo abrirlo:</strong></p>
-      ${renderBulletList(item.how_to_open || [])}
-    </article>
-  `).join("")}</div>`;
-}
-
-function renderAnalysis(analysis) {
-  const opening = analysis.opening_guidance || {};
   analysisOutput.innerHTML = `
     <article class="result-card">
-      <h3>Lectura inicial</h3>
-      <p>${analysis.reading || ""}</p>
-      <p><strong>Masa conflictual:</strong> ${analysis.mass_conflict_hypothesis || "Aún no definida."}</p>
+      <h3>Lectura breve del caso</h3>
+      <p>${formatMessageText(payload.answer || "No hubo respuesta del motor terapéutico.")}</p>
+      ${payload.confidence ? `<p class="chat-meta">Confianza: ${escapeHtml(payload.confidence)}</p>` : ""}
     </article>
-    <article class="result-card">
-      <h3>Por dónde empezar</h3>
-      <p>${opening.opening_focus || "Sin orientación inicial todavía."}</p>
-      ${renderBulletList(opening.interview_targets || [])}
-    </article>
-    <article class="result-card">
-      <h3>Síntomas prioritarios</h3>
-      ${renderChipList(analysis.priority_symptoms || [])}
-    </article>
-    <article class="result-card">
-      <h3>Hipótesis prioritarias</h3>
-      ${renderHypotheses(analysis.prioritized_hypotheses || [])}
-    </article>
-    <article class="result-card">
-      <h3>Guía terapéutica inicial</h3>
-      ${renderTherapeuticGuide(analysis.therapeutic_guide || [])}
-    </article>
-    <article class="result-card">
-      <h3>Sistemas probables</h3>
-      ${renderChipList(analysis.probable_system_labels || analysis.probable_systems || [])}
-    </article>
-    <article class="result-card">
-      <h3>Barrido por sistema</h3>
-      ${renderSystemSweep(analysis.system_sweep_summary || [])}
-    </article>
-    <article class="result-card">
-      <h3>Barrido por órgano</h3>
-      ${renderOrganSweep(analysis.organ_sweep_summary || [])}
-    </article>
-    <article class="result-card">
-      <h3>Conflictos probables</h3>
-      ${renderBulletList(analysis.probable_conflicts || [])}
-    </article>
-    <article class="result-card">
-      <h3>Causas emocionales probables</h3>
-      ${renderReferenceCauses(analysis.reference_emotional_causes || [])}
-    </article>
-    <article class="result-card">
-      <h3>Ejes familiares y transgeneracionales</h3>
-      ${renderBulletList(analysis.family_axes || [])}
-    </article>
-    <article class="result-card">
-      <h3>Lectura de fechas del sistema</h3>
-      ${renderFamilyDateGuidance(analysis.family_date_guidance || [])}
-    </article>
-    <article class="result-card">
-      <h3>Preguntas guía</h3>
-      ${renderBulletList(analysis.guiding_questions || [])}
-    </article>
-    <article class="result-card">
-      <h3>Pares sugeridos a validar</h3>
-      ${renderSuggestedPairs(analysis.suggested_pairs_to_validate || [])}
-    </article>
-    <article class="result-card">
-      <h3>Tabla radiónica sugerida</h3>
-      ${renderRadionicTable(analysis.radionic_pair_table)}
-    </article>
-    <article class="result-card">
-      <h3>Protocolos o aperturas sugeridas</h3>
-      ${renderSuggestedProtocols(analysis.suggested_protocols || [])}
-    </article>
-  `;
-}
-
-function renderPairCard(pair) {
-  const visualImages = (pair.visual?.image_candidates || [])
-    .map((url) => `<img src="${url}" alt="Referencia anatómica ${pair.pair_name}" />`)
-    .join("");
-
-  return `
-    <article class="pair-card">
-      <h3>${pair.pair_name}</h3>
-      <div class="meta-list">
-        <span class="chip">${pair.pair_type || "Sin tipo"}</span>
-        <span class="chip">${pair.related_condition || "Sin condición"}</span>
-      </div>
-      <p><strong>Punto A:</strong> ${pair.visual?.point_a?.label || ""} · ${pair.visual?.point_a?.region_hint || ""}</p>
-      <p><strong>Punto B:</strong> ${pair.visual?.point_b?.label || ""} · ${pair.visual?.point_b?.region_hint || ""}</p>
-      ${visualImages ? `<div class="pair-visual-grid">${visualImages}</div>` : `<p class="status">Sin referencia visual disponible.</p>`}
-    </article>
-  `;
-}
-
-function renderPairs(pairAnalysis) {
-  const protocols = (pairAnalysis.suggested_protocols || []).map((protocol) => `
-    <article class="protocol-card">
-      <h3>${protocol.title}</h3>
-      <p><strong>Ruta:</strong> ${protocol.route}</p>
-      <p>${protocol.body}</p>
-    </article>
-  `).join("");
-
-  pairsOutput.innerHTML = `
-    <article class="result-card">
-      <h3>Lectura integrada de pares</h3>
-      <p>${pairAnalysis.integrated_reading || ""}</p>
-    </article>
-    <article class="result-card">
-      <h3>Tipos dominantes</h3>
-      ${renderChipList(pairAnalysis.dominant_pair_types || [])}
-    </article>
-    <article class="result-card">
-      <h3>Condiciones relacionadas</h3>
-      ${renderBulletList(pairAnalysis.related_conditions || [])}
-    </article>
-    <article class="result-card">
-      <h3>Tabla radiónica para pares interpretados</h3>
-      ${renderRadionicTable(pairAnalysis.radionic_pair_table)}
-    </article>
-    ${(pairAnalysis.interpreted_pairs || []).map(renderPairCard).join("")}
-    ${protocols || '<p class="status">Sin protocolos sugeridos todavía.</p>'}
-  `;
-}
-
-function renderReport(report) {
-  const tableRows = (report.integrative_chart || []).map((row) => `
-    <tr>
-      <td>${row.dimension}</td>
-      <td>${row.value}</td>
-      <td>${row.meaning}</td>
-    </tr>
-  `).join("");
-
-  const protocol = report.primary_protocol;
-  const liberation = report.liberation_plan || {};
-  const eft = report.eft_script || {};
-  const pairVisualCards = (report.pair_visual_summary || []).map((item) => `
-    <article class="pair-card">
-      <h3>${item.pair_name}</h3>
-      <p><strong>Interpretación:</strong> ${item.pair_type || "Sin tipo"} · ${item.related_condition || "Sin condición"}</p>
-      <p><strong>Punto A:</strong> ${item.point_a_label} · ${item.point_a_region}</p>
-      <p><strong>Punto B:</strong> ${item.point_b_label} · ${item.point_b_region}</p>
-      ${(item.image_candidates || []).length
-        ? `<div class="pair-visual-grid">${item.image_candidates.map((url) => `<img src="${url}" alt="${item.pair_name}" />`).join("")}</div>`
-        : `<p class="status">Sin visuales disponibles.</p>`}
-    </article>
-  `).join("");
-
-  reportOutput.innerHTML = `
-    <article class="result-card">
-      <h3>Resumen para terapeuta</h3>
-      <p>${report.therapist_summary || ""}</p>
-    </article>
-    <article class="result-card">
-      <h3>Tabla radiónica del caso</h3>
-      ${renderRadionicTable(report.radionic_pair_table)}
-    </article>
-    <article class="result-card">
-      <h3>Próximos pasos</h3>
-      ${renderBulletList(report.next_steps || [])}
-    </article>
-    <article class="result-card">
-      <h3>Cuadro integrador</h3>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr><th>Dimensión</th><th>Valor</th><th>Significado</th></tr>
-          </thead>
-          <tbody>${tableRows}</tbody>
-        </table>
-      </div>
-    </article>
-    ${protocol ? `
-      <article class="protocol-card">
-        <h3>Protocolo principal sugerido</h3>
-        <p><strong>${protocol.title}</strong></p>
-        <p>${protocol.body}</p>
-      </article>
-    ` : '<p class="status">Aún no hay protocolo principal sugerido.</p>'}
-    <article class="protocol-card">
-      <h3>Liberación sugerida</h3>
-      <p><strong>Intención terapéutica:</strong> ${liberation.therapeutic_intention || "Sin intención definida todavía."}</p>
-      <p><strong>Protocolo base:</strong> ${liberation.protocol_title || "Sin protocolo base detectado."}</p>
-      <p><strong>Eje emocional:</strong> ${liberation.emotional_axis || "Sin eje emocional definido."}</p>
-      <p><strong>Eje familiar:</strong> ${liberation.family_axis || "Sin eje familiar dominante."}</p>
-      <p><strong>Pasos para el terapeuta:</strong></p>
-      ${renderBulletList(liberation.therapist_steps || [])}
-      <p><strong>Indicaciones de seguimiento:</strong></p>
-      ${renderBulletList(liberation.home_recommendations || [])}
-    </article>
-    <article class="protocol-card">
-      <h3>Guion EFT para aplicar al paciente</h3>
-      <p><strong>Foco a trabajar:</strong> ${eft.focus_issue || "Sin foco definido."}</p>
-      <p><strong>Frase de preparación:</strong> ${eft.setup_phrase || "Sin frase sugerida todavía."}</p>
-      <p><strong>Puntos básicos de tapping:</strong></p>
-      ${renderOrderedList(eft.tapping_points || [])}
-      <p><strong>Frases recordatorias:</strong></p>
-      ${renderBulletList(eft.reminder_phrases || [])}
-      ${((eft.rounds || []).map((round) => `
-        <div class="reference-card">
-          <p><strong>${round.title || ""}</strong></p>
-          <p><strong>Enfoque:</strong> ${round.focus || ""}</p>
-          <p><strong>Frase:</strong> ${round.phrase || ""}</p>
-        </div>
-      `).join("")) || '<p class="status">Sin rondas sugeridas todavía.</p>'}
-      <p><strong>Uso sugerido:</strong></p>
-      ${renderBulletList(eft.usage_notes || [])}
-    </article>
-    <article class="result-card">
-      <h3>Entrega para el paciente</h3>
-      <p>${report.patient_delivery?.patient_summary || ""}</p>
-      <p><strong>Foco terapéutico:</strong></p>
-      ${renderChipList(report.patient_delivery?.therapeutic_focus || [])}
-      <p><strong>Foco de pares:</strong></p>
-      ${renderChipList(report.patient_delivery?.pair_focus || [])}
-    </article>
-    ${pairVisualCards}
-  `;
-}
-
-function renderCourseAnswer(payload) {
-  const visual = payload.visual?.content ? `
-    <div class="chat-visual-card">
-      <p class="chat-visual-title">${payload.visual.title || "Apoyo visual"}</p>
-      <div>${payload.visual.content}</div>
+    <div class="reference-list">
+      ${renderSectionCard(
+        "Ruta principal",
+        payload.ruta_principal ? `<p>${escapeHtml(payload.ruta_principal)}</p>` : `<p class="status">Todavía no se definió una ruta principal.</p>`
+      )}
+      ${renderSectionCard(
+        "Acción inmediata",
+        payload.accion_inmediata ? `<p>${escapeHtml(payload.accion_inmediata)}</p>` : `<p class="status">Sin acción inmediata priorizada.</p>`
+      )}
+      ${renderSectionCard(
+        "Evidencias principales",
+        renderSimpleList(payload.evidencias_principales || []) || `<p class="status">Aún faltan evidencias suficientes para sostener una ruta fuerte.</p>`
+      )}
+      ${renderSectionCard("Protocolo principal", protocolSummary)}
+      ${renderSectionCard(
+        "Pasos inmediatos",
+        renderSimpleList(payload.pasos_inmediatos || []) || `<p class="status">Sin pasos inmediatos definidos.</p>`
+      )}
+      ${renderSectionCard(
+        "Punto de decisión",
+        payload.punto_de_decision ? `<p>${escapeHtml(payload.punto_de_decision)}</p>` : `<p class="status">Sin punto de decisión definido todavía.</p>`
+      )}
+      ${renderSectionCard(
+        "Si no confirma",
+        payload.si_no_confirma ? `<p>${escapeHtml(payload.si_no_confirma)}</p>` : `<p class="status">Sin ruta alternativa definida todavía.</p>`
+      )}
+      ${renderSectionCard(
+        "Qué faltaría explorar",
+        renderSimpleList(payload.missing_data || []) || `<p class="status">No se marcaron datos faltantes.</p>`
+      )}
+      ${renderSectionCard(
+        "Preguntas prioritarias",
+        renderSimpleList(payload.priority_questions || []) || `<p class="status">No se sugirieron preguntas prioritarias.</p>`
+      )}
+      ${renderSectionCard(
+        "Advertencias y límites",
+        renderSimpleList([...(payload.warnings || []), ...(payload.limites || [])]) || `<p class="status">Sin advertencias específicas.</p>`
+      )}
+      ${(() => {
+        const g = payload.genogram_resolution;
+        if (!g || !g.dominant_label) return "";
+        const lines = [
+          g.summary ? `<p>${escapeHtml(g.summary)}</p>` : "",
+          g.dominant_label ? `<p><strong>Eje dominante:</strong> ${escapeHtml(g.dominant_label)}</p>` : "",
+          g.repair_target ? `<p><strong>Objetivo de reparación:</strong> ${escapeHtml(g.repair_target)}</p>` : "",
+          g.interview_focus ? `<p><strong>Foco de entrevista:</strong> ${escapeHtml(g.interview_focus)}</p>` : "",
+          Array.isArray(g.supporting_signals) && g.supporting_signals.length
+            ? `<p><strong>Señales de apoyo:</strong></p>${renderSimpleList(g.supporting_signals)}`
+            : "",
+        ].filter(Boolean).join("");
+        return renderSectionCard("Resolución del genograma", lines);
+      })()}
     </div>
-  ` : "";
+  `;
+}
 
-  const modeLabel = payload.generation_mode ? `<p class="chat-meta">Modo: ${payload.generation_mode}</p>` : "";
+function renderAcademicAnswer(payload) {
+  const followups = Array.isArray(payload.suggested_followups) && payload.suggested_followups.length
+    ? `
+      <div class="chat-visual-card">
+        <p class="chat-visual-title">Siguientes preguntas útiles</p>
+        ${renderSimpleList(payload.suggested_followups)}
+      </div>
+    `
+    : "";
 
   return `
     <div class="chat-bubble assistant">
       <div class="chat-avatar">IA</div>
       <div class="chat-message">
         <p>${formatMessageText(payload.answer || "")}</p>
-        ${modeLabel}
-        ${visual}
+        ${payload.confidence ? `<p class="chat-meta">Confianza: ${escapeHtml(payload.confidence)}</p>` : ""}
+        ${followups}
       </div>
     </div>
   `;
 }
 
-function setStatus(container, message, isError = false) {
-  container.innerHTML = `<p class="status ${isError ? "error" : ""}">${message}</p>`;
-}
-
-function renderCourseChat(loadingMessage = "") {
-  if (!state.courseHistory.length && !loadingMessage) {
-    courseOutput.innerHTML = `
+function renderAcademicChat(loadingMessage = "") {
+  if (!state.academicHistory.length && !loadingMessage) {
+    academicOutput.innerHTML = `
       <article class="qa-card course-empty-state">
         <h3>Inicia una conversación</h3>
-        <p>Puedes preguntar por conceptos, maestros, protocolos, módulos o dar seguimiento natural a la respuesta anterior.</p>
+        <p>Puedes preguntar por conceptos, glosario, módulos o cualquier duda del curso.</p>
       </article>
     `;
     return;
   }
 
-  const messages = state.courseHistory.map((item) => {
-    if (item.role === "assistant") {
-      return renderCourseAnswer({
-        answer: item.content,
-        visual: item.visual || null,
-        generation_mode: item.generation_mode || "",
-      });
-    }
-    return `
-      <div class="chat-bubble user">
+  const messages = state.academicHistory
+    .map((item) => {
+      if (item.role === "assistant") {
+        return renderAcademicAnswer(item);
+      }
+      return `
+        <div class="chat-bubble user">
+          <div class="chat-message">
+            <p>${formatMessageText(item.content)}</p>
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  const loading = loadingMessage
+    ? `
+      <div class="chat-bubble assistant pending">
+        <div class="chat-avatar">IA</div>
         <div class="chat-message">
-          <p>${formatMessageText(item.content)}</p>
+          <p>${escapeHtml(loadingMessage)}</p>
         </div>
       </div>
-    `;
-  }).join("");
+    `
+    : "";
 
-  const loading = loadingMessage ? `
-    <div class="chat-bubble assistant pending">
-      <div class="chat-avatar">IA</div>
-      <div class="chat-message">
-        <p>${escapeHtml(loadingMessage)}</p>
-      </div>
-    </div>
-  ` : "";
-
-  courseOutput.innerHTML = messages + loading;
-  courseOutput.scrollTop = courseOutput.scrollHeight;
+  academicOutput.innerHTML = messages + loading;
+  academicOutput.scrollTop = academicOutput.scrollHeight;
 }
 
-document.getElementById("add-significant-partner").addEventListener("click", () => addCollectionItem(significantPartnersList, "significant-partner-template"));
-document.getElementById("add-child").addEventListener("click", () => addCollectionItem(childrenList, "child-template"));
-document.getElementById("add-sibling").addEventListener("click", () => addCollectionItem(siblingsList, "sibling-template"));
-document.getElementById("add-symptom").addEventListener("click", () => addCollectionItem(symptomList, "symptom-template"));
-document.getElementById("add-history").addEventListener("click", () => addCollectionItem(historyList, "history-template"));
-document.getElementById("add-pair").addEventListener("click", () => addCollectionItem(pairsList, "pair-template"));
-
-document.getElementById("analyze-case").addEventListener("click", async () => {
-  const casePayload = getCasePayload();
-  setStatus(analysisOutput, "Analizando caso...");
-  analysisPanel.classList.remove("hidden");
-  try {
-    const response = await postJson("/therapy/analyze", { case_payload: casePayload });
-    state.analysis = response.analysis;
-    renderAnalysis(response.analysis);
-    pairsPanel.classList.remove("hidden");
-    reportPanel.classList.remove("hidden");
-    setStep(2);
-  } catch (error) {
-    setStatus(analysisOutput, `Error al analizar el caso: ${error.message}`, true);
+function renderProtocolSteps(steps = []) {
+  if (!Array.isArray(steps) || !steps.length) {
+    return `<article class="result-card"><h3>Pasos</h3><p class="status">Sin pasos disponibles.</p></article>`;
   }
-});
 
-document.getElementById("analyze-pairs").addEventListener("click", async () => {
-  const casePayload = getCasePayload();
-  const pairs = getPairsPayload();
-  setStatus(pairsOutput, "Integrando pares...");
-  try {
-    const response = await postJson("/therapy/pairs", { case_payload: casePayload, pairs });
-    state.pairAnalysis = response.pair_analysis;
-    renderPairs(response.pair_analysis);
-    setStep(3);
-  } catch (error) {
-    setStatus(pairsOutput, `Error al interpretar pares: ${error.message}`, true);
-  }
-});
+  return `
+    <article class="result-card">
+      <h3>Pasos</h3>
+      <div class="reference-list">
+        ${steps
+          .map(
+            (step) => `
+              <article class="reference-card">
+                <p><strong>Paso ${step.orden} · ${escapeHtml(step.titulo || "Sin título")}</strong></p>
+                <p>${escapeHtml(step.instruccion || "")}</p>
+                ${step.objetivo_del_paso ? `<p><strong>Objetivo:</strong> ${escapeHtml(step.objetivo_del_paso)}</p>` : ""}
+                ${Array.isArray(step.que_observar) && step.que_observar.length ? `<p><strong>Qué observar:</strong></p>${renderSimpleList(step.que_observar)}` : ""}
+                ${Array.isArray(step.que_registrar) && step.que_registrar.length ? `<p><strong>Qué registrar:</strong></p>${renderSimpleList(step.que_registrar)}` : ""}
+                ${Array.isArray(step.notas) && step.notas.length ? `<p><strong>Notas:</strong></p>${renderSimpleList(step.notas)}` : ""}
+                ${Array.isArray(step.decision_points) && step.decision_points.length ? `<p><strong>Decision points:</strong></p>${renderSimpleList(step.decision_points)}` : ""}
+                ${Array.isArray(step.criterios_de_avance) && step.criterios_de_avance.length ? `<p><strong>Criterios de avance:</strong></p>${renderSimpleList(step.criterios_de_avance)}` : ""}
+                ${Array.isArray(step.errores_comunes) && step.errores_comunes.length ? `<p><strong>Errores comunes:</strong></p>${renderSimpleList(step.errores_comunes)}` : ""}
+              </article>
+            `,
+          )
+          .join("")}
+      </div>
+    </article>
+  `;
+}
 
-document.getElementById("build-report").addEventListener("click", async () => {
-  const casePayload = getCasePayload();
-  const pairs = getPairsPayload();
-  setStatus(reportOutput, "Construyendo reporte final...");
-  try {
-    const response = await postJson("/therapy/report", { case_payload: casePayload, pairs });
-    state.report = response.report;
-    renderReport(response.report);
-  } catch (error) {
-    setStatus(reportOutput, `Error al construir el reporte: ${error.message}`, true);
-  }
-});
-
-async function submitCourseQuestion() {
-  const question = courseQuestion.value.trim();
-  if (!question) {
-    renderCourseChat();
-    courseOutput.insertAdjacentHTML("beforeend", `<p class="status error">Escribe una pregunta primero.</p>`);
+function renderProtocolGuide(payload = {}) {
+  if (!payload.found) {
+    protocolStatus.innerHTML = "";
+    protocolOutput.innerHTML = `
+      <article class="result-card">
+        <h3>Protocolo no encontrado</h3>
+        <p>${formatMessageText(payload.answer || "No encontré un protocolo con base suficiente.")}</p>
+      </article>
+    `;
     return;
   }
-  const historyForRequest = state.courseHistory.map((item) => ({ role: item.role, content: item.content }));
-  state.courseHistory.push({ role: "user", content: question });
-  if (state.courseHistory.length > 20) {
-    state.courseHistory.splice(0, state.courseHistory.length - 20);
-  }
-  saveCourseHistory();
-  renderCourseChat("Pensando la respuesta...");
-  courseQuestion.value = "";
-  try {
-    const response = await postJson("/ask", {
-      question,
-      history: historyForRequest,
-      want_visual: true,
-      render_image: false,
-      max_results: 2,
-    });
-    state.courseHistory.push({
-      role: "assistant",
-      content: response.answer || "",
-      visual: response.visual || null,
-      generation_mode: response.generation_mode || "",
-    });
-    if (state.courseHistory.length > 20) {
-      state.courseHistory.splice(0, state.courseHistory.length - 20);
-    }
-    saveCourseHistory();
-    renderCourseChat();
-    const bubbles = courseOutput.querySelectorAll(".chat-bubble.assistant");
-    const lastBubble = bubbles[bubbles.length - 1];
-    if (lastBubble) {
-      lastBubble.outerHTML = renderCourseAnswer(response);
-      courseOutput.scrollTop = courseOutput.scrollHeight;
-    }
-  } catch (error) {
-    state.courseHistory.pop();
-    saveCourseHistory();
-    renderCourseChat();
-    courseOutput.insertAdjacentHTML("beforeend", `<p class="status error">Error al consultar cursos: ${escapeHtml(error.message)}</p>`);
+
+  protocolStatus.innerHTML = "";
+  protocolOutput.innerHTML = `
+    <article class="result-card">
+      <h3>${escapeHtml(payload.protocol_name || "Guía de protocolo")}</h3>
+      <p>${formatMessageText(payload.answer || "")}</p>
+      ${payload.confidence ? `<p class="chat-meta">Confianza: ${escapeHtml(payload.confidence)}</p>` : ""}
+    </article>
+    <div class="reference-list">
+      ${renderSectionCard("Objetivo", payload.objetivo ? `<p>${escapeHtml(payload.objetivo)}</p>` : `<p class="status">Sin objetivo disponible.</p>`)}
+      ${renderSectionCard("Descripción", payload.descripcion ? `<p>${escapeHtml(payload.descripcion)}</p>` : `<p class="status">Sin descripción disponible.</p>`)}
+      ${renderSectionCard("Cuándo usarlo", renderSimpleList(payload.cuando_usarlo || []) || `<p class="status">Sin uso sugerido.</p>`)}
+      ${renderSectionCard("Prerequisitos", renderSimpleList(payload.prerequisitos || []) || `<p class="status">Sin prerequisitos definidos.</p>`)}
+      ${renderProtocolSteps(payload.pasos || [])}
+      ${renderSectionCard("Observaciones", renderSimpleList(payload.observaciones || []) || `<p class="status">Sin observaciones adicionales.</p>`)}
+      ${renderSectionCard("Advertencias", renderSimpleList(payload.advertencias || []) || `<p class="status">Sin advertencias adicionales.</p>`)}
+    </div>
+  `;
+}
+
+async function submitTherapeutic() {
+  const payload = getTherapeuticPayload();
+  analysisPanel.classList.remove("hidden");
+
+  const response = await runViewRequest({
+    container: analysisOutput,
+    loadingMessage: "Analizando caso con el Asistente Terapéutico...",
+    request: () => postJson("/therapeutic/analyze", payload),
+  });
+
+  if (response) {
+    renderTherapeuticResponse(response);
   }
 }
 
-document.getElementById("ask-course").addEventListener("click", submitCourseQuestion);
+async function submitAcademic() {
+  const query = academicQuestion.value.trim();
+  if (!query) {
+    renderAcademicChat();
+    academicOutput.insertAdjacentHTML("beforeend", `<p class="status error">Escribe una pregunta primero.</p>`);
+    return;
+  }
 
-courseQuestion.addEventListener("keydown", (event) => {
+  state.academicHistory.push({ role: "user", content: query });
+  if (state.academicHistory.length > 20) {
+    state.academicHistory.splice(0, state.academicHistory.length - 20);
+  }
+  saveAcademicHistory();
+  renderAcademicChat("Pensando la respuesta...");
+  academicQuestion.value = "";
+
+  const response = await runViewRequest({
+    container: academicOutput,
+    loadingMessage: "Pensando la respuesta...",
+    request: () => postJson("/academic/ask", {
+      query,
+      history: state.academicHistory.slice(-10).map((item) => ({
+        role: item.role,
+        content: item.content || item.answer || "",
+      })),
+    }),
+  });
+
+  if (!response) {
+    state.academicHistory.pop();
+    saveAcademicHistory();
+    renderAcademicChat();
+    academicOutput.insertAdjacentHTML("beforeend", `<p class="status error">No se pudo obtener respuesta del Asistente Académico.</p>`);
+    return;
+  }
+
+  state.academicHistory.push({
+    role: "assistant",
+    answer: response.answer || "",
+    content: response.answer || "",
+    confidence: response.confidence || "",
+    suggested_followups: response.suggested_followups || [],
+  });
+  if (state.academicHistory.length > 20) {
+    state.academicHistory.splice(0, state.academicHistory.length - 20);
+  }
+  saveAcademicHistory();
+  renderAcademicChat();
+}
+
+async function submitProtocols() {
+  const protocol_name = protocolNameInput.value.trim();
+  const protocol_id = protocolIdInput.value.trim();
+  const case_context = parseProtocolCaseContext(protocolCaseContextInput.value);
+
+  if (!protocol_name && !protocol_id) {
+    setStatus(protocolStatus, "Escribe el nombre o el id del protocolo.", true);
+    protocolOutput.innerHTML = "";
+    return;
+  }
+
+  const payload = {};
+  if (protocol_name) payload.protocol_name = protocol_name;
+  if (protocol_id) payload.protocol_id = protocol_id;
+  if (case_context) payload.case_context = case_context;
+
+  protocolPanel?.classList.remove("hidden");
+  protocolOutput.innerHTML = "";
+  const response = await runViewRequest({
+    container: protocolStatus,
+    loadingMessage: "Buscando protocolo...",
+    request: () => postJson("/protocols/guide", payload),
+  });
+
+  if (response) {
+    renderProtocolGuide(response);
+  }
+}
+
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => setActiveTab(tab.dataset.tab));
+});
+
+consultantBirthDate?.addEventListener("change", () => {
+  consultantAge.value = calculateAge(consultantBirthDate.value);
+});
+
+document.getElementById("add-symptom")?.addEventListener("click", () => addCollectionItem(symptomList, "symptom-template"));
+document.getElementById("add-history")?.addEventListener("click", () => addCollectionItem(historyList, "history-template"));
+
+document.getElementById("analyze-case")?.addEventListener("click", submitTherapeutic);
+document.getElementById("ask-academic")?.addEventListener("click", submitAcademic);
+document.getElementById("ask-protocol")?.addEventListener("click", submitProtocols);
+
+academicQuestion?.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && !event.shiftKey) {
     event.preventDefault();
-    submitCourseQuestion();
+    submitAcademic();
   }
 });
 
-document.getElementById("clear-course-chat").addEventListener("click", () => {
-  state.courseHistory = [];
-  saveCourseHistory();
-  renderCourseChat();
-  courseQuestion.focus();
+[protocolNameInput, protocolIdInput].forEach((field) => {
+  field?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitProtocols();
+    }
+  });
 });
 
-addCollectionItem(childrenList, "child-template");
+document.getElementById("clear-academic-chat")?.addEventListener("click", () => {
+  state.academicHistory = [];
+  saveAcademicHistory();
+  renderAcademicChat();
+  academicQuestion?.focus();
+});
+
 addCollectionItem(symptomList, "symptom-template");
 addCollectionItem(historyList, "history-template");
-addCollectionItem(pairsList, "pair-template");
-loadCourseHistory();
-renderCourseChat();
+
+loadAcademicHistory();
+renderAcademicChat();
+setStatus(protocolStatus, "Busca un protocolo por nombre o id para ver la guía estructurada.");
+setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
