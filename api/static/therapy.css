@@ -126,10 +126,7 @@ body::before {
 .hero h1,
 .panel-head h2,
 .panel-head h3,
-.subsection h4,
 .result-card h3,
-.pair-card h3,
-.protocol-card h3,
 .qa-card h3,
 .tab {
   font-family: "Krona One", "Montserrat", sans-serif;
@@ -167,10 +164,11 @@ body::before {
 
 .tabbar {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   margin: 22px 0 18px;
   padding: 8px;
-  width: fit-content;
+  width: 100%;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(20, 61, 115, 0.08);
@@ -178,6 +176,7 @@ body::before {
 }
 
 .tab {
+  flex: 1 1 220px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--ink-soft);
@@ -187,6 +186,7 @@ body::before {
   font-size: 0.84rem;
   line-height: 1.1;
   letter-spacing: 0.01em;
+  text-align: center;
 }
 
 .tab.active {
@@ -204,28 +204,9 @@ body::before {
   display: block;
 }
 
-.stepper {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-}
-
-.step {
-  border: 1px dashed rgba(20, 61, 115, 0.18);
-  color: var(--muted);
-  border-radius: 999px;
-  padding: 10px 15px;
-  font-size: 0.9rem;
-  background: rgba(255, 255, 255, 0.58);
-  font-weight: 600;
-}
-
-.step.active {
-  border-style: solid;
-  border-color: rgba(20, 61, 115, 0.28);
-  color: var(--accent-strong);
-  background: var(--accent-soft);
+#tab-protocols.active {
+  display: grid;
+  gap: 18px;
 }
 
 .panel {
@@ -293,6 +274,27 @@ body::before {
 
 .grid.four {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.subsection {
+  display: grid;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: rgba(20, 61, 115, 0.03);
+  border: 1px solid rgba(20, 61, 115, 0.07);
+}
+
+.subsection h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--brand);
+}
+
+.collection-block.nested {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 label {
@@ -403,27 +405,6 @@ textarea {
   gap: 14px;
 }
 
-.subsection {
-  display: grid;
-  gap: 12px;
-  padding: 18px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(20, 61, 115, 0.08);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
-
-.subsection h4 {
-  margin: 0;
-  color: var(--accent-strong);
-  font-size: 0.92rem;
-  line-height: 1.45;
-}
-
-.collection-block.nested {
-  margin-top: 4px;
-}
-
 .collection-item {
   display: grid;
   gap: 12px;
@@ -435,14 +416,26 @@ textarea {
 }
 
 .result-card,
-.pair-card,
-.protocol-card,
 .qa-card {
   border: 1px solid rgba(20, 61, 115, 0.08);
   border-radius: 22px;
   padding: 20px;
   background: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-soft);
+}
+
+#protocol-status .status,
+#protocol-output .status {
+  margin: 0;
+}
+
+#protocol-output .reference-card,
+#protocol-output .result-card {
+  border-color: rgba(20, 61, 115, 0.1);
+}
+
+#protocol-output .reference-card p + p {
+  margin-top: 10px;
 }
 
 .course-chat-head {
@@ -569,8 +562,6 @@ textarea {
 }
 
 .result-card h3,
-.pair-card h3,
-.protocol-card h3,
 .qa-card h3 {
   margin: 0 0 10px;
   color: var(--accent-strong);
@@ -579,83 +570,10 @@ textarea {
 }
 
 .result-card p,
-.pair-card p,
-.protocol-card p,
 .qa-card p {
   color: var(--ink-soft);
   line-height: 1.7;
 }
-
-.radionic-card {
-  border: 1px dashed rgba(20, 61, 115, 0.22);
-  border-radius: 22px;
-  padding: 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(230, 239, 251, 0.7));
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
-}
-
-.radionic-card h4 {
-  margin: 0 0 14px;
-  color: var(--accent-strong);
-  font-size: 1rem;
-  line-height: 1.4;
-  font-family: "Krona One", "Montserrat", sans-serif;
-}
-
-.radionic-circuit {
-  display: flex;
-  justify-content: center;
-  gap: 14px;
-  margin: 12px 0;
-  color: var(--accent);
-  font-size: 1.9rem;
-  line-height: 1;
-}
-
-.radionic-line {
-  margin: 10px auto;
-  max-width: 840px;
-  text-align: center;
-  line-height: 1.6;
-}
-
-.radionic-patient {
-  color: var(--ink);
-  font-weight: 700;
-}
-
-.radionic-intention {
-  color: var(--ink-soft);
-  font-weight: 600;
-}
-
-.radionic-pairs {
-  margin: 18px 0;
-}
-
-.radionic-copy {
-  margin-top: 16px;
-}
-
-.radionic-copy summary {
-  cursor: pointer;
-  color: var(--accent-strong);
-  font-weight: 700;
-}
-
-.radionic-copy pre {
-  margin: 12px 0 0;
-  padding: 14px;
-  border-radius: 16px;
-  background: rgba(18, 48, 82, 0.06);
-  color: var(--ink);
-  white-space: pre-wrap;
-  font-family: "Montserrat", monospace;
-  font-size: 0.92rem;
-  line-height: 1.6;
-}
-
-.meta-list,
 .chip-list {
   display: flex;
   gap: 10px;
@@ -704,56 +622,6 @@ textarea {
 
 .bullet-list li + li {
   margin-top: 6px;
-}
-
-.pair-visual-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
-}
-
-.pair-visual-grid img {
-  width: 100%;
-  height: auto;
-  border-radius: 16px;
-  border: 1px solid rgba(20, 61, 115, 0.1);
-  background: #f8fbff;
-  box-shadow: var(--shadow-soft);
-}
-
-.table-wrap {
-  overflow: auto;
-  border: 1px solid rgba(20, 61, 115, 0.1);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.96);
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 680px;
-}
-
-th,
-td {
-  padding: 13px 14px;
-  border-bottom: 1px solid rgba(20, 61, 115, 0.08);
-  text-align: left;
-  vertical-align: top;
-}
-
-th {
-  background: rgba(20, 61, 115, 0.06);
-  color: var(--accent-strong);
-  font-family: "Krona One", "Montserrat", sans-serif;
-  font-size: 0.76rem;
-  line-height: 1.45;
-}
-
-td {
-  color: var(--ink-soft);
-  line-height: 1.65;
 }
 
 .status {

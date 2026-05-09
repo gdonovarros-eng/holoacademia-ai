@@ -12,6 +12,9 @@ const consultantAge = document.getElementById("consultant-age");
 
 const symptomList = document.getElementById("symptoms-list");
 const historyList = document.getElementById("history-list");
+const significantPartnersList = document.getElementById("significant-partners-list");
+const childrenList = document.getElementById("children-list");
+const siblingsList = document.getElementById("siblings-list");
 
 const analysisPanel = document.getElementById("analysis-panel");
 const analysisOutput = document.getElementById("analysis-output");
@@ -176,6 +179,27 @@ function getTherapeuticPayload() {
     historyDetails.length ? `Historial referido: ${historyDetails.join(" || ")}` : "",
   ]).join("\n");
 
+  const familyParts = [];
+  const fatherName = getText("father_full_name");
+  const motherName = getText("mother_full_name");
+  const fatherDeath = getText("father_death_date");
+  const motherDeath = getText("mother_death_date");
+  if (fatherName) familyParts.push(`padre: ${fatherName}${fatherDeath ? ` (fallecido ${fatherDeath})` : ""}`);
+  if (getText("paternal_grandfather_full_name")) familyParts.push(`abuelo paterno: ${getText("paternal_grandfather_full_name")}${getText("paternal_grandfather_death_date") ? ` (fallecido)` : ""}`);
+  if (getText("paternal_grandmother_full_name")) familyParts.push(`abuela paterna: ${getText("paternal_grandmother_full_name")}${getText("paternal_grandmother_death_date") ? ` (fallecida)` : ""}`);
+  if (motherName) familyParts.push(`madre: ${motherName}${motherDeath ? ` (fallecida ${motherDeath})` : ""}`);
+  if (getText("maternal_grandfather_full_name")) familyParts.push(`abuelo materno: ${getText("maternal_grandfather_full_name")}${getText("maternal_grandfather_death_date") ? ` (fallecido)` : ""}`);
+  if (getText("maternal_grandmother_full_name")) familyParts.push(`abuela materna: ${getText("maternal_grandmother_full_name")}${getText("maternal_grandmother_death_date") ? ` (fallecida)` : ""}`);
+  if (getText("current_partner_full_name")) familyParts.push(`pareja actual: ${getText("current_partner_full_name")}`);
+  const sigPartners = readCollection(significantPartnersList);
+  sigPartners.forEach((p) => { if (p.full_name) familyParts.push(`pareja significativa: ${p.full_name}`); });
+  const children = readCollection(childrenList);
+  children.forEach((c) => { if (c.full_name) familyParts.push(`hijo/a: ${c.full_name}${c.death_date ? ` (fallecido)` : ""}`); });
+  const siblings = readCollection(siblingsList);
+  siblings.forEach((s) => { if (s.full_name) familyParts.push(`hermano/a: ${s.full_name}${s.death_date ? ` (fallecido)` : ""}`); });
+  const freeNote = getText("therapeutic_family_notes");
+  const family_notes = compactStrings([familyParts.join("; "), freeNote]).join(". ") || "";
+
   return {
     motivo_consulta: getText("therapeutic_reason") || symptomNames[0] || "",
     sintomas: symptomNames,
@@ -186,7 +210,7 @@ function getTherapeuticPayload() {
     contexto_emocional: getText("therapeutic_emotional_context"),
     observaciones,
     pregunta_del_terapeuta: getText("therapeutic_question"),
-    family_notes: getText("therapeutic_family_notes"),
+    family_notes,
   };
 }
 
@@ -549,6 +573,9 @@ consultantBirthDate?.addEventListener("change", () => {
 
 document.getElementById("add-symptom")?.addEventListener("click", () => addCollectionItem(symptomList, "symptom-template"));
 document.getElementById("add-history")?.addEventListener("click", () => addCollectionItem(historyList, "history-template"));
+document.getElementById("add-significant-partner")?.addEventListener("click", () => addCollectionItem(significantPartnersList, "significant-partner-template"));
+document.getElementById("add-child")?.addEventListener("click", () => addCollectionItem(childrenList, "child-template"));
+document.getElementById("add-sibling")?.addEventListener("click", () => addCollectionItem(siblingsList, "sibling-template"));
 
 document.getElementById("analyze-case")?.addEventListener("click", submitTherapeutic);
 document.getElementById("ask-academic")?.addEventListener("click", submitAcademic);

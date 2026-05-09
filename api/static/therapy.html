@@ -91,7 +91,7 @@
                 <h3>Información del consultante</h3>
                 <p>Datos básicos de referencia para contextualizar la consulta sin volver pesada la captura.</p>
               </div>
-              <div class="grid three">
+              <div class="grid four">
                 <label>
                   Nombre completo
                   <input type="text" name="consultant_full_name" />
@@ -101,10 +101,182 @@
                   <input type="date" name="consultant_birth_date" id="consultant-birth-date" />
                 </label>
                 <label>
+                  Hora de nacimiento
+                  <input type="time" name="consultant_birth_time" />
+                </label>
+                <label>
                   Edad
                   <input type="text" name="consultant_age" id="consultant-age" readonly />
                 </label>
               </div>
+            </section>
+
+            <section class="collection-block">
+              <div class="panel-head">
+                <h3>Genograma básico</h3>
+              </div>
+
+              <div class="subsection">
+                <h4>Padre</h4>
+                <div class="grid three">
+                  <label>
+                    Nombre del padre
+                    <input type="text" name="father_full_name" />
+                  </label>
+                  <label>
+                    Fecha de nacimiento
+                    <input type="date" name="father_birth_date" />
+                  </label>
+                  <label>
+                    Fecha de muerte
+                    <input type="date" name="father_death_date" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="grid two">
+                <div class="subsection">
+                  <h4>Abuelo paterno</h4>
+                  <div class="grid three">
+                    <label>
+                      Nombre del abuelo paterno
+                      <input type="text" name="paternal_grandfather_full_name" />
+                    </label>
+                    <label>
+                      Fecha de nacimiento
+                      <input type="date" name="paternal_grandfather_birth_date" />
+                    </label>
+                    <label>
+                      Fecha de muerte
+                      <input type="date" name="paternal_grandfather_death_date" />
+                    </label>
+                  </div>
+                </div>
+
+                <div class="subsection">
+                  <h4>Abuela paterna</h4>
+                  <div class="grid three">
+                    <label>
+                      Nombre de la abuela paterna
+                      <input type="text" name="paternal_grandmother_full_name" />
+                    </label>
+                    <label>
+                      Fecha de nacimiento
+                      <input type="date" name="paternal_grandmother_birth_date" />
+                    </label>
+                    <label>
+                      Fecha de muerte
+                      <input type="date" name="paternal_grandmother_death_date" />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subsection">
+                <h4>Madre</h4>
+                <div class="grid three">
+                  <label>
+                    Nombre de la madre
+                    <input type="text" name="mother_full_name" />
+                  </label>
+                  <label>
+                    Fecha de nacimiento
+                    <input type="date" name="mother_birth_date" />
+                  </label>
+                  <label>
+                    Fecha de muerte
+                    <input type="date" name="mother_death_date" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="grid two">
+                <div class="subsection">
+                  <h4>Abuelo materno</h4>
+                  <div class="grid three">
+                    <label>
+                      Nombre del abuelo materno
+                      <input type="text" name="maternal_grandfather_full_name" />
+                    </label>
+                    <label>
+                      Fecha de nacimiento
+                      <input type="date" name="maternal_grandfather_birth_date" />
+                    </label>
+                    <label>
+                      Fecha de muerte
+                      <input type="date" name="maternal_grandfather_death_date" />
+                    </label>
+                  </div>
+                </div>
+
+                <div class="subsection">
+                  <h4>Abuela materna</h4>
+                  <div class="grid three">
+                    <label>
+                      Nombre de la abuela materna
+                      <input type="text" name="maternal_grandmother_full_name" />
+                    </label>
+                    <label>
+                      Fecha de nacimiento
+                      <input type="date" name="maternal_grandmother_birth_date" />
+                    </label>
+                    <label>
+                      Fecha de muerte
+                      <input type="date" name="maternal_grandmother_death_date" />
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="subsection">
+                <h4>Pareja actual</h4>
+                <div class="grid three">
+                  <label>
+                    Nombre completo
+                    <input type="text" name="current_partner_full_name" />
+                  </label>
+                  <label>
+                    Fecha de nacimiento
+                    <input type="date" name="current_partner_birth_date" />
+                  </label>
+                  <label>
+                    Años de relación
+                    <input type="number" min="0" step="1" name="current_partner_relationship_years" />
+                  </label>
+                </div>
+              </div>
+
+              <section class="collection-block nested">
+                <div class="collection-head">
+                  <div>
+                    <h4>Más parejas significativas</h4>
+                    <p>Usa el botón solo si existen más parejas relevantes.</p>
+                  </div>
+                  <button type="button" class="secondary-btn" id="add-significant-partner">Agregar</button>
+                </div>
+                <div id="significant-partners-list" class="collection-list"></div>
+              </section>
+
+              <section class="collection-block nested">
+                <div class="collection-head">
+                  <div>
+                    <h4>Hijos</h4>
+                    <p>Empieza por el hijo mayor y agrega más si hace falta.</p>
+                  </div>
+                  <button type="button" class="secondary-btn" id="add-child">Agregar hijo</button>
+                </div>
+                <div id="children-list" class="collection-list"></div>
+              </section>
+
+              <section class="collection-block nested">
+                <div class="collection-head">
+                  <div>
+                    <h4>Hermanos</h4>
+                  </div>
+                  <button type="button" class="secondary-btn" id="add-sibling">Agregar hermano</button>
+                </div>
+                <div id="siblings-list" class="collection-list"></div>
+              </section>
             </section>
 
             <section class="collection-block">
@@ -214,6 +386,84 @@
         </section>
       </section>
     </main>
+
+    <template id="significant-partner-template">
+      <article class="collection-item">
+        <div class="grid three">
+          <label>
+            Nombre completo
+            <input type="text" data-field="full_name" />
+          </label>
+          <label>
+            Fecha de nacimiento
+            <input type="date" data-field="birth_date" />
+          </label>
+          <label>
+            Años de relación
+            <input type="number" min="0" step="1" data-field="relationship_years" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
+
+    <template id="child-template">
+      <article class="collection-item">
+        <div class="grid four">
+          <label>
+            Nombre completo
+            <input type="text" data-field="full_name" />
+          </label>
+          <label>
+            Fecha de nacimiento
+            <input type="date" data-field="birth_date" />
+          </label>
+          <label>
+            Fecha de muerte
+            <input type="date" data-field="death_date" />
+          </label>
+          <label>
+            Nombre del padre o madre
+            <input type="text" data-field="other_parent_name" />
+          </label>
+        </div>
+        <div class="grid three">
+          <label>
+            Fecha de nacimiento del padre o madre
+            <input type="date" data-field="other_parent_birth_date" />
+          </label>
+          <label>
+            Fecha de muerte del padre o madre
+            <input type="date" data-field="other_parent_death_date" />
+          </label>
+          <label>
+            Tiempo de relación en años
+            <input type="number" min="0" step="1" data-field="relationship_years" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
+
+    <template id="sibling-template">
+      <article class="collection-item">
+        <div class="grid three">
+          <label>
+            Nombre completo
+            <input type="text" data-field="full_name" />
+          </label>
+          <label>
+            Fecha de nacimiento
+            <input type="date" data-field="birth_date" />
+          </label>
+          <label>
+            Fecha de muerte
+            <input type="date" data-field="death_date" />
+          </label>
+        </div>
+        <button type="button" class="ghost-btn remove-item">Eliminar</button>
+      </article>
+    </template>
 
     <template id="symptom-template">
       <article class="collection-item">
