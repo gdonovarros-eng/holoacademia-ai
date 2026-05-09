@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 import os
+import logging
+import threading
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional
@@ -30,9 +32,17 @@ from api.assistant import AssistantOutput, NaturalAssistant, VisualAid
 from api.knowledge_base import KnowledgeBase, trim_excerpt
 from api.pair_engine import interpret_pairs
 from api.radionic_table import build_radionic_pair_table
+from api.routes.academic import router as academic_router
+from api.routes.pairs import router as pairs_router
+from api.routes.protocols import router as protocols_router
+from api.routes.therapeutic import router as therapeutic_router
 from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
+from api.therapy_reasoner import build_therapy_reasoning
 from api.teacher_memory import get_teacher_memory
+
+
+logger = logging.getLogger(__name__)
 
 
 class AskRequest(BaseModel):
@@ -114,9 +124,22 @@ class TherapyCasePayload(BaseModel):
     history_events: list[HistoryEventItem] = Field(default_factory=list)
 
 
-class PairInputItem(BaseModel):
+class TherapyPairCapture(BaseModel):
     pair_name: str = Field(..., min_length=2)
+    validated_by_therapist: bool = False
+    validated: bool = False
+    applied: bool = False
+    application_minutes: int = 0
+    application_start_time: str = ""
     therapist_note: str = ""
+    notes: str = ""
+    patient_response: str = ""
+    followup_needed: bool = False
+    pair_type: str = ""
+    body_location_1: str = ""
+    body_location_2: str = ""
+    related_system: str = ""
+    related_condition_hint: str = ""
 
 
 class TherapyAnalyzeRequest(BaseModel):
@@ -125,12 +148,17 @@ class TherapyAnalyzeRequest(BaseModel):
 
 class TherapyPairsRequest(BaseModel):
     case_payload: TherapyCasePayload
-    pairs: list[PairInputItem] = Field(default_factory=list)
+    pairs: list[TherapyPairCapture] = Field(default_factory=list)
+    analysis: Optional[dict] = None
 
 
 class TherapyReportRequest(BaseModel):
     case_payload: TherapyCasePayload
-    pairs: list[PairInputItem] = Field(default_factory=list)
+    pairs: list[TherapyPairCapture] = Field(default_factory=list)
+    analysis: Optional[dict] = None
+    pair_analysis: Optional[dict] = None
+    precomputed_case_analysis: Optional[dict] = None
+    precomputed_pair_analysis: Optional[dict] = None
 
 
 class TherapyAnalyzeResponse(BaseModel):
@@ -202,11 +230,28 @@ def get_assistant() -> NaturalAssistant:
     return NaturalAssistant()
 
 
+def _warm_caches_safe() -> None:
+    for label, loader in (
+        ("knowledge_base", get_knowledge_base),
+        ("assistant", get_assistant),
+        ("teacher_memory", get_teacher_memory),
+    ):
+        try:
+            loader()
+        except Exception:
+            logger.exception("No se pudo precalentar %s durante el arranque.", label)
+
+
 app = FastAPI(
     title="HoloAcademia AI API",
     version="0.1.0",
     description="API externa inicial para consultar la biblioteca procesada de cursos.",
 )
+
+app.include_router(academic_router)
+app.include_router(pairs_router)
+app.include_router(protocols_router)
+app.include_router(therapeutic_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -225,9 +270,9 @@ if PAIR_VISUALS_DIR.exists():
 
 @app.on_event("startup")
 async def warm_caches() -> None:
-    get_knowledge_base()
-    get_assistant()
-    get_teacher_memory()
+    # Evita que un cold start pesado o una dependencia temporalmente inestable
+    # deje a Render sin levantar la app completa.
+    threading.Thread(target=_warm_caches_safe, name="warm-caches", daemon=True).start()
 
 
 @app.get("/health")
@@ -260,19 +305,33 @@ async def list_courses() -> dict:
     return {"ok": True, "courses": kb.catalog}
 
 
+def _therapy_app_response() -> FileResponse:
+    return FileResponse(
+        THERAPY_STATIC_DIR / "therapy.html",
+        headers={
+            "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+        },
+    )
+
+
 @app.get("/", include_in_schema=False)
-async def root_redirect() -> RedirectResponse:
-    return RedirectResponse(url="/therapy/app", status_code=307)
+async def root_redirect() -> FileResponse:
+    return _therapy_app_response()
 
 
 @app.get("/therapy", include_in_schema=False)
-async def therapy_root_redirect() -> RedirectResponse:
-    return RedirectResponse(url="/therapy/app", status_code=307)
+async def therapy_root_redirect() -> FileResponse:
+    return _therapy_app_response()
 
 
 @app.get("/therapy/app")
 async def therapy_app() -> FileResponse:
-    return FileResponse(THERAPY_STATIC_DIR / "therapy.html")
+    return _therapy_app_response()
+
+
+@app.get("/index.html", include_in_schema=False)
+async def therapy_index_html() -> FileResponse:
+    return _therapy_app_response()
 
 
 @app.get("/cv")
@@ -293,23 +352,33 @@ async def therapy_analyze(payload: TherapyAnalyzeRequest) -> TherapyAnalyzeRespo
 
 @app.post("/therapy/pairs", response_model=TherapyPairsResponse)
 async def therapy_pairs(payload: TherapyPairsRequest) -> TherapyPairsResponse:
-    case_analysis = analyze_case(payload.case_payload.model_dump())
+    case_payload_dict = payload.case_payload.model_dump()
+    case_analysis = payload.analysis or analyze_case(case_payload_dict)
     pairs_payload = [item.model_dump() for item in payload.pairs]
     pair_analysis = interpret_pairs(case_analysis, pairs_payload)
     pair_analysis["radionic_pair_table"] = build_radionic_pair_table(
-        payload.case_payload.model_dump(),
+        case_payload_dict,
         [item.get("pair_name", "") for item in pair_analysis.get("interpreted_pairs", [])],
         title="Tabla radiónica para pares interpretados",
     )
+    pair_analysis["reasoning_state"] = build_therapy_reasoning(
+        case_payload=case_payload_dict,
+        case_analysis=case_analysis,
+        pair_analysis=pair_analysis,
+    )
+    pair_analysis["case_analysis"] = case_analysis
     return TherapyPairsResponse(ok=True, pair_analysis=_rewrite_visual_asset_paths(pair_analysis))
 
 
 @app.post("/therapy/report", response_model=TherapyReportResponse)
 async def therapy_report(payload: TherapyReportRequest) -> TherapyReportResponse:
+    case_payload_dict = payload.case_payload.model_dump()
     pairs_payload = [item.model_dump() for item in payload.pairs]
     report = build_therapy_report(
-        case_payload=payload.case_payload.model_dump(),
+        case_payload=case_payload_dict,
         pairs_input=pairs_payload,
+        precomputed_case_analysis=payload.precomputed_case_analysis or payload.analysis,
+        precomputed_pair_analysis=payload.precomputed_pair_analysis or payload.pair_analysis,
     )
     return TherapyReportResponse(ok=True, report=_rewrite_visual_asset_paths(report))
 
@@ -326,7 +395,7 @@ async def ask_question(payload: AskRequest) -> AskResponse:
         search_queries = assistant.resolve_search_queries(payload.question, payload.history)
 
         per_query_limit = max(payload.max_results * 3, 8)
-        use_semantic_search = kb.semantic_ready and hasattr(assistant, "embed_query")
+        use_semantic_search = kb.semantic_ready and getattr(assistant, "can_embed_queries", lambda: False)()
 
         for search_query in search_queries:
             partial_results = []

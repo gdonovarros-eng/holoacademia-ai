@@ -29,6 +29,10 @@ const protocolNameInput = document.getElementById("protocol-name");
 const protocolIdInput = document.getElementById("protocol-id");
 const protocolCaseContextInput = document.getElementById("protocol-case-context");
 
+const foundPairsList = document.getElementById("found-pairs-list");
+const pairsInterpretStatus = document.getElementById("pairs-interpret-status");
+const pairsInterpretOutput = document.getElementById("pairs-interpret-output");
+
 function setActiveTab(tabName) {
   tabs.forEach((tab) => tab.classList.toggle("active", tab.dataset.tab === tabName));
   tabPanels.forEach((panel) => panel.classList.toggle("active", panel.id === `tab-${tabName}`));
@@ -469,6 +473,80 @@ function renderProtocolGuide(payload = {}) {
   `;
 }
 
+function renderPairsInterpretation(payload) {
+  const { interpretaciones = [], patron_general = "", sistemas_dominantes = [], tipos_presentes = [], no_encontrados = [] } = payload;
+
+  const tipoLabel = {
+    hongo: "Hongo",
+    bacteria: "Bacteria",
+    virus: "Virus",
+    parasito: "Parásito",
+    emocional: "Emocional",
+    disfuncional: "Disfuncional",
+    especial: "Especial",
+    reservorio: "Reservorio",
+    desconocido: "No clasificado",
+  };
+
+  const pairsCards = interpretaciones.map((item) => `
+    <article class="reference-card">
+      <p><strong>${escapeHtml(item.par_encontrado)}</strong>
+        ${item.tipo ? ` <span class="chat-meta">[${escapeHtml(tipoLabel[item.tipo] || item.tipo)}]</span>` : ""}
+      </p>
+      ${item.condiciones ? `<p>${escapeHtml(item.condiciones)}</p>` : ""}
+      ${item.significado_emocional ? `<p><strong>Significado emocional:</strong> ${escapeHtml(item.significado_emocional)}</p>` : ""}
+      ${item.sistemas_afectados && item.sistemas_afectados.length ? `<p class="chat-meta">Sistemas: ${item.sistemas_afectados.join(", ")}</p>` : ""}
+    </article>
+  `).join("");
+
+  pairsInterpretOutput.innerHTML = `
+    ${patron_general ? `
+      <article class="result-card">
+        <h3>Lectura del patrón</h3>
+        <p>${formatMessageText(patron_general)}</p>
+        ${sistemas_dominantes.length ? `<p class="chat-meta">Sistemas dominantes: ${sistemas_dominantes.join(", ")}</p>` : ""}
+        ${tipos_presentes.length ? `<p class="chat-meta">Tipos presentes: ${tipos_presentes.map((t) => tipoLabel[t] || t).join(", ")}</p>` : ""}
+      </article>
+    ` : ""}
+    ${pairsCards ? `
+      <div class="reference-list">
+        <h3 style="padding:0 4px;margin-bottom:8px">Pares interpretados</h3>
+        ${pairsCards}
+      </div>
+    ` : ""}
+    ${no_encontrados.length ? renderSectionCard(
+      "Pares no encontrados en la base",
+      renderSimpleList(no_encontrados) + `<p class="chat-meta">Puedes buscarlos en el Menú de Protocolos o verificar el nombre exacto.</p>`
+    ) : ""}
+  `;
+}
+
+async function submitPairsInterpret() {
+  const items = readCollection(foundPairsList);
+  const pares = items.map((item) => safeText(item.pair_name)).filter(Boolean);
+
+  if (!pares.length) {
+    setStatus(pairsInterpretStatus, "Agrega al menos un par encontrado para interpretar.", true);
+    return;
+  }
+
+  pairsInterpretStatus.innerHTML = "";
+  pairsInterpretOutput.innerHTML = "";
+
+  const notas = document.getElementById("pairs-case-notes")?.value?.trim() || "";
+
+  const response = await runViewRequest({
+    container: pairsInterpretStatus,
+    loadingMessage: "Interpretando pares con el Asistente Terapéutico...",
+    request: () => postJson("/pairs/interpret", { pares_encontrados: pares, notas: notas || undefined }),
+  });
+
+  if (response) {
+    pairsInterpretStatus.innerHTML = "";
+    renderPairsInterpretation(response);
+  }
+}
+
 async function submitTherapeutic() {
   const payload = getTherapeuticPayload();
   analysisPanel.classList.remove("hidden");
@@ -576,6 +654,8 @@ document.getElementById("add-history")?.addEventListener("click", () => addColle
 document.getElementById("add-significant-partner")?.addEventListener("click", () => addCollectionItem(significantPartnersList, "significant-partner-template"));
 document.getElementById("add-child")?.addEventListener("click", () => addCollectionItem(childrenList, "child-template"));
 document.getElementById("add-sibling")?.addEventListener("click", () => addCollectionItem(siblingsList, "sibling-template"));
+document.getElementById("add-found-pair")?.addEventListener("click", () => addCollectionItem(foundPairsList, "found-pair-template"));
+document.getElementById("interpret-pairs-btn")?.addEventListener("click", submitPairsInterpret);
 
 document.getElementById("analyze-case")?.addEventListener("click", submitTherapeutic);
 document.getElementById("ask-academic")?.addEventListener("click", submitAcademic);
@@ -606,6 +686,8 @@ document.getElementById("clear-academic-chat")?.addEventListener("click", () => 
 
 addCollectionItem(symptomList, "symptom-template");
 addCollectionItem(historyList, "history-template");
+addCollectionItem(foundPairsList, "found-pair-template");
+addCollectionItem(foundPairsList, "found-pair-template");
 
 loadAcademicHistory();
 renderAcademicChat();
