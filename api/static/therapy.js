@@ -29,6 +29,12 @@ const protocolNameInput = document.getElementById("protocol-name");
 const protocolIdInput = document.getElementById("protocol-id");
 const protocolCaseContextInput = document.getElementById("protocol-case-context");
 
+const protocolSearchPanel = document.getElementById("protocol-search-panel");
+const protocolSearchOutput = document.getElementById("protocol-search-output");
+const protocolSearchStatus = document.getElementById("protocol-search-status");
+const protocolSearchQuery = document.getElementById("protocol-search-query");
+const protocolSearchNotes = document.getElementById("protocol-search-notes");
+
 const foundPairsList = document.getElementById("found-pairs-list");
 const pairsInterpretStatus = document.getElementById("pairs-interpret-status");
 const pairsInterpretOutput = document.getElementById("pairs-interpret-output");
@@ -612,6 +618,80 @@ async function submitAcademic() {
   renderAcademicChat();
 }
 
+function renderProtocolSearch(payload = {}) {
+  const { sistema_nombre, conflictos_relevantes = [], lectura_general, protocolo_sugerido, razon_protocolo } = payload;
+
+  const sistemaBadge = sistema_nombre
+    ? `<p class="chat-meta">Sistema detectado: <strong>${escapeHtml(sistema_nombre)}</strong></p>`
+    : "";
+
+  const conflictosHtml = conflictos_relevantes.length
+    ? conflictos_relevantes.map((c) => `
+        <article class="reference-card">
+          <p><strong>${escapeHtml(c.nombre || c.subsistema || "Conflicto")}</strong>
+            ${c.subsistema ? ` <span class="chat-meta">[${escapeHtml(c.subsistema)}]</span>` : ""}
+          </p>
+          ${c.frase_conflicto ? `<p class="conflict-phrase">"${escapeHtml(c.frase_conflicto)}"</p>` : ""}
+          ${c.relevancia ? `<p>${escapeHtml(c.relevancia)}</p>` : ""}
+        </article>`).join("")
+    : `<p class="status">No se identificaron conflictos específicos en el mapa de conflictología. Realiza el rastreo general.</p>`;
+
+  const protocolHtml = protocolo_sugerido
+    ? `
+      <article class="result-card">
+        <h3>${escapeHtml(protocolo_sugerido.nombre)}</h3>
+        ${razon_protocolo ? `<p>${escapeHtml(razon_protocolo)}</p>` : ""}
+        ${protocolo_sugerido.objetivo ? `<p><strong>Objetivo:</strong> ${escapeHtml(protocolo_sugerido.objetivo)}</p>` : ""}
+        ${protocolo_sugerido.prerequisitos?.length ? `<p><strong>Prerequisitos:</strong></p>${renderSimpleList(protocolo_sugerido.prerequisitos)}` : ""}
+        ${protocolo_sugerido.pasos?.length ? `
+          <ol class="protocol-steps">
+            ${protocolo_sugerido.pasos.map((step) => `
+              <li>
+                <strong>${escapeHtml(step.titulo)}</strong>
+                <p>${escapeHtml(step.instruccion)}</p>
+                ${step.notas?.length ? `<p class="chat-meta">${step.notas.map(escapeHtml).join(" · ")}</p>` : ""}
+              </li>`).join("")}
+          </ol>` : ""}
+        ${protocolo_sugerido.observaciones?.length ? `<p class="chat-meta">Nota: ${protocolo_sugerido.observaciones.map(escapeHtml).join(" ")} </p>` : ""}
+      </article>`
+    : `<p class="status">No se identificó un protocolo procedimental específico. Consulta al supervisor o usa el rastreo general.</p>`;
+
+  protocolSearchOutput.innerHTML = `
+    <article class="result-card">
+      <h3>Lectura conflictológica</h3>
+      ${sistemaBadge}
+      <p>${escapeHtml(lectura_general || "")}</p>
+    </article>
+    ${renderSectionCard("Conflictos identificados", conflictosHtml)}
+    ${renderSectionCard("Protocolo sugerido", protocolHtml)}
+  `;
+}
+
+async function submitProtocolSearch() {
+  const query = protocolSearchQuery?.value.trim();
+  if (!query) {
+    setStatus(protocolSearchStatus, "Describe el síntoma o problema del consultante.", true);
+    return;
+  }
+
+  const payload = { query };
+  const notes = protocolSearchNotes?.value.trim();
+  if (notes) payload.notas = notes;
+
+  protocolSearchPanel?.classList.remove("hidden");
+  protocolSearchOutput.innerHTML = "";
+
+  const response = await runViewRequest({
+    container: protocolSearchStatus,
+    loadingMessage: "Buscando conflictos y protocolo...",
+    request: () => postJson("/protocols/search", payload),
+  });
+
+  if (response) {
+    renderProtocolSearch(response);
+  }
+}
+
 async function submitProtocols() {
   const protocol_name = protocolNameInput.value.trim();
   const protocol_id = protocolIdInput.value.trim();
@@ -660,6 +740,7 @@ document.getElementById("interpret-pairs-btn")?.addEventListener("click", submit
 document.getElementById("analyze-case")?.addEventListener("click", submitTherapeutic);
 document.getElementById("ask-academic")?.addEventListener("click", submitAcademic);
 document.getElementById("ask-protocol")?.addEventListener("click", submitProtocols);
+document.getElementById("search-protocols-btn")?.addEventListener("click", submitProtocolSearch);
 
 academicQuestion?.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && !event.shiftKey) {

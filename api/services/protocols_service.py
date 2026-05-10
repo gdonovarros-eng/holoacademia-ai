@@ -1,14 +1,26 @@
 from __future__ import annotations
 
 import json
+import logging
+import os
 from functools import lru_cache
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 
+logger = logging.getLogger(__name__)
+
 BASE_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_COURSE_SLUG = "course_holobiomagnetismo_2021"
 
+CONFLICTOLOGIA_INDEX_PATH = BASE_DIR / "data" / "conflictologia" / "index.json"
+CONFLICTOLOGIA_SOURCES_DIR = BASE_DIR / "data" / "processed_library" / "Diplomados" / "diplomado-terapia-holistica-1" / "sources"
+PROCEDURAL_PROTOCOLS_PATH = BASE_DIR / "data" / "procedural_protocols_db.json"
+
+
+# ---------------------------------------------------------------------------
+# Shared helpers
+# ---------------------------------------------------------------------------
 
 def _course_dir(course_slug: str = DEFAULT_COURSE_SLUG) -> Path:
     direct = BASE_DIR / "data" / "knowledge_units" / course_slug
@@ -32,6 +44,10 @@ def _safe_load_json(path: Path, default: Any) -> Any:
     except Exception:
         return default
 
+
+# ---------------------------------------------------------------------------
+# Existing protocol guide (lookup by id/name)
+# ---------------------------------------------------------------------------
 
 @lru_cache(maxsize=8)
 def _load_protocols(course_slug: str = DEFAULT_COURSE_SLUG) -> Dict[str, Any]:
@@ -239,4 +255,239 @@ def run_protocol_guide(request_data: Dict[str, Any]) -> Dict[str, Any]:
             "observaciones": [],
             "advertencias": [],
             "trace": {"error": str(exc)},
+        }
+
+
+# ---------------------------------------------------------------------------
+# Protocol search (symptom → conflict + procedural protocol)
+# ---------------------------------------------------------------------------
+
+@lru_cache(maxsize=1)
+def _load_conflictologia_index() -> Dict[str, Any]:
+    return _safe_load_json(CONFLICTOLOGIA_INDEX_PATH, {"systems": []})
+
+
+@lru_cache(maxsize=1)
+def _load_procedural_protocols() -> List[Dict[str, Any]]:
+    data = _safe_load_json(PROCEDURAL_PROTOCOLS_PATH, {"protocols": []})
+    return data.get("protocols", [])
+
+
+def _detect_body_system(query: str) -> Optional[Dict[str, Any]]:
+    index = _load_conflictologia_index()
+    query_lower = query.lower()
+    best_system = None
+    best_score = 0
+
+    for system in index.get("systems", []):
+        score = 0
+        for kw in system.get("keywords", []):
+            if kw.lower() in query_lower:
+                score += 1
+        if score > best_score:
+            best_score = score
+            best_system = system
+
+    return best_system if best_score > 0 else None
+
+
+def _load_conflictologia_text(source_filename: str) -> str:
+    path = CONFLICTOLOGIA_SOURCES_DIR / source_filename
+    if not path.exists():
+        # Fallback: try knowledge_units copy
+        alt = BASE_DIR / "data" / "knowledge_units" / "course_terapia_holistica_1" / "01_sources" / source_filename
+        if alt.exists():
+            return alt.read_text(encoding="utf-8")
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def _build_llm_client():
+    """Build an LLM client for protocol search using the same env vars as the rest of the app."""
+    try:
+        import openai
+
+        api_key = os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY")
+        base_url = None
+        model = os.getenv("THERAPEUTIC_ASSISTANT_USE_MODEL", "")
+
+        if os.getenv("GROQ_API_KEY"):
+            base_url = "https://api.groq.com/openai/v1"
+            if not model:
+                model = "llama-3.1-70b-versatile"
+        elif os.getenv("OPENAI_API_KEY"):
+            if not model:
+                model = "gpt-4o-mini"
+
+        if not api_key:
+            return None, None
+
+        client = openai.OpenAI(api_key=api_key, base_url=base_url)
+        return client, model
+    except Exception:
+        return None, None
+
+
+_SEARCH_SYSTEM_PROMPT = """Eres un asistente especializado en Método Lavín de Terapia Holística.
+Tu tarea es analizar el síntoma o problema que describe el terapeuta, identificar los conflictos psicosomáticos
+más relevantes del mapa de conflictología proporcionado, y sugerir qué protocolo terapéutico es el más adecuado.
+
+Responde SIEMPRE en JSON con esta estructura exacta:
+{
+  "conflictos_relevantes": [
+    {
+      "nombre": "nombre del conflicto",
+      "subsistema": "subsistema corporal (ej: nasal, estomacal)",
+      "frase_conflicto": "la frase exacta del conflicto según el mapa",
+      "relevancia": "explicación breve de por qué aplica al caso"
+    }
+  ],
+  "lectura_general": "una síntesis integradora de los conflictos encontrados",
+  "protocolo_sugerido_id": "id del protocolo sugerido (o null si no aplica)",
+  "protocolo_sugerido_nombre": "nombre del protocolo sugerido",
+  "razon_protocolo": "por qué este protocolo es el más indicado"
+}
+
+Extrae solo los conflictos que genuinamente correspondan al caso. Máximo 5 conflictos.
+Si no hay conflictos claros en el mapa para el síntoma indicado, di que el rastreo general es necesario.
+"""
+
+
+def _call_llm_for_conflicts(
+    query: str,
+    system_text: str,
+    system_name: str,
+    procedural_protocols: List[Dict[str, Any]],
+    notas: str,
+) -> Dict[str, Any]:
+    client, model = _build_llm_client()
+    if not client:
+        return {}
+
+    protocols_summary = "\n".join(
+        f"- id: {p['id']} | nombre: {p['nombre']} | cuando_usarlo: {'; '.join(p.get('cuando_usarlo', [])[:2])}"
+        for p in procedural_protocols
+    )
+
+    user_msg = f"""Sistema corporal identificado: {system_name}
+
+Síntoma / problema del consultante: {query}
+{f"Notas adicionales: {notas}" if notas else ""}
+
+MAPA DE CONFLICTOLOGÍA ({system_name}):
+{system_text[:6000]}
+
+PROTOCOLOS TERAPÉUTICOS DISPONIBLES:
+{protocols_summary}
+
+Identifica los conflictos más relevantes y sugiere el protocolo adecuado."""
+
+    try:
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": _SEARCH_SYSTEM_PROMPT},
+                {"role": "user", "content": user_msg},
+            ],
+            temperature=0.2,
+            max_tokens=1200,
+            response_format={"type": "json_object"},
+        )
+        raw = resp.choices[0].message.content or "{}"
+        return json.loads(raw)
+    except Exception as exc:
+        logger.warning("LLM call failed in protocol search: %s", exc)
+        return {}
+
+
+def _fallback_response(query: str, system: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+    if not system:
+        return {
+            "sistema_detectado": None,
+            "sistema_nombre": None,
+            "conflictos_relevantes": [],
+            "lectura_general": (
+                "No pude identificar un sistema corporal específico. "
+                "Realiza el rastreo conflictológico general (Módulo 0) para localizar el conflicto implicado."
+            ),
+            "protocolo_sugerido": None,
+            "razon_protocolo": None,
+        }
+
+    return {
+        "sistema_detectado": system["id"],
+        "sistema_nombre": system["nombre"],
+        "conflictos_relevantes": [],
+        "lectura_general": (
+            f"Se detectó un posible conflicto en el {system['nombre']}. "
+            "Usa el mapa de conflictología correspondiente para localizar el conflicto específico mediante rastreo."
+        ),
+        "protocolo_sugerido": None,
+        "razon_protocolo": None,
+    }
+
+
+def search_protocols(query: str, notas: str = "") -> Dict[str, Any]:
+    """
+    Given a symptom/problem, find relevant conflictología conflicts and suggest
+    which procedural protocol to use.
+    """
+    try:
+        system = _detect_body_system(query + " " + notas)
+        procedural_protocols = _load_procedural_protocols()
+
+        system_text = ""
+        system_name = system["nombre"] if system else ""
+        if system:
+            system_text = _load_conflictologia_text(system["source_file"])
+
+        if not system_text and not system:
+            return _fallback_response(query, system)
+
+        llm_result = _call_llm_for_conflicts(
+            query=query,
+            system_text=system_text,
+            system_name=system_name,
+            procedural_protocols=procedural_protocols,
+            notas=notas,
+        )
+
+        if not llm_result:
+            return _fallback_response(query, system)
+
+        # Attach full protocol steps if suggested
+        suggested_protocol = None
+        suggested_id = llm_result.get("protocolo_sugerido_id")
+        if suggested_id:
+            for p in procedural_protocols:
+                if p.get("id") == suggested_id:
+                    suggested_protocol = {
+                        "id": p["id"],
+                        "nombre": p["nombre"],
+                        "objetivo": p.get("objetivo", ""),
+                        "cuando_usarlo": p.get("cuando_usarlo", []),
+                        "prerequisitos": p.get("prerequisitos", []),
+                        "pasos": p.get("pasos", []),
+                        "observaciones": p.get("observaciones", []),
+                    }
+                    break
+
+        return {
+            "sistema_detectado": system["id"] if system else None,
+            "sistema_nombre": system_name,
+            "conflictos_relevantes": llm_result.get("conflictos_relevantes", []),
+            "lectura_general": llm_result.get("lectura_general", ""),
+            "protocolo_sugerido": suggested_protocol,
+            "razon_protocolo": llm_result.get("razon_protocolo"),
+        }
+
+    except Exception as exc:
+        logger.exception("Error in search_protocols: %s", exc)
+        return {
+            "sistema_detectado": None,
+            "sistema_nombre": None,
+            "conflictos_relevantes": [],
+            "lectura_general": "Error procesando la búsqueda. Intenta nuevamente.",
+            "protocolo_sugerido": None,
+            "razon_protocolo": None,
         }

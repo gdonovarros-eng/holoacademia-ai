@@ -1,0 +1,48 @@
+{
+  "version": "1.0",
+  "description": "Índice de conflictología por sistema corporal. Apunta a los archivos fuente de rastreo conflictológico.",
+  "systems": [
+    {
+      "id": "respiratorio",
+      "nombre": "Sistema Respiratorio",
+      "subsystems": ["nasal", "laringea", "traqueal", "bronquial", "alveolar", "diafragmatica", "gripal", "tos", "asmatica", "apnea", "tabaquista", "transgeneracional_respiratorio"],
+      "total_conflicts": 95,
+      "source_file": "Protocolos_de_Rastreo_-_Módulo_1.txt",
+      "keywords": [
+        "nariz", "olfato", "alergia nasal", "rinitis", "sinusitis", "estornudos",
+        "laringe", "voz", "ronquera", "afonía", "garganta",
+        "traquea", "traqueitis",
+        "bronquios", "bronquitis", "broncoespasmo",
+        "pulmones", "alveolos", "enfisema",
+        "diafragma", "hipo",
+        "gripe", "influenza", "resfriado",
+        "tos", "tos crónica",
+        "asma", "asmático", "asmatica",
+        "apnea", "apnea del sueño",
+        "tabaco", "tabaquismo", "fumar",
+        "respiración", "respiratorio", "pulmonar", "pulmón",
+        "falta de aire", "ahogo", "asfixia", "disnea"
+      ]
+    },
+    {
+      "id": "digestivo",
+      "nombre": "Sistema Digestivo",
+      "subsystems": ["bucal", "estomacal", "intestinal_delgada", "hepatica", "biliar", "intestinal_gruesa", "anal", "peritoneal", "quimo"],
+      "total_conflicts": 200,
+      "source_file": "Protocolos_de_Rastreo_-_Módulo_2.txt",
+      "keywords": [
+        "boca", "bucal", "dientes", "encías", "lengua", "saliva", "deglución", "masticar",
+        "estómago", "gástrico", "gastritis", "úlcera", "acidez", "reflujo", "náusea", "vómito",
+        "intestino delgado", "intestino grueso", "colon", "colitis", "diarrea", "estreñimiento",
+        "hígado", "hepático", "hepatitis", "cirrosis",
+        "vesícula", "biliar", "bilis", "cálculos biliares",
+        "ano", "anal", "hemorroides", "fisura anal",
+        "peritoneo", "peritonitis",
+        "digestión", "digestivo", "abdomen", "abdominal",
+        "inflamación intestinal", "hinchazón", "flatulencias", "gases",
+        "síndrome de intestino irritable", "enfermedad de Crohn",
+        "quimo"
+      ]
+    }
+  ]
+}
