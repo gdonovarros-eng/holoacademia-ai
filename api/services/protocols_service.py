@@ -571,6 +571,163 @@ def _parse_system_sections(text: str) -> List[Dict[str, str]]:
     return sections
 
 
+import re as re_mod
+
+_SUBSYSTEM_HEADER = _re.compile(
+    r'^(?:Conflictolog[i\xed]a\s+\w|CONFLICTOS?\s+(?:DE\s+)?[A-Z\xc1\xc9\xcd\xd3\xda])'
+)
+_RIGHT_NUM = _re.compile(r'^(.+?)\s{5,}(\d{1,2})\s*$')
+_INLINE_PHRASE = _re.compile(r'^(\d{1,2})\s+"(.+?)"\s*$')
+
+
+def _parse_conflicts_section(text: str) -> Optional[List[Dict[str, Any]]]:
+    # Normalize curly/smart quotes (U+201C/D) to ASCII double-quote
+    text = text.replace('“', '"').replace('”', '"')
+    text = text.replace('‘', "'").replace('’', "'")
+    lines = text.splitlines()
+
+    # Detect genuine two-column layouts: many non-author lines have interior whitespace
+    # followed by real text (not just a right-aligned digit used as conflict number).
+    two_col_lines = sum(
+        1 for l in lines
+        if len(l) > 75
+        and _re.search(r'\S {7,}[A-Za-z\xc1-\xff"(]', l)
+        and not _AUTHOR_LINE.search(l)
+    )
+    if two_col_lines > 20:
+        return None
+
+    K_NUM, K_NAME, K_PHRASES = 'number', 'name', 'phrases'
+    K_SUB, K_CONFLICTS = 'subsystem', 'conflicts'
+
+    subsystems: List[Dict[str, Any]] = []
+    current_sub: Optional[Dict[str, Any]] = None
+    current_conflict: Optional[Dict[str, Any]] = None
+
+    def flush_conflict() -> None:
+        nonlocal current_conflict
+        if current_conflict is not None and current_sub is not None:
+            if current_conflict.get(K_PHRASES) or current_conflict.get(K_NAME):
+                current_sub[K_CONFLICTS].append(current_conflict)
+        current_conflict = None
+
+    def flush_subsystem() -> None:
+        nonlocal current_sub
+        flush_conflict()
+        if current_sub is not None and current_sub[K_CONFLICTS]:
+            subsystems.append(current_sub)
+        current_sub = None
+
+    def _set_number(num: int) -> None:
+        nonlocal current_conflict
+        if current_conflict is None:
+            current_conflict = {K_NUM: num, K_NAME: '', K_PHRASES: []}
+        elif not current_conflict.get(K_NUM):
+            current_conflict[K_NUM] = num
+        elif current_conflict.get(K_PHRASES):
+            flush_conflict()
+            current_conflict = {K_NUM: num, K_NAME: '', K_PHRASES: []}
+        else:
+            current_conflict[K_NUM] = num
+
+    def _add_phrase(raw: str) -> None:
+        nonlocal current_conflict
+        phrase = raw.strip('"').strip()
+        if not phrase:
+            return
+        if current_conflict is None:
+            current_conflict = {K_NUM: None, K_NAME: '', K_PHRASES: [phrase]}
+        else:
+            current_conflict[K_PHRASES].append(phrase)
+
+    # Check whether standard subsystem headers exist in this text
+    has_subsystem_headers = any(
+        _SUBSYSTEM_HEADER.match(l.strip()) for l in lines if l.strip()
+    )
+
+    # If no standard headers, use a single catch-all subsystem
+    if not has_subsystem_headers:
+        current_sub = {K_SUB: 'Mapa de Conflictos', K_CONFLICTS: []}
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if _AUTHOR_LINE.search(stripped):
+            continue
+        if _re.match(r'^\d{3,}$', stripped):
+            continue
+        if any(pat.search(stripped) for pat, _ in _SYSTEM_SECTION_HEADERS):
+            continue
+        if _SENTENCE_PREFIXES.match(stripped):
+            continue
+        if len(stripped) > 130:
+            continue
+
+        # Subsystem header: "Conflictologia X" or "CONFLICTOS RENALES"
+        if _SUBSYSTEM_HEADER.match(stripped):
+            sub_name = ' '.join(stripped.split())
+            if (
+                current_sub is not None
+                and current_sub[K_SUB].lower().split()[:3] == sub_name.lower().split()[:3]
+            ):
+                pass  # same subsystem continues on next page
+            else:
+                flush_subsystem()
+                current_sub = {K_SUB: sub_name, K_CONFLICTS: []}
+            continue
+
+        if current_sub is None:
+            continue
+
+        # Number inline with phrase: '2 "phrase"'
+        m_inline = _INLINE_PHRASE.match(stripped)
+        if m_inline:
+            flush_conflict()
+            current_conflict = {
+                K_NUM: int(m_inline.group(1)),
+                K_NAME: '',
+                K_PHRASES: [m_inline.group(2).strip()],
+            }
+            continue
+
+        # Conflict name with right-aligned number: "Conflicto X          1"
+        m_right = _RIGHT_NUM.match(stripped)
+        if m_right and len(m_right.group(1).strip()) > 4:
+            name_part = m_right.group(1).strip()
+            num = int(m_right.group(2))
+            if name_part.startswith('"'):
+                _add_phrase(name_part)
+                _set_number(num)
+            else:
+                flush_conflict()
+                current_conflict = {K_NUM: num, K_NAME: name_part, K_PHRASES: []}
+            continue
+
+        # Standalone number (1-2 digits)
+        if _re.match(r'^\d{1,2}$', stripped):
+            _set_number(int(stripped))
+            continue
+
+        # Quoted phrase
+        if stripped.startswith('"'):
+            _add_phrase(stripped)
+            continue
+
+        # Text line: conflict name or continuation
+        if current_conflict is not None and current_conflict.get(K_PHRASES):
+            flush_conflict()
+        if current_conflict is None:
+            current_conflict = {K_NUM: None, K_NAME: stripped, K_PHRASES: []}
+        elif not current_conflict.get(K_NAME):
+            current_conflict[K_NAME] = stripped
+        else:
+            current_conflict[K_NAME] = current_conflict[K_NAME] + ' - ' + stripped
+
+    flush_subsystem()
+    return subsystems if subsystems else None
+
+
 @lru_cache(maxsize=12)
 def _load_system_text(source_filename: str) -> str:
     path = CONFLICTOLOGIA_DIR / source_filename
@@ -586,6 +743,10 @@ def get_system_detail(system_id: str) -> Optional[Dict[str, Any]]:
         return None
     raw_text = _load_system_text(system["source_file"])
     sections = _parse_system_sections(raw_text) if raw_text else []
+    for sec in sections:
+        parsed = _parse_conflicts_section(sec["content"])
+        if parsed and any(c.get("phrases") for sub in parsed for c in sub.get("conflicts", [])):
+            sec["conflicts_parsed"] = parsed
     return {
         "id": system["id"],
         "nombre": system["nombre"],

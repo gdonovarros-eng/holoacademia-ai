@@ -1025,6 +1025,47 @@ async function selectSystem(systemId) {
   }
 }
 
+function renderConflictCard(c) {
+  const numBadge = c.number != null
+    ? `<span class="conflict-number">${c.number}</span>`
+    : `<span class="conflict-number conflict-number-empty">·</span>`;
+  const name = c.name
+    ? `<span class="conflict-name">${escapeHtml(c.name)}</span>`
+    : '';
+  const phrases = c.phrases.length
+    ? `<div class="conflict-phrases">${c.phrases.map((p) => `<p class="conflict-phrase">"${escapeHtml(p)}"</p>`).join('')}</div>`
+    : '';
+  return `<div class="conflict-card">${numBadge}${name}${phrases}</div>`;
+}
+
+function renderConflictsParsed(subsystems) {
+  return subsystems.map((sub) => {
+    const cards = sub.conflicts.map(renderConflictCard).join('');
+    const count = sub.conflicts.length;
+    return `
+      <div class="conflict-subsystem">
+        <div class="conflict-subsystem-header">
+          <span class="conflict-subsystem-title">${escapeHtml(sub.subsystem)}</span>
+          <span class="conflict-subsystem-count">${count} conflicto${count !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="conflict-list">${cards}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderSectionContent(sec) {
+  if (sec.conflicts_parsed && sec.conflicts_parsed.length) {
+    return `<div class="conflict-map-container">${renderConflictsParsed(sec.conflicts_parsed)}</div>`;
+  }
+  // Fallback: show cleaned text line by line
+  const cleaned = (sec.content || '')
+    .split('\n')
+    .map((l) => l.trimEnd())
+    .filter((l, i, arr) => !(l === '' && arr[i - 1] === ''))
+    .join('\n');
+  return `<pre class="system-section-text">${escapeHtml(cleaned)}</pre>`;
+}
+
 function renderSystemSections(detail) {
   const el = document.getElementById("catalog-system-sections");
   if (!el) return;
@@ -1035,16 +1076,27 @@ function renderSystemSections(detail) {
     return;
   }
 
-  el.innerHTML = sections.map((sec, i) => `
-    <div class="system-section-card">
-      <button class="system-section-toggle${i === 0 ? " open" : ""}" data-sec="${i}">
-        <span>${escapeHtml(sec.label)}</span>
-        <span class="toggle-chevron">▼</span>
-      </button>
-      <div class="system-section-body${i === 0 ? " open" : ""}">
-        <pre class="system-section-text">${escapeHtml(sec.content)}</pre>
-      </div>
-    </div>`).join("");
+  // Open the first section that has conflicts_parsed, otherwise first section
+  const firstWithConflicts = sections.findIndex((s) => s.conflicts_parsed?.length);
+  const defaultOpen = firstWithConflicts >= 0 ? firstWithConflicts : 0;
+
+  el.innerHTML = sections.map((sec, i) => {
+    const isOpen = i === defaultOpen;
+    const hasConflicts = sec.conflicts_parsed?.length;
+    const badge = hasConflicts
+      ? `<span class="section-badge">${sec.conflicts_parsed.reduce((n, sub) => n + sub.conflicts.length, 0)} conflictos</span>`
+      : '';
+    return `
+      <div class="system-section-card">
+        <button class="system-section-toggle${isOpen ? " open" : ""}" data-sec="${i}">
+          <span class="section-toggle-label">${escapeHtml(sec.label)}${badge}</span>
+          <span class="toggle-chevron">▼</span>
+        </button>
+        <div class="system-section-body${isOpen ? " open" : ""}">
+          ${renderSectionContent(sec)}
+        </div>
+      </div>`;
+  }).join("");
 
   el.querySelectorAll(".system-section-toggle").forEach((btn) => {
     btn.addEventListener("click", () => {
