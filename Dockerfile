@@ -11,6 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY api ./api
 COPY data ./data
 COPY ["Motor academico/academic_assistant", "./academic_assistant"]
+COPY ["Motor terapeutico/therapeutic_assistant", "./therapeutic_assistant"]
 
 ENV PORT=8000
 
