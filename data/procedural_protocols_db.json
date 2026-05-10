@@ -1,7 +1,7 @@
 {
-  "version": "2.0",
+  "version": "3.0",
   "source": "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
-  "total": 16,
+  "total": 34,
   "protocols": [
     {
       "id": "eft_transgeneracional",
@@ -886,11 +886,1226 @@
         "Este es el protocolo marco; los demás protocolos son herramientas que se aplican dentro de la Fase 3",
         "La duración estándar es de 60-90 minutos por sesión"
       ]
+    },
+    {
+      "id": "intencionalidades_negativas",
+      "nombre": "Protocolo para Intencionalidades Negativas",
+      "aliases": [
+        "intencionalidades",
+        "intencionalidad negativa",
+        "energía negativa enviada"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y eliminar intencionalidades negativas (energías enviadas conscientemente o inconscientemente por otras personas) que afectan al consultante.",
+      "cuando_usarlo": [
+        "Cuando el consultante siente que alguien le desea mal",
+        "Cuando hay estancamientos inexplicables en diversas áreas de vida",
+        "Como limpieza energética de rutina antes de otras intervenciones"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente",
+        "Trabajar siempre por objetivos"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Tengo alguna intencionalidad negativa que me esté afectando?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Eliminar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Elimino toda intencionalidad negativa que me esté afectando'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir el ejercicio. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Trabajar siempre con un objetivo definido"
+      ]
+    },
+    {
+      "id": "maldiciones",
+      "nombre": "Protocolo para Eliminar Maldiciones",
+      "aliases": [
+        "maldicion",
+        "maldiciones",
+        "brujería",
+        "hechizo"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y liberar maldiciones — energías negativas intensas dirigidas al consultante — que bloquean su bienestar, salud o progreso.",
+      "cuando_usarlo": [
+        "Cuando el rastreo indica una maldición como causa del bloqueo",
+        "Cuando hay patrones de mala suerte, enfermedad o sabotaje sin causa aparente"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente",
+        "Trabajar por objetivos"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Tengo alguna maldición que me esté afectando?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Me libero de toda maldición que me esté afectando'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "mal_de_ojo",
+      "nombre": "Protocolo para Eliminar el Mal de Ojo",
+      "aliases": [
+        "mal de ojo",
+        "envidia",
+        "mal de vista",
+        "mirada negativa"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y eliminar la influencia energética negativa del mal de ojo — energía enviada por envidia o mala intención a través de la mirada.",
+      "cuando_usarlo": [
+        "Cuando el rastreo indica mal de ojo como factor",
+        "Cuando el consultante reporta que sus problemas comenzaron después de una interacción con alguien que le miraba con envidia"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Tengo algún mal de ojo que me esté afectando?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Eliminar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Me libero consciente y subconscientemente de todo mal dirigido hacia mí'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "larvas_energeticas",
+      "nombre": "Protocolo para Eliminar Larvas Energéticas",
+      "aliases": [
+        "larvas",
+        "larvas astrales",
+        "parásitos energéticos",
+        "larvas energéticas"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y eliminar larvas o parásitos energéticos que se adhieren al campo áurico y drenan la energía vital del consultante.",
+      "cuando_usarlo": [
+        "Cuando hay fatiga extrema inexplicable, hormigueos, pesadillas o sensación de presión en el pecho",
+        "Cuando el rastreo indica presencia de larvas energéticas"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Estoy siendo afectado por alguna larva energética?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Eliminar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Elimino permanentemente toda larva energética que tenga'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "saboteadores_energeticos",
+      "nombre": "Protocolo para Saboteadores Energéticos",
+      "aliases": [
+        "saboteador",
+        "entidades",
+        "energía discordante",
+        "interferencia energética"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y expulsar saboteadores energéticos — entidades o energías que interfieren con el bienestar, la salud y el equilibrio del consultante.",
+      "cuando_usarlo": [
+        "Cuando hay autosabotaje inexplicable, ira interna, duda persistente o síntomas que no responden a otros tratamientos",
+        "Cuando el rastreo indica presencia de saboteadores energéticos"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Estoy siendo afectado por algún tipo de saboteador energético?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Expulsar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Expulso y me libero de todo tipo de energía discordante que me esté afectando'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "remanentes_energeticos",
+      "nombre": "Protocolo para Remanentes Energéticos Negativos",
+      "aliases": [
+        "remanentes",
+        "residuos energéticos",
+        "energía de otros",
+        "carga energética ajena"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 6",
+      "objetivo": "Identificar y liberar remanentes energéticos negativos — residuos de energía discordante absorbidos en el contacto cotidiano con otras personas.",
+      "cuando_usarlo": [
+        "Cuando el consultante se siente cargado, de mal humor o ansioso después de convivir con ciertas personas",
+        "Como protocolo de limpieza energética regular al finalizar la jornada"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia",
+          "instruccion": "Preguntar con TM: '¿Estoy siendo afectado por algún tipo de remanente energético negativo?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar y transmutar",
+          "instruccion": "De ser afirmativo, pasar el imán 10 veces con el comando: 'Libero y transmuto todo tipo de remanente energético negativo'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar si fue eliminado. De lo contrario, repetir. Preguntar si se debe hacer por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "eft_pro",
+      "nombre": "EFT PRO — Emotional Freedom Techniques",
+      "aliases": [
+        "EFT PRO",
+        "EFT",
+        "tapping",
+        "libertad emocional",
+        "EFT hipno PNL"
+      ],
+      "categoria": "psicoemocional",
+      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+      "objetivo": "Liberar conflictos emocionales profundos combinando hipnosis, PNL, biodescodificación y tapping en meridianos. Integra la experiencia traumática, la libera emocionalmente y la reencuadra.",
+      "cuando_usarlo": [
+        "Para conflictos emocionales con carga alta (7-10/10)",
+        "Cuando hay traumas, resentires profundos o patrones emocionales recurrentes",
+        "Como protocolo central de la sesión cuando el conflicto ya está identificado"
+      ],
+      "prerequisitos": [
+        "Conflicto o emoción principal identificada",
+        "Conocimiento de los puntos de tapping (meridianos)",
+        "Habilidad en lenguaje hipnótico para inducción"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Entrevista Detallada",
+          "instruccion": "A) Revisar el origen del conflicto. B) Revisar detalles significativos. C) Revisar el conflicto crítico (el momento de mayor impacto). D) Revisar la vida post-conflicto. Objetivo: recabar información para dirigir el viaje interior sin activar demasiado la mente consciente.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Inducción al Trance",
+          "instruccion": "A) Llevar la atención a los procesos automáticos del cuerpo (latido, pulso, respiración, sensación ambiental). B) Relajación sistemática de pies a cabeza. C) Programar visualización: 'Toda emoción que surja la dejamos fluir por el cuerpo, sin retenerla, sin reprimirla, sin juzgarla…'",
+          "notas": [
+            "Usar lenguaje hipnótico suave; el objetivo es disminuir la frecuencia cerebral"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Viaje Temporal",
+          "instruccion": "A) Llevar la mente al origen del conflicto. B) Llevar la mente a los eventos significativos. C) Llevar la mente al punto crítico. D) Llevar la mente a la vida post-conflicto.",
+          "notas": [
+            "Este viaje revela las emociones ocultas y resentires profundos"
+          ]
+        },
+        {
+          "orden": 4,
+          "titulo": "Sintonizar el Conflicto",
+          "instruccion": "A) Definir la emoción principal (máximo 2): '¿Cuál es la más intensa? ¿Hay otra igual de intensa? Dales el nombre que mejor las identifique…'. B) Ubicar en el cuerpo: '¿En qué parte de tu cuerpo se sienten?'. C) Calificar del 1 al 10. D) Subir circuito bioenergético. E) Amplificar: 'Expande esa emoción al máximo, permítete inundarte en ella…'. F) Ventilar: 'Inhala profundamente por tu nariz y exhala por la boca. Cuando exhales, siente cómo la emoción sale'.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Tapping de Ida",
+          "instruccion": "Repetir los ANL (Acuerdo NeuroLingüístico) mientras se dan taps en cada punto: Puntos de inversión psicológica ANLx3 + Puntos mayores ANLx1. Buscar que los ANL 'maticen' la experiencia, tocando todos los matices del conflicto.",
+          "notas": [
+            "Iniciar siempre por el punto karate (zona sensible)"
+          ]
+        },
+        {
+          "orden": 6,
+          "titulo": "Secuencia 9 Gamma",
+          "instruccion": "Dar taps en el punto gamma (entre 4to y 5to dedo sobre el dorso de la mano) SIN repetir el ANL. Objetivo: llevar el programa a todo el cerebro.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Tapping de Vuelta con Reencuadre",
+          "instruccion": "A) Repetir ANL mientras se dan taps en puntos mayores. B) Además del ANL que desactiva ('Aunque sientes X emoción por X razón'), REENCUADRAR dando contexto constructivo y lección de aprendizaje. C) Programar recursos: 'Dentro de ti surge X recurso (confianza, paciencia, fortaleza…)'. D) Soltar la necesidad de la mutación: 'A partir de este momento se vuelve innecesario este síntoma porque comprendo su razón de ser, lo agradezco y lo libero en armonía…'",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Cierre",
+          "instruccion": "A) Golpetear E36 (Su San Li) mientras ventila la emoción. B) Decir ANLx1. C) Exhalar + peinado energético de meridianos + expulsar al suelo. D) Bajar circuito bioenergético.",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Recalibración",
+          "instruccion": "A) Re-sintonización: 'Vuelve a conectar con la emoción… ¿En qué nivel se encuentra del 0 al 10?' B) Si intensidad 4 o mayor: repetir desde el paso de Tapping de Ida. C) Si está en 3 o por debajo: terminar. D) En caso de duelos, aplicar protocolo 'Última lágrima' antes de otra sesión.",
+          "notas": [
+            "El objetivo es llevar la emoción a 3 o menos para considerar la sesión exitosa"
+          ]
+        }
+      ],
+      "observaciones": [
+        "EFT PRO integra EFT + hipnosis + PNL + biodescodificación — es el protocolo más completo para conflictos emocionales",
+        "Fuentes: Huang Di (MTC), Roger Callahan (TFT), Gary Craig (EFT), Milton Erickson (hipnosis), Bandler y Grinder (PNL), Hamer et al. (biodescodificación)"
+      ]
+    },
+    {
+      "id": "reimpronta_tierra",
+      "nombre": "Reimpronta de Tierra (Protocolo Hipnótico 0-7 años)",
+      "aliases": [
+        "reimpronta tierra",
+        "reimpronta infancia",
+        "herida de infancia",
+        "niño interior 0-7"
+      ],
+      "categoria": "psicoemocional",
+      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+      "objetivo": "Sanar heridas de la etapa de tierra (0-7 años) mediante un viaje hipnótico que conecta al consultante con su infancia y resignifica las carencias o traumas de ese período.",
+      "cuando_usarlo": [
+        "Cuando el conflicto tiene raíz en la primera infancia (0-7 años)",
+        "Cuando hay heridas de abandono, rechazo, carencia afectiva o agresión en la infancia",
+        "Cuando el rastreo indica impronta en la etapa de tierra"
+      ],
+      "prerequisitos": [
+        "Definir objetivo terapéutico",
+        "Observar y planear nuevas estrategias de satisfacción",
+        "Habilidad en inducción hipnótica"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Inducir trance",
+          "instruccion": "Llevar al consultante a estado de trance hipnótico mediante técnica de inducción preferida.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Visualizar al infante de tierra",
+          "instruccion": "Pedir al consultante que visualice a su versión de 0-7 años en la claridad infinita.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Contacto de transferencia emocional",
+          "instruccion": "Hacer contacto energético con el infante. Percibir y tomar consciencia del drama infantil que vivió.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Dialogar sobre el futuro resignificado",
+          "instruccion": "Explicarle al infante interior cómo la insatisfacción será compensada. Describir el futuro que el adulto ya vive.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Liberación emocional",
+          "instruccion": "Permitir que el infante suelte las emociones contenidas. Acompañar el proceso.",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Trazar círculo activo",
+          "instruccion": "Visualizar cómo se pinta un círculo de luz en el suelo alrededor del infante.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Proyectar domo protector",
+          "instruccion": "Visualizar cómo se cierra una cúpula de luz por encima, protegiendo al infante.",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Establecer nueva directriz de satisfacción",
+          "instruccion": "Dialogar con el infante sobre sus necesidades ahora satisfechas. Instalar la nueva creencia de seguridad y amor.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Heridas típicas de tierra: carencia de alimento/afecto, abandono, soledad, rechazo, agresión",
+        "Combinable con EFT PRO o Carta Telepática Parental"
+      ]
+    },
+    {
+      "id": "reimpronta_metal",
+      "nombre": "Reimpronta de Metal (Protocolo Hipnótico 8-14 años)",
+      "aliases": [
+        "reimpronta metal",
+        "reimpronta adolescencia",
+        "herida adolescente",
+        "niño interior 8-14"
+      ],
+      "categoria": "psicoemocional",
+      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+      "objetivo": "Sanar heridas de la etapa de metal (8-14 años) mediante un viaje hipnótico que conecta al consultante con su adolescencia temprana y resignifica las carencias o traumas de ese período.",
+      "cuando_usarlo": [
+        "Cuando el conflicto tiene raíz en la pubertad o adolescencia temprana (8-14 años)",
+        "Cuando hay heridas de humillación, injusticia, represión sexual, rechazo social o sobreprotección",
+        "Cuando el rastreo indica impronta en la etapa de metal"
+      ],
+      "prerequisitos": [
+        "Definir objetivo terapéutico",
+        "Observar y planear nuevas estrategias de satisfacción",
+        "Habilidad en inducción hipnótica"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Inducir trance",
+          "instruccion": "Llevar al consultante a estado de trance hipnótico.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Visualizar al puberto/adolescente de metal",
+          "instruccion": "Pedir al consultante que visualice a su versión de 8-14 años en la claridad infinita.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Contacto de transferencia emocional",
+          "instruccion": "Hacer contacto con el adolescente. Percibir y tomar consciencia del drama adolescente.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Dialogar sobre el futuro resignificado",
+          "instruccion": "Explicarle al adolescente interior cómo la insatisfacción será compensada por el adulto que ya es.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Liberación emocional",
+          "instruccion": "Permitir que el adolescente suelte las emociones contenidas.",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Trazar círculo activo",
+          "instruccion": "Visualizar cómo se pinta un círculo de luz en el suelo alrededor del adolescente.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Proyectar flor de potenciales",
+          "instruccion": "Visualizar cómo se abre una flor de pétalos de luz, representando los potenciales no desarrollados que ahora florecen.",
+          "notas": [
+            "En metal se usa flor de potenciales en lugar del domo de tierra"
+          ]
+        },
+        {
+          "orden": 8,
+          "titulo": "Establecer nueva directriz de satisfacción",
+          "instruccion": "Dialogar con el adolescente sobre sus necesidades ahora satisfechas. Instalar la nueva creencia de poder y autenticidad.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Heridas típicas de metal: carencia afectiva, sobreprotección, represión sexual, abandono, humillación, injusticia, rechazo, agresión"
+      ]
+    },
+    {
+      "id": "carta_telepatica_parental",
+      "nombre": "Carta Telepática Parental",
+      "aliases": [
+        "carta telepatica",
+        "carta a padre",
+        "carta a madre",
+        "carta terapéutica",
+        "carta parental"
+      ],
+      "categoria": "psicoemocional",
+      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+      "objetivo": "Sanar la relación con una figura parental mediante la escritura y lectura de una carta que recorre las etapas de desahogo, empatía, perdón, gratitud y amor. El proceso se refuerza con un ritual de 21 noches.",
+      "cuando_usarlo": [
+        "Cuando hay conflictos no resueltos con padre, madre u otra figura parental significativa",
+        "Cuando hay resentimientos, juicios o duelos pendientes con esa figura",
+        "Como preparativo antes de otras intervenciones transgeneracionales"
+      ],
+      "prerequisitos": [
+        "Liberar previamente emociones de dramas más agudos si los hay"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Desahogo",
+          "instruccion": "Escribir de forma libre todo lo que necesite salir: reclamos, señalamientos, acusaciones. Sin miramientos, modales ni maquillajes.",
+          "notas": [
+            "Dejar doble espacio entre renglones para modificaciones posteriores"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Lo siento — Acto de empatía",
+          "instruccion": "Describir las circunstancias de vida del progenitor y hacer un acto honesto de empatía con las mismas.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Perdón / Te perdono",
+          "instruccion": "Pedir perdón por los juicios e intenciones destructivas. Perdonar lo más honestamente posible el pasado.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Gracias",
+          "instruccion": "Agradecer el 50% de la vida. Resignificar las carencias en lo positivo de sus efectos. Ejemplos: Ausencia → Autosuficiencia. Carencia → Desarrollo de talentos. Agresión → Búsqueda de protección.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Amor / Buenos deseos",
+          "instruccion": "De haberlo, manifestar el amor. Desear intenciones positivas para esa figura.",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Ritual de 21 noches",
+          "instruccion": "En un altar, colocar una fotografía o imagen representativa. Leer la carta vinculado emocionalmente durante 21 noches consecutivas. Tachar, aumentar o modificar según se vaya sintiendo necesario.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Día 22 — Entrega final",
+          "instruccion": "Colocar la foto en una silla y leerle la carta directamente. Posteriormente entregarla físicamente si las circunstancias son las adecuadas.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Este proceso puede hacerse también con otras figuras significativas (hermanos, parejas, hijos)",
+        "La combinación de escritura + ritual nocturno trabaja tanto el consciente como el inconsciente"
+      ]
+    },
+    {
+      "id": "sepelio_simbolico",
+      "nombre": "Sepelio Simbólico",
+      "aliases": [
+        "sepelio simbolico",
+        "entierro simbolico",
+        "ritual para nonato",
+        "duelo por aborto",
+        "duelo perinatal"
+      ],
+      "categoria": "psicoemocional",
+      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+      "objetivo": "Dar lugar, reconocimiento y despedida a un hijo no nacido (aborto, pérdida gestacional) mediante un ritual simbólico de entierro que sana el duelo y libera la culpa.",
+      "cuando_usarlo": [
+        "Cuando hay un aborto, pérdida gestacional o hijo que no nació sin haber sido procesado",
+        "Cuando el rastreo indica un 'niño de reemplazo' u otro patrón vinculado a una pérdida perinatal"
+      ],
+      "prerequisitos": [
+        "Nombrar al infante no nacido",
+        "Tener un objeto representativo y una caja donde quepa"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Elegir lugar sagrado",
+          "instruccion": "Elegir un lugar santo por rito o por belleza natural. También se puede santificar un lugar elegido.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "PERTENENCIA — Entierro y desahogo",
+          "instruccion": "Cavar un agujero y colocar la caja con el objeto. Desahogar y soltar todo lo necesario. Decir: 'Lo siento — siento que las condiciones no fueran las apropiadas. Perdón — por las decisiones tomadas. Gracias — por elegirme como tu progenitor. Te amo / Buenos deseos — luz en tu camino. Siempre serás parte del árbol.'",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Discurso de reunión espiritual",
+          "instruccion": "Reunir esa alma con el creador, en honor, amor, respeto y armonía. Opcional: Salmo 23 / Mateo 5:4.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "RECONOCIMIENTO — Sellar la tumba",
+          "instruccion": "Tapar la tumba simbólica y colocar una marca que resalte el lugar a modo de lápida.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Despedida",
+          "instruccion": "Despedirse con amor, agradecimiento, reverencia y libertad.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Este ritual también puede adaptarse para el duelo de personas fallecidas con quienes quedó pendiente una despedida"
+      ]
+    },
+    {
+      "id": "liberacion_impronta_transgeneracional",
+      "nombre": "Liberación de Impronta Transgeneracional (Campo Mórfico)",
+      "aliases": [
+        "impronta transgeneracional",
+        "campo morfico",
+        "liberacion campo morfico",
+        "constelacion campo morfico"
+      ],
+      "categoria": "transgeneracional",
+      "fuente": "Psicosomática y Biodescodificación 1 / Holopsicosomática 2020 – Alejandro Lavín",
+      "objetivo": "Liberar una impronta transgeneracional trabajando con el campo mórfico familiar, un voluntario que sintoniza al ancestro y frases rituales de reconocimiento e inclusión.",
+      "cuando_usarlo": [
+        "Cuando el conflicto tiene raíz ancestral claramente identificada",
+        "Como protocolo grupal o individual cuando se tiene acceso a un voluntario",
+        "Cuando otros protocolos transgeneracionales no han sido suficientes"
+      ],
+      "prerequisitos": [
+        "Haber hecho tirada transgeneracional de tarot o rastreo previo",
+        "Contar con un voluntario disponible"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Proteger el espacio psíquico",
+          "instruccion": "Proyectar pentagramas psíquicos en las 4 direcciones geográficas. Hacer la Cruz Cabalística.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Invocar el campo mórfico transgeneracional",
+          "instruccion": "Abrir el campo mórfico transgeneracional con la intención y el ritual correspondiente.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Sintonizar al ancestro con un voluntario",
+          "instruccion": "El voluntario se sintoniza con el ancestro implicado en el drama.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Geolocalizar al voluntario",
+          "instruccion": "Ubicar al voluntario sintonizado en su posición correspondiente (pasos hacia atrás, derecha o izquierda según el ancestro y generación).",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Visualizar y cargar el objeto representativo",
+          "instruccion": "Visualizar un objeto representativo del drama. Cargarlo de energía de amor, honor, respeto y reconocimiento.",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Entregar el objeto y decretar reconocimiento",
+          "instruccion": "Ubicarse frente al voluntario sintonizado y entregarle el objeto. Recalcar su pertenencia al árbol. Honrar su historia. Agradecer su atención al llamado. Cerrar la sintonización del voluntario.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Regresar al lugar de origen",
+          "instruccion": "El consultante regresa simbólicamente a su lugar en el árbol.",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Visualizar el puente de la nueva vida",
+          "instruccion": "Visualizar el puente de la nueva vida. Avanzar 3 pasos: futuro inmediato / próximo / lejano.",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Cerrar el campo mórfico",
+          "instruccion": "Agradecer y cerrar el campo mórfico transgeneracional.",
+          "notas": []
+        }
+      ],
+      "frases_clave": [
+        "Honro",
+        "Agradezco",
+        "Me doy cuenta",
+        "Yo no tuve nada que ver",
+        "Cancelo",
+        "Te libero",
+        "Te veo, tienes un lugar en mi corazón y en mi familia"
+      ],
+      "observaciones": [
+        "Protocolo de alta potencia; requiere preparación del terapeuta en trabajo transgeneracional",
+        "Combinable con EFT Transgeneracional o Protocolo de Inclusión"
+      ]
+    },
+    {
+      "id": "rastreo_alveolar",
+      "nombre": "Protocolo Especializado de Alvéolos Pulmonares",
+      "aliases": [
+        "alveolar",
+        "alveólos",
+        "pulmones profundo",
+        "hipoxia rastreo"
+      ],
+      "categoria": "rastreo",
+      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
+      "objetivo": "Rastrear en profundidad el conflicto psicosomático específico del tejido alveolar, identificando nudo psórico, sensaciones, holograma, creencia, microbio y par biomagnético implicados.",
+      "cuando_usarlo": [
+        "Cuando el síntoma principal afecta el tejido alveolar (hipoxia, sofocación, dificultad respiratoria profunda)",
+        "Después de haber identificado el conflicto alveolar en el mapa de conflictología respiratoria"
+      ],
+      "prerequisitos": [
+        "Conflicto alveolar identificado previamente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Nudo psórico",
+          "instruccion": "¿Hay nudo psórico?",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Identificar el nudo",
+          "instruccion": "¿Cuál es?",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Sensación sostenedora",
+          "instruccion": "¿Cuál es la sensación que soporta este nudo?",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Instante de la sensación",
+          "instruccion": "¿Cuál es el instante de esta sensación?",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Segunda sensación",
+          "instruccion": "¿Hay alguna otra sensación?",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Instante de la segunda sensación",
+          "instruccion": "¿Cuál es el instante de esta segunda sensación?",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Sensación infantil",
+          "instruccion": "¿Hay alguna sensación infantil que sostenga este nudo?",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Holograma",
+          "instruccion": "¿Hay algún holograma implicado? (Contexto o impacto)",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Creencia",
+          "instruccion": "¿Hay alguna creencia implicada?",
+          "notas": []
+        },
+        {
+          "orden": 10,
+          "titulo": "Microbio",
+          "instruccion": "¿Cuál es el microbio que soporta la información?",
+          "notas": []
+        },
+        {
+          "orden": 11,
+          "titulo": "Par biomagnético",
+          "instruccion": "¿Hay algún par biomagnético que necesites para neutralizar esta información?",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Protocolo de rastreo profundo; cada pregunta se hace con test muscular"
+      ]
+    },
+    {
+      "id": "rastreo_hepatico",
+      "nombre": "Protocolo para Problemas Hepáticos",
+      "aliases": [
+        "hígado rastreo",
+        "hepatico",
+        "hepático profundo"
+      ],
+      "categoria": "rastreo",
+      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
+      "objetivo": "Rastrear el conflicto psicosomático específico del parénquima hepático, identificando conflicto, sensaciones, holograma, microbios y par biomagnético.",
+      "cuando_usarlo": [
+        "Cuando el síntoma principal afecta el hígado (ictericia, hepatitis, problemas de vesícula)",
+        "Después de identificar conflicto hepático en el mapa de conflictología digestiva"
+      ],
+      "prerequisitos": [
+        "Conflicto hepático identificado previamente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar conflicto",
+          "instruccion": "¿Hay conflicto en parénquima hepático?",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Identificar el conflicto",
+          "instruccion": "¿Cuál es el conflicto?",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Sensación sostenedora",
+          "instruccion": "¿Qué sensación soporta el conflicto?",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Instante",
+          "instruccion": "¿Cuál es el instante?",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Segunda sensación",
+          "instruccion": "¿Hay alguna otra sensación?",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Holograma",
+          "instruccion": "¿Hay holograma implicado?",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Microbio principal",
+          "instruccion": "¿Cuál es el microbio que soporta la información?",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Microbio asociado",
+          "instruccion": "¿Hay microbio asociado?",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Par biomagnético",
+          "instruccion": "¿Hay algún par que necesites para neutralizar el conflicto?",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "sublimacion_transgen",
+      "nombre": "Protocolo de Sublimación de Conflicto Transgeneracional",
+      "aliases": [
+        "sublimacion transgen",
+        "sublimación transgeneracional",
+        "campo morfico sublimacion"
+      ],
+      "categoria": "transgeneracional",
+      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
+      "objetivo": "Rastrear y sublimar un conflicto transgeneracional mediante preguntas específicas de test muscular, abriendo el campo mórfico y cancelando la información implicada.",
+      "cuando_usarlo": [
+        "Cuando el conflicto tiene raíz transgeneracional confirmada",
+        "Como protocolo de rastreo profundo antes de aplicar EFT Transgeneracional o Liberación de Impronta"
+      ],
+      "prerequisitos": [
+        "Test muscular activo y calibrado"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar conflicto transgeneracional",
+          "instruccion": "¿Vivo algún conflicto transgeneracional?",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Identificar el conflicto",
+          "instruccion": "¿Cuál es el conflicto?",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Sensación sostenedora",
+          "instruccion": "¿Cuál es la sensación en la que se sostiene este conflicto?",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Instante",
+          "instruccion": "¿Cuál es el instante de esta sensación?",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Segunda sensación",
+          "instruccion": "¿Hay alguna otra sensación en la que se sostiene este conflicto?",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Creencia",
+          "instruccion": "¿Hay alguna creencia implicada? ¿Cuál?",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Holograma",
+          "instruccion": "¿Hay algún holograma implicado? ¿Cuál?",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Microbio",
+          "instruccion": "¿Cuál es el microbio que soporta la información?",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Abrir campo mórfico y cancelar",
+          "instruccion": "Abrir el campo mórfico. a) Cancelar la información. b) Reiniciar. c) Calibrar. d) Ajustar. Buscar si el conflicto tiene riel o anclaje.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "rastreo_aptitud_optima",
+      "nombre": "Rastreo de Aptitud Óptima (Pre-consulta)",
+      "aliases": [
+        "aptitud optima",
+        "pre-rastreo",
+        "optimizacion psiquica",
+        "preparacion rastreo holobio"
+      ],
+      "categoria": "rastreo",
+      "fuente": "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
+      "objetivo": "Verificar que el terapeuta está en condiciones óptimas para rastrear: hemisferios alineados, aptitud psíquica confirmada e interferencias ambientales descartadas.",
+      "cuando_usarlo": [
+        "Al inicio de toda sesión de holobiomagnetismo antes de rastrear",
+        "Cuando hay dudas sobre la calidad del rastreo"
+      ],
+      "prerequisitos": [
+        "Conocimiento de puntos VG (Vaso Gobernador)"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Rastreo de interconexión de hemisferios",
+          "instruccion": "A) Colocar la mano izquierda sobre el hemisferio derecho. Rastrear con la mano derecha: '¿Está en armonía?' Sí/No. B) Colocar la mano izquierda sobre el hemisferio izquierdo. Rastrear: '¿Está en armonía?' Sí/No. C) Si algún hemisferio no está en armonía: trazar de 1 a 5 líneas transversales con la uña del pulgar de lado a lado sobre el cráneo y volver a testear.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Rastreo de aptitud psíquica",
+          "instruccion": "A) Colocar la mano izquierda en VG17 (occipucio, a la altura de las orejas). Rastrear: '¿Estoy apto para rastrear en este momento?' Sí/No. B) Si la respuesta es No: trazar una línea con la uña del dedo por el tramo vital (de VG21 = edad actual a VG15 = nacimiento). C) Volver a rastrear y repetir hasta obtener respuesta positiva.",
+          "notas": [
+            "VG21 = punto más alto de la cabeza; VG15 = nuca"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Rastreo de interferencias ambientales",
+          "instruccion": "A) Colocar el índice izquierdo en VG21 (punto más alto de la cabeza). Preguntar: '¿Hay interferencia geopática para rastrear?' Sí/No. '¿Hay interferencia de electrosmog para rastrear?' Sí/No. B) Si hay interferencia geopática: cambiar de lugar para rastrear. Si hay electrosmog: observar e introyectar el símbolo neutralizador de electrosmog. C) Volver a rastrear. La aptitud se mantiene óptima al menos 30 minutos. Alejar aparatos electrónicos al menos 1 metro.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Este protocolo sustituye o complementa la Preparación Subconsciente del SEI para sesiones de holobiomagnetismo"
+      ]
+    },
+    {
+      "id": "diagnostico_organico",
+      "nombre": "Diagnóstico Orgánico — % de Armonía por Sistema",
+      "aliases": [
+        "diagnostico organico",
+        "porcentaje armonia",
+        "estado organico",
+        "diagnostico sistemas"
+      ],
+      "categoria": "rastreo",
+      "fuente": "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
+      "objetivo": "Obtener un panorama completo del estado energético de los 10 sistemas orgánicos del consultante mediante rastreo de porcentaje de armonía.",
+      "cuando_usarlo": [
+        "Al inicio de sesión para identificar qué sistemas necesitan atención prioritaria",
+        "Para dar seguimiento a la evolución del tratamiento en sesiones sucesivas"
+      ],
+      "prerequisitos": [
+        "Rastreo de aptitud óptima completado",
+        "Programación: '100% de armonía = estado ideal y óptimo del sistema en su mejor momento histórico desde el nacimiento. 0% = necrosis, insuficiencia total o ausencia de dinámica vital.'"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Programar el parámetro",
+          "instruccion": "MS: '100% de armonía equivale al estado ideal, óptimo y equilibrado que tenían mis sistemas en su punto de mayor salud a lo largo de mi historia desde el nacimiento. 0% equivale a un estado de necrosis o insuficiencia total.'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Rastrear sistema neurosensorial",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema neurosensorial?'",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Rastrear sistema endócrino-metabólico",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema endócrino-metabólico?'",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Rastrear sistema inmunológico",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema inmunológico?'",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Rastrear sistema cardiovascular",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema cardiovascular?'",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Rastrear sistema respiratorio",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema respiratorio?'",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Rastrear sistema digestivo",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema digestivo?'",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Rastrear sistema renal/excretor",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema renal / electrolítico-excretor?'",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Rastrear sistema reproductor",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema reproductor?'",
+          "notas": []
+        },
+        {
+          "orden": 10,
+          "titulo": "Rastrear sistema osteomuscular",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema osteomuscular?'",
+          "notas": []
+        },
+        {
+          "orden": 11,
+          "titulo": "Rastrear sistema lipo-fascial",
+          "instruccion": "'¿Cuál es el porcentaje de armonía de mi sistema lipo-fascial?'",
+          "notas": []
+        },
+        {
+          "orden": 12,
+          "titulo": "Registrar e interpretar",
+          "instruccion": "Registrar los porcentajes en tabla. Los sistemas con menor porcentaje son los que requieren intervención prioritaria.",
+          "notas": [
+            "Porcentajes por debajo del 60% suelen indicar intervención necesaria"
+          ]
+        }
+      ],
+      "observaciones": [
+        "Herramienta valiosa para priorizar el trabajo terapéutico cuando hay múltiples sistemas comprometidos"
+      ]
+    },
+    {
+      "id": "rastreo_transgeneracional_tarot",
+      "nombre": "Protocolo de Rastreo Transgeneracional con Tarot",
+      "aliases": [
+        "rastreo transgen tarot",
+        "tarot transgeneracional",
+        "rastreo genealogico tarot"
+      ],
+      "categoria": "transgeneracional",
+      "fuente": "Diplomado Terapia Holística – Módulo 12",
+      "objetivo": "Rastrear en profundidad el ancestro, su problemática, el contexto, la fecha y la emoción de un conflicto transgeneracional usando el tarot como herramienta de rastreo psíquico con test muscular.",
+      "cuando_usarlo": [
+        "Cuando se quiere identificar con precisión el ancestro y contexto de un conflicto transgeneracional",
+        "Como preparación antes de EFT Transgeneracional o Liberación de Impronta"
+      ],
+      "prerequisitos": [
+        "Baraja de tarot disponible",
+        "Test muscular activo",
+        "Abrir campo mórfico transgeneracional"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Definir tema y abrir campo mórfico",
+          "instruccion": "Definir el tema a tratar. 'Abro campo mórfico transgeneracional.' (Guardar en circuito).",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Verificar carga transgeneracional",
+          "instruccion": "'¿Hay carga transgeneracional en este síntoma/tragedia/ciclo/drama?' Sí/No. Si No: detener protocolo y cerrar campo mórfico. Si Sí: continuar.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Identificar el ancestro",
+          "instruccion": "'Manifiéstame el ancestro implicado.' (Guardar en circuito). '¿El ancestro que sintonizo se encuentra en este árbol?' Sí/No. Si No: ampliar a 5ta, 6ta, 7ma generación.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Identificar la línea (materno/paterno)",
+          "instruccion": "'¿Es del lado materno? ¿Es del lado paterno?' Sí/No. Si materno: sacar caballero de bastos. Si paterno: sacar reina de bastos. Revolver cartas de la corte. Rastrear al miembro implicado.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Directo o lateral",
+          "instruccion": "Al encontrarlo: '¿Es directo? ¿Es lateral?' Si es lateral: '¿Hermana/Hermano? ¿Mayor/Menor?'. Anotar y programar: 'Sintonizo la memoria del ancestro X.' (Guardar en circuito).",
+          "notas": []
+        },
+        {
+          "orden": 6,
+          "titulo": "Identificar personalidad",
+          "instruccion": "'Manifiéstame su personalidad.' (Guardar en circuito). Revolver cartas de la corte. Rastrear carta de contexto de la personalidad. Conectar conscientemente con su personalidad.",
+          "notas": []
+        },
+        {
+          "orden": 7,
+          "titulo": "Identificar problemática",
+          "instruccion": "Buscar en los arcanos mayores la problemática acorde. Rastrear: '¿Tengo fidelidad familiar invisible con esta problemática?' Sí/No.",
+          "notas": []
+        },
+        {
+          "orden": 8,
+          "titulo": "Identificar el contexto del conflicto",
+          "instruccion": "'Sintonizo esta historia problemática X de mi ancestro X. Manifiéstame en qué contexto se vivió.' Revolver arcanos menores y rastrear. Conectar la información. Intuir el tipo de conflicto.",
+          "notas": []
+        },
+        {
+          "orden": 9,
+          "titulo": "Identificar el instante exacto",
+          "instruccion": "'¿Cuál es el instante de este conflicto?' Rastrear: rango de edad (0-10, 11-20…) → edad exacta → trimestre → mes → quincena → semana → día.",
+          "notas": []
+        },
+        {
+          "orden": 10,
+          "titulo": "Identificar emoción",
+          "instruccion": "'¿Qué emoción soporta este conflicto?' Bloque A/B/C → categoría específica → sector 1, 2, 3… Anotar emoción asociada.",
+          "notas": []
+        },
+        {
+          "orden": 11,
+          "titulo": "Identificar holograma",
+          "instruccion": "'¿Hay algún holograma implicado?' Sí/No. Si Sí: rastrear bloque (rojo/naranja/amarillo/verde) y número.",
+          "notas": []
+        },
+        {
+          "orden": 12,
+          "titulo": "Identificar cromosoma",
+          "instruccion": "'¿En qué cromosoma se guarda esta memoria?' Columna A o B → Fila 1/2/3/4 → cromosoma del 1 al 23.",
+          "notas": []
+        },
+        {
+          "orden": 13,
+          "titulo": "Cierre",
+          "instruccion": "Registrar la información completa (ancestro, personalidad, problemática, contexto, fecha, emoción, holograma, cromosoma) y proceder a ajustar. O cerrar campo mórfico y agradecer.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Este es el protocolo de rastreo más detallado del sistema; provee todos los datos necesarios para EFT Transgeneracional",
+        "La información que recaba: ancestro, personalidad, problemática, contexto, fecha, emoción, holograma, cromosoma"
+      ]
     }
   ],
   "sources": [
     "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
     "Diplomado SEI (Sanación Energética Integral) – Módulos 1, 2, 4, 5",
-    "Diplomado Terapia Holística – Módulo 1"
+    "Diplomado Terapia Holística – Módulo 1",
+    "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
+    "Holopsicosomática 2020 – Alejandro Lavín",
+    "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
+    "Diplomado SEI – Módulo 6",
+    "Diplomado Terapia Holística – Módulo 12"
   ]
 }
