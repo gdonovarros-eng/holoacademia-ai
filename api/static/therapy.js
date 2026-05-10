@@ -930,10 +930,13 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeCatalogDetail();
 });
 
-// Cargar catálogo cuando el alumno abre la pestaña de protocolos
+// Cargar catálogo al abrir la pestaña o al inicializar si ya está activa
 tabs.forEach((tab) => {
   tab.addEventListener("click", () => {
     if (tab.dataset.tab === "protocols") loadCatalog();
   });
 });
+
+// Pre-cargar el catálogo siempre para evitar depender del clic
+loadCatalog();
 setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
