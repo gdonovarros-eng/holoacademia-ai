@@ -940,3 +940,139 @@ tabs.forEach((tab) => {
 // Pre-cargar el catálogo siempre para evitar depender del clic
 loadCatalog();
 if (protocolOutput) setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
+
+// ── Modo Por Sistema Corporal ──────────────────────────────────────────────
+
+const SYSTEM_ICONS = {
+  respiratorio: "🫁", digestivo: "🫀", alimenticio: "🍽️",
+  endocrino: "⚗️", cardiovascular: "❤️", osteomuscular: "🦴",
+  dermato_lipofascial: "🩹", reproductivo: "🌸", urinario: "💧",
+  inmunologico: "🛡️", neurosensorial: "🧠",
+};
+
+let systemsData = null;
+let activeSystemId = null;
+let systemsCache = {};
+
+async function loadSystemsMode() {
+  if (systemsData) { renderSystemsNav(); return; }
+  const statusEl = document.getElementById("catalog-status");
+  try {
+    if (statusEl) setStatus(statusEl, "Cargando sistemas…");
+    const res = await fetch("/protocols/systems");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    systemsData = await res.json();
+    if (statusEl) statusEl.innerHTML = "";
+    renderSystemsNav();
+    if (systemsData.systems?.length) {
+      selectSystem(systemsData.systems[0].id);
+    }
+  } catch (err) {
+    if (statusEl) setStatus(statusEl, "No se pudo cargar la lista de sistemas.", true);
+  }
+}
+
+function renderSystemsNav() {
+  const nav = document.getElementById("catalog-systems-nav");
+  if (!nav || !systemsData) return;
+  nav.innerHTML = systemsData.systems.map((s) => {
+    const icon = SYSTEM_ICONS[s.id] || "🔬";
+    const subsCount = s.subsystems?.length ?? 0;
+    return `
+      <button class="catalog-cat-btn" data-system="${escapeHtml(s.id)}">
+        <span class="cat-icon">${icon}</span>
+        <span>${escapeHtml(s.nombre.replace("Sistema ", ""))}</span>
+        <span class="catalog-cat-count">${s.total_conflicts ?? subsCount}</span>
+      </button>`;
+  }).join("");
+  nav.querySelectorAll(".catalog-cat-btn").forEach((btn) => {
+    btn.addEventListener("click", () => selectSystem(btn.dataset.system));
+  });
+}
+
+async function selectSystem(systemId) {
+  activeSystemId = systemId;
+  document.querySelectorAll("#catalog-systems-nav .catalog-cat-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.system === systemId);
+  });
+
+  const header = document.getElementById("catalog-system-header");
+  const sectionsEl = document.getElementById("catalog-system-sections");
+  const sys = systemsData?.systems?.find((s) => s.id === systemId);
+
+  if (header && sys) {
+    header.classList.remove("hidden");
+    const icon = SYSTEM_ICONS[sys.id] || "🔬";
+    const conflicts = sys.total_conflicts ? `${sys.total_conflicts} conflictos` : `${sys.subsystems?.length ?? 0} subsistemas`;
+    header.innerHTML = `
+      <h3>${icon} ${escapeHtml(sys.nombre)}</h3>
+      <p>${escapeHtml(conflicts)} · Selecciona una sección para ver el contenido completo</p>`;
+  }
+
+  if (sectionsEl) sectionsEl.innerHTML = `<p class="status">Cargando...</p>`;
+
+  try {
+    let detail = systemsCache[systemId];
+    if (!detail) {
+      const res = await fetch(`/protocols/systems/${encodeURIComponent(systemId)}`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      detail = await res.json();
+      systemsCache[systemId] = detail;
+    }
+    renderSystemSections(detail);
+  } catch (err) {
+    if (sectionsEl) sectionsEl.innerHTML = `<p class="status error">No se pudo cargar el contenido del sistema.</p>`;
+  }
+}
+
+function renderSystemSections(detail) {
+  const el = document.getElementById("catalog-system-sections");
+  if (!el) return;
+
+  const sections = detail.sections || [];
+  if (!sections.length) {
+    el.innerHTML = `<p class="status">Sin contenido disponible para este sistema.</p>`;
+    return;
+  }
+
+  el.innerHTML = sections.map((sec, i) => `
+    <div class="system-section-card">
+      <button class="system-section-toggle${i === 0 ? " open" : ""}" data-sec="${i}">
+        <span>${escapeHtml(sec.label)}</span>
+        <span class="toggle-chevron">▼</span>
+      </button>
+      <div class="system-section-body${i === 0 ? " open" : ""}">
+        <pre class="system-section-text">${escapeHtml(sec.content)}</pre>
+      </div>
+    </div>`).join("");
+
+  el.querySelectorAll(".system-section-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains("open");
+      btn.classList.toggle("open", !isOpen);
+      body.classList.toggle("open", !isOpen);
+    });
+  });
+}
+
+// ── Toggle entre modos ─────────────────────────────────────────────────────
+
+function setCatalogMode(mode) {
+  const layoutTecnicas = document.getElementById("catalog-layout-tecnicas");
+  const layoutSistemas = document.getElementById("catalog-layout-sistemas");
+  document.querySelectorAll(".catalog-mode-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.mode === mode);
+  });
+  if (mode === "sistemas") {
+    layoutTecnicas?.classList.add("hidden");
+    layoutSistemas?.classList.remove("hidden");
+    loadSystemsMode();
+  } else {
+    layoutSistemas?.classList.add("hidden");
+    layoutTecnicas?.classList.remove("hidden");
+  }
+}
+
+document.getElementById("mode-btn-tecnicas")?.addEventListener("click", () => setCatalogMode("tecnicas"));
+document.getElementById("mode-btn-sistemas")?.addEventListener("click", () => setCatalogMode("sistemas"));

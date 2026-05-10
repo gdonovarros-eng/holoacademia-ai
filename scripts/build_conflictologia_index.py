@@ -79,7 +79,7 @@ MODULES = [
         "subsystems": ["hipofisiaria", "tiroidea", "paratiroidea", "pancreatica", "suprarrenal"],
         "total_conflicts": 58,
         "source_file": "Manual_del_Módulo_4.txt",
-        "extract_from_line": 2352,
+        "extract_from_line": 2466,
         "keywords": [
             "tiroides", "hipotiroidismo", "hipertiroidismo", "bocio",
             "diabetes", "insulina", "páncreas", "glucosa", "azúcar",
@@ -96,7 +96,7 @@ MODULES = [
         "subsystems": ["miocardial", "valvular", "del_ritmo", "membranas", "arterial", "venosa", "presion", "adjunta", "lipidica"],
         "total_conflicts": 69,
         "source_file": "Manual_del_Módulo_5.txt",
-        "extract_from_line": 2966,
+        "extract_from_line": 3179,
         "keywords": [
             "corazón", "cardíaco", "infarto", "arritmia", "taquicardia", "bradicardia",
             "presión arterial", "hipertensión", "hipotensión", "presión alta", "presión baja",
@@ -114,7 +114,7 @@ MODULES = [
         "subsystems": ["general", "vertebral", "osea_diversa", "periostio", "articular", "ligamentos", "tendones", "muscular", "cabeza", "miembros_superiores", "tronco", "columna", "miembros_inferiores"],
         "total_conflicts": 159,
         "source_file": "Manual_del_Módulo_6.txt",
-        "extract_from_line": 2352,
+        "extract_from_line": 2555,
         "keywords": [
             "hueso", "óseo", "fractura", "osteoporosis", "articulación",
             "columna", "vertebral", "espalda", "lumbar", "cervical", "torácica", "hernia de disco",
@@ -133,7 +133,7 @@ MODULES = [
         "subsystems": ["desvalorizacion", "contacto_impuesto", "separacion"],
         "total_conflicts": 44,
         "source_file": "Manual_del_Módulo_7.txt",
-        "extract_from_line": 3194,
+        "extract_from_line": 3331,
         "keywords": [
             "piel", "dermatitis", "eczema", "psoriasis", "urticaria", "acné", "sarpullido",
             "picazón", "comezón", "prurito", "escozor",
@@ -151,7 +151,7 @@ MODULES = [
         "subsystems": ["ovarica", "oviductal", "uterina", "menstrual", "vaginal", "del_escroto", "falica", "testicular", "prostatica", "sexual", "mamaria"],
         "total_conflicts": 125,
         "source_file": "Manual_del_Módulo_8.txt",
-        "extract_from_line": 5035,
+        "extract_from_line": 5304,
         "keywords": [
             "ovario", "ovarios", "quiste ovárico", "síndrome de ovario poliquístico",
             "útero", "uterino", "mioma", "endometriosis", "matriz",
@@ -172,7 +172,7 @@ MODULES = [
         "subsystems": ["renal", "de_glomerulo", "de_vejiga"],
         "total_conflicts": 59,
         "source_file": "Manual_del_Módulo_9.txt",
-        "extract_from_line": 937,
+        "extract_from_line": 1040,
         "keywords": [
             "riñón", "renal", "insuficiencia renal", "cálculos renales", "piedras en el riñón",
             "vejiga", "cistitis", "infección urinaria", "infección de vías urinarias",
@@ -188,7 +188,7 @@ MODULES = [
         "subsystems": ["inmunologico", "esplenio", "amigdalino", "ganglionar", "timo", "leucocitario", "linfatico", "sida"],
         "total_conflicts": 73,
         "source_file": "Manual_del_Módulo_10.txt",
-        "extract_from_line": 1146,
+        "extract_from_line": 1264,
         "keywords": [
             "inmune", "inmunológico", "sistema inmune", "defensas bajas",
             "alergias", "alergia", "alérgico",
@@ -208,7 +208,7 @@ MODULES = [
         "subsystems": ["tumoral", "cefalica", "alzheimer", "hemiplejica", "hemorragica", "insomnio", "nerviosa", "ocular", "auditiva"],
         "total_conflicts": 130,
         "source_file": "Manual_del_Módulo_11.txt",
-        "extract_from_line": 2467,
+        "extract_from_line": 2704,
         "keywords": [
             "cerebro", "neurológico", "sistema nervioso", "nervio",
             "dolor de cabeza", "migraña", "cefalea", "jaqueca",

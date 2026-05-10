@@ -371,32 +371,46 @@
 
       <section class="tab-panel" id="tab-protocols">
 
-        <!-- ── Catálogo de Protocolos ── -->
+        <!-- ── Header + modo de navegación ── -->
         <section class="panel catalog-header-panel">
           <div class="panel-head">
             <h2>Catálogo de Protocolos Terapéuticos</h2>
-            <p>Aquí encontrarás todos los protocolos del diplomado organizados por categoría. Selecciona una categoría para explorar los protocolos disponibles y haz clic en cualquier protocolo para ver sus pasos completos.</p>
+            <p>Explora los protocolos del diplomado por tipo de técnica o por sistema corporal. Haz clic en cualquier protocolo o sistema para ver el contenido completo.</p>
+          </div>
+          <div class="catalog-mode-toggle">
+            <button class="catalog-mode-btn active" id="mode-btn-tecnicas" data-mode="tecnicas">Técnicas Terapéuticas</button>
+            <button class="catalog-mode-btn" id="mode-btn-sistemas" data-mode="sistemas">Por Sistema Corporal</button>
           </div>
           <div id="catalog-status" class="stack"></div>
         </section>
 
-        <div class="catalog-layout" id="catalog-layout">
-          <!-- sidebar de categorías -->
-          <nav class="catalog-sidebar" id="catalog-sidebar">
+        <!-- ── Modo: Técnicas Terapéuticas ── -->
+        <div class="catalog-layout" id="catalog-layout-tecnicas">
+          <nav class="catalog-sidebar">
             <p class="catalog-sidebar-title">Categorías</p>
             <div id="catalog-category-nav" class="catalog-category-nav"></div>
           </nav>
-
-          <!-- área de protocolos -->
-          <div class="catalog-main" id="catalog-main">
+          <div class="catalog-main">
             <div id="catalog-category-header" class="catalog-category-header hidden"></div>
             <div id="catalog-cards" class="catalog-cards"></div>
           </div>
         </div>
 
-        <!-- detalle de protocolo (overlay / panel expandido) -->
+        <!-- ── Modo: Por Sistema Corporal ── -->
+        <div class="catalog-layout hidden" id="catalog-layout-sistemas">
+          <nav class="catalog-sidebar">
+            <p class="catalog-sidebar-title">Sistemas</p>
+            <div id="catalog-systems-nav" class="catalog-category-nav"></div>
+          </nav>
+          <div class="catalog-main" id="catalog-systems-main">
+            <div id="catalog-system-header" class="catalog-category-header hidden"></div>
+            <div id="catalog-system-sections" class="catalog-system-sections"></div>
+          </div>
+        </div>
+
+        <!-- ── Overlay detalle (protocolos procedimentales) ── -->
         <div class="catalog-detail-overlay hidden" id="catalog-detail-overlay">
-          <div class="catalog-detail-panel" id="catalog-detail-panel">
+          <div class="catalog-detail-panel">
             <button class="catalog-detail-close" id="catalog-detail-close" aria-label="Cerrar">✕</button>
             <div id="catalog-detail-content"></div>
           </div>

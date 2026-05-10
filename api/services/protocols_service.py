@@ -499,6 +499,116 @@ def search_protocols(query: str, notas: str = "") -> Dict[str, Any]:
         }
 
 
+import re as _re
+
+_SYSTEM_SECTION_HEADERS: List[tuple] = [
+    (_re.compile(r'RASTREO\s+CONFLICTOL[ÓO]GICO', _re.I), "Protocolo de Rastreo Conflictológico"),
+    (_re.compile(r'RASTREO\s+MICROBIOL[ÓO]GICO', _re.I), "Rastreo Microbiológico (Código Patógeno)"),
+    (_re.compile(r'RASTREO\s+BIOM[AÁ]GNETICO(?!\s+GENERAL)', _re.I), "Rastreo Biomagnético"),
+    (_re.compile(r'RASTREO\s+HOLOBIOM[AÁ]GNETICO', _re.I), "Rastreo Holobiomagnético"),
+    (_re.compile(r'RASTREO\s+VIBRACIONAL', _re.I), "Rastreo Vibracional"),
+    (_re.compile(r'RASTREO\s+BIOENERG[ÉE]TICO', _re.I), "Rastreo Bioenergético"),
+    (_re.compile(r'SES[IÍ][OÓ]N\s+TERAP', _re.I), "Sesión Terapéutica"),
+    (_re.compile(r'RASTREO\s+ORG[AÁ]NICO', _re.I), "Rastreo Orgánico"),
+]
+
+_AUTHOR_LINE = _re.compile(r'ALEJANDRO\s+LAV[IÍ]N', _re.I)
+_PAGE_NUMBER = _re.compile(r'^\s*\d{1,3}\s*$')
+
+
+def _clean_system_text(text: str) -> str:
+    lines = text.splitlines()
+    cleaned = []
+    for line in lines:
+        if _AUTHOR_LINE.search(line):
+            continue
+        if _PAGE_NUMBER.match(line):
+            continue
+        cleaned.append(line.rstrip())
+    result = _re.sub(r'\n{4,}', '\n\n\n', '\n'.join(cleaned))
+    return result.strip()
+
+
+_SENTENCE_PREFIXES = _re.compile(r'^(NO|SI|SÍ|–|-|•|\?|¿|MS:|\()', _re.I)
+
+def _parse_system_sections(text: str) -> List[Dict[str, str]]:
+    clean = _clean_system_text(text)
+    lines = clean.splitlines()
+
+    # Find where each major section starts
+    breaks: List[tuple] = []  # (line_index, label)
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if not stripped or len(stripped) > 80:
+            continue
+        # Skip lines that are clearly part of a sentence (not a header)
+        if _SENTENCE_PREFIXES.match(stripped):
+            continue
+        for pattern, label in _SYSTEM_SECTION_HEADERS:
+            if pattern.search(stripped):
+                if not breaks or breaks[-1][1] != label:
+                    breaks.append((i, label))
+                break
+
+    if not breaks:
+        return [{"id": "conflictologia", "label": "Conflictología", "content": clean}]
+
+    sections = []
+    first_break = breaks[0][0]
+    if first_break > 0:
+        intro_text = '\n'.join(lines[:first_break]).strip()
+        if intro_text:
+            sections.append({"id": "resumen", "label": "Mapa de Conflictos", "content": intro_text})
+
+    for idx, (start, label) in enumerate(breaks):
+        end = breaks[idx + 1][0] if idx + 1 < len(breaks) else len(lines)
+        section_lines = lines[start:end]
+        content = '\n'.join(section_lines).strip()
+        section_id = _re.sub(r'\W+', '_', label.lower())[:30]
+        if content:
+            sections.append({"id": section_id, "label": label, "content": content})
+
+    return sections
+
+
+@lru_cache(maxsize=12)
+def _load_system_text(source_filename: str) -> str:
+    path = CONFLICTOLOGIA_DIR / source_filename
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def get_system_detail(system_id: str) -> Optional[Dict[str, Any]]:
+    index = _load_conflictologia_index()
+    system = next((s for s in index.get("systems", []) if s["id"] == system_id), None)
+    if not system:
+        return None
+    raw_text = _load_system_text(system["source_file"])
+    sections = _parse_system_sections(raw_text) if raw_text else []
+    return {
+        "id": system["id"],
+        "nombre": system["nombre"],
+        "subsystems": system.get("subsystems", []),
+        "total_conflicts": system.get("total_conflicts"),
+        "keywords": system.get("keywords", []),
+        "sections": sections,
+    }
+
+
+def get_systems_list() -> Dict[str, Any]:
+    index = _load_conflictologia_index()
+    systems = []
+    for s in index.get("systems", []):
+        systems.append({
+            "id": s["id"],
+            "nombre": s["nombre"],
+            "subsystems": s.get("subsystems", []),
+            "total_conflicts": s.get("total_conflicts"),
+        })
+    return {"systems": systems}
+
+
 _CATEGORY_META: Dict[str, Dict[str, str]] = {
     "transgeneracional": {
         "label": "Transgeneracional",

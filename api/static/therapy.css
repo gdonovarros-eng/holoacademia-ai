@@ -663,6 +663,37 @@ textarea {
 
 /* ── Catálogo de Protocolos ── */
 
+.catalog-mode-toggle {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.catalog-mode-btn {
+  padding: 9px 22px;
+  border-radius: 24px;
+  border: 2px solid var(--line-strong);
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.catalog-mode-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.catalog-mode-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
 .catalog-header-panel {
   margin-bottom: 0;
 }
@@ -993,6 +1024,77 @@ textarea {
   font-size: 0.78rem;
   color: var(--muted);
   font-style: italic;
+}
+
+/* ── Sistema Corporal: secciones acordeón ── */
+
+.catalog-system-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.system-section-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--panel-strong);
+}
+
+.system-section-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.system-section-toggle:hover {
+  background: var(--accent-soft);
+}
+
+.system-section-toggle.open {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+}
+
+.system-section-toggle .toggle-chevron {
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.system-section-toggle.open .toggle-chevron {
+  transform: rotate(180deg);
+}
+
+.system-section-body {
+  display: none;
+  padding: 0 18px 18px;
+  border-top: 1px solid var(--line);
+}
+
+.system-section-body.open {
+  display: block;
+}
+
+.system-section-text {
+  white-space: pre-wrap;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  margin: 14px 0 0;
+  overflow-x: auto;
 }
 
 @media (max-width: 900px) {

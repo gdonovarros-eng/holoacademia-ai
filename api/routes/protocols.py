@@ -12,7 +12,13 @@ from api.schemas.protocols import (
     ProtocolSearchRequest,
     ProtocolSearchResponse,
 )
-from api.services.protocols_service import get_catalog, run_protocol_guide, search_protocols
+from api.services.protocols_service import (
+    get_catalog,
+    get_system_detail,
+    get_systems_list,
+    run_protocol_guide,
+    search_protocols,
+)
 
 
 logger = logging.getLogger(__name__)
@@ -23,6 +29,20 @@ router = APIRouter(prefix="/protocols", tags=["Protocols"])
 @router.get("/catalog")
 def protocol_catalog() -> JSONResponse:
     return JSONResponse(content=get_catalog())
+
+
+@router.get("/systems")
+def protocol_systems() -> JSONResponse:
+    return JSONResponse(content=get_systems_list())
+
+
+@router.get("/systems/{system_id}")
+def protocol_system_detail(system_id: str) -> JSONResponse:
+    data = get_system_detail(system_id)
+    if not data:
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail=f"Sistema '{system_id}' no encontrado")
+    return JSONResponse(content=data)
 
 
 @router.post("/guide", response_model=ProtocolGuideResponse)
