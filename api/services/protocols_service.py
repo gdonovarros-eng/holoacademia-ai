@@ -13,8 +13,8 @@ logger = logging.getLogger(__name__)
 BASE_DIR = Path(__file__).resolve().parents[2]
 DEFAULT_COURSE_SLUG = "course_holobiomagnetismo_2021"
 
-CONFLICTOLOGIA_INDEX_PATH = BASE_DIR / "data" / "conflictologia" / "index.json"
-CONFLICTOLOGIA_SOURCES_DIR = BASE_DIR / "data" / "processed_library" / "Diplomados" / "diplomado-terapia-holistica-1" / "sources"
+CONFLICTOLOGIA_DIR = BASE_DIR / "data" / "conflictologia"
+CONFLICTOLOGIA_INDEX_PATH = CONFLICTOLOGIA_DIR / "index.json"
 PROCEDURAL_PROTOCOLS_PATH = BASE_DIR / "data" / "procedural_protocols_db.json"
 
 
@@ -292,14 +292,10 @@ def _detect_body_system(query: str) -> Optional[Dict[str, Any]]:
 
 
 def _load_conflictologia_text(source_filename: str) -> str:
-    path = CONFLICTOLOGIA_SOURCES_DIR / source_filename
-    if not path.exists():
-        # Fallback: try knowledge_units copy
-        alt = BASE_DIR / "data" / "knowledge_units" / "course_terapia_holistica_1" / "01_sources" / source_filename
-        if alt.exists():
-            return alt.read_text(encoding="utf-8")
-        return ""
-    return path.read_text(encoding="utf-8")
+    path = CONFLICTOLOGIA_DIR / source_filename
+    if path.exists():
+        return path.read_text(encoding="utf-8")
+    return ""
 
 
 def _build_llm_client():
