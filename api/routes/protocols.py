@@ -4,6 +4,7 @@ import logging
 import time
 
 from fastapi import APIRouter
+from fastapi.responses import JSONResponse
 
 from api.schemas.protocols import (
     ProtocolGuideRequest,
@@ -11,12 +12,17 @@ from api.schemas.protocols import (
     ProtocolSearchRequest,
     ProtocolSearchResponse,
 )
-from api.services.protocols_service import run_protocol_guide, search_protocols
+from api.services.protocols_service import get_catalog, run_protocol_guide, search_protocols
 
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/protocols", tags=["Protocols"])
+
+
+@router.get("/catalog")
+def protocol_catalog() -> JSONResponse:
+    return JSONResponse(content=get_catalog())
 
 
 @router.post("/guide", response_model=ProtocolGuideResponse)

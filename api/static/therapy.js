@@ -773,4 +773,167 @@ addCollectionItem(foundPairsList, "found-pair-template");
 loadAcademicHistory();
 renderAcademicChat();
 setStatus(protocolStatus, "Busca un protocolo por nombre o id para ver la guía estructurada.");
+
+// ── Catálogo de Protocolos ──────────────────────────────────────────────────
+
+let catalogData = null;
+let activeCategoryId = null;
+
+async function loadCatalog() {
+  const statusEl = document.getElementById("catalog-status");
+  if (catalogData) return; // already loaded
+
+  try {
+    if (statusEl) setStatus(statusEl, "Cargando catálogo…");
+    const res = await fetch("/protocols/catalog");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    catalogData = await res.json();
+    if (statusEl) statusEl.innerHTML = "";
+    renderCatalogNav();
+    if (catalogData.categories?.length) {
+      selectCatalogCategory(catalogData.categories[0].id);
+    }
+  } catch (err) {
+    if (statusEl) setStatus(statusEl, "No se pudo cargar el catálogo. Recarga la página.", true);
+  }
+}
+
+function renderCatalogNav() {
+  const nav = document.getElementById("catalog-category-nav");
+  if (!nav || !catalogData) return;
+  nav.innerHTML = catalogData.categories.map((cat) => `
+    <button class="catalog-cat-btn" data-cat="${escapeHtml(cat.id)}">
+      <span class="cat-icon">${escapeHtml(cat.icono || "")}</span>
+      <span>${escapeHtml(cat.label)}</span>
+      <span class="catalog-cat-count">${cat.protocolos.length}</span>
+    </button>
+  `).join("");
+
+  nav.querySelectorAll(".catalog-cat-btn").forEach((btn) => {
+    btn.addEventListener("click", () => selectCatalogCategory(btn.dataset.cat));
+  });
+}
+
+function selectCatalogCategory(catId) {
+  activeCategoryId = catId;
+
+  document.querySelectorAll(".catalog-cat-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.cat === catId);
+  });
+
+  const cat = catalogData?.categories?.find((c) => c.id === catId);
+  if (!cat) return;
+
+  const header = document.getElementById("catalog-category-header");
+  if (header) {
+    header.classList.remove("hidden");
+    header.innerHTML = `
+      <h3>${escapeHtml(cat.icono || "")} ${escapeHtml(cat.label)}</h3>
+      <p>${escapeHtml(cat.descripcion || "")}</p>
+    `;
+  }
+
+  const cards = document.getElementById("catalog-cards");
+  if (!cards) return;
+  cards.innerHTML = cat.protocolos.map((p) => {
+    const stepCount = p.pasos?.length ?? 0;
+    const tags = (p.cuando_usarlo || []).slice(0, 2).map((t) =>
+      `<span class="card-tag">${escapeHtml(t)}</span>`
+    ).join("");
+    return `
+      <article class="catalog-card" data-pid="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="Ver ${escapeHtml(p.nombre)}">
+        <h4>${escapeHtml(p.nombre)}</h4>
+        <p class="card-objetivo">${escapeHtml(p.objetivo || "")}</p>
+        ${tags ? `<div class="card-tags">${tags}</div>` : ""}
+        <p class="card-steps-count">${stepCount} paso${stepCount !== 1 ? "s" : ""}</p>
+      </article>
+    `;
+  }).join("");
+
+  cards.querySelectorAll(".catalog-card").forEach((card) => {
+    card.addEventListener("click", () => openProtocolDetail(card.dataset.pid));
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") openProtocolDetail(card.dataset.pid);
+    });
+  });
+}
+
+function openProtocolDetail(protocolId) {
+  const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
+  const p = all.find((x) => x.id === protocolId);
+  if (!p) return;
+
+  const catMeta = catalogData?.categories?.find((c) =>
+    c.protocolos.some((x) => x.id === protocolId)
+  );
+
+  const stepsHtml = (p.pasos || []).length
+    ? `<ol class="catalog-detail-steps">
+        ${p.pasos.map((step) => `
+          <li>
+            <div class="step-body">
+              <strong>${escapeHtml(step.titulo)}</strong>
+              <p>${escapeHtml(step.instruccion)}</p>
+              ${(step.notas || []).map((n) => `<p class="step-nota">${escapeHtml(n)}</p>`).join("")}
+            </div>
+          </li>`).join("")}
+       </ol>`
+    : `<p class="chat-meta">Sin pasos registrados.</p>`;
+
+  const cuandoHtml = (p.cuando_usarlo || []).length
+    ? `<ul class="detail-list">${p.cuando_usarlo.map((u) => `<li>${escapeHtml(u)}</li>`).join("")}</ul>`
+    : "";
+
+  const prereqHtml = (p.prerequisitos || []).length
+    ? `<ul class="detail-list">${p.prerequisitos.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>`
+    : "";
+
+  const obsHtml = (p.observaciones || []).length
+    ? `<ul class="detail-list">${p.observaciones.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}</ul>`
+    : "";
+
+  const content = document.getElementById("catalog-detail-content");
+  if (content) {
+    content.innerHTML = `
+      <h2>${escapeHtml(p.nombre)}</h2>
+      ${catMeta ? `<span class="detail-cat-badge">${escapeHtml(catMeta.icono || "")} ${escapeHtml(catMeta.label)}</span>` : ""}
+
+      <p class="detail-section-label">Objetivo</p>
+      <p class="detail-objetivo">${escapeHtml(p.objetivo || "")}</p>
+
+      ${cuandoHtml ? `<p class="detail-section-label">Cuándo usarlo</p>${cuandoHtml}` : ""}
+      ${prereqHtml ? `<p class="detail-section-label">Prerequisitos</p>${prereqHtml}` : ""}
+
+      <p class="detail-section-label">Pasos</p>
+      ${stepsHtml}
+
+      ${obsHtml ? `<p class="detail-section-label">Observaciones</p>${obsHtml}` : ""}
+    `;
+  }
+
+  const overlay = document.getElementById("catalog-detail-overlay");
+  overlay?.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+function closeCatalogDetail() {
+  const overlay = document.getElementById("catalog-detail-overlay");
+  overlay?.classList.add("hidden");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("catalog-detail-close")?.addEventListener("click", closeCatalogDetail);
+document.getElementById("catalog-detail-overlay")?.addEventListener("click", (e) => {
+  if (e.target === e.currentTarget) closeCatalogDetail();
+});
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeCatalogDetail();
+});
+
+// Cargar catálogo cuando el alumno abre la pestaña de protocolos
+tabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    if (tab.dataset.tab === "protocols") loadCatalog();
+  });
+});
 setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");

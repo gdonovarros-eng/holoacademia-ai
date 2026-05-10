@@ -371,82 +371,36 @@
 
       <section class="tab-panel" id="tab-protocols">
 
-        <!-- ── Menú de Protocolos: búsqueda por síntoma ── -->
-        <section class="panel">
+        <!-- ── Catálogo de Protocolos ── -->
+        <section class="panel catalog-header-panel">
           <div class="panel-head">
-            <h2>Menú de Protocolos</h2>
-            <p>Describe el síntoma o problema del consultante y el sistema detectará los conflictos psicosomáticos implicados y el protocolo terapéutico más adecuado.</p>
+            <h2>Catálogo de Protocolos Terapéuticos</h2>
+            <p>Aquí encontrarás todos los protocolos del diplomado organizados por categoría. Selecciona una categoría para explorar los protocolos disponibles y haz clic en cualquier protocolo para ver sus pasos completos.</p>
           </div>
-          <div class="collection-block">
-            <div class="grid one">
-              <label>
-                Síntoma o problema del consultante
-                <textarea id="protocol-search-query" rows="3" placeholder="Ej: Mi consultante tiene asma crónica desde los 8 años, con crisis frecuentes de noche…"></textarea>
-              </label>
-            </div>
-            <div class="grid one">
-              <label>
-                Notas adicionales del caso (opcional)
-                <textarea id="protocol-search-notes" rows="2" placeholder="Contexto familiar, emocional, o cualquier dato relevante…"></textarea>
-              </label>
-            </div>
-            <div class="actions">
-              <button type="button" class="primary-btn" id="search-protocols-btn">Buscar protocolos</button>
-            </div>
-            <div id="protocol-search-status" class="stack"></div>
-          </div>
+          <div id="catalog-status" class="stack"></div>
         </section>
 
-        <section class="panel hidden" id="protocol-search-panel">
-          <div class="panel-head">
-            <h2>Conflictos y protocolo encontrados</h2>
-          </div>
-          <div id="protocol-search-output" class="stack"></div>
-        </section>
+        <div class="catalog-layout" id="catalog-layout">
+          <!-- sidebar de categorías -->
+          <nav class="catalog-sidebar" id="catalog-sidebar">
+            <p class="catalog-sidebar-title">Categorías</p>
+            <div id="catalog-category-nav" class="catalog-category-nav"></div>
+          </nav>
 
-        <!-- ── Búsqueda por nombre / id (existente) ── -->
-        <section class="panel">
-          <div class="panel-head">
-            <h2>Guía de Protocolos</h2>
-            <p>Busca un protocolo por nombre o id y recibe una guía clara, estructurada y ejecutable.</p>
+          <!-- área de protocolos -->
+          <div class="catalog-main" id="catalog-main">
+            <div id="catalog-category-header" class="catalog-category-header hidden"></div>
+            <div id="catalog-cards" class="catalog-cards"></div>
           </div>
-          <form id="protocol-form" class="therapy-form">
-            <section class="collection-block">
-              <div class="panel-head">
-                <h3>Búsqueda del protocolo</h3>
-                <p>Consulta el endpoint <code>POST /protocols/guide</code> por nombre o por id. Puedes agregar un contexto breve si ayuda a la consulta.</p>
-              </div>
-              <div class="grid two">
-                <label>
-                  Nombre del protocolo
-                  <input type="text" id="protocol-name" placeholder="Ej. Entrevista inicial de rastreo" />
-                </label>
-                <label>
-                  ID del protocolo
-                  <input type="text" id="protocol-id" placeholder="Ej. entrevista_inicial_de_rastreo" />
-                </label>
-              </div>
-              <div class="grid one">
-                <label>
-                  Contexto del caso opcional
-                  <textarea id="protocol-case-context" rows="4" placeholder="Opcional. Puedes pegar una breve nota o contexto del caso."></textarea>
-                </label>
-              </div>
-              <div class="actions">
-                <button type="button" class="primary-btn" id="ask-protocol">Consultar protocolo</button>
-              </div>
-              <div id="protocol-status" class="stack"></div>
-            </section>
-          </form>
-        </section>
+        </div>
 
-        <section class="panel" id="protocol-panel">
-          <div class="panel-head">
-            <h2>Resultado de la Guía de Protocolos</h2>
-            <p>Aquí verás el objetivo, cuándo usarlo, los prerequisitos, los pasos y las advertencias del protocolo consultado.</p>
+        <!-- detalle de protocolo (overlay / panel expandido) -->
+        <div class="catalog-detail-overlay hidden" id="catalog-detail-overlay">
+          <div class="catalog-detail-panel" id="catalog-detail-panel">
+            <button class="catalog-detail-close" id="catalog-detail-close" aria-label="Cerrar">✕</button>
+            <div id="catalog-detail-content"></div>
           </div>
-          <div id="protocol-output" class="stack"></div>
-        </section>
+        </div>
 
       </section><!-- /tab-protocols -->
     </main>

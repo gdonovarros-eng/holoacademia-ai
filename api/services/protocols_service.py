@@ -497,3 +497,72 @@ def search_protocols(query: str, notas: str = "") -> Dict[str, Any]:
             "protocolo_sugerido": None,
             "razon_protocolo": None,
         }
+
+
+_CATEGORY_META: Dict[str, Dict[str, str]] = {
+    "transgeneracional": {
+        "label": "Transgeneracional",
+        "descripcion": "Protocolos para liberar memorias, patrones y traumas heredados del árbol genealógico. Se trabaja sobre el campo mórfico familiar para sanar lo que se transmite de generación en generación.",
+        "icono": "🌳",
+    },
+    "bioenergético": {
+        "label": "Bioenergético",
+        "descripcion": "Protocolos para limpiar y restaurar el campo energético del consultante: miedos, fobias, traumas, corazas, cuerdas, memorias celulares y presencias negativas.",
+        "icono": "⚡",
+    },
+    "psicoemocional": {
+        "label": "Psicoemocional",
+        "descripcion": "Protocolos para reprocesar vivencias emocionales de infancia y adolescencia usando hipnosis, EFT y comunicación simbólica con figuras parentales.",
+        "icono": "💛",
+    },
+    "rastreo": {
+        "label": "Rastreo y Diagnóstico",
+        "descripcion": "Herramientas diagnósticas para identificar conflictos activos por sistema orgánico, evaluar el porcentaje de armonía corporal y preparar la sesión de rastreo.",
+        "icono": "🔍",
+    },
+    "sesion": {
+        "label": "Estructura de Sesión",
+        "descripcion": "Protocolo completo de una sesión holística de principio a fin: las tres fases esenciales que ordenan el trabajo terapéutico.",
+        "icono": "📋",
+    },
+}
+
+_CATEGORY_ORDER = ["sesion", "rastreo", "transgeneracional", "bioenergético", "psicoemocional"]
+
+
+def get_catalog() -> Dict[str, Any]:
+    protocols = _load_procedural_protocols()
+    grouped: Dict[str, List[Dict]] = {}
+    for p in protocols:
+        cat = p.get("categoria", "otros")
+        grouped.setdefault(cat, []).append(p)
+
+    categories = []
+    seen = set()
+    for cat_id in _CATEGORY_ORDER:
+        if cat_id in grouped:
+            meta = _CATEGORY_META.get(cat_id, {"label": cat_id, "descripcion": "", "icono": "📌"})
+            categories.append({
+                "id": cat_id,
+                "label": meta["label"],
+                "descripcion": meta["descripcion"],
+                "icono": meta["icono"],
+                "protocolos": grouped[cat_id],
+            })
+            seen.add(cat_id)
+    for cat_id, protos in grouped.items():
+        if cat_id not in seen:
+            meta = _CATEGORY_META.get(cat_id, {"label": cat_id, "descripcion": "", "icono": "📌"})
+            categories.append({
+                "id": cat_id,
+                "label": meta["label"],
+                "descripcion": meta["descripcion"],
+                "icono": meta["icono"],
+                "protocolos": protos,
+            })
+
+    return {
+        "version": "3.0",
+        "total": len(protocols),
+        "categories": categories,
+    }
