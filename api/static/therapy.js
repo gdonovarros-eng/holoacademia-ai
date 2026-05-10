@@ -772,7 +772,7 @@ addCollectionItem(foundPairsList, "found-pair-template");
 
 loadAcademicHistory();
 renderAcademicChat();
-setStatus(protocolStatus, "Busca un protocolo por nombre o id para ver la guía estructurada.");
+if (protocolStatus) setStatus(protocolStatus, "Busca un protocolo por nombre o id para ver la guía estructurada.");
 
 // ── Catálogo de Protocolos ──────────────────────────────────────────────────
 
@@ -939,4 +939,4 @@ tabs.forEach((tab) => {
 
 // Pre-cargar el catálogo siempre para evitar depender del clic
 loadCatalog();
-setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
+if (protocolOutput) setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
