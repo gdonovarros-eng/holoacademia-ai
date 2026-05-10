@@ -1,12 +1,16 @@
 {
-  "version": "1.0",
+  "version": "2.0",
   "source": "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
-  "total": 4,
+  "total": 16,
   "protocols": [
     {
       "id": "eft_transgeneracional",
       "nombre": "EFT Transgeneracional",
-      "aliases": ["EFT PROG", "EFT transgen", "transgeneracional"],
+      "aliases": [
+        "EFT PROG",
+        "EFT transgen",
+        "transgeneracional"
+      ],
       "categoria": "transgeneracional",
       "objetivo": "Liberar memorias dolorosas de ancestros que se repiten en el consultante mediante EFT aplicado al campo mórfico transgeneracional.",
       "cuando_usarlo": [
@@ -31,13 +35,17 @@
           "orden": 2,
           "titulo": "Sintonizar con la memoria ancestral",
           "instruccion": "Sintonizo conscientemente con la memoria dolorosa de ancestro X, con problemática X, en contexto X, a la edad X el día X del mes X. (Sintonizar en consciencia) (Guardar en circuito).",
-          "notas": ["Especificar el ancestro, la problemática y el contexto lo más claramente posible"]
+          "notas": [
+            "Especificar el ancestro, la problemática y el contexto lo más claramente posible"
+          ]
         },
         {
           "orden": 3,
           "titulo": "Aplicar EFT con frase de liberación",
           "instruccion": "(Aplicando EFT) Aunque has tenido X problema, vivido en X emoción con X holograma, en este momento se libera tu sufrimiento, en el nombre de nuestra memoria genealógica, tu historia y la mía son libres de esta carga, te amas y te aceptas completa y profundamente.",
-          "notas": ["Sustituir X con los datos específicos del caso"]
+          "notas": [
+            "Sustituir X con los datos específicos del caso"
+          ]
         },
         {
           "orden": 4,
@@ -49,7 +57,9 @@
           "orden": 5,
           "titulo": "Verificar con test muscular",
           "instruccion": "\"Márcame cuando esta memoria dolorosa se vuelva consciente y se desactive.\" (Checar con test muscular).",
-          "notas": ["Verificar que la memoria quedó desactivada antes de cerrar"]
+          "notas": [
+            "Verificar que la memoria quedó desactivada antes de cerrar"
+          ]
         }
       ],
       "frases_sanadoras": [
@@ -68,7 +78,11 @@
     {
       "id": "inclusion_excluidos",
       "nombre": "Protocolo de Inclusión para Excluídos",
-      "aliases": ["inclusion", "excluidos", "protocolo inclusion"],
+      "aliases": [
+        "inclusion",
+        "excluidos",
+        "protocolo inclusion"
+      ],
       "categoria": "transgeneracional",
       "objetivo": "Incluir simbólicamente a un ancestro excluido del sistema familiar, liberando al consultante del peso de repetir su destino.",
       "cuando_usarlo": [
@@ -92,7 +106,9 @@
           "orden": 1,
           "titulo": "Verificar exclusión",
           "instruccion": "Buscar exclusión: ¿Este síntoma/ciclo/historia/drama tiene memoria de exclusión? SI/NO.",
-          "notas": ["Usar test muscular o rastreo"]
+          "notas": [
+            "Usar test muscular o rastreo"
+          ]
         },
         {
           "orden": 2,
@@ -122,7 +138,9 @@
           "orden": 6,
           "titulo": "Decretar frases de inclusión",
           "instruccion": "Conectar conscientemente con el ancestro excluido y decretar: \"Ancestro X. Aquí y Ahora te veo. Tienes un lugar en mi corazón y tu espacio correspondiente en ésta familia que también es tuya. A nombre de éste árbol te digo que nosotros también estamos en tu corazón. Hasta ahora he convertido tu destino en el mío. Y decido honrarte de forma diferente (Intuir ritual de honor). Ahora elijo mi propia historia para que tu dolor no carezca de sentido. Ahora que estás de regreso en esta familia, agradezco tu fuerza, tu aprendizaje y tu evolución. Eres parte fundamental de éste árbol familiar. Te honramos, reconocemos y reivindicamos en tu lugar, que siempre ha sido tuyo. Eres reconocido. En el nombre de toda nuestra familia, agradezco tu historia. Tu verdad ahora es conocida.\"",
-          "notas": ["Sustituir 'Ancestro X' con el ancestro identificado"]
+          "notas": [
+            "Sustituir 'Ancestro X' con el ancestro identificado"
+          ]
         }
       ],
       "observaciones": [
@@ -133,7 +151,11 @@
     {
       "id": "extraccion_recursos",
       "nombre": "Protocolo de Extracción de Recursos",
-      "aliases": ["extraccion de recursos", "recursos ancestrales", "recurso genealogico"],
+      "aliases": [
+        "extraccion de recursos",
+        "recursos ancestrales",
+        "recurso genealogico"
+      ],
       "categoria": "transgeneracional",
       "objetivo": "Activar un recurso, talento o registro de éxito almacenado en el árbol genealógico para potenciar al consultante.",
       "cuando_usarlo": [
@@ -156,7 +178,9 @@
           "orden": 1,
           "titulo": "Verificar existencia del recurso",
           "instruccion": "¿Hay un recurso histórico en éste árbol de solución a éste conflicto? SI/NO. O: ¿Existe un registro de gloria en éste árbol para potenciar/mejorar/perfeccionar ésta habilidad/talento/proyecto? SI/NO. O: ¿Existe una mujer/hombre con éxito en X meta/objetivo/proyecto? SI/NO.",
-          "notas": ["Usar la pregunta que más aplique al caso"]
+          "notas": [
+            "Usar la pregunta que más aplique al caso"
+          ]
         },
         {
           "orden": 2,
@@ -192,7 +216,9 @@
           "orden": 7,
           "titulo": "Activar el recurso",
           "instruccion": "\"Memoria/recurso/registro de ancestr@ de línea M/P de X generación, a los X años el X mes de X día, almacenado en X cromosoma, actívate en forma de recurso, hoy lo necesito. Cuando esté activo márcame con una señal corporal.\" (Tomar pies/dedos/test muscular).",
-          "notas": ["Esperar la señal corporal de confirmación"]
+          "notas": [
+            "Esperar la señal corporal de confirmación"
+          ]
         }
       ],
       "observaciones": [
@@ -203,7 +229,12 @@
     {
       "id": "metodo_onirologico",
       "nombre": "Método Onirológico",
-      "aliases": ["onirologico", "onirológico", "sueños ancestrales", "metodo del sueno"],
+      "aliases": [
+        "onirologico",
+        "onirológico",
+        "sueños ancestrales",
+        "metodo del sueno"
+      ],
       "categoria": "transgeneracional",
       "objetivo": "Acceder a información del inconsciente familiar a través de los sueños, solicitando la presencia de ancestros implicados en el conflicto del consultante.",
       "cuando_usarlo": [
@@ -226,19 +257,640 @@
           "orden": 2,
           "titulo": "Solicitar presencia ancestral en sueños",
           "instruccion": "Dirigirse a la mente supraconsciente: \"Durante el sueño de esta noche, solicito con respeto, amor, honor y reconocimiento la presencia psíquica de los ancestros implicados en mi problema X, en el nombre de la libertad y la evolución pido me cuenten la historia oculta, registrada en el inconsciente familiar que busca solución a través de mí. Con el corazón pido la luz de su verdad en la oscuridad de nuestro dolor. Gracias por revelarme sus secretos, aquí y ahora es el momento de volver consciente lo inconsciente. Prometo que su historia se vuelve aprendizaje para el florecimiento de nuestro árbol, a través de su memoria nuestro futuro se libera.\"",
-          "notas": ["Hacer esta invocación antes de dormir"]
+          "notas": [
+            "Hacer esta invocación antes de dormir"
+          ]
         },
         {
           "orden": 3,
           "titulo": "Registrar y sublimar",
           "instruccion": "Registrar las impresiones recibidas por la mañana. Sublimar la experiencia en la siguiente sesión.",
-          "notas": ["El consultante debe tener papel y pluma junto a la cama para registrar al despertar"]
+          "notas": [
+            "El consultante debe tener papel y pluma junto a la cama para registrar al despertar"
+          ]
         }
       ],
       "observaciones": [
         "Es un protocolo para trabajar entre sesiones, no en la sesión misma",
         "La experiencia onirológica puede ser simbólica, no literal"
       ]
+    },
+    {
+      "id": "preparacion_subconsciente",
+      "nombre": "Preparación para Comunicación con el Subconsciente",
+      "aliases": [
+        "preparacion",
+        "preparacion TM",
+        "preparacion rastreo",
+        "ganchos de cook"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 1",
+      "objetivo": "Preparar al terapeuta o consultante para que el test muscular funcione con precisión, eliminando interferencias antes de cualquier rastreo.",
+      "cuando_usarlo": [
+        "Al inicio de cualquier sesión que incluya test muscular",
+        "Antes de rastrear conflictos, pares o emociones",
+        "Cuando hay errores frecuentes o inconsistencias en el test muscular"
+      ],
+      "prerequisitos": [
+        "Conocimiento básico de test muscular"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Ganchos de Cook",
+          "instruccion": "Entrelazar brazos y piernas (posición de Cook). Luego alinear piernas y brazos juntos y unir yemas de los dedos.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Marcha Cruzada",
+          "instruccion": "Unir extremidad superior derecha con inferior izquierda y viceversa, a la altura de la línea media del cuerpo.",
+          "notas": [
+            "Sincroniza hemisferios cerebrales"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Switching (eliminar inversión neurológica)",
+          "instruccion": "a) Estimular REN 24 y DU 28 (debajo y arriba de labios), la otra mano al ombligo, y viceversa. b) Estimular R27 izquierdo y derecho (huecos de las clavículas), la otra mano al ombligo, y viceversa. c) Estimular DU 3 (sacro), la otra mano al ombligo, y viceversa.",
+          "notas": [
+            "Corrige el switching neurológico que invierte las respuestas del TM"
+          ]
+        },
+        {
+          "orden": 4,
+          "titulo": "Estimular el flujo vertical de Qi",
+          "instruccion": "Combinar: a) Movimiento (barrer verticalmente sobre el meridiano REN). b) Respiración: mover la mano mientras se inhala. c) Intención: la energía sigue al pensamiento.",
+          "notas": []
+        },
+        {
+          "orden": 5,
+          "titulo": "Hidratar el cuerpo (opcional)",
+          "instruccion": "a) Mantener agua en la boca 5 segundos. b) Repetir con ojos cerrados 5 segundos más.",
+          "notas": [
+            "La deshidratación puede afectar la conductividad y dar lecturas falsas"
+          ]
+        },
+        {
+          "orden": 6,
+          "titulo": "Calibrar SÍ y NO",
+          "instruccion": "MS (mente subconsciente): 'Manifiéstame claramente un NO' (buscar ausencia de respuesta/músculo débil). Luego: 'Manifiéstame claramente un SÍ' (buscar acortamiento/músculo fuerte). Ajustar postura si la respuesta no es clara.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Hacer esta preparación siempre antes de rastrear para evitar resultados falsos",
+        "Las interferencias más comunes son: cansancio, preguntas mal formuladas, y disturbios del aura"
+      ]
+    },
+    {
+      "id": "protocolo_miedos",
+      "nombre": "Protocolo para Trabajar Miedos",
+      "aliases": [
+        "miedos",
+        "miedo",
+        "nudo psorico",
+        "psoric",
+        "miedo primario"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 2",
+      "objetivo": "Identificar y eliminar miedos conscientes e inconscientes asociados a un conflicto o síntoma usando test muscular e imán.",
+      "cuando_usarlo": [
+        "Cuando el consultante reporta miedo, angustia o evitación",
+        "Cuando el rastreo indica miedos asociados al conflicto principal",
+        "Cuando hay bloqueos emocionales que impiden el avance terapéutico"
+      ],
+      "prerequisitos": [
+        "Preparación para comunicación subconsciente completada",
+        "Objetivo claro definido"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia de miedo",
+          "instruccion": "Preguntar con test muscular: '¿Tengo algún tipo de miedo asociado con el conflicto X o con el objetivo X?'",
+          "notas": [
+            "Sustituir X con el conflicto o síntoma específico"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Identificar tipo de miedo",
+          "instruccion": "Si la respuesta es afirmativa, preguntar: ¿Es un miedo común? ¿Es un nudo psórico? ¿Es un miedo primario? ¿Es un miedo a la oscuridad / a animales / a lo desconocido / etc.?",
+          "notas": [
+            "Ir preguntando categorías hasta localizar el tipo exacto"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Eliminar el miedo",
+          "instruccion": "Una vez identificado el miedo, aplicar el comando: 'Me libero consciente y subconscientemente del miedo / nudo psórico / miedo primario [según sea el caso]'. Pasar el imán 10 veces.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Verificar eliminación y días",
+          "instruccion": "Verificar con test muscular si el miedo fue eliminado. Si no, repetir el paso 3. Preguntar: '¿Debo eliminar este miedo por más días?' y '¿Tiene alguna emoción asociada pendiente?'",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Trabajar siempre con un objetivo definido antes de buscar miedos",
+        "Es frecuente encontrar emociones secundarias asociadas al miedo; tratar cada una por separado"
+      ]
+    },
+    {
+      "id": "protocolo_fobias",
+      "nombre": "Protocolo para Trabajar Fobias",
+      "aliases": [
+        "fobia",
+        "fobias",
+        "temor irracional",
+        "agorafobia",
+        "fobia social"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 2",
+      "objetivo": "Eliminar una fobia detectada con test muscular, incluyendo emociones, traumas o miedos asociados, y anclar la creencia contraria.",
+      "cuando_usarlo": [
+        "Cuando el consultante tiene un miedo intenso, irracional y desproporcionado ante algo específico",
+        "Cuando hay bloqueo emocional severo vinculado a una situación, animal, lugar o persona"
+      ],
+      "prerequisitos": [
+        "Preparación para comunicación subconsciente",
+        "Objetivo definido o fobia ya identificada"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar fobia con test muscular",
+          "instruccion": "Preguntar con TM: '¿Tengo alguna fobia asociada con el conflicto X o con el objetivo X?' También se puede trabajar sin objetivo si la fobia ya está identificada.",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Buscar emociones, miedos o traumas asociados",
+          "instruccion": "Una vez detectada la fobia, preguntar con TM si tiene alguna emoción, miedo inconsciente o trauma asociado. Identificar cada uno.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Eliminar emoción, trauma o miedo",
+          "instruccion": "Proceder a eliminar cada elemento encontrado: 'Me libero consciente y subconscientemente de la emoción X / trauma X / miedo X'. Pasar el imán.",
+          "notas": [
+            "Tratar cada emoción/trauma de forma individual"
+          ]
+        },
+        {
+          "orden": 4,
+          "titulo": "Grabar creencia contraria",
+          "instruccion": "Una vez eliminada la emoción/trauma/miedo, grabar inmediatamente la creencia contraria 10 veces. Ejemplo: si la fobia es a las alturas, grabar: 'Me siento seguro y confiado en las alturas'. Repetir por 3 días.",
+          "notas": [
+            "La creencia debe ser positiva, presente y específica"
+          ]
+        }
+      ],
+      "observaciones": [
+        "La diferencia entre miedo y fobia es la intensidad e irracionalidad",
+        "Anclar la creencia contraria es esencial para que no regrese la fobia"
+      ]
+    },
+    {
+      "id": "liberacion_traumas",
+      "nombre": "Técnica para Liberar Traumas",
+      "aliases": [
+        "trauma",
+        "traumas",
+        "movimiento ocular",
+        "EMDR",
+        "liberacion trauma"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 2",
+      "objetivo": "Liberar traumas emocionales identificados usando movimiento ocular en zigzag con comando de liberación, verificando con test muscular.",
+      "cuando_usarlo": [
+        "Cuando el rastreo identifica un trauma emocional específico",
+        "Cuando el consultante reporta haber vivido eventos abrumadores o dolorosos que persisten",
+        "Como paso dentro del protocolo de fobias o estrés postraumático"
+      ],
+      "prerequisitos": [
+        "Trauma previamente identificado con TM"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Aplicar técnica de movimiento ocular con comando",
+          "instruccion": "Una vez identificado el trauma, pedir al consultante que haga el movimiento ocular en 'zig-zag' (de izquierda a derecha) mientras repite el comando: 'Me libero ahora y para siempre de este trauma'. Repetir 10 veces.",
+          "notas": [
+            "Basada en principios EMDR adaptados al método"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Verificar liberación total",
+          "instruccion": "Comprobar con test muscular: '¿El trauma ha sido liberado en su totalidad?'",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Preguntar si requiere más días",
+          "instruccion": "Si la respuesta es afirmativa, preguntar: '¿Hay que liberarlo por más días?' Si la respuesta es negativa (no liberado), repetir el ejercicio completo.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Técnica simple pero poderosa; puede requerir varias sesiones para traumas profundos",
+        "Combinable con EFT Transgeneracional cuando el trauma tiene raíz ancestral"
+      ]
+    },
+    {
+      "id": "estres_postraumatico",
+      "nombre": "Protocolo para Estrés Postraumático",
+      "aliases": [
+        "PTSD",
+        "estres postraumatico",
+        "estrés postraumático",
+        "trauma severo"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 2",
+      "objetivo": "Liberar el estrés postraumático identificando y eliminando las emociones, miedos y traumas subyacentes, y anclar una nueva creencia liberadora.",
+      "cuando_usarlo": [
+        "Cuando el consultante no puede recuperarse de un evento traumático pasado",
+        "Cuando hay pesadillas recurrentes, flashbacks o respuestas exageradas ante estímulos",
+        "Cuando el rastreo indica PTSD como causa del conflicto"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente completa",
+        "Evento o situación de referencia identificada"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar estrés postraumático",
+          "instruccion": "Preguntar con test muscular: '¿Tengo algún tipo de estrés postraumático derivado de X situación o evento?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Identificar emociones, miedos o traumas asociados",
+          "instruccion": "Si la respuesta es afirmativa, preguntar con TM cuál es la emoción, miedo o trauma asociado. Identificar cada uno.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Eliminar cada elemento",
+          "instruccion": "Proceder a eliminar con el comando: 'Me libero consciente y subconscientemente de la emoción X'. Pasar el imán 10 veces. Repetir por cada emoción/miedo/trauma encontrado.",
+          "notas": []
+        },
+        {
+          "orden": 4,
+          "titulo": "Grabar creencia liberadora",
+          "instruccion": "Comprobar que se haya eliminado y preguntar si se debe eliminar por más días. Grabar la creencia: 'Me libero de todo estrés asociado con el conflicto X de manera total y permanente'.",
+          "notas": [
+            "Esta creencia ancla la liberación y previene la reactivación"
+          ]
+        }
+      ],
+      "observaciones": [
+        "El PTSD puede requerir múltiples sesiones y trabajo en varias capas",
+        "En casos graves, acompañar con apoyo psicológico profesional"
+      ]
+    },
+    {
+      "id": "coraza_energetica",
+      "nombre": "Protocolo para Disolver Corazas Energéticas",
+      "aliases": [
+        "coraza",
+        "bloqueo energetico",
+        "escudo energetico",
+        "coraza energética"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 4",
+      "objetivo": "Identificar y disolver corazas o escudos energéticos inconscientes que bloquean el correcto funcionamiento del consultante.",
+      "cuando_usarlo": [
+        "Cuando hay bloqueos persistentes que no ceden con otros protocolos",
+        "Cuando el consultante tiene dificultad para conectar emocionalmente o avanzar",
+        "Cuando el rastreo indica una coraza energética limitante"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia de coraza",
+          "instruccion": "Preguntar con TM: '¿Tengo alguna coraza energética que tenga algún efecto negativo en mí?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Disolver la coraza",
+          "instruccion": "Si la respuesta es positiva, pasar el imán 10 veces en la cabeza repitiendo el comando (sin cambiar ninguna palabra): 'Transmuto y disipo todas las corazas energéticas que me estén afectando'.",
+          "notas": [
+            "No modificar el comando; funciona exactamente como está redactado"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar con TM que hayan sido eliminadas. Si no, repetir el ejercicio. Preguntar con TM si se debe hacer por más días.",
+          "notas": [
+            "Preferiblemente trabajar con un objetivo definido"
+          ]
+        }
+      ],
+      "observaciones": [
+        "Las corazas se forman como protección ante experiencias traumáticas o dolorosas",
+        "Son diferentes a los bloqueos emocionales; trabajan en capa energética más profunda"
+      ]
+    },
+    {
+      "id": "vidas_pasadas",
+      "nombre": "Protocolo de Vidas Pasadas",
+      "aliases": [
+        "vidas pasadas",
+        "karma",
+        "conflicto kármico",
+        "existencia anterior"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 4",
+      "objetivo": "Identificar y liberar conflictos almacenados en el subconsciente que tienen origen en existencias anteriores y que se activan en la vida presente.",
+      "cuando_usarlo": [
+        "Cuando el conflicto no tiene explicación en la historia de vida presente ni en el árbol genealógico",
+        "Cuando hay ciclos recurrentes inexplicables, déjà vu persistente o sueños recurrentes de contextos desconocidos",
+        "Cuando el rastreo indica origen en vidas pasadas"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente",
+        "Haber descartado origen actual o transgeneracional"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Rastrear vida pasada implicada (opcional)",
+          "instruccion": "Con TM preguntar: '¿Hay alguna vida de la que necesite ser consciente?' Si sí: ¿En cuál vida pasada? ¿En qué milenio/siglo/año? ¿Dónde nací? ¿Cómo morí? ¿Qué sexo tenía? ¿Cuál fue mi propósito existencial?",
+          "notas": [
+            "Este paso es opcional; puede hacerse sin identificar la vida específica"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar el conflicto de vida pasada",
+          "instruccion": "Una vez identificado el conflicto (o sin identificarlo), pasar el imán 10 veces repitiendo el comando: 'Elimino todo conflicto de vidas pasadas que interfiera en mí'.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar con TM que se haya liberado. Preguntar si necesitamos liberarlo por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "No es necesario creer en vidas pasadas; funciona como trabajo simbólico con el subconsciente",
+        "Combinable con otros protocolos de liberación"
+      ]
+    },
+    {
+      "id": "cuerdas_energeticas",
+      "nombre": "Protocolo para Eliminar Cuerdas Energéticas",
+      "aliases": [
+        "cuerda energetica",
+        "cordon energetico",
+        "lazos energeticos",
+        "enganches",
+        "apego energetico"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 4",
+      "objetivo": "Identificar y eliminar conexiones energéticas no saludables con otras personas que drenan energía o generan dependencia.",
+      "cuando_usarlo": [
+        "Cuando el consultante siente un apego o influencia excesiva de alguien",
+        "Cuando hay dificultad para separarse emocionalmente de una relación terminada",
+        "Cuando el rastreo indica cuerdas o lazos energéticos como factor limitante"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia de cuerda",
+          "instruccion": "Preguntar con TM: '¿Tengo una cuerda invisible que me esté afectando o limitando?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Eliminar la cuerda",
+          "instruccion": "Si la respuesta es afirmativa, aplicar el comando: 'Elimino en total armonía toda cuerda energética que me esté limitando'. Pasar el imán.",
+          "notas": [
+            "La frase 'en total armonía' es importante; señala que la liberación es sin conflicto"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar eliminación",
+          "instruccion": "Comprobar con TM si fue eliminada. Preguntar si se necesita eliminar por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Las cuerdas más intensas se forman en relaciones románticas y sexuales",
+        "Puede requerir trabajo en varias sesiones si hay mucha historia emocional compartida"
+      ]
+    },
+    {
+      "id": "memorias_energeticas",
+      "nombre": "Protocolo para Memorias Energéticas",
+      "aliases": [
+        "memoria energetica",
+        "memorias",
+        "memorias energeticas"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 5",
+      "objetivo": "Identificar y liberar memorias energéticas asociadas a un objetivo o conflicto que impiden su resolución.",
+      "cuando_usarlo": [
+        "Cuando hay un patrón repetitivo que no cede a otros tratamientos",
+        "Cuando el conflicto tiene capas profundas a nivel energético",
+        "Al trabajar enfermedades crónicas, miedos o conflictos emocionales complejos"
+      ],
+      "prerequisitos": [
+        "Objetivo claramente definido",
+        "Preparación subconsciente"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Definir objetivo y verificar memorias",
+          "instruccion": "Con el objetivo definido (enfermedad, miedo, conflicto emocional, etc.), preguntar con TM: '¿Tengo alguna memoria energética asociada con este objetivo que me esté afectando?'",
+          "notas": [
+            "Siempre trabajar con un objetivo definido"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar memorias energéticas",
+          "instruccion": "Si la respuesta es sí, aplicar el comando: 'Libero todas las memorias energéticas asociadas con este objetivo'. Pasar el imán 10 veces.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar con TM que se haya eliminado por completo. Preguntar si se debe eliminar por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": []
+    },
+    {
+      "id": "memorias_celulares",
+      "nombre": "Protocolo para Memorias Celulares",
+      "aliases": [
+        "memoria celular",
+        "memorias celulares"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 5",
+      "objetivo": "Liberar memorias almacenadas a nivel celular asociadas a una enfermedad específica.",
+      "cuando_usarlo": [
+        "Principalmente en casos de enfermedades físicas o crónicas",
+        "Cuando el cuerpo mantiene una respuesta física que ya no tiene causa activa"
+      ],
+      "prerequisitos": [
+        "Enfermedad u objetivo físico claramente identificado"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar memorias celulares",
+          "instruccion": "Con el objetivo (algún tipo de enfermedad) definido, preguntar con TM: '¿Tengo alguna memoria celular asociada con este objetivo que me esté afectando?'",
+          "notas": [
+            "Solo aplica en casos de enfermedades"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar memorias celulares",
+          "instruccion": "Si la respuesta es sí, aplicar el comando: 'Libero todas las memorias celulares asociadas con este objetivo'. Pasar el imán 10 veces.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar con TM que se haya eliminado por completo. Preguntar si se debe eliminar por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Complementar con memorias energéticas y kármicas para cobertura completa"
+      ]
+    },
+    {
+      "id": "memorias_karmicas",
+      "nombre": "Protocolo para Memorias Kármicas",
+      "aliases": [
+        "memoria karmica",
+        "memorias kármicas",
+        "karma",
+        "deuda karmica"
+      ],
+      "categoria": "bioenergético",
+      "fuente": "Diplomado SEI – Módulo 5",
+      "objetivo": "Identificar y liberar memorias kármicas asociadas a un objetivo que mantienen patrones de desequilibrio.",
+      "cuando_usarlo": [
+        "Cuando el conflicto persiste después de trabajar memorias energéticas y celulares",
+        "Cuando hay patrones de sufrimiento repetitivo sin causa evidente en la vida presente"
+      ],
+      "prerequisitos": [
+        "Objetivo claramente definido"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar memorias kármicas",
+          "instruccion": "Con el objetivo definido, preguntar con TM: '¿Tengo alguna memoria kármica asociada con este objetivo que me esté afectando?'",
+          "notas": []
+        },
+        {
+          "orden": 2,
+          "titulo": "Liberar memorias kármicas",
+          "instruccion": "Si la respuesta es sí, aplicar el comando: 'Libero todas las memorias kármicas asociadas con este objetivo'. Pasar el imán 10 veces.",
+          "notas": []
+        },
+        {
+          "orden": 3,
+          "titulo": "Verificar y preguntar días",
+          "instruccion": "Comprobar con TM que se haya eliminado por completo. Preguntar si se debe eliminar por más días.",
+          "notas": []
+        }
+      ],
+      "observaciones": [
+        "Suele trabajarse como tercer nivel, después de memorias energéticas y celulares"
+      ]
+    },
+    {
+      "id": "tres_fases_holistica",
+      "nombre": "Protocolo de 3 Fases — Sesión Holística Completa",
+      "aliases": [
+        "tres fases",
+        "3 fases",
+        "sesion holistica",
+        "rastreo completo",
+        "protocolo de sesion"
+      ],
+      "categoria": "sesion",
+      "fuente": "Diplomado Terapia Holística – Módulo 1",
+      "objetivo": "Guiar una sesión terapéutica holística completa desde la identificación del conflicto consciente hasta el ajuste bioenergético, integrando conflictología, test muscular y terapias complementarias.",
+      "cuando_usarlo": [
+        "Como protocolo marco para estructurar cualquier sesión terapéutica completa",
+        "Cuando se trabaja un síntoma físico o emocional con enfoque holístico integrador",
+        "Para garantizar que la sesión cubra diagnóstico consciente, inconsciente y tratamiento bioenergético"
+      ],
+      "prerequisitos": [
+        "Haber completado el rastreo de síntoma o queja principal",
+        "Preparación del espacio y del consultante"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Fase 1 — Rastreo Conflictológico Consciente",
+          "instruccion": "Identificar el conflicto psicosomático usando el mapa de conflictología del sistema corporal implicado. MS: '¿Algún conflicto [sistema] está implicado en tu síntoma X?' Localizar el subsistema y el número de conflicto. Verificar vínculo al síntoma con test muscular.",
+          "notas": [
+            "Usar el Menú de Protocolos para encontrar el mapa de conflictología correcto"
+          ]
+        },
+        {
+          "orden": 2,
+          "titulo": "Fase 2 — Rastreo Inconsciente (Test Muscular)",
+          "instruccion": "Usar test muscular programado para identificar conflictos ocultos no detectados conscientemente. Rastrear: miedos asociados, traumas subyacentes, memorias energéticas/celulares/kármicas, cuerdas energéticas, corazas, y origen transgeneracional si aplica.",
+          "notas": [
+            "Esta fase requiere preparación subconsciente previa"
+          ]
+        },
+        {
+          "orden": 3,
+          "titulo": "Fase 3 — Ajuste Bioenergético y Terapia",
+          "instruccion": "Aplicar tratamiento según lo encontrado: a) Pares biomagnéticos para el microbio implicado. b) Digitopuntura o auriculoterapia. c) Sales de Schüssler o flores de Bach según rastreo. d) Protocolo emocional específico (EFT, liberación de traumas, inclusión de excluidos, etc.). e) Recomendaciones naturistas o de estilo de vida.",
+          "notas": [
+            "Elegir las herramientas según lo que el rastreo indique, no aplicar todo siempre"
+          ]
+        }
+      ],
+      "observaciones": [
+        "Este es el protocolo marco; los demás protocolos son herramientas que se aplican dentro de la Fase 3",
+        "La duración estándar es de 60-90 minutos por sesión"
+      ]
     }
+  ],
+  "sources": [
+    "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
+    "Diplomado SEI (Sanación Energética Integral) – Módulos 1, 2, 4, 5",
+    "Diplomado Terapia Holística – Módulo 1"
   ]
 }
