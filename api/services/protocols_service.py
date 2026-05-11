@@ -40,6 +40,12 @@ SYSTEM_MANUAL_MAP = {
     "neurosensorial":     "Manual_del_Módulo_11.txt",
 }
 
+# Generic rastreo protocol file (all 8 types, from respiratorio module — same steps for all systems)
+RASTREO_PROTOCOL_PATH = SOURCES_DIR / "Protocolos_de_Rastreo_-_Módulo_1.txt"
+
+# Systems that already have their own complete rastreo sections (skip appending generic template)
+SYSTEMS_WITH_FULL_RASTREO = {"digestivo"}
+
 
 # ---------------------------------------------------------------------------
 # Shared helpers
@@ -782,6 +788,33 @@ def _load_manual_text(system_id: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
+@lru_cache(maxsize=1)
+def _load_generic_rastreo_text() -> str:
+    """Load the generic rastreo protocol template (microbiológico, biomagnético, etc.).
+    These sections are system-agnostic and apply the same steps to every body system."""
+    if not RASTREO_PROTOCOL_PATH.exists():
+        return ""
+    return RASTREO_PROTOCOL_PATH.read_text(encoding="utf-8")
+
+
+@lru_cache(maxsize=1)
+def _get_generic_rastreo_sections() -> list:
+    """Parse and cache the generic rastreo sections (everything except conflictológico)."""
+    text = _load_generic_rastreo_text()
+    if not text:
+        return []
+    all_sections = _parse_system_sections(text)
+    # Keep only the non-conflictológico rastreo sections (microbiológico onwards)
+    generic_labels = {
+        "rastreo microbiológico", "rastreo biomágnético", "rastreo holobiomágnético",
+        "rastreo vibracional", "rastreo bioenergético", "sesión terapéutica", "rastreo orgánico",
+    }
+    return [
+        s for s in all_sections
+        if any(g in s["label"].lower() for g in generic_labels)
+    ]
+
+
 def _is_conflict_label(label: str) -> bool:
     lo = label.lower()
     return "conflictolog" in lo or "protocolo de rastreo" in lo
@@ -837,6 +870,14 @@ def get_system_detail(system_id: str) -> Optional[Dict[str, Any]]:
     else:
         sections = _parse_system_sections(_load_system_text(system["source_file"]))
         _attach_conflict_cards(sections)
+
+    # Append generic rastreo protocol sections (microbiológico, biomagnético, etc.)
+    # for systems that don't already include them from their module manual.
+    if system_id not in SYSTEMS_WITH_FULL_RASTREO:
+        existing_labels = {s["label"].lower() for s in sections}
+        for sec in _get_generic_rastreo_sections():
+            if sec["label"].lower() not in existing_labels:
+                sections.append(sec)
 
     # Truncate very large sections (biomagnético tables etc.) to keep response manageable
     _MAX_SECTION_CHARS = 30_000
