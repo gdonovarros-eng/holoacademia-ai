@@ -191,15 +191,15 @@
               "items": [
                 {
                   "id": "h1",
-                  "etiqueta": "1 — Impacto frontal"
+                  "etiqueta": "1 — Impacto frontal (recibí algo de frente que no pude evitar)"
                 },
                 {
                   "id": "h2",
-                  "etiqueta": "2 — Impacto posterior"
+                  "etiqueta": "2 — Impacto posterior (me atacaron por la espalda / traición)"
                 },
                 {
                   "id": "h3",
-                  "etiqueta": "3 — Desvalorización"
+                  "etiqueta": "3 — Desvalorización (me hicieron sentir que no valgo)"
                 }
               ]
             },
@@ -208,7 +208,7 @@
               "items": [
                 {
                   "id": "h4",
-                  "etiqueta": "4 — Alguien tiene la culpa"
+                  "etiqueta": "4 — Alguien tiene la culpa (la responsabilidad es de otro)"
                 },
                 {
                   "id": "h5",
@@ -216,7 +216,7 @@
                 },
                 {
                   "id": "h6",
-                  "etiqueta": "6 — Ultraje"
+                  "etiqueta": "6 — Ultraje (me faltaron al respeto de forma inaceptable)"
                 }
               ]
             },
@@ -229,11 +229,11 @@
                 },
                 {
                   "id": "h8",
-                  "etiqueta": "8 — Abandono"
+                  "etiqueta": "8 — Abandono (me dejaron solo en el momento crítico)"
                 },
                 {
                   "id": "h9",
-                  "etiqueta": "9 — Vivo / Muerto"
+                  "etiqueta": "9 — Vivo/Muerto (no sé si vale la pena seguir)"
                 }
               ]
             },
@@ -242,15 +242,15 @@
               "items": [
                 {
                   "id": "h10",
-                  "etiqueta": "10 — Bloqueo energético"
+                  "etiqueta": "10 — Bloqueo energético (la emoción quedó atrapada sin salida)"
                 },
                 {
                   "id": "h11",
-                  "etiqueta": "11 — Nido"
+                  "etiqueta": "11 — Incorporación energética (absorbí la energía de otro)"
                 },
                 {
                   "id": "h12",
-                  "etiqueta": "12 — Proyecto sentido"
+                  "etiqueta": "12 — Pérdida de la voluntad (ya no tengo fuerza para decidir)"
                 }
               ]
             }
@@ -336,7 +336,7 @@
             "Línea materna = madre, abuela materna, bisabuela materna... Línea paterna = padre, abuelo paterno, bisabuelo paterno... El mismo recurso puede existir en ambas líneas — rastrear cuál tiene mayor potencia si ambas dan 'Sí'."
           ],
           "tipo": "seleccion",
-          "pregunta_ms": "¿Es de la línea materna o paterna?",
+          "pregunta_ms": "¿Línea materna o paterna?",
           "opciones": [
             {
               "id": "mat",
@@ -2485,7 +2485,7 @@
             "Un nudo psórico es un miedo arcaico inconsciente que sostiene el conflicto biológico. Si la respuesta es No, saltar al paso 7 (sensación infantil) o al paso 8 (holograma)."
           ],
           "tipo": "verificacion",
-          "pregunta_ms": "¿Hay nudo psórico implicado en este conflicto?",
+          "pregunta_ms": "¿Hay nudo psórico implicado en este conflicto alveolar?",
           "si_negativo": 8
         },
         {
@@ -2584,7 +2584,7 @@
             },
             {
               "id": "0",
-              "etiqueta": "0 — Miedo a la vida (nivel prenatal primario)"
+              "etiqueta": "0 — Miedo a la vida (nivel primario prenatal)"
             }
           ]
         },
@@ -2599,7 +2599,7 @@
           "pregunta_ms": "¿Cuál es la sensación que soporta este nudo?",
           "opciones": [
             {
-              "grupo": "SOBREVIVENCIA",
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
               "items": [
                 {
                   "id": "s1",
@@ -2636,7 +2636,7 @@
               ]
             },
             {
-              "grupo": "PROTECCIÓN",
+              "grupo": "GRUPO 2 — PROTECCIÓN",
               "items": [
                 {
                   "id": "p1",
@@ -2689,7 +2689,7 @@
               ]
             },
             {
-              "grupo": "MOVIMIENTO",
+              "grupo": "GRUPO 3 — MOVIMIENTO",
               "items": [
                 {
                   "id": "m1",
@@ -2734,7 +2734,7 @@
               ]
             },
             {
-              "grupo": "CONTACTO",
+              "grupo": "GRUPO 4 — CONTACTO",
               "items": [
                 {
                   "id": "c1",
@@ -2779,7 +2779,7 @@
               ]
             },
             {
-              "grupo": "SENSACIONES INFANTILES",
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
               "items": [
                 {
                   "id": "i1",
@@ -2857,23 +2857,23 @@
           "opciones": [
             {
               "id": "prenatal",
-              "etiqueta": "Etapa prenatal / gestación"
+              "etiqueta": "Prenatal (gestación / proyecto sentido)"
             },
             {
-              "id": "0-3",
-              "etiqueta": "0 a 3 años (primera infancia)"
+              "id": "t0_3",
+              "etiqueta": "0–3 años (infancia temprana)"
             },
             {
-              "id": "3-12",
-              "etiqueta": "3 a 12 años (infancia)"
+              "id": "t3_12",
+              "etiqueta": "3–12 años (infancia)"
             },
             {
-              "id": "12-18",
-              "etiqueta": "12 a 18 años (adolescencia)"
+              "id": "t12_18",
+              "etiqueta": "12–18 años (adolescencia)"
             },
             {
-              "id": "adulto",
-              "etiqueta": "Adultez (desde los 18 años)"
+              "id": "tadulto",
+              "etiqueta": "Adultez (18+ años)"
             }
           ]
         },
@@ -2885,8 +2885,255 @@
             "Un mismo nudo puede estar sostenido por más de una sensación en capas. Si existe segunda sensación, también rastrear su instante (paso 6)."
           ],
           "tipo": "verificacion",
-          "pregunta_ms": "¿Hay alguna otra sensación que sostenga este nudo?",
-          "si_negativo": 7
+          "pregunta_ms": "¿Hay otra sensación que también sostenga este nudo?",
+          "si_negativo": 7,
+          "opciones": [
+            {
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
+              "items": [
+                {
+                  "id": "s1",
+                  "etiqueta": "insatisfacción"
+                },
+                {
+                  "id": "s2",
+                  "etiqueta": "algo me falta"
+                },
+                {
+                  "id": "s3",
+                  "etiqueta": "necesidad"
+                },
+                {
+                  "id": "s4",
+                  "etiqueta": "necesito saciarme"
+                },
+                {
+                  "id": "s5",
+                  "etiqueta": "carencia"
+                },
+                {
+                  "id": "s6",
+                  "etiqueta": "vacío"
+                },
+                {
+                  "id": "s7",
+                  "etiqueta": "hambre emocional"
+                },
+                {
+                  "id": "s8",
+                  "etiqueta": "anhelo"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 2 — PROTECCIÓN",
+              "items": [
+                {
+                  "id": "p1",
+                  "etiqueta": "incómodo"
+                },
+                {
+                  "id": "p2",
+                  "etiqueta": "desagrado"
+                },
+                {
+                  "id": "p3",
+                  "etiqueta": "contrariado"
+                },
+                {
+                  "id": "p4",
+                  "etiqueta": "harto"
+                },
+                {
+                  "id": "p5",
+                  "etiqueta": "impotencia"
+                },
+                {
+                  "id": "p6",
+                  "etiqueta": "frustrado"
+                },
+                {
+                  "id": "p7",
+                  "etiqueta": "enfadado"
+                },
+                {
+                  "id": "p8",
+                  "etiqueta": "enojado"
+                },
+                {
+                  "id": "p9",
+                  "etiqueta": "iracundo"
+                },
+                {
+                  "id": "p10",
+                  "etiqueta": "colérico"
+                },
+                {
+                  "id": "p11",
+                  "etiqueta": "resentido"
+                },
+                {
+                  "id": "p12",
+                  "etiqueta": "rencoroso"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 3 — MOVIMIENTO",
+              "items": [
+                {
+                  "id": "m1",
+                  "etiqueta": "aburrido"
+                },
+                {
+                  "id": "m2",
+                  "etiqueta": "perplejo"
+                },
+                {
+                  "id": "m3",
+                  "etiqueta": "ofuscado"
+                },
+                {
+                  "id": "m4",
+                  "etiqueta": "confundido"
+                },
+                {
+                  "id": "m5",
+                  "etiqueta": "fuera de centro"
+                },
+                {
+                  "id": "m6",
+                  "etiqueta": "fuera de lugar"
+                },
+                {
+                  "id": "m7",
+                  "etiqueta": "mente en blanco"
+                },
+                {
+                  "id": "m8",
+                  "etiqueta": "desvalorizado"
+                },
+                {
+                  "id": "m9",
+                  "etiqueta": "bloqueado"
+                },
+                {
+                  "id": "m10",
+                  "etiqueta": "parálisis"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 4 — CONTACTO",
+              "items": [
+                {
+                  "id": "c1",
+                  "etiqueta": "amor difícil"
+                },
+                {
+                  "id": "c2",
+                  "etiqueta": "corazón roto"
+                },
+                {
+                  "id": "c3",
+                  "etiqueta": "desilusionado"
+                },
+                {
+                  "id": "c4",
+                  "etiqueta": "sufriendo"
+                },
+                {
+                  "id": "c5",
+                  "etiqueta": "rechazado"
+                },
+                {
+                  "id": "c6",
+                  "etiqueta": "excluido"
+                },
+                {
+                  "id": "c7",
+                  "etiqueta": "solo"
+                },
+                {
+                  "id": "c8",
+                  "etiqueta": "abandonado"
+                },
+                {
+                  "id": "c9",
+                  "etiqueta": "traicionado"
+                },
+                {
+                  "id": "c10",
+                  "etiqueta": "desamparado"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
+              "items": [
+                {
+                  "id": "i1",
+                  "etiqueta": "vulnerabilidad"
+                },
+                {
+                  "id": "i2",
+                  "etiqueta": "integridad corporal"
+                },
+                {
+                  "id": "i3",
+                  "etiqueta": "integridad emocional"
+                },
+                {
+                  "id": "i4",
+                  "etiqueta": "frustración"
+                },
+                {
+                  "id": "i5",
+                  "etiqueta": "carencia"
+                },
+                {
+                  "id": "i6",
+                  "etiqueta": "privación"
+                },
+                {
+                  "id": "i7",
+                  "etiqueta": "sufrimiento de pobreza afectiva"
+                },
+                {
+                  "id": "i8",
+                  "etiqueta": "mamá no ama ni protege"
+                },
+                {
+                  "id": "i9",
+                  "etiqueta": "rechazo"
+                },
+                {
+                  "id": "i10",
+                  "etiqueta": "ignominia"
+                },
+                {
+                  "id": "i11",
+                  "etiqueta": "represión"
+                },
+                {
+                  "id": "i12",
+                  "etiqueta": "sin permiso del padre para ser/vivir"
+                },
+                {
+                  "id": "i13",
+                  "etiqueta": "amenaza"
+                },
+                {
+                  "id": "i14",
+                  "etiqueta": "agresión"
+                },
+                {
+                  "id": "i15",
+                  "etiqueta": "traición"
+                }
+              ]
+            }
+          ]
         },
         {
           "orden": 6,
@@ -2896,27 +3143,27 @@
             "Solo ejecutar si en el paso 5 se confirmó segunda sensación."
           ],
           "tipo": "rastreo",
-          "pregunta_ms": "¿Cuál es el instante de esa segunda sensación?",
+          "pregunta_ms": "¿Cuál es el instante de esta segunda sensación?",
           "opciones": [
             {
               "id": "prenatal",
-              "etiqueta": "Etapa prenatal / gestación"
+              "etiqueta": "Prenatal (gestación / proyecto sentido)"
             },
             {
-              "id": "0-3",
-              "etiqueta": "0 a 3 años (primera infancia)"
+              "id": "t0_3",
+              "etiqueta": "0–3 años (infancia temprana)"
             },
             {
-              "id": "3-12",
-              "etiqueta": "3 a 12 años (infancia)"
+              "id": "t3_12",
+              "etiqueta": "3–12 años (infancia)"
             },
             {
-              "id": "12-18",
-              "etiqueta": "12 a 18 años (adolescencia)"
+              "id": "t12_18",
+              "etiqueta": "12–18 años (adolescencia)"
             },
             {
-              "id": "adulto",
-              "etiqueta": "Adultez (desde los 18 años)"
+              "id": "tadulto",
+              "etiqueta": "Adultez (18+ años)"
             }
           ]
         },
@@ -2932,63 +3179,63 @@
           "si_negativo": 8,
           "opciones": [
             {
-              "id": "1",
+              "id": "si1",
               "etiqueta": "1 — Vulnerabilidad"
             },
             {
-              "id": "2",
+              "id": "si2",
               "etiqueta": "2 — Integridad corporal (me lastimaron físicamente)"
             },
             {
-              "id": "3",
+              "id": "si3",
               "etiqueta": "3 — Integridad emocional (me lastimaron emocionalmente)"
             },
             {
-              "id": "4",
+              "id": "si4",
               "etiqueta": "4 — Frustración"
             },
             {
-              "id": "5",
+              "id": "si5",
               "etiqueta": "5 — Carencia"
             },
             {
-              "id": "6",
+              "id": "si6",
               "etiqueta": "6 — Privación"
             },
             {
-              "id": "7",
+              "id": "si7",
               "etiqueta": "7 — Sufrimiento de pobreza afectiva"
             },
             {
-              "id": "8",
+              "id": "si8",
               "etiqueta": "8 — Mamá no ama ni protege con su mirada"
             },
             {
-              "id": "9",
+              "id": "si9",
               "etiqueta": "9 — Rechazo"
             },
             {
-              "id": "10",
+              "id": "si10",
               "etiqueta": "10 — Ignominia (humillación profunda)"
             },
             {
-              "id": "11",
+              "id": "si11",
               "etiqueta": "11 — Represión"
             },
             {
-              "id": "12",
+              "id": "si12",
               "etiqueta": "12 — Sin permiso del padre para ser / vivir"
             },
             {
-              "id": "13",
+              "id": "si13",
               "etiqueta": "13 — Amenaza"
             },
             {
-              "id": "14",
+              "id": "si14",
               "etiqueta": "14 — Agresión"
             },
             {
-              "id": "15",
+              "id": "si15",
               "etiqueta": "15 — Traición"
             }
           ]
@@ -3009,15 +3256,15 @@
               "items": [
                 {
                   "id": "h1",
-                  "etiqueta": "1 — Impacto frontal"
+                  "etiqueta": "1 — Impacto frontal (recibí algo de frente que no pude evitar)"
                 },
                 {
                   "id": "h2",
-                  "etiqueta": "2 — Impacto posterior"
+                  "etiqueta": "2 — Impacto posterior (me atacaron por la espalda / traición)"
                 },
                 {
                   "id": "h3",
-                  "etiqueta": "3 — Desvalorización"
+                  "etiqueta": "3 — Desvalorización (me hicieron sentir que no valgo)"
                 }
               ]
             },
@@ -3026,7 +3273,7 @@
               "items": [
                 {
                   "id": "h4",
-                  "etiqueta": "4 — Alguien tiene la culpa"
+                  "etiqueta": "4 — Alguien tiene la culpa (la responsabilidad es de otro)"
                 },
                 {
                   "id": "h5",
@@ -3034,7 +3281,7 @@
                 },
                 {
                   "id": "h6",
-                  "etiqueta": "6 — Ultraje"
+                  "etiqueta": "6 — Ultraje (me faltaron al respeto de forma inaceptable)"
                 }
               ]
             },
@@ -3047,11 +3294,11 @@
                 },
                 {
                   "id": "h8",
-                  "etiqueta": "8 — Abandono"
+                  "etiqueta": "8 — Abandono (me dejaron solo en el momento crítico)"
                 },
                 {
                   "id": "h9",
-                  "etiqueta": "9 — Vivo/Muerto"
+                  "etiqueta": "9 — Vivo/Muerto (no sé si vale la pena seguir)"
                 }
               ]
             },
@@ -3060,15 +3307,15 @@
               "items": [
                 {
                   "id": "h10",
-                  "etiqueta": "10 — Bloqueo energético"
+                  "etiqueta": "10 — Bloqueo energético (la emoción quedó atrapada sin salida)"
                 },
                 {
                   "id": "h11",
-                  "etiqueta": "11 — Incorporación energética"
+                  "etiqueta": "11 — Incorporación energética (absorbí la energía de otro)"
                 },
                 {
                   "id": "h12",
-                  "etiqueta": "12 — Pérdida de la voluntad"
+                  "etiqueta": "12 — Pérdida de la voluntad (ya no tengo fuerza para decidir)"
                 }
               ]
             }
@@ -3086,65 +3333,52 @@
           "si_negativo": 10,
           "opciones": [
             {
-              "grupo": "OBLIGACIÓN",
+              "grupo": "TIPO DE CREENCIA",
               "items": [
                 {
-                  "id": "ob1",
-                  "etiqueta": "Debo / Tengo que"
+                  "id": "obl",
+                  "etiqueta": "Obligación — debo, tengo que, necesito, estoy obligado a…"
                 },
                 {
-                  "id": "ob2",
-                  "etiqueta": "Estoy obligado a"
+                  "id": "proh",
+                  "etiqueta": "Prohibición — está prohibido, no debo, es malo, es injusto…"
                 },
                 {
-                  "id": "ob3",
-                  "etiqueta": "Necesito"
-                },
-                {
-                  "id": "ob4",
-                  "etiqueta": "No tengo más remedio"
+                  "id": "desv",
+                  "etiqueta": "Desvalorización — es mi culpa, no merezco, no valgo, no puedo…"
                 }
               ]
             },
             {
-              "grupo": "PROHIBICIÓN",
+              "grupo": "CATEGORÍA",
               "items": [
                 {
-                  "id": "pr1",
-                  "etiqueta": "Está prohibido"
+                  "id": "cfis",
+                  "etiqueta": "Física"
                 },
                 {
-                  "id": "pr2",
-                  "etiqueta": "No debo / No puedo"
+                  "id": "csex",
+                  "etiqueta": "Sexual"
                 },
                 {
-                  "id": "pr3",
-                  "etiqueta": "Es malo / Es injusto"
+                  "id": "ceco",
+                  "etiqueta": "Económica"
                 },
                 {
-                  "id": "pr4",
-                  "etiqueta": "No vale / No corresponde"
-                }
-              ]
-            },
-            {
-              "grupo": "DESVALORIZACIÓN",
-              "items": [
-                {
-                  "id": "dv1",
-                  "etiqueta": "Es mi culpa"
+                  "id": "cemo",
+                  "etiqueta": "Emocional"
                 },
                 {
-                  "id": "dv2",
-                  "etiqueta": "No merezco / No valgo"
+                  "id": "csoc",
+                  "etiqueta": "Social"
                 },
                 {
-                  "id": "dv3",
-                  "etiqueta": "No puedo / Soy incapaz"
+                  "id": "cesp",
+                  "etiqueta": "Espiritual"
                 },
                 {
-                  "id": "dv4",
-                  "etiqueta": "Siempre / Nunca (absolutista)"
+                  "id": "ccre",
+                  "etiqueta": "Creativa"
                 }
               ]
             }
@@ -3161,114 +3395,61 @@
           "pregunta_ms": "¿Cuál es el microbio que soporta la información?",
           "opciones": [
             {
-              "grupo": "BACTERIA GRAM+",
+              "grupo": "BACTERIA — Gram +",
               "items": [
                 {
                   "id": "bg1",
-                  "etiqueta": "Estafilococo"
+                  "etiqueta": "Cocos Gram+ (Estafilococo / Estreptococo / Enterococo)"
                 },
                 {
                   "id": "bg2",
-                  "etiqueta": "Estreptococo"
+                  "etiqueta": "Bacilos Gram+"
                 },
                 {
                   "id": "bg3",
-                  "etiqueta": "Enterococo"
+                  "etiqueta": "Clostridios (C. difficile, C. tetani, C. botulinum)"
                 },
                 {
                   "id": "bg4",
-                  "etiqueta": "Bacilo gram+"
-                },
+                  "etiqueta": "Micobacterias (TBC, Lepra)"
+                }
+              ]
+            },
+            {
+              "grupo": "BACTERIA — Gram −",
+              "items": [
                 {
                   "id": "bg5",
-                  "etiqueta": "Clostridio"
+                  "etiqueta": "Cocos Gram− (Neisseria — Gonorrea, Meningitis)"
                 },
                 {
                   "id": "bg6",
-                  "etiqueta": "Micobacteria"
+                  "etiqueta": "Bacilos Gram− (Bartonella, Burkholderia, Hemofilus)"
+                },
+                {
+                  "id": "bg7",
+                  "etiqueta": "Bacilos entéricos (Salmonella / E. coli / Klebsiella)"
+                },
+                {
+                  "id": "bg8",
+                  "etiqueta": "Espirilos / Espiroquetas (Treponema, Borrelia, Leptospira)"
+                },
+                {
+                  "id": "bg9",
+                  "etiqueta": "Chlamydias / Mycoplasmas"
                 }
               ]
             },
             {
-              "grupo": "BACTERIA GRAM−",
+              "grupo": "VIRUS",
               "items": [
                 {
-                  "id": "bn1",
-                  "etiqueta": "Coco gram−"
+                  "id": "vadn",
+                  "etiqueta": "ADN (Herpes / Adenovirus / Papilomavirus / VEB / CMV)"
                 },
                 {
-                  "id": "bn2",
-                  "etiqueta": "Bacilo gram−"
-                },
-                {
-                  "id": "bn3",
-                  "etiqueta": "Bacilo entérico"
-                },
-                {
-                  "id": "bn4",
-                  "etiqueta": "Espiroqueta"
-                },
-                {
-                  "id": "bn5",
-                  "etiqueta": "Chlamydia"
-                },
-                {
-                  "id": "bn6",
-                  "etiqueta": "Mycoplasma"
-                }
-              ]
-            },
-            {
-              "grupo": "VIRUS ADN",
-              "items": [
-                {
-                  "id": "va1",
-                  "etiqueta": "Herpesvirus"
-                },
-                {
-                  "id": "va2",
-                  "etiqueta": "Adenovirus"
-                },
-                {
-                  "id": "va3",
-                  "etiqueta": "Poxvirus"
-                },
-                {
-                  "id": "va4",
-                  "etiqueta": "Papilomavirus"
-                },
-                {
-                  "id": "va5",
-                  "etiqueta": "Hepatitis B"
-                }
-              ]
-            },
-            {
-              "grupo": "VIRUS ARN",
-              "items": [
-                {
-                  "id": "vr1",
-                  "etiqueta": "Influenza"
-                },
-                {
-                  "id": "vr2",
-                  "etiqueta": "VIH/Retrovirus"
-                },
-                {
-                  "id": "vr3",
-                  "etiqueta": "Hepatitis C"
-                },
-                {
-                  "id": "vr4",
-                  "etiqueta": "Coronavirus"
-                },
-                {
-                  "id": "vr5",
-                  "etiqueta": "Rotavirus"
-                },
-                {
-                  "id": "vr6",
-                  "etiqueta": "Dengue"
+                  "id": "varn",
+                  "etiqueta": "ARN (Influenza / VIH / Hepatitis C / Dengue / Coronavirus)"
                 }
               ]
             },
@@ -3276,16 +3457,16 @@
               "grupo": "HONGO",
               "items": [
                 {
-                  "id": "ho1",
-                  "etiqueta": "Levadura (Candida)"
+                  "id": "hlev",
+                  "etiqueta": "Levaduras (Candida)"
                 },
                 {
-                  "id": "ho2",
-                  "etiqueta": "Dermatofito"
+                  "id": "hder",
+                  "etiqueta": "Dermatofitos (Tiña, Pitiriasis)"
                 },
                 {
-                  "id": "ho3",
-                  "etiqueta": "Hongo sistémico"
+                  "id": "hsis",
+                  "etiqueta": "Sistémicos (Aspergillus, Histoplasma)"
                 }
               ]
             },
@@ -3293,20 +3474,20 @@
               "grupo": "PARÁSITO",
               "items": [
                 {
-                  "id": "pa1",
-                  "etiqueta": "Protozoo"
+                  "id": "ppro",
+                  "etiqueta": "Protozoos (Ameba, Giardia, Toxoplasma, Plasmodio)"
                 },
                 {
-                  "id": "pa2",
-                  "etiqueta": "Nemátodo"
+                  "id": "pnem",
+                  "etiqueta": "Helmintos — Nematodos (Áscaris, Oxiuros, Trichinella)"
                 },
                 {
-                  "id": "pa3",
-                  "etiqueta": "Trematodo"
+                  "id": "ptre",
+                  "etiqueta": "Helmintos — Trematodos (Fasciola, Schistosoma)"
                 },
                 {
-                  "id": "pa4",
-                  "etiqueta": "Céstodo"
+                  "id": "pces",
+                  "etiqueta": "Helmintos — Cestodos (Tenia, Equinococo)"
                 }
               ]
             }
@@ -3319,8 +3500,57 @@
           "notas": [
             "El par biomagnético neutraliza el campo energético distorsionado por el microbio. Pueden ser físicos (imanes) o digitales (inserción por circuito bioenergético intencional)."
           ],
-          "tipo": "instruccion",
-          "pregunta_ms": "¿Hay algún par biomagnético necesario para neutralizar esta información?"
+          "tipo": "verificacion",
+          "pregunta_ms": "¿Hay algún par biomagnético necesario para neutralizar?",
+          "si_negativo": null,
+          "opciones": [
+            {
+              "grupo": "REGIÓN",
+              "items": [
+                {
+                  "id": "rcab",
+                  "etiqueta": "Cabeza (coronilla, frontal, temporal, occipital)"
+                },
+                {
+                  "id": "rta",
+                  "etiqueta": "Tronco anterior (pecho, abdomen, pelvis)"
+                },
+                {
+                  "id": "rtp",
+                  "etiqueta": "Tronco posterior (cervical, dorsal, lumbar, sacra)"
+                },
+                {
+                  "id": "rms",
+                  "etiqueta": "Miembros superiores (hombro, codo, muñeca, mano)"
+                },
+                {
+                  "id": "rmi",
+                  "etiqueta": "Miembros inferiores (cadera, rodilla, tobillo, pie)"
+                }
+              ]
+            },
+            {
+              "grupo": "BLOQUE DE COLOR",
+              "items": [
+                {
+                  "id": "brojo",
+                  "etiqueta": "Bloque Rojo"
+                },
+                {
+                  "id": "bnar",
+                  "etiqueta": "Bloque Naranja"
+                },
+                {
+                  "id": "bama",
+                  "etiqueta": "Bloque Amarillo"
+                },
+                {
+                  "id": "bver",
+                  "etiqueta": "Bloque Verde"
+                }
+              ]
+            }
+          ]
         }
       ],
       "observaciones": [
@@ -3355,17 +3585,7 @@
           ],
           "tipo": "verificacion",
           "pregunta_ms": "¿Hay algún conflicto hepático implicado en este síntoma?",
-          "si_negativo": null
-        },
-        {
-          "orden": 2,
-          "titulo": "Identificar el conflicto específico",
-          "instruccion": "MS: ¿Qué emoción sostiene este conflicto hepático? Rastrear:\n\n· Angustia (ansiedad por el futuro, miedo a lo que viene)\n· Frustración (lo que quiero no ocurre como debería)\n· Insatisfacción (nada es suficiente, nada llena)\n· Vulnerabilidad (me siento expuesto, sin protección)\n· Rabia acumulada (enojo sostenido que no se expresa)\n· Culpa (me siento responsable de algo negativo)\n· Resentimiento (guardo el daño que alguien me hizo)\n\nGuardar emoción en circuito.",
-          "notas": [
-            "Para el hígado, el eje carencia-toxicidad tiene sus emociones características: CARENCIA → angustia, insatisfacción, vulnerabilidad. TOXICIDAD → rabia, resentimiento, frustración."
-          ],
-          "tipo": "seleccion",
-          "pregunta_ms": "¿Cuál es el tipo y conflicto específico?",
+          "si_negativo": null,
           "opciones": [
             {
               "grupo": "CARENCIA (fase crónica / reparación)",
@@ -3380,43 +3600,43 @@
                 },
                 {
                   "id": "car3",
-                  "etiqueta": "3 — Privación de nutrientes esenciales (física o emocional)"
+                  "etiqueta": "3 — Privación de nutrientes esenciales (físicos o emocionales)"
                 },
                 {
                   "id": "car4",
-                  "etiqueta": "4 — Conflicto de territorio interior (sin espacio propio)"
+                  "etiqueta": "4 — Sentir que no alcanza (dinero, comida, afecto, tiempo)"
                 }
               ]
             },
             {
-              "grupo": "TENSIÓN / ACUMULACIÓN (fase aguda)",
+              "grupo": "TOXICIDAD (fase activa)",
               "items": [
                 {
-                  "id": "ten1",
-                  "etiqueta": "5 — Rabia contenida por injusticia / abuso de poder"
+                  "id": "tox1",
+                  "etiqueta": "5 — Algo o alguien es tóxico/veneno para mi vida"
                 },
                 {
-                  "id": "ten2",
-                  "etiqueta": "6 — Resentimiento de largo plazo sin resolver"
+                  "id": "tox2",
+                  "etiqueta": "6 — Forzado a aceptar/tragar algo que me envenena"
                 },
                 {
-                  "id": "ten3",
-                  "etiqueta": "7 — Sobrecarga de responsabilidad (cargar con todo)"
+                  "id": "tox3",
+                  "etiqueta": "7 — Alguien me contamina con su presencia/palabras/acciones"
                 },
                 {
-                  "id": "ten4",
-                  "etiqueta": "8 — Conflicto de territorio exterior (invasión o pérdida)"
+                  "id": "tox4",
+                  "etiqueta": "8 — El ambiente que habito es venenoso para mí"
                 }
               ]
             }
           ]
         },
         {
-          "orden": 3,
-          "titulo": "Sensación sostenedora del conflicto",
-          "instruccion": "MS: ¿Cuál es la sensación que soporta este conflicto? Rastrear por grupo:\n\nGRUPO 1 — SOBREVIVENCIA:\ninsatisfacción · algo me falta · necesidad · carencia · vacío · hambre emocional\n\nGRUPO 2 — PROTECCIÓN:\nincómodo · desagrado · contrariado · harto · impotencia · frustrado · enojado · iracundo · resentido\n\nGRUPO 3 — MOVIMIENTO:\naburrido · confundido · fuera de lugar · desvalorizado · bloqueado\n\nGRUPO 4 — CONTACTO:\namor difícil · desilusionado · rechazado · excluido · solo · abandonado · traicionado\n\nGRUPO 5 — SENSACIONES INFANTILES:\nvulnerabilidad · carencia · privación · represión · amenaza · agresión · traición\n\nIdentificar grupo y luego ítem específico.",
+          "orden": 2,
+          "titulo": "Identificar el conflicto específico",
+          "instruccion": "MS: ¿Qué emoción sostiene este conflicto hepático? Rastrear:\n\n· Angustia (ansiedad por el futuro, miedo a lo que viene)\n· Frustración (lo que quiero no ocurre como debería)\n· Insatisfacción (nada es suficiente, nada llena)\n· Vulnerabilidad (me siento expuesto, sin protección)\n· Rabia acumulada (enojo sostenido que no se expresa)\n· Culpa (me siento responsable de algo negativo)\n· Resentimiento (guardo el daño que alguien me hizo)\n\nGuardar emoción en circuito.",
           "notas": [
-            "Guardar sensación en circuito antes de rastrear el instante."
+            "Para el hígado, el eje carencia-toxicidad tiene sus emociones características: CARENCIA → angustia, insatisfacción, vulnerabilidad. TOXICIDAD → rabia, resentimiento, frustración."
           ],
           "tipo": "seleccion",
           "pregunta_ms": "¿Qué emoción sostiene este conflicto hepático?",
@@ -3439,38 +3659,30 @@
             },
             {
               "id": "rabia",
-              "etiqueta": "Rabia acumulada (enojo contenido, resentimiento crónico)"
-            },
-            {
-              "id": "miesc",
-              "etiqueta": "Miedo a la escasez (terror a no tener suficiente)"
+              "etiqueta": "Rabia acumulada (enojo sostenido que no se expresa)"
             },
             {
               "id": "culpa",
-              "etiqueta": "Culpa (me siento responsable de algo que salió mal)"
+              "etiqueta": "Culpa (me siento responsable de algo negativo)"
             },
             {
-              "id": "verg",
-              "etiqueta": "Vergüenza (me siento inferior, expuesto, juzgado)"
-            },
-            {
-              "id": "tris",
-              "etiqueta": "Tristeza profunda (pérdida que no pudo elaborarse)"
+              "id": "res",
+              "etiqueta": "Resentimiento (guardo el daño que alguien me hizo)"
             }
           ]
         },
         {
-          "orden": 4,
-          "titulo": "Instante de la sensación",
-          "instruccion": "MS: ¿Cuál es el instante de esta sensación/conflicto?\n¿Es prenatal? ¿0–3 años? ¿3–12 años (infancia)? ¿12–18 años (adolescencia)? ¿Adultez?\nAfinar: año exacto → trimestre → mes → semana → día.",
+          "orden": 3,
+          "titulo": "Sensación sostenedora del conflicto",
+          "instruccion": "MS: ¿Cuál es la sensación que soporta este conflicto? Rastrear por grupo:\n\nGRUPO 1 — SOBREVIVENCIA:\ninsatisfacción · algo me falta · necesidad · carencia · vacío · hambre emocional\n\nGRUPO 2 — PROTECCIÓN:\nincómodo · desagrado · contrariado · harto · impotencia · frustrado · enojado · iracundo · resentido\n\nGRUPO 3 — MOVIMIENTO:\naburrido · confundido · fuera de lugar · desvalorizado · bloqueado\n\nGRUPO 4 — CONTACTO:\namor difícil · desilusionado · rechazado · excluido · solo · abandonado · traicionado\n\nGRUPO 5 — SENSACIONES INFANTILES:\nvulnerabilidad · carencia · privación · represión · amenaza · agresión · traición\n\nIdentificar grupo y luego ítem específico.",
           "notas": [
-            "Navegar de lo general a lo específico. El TM da 'Sí' cuando se nombra el rango correcto."
+            "Guardar sensación en circuito antes de rastrear el instante."
           ],
           "tipo": "seleccion",
           "pregunta_ms": "¿Cuál es la sensación que soporta este conflicto?",
           "opciones": [
             {
-              "grupo": "SOBREVIVENCIA",
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
               "items": [
                 {
                   "id": "s1",
@@ -3486,48 +3698,28 @@
                 },
                 {
                   "id": "s4",
-                  "etiqueta": "carencia"
+                  "etiqueta": "necesito saciarme"
                 },
                 {
                   "id": "s5",
-                  "etiqueta": "vacío"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "s6",
-                  "etiqueta": "hambre emocional"
+                  "etiqueta": "vacío"
                 },
                 {
                   "id": "s7",
-                  "etiqueta": "miserable"
+                  "etiqueta": "hambre emocional"
                 },
                 {
                   "id": "s8",
-                  "etiqueta": "vulnerable"
-                },
-                {
-                  "id": "s9",
-                  "etiqueta": "inseguro"
-                },
-                {
-                  "id": "s10",
-                  "etiqueta": "angustiado"
-                },
-                {
-                  "id": "s11",
-                  "etiqueta": "asustado"
-                },
-                {
-                  "id": "s12",
-                  "etiqueta": "aterrorizado"
-                },
-                {
-                  "id": "s13",
-                  "etiqueta": "impotente"
+                  "etiqueta": "anhelo"
                 }
               ]
             },
             {
-              "grupo": "PROTECCIÓN",
+              "grupo": "GRUPO 2 — PROTECCIÓN",
               "items": [
                 {
                   "id": "p1",
@@ -3555,140 +3747,200 @@
                 },
                 {
                   "id": "p7",
-                  "etiqueta": "enojado"
+                  "etiqueta": "enfadado"
                 },
                 {
                   "id": "p8",
-                  "etiqueta": "iracundo"
+                  "etiqueta": "enojado"
                 },
                 {
                   "id": "p9",
-                  "etiqueta": "resentido"
+                  "etiqueta": "iracundo"
                 },
                 {
                   "id": "p10",
-                  "etiqueta": "odio"
+                  "etiqueta": "colérico"
                 },
                 {
                   "id": "p11",
-                  "etiqueta": "rabia ciega"
+                  "etiqueta": "resentido"
+                },
+                {
+                  "id": "p12",
+                  "etiqueta": "rencoroso"
                 }
               ]
             },
             {
-              "grupo": "MOVIMIENTO",
+              "grupo": "GRUPO 3 — MOVIMIENTO",
               "items": [
                 {
                   "id": "m1",
-                  "etiqueta": "atrapado"
+                  "etiqueta": "aburrido"
                 },
                 {
                   "id": "m2",
-                  "etiqueta": "bloqueado"
+                  "etiqueta": "perplejo"
                 },
                 {
                   "id": "m3",
-                  "etiqueta": "paralizado"
+                  "etiqueta": "ofuscado"
                 },
                 {
                   "id": "m4",
-                  "etiqueta": "no puedo avanzar"
-                },
-                {
-                  "id": "m5",
-                  "etiqueta": "sin salida"
-                },
-                {
-                  "id": "m6",
-                  "etiqueta": "estancado"
-                },
-                {
-                  "id": "m7",
-                  "etiqueta": "prisionero"
-                }
-              ]
-            },
-            {
-              "grupo": "CONTACTO",
-              "items": [
-                {
-                  "id": "c1",
-                  "etiqueta": "solo"
-                },
-                {
-                  "id": "c2",
-                  "etiqueta": "abandonado"
-                },
-                {
-                  "id": "c3",
-                  "etiqueta": "rechazado"
-                },
-                {
-                  "id": "c4",
-                  "etiqueta": "no amado"
-                },
-                {
-                  "id": "c5",
-                  "etiqueta": "separado"
-                },
-                {
-                  "id": "c6",
-                  "etiqueta": "aislado"
-                },
-                {
-                  "id": "c7",
-                  "etiqueta": "nadie me ve"
-                },
-                {
-                  "id": "c8",
-                  "etiqueta": "invisible"
-                }
-              ]
-            },
-            {
-              "grupo": "SENSACIONES INFANTILES",
-              "items": [
-                {
-                  "id": "i1",
                   "etiqueta": "confundido"
                 },
                 {
+                  "id": "m5",
+                  "etiqueta": "fuera de centro"
+                },
+                {
+                  "id": "m6",
+                  "etiqueta": "fuera de lugar"
+                },
+                {
+                  "id": "m7",
+                  "etiqueta": "mente en blanco"
+                },
+                {
+                  "id": "m8",
+                  "etiqueta": "desvalorizado"
+                },
+                {
+                  "id": "m9",
+                  "etiqueta": "bloqueado"
+                },
+                {
+                  "id": "m10",
+                  "etiqueta": "parálisis"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 4 — CONTACTO",
+              "items": [
+                {
+                  "id": "c1",
+                  "etiqueta": "amor difícil"
+                },
+                {
+                  "id": "c2",
+                  "etiqueta": "corazón roto"
+                },
+                {
+                  "id": "c3",
+                  "etiqueta": "desilusionado"
+                },
+                {
+                  "id": "c4",
+                  "etiqueta": "sufriendo"
+                },
+                {
+                  "id": "c5",
+                  "etiqueta": "rechazado"
+                },
+                {
+                  "id": "c6",
+                  "etiqueta": "excluido"
+                },
+                {
+                  "id": "c7",
+                  "etiqueta": "solo"
+                },
+                {
+                  "id": "c8",
+                  "etiqueta": "abandonado"
+                },
+                {
+                  "id": "c9",
+                  "etiqueta": "traicionado"
+                },
+                {
+                  "id": "c10",
+                  "etiqueta": "desamparado"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
+              "items": [
+                {
+                  "id": "i1",
+                  "etiqueta": "vulnerabilidad"
+                },
+                {
                   "id": "i2",
-                  "etiqueta": "perdido"
+                  "etiqueta": "integridad corporal"
                 },
                 {
                   "id": "i3",
-                  "etiqueta": "desorientado"
+                  "etiqueta": "integridad emocional"
                 },
                 {
                   "id": "i4",
-                  "etiqueta": "no entiendo"
+                  "etiqueta": "frustración"
                 },
                 {
                   "id": "i5",
-                  "etiqueta": "sin referentes"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "i6",
-                  "etiqueta": "caos interior"
+                  "etiqueta": "privación"
+                },
+                {
+                  "id": "i7",
+                  "etiqueta": "sufrimiento de pobreza afectiva"
+                },
+                {
+                  "id": "i8",
+                  "etiqueta": "mamá no ama ni protege"
+                },
+                {
+                  "id": "i9",
+                  "etiqueta": "rechazo"
+                },
+                {
+                  "id": "i10",
+                  "etiqueta": "ignominia"
+                },
+                {
+                  "id": "i11",
+                  "etiqueta": "represión"
+                },
+                {
+                  "id": "i12",
+                  "etiqueta": "sin permiso del padre para ser/vivir"
+                },
+                {
+                  "id": "i13",
+                  "etiqueta": "amenaza"
+                },
+                {
+                  "id": "i14",
+                  "etiqueta": "agresión"
+                },
+                {
+                  "id": "i15",
+                  "etiqueta": "traición"
                 }
               ]
             }
           ]
         },
         {
-          "orden": 5,
-          "titulo": "Segunda sensación",
-          "instruccion": "MS: ¿Hay algún holograma implicado? (Sí / No)\nSi Sí:\n\nBLOQUE 1: 1-Impacto frontal · 2-Impacto posterior · 3-Desvalorización\nBLOQUE 2: 4-Alguien tiene la culpa · 5-Yo tengo razón y no me hacen caso · 6-Ultraje\nBLOQUE 3: 7-Tiro la toalla · 8-Abandono · 9-Vivo/Muerto\nBLOQUE 4: 10-Bloqueo energético · 11-Incorporación energética · 12-Pérdida de la voluntad",
+          "orden": 4,
+          "titulo": "Instante de la sensación",
+          "instruccion": "MS: ¿Cuál es el instante de esta sensación/conflicto?\n¿Es prenatal? ¿0–3 años? ¿3–12 años (infancia)? ¿12–18 años (adolescencia)? ¿Adultez?\nAfinar: año exacto → trimestre → mes → semana → día.",
           "notas": [
-            "Rastrear fecha del shock, emoción asociada y persona implicada si es relevante."
+            "Navegar de lo general a lo específico. El TM da 'Sí' cuando se nombra el rango correcto."
           ],
-          "tipo": "seleccion",
+          "tipo": "rastreo",
           "pregunta_ms": "¿Cuál es el instante de esta sensación/conflicto?",
           "opciones": [
             {
               "id": "prenatal",
-              "etiqueta": "Prenatal / Proyecto sentido (gestación)"
+              "etiqueta": "Prenatal (gestación / proyecto sentido)"
             },
             {
               "id": "t0_3",
@@ -3709,30 +3961,29 @@
           ]
         },
         {
-          "orden": 6,
-          "titulo": "Holograma implicado",
-          "instruccion": "MS: ¿Cuál es el microbio principal? ¿Y el microbio secundario?\n\n¿BACTERIA? → Gram+ (cocos/bacilos/clostridios/micobacterias) / Gram− (cocos/bacilos/entéricos/espirilos)\n¿VIRUS? → ADN / ARN\n¿HONGO? → Levaduras / Dermatofitos / Sistémicos\n¿PARÁSITO? → Protozoos / Helmintos\n\nPara hígado: frecuentes son Virus hepatotropos (Hepatitis A/B/C), Ameba, E. coli, Candida.",
+          "orden": 5,
+          "titulo": "Segunda sensación",
+          "instruccion": "MS: ¿Hay algún holograma implicado? (Sí / No)\nSi Sí:\n\nBLOQUE 1: 1-Impacto frontal · 2-Impacto posterior · 3-Desvalorización\nBLOQUE 2: 4-Alguien tiene la culpa · 5-Yo tengo razón y no me hacen caso · 6-Ultraje\nBLOQUE 3: 7-Tiro la toalla · 8-Abandono · 9-Vivo/Muerto\nBLOQUE 4: 10-Bloqueo energético · 11-Incorporación energética · 12-Pérdida de la voluntad",
           "notas": [
-            "El hígado puede tener dos microbios simultáneos — uno por el eje carencia y otro por el eje toxicidad."
+            "Rastrear fecha del shock, emoción asociada y persona implicada si es relevante."
           ],
           "tipo": "verificacion",
-          "pregunta_ms": "¿Hay holograma implicado?",
-          "si_negativo": 7,
+          "pregunta_ms": "¿Hay algún holograma implicado?",
           "opciones": [
             {
               "grupo": "BLOQUE 1",
               "items": [
                 {
                   "id": "h1",
-                  "etiqueta": "1 — Impacto frontal"
+                  "etiqueta": "1 — Impacto frontal (recibí algo de frente que no pude evitar)"
                 },
                 {
                   "id": "h2",
-                  "etiqueta": "2 — Impacto posterior"
+                  "etiqueta": "2 — Impacto posterior (me atacaron por la espalda / traición)"
                 },
                 {
                   "id": "h3",
-                  "etiqueta": "3 — Desvalorización"
+                  "etiqueta": "3 — Desvalorización (me hicieron sentir que no valgo)"
                 }
               ]
             },
@@ -3741,7 +3992,7 @@
               "items": [
                 {
                   "id": "h4",
-                  "etiqueta": "4 — Alguien tiene la culpa"
+                  "etiqueta": "4 — Alguien tiene la culpa (la responsabilidad es de otro)"
                 },
                 {
                   "id": "h5",
@@ -3749,7 +4000,7 @@
                 },
                 {
                   "id": "h6",
-                  "etiqueta": "6 — Ultraje"
+                  "etiqueta": "6 — Ultraje (me faltaron al respeto de forma inaceptable)"
                 }
               ]
             },
@@ -3762,11 +4013,11 @@
                 },
                 {
                   "id": "h8",
-                  "etiqueta": "8 — Abandono"
+                  "etiqueta": "8 — Abandono (me dejaron solo en el momento crítico)"
                 },
                 {
                   "id": "h9",
-                  "etiqueta": "9 — Vivo / Muerto"
+                  "etiqueta": "9 — Vivo/Muerto (no sé si vale la pena seguir)"
                 }
               ]
             },
@@ -3775,64 +4026,75 @@
               "items": [
                 {
                   "id": "h10",
-                  "etiqueta": "10 — Bloqueo energético"
+                  "etiqueta": "10 — Bloqueo energético (la emoción quedó atrapada sin salida)"
                 },
                 {
                   "id": "h11",
-                  "etiqueta": "11 — Nido"
+                  "etiqueta": "11 — Incorporación energética (absorbí la energía de otro)"
                 },
                 {
                   "id": "h12",
-                  "etiqueta": "12 — Proyecto sentido"
+                  "etiqueta": "12 — Pérdida de la voluntad (ya no tengo fuerza para decidir)"
                 }
               ]
             }
-          ]
+          ],
+          "si_negativo": 6
         },
         {
-          "orden": 7,
-          "titulo": "Microbio principal",
-          "instruccion": "MS: ¿Hay par biomagnético necesario? (Sí / No)\n\nNavegar: ¿Región? → ¿Zona? → ¿Bloque? → ¿Número?\n¿Hay otro par necesario? Repetir hasta completar.\nInsertar imanes durante 30 minutos.",
+          "orden": 6,
+          "titulo": "Holograma implicado",
+          "instruccion": "MS: ¿Cuál es el microbio principal? ¿Y el microbio secundario?\n\n¿BACTERIA? → Gram+ (cocos/bacilos/clostridios/micobacterias) / Gram− (cocos/bacilos/entéricos/espirilos)\n¿VIRUS? → ADN / ARN\n¿HONGO? → Levaduras / Dermatofitos / Sistémicos\n¿PARÁSITO? → Protozoos / Helmintos\n\nPara hígado: frecuentes son Virus hepatotropos (Hepatitis A/B/C), Ameba, E. coli, Candida.",
           "notas": [
-            "Para hígado, pares frecuentes incluyen zona hepática / zona pancreática / zona biliar."
+            "El hígado puede tener dos microbios simultáneos — uno por el eje carencia y otro por el eje toxicidad."
           ],
           "tipo": "seleccion",
           "pregunta_ms": "¿Cuál es el microbio principal?",
+          "si_negativo": 7,
           "opciones": [
             {
-              "grupo": "BACTERIA",
+              "grupo": "BACTERIA — Gram +",
               "items": [
                 {
                   "id": "bg1",
-                  "etiqueta": "Gram+ — Cocos (Estreptococo, Estafilococo)"
+                  "etiqueta": "Cocos Gram+ (Estafilococo / Estreptococo / Enterococo)"
                 },
                 {
                   "id": "bg2",
-                  "etiqueta": "Gram+ — Bacilos (Lactobacilo, Bacillus)"
+                  "etiqueta": "Bacilos Gram+"
                 },
                 {
                   "id": "bg3",
-                  "etiqueta": "Gram+ — Clostridios (C. difficile, C. tetani)"
+                  "etiqueta": "Clostridios (C. difficile, C. tetani, C. botulinum)"
                 },
                 {
                   "id": "bg4",
-                  "etiqueta": "Gram+ — Micobacterias (TBC, Lepra)"
-                },
+                  "etiqueta": "Micobacterias (TBC, Lepra)"
+                }
+              ]
+            },
+            {
+              "grupo": "BACTERIA — Gram −",
+              "items": [
                 {
                   "id": "bg5",
-                  "etiqueta": "Gram− — Cocos (Neisseria, Meningococo)"
+                  "etiqueta": "Cocos Gram− (Neisseria — Gonorrea, Meningitis)"
                 },
                 {
                   "id": "bg6",
-                  "etiqueta": "Gram− — Bacilos (E. coli, Salmonella, H. pylori)"
+                  "etiqueta": "Bacilos Gram− (Bartonella, Burkholderia, Hemofilus)"
                 },
                 {
                   "id": "bg7",
-                  "etiqueta": "Gram− — Entéricos (Klebsiella, Proteus, Shigella)"
+                  "etiqueta": "Bacilos entéricos (Salmonella / E. coli / Klebsiella)"
                 },
                 {
                   "id": "bg8",
-                  "etiqueta": "Gram− — Espirilos (Treponema, Borrelia)"
+                  "etiqueta": "Espirilos / Espiroquetas (Treponema, Borrelia, Leptospira)"
+                },
+                {
+                  "id": "bg9",
+                  "etiqueta": "Chlamydias / Mycoplasmas"
                 }
               ]
             },
@@ -3841,11 +4103,11 @@
               "items": [
                 {
                   "id": "vadn",
-                  "etiqueta": "ADN (Herpes, Varicela, Papiloma, Citomegalovirus)"
+                  "etiqueta": "ADN (Herpes / Adenovirus / Papilomavirus / VEB / CMV)"
                 },
                 {
                   "id": "varn",
-                  "etiqueta": "ARN (Influenza, VIH, Hepatitis C, Coronavirus)"
+                  "etiqueta": "ARN (Influenza / VIH / Hepatitis C / Dengue / Coronavirus)"
                 }
               ]
             },
@@ -3854,7 +4116,7 @@
               "items": [
                 {
                   "id": "hlev",
-                  "etiqueta": "Levaduras (Cándida, Criptococo)"
+                  "etiqueta": "Levaduras (Candida)"
                 },
                 {
                   "id": "hder",
@@ -3874,12 +4136,79 @@
                   "etiqueta": "Protozoos (Ameba, Giardia, Toxoplasma, Plasmodio)"
                 },
                 {
-                  "id": "phel",
-                  "etiqueta": "Helmintos (Áscaris, Tenias, Oxiuros)"
+                  "id": "pnem",
+                  "etiqueta": "Helmintos — Nematodos (Áscaris, Oxiuros, Trichinella)"
+                },
+                {
+                  "id": "ptre",
+                  "etiqueta": "Helmintos — Trematodos (Fasciola, Schistosoma)"
+                },
+                {
+                  "id": "pces",
+                  "etiqueta": "Helmintos — Cestodos (Tenia, Equinococo)"
                 }
               ]
             }
           ]
+        },
+        {
+          "orden": 7,
+          "titulo": "Microbio principal",
+          "instruccion": "MS: ¿Hay par biomagnético necesario? (Sí / No)\n\nNavegar: ¿Región? → ¿Zona? → ¿Bloque? → ¿Número?\n¿Hay otro par necesario? Repetir hasta completar.\nInsertar imanes durante 30 minutos.",
+          "notas": [
+            "Para hígado, pares frecuentes incluyen zona hepática / zona pancreática / zona biliar."
+          ],
+          "tipo": "verificacion",
+          "pregunta_ms": "¿Hay par biomagnético necesario?",
+          "opciones": [
+            {
+              "grupo": "REGIÓN",
+              "items": [
+                {
+                  "id": "rcab",
+                  "etiqueta": "Cabeza (coronilla, frontal, temporal, occipital)"
+                },
+                {
+                  "id": "rta",
+                  "etiqueta": "Tronco anterior (pecho, abdomen, pelvis)"
+                },
+                {
+                  "id": "rtp",
+                  "etiqueta": "Tronco posterior (cervical, dorsal, lumbar, sacra)"
+                },
+                {
+                  "id": "rms",
+                  "etiqueta": "Miembros superiores (hombro, codo, muñeca, mano)"
+                },
+                {
+                  "id": "rmi",
+                  "etiqueta": "Miembros inferiores (cadera, rodilla, tobillo, pie)"
+                }
+              ]
+            },
+            {
+              "grupo": "BLOQUE DE COLOR",
+              "items": [
+                {
+                  "id": "brojo",
+                  "etiqueta": "Bloque Rojo"
+                },
+                {
+                  "id": "bnar",
+                  "etiqueta": "Bloque Naranja"
+                },
+                {
+                  "id": "bama",
+                  "etiqueta": "Bloque Amarillo"
+                },
+                {
+                  "id": "bver",
+                  "etiqueta": "Bloque Verde"
+                }
+              ]
+            }
+          ],
+          "si_negativo": 8
         },
         {
           "orden": 8,
@@ -3889,8 +4218,60 @@
             "Para hígado: frecuentes son 'no tengo suficiente', 'el mundo es peligroso/tóxico', 'no puedo protegerme'."
           ],
           "tipo": "verificacion",
-          "pregunta_ms": "¿Hay par biomagnético necesario?",
-          "si_negativo": 9
+          "pregunta_ms": "¿Hay creencia limitante implicada?",
+          "si_negativo": 9,
+          "opciones": [
+            {
+              "grupo": "TIPO DE CREENCIA",
+              "items": [
+                {
+                  "id": "obl",
+                  "etiqueta": "Obligación — debo, tengo que, necesito, estoy obligado a…"
+                },
+                {
+                  "id": "proh",
+                  "etiqueta": "Prohibición — está prohibido, no debo, es malo, es injusto…"
+                },
+                {
+                  "id": "desv",
+                  "etiqueta": "Desvalorización — es mi culpa, no merezco, no valgo, no puedo…"
+                }
+              ]
+            },
+            {
+              "grupo": "CATEGORÍA",
+              "items": [
+                {
+                  "id": "cfis",
+                  "etiqueta": "Física"
+                },
+                {
+                  "id": "csex",
+                  "etiqueta": "Sexual"
+                },
+                {
+                  "id": "ceco",
+                  "etiqueta": "Económica"
+                },
+                {
+                  "id": "cemo",
+                  "etiqueta": "Emocional"
+                },
+                {
+                  "id": "csoc",
+                  "etiqueta": "Social"
+                },
+                {
+                  "id": "cesp",
+                  "etiqueta": "Espiritual"
+                },
+                {
+                  "id": "ccre",
+                  "etiqueta": "Creativa"
+                }
+              ]
+            }
+          ]
         },
         {
           "orden": 9,
@@ -3899,8 +4280,8 @@
           "notas": [
             "Trabajar un conflicto por sesión, en profundidad, es más efectivo que abordar varios superficialmente."
           ],
-          "tipo": "verificacion",
-          "pregunta_ms": "¿Hay creencia limitante implicada?",
+          "tipo": "instruccion",
+          "pregunta_ms": "Registrar todos los datos y agendar sesión terapéutica",
           "si_negativo": null,
           "opciones": [
             {
@@ -4001,39 +4382,39 @@
           "opciones": [
             {
               "id": "acc",
-              "etiqueta": "1 — Acción pendiente (algo que debió hacerse y no se hizo)"
+              "etiqueta": "1 — Acción pendiente (algo que un ancestro debió hacer y no hizo)"
             },
             {
               "id": "dic",
-              "etiqueta": "2 — Dicción pendiente (algo que debió decirse y no se dijo)"
+              "etiqueta": "2 — Dicción pendiente (algo que un ancestro debió decir y no dijo)"
             },
             {
               "id": "fid",
-              "etiqueta": "3 — Fidelidad familiar invisible (repetir inconscientemente el destino ancestral)"
+              "etiqueta": "3 — Fidelidad familiar invisible (repetir el destino del ancestro)"
             },
             {
               "id": "proy",
-              "etiqueta": "4 — Proyecto / pacto (mandato o misión impuesta al nacer)"
+              "etiqueta": "4 — Proyecto/pacto transgeneracional (misión heredada no cumplida)"
             },
             {
-              "id": "geo",
-              "etiqueta": "5 — Memoria geográfica (lugar asociado a trauma ancestral)"
+              "id": "verg",
+              "etiqueta": "5 — Vergüenza/culpa heredada (el secreto del árbol que nadie habla)"
             },
             {
-              "id": "fec",
-              "etiqueta": "6 — Memoria de fecha (aniversario de trauma ancestral)"
+              "id": "deuda",
+              "etiqueta": "6 — Deuda de vida (sentir que se le debe algo al árbol)"
             },
             {
-              "id": "trau",
-              "etiqueta": "7 — Trauma no elaborado (impacto biográfico sin resolver)"
+              "id": "rep",
+              "etiqueta": "7 — Reparación simbólica (necesidad de reparar el daño de un ancestro)"
             },
             {
-              "id": "dest",
-              "etiqueta": "8 — Fidelidad de destino (seguir el destino trágico de un ancestro)"
+              "id": "eco",
+              "etiqueta": "8 — Eco sistémico (repetición de patrón sin causa en la historia propia)"
             },
             {
-              "id": "due",
-              "etiqueta": "9 — Duelo no resuelto (pérdida no procesada en el árbol)"
+              "id": "excl",
+              "etiqueta": "9 — Exclusión (un miembro del árbol fue excluido y busca ser incluido)"
             }
           ]
         },
@@ -4049,7 +4430,7 @@
           "pregunta_ms": "¿Cuál es la sensación en la que se sostiene este conflicto?",
           "opciones": [
             {
-              "grupo": "SOBREVIVENCIA",
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
               "items": [
                 {
                   "id": "s1",
@@ -4065,48 +4446,28 @@
                 },
                 {
                   "id": "s4",
-                  "etiqueta": "carencia"
+                  "etiqueta": "necesito saciarme"
                 },
                 {
                   "id": "s5",
-                  "etiqueta": "vacío"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "s6",
-                  "etiqueta": "hambre emocional"
+                  "etiqueta": "vacío"
                 },
                 {
                   "id": "s7",
-                  "etiqueta": "miserable"
+                  "etiqueta": "hambre emocional"
                 },
                 {
                   "id": "s8",
-                  "etiqueta": "vulnerable"
-                },
-                {
-                  "id": "s9",
-                  "etiqueta": "inseguro"
-                },
-                {
-                  "id": "s10",
-                  "etiqueta": "angustiado"
-                },
-                {
-                  "id": "s11",
-                  "etiqueta": "asustado"
-                },
-                {
-                  "id": "s12",
-                  "etiqueta": "aterrorizado"
-                },
-                {
-                  "id": "s13",
-                  "etiqueta": "impotente"
+                  "etiqueta": "anhelo"
                 }
               ]
             },
             {
-              "grupo": "PROTECCIÓN",
+              "grupo": "GRUPO 2 — PROTECCIÓN",
               "items": [
                 {
                   "id": "p1",
@@ -4134,122 +4495,182 @@
                 },
                 {
                   "id": "p7",
-                  "etiqueta": "enojado"
+                  "etiqueta": "enfadado"
                 },
                 {
                   "id": "p8",
-                  "etiqueta": "iracundo"
+                  "etiqueta": "enojado"
                 },
                 {
                   "id": "p9",
-                  "etiqueta": "resentido"
+                  "etiqueta": "iracundo"
                 },
                 {
                   "id": "p10",
-                  "etiqueta": "odio"
+                  "etiqueta": "colérico"
                 },
                 {
                   "id": "p11",
-                  "etiqueta": "rabia ciega"
+                  "etiqueta": "resentido"
+                },
+                {
+                  "id": "p12",
+                  "etiqueta": "rencoroso"
                 }
               ]
             },
             {
-              "grupo": "MOVIMIENTO",
+              "grupo": "GRUPO 3 — MOVIMIENTO",
               "items": [
                 {
                   "id": "m1",
-                  "etiqueta": "atrapado"
+                  "etiqueta": "aburrido"
                 },
                 {
                   "id": "m2",
-                  "etiqueta": "bloqueado"
+                  "etiqueta": "perplejo"
                 },
                 {
                   "id": "m3",
-                  "etiqueta": "paralizado"
+                  "etiqueta": "ofuscado"
                 },
                 {
                   "id": "m4",
-                  "etiqueta": "no puedo avanzar"
-                },
-                {
-                  "id": "m5",
-                  "etiqueta": "sin salida"
-                },
-                {
-                  "id": "m6",
-                  "etiqueta": "estancado"
-                },
-                {
-                  "id": "m7",
-                  "etiqueta": "prisionero"
-                }
-              ]
-            },
-            {
-              "grupo": "CONTACTO",
-              "items": [
-                {
-                  "id": "c1",
-                  "etiqueta": "solo"
-                },
-                {
-                  "id": "c2",
-                  "etiqueta": "abandonado"
-                },
-                {
-                  "id": "c3",
-                  "etiqueta": "rechazado"
-                },
-                {
-                  "id": "c4",
-                  "etiqueta": "no amado"
-                },
-                {
-                  "id": "c5",
-                  "etiqueta": "separado"
-                },
-                {
-                  "id": "c6",
-                  "etiqueta": "aislado"
-                },
-                {
-                  "id": "c7",
-                  "etiqueta": "nadie me ve"
-                },
-                {
-                  "id": "c8",
-                  "etiqueta": "invisible"
-                }
-              ]
-            },
-            {
-              "grupo": "SENSACIONES INFANTILES",
-              "items": [
-                {
-                  "id": "i1",
                   "etiqueta": "confundido"
                 },
                 {
+                  "id": "m5",
+                  "etiqueta": "fuera de centro"
+                },
+                {
+                  "id": "m6",
+                  "etiqueta": "fuera de lugar"
+                },
+                {
+                  "id": "m7",
+                  "etiqueta": "mente en blanco"
+                },
+                {
+                  "id": "m8",
+                  "etiqueta": "desvalorizado"
+                },
+                {
+                  "id": "m9",
+                  "etiqueta": "bloqueado"
+                },
+                {
+                  "id": "m10",
+                  "etiqueta": "parálisis"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 4 — CONTACTO",
+              "items": [
+                {
+                  "id": "c1",
+                  "etiqueta": "amor difícil"
+                },
+                {
+                  "id": "c2",
+                  "etiqueta": "corazón roto"
+                },
+                {
+                  "id": "c3",
+                  "etiqueta": "desilusionado"
+                },
+                {
+                  "id": "c4",
+                  "etiqueta": "sufriendo"
+                },
+                {
+                  "id": "c5",
+                  "etiqueta": "rechazado"
+                },
+                {
+                  "id": "c6",
+                  "etiqueta": "excluido"
+                },
+                {
+                  "id": "c7",
+                  "etiqueta": "solo"
+                },
+                {
+                  "id": "c8",
+                  "etiqueta": "abandonado"
+                },
+                {
+                  "id": "c9",
+                  "etiqueta": "traicionado"
+                },
+                {
+                  "id": "c10",
+                  "etiqueta": "desamparado"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
+              "items": [
+                {
+                  "id": "i1",
+                  "etiqueta": "vulnerabilidad"
+                },
+                {
                   "id": "i2",
-                  "etiqueta": "perdido"
+                  "etiqueta": "integridad corporal"
                 },
                 {
                   "id": "i3",
-                  "etiqueta": "desorientado"
+                  "etiqueta": "integridad emocional"
                 },
                 {
                   "id": "i4",
-                  "etiqueta": "no entiendo"
+                  "etiqueta": "frustración"
                 },
                 {
                   "id": "i5",
-                  "etiqueta": "sin referentes"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "i6",
-                  "etiqueta": "caos interior"
+                  "etiqueta": "privación"
+                },
+                {
+                  "id": "i7",
+                  "etiqueta": "sufrimiento de pobreza afectiva"
+                },
+                {
+                  "id": "i8",
+                  "etiqueta": "mamá no ama ni protege"
+                },
+                {
+                  "id": "i9",
+                  "etiqueta": "rechazo"
+                },
+                {
+                  "id": "i10",
+                  "etiqueta": "ignominia"
+                },
+                {
+                  "id": "i11",
+                  "etiqueta": "represión"
+                },
+                {
+                  "id": "i12",
+                  "etiqueta": "sin permiso del padre para ser/vivir"
+                },
+                {
+                  "id": "i13",
+                  "etiqueta": "amenaza"
+                },
+                {
+                  "id": "i14",
+                  "etiqueta": "agresión"
+                },
+                {
+                  "id": "i15",
+                  "etiqueta": "traición"
                 }
               ]
             }
@@ -4263,7 +4684,7 @@
             "Para conflictos transgeneracionales, el instante puede estar en el pasado lejano del árbol genealógico (se acepta sin necesidad de precisar fecha exacta) o puede haberse activado en vida del consultante cuando una situación presente resonó con la memoria ancestral.",
             "El test muscular confirma el tramo temporal correcto. Si el instante es de gestación o prenatal, explorar qué estaba viviendo la madre/padre en ese período que conecta con el conflicto ancestral."
           ],
-          "tipo": "seleccion",
+          "tipo": "rastreo",
           "pregunta_ms": "¿Cuál es el instante de esta sensación?",
           "opciones": [
             {
@@ -4272,7 +4693,7 @@
             },
             {
               "id": "prenatal",
-              "etiqueta": "Prenatal / Proyecto sentido (gestación)"
+              "etiqueta": "Prenatal (gestación / proyecto sentido)"
             },
             {
               "id": "t0_3",
@@ -4300,11 +4721,11 @@
             "Los conflictos transgeneracionales complejos, especialmente los de exclusión, secreto o muerte injusta, suelen tener múltiples capas de sensación. Registrar todas las que el test muscular confirme antes de pasar a creencias."
           ],
           "tipo": "verificacion",
-          "pregunta_ms": "¿Hay alguna otra sensación sostenedora?",
+          "pregunta_ms": "¿Hay otra sensación sostenedora?",
           "si_negativo": 6,
           "opciones": [
             {
-              "grupo": "SOBREVIVENCIA",
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
               "items": [
                 {
                   "id": "s1",
@@ -4320,48 +4741,28 @@
                 },
                 {
                   "id": "s4",
-                  "etiqueta": "carencia"
+                  "etiqueta": "necesito saciarme"
                 },
                 {
                   "id": "s5",
-                  "etiqueta": "vacío"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "s6",
-                  "etiqueta": "hambre emocional"
+                  "etiqueta": "vacío"
                 },
                 {
                   "id": "s7",
-                  "etiqueta": "miserable"
+                  "etiqueta": "hambre emocional"
                 },
                 {
                   "id": "s8",
-                  "etiqueta": "vulnerable"
-                },
-                {
-                  "id": "s9",
-                  "etiqueta": "inseguro"
-                },
-                {
-                  "id": "s10",
-                  "etiqueta": "angustiado"
-                },
-                {
-                  "id": "s11",
-                  "etiqueta": "asustado"
-                },
-                {
-                  "id": "s12",
-                  "etiqueta": "aterrorizado"
-                },
-                {
-                  "id": "s13",
-                  "etiqueta": "impotente"
+                  "etiqueta": "anhelo"
                 }
               ]
             },
             {
-              "grupo": "PROTECCIÓN",
+              "grupo": "GRUPO 2 — PROTECCIÓN",
               "items": [
                 {
                   "id": "p1",
@@ -4389,122 +4790,182 @@
                 },
                 {
                   "id": "p7",
-                  "etiqueta": "enojado"
+                  "etiqueta": "enfadado"
                 },
                 {
                   "id": "p8",
-                  "etiqueta": "iracundo"
+                  "etiqueta": "enojado"
                 },
                 {
                   "id": "p9",
-                  "etiqueta": "resentido"
+                  "etiqueta": "iracundo"
                 },
                 {
                   "id": "p10",
-                  "etiqueta": "odio"
+                  "etiqueta": "colérico"
                 },
                 {
                   "id": "p11",
-                  "etiqueta": "rabia ciega"
+                  "etiqueta": "resentido"
+                },
+                {
+                  "id": "p12",
+                  "etiqueta": "rencoroso"
                 }
               ]
             },
             {
-              "grupo": "MOVIMIENTO",
+              "grupo": "GRUPO 3 — MOVIMIENTO",
               "items": [
                 {
                   "id": "m1",
-                  "etiqueta": "atrapado"
+                  "etiqueta": "aburrido"
                 },
                 {
                   "id": "m2",
-                  "etiqueta": "bloqueado"
+                  "etiqueta": "perplejo"
                 },
                 {
                   "id": "m3",
-                  "etiqueta": "paralizado"
+                  "etiqueta": "ofuscado"
                 },
                 {
                   "id": "m4",
-                  "etiqueta": "no puedo avanzar"
-                },
-                {
-                  "id": "m5",
-                  "etiqueta": "sin salida"
-                },
-                {
-                  "id": "m6",
-                  "etiqueta": "estancado"
-                },
-                {
-                  "id": "m7",
-                  "etiqueta": "prisionero"
-                }
-              ]
-            },
-            {
-              "grupo": "CONTACTO",
-              "items": [
-                {
-                  "id": "c1",
-                  "etiqueta": "solo"
-                },
-                {
-                  "id": "c2",
-                  "etiqueta": "abandonado"
-                },
-                {
-                  "id": "c3",
-                  "etiqueta": "rechazado"
-                },
-                {
-                  "id": "c4",
-                  "etiqueta": "no amado"
-                },
-                {
-                  "id": "c5",
-                  "etiqueta": "separado"
-                },
-                {
-                  "id": "c6",
-                  "etiqueta": "aislado"
-                },
-                {
-                  "id": "c7",
-                  "etiqueta": "nadie me ve"
-                },
-                {
-                  "id": "c8",
-                  "etiqueta": "invisible"
-                }
-              ]
-            },
-            {
-              "grupo": "SENSACIONES INFANTILES",
-              "items": [
-                {
-                  "id": "i1",
                   "etiqueta": "confundido"
                 },
                 {
+                  "id": "m5",
+                  "etiqueta": "fuera de centro"
+                },
+                {
+                  "id": "m6",
+                  "etiqueta": "fuera de lugar"
+                },
+                {
+                  "id": "m7",
+                  "etiqueta": "mente en blanco"
+                },
+                {
+                  "id": "m8",
+                  "etiqueta": "desvalorizado"
+                },
+                {
+                  "id": "m9",
+                  "etiqueta": "bloqueado"
+                },
+                {
+                  "id": "m10",
+                  "etiqueta": "parálisis"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 4 — CONTACTO",
+              "items": [
+                {
+                  "id": "c1",
+                  "etiqueta": "amor difícil"
+                },
+                {
+                  "id": "c2",
+                  "etiqueta": "corazón roto"
+                },
+                {
+                  "id": "c3",
+                  "etiqueta": "desilusionado"
+                },
+                {
+                  "id": "c4",
+                  "etiqueta": "sufriendo"
+                },
+                {
+                  "id": "c5",
+                  "etiqueta": "rechazado"
+                },
+                {
+                  "id": "c6",
+                  "etiqueta": "excluido"
+                },
+                {
+                  "id": "c7",
+                  "etiqueta": "solo"
+                },
+                {
+                  "id": "c8",
+                  "etiqueta": "abandonado"
+                },
+                {
+                  "id": "c9",
+                  "etiqueta": "traicionado"
+                },
+                {
+                  "id": "c10",
+                  "etiqueta": "desamparado"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
+              "items": [
+                {
+                  "id": "i1",
+                  "etiqueta": "vulnerabilidad"
+                },
+                {
                   "id": "i2",
-                  "etiqueta": "perdido"
+                  "etiqueta": "integridad corporal"
                 },
                 {
                   "id": "i3",
-                  "etiqueta": "desorientado"
+                  "etiqueta": "integridad emocional"
                 },
                 {
                   "id": "i4",
-                  "etiqueta": "no entiendo"
+                  "etiqueta": "frustración"
                 },
                 {
                   "id": "i5",
-                  "etiqueta": "sin referentes"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "i6",
-                  "etiqueta": "caos interior"
+                  "etiqueta": "privación"
+                },
+                {
+                  "id": "i7",
+                  "etiqueta": "sufrimiento de pobreza afectiva"
+                },
+                {
+                  "id": "i8",
+                  "etiqueta": "mamá no ama ni protege"
+                },
+                {
+                  "id": "i9",
+                  "etiqueta": "rechazo"
+                },
+                {
+                  "id": "i10",
+                  "etiqueta": "ignominia"
+                },
+                {
+                  "id": "i11",
+                  "etiqueta": "represión"
+                },
+                {
+                  "id": "i12",
+                  "etiqueta": "sin permiso del padre para ser/vivir"
+                },
+                {
+                  "id": "i13",
+                  "etiqueta": "amenaza"
+                },
+                {
+                  "id": "i14",
+                  "etiqueta": "agresión"
+                },
+                {
+                  "id": "i15",
+                  "etiqueta": "traición"
                 }
               ]
             }
@@ -4527,15 +4988,15 @@
               "items": [
                 {
                   "id": "obl",
-                  "etiqueta": "Obligación — debo, tengo que, estoy obligado a…"
+                  "etiqueta": "Obligación — debo, tengo que, necesito, estoy obligado a…"
                 },
                 {
                   "id": "proh",
-                  "etiqueta": "Prohibición — no debo, está prohibido, es malo…"
+                  "etiqueta": "Prohibición — está prohibido, no debo, es malo, es injusto…"
                 },
                 {
                   "id": "desv",
-                  "etiqueta": "Desvalorización — no merezco, no puedo, es mi culpa…"
+                  "etiqueta": "Desvalorización — es mi culpa, no merezco, no valgo, no puedo…"
                 }
               ]
             },
@@ -4591,15 +5052,15 @@
               "items": [
                 {
                   "id": "h1",
-                  "etiqueta": "1 — Impacto frontal"
+                  "etiqueta": "1 — Impacto frontal (recibí algo de frente que no pude evitar)"
                 },
                 {
                   "id": "h2",
-                  "etiqueta": "2 — Impacto posterior"
+                  "etiqueta": "2 — Impacto posterior (me atacaron por la espalda / traición)"
                 },
                 {
                   "id": "h3",
-                  "etiqueta": "3 — Desvalorización"
+                  "etiqueta": "3 — Desvalorización (me hicieron sentir que no valgo)"
                 }
               ]
             },
@@ -4608,7 +5069,7 @@
               "items": [
                 {
                   "id": "h4",
-                  "etiqueta": "4 — Alguien tiene la culpa"
+                  "etiqueta": "4 — Alguien tiene la culpa (la responsabilidad es de otro)"
                 },
                 {
                   "id": "h5",
@@ -4616,7 +5077,7 @@
                 },
                 {
                   "id": "h6",
-                  "etiqueta": "6 — Ultraje"
+                  "etiqueta": "6 — Ultraje (me faltaron al respeto de forma inaceptable)"
                 }
               ]
             },
@@ -4629,11 +5090,11 @@
                 },
                 {
                   "id": "h8",
-                  "etiqueta": "8 — Abandono"
+                  "etiqueta": "8 — Abandono (me dejaron solo en el momento crítico)"
                 },
                 {
                   "id": "h9",
-                  "etiqueta": "9 — Vivo / Muerto"
+                  "etiqueta": "9 — Vivo/Muerto (no sé si vale la pena seguir)"
                 }
               ]
             },
@@ -4642,15 +5103,15 @@
               "items": [
                 {
                   "id": "h10",
-                  "etiqueta": "10 — Bloqueo energético"
+                  "etiqueta": "10 — Bloqueo energético (la emoción quedó atrapada sin salida)"
                 },
                 {
                   "id": "h11",
-                  "etiqueta": "11 — Nido"
+                  "etiqueta": "11 — Incorporación energética (absorbí la energía de otro)"
                 },
                 {
                   "id": "h12",
-                  "etiqueta": "12 — Proyecto sentido"
+                  "etiqueta": "12 — Pérdida de la voluntad (ya no tengo fuerza para decidir)"
                 }
               ]
             }
@@ -4668,39 +5129,48 @@
           "pregunta_ms": "¿Cuál es el microbio que soporta la información transgeneracional?",
           "opciones": [
             {
-              "grupo": "BACTERIA",
+              "grupo": "BACTERIA — Gram +",
               "items": [
                 {
                   "id": "bg1",
-                  "etiqueta": "Gram+ — Cocos (Estreptococo, Estafilococo)"
+                  "etiqueta": "Cocos Gram+ (Estafilococo / Estreptococo / Enterococo)"
                 },
                 {
                   "id": "bg2",
-                  "etiqueta": "Gram+ — Bacilos (Lactobacilo, Bacillus)"
+                  "etiqueta": "Bacilos Gram+"
                 },
                 {
                   "id": "bg3",
-                  "etiqueta": "Gram+ — Clostridios (C. difficile, C. tetani)"
+                  "etiqueta": "Clostridios (C. difficile, C. tetani, C. botulinum)"
                 },
                 {
                   "id": "bg4",
-                  "etiqueta": "Gram+ — Micobacterias (TBC, Lepra)"
-                },
+                  "etiqueta": "Micobacterias (TBC, Lepra)"
+                }
+              ]
+            },
+            {
+              "grupo": "BACTERIA — Gram −",
+              "items": [
                 {
                   "id": "bg5",
-                  "etiqueta": "Gram− — Cocos (Neisseria, Meningococo)"
+                  "etiqueta": "Cocos Gram− (Neisseria — Gonorrea, Meningitis)"
                 },
                 {
                   "id": "bg6",
-                  "etiqueta": "Gram− — Bacilos (E. coli, Salmonella, H. pylori)"
+                  "etiqueta": "Bacilos Gram− (Bartonella, Burkholderia, Hemofilus)"
                 },
                 {
                   "id": "bg7",
-                  "etiqueta": "Gram− — Entéricos (Klebsiella, Proteus, Shigella)"
+                  "etiqueta": "Bacilos entéricos (Salmonella / E. coli / Klebsiella)"
                 },
                 {
                   "id": "bg8",
-                  "etiqueta": "Gram− — Espirilos (Treponema, Borrelia)"
+                  "etiqueta": "Espirilos / Espiroquetas (Treponema, Borrelia, Leptospira)"
+                },
+                {
+                  "id": "bg9",
+                  "etiqueta": "Chlamydias / Mycoplasmas"
                 }
               ]
             },
@@ -4709,11 +5179,11 @@
               "items": [
                 {
                   "id": "vadn",
-                  "etiqueta": "ADN (Herpes, Varicela, Papiloma, Citomegalovirus)"
+                  "etiqueta": "ADN (Herpes / Adenovirus / Papilomavirus / VEB / CMV)"
                 },
                 {
                   "id": "varn",
-                  "etiqueta": "ARN (Influenza, VIH, Hepatitis C, Coronavirus)"
+                  "etiqueta": "ARN (Influenza / VIH / Hepatitis C / Dengue / Coronavirus)"
                 }
               ]
             },
@@ -4722,7 +5192,7 @@
               "items": [
                 {
                   "id": "hlev",
-                  "etiqueta": "Levaduras (Cándida, Criptococo)"
+                  "etiqueta": "Levaduras (Candida)"
                 },
                 {
                   "id": "hder",
@@ -4742,8 +5212,16 @@
                   "etiqueta": "Protozoos (Ameba, Giardia, Toxoplasma, Plasmodio)"
                 },
                 {
-                  "id": "phel",
-                  "etiqueta": "Helmintos (Áscaris, Tenias, Oxiuros)"
+                  "id": "pnem",
+                  "etiqueta": "Helmintos — Nematodos (Áscaris, Oxiuros, Trichinella)"
+                },
+                {
+                  "id": "ptre",
+                  "etiqueta": "Helmintos — Trematodos (Fasciola, Schistosoma)"
+                },
+                {
+                  "id": "pces",
+                  "etiqueta": "Helmintos — Cestodos (Tenia, Equinococo)"
                 }
               ]
             }
@@ -4853,7 +5331,7 @@
             "Hacer esta programación al inicio de CADA sesión de diagnóstico. Puede hacerse en voz alta o mentalmente, con la mano al pecho o estómago como ancla kinestésica. El subconsciente integra la referencia en 3-5 segundos."
           ],
           "tipo": "instruccion",
-          "pregunta_ms": "Programar el parámetro de armonía (0%–100%)"
+          "pregunta_ms": "Programar el parámetro: 100% = óptimo histórico · 0% = necrosis total"
         },
         {
           "orden": 2,
@@ -4862,54 +5340,10 @@
           "notas": [
             "Sistema neurosensorial incluye: cerebro, médula espinal, sistema nervioso periférico, órganos sensoriales (ojos, oídos, nariz, lengua, piel). Porcentaje bajo sugiere: fatiga cerebral, alteraciones del sueño, cefaleas, vértigos, problemas de memoria, ansiedad, depresión, alteraciones visuales o auditivas."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Neurosensorial?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "neurosensorial",
+          "sistema_nombre": "Neurosensorial"
         },
         {
           "orden": 3,
@@ -4918,54 +5352,10 @@
           "notas": [
             "Sistema endócrino-metabólico incluye: tiroides, paratiroides, hipófisis, páncreas (insulina/glucagón), suprarrenales (cortisol/adrenalina), gónadas. Porcentaje bajo sugiere: fatiga crónica, alteraciones de peso, diabetes o pre-diabetes, hipotiroidismo, problemas de cortisol (estrés crónico), ciclos hormonales alterados."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Endócrino-Metabólico?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "endócrino_metabólico",
+          "sistema_nombre": "Endócrino-Metabólico"
         },
         {
           "orden": 4,
@@ -4974,54 +5364,10 @@
           "notas": [
             "Sistema inmunológico incluye: bazo, timo, ganglios linfáticos, amígdalas, leucocitos, linfocitos, células NK. Porcentaje bajo sugiere: infecciones frecuentes, alergias, enfermedades autoinmunes, cansancio post-viral, respuesta inflamatoria crónica, defensas bajas."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Inmunológico?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "inmunológico",
+          "sistema_nombre": "Inmunológico"
         },
         {
           "orden": 5,
@@ -5030,54 +5376,10 @@
           "notas": [
             "Sistema cardiovascular incluye: corazón (miocardio, válvulas, pericardio), arterias, venas, sistema linfático, colesterol/triglicéridos. Porcentaje bajo sugiere: palpitaciones, arritmias, presión arterial alterada, varices, mala circulación periférica, colesterol elevado, fatiga cardíaca."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Cardiovascular?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "cardiovascular",
+          "sistema_nombre": "Cardiovascular"
         },
         {
           "orden": 6,
@@ -5086,54 +5388,10 @@
           "notas": [
             "Sistema respiratorio incluye: fosas nasales, laringe, tráquea, bronquios, alvéolos, diafragma, pulmones. Porcentaje bajo sugiere: rinitis crónica, tos frecuente, bronquitis, asma, dificultad respiratoria, apnea del sueño, capacidad pulmonar reducida."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Respiratorio?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "respiratorio",
+          "sistema_nombre": "Respiratorio"
         },
         {
           "orden": 7,
@@ -5142,54 +5400,10 @@
           "notas": [
             "Sistema digestivo incluye: boca, esófago, estómago, intestino delgado, intestino grueso, hígado, vesícula biliar, páncreas exocrino. Porcentaje bajo sugiere: gastritis, reflujo, colitis, síndrome de intestino irritable, problemas hepáticos, cálculos biliares, malabsorción, estreñimiento o diarrea crónica."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Digestivo?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "digestivo",
+          "sistema_nombre": "Digestivo"
         },
         {
           "orden": 8,
@@ -5198,54 +5412,10 @@
           "notas": [
             "Sistema renal/electrolítico-excretor incluye: riñones, uréteres, vejiga, uretra, equilibrio electrolítico (sodio, potasio, calcio, magnesio). Porcentaje bajo sugiere: infecciones urinarias recurrentes, cálculos renales, retención de líquidos, desequilibrios electrolíticos, incontinencia o retención urinaria."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Renal / Electrolítico-Excretor?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "renal_electrolítico_excretor",
+          "sistema_nombre": "Renal / Electrolítico-Excretor"
         },
         {
           "orden": 9,
@@ -5254,54 +5424,10 @@
           "notas": [
             "Sistema reproductor incluye: ovarios, trompas, útero, vagina (mujer) / testículos, epidídimo, próstata, pene (hombre). También abarca hormonas sexuales, libido y fertilidad. Porcentaje bajo sugiere: quistes, miomas, endometriosis, irregularidades menstruales, disfunción eréctil, hiperplasia prostática, infertilidad, libido disminuida."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Reproductor?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "reproductor",
+          "sistema_nombre": "Reproductor"
         },
         {
           "orden": 10,
@@ -5310,54 +5436,10 @@
           "notas": [
             "Sistema osteomuscular incluye: huesos, cartílagos, articulaciones, músculos, tendones, ligamentos, columna vertebral. Porcentaje bajo sugiere: artritis, artrosis, osteoporosis, fibromialgia, contracturas crónicas, hernias discales, problemas de columna, tendinitis, esguinces recurrentes, dolor crónico musculoesquelético."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Osteomuscular?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "osteomuscular",
+          "sistema_nombre": "Osteomuscular"
         },
         {
           "orden": 11,
@@ -5366,54 +5448,10 @@
           "notas": [
             "Sistema lipo-fascial (dermatológico-lipofascial) incluye: piel, tejido adiposo, fascias, tejido conectivo. Porcentaje bajo sugiere: problemas de piel (eczema, psoriasis, acné, dermatitis), celulitis, lipomas, fascias tensas o adheridas, cicatrices que generan restricciones, problemas de elasticidad tisular."
           ],
-          "tipo": "rastreo",
+          "tipo": "diagnostico",
           "pregunta_ms": "¿Cuál es el % de armonía del Sistema Lipo-Fascial?",
-          "opciones": [
-            {
-              "id": "100",
-              "etiqueta": "100% — Estado ideal/óptimo"
-            },
-            {
-              "id": "90",
-              "etiqueta": "90% — Muy bueno, leve tensión"
-            },
-            {
-              "id": "80",
-              "etiqueta": "80% — Bueno, compensado"
-            },
-            {
-              "id": "70",
-              "etiqueta": "70% — Moderado, vigilar"
-            },
-            {
-              "id": "60",
-              "etiqueta": "60% — Comprometido, atención"
-            },
-            {
-              "id": "50",
-              "etiqueta": "50% — Mitad, intervención necesaria"
-            },
-            {
-              "id": "40",
-              "etiqueta": "40% — Bajo, urgente"
-            },
-            {
-              "id": "30",
-              "etiqueta": "30% — Muy bajo, crítico"
-            },
-            {
-              "id": "20",
-              "etiqueta": "20% — Severo"
-            },
-            {
-              "id": "10",
-              "etiqueta": "10% — Crítico extremo"
-            },
-            {
-              "id": "0",
-              "etiqueta": "0% — Insuficiencia total / Necrosis"
-            }
-          ]
+          "sistema_id": "lipo_fascial",
+          "sistema_nombre": "Lipo-Fascial"
         },
         {
           "orden": 12,
@@ -5424,7 +5462,7 @@
             "El sistema con menor porcentaje es el punto de entrada terapéutica. Una vez identificado, dirigirse a su protocolo de rastreo específico (conflictológico, microbiológico, biomagnético) para intervención detallada. Registrar los porcentajes en tabla para seguimiento sesión a sesión."
           ],
           "tipo": "instruccion",
-          "pregunta_ms": "Registrar e interpretar resultados — priorizar sistemas con menor %"
+          "pregunta_ms": "Ver resultados y priorizar intervención"
         }
       ],
       "observaciones": [
@@ -5520,7 +5558,7 @@
           "opciones": [
             {
               "id": "dir",
-              "etiqueta": "Directo (línea directa: padre, abuelo, bisabuelo…)"
+              "etiqueta": "Directo (padre/madre/abuelo/abuela en línea directa)"
             },
             {
               "id": "lat",
@@ -5528,7 +5566,7 @@
             },
             {
               "id": "extra",
-              "etiqueta": "Ancestro extra (no reconocido o fuera del árbol visible)"
+              "etiqueta": "Ancestro extra (no reconocido / fuera del árbol visible)"
             }
           ]
         },
@@ -5574,7 +5612,7 @@
             "Una vez identificado el instante, reconstruir la historia: '¿A qué edad/año vivió el ancestro X, en el contexto de [palo tarot], la problemática de [arcano mayor]?' Esto permite situar el drama en un evento histórico real (guerra, hambruna, migración, etc.) que el consultante puede investigar en su genealogía."
           ],
           "tipo": "rastreo",
-          "pregunta_ms": "¿Cuál es el instante del conflicto del ancestro?",
+          "pregunta_ms": "¿Cuál es el instante del conflicto?",
           "opciones": [
             {
               "id": "r0_10",
@@ -5601,7 +5639,7 @@
               "etiqueta": "51–60 años"
             },
             {
-              "id": "r61_plus",
+              "id": "r61",
               "etiqueta": "61+ años"
             }
           ]
@@ -5615,10 +5653,10 @@
             "Rastrear: Bloque A, B o C → categoría específica → número de sector. La emoción identificada es lo que el ancestro sintió en el instante del conflicto y lo que el consultante inconscientemente lleva en su campo como 'eco generacional'. Es también la emoción que debe ser liberada con EFT Transgeneracional."
           ],
           "tipo": "seleccion",
-          "pregunta_ms": "¿Qué emoción soporta este conflicto transgeneracional?",
+          "pregunta_ms": "¿Qué emoción soporta este conflicto?",
           "opciones": [
             {
-              "grupo": "SOBREVIVENCIA",
+              "grupo": "GRUPO 1 — SOBREVIVENCIA",
               "items": [
                 {
                   "id": "s1",
@@ -5634,48 +5672,28 @@
                 },
                 {
                   "id": "s4",
-                  "etiqueta": "carencia"
+                  "etiqueta": "necesito saciarme"
                 },
                 {
                   "id": "s5",
-                  "etiqueta": "vacío"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "s6",
-                  "etiqueta": "hambre emocional"
+                  "etiqueta": "vacío"
                 },
                 {
                   "id": "s7",
-                  "etiqueta": "miserable"
+                  "etiqueta": "hambre emocional"
                 },
                 {
                   "id": "s8",
-                  "etiqueta": "vulnerable"
-                },
-                {
-                  "id": "s9",
-                  "etiqueta": "inseguro"
-                },
-                {
-                  "id": "s10",
-                  "etiqueta": "angustiado"
-                },
-                {
-                  "id": "s11",
-                  "etiqueta": "asustado"
-                },
-                {
-                  "id": "s12",
-                  "etiqueta": "aterrorizado"
-                },
-                {
-                  "id": "s13",
-                  "etiqueta": "impotente"
+                  "etiqueta": "anhelo"
                 }
               ]
             },
             {
-              "grupo": "PROTECCIÓN",
+              "grupo": "GRUPO 2 — PROTECCIÓN",
               "items": [
                 {
                   "id": "p1",
@@ -5703,122 +5721,182 @@
                 },
                 {
                   "id": "p7",
-                  "etiqueta": "enojado"
+                  "etiqueta": "enfadado"
                 },
                 {
                   "id": "p8",
-                  "etiqueta": "iracundo"
+                  "etiqueta": "enojado"
                 },
                 {
                   "id": "p9",
-                  "etiqueta": "resentido"
+                  "etiqueta": "iracundo"
                 },
                 {
                   "id": "p10",
-                  "etiqueta": "odio"
+                  "etiqueta": "colérico"
                 },
                 {
                   "id": "p11",
-                  "etiqueta": "rabia ciega"
+                  "etiqueta": "resentido"
+                },
+                {
+                  "id": "p12",
+                  "etiqueta": "rencoroso"
                 }
               ]
             },
             {
-              "grupo": "MOVIMIENTO",
+              "grupo": "GRUPO 3 — MOVIMIENTO",
               "items": [
                 {
                   "id": "m1",
-                  "etiqueta": "atrapado"
+                  "etiqueta": "aburrido"
                 },
                 {
                   "id": "m2",
-                  "etiqueta": "bloqueado"
+                  "etiqueta": "perplejo"
                 },
                 {
                   "id": "m3",
-                  "etiqueta": "paralizado"
+                  "etiqueta": "ofuscado"
                 },
                 {
                   "id": "m4",
-                  "etiqueta": "no puedo avanzar"
-                },
-                {
-                  "id": "m5",
-                  "etiqueta": "sin salida"
-                },
-                {
-                  "id": "m6",
-                  "etiqueta": "estancado"
-                },
-                {
-                  "id": "m7",
-                  "etiqueta": "prisionero"
-                }
-              ]
-            },
-            {
-              "grupo": "CONTACTO",
-              "items": [
-                {
-                  "id": "c1",
-                  "etiqueta": "solo"
-                },
-                {
-                  "id": "c2",
-                  "etiqueta": "abandonado"
-                },
-                {
-                  "id": "c3",
-                  "etiqueta": "rechazado"
-                },
-                {
-                  "id": "c4",
-                  "etiqueta": "no amado"
-                },
-                {
-                  "id": "c5",
-                  "etiqueta": "separado"
-                },
-                {
-                  "id": "c6",
-                  "etiqueta": "aislado"
-                },
-                {
-                  "id": "c7",
-                  "etiqueta": "nadie me ve"
-                },
-                {
-                  "id": "c8",
-                  "etiqueta": "invisible"
-                }
-              ]
-            },
-            {
-              "grupo": "SENSACIONES INFANTILES",
-              "items": [
-                {
-                  "id": "i1",
                   "etiqueta": "confundido"
                 },
                 {
+                  "id": "m5",
+                  "etiqueta": "fuera de centro"
+                },
+                {
+                  "id": "m6",
+                  "etiqueta": "fuera de lugar"
+                },
+                {
+                  "id": "m7",
+                  "etiqueta": "mente en blanco"
+                },
+                {
+                  "id": "m8",
+                  "etiqueta": "desvalorizado"
+                },
+                {
+                  "id": "m9",
+                  "etiqueta": "bloqueado"
+                },
+                {
+                  "id": "m10",
+                  "etiqueta": "parálisis"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 4 — CONTACTO",
+              "items": [
+                {
+                  "id": "c1",
+                  "etiqueta": "amor difícil"
+                },
+                {
+                  "id": "c2",
+                  "etiqueta": "corazón roto"
+                },
+                {
+                  "id": "c3",
+                  "etiqueta": "desilusionado"
+                },
+                {
+                  "id": "c4",
+                  "etiqueta": "sufriendo"
+                },
+                {
+                  "id": "c5",
+                  "etiqueta": "rechazado"
+                },
+                {
+                  "id": "c6",
+                  "etiqueta": "excluido"
+                },
+                {
+                  "id": "c7",
+                  "etiqueta": "solo"
+                },
+                {
+                  "id": "c8",
+                  "etiqueta": "abandonado"
+                },
+                {
+                  "id": "c9",
+                  "etiqueta": "traicionado"
+                },
+                {
+                  "id": "c10",
+                  "etiqueta": "desamparado"
+                }
+              ]
+            },
+            {
+              "grupo": "GRUPO 5 — SENSACIONES INFANTILES",
+              "items": [
+                {
+                  "id": "i1",
+                  "etiqueta": "vulnerabilidad"
+                },
+                {
                   "id": "i2",
-                  "etiqueta": "perdido"
+                  "etiqueta": "integridad corporal"
                 },
                 {
                   "id": "i3",
-                  "etiqueta": "desorientado"
+                  "etiqueta": "integridad emocional"
                 },
                 {
                   "id": "i4",
-                  "etiqueta": "no entiendo"
+                  "etiqueta": "frustración"
                 },
                 {
                   "id": "i5",
-                  "etiqueta": "sin referentes"
+                  "etiqueta": "carencia"
                 },
                 {
                   "id": "i6",
-                  "etiqueta": "caos interior"
+                  "etiqueta": "privación"
+                },
+                {
+                  "id": "i7",
+                  "etiqueta": "sufrimiento de pobreza afectiva"
+                },
+                {
+                  "id": "i8",
+                  "etiqueta": "mamá no ama ni protege"
+                },
+                {
+                  "id": "i9",
+                  "etiqueta": "rechazo"
+                },
+                {
+                  "id": "i10",
+                  "etiqueta": "ignominia"
+                },
+                {
+                  "id": "i11",
+                  "etiqueta": "represión"
+                },
+                {
+                  "id": "i12",
+                  "etiqueta": "sin permiso del padre para ser/vivir"
+                },
+                {
+                  "id": "i13",
+                  "etiqueta": "amenaza"
+                },
+                {
+                  "id": "i14",
+                  "etiqueta": "agresión"
+                },
+                {
+                  "id": "i15",
+                  "etiqueta": "traición"
                 }
               ]
             }
@@ -5841,15 +5919,15 @@
               "items": [
                 {
                   "id": "h1",
-                  "etiqueta": "1 — Impacto frontal"
+                  "etiqueta": "1 — Impacto frontal (recibí algo de frente que no pude evitar)"
                 },
                 {
                   "id": "h2",
-                  "etiqueta": "2 — Impacto posterior"
+                  "etiqueta": "2 — Impacto posterior (me atacaron por la espalda / traición)"
                 },
                 {
                   "id": "h3",
-                  "etiqueta": "3 — Desvalorización"
+                  "etiqueta": "3 — Desvalorización (me hicieron sentir que no valgo)"
                 }
               ]
             },
@@ -5858,7 +5936,7 @@
               "items": [
                 {
                   "id": "h4",
-                  "etiqueta": "4 — Alguien tiene la culpa"
+                  "etiqueta": "4 — Alguien tiene la culpa (la responsabilidad es de otro)"
                 },
                 {
                   "id": "h5",
@@ -5866,7 +5944,7 @@
                 },
                 {
                   "id": "h6",
-                  "etiqueta": "6 — Ultraje"
+                  "etiqueta": "6 — Ultraje (me faltaron al respeto de forma inaceptable)"
                 }
               ]
             },
@@ -5879,11 +5957,11 @@
                 },
                 {
                   "id": "h8",
-                  "etiqueta": "8 — Abandono"
+                  "etiqueta": "8 — Abandono (me dejaron solo en el momento crítico)"
                 },
                 {
                   "id": "h9",
-                  "etiqueta": "9 — Vivo / Muerto"
+                  "etiqueta": "9 — Vivo/Muerto (no sé si vale la pena seguir)"
                 }
               ]
             },
@@ -5892,15 +5970,15 @@
               "items": [
                 {
                   "id": "h10",
-                  "etiqueta": "10 — Bloqueo energético"
+                  "etiqueta": "10 — Bloqueo energético (la emoción quedó atrapada sin salida)"
                 },
                 {
                   "id": "h11",
-                  "etiqueta": "11 — Nido"
+                  "etiqueta": "11 — Incorporación energética (absorbí la energía de otro)"
                 },
                 {
                   "id": "h12",
-                  "etiqueta": "12 — Proyecto sentido"
+                  "etiqueta": "12 — Pérdida de la voluntad (ya no tengo fuerza para decidir)"
                 }
               ]
             }

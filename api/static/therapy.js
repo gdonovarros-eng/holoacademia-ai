@@ -992,6 +992,16 @@ function wizardRenderStep() {
     bodyHtml += `</div>`;
   }
 
+  // Show instruccion text as context for non-instruccion steps (if present and not empty)
+  const instrText = paso.instruccion || "";
+  if (!isInstruccion && instrText.trim()) {
+    bodyHtml += `
+      <details class="wizard-context-details">
+        <summary class="wizard-context-summary">📋 Ver tabla del manual</summary>
+        <div class="wizard-context-body">${escapeHtml(instrText)}</div>
+      </details>`;
+  }
+
   const canPrev = wizardState.currentIndex > 0;
   const canNext = wizardState.currentIndex < wizardState.pasos.length - 1;
   const msLabel = isInstruccion ? "" : `<p class="wizard-ms-label">MENTE SUPRACONSCIENTE</p>`;
@@ -1149,6 +1159,98 @@ function wizardJumpToOrden(targetOrden, content) {
   wizardMount(content);
 }
 
+// ── Diagnóstico Orgánico — tabla interactiva ────────────────────────────────
+
+function renderDiagnosticoOrganico(p, content) {
+  const sistemas = (p.pasos || [])
+    .filter((pa) => pa.tipo === "diagnostico")
+    .sort((a, b) => a.orden - b.orden);
+
+  const dxState = {}; // { sistema_id: band }
+  const BANDS = [
+    { id: "optimo",    label: "Óptimo",    range: "81–100%", color: "#22c55e" },
+    { id: "bueno",     label: "Bueno",     range: "61–80%",  color: "#86efac" },
+    { id: "moderado",  label: "Moderado",  range: "41–60%",  color: "#fbbf24" },
+    { id: "bajo",      label: "Bajo",      range: "21–40%",  color: "#f97316" },
+    { id: "critico",   label: "Crítico",   range: "0–20%",   color: "#ef4444" },
+  ];
+  const PRIORITY_ORDER = ["critico", "bajo", "moderado", "bueno", "optimo"];
+
+  function renderTable() {
+    const rows = sistemas.map((pa) => {
+      const sel = dxState[pa.sistema_id];
+      const btns = BANDS.map((b) => {
+        const active = sel === b.id;
+        return `<button class="dx-band-btn${active ? " active" : ""}"
+          data-sid="${pa.sistema_id}" data-band="${b.id}"
+          style="${active ? `background:${b.color};color:#fff;border-color:${b.color}` : `border-color:${b.color};color:${b.color}`}"
+          title="${b.range}">
+          ${b.label}<span class="dx-band-range">${b.range}</span>
+        </button>`;
+      }).join("");
+      return `<div class="dx-row${sel ? " dx-row-done" : ""}">
+        <span class="dx-sys-name">${escapeHtml(pa.sistema_nombre)}</span>
+        <div class="dx-bands">${btns}</div>
+      </div>`;
+    }).join("");
+
+    const done = Object.keys(dxState).length;
+    const total = sistemas.length;
+    const pct = Math.round((done / total) * 100);
+
+    // Priority summary
+    let summaryHtml = "";
+    if (done > 0) {
+      const sorted = Object.entries(dxState)
+        .sort((a, b) => PRIORITY_ORDER.indexOf(a[1]) - PRIORITY_ORDER.indexOf(b[1]));
+      const band = (id) => BANDS.find((b) => b.id === id);
+      const sys = (id) => sistemas.find((s) => s.sistema_id === id);
+      summaryHtml = `<div class="dx-summary">
+        <p class="dx-summary-title">Prioridad de intervención:</p>
+        ${sorted.map(([sid, bid]) => {
+          const b = band(bid); const s = sys(sid);
+          return `<div class="dx-summary-row">
+            <span class="dx-priority-dot" style="background:${b?.color}"></span>
+            <span>${s?.sistema_nombre || sid}</span>
+            <span class="dx-priority-band" style="color:${b?.color}">${b?.label} (${b?.range})</span>
+          </div>`;
+        }).join("")}
+      </div>`;
+    }
+
+    content.innerHTML = `
+      <div class="dx-header">
+        <h2 class="wizard-protocol-name">${escapeHtml(p.nombre)}</h2>
+        <p class="dx-subtitle">MS: "100% = estado óptimo histórico · 0% = necrosis total"<br>
+          Preguntar sistema por sistema con test muscular y seleccionar la banda correspondiente.</p>
+        <div class="wizard-progress-row">
+          <span class="wizard-progress-label">${done} de ${total} sistemas evaluados</span>
+          <div class="wizard-progress-bar"><div class="wizard-progress-fill" style="width:${pct}%"></div></div>
+        </div>
+      </div>
+      <div class="dx-table">${rows}</div>
+      ${summaryHtml}
+      <div class="wizard-nav">
+        <button class="wizard-nav-btn wizard-reiniciar" id="dx-reset">Reiniciar</button>
+      </div>`;
+
+    content.querySelectorAll(".dx-band-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sid = btn.dataset.sid;
+        const bid = btn.dataset.band;
+        if (dxState[sid] === bid) { delete dxState[sid]; } else { dxState[sid] = bid; }
+        renderTable();
+      });
+    });
+    content.querySelector("#dx-reset")?.addEventListener("click", () => {
+      Object.keys(dxState).forEach((k) => delete dxState[k]);
+      renderTable();
+    });
+  }
+
+  renderTable();
+}
+
 function openProtocolDetail(protocolId) {
   const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
   const p = all.find((x) => x.id === protocolId);
@@ -1160,7 +1262,9 @@ function openProtocolDetail(protocolId) {
 
   const content = document.getElementById("catalog-detail-content");
   if (content) {
-    if (wizardHasInteractivePasos(p)) {
+    if (protocolId === "diagnostico_organico") {
+      renderDiagnosticoOrganico(p, content);
+    } else if (wizardHasInteractivePasos(p)) {
       // Initialize wizard state
       wizardState.protocol = p;
       wizardState.pasos = (p.pasos || []).slice().sort((a, b) => a.orden - b.orden);
