@@ -1218,6 +1218,11 @@ textarea {
   vertical-align: middle;
 }
 
+.section-badge-trunc {
+  color: var(--muted);
+  background: var(--bg-secondary);
+}
+
 .section-toggle-label {
   display: flex;
   align-items: center;

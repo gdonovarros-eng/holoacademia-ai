@@ -1070,26 +1070,33 @@ function renderSystemSections(detail) {
   const el = document.getElementById("catalog-system-sections");
   if (!el) return;
 
-  const sections = detail.sections || [];
+  // Filter out uninformative tiny intro sections (module title only)
+  const sections = (detail.sections || []).filter((s) => (s.content || '').length > 80);
   if (!sections.length) {
     el.innerHTML = `<p class="status">Sin contenido disponible para este sistema.</p>`;
     return;
   }
 
-  // Open the first section that has conflicts_parsed, otherwise first section
+  // Default: open first section with conflict cards, else first educational section
   const firstWithConflicts = sections.findIndex((s) => s.conflicts_parsed?.length);
-  const defaultOpen = firstWithConflicts >= 0 ? firstWithConflicts : 0;
+  const firstSubstantive = sections.findIndex((s) => (s.content || '').length > 500);
+  const defaultOpen = firstWithConflicts >= 0 ? firstWithConflicts : Math.max(0, firstSubstantive);
 
   el.innerHTML = sections.map((sec, i) => {
     const isOpen = i === defaultOpen;
     const hasConflicts = sec.conflicts_parsed?.length;
+    const conflictCount = hasConflicts
+      ? sec.conflicts_parsed.reduce((n, sub) => n + sub.conflicts.length, 0) : 0;
     const badge = hasConflicts
-      ? `<span class="section-badge">${sec.conflicts_parsed.reduce((n, sub) => n + sub.conflicts.length, 0)} conflictos</span>`
+      ? `<span class="section-badge">${conflictCount} conflictos</span>`
+      : '';
+    const truncBadge = sec.truncated
+      ? `<span class="section-badge section-badge-trunc">vista parcial</span>`
       : '';
     return `
       <div class="system-section-card">
         <button class="system-section-toggle${isOpen ? " open" : ""}" data-sec="${i}">
-          <span class="section-toggle-label">${escapeHtml(sec.label)}${badge}</span>
+          <span class="section-toggle-label">${escapeHtml(sec.label)}${badge}${truncBadge}</span>
           <span class="toggle-chevron">▼</span>
         </button>
         <div class="system-section-body${isOpen ? " open" : ""}">

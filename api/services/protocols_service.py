@@ -17,6 +17,29 @@ CONFLICTOLOGIA_DIR = BASE_DIR / "data" / "conflictologia"
 CONFLICTOLOGIA_INDEX_PATH = CONFLICTOLOGIA_DIR / "index.json"
 PROCEDURAL_PROTOCOLS_PATH = BASE_DIR / "data" / "procedural_protocols_db.json"
 
+SOURCES_DIR = (
+    BASE_DIR
+    / "data"
+    / "processed_library"
+    / "Diplomados"
+    / "diplomado-terapia-holistica-1"
+    / "sources"
+)
+
+SYSTEM_MANUAL_MAP = {
+    "respiratorio":       "Manual_del_Módulo_1.txt",
+    "digestivo":          "Manual_del_Módulo_2.txt",
+    "alimenticio":        "Manual_del_Módulo_3.txt",
+    "endocrino":          "Manual_del_Módulo_4.txt",
+    "cardiovascular":     "Manual_del_Módulo_5.txt",
+    "osteomuscular":      "Manual_del_Módulo_6.txt",
+    "dermato_lipofascial":"Manual_del_Módulo_7.txt",
+    "reproductivo":       "Manual_del_Módulo_8.txt",
+    "urinario":           "Manual_del_Módulo_9.txt",
+    "inmunologico":       "Manual_del_Módulo_10.txt",
+    "neurosensorial":     "Manual_del_Módulo_11.txt",
+}
+
 
 # ---------------------------------------------------------------------------
 # Shared helpers
@@ -502,14 +525,26 @@ def search_protocols(query: str, notas: str = "") -> Dict[str, Any]:
 import re as _re
 
 _SYSTEM_SECTION_HEADERS: List[tuple] = [
-    (_re.compile(r'RASTREO\s+CONFLICTOL[ÓO]GICO', _re.I), "Protocolo de Rastreo Conflictológico"),
-    (_re.compile(r'RASTREO\s+MICROBIOL[ÓO]GICO', _re.I), "Rastreo Microbiológico (Código Patógeno)"),
-    (_re.compile(r'RASTREO\s+BIOM[AÁ]GNETICO(?!\s+GENERAL)', _re.I), "Rastreo Biomagnético"),
-    (_re.compile(r'RASTREO\s+HOLOBIOM[AÁ]GNETICO', _re.I), "Rastreo Holobiomagnético"),
-    (_re.compile(r'RASTREO\s+VIBRACIONAL', _re.I), "Rastreo Vibracional"),
-    (_re.compile(r'RASTREO\s+BIOENERG[ÉE]TICO', _re.I), "Rastreo Bioenergético"),
-    (_re.compile(r'SES[IÍ][OÓ]N\s+TERAP', _re.I), "Sesión Terapéutica"),
-    (_re.compile(r'RASTREO\s+ORG[AÁ]NICO', _re.I), "Rastreo Orgánico"),
+    # ── Manual structural sections ──────────────────────────────────────────
+    (_re.compile(r'^FUNDAMENTOS?\s*$', _re.I),                         "Fundamentos"),
+    (_re.compile(r'^PRINCIPIOS?\s*$', _re.I),                          "Principios"),
+    (_re.compile(r'^ANATOM\xcdA\s*$', _re.I),                          "Anatom\xeda"),
+    (_re.compile(r'^PATOLOG\xcdAS?\s*$', _re.I),                       "Patolog\xedas"),
+    (_re.compile(r'^MICROBIOLOG\xcdA\s*$', _re.I),                     "Microbiolog\xeda"),
+    (_re.compile(r'^BIOMAGNÉTICOS?\s*$', _re.I),                        "Biom\xe1gn\xe9tico"),
+    (_re.compile(r'^GENERACIONAL\s*$', _re.I),                          "Transgeneracional"),
+    (_re.compile(r'^EMOCIONAL\s*$', _re.I),                             "Emocional"),
+    (_re.compile(r'^NATURISTAS?\s*$', _re.I),                           "Protocolos Naturistas"),
+    (_re.compile(r'^CONFLICTOLOG\xcdA\s*$', _re.I),                    "Conflictolog\xeda"),
+    # ── Protocol rastreo sections ────────────────────────────────────────────
+    (_re.compile(r'RASTREO\s+CONFLICTOL[\xd3O]GICO', _re.I),          "Protocolo de Rastreo Conflictol\xf3gico"),
+    (_re.compile(r'RASTREO\s+MICROBIOL[\xd3O]GICO', _re.I),           "Rastreo Microbiol\xf3gico"),
+    (_re.compile(r'RASTREO\s+BIOM[A\xc1]GNETICO(?!\s+GENERAL)', _re.I), "Rastreo Biom\xe1gn\xe9tico"),
+    (_re.compile(r'RASTREO\s+HOLOBIOM[A\xc1]GNETICO', _re.I),         "Rastreo Holobiom\xe1gn\xe9tico"),
+    (_re.compile(r'RASTREO\s+VIBRACIONAL', _re.I),                      "Rastreo Vibracional"),
+    (_re.compile(r'RASTREO\s+BIOENERG[\xc9E]TICO', _re.I),            "Rastreo Bioenerg\xe9tico"),
+    (_re.compile(r'SES[I\xcd][O\xd3]N\s+TERAP', _re.I),              "Sesi\xf3n Terap\xe9utica"),
+    (_re.compile(r'RASTREO\s+ORG[A\xc1]NICO', _re.I),                 "Rastreo Org\xe1nico"),
 ]
 
 _AUTHOR_LINE = _re.compile(r'ALEJANDRO\s+LAV[IÍ]N', _re.I)
@@ -736,17 +771,84 @@ def _load_system_text(source_filename: str) -> str:
     return path.read_text(encoding="utf-8")
 
 
+@lru_cache(maxsize=12)
+def _load_manual_text(system_id: str) -> str:
+    filename = SYSTEM_MANUAL_MAP.get(system_id)
+    if not filename:
+        return ""
+    path = SOURCES_DIR / filename
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def _is_conflict_label(label: str) -> bool:
+    lo = label.lower()
+    return "conflictolog" in lo or "protocolo de rastreo" in lo
+
+
+def _attach_conflict_cards(sections: List[Dict[str, Any]]) -> bool:
+    """Parse conflict cards for relevant sections; return True if meaningful cards were found."""
+    found_any = False
+    for sec in sections:
+        if not _is_conflict_label(sec["label"]):
+            continue
+        parsed = _parse_conflicts_section(sec["content"])
+        if not parsed:
+            continue
+        # Must have at least 5 conflicts with phrases, OR a named subsystem (not just the default)
+        total_with_phrases = sum(
+            1 for sub in parsed for c in sub.get("conflicts", []) if c.get("phrases")
+        )
+        has_named_subsystem = any(
+            sub["subsystem"] != "Mapa de Conflictos" for sub in parsed
+        )
+        if total_with_phrases >= 5 or (total_with_phrases > 0 and has_named_subsystem):
+            sec["conflicts_parsed"] = parsed
+            found_any = True
+    return found_any
+
+
+def _supplement_with_conflictologia(system_id: str, source_file: str, sections: List[Dict[str, Any]]) -> None:
+    """Add conflict sections from the cleaner conflictologia extract if the full manual lacks them."""
+    conflit_text = _load_system_text(source_file)
+    if not conflit_text:
+        return
+    extra = _parse_system_sections(conflit_text)
+    if _attach_conflict_cards(extra):
+        sections.extend(extra)
+
+
 def get_system_detail(system_id: str) -> Optional[Dict[str, Any]]:
     index = _load_conflictologia_index()
     system = next((s for s in index.get("systems", []) if s["id"] == system_id), None)
     if not system:
         return None
-    raw_text = _load_system_text(system["source_file"])
-    sections = _parse_system_sections(raw_text) if raw_text else []
+
+    manual_text = _load_manual_text(system_id)
+
+    if manual_text:
+        sections = _parse_system_sections(manual_text)
+        has_cards = _attach_conflict_cards(sections)
+        # If the full manual lacks a good conflict section, supplement with the
+        # cleaner conflictologia extract (single-column version for respiratorio etc.).
+        if not has_cards:
+            _supplement_with_conflictologia(system_id, system["source_file"], sections)
+    else:
+        sections = _parse_system_sections(_load_system_text(system["source_file"]))
+        _attach_conflict_cards(sections)
+
+    # Truncate very large sections (biomagnético tables etc.) to keep response manageable
+    _MAX_SECTION_CHARS = 30_000
     for sec in sections:
-        parsed = _parse_conflicts_section(sec["content"])
-        if parsed and any(c.get("phrases") for sub in parsed for c in sub.get("conflicts", [])):
-            sec["conflicts_parsed"] = parsed
+        if len(sec.get("content", "")) > _MAX_SECTION_CHARS:
+            truncated_len = len(sec["content"])
+            sec["content"] = (
+                sec["content"][:_MAX_SECTION_CHARS]
+                + f"\n\n[Contenido truncado — {truncated_len:,} caracteres totales]"
+            )
+            sec["truncated"] = True
+
     return {
         "id": system["id"],
         "nombre": system["nombre"],
