@@ -858,15 +858,171 @@ function selectCatalogCategory(catId) {
   });
 }
 
-function openProtocolDetail(protocolId) {
-  const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
-  const p = all.find((x) => x.id === protocolId);
-  if (!p) return;
+// ── Protocol Wizard ────────────────────────────────────────────────────────
 
-  const catMeta = catalogData?.categories?.find((c) =>
-    c.protocolos.some((x) => x.id === protocolId)
-  );
+const wizardState = {
+  protocol: null,       // full protocol object
+  pasos: [],            // all pasos (ordered)
+  currentIndex: 0,      // index into pasos array
+  circuit: {},          // { orden: { respuesta, opcion, etiqueta } }
+  siAnswered: {},       // { orden: true/false } — tracks SÍ/NO for verificacion pasos
+  skippedTo: null,      // orden we jumped to (for si_negativo)
+};
 
+function wizardHasInteractivePasos(protocol) {
+  return (protocol.pasos || []).some((p) => p.tipo);
+}
+
+function wizardGetCurrentPaso() {
+  return wizardState.pasos[wizardState.currentIndex] || null;
+}
+
+function wizardGetVisibleOrden() {
+  // Returns list of paso ordenes that should appear in sequence (respecting jumps)
+  return wizardState.pasos.map((p) => p.orden);
+}
+
+function wizardRenderCircuit() {
+  const pasos = wizardState.pasos;
+  const circuit = wizardState.circuit;
+  const currentOrden = wizardGetCurrentPaso()?.orden;
+
+  if (!pasos.length) return "";
+
+  const currentIndex = wizardState.currentIndex;
+  const rows = pasos.map((p, idx) => {
+    const rec = circuit[p.orden];
+    const isCurrent = p.orden === currentOrden;
+    const isSkipped = wizardState.skippedPasos && wizardState.skippedPasos.has(p.orden);
+    const isPastInstruccion = p.tipo === "instruccion" && idx < currentIndex;
+    const isDone = rec || isPastInstruccion;
+
+    let statusIcon = isSkipped ? "—" : (isDone ? "✓" : (isCurrent ? "→" : "·"));
+    let statusClass = isSkipped ? "circuit-row-skipped" : (isDone ? "circuit-row-done" : (isCurrent ? "circuit-row-current" : "circuit-row-pending"));
+
+    let label = `Paso ${p.orden} — ${escapeHtml(p.titulo || "")}`;
+    let detail = "";
+    if (rec) {
+      detail = escapeHtml(rec.etiqueta || rec.respuesta || "");
+    } else if (isCurrent) {
+      detail = "(en curso)";
+    } else if (isPastInstruccion) {
+      detail = "completado";
+    }
+
+    return `
+      <div class="circuit-row ${statusClass}">
+        <span class="circuit-icon">${statusIcon}</span>
+        <span class="circuit-label">${label}${detail ? `<span class="circuit-detail">: ${detail}</span>` : ""}</span>
+      </div>`;
+  }).join("");
+
+  return `<div class="wizard-circuit"><p class="wizard-circuit-title">CIRCUITO REGISTRADO</p>${rows}</div>`;
+}
+
+function wizardRenderOpciones(opciones, selectedId) {
+  if (!Array.isArray(opciones) || !opciones.length) return "";
+
+  // Detect grouped vs flat
+  const isGrouped = opciones[0] && opciones[0].grupo !== undefined;
+
+  if (isGrouped) {
+    return opciones.map((group) => `
+      <div class="wizard-opcion-group">
+        <p class="wizard-group-label">${escapeHtml(group.grupo)}</p>
+        <div class="wizard-opcion-grid">
+          ${(group.items || []).map((item) => `
+            <button class="wizard-opcion-btn${selectedId === item.id ? " selected" : ""}"
+              data-opcion-id="${escapeHtml(item.id)}"
+              data-opcion-etiqueta="${escapeHtml(item.etiqueta)}">
+              ${escapeHtml(item.etiqueta)}
+            </button>`).join("")}
+        </div>
+      </div>`).join("");
+  }
+
+  // Flat list
+  return `<div class="wizard-opcion-grid">
+    ${opciones.map((item) => `
+      <button class="wizard-opcion-btn${selectedId === item.id ? " selected" : ""}"
+        data-opcion-id="${escapeHtml(item.id)}"
+        data-opcion-etiqueta="${escapeHtml(item.etiqueta)}">
+        ${escapeHtml(item.etiqueta)}
+      </button>`).join("")}
+  </div>`;
+}
+
+function wizardRenderStep() {
+  const paso = wizardGetCurrentPaso();
+  if (!paso) return "";
+
+  const total = wizardState.pasos.length;
+  const currentNum = wizardState.currentIndex + 1;
+  const progress = Math.round((currentNum / total) * 100);
+
+  const rec = wizardState.circuit[paso.orden];
+  const siAnswered = wizardState.siAnswered[paso.orden];
+  const selectedId = rec?.opcionId || null;
+
+  let bodyHtml = "";
+  const isInstruccion = paso.tipo === "instruccion";
+
+  if (paso.tipo === "verificacion") {
+    const siSelected = siAnswered === true;
+    const noSelected = siAnswered === false;
+    bodyHtml = `
+      <div class="wizard-yn-row">
+        <button class="wizard-yn-btn wizard-si${siSelected ? " selected" : ""}" data-yn="si">SÍ</button>
+        <button class="wizard-yn-btn wizard-no${noSelected ? " selected" : ""}" data-yn="no">NO</button>
+      </div>`;
+    if (siSelected && paso.opciones && paso.opciones.length) {
+      bodyHtml += `<p class="wizard-opciones-label">Selecciona la opción correspondiente:</p>`;
+      bodyHtml += wizardRenderOpciones(paso.opciones, selectedId);
+    }
+  } else if (paso.tipo === "seleccion") {
+    bodyHtml = wizardRenderOpciones(paso.opciones || [], selectedId);
+  } else if (paso.tipo === "rastreo") {
+    bodyHtml = `<p class="wizard-rastreo-hint">Rastrear con TM — seleccionar el rango o valor registrado:</p>`;
+    bodyHtml += wizardRenderOpciones(paso.opciones || [], selectedId);
+  } else if (isInstruccion) {
+    bodyHtml = `<div class="wizard-instruccion-body"><p>${escapeHtml(paso.instruccion || "")}</p>`;
+    if (paso.notas && paso.notas.length) {
+      bodyHtml += paso.notas.map((n) => `<p class="wizard-nota">${escapeHtml(n)}</p>`).join("");
+    }
+    bodyHtml += `</div>`;
+  }
+
+  const canPrev = wizardState.currentIndex > 0;
+  const canNext = wizardState.currentIndex < wizardState.pasos.length - 1;
+  const msLabel = isInstruccion ? "" : `<p class="wizard-ms-label">MENTE SUPRACONSCIENTE</p>`;
+  const questionClass = isInstruccion ? "wizard-step-title" : "wizard-question";
+
+  return `
+    <div class="wizard-header">
+      <h2 class="wizard-protocol-name">${escapeHtml(wizardState.protocol.nombre)}</h2>
+      <div class="wizard-progress-row">
+        <span class="wizard-progress-label">Paso ${currentNum} de ${total}</span>
+        <div class="wizard-progress-bar"><div class="wizard-progress-fill" style="width:${progress}%"></div></div>
+      </div>
+    </div>
+
+    <div class="wizard-card">
+      ${msLabel}
+      <p class="${questionClass}">${escapeHtml(paso.pregunta_ms || paso.titulo || "")}</p>
+      ${bodyHtml}
+    </div>
+
+    <div class="wizard-nav">
+      <button class="wizard-nav-btn wizard-prev${canPrev ? "" : " disabled"}" data-nav="prev" ${canPrev ? "" : "disabled"}>← Anterior</button>
+      <button class="wizard-nav-btn wizard-reiniciar" data-nav="reiniciar">Reiniciar</button>
+      <button class="wizard-nav-btn wizard-next${canNext ? "" : " disabled"}" data-nav="next" ${canNext ? "" : "disabled"}>Siguiente →</button>
+    </div>
+
+    ${wizardRenderCircuit()}
+  `;
+}
+
+function wizardRenderFallback(p, catMeta) {
   const stepsHtml = (p.pasos || []).length
     ? `<ol class="catalog-detail-steps">
         ${p.pasos.map((step) => `
@@ -881,34 +1037,141 @@ function openProtocolDetail(protocolId) {
     : `<p class="chat-meta">Sin pasos registrados.</p>`;
 
   const cuandoHtml = (p.cuando_usarlo || []).length
-    ? `<ul class="detail-list">${p.cuando_usarlo.map((u) => `<li>${escapeHtml(u)}</li>`).join("")}</ul>`
-    : "";
-
+    ? `<ul class="detail-list">${p.cuando_usarlo.map((u) => `<li>${escapeHtml(u)}</li>`).join("")}</ul>` : "";
   const prereqHtml = (p.prerequisitos || []).length
-    ? `<ul class="detail-list">${p.prerequisitos.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>`
-    : "";
-
+    ? `<ul class="detail-list">${p.prerequisitos.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}</ul>` : "";
   const obsHtml = (p.observaciones || []).length
-    ? `<ul class="detail-list">${p.observaciones.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}</ul>`
-    : "";
+    ? `<ul class="detail-list">${p.observaciones.map((o) => `<li>${escapeHtml(o)}</li>`).join("")}</ul>` : "";
+
+  return `
+    <h2>${escapeHtml(p.nombre)}</h2>
+    ${catMeta ? `<span class="detail-cat-badge">${escapeHtml(catMeta.icono || "")} ${escapeHtml(catMeta.label)}</span>` : ""}
+    <p class="detail-section-label">Objetivo</p>
+    <p class="detail-objetivo">${escapeHtml(p.objetivo || "")}</p>
+    ${cuandoHtml ? `<p class="detail-section-label">Cuándo usarlo</p>${cuandoHtml}` : ""}
+    ${prereqHtml ? `<p class="detail-section-label">Prerequisitos</p>${prereqHtml}` : ""}
+    <p class="detail-section-label">Pasos</p>
+    ${stepsHtml}
+    ${obsHtml ? `<p class="detail-section-label">Observaciones</p>${obsHtml}` : ""}
+  `;
+}
+
+function wizardMount(content) {
+  content.innerHTML = wizardRenderStep();
+  wizardBindEvents(content);
+}
+
+function wizardBindEvents(content) {
+  // SÍ/NO buttons
+  content.querySelectorAll(".wizard-yn-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const paso = wizardGetCurrentPaso();
+      if (!paso) return;
+      const yn = btn.dataset.yn;
+      const isYes = yn === "si";
+      wizardState.siAnswered[paso.orden] = isYes;
+
+      if (!isYes) {
+        // Record NO and optionally jump
+        wizardState.circuit[paso.orden] = { respuesta: "NO", etiqueta: "NO" };
+        if (paso.si_negativo) {
+          wizardJumpToOrden(paso.si_negativo, content);
+          return;
+        }
+      } else {
+        // Record SÍ — opcion will be set when user picks one (or just SÍ if no opciones)
+        if (!paso.opciones || !paso.opciones.length) {
+          wizardState.circuit[paso.orden] = { respuesta: "SÍ", etiqueta: "SÍ" };
+        } else {
+          // Clear any previous selection so we re-render with opcion grid shown
+          delete wizardState.circuit[paso.orden];
+        }
+      }
+      wizardMount(content);
+    });
+  });
+
+  // Opcion buttons
+  content.querySelectorAll(".wizard-opcion-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const paso = wizardGetCurrentPaso();
+      if (!paso) return;
+      const id = btn.dataset.opcionId;
+      const etiqueta = btn.dataset.opcionEtiqueta;
+      // Toggle selection
+      if (wizardState.circuit[paso.orden]?.opcionId === id) {
+        // Deselect
+        delete wizardState.circuit[paso.orden];
+      } else {
+        wizardState.circuit[paso.orden] = { respuesta: "SÍ", opcionId: id, etiqueta };
+      }
+      wizardMount(content);
+    });
+  });
+
+  // Nav buttons
+  content.querySelectorAll(".wizard-nav-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const nav = btn.dataset.nav;
+      if (nav === "prev" && wizardState.currentIndex > 0) {
+        wizardState.currentIndex -= 1;
+        wizardMount(content);
+      } else if (nav === "next" && wizardState.currentIndex < wizardState.pasos.length - 1) {
+        wizardState.currentIndex += 1;
+        wizardMount(content);
+      } else if (nav === "reiniciar") {
+        wizardState.circuit = {};
+        wizardState.siAnswered = {};
+        wizardState.skippedPasos = new Set();
+        wizardState.currentIndex = 0;
+        wizardMount(content);
+      }
+    });
+  });
+}
+
+function wizardJumpToOrden(targetOrden, content) {
+  // Mark all pasos between current+1 and targetOrden-1 as skipped
+  if (!wizardState.skippedPasos) wizardState.skippedPasos = new Set();
+  const currentPaso = wizardGetCurrentPaso();
+  const currentOrden = currentPaso?.orden ?? 0;
+
+  wizardState.pasos.forEach((p) => {
+    if (p.orden > currentOrden && p.orden < targetOrden) {
+      wizardState.skippedPasos.add(p.orden);
+    }
+  });
+
+  const targetIndex = wizardState.pasos.findIndex((p) => p.orden === targetOrden);
+  if (targetIndex >= 0) {
+    wizardState.currentIndex = targetIndex;
+  }
+  wizardMount(content);
+}
+
+function openProtocolDetail(protocolId) {
+  const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
+  const p = all.find((x) => x.id === protocolId);
+  if (!p) return;
+
+  const catMeta = catalogData?.categories?.find((c) =>
+    c.protocolos.some((x) => x.id === protocolId)
+  );
 
   const content = document.getElementById("catalog-detail-content");
   if (content) {
-    content.innerHTML = `
-      <h2>${escapeHtml(p.nombre)}</h2>
-      ${catMeta ? `<span class="detail-cat-badge">${escapeHtml(catMeta.icono || "")} ${escapeHtml(catMeta.label)}</span>` : ""}
-
-      <p class="detail-section-label">Objetivo</p>
-      <p class="detail-objetivo">${escapeHtml(p.objetivo || "")}</p>
-
-      ${cuandoHtml ? `<p class="detail-section-label">Cuándo usarlo</p>${cuandoHtml}` : ""}
-      ${prereqHtml ? `<p class="detail-section-label">Prerequisitos</p>${prereqHtml}` : ""}
-
-      <p class="detail-section-label">Pasos</p>
-      ${stepsHtml}
-
-      ${obsHtml ? `<p class="detail-section-label">Observaciones</p>${obsHtml}` : ""}
-    `;
+    if (wizardHasInteractivePasos(p)) {
+      // Initialize wizard state
+      wizardState.protocol = p;
+      wizardState.pasos = (p.pasos || []).slice().sort((a, b) => a.orden - b.orden);
+      wizardState.currentIndex = 0;
+      wizardState.circuit = {};
+      wizardState.siAnswered = {};
+      wizardState.skippedPasos = new Set();
+      wizardMount(content);
+    } else {
+      content.innerHTML = wizardRenderFallback(p, catMeta);
+    }
   }
 
   const overlay = document.getElementById("catalog-detail-overlay");

@@ -84,9 +84,23 @@ def _load_protocols(course_slug: str = DEFAULT_COURSE_SLUG) -> Dict[str, Any]:
     protocol_path = course_dir / "05_protocols" / "protocols.json"
     manifest_path = course_dir / "06_catalog" / "course_manifest.json"
     connection_path = course_dir / "09_connection_map.json"
+
+    # Build a merged list: start with procedural_protocols_db (enriched, with full notas/tablas),
+    # then append any course-specific protocols not already covered by id.
+    procedural = _safe_load_json(PROCEDURAL_PROTOCOLS_PATH, {"protocols": []})
+    procedural_list = procedural.get("protocols", []) if isinstance(procedural, dict) else []
+    procedural_ids = {p.get("id") for p in procedural_list if isinstance(p, dict)}
+
+    course_protocols = _safe_load_json(protocol_path, [])
+    if not isinstance(course_protocols, list):
+        course_protocols = []
+    extra = [p for p in course_protocols if isinstance(p, dict) and p.get("id") not in procedural_ids]
+
+    merged = procedural_list + extra
+
     return {
         "course_dir": course_dir,
-        "protocols": _safe_load_json(protocol_path, []),
+        "protocols": merged,
         "manifest": _safe_load_json(manifest_path, {}),
         "connection_map": _safe_load_json(connection_path, {}),
     }
