@@ -18,13 +18,22 @@ except ImportError:
     OpenAI = None
 
 try:
-    from api.protocol_tables import get_conflict_table, detect_sistema
+    from api.protocol_tables import (
+        get_conflict_table, detect_sistema,
+        get_subsystem_table, get_subsystems_list, detect_sintoma
+    )
 except ImportError:
     try:
-        from protocol_tables import get_conflict_table, detect_sistema
+        from protocol_tables import (
+            get_conflict_table, detect_sistema,
+            get_subsystem_table, get_subsystems_list, detect_sintoma
+        )
     except ImportError:
         def get_conflict_table(s): return ""
         def detect_sistema(t): return None
+        def get_subsystem_table(s, sub): return ""
+        def get_subsystems_list(s): return ""
+        def detect_sintoma(t): return None
 
 logger = logging.getLogger(__name__)
 
@@ -260,28 +269,40 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     # ── Para el modo terapeuta: inyectar tabla cuando se identifica el sistema ──
     tabla_a_emitir = ""
     sistema_sesion = None
+    subsistema_sesion = None
     usuario_dijo_no = _user_said_no(message)
 
     if mode == "terapeuta":
-        # Sistema detectado en el mensaje ACTUAL (nuevo síntoma mencionado)
-        sistema_en_mensaje = detect_sistema(message)
+        # 1. Intentar detección fina: síntoma específico → subsistema concreto
+        sintoma_result = detect_sintoma(message)
 
-        # Sistema ya activo en el historial
-        sistema_en_historia = _get_sistema_from_last_ai_message(history)
+        if sintoma_result and not usuario_dijo_no:
+            sistema_sesion, subsistema_sesion = sintoma_result
+            # Mostrar SOLO los conflictos del subsistema específico
+            tabla_a_emitir = get_subsystem_table(sistema_sesion, subsistema_sesion)
+        else:
+            # 2. Detección de sistema general (sin subsistema conocido)
+            sistema_en_mensaje = detect_sistema(message)
+            sistema_en_historia = _get_sistema_from_last_ai_message(history)
 
-        if sistema_en_mensaje and not usuario_dijo_no:
-            # Síntoma nuevo: mostrar tabla inmediatamente
-            sistema_sesion = sistema_en_mensaje
-            tabla_a_emitir = get_conflict_table(sistema_sesion)
-        elif sistema_en_historia and not usuario_dijo_no:
-            # Continuar sesión existente con el mismo sistema: no volver a mostrar tabla
-            sistema_sesion = sistema_en_historia
+            if sistema_en_mensaje and not usuario_dijo_no:
+                sistema_sesion = sistema_en_mensaje
+                # Mostrar lista de subsistemas para que terapeuta pregunte a la MS cuál
+                tabla_a_emitir = get_subsystems_list(sistema_sesion)
+            elif sistema_en_historia and not usuario_dijo_no:
+                # Continuar sesión existente: no volver a mostrar tabla
+                sistema_sesion = sistema_en_historia
 
         if sistema_sesion and not usuario_dijo_no:
-            # Añadir referencia al AI (sabe qué sistema está activo)
-            tabla_ref = get_conflict_table(sistema_sesion)
+            # Añadir referencia completa al AI (para que sepa qué sistema/subsistema está activo)
+            if subsistema_sesion:
+                tabla_ref = get_subsystem_table(sistema_sesion, subsistema_sesion)
+                ref_label = f"{sistema_sesion.upper()} — {subsistema_sesion}"
+            else:
+                tabla_ref = get_conflict_table(sistema_sesion)
+                ref_label = sistema_sesion.upper()
             system_prompt += (
-                f"\n\n══ REFERENCIA DE CONFLICTOS {sistema_sesion.upper()} ══"
+                f"\n\n══ REFERENCIA DE CONFLICTOS {ref_label} ══"
                 f"{tabla_ref}"
                 f"\n══ FIN DE REFERENCIA ══\n\n"
                 f"{'La tabla ya fue enviada al terapeuta y está visible en pantalla. No la repitas.' if tabla_a_emitir else 'El terapeuta ya tiene la tabla de referencia visible.'} "
@@ -289,6 +310,8 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
             )
         elif usuario_dijo_no:
             # MS dijo NO al sistema: guiar al rastreo general
+            sistema_en_mensaje = detect_sistema(message)
+            sistema_en_historia = _get_sistema_from_last_ai_message(history)
             sistema_rechazado = sistema_en_mensaje or sistema_en_historia or ""
             system_prompt += (
                 f"\n\nINSTRUCCIÓN: La MS dijo NO al sistema {sistema_rechazado}. "

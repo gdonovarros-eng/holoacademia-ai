@@ -1094,12 +1094,230 @@ SISTEMA_KEYWORDS = {
 }
 
 
-# ── Función principal: genera el bloque de tabla para inyectar en el prompt ──
+# ── Mapa síntoma → subsistema específico ─────────────────────────────────────
+
+SINTOMA_SUBSISTEMA = {
+    # Digestivo
+    "hemorroides": ("digestivo", "ANAL"),
+    "fisura anal": ("digestivo", "ANAL"),
+    "estreñimiento": ("digestivo", "INTESTINAL GRUESA"),
+    "colitis": ("digestivo", "INTESTINAL GRUESA"),
+    "colon": ("digestivo", "INTESTINAL GRUESA"),
+    "diarrea": ("digestivo", "INTESTINAL GRUESA"),
+    "intestino irritable": ("digestivo", "INTESTINAL GRUESA"),
+    "crohn": ("digestivo", "INTESTINAL GRUESA"),
+    "gastritis": ("digestivo", "ESTOMACAL"),
+    "úlcera": ("digestivo", "ESTOMACAL"),
+    "reflujo": ("digestivo", "ESTOMACAL"),
+    "acidez": ("digestivo", "ESTOMACAL"),
+    "náusea": ("digestivo", "ESTOMACAL"),
+    "vómito": ("digestivo", "ESTOMACAL"),
+    "hígado": ("digestivo", "HEPÁTICA"),
+    "hepatitis": ("digestivo", "HEPÁTICA"),
+    "cirrosis": ("digestivo", "HEPÁTICA"),
+    "vesícula": ("digestivo", "BILIAR"),
+    "cálculos biliares": ("digestivo", "BILIAR"),
+    "bilis": ("digestivo", "BILIAR"),
+    "peritonitis": ("digestivo", "PERITONEAL"),
+    # Respiratorio
+    "rinitis": ("respiratorio", "NASAL"),
+    "sinusitis": ("respiratorio", "NASAL"),
+    "alergia nasal": ("respiratorio", "NASAL"),
+    "estornudos": ("respiratorio", "NASAL"),
+    "ronquera": ("respiratorio", "LARÍNGEA"),
+    "afonía": ("respiratorio", "LARÍNGEA"),
+    "laringitis": ("respiratorio", "LARÍNGEA"),
+    "tos": ("respiratorio", "TOS"),
+    "bronquitis": ("respiratorio", "BRONQUIAL"),
+    "broncoespasmo": ("respiratorio", "BRONQUIAL"),
+    "asma": ("respiratorio", "ASMÁTICA"),
+    "asmático": ("respiratorio", "ASMÁTICA"),
+    "enfisema": ("respiratorio", "ALVEOLAR"),
+    "apnea": ("respiratorio", "APNEA"),
+    "tabaquismo": ("respiratorio", "TABAQUISTA"),
+    "fumar": ("respiratorio", "TABAQUISTA"),
+    "hipo": ("respiratorio", "DIAFRAGMÁTICA"),
+    "gripe": ("respiratorio", "GRIPAL"),
+    "influenza": ("respiratorio", "GRIPAL"),
+    # Endócrino
+    "tiroides": ("endocrino", "TIROIDEA"),
+    "hipotiroidismo": ("endocrino", "TIROIDEA"),
+    "hipertiroidismo": ("endocrino", "TIROIDEA"),
+    "bocio": ("endocrino", "TIROIDEA"),
+    "diabetes": ("endocrino", "PANCREÁTICA"),
+    "insulina": ("endocrino", "PANCREÁTICA"),
+    "glucosa": ("endocrino", "PANCREÁTICA"),
+    "páncreas": ("endocrino", "PANCREÁTICA"),
+    "hipófisis": ("endocrino", "HIPOFISIARIA"),
+    "pituitaria": ("endocrino", "HIPOFISIARIA"),
+    "papiloma": ("endocrino", "HIPOFISIARIA"),
+    "cortisol": ("endocrino", "SUPRARRENAL"),
+    "adrenalina": ("endocrino", "SUPRARRENAL"),
+    "paratiroides": ("endocrino", "PARATIROIDEA"),
+    "calcio": ("endocrino", "PARATIROIDEA"),
+    # Cardiovascular
+    "infarto": ("cardiovascular", "MIOCARDIAL"),
+    "arritmia": ("cardiovascular", "DEL RITMO"),
+    "taquicardia": ("cardiovascular", "DEL RITMO"),
+    "bradicardia": ("cardiovascular", "DEL RITMO"),
+    "palpitaciones": ("cardiovascular", "DEL RITMO"),
+    "válvula": ("cardiovascular", "VALVULAR"),
+    "presión alta": ("cardiovascular", "DE PRESIÓN"),
+    "hipertensión": ("cardiovascular", "DE PRESIÓN"),
+    "presión baja": ("cardiovascular", "DE PRESIÓN"),
+    "hipotensión": ("cardiovascular", "DE PRESIÓN"),
+    "colesterol": ("cardiovascular", "LIPÍDICA"),
+    "triglicéridos": ("cardiovascular", "LIPÍDICA"),
+    "varices": ("cardiovascular", "VENOSA"),
+    "trombosis": ("cardiovascular", "VENOSA"),
+    "flebitis": ("cardiovascular", "VENOSA"),
+    "angina": ("cardiovascular", "MIOCARDIAL"),
+    # Osteomuscular
+    "lumbar": ("osteomuscular", "VERTEBRAL"),
+    "lumbago": ("osteomuscular", "VERTEBRAL"),
+    "hernia de disco": ("osteomuscular", "VERTEBRAL"),
+    "escoliosis": ("osteomuscular", "VERTEBRAL"),
+    "cervical": ("osteomuscular", "VERTEBRAL"),
+    "cervicalgia": ("osteomuscular", "VERTEBRAL"),
+    "artritis": ("osteomuscular", "ARTICULAR"),
+    "artrosis": ("osteomuscular", "ARTICULAR"),
+    "rodilla": ("osteomuscular", "ARTICULAR"),
+    "cadera": ("osteomuscular", "ARTICULAR"),
+    "hombro": ("osteomuscular", "ARTICULAR"),
+    "tendinitis": ("osteomuscular", "TENDONES"),
+    "esguince": ("osteomuscular", "LIGAMENTOS"),
+    "fibromialgia": ("osteomuscular", "MUSCULAR"),
+    "contractura": ("osteomuscular", "MUSCULAR"),
+    "osteoporosis": ("osteomuscular", "ÓSEA DIVERSA"),
+    "fractura": ("osteomuscular", "ÓSEA DIVERSA"),
+    # Dermatológico
+    "psoriasis": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    "eczema": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    "dermatitis": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    "urticaria": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    "acné": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    "herpes": ("dermato_lipofascial", "SEPARACIÓN"),
+    "vitíligo": ("dermato_lipofascial", "SEPARACIÓN"),
+    "manchas": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "lipoma": ("dermato_lipofascial", "CONTACTO IMPUESTO"),
+    # Reproductivo
+    "ovario": ("reproductivo", "OVÁRICA"),
+    "quiste ovárico": ("reproductivo", "OVÁRICA"),
+    "ovario poliquístico": ("reproductivo", "OVÁRICA"),
+    "útero": ("reproductivo", "UTERINA"),
+    "mioma": ("reproductivo", "UTERINA"),
+    "endometriosis": ("reproductivo", "UTERINA"),
+    "menstruación": ("reproductivo", "MENSTRUAL"),
+    "regla": ("reproductivo", "MENSTRUAL"),
+    "amenorrea": ("reproductivo", "MENSTRUAL"),
+    "dismenorrea": ("reproductivo", "MENSTRUAL"),
+    "vagina": ("reproductivo", "VAGINAL"),
+    "candidiasis": ("reproductivo", "VAGINAL"),
+    "flujo": ("reproductivo", "VAGINAL"),
+    "próstata": ("reproductivo", "PROSTÁTICA"),
+    "testículo": ("reproductivo", "TESTICULAR"),
+    "pene": ("reproductivo", "FÁLICA"),
+    "disfunción eréctil": ("reproductivo", "FÁLICA"),
+    "mama": ("reproductivo", "MAMARIA"),
+    "seno": ("reproductivo", "MAMARIA"),
+    "mastitis": ("reproductivo", "MAMARIA"),
+    "menopausia": ("reproductivo", "MENSTRUAL"),
+    # Urinario
+    "cistitis": ("urinario", "DE VEJIGA"),
+    "infección urinaria": ("urinario", "DE VEJIGA"),
+    "vejiga": ("urinario", "DE VEJIGA"),
+    "riñón": ("urinario", "RENAL"),
+    "cálculos renales": ("urinario", "RENAL"),
+    "piedras en el riñón": ("urinario", "RENAL"),
+    "incontinencia": ("urinario", "DE VEJIGA"),
+    # Inmunológico
+    "amígdalas": ("inmunologico", "AMIGDALINA"),
+    "amigdalitis": ("inmunologico", "AMIGDALINA"),
+    "anginas": ("inmunologico", "AMIGDALINA"),
+    "bazo": ("inmunologico", "ESPLÉNICA"),
+    "ganglios": ("inmunologico", "GANGLIONAR"),
+    "linfoma": ("inmunologico", "GANGLIONAR"),
+    "lupus": ("inmunologico", "INMUNOLÓGICA"),
+    "esclerosis múltiple": ("inmunologico", "INMUNOLÓGICA"),
+    # Neurosensorial
+    "migraña": ("neurosensorial", "CEFÁLICA"),
+    "cefalea": ("neurosensorial", "CEFÁLICA"),
+    "jaqueca": ("neurosensorial", "CEFÁLICA"),
+    "dolor de cabeza": ("neurosensorial", "CEFÁLICA"),
+    "insomnio": ("neurosensorial", "INSOMNIO"),
+    "no puedo dormir": ("neurosensorial", "INSOMNIO"),
+    "vértigo": ("neurosensorial", "CEFÁLICA"),
+    "tinnitus": ("neurosensorial", "AUDITIVA"),
+    "zumbido": ("neurosensorial", "AUDITIVA"),
+    "sordera": ("neurosensorial", "AUDITIVA"),
+    "conjuntivitis": ("neurosensorial", "OCULAR"),
+    "glaucoma": ("neurosensorial", "OCULAR"),
+    "visión": ("neurosensorial", "OCULAR"),
+    "ansiedad": ("neurosensorial", "NERVIOSA"),
+    "depresión": ("neurosensorial", "NERVIOSA"),
+    "pánico": ("neurosensorial", "NERVIOSA"),
+    "alzheimer": ("neurosensorial", "ALZHEIMER"),
+    "demencia": ("neurosensorial", "ALZHEIMER"),
+    "parálisis": ("neurosensorial", "HEMIPLÉJICA"),
+    "hemiplejia": ("neurosensorial", "HEMIPLÉJICA"),
+    # Alimenticio
+    "sobrepeso": ("alimenticio", "SOBREPESO / OBESIDAD"),
+    "obesidad": ("alimenticio", "SOBREPESO / OBESIDAD"),
+    "anorexia": ("alimenticio", "ANOREXIA / BULIMIA"),
+    "bulimia": ("alimenticio", "ANOREXIA / BULIMIA"),
+}
+
+
+# ── Funciones principales ─────────────────────────────────────────────────────
+
+def get_subsystem_table(sistema: str, subsistema: str) -> str:
+    """
+    Devuelve la tabla de UN solo subsistema formateado para mostrar al terapeuta.
+    """
+    data = CONFLICTOS.get(sistema)
+    if not data:
+        return ""
+
+    conflictos = data["subsistemas"].get(subsistema)
+    if not conflictos:
+        return ""
+
+    sistema_titulo = data["titulo"].split("(")[0].strip()
+    lines = [f"\n📋 {sistema_titulo} — {subsistema}\n"]
+    for num, nombre, frase in conflictos:
+        if frase:
+            lines.append(f"  {num}. {nombre} — {frase}")
+        else:
+            lines.append(f"  {num}. {nombre}")
+    lines.append(f"\n{'─'*40}")
+    lines.append("Pregunta por bloque (rojo/naranja/amarillo/etc.) y luego por número.")
+    return "\n".join(lines)
+
+
+def get_subsystems_list(sistema: str) -> str:
+    """
+    Devuelve solo la lista de subsistemas (para cuando aún no se sabe cuál es).
+    El terapeuta los pregunta a la MS uno por uno.
+    """
+    data = CONFLICTOS.get(sistema)
+    if not data:
+        return ""
+
+    sistema_titulo = data["titulo"].split("(")[0].strip()
+    subsistemas = list(data["subsistemas"].keys())
+    lines = [f"\n📋 {sistema_titulo}\n"]
+    lines.append("Pregunta a la MS por cada subsistema:\n")
+    for i, sub in enumerate(subsistemas, 1):
+        lines.append(f"  {i}. {sub}")
+    lines.append(f"\n{'─'*40}")
+    lines.append("MS: ¿Es [subsistema]? → Bloque → Número")
+    return "\n".join(lines)
+
 
 def get_conflict_table(sistema: str) -> str:
     """
-    Devuelve la tabla de conflictos formateada para el sistema dado.
-    Listo para inyectar en el prompt del asistente terapeuta.
+    Devuelve la tabla completa de conflictos del sistema.
+    Solo usar cuando no se puede detectar subsistema específico.
     """
     data = CONFLICTOS.get(sistema)
     if not data:
@@ -1120,6 +1338,18 @@ def get_conflict_table(sistema: str) -> str:
     lines.append(f"\n{'─'*40}")
     lines.append("Pregunta por bloque (rojo/naranja/amarillo/etc.) y luego por número.")
     return "\n".join(lines)
+
+
+def detect_sintoma(text: str) -> Optional[tuple]:
+    """
+    Detecta si el texto menciona un síntoma con subsistema conocido.
+    Devuelve (sistema, subsistema) o None.
+    """
+    text_lower = text.lower()
+    for sintoma, (sistema, subsistema) in SINTOMA_SUBSISTEMA.items():
+        if sintoma in text_lower:
+            return (sistema, subsistema)
+    return None
 
 
 def detect_sistema(text: str) -> Optional[str]:
