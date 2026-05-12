@@ -334,6 +334,80 @@
     text-align: center;
     margin-top: 8px;
   }
+
+  /* ── Tablas de conflictos ── */
+  .conflict-table-header {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--acc);
+    background: rgba(16,185,129,0.08);
+    border: 1px solid rgba(16,185,129,0.25);
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin: 12px 0 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .conflict-subsystem {
+    font-size: 0.73rem;
+    font-weight: 700;
+    color: var(--acc);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 10px 0 4px;
+    border-bottom: 1px solid rgba(16,185,129,0.15);
+    margin-bottom: 4px;
+  }
+
+  .conflict-item {
+    display: flex;
+    gap: 6px;
+    padding: 3px 0;
+    font-size: 0.85rem;
+    align-items: baseline;
+    line-height: 1.4;
+  }
+
+  .cnum {
+    flex-shrink: 0;
+    width: 18px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--acc);
+    text-align: right;
+  }
+
+  .cname {
+    font-weight: 600;
+    color: var(--text);
+    flex-shrink: 0;
+  }
+
+  .cfrase {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-style: italic;
+  }
+
+  .cname::after {
+    content: ' ';
+  }
+
+  .conflict-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 10px 0 6px;
+  }
+
+  .conflict-note {
+    font-size: 0.78rem;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.08);
+    border-left: 2px solid rgba(251,191,36,0.4);
+    padding: 6px 10px;
+    border-radius: 0 6px 6px 0;
+    margin: 8px 0;
+  }
 </style>
 </head>
 <body>
@@ -448,19 +522,108 @@
 
   // ── Renderizado de burbujas ─────────────────────────────────────────────────
   function formatAIText(text) {
-    // Resaltar líneas que empiezan con "MS:"
-    return text
-      .split('\n')
-      .map(line => {
-        if (/^MS\s*:/i.test(line.trim())) {
-          return `<span class="ms-line">${escHtml(line)}</span>`;
+    const lines = text.split('\n');
+    const out = [];
+    let inTable = false;
+    let currentSubsystem = '';
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const trimmed = line.trim();
+
+      // ── Detección de tabla de conflictos ──────────────────────────────
+      // Encabezado de tabla: "📋 CONFLICTOLOGÍA…"
+      if (trimmed.startsWith('📋')) {
+        inTable = true;
+        out.push(`<div class="conflict-table-header">${escHtml(trimmed)}</div>`);
+        continue;
+      }
+
+      // Separador de tabla: "────────"
+      if (inTable && /^─{4,}/.test(trimmed)) {
+        out.push('<div class="conflict-divider"></div>');
+        continue;
+      }
+
+      // Subsistema en MAYÚSCULAS seguido de ":"  (ej: "  HIPOFISIARIA:")
+      if (inTable && /^\s{2,}[A-ZÁÉÍÓÚÑÜ\s\/]+:\s*$/.test(line) && trimmed.length < 40) {
+        currentSubsystem = trimmed.replace(':', '').trim();
+        out.push(`<div class="conflict-subsystem">${escHtml(currentSubsystem)}</div>`);
+        continue;
+      }
+
+      // Línea de conflicto:  "  N. Nombre — "Frase""
+      if (inTable && /^\s{2,}\d+\./.test(line)) {
+        const match = trimmed.match(/^(\w+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
+        if (match) {
+          const num   = match[1];
+          const name  = match[2];
+          const frase = match[3] || '';
+          out.push(
+            `<div class="conflict-item">` +
+              `<span class="cnum">${num}</span>` +
+              `<span class="cname">${escHtml(name)}</span>` +
+              (frase ? `<span class="cfrase">${escHtml(frase)}</span>` : '') +
+            `</div>`
+          );
+          continue;
         }
-        if (/^→/.test(line.trim())) {
-          return `<span class="branch">${escHtml(line)}</span>`;
+      }
+
+      // Línea de conflicto con letra  "  A1. Nombre"
+      if (inTable && /^\s{2,}[A-Z]\d+\./.test(line)) {
+        const match = trimmed.match(/^([A-Z]\d+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
+        if (match) {
+          const num   = match[1];
+          const name  = match[2];
+          const frase = match[3] || '';
+          out.push(
+            `<div class="conflict-item">` +
+              `<span class="cnum">${num}</span>` +
+              `<span class="cname">${escHtml(name)}</span>` +
+              (frase ? `<span class="cfrase">${escHtml(frase)}</span>` : '') +
+            `</div>`
+          );
+          continue;
         }
-        return escHtml(line);
-      })
-      .join('\n');
+      }
+
+      // Texto de instrucción dentro de la tabla
+      if (inTable && trimmed && !/^═{2,}/.test(trimmed)) {
+        if (trimmed.startsWith('Pregunta por bloque') || trimmed.startsWith('Muéstrale')) {
+          out.push(`<div class="conflict-note">${escHtml(trimmed)}</div>`);
+          continue;
+        }
+      }
+
+      // Fin de tabla
+      if (inTable && /^══/.test(trimmed)) {
+        inTable = false;
+      }
+
+      // ── Líneas normales del protocolo ─────────────────────────────────
+      if (/^MS\s*:/i.test(trimmed)) {
+        out.push(`<span class="ms-line">${escHtml(line)}</span>`);
+      } else if (/^→/.test(trimmed)) {
+        out.push(`<span class="branch">${escHtml(line)}</span>`);
+      } else {
+        out.push(escHtml(line));
+      }
+    }
+
+    // Smart join: block HTML elements don't need \n between them
+    const result = [];
+    for (let i = 0; i < out.length; i++) {
+      const chunk = out[i];
+      result.push(chunk);
+      // Add newline only between non-block text pieces
+      const isBlockEl = chunk.startsWith('<div') || chunk.endsWith('</div>');
+      const nextIsBlockEl = out[i+1] && (out[i+1].startsWith('<div') || out[i+1].endsWith('</div>'));
+      if (!isBlockEl && !nextIsBlockEl && i < out.length - 1) {
+        result.push('\n');
+      }
+    }
+    return result.join('');
   }
 
   function escHtml(s) {

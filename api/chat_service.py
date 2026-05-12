@@ -8,7 +8,7 @@ from __future__ import annotations
 import json
 import os
 import logging
-from typing import Generator
+from typing import Generator, Optional
 from pathlib import Path
 from functools import lru_cache
 
@@ -16,6 +16,15 @@ try:
     from openai import OpenAI
 except ImportError:
     OpenAI = None
+
+try:
+    from api.protocol_tables import get_conflict_table, detect_sistema
+except ImportError:
+    try:
+        from protocol_tables import get_conflict_table, detect_sistema
+    except ImportError:
+        def get_conflict_table(s): return ""
+        def detect_sistema(t): return None
 
 logger = logging.getLogger(__name__)
 
@@ -32,8 +41,9 @@ TU ÚNICA FUNCIÓN: ejecutar el protocolo correcto paso a paso, una instrucción
 
 1. RASTREO CONFLICTOLÓGICO
    MS: ¿Algún conflicto [sistema] está implicado en el síntoma X?
-   → SÍ: ¿Es [subsistema A]? ¿[subsistema B]? → bloque (color) → número → anotar conflicto.
-          Preguntar: ¿Hay otro conflicto implicado? Si SÍ, repetir. Si NO, continuar.
+   → SÍ: Mostrar la tabla completa de conflictos del sistema identificado para que el terapeuta
+          pueda leerlos con la MS uno a uno. Preguntar: ¿Es [subsistema A]? → bloque → número.
+          ¿Hay otro conflicto implicado? Si SÍ, repetir. Si NO, continuar.
    → NO: Hacer rastreo conflictológico general.
 
 2. RASTREO MICROBIOLÓGICO
@@ -69,13 +79,22 @@ TU ÚNICA FUNCIÓN: ejecutar el protocolo correcto paso a paso, una instrucción
 ══ SISTEMAS DISPONIBLES ══
 - Respiratorio: nasal, laríngeo, traqueal, bronquial, alveolar, diafragmático, gripal, asmático, apnea, tabaquismo, transgeneracional
 - Digestivo: bucal, estomacal, intestinal delgada, hepático, biliar, intestinal gruesa, anal, peritoneal, del quimo
-- Endócrino-metabólico, Cardiovascular, Osteomuscular, Lipofascial
-- Emocional/transgeneracional: EFT, reimpronta, vidas pasadas, cuerdas energéticas, memorias celulares, miedos, fobias, traumas
+- Endócrino-metabólico: hipofisiaria, tiroidea, paratiroidea, pancreática, suprarrenal
+- Cardiovascular: miocardial, valvular, del ritmo, membranas, arterial, venosa, presión, adjunta, lipídica
+- Osteomuscular: general, vertebral, ósea diversa, periostio, articular, ligamentos, tendones, muscular
+- Dermatológico-Lipofascial: desvalorización, contacto impuesto, separación
+- Reproductivo: ovárica, oviductal, uterina, menstrual, vaginal, fálica, testicular, prostática, mamaria
+- Urinario: renal, de glomérulo, de vejiga
+- Inmunológico: inmunológica, esplénica, amigdalina, ganglionar, del timo, leucocitaria, linfática, de SIDA
+- Neurosensorial: tumoral, cefálica, alzheimer, hemipléjica, hemorrágica, insomnio, nerviosa, ocular, auditiva
 
 ══ REGLAS ABSOLUTAS ══
 - Nunca hagas más de UNA pregunta o instrucción por respuesta.
 - Nunca preguntes sobre el paciente — el terapeuta ya tiene esa información.
 - Cuando el terapeuta diga el síntoma → identifica el sistema → empieza el paso 1 inmediatamente.
+- IMPORTANTE: Cuando la MS confirme que hay conflicto en un sistema, SIEMPRE muestra la tabla
+  completa de conflictos de ese sistema (ya estará en el contexto). El terapeuta NECESITA ver
+  la lista completa para poder leer cada conflicto a la MS.
 - Cuando el terapeuta dé la respuesta de la MS → da el siguiente paso sin explicaciones extra.
 - Respuestas cortas. Sin relleno. Sin "excelente", "perfecto", "muy bien".
 
@@ -173,6 +192,57 @@ def _get_context(message: str) -> str:
 
 # ── Streaming ─────────────────────────────────────────────────────────────────
 
+def _detect_sistema_from_conversation(message: str, history: list[dict]) -> Optional[str]:
+    """
+    Busca el sistema corporal en el mensaje actual y en el historial reciente.
+    """
+    # Primero el mensaje actual
+    sistema = detect_sistema(message)
+    if sistema:
+        return sistema
+    # Luego los últimos 6 mensajes del historial
+    for turn in reversed(history[-6:]):
+        content = turn.get("content", "")
+        if isinstance(content, str):
+            sistema = detect_sistema(content)
+            if sistema:
+                return sistema
+    return None
+
+
+def _user_confirmed_yes(message: str) -> bool:
+    """Detecta si el terapeuta confirmó un SÍ de la MS."""
+    msg = message.lower().strip()
+    affirmatives = ["sí", "si", "yes", "confirmado", "afirmativo", "así es",
+                    "positivo", "correcto", "exacto", "sip", "aha"]
+    if len(msg) < 30 and any(msg == a or msg.startswith(a) for a in affirmatives):
+        return True
+    if "ms dijo" in msg or "dijo sí" in msg or "dijo si" in msg:
+        return True
+    return False
+
+
+def _user_said_no(message: str) -> bool:
+    """Detecta si el terapeuta respondió NO de la MS."""
+    msg = message.lower().strip()
+    negatives = ["no", "nope", "negativo", "no confirmó", "no hay", "ninguno", "nada"]
+    if len(msg) < 20 and any(msg == n or msg.startswith(n) for n in negatives):
+        return True
+    return False
+
+
+def _get_sistema_from_last_ai_message(history: list[dict]) -> Optional[str]:
+    """
+    Busca el sistema en el último mensaje del asistente (cuando preguntó sobre él).
+    """
+    for turn in reversed(history):
+        if turn.get("role") == "assistant":
+            content = turn.get("content", "")
+            if "conflicto" in content.lower():
+                return detect_sistema(content)
+    return None
+
+
 def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, None, None]:
     """
     Genera la respuesta token a token como Server-Sent Events.
@@ -187,6 +257,49 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
 
     system_prompt = TERAPEUTA_SYSTEM if mode == "terapeuta" else ALUMNO_SYSTEM
 
+    # ── Para el modo terapeuta: inyectar tabla cuando se identifica el sistema ──
+    tabla_a_emitir = ""
+    sistema_sesion = None
+    usuario_dijo_no = _user_said_no(message)
+
+    if mode == "terapeuta":
+        # Sistema detectado en el mensaje ACTUAL (nuevo síntoma mencionado)
+        sistema_en_mensaje = detect_sistema(message)
+
+        # Sistema ya activo en el historial
+        sistema_en_historia = _get_sistema_from_last_ai_message(history)
+
+        if sistema_en_mensaje and not usuario_dijo_no:
+            # Síntoma nuevo: mostrar tabla inmediatamente
+            sistema_sesion = sistema_en_mensaje
+            tabla_a_emitir = get_conflict_table(sistema_sesion)
+        elif sistema_en_historia and not usuario_dijo_no:
+            # Continuar sesión existente con el mismo sistema: no volver a mostrar tabla
+            sistema_sesion = sistema_en_historia
+
+        if sistema_sesion and not usuario_dijo_no:
+            # Añadir referencia al AI (sabe qué sistema está activo)
+            tabla_ref = get_conflict_table(sistema_sesion)
+            system_prompt += (
+                f"\n\n══ REFERENCIA DE CONFLICTOS {sistema_sesion.upper()} ══"
+                f"{tabla_ref}"
+                f"\n══ FIN DE REFERENCIA ══\n\n"
+                f"{'La tabla ya fue enviada al terapeuta y está visible en pantalla. No la repitas.' if tabla_a_emitir else 'El terapeuta ya tiene la tabla de referencia visible.'} "
+                f"Ejecuta el protocolo: cuando la MS confirme subsistema, indica bloque y número."
+            )
+        elif usuario_dijo_no:
+            # MS dijo NO al sistema: guiar al rastreo general
+            sistema_rechazado = sistema_en_mensaje or sistema_en_historia or ""
+            system_prompt += (
+                f"\n\nINSTRUCCIÓN: La MS dijo NO al sistema {sistema_rechazado}. "
+                f"Ahora debes guiar el RASTREO CONFLICTOLÓGICO GENERAL: "
+                f"pregunta por cada sistema uno a uno (respiratorio, digestivo, endócrino, "
+                f"cardiovascular, osteomuscular, dermatológico, reproductivo, urinario, "
+                f"inmunológico, neurosensorial) hasta que la MS confirme alguno. "
+                f"Empieza por el primer sistema que NO se ha preguntado todavía. "
+                f"Una sola pregunta MS por respuesta."
+            )
+
     context = _get_context(message)
     if context:
         system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
@@ -194,13 +307,18 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     # Limitar historial a las últimas 12 interacciones (6 turnos)
     trimmed_history = history[-12:] if len(history) > 12 else history
 
+    # Emitir la tabla ANTES de la respuesta del AI (solo para síntomas nuevos)
+    if tabla_a_emitir:
+        tabla_payload = json.dumps({"text": tabla_a_emitir}, ensure_ascii=False)
+        yield f"data: {tabla_payload}\n\n"
+
     messages = [
         {"role": "system", "content": system_prompt},
         *trimmed_history,
         {"role": "user", "content": message},
     ]
 
-    max_tokens = 600 if mode == "terapeuta" else 1200
+    max_tokens = 800 if mode == "terapeuta" else 1200
 
     try:
         stream = client.chat.completions.create(
