@@ -220,7 +220,7 @@ body::before {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .panel-head {
@@ -1333,12 +1333,10 @@ textarea {
 }
 
 .wizard-progress-label {
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.72rem;
+  font-weight: 600;
   color: var(--muted);
   white-space: nowrap;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .wizard-progress-bar {
@@ -1351,44 +1349,44 @@ textarea {
 
 .wizard-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--secondary), var(--accent));
+  background: var(--accent);
   border-radius: 999px;
   transition: width 0.3s ease;
 }
 
 .wizard-card {
-  background: linear-gradient(160deg, rgba(245, 249, 255, 0.98), rgba(232, 242, 253, 0.95));
-  border: 1px solid var(--line-strong);
-  border-radius: 16px;
-  padding: 22px 24px 20px;
-  margin-bottom: 16px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  margin-bottom: 14px;
 }
 
 .wizard-ms-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.14em;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--secondary);
-  margin: 0 0 10px;
+  color: var(--muted);
+  margin: 0 0 8px;
 }
 
 .wizard-question {
-  font-size: 1.08rem;
-  font-weight: 700;
-  color: var(--ink);
-  line-height: 1.5;
-  margin: 0 0 20px;
-}
-
-.wizard-step-title {
   font-size: 1rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.5;
-  margin: 0 0 14px;
-  padding: 8px 12px;
-  background: rgba(var(--primary-rgb, 94, 84, 142), 0.07);
+  margin: 0 0 18px;
+}
+
+.wizard-step-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  background: var(--bg-strong);
   border-radius: 6px;
   border-left: 3px solid var(--secondary);
 }
@@ -1397,23 +1395,23 @@ textarea {
 
 .wizard-yn-row {
   display: flex;
-  gap: 12px;
-  margin-bottom: 18px;
+  gap: 10px;
+  margin-bottom: 16px;
 }
 
 .wizard-yn-btn {
   flex: 1;
-  padding: 13px 16px;
-  border-radius: 12px;
-  border: 2px solid var(--line-strong);
+  padding: 11px 16px;
+  border-radius: 10px;
+  border: 1.5px solid var(--line-strong);
   background: var(--panel-strong);
   font-family: inherit;
-  font-size: 0.95rem;
-  font-weight: 800;
+  font-size: 0.92rem;
+  font-weight: 700;
   color: var(--ink-soft);
   cursor: pointer;
   transition: all 0.15s;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
 }
 
 .wizard-yn-btn:hover {
@@ -1423,21 +1421,21 @@ textarea {
 }
 
 .wizard-si.selected {
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  background: var(--accent);
   border-color: var(--accent-strong);
   color: #fff;
 }
 
 .wizard-no.selected {
-  background: linear-gradient(135deg, #9f3b47, #7a2d37);
+  background: #9f3b47;
   border-color: #7a2d37;
   color: #fff;
 }
 
-/* Opcion grid */
+/* Opciones list */
 
 .wizard-opciones-label {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--muted);
   margin: 0 0 10px;
@@ -1445,7 +1443,7 @@ textarea {
 }
 
 .wizard-opcion-group {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .wizard-opcion-group:last-child {
@@ -1453,35 +1451,36 @@ textarea {
 }
 
 .wizard-group-label {
-  font-size: 0.68rem;
-  font-weight: 800;
-  letter-spacing: 0.1em;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin: 0 0 8px;
-  padding: 4px 0;
+  color: var(--muted);
+  margin: 0 0 6px;
+  padding: 3px 0;
   border-bottom: 1px solid var(--line);
 }
 
 .wizard-opcion-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .wizard-opcion-btn {
-  padding: 6px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--line-strong);
+  padding: 8px 12px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
   background: var(--panel-strong);
   font-family: inherit;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--ink-soft);
   cursor: pointer;
   transition: all 0.12s;
-  line-height: 1.35;
+  line-height: 1.4;
   text-align: left;
+  width: 100%;
 }
 
 .wizard-opcion-btn:hover {
@@ -1491,9 +1490,9 @@ textarea {
 }
 
 .wizard-opcion-btn.selected {
-  background: var(--accent);
-  border-color: var(--accent-strong);
-  color: #fff;
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
   font-weight: 700;
 }
 
@@ -1531,13 +1530,13 @@ textarea {
 }
 
 .wizard-context-summary {
-  padding: 8px 14px;
-  font-size: 0.78rem;
+  padding: 7px 12px;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: var(--secondary);
+  color: var(--muted);
   cursor: pointer;
   list-style: none;
-  background: rgba(var(--secondary-rgb, 180, 130, 80), 0.07);
+  background: var(--bg-strong);
   user-select: none;
 }
 
@@ -1547,10 +1546,10 @@ textarea {
   padding: 12px 14px;
   font-size: 0.78rem;
   color: var(--ink-soft);
-  line-height: 1.8;
+  line-height: 1.75;
   white-space: pre-wrap;
   background: var(--panel);
-  max-height: 300px;
+  max-height: 280px;
   overflow-y: auto;
 }
 
@@ -1698,14 +1697,14 @@ textarea {
 
 .wizard-next {
   margin-left: auto;
-  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  background: var(--accent);
   border-color: var(--accent-strong);
   color: #fff;
 }
 
 .wizard-next:hover:not(.disabled) {
-  background: linear-gradient(135deg, var(--accent-strong), #08213f);
-  border-color: #08213f;
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
   color: #fff;
 }
 
