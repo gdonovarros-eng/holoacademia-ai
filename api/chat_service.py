@@ -65,15 +65,25 @@ Tono: didáctico, cálido, paciente. Como el maestro que siempre tiene tiempo pa
 def _get_client() -> "OpenAI | None":
     if OpenAI is None:
         return None
-    api_key = os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY")
+    # Usar OpenAI directamente (más confiable y económico con gpt-4o-mini)
+    api_key = os.getenv("OPENAI_API_KEY")
+    if api_key and api_key.startswith("sk-"):
+        return OpenAI(api_key=api_key)
+    # Fallback: intentar con Groq
+    groq_key = os.getenv("GROQ_API_KEY")
     base_url = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
-    if not api_key:
-        logger.warning("No se encontró GROQ_API_KEY ni OPENAI_API_KEY.")
-        return None
-    return OpenAI(api_key=api_key, base_url=base_url)
+    if groq_key:
+        return OpenAI(api_key=groq_key, base_url=base_url)
+    logger.warning("No se encontró API key válida.")
+    return None
 
 
 def _model() -> str:
+    # gpt-4o-mini: excelente calidad, muy bajo costo (~$0.15/1M tokens)
+    api_key = os.getenv("OPENAI_API_KEY", "")
+    if api_key.startswith("sk-"):
+        return "gpt-4o-mini"
+    # Groq fallback
     return os.getenv("OPENAI_MODEL", "llama-3.3-70b-versatile")
 
 
