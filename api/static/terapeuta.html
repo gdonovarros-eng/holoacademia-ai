@@ -431,18 +431,18 @@
     <div class="welcome" id="welcome">
       <div class="welcome-icon">🩺</div>
       <h2>¿Con qué trabajamos hoy?</h2>
-      <p>Dime el síntoma de tu paciente y te guío paso a paso por el protocolo. También puedes elegir uno de los accesos rápidos.</p>
+      <p>Puedo guiarte en la <strong>entrevista con el paciente</strong> o en el <strong>protocolo de rastreo</strong>. Escribe lo que necesitas o elige un acceso rápido.</p>
 
       <div class="quick-grid">
-        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma respiratorio')">
-          <span class="qb-icon">🫁</span>
-          <span class="qb-text">Respiratorio</span>
-          <span class="qb-sub">Alveolar, bronquial, nasal…</span>
+        <button class="quick-btn" onclick="quickStart('Voy a iniciar la entrevista con mi paciente. Ayúdame a empezar — ¿cómo abro la conversación?')">
+          <span class="qb-icon">🗣️</span>
+          <span class="qb-text">Iniciar entrevista</span>
+          <span class="qb-sub">Guíame en la conversación clínica</span>
         </button>
-        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma digestivo')">
-          <span class="qb-icon">🫃</span>
-          <span class="qb-text">Digestivo</span>
-          <span class="qb-sub">Hepático, estomacal…</span>
+        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma digestivo. Ayúdame con el protocolo')">
+          <span class="qb-icon">📋</span>
+          <span class="qb-text">Iniciar protocolo</span>
+          <span class="qb-sub">Rastreo MS paso a paso</span>
         </button>
         <button class="quick-btn" onclick="quickStart('Mi paciente tiene un tema emocional o trauma')">
           <span class="qb-icon">💛</span>
@@ -451,7 +451,7 @@
         </button>
         <button class="quick-btn" onclick="quickStart('No sé qué protocolo usar, ayúdame a identificarlo')">
           <span class="qb-icon">🔍</span>
-          <span class="qb-text">No sé qué protocolo</span>
+          <span class="qb-text">No sé por dónde empezar</span>
           <span class="qb-sub">Ayúdame a identificarlo</span>
         </button>
       </div>
@@ -465,7 +465,7 @@
       <textarea
         class="input-field"
         id="inputField"
-        placeholder="Describe el síntoma o la situación del paciente…"
+        placeholder="Describe el síntoma, comparte lo que dijo el paciente, o reporta la respuesta de la MS…"
         rows="1"
         onkeydown="handleKey(event)"
         oninput="handleInput(this)"
@@ -474,7 +474,7 @@
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
     </div>
-    <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea</div>
+    <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea · Escribe lo que dijo el paciente para guía de entrevista</div>
   </div>
 
 </div>
