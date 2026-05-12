@@ -3,7 +3,35 @@ Tablas de conflictología del Método Lavín por sistema.
 Se inyectan en el prompt del terapeuta cuando se identifica el sistema a trabajar.
 """
 from __future__ import annotations
+import re
 from typing import Optional
+
+# Patrones que indican que "mama" se usa como "madre" (posesivo personal),
+# no como síntoma mamario. Solo excluimos posesivos: "su mama", "mi mama", "tu mama".
+# "la mama" y "una mama" SÍ pueden ser síntoma → no se neutralizan.
+_MADRE_PATTERN = re.compile(
+    r'\b(su|mi|tu)\s+mam[aá]\b',
+    re.IGNORECASE,
+)
+
+# Marcadores de alta confianza: siempre son narrativa independientemente de la longitud.
+_STRONG_NARRATIVE = [
+    "el paciente", "la paciente", "mi paciente",
+    "su papa", "su papá", "su padre", "su madre",
+    "el dice", "ella dice", "me dice", "me dijo",
+    "refiere que", "cuenta que",
+    "le marcó", "le marco", "le dijo", "le dijeron",
+    "habia fallecido", "había fallecido",
+]
+
+# Marcadores de narrativa que requieren mensaje largo (≥ 45 chars) para evitar falsos positivos.
+NARRATIVE_MARKERS = [
+    "dice que", "me cuenta", "su esposo", "su esposa",
+    "siente que", "el estaba", "ella estaba", "él estaba",
+    "cuando el", "cuando ella", "su hijo", "su hija", "su pareja",
+    "tenia miedo", "tenía miedo", "se fue", "no pudo",
+    "queria", "quería",
+]
 
 # ── Tablas de conflictos por sistema ─────────────────────────────────────────
 
@@ -1265,6 +1293,16 @@ SINTOMA_SUBSISTEMA = {
     "obesidad": ("alimenticio", "SOBREPESO / OBESIDAD"),
     "anorexia": ("alimenticio", "ANOREXIA / BULIMIA"),
     "bulimia": ("alimenticio", "ANOREXIA / BULIMIA"),
+    # Dermatológico-lipofascial (caída de cabello / alopecia)
+    "pérdida de cabello": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "perdida de cabello": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "caída de cabello": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "caida de cabello": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "alopecia": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "calvicie": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "se le cae el cabello": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "se le cae el pelo": ("dermato_lipofascial", "DESVALORIZACIÓN"),
+    "caída de pelo": ("dermato_lipofascial", "DESVALORIZACIÓN"),
 }
 
 
@@ -1340,14 +1378,46 @@ def get_conflict_table(sistema: str) -> str:
     return "\n".join(lines)
 
 
+def is_patient_narrative(text: str) -> bool:
+    """
+    Devuelve True si el mensaje parece ser el relato del terapeuta sobre el paciente
+    (no un reporte directo de síntoma). En ese caso se suprime la inyección de tablas.
+
+    Dos niveles:
+    - Marcadores de alta confianza → True sin importar la longitud del mensaje.
+    - Marcadores de confianza media → True solo si el mensaje tiene ≥ 45 caracteres.
+    """
+    text_lower = text.lower()
+    # Alta confianza: siempre narrativa
+    if any(marker in text_lower for marker in _STRONG_NARRATIVE):
+        return True
+    # Confianza media: solo si el texto es largo (evita falsos positivos)
+    if len(text) >= 45 and any(marker in text_lower for marker in NARRATIVE_MARKERS):
+        return True
+    return False
+
+
 def detect_sintoma(text: str) -> Optional[tuple]:
     """
     Detecta si el texto menciona un síntoma con subsistema conocido.
     Devuelve (sistema, subsistema) o None.
+
+    Reglas:
+    - Usa límites de palabra (\b) para evitar coincidencias parciales.
+    - Neutraliza referencias a la madre ("su mama", "mi mamá") antes de buscar "mama".
+    - Ignora textos de narrativa larga del paciente (is_patient_narrative).
     """
-    text_lower = text.lower()
+    if is_patient_narrative(text):
+        return None
+
+    # Neutralizar "su/mi/tu mamá" para que no dispare el subsistema MAMARIA
+    text_clean = _MADRE_PATTERN.sub('__madre__', text)
+    text_lower = text_clean.lower()
+
     for sintoma, (sistema, subsistema) in SINTOMA_SUBSISTEMA.items():
-        if sintoma in text_lower:
+        # Límite de palabra; sintomas multi-palabra también se evalúan bien
+        pattern = r'\b' + re.escape(sintoma) + r'\b'
+        if re.search(pattern, text_lower):
             return (sistema, subsistema)
     return None
 
@@ -1356,7 +1426,11 @@ def detect_sistema(text: str) -> Optional[str]:
     """
     Detecta el sistema corporal mencionado en el texto del terapeuta.
     Devuelve el id del sistema o None.
+    No dispara en narrativas largas del paciente.
     """
+    if is_patient_narrative(text):
+        return None
+
     text_lower = text.lower()
 
     # Prioridad explícita: palabras de sistema directamente mencionadas

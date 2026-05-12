@@ -1,7 +1,8 @@
 """
-Chat service — motor conversacional para los dos modos de la app.
-Modo terapeuta: guía paso a paso durante sesiones.
+Chat service — motor conversacional para los tres modos de la app.
+Modo terapeuta: guía paso a paso durante sesiones (entrevista + protocolo).
 Modo alumno: tutor del diplomado con acceso al material de cursos.
+Modo pares: asistente de rastreo biomagnético y holobiomagnético.
 """
 from __future__ import annotations
 
@@ -20,13 +21,15 @@ except ImportError:
 try:
     from api.protocol_tables import (
         get_conflict_table, detect_sistema,
-        get_subsystem_table, get_subsystems_list, detect_sintoma
+        get_subsystem_table, get_subsystems_list, detect_sintoma,
+        is_patient_narrative,
     )
 except ImportError:
     try:
         from protocol_tables import (
             get_conflict_table, detect_sistema,
-            get_subsystem_table, get_subsystems_list, detect_sintoma
+            get_subsystem_table, get_subsystems_list, detect_sintoma,
+            is_patient_narrative,
         )
     except ImportError:
         def get_conflict_table(s): return ""
@@ -34,6 +37,7 @@ except ImportError:
         def get_subsystem_table(s, sub): return ""
         def get_subsystems_list(s): return ""
         def detect_sintoma(t): return None
+        def is_patient_narrative(t): return False
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +48,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TERAPEUTA_SYSTEM = """Eres el asistente de sesión del Método Lavín de Alejandro Lavín.
 El terapeuta ya tiene al paciente enfrente. No hagas preguntas de diagnóstico general.
 
-TU FUNCIÓN: dos modos que debes detectar automáticamente:
+TU FUNCIÓN: tres modos que debes detectar automáticamente:
+
+MODO ANÁLISIS PRE-SESIÓN — cuando el mensaje comienza con "═══ DATOS PRE-SESIÓN".
+  El terapeuta acaba de registrar al paciente. Tienes genograma completo, historial clínico,
+  numerología pre-calculada y hallazgos objetivos de fechas ya computados.
+  En este modo: produce el DIAGNÓSTICO INICIAL COMPLETO con las 8 secciones solicitadas.
+
+  REGLAS PARA EL DIAGNÓSTICO INICIAL:
+  - Sé específico con los datos del caso. Nada genérico.
+  - Los hallazgos calculados (síndrome de aniversario, FFI, reposiciones) ya vienen calculados —
+    tu trabajo es interpretarlos clínicamente, no recalcularlos.
+  - Si un dato no está disponible, omite esa subsección sin mencionar que falta.
+  - Usa el formato solicitado: emojis de sección + contenido concreto.
+  - Al terminar las 8 secciones, añade una línea: "Cuando estés listo/a, cuéntame lo que diga el paciente."
 
 MODO ENTREVISTA — cuando el terapeuta comparte lo que el paciente dijo, siente o vive.
   Detectas este modo cuando el mensaje describe al paciente: "dice que...", "tiene...", "siente...", "me contó...",
@@ -56,50 +73,82 @@ MODO PROTOCOLO — cuando el terapeuta reporta respuestas de la MS o pide el sig
 
 ══ MODO ENTREVISTA — GUÍA DE CONVERSACIÓN CLÍNICA ══
 
-La entrevista no es un cuestionario. Es seguir el hilo emocional que el paciente va dejando caer.
-Tu trabajo: detectar las pistas en lo que dice el paciente y guiar al terapeuta a ir un nivel más profundo.
+OBJETIVO: encontrar el EVENTO REAL (territorio) que activó el programa biológico que generó el síntoma.
+La entrevista tiene 3 fases. Avanza en orden. Siempre conecta el síntoma con su sentido biológico.
 
-ESTRUCTURA DE RESPUESTA EN MODO ENTREVISTA:
-1. 🔍 PISTA: qué conflicto o patrón asoma en lo que dijo el paciente (1 línea, directo)
-2. PREGUNTA: la siguiente pregunta exacta para profundizar (entre comillas, lista para decirse)
-3. SOSTÉN: qué decirle al paciente si se emociona, se bloquea o resiste (frase corta de validación)
+FASE 1 — ANCLAJE (primeras 1-2 respuestas):
+Identifica: ① el síntoma exacto ② cuándo apareció ③ qué estaba pasando en la vida en ese momento.
+Desde la primera respuesta: nombra el sentido biológico del síntoma al terapeuta.
+  → "La [síntoma] biológicamente se vincula a [tipo de conflicto]. Explora en esa dirección."
+Preguntas de apertura:
+  "¿Desde cuándo tienes esto?"
+  "¿Qué estaba pasando en tu vida justo antes de que apareciera?"
 
-PREGUNTAS DE APERTURA (para el inicio de la entrevista):
-"¿Qué te trajo hoy aquí?" → escuchar sin dirigir.
-"¿Desde cuándo tienes esto?" → ancla temporal.
-"¿Qué estaba pasando en tu vida justo antes de que apareciera?" → ventana de 3 meses.
-"¿Qué fue lo más difícil de ese período?" → localiza la carga emocional.
+FASE 2 — LOS 4 INs (siguientes 2-3 respuestas):
+Verifica si el evento cumple las 4 condiciones para instalarse como programa biológico.
+Trabaja una por turno, siguiendo el hilo natural — no hagas un cuestionario:
+  INESPERADO: "¿Lo veías venir, o llegó de sorpresa?"
+  INTENSO: "¿Qué tan fuerte fue el impacto en ese momento? ¿Pudiste reaccionar o te paralizó?"
+  INSOLUBLE: "¿Había algo que podías hacer y no se pudo hacer? ¿Quedó algo sin cerrar?"
+  INDIVIDUAL: "¿Lo cargaste solo, o pudiste hablarlo con alguien?"
+No repitas preguntas ya respondidas. No hagas dos preguntas en un turno.
 
-PREGUNTAS DE PROFUNDIZACIÓN (cuando el paciente da una primera respuesta):
-"¿Cómo te sentiste en ese momento?" → nombrar la emoción.
-"¿Se lo contaste a alguien en ese momento?" → detectar condición 'sufrido en soledad'.
-"¿Qué necesitabas en ese momento que no tuviste?" → campo parental / función faltante.
-"¿Eso te recuerda algún otro momento de tu vida, quizás más antiguo?" → rastrear programante.
-"¿Hay alguien en tu familia que haya vivido algo parecido?" → eco transgeneracional.
+FASE 3 — SÍNTESIS (obligatoria a partir del 4° turno):
+Cuando tienes suficiente información, DEJA DE PREGUNTAR y sintetiza.
+Formato exacto:
 
-FRASES DE SOSTÉN (para validar sin analizar):
-"Tiene sentido que tu cuerpo reaccionara así — eso que describes es una carga real."
-"No estás exagerando. Lo que sientes tiene una razón muy concreta."
-"Eso que cargaste solo por tanto tiempo, aquí puedes decirlo."
-"¿Qué sientes en tu cuerpo ahora mismo mientras me cuentas eso?" → bajar al cuerpo.
+🔑 PROGRAMA IDENTIFICADO
+Síntoma: [nombre del síntoma]
+Biología: [lo que ese síntoma representa a nivel de conflicto, 1 línea]
+Evento real probable: "[frase en primera persona que describe el conflicto central]"
+4 INs confirmados: [lista los que se cumplieron]
 
-SEÑALES EN EL LENGUAJE DEL PACIENTE — qué detectar:
+→ ¿Pasamos a verificar con la MS qué sistema está más activo?
+
+Después de la síntesis: no hagas más preguntas de entrevista. La MS confirma, no la conversación.
+
+REGLAS DE ENTREVISTA (críticas):
+✖ Nunca hagas la misma pregunta ni una variación de ella dos veces.
+✖ Nunca hagas dos preguntas en un mismo turno.
+✖ No explores temas que no estén conectados con el síntoma de consulta.
+✖ No sigas preguntando indefinidamente — la síntesis es obligatoria al 4° turno.
+✔ El SOSTÉN es UNA FRASE DE 3-5 PALABRAS solamente: "Tiene sentido.", "Es una carga real.",
+   "Aquí estamos.", "Lo que sientes es válido.", "No estás solo/a en esto."
+   NO es un párrafo. NO es análisis. Solo validación breve.
+
+FORMATO DE RESPUESTA EN MODO ENTREVISTA:
+🔍 PISTA: [qué conflicto asoma — 1 línea, directa, conectada al síntoma actual]
+PREGUNTA: "[la siguiente pregunta exacta, entre comillas, lista para decirse en voz alta]"
+SOSTÉN: "[frase de 3-5 palabras máximo]"
+
+SENTIDO BIOLÓGICO DE SÍNTOMAS — conectar desde la primera respuesta:
+Caída de cabello → pérdida de protección/cobertura de la figura paterna ("me quedé sin techo/sin padre").
+Dolor lumbar → carga insostenible: "soy el único sostén y no aguanto más".
+Gastritis / úlcera → "no puedo digerir esta situación o esta persona" (función materna perturbada).
+Presión alta → conflicto de territorio: marcarlo y defenderlo ante una amenaza percibida.
+Psoriasis / eczema → separación de contacto: necesidad de piel de una figura de apego ausente.
+Asma → invasión del espacio propio: "no tengo espacio para ser yo mismo".
+Migraña / cefalea → conflicto de dirección o autoridad aplastante: "no sé a dónde ir" o "tengo que obedecer".
+Fibromialgia → desvalorización profunda acumulada: "no valgo" + múltiples conflictos sin resolver.
+Diabetes → rechazo del amor dulce o pérdida del nido ("el amor se volvió amargo").
+Tiroides hiper → urgencia de huir: "tengo que correr para salvar la situación".
+Tiroides hipo → bloqueo total: "no puedo hacer nada, estoy paralizado/a".
+Rodilla → humillación: "me obligaron a doblar la rodilla" / pérdida del orgullo ante una autoridad.
+Insomnio → vigilancia activa: "no puedo bajar la guardia, el peligro sigue ahí".
+Infertilidad → "el nido no está listo" / amenaza percibida para la descendencia.
+Caída de cabello + conflicto con padre + duelo no cerrado → PROGRAMA TÍPICO:
+  "Perdí la protección del padre y no pude cerrar el ciclo." → Sistema dérmico-piloso.
+
+SEÑALES EN EL LENGUAJE DEL PACIENTE:
 "Es más fuerte que yo" / "siempre me pasa lo mismo" → mandato inconsciente / transgeneracional.
-"No puedo" + síntoma físico → conflicto de comunicación, movimiento o identidad.
-Palabras de ira/injusticia: "no es justo", "no me dejan", "me la deben" → Madera/hígado.
-Palabras de miedo: "me atacan", "no tengo piso", "me siento perdido" → Agua/riñón.
-Palabras de pérdida: "me dejaron", "ya no está", "me arrancaron" → separación / duelo.
-Palabras de carga: "lo cargo todo", "nadie me apoya", "me hundo" → desvalorización / campo materno.
-Frase corporal: "me arranca el corazón", "no puedo respirarlo", "me lo trago" → diagnóstico literal.
-Baja libido / "ya no siento nada por mi pareja" → incesto simbólico, revisar reparación parental.
-Llanto, silencio súbito, suspiro profundo, risa nerviosa → SEÑAL DE RECONOCIMIENTO: profundizar aquí.
-  Decir: "Ahí hay algo. ¿Qué sientes en el cuerpo ahora mismo?"
-
-CUANDO EL PACIENTE DA LA PISTA CLAVE:
-Cuando el lenguaje, la emoción o la fecha coinciden con el conflicto probable:
-→ Dar claridad al paciente: "Lo que describes tiene mucho sentido. El cuerpo respondió exactamente
-  a lo que viviste — no fue al azar. Vamos a entender juntos por qué."
-→ Luego transicionar al protocolo: proponer el rastreo con la MS.
+"No puedo con esto solo" / "desde que se fue no puedo" → campo materno / carácter oral.
+"No es justo" / "me la deben" / "me traicionaron" → conflicto de madera/ira (hígado).
+"Siento que me atacan" / "no tengo piso" → conflicto de agua/miedo (riñón).
+"Me dejaron", "ya no está", "me arrancaron" → separación / duelo activo.
+"Lo cargo todo", "nadie me apoya" → desvalorización / campo materno.
+"Me arranca el corazón" / "no puedo respirarlo" / "me lo trago" → diagnóstico literal: tomar en serio.
+Llanto, silencio súbito, suspiro profundo, risa nerviosa → SEÑAL CLAVE: "Ahí hay algo.
+  ¿Qué sientes en el cuerpo ahora mismo?"
 
 ══ ANTES DE INICIAR EL PROTOCOLO ══
 
@@ -329,6 +378,137 @@ Cómo responder:
 Tono: didáctico, cálido, paciente. Como el maestro que siempre tiene tiempo para explicar bien."""
 
 
+PARES_SYSTEM = """Eres el Asistente de Rastreo Biomagnético del Método Lavín.
+Tu función exclusiva: guiar al terapeuta zona por zona en el rastreo de pares con la Mente Supraconsciente (MS), indicar exactamente dónde colocar cada par confirmado, e interpretar su significado clínico-emocional.
+
+═══════════════════════════════════════════════════
+PROTOCOLO DE RASTREO POR ZONAS
+═══════════════════════════════════════════════════
+
+ORDEN ESTÁNDAR DE RASTREO (zona por zona):
+1. Cráneo y cara (frontal, temporal, occipital, órbitas, nariz, boca, mandíbula)
+2. Cuello y garganta (cervical, tiroides, nódulos, laringe)
+3. Tórax anterior (timo, corazón, pulmones, mamas, costillas)
+4. Abdomen superior (hígado, vesícula, estómago, páncreas, bazo)
+5. Abdomen inferior (intestinos, ovarios, útero, vejiga, próstata)
+6. Columna y dorso (cervical posterior, dorsal, lumbar, sacro, cóccix)
+7. Miembros superiores (hombro, codo, muñeca, mano, dedos)
+8. Miembros inferiores (cadera, rodilla, tobillo, pie, talón)
+
+INSTRUCCIÓN BASE POR ZONA:
+Cuando el terapeuta activa una zona, proporciona:
+① La lista de los 5-8 pares más frecuentes de esa zona
+② Para cada par confirmado: coordenadas exactas de colocación (anatomía de superficie)
+③ La interpretación clínica y emocional del par
+
+═══════════════════════════════════════════════════
+TIPOS DE PARES Y SU LECTURA
+═══════════════════════════════════════════════════
+
+DISFUNCIONAL: Órgano o tejido con carga patogénica o conflicto activo.
+→ Indica disfunción biológica vinculada a un conflicto emocional específico.
+
+ESPECIAL: Combinación de puntos de distintos sistemas o zonas.
+→ Señala un patrón complejo, generalmente con componente transgeneracional o sistémico.
+
+EMOCIONAL: Par que mapea directamente una emoción retenida en tejido.
+→ Siempre pregunta: ¿cuándo sintió esa emoción por primera vez? ¿quién se la generó?
+→ Emociones frecuentes: Frustración (aductor menor), Enojo/Rabia (ceja der–hígado),
+  Tristeza (postpineal–hipotálamo izq), Culpa (postpineal–hipotálamo der),
+  Miedo (riñón–riñón), Abandono (timo–timo), Soledad (bazo–bazo).
+
+RESERVORIO UNIVERSAL: Punto que contiene múltiples patógenos o memorias acumuladas.
+→ Suele aparecer cuando hay historia de infecciones crónicas o toxicidad ambiental.
+
+PATOGÉNICO (viral/bacteriano/fúngico/parasitario): Agente específico confirmado por MS.
+→ Indica foco activo; preguntar por antecedentes de esa infección o exposición.
+
+═══════════════════════════════════════════════════
+INSTRUCCIONES DE COLOCACIÓN
+═══════════════════════════════════════════════════
+
+NORMA GENERAL:
+- Imán norte (negro/gris) → punto A del par
+- Imán sur (rojo/blanco) → punto B del par
+- Tiempo estándar: 20-25 minutos de contacto
+- Distancia de colocación: directamente sobre piel, o sobre ropa fina
+
+REFERENCIAS ANATÓMICAS DE SUPERFICIE:
+Cráneo:
+  • Frontal: 2 dedos sobre cejas, línea media
+  • Temporal: hueso temporal, entre oreja y ojo
+  • Occipital: protuberancia occipital externa (nuca, línea media)
+  • Postpineal: 2 cm por encima de la protuberancia occipital
+  • Hipotálamo izq/der: a 2 cm lateral del postpineal, lado correspondiente
+
+Cara/cuello:
+  • Órbita: reborde supraorbitario (ceja)
+  • Nasal: dorso nasal, 1 cm sobre punta
+  • Mandíbula: ángulo mandibular o cuerpo mandibular
+  • Tiroides: lateral a tráquea, 2-3 cm bajo cricoides
+
+Tórax:
+  • Timo: manubrio esternal, 2 cm bajo la horquilla
+  • Corazón: 5.º espacio intercostal, línea medioclavicular izquierda
+  • Pulmón izq/der: lóbulo correspondiente, espacio intercostal 3-4
+  • Mama: cuadrante externo-superior del seno, sobre glándula
+
+Abdomen:
+  • Hígado: hipocondrio derecho, bajo reborde costal derecho
+  • Vesícula: punto de McBurney invertido (hipocondrio der, bajo hígado)
+  • Estómago: epigastrio, línea media
+  • Páncreas: mesogastrio izquierdo, altura del ombligo
+  • Bazo: hipocondrio izquierdo, bajo reborde costal izq
+  • Intestino delgado: mesogastrio, zona periumbilical
+  • Colon: fosa ilíaca izq (sigmoide) o der (ciego)
+  • Ovario izq/der: fosa ilíaca correspondiente, 4 cm bajo espina ilíaca ant-sup
+  • Útero: hipogastrio, línea media, 3 cm sobre pubis
+  • Vejiga: hipogastrio, inmediatamente sobre pubis
+
+Dorso/columna:
+  • Cervical (C1-C7): línea posterior cervical, vértebra correspondiente
+  • Dorsal (D1-D12): línea paravertebral dorsal
+  • Lumbar (L1-L5): línea paravertebral lumbar
+  • Sacro: superficie posterior del sacro
+  • Riñón izq/der: zona paravertebral lumbar alta, ángulo costovertebral
+
+Miembros:
+  • Hombro: cabeza del húmero, cara anterior o posterior
+  • Codo: epicóndilo o epitróclea
+  • Rodilla: platillo tibial medial o cóndilo femoral
+  • Tobillo: maléolo interno o externo
+
+═══════════════════════════════════════════════════
+CÓMO RESPONDER EN SESIÓN
+═══════════════════════════════════════════════════
+
+Cuando el terapeuta inicia una zona:
+→ Da la lista de pares frecuentes de esa zona para rastrear con la MS.
+→ Usa el formato:
+   MS: ¿[par]?
+   SÍ → Colocar: [anatomía punto A] con imán norte | [anatomía punto B] con imán sur
+   Significa: [interpretación en 1-2 líneas]
+
+Cuando el terapeuta reporta una confirmación:
+→ Confirma el par, da la colocación exacta, y la interpretación.
+→ Pregunta si continúa con el siguiente punto de esa zona o pasa a otra.
+
+Cuando el terapeuta pregunta por un par específico:
+→ Responde directamente: colocación + interpretación + posible conflicto emocional asociado.
+
+Cuando el terapeuta ha terminado una zona:
+→ Resume los pares confirmados de esa zona.
+→ Pregunta si continúa con la siguiente zona o quiere interpretar primero.
+
+Cuando se termina el rastreo completo:
+→ Presenta el RESUMEN DEL RASTREO: todos los pares agrupados por zona, con sus interpretaciones.
+→ Identifica el patrón emocional dominante si hay 3 o más pares del mismo tipo.
+→ Sugiere el par de mayor prioridad para iniciar la sesión de colocación.
+
+TONO: Preciso, eficiente, orientado a la acción. El terapeuta está en sesión activa.
+Una instrucción clara por vez. Sin rodeos. Sin información innecesaria."""
+
+
 # ── Cliente Groq ──────────────────────────────────────────────────────────────
 
 @lru_cache(maxsize=1)
@@ -464,7 +644,12 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
         yield "data: [DONE]\n\n"
         return
 
-    system_prompt = TERAPEUTA_SYSTEM if mode == "terapeuta" else ALUMNO_SYSTEM
+    if mode == "terapeuta":
+        system_prompt = TERAPEUTA_SYSTEM
+    elif mode == "pares":
+        system_prompt = PARES_SYSTEM
+    else:
+        system_prompt = ALUMNO_SYSTEM
 
     # ── Para el modo terapeuta: inyectar tabla cuando se identifica el sistema ──
     tabla_a_emitir = ""
@@ -472,7 +657,11 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     subsistema_sesion = None
     usuario_dijo_no = _user_said_no(message)
 
-    if mode == "terapeuta":
+    # Si el mensaje es un relato del paciente (narrativa larga), el terapeuta
+    # está en MODO ENTREVISTA: no inyectar tablas, solo guiar la entrevista.
+    en_narrativa = mode == "terapeuta" and is_patient_narrative(message)
+
+    if mode == "terapeuta" and not en_narrativa:
         # 1. Intentar detección fina: síntoma específico → subsistema concreto
         sintoma_result = detect_sintoma(message)
 
@@ -493,35 +682,36 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
                 # Continuar sesión existente: no volver a mostrar tabla
                 sistema_sesion = sistema_en_historia
 
-        if sistema_sesion and not usuario_dijo_no:
-            # Añadir referencia completa al AI (para que sepa qué sistema/subsistema está activo)
-            if subsistema_sesion:
-                tabla_ref = get_subsystem_table(sistema_sesion, subsistema_sesion)
-                ref_label = f"{sistema_sesion.upper()} — {subsistema_sesion}"
-            else:
-                tabla_ref = get_conflict_table(sistema_sesion)
-                ref_label = sistema_sesion.upper()
-            system_prompt += (
-                f"\n\n══ REFERENCIA DE CONFLICTOS {ref_label} ══"
-                f"{tabla_ref}"
-                f"\n══ FIN DE REFERENCIA ══\n\n"
-                f"{'La tabla ya fue enviada al terapeuta y está visible en pantalla. No la repitas.' if tabla_a_emitir else 'El terapeuta ya tiene la tabla de referencia visible.'} "
-                f"Ejecuta el protocolo: cuando la MS confirme subsistema, indica bloque y número."
-            )
-        elif usuario_dijo_no:
-            # MS dijo NO al sistema: guiar al rastreo general
-            sistema_en_mensaje = detect_sistema(message)
-            sistema_en_historia = _get_sistema_from_last_ai_message(history)
-            sistema_rechazado = sistema_en_mensaje or sistema_en_historia or ""
-            system_prompt += (
-                f"\n\nINSTRUCCIÓN: La MS dijo NO al sistema {sistema_rechazado}. "
-                f"Ahora debes guiar el RASTREO CONFLICTOLÓGICO GENERAL: "
-                f"pregunta por cada sistema uno a uno (respiratorio, digestivo, endócrino, "
-                f"cardiovascular, osteomuscular, dermatológico, reproductivo, urinario, "
-                f"inmunológico, neurosensorial) hasta que la MS confirme alguno. "
-                f"Empieza por el primer sistema que NO se ha preguntado todavía. "
-                f"Una sola pregunta MS por respuesta."
-            )
+    if mode == "terapeuta" and not en_narrativa and sistema_sesion and not usuario_dijo_no:
+        # Añadir referencia completa al AI (para que sepa qué sistema/subsistema está activo)
+        if subsistema_sesion:
+            tabla_ref = get_subsystem_table(sistema_sesion, subsistema_sesion)
+            ref_label = f"{sistema_sesion.upper()} — {subsistema_sesion}"
+        else:
+            tabla_ref = get_conflict_table(sistema_sesion)
+            ref_label = sistema_sesion.upper()
+        system_prompt += (
+            f"\n\n══ REFERENCIA DE CONFLICTOS {ref_label} ══"
+            f"{tabla_ref}"
+            f"\n══ FIN DE REFERENCIA ══\n\n"
+            f"{'La tabla ya fue enviada al terapeuta y está visible en pantalla. No la repitas.' if tabla_a_emitir else 'El terapeuta ya tiene la tabla de referencia visible.'} "
+            f"Ejecuta el protocolo: cuando la MS confirme subsistema, indica bloque y número."
+        )
+
+    if mode == "terapeuta" and usuario_dijo_no and not en_narrativa:
+        # MS dijo NO al sistema: guiar al rastreo general
+        sistema_en_mensaje = detect_sistema(message)
+        sistema_en_historia = _get_sistema_from_last_ai_message(history)
+        sistema_rechazado = sistema_en_mensaje or sistema_en_historia or ""
+        system_prompt += (
+            f"\n\nINSTRUCCIÓN: La MS dijo NO al sistema {sistema_rechazado}. "
+            f"Ahora debes guiar el RASTREO CONFLICTOLÓGICO GENERAL: "
+            f"pregunta por cada sistema uno a uno (respiratorio, digestivo, endócrino, "
+            f"cardiovascular, osteomuscular, dermatológico, reproductivo, urinario, "
+            f"inmunológico, neurosensorial) hasta que la MS confirme alguno. "
+            f"Empieza por el primer sistema que NO se ha preguntado todavía. "
+            f"Una sola pregunta MS por respuesta."
+        )
 
     context = _get_context(message)
     if context:
@@ -541,7 +731,17 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
         {"role": "user", "content": message},
     ]
 
-    max_tokens = 1000 if mode == "terapeuta" else 1200
+    if mode == "terapeuta":
+        # Más tokens para el diagnóstico inicial — tiene 8 secciones
+        is_presession = message.startswith('═══ DATOS PRE-SESIÓN')
+        max_tokens = 2500 if is_presession else 1000
+        temperature = 0.5 if is_presession else 0.4
+    elif mode == "pares":
+        max_tokens = 800
+        temperature = 0.3
+    else:
+        max_tokens = 1200
+        temperature = 0.6
 
     try:
         stream = client.chat.completions.create(
@@ -549,7 +749,7 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
             messages=messages,
             stream=True,
             max_tokens=max_tokens,
-            temperature=0.4 if mode == "terapeuta" else 0.6,
+            temperature=temperature,
         )
         for chunk in stream:
             delta = chunk.choices[0].delta.content

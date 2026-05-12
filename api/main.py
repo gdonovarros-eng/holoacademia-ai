@@ -327,6 +327,11 @@ async def root_landing() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers())
 
 
+@app.get("/intake", include_in_schema=False)
+async def intake_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "intake.html", headers=_no_cache_headers())
+
+
 @app.get("/terapeuta", include_in_schema=False)
 async def terapeuta_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "terapeuta.html", headers=_no_cache_headers())
@@ -335,6 +340,11 @@ async def terapeuta_app() -> FileResponse:
 @app.get("/alumno", include_in_schema=False)
 async def alumno_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "alumno.html", headers=_no_cache_headers())
+
+
+@app.get("/pares", include_in_schema=False)
+async def pares_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "pares.html", headers=_no_cache_headers())
 
 
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
@@ -364,7 +374,7 @@ class ChatRequest(BaseModel):
 
 @app.post("/chat", include_in_schema=False)
 async def chat_endpoint(payload: ChatRequest) -> StreamingResponse:
-    mode = payload.mode if payload.mode in ("terapeuta", "alumno") else "alumno"
+    mode = payload.mode if payload.mode in ("terapeuta", "alumno", "pares") else "alumno"
     return StreamingResponse(
         stream_chat(payload.message, payload.history, mode),
         media_type="text/event-stream",
