@@ -14,7 +14,7 @@ PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
 
 from fastapi import FastAPI
-from fastapi.responses import FileResponse, RedirectResponse
+from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ConfigDict
@@ -40,6 +40,7 @@ from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
 from api.therapy_reasoner import build_therapy_reasoning
 from api.teacher_memory import get_teacher_memory
+from api.chat_service import stream_chat
 
 
 logger = logging.getLogger(__name__)
@@ -314,10 +315,26 @@ def _therapy_app_response() -> FileResponse:
     )
 
 
-@app.get("/", include_in_schema=False)
-async def root_redirect() -> FileResponse:
-    return _therapy_app_response()
+def _no_cache_headers() -> dict:
+    return {"Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"}
 
+
+@app.get("/", include_in_schema=False)
+async def root_landing() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers())
+
+
+@app.get("/terapeuta", include_in_schema=False)
+async def terapeuta_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "terapeuta.html", headers=_no_cache_headers())
+
+
+@app.get("/alumno", include_in_schema=False)
+async def alumno_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "alumno.html", headers=_no_cache_headers())
+
+
+# ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
 
 @app.get("/therapy", include_in_schema=False)
 async def therapy_root_redirect() -> FileResponse:
@@ -331,7 +348,28 @@ async def therapy_app() -> FileResponse:
 
 @app.get("/index.html", include_in_schema=False)
 async def therapy_index_html() -> FileResponse:
-    return _therapy_app_response()
+    return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers())
+
+
+# ── Nuevo endpoint de chat con streaming ──────────────────────────────────────
+
+class ChatRequest(BaseModel):
+    message: str = Field(..., min_length=1, max_length=4000)
+    history: list[dict] = Field(default_factory=list)
+    mode: str = Field(default="alumno")
+
+
+@app.post("/chat", include_in_schema=False)
+async def chat_endpoint(payload: ChatRequest) -> StreamingResponse:
+    mode = payload.mode if payload.mode in ("terapeuta", "alumno") else "alumno"
+    return StreamingResponse(
+        stream_chat(payload.message, payload.history, mode),
+        media_type="text/event-stream",
+        headers={
+            "Cache-Control": "no-cache",
+            "X-Accel-Buffering": "no",
+        },
+    )
 
 
 @app.get("/cv")

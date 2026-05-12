@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Asistente de Sesión · Método Lavín</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0b1120;
+    --surface:  #111827;
+    --surface2: #1f2937;
+    --border:   rgba(255,255,255,0.07);
+    --acc:      #10b981;
+    --acc-dim:  rgba(16,185,129,0.15);
+    --text:     #f1f5f9;
+    --muted:    #94a3b8;
+    --user-bg:  #1e3a5f;
+    --ai-bg:    #1f2937;
+    --radius:   14px;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ── Layout ── */
+  .app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  /* ── Header ── */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+    background: var(--bg);
+  }
+
+  .header-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--acc-dim);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .header-info { flex: 1; min-width: 0; }
+
+  .header-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-sub {
+    font-size: 0.72rem;
+    color: var(--acc);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .header-new {
+    padding: 6px 12px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .header-new:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+  /* ── Messages ── */
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    scroll-behavior: smooth;
+  }
+
+  .messages::-webkit-scrollbar { width: 4px; }
+  .messages::-webkit-scrollbar-track { background: transparent; }
+  .messages::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+  /* ── Pantalla de inicio ── */
+  .welcome {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .welcome-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--acc-dim);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+  }
+
+  .welcome h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .welcome p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 360px;
+    line-height: 1.7;
+  }
+
+  .quick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+  }
+
+  .quick-btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.15s;
+    color: var(--text);
+    font-size: 0.85rem;
+    font-family: inherit;
+    line-height: 1.4;
+  }
+
+  .quick-btn:hover {
+    background: var(--surface2);
+    border-color: var(--acc);
+    color: var(--acc);
+  }
+
+  .quick-btn .qb-icon {
+    font-size: 18px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .quick-btn .qb-text {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .quick-btn .qb-sub {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .quick-btn:hover .qb-sub { color: rgba(16,185,129,0.7); }
+
+  /* ── Burbujas ── */
+  .msg-group {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+  }
+
+  .msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .msg-user { flex-direction: row-reverse; }
+
+  .bubble {
+    max-width: 78%;
+    padding: 11px 15px;
+    border-radius: var(--radius);
+    line-height: 1.65;
+    font-size: 0.9rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .msg-user .bubble {
+    background: var(--user-bg);
+    color: #e0f2fe;
+    border-bottom-right-radius: 4px;
+  }
+
+  .msg-ai .bubble {
+    background: var(--ai-bg);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* Resaltado de instrucciones MS */
+  .bubble .ms-line {
+    color: var(--acc);
+    font-weight: 700;
+  }
+
+  .bubble .branch {
+    color: #94a3b8;
+    font-size: 0.85rem;
+  }
+
+  /* Dot indicador de escritura */
+  .typing-dot {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    padding: 12px 16px;
+  }
+
+  .typing-dot span {
+    width: 7px;
+    height: 7px;
+    background: var(--muted);
+    border-radius: 50%;
+    animation: pulse 1.2s infinite;
+  }
+
+  .typing-dot span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Input ── */
+  .input-area {
+    padding: 12px 16px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .input-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px 10px 10px 16px;
+    transition: border-color 0.15s;
+  }
+
+  .input-box:focus-within {
+    border-color: rgba(16,185,129,0.4);
+  }
+
+  .input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    resize: none;
+    max-height: 120px;
+    min-height: 24px;
+    overflow-y: auto;
+  }
+
+  .input-field::placeholder { color: var(--muted); }
+
+  .send-btn {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    background: var(--acc);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    opacity: 0.4;
+  }
+
+  .send-btn.ready { opacity: 1; }
+  .send-btn:hover.ready { background: #059669; transform: scale(1.05); }
+
+  .send-btn svg { width: 18px; height: 18px; fill: #fff; }
+
+  .input-hint {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-icon">🩺</div>
+    <div class="header-info">
+      <div class="header-title">Asistente de Sesión</div>
+      <div class="header-sub">● En sesión · Método Lavín</div>
+    </div>
+    <button class="header-new" onclick="resetChat()">Nueva sesión</button>
+  </header>
+
+  <!-- Mensajes -->
+  <div class="messages" id="messages">
+
+    <!-- Pantalla de bienvenida -->
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">🩺</div>
+      <h2>¿Con qué trabajamos hoy?</h2>
+      <p>Dime el síntoma de tu paciente y te guío paso a paso por el protocolo. También puedes elegir uno de los accesos rápidos.</p>
+
+      <div class="quick-grid">
+        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma respiratorio')">
+          <span class="qb-icon">🫁</span>
+          <span class="qb-text">Respiratorio</span>
+          <span class="qb-sub">Alveolar, bronquial, nasal…</span>
+        </button>
+        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma digestivo')">
+          <span class="qb-icon">🫃</span>
+          <span class="qb-text">Digestivo</span>
+          <span class="qb-sub">Hepático, estomacal…</span>
+        </button>
+        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un tema emocional o trauma')">
+          <span class="qb-icon">💛</span>
+          <span class="qb-text">Emocional / Trauma</span>
+          <span class="qb-sub">EFT, miedos, reimpronta…</span>
+        </button>
+        <button class="quick-btn" onclick="quickStart('No sé qué protocolo usar, ayúdame a identificarlo')">
+          <span class="qb-icon">🔍</span>
+          <span class="qb-text">No sé qué protocolo</span>
+          <span class="qb-sub">Ayúdame a identificarlo</span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <div class="input-box">
+      <textarea
+        class="input-field"
+        id="inputField"
+        placeholder="Describe el síntoma o la situación del paciente…"
+        rows="1"
+        onkeydown="handleKey(event)"
+        oninput="handleInput(this)"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+    <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea</div>
+  </div>
+
+</div>
+
+<script>
+  // ── Estado ──────────────────────────────────────────────────────────────────
+  let history = [];
+  let isStreaming = false;
+
+  const messagesEl = document.getElementById('messages');
+  const welcomeEl  = document.getElementById('welcome');
+  const inputEl    = document.getElementById('inputField');
+  const sendBtnEl  = document.getElementById('sendBtn');
+
+  // ── Input handlers ──────────────────────────────────────────────────────────
+  function handleInput(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+    sendBtnEl.classList.toggle('ready', el.value.trim().length > 0);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  // ── Quick start ─────────────────────────────────────────────────────────────
+  function quickStart(text) {
+    inputEl.value = text;
+    handleInput(inputEl);
+    sendMessage();
+  }
+
+  // ── Reset ───────────────────────────────────────────────────────────────────
+  function resetChat() {
+    history = [];
+    messagesEl.innerHTML = '';
+    messagesEl.appendChild(welcomeEl);
+    welcomeEl.style.display = '';
+    inputEl.value = '';
+    handleInput(inputEl);
+  }
+
+  // ── Renderizado de burbujas ─────────────────────────────────────────────────
+  function formatAIText(text) {
+    // Resaltar líneas que empiezan con "MS:"
+    return text
+      .split('\n')
+      .map(line => {
+        if (/^MS\s*:/i.test(line.trim())) {
+          return `<span class="ms-line">${escHtml(line)}</span>`;
+        }
+        if (/^→/.test(line.trim())) {
+          return `<span class="branch">${escHtml(line)}</span>`;
+        }
+        return escHtml(line);
+      })
+      .join('\n');
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function addUserBubble(text) {
+    welcomeEl.style.display = 'none';
+    const div = document.createElement('div');
+    div.className = 'msg msg-user';
+    div.innerHTML = `<div class="bubble">${escHtml(text)}</div>`;
+    messagesEl.appendChild(div);
+    scrollBottom();
+  }
+
+  function addAIBubble() {
+    const div = document.createElement('div');
+    div.className = 'msg msg-ai';
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
+    div.appendChild(bubble);
+    messagesEl.appendChild(div);
+    scrollBottom();
+    return bubble;
+  }
+
+  function scrollBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  // ── Enviar mensaje ──────────────────────────────────────────────────────────
+  async function sendMessage() {
+    const text = inputEl.value.trim();
+    if (!text || isStreaming) return;
+
+    isStreaming = true;
+    sendBtnEl.classList.remove('ready');
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+
+    addUserBubble(text);
+    const bubble = addAIBubble();
+
+    history.push({ role: 'user', content: text });
+
+    let fullResponse = '';
+    let firstToken = true;
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'terapeuta' }),
+      });
+
+      if (!res.ok) throw new Error('Error del servidor');
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const raw = line.slice(6).trim();
+          if (raw === '[DONE]') break;
+          try {
+            const obj = JSON.parse(raw);
+            if (obj.text) {
+              fullResponse += obj.text;
+              if (firstToken) {
+                bubble.innerHTML = '';
+                firstToken = false;
+              }
+              bubble.innerHTML = formatAIText(fullResponse);
+              scrollBottom();
+            }
+          } catch (_) {}
+        }
+      }
+    } catch (err) {
+      bubble.innerHTML = '<span style="color:#f87171">Error de conexión. Intenta de nuevo.</span>';
+    }
+
+    if (fullResponse) {
+      history.push({ role: 'assistant', content: fullResponse });
+    }
+
+    isStreaming = false;
+    sendBtnEl.classList.toggle('ready', inputEl.value.trim().length > 0);
+    scrollBottom();
+  }
+</script>
+
+</body>
+</html>
