@@ -87,29 +87,46 @@ def _model() -> str:
     return os.getenv("OPENAI_MODEL", "llama-3.3-70b-versatile")
 
 
+# ── KB compartido (lo provee main.py para no cargarlo dos veces) ─────────────
+
+_shared_kb = None  # Referencia al KB ya cargado por main.py
+
+
+def set_shared_kb(kb) -> None:
+    """Llamado desde main.py una vez que el KB ya está cargado en caché."""
+    global _shared_kb
+    _shared_kb = kb
+
+
 # ── Búsqueda de contexto en la base de conocimiento ──────────────────────────
 
-def _get_context(message: str, mode: str) -> str:
-    """Busca fragmentos relevantes del material de cursos para incluir como contexto."""
-    try:
-        from api.knowledge_base import KnowledgeBase
-        chunks_path = BASE_DIR / "data" / "chunks" / "library_chunks.jsonl"
-        if not chunks_path.exists():
-            return ""
-        kb = KnowledgeBase(chunks_path)
-        results = kb.search(message, limit=4)
-        if not results:
-            return ""
-        parts = []
-        for r in results[:3]:
-            src = getattr(r, "source_file", "")
-            text = getattr(r, "text", "")
-            if text.strip():
-                parts.append(f"[{src}]\n{text.strip()}")
-        return "\n\n---\n\n".join(parts)
-    except Exception as exc:
-        logger.debug("No se pudo obtener contexto del KB: %s", exc)
+def _get_context(message: str) -> str:
+    """Busca fragmentos relevantes. Usa el KB compartido; si no está listo, devuelve ''."""
+    import threading
+
+    kb = _shared_kb
+    if kb is None:
         return ""
+
+    result: dict = {"ctx": ""}
+
+    def _search():
+        try:
+            results = kb.search(message, limit=3)
+            parts = []
+            for r in results[:3]:
+                src = getattr(r, "source_file", "")
+                text = getattr(r, "text", "")
+                if text.strip():
+                    parts.append(f"[{src}]\n{text.strip()}")
+            result["ctx"] = "\n\n---\n\n".join(parts)
+        except Exception as exc:
+            logger.debug("Error en búsqueda de contexto: %s", exc)
+
+    t = threading.Thread(target=_search, daemon=True)
+    t.start()
+    t.join(timeout=2.5)  # máximo 2.5 s; si no, se sigue sin contexto
+    return result["ctx"]
 
 
 # ── Streaming ─────────────────────────────────────────────────────────────────
@@ -128,7 +145,7 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
 
     system_prompt = TERAPEUTA_SYSTEM if mode == "terapeuta" else ALUMNO_SYSTEM
 
-    context = _get_context(message, mode)
+    context = _get_context(message)
     if context:
         system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
 

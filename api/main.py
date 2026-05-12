@@ -40,7 +40,7 @@ from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
 from api.therapy_reasoner import build_therapy_reasoning
 from api.teacher_memory import get_teacher_memory
-from api.chat_service import stream_chat
+from api.chat_service import stream_chat, set_shared_kb
 
 
 logger = logging.getLogger(__name__)
@@ -238,7 +238,10 @@ def _warm_caches_safe() -> None:
         ("teacher_memory", get_teacher_memory),
     ):
         try:
-            loader()
+            result = loader()
+            # Compartir el KB con chat_service para evitar carga duplicada
+            if label == "knowledge_base":
+                set_shared_kb(result)
         except Exception:
             logger.exception("No se pudo precalentar %s durante el arranque.", label)
 
