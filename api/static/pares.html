@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rastreo de Pares · Método Lavín</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:       #0b1120;
+    --surface:  #111827;
+    --surface2: #1f2937;
+    --border:   rgba(255,255,255,0.07);
+    --acc:      #8b5cf6;
+    --acc-dim:  rgba(139,92,246,0.15);
+    --acc-glow: rgba(139,92,246,0.3);
+    --green:    #10b981;
+    --green-dim: rgba(16,185,129,0.15);
+    --text:     #f1f5f9;
+    --muted:    #94a3b8;
+    --user-bg:  #1e1b4b;
+    --ai-bg:    #1f2937;
+    --radius:   14px;
+  }
+
+  html, body {
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow: hidden;
+  }
+
+  /* ── Layout principal ── */
+  .app {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 56px 1fr;
+    height: 100vh;
+  }
+
+  /* ── Header ── */
+  .header {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .header-icon {
+    width: 34px;
+    height: 34px;
+    background: var(--acc-dim);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    flex-shrink: 0;
+  }
+
+  .header-info { flex: 1; min-width: 0; }
+
+  .header-title {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .header-sub {
+    font-size: 0.68rem;
+    color: var(--acc);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+
+  .header-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .header-btn {
+    padding: 5px 11px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+
+  .header-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+  .header-btn.back {
+    color: var(--acc);
+    border-color: var(--acc-glow);
+  }
+
+  .header-btn.back:hover { background: var(--acc-dim); }
+
+  /* ── Panel lateral: zonas + pares confirmados ── */
+  .sidebar {
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: var(--surface);
+  }
+
+  .sidebar-section {
+    padding: 12px 14px 8px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  /* Zonas */
+  .zones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .zone-btn {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    padding: 8px 9px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    font-family: inherit;
+    color: var(--text);
+    font-size: 0.78rem;
+    line-height: 1.3;
+  }
+
+  .zone-btn .z-icon { font-size: 14px; display: block; margin-bottom: 3px; }
+  .zone-btn .z-name { font-weight: 600; display: block; }
+  .zone-btn .z-sub  { font-size: 0.68rem; color: var(--muted); }
+
+  .zone-btn:hover {
+    border-color: var(--acc);
+    background: var(--acc-dim);
+    color: var(--acc);
+  }
+
+  .zone-btn:hover .z-sub { color: rgba(139,92,246,0.7); }
+
+  .zone-btn.active {
+    border-color: var(--acc);
+    background: var(--acc-dim);
+    color: var(--acc);
+  }
+
+  /* Divisor */
+  .sidebar-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 6px 14px;
+    flex-shrink: 0;
+  }
+
+  /* Pares confirmados */
+  .pairs-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 14px 14px;
+  }
+
+  .pairs-list::-webkit-scrollbar { width: 3px; }
+  .pairs-list::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+  .pairs-empty {
+    font-size: 0.78rem;
+    color: var(--muted);
+    text-align: center;
+    padding: 16px 8px;
+    font-style: italic;
+  }
+
+  .pair-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin-bottom: 6px;
+    font-size: 0.78rem;
+    line-height: 1.4;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+
+  .pair-item:hover { border-color: var(--acc-glow); }
+
+  .pair-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--acc);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .pair-dot.placed { background: var(--green); }
+
+  .pair-info { flex: 1; min-width: 0; }
+
+  .pair-name {
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pair-zone {
+    font-size: 0.68rem;
+    color: var(--muted);
+  }
+
+  .pair-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    margin-top: 1px;
+  }
+
+  .pair-check.checked {
+    background: var(--green);
+    border-color: var(--green);
+  }
+
+  .pair-check svg { width: 11px; height: 11px; fill: white; }
+
+  .pairs-count {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: right;
+    padding: 4px 0 6px;
+  }
+
+  .pairs-count span { color: var(--acc); font-weight: 700; }
+
+  /* ── Chat ── */
+  .chat-area {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px 18px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    scroll-behavior: smooth;
+  }
+
+  .messages::-webkit-scrollbar { width: 4px; }
+  .messages::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+  /* Bienvenida */
+  .welcome {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    gap: 20px;
+    min-height: 300px;
+  }
+
+  .welcome-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--acc-dim);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .welcome h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .welcome p {
+    font-size: 0.87rem;
+    color: var(--muted);
+    max-width: 340px;
+    line-height: 1.7;
+  }
+
+  .welcome-hint {
+    font-size: 0.78rem;
+    color: var(--acc);
+    background: var(--acc-dim);
+    border: 1px solid var(--acc-glow);
+    border-radius: 8px;
+    padding: 8px 14px;
+    max-width: 340px;
+  }
+
+  /* Burbujas */
+  .msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+
+  .msg-user { flex-direction: row-reverse; }
+
+  .bubble {
+    max-width: 82%;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    line-height: 1.65;
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .msg-user .bubble {
+    background: var(--user-bg);
+    color: #e0d9ff;
+    border-bottom-right-radius: 4px;
+  }
+
+  .msg-ai .bubble {
+    background: var(--ai-bg);
+    color: var(--text);
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  /* Formato especial en respuestas */
+  .bubble .ms-line {
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  .bubble .branch {
+    color: var(--muted);
+    font-size: 0.84rem;
+  }
+
+  .bubble .pair-confirm {
+    color: var(--acc);
+    font-weight: 700;
+  }
+
+  .bubble .placement {
+    color: #fbbf24;
+    font-size: 0.84rem;
+  }
+
+  .bubble .section-header {
+    color: var(--acc);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 4px;
+  }
+
+  /* Typing dots */
+  .typing-dot {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    padding: 10px 14px;
+  }
+
+  .typing-dot span {
+    width: 7px;
+    height: 7px;
+    background: var(--muted);
+    border-radius: 50%;
+    animation: pulse 1.2s infinite;
+  }
+
+  .typing-dot span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot span:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes pulse {
+    0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+    40% { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Input ── */
+  .input-area {
+    padding: 10px 16px 14px;
+    border-top: 1px solid var(--border);
+    background: var(--bg);
+    flex-shrink: 0;
+  }
+
+  .input-box {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 9px 9px 9px 14px;
+    transition: border-color 0.15s;
+  }
+
+  .input-box:focus-within {
+    border-color: var(--acc-glow);
+  }
+
+  .input-field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: none;
+    max-height: 100px;
+    min-height: 24px;
+    overflow-y: auto;
+  }
+
+  .input-field::placeholder { color: var(--muted); }
+
+  .send-btn {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: var(--acc);
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    opacity: 0.35;
+  }
+
+  .send-btn.ready { opacity: 1; }
+  .send-btn:hover.ready { background: #7c3aed; transform: scale(1.05); }
+  .send-btn svg { width: 17px; height: 17px; fill: #fff; }
+
+  .input-hint {
+    font-size: 0.7rem;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 7px;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 680px) {
+    .app {
+      grid-template-columns: 1fr;
+      grid-template-rows: 56px auto 1fr;
+    }
+
+    .sidebar {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      max-height: 220px;
+    }
+
+    .pairs-list { display: none; }
+    .sidebar-divider { display: none; }
+    .sidebar-section:last-child { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-icon">🧲</div>
+    <div class="header-info">
+      <div class="header-title">Rastreo de Pares</div>
+      <div class="header-sub">● Biomagnético · Holobiomagnético</div>
+    </div>
+    <div class="header-actions">
+      <button class="header-btn" onclick="resetSession()">Nueva sesión</button>
+      <a href="/terapeuta"><button class="header-btn back">← Sesión</button></a>
+    </div>
+  </header>
+
+  <!-- Sidebar: Zonas + Pares confirmados -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label">Zonas del cuerpo</div>
+      <div class="zones-grid">
+        <button class="zone-btn" onclick="selectZone(this, 'Cráneo y cara', 'Vamos a rastrear la zona de cráneo y cara. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">🧠</span>
+          <span class="z-name">Cráneo / Cara</span>
+          <span class="z-sub">Frontal, temporal, facial</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Cuello y garganta', 'Vamos a rastrear la zona de cuello y garganta. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">🫁</span>
+          <span class="z-name">Cuello</span>
+          <span class="z-sub">Tiroides, laringe, cervical</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Tórax anterior', 'Vamos a rastrear el tórax anterior. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">❤️</span>
+          <span class="z-name">Tórax</span>
+          <span class="z-sub">Corazón, pulmones, timo</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Abdomen superior', 'Vamos a rastrear el abdomen superior. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">🫀</span>
+          <span class="z-name">Abdomen sup.</span>
+          <span class="z-sub">Hígado, estómago, páncreas</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Abdomen inferior y pelvis', 'Vamos a rastrear el abdomen inferior y pelvis. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">⭕</span>
+          <span class="z-name">Pelvis</span>
+          <span class="z-sub">Intestinos, ovarios, vejiga</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Columna y dorso', 'Vamos a rastrear la columna y el dorso. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">🦴</span>
+          <span class="z-name">Columna</span>
+          <span class="z-sub">Cervical, dorsal, lumbar</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Miembros superiores', 'Vamos a rastrear los miembros superiores. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">💪</span>
+          <span class="z-name">M. Superiores</span>
+          <span class="z-sub">Hombro, codo, muñeca</span>
+        </button>
+        <button class="zone-btn" onclick="selectZone(this, 'Miembros inferiores', 'Vamos a rastrear los miembros inferiores. Dame los pares más frecuentes de esta zona para rastrear con la MS.')">
+          <span class="z-icon">🦵</span>
+          <span class="z-name">M. Inferiores</span>
+          <span class="z-sub">Cadera, rodilla, tobillo</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="sidebar-divider"></div>
+
+    <div class="sidebar-section" style="padding-bottom:0">
+      <div class="sidebar-label" style="display:flex;justify-content:space-between;align-items:center">
+        <span>Pares confirmados</span>
+        <span class="pairs-count"><span id="pairsCount">0</span> pares</span>
+      </div>
+    </div>
+
+    <div class="pairs-list" id="pairsList">
+      <div class="pairs-empty" id="pairsEmpty">Ningún par confirmado aún.<br>Los pares que confirmes con la MS aparecerán aquí.</div>
+    </div>
+
+  </aside>
+
+  <!-- Chat -->
+  <div class="chat-area">
+    <div class="messages" id="messages">
+
+      <div class="welcome" id="welcome">
+        <div class="welcome-icon">🧲</div>
+        <h2>Rastreo de Pares Biomagnéticos</h2>
+        <p>Selecciona una <strong>zona del cuerpo</strong> para comenzar el rastreo, o escribe directamente lo que necesitas.</p>
+        <div class="welcome-hint">💡 Cuando la MS confirme un par, dímelo y te daré la colocación exacta y la interpretación clínica.</div>
+      </div>
+
+    </div>
+
+    <div class="input-area">
+      <div class="input-box">
+        <textarea
+          class="input-field"
+          id="inputField"
+          placeholder="Ej: MS confirmó TIMO-TIMO · ¿qué par tiene el occipital? · resumen del rastreo…"
+          rows="1"
+          onkeydown="handleKey(event)"
+          oninput="handleInput(this)"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+          <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+        </button>
+      </div>
+      <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea · Reporta confirmaciones de la MS en tiempo real</div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // ── Estado ──────────────────────────────────────────────────────────────────
+  let history = [];
+  let isStreaming = false;
+  let confirmedPairs = [];     // { name, zone, placed }
+  let activeZone = null;
+
+  const messagesEl  = document.getElementById('messages');
+  const welcomeEl   = document.getElementById('welcome');
+  const inputEl     = document.getElementById('inputField');
+  const sendBtnEl   = document.getElementById('sendBtn');
+  const pairsListEl = document.getElementById('pairsList');
+  const pairsEmpty  = document.getElementById('pairsEmpty');
+  const pairsCount  = document.getElementById('pairsCount');
+
+  // ── Input handlers ──────────────────────────────────────────────────────────
+  function handleInput(el) {
+    el.style.height = 'auto';
+    el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+    sendBtnEl.classList.toggle('ready', el.value.trim().length > 0);
+  }
+
+  function handleKey(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  }
+
+  // ── Selección de zona ────────────────────────────────────────────────────────
+  function selectZone(btn, zoneName, message) {
+    // Marcar zona activa visualmente
+    document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeZone = zoneName;
+
+    // Enviar mensaje de inicio de zona
+    inputEl.value = message;
+    handleInput(inputEl);
+    sendMessage();
+  }
+
+  // ── Reset ───────────────────────────────────────────────────────────────────
+  function resetSession() {
+    history = [];
+    confirmedPairs = [];
+    activeZone = null;
+
+    // Limpiar mensajes
+    messagesEl.innerHTML = '';
+    messagesEl.appendChild(welcomeEl);
+    welcomeEl.style.display = '';
+
+    // Limpiar zona activa
+    document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
+
+    // Limpiar lista de pares
+    renderPairsList();
+
+    inputEl.value = '';
+    handleInput(inputEl);
+  }
+
+  // ── Gestión de pares confirmados ─────────────────────────────────────────────
+  function addConfirmedPair(name, zone) {
+    // Evitar duplicados
+    if (confirmedPairs.find(p => p.name.toLowerCase() === name.toLowerCase())) return;
+    confirmedPairs.push({ name, zone: zone || activeZone || 'General', placed: false });
+    renderPairsList();
+  }
+
+  function togglePlaced(index) {
+    if (index >= 0 && index < confirmedPairs.length) {
+      confirmedPairs[index].placed = !confirmedPairs[index].placed;
+      renderPairsList();
+    }
+  }
+
+  function renderPairsList() {
+    pairsCount.textContent = confirmedPairs.length;
+
+    if (confirmedPairs.length === 0) {
+      pairsEmpty.style.display = '';
+      // Eliminar items previos
+      document.querySelectorAll('.pair-item').forEach(el => el.remove());
+      return;
+    }
+
+    pairsEmpty.style.display = 'none';
+    // Reconstruir lista
+    document.querySelectorAll('.pair-item').forEach(el => el.remove());
+
+    confirmedPairs.forEach((pair, i) => {
+      const div = document.createElement('div');
+      div.className = 'pair-item';
+      div.onclick = () => askAboutPair(pair.name);
+      div.innerHTML = `
+        <div class="pair-dot ${pair.placed ? 'placed' : ''}"></div>
+        <div class="pair-info">
+          <div class="pair-name">${escHtml(pair.name)}</div>
+          <div class="pair-zone">${escHtml(pair.zone)}</div>
+        </div>
+        <div class="pair-check ${pair.placed ? 'checked' : ''}" onclick="event.stopPropagation(); togglePlaced(${i})" title="${pair.placed ? 'Colocado' : 'Marcar como colocado'}">
+          ${pair.placed ? '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' : ''}
+        </div>
+      `;
+      pairsListEl.appendChild(div);
+    });
+  }
+
+  function askAboutPair(pairName) {
+    inputEl.value = `Dime más sobre el par ${pairName}: colocación exacta e interpretación`;
+    handleInput(inputEl);
+    inputEl.focus();
+  }
+
+  // ── Auto-detectar pares confirmados en respuesta AI ──────────────────────────
+  function detectAndAddPairs(text) {
+    // Detectar patrones como "SÍ → [par]" o "confirmado: [par]" o "Par confirmado: X–Y"
+    const patterns = [
+      /MS[:\s]+[¿]?(.+?)\?[\s\S]*?→\s*SÍ/gi,
+      /par confirmado[:\s]+([^\n]+)/gi,
+      /confirmado[:\s]+([A-ZÁÉÍÓÚÑÜ][^\n–\-–]{3,40}(?:[–\-–][A-ZÁÉÍÓÚÑÜ][^\n]{3,30})?)/gi,
+    ];
+
+    // También detectar en formato "✅ NOMBRE-NOMBRE"
+    const checkMatch = text.match(/✅\s*([A-ZÁÉÍÓÚÑÜ][^\n]{3,50})/gi);
+    if (checkMatch) {
+      checkMatch.forEach(m => {
+        const name = m.replace(/✅\s*/, '').trim();
+        if (name.length > 3 && name.length < 60) addConfirmedPair(name, activeZone);
+      });
+    }
+  }
+
+  // ── Formatear respuesta AI ───────────────────────────────────────────────────
+  function formatAIText(text) {
+    const lines = text.split('\n');
+    const out = [];
+
+    for (const line of lines) {
+      const t = line.trim();
+
+      if (!t) {
+        out.push('');
+        continue;
+      }
+
+      // Líneas MS
+      if (/^MS\s*:/i.test(t)) {
+        out.push(`<span class="ms-line">${escHtml(line)}</span>`);
+        continue;
+      }
+
+      // Ramas SÍ/NO
+      if (/^→/.test(t)) {
+        out.push(`<span class="branch">${escHtml(line)}</span>`);
+        continue;
+      }
+
+      // Colocación (líneas con "norte" o "sur" o "imán" o anatomía clave)
+      if (/colocar|imán norte|imán sur|punto\s+[AB]/i.test(t)) {
+        out.push(`<span class="placement">${escHtml(line)}</span>`);
+        continue;
+      }
+
+      // Encabezados de sección (═══ o líneas en mayúsculas cortas)
+      if (/^═{3,}/.test(t) || (/^[A-ZÁÉÍÓÚÑÜ\s:]{8,40}$/.test(t) && t === t.toUpperCase() && t.length < 45)) {
+        out.push(`<span class="section-header">${escHtml(t)}</span>`);
+        continue;
+      }
+
+      // Par confirmado (línea con ✅)
+      if (t.includes('✅') || /confirmado/i.test(t)) {
+        out.push(`<span class="pair-confirm">${escHtml(line)}</span>`);
+        continue;
+      }
+
+      out.push(escHtml(line));
+    }
+
+    // Join con saltos de línea, salvo entre spans consecutivos de bloque
+    return out.join('\n');
+  }
+
+  function escHtml(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  // ── Burbujas ────────────────────────────────────────────────────────────────
+  function addUserBubble(text) {
+    welcomeEl.style.display = 'none';
+    const div = document.createElement('div');
+    div.className = 'msg msg-user';
+    div.innerHTML = `<div class="bubble">${escHtml(text)}</div>`;
+    messagesEl.appendChild(div);
+    scrollBottom();
+  }
+
+  function addAIBubble() {
+    const div = document.createElement('div');
+    div.className = 'msg msg-ai';
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
+    div.appendChild(bubble);
+    messagesEl.appendChild(div);
+    scrollBottom();
+    return bubble;
+  }
+
+  function scrollBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  // ── Enviar mensaje ──────────────────────────────────────────────────────────
+  async function sendMessage() {
+    const text = inputEl.value.trim();
+    if (!text || isStreaming) return;
+
+    isStreaming = true;
+    sendBtnEl.classList.remove('ready');
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+
+    addUserBubble(text);
+    const bubble = addAIBubble();
+
+    history.push({ role: 'user', content: text });
+
+    let fullResponse = '';
+    let firstToken = true;
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'pares' }),
+      });
+
+      if (!res.ok) throw new Error('Error del servidor');
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+
+        for (const line of lines) {
+          if (!line.startsWith('data: ')) continue;
+          const raw = line.slice(6).trim();
+          if (raw === '[DONE]') break;
+          try {
+            const obj = JSON.parse(raw);
+            if (obj.text) {
+              fullResponse += obj.text;
+              if (firstToken) {
+                bubble.innerHTML = '';
+                firstToken = false;
+              }
+              bubble.innerHTML = formatAIText(fullResponse);
+              scrollBottom();
+            }
+          } catch (_) {}
+        }
+      }
+    } catch (err) {
+      bubble.innerHTML = '<span style="color:#f87171">Error de conexión. Intenta de nuevo.</span>';
+    }
+
+    if (fullResponse) {
+      history.push({ role: 'assistant', content: fullResponse });
+      // Intentar extraer pares confirmados de la respuesta
+      detectAndAddPairs(fullResponse);
+    }
+
+    isStreaming = false;
+    sendBtnEl.classList.toggle('ready', inputEl.value.trim().length > 0);
+    scrollBottom();
+  }
+</script>
+
+</body>
+</html>
