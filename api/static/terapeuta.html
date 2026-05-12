@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Asistente de Sesión · Método Lavín</title>
+<title>Asesor Terapéutico IA</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -418,43 +418,20 @@
   <header class="header">
     <div class="header-icon">🩺</div>
     <div class="header-info">
-      <div class="header-title">Asistente de Sesión</div>
-      <div class="header-sub">● En sesión · Método Lavín</div>
+      <div class="header-title" id="headerTitle">Asesor Terapéutico IA</div>
+      <div class="header-sub" id="headerSub">● Biomagnetismo · BNE · Hellinger · Lavín</div>
     </div>
-    <button class="header-new" onclick="resetChat()">Nueva sesión</button>
+    <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
   </header>
 
   <!-- Mensajes -->
   <div class="messages" id="messages">
 
-    <!-- Pantalla de bienvenida -->
+    <!-- Pantalla de redirección al cuestionario -->
     <div class="welcome" id="welcome">
-      <div class="welcome-icon">🩺</div>
-      <h2>¿Con qué trabajamos hoy?</h2>
-      <p>Puedo guiarte en la <strong>entrevista con el paciente</strong> o en el <strong>protocolo de rastreo</strong>. Escribe lo que necesitas o elige un acceso rápido.</p>
-
-      <div class="quick-grid">
-        <button class="quick-btn" onclick="quickStart('Voy a iniciar la entrevista con mi paciente. Ayúdame a empezar — ¿cómo abro la conversación?')">
-          <span class="qb-icon">🗣️</span>
-          <span class="qb-text">Iniciar entrevista</span>
-          <span class="qb-sub">Guíame en la conversación clínica</span>
-        </button>
-        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un síntoma digestivo. Ayúdame con el protocolo')">
-          <span class="qb-icon">📋</span>
-          <span class="qb-text">Iniciar protocolo</span>
-          <span class="qb-sub">Rastreo MS paso a paso</span>
-        </button>
-        <button class="quick-btn" onclick="quickStart('Mi paciente tiene un tema emocional o trauma')">
-          <span class="qb-icon">💛</span>
-          <span class="qb-text">Emocional / Trauma</span>
-          <span class="qb-sub">EFT, miedos, reimpronta…</span>
-        </button>
-        <button class="quick-btn" onclick="quickStart('No sé qué protocolo usar, ayúdame a identificarlo')">
-          <span class="qb-icon">🔍</span>
-          <span class="qb-text">No sé por dónde empezar</span>
-          <span class="qb-sub">Ayúdame a identificarlo</span>
-        </button>
-      </div>
+      <div class="welcome-icon">📋</div>
+      <h2>Registrando paciente…</h2>
+      <p>Cargando el cuestionario inicial para comenzar la sesión.</p>
     </div>
 
   </div>
@@ -489,6 +466,75 @@
   const inputEl    = document.getElementById('inputField');
   const sendBtnEl  = document.getElementById('sendBtn');
 
+  // ── Routing de entrada ───────────────────────────────────────────────────────
+  (function routeEntry() {
+    const params = new URLSearchParams(window.location.search);
+
+    // ── Caso A: viene del intake con datos ──────────────────────────────────
+    if (params.has('intake')) {
+      const prompt    = localStorage.getItem('intake_prompt');
+      const dataRaw   = localStorage.getItem('intake_data');
+      const timestamp = parseInt(localStorage.getItem('intake_timestamp') || '0');
+
+      if (prompt && dataRaw && Date.now() - timestamp <= 7_200_000) {
+        const data   = JSON.parse(dataRaw);
+        const nombre = data?.paciente?.nombre || 'Paciente';
+        const ocupacion = data?.paciente?.ocupacion ? ` · ${data.paciente.ocupacion}` : '';
+
+        // Actualizar header
+        document.getElementById('headerTitle').textContent = `Sesión: ${nombre}`;
+        document.getElementById('headerSub').textContent   = `● En sesión${ocupacion}`;
+
+        // Badge de paciente
+        const welcome = document.getElementById('welcome');
+        if (welcome) {
+          welcome.innerHTML = `
+            <div class="welcome-icon">🩺</div>
+            <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);border-radius:12px;padding:12px 18px;max-width:420px;text-align:left;">
+              <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#10b981;margin-bottom:6px;">✓ Paciente registrado</div>
+              <div style="font-size:1rem;font-weight:700;color:#f1f5f9;">${escHtml(nombre)}</div>
+              <div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">${escHtml((data?.paciente?.motivo || '').substring(0, 100))}${(data?.paciente?.motivo?.length || 0) > 100 ? '…' : ''}</div>
+            </div>
+            <p style="color:#94a3b8;font-size:0.85rem;">Generando análisis diagnóstico inicial…</p>`;
+        }
+
+        // Limpiar localStorage
+        localStorage.removeItem('intake_prompt');
+        localStorage.removeItem('intake_data');
+        localStorage.removeItem('intake_timestamp');
+
+        // Limpiar URL
+        window.history.replaceState({}, '', '/terapeuta');
+
+        // Auto-enviar análisis
+        setTimeout(() => {
+          inputEl.value = prompt;
+          handleInput(inputEl);
+          sendMessage();
+        }, 800);
+        return;
+      }
+      // Si los datos expiraron, caer al redirect normal
+    }
+
+    // ── Caso B: viene con ?skip=1 (pulsó "Saltar" en el intake) ────────────
+    if (params.has('skip')) {
+      // Limpiar URL y mostrar chat directamente
+      window.history.replaceState({}, '', '/terapeuta');
+      const welcome = document.getElementById('welcome');
+      if (welcome) {
+        welcome.innerHTML = `
+          <div class="welcome-icon">🩺</div>
+          <h2>¿Con qué trabajamos hoy?</h2>
+          <p>Escribe el síntoma, comparte lo que dijo el paciente, o describe la situación clínica.</p>`;
+      }
+      return;
+    }
+
+    // ── Caso C: acceso directo sin datos → redirect al cuestionario ─────────
+    window.location.replace('/intake');
+  })();
+
   // ── Input handlers ──────────────────────────────────────────────────────────
   function handleInput(el) {
     el.style.height = 'auto';
@@ -510,14 +556,13 @@
     sendMessage();
   }
 
-  // ── Reset ───────────────────────────────────────────────────────────────────
-  function resetChat() {
-    history = [];
-    messagesEl.innerHTML = '';
-    messagesEl.appendChild(welcomeEl);
-    welcomeEl.style.display = '';
-    inputEl.value = '';
-    handleInput(inputEl);
+  // ── Nueva sesión → volver al cuestionario ───────────────────────────────────
+  function nuevaSesion() {
+    // Limpiar cualquier dato pendiente
+    localStorage.removeItem('intake_prompt');
+    localStorage.removeItem('intake_data');
+    localStorage.removeItem('intake_timestamp');
+    window.location.href = '/intake';
   }
 
   // ── Renderizado de burbujas ─────────────────────────────────────────────────

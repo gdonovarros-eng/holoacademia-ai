@@ -72,7 +72,7 @@
   .cards {
     display: flex;
     gap: 20px;
-    max-width: 800px;
+    max-width: 1100px;
     width: 100%;
   }
 
@@ -110,6 +110,21 @@
   .card-alumno:hover {
     box-shadow: 0 8px 48px rgba(0,0,0,0.12), 0 0 0 1px rgba(99,102,241,0.3);
   }
+
+  .card-pares {
+    background: #111827;
+    border-color: rgba(139,92,246,0.2);
+    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(139,92,246,0.1);
+  }
+
+  .card-pares:hover {
+    box-shadow: 0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.3);
+  }
+
+  .card-pares .card-icon { background: rgba(139,92,246,0.15); }
+  .card-pares .card-title { color: #f1f5f9; }
+  .card-pares .card-desc  { color: #94a3b8; }
+  .card-pares .card-cta   { color: #8b5cf6; }
 
   .card-icon {
     width: 52px;
@@ -154,7 +169,7 @@
   .card-terapeuta .card-cta { color: #10b981; }
   .card-alumno   .card-cta { color: #6366f1; }
 
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     body { background: #0b1120; justify-content: flex-start; padding-top: 48px; }
     .cards { flex-direction: column; }
     .card-alumno { background: #1a1f2e; border-color: rgba(99,102,241,0.2); }
@@ -178,13 +193,13 @@
 
 <div class="cards">
 
-  <a class="card card-terapeuta" href="/terapeuta">
+  <a class="card card-terapeuta" href="/intake">
     <div class="card-icon">🩺</div>
-    <div class="card-title">Asistente<br>de Sesión</div>
+    <div class="card-title">Asesor<br>Terapéutico</div>
     <div class="card-desc">
-      Tu guía paso a paso durante consultas. Te indica exactamente qué preguntar a la MS y qué hacer con cada respuesta, en tiempo real.
+      Registra al paciente, recibe un diagnóstico inicial completo (genograma, numerología, patrones, FFI) y guía la sesión en tiempo real.
     </div>
-    <div class="card-cta">Entrar a sesión →</div>
+    <div class="card-cta">Registrar paciente →</div>
   </a>
 
   <a class="card card-alumno" href="/alumno">
@@ -194,6 +209,15 @@
       Resuelve todas tus dudas sobre el material del diplomado. Tiene acceso completo a todos los módulos y manuales del Método Lavín.
     </div>
     <div class="card-cta">Hablar con Sael →</div>
+  </a>
+
+  <a class="card card-pares" href="/pares">
+    <div class="card-icon">🧲</div>
+    <div class="card-title">Rastreo<br>de Pares</div>
+    <div class="card-desc">
+      Guía zona por zona para el rastreo biomagnético con la MS. Colocación exacta de imanes e interpretación clínica de cada par confirmado.
+    </div>
+    <div class="card-cta">Iniciar rastreo →</div>
   </a>
 
 </div>
