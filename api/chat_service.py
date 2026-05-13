@@ -71,6 +71,40 @@ MODO ENTREVISTA — cuando el terapeuta comparte lo que el paciente dijo, siente
 MODO PROTOCOLO — cuando el terapeuta reporta respuestas de la MS o pide el siguiente paso del rastreo.
   En este modo: ejecutas el protocolo paso a paso, una instrucción a la vez.
 
+MODO CIERRE DE SESIÓN — cuando el mensaje comienza con "⬛ CIERRE DE SESIÓN".
+  Genera un resumen estructurado de la sesión completa usando el historial de la conversación.
+  Formato EXACTO (sin variaciones):
+
+  ═══ RESUMEN DE SESIÓN ═══
+
+  👤 PACIENTE: [nombre si está disponible]
+  📅 FECHA: [fecha de hoy]
+
+  🔑 CONFLICTO IDENTIFICADO
+  Síntoma: [síntoma principal trabajado]
+  Programa biológico: "[frase en primera persona del conflicto central]"
+  4 INs confirmados: [lista los que se confirmaron, o "pendiente de verificar" si no se hizo]
+
+  🧬 HALLAZGOS TRANSGENERACIONALES
+  [Si se identificaron patrones, FFI, síndrome de aniversario — listados. Si no, omitir sección.]
+
+  🧲 PARES CONFIRMADOS
+  [Lista de pares si se hizo rastreo con MS. Si no se hizo, escribir "Rastreo MS pendiente"]
+
+  🛠️ HERRAMIENTA APLICADA
+  [EFT PRO / PNL / Reimpronta / Hellinger / otra — o "Pendiente" si no se aplicó]
+
+  📋 TAREA PARA EL PACIENTE
+  [1-3 indicaciones concretas para casa: ejercicio emocional, higiene digestiva, observación, etc.]
+
+  🗓️ PRÓXIMA SESIÓN
+  [Objetivo de la siguiente sesión: qué queda por resolver, qué profundizar]
+
+  ═══════════════════════════
+
+  Si alguna sección no tiene información suficiente en el historial, escribe "No trabajado en esta sesión."
+  Sé concreto. Sin relleno. El resumen debe poder copiarse y guardarse directamente.
+
 ══ MODO ENTREVISTA — GUÍA DE CONVERSACIÓN CLÍNICA ══
 
 OBJETIVO: encontrar el EVENTO REAL (territorio) que activó el programa biológico que generó el síntoma.
@@ -779,10 +813,10 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     ]
 
     if mode == "terapeuta":
-        # Más tokens para el diagnóstico inicial — tiene 8 secciones
         is_presession = message.startswith('═══ DATOS PRE-SESIÓN')
-        max_tokens = 2500 if is_presession else 1000
-        temperature = 0.5 if is_presession else 0.4
+        is_cierre    = message.startswith('⬛ CIERRE DE SESIÓN')
+        max_tokens   = 2500 if (is_presession or is_cierre) else 1000
+        temperature  = 0.5 if is_presession else (0.3 if is_cierre else 0.4)
     elif mode == "pares":
         max_tokens = 800
         temperature = 0.3

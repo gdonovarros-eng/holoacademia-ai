@@ -408,6 +408,132 @@
     border-radius: 0 6px 6px 0;
     margin: 8px 0;
   }
+
+  /* ── Botón cerrar sesión ── */
+  .header-close {
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #ef4444;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+    font-family: inherit;
+  }
+  .header-close:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.6); }
+
+  /* ── Modal de cierre ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease;
+  }
+
+  .modal-overlay.hidden { display: none; }
+
+  .modal-box {
+    background: var(--surface);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .modal-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text);
+    white-space: pre-wrap;
+  }
+
+  .modal-body::-webkit-scrollbar { width: 4px; }
+  .modal-body::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
+
+  .modal-footer {
+    display: flex;
+    gap: 10px;
+    padding: 14px 20px;
+    border-top: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .btn-copy {
+    flex: 1;
+    padding: 10px;
+    background: var(--acc);
+    color: var(--bg);
+    border: none;
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .btn-copy:hover { background: #059669; }
+
+  .btn-modal-close {
+    padding: 10px 18px;
+    background: var(--surface2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .btn-modal-close:hover { color: var(--text); }
+
+  .generating-dots {
+    display: inline-flex;
+    gap: 4px;
+    align-items: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .generating-dots span {
+    width: 6px; height: 6px;
+    background: var(--acc);
+    border-radius: 50%;
+    animation: pulse 1.2s infinite;
+  }
+  .generating-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .generating-dots span:nth-child(3) { animation-delay: 0.4s; }
 </style>
 </head>
 <body>
@@ -421,8 +547,28 @@
       <div class="header-title" id="headerTitle">Asesor Terapéutico IA</div>
       <div class="header-sub" id="headerSub">● Biomagnetismo · BNE · Hellinger · Lavín</div>
     </div>
+    <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
     <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
   </header>
+
+  <!-- Modal de cierre de sesión -->
+  <div class="modal-overlay hidden" id="modalCierre">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title">📋 Resumen de sesión</div>
+        <button class="btn-modal-close" onclick="cerrarModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="generating-dots">
+          Generando resumen<span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-copy" id="btnCopy" onclick="copiarResumen()" style="display:none">📋 Copiar resumen</button>
+        <button class="btn-modal-close" onclick="cerrarModal()">Cerrar</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Mensajes -->
   <div class="messages" id="messages">
@@ -554,6 +700,106 @@
     inputEl.value = text;
     handleInput(inputEl);
     sendMessage();
+  }
+
+  // ── Cierre de sesión ─────────────────────────────────────────────────────────
+  let _resumenTexto = '';
+
+  function abrirCierre() {
+    if (history.length < 2) {
+      alert('Aún no hay suficiente conversación para generar un resumen.');
+      return;
+    }
+    const modal   = document.getElementById('modalCierre');
+    const body    = document.getElementById('modalBody');
+    const btnCopy = document.getElementById('btnCopy');
+    _resumenTexto = '';
+    body.innerHTML = '<div class="generating-dots">Generando resumen<span></span><span></span><span></span></div>';
+    btnCopy.style.display = 'none';
+    modal.classList.remove('hidden');
+
+    // Construir fecha de hoy
+    const hoy = new Date();
+    const fechaStr = hoy.toLocaleDateString('es-MX', { day:'2-digit', month:'long', year:'numeric' });
+
+    // Nombre del paciente desde el header si está disponible
+    const headerTitle = document.getElementById('headerTitle')?.textContent || '';
+    const nombrePac   = headerTitle.startsWith('Sesión:') ? headerTitle.replace('Sesión:', '').trim() : '';
+
+    const cierre = `⬛ CIERRE DE SESIÓN\nFecha: ${fechaStr}${nombrePac ? '\nPaciente: ' + nombrePac : ''}\n\nGenera el resumen estructurado completo de esta sesión basándote en todo el historial de la conversación.`;
+
+    // Usar el mismo historial de conversación pero enviar el cierre
+    const historialParaCierre = [...history];
+
+    streamCierre(cierre, historialParaCierre, body, btnCopy);
+  }
+
+  function streamCierre(mensaje, hist, bodyEl, btnEl) {
+    const ctrl = new AbortController();
+    const messages = [...hist];
+
+    fetch('/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: mensaje, history: messages, mode: 'terapeuta' }),
+      signal: ctrl.signal,
+    })
+    .then(res => {
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let textoCompleto = '';
+      bodyEl.textContent = '';
+
+      function read() {
+        reader.read().then(({ done, value }) => {
+          if (done) {
+            _resumenTexto = textoCompleto;
+            btnEl.style.display = '';
+            return;
+          }
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split('\n');
+          buffer = lines.pop();
+          for (const line of lines) {
+            if (!line.startsWith('data:')) continue;
+            const data = line.slice(5).trim();
+            if (data === '[DONE]') {
+              _resumenTexto = textoCompleto;
+              btnEl.style.display = '';
+              return;
+            }
+            try {
+              const { text } = JSON.parse(data);
+              if (text) {
+                textoCompleto += text;
+                bodyEl.textContent = textoCompleto;
+              }
+            } catch {}
+          }
+          read();
+        });
+      }
+      read();
+    })
+    .catch(err => {
+      if (err.name !== 'AbortError') {
+        bodyEl.textContent = '⚠️ Error al generar el resumen. Intenta de nuevo.';
+      }
+    });
+  }
+
+  function cerrarModal() {
+    document.getElementById('modalCierre').classList.add('hidden');
+  }
+
+  function copiarResumen() {
+    if (!_resumenTexto) return;
+    navigator.clipboard.writeText(_resumenTexto).then(() => {
+      const btn = document.getElementById('btnCopy');
+      btn.textContent = '✓ Copiado';
+      setTimeout(() => { btn.textContent = '📋 Copiar resumen'; }, 2000);
+    });
   }
 
   // ── Nueva sesión → volver al cuestionario ───────────────────────────────────
