@@ -390,6 +390,81 @@
     .person-row { grid-template-columns: 1fr 28px; }
     .person-row .date-col { display: none; }
   }
+
+  /* ── Panel pacientes recientes ── */
+  .recientes-panel {
+    max-width: 760px;
+    margin: 14px auto 0;
+    padding: 0 24px;
+  }
+
+  .recientes-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .recientes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .reciente-chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 0;
+    max-width: 260px;
+  }
+
+  .reciente-chip:hover {
+    border-color: var(--acc);
+    background: var(--acc-dim);
+  }
+
+  .reciente-info { min-width: 0; }
+
+  .reciente-nombre {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reciente-meta {
+    font-size: 0.7rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .reciente-del {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+    margin-left: 2px;
+  }
+  .reciente-del:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
 </style>
 </head>
 <body>
@@ -405,6 +480,12 @@
     <a href="/terapeuta?skip=1"><button class="btn-ghost">Saltar →</button></a>
   </div>
 </header>
+
+<!-- Pacientes recientes -->
+<div class="recientes-panel" id="recientes-panel" style="display:none">
+  <div class="recientes-title">Pacientes recientes</div>
+  <div class="recientes-list" id="recientes-list"></div>
+</div>
 
 <!-- Barra de pasos -->
 <div class="steps-bar">
@@ -1602,6 +1683,9 @@
       return;
     }
 
+    // Guardar en el historial de pacientes
+    guardarPacienteEnHistorial(data);
+
     // Guardar en localStorage para que terapeuta.html lo use
     localStorage.setItem('intake_data', JSON.stringify(data));
     localStorage.setItem('intake_prompt', buildAnalysisPrompt(data));
@@ -1610,6 +1694,163 @@
     // Redirigir a la sesión
     window.location.href = '/terapeuta?intake=1';
   }
+
+  // ══════════════════════════════════════════════════════════════════
+  // HISTORIAL DE PACIENTES — localStorage
+  // ══════════════════════════════════════════════════════════════════
+
+  const HISTORIAL_KEY = 'holoacademia_pacientes';
+  const MAX_PACIENTES = 10;
+
+  function getHistorial() {
+    try { return JSON.parse(localStorage.getItem(HISTORIAL_KEY) || '[]'); }
+    catch { return []; }
+  }
+
+  function saveHistorial(lista) {
+    localStorage.setItem(HISTORIAL_KEY, JSON.stringify(lista));
+  }
+
+  function guardarPacienteEnHistorial(data) {
+    const lista = getHistorial();
+    const id = data.paciente.nombre.toLowerCase().replace(/\s+/g, '_') + '_' + (data.paciente.fnacRaw || '');
+    // Quitar si ya existe (para moverlo al frente)
+    const idx = lista.findIndex(p => p.id === id);
+    if (idx !== -1) lista.splice(idx, 1);
+    lista.unshift({
+      id,
+      nombre:   data.paciente.nombre,
+      fnac:     data.paciente.fnac,
+      motivo:   (data.paciente.motivo || '').substring(0, 80),
+      ocupacion: data.paciente.ocupacion || '',
+      ts:       Date.now(),
+      data,     // guardamos el formulario completo
+    });
+    saveHistorial(lista.slice(0, MAX_PACIENTES));
+  }
+
+  function renderRecientes() {
+    const lista = getHistorial();
+    const panel = document.getElementById('recientes-panel');
+    const cont  = document.getElementById('recientes-list');
+    if (!lista.length) { panel.style.display = 'none'; return; }
+
+    panel.style.display = '';
+    cont.innerHTML = '';
+
+    lista.forEach(p => {
+      const chip = document.createElement('div');
+      chip.className = 'reciente-chip';
+      chip.innerHTML = `
+        <div class="reciente-info">
+          <div class="reciente-nombre">${escHtmlIntake(p.nombre)}</div>
+          <div class="reciente-meta">${p.fnac || ''}${p.ocupacion ? ' · ' + p.ocupacion : ''}</div>
+        </div>
+        <button class="reciente-del" onclick="borrarPaciente('${p.id}', event)" title="Eliminar">✕</button>
+      `;
+      chip.addEventListener('click', (e) => {
+        if (e.target.classList.contains('reciente-del')) return;
+        cargarPaciente(p);
+      });
+      cont.appendChild(chip);
+    });
+  }
+
+  function borrarPaciente(id, e) {
+    e.stopPropagation();
+    const lista = getHistorial().filter(p => p.id !== id);
+    saveHistorial(lista);
+    renderRecientes();
+  }
+
+  function cargarPaciente(p) {
+    // Confirmar antes de sobrescribir si hay datos en el formulario
+    const nombreActual = document.getElementById('pac-nombre')?.value.trim();
+    if (nombreActual && !confirm(`¿Cargar a ${p.nombre}? Se reemplazarán los datos actuales.`)) return;
+    rellenarFormulario(p.data);
+    // Hacer scroll al inicio del formulario
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function rellenarFormulario(d) {
+    // Paso 1 — Paciente
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+    set('pac-nombre', d.paciente.nombre);
+    set('pac-fnac', d.paciente.fnacRaw);
+    set('pac-genero', d.paciente.genero);
+    set('pac-lugar', d.paciente.lugar);
+    set('pac-ocupacion', d.paciente.ocupacion);
+    set('pac-estado-civil', d.paciente.estadoCivil);
+    set('pac-parto', d.paciente.parto);
+    set('pac-termino', d.paciente.termino);
+    set('pac-parto-complicaciones', d.paciente.partoComplics);
+    set('pac-motivo', d.paciente.motivo);
+    set('pac-notas', d.paciente.notas);
+
+    // Paso 2 — Familia
+    set('padre-nombre', d.padre?.nombre); set('padre-fnac', d.padre?.fnacRaw);
+    if (d.padre?.estado === 'Falleció') {
+      document.querySelector('.card:nth-of-type(2) .vivo-btn:last-child')?.click();
+      set('padre-fmuerte', d.padre?.fmuerteRaw);
+    }
+    set('padre-notas', d.padre?.notas);
+    set('madre-nombre', d.madre?.nombre); set('madre-fnac', d.madre?.fnacRaw);
+    if (d.madre?.estado === 'Falleció') {
+      document.querySelector('.card:nth-of-type(3) .vivo-btn:last-child')?.click();
+      set('madre-fmuerte', d.madre?.fmuerteRaw);
+    }
+    set('madre-notas', d.madre?.notas);
+
+    // Abuelos
+    const ab = d.abuelos || {};
+    ['abp','abpm','abm','abmm'].forEach(k => {
+      set(`${k}-nombre`, ab[k]?.nombre);
+      set(`${k}-fnac`, ab[k]?.fnacRaw);
+      set(`${k}-fmuerte`, ab[k]?.fmuerteRaw);
+    });
+
+    // Hermanos
+    document.getElementById('hermanos-list').innerHTML = '';
+    (d.hermanos || []).forEach(() => addHermano());
+    document.querySelectorAll('[data-hermano-nombre]').forEach((el, i) => {
+      el.value = d.hermanos[i]?.nombre || '';
+      const fnacEl = document.querySelector(`[data-hermano-fnac="${i}"]`);
+      if (fnacEl) fnacEl.value = d.hermanos[i]?.fnacRaw || '';
+    });
+
+    // Pareja
+    set('pareja-nombre', d.pareja?.nombre); set('pareja-fnac', d.pareja?.fnacRaw);
+    set('pareja-tiempo', d.pareja?.tiempo); set('pareja-notas', d.pareja?.notas);
+
+    // Paso 3 — Síntomas
+    document.getElementById('sintomas-actuales-list').innerHTML = '';
+    (d.sintomasActuales || []).forEach(s => {
+      addSintoma('actuales');
+      const idx = document.querySelectorAll('[data-sint-actuales-nombre]').length;
+      const el  = document.querySelector(`[data-sint-actuales-nombre="${idx}"]`);
+      if (el) {
+        el.value = s.nombre || '';
+        const set2 = (attr, val) => { const x = document.querySelector(`[data-sint-actuales-${attr}="${idx}"]`); if (x) x.value = val || ''; };
+        set2('edad', s.edad); set2('frecuencia', s.frecuencia); set2('intensidad', s.intensidad); set2('desc', s.desc);
+      }
+    });
+    if (!d.sintomasActuales?.length) addSintoma('actuales');
+
+    // Contexto
+    set('ctx-emocion-dominante', d.contexto?.emocionDominante);
+    set('ctx-relacion-padre', d.contexto?.relacionPadre);
+    set('ctx-relacion-madre', d.contexto?.relacionMadre);
+    set('ctx-emocional', d.contexto?.emocional);
+    set('ctx-evento', d.contexto?.evento);
+  }
+
+  function escHtmlIntake(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Mostrar recientes al cargar
+  renderRecientes();
+
 
   // ── Inicializar con un síntoma vacío ──────────────────────────────────────────
   addSintoma('actuales');
