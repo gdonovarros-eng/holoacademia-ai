@@ -1074,6 +1074,11 @@ SISTEMA_KEYWORDS = {
         "alergia cutánea", "grasa", "lipoma", "celulitis", "fascia",
         "tejido conectivo", "tejido adiposo", "dermatológico", "cutáneo", "epidermis",
         "papiloma cutáneo",
+        # aliases frecuentes en sesión
+        "dérmico", "dermico", "dérmica", "dermica",
+        "sistema derm", "dermatolipofascial", "dermato",
+        "cabello", "pelo", "capilar", "alopecia", "calvicie",
+        "cabello fino", "cabello débil", "se cae el cabello", "se cae el pelo",
     ],
     "reproductivo": [
         "ovario", "quiste ovárico", "ovario poliquístico", "útero", "uterino",

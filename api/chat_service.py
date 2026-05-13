@@ -623,13 +623,46 @@ def _user_said_no(message: str) -> bool:
 def _get_sistema_from_last_ai_message(history: list[dict]) -> Optional[str]:
     """
     Busca el sistema en el último mensaje del asistente (cuando preguntó sobre él).
+    Escanea todos los mensajes del asistente (no solo el último).
     """
     for turn in reversed(history):
         if turn.get("role") == "assistant":
             content = turn.get("content", "")
-            if "conflicto" in content.lower():
-                return detect_sistema(content)
+            sistema = detect_sistema(content)
+            if sistema:
+                return sistema
     return None
+
+
+def _get_sintoma_from_conversation(history: list[dict]) -> Optional[tuple]:
+    """
+    Busca el síntoma activo escaneando el historial completo (mensajes usuario + AI).
+    Devuelve (sistema, subsistema) o None.
+    """
+    # Primero buscar en mensajes del usuario (más fiables)
+    for turn in reversed(history):
+        content = turn.get("content", "")
+        if isinstance(content, str) and content:
+            result = detect_sintoma(content)
+            if result:
+                return result
+    return None
+
+
+def _is_explicit_table_request(message: str) -> bool:
+    """
+    Detecta cuando el terapeuta pide explícitamente la tabla o lista de conflictos.
+    """
+    msg = message.lower()
+    keywords = [
+        "lista de conflicto", "conflictolog", "dame la lista", "dame la tabla",
+        "muéstrame", "muestrame", "tabla de conflicto", "lista de rastreo",
+        "qué conflictos", "que conflictos", "cuáles son los conflictos",
+        "rastreo del sistema", "rastreo de la piel", "rastreo dérmico",
+        "rastreo dermico", "lista de pares", "muestra los conflictos",
+        "conflictos del sistema", "conflictos de la piel",
+    ]
+    return any(k in msg for k in keywords)
 
 
 def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, None, None]:
@@ -661,9 +694,14 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     # está en MODO ENTREVISTA: no inyectar tablas, solo guiar la entrevista.
     en_narrativa = mode == "terapeuta" and is_patient_narrative(message)
 
+    es_peticion_tabla = _is_explicit_table_request(message)
+
     if mode == "terapeuta" and not en_narrativa:
         # 1. Intentar detección fina: síntoma específico → subsistema concreto
         sintoma_result = detect_sintoma(message)
+        if not sintoma_result:
+            # También escanear historial para síntoma activo
+            sintoma_result = _get_sintoma_from_conversation(history)
 
         if sintoma_result and not usuario_dijo_no:
             sistema_sesion, subsistema_sesion = sintoma_result
@@ -679,8 +717,17 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
                 # Mostrar lista de subsistemas para que terapeuta pregunte a la MS cuál
                 tabla_a_emitir = get_subsystems_list(sistema_sesion)
             elif sistema_en_historia and not usuario_dijo_no:
-                # Continuar sesión existente: no volver a mostrar tabla
                 sistema_sesion = sistema_en_historia
+                # Si el terapeuta pide explícitamente la tabla → emitirla
+                if es_peticion_tabla:
+                    tabla_a_emitir = get_conflict_table(sistema_sesion)
+
+        # 3. Petición explícita de tabla SIN sistema detectado → buscar en historial profundo
+        if es_peticion_tabla and not sistema_sesion and not usuario_dijo_no:
+            sistema_historial = _detect_sistema_from_conversation(message, history)
+            if sistema_historial:
+                sistema_sesion = sistema_historial
+                tabla_a_emitir = get_conflict_table(sistema_sesion)
 
     if mode == "terapeuta" and not en_narrativa and sistema_sesion and not usuario_dijo_no:
         # Añadir referencia completa al AI (para que sepa qué sistema/subsistema está activo)
@@ -694,7 +741,7 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
             f"\n\n══ REFERENCIA DE CONFLICTOS {ref_label} ══"
             f"{tabla_ref}"
             f"\n══ FIN DE REFERENCIA ══\n\n"
-            f"{'La tabla ya fue enviada al terapeuta y está visible en pantalla. No la repitas.' if tabla_a_emitir else 'El terapeuta ya tiene la tabla de referencia visible.'} "
+            f"{'La tabla acaba de ser enviada al terapeuta — está visible en su pantalla ahora.' if tabla_a_emitir else 'El terapeuta NO tiene la tabla visible todavía — si la pide, indícale que ya se muestra.'} "
             f"Ejecuta el protocolo: cuando la MS confirme subsistema, indica bloque y número."
         )
 
