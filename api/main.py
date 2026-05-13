@@ -347,6 +347,23 @@ async def pares_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "pares.html", headers=_no_cache_headers())
 
 
+@app.get("/tablas", include_in_schema=False)
+async def tablas_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "tablas.html", headers=_no_cache_headers())
+
+
+@app.get("/api/pares-db", include_in_schema=False)
+async def pares_db():
+    """Sirve la base de datos completa de pares biomagnéticos."""
+    import json as _json
+    db_path = BASE_DIR / "data" / "biomagnetic_pairs_db.json"
+    if not db_path.exists():
+        return {"ok": False, "pairs": []}
+    with open(db_path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
 
 @app.get("/therapy", include_in_schema=False)
