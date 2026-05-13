@@ -53,6 +53,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .dot-bach{background:#9de08a}
 .dot-vitaminas{background:#8ad4e0}
 .dot-creencias{background:#d08ae0}
+.dot-conflicto{background:#ff9f6b}
 
 /* SISTEMA FILTER */
 .sis-filter{padding:10px 14px}
@@ -205,6 +206,40 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
     </div>
 
     <div class="sidebar-section" style="border-top:1px solid var(--border)">
+      <div class="sidebar-label">Conflictología Psicosomática</div>
+      <button class="cat-btn" data-cat="conflicto_respiratorio" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Respiratorio<span class="cat-count" id="cnt-conf-respiratorio">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_digestivo" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Digestivo<span class="cat-count" id="cnt-conf-digestivo">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_cardiovascular" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Cardiovascular<span class="cat-count" id="cnt-conf-cardiovascular">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_locomotor" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Locomotor/Óseo<span class="cat-count" id="cnt-conf-locomotor">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_genital" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Reproductor<span class="cat-count" id="cnt-conf-genital">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_urinario" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Urinario/Renal<span class="cat-count" id="cnt-conf-urinario">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_endocrino" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Endócrino<span class="cat-count" id="cnt-conf-endocrino">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_inmunologico" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Inmunológico<span class="cat-count" id="cnt-conf-inmunologico">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_piel" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Piel/Lipofascial<span class="cat-count" id="cnt-conf-piel">0</span>
+      </button>
+      <button class="cat-btn" data-cat="conflicto_neurosensorial" onclick="selectCat(this)">
+        <span class="tipo-dot dot-conflicto"></span>Neurosensorial<span class="cat-count" id="cnt-conf-neurosensorial">0</span>
+      </button>
+    </div>
+
+    <div class="sidebar-section" style="border-top:1px solid var(--border)">
       <div class="sidebar-label">Otros Rastreos</div>
       <button class="cat-btn" data-cat="sales" onclick="selectCat(this)">
         <span class="tipo-dot dot-sales"></span>Sales de Schüssler<span class="cat-count">12</span>
@@ -250,9 +285,10 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 
 <script>
 // ─── State ────────────────────────────────────────────────────────────────────
-let ALL_PAIRS = [];          // raw pairs from API
-let currentCat = 'bacteria'; // selected category
-let confirmed = [];           // {id, nombre, tipo, cat, sub}
+let ALL_PAIRS = [];           // raw pairs from API
+let CONFLICTO_DB = {};        // conflictología db from API
+let currentCat = 'bacteria';  // selected category
+let confirmed = [];            // {id, nombre, tipo, cat, sub}
 
 // ─── Static datasets ─────────────────────────────────────────────────────────
 const SALES_SCHUSSLER = [
@@ -392,11 +428,11 @@ const CREENCIAS = [
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
 async function init() {
+  // Load pairs DB
   try {
     const r = await fetch('/api/pares-db');
     const d = await r.json();
     ALL_PAIRS = d.pairs || [];
-    // Set counts in sidebar
     const tipoMap = {};
     for (const p of ALL_PAIRS) {
       tipoMap[p.tipo] = (tipoMap[p.tipo] || 0) + 1;
@@ -408,6 +444,30 @@ async function init() {
   } catch(e) {
     ALL_PAIRS = [];
   }
+
+  // Load conflictología DB
+  try {
+    const r = await fetch('/api/conflictologia-db');
+    const d = await r.json();
+    CONFLICTO_DB = d.systems || {};
+    // Set counts
+    const sysMap = {
+      respiratorio: 'respiratorio', digestivo: 'digestivo',
+      cardiovascular: 'cardiovascular', locomotor: 'locomotor',
+      genital: 'genital', urinario: 'urinario', endocrino: 'endocrino',
+      inmunologico: 'inmunologico', piel: 'piel', neurosensorial: 'neurosensorial'
+    };
+    for (const [key, slug] of Object.entries(sysMap)) {
+      const sys = CONFLICTO_DB[key];
+      if (!sys) continue;
+      const total = Object.values(sys.subsystems).reduce((s, sub) => s + sub.conflicts.length, 0);
+      const el = document.getElementById('cnt-conf-' + slug);
+      if (el) el.textContent = total;
+    }
+  } catch(e) {
+    CONFLICTO_DB = {};
+  }
+
   renderCurrent();
 }
 
@@ -423,11 +483,87 @@ function selectCat(btn) {
 
 function renderCurrent() {
   const staticCats = ['sales','bach','vitaminas','creencias'];
-  if (staticCats.includes(currentCat)) {
+  if (currentCat.startsWith('conflicto_')) {
+    renderConflictologia(currentCat.replace('conflicto_', ''));
+  } else if (staticCats.includes(currentCat)) {
     renderStatic(currentCat);
   } else {
     renderPairs(currentCat);
   }
+}
+
+// ─── Conflictología rendering ─────────────────────────────────────────────────
+function renderConflictologia(sysKey) {
+  document.getElementById('sisFilter').value = '';
+  const query = (document.getElementById('searchBox').value || '').toLowerCase();
+  const sys = CONFLICTO_DB[sysKey];
+
+  const sysLabels = {
+    respiratorio:'Sistema Respiratorio', digestivo:'Sistema Digestivo',
+    cardiovascular:'Sistema Cardiovascular', locomotor:'Sistema Locomotor / Osteomuscular',
+    genital:'Sistema Reproductor', urinario:'Sistema Urinario / Renal',
+    endocrino:'Sistema Endócrino-Metabólico', inmunologico:'Sistema Inmunológico / Linfático',
+    piel:'Sistema Lipofascial / Dermatológico', neurosensorial:'Sistema Neurosensorial'
+  };
+
+  const title = sysLabels[sysKey] || sysKey;
+  document.getElementById('categoryLabel').textContent = title;
+  const scroll = document.getElementById('tableScroll');
+
+  if (!sys || !sys.subsystems || Object.keys(sys.subsystems).length === 0) {
+    scroll.innerHTML = `<div class="empty-state"><p>No hay datos de conflictología para este sistema.</p></div>`;
+    return;
+  }
+
+  let total = Object.values(sys.subsystems).reduce((s, sub) => s + sub.conflicts.length, 0);
+
+  let html = `<div class="category-title" style="color:#ff9f6b">${escHtml(title)}</div>
+    <div class="category-sub">Conflictología psicosomática — ${total} conflictos en ${Object.keys(sys.subsystems).length} subsistemas</div>`;
+
+  for (const [slug, sub] of Object.entries(sys.subsystems)) {
+    // Filter by query
+    let conflicts = sub.conflicts;
+    if (query) {
+      conflicts = conflicts.filter(c =>
+        c.nombre.toLowerCase().includes(query) ||
+        (c.desc || '').toLowerCase().includes(query)
+      );
+      if (!conflicts.length) continue;
+    }
+
+    html += `<div style="margin-bottom:16px">
+      <div style="font-size:.7rem;font-weight:700;color:#ff9f6b;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
+        ${escHtml(sub.label)} <span style="color:var(--muted);font-weight:400;text-transform:none">(${conflicts.length})</span>
+      </div>
+      <div class="items-grid">`;
+
+    for (const c of conflicts) {
+      const cid = 'conf_' + sysKey + '_' + btoa(encodeURIComponent(c.nombre)).replace(/[^a-z0-9]/gi,'').slice(0,16);
+      const isChk = confirmed.some(x => x.id === cid);
+      const hasDesc = c.desc && c.desc !== c.nombre;
+      html += `<div class="item-row ${isChk?'checked':''}" onclick="toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')">
+        <input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"/>
+        <div class="item-body">
+          <div class="item-nombre">${escHtml(c.nombre)}</div>
+          ${hasDesc?`<div class="item-condiciones" style="color:#c8b8e8;font-style:italic">${escHtml(c.desc)}</div>`:''}
+        </div>
+      </div>`;
+    }
+    html += `</div></div>`;
+  }
+
+  scroll.innerHTML = html;
+}
+
+function toggleConflicto(id, nombre, sysKey, subLabel) {
+  const idx = confirmed.findIndex(c => c.id === id);
+  if (idx >= 0) {
+    confirmed.splice(idx, 1);
+  } else {
+    confirmed.push({ id, nombre, tipo: 'conflicto', cat: sysKey, sub: subLabel });
+  }
+  renderCurrent();
+  renderConfirmed();
 }
 
 // ─── Pairs rendering ──────────────────────────────────────────────────────────

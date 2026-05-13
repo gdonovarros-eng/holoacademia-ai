@@ -1,0 +1,2126 @@
+{
+  "version": "1.0",
+  "systems": {
+    "respiratorio": {
+      "title": "Sistema Respiratorio",
+      "subsystems": {
+        "nasal_conflictolog_a_lar_ngea": {
+          "label": "Nasal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de pestilencia                                         Conflicto de expresión",
+              "desc": "Conflicto de pestilencia                                         Conflicto de expresión"
+            },
+            {
+              "nombre": "Prohibición de la expresión",
+              "desc": "No puedo evitar oler a esa persona/lugar                   2 Conflicto de sospecha                                            Tengo que callar para sobrevivir Alguien conspira en mi contra                                    Conflicto de secreto Conflicto de presentimiento                                3"
+            },
+            {
+              "nombre": "Hay una verdad que no puedo revelar",
+              "desc": "Siento que algo malo va a suceder Conflicto de amenaza invisible                                   Conflicto de timidez"
+            },
+            {
+              "nombre": "Necesito contar esto pero no puedo",
+              "desc": "En el momento crítico no estás Conflicto de relación tensa"
+            },
+            {
+              "nombre": "Conflicto de comunicación excesiva",
+              "desc": "Alguien cercano me desagrada constantemente Deseo de separación del exterior                                 Hablé de mas y provoqué consecuencias indeseables Necesito recuperarme en soledad                                  Miedo cerval Conflicto de presión                                       2"
+            },
+            {
+              "nombre": "No se como adaptarme a esta nueva situación                      Algo/alguien me provoca un pánico repentino",
+              "desc": "estresante                                                       Conflicto de grito suprimido Conflicto de dirección                                           No pude gritar en el momento No se como o hacia donde orientarme                              Conflicto de impotencia + pánico No pude hacer nada ante el terror Conflicto de dirección equivocada"
+            },
+            {
+              "nombre": "Miedo a responder un ataque",
+              "desc": "Transito en el camino incorrecto                           5 Deseo de aumentar el contacto con alguien ausente                Si me defiendo algo malo pasará Extraño el intercambio con el que ya no está Miedo a la curación imposible"
+            },
+            {
+              "nombre": "Conflicto de agresión",
+              "desc": "Siento que no me voy a curar                               1 Angustia                                                         Algo me ha hecho sentir lastimado Hay algo que no se como resolver Miedo a la sangre Ver sangre me provoca malestar"
+            }
+          ]
+        },
+        "traqueal": {
+          "label": "Traqueal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de rechazo ante una presencia invasora                 Miedo frontal + impotencia",
+              "desc": "Conflicto de rechazo ante una presencia invasora                 Miedo frontal + impotencia"
+            },
+            {
+              "nombre": "Impotencia de no poder tomar el espacio para vivir",
+              "desc": "Un familiar me invade, lo necesito fuera                   2 Miedo frontal                                                    Me es prohibido ocupar mi lugar esencial Algo/alguien frente a mi me aterroriza                           Conflicto de separación + asfixia Miedo a sentir dolor"
+            },
+            {
+              "nombre": "Perderte me deja sin aliento",
+              "desc": "Me aterra el sufrimiento Miedo al futuro Siento que vienen problemas Miedo a la amenaza incomprensible Algo metafísico/sobrenatural me lastimará"
+            }
+          ]
+        },
+        "bronquial_conflictolog_a_alveolar": {
+          "label": "Bronquial",
+          "conflicts": [
+            {
+              "nombre": "Miedo en el territorio                                                   Miedo a la muerte por hipoxia",
+              "desc": "Miedo en el territorio                                                   Miedo a la muerte por hipoxia"
+            },
+            {
+              "nombre": "Miedo a la muerte",
+              "desc": "Algo que no se donde está, viene hacia mi espacio vital              2 Miedo frontal en el territorio                                           Siento que me voy a morir Mi adversario está frente a mí, en mi lugar vital                        Conflicto de muerte Miedo a perder contacto con mi espacio                               3"
+            },
+            {
+              "nombre": "Estuve a punto de morir",
+              "desc": "Algo/alguien me aleja de mi espacio vital Miedo a no poder reaccionar                                              Conflicto de hipoxia"
+            },
+            {
+              "nombre": "Ya no hay muestras de afecto con alguien",
+              "desc": "Algo/alguien me quiere despojar de mi espacio vital Injusticia + resentimiento en el territorio"
+            },
+            {
+              "nombre": "Conflicto existencial profudo",
+              "desc": "Estoy enojado por algo injusto en mi espacio vital Amenaza dentro de la relación social                                     No se cual es mi razón de vivir Algo/alguien amenaza mi intercambio afectivo con alguien                 Conflicto de tristeza Invasión en el territorio                                            2"
+            },
+            {
+              "nombre": "No se como salir de esta emoción",
+              "desc": "Alguien rompe mi armonía, dentro de mi espacio vital Conflicto de asfixia                                                     Conflicto de duelo bloqueado"
+            },
+            {
+              "nombre": "No hay nadie para mi",
+              "desc": "Quiero expulsar algo/alguien que no soporto Conflicto de obstrucción Hay una situación imposible de resolver Conflicto de obstrucción impedida No puedo permitir que esta amenaza entre en mi"
+            }
+          ]
+        },
+        "diafragm_tica": {
+          "label": "Diafragmática",
+          "conflicts": [
+            {
+              "nombre": "Estoy en contra de algo/alguien que no cederá                            Conflicto Vivo/Muerto",
+              "desc": "Conflicto de toxicidad"
+            },
+            {
+              "nombre": "Me quiero morir",
+              "desc": "El ambiente que respiro es venenoso, hostil Conflicto de vulnerabilidad Conflicto de insulto                                                     Necesito defenderme"
+            },
+            {
+              "nombre": "Conflicto de sobrevivencia + impotencia",
+              "desc": "Me agredieron verbalmente y es injusto Conflicto de aliento insuficiente                                        Siento que no podré sobrevivir No es posible descansar, recuperarme Conflicto del último aliento Necesito aferrarme a mi último residuo de fuerza Conflicto de libertad impedida No puedo ser/hacer lo que soy/quiero Conflicto de obligación Estoy sumergido en responsabilidades Conflicto financiero Estoy muy presionado en tema de dinero Conflicto de ingestión No quiero tragarme esta sustancia (líquida Conflicto de sometimiento Me siento subyugado ante una autoridad Conflicto de autoafirmación No quiero molestar con mi presencia"
+            }
+          ]
+        },
+        "gripal": {
+          "label": "Gripal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de pelea dentro del territorio",
+              "desc": "Riña con alguien que comparte mi espacio Conflicto de pelea dentro del territorio + necesidad de calor      CONFLICTOLOGÍA Tengo una riña, al mismo tiempo que necesito cariño Conflicto de amor/odio"
+            }
+          ]
+        },
+        "fetal": {
+          "label": "Fetal/",
+          "conflicts": [
+            {
+              "nombre": "No te soporto pero no puedo vivir sin ti                         TRANSGENERACIONAL",
+              "desc": "No te soporto pero no puedo vivir sin ti                         TRANSGENERACIONAL"
+            },
+            {
+              "nombre": "Memoria fetal de cordón en cuello",
+              "desc": "Memoria fetal de cordón en cuello"
+            }
+          ]
+        },
+        "de_la_tos_2_yaciente": {
+          "label": "De La Tos                                   2 Yaciente",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de rechazo                                             3 Memoria de secreto",
+              "desc": "No soporto la presencia, opinión, forma de ser de alguien        4 Memoria de ambiente tóxico Memoria de asfixia virtual"
+            }
+          ]
+        },
+        "asm_tica_ambiente_opresivo": {
+          "label": "Asmática                                       (Ambiente Opresivo)",
+          "conflicts": [
+            {
+              "nombre": "Memoria de ahogo (Agua)",
+              "desc": "Conflicto de enojo interiorizado"
+            },
+            {
+              "nombre": "2 Memoria de asfixia (Gas)",
+              "desc": "Algo me molesta mucho pero no lo voy a hacer notar Conflicto de separación del territorio"
+            },
+            {
+              "nombre": "Memoria de incendio (Humo)",
+              "desc": "Memoria de incendio (Humo)"
+            },
+            {
+              "nombre": "4 Memoria de silicosis (Partículas)",
+              "desc": "Estoy lejos de mi espacio vital Memoria de estrangulamiento Conflicto de autoafirmación + impotencia                         5"
+            },
+            {
+              "nombre": "(Mecánico)",
+              "desc": "Quiero hacer notar mi presencia, pero no tengo derecho             Memoria de decapitación/degüello (Herida)"
+            }
+          ]
+        },
+        "de_apnea_2": {
+          "label": "De Apnea",
+          "conflicts": [
+            {
+              "nombre": "Memoria de suicidio",
+              "desc": "Conflicto de camuflaje de defunción (Impidiendo la respiración)"
+            },
+            {
+              "nombre": "3 Memoria de sepultura en vida",
+              "desc": "Tengo que aparentar estar muerto para sobrevivir"
+            }
+          ]
+        },
+        "tabaquista": {
+          "label": "Tabaquista",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de opresión",
+              "desc": "Mi ambiente me limita Conflicto de fase oral No pude conocer el mundo a través de la boca Conflicto de destete No me amamantaron lo suficiente = 79 posibles microbios implicados ¿Hay algún otro microbio típico implicado? ¿Es de la lista local? ¿Es de la región cabeza? ¿Tronco? ¿Etc…? Zona X par 1/2/3/4… ¿Hay algún otro microbio típico implicado? ¿Es de la región cabeza? ¿Tronco? ¿Etc…? Zona X par 1/2/3/4… ¿Hay algún otro par que necestes? -Repetir hasta terminar (Modulo I p.233) trascender el estado de conflicto implicado e X síntoma/para trascender X estado ¿Se requiere sedar? ¿Tonificar? ¿Es conveniente estimular algún otro? -Checar también puntos maestros Elegir y aplicar método de estimulación. ¿Es conveniente estimular alguno más? Estimular los puntos indicados Comentar sobre la naturaleza de los conflictos, orientando a la comprensión de su sentido, agendar un programa terapéutico, para trabajar 1 conflicto por sesión. Hasta el sanación o la disposición. Enfoque en los conflictos encontrados Nelson, etc… opcional: tejidos/órganos/sistemas:"
+            }
+          ]
+        }
+      }
+    },
+    "digestivo": {
+      "title": "Sistema Digestivo",
+      "subsystems": {
+        "bucal": {
+          "label": "Bucal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de respuesta ante la injuria",
+              "desc": "“No puedo responder ante el insulto” Pequeño conflicto de cochinada “Me han herido levemente, y no respondí” Conflicto de bocado no atrapado “No puedo alimentarme / captar lo que deseo” Pérdida de contacto con el protector “Ya no he hablado con mi padre” Conflicto de alimento tóxico                                       Conflicto de nudo en la garganta"
+            },
+            {
+              "nombre": "“Tengo que aclarar lo que dije”",
+              "desc": "“No pude decirle la solución, expresar mi idea” Conflicto de bocado perdido                                        Conflicto de expulsión de bocado"
+            },
+            {
+              "nombre": "Conflicto de bocado difícil de tragar",
+              "desc": "“Hablar es peligroso, prohibido, debo masticar silencioso”     4 Conflicto de agresión prohibida                                    “Quiero que se deslice el bocado que deseo” “No tengo derecho a defenderme”                                    Miedo a la inanición Conflicto de poder interiorizado                               5"
+            },
+            {
+              "nombre": "“No se si seré capaz de encontrar alimento”",
+              "desc": "“No puedo expresar mi poder” Conflicto de autoagresión                                          El hámster guarda comida en las mejillas."
+            },
+            {
+              "nombre": "Conflicto de escupitajo",
+              "desc": "“No puedo revelar esta verdad, aunque quiera”                  3 Desvalorización de la palabra                                      “Alguien me escupió insultantemente” “Mis palabras no son escuchadas, no importan.”                     Conflicto de escupitajo impedido Conflicto de expresión insuficiente                            4"
+            },
+            {
+              "nombre": "“No tengo derecho a escupir”",
+              "desc": "“No puedo desmenuzar mis ideas para contarlas” Conflicto de bocado imposible Conflicto de rabia + incapacidad de expresión                      “No tengo derecho a comer, a almacenar alimento” “No logro expresarte mis opiniones enojadas” Desvalorización de la expresión “No dije lo suficiente” Conflicto de pérdida del sabor “La vida me sabe a nada” Desvalorización sexual con matiz lingual “No pude satisfacer al otro con mi lengua” Conflicto de asfixia por deglución “Alguien ha muerto o casi muere por atragantarse”"
+            }
+          ]
+        },
+        "estomacal": {
+          "label": "Estomacal",
+          "conflicts": [
+            {
+              "nombre": "“No estoy seguro de tener eso, me lo pueden quitar”",
+              "desc": "“Se me puede escapar todavía” Conflicto de carencia + repugnancia"
+            },
+            {
+              "nombre": "“Me niegan lo que quiero ingerir",
+              "desc": "y lo que me imponen es repugnante” Conflicto de bocado obligado                                      Contrariedad en el territorio (Sin rencor)"
+            },
+            {
+              "nombre": "bocado                                                            “Soy incapaz de escoger, escoger es renunciar”",
+              "desc": "“Siento impotencia de no atrapar y tragar el bocado”              Conflicto de incomprensión “Me siento incomprendido” Conflicto de intransigencia                                       Conflicto de desprotección"
+            },
+            {
+              "nombre": "“Quiero estar en contacto profundo con lo que absorbo”",
+              "desc": "“Me siento atiborrado de lo que ingiero”                          Conflicto de invasión del enemigo Conflicto de fusión alimentaria madre/hijo                    2"
+            },
+            {
+              "nombre": "“El enemigo ha penetrado y me ha invadido” –Hago más ácido",
+              "desc": "“Todo el alimento del niño vendrá de mí”                          Conflicto de ataque Conflicto de incompetencia alimentaria                        3"
+            },
+            {
+              "nombre": "“El exterior me ataca y me pone en peligro”",
+              "desc": "“Soy un cachorro, dependo de otro para comer y sobrevirir”        Conflicto de imposición + autodestrucción"
+            },
+            {
+              "nombre": "“Me impusieron algo que no supe rechazar,",
+              "desc": "Conflicto de amor materno tóxico                                  lo intento destruir pero me destruyo también” “El afecto que viene de mi madre es peligroso para mí”            Conflicto de vigilancia insuficiente Conflicto de atragantamiento con matiz familiar               5 “Hay una entrada/puerta que está desprotegida”"
+            },
+            {
+              "nombre": "“Hay un vínculo inaceptable con mi familia que se me",
+              "desc": "atraganta” Conflicto de peligro en la asimilación Conflicto de deglución insuficiente                           1 “Terminar de asimilar esto es un peligro para mí”"
+            },
+            {
+              "nombre": "“No estoy seguro de digerir (real o afectivo) lo que me",
+              "desc": "Conflicto de expresión tardía tragué”                                                       2 “Tardé demasiado en expresar mi desacuerdo” Miedo o inseguridad del bocado tragado Conflicto de bocado arrebatado"
+            },
+            {
+              "nombre": "“El bocado todavía se me puede escapar, hay que tragarlo      3",
+              "desc": "todo”                                                             “Me quitaron aquello que estaba seguro de poseer” Conflicto de carencia + indigestión                               Desvalorización ante el futuro"
+            }
+          ]
+        },
+        "intestinal_delgada": {
+          "label": "Intestinal Delgada",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de indigestión",
+              "desc": "“Esta situación es demasiado para asimilarla” Conflicto de Carencia + indigestión “Deseo lo que no tengo y me dan lo que no deseo” Conflicto de bocado no nutritivo “No puedo sacar provecho de esto que tengo” Conflicto de lección no aprendida “No hay nada productivo en la situación que atravesé” Conflicto de indecisión “No se que opción elegir” Conflicto de asimilación acelerada “Necesito acortar el tiempo para integrar rápidamente una situación” Conflicto de digestión impedida “No quiero hacer que el bocado se integre a mí” Conflicto de indigestión + impotencia “No puedo hacer que las cosas avancen” Conflicto de integración familiar “No quiero agruparme con mi grupo” Conflicto con la figura paterna “Tengo problemas con mi padre / tutor / ley” Conflicto de destete “Dejé de mamar / fumar repentinamente” Conflicto de mesa compartida “Hay alguien impuesto con quien no quiero compartir” Conflicto de creencia impuesta “Me imponen un sistema de pensamiento” Conflicto de idea alienígena “Me siento parasitado por una idea extraña” Conflicto de megalomanía “Yo soy el más ____ del mundo” Conflicto de soledad autoimpuesta “Deseo / necesito estar solo” Conflicto de territorio con matiz familiar"
+            },
+            {
+              "nombre": "“Quiero que alguien salga de mi familia”",
+              "desc": "“Yo quiero salirme de la familia”"
+            }
+          ]
+        },
+        "hep_tica": {
+          "label": "Hepática",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de carencia",
+              "desc": "Conflicto de carencia"
+            },
+            {
+              "nombre": "“No tengo suficiente amor/afecto”",
+              "desc": "“Carezco de lo indispensable para sobrevivir” Miedo a la carencia"
+            },
+            {
+              "nombre": "“Tengo miedo de carecer de lo necesario”",
+              "desc": "Tengo miedo a que no sea suficiente Miedo a morir de hambre “Me aterra morir de inanición” Conflicto de imposibilidad de digestión “No puedo comer porque tengo una imposibilidad física” Conflicto de olvido vital “Tengo miedo de olvidar algo esencial antes de un evento” Conflicto de envenenamiento “Estoy digiriendo algo que es tóxico para mí” Necesidad reestructura familiar “Mi familia no es como yo quisiera” “Mi familia no me da los medios para ser feliz” “Vivo en un estado de codependencia” Conflictos de sangre “Miedo a perder/que me falte sangre” Conflicto de carencia alimentaria “Estoy en estado de supervivencia” Conflicto de digestión obligada “Me obligan a comer” Conflicto de eyección “Me siento expulsado” Conflicto de inyección “Me obligaron a introducir algo en mí” Conflicto de pertenencia en el grupo “Me siento foráneo, incomprendido, rechazado por la familia” Conflicto de resentimiento indefinido “Siento rencor hacia el mundo/no se con quién/a mí mismo” Miedo a lo desconocido “Siento miedo e incertidumbre de eso que no veo, algo en mí” Conflicto de rencor durante la gestación “Siento un fuerte rencor mientras estoy embarazada” Conflicto de objeto guardado “Quiero guardar hasta los despojos de la familia” “Me quiero quedar hasta con la basura de la relación” “Guardo un objeto viejo para tener contacto con su dueño”"
+            }
+          ]
+        },
+        "biliar": {
+          "label": "Biliar",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de resentimiento + memoria",
+              "desc": "“Guardo este rencor para nunca olvidarlo” Conflicto de rencor + indigestión “No puedo asimilar esta situación porque la resiento demasiado” Conflicto de impotencia + peligro “No puedo sacar algo de mí” Miedo al resentimiento"
+            },
+            {
+              "nombre": "“Me preocupa que otro me tenga rencor. No me perdonará”",
+              "desc": "“No quiero que alguien se enoje conmigo” Conflicto de cálculo “Me paso la vida calculando todo” Conflicto de inseguridad con enojo + impotencia “Me molesta de mí que no puedo gestionar mi vida” Conflicto de carga + enojo “Me enoja que tengo que arrastrar a alguien como grillete” Conflicto de dureza “Tengo que ser duro, intransigente como los demás” Conflicto de rabia incontenible “Ya no logro calmar mis enojos” Resentimiento, rencor “Me da rabia lo que me hicieron” Conflicto de injusticia “Lo que viví fue rabiosamente injusto” Conflicto de contrariedad en el territorio “Me enfurece esta imposición en mi área” Conflicto de carencia + cólera “Me enoja no poder tener lo que deseo” Conflicto de cólera “Enojo en grado superlativo”"
+            }
+          ]
+        },
+        "intestinal_gruesa": {
+          "label": "Intestinal Gruesa",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de vileza con matiz de callejón sin salida",
+              "desc": "“No puedo salir de esta cochinada” Conflicto de privación del tesoro “Me quitan mis dulces, mi domingo, lo bueno que poseo” Conflicto de vileza imposible de evacuar “Nunca me libraré /asimilaré de esta suciedad” Conflicto de vileza “Me han hecho algo muy vil, muy sucio” Conflicto de vileza con matiz de ascendencia"
+            },
+            {
+              "nombre": "“Mi padre/tío/abuelo/protector/profesor me hizo una",
+              "desc": "vileza”                                                               Miedo territorial con matiz de abandono “Tengo miedo de que me dejen aquí” Conflicto de vileza con matiz colateral"
+            },
+            {
+              "nombre": "Conflicto de situación en el territorio",
+              "desc": "“Mi hermano/primo/pareja me hizo una vileza”                    2 Conflicto de vileza con matiz subordinado                             “No se como ocupar mi lugar” “Mi hijo/sobrino/ahijado/alumno me hizo una vileza”                   Conflicto de rol en el territorio Conflicto de contacto materno                                   3 “Ya no quiero ocupar el lugar que ocupo”"
+            },
+            {
+              "nombre": "“No quiero perder a mi madre, la quiero tener conmigo,",
+              "desc": "necesito a mi madre”                                                  Centro de atención Conflicto de liquidez financiera                                      “Quiero que todos me vean y a nadie más” “El dinero se me está yendo vertiginosamente”                         Conflicto de extravío Conflicto de vileza + enojo                                     5"
+            },
+            {
+              "nombre": "“No se donde estoy”",
+              "desc": "“Eso es asqueroso y me molesta” Conflicto de indigestión recurrente                                   Conflicto de identidad “Paso soportando situaciones que ya no aguanto”                 1 “No se definir mi personalidad” Conflicto de afecto intermitente"
+            },
+            {
+              "nombre": "“No se cual es mi lugar en esto”",
+              "desc": "“A veces me dan cario, pero cuando no, me inflamo” Conflicto de territorio con matiz familiar                            Conflicto de identidad familiar"
+            },
+            {
+              "nombre": "“Quiero que alguien salga de mi familia”                              “No tengo un lugar dentro de la familia”",
+              "desc": "“Yo quiero salirme de la familia”                                     Conflicto de identidad familiar con matiz de suciedad Conflicto financiero con matiz de vileza                        3"
+            },
+            {
+              "nombre": "“Hay vilezas en mi familia que me impiden ser yo”",
+              "desc": "“Me han robado y encima me culpan” Conflicto de vileza con matiz de contacto                             Conflicto de enraizamiento"
+            },
+            {
+              "nombre": "“Necesito aumentar la superficie o tiempo de contacto con             “No tengo raíces, no tengo hogar”",
+              "desc": "lo vil”                                                               Conflicto de territorio con matiz de resentimiento “Le tengo resentimiento a alguien que vive aquí” Conflicto de vileza + impotencia “Me siento impotente para sacar / eliminar esta vileza Conflicto de contrariedad extrema “Injusticia extrema; Esto no lo puedo perdonar” Conflicto de pedazo retenido"
+            },
+            {
+              "nombre": "“No puedo soltar/ expulsar esta situación / objeto /",
+              "desc": "persona” Conflicto de identidad territorial “No tengo un lugar en el territorio Conflicto de identidad familiar"
+            },
+            {
+              "nombre": "“No tengo un lugar dentro de la familia”",
+              "desc": "“Mi familia no me reconoce”"
+            }
+          ]
+        },
+        "anal": {
+          "label": "Anal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de identidad débil",
+              "desc": "“No siento el carácter para afirmarme” Miedo al rechazo “No se decir que no, me preocupa no ser amado” Separación de la identidad"
+            },
+            {
+              "nombre": "“Me siento separado de mi identidad, de lo que soy,",
+              "desc": "injustamente” Conflicto de identidad + impotencia “No es posible encontrar mi lugar” Conflicto de rechazo profundo + rabia “Me enoja no saber quien soy y como ser aceptado” Conflicto grave de miedo “Siento paralizarme ante lo que me aterra” Conflicto de identidad inexistente"
+            },
+            {
+              "nombre": "“No hay ningún modelo que reflejar, no estabilizo mi",
+              "desc": "identidad” Conflicto de intoxicación “Necesito deshacerme de lo que me envenena” Conflicto de miedo financiero “Tengo miedo de perder mi dinero” Conflicto grave de resentimiento “Siento un rencor al máximo” Conflicto grave de identidad secreta “Mi identidad necesita salir a la luz” Disolución de la identidad “Ya no eres mi hijo / Ya no eres nada / estás anulado”"
+            }
+          ]
+        },
+        "peritoneal": {
+          "label": "Peritoneal",
+          "conflicts": [
+            {
+              "nombre": "Miedo a la dinámica interna",
+              "desc": "Miedo a la dinámica interna"
+            },
+            {
+              "nombre": "“Tengo miedo de lo que ocurre en mi vientre”",
+              "desc": "“Algo me carcome por dentro” Agresión al abdomen"
+            },
+            {
+              "nombre": "“Sentí agredida mi cavidad abdominal”",
+              "desc": "“Me apuñalaron el vientre” Miedo a la enfermedad sexual “No quiero que nada me pase en el vientre” Miedo renal (Imprecisión del usuario) “Temo por la salud de mi riñón” Conflicto de territorio de evacuación “Ya no hay lugar para soltar las vilezas familiares” Conflicto intestinal + conflicto peritoneal -Múltiples combinaciones Miedo a la agresión en el vientre “No quiero que el exterior agreda mi interior” Miedo de la profundidad"
+            },
+            {
+              "nombre": "“Tengo miedo en lo más escondido, recóndito de mí”",
+              "desc": "“Me han atacado en lo más profundo” Conflicto de oído sordo con matiz familiar “No quiero escuchar el consejo familiar” Conflicto de vileza + agresión “Necesito protegerme de una vileza, algo asqueroso” Desvalorización + vileza “Me siento menos por la vileza que sufrí”"
+            }
+          ]
+        },
+        "del_quimo": {
+          "label": "Del Quimo",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de rechazo",
+              "desc": "“No soporto el exterior, los acontecimientos” Conflicto de miedo súbito “Me angustia repentinamente un evento” Miedo a enfermedad estomacal “Me aterra un diagnóstico negativo en mi estómago” Conflicto de libertad social insuficiente “Me falta libertad en el intercambio social”                         Conflicto de vileza + consternación Conflicto de libertad impedida                                1 “Me siendo en shock por la cochinada que vivo” “Me imponen tanto que quiero poner aire de por medio”"
+            },
+            {
+              "nombre": "Conflicto de soltar",
+              "desc": "“Me aburre esta vida, quiero desechar lo que me fastidia” “Necesito más espacio vital”                                  2 “No puedo soltar creencias, actitudes, prejuicios, principios” Conflicto de vileza de lento tránsito                           Conflicto grave de indigestión + impotencia y sumisión “No puedo eliminar esta vileza”                               3 “Debo vivenciar una vileza tremenda sin poder hacer Conflicto de muerto sin sepultura                               nada” “Alguien ha muerto y no sabemos donde está el cuerpo”           Conflicto leve de vileza Conflicto de autoafirmación                                   4"
+            },
+            {
+              "nombre": "“Algo / Alguien me hizo pasar un mal momento”",
+              "desc": "“Necesito anunciar que existo” Conflicto de espacio vital + enojo                                   Conflicto de miedo visceral"
+            },
+            {
+              "nombre": "“Quiero eliminar lo improductivo, lo que no sirve, lo",
+              "desc": "Conflicto de identidad en el territorio"
+            },
+            {
+              "nombre": "rancio”",
+              "desc": "“No pertenezco a este lugar” Conflicto de separación en el territorio                        Conflicto de rechazo intelectual"
+            },
+            {
+              "nombre": "2 “Rechazo el sistema de creencias que me quieren",
+              "desc": "“Me siento asilado en este lugar” Conflicto de territorio ajeno                                   imponer”"
+            },
+            {
+              "nombre": "Conflicto de autoridad injusta",
+              "desc": "“Estoy en un lugar al que no pertenezco” Conflicto de desaceleración                                          “No me quiero alinear a la conducta que me imponen”"
+            },
+            {
+              "nombre": "“Todo va demasiado rápido, quiero que menos problemas                Conflicto de negación imposible",
+              "desc": "me lleguen”                                                   4 “No se decir que no, aunque lo rechazo profundamente” Conflicto de vileza mal gestionada"
+            },
+            {
+              "nombre": "Conflicto de envenenamiento",
+              "desc": "“No se como solucionar esta vileza, necesito tiempo” “Estoy digiriendo algo que es tóxico para mí” Conflicto de viaje obligado “Tengo que ir a un lugar al que no quiero” Conflicto de rapidez Conflicto grave de miedo                                      1"
+            },
+            {
+              "nombre": "“Tengo que acabar esto rápidamente”",
+              "desc": "“Necesito deslindarme de esta angustia inmediatamente” Conflicto de vileza con matiz de impotencia                          Miedo a los problemas"
+            },
+            {
+              "nombre": "“No quiero perder a mi madre, la quiero tener conmigo,        3",
+              "desc": "necesito a mi madre”                                                 “Algo me preocupa frecuentemente” Conflicto de liquidez financiera “El dinero se me está yendo vertiginosamente”"
+            }
+          ]
+        }
+      }
+    },
+    "endocrino": {
+      "title": "Sistema Endócrino-Metabólico",
+      "subsystems": {
+        "hipofisiaria": {
+          "label": "Hipofisiaria",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de inferioridad",
+              "desc": "Conflicto de inferioridad"
+            },
+            {
+              "nombre": "“No me siento a la altura”",
+              "desc": "“Soy demasiado pequeño para lograr el objetivo” Conflicto de perfeccionismo “No tengo derecho a equivocarme (Ante la mirada de algo/alguien)” Conflicto de ascensión “Tengo que escalar / lllegar / alcanzar una alta meta / portería / rango” Conflicto de inmersión “Tengo que sacar la cabeza fuera del agua, estoy ahogándome en problemas” Conflicto de defensa insuficiente “Necesito aparentar mas fuerza y tamaño para defenderme / lograr” Conflicto de crecimiento"
+            },
+            {
+              "nombre": "“Está prohibido, es peligroso crecer / ser adulto / mas grande que alguien”",
+              "desc": "“Para qué crecer, ya es demasiado tarde” Conflicto de ahorcamiento “Suicidio del colgado” Conflicto de lactancia"
+            },
+            {
+              "nombre": "“Tengo que producir mas leche”",
+              "desc": "“No puedo alimentar a los míos” Conflicto introyecto de infancia “Quiero darle de comer a mi niño interno para que crezca” Conflicto de extravío del buen camino"
+            },
+            {
+              "nombre": "“No puedo / debo encontrar el buen camino”",
+              "desc": "“Es peligroso cambiar de dirección, no puedo cambiar de donde estoy” Conflicto de producción"
+            },
+            {
+              "nombre": "“Mi plan es no equivocarme nunca en mis decisiones”",
+              "desc": "“Tengo que esforzarme al máximo” Conflicto de satisfacción imposible “No puedo / debo / logro satisfacer a X, es insaciable”"
+            }
+          ]
+        },
+        "tiroidea": {
+          "label": "Tiroidea",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de rapidez",
+              "desc": "“No voy suficientemente rápido” “He llegado demasiado tarde” “Tengo que recuperar el tiempo perdido” Conflicto de urgencia"
+            },
+            {
+              "nombre": "“Necesito llegar porque hay mucho por hacer”",
+              "desc": "“Necesito hacerlo más rápido” Conflicto de evolución demasiado lenta"
+            },
+            {
+              "nombre": "“Necesito saltarme estas etapas”",
+              "desc": "“Quiero evolucionar más rápido” Conflicto de rapidez + impotencia"
+            },
+            {
+              "nombre": "“Hay que actuar rápidamente y nadie hace nada”",
+              "desc": "“Pedí auxilio y nadie llegó a tiempo” Conflicto de miedo frontal ante un peligro con matiz de tiempo"
+            },
+            {
+              "nombre": "“No pude dar la alarma a tiempo”",
+              "desc": "“Me quedo en mi lugar cuando el peligro ya viene” Conflicto de rapidez fútil “Tengo que ir deprisa y de todos modos no funciona” Conflicto de objetivo en rapidez “Tengo que terminar / concretar rápidamente” Conflicto de bocado ocular"
+            },
+            {
+              "nombre": "“Tengo que atrapar el bocado con la mirada”",
+              "desc": "“Tengo que ver que esto pase rápidamente” Conflicto de peligro con matiz de velocidad “Tengo que ver venir el peligro y escapar rápidamente” Conflicto de lentitud “Todo va demasiado rápido, necesito alentar el tiempo” “Es peligroso ir demasiado rápido” “Hubiera querido nacer antes” Conflicto de detención del tiempo “Me arrepiento de lo que pasó, no debí dejar pasar el tiempo” “Nunca lo voy a lograr si el tiempo sigue avanzando” “No quiero enfrentar lo que viene” “Necesito más tiempo” “Esto va mas allá de mi capacidad” Conflicto de intolerancia a la velocidad"
+            },
+            {
+              "nombre": "“Me niego a ir más deprisa”",
+              "desc": "“Todo deberia de ir más lentamente” Conflicto de dependencia ante la velocidad “Solo puedo vivir si el tiempo se detiene / se hace mas lento” “El tiempo pasa tan rápido que tengo que destruirlo” “Solo si el tiempo pasa mas lento sere querido / aceptado / reconocido” “Necesito regresar al pasado” “Me es imposible avanzar hacia el futuro” Conflicto de encrucijada “Estoy en un problema, no se como actuar” “Tengo miedo a comprometerme con esto” “Tengo que apurarme pero me siento bloqueado” Memoria de estrangulamiento Gestación con el cordón en el cuello"
+            }
+          ]
+        },
+        "paratiroidea": {
+          "label": "Paratiroidea",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de esfuerzo insuficiente, impotencia",
+              "desc": "“No logro lo necesario para atrapar el bocado” “Quiero reaccionar ante algo pero no lo logro” “No puedo tragar el bocado porque me lo impeden” Conflicto de sumisión parental “Mis padres me quieren dominar, no encuentro el equilibrio entre ellos y yo” Conflicto de impotencia con matiz de muerte “Quiero escapar del peligro mortal pero no puedo”"
+            },
+            {
+              "nombre": "“Me voy a mrir y no puedo impedirlo”",
+              "desc": "“Hay un enemigo contra el que no puedo luchar” “Me quede congelado en lugar de haber actuado”"
+            }
+          ]
+        },
+        "pancre_tica": {
+          "label": "Pancreática",
+          "conflicts": [
+            {
+              "nombre": "Resistencia",
+              "desc": "Resistencia"
+            },
+            {
+              "nombre": "Impotencia",
+              "desc": "Impotencia"
+            },
+            {
+              "nombre": "Amor tóxico",
+              "desc": "Amor tóxico"
+            },
+            {
+              "nombre": "Casa dividida",
+              "desc": "Casa dividida"
+            },
+            {
+              "nombre": "Soledad",
+              "desc": "Soledad"
+            },
+            {
+              "nombre": "Peligro constante",
+              "desc": "Peligro constante"
+            },
+            {
+              "nombre": "Carencia afectiva",
+              "desc": "Carencia afectiva"
+            },
+            {
+              "nombre": "Carencia financiera",
+              "desc": "Carencia financiera"
+            },
+            {
+              "nombre": "Solución no encontrada",
+              "desc": "Solución no encontrada"
+            },
+            {
+              "nombre": "Ignominia",
+              "desc": "Ignominia"
+            },
+            {
+              "nombre": "Proyecto sentido",
+              "desc": "Proyecto sentido"
+            },
+            {
+              "nombre": "Carga transgeneracional",
+              "desc": "Carga transgeneracional"
+            }
+          ]
+        },
+        "suprarrenal": {
+          "label": "Suprarrenal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de liquidez",
+              "desc": "“No tengo dinero disponible” Conflicto de maternidad en peligro"
+            },
+            {
+              "nombre": "“No quiero perder a mi madre”",
+              "desc": "“Mi madre se aleja de mí” Conflicto de soledad “Me encuentro aislado en este momento / lugar / circunstancia” Conflicto de desvalorización de la dirección “Elegí el camino incorrecto, ya no quiero seguir por donde mismo” “No tomé la decisión correcta” / “Seguí la pista equivocada” “Me desvalorizo por no hallar la dirección correcta” Conflicto de desorientación “No se qué camino elegir” / “Me siento perdido” Conflicto de alienación"
+            },
+            {
+              "nombre": "“Soy la oveja negra de la familia” / “Soy el patito fo del grupo” /",
+              "desc": "“Soy un extraterrestre en este mundo” Conflicto de desinterés"
+            },
+            {
+              "nombre": "“No me interesa nada del mundo exterior” /",
+              "desc": "“No quiero que nadie dependa de mí” Conflicto de liquidez “No tengo dinero disponible” Conflicto de maternidad en peligro"
+            },
+            {
+              "nombre": "“No quiero perder a mi madre”",
+              "desc": "“Mi madre se aleja de mí” Conflicto de soledad"
+            },
+            {
+              "nombre": "“Me encuentro aislado en este momento / lugar / circunstancia”",
+              "desc": "“No se que opción elegir” Conflicto de globalidad “Quiero estar satisfecho en todos los aspectos de mi vida” “Si algo se me escapa, debo conservar todas mis referencias” “Ya no soy el mismo de antes, ya no estoy completo” Conflicto de dirección global “Una parte de mi se ha equivocado de camino” Conflicto de dirección sexual"
+            },
+            {
+              "nombre": "“Me he equivocado de pareja”",
+              "desc": "“No tomé el camino sexual correcto” Conflicto de identidad sexual “Mi identidad de género no es reconocida”"
+            }
+          ]
+        }
+      }
+    },
+    "cardiovascular": {
+      "title": "Sistema Cardiovascular",
+      "subsystems": {
+        "miocardial": {
+          "label": "Miocardial",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desvalorización territorial",
+              "desc": "“No valgo nada porque no tengo territorio” Desvalorización por la eficiencia cardíaca “Mi corazón no podrá, no soy lo suficientemente fuerte/poderoso” Conflicto de inferioridad “No me siento a la altura” Conflicto de toxicidad “Me siento envenenado” “Algo me intoxica” “Si la sangre fluye, el veneno me matará” Miedo a salir del territorio “Si salgo de aquí, algo malo me pasará” Conflicto de vida impedida"
+            },
+            {
+              "nombre": "“Alguien me impide vivir”",
+              "desc": "“No puedo vivir como quiero, estoy impedido” Conflicto relativo al suicidio"
+            },
+            {
+              "nombre": "“No puedo vivir, moriré”",
+              "desc": "“Me siento muerto en vida” Memoria de envenenamiento “Me siento envenenado”"
+            },
+            {
+              "nombre": "“Alguien me envenenó”",
+              "desc": "“Me envenenaron en la concepción” “La presencia/actitud de alguien me envenena” Conflicto de tono masculino “Mi padre no me ama”"
+            },
+            {
+              "nombre": "“Carezco de la suficiente masculinidad”",
+              "desc": "“No soy suficientemente hombre” “Soy incapaz de emanciparme” Conflicto de desvalorización vital “Soy incapaz de dar vida” “Soy impotente para valerme por mí mismo” “No puedo dar”"
+            }
+          ]
+        },
+        "valvular": {
+          "label": "Valvular",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de la puerta maternal abierta",
+              "desc": "“Quiero volver a casa” “Quiero regresar a mi madre” “Quiero tener posibilidad de regreso”"
+            },
+            {
+              "nombre": "“Tengo esperanza de regresar algún día”",
+              "desc": "“Quiero que mi madre siempre me pueda aceptar” “Quiero que alguien vuelva a casa” “Quisiera volver atrás” Conflicto de contrariedad parental “Mi padre y mi madre tienen problemas para hablar”"
+            },
+            {
+              "nombre": "“Mi padre quiere regresar pero mi madre no lo permite”",
+              "desc": "“La puerta está cerrada para mi padre” Retorno a lo femenino impedido “Mi madre no me dejará regresar” “No quiero volver nunca a la casa de mamá”"
+            },
+            {
+              "nombre": "“No puedo volver con mi madre”",
+              "desc": "“No quiero que papá regrese a casa de mamá” “Es peligroso que regresen a casa de mi madre” Retorno a lo femenino impedido “Mi madre no me dejará regresar” “No quiero volver nunca a la casa de mamá”"
+            },
+            {
+              "nombre": "“No puedo volver con mi madre”",
+              "desc": "“No quiero que papá regrese a casa de mamá” “Es peligroso que regresen a casa de mi madre” Conflicto de la puerta paternal abierta “Mi padre me corrió pero quiero regresar” “Quiero volver a casa de mi papá”"
+            },
+            {
+              "nombre": "“Deseo reconciliarme con mi padre aunque él no”",
+              "desc": "“Quiero llegar con todo el amor hacia mi padre” “No quiero estar encerrado en este lugar que me aprisiona”"
+            }
+          ]
+        },
+        "del_ritmo": {
+          "label": "Del Ritmo",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de miedo al futuro del amor",
+              "desc": "“No quiero que se frustre esta relación”"
+            },
+            {
+              "nombre": "“Tengo miedo de fracasar en el amor”",
+              "desc": "“No quiero que la relación vaya en esta dirección” “Tengo miedo de perder a esta persona” Conflicto de urgencia de la solución “Necesito acabar ya con este problema” “Hay una persona en peligro y urge salvarla” “Me siento en una lucha que me urge terminar” Conflicto de autoridad injustificada “No aguanto que no me den la razón” “Tu autoridad no representa suficiente para mí” “Quiero tener la razón a como de lugar” Conflicto de conservación tóxica"
+            },
+            {
+              "nombre": "“Quiero conservar a este muerto conmigo”",
+              "desc": "“Deseo quedarme con lo sucio de la familia” Conflicto de miedo a la toxicidad"
+            },
+            {
+              "nombre": "“No quiero que entre veneno a mi corazón”",
+              "desc": "“Tengo miedo a que me envenenen” Conflicto de alargamiento de vida"
+            },
+            {
+              "nombre": "“Quiero vivir lo más posible, lo haré lentamente”",
+              "desc": "“No quiero apurar a mi corazón” Conflicto de frustración sexual “No soy poseída por el macho” “No soy amada por mi pareja” “No le importo al que a mí me importa” “No intereso sexualmente” “No es este el tipo de relación que deseo” Miedo de perder el territorio en el futuro “Siento que perderé mi territorio” “Me estoy arriesgando a perder mi territorio” “Debo atacar por sorpresa para mantener mi territorio” Miedo grave de pérdida del territorio “Tengo que luchar mucho para mantener el territorio”"
+            },
+            {
+              "nombre": "“Tengo que dar más de todo para conservar esto”",
+              "desc": "“Quiero luchar con todas mis fuerzas para no perder el territorio” “Tengo que ser el más fuerte en la lucha”"
+            }
+          ]
+        },
+        "de_membranas": {
+          "label": "De Membranas",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de corazón partido",
+              "desc": "“Me rompe separarme de algo/alguien del hogar” Conflicto de ataque al corazón “Tengo miedo de que me dañen físicamente el corazón” “Tengo miedo de una cirugía a corazón abierto” “Tengo miedo de que una bala me perfore el corazón” Conflicto de riesgo de enfermedad cardíaca"
+            },
+            {
+              "nombre": "“Tengo miedo a infartarme”",
+              "desc": "“Tengo miedo de tener una enfermedad cardiovascular” Conflicto de ataque al territorio “Tengo que proteger mi casa / hogar” “Mi territorio está siendo atacado” “Tengo miedo de que irrumpan en mi casa”"
+            }
+          ]
+        },
+        "arterial": {
+          "label": "Arterial",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de territorio intelectual",
+              "desc": "Conflicto de territorio intelectual"
+            },
+            {
+              "nombre": "“Me han robado mis ideas”",
+              "desc": "“Me arrebataron mis derechos de autor” Conflicto de locura cercana"
+            },
+            {
+              "nombre": "“Me da miedo quedarme loco”",
+              "desc": "“En mi familia hay un loco” Conflicto de territorio sexual"
+            },
+            {
+              "nombre": "“He perdido a mi pareja sexual”",
+              "desc": "“He perdido a un bebé durante el parto” Conflicto de resistencia + lucha “Tengo que dar batalla con todos mis recursos, encontrar soluciones” “Estoy a tope de la presión, estoy que reviento” “Resisto para sobrevivir” Conflicto de vitalidad familiar insuficiente “En mi familia no hay vida, estamos muertos en vida”"
+            }
+          ]
+        },
+        "venosa": {
+          "label": "Venosa",
+          "conflicts": [
+            {
+              "nombre": "Conflicto del hogar imposible",
+              "desc": "Conflicto del hogar imposible"
+            },
+            {
+              "nombre": "“No puedo, no quiero volver a casa, estoy sucio”",
+              "desc": "“No puedo, no quiero dejar entrar a alguien sucio a mi hogar” Conflicto de retención sanguínea imposible “No puedo contener / retener a alguien (familiar)”"
+            }
+          ]
+        },
+        "de_la_presi_n": {
+          "label": "De La Presión",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de acción impedida",
+              "desc": "“No estoy logrando llevar la acción a cabo” “Me preparo mucho pero no llego a la acción”"
+            },
+            {
+              "nombre": "“Actuar es peligroso”",
+              "desc": "“No me apoyan para entrar en acción” “No puedo salir de la casa” “Me siento prisionero” Conflicto de presión"
+            },
+            {
+              "nombre": "“Algo/alguien me presiona demasiado”",
+              "desc": "“Me están corriendo de la casa” Conflicto de líquidos “Me he quedado sin referencias” “No quiero perder a mi madre” “No quiero perder mi dinero” Conflicto de apoyo inexistente"
+            },
+            {
+              "nombre": "“No me llegan recursos que me prometieron”",
+              "desc": "“No me llega la ayuda a la que tengo derecho” Conflicto de frustración sexual + amenaza en el territorio + pérdida de unión sanguínea + conflicto de líquidos"
+            }
+          ]
+        },
+        "adjunta": {
+          "label": "Adjunta",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de expulsión familiar",
+              "desc": "“Quiero sacar a alguien de la familia de aquí” “Quiero sacar a mi familia de mí” “Quiero sacarme a mí mismo de la familia” Conflicto de frustración afectiva"
+            },
+            {
+              "nombre": "“Tengo que filtrar los conflictos que me hacen sentir envenenado”",
+              "desc": "“Quiero que mi relación se vuelva más pura”"
+            },
+            {
+              "nombre": "Miedo a la muerte",
+              "desc": "Miedo a la muerte"
+            },
+            {
+              "nombre": "Conflicto de desvalorización (Varios)",
+              "desc": "Conflicto de desvalorización (Varios)"
+            },
+            {
+              "nombre": "Conflicto de territorio (Varios)",
+              "desc": "Conflicto de territorio (Varios)"
+            },
+            {
+              "nombre": "Lazos de sangre",
+              "desc": "Lazos de sangre"
+            }
+          ]
+        },
+        "lip_dica": {
+          "label": "Lipídica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de falta de apoyo",
+              "desc": "Solo cuento conmigo” “Voy a salir solo de esto” “Los otros me han decepcionado, no cuento con nadie” Conflicto de apoyo indispensable Solo cuento con los demás” “No puedo yo mismo, necesito a otros” “No confío en mis capacidades, dependo de los demás” Conflicto de apoyo exclusivo “Solo cuento con aquellos de mi grupo/tribu/clan/familia”"
+            }
+          ]
+        }
+      }
+    },
+    "locomotor": {
+      "title": "Sistema Locomotor / Osteomuscular",
+      "subsystems": {
+        "locomotora_general": {
+          "label": "Locomotora General",
+          "conflicts": [
+            {
+              "nombre": "Desvalorización grave hacia uno mismo",
+              "desc": "“No valgo nada” Conflicto de rechazo de valores “Tengo que negar / desechar lo que soy” Desvalorización por haber estado ausente “No valgo por haberme ido de aquí” Conflicto de rechazo a uno mismo “Tengo que rechazar mis valores” Conflicto de valores “Los valores que me construyen se están desmoronando” “No puedo construirme nuevos valores” “No tengo valores que me constituyan” Conflicto de desvalorización crónica"
+            },
+            {
+              "nombre": "“Siempre he valido poco”",
+              "desc": "“No valgo nada porque siempre he estado solo” Desvalorización progresiva general “Poco a poco mi valor se reduce”"
+            },
+            {
+              "nombre": "“Dejo de merecer lo poco que merecía”",
+              "desc": "“No hay nada más para mi en esta vida” “No tengo derecho a nada más en la vida” Desvalorización sexual “Ya nadie se fija en mí” Desvalorización par haber estado demasiado presente “Estuve muy encima de alguien, hubiera preferido estar menos” Conflicto de desvalorización existencial"
+            },
+            {
+              "nombre": "“No tengo derecho a existir”",
+              "desc": "“No tengo derecho a elegir mis propios valores” Conflicto de amor propio “No me amo” Conflicto de apoyo parental “Necesito a mi padre / madre para sostenerme” Gran conflicto de desvalorización"
+            },
+            {
+              "nombre": "“No valgo nada, quisiera ser otra persona”",
+              "desc": "“Soy muy frágil, necesito ser más sólido para (Buscar lugar del cuerpo relacionado)” Necesidad de fortaleza futura"
+            },
+            {
+              "nombre": "“Tengo que ser mas sólido / fuerte la próxima vez”",
+              "desc": "“Antes fui débil, en el futuro debo ser más fuerte” Desvalorización por haber estado ausente “No valgo por haberme ido de aquí”"
+            }
+          ]
+        },
+        "vertebral": {
+          "label": "Vertebral",
+          "conflicts": [
+            {
+              "nombre": "Conflicto del pilar",
+              "desc": "Conflicto del pilar"
+            },
+            {
+              "nombre": "“Siempre soy el pilar de mi familia / tribu / compañía”",
+              "desc": "“Siempre soy el que sostiene a todos” Conflicto de enfoque hacia el padre “Mi atención irá hacia mi padre porque mi madre no me valora” Conflicto de enfoque hacia la madre “Mi atención irá hacia mi madre porque mi padre no me valora” Conflicto de desvalorización comparativa “Valgo menos comparado con alguien cercano a mí” Conflicto de apoyo imposible “No me puedo apoyar en ningún lugar, ni en un lado ni en otro” Conflicto de sobrecarga “El peso que cargo es demasiado para mí” Conflicto de desunión parental Los valores de padre y madre no coinciden Falta de unión entre los padres Rivalidad en la pareja Oseo diverso Peligro de muerte vinculado a un ruido ensordecedor Situación de peligro letal relativa a una explosión /disparo, sonido de vehículo / maquinaria Conflicto auditivo de muerte (Escuchar frases) “Ya estoy muerto” “Tengo la muerte asegurada” “He vivido como muerto en vida” Desvalorización de la palabra “Por haber dicho X, ya no valgo” Conflicto de desvalorización crónica"
+            },
+            {
+              "nombre": "“Siempre he valido poco”",
+              "desc": "“No valgo nada porque siempre he estado solo” Conflicto de desvalorización transgeneracional “Hay un mal familiar del que me debo deshacer” Conflicto de valores endebles “Necesito edificarme con valores más sólidos / fuertes”"
+            }
+          ]
+        },
+        "de_periostio": {
+          "label": "De Periostio",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de contacto no deseado brutal",
+              "desc": "Conflicto de contacto no deseado brutal"
+            },
+            {
+              "nombre": "“Tuve que golpear a alguien, pero no quería”",
+              "desc": "“Alguien me golpeó” Conflicto de separación con matiz estructural “Esta separación es definitiva, irrevocable” Conflicto de separación violenta “Alguien se fue repentina y violentamente” Conflicto de separación con dilema “Al que se fue lo quiero tocar, pero no quiero tocarlo” Desvalorización autoprogramante “Valgo menos por la fractura que tuve” “No soporto estar inmovilizado por mi fractura, no saldré bien librado” “Me siento impotente ante mi dolor / incapacidad”"
+            }
+          ]
+        },
+        "articular": {
+          "label": "Articular",
+          "conflicts": [
+            {
+              "nombre": "Gran conflicto de desvalorización con requerimiento de apoyo",
+              "desc": "“Necesito estar a la altura de X, porque si no, no valgo” “Por más que lo intento no funciona lo que hago” “Si no logro llegar a la talla, me verán como un perdedor” “No he estado a la altura de las circunstancias” “No he sido suficiente para ayudar a X” Conflicto de movimiento inconveniente “Si me muevo haré daño” “Quiero hacer que alguien se deje de mover” “Debo frenar un movimiento” “Necesito rendirme, dejar de moverme” “Debo impedir la unión de dos personas” Conflicto de daño deseado “Quiero hacer daño a X” Conflicto de desvalorización + derrumbamiento"
+            },
+            {
+              "nombre": "“He perdido mis referentes de vida, ahora ya no valgo nada”",
+              "desc": "“Estoy sumergido en problemas” Conflicto de amortiguamiento “Necesito suavizar las cosas”"
+            },
+            {
+              "nombre": "“Quiero amortiguar un daño”",
+              "desc": "“Tengo que armonizar una situación” “Debo amortiguar la situación conservando lo que llevaba avanzado” Conflicto de retención"
+            },
+            {
+              "nombre": "“No quiero perder ni una gota, ni una migaja, ni una porción”",
+              "desc": "“Quiero retenerlo todo, hasta lo que no sirve” Conflicto de desvalorización + derrumbamiento"
+            },
+            {
+              "nombre": "“He perdido mis referentes de vida, ahora ya no valgo nada”",
+              "desc": "“Estoy sumergido en problemas”"
+            }
+          ]
+        },
+        "de_ligamentos": {
+          "label": "De Ligamentos",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de enlace impedido + desvalorización",
+              "desc": "Conflicto de enlace impedido + desvalorización"
+            },
+            {
+              "nombre": "“No valgo porque fracasé en unir a 2 X”",
+              "desc": "“Mi relación con X se anuló” Conflicto de fuerza insuficiente “Necesito ser más fuerte para X objetivo” Conflicto de valores divididos “Hay una fricción / problema entre dos valores que quiero reunir / asociar / vincular”"
+            },
+            {
+              "nombre": "“Me siento dividido entre 2 aspectos”",
+              "desc": "“Estoy obligado a algo pero no quiero” “Tengo que decidir entre trabajo o pareja” Conflicto de perfección “Necesito estar siempre al 100%” “Me he desviado de ser impecable” Checar conflictos de ligamentos específicos Conflicto de desprendimiento “Quiero salir de X lugar / posición / rol”"
+            },
+            {
+              "nombre": "“Quiero escapar a X responsabilidad”",
+              "desc": "“Necesito desprenderme de X” “Quiero soltar X” Quiero atrapar algo / alguien” muy lejos” (Checar conflictos locales específicos) Conflicto de impedimento sexual “Quiero impedir la actividad sexual de alguien” Conflicto de adulterio “Mi pareja me fue infiel durante / previo el embarazo” Conflicto de juicio"
+            },
+            {
+              "nombre": "“Tengo miedo de pensar en como seré juzgado”",
+              "desc": "“Temo afrontar las consecuencias de mis actos” Conflicto de atadura"
+            },
+            {
+              "nombre": "“Estoy atado a X persona / actividad / rol”",
+              "desc": "“No me puedo desvincular de X” Conflicto de gesto forzado"
+            },
+            {
+              "nombre": "“Tengo que lograr más este gesto que quiero expresar”",
+              "desc": "“Quiero dar mas pero no puedo” Conflicto de gesto protector “Esto lo hago por proteger a X” Conflicto de sobrecarga en los hombros “Llevo todo el peso de X situación sobre mis hombros”"
+            }
+          ]
+        },
+        "de_tendones": {
+          "label": "De Tendones",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desvalorización anticipada",
+              "desc": "Conflicto de desvalorización anticipada"
+            },
+            {
+              "nombre": "“Se que no podré hacerlo, no valgo nada”",
+              "desc": "“No lo voy a lograr, aunque haga de todo” Conflicto de indecisión"
+            },
+            {
+              "nombre": "“Me siento dividido entre varias opciones”",
+              "desc": "Conflicto de acción impedida"
+            },
+            {
+              "nombre": "“Me encoleriza que no me permitan hacer lo que deseo”",
+              "desc": "Conflicto de oposición sexual"
+            },
+            {
+              "nombre": "“Me opongo a una situación y me frustra sexualmente”",
+              "desc": "Conflicto de desvalorización relacionada al ascenso"
+            },
+            {
+              "nombre": "“No valgo porque no he sabido subir / ascender / saltar / llegar alto”",
+              "desc": "Desvalorización por la actividad"
+            },
+            {
+              "nombre": "“No valgo porque no encuentro la manera de actuar”",
+              "desc": "Conflicto de alejamiento maternal"
+            },
+            {
+              "nombre": "“Quiero alejarme de mi madre”",
+              "desc": "Conflicto de superioridad impuesta por la madre"
+            },
+            {
+              "nombre": "“Tienes que satisfacer las necesidades / estándares de alguien”",
+              "desc": "Conflicto de inferioridad impuesta por la madre"
+            },
+            {
+              "nombre": "“Los demás tienen que satisfacer tus necesidades”",
+              "desc": "Conflicto de imposición maternal"
+            },
+            {
+              "nombre": "“Mi madre no me permite elegir mi camino”",
+              "desc": "“Mi madre no me permite elegir mi camino”"
+            }
+          ]
+        },
+        "muscular": {
+          "label": "Muscular",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de impotencia",
+              "desc": "“No puedo actuar / impulsar / detener / retener X” “Me siento impotente de llevar a cabo una actividad” “Estoy obligado a actuar” Conflicto de incontinencia “No me puedo contener”"
+            },
+            {
+              "nombre": "Conflicto de rechazo",
+              "desc": "“Quiero rechazar algo / alguien”"
+            },
+            {
+              "nombre": "Conflicto de levantamiento insuficiente",
+              "desc": "“Me quiero levantar, componerme, pero no puedo” “No puedo levantar algo / alguien lo suficiente”"
+            },
+            {
+              "nombre": "Conflicto de micción impedida",
+              "desc": "“Está prohibido ir a orinar” Conflicto de divergencia psicoemocional “Soy incapaz de relacionar mi razonamiento con mis sentimientos” Conflicto de altura insuficiente “Me tengo que poner de puntitas” Conflicto de desvalorización cardiaca “Mi corazón no podrá soportar” Desvalorización por familia anormal “No tuve hijos / una familia normal” Conflicto de tensión “Me siento demasiado presionado” Conflicto de paranoia “Me siento perseguido” Desvalorización e impotencia con matiz de suciedad sexual “No valgo nada por lo que me hicieron sexualmente en contra de mi voluntad” Conflicto de agresión “Me siento agredido, prefiero que guardes tu distancia” Conflicto de crecimiento insuficiente “Quiero abrirme, crecer, pero no lo he logrado” Conflicto de vulnerabilidad + peligro “Tengo que pasar desapercibido, soy una presa fácil” Conflicto de agresividad impedida “No puedo ser agresivo, no se me permite pelear” Conflicto de impotencia física con matiz de desplazamiento"
+            },
+            {
+              "nombre": "“No logré huir a tiempo”",
+              "desc": "“No logre llegar a tiempo” Conflicto de retorno difícil “Me resulta muy complicado volver a casa” Conflicto de ausencia de apoyo “No me siento apoyado y necesito ser capaz” “Me siento solo, sin apoyo para avanzar” “No puedo lograrlo sin un hombre en mi vida” Desvalorización por escuerzo muscular “No puedo practicar esta actividad por mi edad / sexo / fuerza física” Desvalorización ante la presión “No soy capaz de oponerme a la fuerza que me oprime” Conflicto de acción forzada “Tengo que ir pero no quiero” Conflicto de debilidad impuesta"
+            },
+            {
+              "nombre": "“Necesito ser débil para sobrevivir”",
+              "desc": "“No puedo expresar mi fuerza” Conflicto de impotencia relativo a la fuerza física “Tengo que ser mas fuerte en el futuro” Conflicto de desvalorización + impotencia"
+            },
+            {
+              "nombre": "“No valgo nada por que no pude hacerlo”",
+              "desc": "“Me siento culpable por no haberlo logrado” Conflicto anticipado de fuerza insuficiente “Próximamente debo de tener más fuerza” Conflicto de remordimiento anticipado “Todavía no cometo el error y ya me arrepiento” Conflicto gestual “Lamento haberme expresado así” “No puedo / debo expresarme como deseo” “Está prohibido expresar mi sensación” Conflicto de giro de cabeza “Está prohibido / es obligatorio voltear a mirar” “Quiero voltear pero me lo impiden” “No quiero voltear pero tengo que hacerlo” Conflicto de insoportabilidad “Debo soportar lo insoportable” Conflicto de remordimiento anticipado “Todavía no cometo el error y ya me arrepiento”"
+            }
+          ]
+        },
+        "sea_de_la_cabeza": {
+          "label": "Ósea De La Cabeza",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desvalorización intelectual",
+              "desc": "Conflicto de desvalorización intelectual"
+            },
+            {
+              "nombre": "“No sirve de nada razonar, es absurdo ser inteligente”.",
+              "desc": "“Me critican por mi forma de pensar” Desvalorización vinculada a la palabra, a la expresión. “Tengo que decir algo insoportable”"
+            },
+            {
+              "nombre": "“Me prohíbo expresar mi propia agresividad”",
+              "desc": "“Me reprocho no haber empleado la expresión justa” “Me han mentido” Desvalorización por no sentirse escuchado."
+            },
+            {
+              "nombre": "“No he podido hablar”",
+              "desc": "“No tiene sentido hablar” Conflicto de bocado no retenido"
+            },
+            {
+              "nombre": "“No soy capaz de atrapar y conservar el bocado, material o inmaterial”",
+              "desc": "“Aunque lo atrape, no puedo retenerlo” Conflicto vinculado a la alimentación “Me comí algo que no debía” Conflicto de bocado no retenido"
+            },
+            {
+              "nombre": "“No soy capaz de atrapar y conservar el bocado, material o inmaterial”",
+              "desc": "“Aunque lo atrape, no puedo retenerlo” “Me arrebataron de la boca lo que ya era mío” Desvalorización vinculada a la palabra, a la expresión. “Tengo que decir algo insoportable”"
+            },
+            {
+              "nombre": "“Me prohíbo expresar mi propia agresividad”",
+              "desc": "“Me reprocho no haber empleado la expresión justa” “Me han mentido” Desvalorización por agresividad contenida “No puedo mostrar signos de agresividad” “No me puedo / debo defender” “No me supe defender” “No tengo derecho a ser agresivo” “No puedo expresar mi fuerza” “Quiero agredir a alguien pero no puedo” “Reprimo mi violencia interior”"
+            }
+          ]
+        },
+        "sea_de_miembros_superiores": {
+          "label": "Ósea De Miembros Superiores",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de autoridad que no apoya",
+              "desc": "“No puedo volar con mis propias alas” “Mi padre no me apoya para crecer” “La autoridad superior a mi es demasiado” Desvalorización por haber sido reducido “Me vencieron en una riña” “Me han pisoteado” “Me someten en contra de mi naturaleza” Desvalorización parental “Soy un mal padre / madre” “Mis hijos no me respetan” “No puedo proteger a nadie bajo mi ala” Conflicto de madre gallina"
+            },
+            {
+              "nombre": "“No puedo volar porque tengo que proteger a mis hijos”",
+              "desc": "“No puedo hacer mis cosas porque me tengo que ocupar de X” Conflicto de identidad de pareja “Soy el peor esposo / esposa del mundo” Desvalorización del rol social"
+            },
+            {
+              "nombre": "“No estoy a la altura de los demás”",
+              "desc": "“Estoy por debajo del escalafón que quiero” Desvalorización ante la capacidad de proteger “Soy incapaz de proteger a X” Desvalorización laboral"
+            },
+            {
+              "nombre": "“No logré mis objetivos”",
+              "desc": "“No soy capaz de hacer el trabajo” Impotencia laboral"
+            },
+            {
+              "nombre": "“Quiero hacer esa actividad pero me lo impiden”",
+              "desc": "“Tengo que hacer este trabajo porque me obligan” Desvalorización anticipada"
+            },
+            {
+              "nombre": "“No lograré ser quien quiero ser”",
+              "desc": "“No estoy seguro de poder triunfar” Conflicto de defensa penetrada “Alguien ha entrado en mi espacio personal” Desvalorización de la defensa “No tengo defensa suficiente” “No tengo numero de seguridad social” “No tengo dinero para afrontar la vejez” Desvalorización ante la función o rol “No me he podido desempeñar en lo que me encargaron” “Soy demasiado torpe para dedicarme a esto” “Esto será demasiado pesado como para que yo me encargue” “No voy a poder completar la tarea que me asignaron” “Me siento atado de manos” Conflicto de esposas “Estuve esposado durante el camino a la prisión” Desvalorización gestual precisa “No pude señalar exactamente lo que quería” “No pude reparar este reloj”"
+            }
+          ]
+        },
+        "sea_del_tronco": {
+          "label": "Ósea Del Tronco",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desvalorización estética",
+              "desc": "Conflicto de desvalorización estética"
+            },
+            {
+              "nombre": "“No soy tan bello / atractivo como quisiera”",
+              "desc": "“Me han criticado la imagen” Desvalorización respecto al futuro"
+            },
+            {
+              "nombre": "“No tengo un porvenir”",
+              "desc": "“No valgo nada porque no tengo futuro” Desvalorización afectiva"
+            },
+            {
+              "nombre": "“No valgo porque no me siento amado”",
+              "desc": "“No valgo porque no me siento amado”"
+            }
+          ]
+        },
+        "sea_de_columna": {
+          "label": "Ósea De Columna",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de sumisión",
+              "desc": "Conflicto de sumisión"
+            },
+            {
+              "nombre": "Tengo que bajar la cabeza (Conlflictos cervicales)",
+              "desc": "Conflito de resistencia"
+            },
+            {
+              "nombre": "Tengo que soportar (Conflictos dorsales)",
+              "desc": "Desvalorización de la personalidad"
+            },
+            {
+              "nombre": "Checar conflictos lumbares",
+              "desc": "Desvalorización sexual"
+            },
+            {
+              "nombre": "(Conflictos del sacro, coxis, pelvis y pubis)",
+              "desc": "Desvalorización espiritual"
+            },
+            {
+              "nombre": "(Confictos del sacro)",
+              "desc": "(Confictos del sacro)"
+            }
+          ]
+        },
+        "sea_de_miembros_inferiores": {
+          "label": "Ósea De Miembros Inferiores",
+          "conflicts": [
+            {
+              "nombre": "Dirección o avance obligado o impedido.",
+              "desc": "Dirección o avance obligado o impedido."
+            },
+            {
+              "nombre": "Obediencia o sumisión obligada.",
+              "desc": "Obediencia o sumisión obligada."
+            },
+            {
+              "nombre": "Desvalorización por impotencia ante oposición sexual",
+              "desc": "Desvalorización por impotencia ante oposición sexual"
+            },
+            {
+              "nombre": "Desvalorización ante la relación sexual cara a cara",
+              "desc": "Desvalorización ante la relación sexual cara a cara"
+            },
+            {
+              "nombre": "Conflicto de oposición. No querer ceder ante la voluntad ajena.",
+              "desc": "Conflicto de oposición. No querer ceder ante la voluntad ajena."
+            },
+            {
+              "nombre": "No querer rendirse ante alguien más joven.",
+              "desc": "No querer rendirse ante alguien más joven."
+            },
+            {
+              "nombre": "Oposición a la figura materna o femenina.",
+              "desc": "Oposición a la figura materna o femenina."
+            },
+            {
+              "nombre": "Conflicto de oposición",
+              "desc": "Conflicto de oposición"
+            },
+            {
+              "nombre": "Problemática sexual",
+              "desc": "Conflicto con la sumisión, la madre, espiritualidad o deporte."
+            },
+            {
+              "nombre": "Forzado a obedecer.",
+              "desc": "Forzado a obedecer."
+            },
+            {
+              "nombre": "Perder un partido.",
+              "desc": "Conflicto de ligamentos"
+            },
+            {
+              "nombre": "(Checar conflicto de ligamentos miembros inferiores)",
+              "desc": "(Checar conflicto de ligamentos miembros inferiores)"
+            },
+            {
+              "nombre": "Conflicto de evolución imposible en la vida",
+              "desc": "Conflicto de evolución imposible en la vida"
+            },
+            {
+              "nombre": "Gran desvalorización de estar satisfecho de una manera banal.",
+              "desc": "Gran desvalorización de estar satisfecho de una manera banal."
+            },
+            {
+              "nombre": "Conflicto de obcecación sobre el progreso de las cosas.",
+              "desc": "Conflicto de obcecación sobre el progreso de las cosas."
+            },
+            {
+              "nombre": "Problema de contacto con la madre durante el embarazo.",
+              "desc": "Problema de contacto con la madre durante el embarazo."
+            },
+            {
+              "nombre": "Conflicto de indecisión. Cambio de dirección.",
+              "desc": "Madre posesiva. Conflicto de fusión con la madre. Edipo no"
+            },
+            {
+              "nombre": "resuelto.",
+              "desc": "Conflicto de dedos del pie"
+            },
+            {
+              "nombre": "(Checar dedos del pie)",
+              "desc": "(Checar dedos del pie)"
+            },
+            {
+              "nombre": "Conflicto de huida; permanecer acorralado por la madre.",
+              "desc": "Aspiración a la muerte o a partir más allá de la tierra."
+            },
+            {
+              "nombre": "No ser ya calcáreo, no ser ya humano. No ser ya más un ser",
+              "desc": "personificado."
+            },
+            {
+              "nombre": "Conflicto de separación relacionado con la madre y el rencor.",
+              "desc": "Conflicto de separación relacionado con la madre y el rencor."
+            },
+            {
+              "nombre": "Marcaje del territorio relacionado con la madre.",
+              "desc": "Problemática de preocupación con respecto a la madre con una"
+            },
+            {
+              "nombre": "connotación de separación.",
+              "desc": "Conflictos de pie"
+            },
+            {
+              "nombre": "(Checar conflictos de los pies)",
+              "desc": "(Checar conflictos de los pies)"
+            }
+          ]
+        }
+      }
+    },
+    "piel": {
+      "title": "Sistema Lipofascial / Dermatológico",
+      "subsystems": {
+        "desvalorizaci_n": {
+          "label": "Desvalorización",
+          "conflicts": [
+            {
+              "nombre": "Desvalorización estética",
+              "desc": "“Me siento feo”"
+            },
+            {
+              "nombre": "“Comparan mi imagen con la de X”",
+              "desc": "“Critican fuertemente mi aspecto” “Dicen que estoy gordo” Conflicto de desvalorización grupal"
+            },
+            {
+              "nombre": "“No valgo nada para esta gente”",
+              "desc": "“Nadie me valora en este lugar” Conflicto de desvalorización grave + impotencia"
+            },
+            {
+              "nombre": "“A partir de ahora, no valgo para nada”",
+              "desc": "“No puedo hacer nada después de lo que me hicieron” Conflicto de desvalorización intelectual"
+            },
+            {
+              "nombre": "“Me critican por lo que pienso”",
+              "desc": "“A nadie le importa mi opinión / recomendación” Conflicto de separación + desvalorización + desprotección “Se fue por mi culpa, ahora nadie me cuidará” Sensación de no ser amado “Nadie me quiere” Conflicto de inexistencia"
+            },
+            {
+              "nombre": "“Siento que no existo para alguien”",
+              "desc": "“Soy invisible en esta vida” Conflicto de comunicación"
+            },
+            {
+              "nombre": "“Nadie me entiende”",
+              "desc": "“No puedo confiar en nadie” Conflicto de rigidez"
+            },
+            {
+              "nombre": "“Si me hubiera quedado quieto, otra cosa sería”",
+              "desc": "“Tengo que ser así, para que me acepten”"
+            }
+          ]
+        },
+        "contacto_impuesto": {
+          "label": "Contacto Impuesto",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de humillación",
+              "desc": "“Me han hecho pasar el ridículo”"
+            },
+            {
+              "nombre": "“Me denigraron frente a los demás”",
+              "desc": "“Me siento muy avergonzado por lo que me hicieron” “Todos vieron lo que me pasó” Conflicto del cuerpo extraño (Bacterias) “Hay algo que quiero sacar de mí” Conflicto de suciedad “Hay algo que necesito lavar en mí” Conflicto de peso excesivo “Necesito soltar esta carga pesada” Conflicto de escape “Necesito deslizarme a través de esta situación complicada” Conflicto de integridad física / mental “No respetan mi espacio” “Critican lo que soy” “Me han atacado fuertemente” Conflicto de indignidad"
+            },
+            {
+              "nombre": "“Me han herido en mi dignidad”",
+              "desc": "“Me han sobajado” Conflicto de agresión local “Siento un ataque en X parte del cuerpo” Conflicto de contacto insoportable “Tengo que aguantar estar con X” Conflicto de intocabilidad “No soy digno de ser amado / tocado”"
+            },
+            {
+              "nombre": "Conflicto de vergüenza",
+              "desc": "Conflicto de invisibilidad “Tengo que desaparecer” “Tengo que evitar ser visto” “Tengo que esconderme” Conflicto de mancha"
+            },
+            {
+              "nombre": "“Hay un lugar que ha sido ensuciado”",
+              "desc": "“Tengo una marca que no me puedo borrar” Conflicto de pureza “Tengo que llevar luz a un lugar oscurecido, sucio” Rechazo paternal"
+            },
+            {
+              "nombre": "“No quiero la protección de mi padre”",
+              "desc": "“No puedo protegerme de mi padre” Conflicto de juicio ajeno “No soporto como me critican” Conflicto de ataque “Me dieron de golpes en X lugar”"
+            }
+          ]
+        },
+        "separaci_n": {
+          "label": "Separación",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de separación (Ruptura de contacto)",
+              "desc": "“Murió un ser querido” “La familia se rompió”                                         Conflicto de duelo bloqueado"
+            },
+            {
+              "nombre": "“Me acabo de divorciar”                                    4   “No he podido superar una muerte”",
+              "desc": "“Me siento desvinculado del grupo” “Quiero retener al muerto” “Rompimos lazos” “Mi gato se perdió” Conflicto del contacto propio Conflicto de miedo a la separación"
+            },
+            {
+              "nombre": "“Rechazo contactar conmigo mismo”",
+              "desc": "“No me quiero quedar solo”"
+            },
+            {
+              "nombre": "“Tengo que ser otro para no ser rechazado”",
+              "desc": "Conflicto de separación con el protector /                     “Si me reconocen, me van a agredir,"
+            },
+            {
+              "nombre": "progenitor                                                     cambiaré de piel”",
+              "desc": "“Mis padres se han ido”                                        “Me siento separado de mi mismo” Conflicto de contacto perdido “Extraño ser tocado como antes”                                Conflicto de desprotección “Nadie me cuida” Conflicto de separación desvalorizante"
+            },
+            {
+              "nombre": "“Estoy en peligro y nadie me salva”",
+              "desc": "“Estoy en peligro y nadie me salva”"
+            },
+            {
+              "nombre": "“Desde que se fue, soy un inútil”",
+              "desc": "“Si se va, es mi culpa”                                        “Me quedaré en la calle” “Me tengo que cuidar del predador” Conflicto de separación semi-íntima “Se fue una persona muy importante para mí” Programa de incesto simbólico Conflicto de separación brutal “Estoy virtualmente unido a mi progenitor”"
+            },
+            {
+              "nombre": "“Murió instantáneamente el ser querido, sin",
+              "desc": "aviso” Conflicto de dolor moral Conflicto de separación paterna                            3 “Sufro por la separación” “Mi padre no me protegerá” “Mi padre se fue” “Mi padre nunca me cuidó” Conflicto de padre ausente “Mi padre nunca estuvo” “Necesito que mi padre esté aquí” “busco a mi padre” Conflicto de separación maternal"
+            },
+            {
+              "nombre": "“Mi madre no me ama”",
+              "desc": "“Mi madre está celosa de mí” Conflicto de mirada paternal “Quiero ser mirada por mi padre” Conflicto de falta de mirada"
+            },
+            {
+              "nombre": "“Sufro porque nadie me vio, cuando quería ser",
+              "desc": "visto” Conflicto de reconocimiento"
+            },
+            {
+              "nombre": "“Nadie me felicitó”",
+              "desc": "“Nadie valora mis acciones”"
+            }
+          ]
+        }
+      }
+    },
+    "genital": {
+      "title": "Sistema Reproductor",
+      "subsystems": {
+        "ov_rica": {
+          "label": "Ovárica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de pérdida filial",
+              "desc": "Conflicto de pérdida filial"
+            },
+            {
+              "nombre": "“Perdí a mi hijo”",
+              "desc": "“Era como mi hijo y murió” Miedo a pérdida filial “No quiero perder a mi hijo” Grave conflicto de pérdida"
+            },
+            {
+              "nombre": "“Perdí a mi mascota de 15 años”",
+              "desc": "“Murió mi mejor amigo” Conflicto de fusión maternal “No se donde termina mi madre y empiezo yo” Conflicto de seducción perdida"
+            },
+            {
+              "nombre": "“Ya no logro atraer a el/los que me atraen”",
+              "desc": "“Ya no me miran los hombres” Conflicto semigenital “Sufrí un golpe bajo a mi femeneidad”"
+            },
+            {
+              "nombre": "“Ese hombre me rebajó”",
+              "desc": "“Me hizo sentir como si no fuera suficiente mujer” “Mi hija tiene un novio feo” Conflicto de falta filial “Como no tengo una pareja para engendrar, hago un hijo yo misma” Conflicto de masculinidad deseada “Quisiera haber nacido hombre” Conflicto de identidad femenina “No se que tipo de mujer quiero ser” Conflicto genital desvalorizante “Me han criticado en mi sexualidad” “Me dejó porque no se hacer el amor” “No quiso ser mi novio porque no quise tener sexo” Conflicto de infancia prolongada “Quiero seguir siendo una niña” Conflicto de culpabilidad femenina"
+            },
+            {
+              "nombre": "“Me siento mal por no ser una mujer completa”",
+              "desc": "“Me siento fea/vieja/inútil” Conflicto de maternidad imposible"
+            },
+            {
+              "nombre": "“No soy capaz de tener hijos”",
+              "desc": "“Mi pareja no quiere tener un hijo conmigo”"
+            }
+          ]
+        },
+        "oviductal": {
+          "label": "Oviductal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto sexual sucio",
+              "desc": "“Mi amiga se acostó con mi novio” “Mi pareja me engañó con mi mamá” “Me acosté con él y descubrí después que era casado” Conflicto de violación sexual “Fui abusada sexualmente” Conflicto de agresión sexual “Me tocó íntimamente sin mi consentimiento” Conflicto de secreto sexual “Tuve una relación sexual que no puedo contar a nadie, nunca” Conflicto de dilema filial “Quiero pero no quiero tener un hijo” Conflicto de espacio filial “Mi hijo no tendrá hogar cuando llegue”"
+            }
+          ]
+        },
+        "uterina": {
+          "label": "Uterina",
+          "conflicts": [
+            {
+              "nombre": "Conflicto familiar fuera de la norma                                Conflicto de penetración no deseada",
+              "desc": "Conflicto familiar fuera de la norma                                Conflicto de penetración no deseada"
+            },
+            {
+              "nombre": "“No puedo hacer nada para redirigir el destino de la                Conflicto de femineidad complicada",
+              "desc": "familia” “Ser mujer es muy difícil” Conflicto de pérdida                                                “Tengo que ser como hombre para resolver esto”"
+            },
+            {
+              "nombre": "“Murió un ser familiar querido”                                     “No me siento cómoda con mi forma de ser mujer”",
+              "desc": "“Murió mi nieto” Conflicto de producto perdido                                       Conflicto de frustración sexual"
+            },
+            {
+              "nombre": "“Aborté y no supero el duelo”",
+              "desc": "“Mi hombre no es como yo quiero” “Perdí a mi bebé”                                               3 “Mi pareja no se fija en mí” Conflicto de maternidad imposible                                   “No tengo pareja”"
+            },
+            {
+              "nombre": "“No soy capaz de tener hijos”",
+              "desc": "“Mi pareja no quiere tener un hijo conmigo” Conflicto de dependencia negativa romántica Conflicto de sexualidad fuera de la norma                       4   “Mi pareja ni siquiera me mira”"
+            },
+            {
+              "nombre": "“Tuvimos sexo de una manera pecaminosa”",
+              "desc": "“Hicimos algo sexualmente indebido”                                 “Mi vida depende de mi pareja” Conflicto sexual con matiz filial                                   Conflicto de violación sexual “Mi hijo nos descubrió teniendo sexo”                           5"
+            },
+            {
+              "nombre": "“Fui abusada sexualmente”",
+              "desc": "“Tengo una pulsión incestuosa” “Me acosté con mi alumno” Conflicto de maternidad no deseada Conflicto de disconformidad sexual                              1"
+            },
+            {
+              "nombre": "“No estoy de acuerdo con como mis hijos llevan su                   “Lo último que deseo es quedar embarazada”",
+              "desc": "sexualidad” Conflicto de sexualidad obligada “Tengo que cumplirle a mi marido aunque no tengo ganas” Conflicto de embarazo fuera de lugar"
+            },
+            {
+              "nombre": "“Quiero embarazarme pero no es el momento o lugar",
+              "desc": "adecuado” Miedo al parto “Me da terror que algo salga mal durante el parto” Conflicto de hogar lejano “No siento que esta casa / pareja / familia sea mi hogar” Conflicto de poder divino"
+            },
+            {
+              "nombre": "“Quiero ser como Dios”",
+              "desc": "“Quiero poder controlarlo todo” Conflicto de maternidad equivocada “Mi hijo no es del hombre que yo quería” Conflicto de pareja equivocada “Tengo sexo con mi pareja mientras pienso en otro”"
+            }
+          ]
+        },
+        "menstrual": {
+          "label": "Menstrual",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de miedo a la adultez",
+              "desc": "Conflicto de miedo a la adultez"
+            },
+            {
+              "nombre": "“Me aterra mostrar que ya no soy una niña”",
+              "desc": "“La sexualidad adulta me asusta” Conflicto de oposición maternal"
+            },
+            {
+              "nombre": "“Soy lo contrario a mi madre”",
+              "desc": "“No estoy de acuerdo con la postura de mi mamá” Conflicto de madre abrumadora"
+            },
+            {
+              "nombre": "“Mi madre no me permite ser mujer”",
+              "desc": "“Mi madre me hace sentir inhibida” Conflicto de expulsión familiar"
+            },
+            {
+              "nombre": "“Quiero que alguien de la familia se vaya”",
+              "desc": "“Me quiero salir de esta familia” Miedo al abandono romántico “No quiero que mi pareja se vaya” Conflicto de vampirismo “Tengo miedo a que me “chupen la sangre”” Conflicto de daño familiar “Mi familia me lastima” Conflicto de menstruación vergonzosa “En mi menarquía tuve una experiencia desagradable” Conflicto de normativa impuesta “Este sistema de reglas me está ahogando” Conflicto de femineidad no deseada"
+            },
+            {
+              "nombre": "“No quiero tener que ver con todos los temas de la mujer”",
+              "desc": "“Es muy doloroso ser mujer”"
+            }
+          ]
+        },
+        "vaginal": {
+          "label": "Vaginal",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de frustración coital",
+              "desc": "“No pude consumar el sexo como yo quería” Conflicto de sexualidad imposible"
+            },
+            {
+              "nombre": "“No logro tener relaciones sexuales”",
+              "desc": "“Nadie quiere ser mi pareja” Conflicto de sexualidad indeseada “No debo de atraer pareja”"
+            },
+            {
+              "nombre": "“El placer está prohibido”",
+              "desc": "“No quiero tener relaciones sexuales” “Seducir es peligroso” Conflicto de pareja ausente / distante"
+            },
+            {
+              "nombre": "“Mi pareja escoge a otras mujeres”",
+              "desc": "“Mi pareja ya ni me mira” Conflicto de territorio sexual “No puedo preservar mi relación” “No puedo mantener el lugar que tengo” “Me siento celosa” Conflicto de separación sexual “Ya no tengo sexo con la persona que quiero”"
+            },
+            {
+              "nombre": "Conflicto de rencor sexual",
+              "desc": "“Me han humillado sexualmente” Conflicto de compromiso sexual"
+            },
+            {
+              "nombre": "“No me quiero comprometer sexualmente con x",
+              "desc": "persona” Conflicto de rechazo sexual “Ya no soporto a mi pareja” Conflicto de dilema sexual “Quiero pero no quiero tener relaciones sexuales”"
+            }
+          ]
+        },
+        "del_escroto": {
+          "label": "Del Escroto",
+          "conflicts": [
+            {
+              "nombre": "Miedo por la integridad de los testículos",
+              "desc": "“Me preocupa que me den un mal golpe” Miedo por la descendencia “Van a atacar a mis hijos” Conflicto de ataque a la masculinidad “Siento que critican mi virilidad” Conflicto de desvalorización filiar “Cargar a mis hijos es muy pesado” Conflicto de toxicidad filiar “No quiero que mis pecados infecten a mis hijos”"
+            }
+          ]
+        },
+        "f_lica": {
+          "label": "Fálica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de inhibición masculina",
+              "desc": "Conflicto de inhibición masculina"
+            },
+            {
+              "nombre": "“Me da miedo mostrar mi hombría”",
+              "desc": "“No puedo demostrar mi masculinidad” Conflicto del placer impedido"
+            },
+            {
+              "nombre": "“Es malo / prohibido experimentar placer”",
+              "desc": "“Tener sexo es malo” Conflicto de identidad sexual “Mis padres querían niña y salí hombre” Conflicto de pareja equivocada"
+            },
+            {
+              "nombre": "“Tengo sexo con mi pareja mientras pienso en otro”",
+              "desc": "“No tengo a la pareja que realmente deseo” Desvalorización sexual “Soy incompetente en mi desempeño sexual” Complejo de Edipo “Mi madre es mi pareja simbólica”"
+            }
+          ]
+        },
+        "testicular": {
+          "label": "Testicular",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de inmortalidad                                            Conflicto de paternidad imposible",
+              "desc": "Conflicto de inmortalidad                                            Conflicto de paternidad imposible"
+            },
+            {
+              "nombre": "“Perdí a mi hijo”                                                    Conflicto de Peter Pan",
+              "desc": "“Era como mi hijo y murió”                                       2   “Crecer es peligroso / prohibido” Miedo a pérdida filial “No me quiero parecer a mi padre” “No quiero perder a mi hijo” Conflicto de castración parental Grave conflicto de pérdida                                           “Me siento abrumado por mis padres”"
+            },
+            {
+              "nombre": "“Perdí a mi mascota de 15 años”                                  3",
+              "desc": "“La autoridad siempre se siente “Murió mi mejor amigo” impuesta” Conflicto de seducción"
+            },
+            {
+              "nombre": "“Ya no tengo poder de seducción”                                     Conflicto de identidad sexual",
+              "desc": "“No le atraigo a quien deseo”                                    4 “Mis padres querían niña y salí hombre” Conflicto de protección filial"
+            },
+            {
+              "nombre": "Desvalorización testicular",
+              "desc": "“No puedo proteger a mis hijos” “No logro tener hijos” Conflicto de disminución masculina “Me siendo rebajado / denigrado por el sexo opuesto” Conflicto de fusión paternal Conflicto de Casanova                                                “No quiero que mi hijo se aparte de mi” “Necesito gustar al sexo opuesto” Conflicto de paternidad"
+            },
+            {
+              "nombre": "“No quiero tener hijos”",
+              "desc": "“Me obligaron a procrear” Conflicto de culpabilidad masculina “Me siento culpable por lo que le hice a mi mujer” Conflicto de usurpación paternal “Necesito ocupar el lugar de mi padre” Desvalorización de jefe familiar"
+            },
+            {
+              "nombre": "“No podre proteger a mi familia”",
+              "desc": "“No puedo fomentar buenos valores” Conflicto de paternidad imposible"
+            },
+            {
+              "nombre": "“Está prohibido tener hijos”",
+              "desc": "“No debo de procrear” Conflicto de superación paternal “No debo superar a mi padre” Conflicto de identidad familiar “No estoy en el lugar correcto en mi linaje”"
+            }
+          ]
+        },
+        "prost_tica": {
+          "label": "Prostática",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de múltiples pérdidas",
+              "desc": "Conflicto de múltiples pérdidas"
+            },
+            {
+              "nombre": "“Ya es mucha familia la que se me muere”",
+              "desc": "“Perdí a todos en una tragedia” Desvalorización sexual progresiva “No puedo satisfacer sexualmente a mi mujer” “Ella es muy joven para mí” “Estoy inconforme con el tamaño de mi miembro” Sexualidad masculina fuera de la norma “Es fuera del matrimonio” “Quiero tener sexo pero… Ella es mi paciente” “Me las quiero echar a todas” Conflicto de descendencia distal “Quiero nietos y no los tengo”"
+            },
+            {
+              "nombre": "“Mis nietos corren peligro”",
+              "desc": "“Necesito proteger a mis nietos” “No educan a mis nietos como me gustaría” Conflicto de pérdida de la masculinidad"
+            },
+            {
+              "nombre": "“Siento que pierdo mi masculinidad”",
+              "desc": "“Se desvanece mi poder” Conflicto de nido imposible “No podemos vivir todos juntos en un hogar” Conflicto de pareja impuesta “Tengo sexo con mi pareja solo por obligación” Conflicto de vulnerabilidad del linaje “Siento que mi estirpe está amenazada” Conflicto de forastero “Me siento un extraño entre los míos” Conflicto de Peter Pan"
+            },
+            {
+              "nombre": "“Crecer es peligroso / prohibido”",
+              "desc": "“No me quiero parecer a mi padre” Conflicto de vida imposible “Tengo miedo / Está prohibido dar vida” Conflicto de paternidad imposible"
+            },
+            {
+              "nombre": "“No debo de tener hijos”",
+              "desc": "“No tengo derecho a procrear” Memoria de incesto “Tengo miedo que un incesto en la familia se repita”"
+            }
+          ]
+        },
+        "de_la_sexualidad": {
+          "label": "De La Sexualidad",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de control debilitado",
+              "desc": "“Tengo miedo a perder el control” Conflicto de intimidad peligrosa “Me agrede abrirme a la intimidad” Memoria de violación “Fui abusado sexualmente” Conflicto de expulsión de pareja “No quiero que mi pareja entre en mi vida” Conflicto de vergüenza sexual “Me apena mi desenvolvimiento / carácter sexual” Conflicto de coito acelerado “Es peligroso que dure el sexo” Conflicto de separación maternal y agresión paternal"
+            },
+            {
+              "nombre": "“Mi madre se fue y mi padre me critica / agrede”",
+              "desc": "“Mi padre ganó en la competencia por el amor de mi madre”"
+            },
+            {
+              "nombre": "Miedo a hacer sufrir a la madre",
+              "desc": "Desvalorización sexual “No soy capaz de satisfacer a mi pareja” Miedo a lastimar a la pareja “No quiero dañar a la persona que amo” Conflicto de pérdida del territorio sexual + separación"
+            },
+            {
+              "nombre": "“Me siento despreciado por mi pareja”",
+              "desc": "“Mi pareja me rechaza”"
+            },
+            {
+              "nombre": "Miedo a la pareja",
+              "desc": "Miedo a la pareja"
+            }
+          ]
+        },
+        "mamaria": {
+          "label": "Mamaria",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de protección filial",
+              "desc": "“No puedo proteger a m hijo real / simbólico” “Necesito hacer algo más para poder protegerlo” “Mi(s) hijo(s) está(n) en peligro de muerte” Conflicto de protección extendida “Mi pareja está en peligro” “Este negocio está desintegrándose” Conflicto de protección"
+            },
+            {
+              "nombre": "“Mi hombre ya no me protege”",
+              "desc": "“En vez de defenderme me ataca” Conflicto de nido vacío"
+            },
+            {
+              "nombre": "“Mis hijos están lejos de mí”",
+              "desc": "“Ya no siento el amor de mis hijos” Desvalorización maternal"
+            },
+            {
+              "nombre": "“No soy la madre que debería ser”",
+              "desc": "“Soy una pésima madre” Conflicto de nido + Drama/peligro"
+            },
+            {
+              "nombre": "“Tengo miedo que algo le suceda a “X”",
+              "desc": "(Cría, pareja, progenitor; Mascota, proyecto, lugar) Conflicto de nido + Falta de comunicación"
+            },
+            {
+              "nombre": "“Mi hija ya no me habla”",
+              "desc": "“Mi hijo está en la cárcel” Conflicto de Nido + Mancha / Mutilación/ Desmembramiento (Ataque contra la integridad) “Me siento sucia, manchada en mi identidad de madre” “Me humillaron por mi forma de maternar” Conflicto de comunicación familiar"
+            },
+            {
+              "nombre": "“Deseo reunir a la familia dispersa”",
+              "desc": "“Tengo miedo de que la familia se rompa” Conflicto de orientación sexual “Me equivoqué en mis decisiones sexuales” “Me casé con alguien que no era” “No debí de sostener esta manera de llevar mi sexualidad”"
+            }
+          ]
+        }
+      }
+    },
+    "urinario": {
+      "title": "Sistema Urinario / Renal",
+      "subsystems": {
+        "conflictos_renales": {
+          "label": "Conflictos Renales",
+          "conflicts": [
+            {
+              "nombre": "Impotencia al enfrentar una situación, fuerte lucha por existir",
+              "desc": "“Esta vida es demasiado para mí” Conflicto de derrumbamiento. “He perdido todas mis referencias, mis ejes” Conflicto del pez fuera de agua"
+            },
+            {
+              "nombre": "“Estoy fuera de mi elemento”",
+              "desc": "El desplazado de guerra, inmigrante, foráneo, damnificado Conflicto grave de extravío “Me siento totalmente perdido” Conflicto grave de abandono “No tengo a nadie en mi vida” Conflicto grave de pérdida “Lo perdí todo” Sueño existencial perdido “Todo lo que deseaba ahora es imposible” Conflicto de incapacidad de hacer frente “No se como dar la cara a esta situación” Conflicto de miedo a lo desconocido “Me aterra eso aunque no lo he visto / no ha sucedido” Conflicto de sangre “Hay algo malo en la sangre que corre por mis venas, familiar” Conflicto de líquidos"
+            },
+            {
+              "nombre": "“No quiero perder el dinero”",
+              "desc": "“No quiero que mi madre se vaya” Conflicto de miedo al derrumbamiento “No quiero perderlo todo” Conflicto de sostén de referencia “No quiero perder mis ejes, dinero, vínculos” Desvalorización por falta de territorio “No valgo nada desde que perdí la casa” Conflicto de economía forzada “Necesito los desechos que todavía pueden ser aprovechados” Conflicto de referencia forzada “Debo sobrevivir en estas circunstancias aunque son peligrosas para mí” Conflicto de líquido pulmonar “Quiero sacar el agua de mi pulmón” Conflicto de alargamiento de vida “Quiero seguir vivo, bajo mis propias referencias” Conflicto de apoyo en tema de líquidos “Necesito que me ayuden porque me ahogo” Conflicto de aniquilamiento"
+            },
+            {
+              "nombre": "“Esta forma de vida es insostenible, no puedo más”",
+              "desc": "“Vivo en una forma infrahumana” Conflicto de proteína"
+            },
+            {
+              "nombre": "“Hay una carne que quiero eliminar” (Tumor propio o ajeno)",
+              "desc": "“Alguien se ahogó con una albóndiga” Miedo al derrumbamiento “Temo que mis ejes se pierdan, y yo me muera en el proceso” Conflicto de huida “Tengo que escapar de este lugar” Conflicto de canibalismo “Hay una persona a la que hay que eliminar” Conflicto de atracción insuficiente “No logro atraer a la pareja, tengo que atraerla con olor” Conflicto de desarraigo “Ya perdí todo, aquí no hay nada para mí” Conflicto territorial con marca ajena “No quiero que otros marquen mi territorio” Conflicto de ocupación territorial “Alguien ya invadió mi territorio” Conflicto de territorio imposible “No puedo ocupar un territorio que es mío” Conflicto de muro territorial “Tengo que construir una barrera para proteger mi territorio” Conflicto de reconstrucción “Tengo que construir un lugar puesto que fue destruido” Conflicto de territorio pendiente “Hay un tema legal que resolver con esta propiedad” Conflicto de miedo a perder líquidos “No quiero perder a mi madre” “No quiero perder más dinero” “No quiero que el río que pasa por mi casa desaparezca” Conflicto de retención del desecho “Quiero conservar las migajas de este amor” “Quiero aprovechar hasta la última gota” “No quiero que nada se desperdicie” Impotencia ante las nuevas referencias “No soporto / no puedo con esta nueva forma de vida” Conflicto de pérdida territorial anticipada “No voy a perder este lugar que yo reconstruí”"
+            }
+          ]
+        },
+        "conflictos_de_glom_rulo": {
+          "label": "Conflictos De Glomérulo",
+          "conflicts": [
+            {
+              "nombre": "Conflicto del alcohólico",
+              "desc": "“Me ahogo en la bebida” Memoria de ahogamiento “Casi muero ahogado” Desvalorización con respecto a los líquidos -Accidentes relacionados al agua o algún líquido Conflicto de toxicidad familiar “Hay un pecado, desecho en la familia que quiero eliminar, nos envenena” Conflicto de eliminación familiar"
+            },
+            {
+              "nombre": "“Quiero eliminar a alguien presente en mi familia”",
+              "desc": "“Quiero que un familiar deje de ser referencia para mi” Conflicto de creencia arraigada"
+            },
+            {
+              "nombre": "“No voy a cambiar por nada”",
+              "desc": "“Me aferro a lo antiguo Conflicto de vida en extinción"
+            },
+            {
+              "nombre": "“Mi vida se escapa entre mis dedos”",
+              "desc": "“Siento que me estoy muriendo” Conflicto de marcar el territorio “No puedo demostrar que este lugar es mío” Conflicto de proyecto de marcaje de territorio “Tengo que marcar un territorio en el futuro, a la distancia” Conflicto de marcaje interior imposible “Mi identidad es frágil, no logro delimitar mi propio territorio personal”"
+            }
+          ]
+        },
+        "conflictos_de_vejiga": {
+          "label": "Conflictos De Vejiga",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de marcaje interior imposible",
+              "desc": "Conflicto de marcaje interior imposible"
+            },
+            {
+              "nombre": "“Mi identidad es frágil, no logro delimitar mi propio",
+              "desc": "territorio personal” Conflicto de territorio ausente"
+            },
+            {
+              "nombre": "“Carezco de territorio propio”",
+              "desc": "“Mi único territorio está en mi” Conflicto de retorno a la matriz “Quiero regresar al vientre de mamá” Conflicto de frontera"
+            },
+            {
+              "nombre": "“Alguien intenta traspasar mis límites”",
+              "desc": "“No soporto al vecino” Conflicto de administración del territorio interior"
+            },
+            {
+              "nombre": "“No puedo decidir dentro de mi territorio”",
+              "desc": "“Alguien cambió de lugar las cosas dentro mi territorio” Conflicto espacial en el territorio"
+            },
+            {
+              "nombre": "“No quiero compartir mi territorio”",
+              "desc": "“Aquí ya no cabe nadie más” Conflicto de suciedad en el territorio"
+            },
+            {
+              "nombre": "“Me han hecho algo sucio dentro de mi territorio”",
+              "desc": "“Bajo mis propias referencias, sufrí algo vil” Conflicto de frontera sexual “Quiero evitar que traspasen mi territorio sexual” Conflicto de grito de ayuda “Me siento abandonado, vengan por mí” Conflicto edípico “No tengo el amor de mis padres que yo quisiera” Conflicto de territorio invadido “Alguien invade mi territorio, lo voy a marcar”"
+            },
+            {
+              "nombre": "Conflicto de miedo",
+              "desc": "Conflicto de frustración sexual “Mi pareja / alguien no quiere tener relaciones conmigo”"
+            }
+          ]
+        }
+      }
+    },
+    "inmunologico": {
+      "title": "Sistema Inmunológico / Linfático",
+      "subsystems": {
+        "inmunol_gica": {
+          "label": "Inmunológica",
+          "conflicts": [
+            {
+              "nombre": "Miedo al combate",
+              "desc": "“No tengo permitido pelear, defenderme, accionar” Impotencia ante el combate"
+            },
+            {
+              "nombre": "“Para que pelear si no voy a poder ganar, no podré pelear”",
+              "desc": "“Me siento en peligro ante mis familiares, pero me niego a defenderme” Miedo a lo desconocido + conflicto de identidad “Tengo miedo de todo lo extraño porque no se quien soy yo” Conflicto de identidad endeble “No se poner límites estables, los demás me influyen demasiado” ” Palabras y emociones ajenas me afectan demasiado” “Empiezo a pensar como los demás” Conflicto de autoabandono"
+            },
+            {
+              "nombre": "“Tengo que renunciar a mis deseos, cuidados, atenciones para sobrevivir”",
+              "desc": "“Los deseos de los demás son más importantes que los míos” Miedo al abandono “Si soy como soy, se terminarán iendo” Miedo al rechazo"
+            },
+            {
+              "nombre": "“No me permito ser, porque no seré amado”",
+              "desc": "“Me señalarán si me acepto como soy” Conflicto de carencia afectiva"
+            },
+            {
+              "nombre": "“No me siento amado”",
+              "desc": "“Nadie me quiere” Conflicto de identidad invadida “Carezco de aspiración y territorio propio, pertenezco a otra persona” Conflicto de enemigo interno “El agresor está en mi familia” Conflicto de familia patógena “Estoy dentro de una familia tóxica” Conflicto de autoreconocimiento"
+            },
+            {
+              "nombre": "“No soy reconocido por nadie”",
+              "desc": "“Quiero ser reconocido por una familia que no reconozco” Conflicto de autodestrucción “Mi identidad debe ser destruída”"
+            },
+            {
+              "nombre": "“Debo ser destruido para existir, para ser reconocido”",
+              "desc": "“Debo destruir mi identidad” “Me dejo destruir porque es necesario” Conflicto limítrofe"
+            },
+            {
+              "nombre": "“No se donde empiezo yo y termina el otro”",
+              "desc": "“No se quien soy, porque no se que quieren que sea”"
+            }
+          ]
+        },
+        "espl_nica": {
+          "label": "Esplénica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de hemorragia virtual",
+              "desc": "“Tengo miedo intenso a perder la sangre, de morir en un baño de sangre” Grave conflicto familiar “Tengo un problema que no se como resolver con mis lazos de sangre” Conflicto de hemorragia simbólica “Siento que esta herida aún la tengo abierta”"
+            }
+          ]
+        },
+        "amigdalina": {
+          "label": "Amigdalina",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de bocado arrebatado",
+              "desc": "No puedo tragar el bocado que ya he comenzado a tragar, porque me lo arrancan“ Conflicto de bocado impuesto “No puedo escupir el bocado (no poder responder, por ejemplo)” “No me quiero tragar esto que me imponen” “No puedo responder como yo quisiera en esta discusión” Conflicto de bocado demasiado grande “No me puedo tragar esto, es demasiado para mí” Conflicto de bocado improbable “No creo poder alcanzar este bocado que es vital para mí”"
+            },
+            {
+              "nombre": "Conflicto de cólera encerrada.",
+              "desc": "Conflicto de defensa infantil impedida “No me puedo defender de mis padres / hermanos / otros niños” “No me dan permiso de defenderme” “No me defienden como yo quisiera” Conflicto de amor parental insuficiente “Mi madre / padre no me ama en la forma, magnitud o frecuencia que yo quisiera” Conflicto de bocado no atrapado con matiz de ataque-defensa “Por tener que estar peleando no logré mi objetivo” Miedo a no poder obtener la totalidad del bocado Estoy casi seguro de tragarlo pero todavía no puedo, todavía se me puede escapar"
+            }
+          ]
+        },
+        "ganglionar": {
+          "label": "Ganglionar",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de miedo orgánico local + impotencia",
+              "desc": "Conflicto de miedo orgánico local + impotencia"
+            },
+            {
+              "nombre": "Miedo por el órgano que los ganglios drenan",
+              "desc": "“Temo a una enfermedad en mi X tejido, los doctores no me podrán ayudar” Conflicto de alerta ante el peligro “Siento que algo viene, que me acecha” Conflicto de ligera desvalorización (Menor que en los huesos)"
+            },
+            {
+              "nombre": "Resonancia con la parte del esqueleto correspondiente al conflicto.",
+              "desc": "“Siento que hay algo que me hace sentir menos” Sentimiento de miedo impotente “No voy a poder enfrentarme / protegerme a ese problema” Conflicto de miedo impotente ante información “Me acaban de dar una noticia que me aterra y no puedo hacer nada” Conflicto de ataque / defensa"
+            },
+            {
+              "nombre": "“Atacan mis creencias, tengo que defenderlas”",
+              "desc": "“Me tengo que defender de estas críticas” Desvalorización + angustia profunda, inseguridad, vivencia de miedo en relación con el órgano que le corresponde Conflicto de miedo anticipativo “Me aterra un conflicto que sé que sucederá”"
+            },
+            {
+              "nombre": "(Función de drenaje y de eliminación: conflicto por no poder eliminar.",
+              "desc": "No se refiere a una vivencia digestiva, más relacionada con un hecho del pasado, sino a un miedo a eliminar, en proyección futura.)"
+            },
+            {
+              "nombre": "Desvalorización deportiva, sumisión, religiosidad.",
+              "desc": "Desvalorización deportiva, sumisión, religiosidad."
+            },
+            {
+              "nombre": "Angustia por la región inguinal.",
+              "desc": "Conflicto de carencia de protección en un desplazamiento “Me siento vulnerable en esta mudanza / cambio”"
+            },
+            {
+              "nombre": "Conflicto de desvalorización sexual",
+              "desc": "Conflicto de desvalorización parental “No se si pueda tener / criar hijos” Conflicto grave de amenaza Tener \"el cuchillo en la garganta\". Conflicto de desvalorización por no haber podido detener la invasión mortal del propio territorio en la posición de niño o de madre (izquierda) o afectiva masculina (derecha) Conflicto de desvalorización como protector parental Soy un/a mal/a padre/madre porque no protejo a mi hijo Conflicto de desvalorización como pareja Soy un/a mal/a compañero/a Desvalorización + miedo en un conflicto"
+            },
+            {
+              "nombre": "donde se necesitará conquistar o reconquistar su territorio",
+              "desc": "No se si pueda pelear la misma batalla otra vez Desvalorización en función de pilar de la familia “No puedo mantener mi hogar y a sus integrantes”"
+            }
+          ]
+        },
+        "del_timo": {
+          "label": "Del Timo",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desposesión profunda (Tal vez un cataclismo)",
+              "desc": "“Siento que me han quitado la cosa mas esencial para continuar existiendo” Grave conflicto de necesidad parental “Necesito a mi madre para salir de mis problemas” Conflicto pasivo de nido “No me siento cerca de mis padres desde siempre”"
+            }
+          ]
+        },
+        "leucocitaria": {
+          "label": "Leucocitaria",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de desvalorización específica por ataque-defensa familiar",
+              "desc": "“Desde que mi familia me critica por X tema, me siento poca cosa” Conflicto de desvalorización en la historia de la familia “No tengo información de nadie porque a nadie le importo” Desvalorización por ausencia de padre (protección, personal o en genealogía) Conflicto de defensa “Siento que me tengo que proteger de una agresión”"
+            },
+            {
+              "nombre": "Neutrófilo: en relación con enfermedades bacterianas.",
+              "desc": "Eosinófilo: enfermedades alérgicas (extraños en el interior). Conflicto de identidad “No estoy seguro de ser quien / como soy”"
+            },
+            {
+              "nombre": "Monocitos: \"Yo respecto a mí mismo\".",
+              "desc": "Linfocitos: \"Yo respecto a los demás\"."
+            }
+          ]
+        },
+        "linf_tica": {
+          "label": "Linfática",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de toxicidad",
+              "desc": "Conflicto de toxicidad"
+            },
+            {
+              "nombre": "“Tengo que limpiar esta suciedad”",
+              "desc": "“Tengo que adaptarme a vivir en este ambiente tóxico, difícil” Desvalorización ante la eliminación + agresión “No pude librarme / eliminar esta experiencia violenta / protegerme de ella Conflicto de la muerte de la pureza “Aquello que era puro y bueno ha muerto para siempre” Conflicto de desvalorización en términos de fatalidad y de impotencia “No logré salvar esto que murió / terminó para siempre” Conflicto de desvalorización en términos de ataques y de defensas “No soy suficientemente poderoso para defenderme / ganar este ataque”"
+            },
+            {
+              "nombre": "Conflicto de líquidos / túbulos colectores del riñón",
+              "desc": "Conflicto de silencio filial “Debo callarme frente a mis padres / autoridad parental” Conflicto grave de vulnerabilidad “Carezco de protección” “Me da miedo aquello que evidencia mi debilidad” “Debo de protegerme de un gran peligro en mi cuerpo (Enfemedad) Conflicto de miedo grave a la muerte “Me aterra la idea de la muerte, no puedo soltarla”"
+            }
+          ]
+        },
+        "de_sida": {
+          "label": "De Sida",
+          "conflicts": [
+            {
+              "nombre": "Programa de ruptura de la unidad",
+              "desc": "Programa de ruptura de la unidad"
+            },
+            {
+              "nombre": "Proyecto sentido condicional de vida",
+              "desc": "Proyecto sentido condicional de vida"
+            },
+            {
+              "nombre": "Programa de muerte",
+              "desc": "Conflicto concatenado Desvalorización + atentado a la integridad + miedo + separación Grave desvalorización social No puedo aceptar o reconocer lo que no es admisible ni por mí mismo” (Drogas, preferencia sexual) ni por la sociedad Conflicto de inhibición al combate Debo huir inmediatamente de esta situación sin prestar batalla“ Conflicto de separación + miedo violento a morir “No encuentro a mis padres, moriré” Conflicto transgeneracional de muerte"
+            },
+            {
+              "nombre": "Buscar embarazos fallidos, abortos, fallecimientos al nacer,",
+              "desc": "un muerto después de la concepción de alguien, hiatrogenia. Gran conflicto de diagnóstico El sida mata. Conflicto de pronóstico, “Es algo incurable” (Imposibilidad de curación)"
+            },
+            {
+              "nombre": "Conflicto por no haber sido deseado",
+              "desc": "Conflicto por no haber sido deseado"
+            },
+            {
+              "nombre": "GRAVE CONFLICTO DE DESVALORIZACIÓN + CONFLICTO DE IDENTIDAD",
+              "desc": "Conflicto de camuflaje mortal Me enfrento a un predador: me hago el muerto”"
+            }
+          ]
+        }
+      }
+    },
+    "neurosensorial": {
+      "title": "Sistema Neurosensorial",
+      "subsystems": {
+        "tumoral": {
+          "label": "Tumoral",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de solución intelectual",
+              "desc": "“Tengo que pensar una solución que está más allá de mi capacidad mental” Conflicto de apoyo intelectual “Necesito que me apoyen para encontrar la solución mental que no encuentro” Conflicto de solución imposible “Sé como arreglar la situación, pero no puedo hacerlo porque moriré / morirán” Conflicto de solución equivocada “Arreglé una situación que no era la que tenía que arreglar” Conflicto de larga duración “Llevo años atorado en este problema que no se soluciona” Conflicto en balance “Cuando parece arreglarse el problema surge un nuevo matiz” Conflicto de negación permanente “Todo está bien siempre, no me pasa nada” Conflicto de campeón “Tengo que ser el primer lugar en el poderoso / inteligente / fuerte” Conflicto del salvador único “Tengo que encargarme de todos, atenderlos, proteger a todo mundo”"
+            }
+          ]
+        },
+        "cef_lica": {
+          "label": "Cefálica",
+          "conflicts": [
+            {
+              "nombre": "Miedo a vacío",
+              "desc": "“Me aterroriza la ausencia de estímulos” Conflicto de correcaminos “Tengo que correr a todas partes, siempre”"
+            },
+            {
+              "nombre": "Miedo a morir",
+              "desc": "Conflicto de prolongación de la vida “Quiero que lo vivo continúe” Conflicto de eternidad “Quiero que lo que yo vivo continue” Conflicto de desvalorización intelectual “No soy tan listo como quisiera” Conflicto de descanso imposible “No descansaré hasta que…” Conflicto de necedad “Esto tiene que ser como yo pienso” Conflicto de saturación mental “Estoy abrumado entre todos mis pensamientos” Conflicto de perfeccionismo “Tengo que alcanzar un estándar altísimo” Conflicto de no aceptación de la realidad “Esto que sucedió no puede estar pasando” Conflicto de acción imposible “No sirvo de nada porque no puedo actuar” Conflicto de sufrimiento inaceptable “No puedo / quiero reconocer el sufrimiento que vivo Conflicto de impotencia intelectual “No puedo encontrar la solución a mi problema” Conflicto de frustración sexual llevado a lo intelectual “No logro encontrar la relación íntima que quiero” Conflicto de duda sobre el padre “No sé si este hombre es mi padre” Conflicto de rencor hacia el padre “Odio a mi papá por cierta situación Desvalorización sobre la función del padre “Mi madre ha derrumbado a mi padre”"
+            }
+          ]
+        },
+        "alzheimer": {
+          "label": "Alzheimer",
+          "conflicts": [
+            {
+              "nombre": "Conflicto motriz",
+              "desc": "“Me obligan / impiden moverme / reaccionar / hacer / hablar / desplazarme” Conflicto grave de miedo"
+            },
+            {
+              "nombre": "“No me quiero morir”",
+              "desc": "“Hay algo que viene por mí” Conflicto de miedo + impotencia “No puedo hacer nada ante el terror que se acerca” Conflicto de enemigo invisible “Alguien viene y no puedo combatirlo” Conflicto de abandono / separación parental “Me han dejado aquí, tengo que pedir socorro” Miedo a la soledad “No me quiero quedar solo” Miedo a perder el territorio “Siento que me arrebatarán lo que es mío” Estrategia de liberación de la autoridad “Quiero ser libre de la autoridad que me oprime”"
+            }
+          ]
+        },
+        "hemipl_jica": {
+          "label": "Hemipléjica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de ser doblegado",
+              "desc": "“Me siento sometido ante algo / alguien” Gran conflicto motor"
+            },
+            {
+              "nombre": "“Ya no tengo fuerza para luchar”",
+              "desc": "“No me puedo mover bajo ninguna circunstancia” Desvalorización ante el desplazamiento “No pude escapar” “Debí huir cuando pude” “Soy un tonto por no haberme movido” Conflicto de muerte por la mitad “Perdí a quien era mi otra mitad” Memoria de pelotón de fusilamiento “Alguien de mi familia fue parte de un asesinato”"
+            }
+          ]
+        },
+        "hemorr_gica": {
+          "label": "Hemorrágica",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de solución urgente",
+              "desc": "“Necesito resolver esto lo más rápido posible” Conflicto de desvalorización intelectual “No soy tan inteligente como creía” Conflicto de territorio intelectual “Alguien me robó la idea / proyecto” Conflicto de expulsión mental familiar “Quiero sacar a alguien de la familia de mi mente”"
+            }
+          ]
+        },
+        "del_insomnio": {
+          "label": "Del Insomnio",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de alerta permanente",
+              "desc": "“Si me duermo, estoy en peligro” Conflicto de miedo retrospectivo “Nadie me puede proteger, solo yo” Miedo a perder la consciencia “Si duermo, dejo de existir” Conflicto de preocupación “Hay algo en lo que no puedo dejar de pensar” Miedo a la agresión “Alguien viene a violentarme”"
+            },
+            {
+              "nombre": "Conflicto de miedo",
+              "desc": "Conflicto de miedo"
+            }
+          ]
+        },
+        "nerviosa": {
+          "label": "Nerviosa",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de contrariedad motriz",
+              "desc": "“Me han dado órdenes contradictorias” Conflicto de imagen mancillada Conflicto de desvalorización motriz                                      1"
+            },
+            {
+              "nombre": "“No debí de haber hecho eso”",
+              "desc": "“Di la cara y quedé mal con alguien / todos” “Fui un tonto por mis acciones” Conflicto de prestigio perdido Conflicto de deseo irrealizable                                          2"
+            },
+            {
+              "nombre": "“Mi reputación ha quedado hecha pedazos”",
+              "desc": "“No hay manera de lograr lo que me propongo” Conflicto de huida imposible                                                 Conflicto de bofetada"
+            },
+            {
+              "nombre": "“Alguien mueve los hilos de mi vida”                                         Conflicto de contacto indeseado",
+              "desc": "“No puedo salir de esta prisión”                                         4   “Me quiero aislar, ya no quiero este contacto con algo / alguien” Conflicto de retención / repele imposible                                    “Rechazo el contacto con alguien que me ha"
+            },
+            {
+              "nombre": "lastimado”",
+              "desc": "“No puedo retener / repeler algo o alguien” Conflicto de desvalorización estética relativa al movimiento”"
+            },
+            {
+              "nombre": "Conflicto de sensación perdida",
+              "desc": "“Mi imagen quedó hecha pedazos por lo que hice”"
+            },
+            {
+              "nombre": "“Ya no siento nada. Prefiero dolor a no sentir",
+              "desc": "Conflicto de agresión facial                                                 nada” “Me golpearon en el rostro” Conflicto de proyecto"
+            },
+            {
+              "nombre": "“Vivo los proyectos de otros, mas no el mío”",
+              "desc": "“Me imponen el proyecto de alguien más” “No puedo hacer lo que yo quiero” “Quiero dar macha atrás en este proyecto” Conflicto motriz relativo al futuro “Me causa problemas el proyecto a futuro” “No tengo futuro” “Tengo prohibido crecer / avanzar” Conflicto motriz relativo al ascenso “quiero destruir las órdenes que llegan desde arriba” “Tengo prohibido ascender / subir” “Tengo miedo de caer de la altura en la que estoy” “Me han degradado de la posición en la que estaba” Conflicto de retención imposible “No puedo retener al amado, me aterra que se vaya” Conflicto de impotencia ante el peligro “No puedo hacer nada contra lo que me amenaza” Conflicto de separación lateral “Mi pareja / hermano / aliado, me dejó / murió” Conflicto de miedo al contacto lateral “Es peligroso / prohibido vivir al lado del que amo”"
+            }
+          ]
+        },
+        "ocular": {
+          "label": "Ocular",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de miedo frontal",
+              "desc": "“Tengo miedo de algo /alguien muy cercano”"
+            },
+            {
+              "nombre": "“Recuerdo constantemente eventos violentos”",
+              "desc": "“Vivo muy cerca del peligro” “No puedo defenderme de estas agresiones” Conflicto de autocentrismo"
+            },
+            {
+              "nombre": "“Estoy demasiado ensimismado en mí mismo / mi intelecto”",
+              "desc": "“El exterior me hace sentir inseguro, mejor vivo en el interior” Conflicto de separación visual"
+            },
+            {
+              "nombre": "“Quiero que alguien me vea de cerca / se acerque a mí / regrese a mí”",
+              "desc": "“No quiero ver nunca más eso / ese que se fue” Conflicto de incertidumbre “El futuro es incierto, prefiero no enfocarme en él” Conflicto de miedo lejano “Me da miedo / mucha preocupación el futuro” “Hay un peligro que viene desde lejos “ “Mis enemigos están lejos, pero están” Conflicto de enfoque lejano “Deseo irme de aquí, irme lejos” “Prefiero enfocarme en lo exterior / lejano, lo interior / cercano me duele” “El presente me desagrada, prefiero vivir de los recuerdos (pasado) y/o ilusiones (futuro)” Conflicto de enfoque ajeno “Vivo enfocado en el bienestar de los demás” Conflicto de realidad distorsionada"
+            },
+            {
+              "nombre": "“No tolero lo que veo, quisiera que fuera de otra forma”",
+              "desc": "“Mi imagen perfecta es muy diferente a esta realidad” Conflicto deformante “Quiero transformar lo que veo en mí, ser más parecido a fulano X” “No me quiero parecer a fulano X, pero siento que empiezo a hacerlo” “Quiero que me vean de otra forma “ Conflicto de visión no deseada “No quiero ver el punto de esta situación / conversación / relación” “Prefiero no verte sufrir” “No quiero que me vean sufrir” Conflicto de vida imposible Conflicto de rebeldía"
+            },
+            {
+              "nombre": "“Ya no quiero ceder ante nada / nadie. “",
+              "desc": "“He cedido / sacrificado mucho, ahora me toca a mí” “Me siento presionado / invadido por los deseos / agendas ajenas “ “Es hora de salir de mi caja de confort” Conflicto de perspectiva"
+            },
+            {
+              "nombre": "“Necesito perspectiva, ver mi vida desde afuera / lejos”",
+              "desc": "“Quiero alejarme de eso / ese que me impide ser yo” Miedo a la senectud “Me hago viej@. Viene la enfermedad, la pobreza y la soledad” Conflicto visual de prohibición"
+            },
+            {
+              "nombre": "“Vi algo que nunca debió de ser visto, prohibido, tabú”",
+              "desc": "“Tengo miedo de ser visto en algo prohibido, tabú” Conflicto de peligro visual “El mundo exterior es muy peligroso, hay que mantenerlo vigilado” Conflicto de separación parental visual “Mi mamá y mi papá tienen muchos problemas” “Quisiera ver a mis padres juntos” “¿Dónde están mis padres?” Conflicto visual de ruta “Hay dos partes de mí, muy diferentes entre sí”                                         Conflicto de lágrima congelada"
+            },
+            {
+              "nombre": "1 “Lloro para mis adentros, que nadie",
+              "desc": "“Este camino ya no me place, necesito elegir otro” “Ya no veo aquello que me hace sentir yo… ¿Dónde está?”                                 vea estas lágrimas” Conflicto de dolor visual                                                               Conflicto de retención visual “Es muy sucio mirar eso, no lo soporto”                                               2 “Quisiera quedarme en la mirada el “Me duele lo que veo” recuerdo de algo que ya no existe” “Quiero limpiar lo mal que me ves” Conflicto de separación afectiva visual                                                 Conflicto de acecho visual “No te quiero perder de vista”                                                          “Tengo miedo de algo que me “Algo que veía, ya no lo veo. Lo dejé de ver.”                                          acecha por detrás” “Nuestras miradas se han dejado de cruzar”                                            3 “Ansiedad por un peligro del pasado” Conflicto de sigilo visual “Demasiada aprensión por algo que “Quiero vigilar sin ser visto” ya pasó”"
+            },
+            {
+              "nombre": "“Quiero ver sin que me vean”",
+              "desc": "“No quiero que desde el exterior miren mi interior” “Quiero impedir que el otro me mire por dentro”                                         Conflicto de transparencia visual Conflicto de dismorfia visual                                                         4 “Quiero que otro(s) vea mi interior”"
+            },
+            {
+              "nombre": "“No me creen, pero si conocieran",
+              "desc": "“No quiero ver como se refleja en el exterior mi interior”                              mi pasado lo harían” Conflicto de negación visual “Me niego a ver lo que pasa frente a mis ojos (Aunque lo veo)”                        5 Visión de horror “Sé que pasará frente a mis ojos pero no lo quiero ver” “Lo veo pero no lo creo / no lo quiero creer”"
+            },
+            {
+              "nombre": "Conflicto de miedo visual lejano",
+              "desc": "“Mi futuro es muy sombrío / negro / vacío. No hay nada para mí” “Se acerca algo negativo, deseo que disminuya su velocidad” Conflicto visual relativo al padre Me protegerse de la luz (El sol, el padre) Miedo a lastimar a la pareja “No quiero dañar a la persona que amo” Conflicto de pérdida del territorio sexual + separación"
+            },
+            {
+              "nombre": "“Me siento despreciado por mi pareja”",
+              "desc": "“Mi pareja me rechaza”"
+            },
+            {
+              "nombre": "Miedo a la muerte",
+              "desc": "Conflicto visual relativo al padre Me protegerse de la luz (El sol, el padre Conflicto de aceleración visual"
+            },
+            {
+              "nombre": "“Quisiera acelerar el tiempo, para que ya alcance mi meta”",
+              "desc": "“Me urge completar algo, antes de que se pierda la oportunidad” Conflicto de acercamiento visual “Quiero estar cerca de algo / alguien, antes de que se pierda / se aleje (Aún más)”"
+            }
+          ]
+        },
+        "auditiva": {
+          "label": "Auditiva",
+          "conflicts": [
+            {
+              "nombre": "Conflicto de bocado auditivo perdido",
+              "desc": "“Ya no escucho lo que deseo escuchar” Conflicto de bocado auditivo impuesto “Ya no quiero escuchar esto” Conflicto de relación maternal insuficiente"
+            },
+            {
+              "nombre": "“Quiero revivir mi experiencia intrauterina”",
+              "desc": "“Quiero sentir la palabra tranquilizante de mi madre” Miedo sobre el bocado auditivo “Tengo miedo de ya no escuchar a alguien” Conflicto de protección auditiva"
+            },
+            {
+              "nombre": "“Temo por un daño que me puedan hacer en los oídos”",
+              "desc": "“Me aterra que un insecto se me meta en el oído” Conflicto de problemas a través de la audición"
+            },
+            {
+              "nombre": "“Ya no quiero escuchar que se peleen”",
+              "desc": "“Quisiera que ya no hubieran estas disputas” Conflicto de agresión auditiva “Me protejo de la suciedad, la crítica y mentiras que escucho” Conflicto de separación auditiva “Me siento separado auditivamente de algo / alguien” Peligro de muerte por audición “Escucho un fuerte ruido que avisa mi muerte” Desvalorización auditiva “Me siento menos porque no puedo escuchar correctamente” Conflicto grave de agresión auditiva “Ya no puedo seguir escuchando esto” Conflicto de sorpresa auditiva “No puedo creer lo que estoy escuchando” Conflicto de sigilo auditivo “Otra persona no puede escuchar este secreto” Conflicto de silencio insoportable “No puedo soportar este silencio” Conflicto grave de separación auditiva “Sueño con oír de nuevo a X” Conflicto de palabra cálida"
+            },
+            {
+              "nombre": "“No escucho ninguna palabra de cariño”",
+              "desc": "“Deseo con todo mi ser escuchar cierta palabra” Conflicto de contacto auditivo “No tengo una buena comunicación con alguien” Conflicto de peligro auditivo “Hay algo peligroso que he estado escuchando” Miedo a morir El silencio es mortal Conflicto de presión excesiva “Estoy bajo una presión que no soporto” Conflicto de necesidad auditiva “Tengo que oír algo / alguien porque si no algo malo pasará” Conflicto de avance obligado “Me aterra ir hacia allá pero tengo que ir”"
+            },
+            {
+              "nombre": "Conflicto de referencia perdida",
+              "desc": "“Necesito un punto de referencia para tomar decisiones” Conflicto de mundo tambaleante “El piso debajo de mis pies es incierto, no se que hacer” Conflicto de control “Me siento mal de no poder controlar la situación” Conflicto de presión vital auditiva “Aunque necesito escuchar, me presiona así que ya no quiero”"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

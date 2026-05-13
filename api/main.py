@@ -364,6 +364,18 @@ async def pares_db():
     return data
 
 
+@app.get("/api/conflictologia-db", include_in_schema=False)
+async def conflictologia_db():
+    """Sirve la base de datos de conflictología psicosomática por sistema."""
+    import json as _json
+    db_path = BASE_DIR / "data" / "conflictologia_db.json"
+    if not db_path.exists():
+        return {"ok": False, "systems": {}}
+    with open(db_path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
 
 @app.get("/therapy", include_in_schema=False)
