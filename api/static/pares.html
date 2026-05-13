@@ -264,6 +264,108 @@
 
   .pair-check svg { width: 11px; height: 11px; fill: white; }
 
+  /* Botón timer en cada par */
+  .pair-timer-btn {
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    border: 1px solid rgba(139,92,246,0.3);
+    background: transparent;
+    color: var(--acc);
+    font-size: 11px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    margin-top: 0;
+  }
+  .pair-timer-btn:hover { background: var(--acc-dim); border-color: var(--acc); }
+  .pair-timer-btn.running { color: #f59e0b; border-color: rgba(245,158,11,0.5); animation: timerPulse 2s infinite; }
+  @keyframes timerPulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+
+  /* Widget timer flotante */
+  .timer-widget {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: var(--surface);
+    border: 1px solid rgba(139,92,246,0.4);
+    border-radius: 16px;
+    padding: 14px 18px;
+    z-index: 50;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    min-width: 200px;
+    animation: slideUp 0.2s ease;
+  }
+  @keyframes slideUp { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: none; } }
+
+  .timer-widget.hidden { display: none; }
+
+  .timer-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--acc);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+
+  .timer-display {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+  }
+
+  .timer-display.warning { color: #f59e0b; }
+  .timer-display.done    { color: #10b981; }
+
+  .timer-controls {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .timer-btn {
+    flex: 1;
+    padding: 5px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text);
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .timer-btn:hover { border-color: var(--acc); color: var(--acc); }
+  .timer-btn.stop-btn { color: #ef4444; border-color: rgba(239,68,68,0.25); }
+  .timer-btn.stop-btn:hover { background: rgba(239,68,68,0.1); }
+
+  .timer-progress {
+    height: 3px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-top: 10px;
+    overflow: hidden;
+  }
+  .timer-bar {
+    height: 100%;
+    background: var(--acc);
+    border-radius: 2px;
+    transition: width 1s linear;
+  }
+  .timer-bar.warning { background: #f59e0b; }
+
   .pairs-count {
     font-size: 0.72rem;
     color: var(--muted);
@@ -514,6 +616,17 @@
 </head>
 <body>
 
+<!-- Timer widget flotante -->
+<div class="timer-widget hidden" id="timerWidget">
+  <div class="timer-label" id="timerLabel">Par activo</div>
+  <div class="timer-display" id="timerDisplay">20:00</div>
+  <div class="timer-progress"><div class="timer-bar" id="timerBar" style="width:100%"></div></div>
+  <div class="timer-controls">
+    <button class="timer-btn" id="timerToggleBtn" onclick="toggleTimer()">⏸ Pausar</button>
+    <button class="timer-btn stop-btn" onclick="stopTimer()">✕ Detener</button>
+  </div>
+</div>
+
 <div class="app">
 
   <!-- Header -->
@@ -722,18 +835,108 @@
       const div = document.createElement('div');
       div.className = 'pair-item';
       div.onclick = () => askAboutPair(pair.name);
+      const isRunning = timerState.pairName === pair.name && timerState.running;
       div.innerHTML = `
         <div class="pair-dot ${pair.placed ? 'placed' : ''}"></div>
         <div class="pair-info">
           <div class="pair-name">${escHtml(pair.name)}</div>
           <div class="pair-zone">${escHtml(pair.zone)}</div>
         </div>
+        <button class="pair-timer-btn ${isRunning ? 'running' : ''}" onclick="event.stopPropagation(); startTimer('${escHtml(pair.name).replace(/'/g,"\\'")}', ${i})" title="Iniciar temporizador 20 min">⏱</button>
         <div class="pair-check ${pair.placed ? 'checked' : ''}" onclick="event.stopPropagation(); togglePlaced(${i})" title="${pair.placed ? 'Colocado' : 'Marcar como colocado'}">
           ${pair.placed ? '<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>' : ''}
         </div>
       `;
       pairsListEl.appendChild(div);
     });
+  }
+
+  // ── Timer de imanes ──────────────────────────────────────────────────────────
+  const TIMER_DURATION = 20 * 60; // 20 minutos en segundos
+  const timerWidget  = document.getElementById('timerWidget');
+  const timerLabel   = document.getElementById('timerLabel');
+  const timerDisplay = document.getElementById('timerDisplay');
+  const timerBar     = document.getElementById('timerBar');
+  const timerToggle  = document.getElementById('timerToggleBtn');
+
+  let timerState = { pairName: null, pairIdx: -1, remaining: TIMER_DURATION, running: false, interval: null };
+
+  function startTimer(pairName, pairIdx) {
+    // Si ya hay timer corriendo para otro par, confirmar
+    if (timerState.running && timerState.pairName !== pairName) {
+      if (!confirm(`Hay un temporizador activo para "${timerState.pairName}". ¿Detenerlo e iniciar uno nuevo?`)) return;
+    }
+    stopTimer(true); // detener sin notificación
+    timerState = { pairName, pairIdx, remaining: TIMER_DURATION, running: true, interval: null };
+    timerWidget.classList.remove('hidden');
+    timerLabel.textContent = pairName;
+    timerToggle.textContent = '⏸ Pausar';
+    _tickTimer();
+    timerState.interval = setInterval(_tickTimer, 1000);
+    renderPairsList();
+  }
+
+  function _tickTimer() {
+    const r = timerState.remaining;
+    const m = Math.floor(r / 60);
+    const s = r % 60;
+    timerDisplay.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    const pct = (r / TIMER_DURATION) * 100;
+    timerBar.style.width = pct + '%';
+
+    if (r <= 120) { // últimos 2 min → naranja
+      timerDisplay.classList.add('warning');
+      timerBar.classList.add('warning');
+    } else {
+      timerDisplay.classList.remove('warning');
+      timerBar.classList.remove('warning');
+    }
+
+    if (r <= 0) {
+      clearInterval(timerState.interval);
+      timerState.running = false;
+      timerDisplay.textContent = '¡Listo!';
+      timerDisplay.classList.remove('warning');
+      timerDisplay.classList.add('done');
+      timerToggle.textContent = '✓ Terminado';
+      // Marcar par como colocado automáticamente
+      if (timerState.pairIdx >= 0) togglePlaced(timerState.pairIdx);
+      // Notificación del sistema si está disponible
+      if ('Notification' in window && Notification.permission === 'granted') {
+        new Notification('⏱ Tiempo completado', { body: `Par "${timerState.pairName}" — 20 min completados`, icon: '/favicon.ico' });
+      }
+      return;
+    }
+    timerState.remaining--;
+  }
+
+  function toggleTimer() {
+    if (!timerState.pairName) return;
+    if (timerDisplay.classList.contains('done')) { stopTimer(); return; }
+    if (timerState.running) {
+      clearInterval(timerState.interval);
+      timerState.running = false;
+      timerToggle.textContent = '▶ Reanudar';
+    } else {
+      timerState.running = true;
+      timerToggle.textContent = '⏸ Pausar';
+      timerState.interval = setInterval(_tickTimer, 1000);
+    }
+    renderPairsList();
+  }
+
+  function stopTimer(silent = false) {
+    clearInterval(timerState.interval);
+    timerState = { pairName: null, pairIdx: -1, remaining: TIMER_DURATION, running: false, interval: null };
+    timerWidget.classList.add('hidden');
+    timerDisplay.classList.remove('warning', 'done');
+    timerBar.classList.remove('warning');
+    if (!silent) renderPairsList();
+  }
+
+  // Pedir permiso de notificaciones al cargar (una vez)
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
   }
 
   function askAboutPair(pairName) {
