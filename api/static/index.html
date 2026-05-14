@@ -123,21 +123,7 @@ html, body {
 }
 
 /* Connector line between cards */
-.cards-grid::before {
-  content: '';
-  position: absolute;
-  top: 58px;
-  left: calc(24px + 12.5%);
-  right: calc(24px + 12.5%);
-  height: 2px;
-  background: linear-gradient(90deg,
-    rgba(16,185,129,0.6),
-    rgba(99,102,241,0.6) 33%,
-    rgba(139,92,246,0.6) 66%,
-    rgba(245,158,11,0.6)
-  );
-  z-index: 0;
-}
+.cards-grid::before { display: none; }
 
 .card-wrap {
   display: flex;
@@ -149,29 +135,21 @@ html, body {
   z-index: 1;
 }
 
-/* Step number bubble */
+/* Step icon bubble */
 .step-bubble {
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #fff;
+  font-size: 1.2rem;
   flex-shrink: 0;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   position: relative;
   z-index: 2;
-}
-.step-bubble::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1px solid currentColor;
-  opacity: 0.3;
+  background: var(--surface);
+  border: 2px solid var(--border);
 }
 
 .card {
@@ -393,39 +371,39 @@ html, body {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">✦ Flujo de sesión terapéutica</div>
-  <h1>¿Por dónde<br><span>empiezas cada sesión?</span></h1>
-  <p>Sigue los 4 pasos en orden. Cada herramienta está diseñada para una etapa específica de la consulta.</p>
+  <div class="hero-badge">✦ Tus herramientas Holoacademia IA</div>
+  <h1>Todo lo que<br><span>necesitas en un lugar</span></h1>
+  <p>Cuatro herramientas especializadas: desde resolver dudas del diplomado hasta guiar una sesión terapéutica completa.</p>
 </div>
 
-<div class="flow-label">─── Sigue el orden de izquierda a derecha ───</div>
+<div class="flow-label">─── Selecciona la herramienta que necesitas ───</div>
 
 <!-- MAIN CARDS -->
 <div class="cards-grid">
 
   <!-- 1 · SINODAL -->
   <div class="card-wrap">
-    <div class="step-bubble step-1">1</div>
-    <a class="card card-sinodal" href="/intake">
-      <div class="card-icon">📋</div>
-      <div class="card-step-label">Paso 1 · Inicio</div>
-      <div class="card-title">Sinodal<br>& Historial</div>
+    <div class="step-bubble step-1">📚</div>
+    <a class="card card-sinodal" href="/alumno">
+      <div class="card-icon">📚</div>
+      <div class="card-step-label">Tutor del Diplomado</div>
+      <div class="card-title">Sinodal<br>IA</div>
       <div class="card-desc">
-        Registra los datos del paciente, construye el árbol genealógico y obtén el análisis inicial completo antes de la sesión.
+        Resuelve todas tus dudas sobre el material del diplomado. Sael tiene acceso completo a todos los módulos y manuales del Método Lavín.
       </div>
       <ul class="card-steps">
-        <li><span class="dot"></span>Nombre, fecha de nacimiento</li>
-        <li><span class="dot"></span>Genograma familiar (3 generaciones)</li>
-        <li><span class="dot"></span>Numerología + patrones + FFI</li>
-        <li><span class="dot"></span>Diagnóstico multi-enfoque inicial</li>
+        <li><span class="dot"></span>Preguntas sobre cualquier módulo</li>
+        <li><span class="dot"></span>Explicaciones de técnicas y protocolos</li>
+        <li><span class="dot"></span>Casos clínicos del material</li>
+        <li><span class="dot"></span>Disponible 24/7 como tu tutor personal</li>
       </ul>
-      <div class="card-cta">Registrar paciente →</div>
+      <div class="card-cta">Hablar con Sael →</div>
     </a>
   </div>
 
   <!-- 2 · RASTREO -->
   <div class="card-wrap">
-    <div class="step-bubble step-2">2</div>
+    <div class="step-bubble step-2">🧲</div>
     <a class="card card-rastreo" href="/rastreo">
       <div class="card-icon">🧲</div>
       <div class="card-step-label">Paso 2 · Rastreo</div>
@@ -445,7 +423,7 @@ html, body {
 
   <!-- 3 · PARES -->
   <div class="card-wrap">
-    <div class="step-bubble step-3">3</div>
+    <div class="step-bubble step-3">⚡</div>
     <a class="card card-pares" href="/pares">
       <div class="card-icon">⚡</div>
       <div class="card-step-label">Paso 3 · Aplicación</div>
@@ -465,7 +443,7 @@ html, body {
 
   <!-- 4 · TERAPEUTA -->
   <div class="card-wrap">
-    <div class="step-bubble step-4">4</div>
+    <div class="step-bubble step-4">🤖</div>
     <a class="card card-terapeuta" href="/terapeuta">
       <div class="card-icon">🤖</div>
       <div class="card-step-label">Paso 4 · Sesión en vivo</div>
@@ -490,11 +468,11 @@ html, body {
   <div class="secondary-label">Herramientas adicionales</div>
   <div class="secondary-grid">
 
-    <a class="sec-card" href="/alumno">
-      <div class="sec-icon">📚</div>
+    <a class="sec-card" href="/intake">
+      <div class="sec-icon">📋</div>
       <div class="sec-info">
-        <div class="sec-title">Tutor del Diplomado — Sael</div>
-        <div class="sec-desc">Resuelve dudas del material del diplomado. Acceso completo a todos los módulos y manuales del Método Lavín.</div>
+        <div class="sec-title">Historial del Paciente</div>
+        <div class="sec-desc">Registra datos, genograma familiar, numerología y obtén un diagnóstico multi-enfoque antes de la sesión.</div>
       </div>
       <div class="sec-arrow">→</div>
     </a>
@@ -502,8 +480,8 @@ html, body {
     <a class="sec-card" href="/tablas">
       <div class="sec-icon">📊</div>
       <div class="sec-info">
-        <div class="sec-title">Tablas Interactivas (modo texto)</div>
-        <div class="sec-desc">Versión alternativa en texto de los 1,059 pares, creencias, miedos, sales y florales. Útil para búsqueda rápida.</div>
+        <div class="sec-title">Tablas (modo texto)</div>
+        <div class="sec-desc">Versión en texto de los 1,059 pares, creencias, miedos, sales y florales. Útil para búsqueda rápida sin imágenes.</div>
       </div>
       <div class="sec-arrow">→</div>
     </a>
