@@ -62,6 +62,18 @@ header h1 {
   white-space: nowrap;
 }
 
+.home-btn {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color .2s, background .2s;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
 #global-search {
   flex: 1;
   max-width: 400px;
@@ -691,6 +703,7 @@ header h1 {
 
 <!-- ── HEADER ─────────────────────────────────────────────────── -->
 <header>
+  <a href="/" class="home-btn" title="Inicio">⌂</a>
   <h1>🧲 Rastreo</h1>
   <button class="mobile-toggle" id="btn-toggle-cat">☰ Cat.</button>
   <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
@@ -900,7 +913,8 @@ function selectCategory(cat) {
   document.getElementById('active-cat-label').textContent = `${cat.icon} ${cat.label}`;
 
   // load images
-  const imgs = manifest[cat.key] || [];
+  const catData = manifest[cat.key] || {};
+  const imgs = catData.archivos || [];
   activeImages = imgs;
   activeImageIdx = 0;
   renderImageStrip();
@@ -921,9 +935,10 @@ function renderImageStrip() {
     return;
   }
 
+  const catDir = activeCategory.key;
   strip.innerHTML = '';
   activeImages.forEach((imgPath, i) => {
-    const url = imgPath.startsWith('http') ? imgPath : `/tablas-assets/${imgPath}`;
+    const url = imgPath.startsWith('http') ? imgPath : `/tablas-assets/${catDir}/${imgPath}`;
     const img = document.createElement('img');
     img.className = 'thumb' + (i === activeImageIdx ? ' active' : '');
     img.src = url;

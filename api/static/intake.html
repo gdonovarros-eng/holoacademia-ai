@@ -44,6 +44,18 @@
     border-bottom: 1px solid var(--border);
   }
 
+  .home-btn {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color .2s, background .2s;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
   .header-icon {
     width: 32px; height: 32px;
     background: var(--acc-dim);
@@ -471,10 +483,11 @@
 
 <!-- Header -->
 <header class="header">
+  <a href="/" class="home-btn" title="Inicio">⌂</a>
   <div class="header-icon">📋</div>
   <div>
     <div class="header-title">Registro Pre-Sesión</div>
-    <div class="header-sub">Asistente Terapéutico Holoacadem-ia</div>
+    <div class="header-sub">Asistente Terapéutico Holoacadem-iA</div>
   </div>
   <div class="header-right">
     <a href="/terapeuta?skip=1"><button class="btn-ghost">Saltar →</button></a>
