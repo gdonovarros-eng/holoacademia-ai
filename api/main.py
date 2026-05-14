@@ -271,6 +271,10 @@ if THERAPY_STATIC_DIR.exists():
 if PAIR_VISUALS_DIR.exists():
     app.mount("/therapy-assets", StaticFiles(directory=PAIR_VISUALS_DIR), name="therapy-assets")
 
+TABLAS_IMAGES_DIR = BASE_DIR / "data" / "tablas_images"
+if TABLAS_IMAGES_DIR.exists():
+    app.mount("/tablas-assets", StaticFiles(directory=TABLAS_IMAGES_DIR), name="tablas-assets")
+
 
 @app.on_event("startup")
 async def warm_caches() -> None:
@@ -374,6 +378,23 @@ async def conflictologia_db():
     with open(db_path, encoding="utf-8") as f:
         data = _json.load(f)
     return data
+
+
+@app.get("/api/tablas-images", include_in_schema=False)
+async def tablas_images_manifest():
+    """Sirve el manifest de imágenes de tablas de rastreo."""
+    import json as _json
+    manifest_path = BASE_DIR / "data" / "tablas_images" / "manifest.json"
+    if not manifest_path.exists():
+        return {"ok": False, "categories": {}}
+    with open(manifest_path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return {"ok": True, "categories": data}
+
+
+@app.get("/rastreo", include_in_schema=False)
+async def rastreo_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "rastreo.html", headers=_no_cache_headers())
 
 
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
