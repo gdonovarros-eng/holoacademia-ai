@@ -8,12 +8,12 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:      #0b1120;
-  --surface: #111827;
-  --surface2: #1a2235;
-  --border:  rgba(255,255,255,0.07);
-  --text:    #e2e8f0;
-  --muted:   #64748b;
+  --bg:      #f5f5f7;
+  --surface: #ffffff;
+  --surface2: #e8e8ed;
+  --border:  rgba(0,0,0,0.08);
+  --text:    #1d1d1f;
+  --muted:   #6e6e73;
   --acc:     #3b82f6;
   --radius:  16px;
 }
@@ -30,19 +30,24 @@ html, body {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 20px 32px;
+  padding: 14px 32px;
   border-bottom: 1px solid var(--border);
-  background: var(--surface);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .logo-mark {
-  height: 40px;
+  height: 44px;
   display: flex;
   align-items: center;
   flex-shrink: 0;
 }
 .logo-mark img {
-  height: 40px;
+  height: 44px;
   width: auto;
   object-fit: contain;
 }
@@ -64,11 +69,11 @@ html, body {
   gap: 6px;
   font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--acc);
-  background: rgba(59,130,246,0.1);
-  border: 1px solid rgba(59,130,246,0.25);
+  color: #2563eb;
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.2);
   border-radius: 20px;
   padding: 5px 14px;
   margin-bottom: 20px;
@@ -108,7 +113,7 @@ html, body {
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  gap: 16px;
   max-width: 1180px;
   margin: 0 auto;
   padding: 0 24px 48px;
@@ -141,8 +146,9 @@ html, body {
   margin-bottom: 14px;
   position: relative;
   z-index: 2;
-  background: var(--surface);
+  background: #ffffff;
   border: 2px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
 .card {
@@ -181,32 +187,32 @@ html, body {
 }
 
 /* Card 1 — Sinodal */
-.card-sinodal { border-color: rgba(59,130,246,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-.card-sinodal:hover { border-color: rgba(59,130,246,0.4); box-shadow: 0 8px 40px rgba(59,130,246,0.12); }
+.card-sinodal { border-color: rgba(59,130,246,0.25); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.card-sinodal:hover { border-color: rgba(59,130,246,0.5); box-shadow: 0 8px 32px rgba(59,130,246,0.15); }
 .card-sinodal::after { background: linear-gradient(90deg, #3b82f6, #60a5fa); }
-.card-sinodal::before { background: radial-gradient(ellipse at top, rgba(59,130,246,0.05), transparent 70%); }
-.step-1 { background: linear-gradient(135deg, #3b82f6, #2563eb); color: #3b82f6; }
+.card-sinodal::before { background: radial-gradient(ellipse at top, rgba(59,130,246,0.04), transparent 70%); }
+.step-1 { border-color: rgba(59,130,246,0.3); }
 
 /* Card 2 — Rastreo */
-.card-rastreo { border-color: rgba(99,102,241,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-.card-rastreo:hover { border-color: rgba(99,102,241,0.4); box-shadow: 0 8px 40px rgba(99,102,241,0.12); }
+.card-rastreo { border-color: rgba(99,102,241,0.25); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.card-rastreo:hover { border-color: rgba(99,102,241,0.5); box-shadow: 0 8px 32px rgba(99,102,241,0.15); }
 .card-rastreo::after { background: linear-gradient(90deg, #6366f1, #818cf8); }
-.card-rastreo::before { background: radial-gradient(ellipse at top, rgba(99,102,241,0.05), transparent 70%); }
-.step-2 { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #6366f1; }
+.card-rastreo::before { background: radial-gradient(ellipse at top, rgba(99,102,241,0.04), transparent 70%); }
+.step-2 { border-color: rgba(99,102,241,0.3); }
 
 /* Card 3 — Pares */
-.card-pares { border-color: rgba(139,92,246,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-.card-pares:hover { border-color: rgba(139,92,246,0.4); box-shadow: 0 8px 40px rgba(139,92,246,0.12); }
+.card-pares { border-color: rgba(139,92,246,0.25); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.card-pares:hover { border-color: rgba(139,92,246,0.5); box-shadow: 0 8px 32px rgba(139,92,246,0.15); }
 .card-pares::after { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
-.card-pares::before { background: radial-gradient(ellipse at top, rgba(139,92,246,0.05), transparent 70%); }
-.step-3 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #8b5cf6; }
+.card-pares::before { background: radial-gradient(ellipse at top, rgba(139,92,246,0.04), transparent 70%); }
+.step-3 { border-color: rgba(139,92,246,0.3); }
 
 /* Card 4 — Terapeuta */
-.card-terapeuta { border-color: rgba(168,85,247,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
-.card-terapeuta:hover { border-color: rgba(168,85,247,0.4); box-shadow: 0 8px 40px rgba(168,85,247,0.12); }
+.card-terapeuta { border-color: rgba(168,85,247,0.25); box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+.card-terapeuta:hover { border-color: rgba(168,85,247,0.5); box-shadow: 0 8px 32px rgba(168,85,247,0.15); }
 .card-terapeuta::after { background: linear-gradient(90deg, #a855f7, #c084fc); }
-.card-terapeuta::before { background: radial-gradient(ellipse at top, rgba(168,85,247,0.05), transparent 70%); }
-.step-4 { background: linear-gradient(135deg, #a855f7, #9333ea); color: #a855f7; }
+.card-terapeuta::before { background: radial-gradient(ellipse at top, rgba(168,85,247,0.04), transparent 70%); }
+.step-4 { border-color: rgba(168,85,247,0.3); }
 
 .card-icon {
   font-size: 1.6rem;
@@ -249,7 +255,7 @@ html, body {
 }
 .card-steps li {
   font-size: 0.78rem;
-  color: #94a3b8;
+  color: #8e8e93;
   line-height: 1.4;
   display: flex;
   gap: 7px;
@@ -276,10 +282,10 @@ html, body {
 }
 .card:hover .card-cta { gap: 8px; }
 
-.card-sinodal .card-cta  { color: #60a5fa; }
-.card-rastreo .card-cta  { color: #818cf8; }
-.card-pares   .card-cta  { color: #a78bfa; }
-.card-terapeuta .card-cta { color: #c084fc; }
+.card-sinodal .card-cta  { color: #2563eb; }
+.card-rastreo .card-cta  { color: #4f46e5; }
+.card-pares   .card-cta  { color: #7c3aed; }
+.card-terapeuta .card-cta { color: #9333ea; }
 
 /* ── SECONDARY TOOLS ── */
 .secondary-section {
@@ -311,7 +317,7 @@ html, body {
   gap: 16px;
   transition: transform 0.15s, border-color 0.15s;
 }
-.sec-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.15); }
+.sec-card:hover { transform: translateY(-2px); border-color: rgba(0,0,0,0.15); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
 .sec-icon {
   font-size: 1.4rem;
   flex-shrink: 0;
@@ -320,7 +326,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255,255,255,0.05);
+  background: rgba(0,0,0,0.04);
   border-radius: 10px;
 }
 .sec-info { flex: 1; }
@@ -354,11 +360,7 @@ html, body {
 <!-- HEADER -->
 <header class="header">
   <div class="logo-mark">
-    <img src="/therapy/logo" alt="Holoacadem-iA">
-  </div>
-  <div class="logo-text">
-    <div class="logo-name">Holoacadem-iA</div>
-    <div class="logo-sub">Asistente Terapéutico Holoacadem-iA</div>
+    <img src="/therapy-static/logo.png" alt="Holoacadem-iA">
   </div>
 </header>
 
