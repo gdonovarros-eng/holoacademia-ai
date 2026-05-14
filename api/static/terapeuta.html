@@ -399,6 +399,27 @@
     margin: 10px 0 6px;
   }
 
+  /* ── Bloques de color ── */
+  .conflict-bloque {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 3px 10px 3px 6px;
+    border-radius: 20px;
+    margin: 8px 0 4px;
+  }
+  .conflict-bloque.rojo    { background: rgba(239,68,68,0.18);  color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+  .conflict-bloque.naranja { background: rgba(249,115,22,0.18); color: #fdba74; border: 1px solid rgba(249,115,22,0.35); }
+  .conflict-bloque.amarillo{ background: rgba(234,179,8,0.18);  color: #fde047; border: 1px solid rgba(234,179,8,0.35); }
+  .conflict-bloque.verde   { background: rgba(34,197,94,0.15);  color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+  .conflict-bloque.azul    { background: rgba(59,130,246,0.18); color: #93c5fd; border: 1px solid rgba(59,130,246,0.35); }
+  .conflict-bloque.violeta { background: rgba(168,85,247,0.18); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.35); }
+  .conflict-bloque.cafe    { background: rgba(180,120,60,0.2);  color: #d4a574; border: 1px solid rgba(180,120,60,0.4); }
+  .conflict-bloque.blanco  { background: rgba(255,255,255,0.1); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.25); }
+
   .conflict-note {
     font-size: 0.78rem;
     color: #fbbf24;
@@ -835,6 +856,17 @@
         continue;
       }
 
+      // Bloque de color:  "  [BLOQUE:🔴ROJO]"
+      if (inTable && /\[BLOQUE:[^\]]+\]/.test(trimmed)) {
+        const bm = trimmed.match(/\[BLOQUE:(.+?)\]/);
+        if (bm) {
+          const bloqueText = bm[1]; // e.g. "🔴ROJO"
+          const colorKey = bloqueText.replace(/[^a-záéíóúñü]/gi,'').toLowerCase(); // "rojo"
+          out.push(`<div class="conflict-bloque ${colorKey}">${bloqueText}</div>`);
+        }
+        continue;
+      }
+
       // Subsistema en MAYÚSCULAS seguido de ":"  (ej: "  HIPOFISIARIA:")
       if (inTable && /^\s{2,}[A-ZÁÉÍÓÚÑÜ\s\/]+:\s*$/.test(line) && trimmed.length < 40) {
         currentSubsystem = trimmed.replace(':', '').trim();
@@ -880,7 +912,7 @@
 
       // Texto de instrucción dentro de la tabla
       if (inTable && trimmed && !/^═{2,}/.test(trimmed)) {
-        if (trimmed.startsWith('Pregunta por bloque') || trimmed.startsWith('Muéstrale')) {
+        if (trimmed.startsWith('Pregunta') || trimmed.startsWith('Muéstrale') || trimmed.startsWith('Muestra')) {
           out.push(`<div class="conflict-note">${escHtml(trimmed)}</div>`);
           continue;
         }

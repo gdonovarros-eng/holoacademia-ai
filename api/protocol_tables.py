@@ -1357,29 +1357,53 @@ def get_subsystems_list(sistema: str) -> str:
     return "\n".join(lines)
 
 
+_COLORES_BLOQUE = [
+    ("🔴", "ROJO"),
+    ("🟠", "NARANJA"),
+    ("🟡", "AMARILLO"),
+    ("🟢", "VERDE"),
+    ("🔵", "AZUL"),
+    ("🟣", "VIOLETA"),
+    ("🟤", "CAFÉ"),
+    ("⚪", "BLANCO"),
+]
+
+
 def get_conflict_table(sistema: str) -> str:
     """
     Devuelve la tabla completa de conflictos del sistema.
-    Solo usar cuando no se puede detectar subsistema específico.
+    Los bloques de color se marcan automáticamente cuando los números reinician desde 1.
     """
     data = CONFLICTOS.get(sistema)
     if not data:
         return ""
 
     lines = [f"\n📋 {data['titulo']}\n"]
-    lines.append("Muéstrale esta lista al terapeuta para que la lea con la MS:\n")
+    lines.append("Muéstrale esta tabla al terapeuta — primero pregunta el bloque (color), luego el número:\n")
 
     for subsistema, conflictos in data["subsistemas"].items():
         lines.append(f"\n{'─'*40}")
         lines.append(f"  {subsistema}:")
+
+        bloque_idx = 0
+        prev_num = None
         for num, nombre, frase in conflictos:
+            # Detectar inicio de nuevo bloque: cuando el número vuelve a 1
+            if num == '1' and prev_num is not None:
+                bloque_idx += 1
+            if num == '1' or prev_num is None:
+                if prev_num is None:
+                    bloque_idx = 0  # primer bloque
+                emoji, color = _COLORES_BLOQUE[bloque_idx % len(_COLORES_BLOQUE)]
+                lines.append(f"  [BLOQUE:{emoji}{color}]")
+            prev_num = num
             if frase:
                 lines.append(f"  {num}. {nombre} — {frase}")
             else:
                 lines.append(f"  {num}. {nombre}")
 
     lines.append(f"\n{'─'*40}")
-    lines.append("Pregunta por bloque (rojo/naranja/amarillo/etc.) y luego por número.")
+    lines.append("Pregunta primero el bloque (🔴ROJO/🟠NARANJA/🟡AMARILLO/etc.) y luego el número dentro del bloque.")
     return "\n".join(lines)
 
 
