@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holoacademia IA — Panel Principal</title>
+<title>Holoacadem-iA</title>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -36,27 +36,20 @@ html, body {
 }
 
 .logo-mark {
-  width: 42px;
-  height: 42px;
-  background: linear-gradient(135deg, #10b981, #6366f1);
-  border-radius: 12px;
+  height: 40px;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
 }
-.logo-mark svg { width: 22px; height: 22px; fill: #fff; }
+.logo-mark img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+}
 
 .logo-text { line-height: 1.2; }
-.logo-name {
-  font-size: 1.05rem;
-  font-weight: 700;
-  background: linear-gradient(90deg, #10b981, #6366f1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.logo-sub { font-size: 0.75rem; color: var(--muted); }
+.logo-name { display: none; }
+.logo-sub { font-size: 0.78rem; color: var(--muted); }
 
 /* ── HERO ── */
 .hero {
@@ -361,17 +354,17 @@ html, body {
 <!-- HEADER -->
 <header class="header">
   <div class="logo-mark">
-    <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
+    <img src="/therapy/logo" alt="Holoacadem-iA">
   </div>
   <div class="logo-text">
-    <div class="logo-name">Holoacademia IA</div>
-    <div class="logo-sub">Asistente Terapéutico · Método Lavín</div>
+    <div class="logo-name">Holoacadem-iA</div>
+    <div class="logo-sub">Asistente Terapéutico Holoacadem-ia</div>
   </div>
 </header>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="hero-badge">✦ Tus herramientas Holoacademia IA</div>
+  <div class="hero-badge">✦ Tus herramientas Holoacadem-iA</div>
   <h1>Todo lo que<br><span>necesitas en un lugar</span></h1>
   <p>Cuatro herramientas especializadas: desde resolver dudas del diplomado hasta guiar una sesión terapéutica completa.</p>
 </div>
