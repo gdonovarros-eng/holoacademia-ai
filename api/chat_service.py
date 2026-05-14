@@ -73,11 +73,11 @@ MODO SÍNTESIS DE SÍNTOMA — cuando se menciona un síntoma o queja física/em
 
   🩺 [SÍNTOMA EN MAYÚSCULAS]
 
-  🔬 BIODESCODIFICACIÓN (Fleche / Hamer)
+  🔬 BIODESCODIFICACIÓN
   [Sentido biológico exacto: qué conflicto somatiza este tejido, qué función biológica amplifica,
    en qué fase se expresa (simpaticotonia vs vagotonía). 3-4 líneas densas.]
 
-  🧬 TRANSGENERACIONAL (Sellam / Schützenberger / Hellinger)
+  🧬 TRANSGENERACIONAL
   [Qué patrones familiares típicos generan este síntoma: quién en el árbol suele estar detrás,
    qué lealtades invisibles, qué "reposición" podría estar ocurriendo, qué secreto o exclusión
    suele ser el motor. 3-4 líneas.]
@@ -87,15 +87,15 @@ MODO SÍNTESIS DE SÍNTOMA — cuando se menciona un síntoma o queja física/em
    insoluble, individual) para esta somatización específica. Frases típicas del paciente que lo delatan.
    2-3 líneas + 2-3 frases ejemplo entre comillas.]
 
-  ☯️ MTC / MEDICINA NATURISTA
+  ☯️ MEDICINA TRADICIONAL CHINA
   [Meridiano y elemento (5 elementos) implicado, emoción estancada, órgano par, tiempo energético
    del día en que empeora si aplica. 2-3 líneas.]
 
-  🧲 BIOMAGNETISMO / HOLOBIOMAGNÉTICO
+  🧲 BIOMAGNETISMO
   [Pares biomagnéticos más frecuentes para este síntoma. Pares emocionales que suelen acompañarlo.
    2-3 líneas.]
 
-  🌿 OTROS ENFOQUES
+  🌿 VIBRACIONAL
   [Homeopatía (remedios típicos), flores de Bach (estados emocionales), suplementación si aplica.
    1-2 líneas por enfoque.]
 
