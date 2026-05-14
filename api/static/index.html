@@ -3,247 +3,512 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holoacademia IA</title>
+<title>Holoacademia IA — Panel Principal</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --t-bg:    #0b1120;
-    --t-card:  #111827;
-    --t-acc:   #10b981;
-    --t-text:  #f1f5f9;
-    --t-muted: #64748b;
-    --a-bg:    #f8fafc;
-    --a-card:  #ffffff;
-    --a-acc:   #6366f1;
-    --a-text:  #1e293b;
-    --a-muted: #64748b;
-  }
+:root {
+  --bg:      #0b1120;
+  --surface: #111827;
+  --surface2: #1a2235;
+  --border:  rgba(255,255,255,0.07);
+  --text:    #e2e8f0;
+  --muted:   #64748b;
+  --acc:     #10b981;
+  --radius:  16px;
+}
 
-  html, body {
-    height: 100%;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  }
+html, body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0b1120 50%, #f8fafc 50%);
-    padding: 24px;
-  }
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px 32px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
 
-  .logo {
-    text-align: center;
-    margin-bottom: 48px;
-  }
+.logo-mark {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #10b981, #6366f1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark svg { width: 22px; height: 22px; fill: #fff; }
 
-  .logo-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #10b981, #6366f1);
-    border-radius: 18px;
-    margin-bottom: 14px;
-  }
+.logo-text { line-height: 1.2; }
+.logo-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #10b981, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-sub { font-size: 0.75rem; color: var(--muted); }
 
-  .logo-mark svg { width: 36px; height: 36px; fill: #fff; }
+/* ── HERO ── */
+.hero {
+  text-align: center;
+  padding: 52px 24px 36px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acc);
+  background: rgba(16,185,129,0.1);
+  border: 1px solid rgba(16,185,129,0.25);
+  border-radius: 20px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.hero h1 span {
+  background: linear-gradient(90deg, #10b981, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 480px;
+  margin: 0 auto;
+}
 
-  .logo-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #10b981, #6366f1);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.02em;
-  }
+/* ── FLOW ── */
+.flow-label {
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
 
-  .logo-sub {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-top: 4px;
-  }
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 48px;
+  position: relative;
+}
 
-  .cards {
-    display: flex;
-    gap: 20px;
-    max-width: 1100px;
-    width: 100%;
-  }
+/* Connector line between cards */
+.cards-grid::before {
+  content: '';
+  position: absolute;
+  top: 58px;
+  left: calc(24px + 12.5%);
+  right: calc(24px + 12.5%);
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(16,185,129,0.6),
+    rgba(99,102,241,0.6) 33%,
+    rgba(139,92,246,0.6) 66%,
+    rgba(245,158,11,0.6)
+  );
+  z-index: 0;
+}
 
-  .card {
-    flex: 1;
-    border-radius: 20px;
-    padding: 36px 28px 32px;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  padding: 0 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Step number bubble */
+.step-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+.step-bubble::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid currentColor;
+  opacity: 0.3;
+}
+
+.card {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 20px 20px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+.card:hover { transform: translateY(-4px); }
+.card:hover::before { opacity: 1; }
+
+/* ── Card accent line top ── */
+.card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+/* Card 1 — Sinodal */
+.card-sinodal { border-color: rgba(16,185,129,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.card-sinodal:hover { border-color: rgba(16,185,129,0.4); box-shadow: 0 8px 40px rgba(16,185,129,0.12); }
+.card-sinodal::after { background: linear-gradient(90deg, #10b981, #34d399); }
+.card-sinodal::before { background: radial-gradient(ellipse at top, rgba(16,185,129,0.05), transparent 70%); }
+.step-1 { background: linear-gradient(135deg, #10b981, #059669); color: #10b981; }
+
+/* Card 2 — Rastreo */
+.card-rastreo { border-color: rgba(99,102,241,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.card-rastreo:hover { border-color: rgba(99,102,241,0.4); box-shadow: 0 8px 40px rgba(99,102,241,0.12); }
+.card-rastreo::after { background: linear-gradient(90deg, #6366f1, #818cf8); }
+.card-rastreo::before { background: radial-gradient(ellipse at top, rgba(99,102,241,0.05), transparent 70%); }
+.step-2 { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #6366f1; }
+
+/* Card 3 — Pares */
+.card-pares { border-color: rgba(139,92,246,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.card-pares:hover { border-color: rgba(139,92,246,0.4); box-shadow: 0 8px 40px rgba(139,92,246,0.12); }
+.card-pares::after { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.card-pares::before { background: radial-gradient(ellipse at top, rgba(139,92,246,0.05), transparent 70%); }
+.step-3 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: #8b5cf6; }
+
+/* Card 4 — Terapeuta */
+.card-terapeuta { border-color: rgba(245,158,11,0.2); box-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+.card-terapeuta:hover { border-color: rgba(245,158,11,0.4); box-shadow: 0 8px 40px rgba(245,158,11,0.12); }
+.card-terapeuta::after { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.card-terapeuta::before { background: radial-gradient(ellipse at top, rgba(245,158,11,0.05), transparent 70%); }
+.step-4 { background: linear-gradient(135deg, #f59e0b, #d97706); color: #f59e0b; }
+
+.card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+
+.card-step-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.card-desc {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* What to do section */
+.card-steps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+.card-steps li {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  line-height: 1.4;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+.card-steps li .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+  margin-top: 5px;
+  opacity: 0.5;
+}
+
+.card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-top: 4px;
+  transition: gap 0.2s;
+}
+.card:hover .card-cta { gap: 8px; }
+
+.card-sinodal .card-cta  { color: #10b981; }
+.card-rastreo .card-cta  { color: #818cf8; }
+.card-pares   .card-cta  { color: #a78bfa; }
+.card-terapeuta .card-cta { color: #fbbf24; }
+
+/* ── SECONDARY TOOLS ── */
+.secondary-section {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+.secondary-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.secondary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.sec-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.15s, border-color 0.15s;
+}
+.sec-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.15); }
+.sec-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+}
+.sec-info { flex: 1; }
+.sec-title { font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.sec-desc  { font-size: 0.77rem; color: var(--muted); margin-top: 3px; line-height: 1.4; }
+.sec-arrow { color: var(--muted); font-size: 0.9rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-    border: 1px solid transparent;
   }
-
-  .card:hover { transform: translateY(-4px); }
-
-  .card-terapeuta {
-    background: #111827;
-    border-color: rgba(16, 185, 129, 0.2);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(16,185,129,0.1);
+  .cards-grid::before { display: none; }
+  .card-wrap { padding: 0; }
+}
+@media (max-width: 560px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+    padding: 0 16px 32px;
   }
-
-  .card-terapeuta:hover {
-    box-shadow: 0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.3);
-  }
-
-  .card-alumno {
-    background: #ffffff;
-    border-color: rgba(99, 102, 241, 0.2);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(99,102,241,0.1);
-  }
-
-  .card-alumno:hover {
-    box-shadow: 0 8px 48px rgba(0,0,0,0.12), 0 0 0 1px rgba(99,102,241,0.3);
-  }
-
-  .card-pares {
-    background: #111827;
-    border-color: rgba(139,92,246,0.2);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(139,92,246,0.1);
-  }
-
-  .card-pares:hover {
-    box-shadow: 0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,92,246,0.3);
-  }
-
-  .card-pares .card-icon { background: rgba(139,92,246,0.15); }
-  .card-pares .card-title { color: #f1f5f9; }
-  .card-pares .card-desc  { color: #94a3b8; }
-  .card-pares .card-cta   { color: #8b5cf6; }
-
-  .card-tablas {
-    background: #111827;
-    border-color: rgba(240,192,96,0.2);
-    box-shadow: 0 4px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(240,192,96,0.1);
-  }
-
-  .card-tablas:hover {
-    box-shadow: 0 8px 48px rgba(0,0,0,0.5), 0 0 0 1px rgba(240,192,96,0.3);
-  }
-
-  .card-tablas .card-icon { background: rgba(240,192,96,0.12); }
-  .card-tablas .card-title { color: #f1f5f9; }
-  .card-tablas .card-desc  { color: #94a3b8; }
-  .card-tablas .card-cta   { color: #f0c060; }
-
-  .card-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-  }
-
-  .card-terapeuta .card-icon { background: rgba(16,185,129,0.15); }
-  .card-alumno   .card-icon { background: rgba(99,102,241,0.1); }
-
-  .card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    line-height: 1.2;
-  }
-
-  .card-terapeuta .card-title { color: #f1f5f9; }
-  .card-alumno   .card-title { color: #1e293b; }
-
-  .card-desc {
-    font-size: 0.9rem;
-    line-height: 1.6;
-  }
-
-  .card-terapeuta .card-desc { color: #94a3b8; }
-  .card-alumno   .card-desc { color: #64748b; }
-
-  .card-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    margin-top: auto;
-    padding-top: 8px;
-  }
-
-  .card-terapeuta .card-cta { color: #10b981; }
-  .card-alumno   .card-cta { color: #6366f1; }
-
-  @media (max-width: 700px) {
-    body { background: #0b1120; justify-content: flex-start; padding-top: 48px; }
-    .cards { flex-direction: column; }
-    .card-alumno { background: #1a1f2e; border-color: rgba(99,102,241,0.2); }
-    .card-alumno .card-title { color: #f1f5f9; }
-    .card-alumno .card-desc  { color: #94a3b8; }
-    .card-alumno:hover { box-shadow: 0 8px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,102,241,0.3); }
-  }
+  .secondary-grid { grid-template-columns: 1fr; }
+  .secondary-section { padding: 0 16px 40px; }
+  .hero { padding: 36px 16px 28px; }
+  .header { padding: 16px; }
+}
 </style>
 </head>
 <body>
 
-<div class="logo">
+<!-- HEADER -->
+<header class="header">
   <div class="logo-mark">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/>
-    </svg>
+    <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 1 0 10A5 5 0 0 1 12 2zm0 12c5.33 0 8 2.67 8 4v2H4v-2c0-1.33 2.67-4 8-4z"/></svg>
   </div>
-  <div class="logo-name">Holoacademia IA</div>
-  <div class="logo-sub">Método Lavín · Asistente Inteligente</div>
+  <div class="logo-text">
+    <div class="logo-name">Holoacademia IA</div>
+    <div class="logo-sub">Asistente Terapéutico · Método Lavín</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✦ Flujo de sesión terapéutica</div>
+  <h1>¿Por dónde<br><span>empiezas cada sesión?</span></h1>
+  <p>Sigue los 4 pasos en orden. Cada herramienta está diseñada para una etapa específica de la consulta.</p>
 </div>
 
-<div class="cards">
+<div class="flow-label">─── Sigue el orden de izquierda a derecha ───</div>
 
-  <a class="card card-terapeuta" href="/intake">
-    <div class="card-icon">🩺</div>
-    <div class="card-title">Asesor<br>Terapéutico</div>
-    <div class="card-desc">
-      Registra al paciente, recibe un diagnóstico inicial completo (genograma, numerología, patrones, FFI) y guía la sesión en tiempo real.
-    </div>
-    <div class="card-cta">Registrar paciente →</div>
-  </a>
+<!-- MAIN CARDS -->
+<div class="cards-grid">
 
-  <a class="card card-alumno" href="/alumno">
-    <div class="card-icon">📚</div>
-    <div class="card-title">Tutor<br>del Diplomado</div>
-    <div class="card-desc">
-      Resuelve todas tus dudas sobre el material del diplomado. Tiene acceso completo a todos los módulos y manuales del Método Lavín.
-    </div>
-    <div class="card-cta">Hablar con Sael →</div>
-  </a>
+  <!-- 1 · SINODAL -->
+  <div class="card-wrap">
+    <div class="step-bubble step-1">1</div>
+    <a class="card card-sinodal" href="/intake">
+      <div class="card-icon">📋</div>
+      <div class="card-step-label">Paso 1 · Inicio</div>
+      <div class="card-title">Sinodal<br>& Historial</div>
+      <div class="card-desc">
+        Registra los datos del paciente, construye el árbol genealógico y obtén el análisis inicial completo antes de la sesión.
+      </div>
+      <ul class="card-steps">
+        <li><span class="dot"></span>Nombre, fecha de nacimiento</li>
+        <li><span class="dot"></span>Genograma familiar (3 generaciones)</li>
+        <li><span class="dot"></span>Numerología + patrones + FFI</li>
+        <li><span class="dot"></span>Diagnóstico multi-enfoque inicial</li>
+      </ul>
+      <div class="card-cta">Registrar paciente →</div>
+    </a>
+  </div>
 
-  <a class="card card-pares" href="/pares">
-    <div class="card-icon">🧲</div>
-    <div class="card-title">Rastreo<br>de Pares</div>
-    <div class="card-desc">
-      Guía zona por zona para el rastreo biomagnético con la MS. Colocación exacta de imanes e interpretación clínica de cada par confirmado.
-    </div>
-    <div class="card-cta">Iniciar rastreo →</div>
-  </a>
+  <!-- 2 · RASTREO -->
+  <div class="card-wrap">
+    <div class="step-bubble step-2">2</div>
+    <a class="card card-rastreo" href="/rastreo">
+      <div class="card-icon">🧲</div>
+      <div class="card-step-label">Paso 2 · Rastreo</div>
+      <div class="card-title">Tablas de<br>Rastreo</div>
+      <div class="card-desc">
+        Consulta las tablas escaneadas de los manuales. Ve categoría por categoría y marca cada par, floral o sal que salga positivo con la MS.
+      </div>
+      <ul class="card-steps">
+        <li><span class="dot"></span>Pares biomagnéticos (1,059)</li>
+        <li><span class="dot"></span>Flores de Bach · Sales de Schüssler</li>
+        <li><span class="dot"></span>Holobiomagnético · Creencias · Miedos</li>
+        <li><span class="dot"></span>Finaliza → mapa de colocación de imanes</li>
+      </ul>
+      <div class="card-cta">Abrir rastreo →</div>
+    </a>
+  </div>
 
-  <a class="card card-tablas" href="/tablas">
-    <div class="card-icon">📋</div>
-    <div class="card-title">Tablas de<br>Rastreo</div>
-    <div class="card-desc">
-      Consulta y marca los 1,059 pares biomagnéticos, Sales de Schüssler, Florales de Bach, vitaminas y creencias limitantes.
-    </div>
-    <div class="card-cta">Abrir tablas →</div>
-  </a>
+  <!-- 3 · PARES -->
+  <div class="card-wrap">
+    <div class="step-bubble step-3">3</div>
+    <a class="card card-pares" href="/pares">
+      <div class="card-icon">⚡</div>
+      <div class="card-step-label">Paso 3 · Aplicación</div>
+      <div class="card-title">Guía de<br>Pares</div>
+      <div class="card-desc">
+        Con los pares confirmados del rastreo, busca la ubicación exacta de cada imán y lee la interpretación clínica completa del par.
+      </div>
+      <ul class="card-steps">
+        <li><span class="dot"></span>Busca el par por nombre o zona</li>
+        <li><span class="dot"></span>Ubicación exacta: positivo / negativo</li>
+        <li><span class="dot"></span>Tipo: bacteria, virus, hongo, emocional…</li>
+        <li><span class="dot"></span>Tiempo: 20-25 min por par</li>
+      </ul>
+      <div class="card-cta">Buscar par →</div>
+    </a>
+  </div>
 
+  <!-- 4 · TERAPEUTA -->
+  <div class="card-wrap">
+    <div class="step-bubble step-4">4</div>
+    <a class="card card-terapeuta" href="/terapeuta">
+      <div class="card-icon">🤖</div>
+      <div class="card-step-label">Paso 4 · Sesión en vivo</div>
+      <div class="card-title">Asistente<br>Terapéutico</div>
+      <div class="card-desc">
+        IA en tiempo real durante la sesión. Activa los modos según lo que necesites: síntesis, entrevista, conflictología o protocolo paso a paso.
+      </div>
+      <ul class="card-steps">
+        <li><span class="dot"></span>Síntoma → explicación multi-enfoque</li>
+        <li><span class="dot"></span>Modo entrevista guiada (Biodescodificación)</li>
+        <li><span class="dot"></span>Tablas de conflictología con colores</li>
+        <li><span class="dot"></span>Protocolos: BNE · Hellinger · Psicosom.</li>
+      </ul>
+      <div class="card-cta">Iniciar sesión →</div>
+    </a>
+  </div>
+
+</div>
+
+<!-- SECONDARY TOOLS -->
+<div class="secondary-section">
+  <div class="secondary-label">Herramientas adicionales</div>
+  <div class="secondary-grid">
+
+    <a class="sec-card" href="/alumno">
+      <div class="sec-icon">📚</div>
+      <div class="sec-info">
+        <div class="sec-title">Tutor del Diplomado — Sael</div>
+        <div class="sec-desc">Resuelve dudas del material del diplomado. Acceso completo a todos los módulos y manuales del Método Lavín.</div>
+      </div>
+      <div class="sec-arrow">→</div>
+    </a>
+
+    <a class="sec-card" href="/tablas">
+      <div class="sec-icon">📊</div>
+      <div class="sec-info">
+        <div class="sec-title">Tablas Interactivas (modo texto)</div>
+        <div class="sec-desc">Versión alternativa en texto de los 1,059 pares, creencias, miedos, sales y florales. Útil para búsqueda rápida.</div>
+      </div>
+      <div class="sec-arrow">→</div>
+    </a>
+
+  </div>
 </div>
 
 </body>
