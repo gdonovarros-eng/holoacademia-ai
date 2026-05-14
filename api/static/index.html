@@ -25,41 +25,22 @@ html, body {
   color: var(--text);
 }
 
-/* ── HEADER ── */
-.header {
+/* ── HERO LOGO ── */
+.hero-logo {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 32px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 100;
+  justify-content: center;
+  margin-bottom: 28px;
 }
-
-.logo-mark {
-  height: 44px;
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
-.logo-mark img {
-  height: 44px;
+.hero-logo img {
+  height: 140px;
   width: auto;
   object-fit: contain;
 }
 
-.logo-text { line-height: 1.2; }
-.logo-name { display: none; }
-.logo-sub { font-size: 0.78rem; color: var(--muted); }
-
 /* ── HERO ── */
 .hero {
   text-align: center;
-  padding: 52px 24px 36px;
+  padding: 64px 24px 36px;
   max-width: 640px;
   margin: 0 auto;
 }
@@ -350,22 +331,18 @@ html, body {
   }
   .secondary-grid { grid-template-columns: 1fr; }
   .secondary-section { padding: 0 16px 40px; }
-  .hero { padding: 36px 16px 28px; }
-  .header { padding: 16px; }
+  .hero { padding: 40px 16px 28px; }
+  .hero-logo img { height: 100px; }
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo-mark">
-    <img src="/therapy-static/logo.png" alt="Holoacadem-iA">
-  </div>
-</header>
-
 <!-- HERO -->
 <div class="hero">
+  <div class="hero-logo">
+    <img src="/therapy-static/logo.png" alt="Holoacadem-iA">
+  </div>
   <div class="hero-badge">✦ Holoacadem-iA</div>
   <h1>Todo lo que<br><span>necesitas en un lugar</span></h1>
   <p>Empoderando terapeutas con información inteligente.</p>
