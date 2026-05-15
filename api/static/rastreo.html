@@ -709,6 +709,34 @@ header h1 {
 }
 #wizard-pares.active { display: flex; }
 
+/* tab bar */
+#wizard-pares .wiz-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1.5px solid #e0e0e5;
+  background: #fff;
+  flex-shrink: 0;
+}
+#wizard-pares .wiz-tab {
+  flex: 1;
+  padding: 11px 10px;
+  font-size: .82rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  cursor: pointer;
+  color: #6e6e73;
+  transition: color .15s, border-color .15s;
+  margin-bottom: -1.5px;
+}
+#wizard-pares .wiz-tab.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+#wizard-pares .wiz-tab:hover:not(.active) { color: #1d1d1f; }
+
 #wizard-pares .wiz-inner {
   flex: 1;
   overflow-y: auto;
@@ -717,6 +745,138 @@ header h1 {
   flex-direction: column;
   gap: 14px;
 }
+#wizard-pares .wiz-inner.hidden { display: none; }
+
+/* ── TABLA DE REFERENCIA ── */
+#tabla-ref {
+  flex: 1;
+  overflow-y: auto;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  padding: 16px 18px 24px;
+}
+#tabla-ref.visible { display: flex; }
+
+.tref-search {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: #f5f5f7;
+  padding-bottom: 10px;
+}
+.tref-search input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1.5px solid #d0d0d5;
+  border-radius: 9px;
+  font-size: .85rem;
+  font-family: inherit;
+  background: #fff;
+  color: #1d1d1f;
+  outline: none;
+  transition: border-color .15s;
+}
+.tref-search input:focus { border-color: #3b82f6; }
+
+.tref-region {
+  margin-bottom: 18px;
+}
+.tref-region-hdr {
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: #fff;
+  background: #3b82f6;
+  border-radius: 9px 9px 0 0;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .15s;
+}
+.tref-region-hdr:hover { background: #2563eb; }
+.tref-region-hdr .tref-toggle { margin-left: auto; font-size: .9rem; transition: transform .2s; }
+.tref-region.collapsed .tref-toggle { transform: rotate(-90deg); }
+
+.tref-region-body {
+  border: 1.5px solid #d0d0d5;
+  border-top: none;
+  border-radius: 0 0 9px 9px;
+  overflow: hidden;
+  background: #fff;
+}
+.tref-region.collapsed .tref-region-body { display: none; }
+
+.tref-zona-hdr {
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #3b82f6;
+  background: #eff6ff;
+  padding: 6px 14px;
+  border-top: 1px solid #dbeafe;
+}
+.tref-zona-hdr:first-child { border-top: none; }
+
+table.tref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .78rem;
+}
+table.tref-table th {
+  background: #f0f0f5;
+  color: #6e6e73;
+  font-size: .66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  padding: 5px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e5;
+}
+table.tref-table td {
+  padding: 6px 10px;
+  border-bottom: 1px solid #f0f0f5;
+  vertical-align: top;
+  color: #1d1d1f;
+  line-height: 1.4;
+}
+table.tref-table tr:last-child td { border-bottom: none; }
+table.tref-table tr:hover td { background: #f9f9fb; }
+table.tref-table td:first-child {
+  font-weight: 600;
+  color: #1d1d1f;
+  white-space: nowrap;
+  width: 130px;
+}
+table.tref-table td:nth-child(2) {
+  color: #6e6e73;
+  font-size: .7rem;
+  white-space: nowrap;
+  width: 40px;
+}
+table.tref-table td:nth-child(3) { color: #374151; }
+
+.tref-par-list { display: flex; flex-wrap: wrap; gap: 3px 8px; }
+.tref-par-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+}
+.tref-par-num {
+  font-size: .63rem;
+  font-weight: 700;
+  color: #3b82f6;
+  min-width: 14px;
+}
+.tref-par-name { font-size: .75rem; color: #374151; }
+.tref-par-item.highlight .tref-par-name { background: #fef08a; border-radius: 3px; padding: 0 2px; }
+.tref-no-results { padding: 20px; text-align: center; color: #6e6e73; font-size: .85rem; }
 
 /* breadcrumb */
 #wizard-pares .wiz-bc {
@@ -852,11 +1012,27 @@ header h1 {
 
     <!-- Vista wizard pares biomagnéticos -->
     <div id="wizard-pares">
-      <div class="wiz-inner">
+      <!-- Tab bar -->
+      <div class="wiz-tabs">
+        <button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">🔍 Rastreo Guiado</button>
+        <button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">📋 Tabla de Referencia</button>
+      </div>
+
+      <!-- Tab: rastreo guiado -->
+      <div class="wiz-inner" id="wizInner">
         <div class="wiz-bc" id="wizBc"></div>
         <div class="wiz-label" id="wizLabel">Paso 1 de 4</div>
         <div class="wiz-question" id="wizQuestion">¿En qué región del cuerpo?</div>
         <div class="wiz-grid g2" id="wizGrid"></div>
+      </div>
+
+      <!-- Tab: tabla de referencia -->
+      <div id="tabla-ref">
+        <div class="tref-search">
+          <input type="text" id="trefSearch" placeholder="Buscar bloque o par…" oninput="trefFilter(this.value)" autocomplete="off">
+        </div>
+        <div id="tref-body"></div>
+        <div class="tref-no-results" id="tref-no-results" style="display:none">No se encontraron resultados</div>
       </div>
     </div>
 
@@ -1534,6 +1710,130 @@ function wizNavTo(target) {
   if (target === 'bloque') { wizBloque = wizPar = null; }
   if (target === 'par')    { wizPar = null; }
   wizRender();
+}
+
+// ── TABLA DE REFERENCIA ───────────────────────────────────────────────────
+let wizCurrentTab = 'rastreo';
+
+function wizSwitchTab(tab) {
+  wizCurrentTab = tab;
+  document.getElementById('wizTabRastreo').classList.toggle('active', tab === 'rastreo');
+  document.getElementById('wizTabTabla').classList.toggle('active', tab === 'tabla');
+  document.getElementById('wizInner').classList.toggle('hidden', tab !== 'rastreo');
+  const tref = document.getElementById('tabla-ref');
+  if (tab === 'tabla') {
+    tref.classList.add('visible');
+    if (!tref.dataset.built) { trefBuild(); tref.dataset.built = '1'; }
+  } else {
+    tref.classList.remove('visible');
+  }
+}
+
+function trefBuild() {
+  if (!wizDB || !wizDB.regiones) return;
+  const body = document.getElementById('tref-body');
+  body.innerHTML = '';
+
+  const regionColors = ['#3b82f6','#10b981','#f59e0b','#8b5cf6','#ef4444'];
+
+  wizDB.regiones.forEach((reg, ri) => {
+    const section = document.createElement('div');
+    section.className = 'tref-region';
+    section.dataset.region = reg.nombre.toLowerCase();
+
+    const color = regionColors[ri % regionColors.length];
+    const totalPares = reg.zonas.reduce((a, z) => a + z.bloques.reduce((b, bl) => b + bl.pares.length, 0), 0);
+
+    section.innerHTML = `
+      <div class="tref-region-hdr" style="background:${color}" onclick="trefToggle(this.closest('.tref-region'))">
+        <span>${reg.icon || ''} ${reg.nombre}</span>
+        <span style="font-weight:400;opacity:.85;font-size:.72rem;margin-left:6px">${reg.zonas.length} zonas · ${totalPares} pares</span>
+        <span class="tref-toggle">▾</span>
+      </div>
+      <div class="tref-region-body"></div>
+    `;
+
+    const regionBody = section.querySelector('.tref-region-body');
+
+    reg.zonas.forEach(zona => {
+      const zHdr = document.createElement('div');
+      zHdr.className = 'tref-zona-hdr';
+      const zTotal = zona.bloques.reduce((a, b) => a + b.pares.length, 0);
+      zHdr.textContent = `${zona.numero ? zona.numero + '. ' : ''}${zona.nombre}  —  ${zona.bloques.length} bloques · ${zTotal} pares`;
+      regionBody.appendChild(zHdr);
+
+      const tbl = document.createElement('table');
+      tbl.className = 'tref-table';
+      tbl.innerHTML = '<thead><tr><th>Bloque</th><th>#</th><th>Pares</th></tr></thead>';
+      const tbody = document.createElement('tbody');
+
+      zona.bloques.forEach(bloque => {
+        const tr = document.createElement('tr');
+        tr.dataset.bloque = bloque.nombre.toLowerCase();
+        const parList = bloque.pares.map((p, i) =>
+          `<span class="tref-par-item" data-par="${p.toLowerCase()}"><span class="tref-par-num">${i+1}.</span><span class="tref-par-name">${escHtml(p)}</span></span>`
+        ).join('');
+        tr.innerHTML = `
+          <td>${escHtml(bloque.numero ? bloque.numero + '. ' + bloque.nombre : bloque.nombre)}</td>
+          <td>${bloque.pares.length}</td>
+          <td><div class="tref-par-list">${parList}</div></td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      tbl.appendChild(tbody);
+      regionBody.appendChild(tbl);
+    });
+
+    body.appendChild(section);
+  });
+}
+
+function trefToggle(section) {
+  section.classList.toggle('collapsed');
+}
+
+function trefFilter(q) {
+  const term = q.trim().toLowerCase();
+  const body = document.getElementById('tref-body');
+  const noResults = document.getElementById('tref-no-results');
+  let anyVisible = false;
+
+  body.querySelectorAll('.tref-region').forEach(section => {
+    if (!term) {
+      // show all, remove highlights
+      section.classList.remove('collapsed');
+      section.style.display = '';
+      section.querySelectorAll('tr').forEach(r => r.style.display = '');
+      section.querySelectorAll('.tref-par-item').forEach(el => el.classList.remove('highlight'));
+      anyVisible = true;
+      return;
+    }
+
+    let regionVisible = false;
+    section.querySelectorAll('tr').forEach(tr => {
+      const bloqueText = (tr.dataset.bloque || '');
+      const parItems = tr.querySelectorAll('.tref-par-item');
+      let rowHasMatch = bloqueText.includes(term);
+
+      parItems.forEach(item => {
+        const match = (item.dataset.par || '').includes(term);
+        item.classList.toggle('highlight', match);
+        if (match) rowHasMatch = true;
+      });
+
+      tr.style.display = rowHasMatch ? '' : 'none';
+      if (rowHasMatch) regionVisible = true;
+    });
+
+    section.style.display = regionVisible ? '' : 'none';
+    if (regionVisible) {
+      section.classList.remove('collapsed');
+      anyVisible = true;
+    }
+  });
+
+  noResults.style.display = anyVisible ? 'none' : '';
 }
 
 // ── BOOT ──────────────────────────────────────────────────────────────────
