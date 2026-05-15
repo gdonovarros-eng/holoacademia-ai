@@ -276,7 +276,7 @@ function renderBloques() {
 }
 
 function renderPares() {
-  setQuestion('Paso 4 · Par', '¿Cuál número indicó el músculo?');
+  setQuestion('Paso 4 · Par', '¿Qué número de par?');
   document.getElementById('stepLabel').textContent = selBloque.nombre + ' · ' + selBloque.pares.length + ' pares';
   const grid = getGrid('cols-2');
   selBloque.pares.forEach((parName, i) => {
