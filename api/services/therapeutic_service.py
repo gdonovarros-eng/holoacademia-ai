@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 from typing import Any
@@ -13,10 +14,19 @@ if str(THERAPEUTIC_ENGINE_DIR) not in sys.path:
 
 from therapeutic_assistant.service import answer_therapeutic_query
 
+# Resolve course directory: env var takes priority, then look relative to BASE_DIR (works in Docker),
+# then fall back to letting the engine discover it on its own.
+_env_course_dir = os.getenv("THERAPEUTIC_ASSISTANT_COURSE_DIR", "").strip()
+if _env_course_dir:
+    _COURSE_DIR: Path | None = Path(_env_course_dir)
+else:
+    _candidate = BASE_DIR / "data" / "knowledge_units" / "course_holobiomagnetismo_2021"
+    _COURSE_DIR = _candidate if _candidate.exists() else None
+
 
 def run_therapeutic_analysis(data: dict[str, Any]) -> dict[str, Any]:
     try:
-        result = answer_therapeutic_query(data)
+        result = answer_therapeutic_query(data, course_dir=_COURSE_DIR)
         return {
             "answer": str(result.get("answer", "")),
             "confidence": str(result.get("confidence", "low")),
