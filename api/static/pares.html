@@ -3,632 +3,537 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Guía de Pares · Holoacadem-iA</title>
+<title>Rastreo de Pares · Holoacadem-iA</title>
 <style>
-:root {
-  --bg:#0b1120; --surface:#111827; --card:#1a1f30; --border:rgba(255,255,255,.07);
-  --acc:#8b5cf6; --acc2:#6d40e8; --green:#10b981; --red:#e05c5c; --yellow:#f0c060;
-  --text:#f1f5f9; --muted:#64748b; --tag:#1e2030;
+:root{
+  --bg:#f5f5f7; --surface:#ffffff; --surface2:#e8e8ed;
+  --border:rgba(0,0,0,0.08); --text:#1d1d1f; --muted:#6e6e73;
+  --acc:#3b82f6; --acc-dark:#2563eb;
+  --green:#22c55e; --green-dark:#16a34a;
+  --radius:14px; --shadow:0 2px 12px rgba(0,0,0,.08);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:var(--bg);color:var(--text);
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;overflow:hidden}
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
+body{display:grid;grid-template-rows:52px 1fr;height:100vh;overflow:hidden}
 
-/* ── App shell ── */
-.app{display:grid;grid-template-rows:52px 1fr;height:100vh}
-.main{display:grid;grid-template-columns:210px 1fr 272px;overflow:hidden;height:100%}
-
-/* ── Header ── */
-.header{display:flex;align-items:center;gap:10px;padding:0 16px;
+/* Header */
+.header{display:flex;align-items:center;gap:10px;padding:0 18px;
   background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
-.back-btn{color:var(--muted);text-decoration:none;font-size:1.1rem;padding:4px 8px;
-  border-radius:6px;transition:color .2s;line-height:1}
-.back-btn:hover{color:var(--text)}
-.header-title{font-size:.9rem;font-weight:700;line-height:1.2}
+.home-btn{color:var(--muted);text-decoration:none;font-size:1.1rem;padding:4px 8px;
+  border-radius:6px;transition:color .15s;line-height:1}
+.home-btn:hover{color:var(--text)}
+.header-title{font-weight:700;font-size:.92rem;color:var(--text)}
 .header-sub{font-size:.68rem;color:var(--acc);font-weight:600}
-.search-wrap{flex:1;max-width:360px;margin:0 12px}
-.search-wrap input{width:100%;background:var(--card);border:1px solid var(--border);
-  color:var(--text);border-radius:8px;padding:6px 12px;font-size:.8rem}
-.search-wrap input:focus{outline:none;border-color:var(--acc)}
-.conf-badge{background:var(--acc);color:#fff;border-radius:12px;padding:3px 12px;
-  font-size:.72rem;font-weight:700;white-space:nowrap;margin-left:auto}
+.session-badge{margin-left:auto;background:var(--acc);color:#fff;
+  border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;cursor:pointer;
+  transition:background .15s}
+.session-badge:hover{background:var(--acc-dark)}
+.session-badge.empty{background:var(--surface2);color:var(--muted)}
 
-/* ── Zone nav ── */
-.zone-nav{background:var(--surface);border-right:1px solid var(--border);
-  overflow-y:auto;display:flex;flex-direction:column}
-.zone-nav::-webkit-scrollbar{width:3px}
-.zone-nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
-.zone-nav-label{font-size:.6rem;font-weight:700;letter-spacing:.1em;color:var(--muted);
-  text-transform:uppercase;padding:12px 14px 6px}
-.zone-btn{display:flex;align-items:flex-start;gap:8px;width:100%;padding:8px 14px;
-  background:none;border:none;border-left:2px solid transparent;color:var(--muted);
-  font-size:.78rem;cursor:pointer;text-align:left;transition:all .15s;line-height:1}
-.zone-btn:hover{color:var(--text);background:rgba(255,255,255,.03)}
-.zone-btn.active{color:var(--acc);background:rgba(139,92,246,.08);border-left-color:var(--acc)}
-.zone-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
-.zone-info{flex:1;min-width:0}
-.zone-name{font-weight:600;display:block;line-height:1.3;margin-bottom:2px}
-.zone-sub{font-size:.6rem;color:var(--muted);display:block;line-height:1.3}
-.zone-btn.active .zone-sub{color:rgba(139,92,246,.7)}
-.zone-count{background:var(--tag);border-radius:10px;padding:1px 7px;font-size:.62rem;
-  color:var(--muted);white-space:nowrap;margin-top:2px;flex-shrink:0}
-.zone-btn.active .zone-count{color:var(--acc);background:rgba(139,92,246,.15)}
+/* Main layout */
+.main{display:grid;grid-template-columns:1fr 300px;overflow:hidden;height:100%}
 
-/* ── Pairs area ── */
-.pairs-area{display:flex;flex-direction:column;overflow:hidden}
+/* Wizard panel */
+.wizard{padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
 
-/* Tipo filter bar */
-.tipo-bar{display:flex;gap:5px;padding:8px 14px;background:var(--surface);
-  border-bottom:1px solid var(--border);overflow-x:auto;flex-shrink:0;align-items:center}
-.tipo-bar::-webkit-scrollbar{height:2px}
-.tipo-bar::-webkit-scrollbar-thumb{background:var(--border)}
-.tipo-pill{background:var(--tag);border:1px solid var(--border);border-radius:16px;
-  padding:4px 11px;font-size:.7rem;color:var(--muted);cursor:pointer;white-space:nowrap;
-  transition:all .15s;flex-shrink:0;display:flex;align-items:center;gap:4px}
-.tipo-pill:hover{color:var(--text)}
-.tipo-pill.active{color:#fff;border-color:transparent}
-.tipo-dot-sm{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+/* Breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  font-size:.75rem;color:var(--muted);min-height:22px}
+.bc-sep{opacity:.4}
+.bc-item{cursor:pointer;color:var(--acc);font-weight:500}
+.bc-item:hover{text-decoration:underline}
+.bc-current{color:var(--text);font-weight:600;cursor:default}
 
-/* Pairs table */
-.pairs-scroll{flex:1;overflow-y:auto}
-.pairs-scroll::-webkit-scrollbar{width:4px}
-.pairs-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+/* Step title */
+.step-label{font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  color:var(--muted);text-transform:uppercase}
+.step-question{font-size:1.05rem;font-weight:700;color:var(--text);margin-top:4px}
 
-.group-hdr{position:sticky;top:0;z-index:5;
-  background:rgba(11,17,32,.96);backdrop-filter:blur(8px);
-  padding:7px 14px;font-size:.64rem;font-weight:700;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--border);
-  display:flex;align-items:center;gap:7px}
-.group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.group-cnt{font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted);margin-left:4px}
+/* Grid of option buttons */
+.options-grid{display:grid;gap:10px}
+.options-grid.cols-2{grid-template-columns:1fr 1fr}
+.options-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+.options-grid.cols-auto{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.options-grid.cols-nums{grid-template-columns:repeat(auto-fill,minmax(64px,1fr))}
 
-.pair-row{display:flex;align-items:flex-start;gap:10px;padding:8px 14px;
-  border-bottom:1px solid rgba(255,255,255,.025);cursor:pointer;transition:background .1s}
-.pair-row:hover{background:rgba(255,255,255,.03)}
-.pair-row.confirmed{background:rgba(16,185,129,.05)}
-.pair-row.confirmed .pair-nombre{color:var(--green)}
-.pair-cb{width:15px;height:15px;accent-color:var(--green);cursor:pointer;
-  margin-top:3px;flex-shrink:0}
-.pair-body{flex:1;min-width:0}
-.pair-nombre{font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:2px;line-height:1.35}
-.pair-cond{font-size:.7rem;color:var(--muted);line-height:1.4;margin-bottom:2px}
-.pair-emoc{font-size:.67rem;color:#b8a8f0;font-style:italic;line-height:1.4}
-.pair-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
-.pair-tag{font-size:.59rem;padding:1px 6px;border-radius:8px;background:var(--tag);color:var(--muted)}
+.opt-btn{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:14px 12px;cursor:pointer;transition:all .15s;text-align:left;
+  display:flex;flex-direction:column;gap:4px;min-height:60px;justify-content:center
+}
+.opt-btn:hover{border-color:var(--acc);box-shadow:0 0 0 3px rgba(59,130,246,.12);transform:translateY(-1px)}
+.opt-btn.active{border-color:var(--acc);background:rgba(59,130,246,.06)}
+.opt-btn .opt-num{font-size:.65rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.05em}
+.opt-btn .opt-name{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.2}
+.opt-btn .opt-count{font-size:.7rem;color:var(--muted)}
 
-.empty-state{text-align:center;padding:60px 20px;color:var(--muted);font-size:.83rem;line-height:1.7}
-.loading-state{text-align:center;padding:60px;color:var(--muted)}
-.spinner{display:inline-block;width:22px;height:22px;border:2px solid var(--border);
-  border-top-color:var(--acc);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:10px}
-@keyframes spin{to{transform:rotate(360deg)}}
+/* Number buttons */
+.num-btn{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:10px;
+  padding:14px 8px;cursor:pointer;transition:all .15s;text-align:center;
+  font-size:1.15rem;font-weight:700;color:var(--text);min-height:52px;
+  display:flex;align-items:center;justify-content:center
+}
+.num-btn:hover{border-color:var(--acc);background:rgba(59,130,246,.06);transform:translateY(-1px)}
 
-/* ── Confirmed panel ── */
-.conf-panel{background:var(--surface);border-left:1px solid var(--border);
+/* Result card */
+.result-card{background:var(--surface);border:2px solid var(--green);border-radius:var(--radius);padding:18px 20px}
+.result-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px}
+.result-pair{font-size:1.15rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px}
+.result-path{font-size:.72rem;color:var(--muted)}
+.result-actions{display:flex;gap:10px;margin-top:14px}
+.btn-confirm{flex:1;background:var(--green);color:#fff;border:none;border-radius:10px;
+  padding:12px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-confirm:hover{background:var(--green-dark)}
+.btn-another{background:var(--surface2);color:var(--text);border:none;border-radius:10px;
+  padding:12px 14px;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-another:hover{background:#d1d1d6}
+
+/* Sidebar: session */
+.sidebar{background:var(--surface);border-left:1px solid var(--border);
   display:flex;flex-direction:column;overflow:hidden}
-.conf-panel-header{padding:11px 14px;border-bottom:1px solid var(--border);
+.sidebar-header{padding:14px 18px;border-bottom:1px solid var(--border);
   display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-.conf-panel-header h3{font-size:.82rem;font-weight:700}
-.conf-cnt{background:var(--acc);color:#fff;border-radius:10px;padding:2px 8px;
-  font-size:.7rem;font-weight:700}
-.conf-scroll{flex:1;overflow-y:auto;padding:8px 8px 4px}
-.conf-scroll::-webkit-scrollbar{width:3px}
-.conf-scroll::-webkit-scrollbar-thumb{background:var(--border)}
-.conf-empty{text-align:center;padding:36px 14px;color:var(--muted);font-size:.74rem;line-height:1.7}
+.sidebar-title{font-size:.82rem;font-weight:700;color:var(--text)}
+.btn-finalize{background:var(--acc);color:#fff;border:none;border-radius:8px;
+  padding:7px 14px;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-finalize:hover{background:var(--acc-dark)}
+.btn-finalize:disabled{background:var(--surface2);color:var(--muted);cursor:default}
+.pairs-list{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.pair-item{background:var(--bg);border-radius:10px;padding:10px 12px;
+  display:flex;align-items:flex-start;gap:8px}
+.pair-num{width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;
+  font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pair-info{flex:1;min-width:0}
+.pair-name{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.3}
+.pair-path{font-size:.65rem;color:var(--muted);margin-top:2px}
+.pair-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;
+  padding:2px 4px;border-radius:4px;transition:color .15s;flex-shrink:0}
+.pair-remove:hover{color:#ef4444}
+.empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--muted);gap:8px;padding:24px;text-align:center}
+.empty-state .icon{font-size:2rem;opacity:.4}
+.empty-state p{font-size:.78rem;line-height:1.4}
 
-.conf-zona-label{font-size:.6rem;color:var(--muted);text-transform:uppercase;
-  letter-spacing:.08em;font-weight:700;margin:8px 2px 4px}
-.conf-item{background:var(--card);border:1px solid rgba(16,185,129,.35);
-  border-radius:8px;padding:8px 10px;margin-bottom:5px}
-.conf-item-top{display:flex;align-items:flex-start;gap:6px;margin-bottom:3px}
-.conf-nombre{flex:1;font-size:.77rem;font-weight:600;color:var(--green);line-height:1.3}
-.conf-rm{background:none;border:none;color:var(--muted);cursor:pointer;
-  font-size:.68rem;flex-shrink:0;padding:1px 4px;border-radius:3px;transition:color .15s}
-.conf-rm:hover{color:var(--red)}
-.conf-tipo{font-size:.63rem;color:var(--muted);margin-bottom:5px}
-.interp-btn{background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.25);
-  color:var(--acc);border-radius:6px;padding:4px 10px;font-size:.68rem;cursor:pointer;
-  width:100%;transition:all .15s;text-align:center}
-.interp-btn:hover{background:rgba(139,92,246,.22)}
-.interp-btn.loading{opacity:.6;cursor:default}
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:20px;width:100%;max-width:760px;
+  max-height:90vh;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);transform:translateY(16px);transition:transform .2s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-head{padding:20px 24px 16px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-head h2{font-size:1.05rem;font-weight:700}
+.modal-close{background:var(--surface2);border:none;border-radius:50%;width:32px;height:32px;
+  cursor:pointer;font-size:1rem;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.modal-body{padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:20px}
+.modal-section h3{font-size:.78rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.final-pairs-list{display:flex;flex-direction:column;gap:6px}
+.final-pair{background:var(--bg);border-radius:10px;padding:10px 14px;
+  display:flex;align-items:center;gap:10px}
+.final-pair-num{width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;
+  font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.final-pair-name{font-size:.85rem;font-weight:600;color:var(--text);flex:1}
+.final-pair-path{font-size:.68rem;color:var(--muted)}
+.maps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.map-img{width:100%;border-radius:10px;cursor:zoom-in;transition:transform .15s;border:1px solid var(--border)}
+.map-img:hover{transform:scale(1.02)}
+.modal-actions{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;flex-shrink:0}
+.btn-new-session{flex:1;background:var(--surface2);color:var(--text);border:none;
+  border-radius:10px;padding:13px;font-size:.88rem;font-weight:600;cursor:pointer}
+.btn-new-session:hover{background:#d1d1d6}
 
-/* AI response inline */
-.ai-resp{margin-top:6px;padding:7px 9px;background:rgba(139,92,246,.07);
-  border-radius:6px;border:1px solid rgba(139,92,246,.15);font-size:.7rem;
-  color:var(--text);line-height:1.55}
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;
+  display:flex;align-items:center;justify-content:center;cursor:zoom-out;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:94vw;max-height:94vh;object-fit:contain;border-radius:8px}
 
-/* ── Panel actions ── */
-.conf-actions{padding:8px 10px;border-top:1px solid var(--border);
-  display:flex;flex-direction:column;gap:5px;flex-shrink:0}
-.btn-action{border:none;border-radius:8px;padding:8px;font-size:.76rem;
-  font-weight:600;cursor:pointer;width:100%;transition:all .15s}
-.btn-copy{background:var(--acc);color:#fff}
-.btn-copy:hover{background:var(--acc2)}
-.btn-clear{background:none;border:1px solid var(--border);color:var(--muted)}
-.btn-clear:hover{border-color:var(--red);color:var(--red)}
-
-/* ── Responsive ── */
-@media(max-width:1100px){.main{grid-template-columns:190px 1fr 240px}}
-@media(max-width:860px){
+/* Responsive */
+@media(max-width:640px){
   .main{grid-template-columns:1fr}
-  .zone-nav,.conf-panel{display:none}
+  .sidebar{display:none}
 }
 </style>
 </head>
 <body>
-<div class="app">
 
-  <!-- HEADER -->
-  <header class="header">
-    <a href="/" class="back-btn" title="Inicio">←</a>
-    <div>
-      <div class="header-title">🧲 Rastreo de Pares</div>
-      <div class="header-sub">Guía de Pares Biomagnéticos · Holoacadem-iA</div>
+<div class="header">
+  <a href="/" class="home-btn" title="Inicio">⌂</a>
+  <div>
+    <div class="header-title">Rastreo de Pares Biomagnéticos</div>
+    <div class="header-sub">Holoacadem-iA · Guía Interactiva</div>
+  </div>
+  <div class="session-badge empty" id="sessionBadge" onclick="openModal()">0 pares</div>
+</div>
+
+<div class="main">
+  <!-- Wizard -->
+  <div class="wizard" id="wizard">
+    <div class="breadcrumb" id="breadcrumb"></div>
+    <div class="step-label" id="stepLabel">Paso 1 de 4</div>
+    <div class="step-question" id="stepQuestion">¿En qué región necesita un par?</div>
+    <div class="options-grid cols-2" id="optionsGrid"></div>
+  </div>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Sesión actual</span>
+      <button class="btn-finalize" id="btnFinalize" disabled onclick="openModal()">Finalizar</button>
     </div>
-    <div class="search-wrap">
-      <input type="search" id="searchBox" placeholder="🔍  Buscar par, condición, emoción…" oninput="applyFilters()">
+    <div class="pairs-list" id="pairsList">
+      <div class="empty-state">
+        <div class="icon">🧲</div>
+        <p>Aquí aparecerán los pares<br>confirmados durante el rastreo</p>
+      </div>
     </div>
-    <span class="conf-badge" id="confBadge">0 confirmados</span>
-  </header>
-
-  <div class="main">
-
-    <!-- ZONA NAV -->
-    <nav class="zone-nav">
-      <div class="zone-nav-label">Zonas corporales</div>
-      <div id="zoneNav"><!-- JS --></div>
-    </nav>
-
-    <!-- PAIRS AREA -->
-    <main class="pairs-area">
-      <div class="tipo-bar" id="tipoBar"><!-- JS --></div>
-      <div class="pairs-scroll" id="pairsScroll">
-        <div class="loading-state">
-          <div class="spinner"></div><br>Cargando base de datos…
-        </div>
-      </div>
-    </main>
-
-    <!-- CONFIRMED PANEL -->
-    <aside class="conf-panel">
-      <div class="conf-panel-header">
-        <h3>✅ Rastreo confirmado</h3>
-        <span class="conf-cnt" id="confCnt">0</span>
-      </div>
-      <div class="conf-scroll" id="confScroll">
-        <div class="conf-empty">
-          Confirma pares haciendo clic<br>en la tabla.<br><br>
-          <span style="color:var(--acc);font-size:.72rem">El mapa completo está visible.<br>Navega zona a zona.</span>
-        </div>
-      </div>
-      <div class="conf-actions">
-        <button class="btn-action btn-copy" onclick="copiarResumen()">📋 Copiar resumen</button>
-        <button class="btn-action btn-clear" onclick="limpiarTodo()">🗑 Nueva sesión</button>
-      </div>
-    </aside>
-
   </div>
 </div>
 
+<!-- Modal final -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Resumen del Rastreo</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn-new-session" onclick="newSession()">Nueva Sesión</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="Mapa de colocación">
+</div>
+
 <script>
-// ── State ─────────────────────────────────────────────────────────────────────
-let ALL_PAIRS  = [];
-let confirmed  = [];      // {id, nombre, tipo, zona, zonaLabel, condiciones}
-let currentZone = 'all';
-let currentTipo = '';
-let streamingId = null;
+// ─── State ───────────────────────────────────────────────
+let DB = null;
+let session = [];           // confirmed pairs
+let step = 'region';        // region | zona | bloque | par | result
+let selRegion = null;
+let selZona   = null;
+let selBloque = null;
+let selPar    = null;
 
-// ── Zone definitions ──────────────────────────────────────────────────────────
-const ZONAS = [
-  { key:'all',       label:'Todas las zonas',          icon:'🌐', sistemas:null,
-    sub:'Vista completa — todos los pares' },
-  { key:'craneo',    label:'Cráneo / Encéfalo',         icon:'🧠', sistemas:['neurológico'],
-    sub:'Cerebro, nervios craneales, hipófisis, sentidos' },
-  { key:'cuello',    label:'Cuello / Garganta',         icon:'🫁', sistemas:['respiratorio'],
-    sub:'Tiroides, laringe, faringe, tráquea, cervicales' },
-  { key:'torax',     label:'Tórax',                     icon:'❤️', sistemas:['cardiovascular'],
-    sub:'Corazón, pulmones, timo, mediastino, costillas' },
-  { key:'abdomen',   label:'Abdomen Superior',          icon:'🟠', sistemas:['digestivo'],
-    sub:'Hígado, estómago, páncreas, vesícula, bazo' },
-  { key:'pelvis',    label:'Pelvis / Abd. inferior',    icon:'⭕', sistemas:['genital','renal_urinario'],
-    sub:'Intestinos, vejiga, útero, ovarios, riñones' },
-  { key:'locomotor', label:'Locomotor / Columna',       icon:'🦴', sistemas:['osteomuscular'],
-    sub:'Huesos, articulaciones, músculos, columna' },
-  { key:'piel',      label:'Piel / Lipofascial',        icon:'🩹', sistemas:['piel'],
-    sub:'Dermis, epidermis, tejido conectivo, fascia' },
-  { key:'endocrino', label:'Endócrino / Metabólico',    icon:'⚗️', sistemas:['endócrino'],
-    sub:'Suprarrenales, hipófisis, páncreas endócrino' },
-  { key:'linfatico', label:'Linfático / Inmune',        icon:'🛡️', sistemas:['linfático','inmunológico'],
-    sub:'Ganglios, bazo, timo, médula ósea' },
-  { key:'sistemico', label:'Sistémico / General',       icon:'✳️', sistemas:[],
-    sub:'Emocionales, disfuncionales, especiales, reservorios' },
-];
-
-// ── Type definitions ──────────────────────────────────────────────────────────
-const TIPO_COLORS = {
-  bacteria:'#e05c5c', virus:'#f07c40', hongo:'#f0c060', parasito:'#4caf7d',
-  emocional:'#7c6df0', disfuncional:'#5b8fff', especial:'#ff85b3',
-  reservorio:'#7ae0c0', desconocido:'#7a7a9a'
-};
-const TIPO_LABELS = {
-  bacteria:'Bacterias', virus:'Virus', hongo:'Hongos', parasito:'Parásitos',
-  emocional:'Emocionales', disfuncional:'Disfuncionales', especial:'Especiales',
-  reservorio:'Reservorios', desconocido:'Desconocidos'
-};
-const TIPO_ORDER = ['bacteria','virus','hongo','parasito','emocional','disfuncional','especial','reservorio','desconocido'];
-
-// ── Zone assignment ───────────────────────────────────────────────────────────
-function getPairZone(pair) {
-  const sis = pair.sistemas_afectados || [];
-  if (sis.includes('neurológico'))                               return 'craneo';
-  if (sis.includes('cardiovascular'))                            return 'torax';
-  if (sis.includes('digestivo'))                                 return 'abdomen';
-  if (sis.includes('genital') || sis.includes('renal_urinario')) return 'pelvis';
-  if (sis.includes('osteomuscular'))                             return 'locomotor';
-  if (sis.includes('piel'))                                      return 'piel';
-  if (sis.includes('endócrino'))                                 return 'endocrino';
-  if (sis.includes('linfático') || sis.includes('inmunológico')) return 'linfatico';
-  if (sis.includes('respiratorio'))                              return 'cuello';
-  return 'sistemico';
-}
-
-// ── Init ──────────────────────────────────────────────────────────────────────
+// ─── Boot ─────────────────────────────────────────────────
 async function init() {
   try {
     const r = await fetch('/api/pares-db');
-    const d = await r.json();
-    ALL_PAIRS = d.pairs || [];
-    ALL_PAIRS.forEach(p => { p._zone = getPairZone(p); });
-    buildZoneNav();
-    buildTipoBar();
-    renderPairs();
+    DB = await r.json();
   } catch(e) {
-    document.getElementById('pairsScroll').innerHTML =
-      '<div class="empty-state">Error al cargar la base de datos.<br>Verifica la conexión.</div>';
+    DB = { regiones: [] };
+  }
+  // Load session from localStorage
+  try { session = JSON.parse(localStorage.getItem('pares_session') || '[]'); } catch(e) { session = []; }
+  renderStep();
+  renderSidebar();
+}
+
+// ─── Step rendering ───────────────────────────────────────
+function renderStep() {
+  updateBreadcrumb();
+  switch(step) {
+    case 'region': renderRegions(); break;
+    case 'zona':   renderZonas(); break;
+    case 'bloque': renderBloques(); break;
+    case 'par':    renderPares(); break;
+    case 'result': renderResult(); break;
   }
 }
 
-// ── Zone nav ──────────────────────────────────────────────────────────────────
-function buildZoneNav() {
-  let html = '';
-  for (const z of ZONAS) {
-    const count = z.key === 'all'
-      ? ALL_PAIRS.length
-      : ALL_PAIRS.filter(p => p._zone === z.key).length;
-    if (z.key !== 'all' && count === 0) continue;
-    html += `<button class="zone-btn ${z.key === currentZone ? 'active' : ''}"
-        onclick="selectZone('${z.key}',this)">
-      <span class="zone-icon">${z.icon}</span>
-      <span class="zone-info">
-        <span class="zone-name">${z.label}</span>
-        <span class="zone-sub">${z.sub}</span>
-      </span>
-      <span class="zone-count">${count}</span>
-    </button>`;
-  }
-  document.getElementById('zoneNav').innerHTML = html;
-}
-
-// ── Tipo bar ──────────────────────────────────────────────────────────────────
-function buildTipoBar() {
-  let html = `<button class="tipo-pill active" data-tipo=""
-      onclick="selectTipo('',this)"
-      style="background:var(--acc);color:#fff;border-color:transparent">
-    Todos
-  </button>`;
-  for (const t of TIPO_ORDER) {
-    const c = TIPO_COLORS[t];
-    html += `<button class="tipo-pill" data-tipo="${t}" onclick="selectTipo('${t}',this)">
-      <span class="tipo-dot-sm" style="background:${c}"></span>${TIPO_LABELS[t]}
-    </button>`;
-  }
-  document.getElementById('tipoBar').innerHTML = html;
-}
-
-function selectZone(key, btn) {
-  currentZone = key;
-  document.querySelectorAll('.zone-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  resetTipoFilter();
-  renderPairs();
-}
-
-function selectTipo(tipo, btn) {
-  currentTipo = tipo;
-  document.querySelectorAll('.tipo-pill').forEach(p => {
-    p.classList.remove('active');
-    p.style.background = '';
-    p.style.color = '';
-    p.style.borderColor = '';
+function renderRegions() {
+  setQuestion('Paso 1 · Región', '¿En qué región del cuerpo?');
+  const grid = getGrid('cols-2');
+  DB.regiones.forEach(r => {
+    const btn = makeOptBtn(r.icon + ' ' + r.nombre, r.numero + ' · ' + r.zonas.length + ' zonas');
+    btn.onclick = () => { selRegion = r; step = 'zona'; renderStep(); };
+    grid.appendChild(btn);
   });
-  btn.classList.add('active');
-  if (tipo) {
-    btn.style.background = TIPO_COLORS[tipo] || 'var(--acc)';
-    btn.style.color = '#fff';
-    btn.style.borderColor = 'transparent';
-  } else {
-    btn.style.background = 'var(--acc)';
-    btn.style.color = '#fff';
-    btn.style.borderColor = 'transparent';
-  }
-  renderPairs();
 }
 
-function resetTipoFilter() {
-  currentTipo = '';
-  document.querySelectorAll('.tipo-pill').forEach(p => {
-    p.classList.remove('active');
-    p.style.background = '';
-    p.style.color = '';
-    p.style.borderColor = '';
+function renderZonas() {
+  setQuestion('Paso 2 · Zona', '¿En qué zona de ' + selRegion.nombre + '?');
+  const cols = selRegion.zonas.length <= 3 ? 'cols-2' : 'cols-auto';
+  const grid = getGrid(cols);
+  selRegion.zonas.forEach(z => {
+    const nPares = z.bloques.reduce((a,b) => a + b.pares.length, 0);
+    const btn = makeOptBtn(z.numero + '. ' + z.nombre, z.bloques.length + ' bloques · ' + nPares + ' pares');
+    btn.onclick = () => { selZona = z; step = 'bloque'; renderStep(); };
+    grid.appendChild(btn);
   });
-  const allPill = document.querySelector('.tipo-pill[data-tipo=""]');
-  if (allPill) {
-    allPill.classList.add('active');
-    allPill.style.background = 'var(--acc)';
-    allPill.style.color = '#fff';
-    allPill.style.borderColor = 'transparent';
-  }
 }
 
-function applyFilters() { renderPairs(); }
+function renderBloques() {
+  setQuestion('Paso 3 · Bloque', '¿Qué bloque dentro de ' + selZona.nombre + '?');
+  const grid = getGrid('cols-auto');
+  selZona.bloques.forEach(b => {
+    const btn = makeOptBtn(b.numero + '. ' + b.nombre, b.pares.length + ' pares');
+    btn.onclick = () => { selBloque = b; step = 'par'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
 
-// ── Render pairs ──────────────────────────────────────────────────────────────
-function renderPairs() {
-  const query = (document.getElementById('searchBox').value || '').toLowerCase().trim();
-  let pairs = ALL_PAIRS;
+function renderPares() {
+  setQuestion('Paso 4 · Par #', '¿Qué número de par indicó el músculo?');
+  document.getElementById('stepLabel').textContent = selBloque.nombre + ' · ' + selBloque.pares.length + ' pares disponibles';
+  const grid = getGrid('cols-nums');
+  selBloque.pares.forEach((_, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'num-btn';
+    btn.textContent = i + 1;
+    btn.onclick = () => { selPar = i; step = 'result'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
 
-  if (currentZone !== 'all') pairs = pairs.filter(p => p._zone === currentZone);
-  if (currentTipo)            pairs = pairs.filter(p => p.tipo === currentTipo);
-  if (query) {
-    pairs = pairs.filter(p =>
-      p.nombre.toLowerCase().includes(query) ||
-      (p.condiciones || '').toLowerCase().includes(query) ||
-      (p.significado_emocional || '').toLowerCase().includes(query)
-    );
-  }
+function renderResult() {
+  const pairName = selBloque.pares[selPar];
+  const path = selRegion.nombre + ' › ' + selZona.nombre + ' › ' + selBloque.nombre;
+  
+  setQuestion('✅ Par encontrado', '');
+  document.getElementById('stepLabel').textContent = 'Par #' + (selPar + 1);
 
-  const scroll = document.getElementById('pairsScroll');
-  if (!pairs.length) {
-    scroll.innerHTML = '<div class="empty-state">Sin resultados.<br>Prueba con otra zona o término.</div>';
+  const grid = document.getElementById('optionsGrid');
+  grid.className = 'options-grid';
+  grid.innerHTML = '';
+
+  const card = document.createElement('div');
+  card.className = 'result-card';
+  card.innerHTML = `
+    <div class="result-label">Par #${selPar + 1} · ${selBloque.nombre}</div>
+    <div class="result-pair">${pairName}</div>
+    <div class="result-path">${path}</div>
+    <div class="result-actions">
+      <button class="btn-confirm" onclick="confirmPair()">✓ Confirmar par</button>
+      <button class="btn-another" onclick="anotherPar()">Cambiar #</button>
+    </div>
+  `;
+  grid.appendChild(card);
+}
+
+// ─── Actions ──────────────────────────────────────────────
+function confirmPair() {
+  const pair = {
+    id: Date.now(),
+    name: selBloque.pares[selPar],
+    num: selPar + 1,
+    bloque: selBloque.nombre,
+    zona: selZona.nombre,
+    region: selRegion.nombre,
+    path: selRegion.nombre + ' › ' + selZona.nombre + ' › ' + selBloque.nombre,
+    regionId: selRegion.id
+  };
+  session.push(pair);
+  saveSession();
+  renderSidebar();
+  // Go back to start for next pair
+  resetWizard();
+}
+
+function anotherPar() {
+  step = 'par';
+  renderStep();
+}
+
+function resetWizard() {
+  step = 'region';
+  selRegion = selZona = selBloque = selPar = null;
+  renderStep();
+}
+
+// ─── Breadcrumb ───────────────────────────────────────────
+function updateBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  bc.innerHTML = '';
+  const crumbs = [{ label: 'Región', target: 'region' }];
+  if (selRegion) crumbs.push({ label: selRegion.nombre, target: 'zona' });
+  if (selZona)   crumbs.push({ label: selZona.nombre, target: 'bloque' });
+  if (selBloque) crumbs.push({ label: selBloque.nombre, target: 'par' });
+  if (step === 'result') crumbs.push({ label: 'Par #' + (selPar+1), target: 'result' });
+
+  crumbs.forEach((c, i) => {
+    if (i > 0) { const sep = document.createElement('span'); sep.className='bc-sep'; sep.textContent='›'; bc.appendChild(sep); }
+    const el = document.createElement('span');
+    const isCurrent = i === crumbs.length - 1;
+    el.className = isCurrent ? 'bc-current' : 'bc-item';
+    el.textContent = c.label;
+    if (!isCurrent) el.onclick = () => navigateTo(c.target);
+    bc.appendChild(el);
+  });
+}
+
+function navigateTo(target) {
+  step = target;
+  if (target === 'region') { selRegion = selZona = selBloque = selPar = null; }
+  if (target === 'zona')   { selZona = selBloque = selPar = null; }
+  if (target === 'bloque') { selBloque = selPar = null; }
+  if (target === 'par')    { selPar = null; }
+  renderStep();
+}
+
+// ─── Sidebar ──────────────────────────────────────────────
+function renderSidebar() {
+  const list = document.getElementById('pairsList');
+  const badge = document.getElementById('sessionBadge');
+  const btn = document.getElementById('btnFinalize');
+  
+  badge.textContent = session.length + (session.length === 1 ? ' par' : ' pares');
+  badge.className = 'session-badge' + (session.length === 0 ? ' empty' : '');
+  btn.disabled = session.length === 0;
+
+  if (session.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">🧲</div><p>Aquí aparecerán los pares<br>confirmados durante el rastreo</p></div>`;
     return;
   }
-
-  // Group by tipo
-  const groups = {};
-  for (const p of pairs) {
-    const t = p.tipo || 'desconocido';
-    if (!groups[t]) groups[t] = [];
-    groups[t].push(p);
-  }
-
-  let html = '';
-  for (const t of TIPO_ORDER) {
-    const grp = groups[t];
-    if (!grp || !grp.length) continue;
-    const color = TIPO_COLORS[t] || '#888';
-    html += `<div class="group-hdr">
-      <span class="group-dot" style="background:${color}"></span>
-      ${TIPO_LABELS[t] || t}
-      <span class="group-cnt">(${grp.length})</span>
-    </div>`;
-    for (const p of grp) {
-      const isChk = confirmed.some(c => c.id === p.id);
-      const siss  = (p.sistemas_afectados || []).join(' · ');
-      const safeId = escId(p.id);
-      html += `<div class="pair-row ${isChk ? 'confirmed' : ''}" onclick="togglePair('${safeId}')">
-        <input type="checkbox" class="pair-cb" ${isChk ? 'checked' : ''}
-          onclick="event.stopPropagation();togglePair('${safeId}')">
-        <div class="pair-body">
-          <div class="pair-nombre">${escHtml(p.nombre)}</div>
-          ${p.condiciones ? `<div class="pair-cond">${escHtml(p.condiciones)}</div>` : ''}
-          ${p.significado_emocional && p.significado_emocional !== p.condiciones
-            ? `<div class="pair-emoc">💜 ${escHtml(p.significado_emocional)}</div>` : ''}
-          <div class="pair-tags">
-            <span class="pair-tag" style="color:${color}">${TIPO_LABELS[t] || t}</span>
-            ${siss ? `<span class="pair-tag">${escHtml(siss)}</span>` : ''}
-          </div>
-        </div>
-      </div>`;
-    }
-  }
-
-  scroll.innerHTML = html;
+  list.innerHTML = '';
+  session.forEach((p, i) => {
+    const item = document.createElement('div');
+    item.className = 'pair-item';
+    item.innerHTML = `
+      <div class="pair-num">${i+1}</div>
+      <div class="pair-info">
+        <div class="pair-name">${p.name}</div>
+        <div class="pair-path">${p.path}</div>
+      </div>
+      <button class="pair-remove" onclick="removePair(${p.id})" title="Quitar">✕</button>
+    `;
+    list.appendChild(item);
+  });
 }
 
-// ── Toggle pair ───────────────────────────────────────────────────────────────
-function togglePair(safeId) {
-  // Find pair by matching safeId
-  const pair = ALL_PAIRS.find(p => escId(p.id) === safeId);
-  if (!pair) return;
-  const idx = confirmed.findIndex(c => c.id === pair.id);
-  if (idx >= 0) {
-    confirmed.splice(idx, 1);
-  } else {
-    const zona = ZONAS.find(z => z.key === pair._zone);
-    confirmed.push({
-      id:          pair.id,
-      nombre:      pair.nombre,
-      tipo:        pair.tipo || 'desconocido',
-      zona:        pair._zone,
-      zonaLabel:   zona ? zona.label : pair._zone,
-      condiciones: pair.condiciones || '',
-      emocional:   pair.significado_emocional || '',
-    });
-  }
-  renderPairs();
-  renderConfirmed();
+function removePair(id) {
+  session = session.filter(p => p.id !== id);
+  saveSession();
+  renderSidebar();
 }
 
-// ── Confirmed panel ───────────────────────────────────────────────────────────
-function renderConfirmed() {
-  const scroll = document.getElementById('confScroll');
-  const cnt    = document.getElementById('confCnt');
-  const badge  = document.getElementById('confBadge');
-  cnt.textContent   = confirmed.length;
-  badge.textContent = confirmed.length + ' confirmado' + (confirmed.length !== 1 ? 's' : '');
-
-  if (!confirmed.length) {
-    scroll.innerHTML = `<div class="conf-empty">Confirma pares haciendo clic<br>en la tabla.<br><br>
-      <span style="color:var(--acc);font-size:.72rem">El mapa completo está visible.<br>Navega zona a zona.</span></div>`;
-    return;
-  }
-
-  // Group by zona
-  const groups = {};
-  for (const c of confirmed) {
-    const g = c.zonaLabel || 'General';
-    if (!groups[g]) groups[g] = [];
-    groups[g].push(c);
-  }
-
-  let html = '';
-  for (const [g, items] of Object.entries(groups)) {
-    html += `<div class="conf-zona-label">${escHtml(g)}</div>`;
-    for (const item of items) {
-      const color  = TIPO_COLORS[item.tipo] || '#888';
-      const sid    = escId(item.id);
-      html += `<div class="conf-item" id="ci_${sid}">
-        <div class="conf-item-top">
-          <div class="conf-nombre">${escHtml(item.nombre)}</div>
-          <button class="conf-rm" onclick="removeConfirmed('${sid}')" title="Quitar">✕</button>
-        </div>
-        <div class="conf-tipo" style="color:${color}">${TIPO_LABELS[item.tipo] || item.tipo}</div>
-        <button class="interp-btn" id="ib_${sid}" onclick="interpretarPar('${sid}')">
-          🤖 Interpretar con IA
-        </button>
-        <div class="ai-resp" id="air_${sid}" style="display:none"></div>
-      </div>`;
-    }
-  }
-  scroll.innerHTML = html;
+function saveSession() {
+  localStorage.setItem('pares_session', JSON.stringify(session));
 }
 
-function removeConfirmed(sid) {
-  const pair = ALL_PAIRS.find(p => escId(p.id) === sid);
-  if (!pair) return;
-  confirmed = confirmed.filter(c => c.id !== pair.id);
-  renderPairs();
-  renderConfirmed();
+function newSession() {
+  if (!confirm('¿Iniciar una nueva sesión? Se borrarán los pares actuales.')) return;
+  session = [];
+  saveSession();
+  closeModal();
+  renderSidebar();
+  resetWizard();
 }
 
-function limpiarTodo() {
-  if (!confirmed.length) return;
-  if (confirm(`¿Limpiar los ${confirmed.length} pares confirmados e iniciar nueva sesión?`)) {
-    confirmed = [];
-    streamingId = null;
-    renderPairs();
-    renderConfirmed();
-  }
-}
-
-// ── AI interpretation (inline per pair) ──────────────────────────────────────
-async function interpretarPar(sid) {
-  if (streamingId) return;
-  const pair = ALL_PAIRS.find(p => escId(p.id) === sid);
-  if (!pair) return;
-
-  const btn  = document.getElementById('ib_'  + sid);
-  const resp = document.getElementById('air_' + sid);
-  if (!btn || !resp) return;
-
-  btn.textContent = '⏳ Analizando…';
-  btn.classList.add('loading');
-  resp.style.display = 'block';
-  resp.innerHTML = '<span style="color:var(--muted)">●●●</span>';
-
-  streamingId = sid;
-  let full = '';
-  let first = true;
-
-  const prompt = `Par biomagnético confirmado con la MS: "${pair.nombre}".
-Condiciones: ${pair.condiciones || 'N/A'}. Resonancia emocional: ${pair.significado_emocional || 'N/A'}.
-
-Responde en exactamente 4 líneas:
-1. 📍 Colocación: polo negativo en ___, polo positivo en ___
-2. 🔬 Interpretación clínica (1 línea)
-3. 💜 Enfoque psicosomático/emocional (1 línea)
-4. ⏱ Tiempo recomendado de imanes`;
-
+// ─── Modal ────────────────────────────────────────────────
+async function openModal() {
+  if (session.length === 0) return;
+  
+  // Build maps list
+  let mapsHTML = '';
   try {
-    const res = await fetch('/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: prompt, history: [], mode: 'pares' })
-    });
-    if (!res.ok) throw new Error('Server error');
-    const reader  = res.body.getReader();
-    const decoder = new TextDecoder();
-    let buf = '';
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buf += decoder.decode(value, { stream: true });
-      const lines = buf.split('\n');
-      buf = lines.pop();
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const raw = line.slice(6).trim();
-        if (raw === '[DONE]') break;
-        try {
-          const obj = JSON.parse(raw);
-          if (obj.text) {
-            full += obj.text;
-            if (first) { resp.innerHTML = ''; first = false; }
-            resp.innerHTML = escHtml(full).replace(/\n/g, '<br>');
-            document.getElementById('confScroll').scrollTop = 99999;
-          }
-        } catch (_) {}
+    const r = await fetch('/api/tablas-images');
+    const data = await r.json();
+    if (data.ok) {
+      const mapas = data.categories?.pares_biomagneticos?.mapas || [];
+      if (mapas.length > 0) {
+        mapsHTML = `
+          <div class="modal-section">
+            <h3>🗺️ Mapas de Colocación (Pares Biomagnéticos)</h3>
+            <div class="maps-grid" id="mapsGrid"></div>
+          </div>`;
       }
+      // Store for later
+      window._mapas = mapas;
     }
-  } catch(e) {
-    resp.innerHTML = '<span style="color:var(--red)">Error de conexión. Intenta de nuevo.</span>';
-  }
+  } catch(e) { window._mapas = []; }
 
-  btn.textContent = '🤖 Interpretar con IA';
-  btn.classList.remove('loading');
-  streamingId = null;
-}
+  const body = document.getElementById('modalBody');
+  body.innerHTML = `
+    <div class="modal-section">
+      <h3>🧲 Pares del rastreo (${session.length})</h3>
+      <div class="final-pairs-list">
+        ${session.map((p,i) => `
+          <div class="final-pair">
+            <div class="final-pair-num">${i+1}</div>
+            <div class="final-pair-info">
+              <div class="final-pair-name">${p.name}</div>
+              <div class="final-pair-path">${p.path}</div>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>
+    ${mapsHTML}
+  `;
 
-// ── Copy summary ──────────────────────────────────────────────────────────────
-function copiarResumen() {
-  if (!confirmed.length) { alert('No hay pares confirmados.'); return; }
+  document.getElementById('modalOverlay').classList.add('open');
 
-  const groups = {};
-  for (const c of confirmed) {
-    const g = c.zonaLabel || 'General';
-    if (!groups[g]) groups[g] = [];
-    groups[g].push(c);
-  }
-
-  let text = '🧲 RASTREO DE PARES — RESULTADOS\n' + '━'.repeat(34) + '\n\n';
-  for (const [g, items] of Object.entries(groups)) {
-    text += `▸ ${g.toUpperCase()}\n`;
-    for (const it of items) {
-      text += `  • ${it.nombre}`;
-      if (it.condiciones) text += `\n    ↳ ${it.condiciones}`;
-      text += '\n';
+  // Populate maps after DOM insertion
+  if (window._mapas && window._mapas.length > 0) {
+    const grid = document.getElementById('mapsGrid');
+    if (grid) {
+      window._mapas.forEach(fname => {
+        const url = `/tablas-assets/pares_biomagneticos/${fname}`;
+        const img = document.createElement('img');
+        img.className = 'map-img';
+        img.src = url;
+        img.alt = fname;
+        img.loading = 'lazy';
+        img.onclick = () => openLightbox(url);
+        grid.appendChild(img);
+      });
     }
-    text += '\n';
   }
-  text += `Total: ${confirmed.length} par${confirmed.length !== 1 ? 'es' : ''} confirmado${confirmed.length !== 1 ? 's' : ''}`;
-
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.btn-copy');
-    const orig = btn.textContent;
-    btn.textContent = '✅ Copiado!';
-    setTimeout(() => btn.textContent = orig, 2000);
-  });
 }
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
-function escHtml(s) {
-  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-function escId(id) {
-  return String(id || '').replace(/[^a-z0-9]/gi, '_');
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
 }
 
-// ── Boot ──────────────────────────────────────────────────────────────────────
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+// ─── Helpers ──────────────────────────────────────────────
+function setQuestion(label, question) {
+  document.getElementById('stepLabel').textContent = label;
+  document.getElementById('stepQuestion').textContent = question;
+}
+
+function getGrid(cls) {
+  const grid = document.getElementById('optionsGrid');
+  grid.className = 'options-grid ' + cls;
+  grid.innerHTML = '';
+  return grid;
+}
+
+function makeOptBtn(name, sub) {
+  const btn = document.createElement('button');
+  btn.className = 'opt-btn';
+  btn.innerHTML = `<div class="opt-name">${name}</div><div class="opt-count">${sub}</div>`;
+  return btn;
+}
+
+// Close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
+
+// Keyboard: Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLightbox(); closeModal(); }
+});
+
 init();
 </script>
 </body>
