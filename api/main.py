@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import secrets
 import logging
 import threading
 from functools import lru_cache
@@ -13,7 +14,7 @@ THERAPY_STATIC_DIR = BASE_DIR / "api" / "static"
 PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response
 from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -264,6 +265,61 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# ── Control de acceso ─────────────────────────────────────────────────────────
+# EMBED_SECRET: token secreto compartido entre Wix y Render.
+# Configúralo como variable de entorno en Render Dashboard.
+# En Wix (Velo), pon ese mismo valor en la URL del iframe:
+#   https://holoacademia-ai.onrender.com/?embed=1&token=TU_SECRET
+# Sin token válido ni cookie de sesión → redirige al login de Wix.
+_EMBED_SECRET = os.getenv("EMBED_SECRET", "")
+_SESSION_COOKIE = "holo_sess"
+_SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
+_LOGIN_REDIRECT = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
+
+# Rutas HTML protegidas (todo lo que el usuario ve en el browser)
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo"}
+
+@app.middleware("http")
+async def session_guard(request: Request, call_next):
+    """
+    Bloquea acceso directo a las páginas HTML si no hay token o cookie válidos.
+    Las rutas de API, assets estáticos y health quedan libres.
+    """
+    # Sin secret configurado → modo desarrollo, pasa todo
+    if not _EMBED_SECRET:
+        return await call_next(request)
+
+    path = request.url.path.rstrip("/") or "/"
+
+    # Solo proteger páginas HTML; APIs y assets pasan siempre
+    if path not in _PROTECTED_PATHS:
+        return await call_next(request)
+
+    token  = request.query_params.get("token", "")
+    cookie = request.cookies.get(_SESSION_COOKIE, "")
+
+    token_ok  = bool(token)  and secrets.compare_digest(token,  _EMBED_SECRET)
+    cookie_ok = bool(cookie) and secrets.compare_digest(cookie, _EMBED_SECRET)
+
+    if not token_ok and not cookie_ok:
+        # Sin autorización → redirige al login de Wix
+        return RedirectResponse(_LOGIN_REDIRECT, status_code=302)
+
+    response = await call_next(request)
+
+    if token_ok:
+        # Token válido → renovar/crear cookie de sesión
+        response.set_cookie(
+            _SESSION_COOKIE,
+            _EMBED_SECRET,
+            max_age=_SESSION_MAX_AGE,
+            httponly=True,
+            samesite="none",
+            secure=True,
+        )
+
+    return response
 
 if THERAPY_STATIC_DIR.exists():
     app.mount("/therapy-static", StaticFiles(directory=THERAPY_STATIC_DIR), name="therapy-static")
