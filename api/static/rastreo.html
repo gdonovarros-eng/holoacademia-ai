@@ -2,1301 +2,552 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rastreo Biomagnético · Holoacadem-iA</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Rastreo de Pares · Holoacadem-iA</title>
 <style>
-:root {
-  --bg: #0f172a;
-  --surface: #1e293b;
-  --surface2: #263248;
-  --border: rgba(255,255,255,0.08);
-  --text: #e2e8f0;
-  --muted: #64748b;
-  --acc: #3b82f6;
-  --acc-dim: rgba(59,130,246,0.15);
-  --radius: 8px;
-  --header-h: 52px;
-  --col-izq: 220px;
-  --col-der: 280px;
-
-  /* tipo colors */
-  --c-bacteria: #ef4444;
-  --c-virus: #f97316;
-  --c-hongo: #eab308;
-  --c-parasito: #84cc16;
-  --c-emocional: #a78bfa;
-  --c-disfuncional: #60a5fa;
-  --c-especial: #f472b6;
-  --c-reservorio: #94a3b8;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  height: 100dvh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── HEADER ───────────────────────────────────────── */
-header {
-  height: var(--header-h);
-  background: var(--surface);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 16px;
-  flex-shrink: 0;
-  z-index: 10;
-}
-
-header h1 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--acc);
-  white-space: nowrap;
-}
-
-.home-btn {
-  color: var(--muted);
-  text-decoration: none;
-  font-size: 1.1rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  transition: color .2s, background .2s;
-  line-height: 1;
-  flex-shrink: 0;
-}
-.home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
-
-#global-search {
-  flex: 1;
-  max-width: 400px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
-  padding: 6px 12px;
-  font-size: 0.85rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-#global-search:focus { border-color: var(--acc); }
-#global-search::placeholder { color: var(--muted); }
-
-.spacer { flex: 1; }
-
-#btn-finalizar {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--acc);
-  color: #0f172a;
-  border: none;
-  border-radius: var(--radius);
-  padding: 7px 14px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-}
-#btn-finalizar:hover { opacity: 0.85; }
-
-#confirmed-badge {
-  background: #0f172a;
-  color: var(--acc);
-  border-radius: 999px;
-  padding: 1px 7px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  min-width: 20px;
-  text-align: center;
-}
-
-/* ── MAIN GRID ────────────────────────────────────── */
-.main-grid {
-  display: grid;
-  grid-template-columns: var(--col-izq) 1fr var(--col-der);
-  flex: 1;
-  overflow: hidden;
-}
-
-/* ── COL IZQUIERDA ───────────────────────────────── */
-.col-izq {
-  background: var(--surface);
-  border-right: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  padding: 12px 8px;
-  gap: 4px;
-}
-
-.col-izq-title {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  text-transform: uppercase;
-  padding: 4px 8px 8px;
-}
-
-.cat-chip {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 10px;
-  border-radius: var(--radius);
-  cursor: pointer;
-  font-size: 0.82rem;
-  color: var(--text);
-  border: 1px solid transparent;
-  transition: background 0.15s, border-color 0.15s;
-  user-select: none;
-  line-height: 1.3;
-}
-.cat-chip:hover { background: var(--surface2); }
-.cat-chip.active {
-  background: var(--acc-dim);
-  border-color: var(--acc);
-  color: var(--acc);
-  font-weight: 600;
-}
-.cat-chip .cat-icon { font-size: 1rem; flex-shrink: 0; }
-.cat-chip .cat-label { flex: 1; }
-
-/* ── COL CENTRO ──────────────────────────────────── */
-.col-centro {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-/* image viewer */
-.image-viewer {
-  flex: 0 0 60%;
-  display: flex;
-  flex-direction: column;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg);
-  overflow: hidden;
-}
-
-.image-viewer-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-bottom: 1px solid var(--border);
-  font-size: 0.8rem;
-  color: var(--muted);
-  flex-shrink: 0;
-}
-.image-viewer-header strong { color: var(--text); }
-
-.image-nav-btn {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  color: var(--text);
-  cursor: pointer;
-  padding: 3px 10px;
-  font-size: 0.8rem;
-  transition: background 0.15s;
-}
-.image-nav-btn:hover { background: var(--surface2); }
-.image-nav-btn:disabled { opacity: 0.35; cursor: default; }
-
-.image-viewer-spacer { flex: 1; }
-
-.image-strip-wrap {
-  flex: 1;
-  overflow-x: auto;
-  overflow-y: hidden;
-  display: flex;
-  align-items: center;
-  padding: 10px 14px;
-  gap: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) transparent;
-}
-
-.thumb {
-  flex-shrink: 0;
-  height: 100%;
-  max-height: 200px;
-  border-radius: 6px;
-  border: 2px solid transparent;
-  cursor: pointer;
-  object-fit: contain;
-  transition: border-color 0.15s, transform 0.15s;
-  background: var(--surface);
-}
-.thumb:hover { border-color: var(--acc); transform: scale(1.03); }
-.thumb.active { border-color: var(--acc); }
-
-.image-empty {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  font-size: 0.9rem;
-  gap: 8px;
-  padding: 20px;
-  text-align: center;
-}
-.image-empty .empty-icon { font-size: 2.5rem; }
-
-/* pair search */
-.pair-search-area {
-  flex: 0 0 40%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  padding: 10px 14px;
-  gap: 8px;
-}
-
-.pair-search-area label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-#pair-search-input {
-  width: 100%;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
-  padding: 7px 12px;
-  font-size: 0.85rem;
-  outline: none;
-  transition: border-color 0.2s;
-}
-#pair-search-input:focus { border-color: var(--acc); }
-#pair-search-input::placeholder { color: var(--muted); }
-
-#pair-results {
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) transparent;
-}
-
-.pair-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 8px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-  transition: background 0.12s;
-  cursor: default;
-}
-.pair-row:hover { background: var(--surface2); }
-
-.pair-row-name {
-  flex: 1;
-  font-size: 0.82rem;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.btn-add {
-  background: var(--acc-dim);
-  border: 1px solid var(--acc);
-  border-radius: 6px;
-  color: var(--acc);
-  cursor: pointer;
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 2px 9px;
-  transition: background 0.15s;
-  flex-shrink: 0;
-}
-.btn-add:hover { background: rgba(59,130,246,0.3); }
-.btn-add.added {
-  background: rgba(59,130,246,0.08);
-  border-color: var(--muted);
-  color: var(--acc);
-  cursor: default;
-}
-
-.pair-search-empty {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.82rem;
-  padding: 20px;
-}
-
-/* ── COL DERECHA ─────────────────────────────────── */
-.col-der {
-  background: var(--surface);
-  border-left: 1px solid var(--border);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.col-der-header {
-  padding: 10px 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  color: var(--muted);
-  text-transform: uppercase;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-
-#confirmed-list {
-  flex: 1;
-  overflow-y: auto;
-  padding: 10px 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--muted) transparent;
-}
-
-.confirmed-empty {
-  text-align: center;
-  color: var(--muted);
-  font-size: 0.8rem;
-  padding: 24px 12px;
-  line-height: 1.6;
-}
-
-.confirmed-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  position: relative;
-}
-
-.confirmed-card-top {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.confirmed-card-name {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text);
-  flex: 1;
-  line-height: 1.3;
-}
-
-.confirmed-card-sistema {
-  font-size: 0.72rem;
-  color: var(--muted);
-}
-
-.confirmed-card-bottom {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.btn-remove {
-  background: none;
-  border: none;
-  color: var(--muted);
-  cursor: pointer;
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 4px;
-  transition: color 0.15s, background 0.15s;
-}
-.btn-remove:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
-
-/* ── TIPO CHIPS ──────────────────────────────────── */
-.tipo-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 1px 7px;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-
-.tipo-bacteria   { background: rgba(239,68,68,0.15);   color: #ef4444; }
-.tipo-virus      { background: rgba(249,115,22,0.15);  color: #f97316; }
-.tipo-hongo      { background: rgba(234,179,8,0.15);   color: #eab308; }
-.tipo-parasito   { background: rgba(132,204,22,0.15);  color: #84cc16; }
-.tipo-emocional  { background: rgba(167,139,250,0.15); color: #a78bfa; }
-.tipo-disfuncional { background: rgba(96,165,250,0.15); color: #60a5fa; }
-.tipo-especial   { background: rgba(244,114,182,0.15); color: #f472b6; }
-.tipo-reservorio { background: rgba(148,163,184,0.15); color: #94a3b8; }
-.tipo-otro       { background: rgba(100,116,139,0.15); color: #94a3b8; }
-
-/* ── LIGHTBOX ────────────────────────────────────── */
-#lightbox {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.88);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-#lightbox.open { display: flex; }
-
-#lightbox-img {
-  max-width: 90vw;
-  max-height: 88vh;
-  border-radius: 8px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-  object-fit: contain;
-}
-
-#lightbox-close {
-  position: fixed;
-  top: 16px;
-  right: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  border-radius: 8px;
-  padding: 6px 14px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  z-index: 101;
-}
-#lightbox-close:hover { background: var(--surface2); }
-
-/* ── FINALIZAR MODAL ──────────────────────────────── */
-#modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.82);
-  z-index: 200;
-  overflow-y: auto;
-  padding: 24px 16px;
-}
-#modal-overlay.open { display: block; }
-
-#modal-box {
-  max-width: 820px;
-  margin: 0 auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.modal-header {
-  padding: 18px 24px;
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.modal-header h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  flex: 1;
-}
-
-.modal-header-btns {
-  display: flex;
-  gap: 8px;
-}
-
-.modal-btn {
-  padding: 6px 14px;
-  border-radius: var(--radius);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  transition: background 0.15s;
-}
-.modal-btn-primary {
-  background: var(--acc);
-  color: #0f172a;
-  border-color: var(--acc);
-}
-.modal-btn-primary:hover { opacity: 0.85; }
-.modal-btn-secondary {
-  background: var(--surface2);
-  color: var(--text);
-}
-.modal-btn-secondary:hover { background: #334155; }
-.modal-btn-ghost {
-  background: transparent;
-  color: var(--muted);
-}
-.modal-btn-ghost:hover { background: rgba(255,255,255,0.05); color: var(--text); }
-
-.modal-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 24px; }
-
-.modal-section-title {
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 12px;
-}
-
-/* body map */
-.body-map-wrap {
-  display: flex;
-  justify-content: center;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-}
-.body-map-wrap img {
-  max-height: 320px;
-  object-fit: contain;
-  opacity: 0.85;
-}
-
-/* instruction cards */
-.instruction-card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.instruction-card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.instruction-num {
-  background: var(--acc);
-  color: #0f172a;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 800;
-  flex-shrink: 0;
-}
-
-.instruction-card-name {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text);
-  flex: 1;
-}
-
-.instruction-detail {
-  font-size: 0.82rem;
-  color: var(--muted);
-  line-height: 1.55;
-  padding-left: 34px;
-}
-
-.instruction-detail strong { color: var(--text); }
-
-.instruction-row {
-  display: flex;
-  gap: 6px;
-  padding-left: 34px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
-.instruction-label {
-  font-size: 0.78rem;
-  color: var(--muted);
-  white-space: nowrap;
-}
-
-.instruction-value {
-  font-size: 0.82rem;
-  color: var(--text);
-  line-height: 1.5;
-}
-
-/* ── PRINT STYLES ────────────────────────────────── */
-@media print {
-  body { background: white; color: #111; overflow: auto; height: auto; }
-  header, .main-grid { display: none; }
-  #modal-overlay { display: block !important; position: static; background: white; padding: 0; }
-  #modal-box { border: none; box-shadow: none; }
-  .modal-header-btns { display: none; }
-  .instruction-card { border: 1px solid #ddd; break-inside: avoid; }
-  .modal-section-title { color: #666; }
-  .instruction-detail, .instruction-value { color: #222; }
-  .instruction-label { color: #555; }
-  .tipo-chip { border: 1px solid currentColor; }
-}
-
-/* ── MOBILE ──────────────────────────────────────── */
-@media (max-width: 700px) {
-  .main-grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-  }
-  .col-izq, .col-der { display: none; }
-
-  .col-izq.drawer-open, .col-der.drawer-open {
-    display: flex;
-    position: fixed;
-    top: var(--header-h);
-    bottom: 0;
-    z-index: 50;
-    width: min(280px, 85vw);
-  }
-
-  .col-izq.drawer-open { left: 0; }
-  .col-der.drawer-open { right: 0; }
-
-  #btn-toggle-cat, #btn-toggle-confirm { display: flex; }
-}
-
-#btn-toggle-cat, #btn-toggle-confirm { display: none; }
-
-.mobile-toggle {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  color: var(--text);
-  padding: 5px 10px;
-  font-size: 0.78rem;
-  cursor: pointer;
+:root{
+  --bg:#f5f5f7; --surface:#ffffff; --surface2:#e8e8ed;
+  --border:rgba(0,0,0,0.08); --text:#1d1d1f; --muted:#6e6e73;
+  --acc:#3b82f6; --acc-dark:#2563eb;
+  --green:#22c55e; --green-dark:#16a34a;
+  --radius:14px; --shadow:0 2px 12px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif}
+body{display:grid;grid-template-rows:52px 1fr;height:100vh;overflow:hidden}
+
+/* Header */
+.header{display:flex;align-items:center;gap:10px;padding:0 18px;
+  background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0}
+.home-btn{color:var(--muted);text-decoration:none;font-size:1.1rem;padding:4px 8px;
+  border-radius:6px;transition:color .15s;line-height:1}
+.home-btn:hover{color:var(--text)}
+.header-title{font-weight:700;font-size:.92rem;color:var(--text)}
+.header-sub{font-size:.68rem;color:var(--acc);font-weight:600}
+.session-badge{margin-left:auto;background:var(--acc);color:#fff;
+  border-radius:20px;padding:3px 12px;font-size:.75rem;font-weight:700;cursor:pointer;
+  transition:background .15s}
+.session-badge:hover{background:var(--acc-dark)}
+.session-badge.empty{background:var(--surface2);color:var(--muted)}
+
+/* Main layout */
+.main{display:grid;grid-template-columns:1fr 300px;overflow:hidden;height:100%}
+
+/* Wizard panel */
+.wizard{padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:16px}
+
+/* Breadcrumb */
+.breadcrumb{display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  font-size:.75rem;color:var(--muted);min-height:22px}
+.bc-sep{opacity:.4}
+.bc-item{cursor:pointer;color:var(--acc);font-weight:500}
+.bc-item:hover{text-decoration:underline}
+.bc-current{color:var(--text);font-weight:600;cursor:default}
+
+/* Step title */
+.step-label{font-size:.68rem;font-weight:700;letter-spacing:.08em;
+  color:var(--muted);text-transform:uppercase}
+.step-question{font-size:1.05rem;font-weight:700;color:var(--text);margin-top:4px}
+
+/* Grid of option buttons */
+.options-grid{display:grid;gap:10px}
+.options-grid.cols-2{grid-template-columns:1fr 1fr}
+.options-grid.cols-3{grid-template-columns:1fr 1fr 1fr}
+.options-grid.cols-auto{grid-template-columns:repeat(auto-fill,minmax(120px,1fr))}
+.options-grid.cols-nums{grid-template-columns:repeat(auto-fill,minmax(64px,1fr))}
+
+.opt-btn{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);
+  padding:14px 12px;cursor:pointer;transition:all .15s;text-align:left;
+  display:flex;flex-direction:column;gap:4px;min-height:60px;justify-content:center
+}
+.opt-btn:hover{border-color:var(--acc);box-shadow:0 0 0 3px rgba(59,130,246,.12);transform:translateY(-1px)}
+.opt-btn.active{border-color:var(--acc);background:rgba(59,130,246,.06)}
+.opt-btn .opt-num{font-size:.65rem;font-weight:700;color:var(--acc);text-transform:uppercase;letter-spacing:.05em}
+.opt-btn .opt-name{font-size:.88rem;font-weight:600;color:var(--text);line-height:1.2}
+.opt-btn .opt-count{font-size:.7rem;color:var(--muted)}
+
+/* Result card */
+.result-card{background:var(--surface);border:2px solid var(--green);border-radius:var(--radius);padding:18px 20px}
+.result-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:8px}
+.result-pair{font-size:1.15rem;font-weight:700;color:var(--text);line-height:1.3;margin-bottom:6px}
+.result-path{font-size:.72rem;color:var(--muted)}
+.result-actions{display:flex;gap:10px;margin-top:14px}
+.btn-confirm{flex:1;background:var(--green);color:#fff;border:none;border-radius:10px;
+  padding:12px;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-confirm:hover{background:var(--green-dark)}
+.btn-another{background:var(--surface2);color:var(--text);border:none;border-radius:10px;
+  padding:12px 14px;font-size:.88rem;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-another:hover{background:#d1d1d6}
+
+/* Sidebar: session */
+.sidebar{background:var(--surface);border-left:1px solid var(--border);
+  display:flex;flex-direction:column;overflow:hidden}
+.sidebar-header{padding:14px 18px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.sidebar-title{font-size:.82rem;font-weight:700;color:var(--text)}
+.btn-finalize{background:var(--acc);color:#fff;border:none;border-radius:8px;
+  padding:7px 14px;font-size:.75rem;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-finalize:hover{background:var(--acc-dark)}
+.btn-finalize:disabled{background:var(--surface2);color:var(--muted);cursor:default}
+.pairs-list{flex:1;overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.pair-item{background:var(--bg);border-radius:10px;padding:10px 12px;
+  display:flex;align-items:flex-start;gap:8px}
+.pair-num{width:22px;height:22px;border-radius:50%;background:var(--acc);color:#fff;
+  font-size:.68rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.pair-info{flex:1;min-width:0}
+.pair-name{font-size:.8rem;font-weight:600;color:var(--text);line-height:1.3}
+.pair-path{font-size:.65rem;color:var(--muted);margin-top:2px}
+.pair-remove{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.85rem;
+  padding:2px 4px;border-radius:4px;transition:color .15s;flex-shrink:0}
+.pair-remove:hover{color:#ef4444}
+.empty-state{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  color:var(--muted);gap:8px;padding:24px;text-align:center}
+.empty-state .icon{font-size:2rem;opacity:.4}
+.empty-state p{font-size:.78rem;line-height:1.4}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:100;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--surface);border-radius:20px;width:100%;max-width:760px;
+  max-height:90vh;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);transform:translateY(16px);transition:transform .2s}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal-head{padding:20px 24px 16px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.modal-head h2{font-size:1.05rem;font-weight:700}
+.modal-close{background:var(--surface2);border:none;border-radius:50%;width:32px;height:32px;
+  cursor:pointer;font-size:1rem;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.modal-body{padding:20px 24px;overflow-y:auto;display:flex;flex-direction:column;gap:20px}
+.modal-section h3{font-size:.78rem;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--muted);margin-bottom:10px}
+.final-pairs-list{display:flex;flex-direction:column;gap:6px}
+.final-pair{background:var(--bg);border-radius:10px;padding:10px 14px;
+  display:flex;align-items:center;gap:10px}
+.final-pair-num{width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;
+  font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.final-pair-name{font-size:.85rem;font-weight:600;color:var(--text);flex:1}
+.final-pair-path{font-size:.68rem;color:var(--muted)}
+.maps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.map-img{width:100%;border-radius:10px;cursor:zoom-in;transition:transform .15s;border:1px solid var(--border)}
+.map-img:hover{transform:scale(1.02)}
+.modal-actions{padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:10px;flex-shrink:0}
+.btn-new-session{flex:1;background:var(--surface2);color:var(--text);border:none;
+  border-radius:10px;padding:13px;font-size:.88rem;font-weight:600;cursor:pointer}
+.btn-new-session:hover{background:#d1d1d6}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:200;
+  display:flex;align-items:center;justify-content:center;cursor:zoom-out;
+  opacity:0;pointer-events:none;transition:opacity .2s}
+.lightbox.open{opacity:1;pointer-events:all}
+.lightbox img{max-width:94vw;max-height:94vh;object-fit:contain;border-radius:8px}
+
+/* Responsive */
+@media(max-width:640px){
+  .main{grid-template-columns:1fr}
+  .sidebar{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- ── HEADER ─────────────────────────────────────────────────── -->
-<header>
+<div class="header">
   <a href="/" class="home-btn" title="Inicio">⌂</a>
-  <h1>🧲 Rastreo</h1>
-  <button class="mobile-toggle" id="btn-toggle-cat">☰ Cat.</button>
-  <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
-  <div class="spacer"></div>
-  <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
-  <button id="btn-finalizar">
-    Finalizar ✓ <span id="confirmed-badge">0</span>
-  </button>
-</header>
-
-<!-- ── MAIN GRID ──────────────────────────────────────────────── -->
-<div class="main-grid">
-
-  <!-- COL IZQUIERDA -->
-  <aside class="col-izq" id="col-izq">
-    <div class="col-izq-title">Categorías</div>
-    <div id="cat-list">
-      <!-- populated by JS -->
-    </div>
-  </aside>
-
-  <!-- COL CENTRO -->
-  <main class="col-centro">
-
-    <!-- image viewer (60%) -->
-    <div class="image-viewer">
-      <div class="image-viewer-header">
-        <strong id="active-cat-label">Selecciona una categoría</strong>
-        <div class="image-viewer-spacer"></div>
-        <button class="image-nav-btn" id="btn-prev" disabled>← Ant</button>
-        <span id="img-counter" style="font-size:0.78rem;color:var(--muted)">—</span>
-        <button class="image-nav-btn" id="btn-next" disabled>Sig →</button>
-      </div>
-      <div class="image-strip-wrap" id="image-strip">
-        <div class="image-empty">
-          <div class="empty-icon">🖼️</div>
-          <div>Selecciona una categoría para ver sus imágenes</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- pair search (40%) -->
-    <div class="pair-search-area">
-      <label for="pair-search-input">Buscar & Agregar Pares</label>
-      <input type="text" id="pair-search-input" placeholder="Nombre, condición, tipo…" autocomplete="off">
-      <div id="pair-results">
-        <div class="pair-search-empty">Escribe para buscar pares biomagnéticos</div>
-      </div>
-    </div>
-
-  </main>
-
-  <!-- COL DERECHA -->
-  <aside class="col-der">
-    <div class="col-der-header">Pares confirmados</div>
-    <div id="confirmed-list">
-      <div class="confirmed-empty">Selecciona una categoría y agrega pares al rastreo</div>
-    </div>
-  </aside>
-
+  <div>
+    <div class="header-title">Rastreo de Pares Biomagnéticos</div>
+    <div class="header-sub">Holoacadem-iA · Guía Interactiva</div>
+  </div>
+  <div class="session-badge empty" id="sessionBadge" onclick="openModal()">0 pares</div>
 </div>
 
-<!-- LIGHTBOX -->
-<div id="lightbox">
-  <button id="lightbox-close">✕ Cerrar</button>
-  <img id="lightbox-img" src="" alt="Vista ampliada">
-</div>
+<div class="main">
+  <!-- Wizard -->
+  <div class="wizard" id="wizard">
+    <div class="breadcrumb" id="breadcrumb"></div>
+    <div class="step-label" id="stepLabel">Paso 1 de 4</div>
+    <div class="step-question" id="stepQuestion">¿En qué región necesita un par?</div>
+    <div class="options-grid cols-2" id="optionsGrid"></div>
+  </div>
 
-<!-- FINALIZAR MODAL -->
-<div id="modal-overlay">
-  <div id="modal-box">
-    <div class="modal-header">
-      <h2>🗺️ Mapa de Colocación de Imanes</h2>
-      <div class="modal-header-btns">
-        <button class="modal-btn modal-btn-secondary" id="btn-print">🖨️ Imprimir</button>
-        <button class="modal-btn modal-btn-primary" id="btn-nuevo-rastreo">🔄 Nuevo Rastreo</button>
-        <button class="modal-btn modal-btn-ghost" id="btn-close-modal">✕</button>
-      </div>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Sesión actual</span>
+      <button class="btn-finalize" id="btnFinalize" disabled onclick="openModal()">Finalizar</button>
     </div>
-    <div class="modal-body">
-
-      <!-- Mapas de colocación (solo para categorías que los tengan) -->
-      <section id="mapas-section" style="display:none">
-        <div class="modal-section-title">🗺️ Mapas de Colocación</div>
-        <div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;">
-          <!-- populated by JS -->
-        </div>
-      </section>
-
-      <!-- Instruction list -->
-      <section>
-        <div class="modal-section-title">📋 Pares Confirmados — Instrucciones</div>
-        <div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;">
-          <!-- populated by JS -->
-        </div>
-      </section>
-
+    <div class="pairs-list" id="pairsList">
+      <div class="empty-state">
+        <div class="icon">🧲</div>
+        <p>Aquí aparecerán los pares<br>confirmados durante el rastreo</p>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- Modal final -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <h2>Resumen del Rastreo</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-actions">
+      <button class="btn-new-session" onclick="newSession()">Nueva Sesión</button>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" alt="Mapa de colocación">
+</div>
+
 <script>
-'use strict';
+// ─── State ───────────────────────────────────────────────
+let DB = null;
+let session = [];           // confirmed pairs
+let step = 'region';        // region | zona | bloque | par | result
+let selRegion = null;
+let selZona   = null;
+let selBloque = null;
+let selPar    = null;
 
-// ── CONFIG ────────────────────────────────────────────────────────────────
-const CATEGORIES = [
-  { key: 'pares_biomagneticos',      icon: '🧲', label: 'Pares Biomagnéticos' },
-  { key: 'microbios',                icon: '🦠', label: 'Microbios' },
-  { key: 'holobiomagnético',         icon: '✨', label: 'Holobiomagnético' },
-  { key: 'flores_de_bach',           icon: '🌸', label: 'Flores de Bach' },
-  { key: 'sales_de_schussler',       icon: '🧂', label: 'Sales de Schüssler' },
-  { key: 'vitaminas_minerales',      icon: '💊', label: 'Vitaminas & Minerales' },
-  { key: 'homeopatia',               icon: '⚗️', label: 'Homeopatía' },
-  { key: 'creencias',                icon: '🧠', label: 'Creencias' },
-  { key: 'miedos_fobias',            icon: '😨', label: 'Miedos & Fobias' },
-  { key: 'chakras_energeticos',      icon: '🔮', label: 'Chakras & Centros Energéticos' },
-  { key: '5_elementos_mtc',          icon: '☯️', label: '5 Elementos MTC' },
-  { key: 'aminoacidos_enzimas',      icon: '🔬', label: 'Aminoácidos & Enzimas' },
-  { key: 'sei',                      icon: '⚡', label: 'SEI' },
-];
-
-const TIPO_CLASS = {
-  bacteria: 'tipo-bacteria',
-  virus: 'tipo-virus',
-  hongo: 'tipo-hongo',
-  parásito: 'tipo-parasito',
-  parasito: 'tipo-parasito',
-  emocional: 'tipo-emocional',
-  disfuncional: 'tipo-disfuncional',
-  especial: 'tipo-especial',
-  reservorio: 'tipo-reservorio',
-};
-
-// IS-PAIR category? (vs supplement/other)
-const PAIR_CATEGORIES = new Set(['pares_biomagneticos', 'microbios', 'holobiomagnético']);
-
-const LS_KEY = 'rastreo_session';
-
-// ── STATE ─────────────────────────────────────────────────────────────────
-let allPairs = [];
-let manifest = {};
-let activeCategory = null;
-let activeImages = [];
-let activeImageIdx = 0;
-let confirmedPairs = loadSession();   // [{id,nombre,tipo,condiciones,significado_emocional,sistemas_afectados,_catKey,_catLabel}]
-let searchDebounce = null;
-let globalSearchDebounce = null;
-
-// ── SESSION PERSISTENCE ───────────────────────────────────────────────────
-function loadSession() {
+// ─── Boot ─────────────────────────────────────────────────
+async function init() {
   try {
-    const raw = localStorage.getItem(LS_KEY);
-    return raw ? JSON.parse(raw) : [];
-  } catch { return []; }
+    const r = await fetch('/api/pares-db');
+    DB = await r.json();
+  } catch(e) {
+    DB = { regiones: [] };
+  }
+  // Load session from localStorage
+  try { session = JSON.parse(localStorage.getItem('pares_session') || '[]'); } catch(e) { session = []; }
+  renderStep();
+  renderSidebar();
+}
+
+// ─── Step rendering ───────────────────────────────────────
+function renderStep() {
+  updateBreadcrumb();
+  switch(step) {
+    case 'region': renderRegions(); break;
+    case 'zona':   renderZonas(); break;
+    case 'bloque': renderBloques(); break;
+    case 'par':    renderPares(); break;
+    case 'result': renderResult(); break;
+  }
+}
+
+function renderRegions() {
+  setQuestion('Paso 1 · Región', '¿En qué región del cuerpo?');
+  const grid = getGrid('cols-2');
+  DB.regiones.forEach(r => {
+    const btn = makeOptBtn(r.icon + ' ' + r.nombre, r.numero + ' · ' + r.zonas.length + ' zonas');
+    btn.onclick = () => { selRegion = r; step = 'zona'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
+
+function renderZonas() {
+  setQuestion('Paso 2 · Zona', '¿En qué zona de ' + selRegion.nombre + '?');
+  const cols = selRegion.zonas.length <= 3 ? 'cols-2' : 'cols-auto';
+  const grid = getGrid(cols);
+  selRegion.zonas.forEach(z => {
+    const nPares = z.bloques.reduce((a,b) => a + b.pares.length, 0);
+    const btn = makeOptBtn(z.numero + '. ' + z.nombre, z.bloques.length + ' bloques · ' + nPares + ' pares');
+    btn.onclick = () => { selZona = z; step = 'bloque'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
+
+function renderBloques() {
+  setQuestion('Paso 3 · Bloque', '¿Qué bloque dentro de ' + selZona.nombre + '?');
+  const grid = getGrid('cols-auto');
+  selZona.bloques.forEach(b => {
+    const btn = makeOptBtn(b.numero + '. ' + b.nombre, b.pares.length + ' pares');
+    btn.onclick = () => { selBloque = b; step = 'par'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
+
+function renderPares() {
+  setQuestion('Paso 4 · Par', '¿Cuál número indicó el músculo?');
+  document.getElementById('stepLabel').textContent = selBloque.nombre + ' · ' + selBloque.pares.length + ' pares';
+  const grid = getGrid('cols-2');
+  selBloque.pares.forEach((parName, i) => {
+    const btn = makeOptBtn('Par ' + (i + 1), parName);
+    btn.onclick = () => { selPar = i; step = 'result'; renderStep(); };
+    grid.appendChild(btn);
+  });
+}
+
+function renderResult() {
+  const pairName = selBloque.pares[selPar];
+  const path = selRegion.nombre + ' › ' + selZona.nombre + ' › ' + selBloque.nombre;
+
+  setQuestion('✅ Par encontrado', '');
+  document.getElementById('stepLabel').textContent = 'Par #' + (selPar + 1);
+
+  const grid = document.getElementById('optionsGrid');
+  grid.className = 'options-grid';
+  grid.innerHTML = '';
+
+  const card = document.createElement('div');
+  card.className = 'result-card';
+  card.innerHTML = `
+    <div class="result-label">Par #${selPar + 1} · ${selBloque.nombre}</div>
+    <div class="result-pair">${pairName}</div>
+    <div class="result-path">${path}</div>
+    <div class="result-actions">
+      <button class="btn-confirm" onclick="confirmPair()">✓ Confirmar par</button>
+      <button class="btn-another" onclick="anotherPar()">Cambiar #</button>
+    </div>
+  `;
+  grid.appendChild(card);
+}
+
+// ─── Actions ──────────────────────────────────────────────
+function confirmPair() {
+  const pair = {
+    id: Date.now(),
+    name: selBloque.pares[selPar],
+    num: selPar + 1,
+    bloque: selBloque.nombre,
+    bloqueId: selBloque.id,
+    zona: selZona.nombre,
+    region: selRegion.nombre,
+    path: selRegion.nombre + ' › ' + selZona.nombre + ' › ' + selBloque.nombre,
+    regionId: selRegion.id
+  };
+  session.push(pair);
+  saveSession();
+  renderSidebar();
+  // Go back to start for next pair
+  resetWizard();
+}
+
+function anotherPar() {
+  step = 'par';
+  renderStep();
+}
+
+function resetWizard() {
+  step = 'region';
+  selRegion = selZona = selBloque = selPar = null;
+  renderStep();
+}
+
+// ─── Breadcrumb ───────────────────────────────────────────
+function updateBreadcrumb() {
+  const bc = document.getElementById('breadcrumb');
+  bc.innerHTML = '';
+  const crumbs = [{ label: 'Región', target: 'region' }];
+  if (selRegion) crumbs.push({ label: selRegion.nombre, target: 'zona' });
+  if (selZona)   crumbs.push({ label: selZona.nombre, target: 'bloque' });
+  if (selBloque) crumbs.push({ label: selBloque.nombre, target: 'par' });
+  if (step === 'result') crumbs.push({ label: 'Par #' + (selPar+1), target: 'result' });
+
+  crumbs.forEach((c, i) => {
+    if (i > 0) { const sep = document.createElement('span'); sep.className='bc-sep'; sep.textContent='›'; bc.appendChild(sep); }
+    const el = document.createElement('span');
+    const isCurrent = i === crumbs.length - 1;
+    el.className = isCurrent ? 'bc-current' : 'bc-item';
+    el.textContent = c.label;
+    if (!isCurrent) el.onclick = () => navigateTo(c.target);
+    bc.appendChild(el);
+  });
+}
+
+function navigateTo(target) {
+  step = target;
+  if (target === 'region') { selRegion = selZona = selBloque = selPar = null; }
+  if (target === 'zona')   { selZona = selBloque = selPar = null; }
+  if (target === 'bloque') { selBloque = selPar = null; }
+  if (target === 'par')    { selPar = null; }
+  renderStep();
+}
+
+// ─── Sidebar ──────────────────────────────────────────────
+function renderSidebar() {
+  const list = document.getElementById('pairsList');
+  const badge = document.getElementById('sessionBadge');
+  const btn = document.getElementById('btnFinalize');
+
+  badge.textContent = session.length + (session.length === 1 ? ' par' : ' pares');
+  badge.className = 'session-badge' + (session.length === 0 ? ' empty' : '');
+  btn.disabled = session.length === 0;
+
+  if (session.length === 0) {
+    list.innerHTML = `<div class="empty-state"><div class="icon">🧲</div><p>Aquí aparecerán los pares<br>confirmados durante el rastreo</p></div>`;
+    return;
+  }
+  list.innerHTML = '';
+  session.forEach((p, i) => {
+    const item = document.createElement('div');
+    item.className = 'pair-item';
+    item.innerHTML = `
+      <div class="pair-num">${i+1}</div>
+      <div class="pair-info">
+        <div class="pair-name">${p.name}</div>
+        <div class="pair-path">${p.path}</div>
+      </div>
+      <button class="pair-remove" onclick="removePair(${p.id})" title="Quitar">✕</button>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function removePair(id) {
+  session = session.filter(p => p.id !== id);
+  saveSession();
+  renderSidebar();
 }
 
 function saveSession() {
-  try { localStorage.setItem(LS_KEY, JSON.stringify(confirmedPairs)); } catch {}
+  localStorage.setItem('pares_session', JSON.stringify(session));
 }
 
-// ── INIT ──────────────────────────────────────────────────────────────────
-async function init() {
-  renderCategories();
-  renderConfirmedList();
-  updateBadge();
-
-  const [pairsData, manifestData] = await Promise.allSettled([
-    fetch('/api/pares-db').then(r => r.json()),
-    fetch('/api/tablas-images').then(r => r.json()),
-  ]);
-
-  if (pairsData.status === 'fulfilled') {
-    const d = pairsData.value;
-    allPairs = Array.isArray(d) ? d : (d.pairs || []);
-  }
-
-  if (manifestData.status === 'fulfilled' && manifestData.value.ok) {
-    manifest = manifestData.value.categories || {};
-  }
-
-  setupListeners();
+function newSession() {
+  if (!confirm('¿Iniciar una nueva sesión? Se borrarán los pares actuales.')) return;
+  session = [];
+  saveSession();
+  closeModal();
+  renderSidebar();
+  resetWizard();
 }
 
-// ── CATEGORIES ────────────────────────────────────────────────────────────
-function renderCategories() {
-  const list = document.getElementById('cat-list');
-  list.innerHTML = '';
-  CATEGORIES.forEach(cat => {
-    const chip = document.createElement('div');
-    chip.className = 'cat-chip';
-    chip.dataset.key = cat.key;
-    chip.innerHTML = `<span class="cat-icon">${cat.icon}</span><span class="cat-label">${cat.label}</span>`;
-    chip.addEventListener('click', () => selectCategory(cat));
-    list.appendChild(chip);
+// ─── Mapa por bloque ──────────────────────────────────────
+const BLOQUE_MAP = {
+  // Cabeza – Coronilla
+  pineal:'p0040',corona:'p0040',callosidad:'p0040',parietal:'p0040',
+  // Cabeza – Posterior
+  bulbo:'p0041',occipital:'p0041',cerebelo:'p0041',
+  // Cabeza – Lateral
+  temporal:'p0042',auricula:'p0042',posterior_lat:'p0042',
+  sien:'p0042',mandibular:'p0042',parotida:'p0042',
+  // Cabeza – Frente
+  frente_alta:'p0043',hipofisis:'p0043',frente_baja:'p0043',
+  // Cabeza – Rostro
+  ojo:'p0044',anillo_ocular:'p0044',pomulo:'p0044',nariz:'p0044',boca:'p0044',
+  // Cabeza – Cuello
+  garganta_central:'p0045',garganta_baja:'p0045',garganta_lateral:'p0045',
+  nuca:'p0046',
+  // Tronco – Tórax
+  collar:'p0047',timo:'p0047',anahata:'p0047',pecho_bajo:'p0047',
+  cavidad:'p0047',diafragma:'p0047',corazon:'p0047',pecho_lateral:'p0047',pleura:'p0047',
+  // Tronco – Hepatitis
+  hepatitis_b1:'p0048',hepatitis_b2:'p0048',hepatitis_b3:'p0048',
+  // Tronco – Abdomen
+  estomago:'p0049',piloro:'p0049',higado:'p0049',zona_hepatica:'p0049',
+  vesicula:'p0049',bazo:'p0049',pancreas:'p0049',ombligo:'p0049',
+  interseccion:'p0049',colon:'p0049',
+  // Tronco – Espalda
+  dorsales:'p0051',espalda_alta:'p0051',homoplato:'p0051',
+  retrohepatico:'p0051',rinon:'p0051',espalda_baja:'p0051',
+  // Pelvis – Delantera
+  pubis:'p0052',cadera:'p0052',femur:'p0052',
+  // Pelvis – Trasera
+  sacro:'p0053',coxis:'p0053',trasero:'p0053',
+  // Pelvis – Sexo
+  femina_a:'p0054',femina_b:'p0054',macho:'p0054',
+  // Miembros – Brazos
+  brazo_alto:'p0055',brazo_medio:'p0055',mano:'p0055',
+  // Miembros – Piernas
+  pierna_alta:'p0056',pierna_media:'p0056',pierna_trasera:'p0056',pie:'p0056',
+  // Extras
+  variables_a:'p0057',variables_b:'p0057',personalizado:'p0057',
+  predeterminados:'p0057',homologos:'p0057',
+  rastreo_cervical:'p0057',rastreo_dorsal:'p0057',rastreo_lumbar:'p0057',
+  rastreo_sacro:'p0057',rastreo_coxis:'p0057',
+  eje_vertical:'p0058',eje_horizontal:'p0058',eje_transverso:'p0058'
+};
+
+function getMapUrl(bloqueId) {
+  const page = BLOQUE_MAP[bloqueId];
+  if (!page) return null;
+  return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
+}
+
+// ─── Modal ────────────────────────────────────────────────
+function openModal() {
+  if (session.length === 0) return;
+
+  const body = document.getElementById('modalBody');
+  body.innerHTML = '';
+
+  session.forEach((p, i) => {
+    const section = document.createElement('div');
+    section.className = 'modal-section';
+
+    const mapUrl = getMapUrl(p.bloqueId);
+    const mapHTML = mapUrl
+      ? `<img class="map-img" src="${mapUrl}" alt="Mapa ${p.bloque}" loading="lazy" onclick="openLightbox('${mapUrl}')" style="max-height:320px;object-fit:contain;">`
+      : `<div style="background:var(--bg);border-radius:10px;padding:16px;color:var(--muted);font-size:.8rem;text-align:center;">Sin mapa disponible para esta zona</div>`;
+
+    section.innerHTML = `
+      <div class="final-pair" style="margin-bottom:10px;">
+        <div class="final-pair-num">${i+1}</div>
+        <div style="flex:1">
+          <div class="final-pair-name">${p.name}</div>
+          <div class="final-pair-path">${p.path}</div>
+        </div>
+      </div>
+      <h3>📍 Mapa de colocación · ${p.bloque}</h3>
+      ${mapHTML}
+    `;
+    body.appendChild(section);
   });
+
+  document.getElementById('modalOverlay').classList.add('open');
 }
 
-function selectCategory(cat) {
-  activeCategory = cat;
-  document.querySelectorAll('.cat-chip').forEach(c =>
-    c.classList.toggle('active', c.dataset.key === cat.key)
-  );
-  document.getElementById('active-cat-label').textContent = `${cat.icon} ${cat.label}`;
-
-  // load images — usar solo las tablas de rastreo (no mapas ni interpretaciones)
-  const catData = manifest[cat.key] || {};
-  const imgs = catData.tablas || catData.archivos || [];
-  activeImages = imgs;
-  activeImageIdx = 0;
-  renderImageStrip();
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
 }
 
-// ── IMAGES ────────────────────────────────────────────────────────────────
-function renderImageStrip() {
-  const strip = document.getElementById('image-strip');
-  const prevBtn = document.getElementById('btn-prev');
-  const nextBtn = document.getElementById('btn-next');
-  const counter = document.getElementById('img-counter');
-
-  if (!activeImages.length) {
-    strip.innerHTML = `<div class="image-empty"><div class="empty-icon">🖼️</div><div>No hay imágenes para esta categoría</div></div>`;
-    prevBtn.disabled = true;
-    nextBtn.disabled = true;
-    counter.textContent = '—';
-    return;
-  }
-
-  const catDir = activeCategory.key;
-  strip.innerHTML = '';
-  activeImages.forEach((imgPath, i) => {
-    const url = imgPath.startsWith('http') ? imgPath : `/tablas-assets/${catDir}/${imgPath}`;
-    const img = document.createElement('img');
-    img.className = 'thumb' + (i === activeImageIdx ? ' active' : '');
-    img.src = url;
-    img.alt = `Imagen ${i + 1}`;
-    img.loading = 'lazy';
-    img.addEventListener('click', () => openLightbox(url, i));
-    strip.appendChild(img);
-  });
-
-  counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
-  prevBtn.disabled = activeImageIdx === 0;
-  nextBtn.disabled = activeImageIdx === activeImages.length - 1;
-
-  // scroll active thumb into view
-  const activeThumb = strip.children[activeImageIdx];
-  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-}
-
-function navigateImage(delta) {
-  activeImageIdx = Math.max(0, Math.min(activeImages.length - 1, activeImageIdx + delta));
-  document.querySelectorAll('#image-strip .thumb').forEach((t, i) =>
-    t.classList.toggle('active', i === activeImageIdx)
-  );
-  document.getElementById('img-counter').textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
-  document.getElementById('btn-prev').disabled = activeImageIdx === 0;
-  document.getElementById('btn-next').disabled = activeImageIdx === activeImages.length - 1;
-  const activeThumb = document.getElementById('image-strip').children[activeImageIdx];
-  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-}
-
-// ── LIGHTBOX ──────────────────────────────────────────────────────────────
-function openLightbox(url, idx) {
-  document.getElementById('lightbox-img').src = url;
+function openLightbox(src) {
+  document.getElementById('lightboxImg').src = src;
   document.getElementById('lightbox').classList.add('open');
 }
-
 function closeLightbox() {
   document.getElementById('lightbox').classList.remove('open');
 }
 
-// ── PAIR SEARCH ───────────────────────────────────────────────────────────
-function tipoChip(tipo) {
-  const cls = TIPO_CLASS[tipo?.toLowerCase()] || 'tipo-otro';
-  return `<span class="tipo-chip ${cls}">${tipo || '?'}</span>`;
+// ─── Helpers ──────────────────────────────────────────────
+function setQuestion(label, question) {
+  document.getElementById('stepLabel').textContent = label;
+  document.getElementById('stepQuestion').textContent = question;
 }
 
-function isConfirmed(id) {
-  return confirmedPairs.some(p => p.id === id);
+function getGrid(cls) {
+  const grid = document.getElementById('optionsGrid');
+  grid.className = 'options-grid ' + cls;
+  grid.innerHTML = '';
+  return grid;
 }
 
-function renderPairResults(pairs) {
-  const container = document.getElementById('pair-results');
-  if (!pairs.length) {
-    container.innerHTML = `<div class="pair-search-empty">Sin resultados</div>`;
-    return;
-  }
-
-  container.innerHTML = '';
-  pairs.slice(0, 80).forEach(pair => {
-    const confirmed = isConfirmed(pair.id);
-    const row = document.createElement('div');
-    row.className = 'pair-row';
-    row.innerHTML = `
-      ${tipoChip(pair.tipo)}
-      <span class="pair-row-name" title="${escHtml(pair.nombre)}">${escHtml(pair.nombre)}</span>
-      <button class="btn-add${confirmed ? ' added' : ''}" data-id="${pair.id}">
-        ${confirmed ? '✓' : '+'}
-      </button>
-    `;
-    const btn = row.querySelector('.btn-add');
-    btn.addEventListener('click', () => {
-      if (!confirmed) addPair(pair);
-    });
-    container.appendChild(row);
-  });
+function makeOptBtn(name, sub) {
+  const btn = document.createElement('button');
+  btn.className = 'opt-btn';
+  btn.innerHTML = `<div class="opt-name">${name}</div><div class="opt-count">${sub}</div>`;
+  return btn;
 }
 
-function searchPairs(query) {
-  if (!query.trim()) {
-    document.getElementById('pair-results').innerHTML =
-      `<div class="pair-search-empty">Escribe para buscar pares biomagnéticos</div>`;
-    return;
-  }
+// Close modal on overlay click
+document.getElementById('modalOverlay').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeModal();
+});
 
-  const q = query.toLowerCase();
-  const results = allPairs.filter(p =>
-    p.nombre?.toLowerCase().includes(q) ||
-    p.tipo?.toLowerCase().includes(q) ||
-    p.condiciones?.toLowerCase().includes(q) ||
-    (Array.isArray(p.sistemas_afectados) && p.sistemas_afectados.some(s => s.toLowerCase().includes(q)))
-  );
-  renderPairResults(results);
-}
+// Keyboard: Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeLightbox(); closeModal(); }
+});
 
-function searchGlobal(query) {
-  if (!query.trim()) {
-    clearGlobalSearch();
-    return;
-  }
-  // delegate to pair-search
-  document.getElementById('pair-search-input').value = query;
-  searchPairs(query);
-}
-
-function clearGlobalSearch() {
-  const pairInput = document.getElementById('pair-search-input');
-  if (!pairInput.value) {
-    document.getElementById('pair-results').innerHTML =
-      `<div class="pair-search-empty">Escribe para buscar pares biomagnéticos</div>`;
-  }
-}
-
-// ── CONFIRMED PAIRS ───────────────────────────────────────────────────────
-function addPair(pair) {
-  if (isConfirmed(pair.id)) return;
-  const entry = {
-    ...pair,
-    _catKey: activeCategory?.key || null,
-    _catLabel: activeCategory?.label || null,
-  };
-  confirmedPairs.push(entry);
-  saveSession();
-  renderConfirmedList();
-  updateBadge();
-  // re-render results to update checkmarks
-  const q = document.getElementById('pair-search-input').value || document.getElementById('global-search').value;
-  if (q) searchPairs(q);
-}
-
-function removePair(id) {
-  confirmedPairs = confirmedPairs.filter(p => p.id !== id);
-  saveSession();
-  renderConfirmedList();
-  updateBadge();
-  // refresh results
-  const q = document.getElementById('pair-search-input').value || document.getElementById('global-search').value;
-  if (q) searchPairs(q);
-}
-
-function renderConfirmedList() {
-  const list = document.getElementById('confirmed-list');
-  if (!confirmedPairs.length) {
-    list.innerHTML = `<div class="confirmed-empty">Selecciona una categoría y agrega pares al rastreo</div>`;
-    return;
-  }
-  list.innerHTML = '';
-  confirmedPairs.forEach(pair => {
-    const sistemas = Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length
-      ? pair.sistemas_afectados.join(', ')
-      : '';
-    const card = document.createElement('div');
-    card.className = 'confirmed-card';
-    card.innerHTML = `
-      <div class="confirmed-card-top">
-        ${tipoChip(pair.tipo)}
-        <span class="confirmed-card-name">${escHtml(pair.nombre)}</span>
-      </div>
-      ${sistemas ? `<div class="confirmed-card-sistema">Sistema: ${escHtml(sistemas)}</div>` : ''}
-      <div class="confirmed-card-bottom">
-        <button class="btn-remove" data-id="${pair.id}">✕ eliminar</button>
-      </div>
-    `;
-    card.querySelector('.btn-remove').addEventListener('click', () => removePair(pair.id));
-    list.appendChild(card);
-  });
-}
-
-function updateBadge() {
-  document.getElementById('confirmed-badge').textContent = confirmedPairs.length;
-}
-
-// ── FINALIZAR MODAL ───────────────────────────────────────────────────────
-function openModal() {
-  buildInstructionList();
-  buildMapasGallery();
-  document.getElementById('modal-overlay').classList.add('open');
-}
-
-function buildMapasGallery() {
-  // Collect mapas from all categories that have confirmed pairs
-  const catKeys = [...new Set(confirmedPairs
-    .filter(p => p._catKey)
-    .map(p => p._catKey)
-  )];
-
-  const allMapas = [];
-  catKeys.forEach(key => {
-    const catData = manifest[key] || {};
-    const mapas = catData.mapas || [];
-    mapas.forEach(filename => {
-      allMapas.push({ catDir: key, filename });
-    });
-  });
-
-  const section  = document.getElementById('mapas-section');
-  const gallery  = document.getElementById('mapas-gallery');
-
-  if (!allMapas.length) {
-    section.style.display = 'none';
-    return;
-  }
-
-  section.style.display = 'block';
-  gallery.innerHTML = '';
-  allMapas.forEach(({ catDir, filename }) => {
-    const url = `/tablas-assets/${catDir}/${filename}`;
-    const img = document.createElement('img');
-    img.src = url;
-    img.alt = filename;
-    img.style.cssText = 'width:100%;border-radius:8px;cursor:zoom-in;';
-    img.addEventListener('click', () => openLightbox(url, 0));
-    gallery.appendChild(img);
-  });
-}
-
-function closeModal() {
-  document.getElementById('modal-overlay').classList.remove('open');
-}
-
-function buildInstructionList() {
-  const container = document.getElementById('instruction-list');
-  if (!confirmedPairs.length) {
-    container.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">No hay pares confirmados. Agrega pares primero.</p>`;
-    return;
-  }
-
-  container.innerHTML = '';
-  confirmedPairs.forEach((pair, i) => {
-    const n = i + 1;
-    const sistemas = Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length
-      ? pair.sistemas_afectados.join(', ')
-      : '—';
-
-    const isPair = !pair._catKey || PAIR_CATEGORIES.has(pair._catKey) ||
-      ['bacteria','virus','hongo','parásito','disfuncional','especial','reservorio','emocional']
-        .includes(pair.tipo?.toLowerCase());
-
-    const card = document.createElement('div');
-    card.className = 'instruction-card';
-
-    if (isPair) {
-      card.innerHTML = `
-        <div class="instruction-card-header">
-          <div class="instruction-num">${n}</div>
-          <span style="font-size:1rem">🧲</span>
-          <span class="instruction-card-name">${escHtml(pair.nombre)}</span>
-        </div>
-        <div class="instruction-row">
-          <span class="instruction-label">Tipo:</span>
-          ${tipoChip(pair.tipo)}
-          ${sistemas !== '—' ? `&nbsp;<span class="instruction-label">Sistema:</span><span class="instruction-value">${escHtml(sistemas)}</span>` : ''}
-        </div>
-        ${pair.condiciones ? `
-        <div class="instruction-detail">
-          🔬 <strong>Condiciones relacionadas:</strong> ${escHtml(pair.condiciones)}
-        </div>` : ''}
-        ${pair.significado_emocional ? `
-        <div class="instruction-detail">
-          💜 <strong>Significado emocional:</strong> ${escHtml(pair.significado_emocional)}
-        </div>` : ''}
-        <div class="instruction-detail">
-          ⏱ <strong>Tiempo:</strong> 20-25 minutos por par
-        </div>
-      `;
-    } else {
-      // supplements, flores, etc.
-      const catIcon = CATEGORIES.find(c => c.key === pair._catKey)?.icon || '💊';
-      const catName = pair._catLabel || pair._catKey || '';
-      card.innerHTML = `
-        <div class="instruction-card-header">
-          <div class="instruction-num">${n}</div>
-          <span style="font-size:1rem">${catIcon}</span>
-          <span class="instruction-card-name">${catName ? escHtml(catName).toUpperCase() + ' — ' : ''}${escHtml(pair.nombre)}</span>
-        </div>
-        ${pair.condiciones ? `
-        <div class="instruction-detail">
-          💊 <strong>Indicación:</strong> ${escHtml(pair.condiciones)}
-        </div>` : ''}
-        <div class="instruction-detail">
-          📋 <strong>Modo de uso:</strong> Tomar 4 gotas directas o en agua, 3 veces al día
-        </div>
-        ${pair.significado_emocional ? `
-        <div class="instruction-detail">
-          💜 <strong>Significado:</strong> ${escHtml(pair.significado_emocional)}
-        </div>` : ''}
-      `;
-    }
-    container.appendChild(card);
-  });
-}
-
-// ── HELPERS ───────────────────────────────────────────────────────────────
-function escHtml(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-// ── LISTENERS ─────────────────────────────────────────────────────────────
-function setupListeners() {
-  // pair search
-  document.getElementById('pair-search-input').addEventListener('input', e => {
-    clearTimeout(searchDebounce);
-    searchDebounce = setTimeout(() => searchPairs(e.target.value), 200);
-  });
-
-  // global search
-  document.getElementById('global-search').addEventListener('input', e => {
-    clearTimeout(globalSearchDebounce);
-    globalSearchDebounce = setTimeout(() => searchGlobal(e.target.value), 200);
-  });
-
-  // image nav
-  document.getElementById('btn-prev').addEventListener('click', () => navigateImage(-1));
-  document.getElementById('btn-next').addEventListener('click', () => navigateImage(+1));
-
-  // lightbox
-  document.getElementById('lightbox').addEventListener('click', e => {
-    if (e.target === document.getElementById('lightbox')) closeLightbox();
-  });
-  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      closeLightbox();
-      closeModal();
-    }
-    if (document.getElementById('lightbox').classList.contains('open')) {
-      if (e.key === 'ArrowLeft') navigateImage(-1);
-      if (e.key === 'ArrowRight') navigateImage(+1);
-    }
-  });
-
-  // modal
-  document.getElementById('btn-finalizar').addEventListener('click', openModal);
-  document.getElementById('btn-close-modal').addEventListener('click', closeModal);
-  document.getElementById('modal-overlay').addEventListener('click', e => {
-    if (e.target === document.getElementById('modal-overlay')) closeModal();
-  });
-  document.getElementById('btn-print').addEventListener('click', () => window.print());
-  document.getElementById('btn-nuevo-rastreo').addEventListener('click', () => {
-    if (confirm('¿Confirmas iniciar un nuevo rastreo? Se borrarán los pares confirmados.')) {
-      confirmedPairs = [];
-      saveSession();
-      renderConfirmedList();
-      updateBadge();
-      closeModal();
-    }
-  });
-
-  // mobile drawers
-  document.getElementById('btn-toggle-cat').addEventListener('click', () => {
-    document.getElementById('col-izq').classList.toggle('drawer-open');
-  });
-  document.getElementById('btn-toggle-confirm').addEventListener('click', () => {
-    document.querySelector('.col-der').classList.toggle('drawer-open');
-  });
-}
-
-// ── BOOT ──────────────────────────────────────────────────────────────────
 init();
 </script>
 </body>
