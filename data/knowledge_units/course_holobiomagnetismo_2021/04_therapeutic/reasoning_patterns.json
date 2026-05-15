@@ -1,0 +1,611 @@
+[
+  {
+    "id": "patron_vaguedad_sintoma",
+    "trigger": "Un paciente usa una etiqueta general como 'gastritis' o 'migraña'.",
+    "interpretacion": "No trabajar la palabra como diagnóstico sino la sensación concreta y su localización.",
+    "que_observar": [
+      "Qué siente realmente",
+      "dónde",
+      "cómo",
+      "con qué cualidad"
+    ],
+    "acciones_sugeridas": [
+      "pedir sensación, localización y cualidad antes de rastrear",
+      "traducir la etiqueta diagnóstica en datos fenomenológicos",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Cómo es exactamente el síntoma: dónde está, cómo duele o cómo se siente?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ],
+    "errores_comunes": [
+      "quedarse en la etiqueta médica",
+      "rastrear sin precisar sensación y localización"
+    ],
+    "relacionado_intake": [
+      "intake_caracteristicas"
+    ]
+  },
+  {
+    "id": "patron_recurrencia",
+    "trigger": "El problema no es diario pero vuelve cíclicamente.",
+    "interpretacion": "Puede haber un patrón recurrente más profundo que el cuadro actual.",
+    "que_observar": [
+      "Frecuencia semanal",
+      "mensual o anual",
+      "episodios previos similares"
+    ],
+    "acciones_sugeridas": [
+      "registrar periodicidad y episodios previos",
+      "contrastar el patrón repetitivo con el terreno energético de fondo",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué frecuencia aparece: diario, varias veces por semana o en recurrencias por periodos?",
+      "¿Le ha pasado antes algo parecido y cada cuánto vuelve?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ],
+    "errores_comunes": [
+      "tratar cada episodio como aislado",
+      "no preguntar por periodicidad"
+    ],
+    "relacionado_intake": [
+      "intake_frecuencia",
+      "intake_recurrencia"
+    ]
+  },
+  {
+    "id": "patron_origen_aproximado",
+    "trigger": "La persona no recuerda una fecha exacta.",
+    "interpretacion": "Ubicar cronología aproximada sigue siendo clínicamente útil.",
+    "que_observar": [
+      "Etapa de vida",
+      "años de referencia",
+      "periodos académicos o familiares"
+    ],
+    "acciones_sugeridas": [
+      "ubicar el inicio por etapa de vida o hito relevante",
+      "anotar una referencia temporal útil aunque no sea exacta",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Desde cuándo empezó, aunque sea de forma aproximada?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ],
+    "errores_comunes": [
+      "descartar cronología por no tener fecha exacta"
+    ],
+    "relacionado_intake": [
+      "intake_origen"
+    ]
+  },
+  {
+    "id": "patron_terapia_empieza_en_entrevista",
+    "trigger": "El paciente empieza a recordar o conectar datos mientras habla.",
+    "interpretacion": "La intervención ya empezó; no separar investigación y terapia de manera rígida.",
+    "que_observar": [
+      "Cambios de conciencia",
+      "memoria",
+      "emoción durante la entrevista"
+    ],
+    "acciones_sugeridas": [
+      "seguir la asociación emocional que aparece en la entrevista",
+      "usar el relato como puerta de entrada terapéutica, no solo administrativa",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Cuál fue el evento o punto crítico asociado al inicio o empeoramiento del problema?",
+      "¿Qué pasó después del evento y cómo ha seguido su vida desde entonces?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ],
+    "errores_comunes": [
+      "cortar la asociación emocional que surge durante la entrevista"
+    ],
+    "relacionado_intake": [
+      "intake_conflicto_critico",
+      "intake_vida_post_conflicto"
+    ]
+  },
+  {
+    "id": "patron_subyacente_vs_sintoma",
+    "trigger": "Los síntomas recientes parecen menores frente al desorden energético global.",
+    "interpretacion": "Tratar primero el estado energético subyacente puede modificar los síntomas visibles.",
+    "que_observar": [
+      "Señales de exceso",
+      "calor",
+      "frío o estasis más allá del motivo puntual de consulta"
+    ],
+    "acciones_sugeridas": [
+      "leer primero el desequilibrio global y luego el síntoma puntual",
+      "usar cinco elementos o rastreo condensado para priorizar fondo sobre forma",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Lo que trae es físico, psicoemocional o de ambos tipos?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "holobiomagnetismo",
+      "yin_yang"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "perseguir síntomas secundarios sin leer el terreno energético"
+    ],
+    "relacionado_intake": [
+      "intake_tipo_sintoma",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_molde_organico",
+    "trigger": "Un órgano fue retirado quirúrgicamente.",
+    "interpretacion": "El molde energético puede seguir activo aunque la estructura física ya no esté.",
+    "que_observar": [
+      "Si el rastreo sigue mostrando actividad energética asociada a ese órgano"
+    ],
+    "acciones_sugeridas": [
+      "considerar el molde energético aunque el órgano ya no esté presente",
+      "cruzar el antecedente quirúrgico con el rastreo energético actual",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Hay embarazo, marcapasos, quimio/radioterapia, transfusiones, trasplantes o cirugías relevantes?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "molde_energetico"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_holobiomagnetico_condensado"
+    ],
+    "errores_comunes": [
+      "asumir que un órgano ausente ya no puede rastrearse energéticamente"
+    ],
+    "relacionado_intake": [
+      "intake_antecedentes_control"
+    ]
+  },
+  {
+    "id": "patron_qi_miedo",
+    "trigger": "Predomina miedo, pánico o contracción.",
+    "interpretacion": "El miedo puede estar alterando agua/riñón o la dinámica descendente del Qi.",
+    "que_observar": [
+      "Descenso del Qi",
+      "sequedad",
+      "ganas de orinar",
+      "repliegue corporal"
+    ],
+    "acciones_sugeridas": [
+      "explorar agua/riñón y la dirección descendente del Qi",
+      "observar contracción corporal y sensación de repliegue",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "merged",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "alto",
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "leer miedo sin observar la dirección del Qi"
+    ],
+    "relacionado_intake": [
+      "intake_emocion_actual",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_qi_enojo",
+    "trigger": "Predomina enojo o rabia.",
+    "interpretacion": "El enojo hace ascender el Qi y puede orientar hacia madera/hígado/vesícula.",
+    "que_observar": [
+      "Calor en cabeza",
+      "tensión",
+      "rubor",
+      "elevación energética"
+    ],
+    "acciones_sugeridas": [
+      "explorar madera/hígado/vesícula",
+      "observar ascenso energético, tensión o calor en la parte alta",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "merged",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "alto",
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "reducir el enojo a un dato psicológico sin correlato energético"
+    ],
+    "relacionado_intake": [
+      "intake_emocion_actual",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_qi_tristeza",
+    "trigger": "Predomina tristeza o melancolía.",
+    "interpretacion": "La tristeza dispersa el Qi y puede alterar metal/pulmón/intestino grueso.",
+    "que_observar": [
+      "Dispersión",
+      "vacío",
+      "desconexión del foco"
+    ],
+    "acciones_sugeridas": [
+      "explorar metal/pulmón/intestino grueso",
+      "observar repliegue, desconexión o dificultad de soltar",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "merged",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "alto",
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "leer tristeza sin observar desconexión o bloqueo de metal"
+    ],
+    "relacionado_intake": [
+      "intake_emocion_actual",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_metal_social",
+    "trigger": "Hay alteración en metal.",
+    "interpretacion": "Metal no se limita a pulmón-intestino grueso: también habla de lazos y elección social.",
+    "que_observar": [
+      "Padre",
+      "vínculos sociales",
+      "círculos elegidos",
+      "forma de conectarse con otros"
+    ],
+    "acciones_sugeridas": [
+      "preguntar por vínculo con figura paterna y red social",
+      "leer metal más allá del órgano aislado",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Cuál fue el evento o punto crítico asociado al inicio o empeoramiento del problema?",
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "reducir metal a pulmón sin revisar la dimensión vincular"
+    ],
+    "relacionado_intake": [
+      "intake_conflicto_critico",
+      "intake_emocion_actual"
+    ]
+  },
+  {
+    "id": "patron_madera_direccion",
+    "trigger": "Hay alteración en madera.",
+    "interpretacion": "La madera se relaciona con orientación, movimiento y decisión sobre lo que se quiere.",
+    "que_observar": [
+      "Dirección vital",
+      "decisiones",
+      "enojo presente o resentido"
+    ],
+    "acciones_sugeridas": [
+      "preguntar por decisiones pendientes y dirección vital",
+      "relacionar el caso con enojo retenido o falta de rumbo",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Cuál fue el evento o punto crítico asociado al inicio o empeoramiento del problema?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "leer madera solo como ira y no como dirección o decisión"
+    ],
+    "relacionado_intake": [
+      "intake_conflicto_critico",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_fuego_expresion",
+    "trigger": "Hay alteración en fuego.",
+    "interpretacion": "Fuego se interpreta como expresión del ser y del Shen, más que solo como órgano cardíaco.",
+    "que_observar": [
+      "Expresión de ideas",
+      "espíritu",
+      "proyectos",
+      "mente consciente"
+    ],
+    "acciones_sugeridas": [
+      "explorar expresión, alegría desbordada o agitación mental",
+      "observar estado del Shen y la capacidad de articular lo vivido",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "confundir activación de fuego con simple entusiasmo pasajero"
+    ],
+    "relacionado_intake": [
+      "intake_emocion_actual",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_canal_exceso",
+    "trigger": "Varios meridianos aparecen en exceso.",
+    "interpretacion": "Puede haber una crisis energética global y no solo un punto local afectado.",
+    "que_observar": [
+      "Si el regulador general también muestra calor o sobrecarga"
+    ],
+    "acciones_sugeridas": [
+      "evaluar sobrecarga del canal y del sistema completo",
+      "evitar quedarse en un punto local sin mirar el meridiano entero",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Lo que trae es físico, psicoemocional o de ambos tipos?",
+      "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "meridianos",
+      "yin_yang"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "errores_comunes": [
+      "mirar solo el punto doloroso y no el canal completo"
+    ],
+    "relacionado_intake": [
+      "intake_tipo_sintoma",
+      "intake_relacion_elemental"
+    ]
+  },
+  {
+    "id": "patron_busqueda_ordenada",
+    "trigger": "Se va a rastrear patógenos, pares o frecuencias.",
+    "interpretacion": "El curso insiste en una secuencia mental y verbal ordenada antes del rastreo.",
+    "que_observar": [
+      "Que el comando de búsqueda sea claro",
+      "luego se compruebe el programa"
+    ],
+    "acciones_sugeridas": [
+      "declarar la búsqueda antes de rastrear",
+      "comprobar programa y avanzar por categorías o bloques",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "manual",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Qué síntomas quiere trabajar hoy?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "comandos_de_busqueda"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "errores_comunes": [
+      "saltar pasos de validación del programa"
+    ],
+    "relacionado_intake": [
+      "intake_sintoma_principal"
+    ]
+  },
+  {
+    "id": "patron_conflicto_emocional",
+    "trigger": "El síntoma tiene una carga afectiva evidente o un antecedente crítico.",
+    "interpretacion": "Puede ser mejor desarticular impacto emocional antes de repetir solo pares físicos.",
+    "que_observar": [
+      "Emoción principal",
+      "localización corporal",
+      "intensidad",
+      "evento originario"
+    ],
+    "acciones_sugeridas": [
+      "definir conflicto, emoción y recuerdo antes de intervenir",
+      "valorar si conviene pasar a holograma emocional o EFT Pro",
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "manual",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Cuál fue el evento o punto crítico asociado al inicio o empeoramiento del problema?",
+      "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?"
+    ],
+    "nivel_confianza": "medio",
+    "relacionado_conceptos": [
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "holobiomagnetismo",
+      "eft_pro_concepto",
+      "factor_psicoemocional"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ],
+    "errores_comunes": [
+      "pasar a EFT Pro sin definir antes el conflicto"
+    ],
+    "relacionado_intake": [
+      "intake_conflicto_critico",
+      "intake_emocion_actual"
+    ]
+  }
+]

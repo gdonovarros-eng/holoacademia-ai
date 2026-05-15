@@ -1,0 +1,130 @@
+{
+  "concepts_added": [
+    "par_biomagnetico",
+    "polaridad",
+    "cronologia_clinica",
+    "recurrencia",
+    "microorganismos_patogenos",
+    "chakras"
+  ],
+  "concepts_strengthened": [
+    "entrevista_de_rastreo",
+    "holobiomagnetismo",
+    "molde_energetico"
+  ],
+  "glossary_entries_added": [
+    "glosario_par_biomagnetico",
+    "glosario_microorganismos_patogenos",
+    "glosario_chakras"
+  ],
+  "aliases_added": [
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Cronologia"
+    },
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Cronologia clínica"
+    },
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Cronología"
+    },
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Desde cuando"
+    },
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Desde cuándo"
+    },
+    {
+      "concept_id": "cronologia_clinica",
+      "alias": "Inicio del síntoma"
+    },
+    {
+      "concept_id": "entrevista_de_rastreo",
+      "alias": "Entrevista inicial"
+    },
+    {
+      "concept_id": "entrevista_de_rastreo",
+      "alias": "Ficha de rastreo"
+    },
+    {
+      "concept_id": "entrevista_de_rastreo",
+      "alias": "Inicio del síntoma"
+    },
+    {
+      "concept_id": "par_biomagnetico",
+      "alias": "Los pares"
+    },
+    {
+      "concept_id": "par_biomagnetico",
+      "alias": "Par biomagnetico"
+    },
+    {
+      "concept_id": "par_biomagnetico",
+      "alias": "Pares"
+    },
+    {
+      "concept_id": "par_biomagnetico",
+      "alias": "Pares biomagneticos"
+    },
+    {
+      "concept_id": "par_biomagnetico",
+      "alias": "Pares biomagnéticos"
+    },
+    {
+      "concept_id": "polaridad",
+      "alias": "Bipolaridad"
+    },
+    {
+      "concept_id": "polaridad",
+      "alias": "Campo bipolar"
+    },
+    {
+      "concept_id": "polaridad",
+      "alias": "Polaridad magnetica"
+    },
+    {
+      "concept_id": "polaridad",
+      "alias": "Polaridad magnética"
+    },
+    {
+      "concept_id": "polaridad",
+      "alias": "Positivo y negativo"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Cada cuanto"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Cada cuánto"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Frecuencia del sintoma"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Frecuencia del síntoma"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Reaparicion del sintoma"
+    },
+    {
+      "concept_id": "recurrencia",
+      "alias": "Reaparición del síntoma"
+    },
+    "pares biomagnéticos",
+    "microbios",
+    "chakra"
+  ],
+  "weak_points_remaining": [
+    "La taxonomía específica de microbios y listados de pares sigue viviendo más como contenido modular que como conceptos atómicos independientes.",
+    "Algunos comandos de búsqueda siguen mejor representados en FAQ, resúmenes y material operativo que en una definición académica aislada."
+  ],
+  "ready_for_academic_v1_close": true
+}

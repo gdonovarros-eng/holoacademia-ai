@@ -1,0 +1,364 @@
+[
+  {
+    "id": "intake_sintoma_principal",
+    "pregunta": "¿Qué síntomas quiere trabajar hoy?",
+    "objetivo": "delimitar motivo de consulta",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "transcript",
+    "confidence": "high",
+    "flujo": "inicio",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_tipo_sintoma"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ]
+  },
+  {
+    "id": "intake_tipo_sintoma",
+    "pregunta": "¿Lo que trae es físico, psicoemocional o de ambos tipos?",
+    "objetivo": "clasificar el síntoma en plano físico, psicoemocional o mixto",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "inicio",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_caracteristicas"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "factor_psicoemocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_canal_exceso"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_de_5_elementos_global"
+    ]
+  },
+  {
+    "id": "intake_caracteristicas",
+    "pregunta": "¿Cómo es exactamente el síntoma: dónde está, cómo duele o cómo se siente?",
+    "objetivo": "obtener descripción fenomenológica del síntoma",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "transcript",
+    "confidence": "high",
+    "flujo": "inicio",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_frecuencia"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_reasoning": [
+      "patron_vaguedad_sintoma"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ]
+  },
+  {
+    "id": "intake_frecuencia",
+    "pregunta": "¿Con qué frecuencia aparece: diario, varias veces por semana o en recurrencias por periodos?",
+    "objetivo": "determinar cronología clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "transcript",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_origen"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_reasoning": [
+      "patron_recurrencia"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ]
+  },
+  {
+    "id": "intake_origen",
+    "pregunta": "¿Desde cuándo empezó, aunque sea de forma aproximada?",
+    "objetivo": "determinar cronología clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_factores"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "factor_psicoemocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_origen_aproximado"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ]
+  },
+  {
+    "id": "intake_factores",
+    "pregunta": "¿Qué factores lo inhiben, lo agravan o lo disparan?",
+    "objetivo": "identificar factores que agravan, alivian o disparan",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "manual",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_conflicto_critico"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "factor_psicoemocional"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_conflicto_critico",
+    "pregunta": "¿Cuál fue el evento o punto crítico asociado al inicio o empeoramiento del problema?",
+    "objetivo": "ubicar evento crítico asociado al cuadro",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_vida_post_conflicto"
+    ],
+    "relacionado_conceptos": [
+      "factor_psicoemocional",
+      "holograma_impacto_emocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_terapia_empieza_en_entrevista",
+      "patron_metal_social",
+      "patron_madera_direccion",
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_de_5_elementos_global",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ]
+  },
+  {
+    "id": "intake_vida_post_conflicto",
+    "pregunta": "¿Qué pasó después del evento y cómo ha seguido su vida desde entonces?",
+    "objetivo": "evaluar continuidad del conflicto en el tiempo",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "manual",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_antecedentes_control"
+    ],
+    "relacionado_conceptos": [
+      "factor_psicoemocional",
+      "holograma_impacto_emocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_terapia_empieza_en_entrevista"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ]
+  },
+  {
+    "id": "intake_antecedentes_control",
+    "pregunta": "¿Hay embarazo, marcapasos, quimio/radioterapia, transfusiones, trasplantes o cirugías relevantes?",
+    "objetivo": "registrar antecedentes y condiciones de control",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "manual",
+    "confidence": "high",
+    "flujo": "inicio",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_emocion_actual"
+    ],
+    "relacionado_conceptos": [
+      "molde_energetico"
+    ],
+    "relacionado_reasoning": [
+      "patron_molde_organico"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_holobiomagnetico_condensado"
+    ]
+  },
+  {
+    "id": "intake_emocion_actual",
+    "pregunta": "¿Qué emoción pesa más hoy y en qué parte del cuerpo la siente?",
+    "objetivo": "identificar emoción predominante y su localización corporal",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_recurrencia"
+    ],
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "factor_psicoemocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_qi_miedo",
+      "patron_qi_enojo",
+      "patron_qi_tristeza",
+      "patron_metal_social",
+      "patron_fuego_expresion",
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ]
+  },
+  {
+    "id": "intake_recurrencia",
+    "pregunta": "¿Le ha pasado antes algo parecido y cada cuánto vuelve?",
+    "objetivo": "detectar recurrencia o repetición del cuadro",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "transcript",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "alta",
+    "siguiente_posible": [
+      "intake_relacion_elemental"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo"
+    ],
+    "relacionado_reasoning": [
+      "patron_recurrencia"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ]
+  },
+  {
+    "id": "intake_relacion_elemental",
+    "pregunta": "¿El cuadro se siente más ligado a miedo, enojo, tristeza, reflexión o ansiedad?",
+    "objetivo": "orientar lectura energética por cinco elementos",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "validacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "qi"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_qi_miedo",
+      "patron_qi_enojo",
+      "patron_qi_tristeza",
+      "patron_madera_direccion",
+      "patron_fuego_expresion",
+      "patron_canal_exceso"
+    ],
+    "relacionado_protocolos": [
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_de_5_elementos_global"
+    ]
+  }
+]

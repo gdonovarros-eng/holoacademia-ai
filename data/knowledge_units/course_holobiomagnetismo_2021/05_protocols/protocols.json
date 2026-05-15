@@ -1,0 +1,1658 @@
+[
+  {
+    "id": "entrevista_inicial_de_rastreo",
+    "nombre": "Entrevista inicial de rastreo",
+    "objetivo": "Convertir la queja del paciente en información clínica operable para rastreo e interpretación.",
+    "descripcion": "Secuencia base para ordenar síntomas, cronología, moduladores y controles antes del trabajo energético.",
+    "cuando_usarlo": [
+      "Al inicio de toda sesión.",
+      "Antes de rastreo de pares, 5 elementos o frecuencias."
+    ],
+    "prerequisitos": [
+      "Consentimiento informado y ficha de control.",
+      "Disposición del paciente para describir síntomas con detalle."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Identificar motivo de consulta",
+        "instruccion": "Preguntar qué síntomas desea trabajar el paciente.",
+        "objetivo_del_paso": "Definir el foco de la sesión.",
+        "que_observar": [
+          "Si el síntoma es físico",
+          "psicoemocional o mixto"
+        ],
+        "que_registrar": [
+          "Motivo principal de consulta"
+        ],
+        "notas": [
+          "El curso insiste en distinguir ambos planos desde el inicio"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aceptar respuestas vagas sin bajar a sensación y localización."
+        ],
+        "criterios_de_avance": [
+          "El motivo principal de consulta quedó definido."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Precisar características",
+        "instruccion": "Pedir que describa cómo se siente el síntoma y dónde aparece exactamente.",
+        "objetivo_del_paso": "Bajar de la etiqueta general a la experiencia concreta.",
+        "que_observar": [
+          "Tipo de dolor",
+          "sensación",
+          "zona específica"
+        ],
+        "que_registrar": [
+          "Características detalladas del síntoma"
+        ],
+        "notas": [
+          "Ejemplo del curso: 'gastritis' no basta",
+          "se pide qué siente",
+          "dónde"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aceptar respuestas vagas sin bajar a sensación y localización."
+        ],
+        "criterios_de_avance": [
+          "El síntoma ya puede describirse por sensación, localización y cualidad."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Registrar frecuencia",
+        "instruccion": "Explorar si es diario, intermitente o recurrente por periodos.",
+        "objetivo_del_paso": "Distinguir patrón agudo de patrón repetitivo.",
+        "que_observar": [
+          "Frecuencia por día",
+          "semana o recurrencia anual"
+        ],
+        "que_registrar": [
+          "Frecuencia",
+          "recurrencia"
+        ],
+        "notas": [
+          "Hay cuadros donde no aplica frecuencia clásica",
+          "se anota como permanente"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "La frecuencia o recurrencia del cuadro quedó anotada."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Ubicar origen aproximado",
+        "instruccion": "Investigar desde cuándo empezó, aunque sea por etapa de vida.",
+        "objetivo_del_paso": "Conectar el cuadro con cronología clínica.",
+        "que_observar": [
+          "Recuerdos asociados",
+          "periodos vitales",
+          "cambios importantes"
+        ],
+        "que_registrar": [
+          "Fecha aproximada de origen"
+        ],
+        "notas": [
+          "Si la persona no recuerda fecha exacta",
+          "se ubica por rangos o hitos de vida"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Existe una referencia temporal útil del inicio del cuadro."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Identificar factores moduladores",
+        "instruccion": "Explorar qué lo empeora, lo inhibe o lo acompaña.",
+        "objetivo_del_paso": "Entender contexto funcional y emocional.",
+        "que_observar": [
+          "Factores estresores",
+          "inhibidores",
+          "disparadores"
+        ],
+        "que_registrar": [
+          "Factores Inh/Est"
+        ],
+        "notas": [
+          "Viene explícito en la ficha del manual"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_5",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Entender contexto funcional y emocional."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Aplicar preguntas de control",
+        "instruccion": "Registrar embarazo, marcapasos, quimio/radioterapia, transfusiones, trasplantes y cirugías.",
+        "objetivo_del_paso": "Tener contexto de seguridad y antecedentes.",
+        "que_observar": [
+          "Condiciones previas relevantes"
+        ],
+        "que_registrar": [
+          "Preguntas de control del formato"
+        ],
+        "notas": [
+          "No se presentan como contraindicaciones absolutas",
+          "sino como datos a considerar"
+        ],
+        "id": "entrevista_inicial_de_rastreo_paso_6",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Tener contexto de seguridad y antecedentes."
+        ]
+      }
+    ],
+    "observaciones": [
+      "El curso recalca que la entrevista ya forma parte de la terapia.",
+      "Sirve de base para rastreo de pares, 5 elementos y trabajo emocional."
+    ],
+    "advertencias": [
+      "No usar la entrevista como si fuera un diagnóstico médico cerrado.",
+      "No dejar el síntoma en palabras vagas; convertirlo en experiencia concreta."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "cinco_elementos"
+    ],
+    "relacionado_reasoning": [
+      "patron_vaguedad_sintoma",
+      "patron_recurrencia",
+      "patron_origen_aproximado",
+      "patron_terapia_empieza_en_entrevista"
+    ]
+  },
+  {
+    "id": "rastreo_de_microorganismos_y_pares_biomagneticos",
+    "nombre": "Rastreo de microorganismos y pares biomagnéticos",
+    "objetivo": "Detectar agentes patógenos relevantes y los pares biomagnéticos necesarios.",
+    "descripcion": "Secuencia condensada para abrir búsqueda, comprobar programa, rastrear categorías de patógenos y después rastrear pares por región, zona y bloque.",
+    "cuando_usarlo": [
+      "Cuando se quiera explorar infección o componente microbiológico.",
+      "Como secuencia base de rastreo biomagnético clásico dentro del curso."
+    ],
+    "prerequisitos": [
+      "Consentimiento y entrevista inicial.",
+      "Circuito bioenergético abierto según la metodología.",
+      "Listas o menús de patógenos y pares a la mano."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Establecer búsqueda de patógenos",
+        "instruccion": "Declarar la búsqueda de microorganismos patógenos presentes en ese momento.",
+        "objetivo_del_paso": "Fijar el foco del rastreo.",
+        "que_observar": [
+          "Respuesta afirmativa de que el sistema sabe qué se busca"
+        ],
+        "que_registrar": [
+          "Comando usado",
+          "validación"
+        ],
+        "notas": [
+          "El manual formula la frase exacta"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Fijar el foco del rastreo."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Comprobar programa",
+        "instruccion": "Preguntar si el sistema sabe qué se está buscando.",
+        "objetivo_del_paso": "Evitar rastreo sin foco validado.",
+        "que_observar": [
+          "Sí/No"
+        ],
+        "que_registrar": [
+          "Confirmación del programa"
+        ],
+        "notas": [
+          "Se repite en casi todos los rastreos del curso"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta no confirma el programa o la validación esperada, reformular antes de continuar.",
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Continuar aunque la comprobación no haya sido afirmativa."
+        ],
+        "criterios_de_avance": [
+          "La validación fue afirmativa."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Buscar patógenos por categorías",
+        "instruccion": "Rastrear cuántas bacterias, parásitos, hongos, virus o priones hay y luego identificarlos por lista o bloque.",
+        "objetivo_del_paso": "Acotar agentes relevantes.",
+        "que_observar": [
+          "Número de agentes por categoría",
+          "grupo"
+        ],
+        "que_registrar": [
+          "Patógenos detectados",
+          "su clasificación"
+        ],
+        "notas": [
+          "El manual ordena la búsqueda por categorías"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si una categoría no muestra activación, continuar con la siguiente categoría de rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Los hallazgos solicitados quedaron detectados y registrados."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Abrir búsqueda de pares biomagnéticos",
+        "instruccion": "Declarar la búsqueda de pares necesarios y comprobar el programa.",
+        "objetivo_del_paso": "Pasar del agente al soporte biomagnético correctivo.",
+        "que_observar": [
+          "Confirmación de la búsqueda"
+        ],
+        "que_registrar": [
+          "Inicio de búsqueda de pares"
+        ],
+        "notas": [
+          "En transcripción se repite esta lógica operativa"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Pasar del agente al soporte biomagnético correctivo."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Rastrear por región, zona y bloque",
+        "instruccion": "Preguntar si se necesita algún par de región, zona, bloque y luego el número de par.",
+        "objetivo_del_paso": "Ubicar los pares específicos.",
+        "que_observar": [
+          "Regiones",
+          "números activados"
+        ],
+        "que_registrar": [
+          "Pares detectados"
+        ],
+        "notas": [
+          "La búsqueda se hace en orden de lista"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_5",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar.",
+          "Si el sistema no activa esa capa de búsqueda, pasar a la siguiente sin forzarla."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Los hallazgos solicitados quedaron detectados y registrados."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Colocar y retirar imanes",
+        "instruccion": "Colocar los imanes durante 20 minutos y retirarlos.",
+        "objetivo_del_paso": "Ejecutar la corrección biomagnética.",
+        "que_observar": [
+          "Tolerancia",
+          "cambios posteriores"
+        ],
+        "que_registrar": [
+          "Tiempo de colocación",
+          "observaciones de la sesión"
+        ],
+        "notas": [
+          "Es el cierre operativo resumido del manual"
+        ],
+        "id": "rastreo_de_microorganismos_y_pares_biomagneticos_paso_6",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si no hubo validación previa del hallazgo, pausar la instalación y volver a comprobar el rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aplicar la instalación sin validar primero qué se va a gestionar."
+        ],
+        "criterios_de_avance": [
+          "La aplicación quedó registrada con duración u observación final."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Esta secuencia combina biomagnetismo clásico y la disciplina verbal de búsqueda del curso."
+    ],
+    "advertencias": [
+      "No confundir rastreo con diagnóstico médico definitivo.",
+      "Se recomienda haber completado la entrevista inicial antes de aplicar esta secuencia."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "comandos_de_busqueda"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ]
+  },
+  {
+    "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+    "nombre": "Programa de sustitución temporal para trabajo a distancia",
+    "objetivo": "Habilitar rastreo o intervención remota mediante una persona sustituta.",
+    "descripcion": "Procedimiento verbal y de comprobación para que un sustituto temporal manifieste respuestas de otra persona.",
+    "cuando_usarlo": [
+      "Cuando el consultante no está presente.",
+      "En demostraciones o trabajo remoto donde el curso utilice sustituto."
+    ],
+    "prerequisitos": [
+      "Nombre completo y fecha de nacimiento de la persona objetivo.",
+      "Sustituto disponible y dispuesto.",
+      "Apertura del circuito bioenergético según el método."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Declarar aceptación de sustitución",
+        "instruccion": "Pronunciar la fórmula de aceptación como sustituto temporal de la persona objetivo.",
+        "objetivo_del_paso": "Asignar la representación temporal.",
+        "que_observar": [
+          "Respuesta del sistema o resistencia muscular"
+        ],
+        "que_registrar": [
+          "Nombre",
+          "fecha de nacimiento usados"
+        ],
+        "notas": [
+          "La versión ampliada añade 'manifiesta a través de mí todas sus respuestas…'"
+        ],
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Asignar la representación temporal."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Subir circuito bioenergético",
+        "instruccion": "Subir el circuito bioenergético al finalizar la fórmula.",
+        "objetivo_del_paso": "Habilitar el canal operativo para el rastreo.",
+        "que_observar": [
+          "Cambio corporal o respuesta muscular"
+        ],
+        "que_registrar": [
+          "Que el circuito fue abierto"
+        ],
+        "notas": [
+          "En la versión corta se hace tras vencer la resistencia muscular de brazos erguidos"
+        ],
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Habilitar el canal operativo para el rastreo."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Comprobar identidad",
+        "instruccion": "Preguntar si el nombre es el del sustituto y luego el de la persona objetivo.",
+        "objetivo_del_paso": "Verificar que la sintonización está correcta.",
+        "que_observar": [
+          "Respuesta negativa al nombre propio",
+          "afirmativa al nombre objetivo"
+        ],
+        "que_registrar": [
+          "Resultado de comprobación"
+        ],
+        "notas": [
+          "Es central en los ejemplos de módulos 11",
+          "12"
+        ],
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta no confirma el programa o la validación esperada, reformular antes de continuar.",
+          "Si la identidad no coincide con la persona objetivo, repetir la fórmula de sustitución y volver a comprobar.",
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Continuar aunque la comprobación no haya sido afirmativa."
+        ],
+        "criterios_de_avance": [
+          "La validación fue afirmativa."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Ejecutar el rastreo necesario",
+        "instruccion": "Realizar búsqueda de pares, impactos, 5 elementos o puntos según el objetivo de la sesión.",
+        "objetivo_del_paso": "Usar la sustitución como interfaz de trabajo.",
+        "que_observar": [
+          "Respuestas del sustituto"
+        ],
+        "que_registrar": [
+          "Comandos",
+          "hallazgos del rastreo"
+        ],
+        "notas": [
+          "El manual deja comandos de búsqueda posibles"
+        ],
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Usar la sustitución como interfaz de trabajo."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Instalar información o pares",
+        "instruccion": "Insertar la información holobiomagnética activa y pulsante durante 30 minutos si el protocolo lo requiere.",
+        "objetivo_del_paso": "Aplicar la corrección a distancia.",
+        "que_observar": [
+          "Validación de que se está gestionando efectivamente"
+        ],
+        "que_registrar": [
+          "Pares o puntos instalados",
+          "duración"
+        ],
+        "notas": [
+          "Se visualizan toroides en los puntos según el manual"
+        ],
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia_paso_5",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high",
+        "decision_points": [
+          "Si no hubo validación previa del hallazgo, pausar la instalación y volver a comprobar el rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aplicar la instalación sin validar primero qué se va a gestionar."
+        ],
+        "criterios_de_avance": [
+          "La aplicación quedó registrada con duración u observación final."
+        ]
+      }
+    ],
+    "observaciones": [
+      "El curso lo presenta como estructura formal, no como improvisación.",
+      "Se usa en prácticas remotas con casos reales."
+    ],
+    "advertencias": [
+      "La comprobación de identidad es obligatoria dentro del método.",
+      "Respetar privacidad del consultante remoto."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "sustituto_temporal",
+      "cinco_elementos",
+      "comandos_de_busqueda"
+    ],
+    "relacionado_reasoning": []
+  },
+  {
+    "id": "rastreo_holobiomagnetico_condensado",
+    "nombre": "Rastreo holobiomagnético condensado",
+    "objetivo": "Detectar e instalar pares holobiomagnéticos para restaurar la armonía biodinámica de todos los cuerpos.",
+    "descripcion": "Versión condensada del manual para búsqueda de pares holobiomagnéticos e instalación de información activa y pulsante.",
+    "cuando_usarlo": [
+      "Cuando se busca restaurar armonía biodinámica más allá del biomagnetismo clásico.",
+      "Después de entrevista y definición del síntoma o foco."
+    ],
+    "prerequisitos": [
+      "Circuito bioenergético abierto.",
+      "Síntoma o foco terapéutico definido si se va a hacer búsqueda opcional por síntoma."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Establecer búsqueda",
+        "instruccion": "Declarar que se hará un rastreo holobiomagnético y pedir los pares necesarios para restaurar la armonía biodinámica.",
+        "objetivo_del_paso": "Fijar la intención operativa del rastreo.",
+        "que_observar": [
+          "Claridad del foco",
+          "apertura del circuito"
+        ],
+        "que_registrar": [
+          "Comando de búsqueda",
+          "síntoma focal si aplica"
+        ],
+        "notas": [
+          "El manual agrega una opción para ligar la búsqueda a un síntoma X"
+        ],
+        "id": "rastreo_holobiomagnetico_condensado_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Fijar la intención operativa del rastreo."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Comprobar programa",
+        "instruccion": "Verificar si el sistema sabe qué se está buscando.",
+        "objetivo_del_paso": "Confirmar que la búsqueda está correctamente planteada.",
+        "que_observar": [
+          "Respuesta sí/no"
+        ],
+        "que_registrar": [
+          "Confirmación del programa"
+        ],
+        "notas": [],
+        "id": "rastreo_holobiomagnetico_condensado_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta no confirma el programa o la validación esperada, reformular antes de continuar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Continuar aunque la comprobación no haya sido afirmativa."
+        ],
+        "criterios_de_avance": [
+          "La validación fue afirmativa."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Rastrear por región, zona y bloque",
+        "instruccion": "Preguntar por región, zona, bloque y número de par necesarios.",
+        "objetivo_del_paso": "Localizar los pares activos del momento.",
+        "que_observar": [
+          "Cuántos pares",
+          "en qué áreas aparecen"
+        ],
+        "que_registrar": [
+          "Pares detectados"
+        ],
+        "notas": [
+          "Mantiene la secuencia por niveles del curso"
+        ],
+        "id": "rastreo_holobiomagnetico_condensado_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Los hallazgos solicitados quedaron detectados y registrados."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Instalar información",
+        "instruccion": "Insertar información de par holobiomagnético activo y pulsante durante 30 minutos en los puntos encontrados, visualizando toroides.",
+        "objetivo_del_paso": "Aplicar la corrección holobiomagnética.",
+        "que_observar": [
+          "Si los pares se están gestionando efectivamente"
+        ],
+        "que_registrar": [
+          "Pares instalados",
+          "duración",
+          "validación"
+        ],
+        "notas": [
+          "El manual pide comprobar la gestión efectiva"
+        ],
+        "id": "rastreo_holobiomagnetico_condensado_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si no hubo validación previa del hallazgo, pausar la instalación y volver a comprobar el rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aplicar la instalación sin validar primero qué se va a gestionar."
+        ],
+        "criterios_de_avance": [
+          "La aplicación quedó registrada con duración u observación final."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Es una versión condensada y escalable del enfoque del curso."
+    ],
+    "advertencias": [
+      "No sustituye una entrevista adecuada ni el razonamiento del caso."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "manual",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "comandos_de_busqueda"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_molde_organico",
+      "patron_busqueda_ordenada"
+    ]
+  },
+  {
+    "id": "rastreo_y_desarticulacion_de_impacto_emocional",
+    "nombre": "Rastreo y desarticulación de impacto emocional",
+    "objetivo": "Identificar hologramas o impactos emocionales y reunir datos para desarticularlos.",
+    "descripcion": "Secuencia condensada del manual para rastrear conflictos emocionales activos y cancelarlos con apoyo holobiomagnético.",
+    "cuando_usarlo": [
+      "Cuando el caso tiene una carga emocional clara.",
+      "Cuando el síntoma se relaciona con un conflicto, persona o evento específico."
+    ],
+    "prerequisitos": [
+      "Foco terapéutico definido.",
+      "Apertura del circuito bioenergético."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Establecer búsqueda de impactos",
+        "instruccion": "Declarar que se hará un rastreo de impactos emocionales para restaurar armonía biodinámica.",
+        "objetivo_del_paso": "Abrir la línea de trabajo emocional.",
+        "que_observar": [
+          "Confirmación del programa"
+        ],
+        "que_registrar": [
+          "Comando de búsqueda"
+        ],
+        "notas": [],
+        "id": "rastreo_y_desarticulacion_de_impacto_emocional_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Abrir la línea de trabajo emocional."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Rastrear holograma o conflicto",
+        "instruccion": "Preguntar si hay hologramas o impactos en bloques y localizar el conflicto activo.",
+        "objetivo_del_paso": "Detectar el núcleo emocional a trabajar.",
+        "que_observar": [
+          "Número de holograma/conflicto"
+        ],
+        "que_registrar": [
+          "Bloque",
+          "holograma",
+          "conflicto principal"
+        ],
+        "notas": [],
+        "id": "rastreo_y_desarticulacion_de_impacto_emocional_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Los hallazgos solicitados quedaron detectados y registrados."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Precisar datos complementarios",
+        "instruccion": "Rastrear si se necesita recesión de edad, emoción-reacción, persona implicada, capa embrionaria, cromosoma, microbio, par biomagnético, chakra o meridiano.",
+        "objetivo_del_paso": "Completar la lectura necesaria para la desarticulación.",
+        "que_observar": [
+          "Qué capa de información se activa"
+        ],
+        "que_registrar": [
+          "Datos complementarios requeridos"
+        ],
+        "notas": [
+          "El manual no obliga a rastrear todo",
+          "solo lo que el sistema pida"
+        ],
+        "id": "rastreo_y_desarticulacion_de_impacto_emocional_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aceptar respuestas vagas sin bajar a sensación y localización."
+        ],
+        "criterios_de_avance": [
+          "El síntoma ya puede describirse por sensación, localización y cualidad."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Cancelar conflicto e instalar información",
+        "instruccion": "Declarar la cancelación del impacto y añadir la instalación de par holobiomagnético activo y pulsante durante 30 minutos.",
+        "objetivo_del_paso": "Desarticular la estructura emocional activa.",
+        "que_observar": [
+          "Chakra",
+          "meridiano a rearmonizar"
+        ],
+        "que_registrar": [
+          "Persona implicada",
+          "matiz específico",
+          "par usado",
+          "centros reequilibrados"
+        ],
+        "notas": [
+          "La fórmula del manual integra esencia primordial",
+          "matiz específico"
+        ],
+        "id": "rastreo_y_desarticulacion_de_impacto_emocional_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si no hubo validación previa del hallazgo, pausar la instalación y volver a comprobar el rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aplicar la instalación sin validar primero qué se va a gestionar."
+        ],
+        "criterios_de_avance": [
+          "La aplicación quedó registrada con duración u observación final."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Se puede cruzar con EFT Pro si el caso requiere ventilación y reprocesamiento consciente."
+    ],
+    "advertencias": [
+      "Parte del contenido es condensado y requiere criterio del terapeuta para secuenciarlo."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "manual",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "comandos_de_busqueda"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ]
+  },
+  {
+    "id": "rastreo_de_frecuencias_y_soportes_vibratorios",
+    "nombre": "Rastreo de frecuencias y soportes vibratorios",
+    "objetivo": "Seleccionar homeopatía, flores de Bach o sales de Schüssler por rastreo.",
+    "descripcion": "Secuencia para determinar tipo de soporte, bloque, potencia y periodo temporal de aplicación.",
+    "cuando_usarlo": [
+      "Cuando se busca soporte vibratorio complementario.",
+      "Después de definir síntoma o causa principal a tratar."
+    ],
+    "prerequisitos": [
+      "Apertura del circuito bioenergético.",
+      "Acceso al repertorio de remedios del manual."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Declarar búsqueda",
+        "instruccion": "Anunciar el rastreo homeopático, floral o de sales de Schüssler para restaurar armonía biodinámica.",
+        "objetivo_del_paso": "Definir la familia de soporte a rastrear.",
+        "que_observar": [
+          "Que el sistema reconozca la búsqueda"
+        ],
+        "que_registrar": [
+          "Tipo de rastreo solicitado"
+        ],
+        "notas": [
+          "Puede ligarse a un síntoma X"
+        ],
+        "id": "rastreo_de_frecuencias_y_soportes_vibratorios_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Definir la familia de soporte a rastrear."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Comprobar programa",
+        "instruccion": "Verificar que se sabe qué se está buscando.",
+        "objetivo_del_paso": "Validar la preparación de la búsqueda.",
+        "que_observar": [
+          "Sí/No"
+        ],
+        "que_registrar": [
+          "Confirmación del programa"
+        ],
+        "notas": [],
+        "id": "rastreo_de_frecuencias_y_soportes_vibratorios_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta no confirma el programa o la validación esperada, reformular antes de continuar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Continuar aunque la comprobación no haya sido afirmativa."
+        ],
+        "criterios_de_avance": [
+          "La validación fue afirmativa."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Rastrear remedio, potencia y tiempo",
+        "instruccion": "Preguntar si es policresto o semipolicresto, el bloque, potencia y duración; o sector y duración para flores/sales.",
+        "objetivo_del_paso": "Definir con precisión el soporte vibratorio.",
+        "que_observar": [
+          "Bloque",
+          "potencia",
+          "periodo temporal",
+          "necesidad de otros remedios"
+        ],
+        "que_registrar": [
+          "Remedio o sal/flor",
+          "potencia",
+          "tiempo",
+          "repeticiones"
+        ],
+        "notas": [
+          "El manual separa lógica homeopática",
+          "floral/sales"
+        ],
+        "id": "rastreo_de_frecuencias_y_soportes_vibratorios_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Los hallazgos solicitados quedaron detectados y registrados."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Instalar información",
+        "instruccion": "Insertar el remedio o la sal/flor con su código radiónico activo y pulsante durante el periodo indicado.",
+        "objetivo_del_paso": "Aplicar el soporte seleccionado.",
+        "que_observar": [
+          "Comprobación de gestión efectiva"
+        ],
+        "que_registrar": [
+          "Soporte instalado",
+          "validación"
+        ],
+        "notas": [
+          "El manual pide comprobar si se está gestionando efectivamente"
+        ],
+        "id": "rastreo_de_frecuencias_y_soportes_vibratorios_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si no hubo validación previa del hallazgo, pausar la instalación y volver a comprobar el rastreo."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso.",
+          "Aplicar la instalación sin validar primero qué se va a gestionar."
+        ],
+        "criterios_de_avance": [
+          "La aplicación quedó registrada con duración u observación final."
+        ]
+      }
+    ],
+    "observaciones": [
+      "En el curso funciona como apoyo complementario al trabajo central."
+    ],
+    "advertencias": [
+      "No confundir esta lógica de rastreo con indicación farmacológica convencional."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "manual",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "flores_de_bach",
+      "sales_de_schussler"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ]
+  },
+  {
+    "id": "eft_pro",
+    "nombre": "EFT Pro",
+    "objetivo": "Liberar conflicto emocional mediante entrevista, trance, tapping, reencuadre y recalibración.",
+    "descripcion": "Protocolo emocional central del curso, integrando TFT/EFT, hipnosis, PNL, meridianos y biodescodificación.",
+    "cuando_usarlo": [
+      "Cuando hay emoción o resentir claro asociado al cuadro.",
+      "Cuando se necesita liberar carga emocional reprimida."
+    ],
+    "prerequisitos": [
+      "Entrevista detallada del conflicto.",
+      "Disposición del consultante para entrar en trance ligero y viaje temporal.",
+      "Identificación de emoción principal y localización corporal."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Entrevista detallada",
+        "instruccion": "Revisar origen del conflicto, detalles significativos, conflicto crítico y vida post-conflicto.",
+        "objetivo_del_paso": "Recabar información suficiente sin activar en exceso la mente consciente.",
+        "que_observar": [
+          "Hechos clave",
+          "momentos críticos",
+          "narrativa del paciente"
+        ],
+        "que_registrar": [
+          "Origen",
+          "detalles",
+          "conflicto crítico",
+          "vida post-conflicto"
+        ],
+        "notas": [
+          "El manual lo formula como paso 1"
+        ],
+        "id": "eft_pro_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Recabar información suficiente sin activar en exceso la mente consciente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Inducción al trance",
+        "instruccion": "Llevar atención a procesos automáticos, hacer relajación sistemática y programar visualización sin juicio.",
+        "objetivo_del_paso": "Disminuir frecuencia cerebral y permitir que aflore lo inconsciente.",
+        "que_observar": [
+          "Relajación",
+          "foco",
+          "respuesta a lenguaje hipnótico"
+        ],
+        "que_registrar": [
+          "Inducción realizada",
+          "nivel de respuesta"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Disminuir frecuencia cerebral y permitir que aflore lo inconsciente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Viaje temporal",
+        "instruccion": "Llevar la mente al origen, eventos significativos, punto crítico y vida post-conflicto.",
+        "objetivo_del_paso": "Revivir la experiencia para detectar emociones ocultas.",
+        "que_observar": [
+          "Recuerdos",
+          "reacciones emocionales",
+          "imágenes"
+        ],
+        "que_registrar": [
+          "Escenas significativas"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Revivir la experiencia para detectar emociones ocultas."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Sintonizar el conflicto",
+        "instruccion": "Definir emoción principal (máximo dos), ubicarla en el cuerpo, calificar intensidad y subir circuito bioenergético.",
+        "objetivo_del_paso": "Identificar con precisión el conflicto a liberar.",
+        "que_observar": [
+          "Emoción",
+          "zona corporal",
+          "intensidad 1-10"
+        ],
+        "que_registrar": [
+          "Emoción principal",
+          "localización",
+          "intensidad inicial"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Identificar con precisión el conflicto a liberar."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Ventilar energía contenida",
+        "instruccion": "Amplificar la emoción y luego ventilarla con inhalación por nariz y exhalación por boca.",
+        "objetivo_del_paso": "Comenzar a liberar lo reprimido psicológica y energéticamente.",
+        "que_observar": [
+          "Liberación afectiva",
+          "descarga corporal"
+        ],
+        "que_registrar": [
+          "Cambios tras la ventilación"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_5",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Comenzar a liberar lo reprimido psicológica y energéticamente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Taps de ida",
+        "instruccion": "Aplicar tapping en puntos de inversión y puntos mayores repitiendo el acuerdo neurolingüístico.",
+        "objetivo_del_paso": "Liberar en profundidad cuerpo mental y emocional y matizar la experiencia.",
+        "que_observar": [
+          "Variaciones de la emoción",
+          "memoria asociada"
+        ],
+        "que_registrar": [
+          "ANL usado",
+          "respuesta del paciente"
+        ],
+        "notas": [
+          "Incluye AJ",
+          "AHT",
+          "zona sensible",
+          "punto karate"
+        ],
+        "id": "eft_pro_paso_6",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Liberar en profundidad cuerpo mental y emocional y matizar la experiencia."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Secuencia 9 gamma",
+        "instruccion": "Dar taps en punto gamma entre cuarto y quinto dedo del dorso sin repetir el ANL.",
+        "objetivo_del_paso": "Llevar el programa a todo el cerebro.",
+        "que_observar": [
+          "Integración",
+          "respuesta neurológica"
+        ],
+        "que_registrar": [
+          "Aplicación de secuencia 9 gamma"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_7",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Llevar el programa a todo el cerebro."
+        ]
+      },
+      {
+        "orden": 8,
+        "titulo": "Taps de vuelta y reencuadre",
+        "instruccion": "Repetir tapping con ANL, dar contexto constructivo, aportar recursos y soltar necesidad del síntoma.",
+        "objetivo_del_paso": "Reencuadrar la experiencia y desactivar la necesidad de la mutación o síntoma.",
+        "que_observar": [
+          "Aceptación",
+          "cambio de narrativa",
+          "recursos emergentes"
+        ],
+        "que_registrar": [
+          "Recurso aportado",
+          "reencuadre principal"
+        ],
+        "notas": [
+          "El manual menciona confianza",
+          "paciencia",
+          "fortaleza",
+          "entre otros"
+        ],
+        "id": "eft_pro_paso_8",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Reencuadrar la experiencia y desactivar la necesidad de la mutación o síntoma."
+        ]
+      },
+      {
+        "orden": 9,
+        "titulo": "Cierre",
+        "instruccion": "Golpetear E36 mientras se ventila, decir ANL, exhalar, peinar energéticamente meridianos y expulsar al suelo; bajar circuito bioenergético.",
+        "objetivo_del_paso": "Terminar de liberar energética y psicológicamente el conflicto.",
+        "que_observar": [
+          "Sensación de descarga",
+          "cierre"
+        ],
+        "que_registrar": [
+          "Cierre realizado"
+        ],
+        "notas": [],
+        "id": "eft_pro_paso_9",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Terminar de liberar energética y psicológicamente el conflicto."
+        ]
+      },
+      {
+        "orden": 10,
+        "titulo": "Recalibración",
+        "instruccion": "Volver a conectar con la emoción y medir intensidad del 0 al 10; si sigue en 4 o más, repetir desde paso 5.",
+        "objetivo_del_paso": "Comprobar si la gestión fue suficiente.",
+        "que_observar": [
+          "Intensidad final",
+          "necesidad de repetir"
+        ],
+        "que_registrar": [
+          "Intensidad final",
+          "decisión de continuidad"
+        ],
+        "notas": [
+          "En duelos se indica 'Última lágrima' antes de otra sesión"
+        ],
+        "id": "eft_pro_paso_10",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Comprobar si la gestión fue suficiente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "El manual también entrega una versión condensada de 6 grandes pasos.",
+      "Integra recursos de varias tradiciones en un solo flujo operativo."
+    ],
+    "advertencias": [
+      "Si la intensidad sigue alta, no cerrar en falso: repetir desde el paso 5.",
+      "En duelos, atender la nota específica del manual sobre 'Última lágrima'."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "manual",
+    "confidence": "high",
+    "relacionado_conceptos": [
+      "meridianos",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "factor_psicoemocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ]
+  },
+  {
+    "id": "rastreo_de_5_elementos_global",
+    "nombre": "Rastreo de 5 elementos global",
+    "objetivo": "Leer el estado energético subyacente del caso por elemento, órgano, víscera y canal.",
+    "descripcion": "Secuencia inferida desde los comandos condensados del manual y la demostración clínica del curso.",
+    "cuando_usarlo": [
+      "Cuando el caso parece más profundo que el síntoma del día.",
+      "En cuadros donde conviene ver el panel energético general."
+    ],
+    "prerequisitos": [
+      "Entrevista inicial completa.",
+      "Conocimiento mínimo de 5 elementos y meridianos según el curso."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Abrir búsqueda de 5 elementos",
+        "instruccion": "Usar el comando de búsqueda para rastreo de 5 elementos global.",
+        "objetivo_del_paso": "Definir el modo de lectura energética.",
+        "que_observar": [
+          "Confirmación del programa"
+        ],
+        "que_registrar": [
+          "Comando utilizado"
+        ],
+        "notas": [
+          "El comando aparece en condensados"
+        ],
+        "id": "rastreo_de_5_elementos_global_paso_1",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Definir el modo de lectura energética."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Preguntar por elemento alterado",
+        "instruccion": "Revisar agua, madera, fuego, tierra y metal.",
+        "objetivo_del_paso": "Ubicar por dónde se abre la lectura.",
+        "que_observar": [
+          "Elementos con respuesta positiva"
+        ],
+        "que_registrar": [
+          "Elementos alterados"
+        ],
+        "notas": [],
+        "id": "rastreo_de_5_elementos_global_paso_2",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ubicar por dónde se abre la lectura."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Distinguir órgano, víscera y chi",
+        "instruccion": "Para cada elemento positivo, preguntar por órgano yin, víscera yang y trastorno de chi.",
+        "objetivo_del_paso": "Precisar si el hallazgo es estructural, funcional o de canal.",
+        "que_observar": [
+          "Qué parte del sistema se activa"
+        ],
+        "que_registrar": [
+          "Órgano",
+          "víscera y/o chi implicados"
+        ],
+        "notas": [
+          "La demostración del curso hace esta distinción"
+        ],
+        "id": "rastreo_de_5_elementos_global_paso_3",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Precisar si el hallazgo es estructural, funcional o de canal."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Calificar cualidad del desequilibrio",
+        "instruccion": "Preguntar si hay frío, calor, calor por insuficiencia, deficiencia, exceso o estasis según corresponda.",
+        "objetivo_del_paso": "Caracterizar la forma del desequilibrio.",
+        "que_observar": [
+          "Cualidades energéticas predominantes"
+        ],
+        "que_registrar": [
+          "Tipo de alteración"
+        ],
+        "notas": [
+          "Se apoya en categorías Yin/Yang del manual"
+        ],
+        "id": "rastreo_de_5_elementos_global_paso_4",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la respuesta sigue siendo vaga, pedir sensación, localización o cronología antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Caracterizar la forma del desequilibrio."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Interpretar el patrón",
+        "instruccion": "Relacionar el hallazgo con emoción, función y aspecto vital del elemento.",
+        "objetivo_del_paso": "Traducir el rastreo a razonamiento clínico.",
+        "que_observar": [
+          "Conexión con dirección",
+          "expresión",
+          "vínculos",
+          "miedo",
+          "tristeza",
+          "etc"
+        ],
+        "que_registrar": [
+          "Hipótesis interpretativa"
+        ],
+        "notas": [
+          "El curso usa esta lectura para ir más profundo que el síntoma"
+        ],
+        "id": "rastreo_de_5_elementos_global_paso_5",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Traducir el rastreo a razonamiento clínico."
+        ]
+      }
+    ],
+    "observaciones": [
+      "El curso lo usa como panel de control energético general.",
+      "La secuencia está parcialmente reconstruida desde una demostración práctica."
+    ],
+    "advertencias": [
+      "Marcar como interpretación clínica, no como dato absoluto aislado."
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "protocolos",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "meridianos"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_qi_miedo",
+      "patron_qi_enojo",
+      "patron_qi_tristeza",
+      "patron_metal_social",
+      "patron_madera_direccion",
+      "patron_fuego_expresion",
+      "patron_canal_exceso"
+    ]
+  }
+]

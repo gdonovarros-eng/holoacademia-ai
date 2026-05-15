@@ -1,0 +1,271 @@
+[
+  {
+    "id": "guide_entrevista",
+    "contexto": "Cuando el paciente llega con etiquetas vagas o con poca descripción corporal del problema.",
+    "interpretacion": "El terapeuta debe bajar de la etiqueta al dato fenomenológico: sensación, lugar, frecuencia, origen y detonantes.",
+    "factores_clave": [
+      "síntoma vago",
+      "etiqueta médica repetida",
+      "poca precisión corporal"
+    ],
+    "errores_comunes": [
+      "tratar la etiqueta médica como dato suficiente",
+      "omitir cronología o moduladores del síntoma"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el síntoma ya está descrito con suficiente precisión fenomenológica."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "holobiomagnetismo",
+      "eft_pro_concepto",
+      "factor_psicoemocional",
+      "comandos_de_busqueda"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ]
+  },
+  {
+    "id": "guide_5_elementos_global",
+    "contexto": "Cuando el caso requiere lectura del terreno energético global y no solo del síntoma puntual.",
+    "interpretacion": "Sirve para ubicar el estado energético de fondo y no solo el síntoma del día.",
+    "factores_clave": [
+      "múltiples sistemas alterados",
+      "sobrecarga emocional",
+      "casos complejos"
+    ],
+    "errores_comunes": [
+      "leer solo el síntoma del día",
+      "usar los elementos como equivalencias rígidas"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el objetivo es solamente ejecutar una corrección local ya definida."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "yin_yang",
+      "qi",
+      "holobiomagnetismo",
+      "comandos_de_busqueda"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "rastreo_de_5_elementos_global"
+    ]
+  },
+  {
+    "id": "guide_emocion_qi",
+    "contexto": "Cuando hay una emoción predominante que parece modular el cuadro clínico.",
+    "interpretacion": "Cada emoción cambia la dirección o calidad del Qi y orienta la lectura terapéutica.",
+    "factores_clave": [
+      "miedo",
+      "enojo",
+      "tristeza",
+      "ansiedad",
+      "alegría desbordada"
+    ],
+    "errores_comunes": [
+      "separar emoción y cuerpo",
+      "interpretar la emoción sin observar dirección del Qi"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando no hay una emoción dominante identificable en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "factor_psicoemocional",
+      "comandos_de_busqueda"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro",
+      "rastreo_de_5_elementos_global",
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ]
+  },
+  {
+    "id": "guide_organos_y_moldes",
+    "contexto": "Cuando existe antecedente de cirugía o ausencia anatómica de un órgano.",
+    "interpretacion": "La falta anatómica no cancela automáticamente la lectura energética del sistema.",
+    "factores_clave": [
+      "órgano ausente",
+      "cirugía previa",
+      "rastreo energético persistente"
+    ],
+    "errores_comunes": [
+      "descartar un órgano solo por ausencia anatómica"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "transcript",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando no existe antecedente quirúrgico ni persistencia energética asociada."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "molde_energetico",
+      "meridianos",
+      "yin_yang",
+      "qi",
+      "cinco_elementos"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "eft_pro",
+      "rastreo_de_5_elementos_global",
+      "rastreo_holobiomagnetico_condensado"
+    ]
+  },
+  {
+    "id": "guide_metal",
+    "contexto": "Cuando la entrevista o el rastreo orientan hacia metal.",
+    "interpretacion": "Metal puede hablar de eliminación, vínculo social, figura paterna y forma de conectarse con otros.",
+    "factores_clave": [
+      "alteración en pulmón",
+      "alteración en intestino grueso",
+      "tristeza o conexión social afectada"
+    ],
+    "errores_comunes": [
+      "reducir metal a pulmón e intestino grueso sin mirar vínculo social"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "transcript",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando metal no aparece como eje del caso ni del rastreo."
+    ],
+    "nivel_riesgo": "bajo",
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "qi",
+      "meridianos"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "eft_pro",
+      "rastreo_de_5_elementos_global"
+    ]
+  },
+  {
+    "id": "guide_madera",
+    "contexto": "Cuando la entrevista o el rastreo orientan hacia madera.",
+    "interpretacion": "Madera se lee como dirección, decisión y manejo del enojo presente o retenido.",
+    "factores_clave": [
+      "vesícula/hígado",
+      "enojo",
+      "indecisión",
+      "falta de dirección"
+    ],
+    "errores_comunes": [
+      "leer madera solo como enojo sin revisar dirección o decisión"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando madera no aparece como eje del caso ni del rastreo."
+    ],
+    "nivel_riesgo": "bajo",
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "qi",
+      "meridianos"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "eft_pro",
+      "rastreo_de_5_elementos_global"
+    ]
+  },
+  {
+    "id": "guide_distancia",
+    "contexto": "Cuando se hará trabajo terapéutico a distancia con sustituto temporal.",
+    "interpretacion": "El curso requiere aceptación explícita del sustituto y comprobación de identidad antes del rastreo.",
+    "factores_clave": [
+      "paciente ausente",
+      "caso remoto",
+      "uso de sustituto"
+    ],
+    "errores_comunes": [
+      "trabajar a distancia sin comprobación de identidad",
+      "omitir aceptación del sustituto"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el consultante está presente y no se usará sustituto."
+    ],
+    "nivel_riesgo": "alto",
+    "relacionado_conceptos": [
+      "sustituto_temporal",
+      "cibertelepatia",
+      "comandos_de_busqueda",
+      "qi",
+      "cinco_elementos",
+      "meridianos"
+    ],
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro",
+      "rastreo_de_5_elementos_global"
+    ]
+  }
+]

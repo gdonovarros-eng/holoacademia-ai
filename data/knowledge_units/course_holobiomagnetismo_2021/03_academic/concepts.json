@@ -1,0 +1,727 @@
+[
+  {
+    "id": "biomagnetopuntura",
+    "termino": "Biomagnetopuntura",
+    "aliases": [
+      "Biomagneto puntura"
+    ],
+    "definicion": "Uso de imanes a manera de agujas para estimular corrientes energéticas en el cuerpo.",
+    "explicacion_simple": "Es aplicar la lógica de la acupuntura con imanes en lugar de agujas.",
+    "explicacion_extendida": "El docente la presenta como una forma de integrar medicina tradicional china al biomagnetismo. En vez de trabajar solo con agujas o plantas, se usan imanes para influir sobre el flujo energético y modular estados emocionales y corporales.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "meridianos",
+      "homologacion_de_puntos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de 5 elementos global.",
+    "errores_comunes": []
+  },
+  {
+    "id": "chakras",
+    "termino": "Chakras",
+    "aliases": [
+      "chakra",
+      "centros energéticos"
+    ],
+    "definicion": "Dato energético complementario que algunos protocolos del curso permiten rastrear cuando hace falta precisar mejor el conflicto o la desregulación.",
+    "explicacion_simple": "En este curso aparecen como una ayuda complementaria, no como puerta principal de todos los casos.",
+    "explicacion_extendida": "Holobiomagnetismo 2021 no los desarrolla como eje teórico principal, pero sí los incluye dentro del protocolo de rastreo y desarticulación de impacto emocional como un dato adicional que puede pedirse junto con microbio, par biomagnético, chakra o meridiano para afinar la lectura del conflicto.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_y_desarticulacion_de_impacto_emocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_conceptos": [
+      "holograma_impacto_emocional",
+      "factor_psicoemocional",
+      "meridianos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo y desarticulación de impacto emocional.",
+    "errores_comunes": [
+      "Tomarlos como explicación principal si el protocolo todavía no pide ese nivel de detalle.",
+      "Usarlos sin haber definido antes conflicto, emoción o persona implicada."
+    ]
+  },
+  {
+    "id": "cibertelepatia",
+    "termino": "Cibertelepatía",
+    "aliases": [
+      "Ciber-telepatía",
+      "Teletransmisión"
+    ],
+    "definicion": "Marco mental y cibernético para recibir o transmitir información entre mente universal y mente local.",
+    "explicacion_simple": "Es la base conceptual del trabajo terapéutico a distancia y del uso de sustitutos.",
+    "explicacion_extendida": "El manual la vincula con capas mentales, retroalimentación y recepción/emisión psíquica de información. En el curso se convierte en una justificación práctica del rastreo remoto y de la instalación de información sin contacto físico directo.",
+    "modulo": "modulo_2",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "sustituto_temporal",
+      "cinco_elementos",
+      "comandos_de_busqueda"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Programa de sustitución temporal para trabajo a distancia.",
+    "errores_comunes": []
+  },
+  {
+    "id": "cinco_elementos",
+    "termino": "Cinco elementos",
+    "aliases": [
+      "5 elementos",
+      "Wu Xing"
+    ],
+    "definicion": "Modelo de relación entre órganos, emociones, funciones y dinámicas de generación y control.",
+    "explicacion_simple": "Sirve para leer patrones energéticos, emocionales y corporales dentro de un mismo mapa.",
+    "explicacion_extendida": "En el curso, los cinco elementos no se enseñan solo como tabla simbólica, sino como una herramienta de interpretación. Agua, madera, fuego, tierra y metal se conectan con órganos, emociones, relaciones, decisiones, expresión y ancestros.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_de_5_elementos_global"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_qi_miedo",
+      "patron_qi_enojo",
+      "patron_qi_tristeza",
+      "patron_metal_social",
+      "patron_madera_direccion",
+      "patron_fuego_expresion"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "sustituto_temporal",
+      "comandos_de_busqueda",
+      "qi",
+      "meridianos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Entrevista inicial de rastreo y Programa de sustitución temporal para trabajo a distancia.",
+    "errores_comunes": [
+      "Usar los elementos como equivalencias rígidas en lugar de una lectura dinámica.",
+      "Leer solo el síntoma del día sin mirar el estado energético de fondo."
+    ]
+  },
+  {
+    "id": "comandos_de_busqueda",
+    "termino": "Comandos de búsqueda",
+    "aliases": [
+      "Establecer búsqueda",
+      "MS"
+    ],
+    "definicion": "Fórmulas verbales para abrir el circuito bioenergético, definir la búsqueda y comprobar si el sistema sabe qué se está buscando.",
+    "explicacion_simple": "Son frases operativas que estructuran cada rastreo del curso.",
+    "explicacion_extendida": "El curso no rastrea de forma improvisada. Cada búsqueda inicia con una declaración del tipo 'Voy a hacer un rastreo…', seguida por una comprobación explícita. Esa disciplina aparece en rastreo de microbios, pares, frecuencias, impactos emocionales y sustitución.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "rastreo_holobiomagnetico_condensado",
+      "rastreo_y_desarticulacion_de_impacto_emocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ],
+    "relacionado_conceptos": [
+      "sustituto_temporal",
+      "cinco_elementos",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de microorganismos y pares biomagnéticos y Programa de sustitución temporal para trabajo a distancia.",
+    "errores_comunes": [
+      "Rastrear sin comprobar antes si el sistema sabe qué se está buscando."
+    ]
+  },
+  {
+    "id": "concepto_eft_pro",
+    "termino": "EFT Pro",
+    "aliases": [
+      "Emotional Freedom Techniques Pro"
+    ],
+    "definicion": "Protocolo de liberación emocional que integra EFT, hipnosis, PNL, biodescodificación y meridianos.",
+    "explicacion_simple": "Es la principal secuencia emocional operativa del curso.",
+    "explicacion_extendida": "EFT Pro organiza una entrevista detallada, inducción al trance, viaje temporal, sintonización del conflicto, tapping de ida y vuelta, cierre y recalibración. Busca liberar cuerpo mental y emocional con un acuerdo neurolingüístico y reencuadre constructivo.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_conceptos": [
+      "holograma_impacto_emocional",
+      "comandos_de_busqueda",
+      "meridianos",
+      "factor_psicoemocional"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo y desarticulación de impacto emocional y EFT Pro.",
+    "errores_comunes": []
+  },
+  {
+    "id": "entrevista_de_rastreo",
+    "termino": "Entrevista de rastreo",
+    "aliases": [
+      "Historia clínica de rastreo",
+      "Ficha de control"
+    ],
+    "definicion": "Secuencia de preguntas iniciales para convertir síntomas vagos en datos clínicos operables.",
+    "explicacion_simple": "Sirve para traducir 'me siento mal' en información que se puede rastrear y pensar terapéuticamente.",
+    "explicacion_extendida": "El curso pide distinguir entre síntomas físicos y psicoemocionales, registrar características, frecuencia, fecha aproximada de origen y factores estresores o inhibidores. Esta entrevista no es un trámite: es el inicio de la labor terapéutica.",
+    "modulo": "modulo_5",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo"
+    ],
+    "relacionado_reasoning": [
+      "patron_vaguedad_sintoma",
+      "patron_recurrencia",
+      "patron_origen_aproximado",
+      "patron_terapia_empieza_en_entrevista"
+    ],
+    "relacionado_conceptos": [
+      "cinco_elementos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Entrevista inicial de rastreo.",
+    "errores_comunes": [
+      "Tomar la etiqueta diagnóstica como si ya fuera información clínica suficiente.",
+      "Omitir cronología, frecuencia o moduladores del síntoma."
+    ]
+  },
+  {
+    "id": "factor_psicoemocional",
+    "termino": "Factor psicoemocional",
+    "aliases": [
+      "Síntoma psicoemocional",
+      "Conflicto crítico"
+    ],
+    "definicion": "Dimensión emocional o mental que acompaña, origina o sostiene un cuadro físico.",
+    "explicacion_simple": "El curso trata lo psicoemocional como un dato clínico obligatorio, no opcional.",
+    "explicacion_extendida": "La ficha de control separa síntomas físicos y psicoemocionales. El docente insiste en revisar origen, conflicto crítico, vida post-conflicto y emociones principales para entender la lógica del caso y liberar lo que está reprimido.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "eft_pro"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_conceptos": [
+      "meridianos",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de EFT Pro.",
+    "errores_comunes": []
+  },
+  {
+    "id": "farmacopea_homeopatica",
+    "termino": "Farmacopea homeopática",
+    "aliases": [
+      "Policrestos",
+      "Semipolicrestos"
+    ],
+    "definicion": "Catálogo de remedios homeopáticos que el curso usa como soporte vibratorio complementario.",
+    "explicacion_simple": "No se prescribe por repertorización clásica, sino por rastreo dentro del sistema del curso.",
+    "explicacion_extendida": "El manual detalla remedios y sugiere una lógica de rastreo por bloques, potencia y tiempo. En la estructura del curso funciona como herramienta complementaria, no como eje único del tratamiento.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "flores_de_bach",
+      "sales_de_schussler",
+      "frecuencias_bioenergeticas"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de frecuencias y soportes vibratorios.",
+    "errores_comunes": []
+  },
+  {
+    "id": "flores_de_bach",
+    "termino": "Flores de Bach",
+    "aliases": [
+      "Remedios florales de Bach"
+    ],
+    "definicion": "Sistema floral orientado a desequilibrios psicoemocionales y de carácter.",
+    "explicacion_simple": "En el curso se incorporan como apoyo emocional complementario elegido por rastreo.",
+    "explicacion_extendida": "El manual explica su origen, sus categorías y la intención de aliviar miedo, impaciencia, angustia, incertidumbre, ira o confusión. Se integran a la ecuación terapéutica como soporte vibratorio.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "sales_de_schussler"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de frecuencias y soportes vibratorios.",
+    "errores_comunes": []
+  },
+  {
+    "id": "frecuencias_bioenergeticas",
+    "termino": "Frecuencias bioenergéticas",
+    "aliases": [
+      "Patrones vibratorios"
+    ],
+    "definicion": "Rastreo e instalación de remedios vibratorios como homeopatía, flores de Bach o sales de Schüssler.",
+    "explicacion_simple": "Amplían el trabajo del curso con soportes vibratorios y no solo con pares e imanes.",
+    "explicacion_extendida": "El curso incluye un rastreo estructurado para decidir si se necesita un policresto, un semipolicresto, una flor o una sal, con potencia, duración y validación de gestión.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "flores_de_bach",
+      "sales_de_schussler",
+      "frecuencias_biomagneticas",
+      "farmacopea_homeopatica"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de frecuencias y soportes vibratorios.",
+    "errores_comunes": []
+  },
+  {
+    "id": "frecuencias_biomagneticas",
+    "termino": "Frecuencias biomagnéticas",
+    "aliases": [
+      "Campos magnéticos pulsantes",
+      "CMP",
+      "Bio Vortex"
+    ],
+    "definicion": "Uso de campos magnéticos pulsantes como herramienta complementaria para modular dolor, inflamación y regeneración.",
+    "explicacion_simple": "Son frecuencias magnéticas usadas como apoyo físico y regulador.",
+    "explicacion_extendida": "El manual introduce el uso de CMP y un dispositivo en forma de vórtice para producir un campo electromagnético pulsante con fines de equilibrio corporal y apoyo regenerativo.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "flores_de_bach",
+      "sales_de_schussler",
+      "frecuencias_bioenergeticas"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de frecuencias y soportes vibratorios.",
+    "errores_comunes": []
+  },
+  {
+    "id": "holobiomagnetismo",
+    "termino": "Holobiomagnetismo",
+    "aliases": [
+      "Holo biomagnetismo",
+      "curso holobiomagnético"
+    ],
+    "definicion": "Integración del biomagnetismo con una lectura bioenergética, mental y emocional del paciente.",
+    "explicacion_simple": "No se queda solo en microbios y pH; mira al cuerpo como un sistema físico, psicológico y energético.",
+    "explicacion_extendida": "En el curso, holobiomagnetismo se presenta como una expansión del biomagnetismo puro. Los campos magnéticos no solo dialogan con el tejido orgánico, sino con moldes energéticos, meridianos, emociones y procesos de información corporal.",
+    "modulo": "modulo_3",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [
+      "entrevista_inicial_de_rastreo",
+      "rastreo_holobiomagnetico_condensado"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_conceptos": [
+      "entrevista_de_rastreo",
+      "cinco_elementos",
+      "comandos_de_busqueda",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "factor_psicoemocional"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Entrevista inicial de rastreo y Rastreo holobiomagnético condensado.",
+    "errores_comunes": [
+      "Reducirlo a biomagnetismo clásico sin integrar dimensión emocional y bioenergética."
+    ]
+  },
+  {
+    "id": "holograma_impacto_emocional",
+    "termino": "Holograma / impacto emocional",
+    "aliases": [
+      "Impacto emocional",
+      "Conflicto emocional",
+      "Holograma impacto emocional"
+    ],
+    "definicion": "Evento o patrón emocional que debe rastrearse y desarticularse para restaurar armonía biodinámica.",
+    "explicacion_simple": "Es la unidad de conflicto que el curso intenta localizar y desmontar.",
+    "explicacion_extendida": "El condensado propone rastrear hologramas o impactos emocionales y luego precisar datos como recesión de edad, emoción-reacción, persona implicada, capa embrionaria, cromosoma, microbio, par biomagnético, chakra o meridiano.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_y_desarticulacion_de_impacto_emocional",
+      "eft_pro"
+    ],
+    "relacionado_reasoning": [
+      "patron_conflicto_emocional"
+    ],
+    "relacionado_conceptos": [
+      "concepto_eft_pro",
+      "comandos_de_busqueda",
+      "meridianos",
+      "factor_psicoemocional"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo y desarticulación de impacto emocional y EFT Pro.",
+    "errores_comunes": [
+      "Forzar todas las capas complementarias cuando el sistema no las está pidiendo."
+    ]
+  },
+  {
+    "id": "homologacion_de_puntos",
+    "termino": "Homologación de puntos",
+    "aliases": [
+      "Puntos equivalentes",
+      "Mapa de puntos"
+    ],
+    "definicion": "Relación operativa entre la nomenclatura de biomagnetismo y la de medicina tradicional china.",
+    "explicacion_simple": "Permite pasar del lenguaje de puntos biomagnéticos al lenguaje de puntos MTC.",
+    "explicacion_extendida": "El manual dedica una sección a homologar puntos y a ordenar puntos yuan, luo, tonificación, sedación y cruces. Esta capa hace posible el uso terapéutico de biomagnetopuntura y del rastreo de puntos remotos.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global",
+      "eft_pro"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "meridianos",
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "factor_psicoemocional",
+      "biomagnetopuntura"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de 5 elementos global y EFT Pro.",
+    "errores_comunes": []
+  },
+  {
+    "id": "meridianos",
+    "termino": "Meridianos",
+    "aliases": [
+      "Canales",
+      "14 meridianos"
+    ],
+    "definicion": "Circuitos por donde circula el Qi y cuya alteración se lee como exceso, deficiencia, estasis, calor o frío.",
+    "explicacion_simple": "Son rutas energéticas que ayudan a localizar y entender el desequilibrio.",
+    "explicacion_extendida": "El curso trabaja los 14 meridianos y después los 362 puntos. La transcripción usa esta lógica para leer chi de vesícula biliar, corazón, pulmón e intestino grueso y vincularlo con un estado energético global.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "eft_pro",
+      "rastreo_de_5_elementos_global"
+    ],
+    "relacionado_reasoning": [
+      "patron_canal_exceso"
+    ],
+    "relacionado_conceptos": [
+      "concepto_eft_pro",
+      "holograma_impacto_emocional",
+      "factor_psicoemocional",
+      "qi",
+      "cinco_elementos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de EFT Pro y Rastreo de 5 elementos global.",
+    "errores_comunes": []
+  },
+  {
+    "id": "microorganismos_patogenos",
+    "termino": "Microorganismos patógenos",
+    "aliases": [
+      "microorganismos",
+      "microbios",
+      "patógenos",
+      "microbios patógenos"
+    ],
+    "definicion": "Categoría de agentes patógenos que el curso rastrea por bloques como bacterias, parásitos, hongos, virus o priones.",
+    "explicacion_simple": "Son los microbios que se buscan cuando el caso parece tener un componente infeccioso o microbiológico.",
+    "explicacion_extendida": "El manual propone una secuencia concreta: declarar la búsqueda de patógenos, comprobar programa, contar categorías y después identificarlas por lista o bloque. En el curso no se presentan como dato aislado, sino como parte de una búsqueda ordenada que luego conduce al rastreo de pares biomagnéticos.",
+    "modulo": "modulo_6",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [
+      "rastreo_de_microorganismos_y_pares_biomagneticos"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ],
+    "relacionado_conceptos": [
+      "par_biomagnetico",
+      "comandos_de_busqueda",
+      "holobiomagnetismo"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de microorganismos y pares biomagnéticos.",
+    "errores_comunes": [
+      "Asumir microbio sin abrir búsqueda ni validar categoría.",
+      "Saltar del síntoma directo al par sin revisar primero el componente microbiológico cuando el curso lo sugiere."
+    ]
+  },
+  {
+    "id": "molde_energetico",
+    "termino": "Molde energético",
+    "aliases": [
+      "Molde sutil",
+      "Campo del órgano"
+    ],
+    "definicion": "Estructura energética que se mantiene aunque la parte física del órgano ya no esté presente.",
+    "explicacion_simple": "Un órgano puede faltar físicamente y aun así seguir teniendo un patrón energético evaluable.",
+    "explicacion_extendida": "El docente lo explica con el caso de la vesícula extirpada: aunque el órgano ya no esté, el molde energético sigue mostrando frío o desequilibrio. Esto permite rastrear estados subyacentes más allá del cuerpo anatómico visible.",
+    "modulo": "modulo_4",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [],
+    "relacionado_reasoning": [
+      "patron_molde_organico"
+    ],
+    "relacionado_conceptos": [],
+    "cuando_se_aplica": "Se aborda dentro de modulo 4.",
+    "errores_comunes": [
+      "Descartar la lectura energética solo porque el órgano ya no está anatómicamente presente."
+    ]
+  },
+  {
+    "id": "par_biomagnetico",
+    "termino": "Par biomagnético",
+    "aliases": [
+      "par biomagnetico",
+      "pares biomagnéticos",
+      "pares biomagneticos",
+      "los pares"
+    ],
+    "definicion": "Relación operativa entre un agente patógeno o desequilibrio y la localización magnética que el curso busca para intervenir.",
+    "explicacion_simple": "Es el par que se rastrea después de identificar el problema o el microbio para saber dónde trabajar con imanes.",
+    "explicacion_extendida": "En Holobiomagnetismo 2021 aparece sobre todo en el módulo de microbios y secuencia de búsqueda. El curso lo trata como parte de una ruta ordenada: primero se abre la búsqueda, luego se identifican patógenos o bloques y después se rastrean los pares biomagnéticos necesarios por región, zona o estructura relacionada.",
+    "modulo": "modulo_6",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "high",
+    "relacionado_protocolos": [
+      "rastreo_de_microorganismos_y_pares_biomagneticos",
+      "rastreo_y_desarticulacion_de_impacto_emocional"
+    ],
+    "relacionado_reasoning": [
+      "patron_busqueda_ordenada"
+    ],
+    "relacionado_conceptos": [
+      "microorganismos_patogenos",
+      "polaridad",
+      "comandos_de_busqueda"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de microorganismos y pares biomagnéticos y como dato complementario dentro de Rastreo y desarticulación de impacto emocional.",
+    "errores_comunes": [
+      "Buscar pares sin abrir antes la búsqueda del problema o del patógeno.",
+      "Soltar listas largas de pares sin orden de validación."
+    ]
+  },
+  {
+    "id": "qi",
+    "termino": "Qi",
+    "aliases": [
+      "Chi"
+    ],
+    "definicion": "Fuerza vital organizada que da movimiento, forma y dinamismo a la materia viva.",
+    "explicacion_simple": "Es la energía funcional que sostiene procesos, forma y movimiento en el organismo.",
+    "explicacion_extendida": "El manual presenta el Qi como fuerza que polariza Yin-Yang, sostiene el macroverso y microverso y da leyes al movimiento. La transcripción lo vuelve clínico al describir cómo sube, baja, se concentra, se dispersa o se distorsiona según la emoción.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "relacionado_reasoning": [
+      "patron_qi_miedo",
+      "patron_qi_enojo",
+      "patron_qi_tristeza"
+    ],
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "meridianos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de 5 elementos global.",
+    "errores_comunes": [
+      "Interpretar la emoción sin observar cómo cambia la dirección o calidad del Qi."
+    ]
+  },
+  {
+    "id": "sales_de_schussler",
+    "termino": "Sales de Schüssler",
+    "aliases": [
+      "Sales tisulares"
+    ],
+    "definicion": "Preparados homeopáticos derivados de sales minerales orientados al equilibrio funcional del organismo.",
+    "explicacion_simple": "Se usan como apoyo para compensar desequilibrios funcionales detectados por rastreo.",
+    "explicacion_extendida": "El manual describe 12 sales y las vincula con funciones orgánicas y síntomas. Dentro del curso, se integran al rastreo de frecuencias bioenergéticas como recurso complementario.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_frecuencias_y_soportes_vibratorios"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "flores_de_bach"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de frecuencias y soportes vibratorios.",
+    "errores_comunes": []
+  },
+  {
+    "id": "sustituto_temporal",
+    "termino": "Sustituto temporal",
+    "aliases": [
+      "Programa de sustitución",
+      "Sustitución a distancia"
+    ],
+    "definicion": "Procedimiento por el cual una persona representa temporalmente a otra para manifestar respuestas en el rastreo.",
+    "explicacion_simple": "Permite trabajar a distancia usando a otra persona como testigo o representante.",
+    "explicacion_extendida": "El manual ofrece una fórmula verbal de aceptación y una comprobación de identidad. El curso lo usa en casos remotos para verificar respuestas musculares o energéticas y después aplicar búsquedas, puntos o instalación de información.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_conceptos": [
+      "cinco_elementos",
+      "comandos_de_busqueda"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Programa de sustitución temporal para trabajo a distancia.",
+    "errores_comunes": [
+      "Usarlo sin comprobación de identidad.",
+      "Omitir la aceptación explícita del sustituto antes del rastreo."
+    ]
+  },
+  {
+    "id": "yin_yang",
+    "termino": "Yin / Yang",
+    "aliases": [
+      "Yin Yang"
+    ],
+    "definicion": "Polaridades complementarias cuya relación explica equilibrio, exceso, deficiencia y profundidad del desequilibrio.",
+    "explicacion_simple": "Ayuda a distinguir si algo está en exceso, insuficiencia, calor o frío.",
+    "explicacion_extendida": "El manual relaciona Yin/Yang con las fases de la enfermedad, calor por insuficiencia y equilibrio funcional. Esto sirve de base para el rastreo específico de órganos y del Qi de los meridianos.",
+    "modulo": "",
+    "seccion": "",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_protocolos": [
+      "rastreo_de_5_elementos_global"
+    ],
+    "relacionado_reasoning": [
+      "patron_subyacente_vs_sintoma",
+      "patron_canal_exceso"
+    ],
+    "relacionado_conceptos": [
+      "qi",
+      "cinco_elementos",
+      "meridianos"
+    ],
+    "cuando_se_aplica": "Se usa especialmente dentro de Rastreo de 5 elementos global.",
+    "errores_comunes": []
+  }
+]

@@ -1,0 +1,190 @@
+{
+  "id": "course_manifest",
+  "curso": "holobiomagnetismo_2021",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Holobiomagnetismo 2021",
+  "archivos_fuente_usados": [
+    "sources/transcripcion_completa.txt",
+    "sources/Holobiomagnetismo_2021.txt",
+    "sources/index_modulos.txt",
+    "data/manuals_raws/HOLOBIOMAGNETISMO.pdf"
+  ],
+  "temas_principales": [
+    "Holobiomagnetismo como integración físico-psicoemocional-bioenergética.",
+    "Entrevista clínica orientada por síntomas, cronología y factores relevantes.",
+    "Cibertelepatía, sustitución temporal y trabajo terapéutico a distancia.",
+    "Medicina tradicional china: Qi, 5 elementos, meridianos y puntos.",
+    "Frecuencias biomagnéticas, bioenergéticas y apoyos complementarios.",
+    "Protocolos emocionales y desarticulación de impactos emocionales."
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "cantidad_de_conceptos_extraidos": 20,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 8,
+  "ambiguedades_detectadas": [
+    "El material fuente presenta el curso como 2021, pero el manual disponible indica '1era Edición, 2020'.",
+    "La transcripción contiene dos bloques etiquetados como módulo 11 y un bloque final como módulo 12; parece haber continuidad entre ellos y no una separación temática totalmente limpia.",
+    "El manual entrega comandos de búsqueda para '5 elementos global' y '5 elementos específico', pero no un protocolo completo y cerrado como sí ocurre con EFT Pro.",
+    "Varias tablas del PDF (pares, meridianos, puntos) están mejor como referencia de catálogo que como narrativa corrida; por eso se consolidaron conceptualmente y no se copiaron completas a las capas limpias."
+  ],
+  "vacios_detectados": [
+    "No se dispone de un metadata.json original independiente; se derivó metadata desde el manifiesto ya existente.",
+    "El manual no fija siempre límites clínicos o contraindicaciones absolutas para cada protocolo; en varios casos solo deja formato de control o advertencias generales.",
+    "Las páginas de listas extensas de pares y algunos diagramas del PDF no son legibles como texto narrativo continuo; se usaron como referencia estructural, no como base de explicación larga."
+  ],
+  "nivel_de_preparacion": {
+    "academic": "alto",
+    "therapeutic": "alto",
+    "protocols": "alto con algunas zonas marcadas como condensadas o parcialmente inferidas"
+  },
+  "observacion_general": "La unidad quedó lista para alimentar futuros asistentes académicos, terapéuticos y de protocolos. El siguiente paso natural ya sería chunking o indexación semántica, pero la base de organización quedó separada y reutilizable.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "cinco_elementos",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "concepto",
+        "id": "holobiomagnetismo",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "comandos_de_busqueda",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "concepto",
+        "id": "homologacion_de_puntos",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_conflicto_emocional",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_subyacente_vs_sintoma",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_distancia",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_entrevista",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "rastreo_de_5_elementos_global",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "eft_pro",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "manual",
+        "confidence": "high"
+      },
+      {
+        "tipo": "protocol",
+        "id": "entrevista_inicial_de_rastreo",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "protocol",
+        "id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+        "curso": "holobiomagnetismo_2021",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "cinco_elementos",
+      "holobiomagnetismo",
+      "comandos_de_busqueda",
+      "homologacion_de_puntos"
+    ],
+    "reasoning_clave": [
+      "patron_conflicto_emocional",
+      "patron_subyacente_vs_sintoma"
+    ],
+    "preguntas_de_entrada": [
+      "intake_emocion_actual",
+      "intake_relacion_elemental",
+      "intake_conflicto_critico",
+      "intake_tipo_sintoma"
+    ],
+    "guias_interpretativas": [
+      "guide_distancia",
+      "guide_entrevista"
+    ],
+    "protocolos_clave": [
+      "rastreo_de_5_elementos_global",
+      "eft_pro",
+      "entrevista_inicial_de_rastreo",
+      "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    ]
+  }
+}

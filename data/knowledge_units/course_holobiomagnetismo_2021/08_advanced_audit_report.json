@@ -1,0 +1,35 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [],
+  "elementos_excelentes": [
+    "Concepto bien anclado y conectable: holobiomagnetismo",
+    "Concepto bien anclado y conectable: entrevista_de_rastreo",
+    "Protocolo operativo y conectado: entrevista_inicial_de_rastreo",
+    "Protocolo operativo y conectado: rastreo_de_microorganismos_y_pares_biomagneticos",
+    "Protocolo operativo y conectado: rastreo_holobiomagnetico_condensado",
+    "Protocolo operativo y conectado: rastreo_y_desarticulacion_de_impacto_emocional",
+    "Protocolo operativo y conectado: rastreo_de_frecuencias_y_soportes_vibratorios",
+    "Protocolo operativo y conectado: eft_pro",
+    "Protocolo operativo y conectado: rastreo_de_5_elementos_global",
+    "Patrón terapéutico accionable: patron_vaguedad_sintoma",
+    "Patrón terapéutico accionable: patron_recurrencia",
+    "Patrón terapéutico accionable: patron_origen_aproximado",
+    "Patrón terapéutico accionable: patron_terapia_empieza_en_entrevista",
+    "Patrón terapéutico accionable: patron_subyacente_vs_sintoma",
+    "Patrón terapéutico accionable: patron_molde_organico",
+    "Patrón terapéutico accionable: patron_qi_miedo",
+    "Patrón terapéutico accionable: patron_qi_enojo",
+    "Patrón terapéutico accionable: patron_qi_tristeza",
+    "Patrón terapéutico accionable: patron_metal_social",
+    "Patrón terapéutico accionable: patron_madera_direccion"
+  ],
+  "listo_para_rag": true
+}

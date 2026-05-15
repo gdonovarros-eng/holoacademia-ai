@@ -1,0 +1,661 @@
+{
+  "id": "connection_map",
+  "curso": "holobiomagnetismo_2021",
+  "linea": "salud",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [
+    {
+      "id": "holobiomagnetismo__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "holobiomagnetismo__rastreo_holobiomagnetico_condensado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    },
+    {
+      "id": "biomagnetopuntura__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "biomagnetopuntura",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "cibertelepatia__programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cibertelepatia",
+      "protocol_id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    },
+    {
+      "id": "sustituto_temporal__programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "sustituto_temporal",
+      "protocol_id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    },
+    {
+      "id": "entrevista_de_rastreo__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "entrevista_de_rastreo",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "qi__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "qi",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "cinco_elementos__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "cinco_elementos__programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "protocol_id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    },
+    {
+      "id": "cinco_elementos__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "yin_yang__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "yin_yang",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "meridianos__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "meridianos",
+      "protocol_id": "eft_pro"
+    },
+    {
+      "id": "meridianos__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "meridianos",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "homologacion_de_puntos__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "homologacion_de_puntos",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "homologacion_de_puntos__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "homologacion_de_puntos",
+      "protocol_id": "eft_pro"
+    },
+    {
+      "id": "frecuencias_biomagneticas__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "frecuencias_biomagneticas",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "frecuencias_bioenergeticas__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "frecuencias_bioenergeticas",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "farmacopea_homeopatica__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "farmacopea_homeopatica",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "flores_de_bach__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "flores_de_bach",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "sales_de_schussler__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "sales_de_schussler",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "concepto_eft_pro__rastreo_y_desarticulacion_de_impacto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "concepto_eft_pro",
+      "protocol_id": "rastreo_y_desarticulacion_de_impacto_emocional"
+    },
+    {
+      "id": "concepto_eft_pro__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "concepto_eft_pro",
+      "protocol_id": "eft_pro"
+    },
+    {
+      "id": "holograma_impacto_emocional__rastreo_y_desarticulacion_de_impacto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holograma_impacto_emocional",
+      "protocol_id": "rastreo_y_desarticulacion_de_impacto_emocional"
+    },
+    {
+      "id": "holograma_impacto_emocional__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holograma_impacto_emocional",
+      "protocol_id": "eft_pro"
+    },
+    {
+      "id": "comandos_de_busqueda__rastreo_de_microorganismos_y_pares_biomagneticos",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "comandos_de_busqueda",
+      "protocol_id": "rastreo_de_microorganismos_y_pares_biomagneticos"
+    },
+    {
+      "id": "comandos_de_busqueda__programa_de_sustitucion_temporal_para_trabajo_a_distancia",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "comandos_de_busqueda",
+      "protocol_id": "programa_de_sustitucion_temporal_para_trabajo_a_distancia"
+    },
+    {
+      "id": "comandos_de_busqueda__rastreo_holobiomagnetico_condensado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "comandos_de_busqueda",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    },
+    {
+      "id": "comandos_de_busqueda__rastreo_y_desarticulacion_de_impacto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "comandos_de_busqueda",
+      "protocol_id": "rastreo_y_desarticulacion_de_impacto_emocional"
+    },
+    {
+      "id": "factor_psicoemocional__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "factor_psicoemocional",
+      "protocol_id": "eft_pro"
+    }
+  ],
+  "concept_to_reasoning": [
+    {
+      "id": "holobiomagnetismo__patron_subyacente_vs_sintoma",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "reasoning_id": "patron_subyacente_vs_sintoma"
+    },
+    {
+      "id": "holobiomagnetismo__patron_conflicto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "reasoning_id": "patron_conflicto_emocional"
+    },
+    {
+      "id": "entrevista_de_rastreo__patron_vaguedad_sintoma",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "entrevista_de_rastreo",
+      "reasoning_id": "patron_vaguedad_sintoma"
+    },
+    {
+      "id": "entrevista_de_rastreo__patron_recurrencia",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "entrevista_de_rastreo",
+      "reasoning_id": "patron_recurrencia"
+    },
+    {
+      "id": "entrevista_de_rastreo__patron_origen_aproximado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "entrevista_de_rastreo",
+      "reasoning_id": "patron_origen_aproximado"
+    },
+    {
+      "id": "entrevista_de_rastreo__patron_terapia_empieza_en_entrevista",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "entrevista_de_rastreo",
+      "reasoning_id": "patron_terapia_empieza_en_entrevista"
+    },
+    {
+      "id": "molde_energetico__patron_molde_organico",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "molde_energetico",
+      "reasoning_id": "patron_molde_organico"
+    },
+    {
+      "id": "qi__patron_qi_miedo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "qi",
+      "reasoning_id": "patron_qi_miedo"
+    },
+    {
+      "id": "qi__patron_qi_enojo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "qi",
+      "reasoning_id": "patron_qi_enojo"
+    },
+    {
+      "id": "qi__patron_qi_tristeza",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "qi",
+      "reasoning_id": "patron_qi_tristeza"
+    },
+    {
+      "id": "cinco_elementos__patron_subyacente_vs_sintoma",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_subyacente_vs_sintoma"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_miedo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_miedo"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_enojo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_enojo"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_tristeza",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_tristeza"
+    },
+    {
+      "id": "cinco_elementos__patron_metal_social",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_metal_social"
+    },
+    {
+      "id": "cinco_elementos__patron_madera_direccion",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_madera_direccion"
+    },
+    {
+      "id": "cinco_elementos__patron_fuego_expresion",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_fuego_expresion"
+    },
+    {
+      "id": "yin_yang__patron_subyacente_vs_sintoma",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "yin_yang",
+      "reasoning_id": "patron_subyacente_vs_sintoma"
+    },
+    {
+      "id": "yin_yang__patron_canal_exceso",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "yin_yang",
+      "reasoning_id": "patron_canal_exceso"
+    },
+    {
+      "id": "meridianos__patron_canal_exceso",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "meridianos",
+      "reasoning_id": "patron_canal_exceso"
+    },
+    {
+      "id": "concepto_eft_pro__patron_conflicto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "concepto_eft_pro",
+      "reasoning_id": "patron_conflicto_emocional"
+    },
+    {
+      "id": "holograma_impacto_emocional__patron_conflicto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holograma_impacto_emocional",
+      "reasoning_id": "patron_conflicto_emocional"
+    },
+    {
+      "id": "comandos_de_busqueda__patron_busqueda_ordenada",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "comandos_de_busqueda",
+      "reasoning_id": "patron_busqueda_ordenada"
+    },
+    {
+      "id": "factor_psicoemocional__patron_conflicto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "factor_psicoemocional",
+      "reasoning_id": "patron_conflicto_emocional"
+    }
+  ],
+  "reasoning_to_protocol": [
+    {
+      "id": "patron_vaguedad_sintoma__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_vaguedad_sintoma",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "patron_recurrencia__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_recurrencia",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "patron_origen_aproximado__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_origen_aproximado",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "patron_terapia_empieza_en_entrevista__entrevista_inicial_de_rastreo",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_terapia_empieza_en_entrevista",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "patron_subyacente_vs_sintoma__rastreo_holobiomagnetico_condensado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_subyacente_vs_sintoma",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    },
+    {
+      "id": "patron_subyacente_vs_sintoma__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_subyacente_vs_sintoma",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_molde_organico__rastreo_holobiomagnetico_condensado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_molde_organico",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    },
+    {
+      "id": "patron_qi_miedo__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_qi_miedo",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_qi_enojo__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_qi_enojo",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_qi_tristeza__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_qi_tristeza",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_metal_social__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_metal_social",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_madera_direccion__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_madera_direccion",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_fuego_expresion__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_fuego_expresion",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_canal_exceso__rastreo_de_5_elementos_global",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_canal_exceso",
+      "protocol_id": "rastreo_de_5_elementos_global"
+    },
+    {
+      "id": "patron_busqueda_ordenada__rastreo_de_microorganismos_y_pares_biomagneticos",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_busqueda_ordenada",
+      "protocol_id": "rastreo_de_microorganismos_y_pares_biomagneticos"
+    },
+    {
+      "id": "patron_busqueda_ordenada__rastreo_holobiomagnetico_condensado",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_busqueda_ordenada",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    },
+    {
+      "id": "patron_busqueda_ordenada__rastreo_de_frecuencias_y_soportes_vibratorios",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_busqueda_ordenada",
+      "protocol_id": "rastreo_de_frecuencias_y_soportes_vibratorios"
+    },
+    {
+      "id": "patron_conflicto_emocional__rastreo_y_desarticulacion_de_impacto_emocional",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_conflicto_emocional",
+      "protocol_id": "rastreo_y_desarticulacion_de_impacto_emocional"
+    },
+    {
+      "id": "patron_conflicto_emocional__eft_pro",
+      "curso": "holobiomagnetismo_2021",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_conflicto_emocional",
+      "protocol_id": "eft_pro"
+    }
+  ]
+}

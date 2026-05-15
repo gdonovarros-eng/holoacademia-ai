@@ -1,0 +1,92 @@
+[
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob",
+    "observacion": "El curso trata la entrevista como parte activa de la terapia y no como preámbulo administrativo.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_2",
+    "observacion": "Se busca leer el estado energético de fondo antes que perseguir síntomas aislados.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_3",
+    "observacion": "La integración con medicina tradicional china se usa como lógica de lectura e intervención, no como repetición literal de la acupuntura clásica.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [
+      "qi"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_4",
+    "observacion": "El curso enfatiza la relación entre emoción, cuerpo y meridianos como un mismo continuo clínico.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [
+      "meridianos"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "merged",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_5",
+    "observacion": "Las herramientas complementarias se incorporan por rastreo, no por receta uniforme.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "merged",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_6",
+    "observacion": "La práctica remota no se presenta como improvisación, sino como protocolo con sustitución, comprobación y comandos de búsqueda.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [
+      "comandos_de_busqueda"
+    ],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "manual",
+    "confidence": "high"
+  },
+  {
+    "id": "observacion_observacion_observacion_observacion_observacion_ob_7",
+    "observacion": "La dimensión psicoemocional no es adorno: forma parte del razonamiento causal del caso.",
+    "utilidad_terapeutica": "Ayuda a orientar observación clínica y criterio del caso.",
+    "relacionado_con": [],
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "observaciones_terapeuticas",
+    "source": "merged",
+    "confidence": "high"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad",
+    "tipo": "limite_metodologico",
+    "advertencia": "El rastreo no se presenta como medicina alopática ni como sustituto de diagnóstico médico.",
+    "detalle": "El consentimiento del manual aclara que no se deben alterar prescripciones médicas de base y que el objetivo es estabilizar o equilibrar el sistema bioeléctrico con fines homeostáticos.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "manual",
+    "confidence": "high"
+  },
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad_2",
+    "tipo": "seguimiento_post_rastreo",
+    "advertencia": "Después del rastreo pueden aparecer síntomas leves transitorios.",
+    "detalle": "Se mencionan poliuria, astenia, adinamia, febrícula, cefalea, diarrea, pesadez, dolor muscular y somnolencia, que no deberían durar más de 72 horas.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "manual",
+    "confidence": "high"
+  },
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad_3",
+    "tipo": "seguridad_basica",
+    "advertencia": "Antes del trabajo se registran condiciones de control.",
+    "detalle": "El formato pide revisar embarazo, marcapasos, quimio/radioterapia, transfusiones, trasplantes y cirugías.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "manual",
+    "confidence": "high"
+  },
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad_4",
+    "tipo": "privacidad",
+    "advertencia": "Los casos demostrativos deben respetar la privacidad del consultante.",
+    "detalle": "En la práctica en vivo se recuerda que no debe romperse la privacidad si se graba o comparte la sesión.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad_5",
+    "tipo": "uso_profesional",
+    "advertencia": "El manual pide practicar el material con comprensión y profesionalismo.",
+    "detalle": "Advierte contra la reproducción mecánica del contenido sin haber transmitido ni entendido bien la técnica.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "manual",
+    "confidence": "high"
+  },
+  {
+    "id": "advertencia_advertencia_advertencia_advertencia_advertencia_ad_6",
+    "tipo": "ambiguedad_clinica",
+    "advertencia": "Varias correspondencias energéticas funcionan como guía interpretativa, no como diagnóstico definitivo por sí solas.",
+    "detalle": "El curso ofrece relaciones entre emociones, meridianos, elementos y síntomas, pero su uso requiere entrevista, rastreo y contextualización.",
+    "curso": "holobiomagnetismo_2021",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "advertencias_clinicas",
+    "source": "transcript",
+    "confidence": "high"
+  }
+]
