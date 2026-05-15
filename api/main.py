@@ -322,8 +322,13 @@ def _therapy_app_response() -> FileResponse:
     )
 
 
-def _no_cache_headers() -> dict:
-    return {"Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"}
+def _no_cache_headers(allow_iframe: bool = False) -> dict:
+    headers = {"Cache-Control": "no-store, no-cache, must-revalidate, max-age=0"}
+    if allow_iframe:
+        # Permite que Wix (u otros orígenes) embeba la página en un iframe
+        headers["X-Frame-Options"] = "ALLOWALL"
+        headers["Content-Security-Policy"] = "frame-ancestors *"
+    return headers
 
 
 @app.get("/", include_in_schema=False)
@@ -338,7 +343,7 @@ async def intake_app() -> FileResponse:
 
 @app.get("/terapeuta", include_in_schema=False)
 async def terapeuta_app() -> FileResponse:
-    return FileResponse(THERAPY_STATIC_DIR / "terapeuta.html", headers=_no_cache_headers())
+    return FileResponse(THERAPY_STATIC_DIR / "terapeuta.html", headers=_no_cache_headers(allow_iframe=True))
 
 
 @app.get("/alumno", include_in_schema=False)

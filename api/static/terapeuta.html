@@ -39,6 +39,19 @@
     margin: 0 auto;
   }
 
+  /* ── Modo embed (iframe en Wix) ── */
+  body.embed-mode {
+    background: transparent;
+  }
+  body.embed-mode .app {
+    height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+  body.embed-mode .header {
+    display: none;
+  }
+
   /* ── Header ── */
   .header {
     display: flex;
@@ -646,6 +659,17 @@
   const inputEl    = document.getElementById('inputField');
   const sendBtnEl  = document.getElementById('sendBtn');
 
+  // ── Modo embed (iframe en Wix) ───────────────────────────────────────────────
+  (function applyEmbedMode() {
+    const p = new URLSearchParams(window.location.search);
+    if (p.has('embed')) {
+      document.body.classList.add('embed-mode');
+      // html y body necesitan height:100% para que el chat llene el iframe
+      document.documentElement.style.height = '100%';
+      document.body.style.height = '100%';
+    }
+  })();
+
   // ── Routing de entrada ───────────────────────────────────────────────────────
   (function routeEntry() {
     const params = new URLSearchParams(window.location.search);
@@ -685,8 +709,9 @@
         localStorage.removeItem('intake_data');
         localStorage.removeItem('intake_timestamp');
 
-        // Limpiar URL
-        window.history.replaceState({}, '', '/terapeuta');
+        // Limpiar URL (conservar ?embed si aplica)
+        const cleanUrl = params.has('embed') ? '/terapeuta?embed=1' : '/terapeuta';
+        window.history.replaceState({}, '', cleanUrl);
 
         // Auto-enviar análisis
         setTimeout(() => {
