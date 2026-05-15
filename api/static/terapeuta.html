@@ -579,6 +579,7 @@
     <div class="header-icon">🩺</div>
     <div class="header-info">
       <div class="header-title" id="headerTitle">Asistente Terapéutico Holoacadem-iA</div>
+      <div class="header-sub" id="headerSub"></div>
     </div>
     <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
     <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
@@ -661,8 +662,10 @@
         const ocupacion = data?.paciente?.ocupacion ? ` · ${data.paciente.ocupacion}` : '';
 
         // Actualizar header
-        document.getElementById('headerTitle').textContent = `Sesión: ${nombre}`;
-        document.getElementById('headerSub').textContent   = `● En sesión${ocupacion}`;
+        const hTitle = document.getElementById('headerTitle');
+        const hSub   = document.getElementById('headerSub');
+        if (hTitle) hTitle.textContent = `Sesión: ${nombre}`;
+        if (hSub)   hSub.textContent   = `● En sesión${ocupacion}`;
 
         // Badge de paciente
         const welcome = document.getElementById('welcome');
