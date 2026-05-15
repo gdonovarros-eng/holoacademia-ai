@@ -333,7 +333,7 @@ def _no_cache_headers(allow_iframe: bool = False) -> dict:
 
 @app.get("/", include_in_schema=False)
 async def root_landing() -> FileResponse:
-    return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers())
+    return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers(allow_iframe=True))
 
 
 @app.get("/intake", include_in_schema=False)

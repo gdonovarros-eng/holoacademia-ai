@@ -25,6 +25,16 @@ html, body {
   color: var(--text);
 }
 
+/* ── Modo embed (iframe en Wix) ── */
+body.embed-mode {
+  min-height: unset;
+  background: transparent;
+}
+body.embed-mode .hero { display: none; }
+body.embed-mode .flow-label { margin-top: 24px; }
+body.embed-mode .cards-grid { padding-bottom: 24px; }
+body.embed-mode .secondary-section { padding-bottom: 24px; }
+
 /* ── HERO LOGO ── */
 .hero-logo {
   display: flex;
@@ -461,5 +471,27 @@ html, body {
   </div>
 </div>
 
+<script>
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  if (!p.has('embed')) return;
+
+  // 1. Activar estilos embed
+  document.body.classList.add('embed-mode');
+
+  // 2. Abrir todas las cards en pantalla completa (fuera del iframe)
+  document.querySelectorAll('a.card, a.sec-card').forEach(function(a) {
+    a.target = '_top';
+  });
+
+  // 3. Reportar altura real al iframe padre (para auto-resize en Wix)
+  function sendHeight() {
+    var h = document.body.scrollHeight;
+    window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+  }
+  sendHeight();
+  window.addEventListener('resize', sendHeight);
+})();
+</script>
 </body>
 </html>
