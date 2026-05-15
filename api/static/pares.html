@@ -329,6 +329,7 @@ function confirmPair() {
     name: selBloque.pares[selPar],
     num: selPar + 1,
     bloque: selBloque.nombre,
+    bloqueId: selBloque.id,
     zona: selZona.nombre,
     region: selRegion.nombre,
     path: selRegion.nombre + ' › ' + selZona.nombre + ' › ' + selBloque.nombre,
@@ -431,65 +432,89 @@ function newSession() {
   resetWizard();
 }
 
+// ─── Mapa por bloque ──────────────────────────────────────
+const BLOQUE_MAP = {
+  // Cabeza – Coronilla
+  pineal:'p0040',corona:'p0040',callosidad:'p0040',parietal:'p0040',
+  // Cabeza – Posterior
+  bulbo:'p0041',occipital:'p0041',cerebelo:'p0041',
+  // Cabeza – Lateral
+  temporal:'p0042',auricula:'p0042',posterior_lat:'p0042',
+  sien:'p0042',mandibular:'p0042',parotida:'p0042',
+  // Cabeza – Frente
+  frente_alta:'p0043',hipofisis:'p0043',frente_baja:'p0043',
+  // Cabeza – Rostro
+  ojo:'p0044',anillo_ocular:'p0044',pomulo:'p0044',nariz:'p0044',boca:'p0044',
+  // Cabeza – Cuello
+  garganta_central:'p0045',garganta_baja:'p0045',garganta_lateral:'p0045',
+  nuca:'p0046',
+  // Tronco – Tórax
+  collar:'p0047',timo:'p0047',anahata:'p0047',pecho_bajo:'p0047',
+  cavidad:'p0047',diafragma:'p0047',corazon:'p0047',pecho_lateral:'p0047',pleura:'p0047',
+  // Tronco – Hepatitis
+  hepatitis_b1:'p0048',hepatitis_b2:'p0048',hepatitis_b3:'p0048',
+  // Tronco – Abdomen
+  estomago:'p0049',piloro:'p0049',higado:'p0049',zona_hepatica:'p0049',
+  vesicula:'p0049',bazo:'p0049',pancreas:'p0049',ombligo:'p0049',
+  interseccion:'p0049',colon:'p0049',
+  // Tronco – Espalda
+  dorsales:'p0051',espalda_alta:'p0051',homoplato:'p0051',
+  retrohepatico:'p0051',rinon:'p0051',espalda_baja:'p0051',
+  // Pelvis – Delantera
+  pubis:'p0052',cadera:'p0052',femur:'p0052',
+  // Pelvis – Trasera
+  sacro:'p0053',coxis:'p0053',trasero:'p0053',
+  // Pelvis – Sexo
+  femina_a:'p0054',femina_b:'p0054',macho:'p0054',
+  // Miembros – Brazos
+  brazo_alto:'p0055',brazo_medio:'p0055',mano:'p0055',
+  // Miembros – Piernas
+  pierna_alta:'p0056',pierna_media:'p0056',pierna_trasera:'p0056',pie:'p0056',
+  // Extras
+  variables_a:'p0057',variables_b:'p0057',personalizado:'p0057',
+  predeterminados:'p0057',homologos:'p0057',
+  rastreo_cervical:'p0057',rastreo_dorsal:'p0057',rastreo_lumbar:'p0057',
+  rastreo_sacro:'p0057',rastreo_coxis:'p0057',
+  eje_vertical:'p0058',eje_horizontal:'p0058',eje_transverso:'p0058'
+};
+
+function getMapUrl(bloqueId) {
+  const page = BLOQUE_MAP[bloqueId];
+  if (!page) return null;
+  return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
+}
+
 // ─── Modal ────────────────────────────────────────────────
-async function openModal() {
+function openModal() {
   if (session.length === 0) return;
-  
-  // Build maps list
-  let mapsHTML = '';
-  try {
-    const r = await fetch('/api/tablas-images');
-    const data = await r.json();
-    if (data.ok) {
-      const mapas = data.categories?.pares_biomagneticos?.mapas || [];
-      if (mapas.length > 0) {
-        mapsHTML = `
-          <div class="modal-section">
-            <h3>🗺️ Mapas de Colocación (Pares Biomagnéticos)</h3>
-            <div class="maps-grid" id="mapsGrid"></div>
-          </div>`;
-      }
-      // Store for later
-      window._mapas = mapas;
-    }
-  } catch(e) { window._mapas = []; }
 
   const body = document.getElementById('modalBody');
-  body.innerHTML = `
-    <div class="modal-section">
-      <h3>🧲 Pares del rastreo (${session.length})</h3>
-      <div class="final-pairs-list">
-        ${session.map((p,i) => `
-          <div class="final-pair">
-            <div class="final-pair-num">${i+1}</div>
-            <div class="final-pair-info">
-              <div class="final-pair-name">${p.name}</div>
-              <div class="final-pair-path">${p.path}</div>
-            </div>
-          </div>`).join('')}
+  body.innerHTML = '';
+
+  session.forEach((p, i) => {
+    const section = document.createElement('div');
+    section.className = 'modal-section';
+
+    const mapUrl = getMapUrl(p.bloqueId);
+    const mapHTML = mapUrl
+      ? `<img class="map-img" src="${mapUrl}" alt="Mapa ${p.bloque}" loading="lazy" onclick="openLightbox('${mapUrl}')" style="max-height:320px;object-fit:contain;">`
+      : `<div style="background:var(--bg);border-radius:10px;padding:16px;color:var(--muted);font-size:.8rem;text-align:center;">Sin mapa disponible para esta zona</div>`;
+
+    section.innerHTML = `
+      <div class="final-pair" style="margin-bottom:10px;">
+        <div class="final-pair-num">${i+1}</div>
+        <div style="flex:1">
+          <div class="final-pair-name">${p.name}</div>
+          <div class="final-pair-path">${p.path}</div>
+        </div>
       </div>
-    </div>
-    ${mapsHTML}
-  `;
+      <h3>📍 Mapa de colocación · ${p.bloque}</h3>
+      ${mapHTML}
+    `;
+    body.appendChild(section);
+  });
 
   document.getElementById('modalOverlay').classList.add('open');
-
-  // Populate maps after DOM insertion
-  if (window._mapas && window._mapas.length > 0) {
-    const grid = document.getElementById('mapsGrid');
-    if (grid) {
-      window._mapas.forEach(fname => {
-        const url = `/tablas-assets/pares_biomagneticos/${fname}`;
-        const img = document.createElement('img');
-        img.className = 'map-img';
-        img.src = url;
-        img.alt = fname;
-        img.loading = 'lazy';
-        img.onclick = () => openLightbox(url);
-        grid.appendChild(img);
-      });
-    }
-  }
 }
 
 function closeModal() {
