@@ -583,6 +583,32 @@ header h1 {
   opacity: 0.85;
 }
 
+/* map inside instruction card */
+.instruction-map-wrap {
+  margin: 6px 0 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.instruction-map-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+  padding: 6px 10px 4px;
+  border-bottom: 1px solid var(--border);
+}
+.instruction-map-img {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: contain;
+  cursor: zoom-in;
+  background: var(--bg);
+  padding: 8px;
+  box-sizing: border-box;
+}
+
 /* instruction cards */
 .instruction-card {
   background: var(--bg);
@@ -1224,9 +1250,6 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="wiz-bc" id="wizBc"></div>
         <div class="wiz-label" id="wizLabel">Paso 1 de 4</div>
         <div class="wiz-question" id="wizQuestion">¿En qué región del cuerpo?</div>
-        <div class="body-map-wrap" id="wizMap" style="display:none;margin-bottom:12px;cursor:zoom-in;">
-          <img id="wizMapImg" src="" alt="Mapa corporal" loading="lazy">
-        </div>
         <div class="wiz-grid g2" id="wizGrid"></div>
       </div>
 
@@ -1667,6 +1690,7 @@ function buildInstructionList() {
     const card = document.createElement('div');
     card.className = 'instruction-card';
     if (isPair) {
+      const mapUrl = getMapUrl(pair._bloqueId);
       card.innerHTML = `
         <div class="instruction-card-header">
           <div class="instruction-num">${n}</div>
@@ -1675,8 +1699,14 @@ function buildInstructionList() {
         </div>
         ${pair._path ? `<div class="instruction-detail">📍 <strong>Zona:</strong> ${escHtml(pair._path)}</div>` : ''}
         ${pair.tipo ? `<div class="instruction-row"><span class="instruction-label">Tipo:</span>${tipoChip(pair.tipo)}</div>` : ''}
-        ${pair.condiciones ? `<div class="instruction-detail">🔬 <strong>Condiciones:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
+        ${mapUrl ? `
+        <div class="instruction-map-wrap">
+          <p class="instruction-map-label">🗺️ <strong>Mapa de ubicación</strong> — toca para ampliar</p>
+          <img class="instruction-map-img" src="${mapUrl}" alt="Mapa: ${escHtml(pair.nombre)}" loading="lazy">
+        </div>` : ''}
+        ${pair.condiciones ? `<div class="instruction-detail">🔬 <strong>Condiciones asociadas:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
         ${pair.significado_emocional ? `<div class="instruction-detail">💜 <strong>Significado emocional:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
+        ${Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length ? `<div class="instruction-detail">🫁 <strong>Sistemas:</strong> ${escHtml(pair.sistemas_afectados.join(', '))}</div>` : ''}
         <div class="instruction-detail">⏱ <strong>Tiempo:</strong> 20-25 minutos por par</div>
       `;
     } else {
@@ -1727,6 +1757,10 @@ function setupListeners() {
     }
   });
   document.getElementById('btn-finalizar').addEventListener('click', openModal);
+  document.getElementById('instruction-list').addEventListener('click', e => {
+    const img = e.target.closest('.instruction-map-img');
+    if (img && img.src) openLightbox(img.src);
+  });
   document.getElementById('btn-close-modal').addEventListener('click', closeModal);
   document.getElementById('modal-overlay').addEventListener('click', e => {
     if (e.target === document.getElementById('modal-overlay')) closeModal();
@@ -1791,21 +1825,6 @@ function getMapUrl(bloqueId) {
   return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
 }
 
-function wizShowMap(bloqueId) {
-  const url = getMapUrl(bloqueId);
-  const wrap = document.getElementById('wizMap');
-  if (!url || !wrap) return;
-  const img = document.getElementById('wizMapImg');
-  img.src = url;
-  wrap.style.display = 'flex';
-  wrap.onclick = () => openLightbox(url);
-}
-
-function wizHideMap() {
-  const wrap = document.getElementById('wizMap');
-  if (wrap) wrap.style.display = 'none';
-}
-
 function wizInit() { /* DB loaded in init(); wizard renders on category select */ }
 
 function wizReset() {
@@ -1844,7 +1863,6 @@ function wizMakeBtn(name, sub) {
 }
 
 function wizRenderRegions() {
-  wizHideMap();
   if (!wizDB || !wizDB.regiones) {
     wizSetQ('Cargando…', '');
     document.getElementById('wizGrid').innerHTML = '';
@@ -1860,7 +1878,6 @@ function wizRenderRegions() {
 }
 
 function wizRenderZonas() {
-  wizHideMap();
   wizSetQ('Paso 2 · Zona', '¿En qué zona de ' + wizRegion.nombre + '?');
   const cols = wizRegion.zonas.length <= 3 ? 'g2' : 'gauto';
   const g = wizGetGrid(cols);
@@ -1874,7 +1891,6 @@ function wizRenderZonas() {
 
 function wizRenderBloques() {
   wizSetQ('Paso 3 · Bloque', '¿Qué bloque dentro de ' + wizZona.nombre + '?');
-  wizShowMap(wizZona.bloques[0]?.id);
   const g = wizGetGrid('gauto');
   wizZona.bloques.forEach(b => {
     const btn = wizMakeBtn(b.numero + '. ' + b.nombre, b.pares.length + ' pares');
@@ -1885,7 +1901,6 @@ function wizRenderBloques() {
 
 function wizRenderPares() {
   wizSetQ('Paso 4 · Par', '¿Qué número de par?');
-  wizShowMap(wizBloque.id);
   document.getElementById('wizLabel').textContent = wizBloque.nombre + ' · ' + wizBloque.pares.length + ' pares';
   const g = wizGetGrid('g2');
   wizBloque.pares.forEach((parName, i) => {
@@ -1899,7 +1914,6 @@ function wizRenderResult() {
   const pairName = wizBloque.pares[wizPar];
   const path = wizRegion.nombre + ' › ' + wizZona.nombre + ' › ' + wizBloque.nombre;
   wizSetQ('✅ Par encontrado', '');
-  wizShowMap(wizBloque.id);
   document.getElementById('wizLabel').textContent = 'Par #' + (wizPar + 1);
 
   const g = document.getElementById('wizGrid');
