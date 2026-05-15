@@ -1224,6 +1224,9 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="wiz-bc" id="wizBc"></div>
         <div class="wiz-label" id="wizLabel">Paso 1 de 4</div>
         <div class="wiz-question" id="wizQuestion">¿En qué región del cuerpo?</div>
+        <div class="body-map-wrap" id="wizMap" style="display:none;margin-bottom:12px;cursor:zoom-in;">
+          <img id="wizMapImg" src="" alt="Mapa corporal" loading="lazy">
+        </div>
         <div class="wiz-grid g2" id="wizGrid"></div>
       </div>
 
@@ -1772,7 +1775,7 @@ const BLOQUE_MAP = {
   retrohepatico:'p0051',rinon:'p0051',espalda_baja:'p0051',
   pubis:'p0052',cadera:'p0052',femur:'p0052',
   sacro:'p0053',coxis:'p0053',trasero:'p0053',
-  femina_a:'p0054',femina_b:'p0054',macho:'p0054',
+  femina_a:'p0054',femina_b:'p0054',macho:'p0052',
   brazo_alto:'p0055',brazo_medio:'p0055',mano:'p0055',
   pierna_alta:'p0056',pierna_media:'p0056',pierna_trasera:'p0056',pie:'p0056',
   variables_a:'p0057',variables_b:'p0057',personalizado:'p0057',
@@ -1786,6 +1789,21 @@ function getMapUrl(bloqueId) {
   const page = BLOQUE_MAP[bloqueId];
   if (!page) return null;
   return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
+}
+
+function wizShowMap(bloqueId) {
+  const url = getMapUrl(bloqueId);
+  const wrap = document.getElementById('wizMap');
+  if (!url || !wrap) return;
+  const img = document.getElementById('wizMapImg');
+  img.src = url;
+  wrap.style.display = 'flex';
+  wrap.onclick = () => openLightbox(url);
+}
+
+function wizHideMap() {
+  const wrap = document.getElementById('wizMap');
+  if (wrap) wrap.style.display = 'none';
 }
 
 function wizInit() { /* DB loaded in init(); wizard renders on category select */ }
@@ -1826,6 +1844,7 @@ function wizMakeBtn(name, sub) {
 }
 
 function wizRenderRegions() {
+  wizHideMap();
   if (!wizDB || !wizDB.regiones) {
     wizSetQ('Cargando…', '');
     document.getElementById('wizGrid').innerHTML = '';
@@ -1841,6 +1860,7 @@ function wizRenderRegions() {
 }
 
 function wizRenderZonas() {
+  wizHideMap();
   wizSetQ('Paso 2 · Zona', '¿En qué zona de ' + wizRegion.nombre + '?');
   const cols = wizRegion.zonas.length <= 3 ? 'g2' : 'gauto';
   const g = wizGetGrid(cols);
@@ -1854,6 +1874,7 @@ function wizRenderZonas() {
 
 function wizRenderBloques() {
   wizSetQ('Paso 3 · Bloque', '¿Qué bloque dentro de ' + wizZona.nombre + '?');
+  wizShowMap(wizZona.bloques[0]?.id);
   const g = wizGetGrid('gauto');
   wizZona.bloques.forEach(b => {
     const btn = wizMakeBtn(b.numero + '. ' + b.nombre, b.pares.length + ' pares');
@@ -1864,6 +1885,7 @@ function wizRenderBloques() {
 
 function wizRenderPares() {
   wizSetQ('Paso 4 · Par', '¿Qué número de par?');
+  wizShowMap(wizBloque.id);
   document.getElementById('wizLabel').textContent = wizBloque.nombre + ' · ' + wizBloque.pares.length + ' pares';
   const g = wizGetGrid('g2');
   wizBloque.pares.forEach((parName, i) => {
@@ -1877,6 +1899,7 @@ function wizRenderResult() {
   const pairName = wizBloque.pares[wizPar];
   const path = wizRegion.nombre + ' › ' + wizZona.nombre + ' › ' + wizBloque.nombre;
   wizSetQ('✅ Par encontrado', '');
+  wizShowMap(wizBloque.id);
   document.getElementById('wizLabel').textContent = 'Par #' + (wizPar + 1);
 
   const g = document.getElementById('wizGrid');
