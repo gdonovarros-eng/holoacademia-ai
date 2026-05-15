@@ -4,7 +4,7 @@
     "icon": "🧲",
     "color": "#10b981",
     "dir": "pares_biomagneticos",
-    "paginas": 80,
+    "paginas": 7,
     "archivos": [
       "HOLOBIOMAGNETISMO_PARTE_1_p0032.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0033.jpg",
@@ -86,6 +86,41 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0109.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0110.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0111.jpg"
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0032.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0033.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0034.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0035.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0036.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0037.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0038.jpg"
+    ],
+    "mapas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0039.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0040.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0041.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0042.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0043.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0044.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0045.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0046.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0047.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0048.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0049.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0050.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0051.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0052.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0053.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0054.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0055.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0056.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0057.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0058.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0059.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0060.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0061.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0062.jpg"
     ]
   },
   "microbios": {
@@ -102,7 +137,17 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0029.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0030.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0031.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0025.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0026.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0027.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0028.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0029.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0030.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0031.jpg"
+    ],
+    "mapas": []
   },
   "holobiomag": {
     "label": "Holobiomagnético",
@@ -159,7 +204,58 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0157.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0158.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0159.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0112.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0113.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0114.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0115.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0116.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0117.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0118.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0119.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0120.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0121.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0122.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0123.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0124.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0125.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0126.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0127.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0128.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0129.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0130.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0131.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0132.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0133.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0134.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0135.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0136.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0137.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0138.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0139.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0140.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0141.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0142.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0143.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0144.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0145.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0146.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0147.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0148.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0149.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0150.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0151.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0152.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0153.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0154.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0155.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0156.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0157.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0158.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0159.jpg"
+    ],
+    "mapas": []
   },
   "flores_bach": {
     "label": "Flores de Bach",
@@ -216,7 +312,58 @@
       "FLORES_DE_BACH_p0027.jpg",
       "FLORES_DE_BACH_p0028.jpg",
       "FLORES_DE_BACH_p0029.jpg"
-    ]
+    ],
+    "tablas": [
+      "FLORES_DE_BACH_MODULO_3_p0001.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0002.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0003.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0004.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0005.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0006.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0007.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0008.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0009.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0010.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0011.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0012.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0013.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0014.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0015.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0016.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0017.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0018.jpg",
+      "FLORES_DE_BACH_MODULO_3_p0019.jpg",
+      "FLORES_DE_BACH_p0001.jpg",
+      "FLORES_DE_BACH_p0002.jpg",
+      "FLORES_DE_BACH_p0003.jpg",
+      "FLORES_DE_BACH_p0004.jpg",
+      "FLORES_DE_BACH_p0005.jpg",
+      "FLORES_DE_BACH_p0006.jpg",
+      "FLORES_DE_BACH_p0007.jpg",
+      "FLORES_DE_BACH_p0008.jpg",
+      "FLORES_DE_BACH_p0009.jpg",
+      "FLORES_DE_BACH_p0010.jpg",
+      "FLORES_DE_BACH_p0011.jpg",
+      "FLORES_DE_BACH_p0012.jpg",
+      "FLORES_DE_BACH_p0013.jpg",
+      "FLORES_DE_BACH_p0014.jpg",
+      "FLORES_DE_BACH_p0015.jpg",
+      "FLORES_DE_BACH_p0016.jpg",
+      "FLORES_DE_BACH_p0017.jpg",
+      "FLORES_DE_BACH_p0018.jpg",
+      "FLORES_DE_BACH_p0019.jpg",
+      "FLORES_DE_BACH_p0020.jpg",
+      "FLORES_DE_BACH_p0021.jpg",
+      "FLORES_DE_BACH_p0022.jpg",
+      "FLORES_DE_BACH_p0023.jpg",
+      "FLORES_DE_BACH_p0024.jpg",
+      "FLORES_DE_BACH_p0025.jpg",
+      "FLORES_DE_BACH_p0026.jpg",
+      "FLORES_DE_BACH_p0027.jpg",
+      "FLORES_DE_BACH_p0028.jpg",
+      "FLORES_DE_BACH_p0029.jpg"
+    ],
+    "mapas": []
   },
   "sales": {
     "label": "Sales de Schüssler",
@@ -237,7 +384,22 @@
       "PSICOSOMATRIX_p0017.jpg",
       "PSICOSOMATRIX_p0018.jpg",
       "PSICOSOMATRIX_p0019.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0089.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0098.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0199.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0203.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0222.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0229.jpg",
+      "PSICOSOMATRIX_p0014.jpg",
+      "PSICOSOMATRIX_p0015.jpg",
+      "PSICOSOMATRIX_p0016.jpg",
+      "PSICOSOMATRIX_p0017.jpg",
+      "PSICOSOMATRIX_p0018.jpg",
+      "PSICOSOMATRIX_p0019.jpg"
+    ],
+    "mapas": []
   },
   "vitaminas": {
     "label": "Vitaminas & Minerales",
@@ -251,7 +413,15 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0387.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0460.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0584.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0013.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0079.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0387.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0460.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0584.jpg"
+    ],
+    "mapas": []
   },
   "homeopatia": {
     "label": "Homeopatía",
@@ -276,7 +446,26 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0311.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0312.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0313.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0013.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0016.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0019.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0022.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0024.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0300.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0302.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0303.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0304.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0305.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0307.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0309.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0310.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0311.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0312.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0313.jpg"
+    ],
+    "mapas": []
   },
   "creencias": {
     "label": "Creencias",
@@ -289,7 +478,14 @@
       "PSICOSOMATRIX_p0015.jpg",
       "PSICOSOMATRIX_p0016.jpg",
       "PSICOSOMATRIX_p0017.jpg"
-    ]
+    ],
+    "tablas": [
+      "PSICOSOMATRIX_p0014.jpg",
+      "PSICOSOMATRIX_p0015.jpg",
+      "PSICOSOMATRIX_p0016.jpg",
+      "PSICOSOMATRIX_p0017.jpg"
+    ],
+    "mapas": []
   },
   "miedos": {
     "label": "Miedos & Fobias",
@@ -301,7 +497,13 @@
       "PSICOSOMATRIX_p0011.jpg",
       "PSICOSOMATRIX_p0025.jpg",
       "PSICOSOMATRIX_p0026.jpg"
-    ]
+    ],
+    "tablas": [
+      "PSICOSOMATRIX_p0011.jpg",
+      "PSICOSOMATRIX_p0025.jpg",
+      "PSICOSOMATRIX_p0026.jpg"
+    ],
+    "mapas": []
   },
   "chakras": {
     "label": "Chakras & Centros Energéticos",
@@ -317,7 +519,17 @@
       "HOLOBIOMAGNETISMO_PARTE_1_p0160.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0161.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0162.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0138.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0144.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0157.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0158.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0160.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0161.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0162.jpg"
+    ],
+    "mapas": []
   },
   "cinco_elementos": {
     "label": "5 Elementos MTC",
@@ -346,7 +558,30 @@
       "MANUAL_MTC1_p0008.jpg",
       "MANUAL_MTC1_p0009.jpg",
       "MANUAL_MTC1_p0010.jpg"
-    ]
+    ],
+    "tablas": [
+      "CURSO_MTC_1_p0001.jpg",
+      "CURSO_MTC_1_p0002.jpg",
+      "CURSO_MTC_1_p0003.jpg",
+      "CURSO_MTC_1_p0004.jpg",
+      "CURSO_MTC_1_p0005.jpg",
+      "CURSO_MTC_1_p0006.jpg",
+      "CURSO_MTC_1_p0007.jpg",
+      "CURSO_MTC_1_p0008.jpg",
+      "CURSO_MTC_1_p0009.jpg",
+      "CURSO_MTC_1_p0010.jpg",
+      "MANUAL_MTC1_p0001.jpg",
+      "MANUAL_MTC1_p0002.jpg",
+      "MANUAL_MTC1_p0003.jpg",
+      "MANUAL_MTC1_p0004.jpg",
+      "MANUAL_MTC1_p0005.jpg",
+      "MANUAL_MTC1_p0006.jpg",
+      "MANUAL_MTC1_p0007.jpg",
+      "MANUAL_MTC1_p0008.jpg",
+      "MANUAL_MTC1_p0009.jpg",
+      "MANUAL_MTC1_p0010.jpg"
+    ],
+    "mapas": []
   },
   "aminoacidos": {
     "label": "Aminoácidos & Enzimas",
@@ -357,7 +592,12 @@
     "archivos": [
       "HOLOBIOMAGNETISMO_PARTE_1_p0387.jpg",
       "HOLOBIOMAGNETISMO_PARTE_1_p0485.jpg"
-    ]
+    ],
+    "tablas": [
+      "HOLOBIOMAGNETISMO_PARTE_1_p0387.jpg",
+      "HOLOBIOMAGNETISMO_PARTE_1_p0485.jpg"
+    ],
+    "mapas": []
   },
   "sei": {
     "label": "SEI (Sanación Energética Integral)",
@@ -404,6 +644,47 @@
       "DIPLOMADO_SEI_2_p0017.jpg",
       "DIPLOMADO_SEI_2_p0018.jpg",
       "DIPLOMADO_SEI_2_p0019.jpg"
-    ]
+    ],
+    "tablas": [
+      "DIPLOMADO_SEI_1_p0001.jpg",
+      "DIPLOMADO_SEI_1_p0002.jpg",
+      "DIPLOMADO_SEI_1_p0003.jpg",
+      "DIPLOMADO_SEI_1_p0004.jpg",
+      "DIPLOMADO_SEI_1_p0005.jpg",
+      "DIPLOMADO_SEI_1_p0006.jpg",
+      "DIPLOMADO_SEI_1_p0007.jpg",
+      "DIPLOMADO_SEI_1_p0008.jpg",
+      "DIPLOMADO_SEI_1_p0009.jpg",
+      "DIPLOMADO_SEI_1_p0010.jpg",
+      "DIPLOMADO_SEI_1_p0011.jpg",
+      "DIPLOMADO_SEI_1_p0012.jpg",
+      "DIPLOMADO_SEI_1_p0013.jpg",
+      "DIPLOMADO_SEI_1_p0014.jpg",
+      "DIPLOMADO_SEI_1_p0015.jpg",
+      "DIPLOMADO_SEI_1_p0016.jpg",
+      "DIPLOMADO_SEI_1_p0017.jpg",
+      "DIPLOMADO_SEI_1_p0018.jpg",
+      "DIPLOMADO_SEI_1_p0019.jpg",
+      "DIPLOMADO_SEI_2_p0001.jpg",
+      "DIPLOMADO_SEI_2_p0002.jpg",
+      "DIPLOMADO_SEI_2_p0003.jpg",
+      "DIPLOMADO_SEI_2_p0004.jpg",
+      "DIPLOMADO_SEI_2_p0005.jpg",
+      "DIPLOMADO_SEI_2_p0006.jpg",
+      "DIPLOMADO_SEI_2_p0007.jpg",
+      "DIPLOMADO_SEI_2_p0008.jpg",
+      "DIPLOMADO_SEI_2_p0009.jpg",
+      "DIPLOMADO_SEI_2_p0010.jpg",
+      "DIPLOMADO_SEI_2_p0011.jpg",
+      "DIPLOMADO_SEI_2_p0012.jpg",
+      "DIPLOMADO_SEI_2_p0013.jpg",
+      "DIPLOMADO_SEI_2_p0014.jpg",
+      "DIPLOMADO_SEI_2_p0015.jpg",
+      "DIPLOMADO_SEI_2_p0016.jpg",
+      "DIPLOMADO_SEI_2_p0017.jpg",
+      "DIPLOMADO_SEI_2_p0018.jpg",
+      "DIPLOMADO_SEI_2_p0019.jpg"
+    ],
+    "mapas": []
   }
 }

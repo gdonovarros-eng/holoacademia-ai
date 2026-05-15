@@ -785,21 +785,17 @@ header h1 {
     </div>
     <div class="modal-body">
 
-      <!-- Body map -->
-      <section>
-        <div class="modal-section-title">🧍 Silueta de Referencia</div>
-        <div class="body-map-wrap">
-          <img src="/therapy-assets/manual_2024/page-039.png" alt="Silueta corporal" id="body-silhouette"
-               onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-          <div style="display:none;color:var(--muted);font-size:0.85rem;padding:20px;">
-            (Imagen de silueta no disponible)
-          </div>
+      <!-- Mapas de colocación (solo para categorías que los tengan) -->
+      <section id="mapas-section" style="display:none">
+        <div class="modal-section-title">🗺️ Mapas de Colocación</div>
+        <div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;">
+          <!-- populated by JS -->
         </div>
       </section>
 
       <!-- Instruction list -->
       <section>
-        <div class="modal-section-title">📋 Lista de Instrucciones</div>
+        <div class="modal-section-title">📋 Pares Confirmados — Instrucciones</div>
         <div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;">
           <!-- populated by JS -->
         </div>
@@ -912,9 +908,9 @@ function selectCategory(cat) {
   );
   document.getElementById('active-cat-label').textContent = `${cat.icon} ${cat.label}`;
 
-  // load images
+  // load images — usar solo las tablas de rastreo (no mapas ni interpretaciones)
   const catData = manifest[cat.key] || {};
-  const imgs = catData.archivos || [];
+  const imgs = catData.tablas || catData.archivos || [];
   activeImages = imgs;
   activeImageIdx = 0;
   renderImageStrip();
@@ -1113,7 +1109,45 @@ function updateBadge() {
 // ── FINALIZAR MODAL ───────────────────────────────────────────────────────
 function openModal() {
   buildInstructionList();
+  buildMapasGallery();
   document.getElementById('modal-overlay').classList.add('open');
+}
+
+function buildMapasGallery() {
+  // Collect mapas from all categories that have confirmed pairs
+  const catKeys = [...new Set(confirmedPairs
+    .filter(p => p._catKey)
+    .map(p => p._catKey)
+  )];
+
+  const allMapas = [];
+  catKeys.forEach(key => {
+    const catData = manifest[key] || {};
+    const mapas = catData.mapas || [];
+    mapas.forEach(filename => {
+      allMapas.push({ catDir: key, filename });
+    });
+  });
+
+  const section  = document.getElementById('mapas-section');
+  const gallery  = document.getElementById('mapas-gallery');
+
+  if (!allMapas.length) {
+    section.style.display = 'none';
+    return;
+  }
+
+  section.style.display = 'block';
+  gallery.innerHTML = '';
+  allMapas.forEach(({ catDir, filename }) => {
+    const url = `/tablas-assets/${catDir}/${filename}`;
+    const img = document.createElement('img');
+    img.src = url;
+    img.alt = filename;
+    img.style.cssText = 'width:100%;border-radius:8px;cursor:zoom-in;';
+    img.addEventListener('click', () => openLightbox(url, 0));
+    gallery.appendChild(img);
+  });
 }
 
 function closeModal() {
