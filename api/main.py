@@ -8,8 +8,18 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Optional
 
+from api.db import (
+    init_db, upsert_user, get_usage, try_consume,
+    sign_session, verify_session, PLAN_LIMITS, PLAN_NAMES,
+)
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEFAULT_CHUNKS_PATH = BASE_DIR / "data" / "chunks" / "library_chunks.jsonl"
+
+# DB en disco persistente de Render (/data) o local en desarrollo
+_DB_PATH = Path(os.getenv("DB_PATH", "/data/holoacademia.db"))
+if not _DB_PATH.parent.exists():
+    _DB_PATH = BASE_DIR / "holoacademia.db"
 THERAPY_STATIC_DIR = BASE_DIR / "api" / "static"
 PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
@@ -266,53 +276,75 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Control de acceso ─────────────────────────────────────────────────────────
-# EMBED_SECRET: token secreto compartido entre Wix y Render.
-# Configúralo como variable de entorno en Render Dashboard.
-# En Wix (Velo), pon ese mismo valor en la URL del iframe:
-#   https://holoacademia-ai.onrender.com/?embed=1&token=TU_SECRET
-# Sin token válido ni cookie de sesión → redirige al login de Wix.
-_EMBED_SECRET = os.getenv("EMBED_SECRET", "")
+# ── Control de acceso + sesión de usuario ─────────────────────────────────────
+# Variables de entorno en Render:
+#   EMBED_SECRET  — secreto compartido con Wix (requerido)
+#   LOGIN_URL     — URL de login en Wix (destino del redirect)
+#
+# URL del iframe en Wix Velo:
+#   https://holoacademia-ai.onrender.com/?embed=1&uid=WIX_UID&plan=elite_pro&token=EMBED_SECRET
+#
+# Flujo:
+#   1. Wix pasa uid + plan + token en la URL del iframe
+#   2. Middleware valida token, crea/actualiza usuario en DB, setea cookie firmada
+#   3. Navegación posterior usa la cookie — sin token en URL
+#   4. Acceso directo sin cookie/token → redirect a LOGIN_URL
+_EMBED_SECRET  = os.getenv("EMBED_SECRET", "")
 _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
-_LOGIN_REDIRECT = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
+_LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-# Rutas HTML protegidas (todo lo que el usuario ve en el browser)
 _PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo"}
+
+
+def _get_session_user(request: Request) -> tuple[str, str] | None:
+    """
+    Extract (user_id, plan) from the signed session cookie.
+    Returns None if missing or tampered.
+    """
+    cookie = request.cookies.get(_SESSION_COOKIE, "")
+    if not cookie or not _EMBED_SECRET:
+        return None
+    return verify_session(cookie, _EMBED_SECRET)
+
 
 @app.middleware("http")
 async def session_guard(request: Request, call_next):
     """
-    Bloquea acceso directo a las páginas HTML si no hay token o cookie válidos.
-    Las rutas de API, assets estáticos y health quedan libres.
+    Protege páginas HTML. En la primera carga (token en URL) crea/actualiza
+    el usuario en la DB y emite una cookie firmada con uid|plan.
+    Navegaciones posteriores usan la cookie.
+    APIs, assets y /health siempre pasan.
     """
-    # Sin secret configurado → modo desarrollo, pasa todo
     if not _EMBED_SECRET:
         return await call_next(request)
 
     path = request.url.path.rstrip("/") or "/"
-
-    # Solo proteger páginas HTML; APIs y assets pasan siempre
     if path not in _PROTECTED_PATHS:
         return await call_next(request)
 
     token  = request.query_params.get("token", "")
+    uid    = request.query_params.get("uid", "").strip()
+    plan   = request.query_params.get("plan", "holoconexion").strip()
     cookie = request.cookies.get(_SESSION_COOKIE, "")
 
-    token_ok  = bool(token)  and secrets.compare_digest(token,  _EMBED_SECRET)
-    cookie_ok = bool(cookie) and secrets.compare_digest(cookie, _EMBED_SECRET)
+    token_ok  = bool(token) and bool(uid) and secrets.compare_digest(token, _EMBED_SECRET)
+    cookie_ok = bool(cookie) and verify_session(cookie, _EMBED_SECRET) is not None
 
     if not token_ok and not cookie_ok:
-        # Sin autorización → redirige al login de Wix
         return RedirectResponse(_LOGIN_REDIRECT, status_code=302)
 
     response = await call_next(request)
 
     if token_ok:
-        # Token válido → renovar/crear cookie de sesión
+        # Primer acceso válido desde Wix — registrar/actualizar usuario
+        if plan not in PLAN_LIMITS:
+            plan = "holoconexion"
+        upsert_user(_DB_PATH, uid, plan)
+        signed = sign_session(uid, plan, _EMBED_SECRET)
         response.set_cookie(
             _SESSION_COOKIE,
-            _EMBED_SECRET,
+            signed,
             max_age=_SESSION_MAX_AGE,
             httponly=True,
             samesite="none",
@@ -334,8 +366,13 @@ if TABLAS_IMAGES_DIR.exists():
 
 @app.on_event("startup")
 async def warm_caches() -> None:
-    # Evita que un cold start pesado o una dependencia temporalmente inestable
-    # deje a Render sin levantar la app completa.
+    # Inicializar DB de usuarios (crea tablas si no existen)
+    try:
+        init_db(_DB_PATH)
+        logging.getLogger(__name__).info("Usage DB ready: %s", _DB_PATH)
+    except Exception as exc:
+        logging.getLogger(__name__).warning("Usage DB init failed: %s", exc)
+    # Evita que un cold start pesado deje a Render sin levantar la app completa.
     threading.Thread(target=_warm_caches_safe, name="warm-caches", daemon=True).start()
 
 
@@ -483,9 +520,51 @@ class ChatRequest(BaseModel):
     mode: str = Field(default="alumno")
 
 
+# ── Endpoints de uso ───────────────────────────────────────────────────────────
+
+@app.get("/api/usage", include_in_schema=False)
+async def api_usage(request: Request):
+    """Devuelve el uso mensual del usuario actual (para mostrar el contador en la UI)."""
+    from fastapi.responses import JSONResponse
+    sess = _get_session_user(request)
+    if not sess:
+        return JSONResponse({"error": "no_session"}, status_code=401)
+    user_id, _plan = sess
+    return JSONResponse(get_usage(_DB_PATH, user_id))
+
+
+# ── Chat con streaming + control de límites ────────────────────────────────────
+
+def _usage_blocked_stream(used: int, limit: int, plan: str):
+    """SSE stream que notifica al cliente que el límite mensual fue alcanzado."""
+    plan_name = PLAN_NAMES.get(plan, plan)
+    msg = (
+        f"⛔ **Límite mensual alcanzado**\n\n"
+        f"Has usado {used} de {limit} sesiones de este mes en tu plan **{plan_name}**.\n\n"
+        f"Actualiza tu suscripción en Holoacademia para continuar."
+    )
+    import json
+    yield f"data: {json.dumps({'token': msg})}\n\n"
+    yield "data: [DONE]\n\n"
+
+
 @app.post("/chat", include_in_schema=False)
-async def chat_endpoint(payload: ChatRequest) -> StreamingResponse:
+async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResponse:
     mode = payload.mode if payload.mode in ("terapeuta", "alumno", "pares") else "alumno"
+
+    # Verificar límite solo en el primer mensaje de la sesión (history vacío)
+    if not payload.history and _EMBED_SECRET:
+        sess = _get_session_user(request)
+        if sess:
+            user_id, plan = sess
+            allowed, used, limit = try_consume(_DB_PATH, user_id, mode)
+            if not allowed:
+                return StreamingResponse(
+                    _usage_blocked_stream(used, limit, plan),
+                    media_type="text/event-stream",
+                    headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+                )
+
     return StreamingResponse(
         stream_chat(payload.message, payload.history, mode),
         media_type="text/event-stream",

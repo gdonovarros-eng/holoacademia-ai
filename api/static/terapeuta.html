@@ -39,6 +39,11 @@
     margin: 0 auto;
   }
 
+  /* ── Badge de uso ── */
+  #usageBadge { padding: 4px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); }
+  #usageBadge.warn  { color: #f59e0b; border-color: rgba(245,158,11,0.4); }
+  #usageBadge.limit { color: #ef4444; border-color: rgba(239,68,68,0.4); }
+
   /* ── Modo embed (iframe en Wix) ── */
   body.embed-mode {
     background: transparent;
@@ -594,9 +599,23 @@
       <div class="header-title" id="headerTitle">Asistente Terapéutico Holoacadem-iA</div>
       <div class="header-sub" id="headerSub"></div>
     </div>
+    <div id="usageBadge" style="display:none;font-size:0.72rem;color:var(--muted);white-space:nowrap;"></div>
     <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
     <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
   </header>
+
+  <!-- Modal paywall (límite alcanzado) -->
+  <div class="modal-overlay hidden" id="modalPaywall" style="z-index:9999;">
+    <div class="modal-box" style="text-align:center;max-width:400px;">
+      <div style="font-size:2rem;margin-bottom:12px;">⛔</div>
+      <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Límite mensual alcanzado</div>
+      <div id="paywallMsg" style="font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:20px;"></div>
+      <a href="https://www.holoacademia.com/miembros" target="_top"
+         style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">
+        Ver planes →
+      </a>
+    </div>
+  </div>
 
   <!-- Modal de cierre de sesión -->
   <div class="modal-overlay hidden" id="modalCierre">
@@ -658,6 +677,41 @@
   const welcomeEl  = document.getElementById('welcome');
   const inputEl    = document.getElementById('inputField');
   const sendBtnEl  = document.getElementById('sendBtn');
+
+  // ── Control de uso mensual ───────────────────────────────────────────────────
+  (async function checkUsage() {
+    try {
+      const res = await fetch('/api/usage');
+      if (!res.ok) return;
+      const data = await res.json();
+      const u = data.usage?.terapeuta;
+      if (!u) return;
+      const badge = document.getElementById('usageBadge');
+      if (badge) {
+        const pct = u.limit > 0 ? u.used / u.limit : 1;
+        badge.textContent = `${u.used}/${u.limit} sesiones`;
+        badge.style.display = 'block';
+        if (!u.allowed) {
+          badge.classList.add('limit');
+          showPaywall(u.used, u.limit, data.plan_name);
+        } else if (pct >= 0.8) {
+          badge.classList.add('warn');
+        }
+      }
+    } catch(e) { /* sin sesión — no mostrar badge */ }
+  })();
+
+  function showPaywall(used, limit, planName) {
+    const el = document.getElementById('paywallMsg');
+    if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
+    const m = document.getElementById('modalPaywall');
+    if (m) m.classList.remove('hidden');
+    // Deshabilitar input
+    const inp = document.getElementById('inputField');
+    const btn = document.getElementById('sendBtn');
+    if (inp) { inp.disabled = true; inp.placeholder = 'Límite alcanzado — actualiza tu plan'; }
+    if (btn) btn.disabled = true;
+  }
 
   // ── Modo embed (iframe en Wix) ───────────────────────────────────────────────
   (function applyEmbedMode() {
