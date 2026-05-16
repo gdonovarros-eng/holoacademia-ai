@@ -374,8 +374,10 @@ async def warm_caches() -> None:
         logging.getLogger(__name__).info("Usage DB ready: %s", _DB_PATH)
     except Exception as exc:
         logging.getLogger(__name__).warning("Usage DB init failed: %s", exc)
-    # Evita que un cold start pesado deje a Render sin levantar la app completa.
-    threading.Thread(target=_warm_caches_safe, name="warm-caches", daemon=True).start()
+    # Pre-calentamiento desactivado en Starter (512 MB).
+    # Los caches se cargan lazy en la primera solicitud real.
+    # Para activarlo en un plan con más RAM: descomentar la línea siguiente.
+    # threading.Thread(target=_warm_caches_safe, name="warm-caches", daemon=True).start()
 
 
 @app.get("/health")
