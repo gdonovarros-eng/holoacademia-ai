@@ -2,12 +2,20 @@ services:
   - type: web
     name: holoacademia-ai
     runtime: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile
     dockerContext: .
     autoDeployTrigger: commit
     healthCheckPath: /health
+
+    # ── Disco persistente para SQLite (usuarios, sesiones) ──────────────────────
+    disk:
+      name: holoacademia-data
+      mountPath: /data
+      sizeGB: 1
+
     envVars:
+      # ── LLM ────────────────────────────────────────────────────────────────────
       - key: OPENAI_API_KEY
         sync: false
       - key: GROQ_API_KEY
@@ -16,12 +24,6 @@ services:
         value: groq
       - key: LLM_BASE_URL
         value: https://api.groq.com/openai/v1
-      - key: COURSE_ASSISTANT_USE_MODEL
-        value: "true"
-      - key: ACADEMIC_ASSISTANT_USE_MODEL
-        value: "true"
-      - key: THERAPEUTIC_ASSISTANT_USE_MODEL
-        value: "true"
       - key: OPENAI_MODEL
         value: openai/gpt-oss-20b
       - key: OPENAI_IMAGE_MODEL
@@ -32,3 +34,23 @@ services:
         value: "30"
       - key: OPENAI_REASONING_EFFORT
         value: high
+
+      # ── Motores IA ─────────────────────────────────────────────────────────────
+      - key: COURSE_ASSISTANT_USE_MODEL
+        value: "true"
+      - key: ACADEMIC_ASSISTANT_USE_MODEL
+        value: "true"
+      - key: THERAPEUTIC_ASSISTANT_USE_MODEL
+        value: "true"
+
+      # ── Auth / Sesiones (Wix embed) ─────────────────────────────────────────────
+      # Secreto compartido con Wix — generar con: python3 -c "import secrets; print(secrets.token_hex(32))"
+      - key: EMBED_SECRET
+        sync: false
+      # URL de login en Wix (a donde redirige si no hay sesión válida)
+      - key: LOGIN_URL
+        value: https://www.holoacademia.com/miembros
+
+      # ── Base de datos ───────────────────────────────────────────────────────────
+      - key: DB_PATH
+        value: /data/holoacademia.db
