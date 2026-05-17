@@ -301,6 +301,89 @@ async def datos_carta(nombre: str):
     )
 
 
+class TarotChatMessage(BaseModel):
+    role: str = Field(..., description="'user' o 'assistant'")
+    content: str = Field(..., description="Contenido del mensaje")
+
+
+class TarotChatRequest(BaseModel):
+    pregunta: str = Field(..., min_length=1, max_length=1000,
+                          description="Pregunta de seguimiento del consultante")
+    contexto_lectura: str = Field(..., description="Texto completo de la lectura original")
+    historial: list[TarotChatMessage] = Field(
+        default_factory=list,
+        description="Historial de mensajes anteriores del chat"
+    )
+
+
+@router.post("/chat-stream")
+async def chat_sobre_lectura(
+    payload: TarotChatRequest,
+    request: Request,
+):
+    """
+    Chat de seguimiento sobre una lectura de tarot completada.
+
+    El consultante puede hacer preguntas sobre las cartas, pedir más
+    profundidad sobre una posición específica, o explorar conexiones entre cartas.
+
+    Eventos SSE:
+      {"token": "..."} × N
+      [DONE]
+    """
+    import json
+
+    async def _stream():
+        try:
+            from api.tarot.engine import _get_llm_client
+
+            sistema = (
+                "Eres un tarotista terapéutico experto y acompañante de crecimiento personal. "
+                "El consultante acaba de recibir la siguiente lectura de tarot:\n\n"
+                f"---\n{payload.contexto_lectura}\n---\n\n"
+                "Responde sus preguntas de seguimiento con profundidad, calidez y precisión. "
+                "Mantén el tono terapéutico, simbólico y reflexivo. "
+                "Si preguntan por una carta específica, profundiza en su simbología y relación "
+                "con la pregunta original. Responde en español, en formato Markdown cuando sea útil."
+            )
+
+            messages = [{"role": "system", "content": sistema}]
+
+            # Agregar historial previo
+            for msg in payload.historial[-10:]:  # máximo 10 turnos de contexto
+                messages.append({"role": msg.role, "content": msg.content})
+
+            # Agregar la pregunta actual
+            messages.append({"role": "user", "content": payload.pregunta})
+
+            client, model = _get_llm_client()
+            stream = client.chat.completions.create(
+                model=model,
+                messages=messages,
+                temperature=0.72,
+                max_tokens=1500,
+                stream=True,
+                timeout=60.0,
+            )
+            for chunk in stream:
+                delta = chunk.choices[0].delta.content if chunk.choices else None
+                if delta:
+                    yield f"data: {json.dumps({'token': delta})}\n\n"
+
+            yield "data: [DONE]\n\n"
+
+        except Exception as e:
+            logger.exception("Tarot chat stream error: %s", e)
+            yield f"data: {json.dumps({'error': str(e)})}\n\n"
+            yield "data: [DONE]\n\n"
+
+    return StreamingResponse(
+        _stream(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
+
 @router.get("/health")
 async def tarot_health():
     """Verifica que el motor de tarot está disponible."""
