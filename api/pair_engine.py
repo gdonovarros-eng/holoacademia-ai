@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import asdict
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -12,7 +13,10 @@ ROOT = Path(__file__).resolve().parent.parent
 TEACHER_KNOWLEDGE_CACHE_PATH = ROOT / "data" / "teacher_knowledge_cache.json"
 
 
-teacher = TeacherKnowledge.from_cache(TEACHER_KNOWLEDGE_CACHE_PATH)
+@lru_cache(maxsize=1)
+def _get_teacher() -> TeacherKnowledge:
+    """Carga TeacherKnowledge lazy — solo cuando se necesita, no al importar."""
+    return TeacherKnowledge.from_cache(TEACHER_KNOWLEDGE_CACHE_PATH)
 
 
 ROUTE_PROTOCOL_PREFERENCES = {
@@ -75,7 +79,7 @@ def _suggest_protocols(release_routes: list[str]) -> list[dict[str, Any]]:
     matches: list[dict[str, Any]] = []
     for route in release_routes:
         for title in ROUTE_PROTOCOL_PREFERENCES.get(route, []):
-            protocol = teacher.find_protocol(title)
+            protocol = _get_teacher().find_protocol(title)
             if protocol:
                 matches.append(
                     {
@@ -101,7 +105,7 @@ def interpret_pairs(
         if not pair_query:
             continue
 
-        entry = teacher.find_pair(pair_query)
+        entry = _get_teacher().find_pair(pair_query)
         if not entry:
             interpreted_pairs.append(
                 {
