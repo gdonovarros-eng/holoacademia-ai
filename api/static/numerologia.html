@@ -1141,8 +1141,8 @@ elIndividual.form.addEventListener('submit', function(e) {
       elIndividual.btnCalcular.disabled     = false;
       elIndividual.btnCalcLabel.textContent = 'Recalcular Numeroscopio';
 
-      // Render pentagrama — try different shapes
-      var resumen = data.resumen || data;
+      // Render pentagrama — API devuelve {ok, datos: {resumen: {...}}}
+      var resumen = (data.datos && data.datos.resumen) || data.resumen || data;
       renderPentagrama({ resumen: resumen });
       elIndividual.pentaSection.classList.add('visible');
 
