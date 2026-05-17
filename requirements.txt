@@ -3,3 +3,9 @@ openai>=2.0.0,<3
 numpy>=1.26,<3
 python-dotenv>=1.0.1,<2
 uvicorn[standard]==0.30.6
+pytz>=2024.1
+
+# Astrología — requieren plan Render con ≥2 GB RAM (Standard)
+# Comentar si se despliega en Free/Starter para evitar OOM
+pyswisseph>=2.10.3
+kerykeion>=5.12.0

@@ -11,6 +11,11 @@ ENV OPENBLAS_NUM_THREADS=1
 ENV MKL_NUM_THREADS=1
 ENV NUMEXPR_NUM_THREADS=1
 
+# Build tools para compilar pyswisseph (extensión C)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc python3-dev libffi-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 

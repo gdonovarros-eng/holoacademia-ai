@@ -16,6 +16,7 @@ from typing import Optional
 
 warnings.filterwarnings("ignore")
 
+import pytz
 import swisseph as swe
 from kerykeion import AstrologicalSubject, NatalAspects
 
@@ -135,17 +136,20 @@ def _find_solar_return_jd(natal_sun_abs: float, year: int) -> float:
     Encuentra el JD exacto del retorno solar en 'year'.
     Usa swe.solcross_ut (efímeras suizas).
     """
-    # Punto de partida: ~60 días antes del posible retorno
-    approx_month = int((natal_sun_abs / 30)) + 1  # mes aproximado del signo solar
-    # Aproximación: buscar desde 1 Feb del año para garantizar cobertura
-    jd_start = swe.julday(year, 1, 15, 0.0)
+    # Punto de partida: ~60 días antes del mes solar del nativo
+    # Signo 1=Aries≈marzo, 2=Tauro≈abril... convertimos grado solar a mes calendario
+    approx_sign = int(natal_sun_abs / 30)  # 0=Aries, 1=Tauro, ...
+    # Mes calendario aproximado: Aries→marzo(3), Tauro→abril(4)...
+    approx_month = ((approx_sign + 2) % 12) + 1  # desfase zodíaco→calendario
+    start_month = max(1, approx_month - 2)
+    jd_start = swe.julday(year, start_month, 1, 0.0)
     try:
         sr_jd = swe.solcross_ut(natal_sun_abs, jd_start, swe.FLG_SWIEPH)
         # Verificar que caiga en el año correcto
         yr, *_ = swe.revjul(sr_jd)
         if yr != year:
-            # Intentar con inicio en año anterior
-            jd_start2 = swe.julday(year - 1, 10, 1, 0.0)
+            # Buscar desde 2 meses antes en el año anterior
+            jd_start2 = swe.julday(year - 1, max(1, start_month - 1), 1, 0.0)
             sr_jd = swe.solcross_ut(natal_sun_abs, jd_start2, swe.FLG_SWIEPH)
         return sr_jd
     except Exception:
@@ -171,6 +175,19 @@ def _jd_to_utc(jd: float) -> tuple[int, int, int, int, int]:
     h = int(hr)
     m = int((hr - h) * 60)
     return int(yr), int(mo), int(dy), h, m
+
+
+def _jd_to_local(jd: float, tz_str: str) -> tuple[int, int, int, int, int]:
+    """Convierte JD a hora LOCAL en la zona horaria dada (para kerykeion)."""
+    yr, mo, dy, hr = swe.revjul(jd)
+    h = int(hr)
+    m = int((hr - h) * 60)
+    s = int(((hr - h) * 60 - m) * 60)
+    utc_dt = datetime.datetime(int(yr), int(mo), int(dy), h, m, s,
+                                tzinfo=datetime.timezone.utc)
+    local_tz = pytz.timezone(tz_str)
+    local_dt = utc_dt.astimezone(local_tz)
+    return local_dt.year, local_dt.month, local_dt.day, local_dt.hour, local_dt.minute
 
 
 # ─── Cálculo de carta con kerykeion ──────────────────────────────────────────────
@@ -277,10 +294,8 @@ def get_solar_return(
     El lugar puede ser nacimiento o residencia actual.
     """
     sr_jd = _find_solar_return_jd(natal_sun_abs, sr_year)
-    yr, mo, dy, h, m = _jd_to_utc(sr_jd)
-
-    # kerykeion recibe hora local; convertimos UTC aproximado a local
-    # (para producción: usar pytz para conversión exacta)
+    # kerykeion espera hora LOCAL — convertimos UTC→local con pytz
+    yr, mo, dy, h, m = _jd_to_local(sr_jd, tz_str)
     subj = _kerykeion_subject(nombre, yr, mo, dy, h, m, lat, lng, tz_str)
     data = _extract_chart_data(subj, "rs")
     data["jd"] = round(sr_jd, 6)
@@ -303,8 +318,7 @@ def get_rsp(
     natal_sun_rsp = (natal_sun_abs + correccion_deg) % 360
 
     rsp_jd = _find_solar_return_jd(natal_sun_rsp, sr_year)
-    yr, mo, dy, h, m = _jd_to_utc(rsp_jd)
-
+    yr, mo, dy, h, m = _jd_to_local(rsp_jd, tz_str)
     subj = _kerykeion_subject(nombre, yr, mo, dy, h, m, lat, lng, tz_str)
     data = _extract_chart_data(subj, "rsp")
     data["correccion_arcseg"] = round(correccion_deg * 3600, 2)
@@ -327,29 +341,27 @@ def get_mensal(
     sr_dt = datetime.date.fromisoformat(sr_date)
     jd_start = swe.julday(sr_dt.year, sr_dt.month, sr_dt.day, 12.0)
 
-    # Buscar el próximo retorno lunar a la posición de RS
+    # Buscar el próximo retorno lunar exacto usando mooncross_ut
+    # La Luna regresa ~cada 27.32 días; iteramos meses sidéreos hasta encontrar
+    # una fecha >= hoy
     best_jd = None
-    best_diff = 999.0
-    for i in range(400):  # ~400 * 0.1 días = ~40 días de búsqueda
-        jd = jd_start + i * 0.1
-        yr, mo, dy, _ = swe.revjul(jd)
-        check_date = datetime.date(int(yr), int(mo), int(dy))
-        if check_date < today:
-            continue
-        pos, _ = swe.calc_ut(jd, swe.MOON)
-        diff = abs(pos[0] - sr_moon_abs)
-        if diff > 180:
-            diff = 360 - diff
-        if diff < best_diff:
-            best_diff = diff
-            best_jd = jd
-        if diff < 0.5 and best_diff < 0.5:
+    jd_search = jd_start
+    for _ in range(14):  # máx ~14 meses sidéreos = ~1 año
+        try:
+            candidate_jd = swe.mooncross_ut(sr_moon_abs, jd_search, swe.FLG_SWIEPH)
+        except Exception:
+            candidate_jd = jd_search + 27.32
+        yr_c, mo_c, dy_c, _ = swe.revjul(candidate_jd)
+        candidate_date = datetime.date(int(yr_c), int(mo_c), int(dy_c))
+        if candidate_date >= today:
+            best_jd = candidate_jd
             break
+        jd_search = candidate_jd + 1.0  # avanzar un día para buscar el siguiente
 
     if best_jd is None:
         best_jd = jd_start + 27.32
 
-    yr, mo, dy, h, m = _jd_to_utc(best_jd)
+    yr, mo, dy, h, m = _jd_to_local(best_jd, tz_str)
     subj = _kerykeion_subject(nombre, yr, mo, dy, h, m, lat, lng, tz_str)
     data = _extract_chart_data(subj, "mensal")
     data["jd"] = round(best_jd, 6)
@@ -359,8 +371,9 @@ def get_mensal(
 def get_transits_today(
     lat: float, lng: float, tz_str: str,
 ) -> dict:
-    """Posiciones planetarias actuales (tránsitos del día)."""
-    now = datetime.datetime.utcnow()
+    """Posiciones planetarias actuales (tránsitos del día) en hora local."""
+    local_tz = pytz.timezone(tz_str)
+    now = datetime.datetime.now(tz=local_tz)
     subj = _kerykeion_subject(
         "Tránsitos", now.year, now.month, now.day, now.hour, now.minute,
         lat, lng, tz_str,
