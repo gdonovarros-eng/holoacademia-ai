@@ -49,6 +49,7 @@ from api.routes.protocols import router as protocols_router
 from api.routes.therapeutic import router as therapeutic_router
 from api.routes.astro import router as astro_router
 from api.routes.numerology import router as numerology_router
+from api.routes.tarot import router as tarot_router
 from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
 from api.therapy_reasoner import build_therapy_reasoning
@@ -271,6 +272,7 @@ app.include_router(protocols_router)
 app.include_router(therapeutic_router)
 app.include_router(astro_router)
 app.include_router(numerology_router)
+app.include_router(tarot_router)
 
 app.add_middleware(
     CORSMiddleware,
@@ -298,7 +300,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -551,6 +553,10 @@ async def salud_app() -> FileResponse:
 @app.get("/numerologia", include_in_schema=False)
 async def numerologia_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "numerologia.html", headers=_no_cache_headers(allow_iframe=True))
+
+@app.get("/tarot", include_in_schema=False)
+async def tarot_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "tarot.html", headers=_no_cache_headers(allow_iframe=True))
 
 
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────
