@@ -2,17 +2,11 @@ services:
   - type: web
     name: holoacademia-ai
     runtime: docker
-    plan: starter
+    plan: free
     dockerfilePath: ./Dockerfile
     dockerContext: .
     autoDeployTrigger: commit
     healthCheckPath: /health
-
-    # ── Disco persistente para SQLite (usuarios, sesiones) ──────────────────────
-    disk:
-      name: holoacademia-data
-      mountPath: /data
-      sizeGB: 1
 
     envVars:
       # ── LLM ────────────────────────────────────────────────────────────────────
@@ -44,13 +38,7 @@ services:
         value: "true"
 
       # ── Auth / Sesiones (Wix embed) ─────────────────────────────────────────────
-      # Secreto compartido con Wix — generar con: python3 -c "import secrets; print(secrets.token_hex(32))"
       - key: EMBED_SECRET
         sync: false
-      # URL de login en Wix (a donde redirige si no hay sesión válida)
       - key: LOGIN_URL
         value: https://www.holoacademia.com/miembros
-
-      # ── Base de datos ───────────────────────────────────────────────────────────
-      - key: DB_PATH
-        value: /data/holoacademia.db
