@@ -97,9 +97,10 @@ def _get_essential_dignity(planet_name: str, sign: str) -> str:
         "jupiter": {"Sagitario": "domicilio", "Piscis": "domicilio"},
         "saturn": {"Capricornio": "domicilio", "Acuario": "domicilio"},
         # Exaltación
+        # Nota: mercury_ex (Virgo) se omite — Virgo ya es domicilio de Mercurio
+        # y domicilio tiene precedencia (se evalúa primero en el loop de checks).
         "sun_ex": {"Aries": "exaltación"},
         "moon_ex": {"Tauro": "exaltación"},
-        "mercury_ex": {"Virgo": "exaltación"},
         "venus_ex": {"Piscis": "exaltación"},
         "mars_ex": {"Capricornio": "exaltación"},
         "jupiter_ex": {"Cáncer": "exaltación"},
@@ -113,9 +114,10 @@ def _get_essential_dignity(planet_name: str, sign: str) -> str:
         "jupiter_det": {"Géminis": "detrimento", "Virgo": "detrimento"},
         "saturn_det": {"Cáncer": "detrimento", "Leo": "detrimento"},
         # Caída
+        # Nota: mercury_cai (Piscis) se omite — Piscis ya es detrimento de Mercurio
+        # y detrimento tiene precedencia (se evalúa primero en el loop de checks).
         "sun_cai": {"Libra": "caída"},
         "moon_cai": {"Escorpio": "caída"},
-        "mercury_cai": {"Piscis": "caída"},
         "venus_cai": {"Virgo": "caída"},
         "mars_cai": {"Cáncer": "caída"},
         "jupiter_cai": {"Capricornio": "caída"},
