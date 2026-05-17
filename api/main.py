@@ -382,6 +382,13 @@ async def warm_caches() -> None:
 
 @app.get("/health")
 async def health() -> dict:
+    """Health check ligero — solo confirma que el proceso está vivo."""
+    return {"ok": True, "status": "up"}
+
+
+@app.get("/health/full")
+async def health_full() -> dict:
+    """Health check completo — carga KB, assistant y teacher memory."""
     kb = get_knowledge_base()
     assistant = get_assistant()
     teacher_memory = get_teacher_memory()
