@@ -334,6 +334,21 @@ async def session_guard(request: Request, call_next):
     cookie_ok = bool(cookie) and verify_session(cookie, _EMBED_SECRET) is not None
 
     if not token_ok and not cookie_ok:
+        # Si viene desde un iframe embed, mostrar página inline en vez de redirigir
+        if request.query_params.get("embed") == "1" or request.cookies.get("embed_hint") == "1":
+            from fastapi.responses import HTMLResponse
+            html = (
+                "<!DOCTYPE html><html><head><meta charset='utf-8'>"
+                "<style>body{font-family:sans-serif;display:flex;align-items:center;"
+                "justify-content:center;height:100vh;margin:0;background:#f5f0ff;}"
+                ".box{text-align:center;padding:2rem;}"
+                "h2{color:#6b21a8;}p{color:#555;}a{color:#7c3aed;}"
+                "</style></head><body><div class='box'>"
+                "<h2>🔒 Acceso restringido</h2>"
+                "<p>Por favor <a href='" + _LOGIN_REDIRECT + "' target='_top'>inicia sesión</a>"
+                " para acceder a Holoacadem-iA.</p></div></body></html>"
+            )
+            return HTMLResponse(html, status_code=200)
         return RedirectResponse(_LOGIN_REDIRECT, status_code=302)
 
     response = await call_next(request)
