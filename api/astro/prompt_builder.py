@@ -82,28 +82,97 @@ def _fmt_aspect(a: dict) -> str:
 
 
 def _detect_aspect_figures(aspectos: list[dict]) -> list[str]:
-    """Detecta figuras aspectuales presentes según el catálogo de Maciá."""
+    """
+    Detecta figuras aspectuales según el catálogo de Maciá.
+    Usa verificación de conectividad por grafo en lugar de simples conteos
+    para evitar falsos positivos (especialmente en Gran Sextil y Gran Trígono).
+    """
     figuras_detectadas = []
 
-    # Contar tipos de aspectos
+    # ── Conteos rápidos (prefiltro antes de chequeos de conectividad) ──────────
     tipos = [a["tipo"] for a in aspectos]
-    sq_count = tipos.count("square")
+    sq_count  = tipos.count("square")
     opp_count = tipos.count("opposition")
     tri_count = tipos.count("trine")
     sex_count = tipos.count("sextile")
     qui_count = tipos.count("quincunx")
     ssq_count = tipos.count("semisquare") + tipos.count("sesquisquare")
 
+    # ── Helper: grafo de vecinos por tipo de aspecto ───────────────────────────
+    def _grafo(tipo: str) -> dict:
+        g: dict = {}
+        for a in aspectos:
+            if a["tipo"] == tipo:
+                p1, p2 = a["planeta1"], a["planeta2"]
+                g.setdefault(p1, set()).add(p2)
+                g.setdefault(p2, set()).add(p1)
+        return g
+
+    # ── T Cuadrada ─────────────────────────────────────────────────────────────
+    # Apex A cuadra P1 y P2; P1 se opone a P2.
     if opp_count >= 1 and sq_count >= 2:
-        figuras_detectadas.append("T Cuadrada")
+        sq_g  = _grafo("square")
+        opp_g = _grafo("opposition")
+        for apex, sq_nbrs in sq_g.items():
+            sq_list = list(sq_nbrs)
+            for i in range(len(sq_list)):
+                for j in range(i + 1, len(sq_list)):
+                    if sq_list[j] in opp_g.get(sq_list[i], set()):
+                        figuras_detectadas.append("T Cuadrada")
+                        break
+                else:
+                    continue
+                break
+            if "T Cuadrada" in figuras_detectadas:
+                break
+
+    # ── Gran Cruz ──────────────────────────────────────────────────────────────
+    # Dos oposiciones + 4 cuadraturas que las conectan (figura más restrictiva).
     if opp_count >= 2 and sq_count >= 4:
         figuras_detectadas.append("Gran Cruz")
-    if tri_count >= 2 and sex_count >= 3:
-        figuras_detectadas.append("Gran Sextil")
+
+    # ── Gran Trígono ───────────────────────────────────────────────────────────
+    # Tres planetas A-B-C mutuamente en trígono.
     if tri_count >= 3:
-        figuras_detectadas.append("Gran Trígono")
+        tri_g = _grafo("trine")
+        for a, nbrs_a in tri_g.items():
+            for b in nbrs_a:
+                # ¿Existe C en trígono con A y B (y C ≠ A)?
+                if tri_g.get(b, set()) & nbrs_a - {a}:
+                    figuras_detectadas.append("Gran Trígono")
+                    break
+            if "Gran Trígono" in figuras_detectadas:
+                break
+
+    # ── Gran Sextil ────────────────────────────────────────────────────────────
+    # 6 planetas en hexágono: 6 sextiles + 6 trígonos (2 Gran Trígonos) + 3 opos.
+    # Condición mínima real: sex_count >= 6, tri_count >= 6, opp_count >= 3.
+    # Usamos sex_count >= 6 + al menos 6 nodos con ≥ 2 vecinos en sextil.
+    if sex_count >= 6 and tri_count >= 6 and opp_count >= 3:
+        sex_g = _grafo("sextile")
+        hex_nodes = [p for p, nbrs in sex_g.items() if len(nbrs) >= 2]
+        if len(hex_nodes) >= 6:
+            figuras_detectadas.append("Gran Sextil")
+
+    # ── Dedo de Dios (Yod) ─────────────────────────────────────────────────────
+    # Apex con 2 quincunces; los dos planetas base en sextil entre sí.
     if qui_count >= 2 and sex_count >= 1:
-        figuras_detectadas.append("Dedo de Dios")
+        qui_g = _grafo("quincunx")
+        sex_g = _grafo("sextile")
+        for apex, qui_nbrs in qui_g.items():
+            qui_list = list(qui_nbrs)
+            for i in range(len(qui_list)):
+                for j in range(i + 1, len(qui_list)):
+                    if qui_list[j] in sex_g.get(qui_list[i], set()):
+                        figuras_detectadas.append("Dedo de Dios")
+                        break
+                else:
+                    continue
+                break
+            if "Dedo de Dios" in figuras_detectadas:
+                break
+
+    # ── Figuras de conteo (menos propensas a falsos positivos) ─────────────────
     if ssq_count >= 4:
         figuras_detectadas.append("Semicuadrado Cósmico")
     if qui_count >= 4:
