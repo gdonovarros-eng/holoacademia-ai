@@ -8,14 +8,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #08090f;
-  --surface:   #0f1117;
-  --surface2:  #151821;
-  --border:    rgba(255,255,255,0.07);
-  --border2:   rgba(255,255,255,0.12);
-  --text:      #f0f2f8;
-  --muted:     #7a8099;
-  --muted2:    #50566e;
+  --bg:        #f2f3f6;
+  --surface:   #ffffff;
+  --surface2:  #f7f8fa;
+  --border:    rgba(0,0,0,0.07);
+  --border2:   rgba(0,0,0,0.12);
+  --text:      #1a1d27;
+  --muted:     #6b7280;
+  --muted2:    #9ca3af;
   --radius:    14px;
 
   /* accents */
@@ -23,9 +23,9 @@
   --indigo:    #6366f1;
   --violet:    #8b5cf6;
   --purple:    #a855f7;
-  --teal:      #14b8a6;
-  --gold:      #f59e0b;
-  --rose:      #f43f5e;
+  --teal:      #0d9488;
+  --gold:      #d97706;
+  --rose:      #e11d48;
   --sky:       #0ea5e9;
 }
 
@@ -49,7 +49,7 @@ body.embed-mode .page-footer { display: none; }
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
-  background: rgba(8,9,15,0.92);
+  background: rgba(242,243,246,0.92);
   backdrop-filter: blur(16px);
   z-index: 100;
 }
@@ -68,7 +68,7 @@ body.embed-mode .page-footer { display: none; }
   letter-spacing: -0.01em;
   color: var(--text);
 }
-.header-name span { color: var(--blue); }
+.header-name span { color: var(--indigo); }
 .header-badge {
   font-size: 0.62rem;
   font-weight: 700;
@@ -104,7 +104,7 @@ body.embed-mode .page-footer { display: none; }
 }
 .hero h1 em {
   font-style: normal;
-  background: linear-gradient(90deg, var(--blue), var(--violet));
+  background: linear-gradient(90deg, #2563eb, #7c3aed);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,20 +155,21 @@ body.embed-mode .page-footer { display: none; }
   position: relative;
   overflow: hidden;
   transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
 }
 .tool-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
-  height: 2px;
+  height: 3px;
   border-radius: var(--radius) var(--radius) 0 0;
   background: var(--card-accent, var(--blue));
-  opacity: 0.7;
+  opacity: 0.55;
   transition: opacity 0.18s;
 }
 .tool-card:hover {
-  border-color: var(--card-border-hover, rgba(255,255,255,0.14));
-  box-shadow: 0 8px 32px var(--card-glow, rgba(59,130,246,0.1));
+  border-color: var(--card-border-hover, rgba(0,0,0,0.14));
+  box-shadow: 0 8px 28px var(--card-glow, rgba(59,130,246,0.1));
   transform: translateY(-3px);
 }
 .tool-card:hover::before { opacity: 1; }
@@ -206,19 +207,18 @@ body.embed-mode .page-footer { display: none; }
 .tool-card:hover .card-cta { gap: 8px; }
 
 /* Per-card color tokens */
-.c-sinodal  { --card-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --card-color:#60a5fa; --card-border-hover:rgba(59,130,246,0.28); --card-glow:rgba(59,130,246,0.12); }
-.c-rastreo  { --card-accent: linear-gradient(90deg,#6366f1,#818cf8); --card-color:#818cf8; --card-border-hover:rgba(99,102,241,0.28); --card-glow:rgba(99,102,241,0.12); }
-.c-pares    { --card-accent: linear-gradient(90deg,#8b5cf6,#a78bfa); --card-color:#a78bfa; --card-border-hover:rgba(139,92,246,0.28); --card-glow:rgba(139,92,246,0.12); }
-.c-terapia  { --card-accent: linear-gradient(90deg,#a855f7,#c084fc); --card-color:#c084fc; --card-border-hover:rgba(168,85,247,0.28); --card-glow:rgba(168,85,247,0.12); }
-.c-salud    { --card-accent: linear-gradient(90deg,#14b8a6,#2dd4bf); --card-color:#2dd4bf; --card-border-hover:rgba(20,184,166,0.28); --card-glow:rgba(20,184,166,0.12); }
-.c-astro    { --card-accent: linear-gradient(90deg,#f59e0b,#fbbf24); --card-color:#fbbf24; --card-border-hover:rgba(245,158,11,0.35); --card-glow:rgba(245,158,11,0.12); }
-.c-numerologia { --card-accent: linear-gradient(90deg,#f43f5e,#fb7185); --card-color:#fb7185; --card-border-hover:rgba(244,63,94,0.28); --card-glow:rgba(244,63,94,0.12); }
-.c-tarot    { --card-accent: linear-gradient(90deg,#a855f7,#e879f9); --card-color:#e879f9; --card-border-hover:rgba(232,121,249,0.28); --card-glow:rgba(232,121,249,0.12); }
-.c-util     { --card-accent: var(--border2); --card-color:var(--muted); --card-border-hover:rgba(255,255,255,0.12); --card-glow:rgba(0,0,0,0); }
+.c-sinodal  { --card-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --card-color:#2563eb; --card-border-hover:rgba(59,130,246,0.22); --card-glow:rgba(59,130,246,0.08); }
+.c-rastreo  { --card-accent: linear-gradient(90deg,#6366f1,#818cf8); --card-color:#4f46e5; --card-border-hover:rgba(99,102,241,0.22); --card-glow:rgba(99,102,241,0.08); }
+.c-pares    { --card-accent: linear-gradient(90deg,#8b5cf6,#a78bfa); --card-color:#7c3aed; --card-border-hover:rgba(139,92,246,0.22); --card-glow:rgba(139,92,246,0.08); }
+.c-terapia  { --card-accent: linear-gradient(90deg,#a855f7,#c084fc); --card-color:#9333ea; --card-border-hover:rgba(168,85,247,0.22); --card-glow:rgba(168,85,247,0.08); }
+.c-salud    { --card-accent: linear-gradient(90deg,#0d9488,#14b8a6); --card-color:#0d9488; --card-border-hover:rgba(13,148,136,0.22); --card-glow:rgba(13,148,136,0.08); }
+.c-astro    { --card-accent: linear-gradient(90deg,#d97706,#f59e0b); --card-color:#b45309; --card-border-hover:rgba(217,119,6,0.25); --card-glow:rgba(217,119,6,0.08); }
+.c-numerologia { --card-accent: linear-gradient(90deg,#e11d48,#f43f5e); --card-color:#be123c; --card-border-hover:rgba(225,29,72,0.22); --card-glow:rgba(225,29,72,0.08); }
+.c-tarot    { --card-accent: linear-gradient(90deg,#a855f7,#d946ef); --card-color:#9333ea; --card-border-hover:rgba(168,85,247,0.22); --card-glow:rgba(168,85,247,0.08); }
 
-/* Astrology card — premium treatment */
+/* Astrology card — subtle warm parchment */
 .c-astro {
-  background: linear-gradient(145deg, #0f1117, #141208);
+  background: #fffef9;
 }
 
 /* ── UTILITY CARDS (compact row) ── */
@@ -240,8 +240,9 @@ body.embed-mode .page-footer { display: none; }
   transition: border-color 0.15s, background 0.15s;
 }
 .util-card:hover {
-  border-color: var(--border2);
+  border-color: rgba(0,0,0,0.14);
   background: var(--surface);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
 }
 .util-info { flex: 1; min-width: 0; }
 .util-name {
