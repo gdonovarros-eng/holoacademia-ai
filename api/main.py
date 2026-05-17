@@ -300,7 +300,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/terapias"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -557,6 +557,11 @@ async def numerologia_app() -> FileResponse:
 @app.get("/tarot", include_in_schema=False)
 async def tarot_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "tarot.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/terapias", include_in_schema=False)
+async def terapias_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "terapias.html", headers=_no_cache_headers())
 
 
 # ── Legacy routes (mantener compatibilidad) ────────────────────────────────────

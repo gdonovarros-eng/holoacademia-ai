@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Rastreo · Terapias Complementarias</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --primary: #1a4d6b; --secondary: #2c7ba0; --teal: #00897b;
+    --homeo: #c0392b; --semi: #e74c3c; --bach: #8e44ad; --schussler: #2980b9;
+    --medical: #2e7d32; --warning: #d84315; --accent: #f57c00;
+    --bg: #f5f7fa; --card: white; --text: #2c3e50;
+    --border: #e0e6ed; --shadow: 0 2px 8px rgba(0,0,0,0.06);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+}
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    background: var(--bg); color: var(--text); line-height: 1.5;
+}
+
+.banner {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white; padding: 1.5rem 2rem; box-shadow: var(--shadow);
+}
+.banner h1 { font-size: 1.7rem; margin-bottom: 0.3rem; }
+.banner .subtitle { opacity: 0.9; }
+.banner .stats { display: flex; gap: 1.2rem; margin-top: 0.9rem; flex-wrap: wrap; }
+.banner .stats > div {
+    background: rgba(255,255,255,0.15); padding: 0.4rem 0.9rem;
+    border-radius: 6px; font-size: 0.9rem;
+}
+.banner .stats strong { font-size: 1.15rem; }
+
+.tabs {
+    background: var(--card); display: flex; gap: 0; padding: 0 2rem;
+    box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100;
+    overflow-x: auto; flex-wrap: nowrap;
+}
+.tab {
+    padding: 1rem 1.3rem; cursor: pointer; border-bottom: 3px solid transparent;
+    color: #888; font-weight: 600; white-space: nowrap; transition: all 0.15s;
+    font-size: 0.95rem;
+}
+.tab:hover { color: var(--primary); background: #fafbfc; }
+.tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+.tab .count {
+    display: inline-block; margin-left: 6px; padding: 1px 7px; border-radius: 10px;
+    background: #f0f0f0; font-size: 0.72rem; font-weight: 700;
+}
+.tab.active .count { background: var(--primary); color: white; }
+.tab.manual { color: var(--accent); }
+.tab.manual.active { color: var(--accent); border-bottom-color: var(--accent); }
+.tab.proc { color: var(--medical); }
+.tab.proc.active { color: var(--medical); border-bottom-color: var(--medical); }
+.tab.ejemplo { color: var(--bach); }
+.tab.ejemplo.active { color: var(--bach); border-bottom-color: var(--bach); }
+
+.container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+.section-page { display: none; }
+.section-page.active { display: block; }
+
+.intro-card {
+    background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+    padding: 1.5rem 2rem; border-radius: 10px; margin-bottom: 1.5rem;
+    border-left: 5px solid var(--accent);
+}
+.intro-card h2 { color: #e65100; margin-bottom: 0.5rem; }
+.intro-card p { color: #5d4037; line-height: 1.6; }
+
+.seccion-bloque {
+    background: var(--card); border-radius: 10px; box-shadow: var(--shadow);
+    padding: 1.5rem; margin-bottom: 1rem; border-left: 5px solid var(--primary);
+}
+.seccion-bloque h3 { color: var(--primary); margin-bottom: 0.8rem; font-size: 1.15rem; }
+.seccion-bloque ul { padding-left: 1.5rem; }
+.seccion-bloque li { margin-bottom: 0.4rem; line-height: 1.5; }
+
+/* ==== USO POR TABLA ==== */
+.tabla-uso-card {
+    background: var(--card); border-radius: 10px; box-shadow: var(--shadow);
+    margin-bottom: 1.5rem; overflow: hidden;
+}
+.tabla-uso-header {
+    padding: 1rem 1.5rem; color: white; font-weight: 700; font-size: 1.1rem;
+}
+.tabla-uso-header.homeo { background: var(--homeo); }
+.tabla-uso-header.semi { background: var(--semi); }
+.tabla-uso-header.bach { background: var(--bach); }
+.tabla-uso-header.schussler { background: var(--schussler); }
+.tabla-uso-body { padding: 1.2rem 1.5rem; }
+.tabla-uso-body .label-mini {
+    font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--primary); font-weight: 700; margin-bottom: 0.3rem;
+}
+.tabla-uso-body .cuando { 
+    background: #fff8e1; padding: 0.7rem 1rem; border-radius: 6px;
+    border-left: 3px solid var(--accent); margin-bottom: 0.8rem;
+    font-size: 0.92rem; color: #5d4037;
+}
+.tabla-uso-body .estructura {
+    background: #e3f2fd; padding: 0.5rem 1rem; border-radius: 6px;
+    margin-bottom: 0.8rem; font-size: 0.88rem; color: #01579b;
+    font-family: 'Courier New', monospace;
+}
+.tabla-uso-body .nav-list { list-style: none; counter-reset: nav; padding-left: 0; }
+.tabla-uso-body .nav-list li {
+    counter-increment: nav; position: relative; padding-left: 2rem;
+    margin-bottom: 0.5rem; font-size: 0.92rem; line-height: 1.4;
+}
+.tabla-uso-body .nav-list li::before {
+    content: counter(nav); position: absolute; left: 0; top: 0;
+    background: var(--primary); color: white; width: 1.4rem; height: 1.4rem;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 700;
+}
+.tabla-uso-body .ejemplo-flecha {
+    background: #e8f5e9; padding: 0.7rem 1rem; border-radius: 6px;
+    border-left: 3px solid var(--medical); margin-top: 0.8rem;
+    font-size: 0.85rem; color: #1b5e20; font-family: 'Courier New', monospace;
+}
+
+/* ==== PROCEDIMIENTO INSERCIÓN ==== */
+.paso-card {
+    background: var(--card); border-radius: 10px; box-shadow: var(--shadow);
+    padding: 1.5rem; margin-bottom: 1.2rem; border-left: 5px solid var(--medical);
+    position: relative;
+}
+.paso-header {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;
+}
+.paso-numero {
+    width: 60px; height: 60px; border-radius: 50%; background: var(--medical);
+    color: white; display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; font-weight: 700; flex-shrink: 0;
+}
+.paso-titulo h3 { font-size: 1.2rem; color: var(--primary); }
+.paso-titulo .accion { font-size: 0.85rem; color: #888; font-style: italic; }
+.paso-detalle { color: #555; line-height: 1.6; margin-bottom: 0.8rem; }
+.mensaje-op {
+    background: #e8f5e9; padding: 1rem; border-radius: 6px;
+    border-left: 4px solid var(--medical); margin: 0.6rem 0;
+}
+.mensaje-op .label-msg {
+    font-size: 0.72rem; text-transform: uppercase; color: var(--medical);
+    font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.3rem;
+}
+.mensaje-op .texto-msg { color: var(--text); font-style: italic; font-size: 0.95rem; }
+.opcional-tag {
+    margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px dashed #aed581;
+    font-size: 0.85rem; color: #555;
+}
+.respuesta-badge {
+    display: inline-block; background: var(--accent); color: white;
+    padding: 4px 12px; border-radius: 12px; font-size: 0.8rem;
+    font-weight: 700; margin-left: 8px;
+}
+.secuencia-rastreo {
+    background: #f3e5f5; padding: 1rem; border-radius: 6px;
+    margin: 0.6rem 0;
+}
+.secuencia-rastreo h4 {
+    color: var(--bach); font-size: 0.9rem; margin-bottom: 0.5rem;
+    padding-bottom: 0.4rem; border-bottom: 1px solid #ce93d8;
+}
+.secuencia-rastreo ol { padding-left: 1.5rem; }
+.secuencia-rastreo li { margin-bottom: 0.4rem; font-size: 0.9rem; color: #4a148c; line-height: 1.5; }
+
+.subpaso {
+    background: #fafbfc; padding: 0.8rem 1rem; border-radius: 6px;
+    border-left: 3px solid var(--teal); margin: 0.5rem 0;
+}
+.subpaso .letra {
+    display: inline-block; background: var(--teal); color: white;
+    padding: 1px 8px; border-radius: 8px; font-size: 0.75rem;
+    font-weight: 700; margin-right: 6px;
+}
+.subpaso .nombre-sub { font-weight: 600; color: var(--teal); font-size: 0.92rem; }
+.subpaso .desc-sub { font-size: 0.88rem; color: #555; line-height: 1.5; margin-top: 0.3rem; }
+
+.inserto-box {
+    background: linear-gradient(135deg, #e1f5fe, #b3e5fc);
+    padding: 1rem 1.2rem; border-radius: 8px; border-left: 4px solid #0288d1;
+    margin: 0.6rem 0; font-family: 'Courier New', monospace;
+}
+.inserto-box .label-ins {
+    font-size: 0.72rem; text-transform: uppercase; color: #01579b;
+    font-weight: 700; letter-spacing: 0.5px; margin-bottom: 0.3rem;
+    font-family: -apple-system, sans-serif;
+}
+.inserto-box .formato {
+    font-weight: 600; color: #0277bd; font-size: 0.95rem; margin-bottom: 0.5rem;
+}
+.inserto-box .ejemplo-ins {
+    background: white; padding: 0.6rem 0.8rem; border-radius: 4px;
+    font-size: 0.85rem; color: #01579b; border-left: 2px solid #0288d1;
+    margin-top: 0.4rem;
+}
+
+.alert-si-no {
+    background: #fff3e0; padding: 0.7rem 1rem; border-radius: 6px;
+    border-left: 3px solid var(--accent); margin-top: 0.6rem;
+    font-size: 0.88rem; color: #5d4037;
+}
+
+/* ==== EJEMPLO CONSULTA ==== */
+.consulta-caso {
+    background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+    padding: 1.2rem 1.5rem; border-radius: 10px; margin-bottom: 1.2rem;
+    border-left: 5px solid var(--bach);
+}
+.consulta-caso h3 { color: #4a148c; margin-bottom: 0.5rem; }
+.consulta-caso p { color: #6a1b9a; font-style: italic; line-height: 1.5; }
+
+.dialogo-table {
+    width: 100%; border-collapse: collapse; background: white;
+    border-radius: 8px; overflow: hidden; box-shadow: var(--shadow);
+    margin-bottom: 1rem;
+}
+.dialogo-table th {
+    background: var(--bach); color: white; padding: 0.7rem;
+    text-align: left; font-size: 0.85rem;
+}
+.dialogo-table td {
+    padding: 0.6rem 0.8rem; border-bottom: 1px solid #eee;
+    font-size: 0.88rem; vertical-align: top;
+}
+.dialogo-table tr:last-child td { border-bottom: none; }
+.dialogo-table tr.nota td {
+    background: #fff8e1; font-style: italic; color: #5d4037; font-size: 0.82rem;
+}
+.dialogo-table .paso-tag {
+    background: #e3f2fd; color: #01579b; padding: 2px 8px;
+    border-radius: 8px; font-size: 0.72rem; font-weight: 600;
+    font-family: monospace; white-space: nowrap;
+}
+.dialogo-table .resp-si {
+    background: #c8e6c9; color: #1b5e20; padding: 2px 8px;
+    border-radius: 8px; font-size: 0.75rem; font-weight: 700;
+}
+.dialogo-table .resp-no {
+    background: #ffcdd2; color: #b71c1c; padding: 2px 8px;
+    border-radius: 8px; font-size: 0.75rem; font-weight: 700;
+}
+
+.resumen-final {
+    background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+    padding: 1.2rem 1.5rem; border-radius: 10px; margin-top: 1rem;
+    border-left: 5px solid var(--medical);
+}
+.resumen-final h4 { color: #1b5e20; margin-bottom: 0.6rem; }
+.resumen-final ul { padding-left: 1.5rem; }
+.resumen-final li { color: #1b5e20; margin-bottom: 0.3rem; }
+
+/* ==== AVISO ==== */
+.aviso {
+    background: linear-gradient(90deg, #fff3cd, #ffebee);
+    border-left: 5px solid var(--warning); color: #4e342e;
+    padding: 0.7rem 2rem; font-size: 0.85rem;
+}
+.aviso strong { color: var(--warning); }
+
+/* ==== TABLAS REMEDIOS ==== */
+.section-header { margin-bottom: 1rem; }
+.section-header h2 { font-size: 1.4rem; color: var(--primary); margin-bottom: 0.3rem; }
+.section-header .desc { color: #666; font-size: 0.9rem; }
+
+.controls {
+    background: var(--card); padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+}
+.search-box {
+    width: 100%; max-width: 500px; padding: 0.6rem 1rem;
+    border: 2px solid var(--border); border-radius: 6px; font-size: 0.95rem;
+}
+.view-toggle {
+    display: inline-flex; background: #f0f0f0; border-radius: 6px; padding: 2px;
+}
+.view-toggle button {
+    padding: 0.3rem 0.8rem; border: none; background: transparent;
+    cursor: pointer; border-radius: 4px; font-size: 0.85rem; color: #666;
+}
+.view-toggle button.active { background: white; color: var(--primary); font-weight: 600; }
+
+.matriz-container {
+    background: var(--card); border-radius: 10px; padding: 1.5rem;
+    box-shadow: var(--shadow); overflow-x: auto;
+}
+.sector-block {
+    margin-bottom: 1.5rem; border: 1px solid var(--border); border-radius: 8px;
+    overflow: hidden;
+}
+.sector-header {
+    background: var(--primary); color: white; padding: 0.6rem 1rem;
+    font-weight: 700; font-size: 0.95rem;
+}
+.sector-content {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+.lado-block { border-right: 1px solid var(--border); }
+.lado-block:last-child { border-right: none; }
+.lado-header {
+    background: #ecf0f1; padding: 0.4rem 0.8rem; font-weight: 600;
+    font-size: 0.85rem; color: #555;
+    border-bottom: 1px solid var(--border);
+}
+.matrix-row {
+    display: grid; grid-template-columns: 30px 1fr 60px;
+    padding: 0.5rem 0.8rem; border-bottom: 1px solid #f0f0f0;
+    align-items: center; gap: 0.5rem; cursor: pointer; transition: background 0.1s;
+}
+.matrix-row:hover { background: #f8f9fa; }
+.matrix-row .num { text-align: center; color: #999; font-weight: 600; font-size: 0.85rem; }
+.matrix-row .nombre { font-size: 0.9rem; color: var(--text); }
+.matrix-row .codigo {
+    text-align: right; font-family: monospace; font-size: 0.82rem;
+    color: var(--accent); font-weight: 600;
+}
+
+.cards-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1rem;
+}
+.card {
+    background: var(--card); padding: 1rem 1.2rem; border-radius: 8px;
+    box-shadow: var(--shadow); border-left: 5px solid var(--primary);
+    cursor: pointer; transition: all 0.15s;
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.card.homeo { border-left-color: var(--homeo); }
+.card.semi { border-left-color: var(--semi); }
+.card.bach { border-left-color: var(--bach); }
+.card.schussler { border-left-color: var(--schussler); }
+.card .nombre {
+    font-weight: 700; font-size: 1.05rem; color: var(--primary); margin-bottom: 0.3rem;
+}
+.card .subname { font-size: 0.8rem; color: #666; font-style: italic; margin-bottom: 0.5rem; }
+.card .badges { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.card .badge {
+    font-size: 0.72rem; padding: 2px 8px; border-radius: 10px;
+    font-weight: 600; background: #ecf0f1; color: #555;
+}
+.card .badge.sector { background: #fff3e0; color: #e67e22; }
+.card .badge.codigo { background: #f0f4c3; color: #827717; font-family: monospace; }
+
+/* ==== MODAL ==== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: none;
+    justify-content: center; align-items: center; z-index: 1000; padding: 1rem;
+}
+.modal-overlay.active { display: flex; }
+.modal {
+    background: white; padding: 2rem; border-radius: 12px;
+    max-width: 750px; width: 100%; max-height: 90vh; overflow-y: auto;
+    position: relative;
+}
+.modal .close-btn {
+    position: absolute; top: 1rem; right: 1rem; background: none;
+    border: none; font-size: 1.5rem; cursor: pointer; opacity: 0.6;
+}
+.modal h2 { color: var(--primary); margin-bottom: 0.5rem; padding-right: 2rem; }
+.modal .modal-sub { color: #888; font-style: italic; margin-bottom: 1rem; font-size: 0.9rem; }
+
+.codigo-box {
+    background: linear-gradient(135deg, #fff9c4, #fff59d);
+    padding: 0.7rem 1rem; border-radius: 6px; margin-bottom: 1rem;
+    border: 1px dashed #f57c00; display: flex; justify-content: space-between;
+    align-items: center;
+}
+.codigo-box .label { font-weight: 600; color: #e65100; font-size: 0.85rem; }
+.codigo-box .codigo {
+    font-size: 1.4rem; font-weight: 700; color: #bf360c;
+    font-family: monospace;
+}
+
+.procedimiento-completo {
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    padding: 1.2rem; border-radius: 8px; border-left: 4px solid #0277bd;
+    margin: 1rem 0;
+}
+.procedimiento-completo h4 {
+    color: #01579b; margin-bottom: 0.7rem; font-size: 1rem;
+}
+.proc-step {
+    background: white; padding: 0.6rem 0.8rem; border-radius: 5px;
+    margin-bottom: 0.4rem; font-size: 0.88rem;
+    border-left: 3px solid #0288d1;
+}
+.proc-step .num-paso {
+    display: inline-block; background: #0288d1; color: white;
+    width: 22px; height: 22px; border-radius: 50%;
+    text-align: center; line-height: 22px; font-size: 0.78rem;
+    font-weight: 700; margin-right: 6px;
+}
+.proc-step .frase {
+    font-style: italic; color: #01579b; margin-top: 0.3rem;
+    display: block; font-size: 0.85rem;
+}
+
+.modal .section-tradicional {
+    background: #fff8e1; padding: 1rem; border-radius: 6px;
+    border-left: 4px solid #f39c12; margin-bottom: 1rem;
+}
+.modal .section-cientifica {
+    background: #e8f5e9; padding: 1rem; border-radius: 6px;
+    border-left: 4px solid var(--medical); margin-bottom: 1rem;
+}
+.modal .section-tox {
+    background: #ffebee; padding: 0.7rem 1rem; border-radius: 6px;
+    border-left: 4px solid var(--homeo); font-size: 0.88rem;
+}
+.modal .field { margin-bottom: 0.8rem; }
+.modal .field-label {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+    color: var(--secondary); font-weight: 700; margin-bottom: 0.25rem;
+}
+.modal .section-header {
+    font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+.modal .section-tradicional .section-header { color: #856404; }
+.modal .section-cientifica .section-header { color: var(--medical); }
+.modal .section-tox .section-header { color: var(--homeo); }
+
+.consideraciones-list {
+    background: var(--card); padding: 1.5rem; border-radius: 10px;
+    box-shadow: var(--shadow); border-left: 5px solid var(--accent);
+}
+.consideraciones-list h3 { color: #e65100; margin-bottom: 0.8rem; }
+.consideraciones-list ul { padding-left: 1.5rem; }
+.consideraciones-list li {
+    margin-bottom: 0.6rem; color: #5d4037; line-height: 1.5; font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+    .container { padding: 1rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .tabs { padding: 0 1rem; }
+    .sector-content { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:12px;left:14px;z-index:9999;background:rgba(255,255,255,0.94);border:1px solid rgba(0,0,0,0.13);border-radius:8px;padding:6px 14px;font-size:0.78rem;font-weight:700;color:#1a4d6b;text-decoration:none;backdrop-filter:blur(10px);box-shadow:0 2px 10px rgba(0,0,0,0.1);letter-spacing:0.01em;">← Inicio</a>
+
+<div class="banner">
+    <h1>📚 Manual de Rastreo · Terapias Complementarias</h1>
+    <div class="subtitle">Procedimiento operativo completo de inserción con código radiónico</div>
+    <div class="stats">
+        <div><strong>10</strong> Pasos del procedimiento</div>
+        <div><strong>112</strong> Remedios catalogados</div>
+        <div><strong>4</strong> Tablas de rastreo</div>
+        <div><strong>1</strong> Ejemplo completo</div>
+    </div>
+</div>
+
+<div class="aviso">
+    <strong>⚠️ Aviso científico:</strong> Las preparaciones homeopáticas a partir de 12C no contienen molécula del original. Revisiones sistemáticas (Cochrane, NHMRC Australia 2015) no encuentran eficacia más allá del placebo en homeopatía, Bach y Schüssler. La información farmacológica de referencia está marcada con ⚕️.
+</div>
+
+<div class="tabs" id="tabs">
+    <div class="tab manual active" data-tab="prep">🧭 Preparación</div>
+    <div class="tab manual" data-tab="uso_tablas">📊 Uso de cada tabla</div>
+    <div class="tab proc" data-tab="procedimiento">⚙️ Procedimiento de inserción</div>
+    <div class="tab ejemplo" data-tab="ejemplo">📝 Ejemplo completo</div>
+    <div class="tab" data-tab="policrestos">Policrestos <span class="count">25</span></div>
+    <div class="tab" data-tab="semipolicrestos">Semipolicrestos <span class="count">36</span></div>
+    <div class="tab" data-tab="flores_bach">Flores de Bach <span class="count">39</span></div>
+    <div class="tab" data-tab="sales_schussler">Sales de Schüssler <span class="count">12</span></div>
+</div>
+
+<!-- PREPARACIÓN -->
+<div class="section-page active" id="page-prep">
+    <div class="container">
+        <div class="intro-card">
+            <h2>🧭 Preparación general antes del rastreo</h2>
+            <p>Antes de iniciar cualquier rastreo, tanto el operador como el consultante deben estar en estado óptimo. La calidad del rastreo depende de la presencia plena y la claridad del operador.</p>
+        </div>
+        <div id="prep-content"></div>
+    </div>
+</div>
+
+<!-- USO DE CADA TABLA -->
+<div class="section-page" id="page-uso_tablas">
+    <div class="container">
+        <div class="intro-card">
+            <h2>📊 Cómo se usa cada tabla específicamente</h2>
+            <p>Cada sistema (Homeopatía, Bach, Schüssler) tiene una tabla con estructura propia (sectores, lados, números). Aquí se explica cuándo usar cada tabla, su estructura, cómo navegarla y un ejemplo concreto de navegación.</p>
+        </div>
+        <div id="uso-content"></div>
+    </div>
+</div>
+
+<!-- PROCEDIMIENTO INSERCIÓN -->
+<div class="section-page" id="page-procedimiento">
+    <div class="container">
+        <div class="intro-card" style="background:linear-gradient(135deg, #e8f5e9, #c8e6c9); border-left-color: var(--medical)">
+            <h2 style="color:#1b5e20">⚙️ Procedimiento completo de inserción con código radiónico</h2>
+            <p style="color:#1b5e20">Secuencia operativa de 10 pasos (A-J) desde la apertura del circuito bioenergético hasta el cierre, con las frases exactas del operador y las verificaciones SI/NO. El paso central (G) es la INSERCIÓN propiamente dicha.</p>
+        </div>
+        <div id="proc-content"></div>
+        <div id="consideraciones-content"></div>
+    </div>
+</div>
+
+<!-- EJEMPLO COMPLETO -->
+<div class="section-page" id="page-ejemplo">
+    <div class="container">
+        <div id="ejemplo-content"></div>
+    </div>
+</div>
+
+<!-- TABLAS REMEDIOS -->
+<div class="section-page" id="page-policrestos"></div>
+<div class="section-page" id="page-semipolicrestos"></div>
+<div class="section-page" id="page-flores_bach"></div>
+<div class="section-page" id="page-sales_schussler"></div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)cerrarModal()">
+    <div class="modal">
+        <button class="close-btn" onclick="cerrarModal()">×</button>
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+<script>
+const DATA = {"policrestos":[{"sector":1,"lado":"","num":1,"nombre":"Aconitum Napellus","codigo_radionico":2557,"info":{"origen":"Planta: Aconitum napellus (acónito, matalobos). Familia Ranunculaceae","composicion":"Alcaloides tropánicos: aconitina, mesaconitina, hipaconitina (tóxicos)","uso_tradicional":"Homeopatía: estados agudos de inicio súbito con fiebre, miedo, ansiedad","evidencia":"Sin evidencia clínica robusta para uso homeopático. La planta cruda es letal a dosis bajas.","toxicidad":"EXTREMADAMENTE TÓXICA. Una de las plantas más venenosas. Letalidad por contacto incluso. Solo en diluciones homeopáticas.","nota":"Diluciones >12CH no contienen molécula original (más allá del número de Avogadro)."}},{"sector":1,"lado":"","num":2,"nombre":"Arnica Montana","codigo_radionico":8687,"info":{"origen":"Planta: Arnica montana (árnica). Familia Asteraceae","composicion":"Sesquiterpenlactonas (helenalina), flavonoides, aceites esenciales","uso_tradicional":"Homeopatía: traumatismos, contusiones, dolor muscular post-esfuerzo","evidencia":"Tópica con extractos concentrados: algo de evidencia para hematomas y dolor. Diluciones homeopáticas orales: meta-análisis no muestran beneficio sobre placebo.","toxicidad":"Oral cruda: gastritis, vómito, cardiotóxica. Solo uso tópico de extractos.","nota":"Distinguir entre extractos tópicos (con evidencia limitada) y diluciones homeopáticas (sin evidencia)."}},{"sector":1,"lado":"","num":3,"nombre":"Arsenicum Album","codigo_radionico":34999,"info":{"origen":"Mineral: trióxido de arsénico (As₂O₃)","composicion":"Arsénico inorgánico","uso_tradicional":"Homeopatía: gastroenteritis aguda, ansiedad, agotamiento, quemazón","evidencia":"Sin evidencia clínica.","toxicidad":"Arsénico crudo: cancerígeno tipo I (IARC), causa daño multiorgánico, dosis letal ~100mg","nota":"Las diluciones homeopáticas no contienen arsénico medible; pero el envasado y trazas pueden ser problema (FDA ha encontrado contaminación en algunos productos)."}},{"sector":1,"lado":"","num":4,"nombre":"Belladonna","codigo_radionico":9633,"info":{"origen":"Planta: Atropa belladonna (belladona). Familia Solanaceae","composicion":"Alcaloides tropánicos: atropina, hiosciamina, escopolamina","uso_tradicional":"Homeopatía: fiebre alta súbita, congestión facial, delirio, dolor pulsátil","evidencia":"Diluciones homeopáticas sin evidencia. Atropina pura SÍ tiene usos médicos (antimuscarínico) bien establecidos.","toxicidad":"Altamente tóxica. Atropina pura es medicamento, pero planta cruda causa delirio, midriasis, taquicardia, muerte.","nota":"Curiosa la asociación entre uso homeopático y efectos reales de la planta (ambos describen midriasis, sequedad, agitación)."}},{"sector":1,"lado":"","num":5,"nombre":"Bryonia Alba","codigo_radionico":6568,"info":{"origen":"Planta: Bryonia alba (nueza blanca). Familia Cucurbitaceae","composicion":"Glucósidos cucurbitacínicos (brionina), purgantes","uso_tradicional":"Homeopatía: dolores que empeoran con movimiento, mucosas secas","evidencia":"Sin evidencia clínica para uso homeopático.","toxicidad":"Planta tóxica. Bayas causan irritación gastrointestinal severa.","nota":"Cucurbitacinas tienen actividad biológica real pero no en diluciones homeopáticas."}},{"sector":2,"lado":"","num":1,"nombre":"Calcarea Carbonica","codigo_radionico":3402,"info":{"origen":"Mineral: capa media de la concha de ostra (carbonato de calcio impuro)","composicion":"CaCO₃ + impurezas orgánicas","uso_tradicional":"Homeopatía: constitución 'linfática', sudoración cabeza, dentición tardía","evidencia":"Sin evidencia para uso homeopático. Carbonato de calcio puro sí es suplemento útil en deficiencia de calcio.","toxicidad":"Mineral inocuo. Carbonato de calcio es seguro como suplemento.","nota":"Calcio elemental: 40% del CaCO₃. Útil en osteoporosis pero NO en diluciones homeopáticas."}},{"sector":2,"lado":"","num":2,"nombre":"Carbo Vegetabilis","codigo_radionico":2949,"info":{"origen":"Carbón vegetal (de madera de haya o álamo)","composicion":"Carbono activado (similar al farmacológico)","uso_tradicional":"Homeopatía: indigestión con gas, colapso, falta de aire","evidencia":"Carbón activado SÍ es eficaz en intoxicaciones agudas y gases (efecto adsorbente físico). Diluciones homeopáticas sin evidencia.","toxicidad":"Seguro en cantidades adecuadas.","nota":"El carbón activado farmacológico es estándar en intoxicaciones; las dosis terapéuticas son gramos, no diluciones."}},{"sector":2,"lado":"","num":3,"nombre":"Causticum","codigo_radionico":6147,"info":{"origen":"Preparación de Hahnemann a partir de cal viva y sulfato de potasio destilado","composicion":"Hidróxido de potasio diluido (sin compuesto bioquímico bien definido)","uso_tradicional":"Homeopatía: parálisis, contracciones, parestesias","evidencia":"Sin evidencia.","toxicidad":"El reactivo crudo (cáustico) es corrosivo. Diluciones homeopáticas inocuas.","nota":"Sustancia exclusiva del corpus homeopático, sin equivalente farmacológico."}},{"sector":2,"lado":"","num":4,"nombre":"Chamomilla","codigo_radionico":3643,"info":{"origen":"Planta: Matricaria chamomilla (manzanilla). Familia Asteraceae","composicion":"Aceites esenciales (α-bisabolol, camazuleno), flavonoides (apigenina)","uso_tradicional":"Homeopatía: irritabilidad infantil, cólicos del lactante, dolor menstrual","evidencia":"Manzanilla en infusión: evidencia moderada para ansiedad leve, cólicos, dispepsia. Diluciones homeopáticas: sin evidencia separada.","toxicidad":"Muy segura. Posibles alergias cruzadas con Asteraceae.","nota":"Una de las hierbas medicinales más estudiadas; eficacia real depende de dosis terapéuticas, no homeopáticas."}},{"sector":2,"lado":"","num":5,"nombre":"China Officinalis","codigo_radionico":5671,"info":{"origen":"Planta: Cinchona officinalis (quina). Familia Rubiaceae","composicion":"Alcaloides cinchónicos: quinina, quinidina, cinchonina","uso_tradicional":"Homeopatía: postraciones, sudoración, periodicidad. Historia: caso original de Hahnemann.","evidencia":"Quinina (extracto): tratamiento histórico de malaria, hoy reemplazada por artemisininas. Quinidina: antiarrítmico real. Homeopatía: sin evidencia.","toxicidad":"Quinina pura: cinconismo (cefalea, tinnitus), arritmias, hemólisis.","nota":"Origen histórico de la homeopatía: Hahnemann atribuyó síntomas erróneamente a la quina cruda."}},{"sector":3,"lado":"","num":1,"nombre":"Dulcamara","codigo_radionico":5182,"info":{"origen":"Planta: Solanum dulcamara (dulcamara). Familia Solanaceae","composicion":"Alcaloides esteroidales (solanina), glucósidos","uso_tradicional":"Homeopatía: enfermedades agravadas por humedad, eccemas","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Bayas tóxicas, especialmente verdes.","nota":"Pariente de tomate y papa, con principios tóxicos."}},{"sector":3,"lado":"","num":2,"nombre":"Hepar Sulphur","codigo_radionico":2789,"info":{"origen":"Preparación: cal y azufre calcinados (sulfuro de calcio)","composicion":"Polisulfuros de calcio","uso_tradicional":"Homeopatía: supuraciones, sensibilidad al frío y dolor","evidencia":"Sin evidencia clínica.","toxicidad":"Compuesto crudo irritante; diluciones inocuas.","nota":"Otra preparación exclusiva del corpus homeopático."}},{"sector":3,"lado":"","num":3,"nombre":"Hyosciamus Niger","codigo_radionico":4253,"info":{"origen":"Planta: Hyoscyamus niger (beleño negro). Familia Solanaceae","composicion":"Alcaloides tropánicos: hiosciamina, escopolamina","uso_tradicional":"Homeopatía: delirio, convulsiones, celos, conductas alteradas","evidencia":"Hiosciamina y escopolamina puras: usos médicos reales (cinetosis, premedicación). Homeopatía: sin evidencia separada.","toxicidad":"Planta cruda altamente tóxica: delirio, alucinaciones, muerte.","nota":"Antiguo veneno medieval ('hierba de bruja'). Alcaloides son útiles aislados, no en preparación cruda."}},{"sector":3,"lado":"","num":4,"nombre":"Ipecacuanha","codigo_radionico":2166,"info":{"origen":"Planta: Carapichea ipecacuanha. Familia Rubiaceae","composicion":"Alcaloides isoquinolínicos: emetina, cefelina","uso_tradicional":"Homeopatía: náusea persistente, vómito, hemorragias","evidencia":"Emetina cruda: antiguamente emética (ya no se recomienda en intoxicaciones). Amebicida en infecciones graves. Homeopatía: sin evidencia.","toxicidad":"Emetina pura: cardiotóxica.","nota":"El jarabe de ipeca fue retirado del mercado por riesgos."}},{"sector":3,"lado":"","num":5,"nombre":"Lachesis","codigo_radionico":2792,"info":{"origen":"Veneno de Lachesis muta (surucucú, serpiente sudamericana)","composicion":"Veneno hemotóxico: metaloproteinasas, fosfolipasas","uso_tradicional":"Homeopatía: trastornos menopáusicos, agravación al despertar, intolerancia a presión","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Veneno crudo: hemorragias masivas, mortal sin antiveneno.","nota":"Uso de venenos en homeopatía es controvertido incluso dentro del movimiento."}},{"sector":4,"lado":"","num":1,"nombre":"Lycopodium Clavatum","codigo_radionico":2366,"info":{"origen":"Esporas de Lycopodium clavatum (licopodio). División Lycopodiophyta","composicion":"Esporas con aceites, alcaloides (licopodina)","uso_tradicional":"Homeopatía: trastornos hepáticos y digestivos, agravación 16-20h, falta de confianza","evidencia":"Sin evidencia clínica.","toxicidad":"Esporas inocuas; alcaloide en planta entera ligeramente tóxico.","nota":"Las esporas son inertes (se usaron como polvo absorbente y en pirotecnia)."}},{"sector":4,"lado":"","num":2,"nombre":"Mercurius Solubilis","codigo_radionico":3913,"info":{"origen":"Preparación con mercurio metálico","composicion":"Mercurio elemental + impurezas","uso_tradicional":"Homeopatía: úlceras orales, salivación profusa, supuraciones","evidencia":"Sin evidencia clínica.","toxicidad":"Mercurio crudo: neurotóxico potente, daño renal, hidrargirismo.","nota":"Antes de antibióticos, mercurio se usó para sífilis con consecuencias devastadoras. Hoy: hidrargirismo es un riesgo confirmado, motivo por el cual reguladores vigilan contaminación en productos homeopáticos."}},{"sector":4,"lado":"","num":3,"nombre":"Nux Vomica","codigo_radionico":6222,"info":{"origen":"Semillas de Strychnos nux-vomica. Familia Loganiaceae","composicion":"Alcaloides: estricnina, brucina","uso_tradicional":"Homeopatía: irritabilidad, hipersensibilidad, excesos alimentarios o de alcohol","evidencia":"Sin evidencia para homeopatía. Estricnina: tóxico convulsivante.","toxicidad":"Estricnina cruda: convulsiones tetánicas, muerte. Dosis letal: 30-100mg.","nota":"Veneno de roedores históricamente."}},{"sector":4,"lado":"","num":4,"nombre":"Phosphorus","codigo_radionico":3791,"info":{"origen":"Fósforo elemental (forma blanca, altamente reactiva)","composicion":"P₄","uso_tradicional":"Homeopatía: hemorragias, sensibilidad a ambiente, sed de bebidas frías","evidencia":"Sin evidencia para uso homeopático. Fósforo elemental crudo: peligroso.","toxicidad":"Fósforo blanco: extremadamente tóxico, autoinflamable; histórico 'mandíbula del fósforo' en obreros de cerillas.","nota":"El fósforo orgánico (fosfatos) es esencial en biología; el elemental no se usa terapéuticamente."}},{"sector":4,"lado":"","num":5,"nombre":"Pulsatilla","codigo_radionico":5556,"info":{"origen":"Planta: Pulsatilla nigricans / Anemone pulsatilla. Familia Ranunculaceae","composicion":"Glucósidos lactónicos: protoanemonina (irritante)","uso_tradicional":"Homeopatía: temperamento maleable, lloroso; trastornos menstruales irregulares","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Planta fresca tóxica (vesicante); seca pierde toxicidad.","nota":"Cubre síntomas tipológicos muy específicos en la práctica homeopática."}},{"sector":5,"lado":"","num":1,"nombre":"Rhus Toxicodendron","codigo_radionico":7683,"info":{"origen":"Planta: Toxicodendron radicans (zumaque venenoso). Familia Anacardiaceae","composicion":"Urushiol (alérgeno potente)","uso_tradicional":"Homeopatía: rigidez que mejora con movimiento, herpes, eccemas","evidencia":"Sin evidencia. Urushiol crudo causa dermatitis severa por contacto.","toxicidad":"Dermatitis alérgica por contacto en ~85% de personas expuestas.","nota":"Es el mismo principio activo que la 'hiedra venenosa' (poison ivy)."}},{"sector":5,"lado":"","num":2,"nombre":"Sepia Officinalis","codigo_radionico":8725,"info":{"origen":"Tinta del calamar/sepia (Sepia officinalis)","composicion":"Melanina, polisacáridos, dopamina","uso_tradicional":"Homeopatía: agotamiento femenino, indiferencia emocional, trastornos hormonales","evidencia":"Sin evidencia clínica.","toxicidad":"Inocua. La tinta de sepia es comestible (usada en cocina).","nota":"Constitucional importante en homeopatía femenina."}},{"sector":5,"lado":"","num":3,"nombre":"Silicea","codigo_radionico":9254,"info":{"origen":"Mineral: dióxido de silicio (SiO₂)","composicion":"Sílice purificada","uso_tradicional":"Homeopatía: debilidad constitucional, supuraciones crónicas, falta de calor vital","evidencia":"Sílice como nutriente: rol estructural en tejido conjuntivo. Diluciones homeopáticas: sin evidencia separada.","toxicidad":"Sílice cristalina inhalada: silicosis (enfermedad ocupacional grave). Vía oral: inocua.","nota":"Importante por exposición ocupacional (canteros, mineros), no por uso homeopático."}},{"sector":5,"lado":"","num":4,"nombre":"Sulphur","codigo_radionico":6361,"info":{"origen":"Azufre elemental","composicion":"S₈","uso_tradicional":"Homeopatía: enfermedades crónicas de piel, calor, prurito","evidencia":"Azufre tópico (5-10%) sí es eficaz contra escabiosis, acné. Diluciones homeopáticas sin evidencia.","toxicidad":"Inocuo en uso tópico y dosis terapéuticas.","nota":"Distinguir: azufre 5% tópico (farmacológico, eficaz) vs Sulphur 30C (homeopático, sin moléculas)."}},{"sector":5,"lado":"","num":5,"nombre":"Veratrum Album","codigo_radionico":6219,"info":{"origen":"Planta: Veratrum album (vedegambre). Familia Melanthiaceae","composicion":"Alcaloides esteroidales: protoveratrina, jervina","uso_tradicional":"Homeopatía: colapso, sudor frío, diarrea con vómitos","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Planta extremadamente tóxica. Causa hipotensión severa, bradicardia.","nota":"Causa de intoxicaciones por confusión con plantas comestibles (especialmente la genciana)."}}],"semipolicrestos":[{"sector":1,"lado":"A","num":1,"nombre":"Antimonium Crudum","codigo_radionico":6796,"info":{"origen":"Sulfuro de antimonio (Sb₂S₃, estibina mineral)","composicion":"Sulfuro de antimonio","uso_tradicional":"Homeopatía: lengua saburral blanca, indigestiones por excesos, callosidades","evidencia":"Sin evidencia. Antimonio crudo es tóxico.","toxicidad":"Antimonio: toxicidad similar al arsénico (mismo grupo).","nota":"Históricamente usado como emético; abandonado por toxicidad."}},{"sector":1,"lado":"A","num":2,"nombre":"Antimonium Tartaricum","codigo_radionico":6458,"info":{"origen":"Tartrato antimónico potásico (sal de antimonio)","composicion":"K(SbO)C₄H₄O₆","uso_tradicional":"Homeopatía: bronquitis con estertores de moco, debilidad","evidencia":"Sin evidencia para uso homeopático. 'Tártaro emético' fue usado para inducir vómito (obsoleto).","toxicidad":"Tóxico. Causa vómito intenso, hipotensión.","nota":"Conocido como 'tártaro emético', uso abandonado en medicina."}},{"sector":1,"lado":"A","num":3,"nombre":"Aurum Metallicum","codigo_radionico":3467,"info":{"origen":"Oro metálico (Au)","composicion":"Oro elemental","uso_tradicional":"Homeopatía: estados depresivos profundos, hipertensión, ideas suicidas","evidencia":"Sin evidencia clínica para uso homeopático. Sales de oro (auranofin) SÍ se usaron en artritis reumatoide (ya casi obsoletas).","toxicidad":"Oro metálico: inocuo. Sales de oro: nefrotóxicas.","nota":"Oro coloidal/metálico no tiene biodisponibilidad significativa."}},{"sector":1,"lado":"B","num":1,"nombre":"Baryta Carbonica","codigo_radionico":5414,"info":{"origen":"Carbonato de bario (BaCO₃)","composicion":"BaCO₃","uso_tradicional":"Homeopatía: retraso en desarrollo infantil, debilidad senil","evidencia":"Sin evidencia clínica.","toxicidad":"Sales solubles de bario son tóxicas (cardiotóxicas).","nota":"El carbonato es poco soluble, menos tóxico que cloruro/nitrato de bario."}},{"sector":1,"lado":"B","num":2,"nombre":"Cannabis Sativa","codigo_radionico":5229,"info":{"origen":"Planta: Cannabis sativa. Familia Cannabaceae","composicion":"Cannabinoides: THC, CBD, CBN, terpenos","uso_tradicional":"Homeopatía: trastornos urinarios, distorsiones de percepción del tiempo","evidencia":"Cannabis medicinal (CBD, THC) tiene evidencia para epilepsia refractaria, dolor neuropático, espasticidad en EM, náuseas por quimioterapia. Diluciones homeopáticas: sin evidencia separada.","toxicidad":"Baja toxicidad aguda; riesgos crónicos: trastornos psicóticos, dependencia.","nota":"Distinguir: cannabis medicinal (CBD/THC en dosis farmacológicas, con evidencia) vs preparación homeopática (sin actividad farmacológica)."}},{"sector":1,"lado":"B","num":3,"nombre":"Cantharis","codigo_radionico":7498,"info":{"origen":"Insecto: Lytta vesicatoria (cantárida, 'mosca española')","composicion":"Cantaridina (vesicante potente)","uso_tradicional":"Homeopatía: cistitis aguda con ardor intenso, quemaduras","evidencia":"Sin evidencia para uso homeopático. Cantaridina pura: vesicante histórico para verrugas (hoy reemplazada).","toxicidad":"Cantaridina cruda: extremadamente tóxica (nefrotóxica, gastrotóxica). Dosis letal ~10mg.","nota":"Histórica 'mosca española' como afrodisíaco causó intoxicaciones letales."}},{"sector":2,"lado":"A","num":1,"nombre":"Cicuta Virosa","codigo_radionico":5927,"info":{"origen":"Planta: Cicuta virosa (cicuta acuática). Familia Apiaceae","composicion":"Cicutoxina (neurotoxina convulsivante)","uso_tradicional":"Homeopatía: convulsiones, distorsiones de imagen corporal","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Una de las plantas más tóxicas. Causa convulsiones violentas, muerte.","nota":"NO confundir con Conium maculatum (la cicuta que mató a Sócrates)."}},{"sector":2,"lado":"A","num":2,"nombre":"Coccus Cacti","codigo_radionico":6212,"info":{"origen":"Insecto: Dactylopius coccus (cochinilla del nopal)","composicion":"Ácido carmínico (pigmento rojo)","uso_tradicional":"Homeopatía: tos paroxística con expectoración filante","evidencia":"Sin evidencia. El ácido carmínico es colorante alimentario (E120).","toxicidad":"Baja toxicidad; ocasional alergia.","nota":"Insecto cultivado en México y Perú como fuente de tinte natural."}},{"sector":2,"lado":"A","num":3,"nombre":"Coffea Cruda","codigo_radionico":1821,"info":{"origen":"Granos de Coffea arabica sin tostar. Familia Rubiaceae","composicion":"Cafeína, ácidos clorogénicos","uso_tradicional":"Homeopatía: insomnio por exceso de actividad mental, hipersensibilidad","evidencia":"Cafeína farmacológica: bien establecida (estimulante). Diluciones homeopáticas de café: sin evidencia.","toxicidad":"Cafeína: dosis tóxicas >1g; letales >5g.","nota":"Paradoja homeopática: café causa insomnio, su 'similar' busca tratarlo."}},{"sector":2,"lado":"B","num":1,"nombre":"Colocynthis","codigo_radionico":3938,"info":{"origen":"Planta: Citrullus colocynthis (coloquíntida). Familia Cucurbitaceae","composicion":"Cucurbitacinas, alcaloides amargos","uso_tradicional":"Homeopatía: cólicos abdominales que mejoran con presión","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Purgante violento; tóxico.","nota":"Históricamente usado como purgante drástico, abandonado."}},{"sector":2,"lado":"B","num":2,"nombre":"Conium Maculatum","codigo_radionico":8182,"info":{"origen":"Planta: Conium maculatum (cicuta mayor). Familia Apiaceae","composicion":"Alcaloides: coniína, conhidrina, γ-coniceína","uso_tradicional":"Homeopatía: tumores duros, parálisis ascendente, senilidad","evidencia":"Sin evidencia.","toxicidad":"Coniína: parálisis ascendente similar a curare. Mortal.","nota":"Veneno histórico (Sócrates). NO confundir con cicuta acuática."}},{"sector":2,"lado":"B","num":3,"nombre":"Digitalis Purpurea","codigo_radionico":7321,"info":{"origen":"Planta: Digitalis purpurea (digital). Familia Plantaginaceae","composicion":"Glucósidos cardiotónicos: digoxina, digitoxina","uso_tradicional":"Homeopatía: pulso lento e irregular, trastornos cardíacos","evidencia":"Digoxina purificada SÍ tiene uso en insuficiencia cardíaca y fibrilación auricular (con margen terapéutico estrecho). Diluciones homeopáticas: sin evidencia separada.","toxicidad":"Glucósidos cardíacos: ventana terapéutica muy estrecha. Intoxicación: arritmias mortales.","nota":"Ejemplo clave: aislamiento moderno extrae digoxina útil; planta cruda es venenosa."}},{"sector":3,"lado":"A","num":1,"nombre":"Drosera Rotundifolia","codigo_radionico":5641,"info":{"origen":"Planta: Drosera rotundifolia (rocío del sol). Familia Droseraceae","composicion":"Naftoquinonas (plumbagina), flavonoides","uso_tradicional":"Homeopatía: tos espasmódica, tos ferina","evidencia":"Extractos: tradicionalmente para tos; evidencia clínica limitada. Homeopatía: sin evidencia separada.","toxicidad":"Baja toxicidad.","nota":"Planta carnívora. Naftoquinonas tienen actividad antimicrobiana in vitro."}},{"sector":3,"lado":"A","num":2,"nombre":"Ferrum Metallicum","codigo_radionico":42363,"info":{"origen":"Hierro elemental (Fe)","composicion":"Hierro","uso_tradicional":"Homeopatía: anemia con palidez alternada con rubor","evidencia":"Hierro suplementario farmacológico (sulfato, fumarato): tratamiento estándar de anemia ferropénica. Diluciones homeopáticas: sin evidencia (no aportan hierro biodisponible).","toxicidad":"Sobrecarga: hemocromatosis, daño hepático.","nota":"Para anemia: suplementos farmacológicos sí curan; diluciones homeopáticas no tienen hierro suficiente."}},{"sector":3,"lado":"A","num":3,"nombre":"Graphites","codigo_radionico":3667,"info":{"origen":"Mineral: grafito (carbono cristalino)","composicion":"Carbono (alotropo)","uso_tradicional":"Homeopatía: eccemas crónicos, queloides, fisuras","evidencia":"Sin evidencia.","toxicidad":"Inocuo.","nota":"Tópico: grafito se usa en lubricantes. Sin valor terapéutico oral."}},{"sector":3,"lado":"B","num":1,"nombre":"Ignatia Amara","codigo_radionico":4383,"info":{"origen":"Semillas de Strychnos ignatii (haba de San Ignacio). Familia Loganiaceae","composicion":"Estricnina, brucina (similares a Nux vomica)","uso_tradicional":"Homeopatía: pena, duelo, suspiros, contradicciones emocionales","evidencia":"Sin evidencia.","toxicidad":"Alta. Mismo género que Nux vomica.","nota":"Constitucional para reacciones emocionales agudas en homeopatía clásica."}},{"sector":3,"lado":"B","num":2,"nombre":"Iodum Metallicum","codigo_radionico":5711,"info":{"origen":"Yodo elemental (I₂)","composicion":"Yodo","uso_tradicional":"Homeopatía: hipertiroidismo, ansiedad, pérdida de peso","evidencia":"Yodo farmacológico: esencial para tiroides; tratamiento de bocio por deficiencia. Diluciones homeopáticas: sin yodo medible.","toxicidad":"Yodo cruco: cáustico; sobredosis causa daño tiroideo.","nota":"Deficiencia de yodo causa hipotiroidismo; exceso también daña tiroides."}},{"sector":3,"lado":"B","num":3,"nombre":"Kalmia Latifolia","codigo_radionico":3946,"info":{"origen":"Planta: Kalmia latifolia (laurel de montaña). Familia Ericaceae","composicion":"Andromedotoxina (grayanotoxina)","uso_tradicional":"Homeopatía: neuralgias, palpitaciones, dolor migratorio","evidencia":"Sin evidencia.","toxicidad":"Planta tóxica. Causa bradicardia, hipotensión.","nota":"Toxicidad similar al rododendro (misma familia)."}},{"sector":4,"lado":"A","num":1,"nombre":"Ledum Palustre","codigo_radionico":5612,"info":{"origen":"Planta: Rhododendron tomentosum (té del pantano). Familia Ericaceae","composicion":"Ledol (aceite esencial), grayanotoxinas","uso_tradicional":"Homeopatía: punciones, picaduras de insectos, contusiones","evidencia":"Sin evidencia.","toxicidad":"Tóxica en planta entera.","nota":"Aceite esencial usado tradicionalmente como insecticida."}},{"sector":4,"lado":"A","num":2,"nombre":"Magnesia Carbonica","codigo_radionico":8156,"info":{"origen":"Carbonato de magnesio (MgCO₃)","composicion":"MgCO₃","uso_tradicional":"Homeopatía: dolores nocturnos, lactantes con cólicos ácidos","evidencia":"Carbonato de magnesio farmacológico: antiácido y laxante. Diluciones homeopáticas: sin evidencia.","toxicidad":"Seguro en dosis terapéuticas.","nota":"Como mineral nutricional: 2 g/día. Como homeopático: trazas o nada."}},{"sector":4,"lado":"A","num":3,"nombre":"Magnesia Muriatica","codigo_radionico":2868,"info":{"origen":"Cloruro de magnesio (MgCl₂)","composicion":"MgCl₂","uso_tradicional":"Homeopatía: trastornos hepáticos con estreñimiento","evidencia":"Cloruro de magnesio farmacológico: laxante, suplemento mineral. Diluciones homeopáticas: sin evidencia.","toxicidad":"Seguro.","nota":"Importante mineral; deficiencia de magnesio es común."}},{"sector":4,"lado":"B","num":1,"nombre":"Natrum Carbonicum","codigo_radionico":6921,"info":{"origen":"Carbonato de sodio (Na₂CO₃, sosa)","composicion":"Na₂CO₃","uso_tradicional":"Homeopatía: agotamiento por calor, debilidad muscular","evidencia":"Sin evidencia.","toxicidad":"Irritante cáustico en concentrado; diluido es inocuo.","nota":"Sodio elemental como electrolito sí es esencial."}},{"sector":4,"lado":"B","num":2,"nombre":"Natrum Muriaticum","codigo_radionico":6243,"info":{"origen":"Cloruro de sodio (NaCl, sal de mesa)","composicion":"NaCl","uso_tradicional":"Homeopatía: pena retenida, anemia, herpes labial, palpitaciones","evidencia":"Sodio es esencial (electrolito); déficit causa hiponatremia. Diluciones homeopáticas: cantidades fisiológicamente irrelevantes.","toxicidad":"Exceso en dieta: hipertensión. Deficiencia aguda: hiponatremia (puede ser mortal).","nota":"La 'sal de cocina' es ubicua; las cantidades homeopáticas son insignificantes comparadas con cualquier comida."}},{"sector":4,"lado":"B","num":3,"nombre":"Nitricum Acidum","codigo_radionico":5933,"info":{"origen":"Ácido nítrico (HNO₃)","composicion":"HNO₃","uso_tradicional":"Homeopatía: úlceras dolorosas en mucosas, fisuras","evidencia":"Sin evidencia.","toxicidad":"Ácido fuerte; concentrado causa quemaduras químicas severas.","nota":"Diluciones homeopáticas son inocuas."}},{"sector":5,"lado":"A","num":1,"nombre":"Nux Moschata","codigo_radionico":3651,"info":{"origen":"Semilla: Myristica fragrans (nuez moscada). Familia Myristicaceae","composicion":"Miristicina, elemicina (psicoactivas a dosis altas)","uso_tradicional":"Homeopatía: somnolencia, sequedad de mucosas, confusión","evidencia":"Sin evidencia clínica para uso homeopático. Dosis altas en cocina pueden causar alucinaciones.","toxicidad":"Dosis altas (>5 g): náuseas, alucinaciones, taquicardia. Casos de intoxicación recreativa documentados.","nota":"Especia común en cantidades culinarias es segura."}},{"sector":5,"lado":"A","num":2,"nombre":"Opium","codigo_radionico":2371,"info":{"origen":"Látex de Papaver somniferum (adormidera). Familia Papaveraceae","composicion":"Alcaloides opioides: morfina, codeína, tebaína","uso_tradicional":"Homeopatía: estupor, falta de respuesta, parálisis post-shock","evidencia":"Opioides farmacológicos: analgésicos potentes con uso médico bien establecido. Diluciones homeopáticas: sin evidencia.","toxicidad":"Opioides: depresión respiratoria, adicción, sobredosis mortal.","nota":"La crisis de opioides es una de las mayores emergencias de salud pública actuales."}},{"sector":5,"lado":"A","num":3,"nombre":"Petroleum","codigo_radionico":6649,"info":{"origen":"Aceite mineral / petróleo crudo","composicion":"Mezcla de hidrocarburos","uso_tradicional":"Homeopatía: dermatosis con grietas, mareo de viaje","evidencia":"Sin evidencia.","toxicidad":"Hidrocarburos crudos: hepatotóxicos, cancerígenos.","nota":"Aceite mineral refinado (vaselina) sí se usa como excipiente farmacéutico."}},{"sector":5,"lado":"B","num":1,"nombre":"Phosphoricum Acidum","codigo_radionico":6928,"info":{"origen":"Ácido fosfórico (H₃PO₄)","composicion":"H₃PO₄","uso_tradicional":"Homeopatía: agotamiento mental post-pena o estudio, apatía","evidencia":"Sin evidencia.","toxicidad":"Ácido moderado; concentrado es irritante.","nota":"Usado como aditivo en refrescos de cola."}},{"sector":5,"lado":"B","num":2,"nombre":"Platinum Metallicum","codigo_radionico":7384,"info":{"origen":"Platino metálico (Pt)","composicion":"Platino","uso_tradicional":"Homeopatía: trastornos femeninos con orgullo o egolatría","evidencia":"Sin evidencia. Cisplatino (sal de platino) SÍ es quimioterápico oncológico real.","toxicidad":"Sales solubles de platino: nefrotóxicas, ototóxicas.","nota":"Cisplatino y derivados son medicamentos antitumorales esenciales; trabajo de Rosenberg en los 1960s."}},{"sector":5,"lado":"B","num":3,"nombre":"Spigelia","codigo_radionico":8845,"info":{"origen":"Planta: Spigelia anthelmia. Familia Loganiaceae","composicion":"Espigelina, alcaloides","uso_tradicional":"Homeopatía: neuralgias faciales, palpitaciones, parásitos","evidencia":"Sin evidencia para uso homeopático. Tradicionalmente vermífugo en zonas tropicales.","toxicidad":"Tóxica en planta cruda.","nota":"Antihelmíntico tradicional; reemplazado por fármacos seguros."}},{"sector":6,"lado":"A","num":1,"nombre":"Stannum Metallicum","codigo_radionico":37655,"info":{"origen":"Estaño metálico (Sn)","composicion":"Estaño","uso_tradicional":"Homeopatía: debilidad respiratoria, opresión, tos productiva","evidencia":"Sin evidencia.","toxicidad":"Estaño elemental: poco tóxico. Organoestaños: muy tóxicos.","nota":"Histórico uso en latas (estanado) sigue siendo común."}},{"sector":6,"lado":"A","num":2,"nombre":"Staphysagria","codigo_radionico":4139,"info":{"origen":"Semillas de Delphinium staphisagria (estafisagria). Familia Ranunculaceae","composicion":"Alcaloides diterpénicos: delfinina, estafisagrina","uso_tradicional":"Homeopatía: ira reprimida, abuso, prostatitis","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Planta tóxica. Históricamente: insecticida (contra piojos).","nota":"Mismo género que Aconitum pero con diferentes alcaloides."}},{"sector":6,"lado":"A","num":3,"nombre":"Stramonium","codigo_radionico":9627,"info":{"origen":"Planta: Datura stramonium (estramonio, toloache). Familia Solanaceae","composicion":"Alcaloides tropánicos: atropina, escopolamina, hiosciamina","uso_tradicional":"Homeopatía: terrores nocturnos, convulsiones, miedo a la oscuridad","evidencia":"Sin evidencia para uso homeopático.","toxicidad":"Altamente tóxica. Frecuentes intoxicaciones por uso recreativo en adolescentes.","nota":"El 'toloache' en México causa intoxicaciones agudas con delirio severo."}},{"sector":6,"lado":"B","num":1,"nombre":"Tartarus Emeticus","codigo_radionico":23534,"info":{"origen":"Tartrato antimónico potásico (sinónimo de Antimonium Tartaricum)","composicion":"K(SbO)C₄H₄O₆","uso_tradicional":"Homeopatía: estertores de moco, debilidad por bronquitis","evidencia":"Sin evidencia para uso homeopático. Uso emético histórico (abandonado).","toxicidad":"Antimonio tóxico.","nota":"Sinónimo de Antimonium Tartaricum."}},{"sector":6,"lado":"B","num":2,"nombre":"Thuja Occidentalis","codigo_radionico":82,"info":{"origen":"Planta: Thuja occidentalis (cedro blanco). Familia Cupressaceae","composicion":"Tujona (neurotóxica), terpenos","uso_tradicional":"Homeopatía: verrugas, condilomas, efectos de vacunación","evidencia":"Sin evidencia para uso homeopático. Tujona: prohibida en bebidas en altas cantidades (sustancia que causaba el 'absenta' siglo XIX).","toxicidad":"Tujona: convulsivante, hepatotóxica a dosis altas.","nota":"Antiabortivo histórico con consecuencias graves."}},{"sector":6,"lado":"B","num":3,"nombre":"Zincum Metallicum","codigo_radionico":12297,"info":{"origen":"Zinc elemental (Zn)","composicion":"Zn","uso_tradicional":"Homeopatía: inquietud motora, agotamiento nervioso","evidencia":"Zinc nutricional: esencial; déficit causa retraso del crecimiento, alteraciones inmunológicas. Diluciones homeopáticas: cantidades fisiológicamente irrelevantes.","toxicidad":"Exceso (>50 mg/día crónico): déficit de cobre.","nota":"Como suplemento farmacológico tiene utilidad; como diluciones no."}}],"flores_bach":[{"sector":1,"lado":"A","num":1,"nombre_es":"Agrimonia","nombre_bach":"Agrimony / Agrimonia eupatoria","codigo_radionico":2247,"info":{"origen":"Planta: Agrimonia eupatoria. Familia Rosaceae","composicion":"Taninos, flavonoides, ácidos fenólicos (en planta entera)","uso_tradicional":"Bach: ocultamiento del sufrimiento tras aparente alegría","evidencia":"Revisiones sistemáticas (Ernst 2002, 2010; Thaler 2009) no encuentran eficacia más allá del placebo.","toxicidad":"Planta segura en infusión.","nota":"Planta con usos en herbolaria tradicional (astringente, diurética). Preparación Bach no contiene fitoquímicos medibles."}},{"sector":1,"lado":"A","num":2,"nombre_es":"Álamo temblón","nombre_bach":"Aspen / Populus tremula","codigo_radionico":4178,"info":{"origen":"Árbol: Populus tremula. Familia Salicaceae","composicion":"Salicina (precursor de aspirina), flavonoides en corteza","uso_tradicional":"Bach: miedos vagos sin causa identificable, presentimientos","evidencia":"Sin evidencia clínica para preparación Bach.","toxicidad":"Segura.","nota":"Corteza de Salicaceae tiene principios analgésicos reales (precursores de aspirina), no presentes en preparación floral."}},{"sector":1,"lado":"A","num":3,"nombre_es":"Haya","nombre_bach":"Beech / Fagus sylvatica","codigo_radionico":1436,"info":{"origen":"Árbol: Fagus sylvatica. Familia Fagaceae","composicion":"Taninos, fagina (alcaloide)","uso_tradicional":"Bach: intolerancia, crítica, perfeccionismo hacia otros","evidencia":"Sin evidencia.","toxicidad":"Hayucos crudos en exceso: irritación gastrointestinal.","nota":"Árbol común en bosques templados europeos."}},{"sector":1,"lado":"B","num":4,"nombre_es":"Centaura","nombre_bach":"Centaury / Centaurium umbellatum","codigo_radionico":2135,"info":{"origen":"Planta: Centaurium umbellatum. Familia Gentianaceae","composicion":"Glucósidos amargos, alcaloides","uso_tradicional":"Bach: debilidad de voluntad, servilismo, incapacidad de decir no","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Baja.","nota":"Hierba amarga tradicional en aperitivos digestivos."}},{"sector":1,"lado":"B","num":5,"nombre_es":"Ceratostigma","nombre_bach":"Cerato / Ceratostigma willmottiana","codigo_radionico":5413,"info":{"origen":"Planta: Ceratostigma willmottianum. Familia Plumbaginaceae","composicion":"Plumbagina (en planta)","uso_tradicional":"Bach: falta de confianza en propio juicio, buscar consejo constantemente","evidencia":"Sin evidencia.","toxicidad":"Baja.","nota":"Arbusto ornamental originario de China."}},{"sector":1,"lado":"B","num":6,"nombre_es":"Cerasífera","nombre_bach":"Cherry Plum / Prunus cerasifera","codigo_radionico":1573,"info":{"origen":"Árbol: Prunus cerasifera (cerezo-ciruelo). Familia Rosaceae","composicion":"Glucósidos cianogénicos en semillas (en planta entera)","uso_tradicional":"Bach: miedo a perder control mental o físico, impulsos temidos","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Semillas de Rosaceae: cianuro si se ingieren en cantidad.","nota":"Cultivado por sus frutos (mirabel)."}},{"sector":2,"lado":"A","num":1,"nombre_es":"Brote de castaño blanco","nombre_bach":"Chestnut Bud / Aesculus hippocastanum","codigo_radionico":6372,"info":{"origen":"Yema de Aesculus hippocastanum. Familia Sapindaceae","composicion":"Esculina, escina (en semilla, no en yema)","uso_tradicional":"Bach: incapacidad de aprender de la experiencia, repetir errores","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Castaña cruda tóxica (esculina).","nota":"Escina (de la castaña) sí tiene uso médico real en insuficiencia venosa."}},{"sector":2,"lado":"A","num":2,"nombre_es":"Achicoria","nombre_bach":"Chicory / Cichorium intybus","codigo_radionico":1622,"info":{"origen":"Planta: Cichorium intybus. Familia Asteraceae","composicion":"Inulina, lactucina (amargo), ácido cicórico","uso_tradicional":"Bach: amor posesivo, exceso de cuidado controlador","evidencia":"Inulina como prebiótico tiene evidencia. Preparación Bach: sin evidencia.","toxicidad":"Inocua. Comestible (ensalada, café de achicoria).","nota":"Raíz tostada como sustituto/aditivo del café."}},{"sector":2,"lado":"A","num":3,"nombre_es":"Clematide","nombre_bach":"Clematis / Clematis vitalba","codigo_radionico":3639,"info":{"origen":"Planta: Clematis vitalba. Familia Ranunculaceae","composicion":"Protoanemonina, anemonina (irritantes vesicantes)","uso_tradicional":"Bach: ensoñación, falta de presencia, fugarse mentalmente","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Planta fresca cáustica para mucosas.","nota":"Trepadora común en setos europeos."}},{"sector":2,"lado":"B","num":4,"nombre_es":"Manzano silvestre","nombre_bach":"Crab Apple / Malus pumila","codigo_radionico":1214,"info":{"origen":"Árbol: Malus pumila/sylvestris. Familia Rosaceae","composicion":"Pectinas, flavonoides (quercetina) en fruto","uso_tradicional":"Bach: 'flor de la limpieza', autorrechazo, obsesión por detalles menores","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Frutos seguros.","nota":"Sin valor farmacológico específico el preparado Bach."}},{"sector":2,"lado":"B","num":5,"nombre_es":"Olmo blanco","nombre_bach":"Elm / Ulmus procera","codigo_radionico":7884,"info":{"origen":"Árbol: Ulmus procera. Familia Ulmaceae","composicion":"Mucílagos en corteza interna","uso_tradicional":"Bach: sentimiento temporal de incompetencia ante responsabilidad","evidencia":"Sin evidencia.","toxicidad":"Segura.","nota":"Mucílago de olmo americano (Ulmus rubra) sí se usa para irritación digestiva."}},{"sector":2,"lado":"B","num":6,"nombre_es":"Genciana","nombre_bach":"Gentian / Gentiana amarella","codigo_radionico":4156,"info":{"origen":"Planta: Gentianella amarella / Gentiana amarella. Familia Gentianaceae","composicion":"Glucósidos amargos (genciopicrina)","uso_tradicional":"Bach: desánimo después de un revés, fácilmente desalentado","evidencia":"Genciana como tónico amargo: tradicional para apetito. Preparación Bach: sin evidencia.","toxicidad":"Baja.","nota":"Distinto género del que se usa en bebidas amargas (Gentiana lutea)."}},{"sector":3,"lado":"A","num":1,"nombre_es":"Aulaga","nombre_bach":"Gorse / Ulex europaeus","codigo_radionico":2627,"info":{"origen":"Arbusto: Ulex europaeus. Familia Fabaceae","composicion":"Alcaloides (citisina-tipo)","uso_tradicional":"Bach: desesperanza total, abandono de la lucha","evidencia":"Sin evidencia.","toxicidad":"Alcaloides en semillas: tóxicos.","nota":"Tojo común en brezales atlánticos."}},{"sector":3,"lado":"A","num":2,"nombre_es":"Brezo/brecina","nombre_bach":"Heather / Calluna vulgaris","codigo_radionico":6338,"info":{"origen":"Arbusto: Calluna vulgaris. Familia Ericaceae","composicion":"Flavonoides (callunina), arbutina","uso_tradicional":"Bach: locuacidad excesiva por necesidad de atención, miedo a soledad","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Baja.","nota":"Brezos (Ericaceae): algunos tienen grayanotoxinas, no esta especie."}},{"sector":3,"lado":"A","num":3,"nombre_es":"Acebo","nombre_bach":"Holly / Ilex aquifolium","codigo_radionico":2809,"info":{"origen":"Árbol: Ilex aquifolium. Familia Aquifoliaceae","composicion":"Saponinas, alcaloides (ilicina) en hojas y bayas","uso_tradicional":"Bach: odio, envidia, celos, sospecha","evidencia":"Sin evidencia.","toxicidad":"Bayas tóxicas (causa intoxicaciones pediátricas en Navidad).","nota":"NO confundir con yerba mate (Ilex paraguariensis), congénere comestible."}},{"sector":3,"lado":"B","num":4,"nombre_es":"Madreselva","nombre_bach":"Honeysuckle / Lonicera caprifolium","codigo_radionico":3972,"info":{"origen":"Planta: Lonicera caprifolium. Familia Caprifoliaceae","composicion":"Loniceroside, saponinas","uso_tradicional":"Bach: añoranza del pasado, vivir en lo perdido","evidencia":"Sin evidencia.","toxicidad":"Bayas tóxicas.","nota":"Trepadora ornamental con flores fragantes."}},{"sector":3,"lado":"B","num":5,"nombre_es":"Hojarazo/carpe","nombre_bach":"Hornbeam / Carpinus betulus","codigo_radionico":6113,"info":{"origen":"Árbol: Carpinus betulus (carpe). Familia Betulaceae","composicion":"Taninos (en corteza y hojas)","uso_tradicional":"Bach: cansancio mental anticipatorio ante tareas, 'lunes por la mañana'","evidencia":"Sin evidencia.","toxicidad":"Segura.","nota":"Árbol común en bosques caducifolios europeos."}},{"sector":3,"lado":"B","num":6,"nombre_es":"Impaciencia","nombre_bach":"Impatiens / Impatiens glandulifera","codigo_radionico":2653,"info":{"origen":"Planta: Impatiens glandulifera. Familia Balsaminaceae","composicion":"Flavonoides, naftoquinonas (impatienol)","uso_tradicional":"Bach: impaciencia, irritabilidad por ritmos ajenos lentos","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Baja.","nota":"Una de las 12 'curadoras' originales de Bach. Especie invasiva en Europa."}},{"sector":4,"lado":"A","num":1,"nombre_es":"Alerce","nombre_bach":"Larch / Larix decidua","codigo_radionico":3363,"info":{"origen":"Árbol: Larix decidua. Familia Pinaceae","composicion":"Resinas (trementina veneciana), ácido abietico","uso_tradicional":"Bach: falta de confianza, anticipación de fracaso","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Resinas pueden ser irritantes.","nota":"Únicas coníferas que pierden las hojas (acículas) en invierno."}},{"sector":4,"lado":"A","num":2,"nombre_es":"Mímulo","nombre_bach":"Mimulus / Mimulus guttatus","codigo_radionico":5733,"info":{"origen":"Planta: Mimulus guttatus. Familia Phrymaceae","composicion":"Mimulin, fenoles","uso_tradicional":"Bach: miedos concretos identificables (alturas, animales, enfermedad)","evidencia":"Sin evidencia.","toxicidad":"Baja.","nota":"Una de las 12 'curadoras' originales de Bach."}},{"sector":4,"lado":"A","num":3,"nombre_es":"Mostaza","nombre_bach":"Mustard / Sinapis arvensis","codigo_radionico":2122,"info":{"origen":"Planta: Sinapis arvensis (mostaza silvestre). Familia Brassicaceae","composicion":"Glucosinolatos (sinigrina), isotiocianatos","uso_tradicional":"Bach: tristeza profunda y repentina sin causa, depresión 'que cae'","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Semilla cruda: irritante.","nota":"Sinapismos (cataplasmas) históricamente como contrairritante."}},{"sector":4,"lado":"B","num":4,"nombre_es":"Roble","nombre_bach":"Oak / Quercus robur","codigo_radionico":5847,"info":{"origen":"Árbol: Quercus robur. Familia Fagaceae","composicion":"Taninos elágicos (corteza), bellotas","uso_tradicional":"Bach: lucha incansable contra adversidad, sin descanso ni queja","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Baja.","nota":"Corteza de roble: astringente tradicional para diarrea."}},{"sector":4,"lado":"B","num":5,"nombre_es":"Olivo","nombre_bach":"Olive / Olea europaea","codigo_radionico":4122,"info":{"origen":"Árbol: Olea europaea. Familia Oleaceae","composicion":"Oleuropeína, hidroxitirosol (en hojas y fruto)","uso_tradicional":"Bach: agotamiento total tras esfuerzo prolongado","evidencia":"Olivo (hoja): evidencia preliminar para hipertensión. Aceite: cardioprotector (estudios PREDIMED). Preparación Bach: sin evidencia.","toxicidad":"Segura.","nota":"El aceite y la hoja tienen actividad farmacológica real, no la preparación Bach."}},{"sector":4,"lado":"B","num":6,"nombre_es":"Pino silvestre","nombre_bach":"Pine / Pinus sylvestris","codigo_radionico":1257,"info":{"origen":"Árbol: Pinus sylvestris. Familia Pinaceae","composicion":"Resina, terpenos (alfa-pineno)","uso_tradicional":"Bach: culpa, autorreproche por errores propios o ajenos","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Resina puede causar dermatitis de contacto.","nota":"Aceite esencial sí tiene propiedades antimicrobianas in vitro."}},{"sector":5,"lado":"A","num":1,"nombre_es":"Castaño rojo","nombre_bach":"Red Chestnut / Aesculus carnea","codigo_radionico":5719,"info":{"origen":"Árbol: Aesculus carnea. Familia Sapindaceae","composicion":"Escina, esculina (en semillas)","uso_tradicional":"Bach: preocupación excesiva por seres queridos","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Castañas crudas tóxicas.","nota":"Híbrido de castaño de Indias y castaño rojo americano."}},{"sector":5,"lado":"A","num":2,"nombre_es":"Heliantemo","nombre_bach":"Rock Rose / Helianthemum nummularium","codigo_radionico":2841,"info":{"origen":"Planta: Helianthemum nummularium. Familia Cistaceae","composicion":"Taninos, flavonoides","uso_tradicional":"Bach: terror, pánico paralizante, post-traumático agudo","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Baja.","nota":"Uno de los componentes del Rescue Remedy."}},{"sector":5,"lado":"A","num":3,"nombre_es":"Agua de roca","nombre_bach":"Rock Water","codigo_radionico":4634,"info":{"origen":"Agua de manantiales no contaminados (no es planta)","composicion":"Agua + mineralización local + 'potenciación' solar","uso_tradicional":"Bach: autoexigencia rígida, abnegación, perfeccionismo","evidencia":"Sin evidencia. Es solo agua.","toxicidad":"Ninguna.","nota":"Es la única 'flor' de Bach que no es una planta. Es agua expuesta al sol según protocolo Bach."}},{"sector":5,"lado":"B","num":4,"nombre_es":"Scleranthus","nombre_bach":"Scleranthus / Scleranthus annuus","codigo_radionico":2622,"info":{"origen":"Planta: Scleranthus annuus. Familia Caryophyllaceae","composicion":"Saponinas, glucósidos (poco caracterizados)","uso_tradicional":"Bach: indecisión entre dos opciones, oscilación","evidencia":"Sin evidencia.","toxicidad":"Baja.","nota":"Planta pequeña común en suelos arenosos."}},{"sector":5,"lado":"B","num":5,"nombre_es":"Estrella de Belén","nombre_bach":"Star of Bethlehem / Ornithogalum umbellatum","codigo_radionico":3672,"info":{"origen":"Planta: Ornithogalum umbellatum. Familia Asparagaceae","composicion":"Glucósidos cardiotónicos (similares a digital)","uso_tradicional":"Bach: shock, trauma físico/emocional pasado o reciente","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Bulbo tóxico (cardiotónico).","nota":"Componente del Rescue Remedy."}},{"sector":5,"lado":"B","num":6,"nombre_es":"Castaño dulce","nombre_bach":"Sweet Chestnut / Castanea sativa","codigo_radionico":2805,"info":{"origen":"Árbol: Castanea sativa. Familia Fagaceae","composicion":"Taninos, almidón (en castaña)","uso_tradicional":"Bach: 'oscura noche del alma', desesperación extrema","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Castaña comestible segura.","nota":"Productor de las castañas comestibles tradicionales."}},{"sector":6,"lado":"A","num":1,"nombre_es":"Verbena","nombre_bach":"Vervain / Verbena officinalis","codigo_radionico":5637,"info":{"origen":"Planta: Verbena officinalis. Familia Verbenaceae","composicion":"Verbenina, iridoides (verbenalina)","uso_tradicional":"Bach: fanatismo, exceso de entusiasmo por causas, sobrecarga voluntaria","evidencia":"Verbena tradicional: ansiolítico leve, evidencia limitada. Preparación Bach: sin evidencia.","toxicidad":"Baja.","nota":"Tradicional en Europa como hierba mágica."}},{"sector":6,"lado":"A","num":2,"nombre_es":"Vid","nombre_bach":"Vine / Vitis vinifera","codigo_radionico":3317,"info":{"origen":"Planta: Vitis vinifera. Familia Vitaceae","composicion":"Resveratrol, antocianinas (en uvas/semillas)","uso_tradicional":"Bach: dominio autoritario, ambición de poder, inflexibilidad","evidencia":"Resveratrol farmacológico: investigación activa (cardioprotector, antiaging). Preparación Bach: sin evidencia.","toxicidad":"Frutos seguros.","nota":"Frutos y derivados (vino, jugo) con valor nutricional; preparación Bach sin actividad."}},{"sector":6,"lado":"A","num":3,"nombre_es":"Nogal","nombre_bach":"Walnut / Juglans regia","codigo_radionico":2803,"info":{"origen":"Árbol: Juglans regia. Familia Juglandaceae","composicion":"Juglona (naftoquinona), taninos","uso_tradicional":"Bach: protección durante cambios de vida, transiciones","evidencia":"Sin evidencia para preparación Bach.","toxicidad":"Juglona: alelopática (mata otras plantas).","nota":"Nuez comestible nutritiva, alta en omega-3."}},{"sector":6,"lado":"B","num":4,"nombre_es":"Violeta de agua","nombre_bach":"Water Violet / Hottonia palustris","codigo_radionico":1579,"info":{"origen":"Planta acuática: Hottonia palustris. Familia Primulaceae","composicion":"Saponinas (limited data)","uso_tradicional":"Bach: orgullo solitario, reserva, aislamiento por distancia interior","evidencia":"Sin evidencia.","toxicidad":"Baja.","nota":"Planta acuática europea, en regresión por contaminación."}},{"sector":6,"lado":"B","num":5,"nombre_es":"Castaño blanco","nombre_bach":"White Chestnut / Aesculus hippocastanum","codigo_radionico":2614,"info":{"origen":"Árbol: Aesculus hippocastanum (castaño de Indias). Familia Sapindaceae","composicion":"Escina, esculina (en semilla)","uso_tradicional":"Bach: pensamientos repetitivos, rumiación mental sin solución","evidencia":"Escina (aislada): SÍ usada en insuficiencia venosa crónica con evidencia razonable. Preparación Bach: sin evidencia separada.","toxicidad":"Semilla cruda tóxica.","nota":"Distinguir: escina farmacológica (con evidencia) vs preparación Bach (sin evidencia)."}},{"sector":6,"lado":"B","num":6,"nombre_es":"Avena silvestre-bromo","nombre_bach":"Wild Oat / Bromus ramosus","codigo_radionico":5449,"info":{"origen":"Planta: Bromus ramosus. Familia Poaceae","composicion":"Glúcidos, fibra (poco caracterizado)","uso_tradicional":"Bach: incertidumbre vocacional, no encontrar dirección en vida","evidencia":"Sin evidencia.","toxicidad":"Inocua.","nota":"NO es la avena comestible (Avena sativa); Bach usó Bromus."}},{"sector":7,"lado":"","num":1,"nombre_es":"Escaramujo / Rosa silvestre","nombre_bach":"Wild Rose / Rosa canina","codigo_radionico":1594,"info":{"origen":"Planta: Rosa canina (rosal silvestre). Familia Rosaceae","composicion":"Vitamina C alta, flavonoides, ácido ascórbico en frutos","uso_tradicional":"Bach: apatía, resignación, falta de interés por la vida","evidencia":"Frutos de escaramujo (en infusión): alta vitamina C, antiinflamatorio leve. Preparación Bach: sin evidencia separada.","toxicidad":"Inocuo. Frutos comestibles.","nota":"Frutos (cinorrodones) ricos en vitamina C; uso herbario diferente al Bach."}},{"sector":7,"lado":"","num":2,"nombre_es":"Sauce / Mimbre dorado","nombre_bach":"Willow / Salix vitellina","codigo_radionico":1629,"info":{"origen":"Árbol: Salix vitellina (sauce amarillo). Familia Salicaceae","composicion":"Salicina (precursor de aspirina) en corteza","uso_tradicional":"Bach: resentimiento, victimismo, autoconmiseración","evidencia":"Corteza de sauce (Salix alba): analgesia leve por salicina, evidencia moderada. Preparación Bach: sin evidencia.","toxicidad":"Como aspirina: riesgo de sangrado, evitar en niños (síndrome de Reye).","nota":"Origen histórico de la aspirina (1899)."}},{"sector":7,"lado":"","num":3,"nombre_es":"Remedio de urgencia","nombre_bach":"Rescue Remedy (mezcla 5 flores)","codigo_radionico":476362,"info":{"origen":"Mezcla de 5 flores: Heliantemo, Clemátide, Impaciencia, Cerasífera, Estrella de Belén","composicion":"Sin moléculas activas significativas","uso_tradicional":"Bach: situaciones de crisis aguda emocional, shock","evidencia":"ECA específicos (ej. Halberstein 2007): efecto similar a placebo. Revisión Cochrane indirecta: sin evidencia de eficacia.","toxicidad":"Inocuo (contiene brandy como conservante - precaución en alcohólicos).","nota":"Conocido también como 'Rescue Remedy'. Producto más vendido del catálogo Bach."}}],"sales_schussler":[{"sector":1,"lado":"A","num":1,"nombre":"Calc Fluor","nombre_completo":"Calcium fluoratum (Fluoruro de calcio)","codigo_radionico":5128,"info":{"origen":"Fluoruro de calcio (CaF₂)","composicion":"CaF₂","uso_tradicional":"Schüssler: elasticidad de tejidos (piel, vasos), esmalte dental","evidencia":"Fluoruro farmacológico: bien establecido para caries dental (tópico o sistémico a dosis específicas). Sal Schüssler D6/D12: cantidad insignificante de flúor.","toxicidad":"Flúor en exceso: fluorosis dental y esquelética.","nota":"El flúor farmacológico (pastas dentales 1450ppm) es eficaz; la dosis homeopática D6 = 1 millón de veces menor."}},{"sector":1,"lado":"A","num":2,"nombre":"Calc Phos","nombre_completo":"Calcium phosphoricum (Fosfato de calcio)","codigo_radionico":5945,"info":{"origen":"Fosfato de calcio (Ca₃(PO₄)₂)","composicion":"Fosfato cálcico tribásico","uso_tradicional":"Schüssler: crecimiento óseo, dentición, recuperación post-fractura","evidencia":"Fosfato de calcio: principal mineral del hueso. Suplementos farmacológicos efectivos en deficiencia. Sal Schüssler: cantidades irrelevantes nutricionalmente.","toxicidad":"Exceso: hipercalcemia, calcificación.","nota":"1 gramo de queso aporta más calcio que años de Calc Phos D6."}},{"sector":1,"lado":"A","num":3,"nombre":"Calc Sulph","nombre_completo":"Calcium sulfuricum (Sulfato de calcio)","codigo_radionico":7736,"info":{"origen":"Sulfato de calcio (CaSO₄, yeso)","composicion":"CaSO₄","uso_tradicional":"Schüssler: supuraciones crónicas, infecciones que tardan en sanar","evidencia":"Sin evidencia clínica.","toxicidad":"Inocuo.","nota":"Es el yeso común. Sin valor farmacológico oral."}},{"sector":1,"lado":"B","num":1,"nombre":"Kali Phos","nombre_completo":"Kalium phosphoricum (Fosfato de potasio)","codigo_radionico":5286,"info":{"origen":"Fosfato dipotásico (K₂HPO₄)","composicion":"K₂HPO₄","uso_tradicional":"Schüssler: agotamiento nervioso, estados depresivos por sobrecarga mental","evidencia":"Potasio nutricional: esencial. Fosfato también. Preparación Schüssler: cantidades fisiológicamente irrelevantes.","toxicidad":"Como suplemento: hiperpotasemia es peligrosa cardíaca.","nota":"Potasio dietético importante (frutas, verduras); no por Schüssler."}},{"sector":1,"lado":"B","num":2,"nombre":"Kali Mur","nombre_completo":"Kalium muriaticum (Cloruro de potasio)","codigo_radionico":5668,"info":{"origen":"Cloruro de potasio (KCl)","composicion":"KCl","uso_tradicional":"Schüssler: inflamaciones de mucosas (segundo estadio), mocos blancos","evidencia":"KCl farmacológico: corrección de hipopotasemia. Schüssler D6: insignificante.","toxicidad":"Hiperpotasemia es letal.","nota":"Sustituto de sal en hipertensos (productos como NoSalt). El uso farmacológico es muy distinto."}},{"sector":1,"lado":"B","num":3,"nombre":"Kali Sulph","nombre_completo":"Kalium sulfuricum (Sulfato de potasio)","codigo_radionico":3181,"info":{"origen":"Sulfato de potasio (K₂SO₄)","composicion":"K₂SO₄","uso_tradicional":"Schüssler: inflamaciones crónicas, mocos amarillentos, problemas de piel","evidencia":"Sin evidencia.","toxicidad":"Baja.","nota":"Sin uso farmacológico relevante."}},{"sector":2,"lado":"A","num":1,"nombre":"Nat Phos","nombre_completo":"Natrum phosphoricum (Fosfato de sodio)","codigo_radionico":1618,"info":{"origen":"Fosfato disódico (Na₂HPO₄)","composicion":"Na₂HPO₄","uso_tradicional":"Schüssler: 'desequilibrios ácido-base', acidez, gota, reumatismo","evidencia":"Fosfato de sodio farmacológico: laxante osmótico. Schüssler: cantidades irrelevantes.","toxicidad":"Como laxante en dosis altas: deshidratación, alteraciones renales.","nota":"El concepto Schüssler de 'regular el pH' no es como funciona la homeostasis ácido-base real (regulada por riñones y pulmones)."}},{"sector":2,"lado":"A","num":2,"nombre":"Nat Mur","nombre_completo":"Natrum muriaticum (Cloruro de sodio)","codigo_radionico":2825,"info":{"origen":"Cloruro de sodio (NaCl, sal de mesa)","composicion":"NaCl","uso_tradicional":"Schüssler: regulación de fluidos corporales, mucosas secas, anemia, fatiga","evidencia":"Sodio nutricional: esencial. Preparación Schüssler: cantidades millones de veces menores que una pizca de sal de cocina.","toxicidad":"Exceso dietético: hipertensión. Suero hipertónico: cuidado en uso clínico.","nota":"Una pizca de sal de mesa contiene billones de veces más NaCl que una pastilla Schüssler D6."}},{"sector":2,"lado":"A","num":3,"nombre":"Nat Sulph","nombre_completo":"Natrum sulfuricum (Sulfato de sodio)","codigo_radionico":4768,"info":{"origen":"Sulfato de sodio (Na₂SO₄, sal de Glauber)","composicion":"Na₂SO₄","uso_tradicional":"Schüssler: drenaje hepático y biliar, retención de líquidos","evidencia":"Sulfato de sodio: laxante osmótico (sal de Glauber). Schüssler: irrelevante.","toxicidad":"Como laxante: deshidratación.","nota":"Las dosis terapéuticas de Na₂SO₄ son gramos; las Schüssler son fracciones de microgramo."}},{"sector":2,"lado":"B","num":1,"nombre":"Ferr Phos","nombre_completo":"Ferrum phosphoricum (Fosfato de hierro)","codigo_radionico":4369,"info":{"origen":"Fosfato de hierro (FePO₄)","composicion":"FePO₄","uso_tradicional":"Schüssler: 'primer estadio' de inflamación, fiebre inicial, anemia leve","evidencia":"Hierro suplementario (sulfato ferroso, fumarato, polimaltosa): SÍ trata anemia ferropénica. Sal Schüssler: cantidades fisiológicamente irrelevantes.","toxicidad":"Exceso: hemocromatosis.","nota":"Para anemia ferropénica, sulfato ferroso (60 mg Fe elemental) es estándar. Schüssler D6 no aporta hierro biodisponible."}},{"sector":2,"lado":"B","num":2,"nombre":"Mag Phos","nombre_completo":"Magnesium phosphoricum (Fosfato de magnesio)","codigo_radionico":4382,"info":{"origen":"Fosfato de magnesio (Mg₃(PO₄)₂)","composicion":"Mg₃(PO₄)₂","uso_tradicional":"Schüssler: espasmos, calambres, dolores agudos en relámpagos","evidencia":"Magnesio nutricional: esencial (cofactor enzimático). Suplementos farmacológicos efectivos en deficiencia. Schüssler: irrelevante por cantidad.","toxicidad":"Exceso: diarrea (efecto laxante).","nota":"Para calambres: magnesio dietético o suplemento farmacológico (300-400 mg) sí ayuda; Schüssler no."}},{"sector":2,"lado":"B","num":3,"nombre":"Silícea","nombre_completo":"Silicea terra (Dióxido de silicio)","codigo_radionico":3638,"info":{"origen":"Dióxido de silicio (SiO₂)","composicion":"Sílice","uso_tradicional":"Schüssler: tejidos conjuntivos, cabello, uñas, abscesos","evidencia":"Sílice nutricional: rol estructural posible pero no es nutriente esencial humano. Preparación Schüssler: sin evidencia.","toxicidad":"Inhalada: silicosis. Oral: inocua.","nota":"Silicio orgánico (en alimentos) es asimilable; SiO₂ cristalino oral apenas se absorbe."}}],"protocolo":{"nombre":"Protocolo de Rastreo de Frecuencias","descripcion":"Procedimiento estándar para identificar el remedio, potencia y período mediante rastreo bioenergético con respuestas SI/NO","fases":[{"numero":1,"nombre":"Establecer búsqueda","subtitulo":"Abriendo el circuito bioenergético","mensaje":"Voy a hacer un rastreo [homeopático / de remedio floral / de sales de Schüssler]. Manifiéstame qué necesitas para restaurar la armonía biodinámica de todos tus cuerpos.","opcional":"...para sanar y aliviar las causas involucradas al síntoma X","tipo":"apertura"},{"numero":2,"nombre":"Comprobar programa","subtitulo":"Verificación inicial","mensaje":"¿Sabes qué estamos buscando?","respuesta":"SI / NO","tipo":"verificacion"},{"numero":3,"nombre":"Rastreo","subtitulo":"Identificación del remedio mediante preguntas SI/NO","secuencias":{"Homeopatía":["¿Es Policresto o Semipolicresto?","¿Qué Sector / Bloque? (1, 2, 3, 4, 5 ó 6)","¿Lado A o B? (en Semipolicrestos)","¿Qué número? (1, 2, 3, 4 ó 5 según tabla)","¿A qué potencia? (Decimal / Centesimal A o B / Milesimal A o B)","¿Durante qué período temporal? (Período A, B, C o D × Días / Semanas / Meses)","¿Hay algún otro medicamento homeopático que necesites?"],"Flores de Bach":["¿Qué Sector? (1 a 7)","¿Lado A o B? (en sectores 1 a 6; el sector 7 no tiene lados)","¿Qué número? (1 a 6)","¿Durante qué período temporal?","¿Hay algún otro remedio floral que necesites?"],"Sales de Schüssler":["¿Qué Sector? (1 ó 2)","¿Lado A o B?","¿Qué número? (1, 2 ó 3)","¿Durante qué período temporal?","¿Hay alguna otra sal que necesites?","Alternativa: usar código 790702 para activar las 12 sales conjuntas"]},"tipo":"rastreo"},{"numero":4,"nombre":"Instalar información","subtitulo":"Abriendo el circuito bioenergético","formato_inserto":"Inserto: ([nombre del remedio]), código radiónico [número], activo y pulsante durante [período X], a [potencia X]","verificacion":"¿Este [medicamento / remedio / sal] se está gestionando efectivamente?","respuesta":"SI / NO","tipo":"instalacion"}]},"potencias_sistema":{"Decimales":{"potencias":["1x","2x","3x"],"ratio":"1:10 por cada paso","nota":"Trazas medibles del original"},"Centesimales A":{"potencias":["3c","6c","12c"],"ratio":"1:100 por cada paso","nota":"A 12c se alcanza el umbral de Avogadro"},"Centesimales B":{"potencias":["30c","200c","500c"],"ratio":"1:100 por cada paso","nota":"Sin moléculas del original presentes"},"Milesimales A":{"potencias":["1M","10M","50M"],"ratio":"1:1000 por cada paso","nota":"Diluciones altas"},"Milesimales B":{"potencias":["100M","500M","1MM","10MM"],"ratio":"1:1000 por cada paso","nota":"Diluciones extremas"}},"periodos_sistema":{"Periodo A":{"numeros":[1,2,3]},"Periodo B":{"numeros":[4,5,6]},"Periodo C":{"numeros":[7,8,9]},"Periodo D":{"numeros":[10,11,12]},"Unidades":["Días","Semanas","Meses"]},"bach_categorias":{"1. Miedo":{"flores":["Heliantemo","Mímulo","Cerasífera","Álamo temblón","Castaño rojo"],"descripcion":"Para distintos tipos de miedo: terror agudo, miedos concretos, pérdida de control, miedos vagos, preocupación por seres queridos"},"2. Incertidumbre":{"flores":["Ceratostigma","Scleranthus","Genciana","Aulaga","Hojarazo","Avena silvestre"],"descripcion":"Falta de confianza en propio juicio, indecisión, desánimo, desesperanza, fatiga anticipatoria, falta de dirección"},"3. Falta de interés en el presente":{"flores":["Clemátide","Madreselva","Escaramujo","Olivo","Castaño blanco","Mostaza","Brote de castaño blanco"],"descripcion":"Ensoñación, añoranza del pasado, apatía, agotamiento, rumiación mental, tristeza profunda, repetición de errores"},"4. Soledad":{"flores":["Violeta de agua","Impaciencia","Brezo"],"descripcion":"Reserva orgullosa, irritabilidad por lentitud ajena, locuacidad excesiva por necesidad de atención"},"5. Hipersensibilidad a influencias e ideas":{"flores":["Agrimonia","Centaura","Nogal","Acebo"],"descripcion":"Ocultamiento de sufrimiento, debilidad de voluntad, sensibilidad ante cambios, odio y celos"},"6. Desaliento o desesperación":{"flores":["Alerce","Pino silvestre","Olmo blanco","Castaño dulce","Estrella de Belén","Sauce","Roble","Manzano silvestre"],"descripcion":"Falta de confianza, autoreproche, incompetencia temporal, desesperación extrema, shock/trauma, victimismo, agotamiento por lucha, autorrechazo"},"7. Preocupación excesiva por los demás":{"flores":["Achicoria","Verbena","Vid","Haya","Agua de roca"],"descripcion":"Amor posesivo, fanatismo, autoritarismo, intolerancia, autoexigencia rígida"}},"guia_lectura":{"estructura_codigo":"Cada remedio tiene 4 coordenadas: Sector + Lado (A/B) + Número + Código radiónico","sector":"Agrupación temática del remedio dentro del sistema","lado":"Subdivisión A o B dentro del sector (aplicable en Semipolicrestos y Flores de Bach sectores 1-6)","numero":"Posición específica dentro del sector/lado","codigo":"Código radiónico numérico único usado para la activación bioenergética","potencia":"(Solo Homeopatía) Nivel de dilución del remedio: desde 1x (1:10) hasta 10MM","periodo":"Duración del tratamiento: período A/B/C/D × días/semanas/meses","ejemplo":{"remedio":"Aconitum Napellus (Policresto)","sector":1,"lado":"—","numero":1,"codigo":2557,"potencia_ejemplo":"30c","periodo_ejemplo":"Período B (4-6) × Semanas","inserto":"Inserto: Aconitum Napellus, código radiónico 2557, activo y pulsante durante 5 semanas, a potencia 30c"}},"manual":{"preparacion_general":{"titulo":"Preparación general antes de iniciar el rastreo","secciones":[{"titulo":"Estado del operador","puntos":["Centrarse. Respiración consciente durante 1-2 minutos antes de iniciar.","Liberarse de juicios sobre el resultado esperado. La intención debe ser neutra.","Tener las tablas de rastreo accesibles (impresas o en pantalla).","Disponer de instrumento de verificación SI/NO (péndulo, kinesiología muscular, biotensor u otro)."]},{"titulo":"Estado del consultante","puntos":["Posición cómoda, relajada, sin cruce de extremidades.","Hidratación adecuada (vaso de agua antes del rastreo).","Sin metales conductores grandes encima si se trabaja con péndulo.","Permiso verbal o consentimiento para el procedimiento."]},{"titulo":"Identificación del cuadro","puntos":["Anotar el síntoma principal o motivo de consulta.","Decidir qué sistema(s) se van a rastrear: Homeopatía, Bach, Schüssler, o varios.","Si hay duda, se puede rastrear primero cuál sistema es el indicado preguntando SI/NO."]}]},"uso_por_tabla":{"Policrestos":{"cuando_usar":"Síntomas agudos o cuadros constitucionales bien definidos. 25 remedios principales de la homeopatía clásica que cubren la mayoría de cuadros profundos.","estructura":"5 sectores × 5 remedios = 25 entradas. Sin subdivisión A/B.","navegacion":["Pregunta 1: ¿Es Policresto? → Si SI, continuar en esta tabla","Pregunta 2: ¿Sector? (rastrear: ¿1? ¿2? ¿3? ¿4? ¿5?)","Pregunta 3: ¿Número dentro del sector? (rastrear: ¿1? ¿2? ¿3? ¿4? ¿5?)","Confirmar el remedio identificado en la intersección Sector × Número","Continuar con potencia y período"],"ejemplo_navegacion":"SI a Policresto → SI a Sector 1 → SI a Número 4 → Remedio: Belladonna (código 9633)"},"Semipolicrestos":{"cuando_usar":"Cuadros secundarios o cuando los Policrestos no resuenan. 36 remedios complementarios con indicaciones más específicas.","estructura":"6 sectores × 2 lados (A/B) × 3 remedios = 36 entradas.","navegacion":["Pregunta 1: ¿Es Semipolicresto? → Si SI, continuar en esta tabla","Pregunta 2: ¿Sector? (¿1? ¿2? ¿3? ¿4? ¿5? ¿6?)","Pregunta 3: ¿Lado A? Si NO → ¿Lado B?","Pregunta 4: ¿Número? (¿1? ¿2? ¿3?)","Confirmar remedio en intersección Sector × Lado × Número","Continuar con potencia y período"],"ejemplo_navegacion":"SI a Semipolicresto → SI a Sector 3 → NO a Lado A, SI a Lado B → SI a Número 2 → Remedio: Iodum Metallicum (código 5711)"},"Flores de Bach":{"cuando_usar":"Desequilibrios psicoemocionales (miedo, incertidumbre, soledad, hipersensibilidad, desaliento, preocupación). NO se usan potencias, solo períodos.","estructura":"7 sectores. Sectores 1-6 con subdivisión A/B × 6 flores. Sector 7 sin lados, 3 flores (incluye Remedio de Urgencia código 476362).","navegacion":["Pregunta 1: ¿Sector? (¿1? ¿2? ¿3? ¿4? ¿5? ¿6? ¿7?)","Pregunta 2 (si sector 1-6): ¿Lado A o B?","Pregunta 3: ¿Número? (1-6 en sectores 1-6; 1-3 en sector 7)","Confirmar la flor identificada","Determinar período únicamente (no hay potencias en Bach)","Alternativa rápida: si crisis aguda emocional → usar directamente Remedio de Urgencia (476362)"],"ejemplo_navegacion":"SI a Sector 5 → SI a Lado A → SI a Número 1 → Flor: Castaño rojo (Red Chestnut, código 5719) - preocupación por seres queridos","cruce_categorias":"Las 7 categorías emocionales de Bach se correlacionan con los sectores. Útil para selección por sintomatología clara."},"Sales de Schüssler":{"cuando_usar":"Desequilibrios bioquímicos/minerales. 12 sales que Schüssler consideró constituyentes del cuerpo. NO se usan potencias, solo períodos.","estructura":"2 sectores × 2 lados (A/B) × 3 sales = 12. Más código adicional 790702 para activación conjunta de las 12 sales.","navegacion":["Pregunta 1: ¿Sector? (¿1? ¿2?)","Pregunta 2: ¿Lado A o B?","Pregunta 3: ¿Número? (¿1? ¿2? ¿3?)","Confirmar sal identificada","Determinar período","Alternativa: ¿Conviene activar TODAS las sales conjuntamente? → código 790702"],"ejemplo_navegacion":"SI a Sector 2 → NO a Lado A, SI a Lado B → SI a Número 3 → Sal: Silícea (código 3638)"}},"procedimiento_insercion":{"titulo":"Procedimiento completo de inserción del código radiónico","descripcion":"Secuencia operativa paso a paso desde el inicio hasta el cierre del circuito bioenergético.","pasos":[{"numero":"A","titulo":"Apertura del circuito bioenergético","accion":"Iniciar la conexión","detalle":"Visualizar la conexión entre el operador y el campo bioenergético del consultante. Algunos profesionales colocan la mano sobre el plexo solar o la coronilla del consultante; otros trabajan a distancia con foto/testigo.","mensaje_operador":"Abriendo circuito bioenergético.","verificacion":null},{"numero":"B","titulo":"Establecer la búsqueda","accion":"Comunicar al subconsciente el objetivo del rastreo","detalle":"Mensaje al Subconsciente (MS): comunicación directa con el campo informacional del consultante.","mensaje_operador":"Voy a hacer un rastreo [homeopático / de remedio floral / de sales de Schüssler]. Manifiéstame qué necesitas para restaurar la armonía biodinámica de todos tus cuerpos.","opcional":"Para sanar y aliviar las causas involucradas al SÍNTOMA X","verificacion":null},{"numero":"C","titulo":"Comprobar programa","accion":"Verificar que el subconsciente está en disposición","detalle":"Pregunta de verificación previa al rastreo. Si la respuesta es NO, repetir el mensaje del Paso B o esperar/reformular.","mensaje_operador":"¿Sabes qué estamos buscando?","verificacion":"SI / NO"},{"numero":"D","titulo":"Rastreo de coordenadas","accion":"Identificar el remedio mediante preguntas SI/NO secuenciales","detalle":"Navegar la tabla del sistema correspondiente preguntando cada coordenada hasta llegar al remedio único. Anotar progresivamente.","secuencia_homeopatia":["1. ¿Policresto? Si NO → ¿Semipolicresto?","2. ¿Sector X? (preguntar uno por uno hasta SI)","3. ¿Lado A? Si NO → Lado B (solo Semipolicrestos)","4. ¿Número X? (preguntar uno por uno hasta SI)","5. Localizar el remedio en la tabla y leer su CÓDIGO RADIÓNICO","6. Continuar al Paso E (potencia)"],"secuencia_bach_schussler":["1. ¿Sector X? (preguntar uno por uno hasta SI)","2. ¿Lado A o B? (cuando aplique)","3. ¿Número X? (preguntar uno por uno hasta SI)","4. Localizar el remedio en la tabla y leer su CÓDIGO RADIÓNICO","5. Saltar al Paso F (período) — Bach y Schüssler no usan potencias"],"verificacion":"SI / NO en cada pregunta"},{"numero":"E","titulo":"Determinar potencia (solo Homeopatía)","accion":"Identificar el nivel de dilución del remedio homeopático","detalle":"Las potencias se preguntan en cascada: primero familia, luego sub-grupo, luego potencia específica. NO aplicar este paso para Flores de Bach ni Sales de Schüssler.","secuencia_potencia":["1. ¿Familia Decimal? ¿Centesimal? ¿Milesimal?","2. Si Centesimal o Milesimal: ¿Sub-grupo A o B?","3. Potencia específica: ir preguntando una por una","   - Decimales: 1x, 2x, 3x","   - Centesimales A: 3c, 6c, 12c","   - Centesimales B: 30c, 200c, 500c","   - Milesimales A: 1M, 10M, 50M","   - Milesimales B: 100M, 500M, 1MM, 10MM"],"verificacion":"SI / NO en cada pregunta"},{"numero":"F","titulo":"Determinar período temporal","accion":"Identificar la duración de la inserción del código","detalle":"El período se compone de tres elementos: período (A/B/C/D) + número específico + unidad de tiempo.","secuencia_periodo":["1. ¿Período A (1-3)? ¿B (4-6)? ¿C (7-9)? ¿D (10-12)?","2. Número específico dentro del período (ir preguntando)","3. ¿Unidad: Días? ¿Semanas? ¿Meses?"],"ejemplo":"Período B + Número 5 + Semanas = inserción activa durante 5 semanas","verificacion":"SI / NO en cada pregunta"},{"numero":"G","titulo":"INSERCIÓN del código radiónico","accion":"Activar el código en el campo bioenergético","detalle":"Este es el momento central del procedimiento. Con todas las coordenadas identificadas (remedio, código, potencia si aplica, período), se realiza la inserción formal con visualización, pronunciación clara y activación.","subpasos":[{"letra":"G.1","nombre":"Visualización","descripcion":"Visualizar el código radiónico como secuencia numérica luminosa anclándose en el campo bioenergético del consultante."},{"letra":"G.2","nombre":"Pronunciación del inserto","descripcion":"Pronunciar el inserto completo en voz audible o mental, con presencia plena.","formato_homeopatia":"Inserto: [NOMBRE DEL REMEDIO], código radiónico [NÚMERO], activo y pulsante durante [PERÍODO X] [UNIDAD], a potencia [POTENCIA X].","formato_bach_schussler":"Inserto: [NOMBRE DEL REMEDIO/FLOR/SAL], código radiónico [NÚMERO], activo y pulsante durante [PERÍODO X] [UNIDAD].","ejemplo_homeo":"Inserto: Belladonna, código radiónico 9633, activo y pulsante durante 5 semanas, a potencia 30c.","ejemplo_bach":"Inserto: Castaño rojo, código radiónico 5719, activo y pulsante durante 3 semanas.","ejemplo_schussler":"Inserto: Silícea, código radiónico 3638, activo y pulsante durante 6 meses."},{"letra":"G.3","nombre":"Activación","descripcion":"La frase 'activo y pulsante' es la fórmula de activación. Significa que el código no queda inerte sino que se programa para emitir su frecuencia durante todo el período indicado, modulando continuamente."}],"verificacion":null},{"numero":"H","titulo":"Verificación de la inserción","accion":"Confirmar que el inserto fue aceptado y se está procesando","detalle":"Inmediatamente después de la pronunciación del inserto, verificar SI/NO. Si NO, revisar las coordenadas anteriores (puede haber error en algún paso del rastreo).","mensaje_operador_homeo":"¿Este medicamento se está gestionando efectivamente?","mensaje_operador_bach":"¿Este remedio se está gestionando efectivamente?","mensaje_operador_schussler":"¿Esta sal se está gestionando efectivamente?","verificacion":"SI / NO","si_no":"Si la respuesta es NO: revisar paso a paso. Posibles causas: sector mal identificado, potencia incorrecta, período inadecuado, o el cuerpo necesita primero otro remedio."},{"numero":"I","titulo":"Pregunta de continuación","accion":"Determinar si se necesita otro remedio","detalle":"Antes de cerrar, preguntar si hay otro remedio necesario del mismo o de otro sistema.","mensaje_operador":"¿Hay algún otro [medicamento homeopático / remedio floral / sal] que necesites?","verificacion":"SI / NO","si_si":"Volver al Paso D con la nueva búsqueda.","si_no":"Cerrar el circuito (Paso J)."},{"numero":"J","titulo":"Cierre del circuito bioenergético","accion":"Cerrar la conexión","detalle":"Agradecer al campo bioenergético y cerrar la conexión visualizando la separación. Anotar todo lo identificado para registro del consultante.","mensaje_operador":"Cerrando circuito bioenergético. Gracias.","verificacion":null}]},"ejemplo_consulta_completa":{"titulo":"Ejemplo completo de consulta","caso":"Mujer 38 años, ansiedad aguda con palpitaciones, miedo intenso después de un susto reciente.","transcripcion":[{"paso":"A","operador":"[Abre circuito bioenergético, respiración consciente]","respuesta":""},{"paso":"B","operador":"Voy a hacer un rastreo homeopático. Manifiéstame qué necesitas para restaurar la armonía biodinámica de todos tus cuerpos, para sanar y aliviar las causas involucradas a la ansiedad con palpitaciones.","respuesta":""},{"paso":"C","operador":"¿Sabes qué estamos buscando?","respuesta":"SI"},{"paso":"D.1","operador":"¿Es Policresto?","respuesta":"SI"},{"paso":"D.2","operador":"¿Sector 1?","respuesta":"SI"},{"paso":"D.3","operador":"¿Número 1?","respuesta":"SI","nota":"→ Remedio: Aconitum Napellus (código 2557)"},{"paso":"E.1","operador":"¿Familia Centesimales?","respuesta":"SI"},{"paso":"E.2","operador":"¿Sub-grupo B?","respuesta":"SI"},{"paso":"E.3","operador":"¿Potencia 200c?","respuesta":"SI"},{"paso":"F.1","operador":"¿Período A?","respuesta":"SI"},{"paso":"F.2","operador":"¿Número 3?","respuesta":"SI"},{"paso":"F.3","operador":"¿Unidad Días?","respuesta":"SI"},{"paso":"G","operador":"Inserto: Aconitum Napellus, código radiónico 2557, activo y pulsante durante 3 días, a potencia 200c.","respuesta":""},{"paso":"H","operador":"¿Este medicamento se está gestionando efectivamente?","respuesta":"SI"},{"paso":"I","operador":"¿Hay algún otro medicamento homeopático que necesites?","respuesta":"NO"},{"paso":"I bis","operador":"¿Hay algún remedio floral que necesites?","respuesta":"SI","nota":"→ Inicia nuevo rastreo en tabla Bach"},{"paso":"D.1 (Bach)","operador":"¿Sector 1?","respuesta":"SI"},{"paso":"D.2 (Bach)","operador":"¿Lado A?","respuesta":"SI"},{"paso":"D.3 (Bach)","operador":"¿Número 1?","respuesta":"SI","nota":"→ Flor: Heliantemo (Rock Rose, código 2841)"},{"paso":"F.1 (Bach)","operador":"¿Período B?","respuesta":"SI"},{"paso":"F.2 (Bach)","operador":"¿Número 5?","respuesta":"SI"},{"paso":"F.3 (Bach)","operador":"¿Unidad Semanas?","respuesta":"SI"},{"paso":"G (Bach)","operador":"Inserto: Heliantemo, código radiónico 2841, activo y pulsante durante 5 semanas.","respuesta":""},{"paso":"H (Bach)","operador":"¿Este remedio se está gestionando efectivamente?","respuesta":"SI"},{"paso":"I (Bach)","operador":"¿Hay alguna otra flor que necesites?","respuesta":"NO"},{"paso":"J","operador":"Cerrando circuito bioenergético. Gracias.","respuesta":""}],"resumen_consulta":{"Homeopatía":"Aconitum Napellus (2557), 200c, durante 3 días","Bach":"Heliantemo (2841), durante 5 semanas","tiempo_total_rastreo":"~5-10 minutos con experiencia"}},"consideraciones_practicas":["El rastreo requiere PRESENCIA PLENA del operador. Distracciones, fatiga o estados emocionales alterados afectan la calidad de las respuestas SI/NO.","Calibración previa: antes de cada sesión, verificar el instrumento de respuesta (péndulo, kinesiología) con una pregunta de referencia conocida.","Cuando NO sale claro: si una pregunta queda ambigua, reformular o esperar 30 segundos antes de repetir.","Registro: anotar TODO. Coordenadas, códigos, potencia, período, respuestas. Esto permite trazabilidad y aprendizaje.","Tiempo de inserción: el período indica durante cuánto tiempo el código sigue 'activo y pulsante'. No requiere intervención adicional durante ese tiempo.","Verificación intermedia: si el período es largo (semanas/meses), se puede verificar a la mitad si sigue gestionándose. Si no, reinsertar.","Combinaciones: pueden coexistir múltiples insertos activos simultáneamente (homeopático + floral + sal). El cuerpo los integra.","Documentación al consultante: entregar nota escrita con remedios identificados y períodos para que tenga registro propio."]}};
+
+const META_TABS = {
+    'policrestos': {titulo: 'Policrestos Homeopáticos', desc: '25 remedios · 5 sectores × 5 remedios', clase: 'homeo', tienePotencia: true, tipo_inserto: 'medicamento homeopático'},
+    'semipolicrestos': {titulo: 'Semipolicrestos Homeopáticos', desc: '36 remedios · 6 sectores × 2 lados × 3', clase: 'semi', tienePotencia: true, tipo_inserto: 'medicamento homeopático'},
+    'flores_bach': {titulo: 'Flores de Bach', desc: '38 flores + Remedio de Urgencia · 7 sectores', clase: 'bach', tienePotencia: false, tipo_inserto: 'remedio floral'},
+    'sales_schussler': {titulo: 'Sales de Schüssler', desc: '12 sales · 2 sectores × 2 lados × 3', clase: 'schussler', tienePotencia: false, tipo_inserto: 'sal'}
+};
+
+let estado = {tab: 'prep', vista: 'matriz'};
+
+function init() {
+    document.querySelectorAll('.tab').forEach(t => {
+        t.addEventListener('click', () => cambiarTab(t.dataset.tab));
+    });
+    renderPreparacion();
+    renderUsoTablas();
+    renderProcedimiento();
+    renderConsideraciones();
+    renderEjemplo();
+}
+
+function cambiarTab(tab) {
+    estado.tab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.querySelectorAll('.section-page').forEach(p => p.classList.toggle('active', p.id === 'page-' + tab));
+    if (['policrestos','semipolicrestos','flores_bach','sales_schussler'].includes(tab)) renderTabla(tab);
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+function renderPreparacion() {
+    const cont = document.getElementById('prep-content');
+    cont.innerHTML = DATA.manual.preparacion_general.secciones.map(s => 
+        `<div class="seccion-bloque">
+            <h3>${esc(s.titulo)}</h3>
+            <ul>${s.puntos.map(p => `<li>${esc(p)}</li>`).join('')}</ul>
+        </div>`
+    ).join('');
+}
+
+function renderUsoTablas() {
+    const cont = document.getElementById('uso-content');
+    const mapaClase = {'Policrestos':'homeo','Semipolicrestos':'semi','Flores de Bach':'bach','Sales de Schüssler':'schussler'};
+    cont.innerHTML = Object.entries(DATA.manual.uso_por_tabla).map(([nombre, info]) => {
+        const clase = mapaClase[nombre] || 'homeo';
+        return `<div class="tabla-uso-card">
+            <div class="tabla-uso-header ${clase}">${esc(nombre)}</div>
+            <div class="tabla-uso-body">
+                <div class="label-mini">¿Cuándo usar esta tabla?</div>
+                <div class="cuando">${esc(info.cuando_usar)}</div>
+                
+                <div class="label-mini">Estructura</div>
+                <div class="estructura">${esc(info.estructura)}</div>
+                
+                <div class="label-mini">Cómo navegar (secuencia de preguntas SI/NO)</div>
+                <ul class="nav-list">
+                    ${info.navegacion.map(n => `<li>${esc(n)}</li>`).join('')}
+                </ul>
+                
+                <div class="label-mini" style="margin-top:0.8rem">Ejemplo de navegación</div>
+                <div class="ejemplo-flecha">${esc(info.ejemplo_navegacion)}</div>
+                ${info.cruce_categorias ? `<div class="alert-si-no" style="margin-top:0.6rem">💡 ${esc(info.cruce_categorias)}</div>` : ''}
+            </div>
+        </div>`;
+    }).join('');
+}
+
+function renderProcedimiento() {
+    const cont = document.getElementById('proc-content');
+    cont.innerHTML = DATA.manual.procedimiento_insercion.pasos.map(p => {
+        let contenido = `<div class="paso-detalle">${esc(p.detalle)}</div>`;
+        
+        if (p.mensaje_operador) {
+            contenido += `<div class="mensaje-op">
+                <div class="label-msg">📢 Frase del operador (Mensaje al Subconsciente)</div>
+                <div class="texto-msg">"${esc(p.mensaje_operador)}"</div>
+                ${p.opcional ? `<div class="opcional-tag"><strong>Opcional:</strong> "${esc(p.opcional)}"</div>` : ''}
+                ${p.verificacion ? `<span class="respuesta-badge">Respuesta: ${esc(p.verificacion)}</span>` : ''}
+            </div>`;
+        }
+        
+        if (p.mensaje_operador_homeo) {
+            contenido += `<div class="mensaje-op">
+                <div class="label-msg">📢 Frase del operador (Homeopatía)</div>
+                <div class="texto-msg">"${esc(p.mensaje_operador_homeo)}"</div>
+            </div>`;
+            contenido += `<div class="mensaje-op">
+                <div class="label-msg">📢 Frase del operador (Bach)</div>
+                <div class="texto-msg">"${esc(p.mensaje_operador_bach)}"</div>
+            </div>`;
+            contenido += `<div class="mensaje-op">
+                <div class="label-msg">📢 Frase del operador (Schüssler)</div>
+                <div class="texto-msg">"${esc(p.mensaje_operador_schussler)}"</div>
+            </div>`;
+            if (p.verificacion) {
+                contenido += `<span class="respuesta-badge">Respuesta: ${esc(p.verificacion)}</span>`;
+            }
+        }
+        
+        if (p.secuencia_homeopatia) {
+            contenido += `<div class="secuencia-rastreo">
+                <h4>🔍 Secuencia para Homeopatía</h4>
+                <ol>${p.secuencia_homeopatia.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+            </div>`;
+            contenido += `<div class="secuencia-rastreo">
+                <h4>🔍 Secuencia para Flores de Bach / Sales de Schüssler</h4>
+                <ol>${p.secuencia_bach_schussler.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+            </div>`;
+        }
+        
+        if (p.secuencia_potencia) {
+            contenido += `<div class="secuencia-rastreo">
+                <h4>🔍 Cascada de preguntas para Potencia</h4>
+                <ol>${p.secuencia_potencia.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+            </div>`;
+        }
+        
+        if (p.secuencia_periodo) {
+            contenido += `<div class="secuencia-rastreo">
+                <h4>🔍 Cascada de preguntas para Período</h4>
+                <ol>${p.secuencia_periodo.map(s => `<li>${esc(s)}</li>`).join('')}</ol>
+            </div>`;
+            if (p.ejemplo) {
+                contenido += `<div class="alert-si-no">💡 <strong>Ejemplo:</strong> ${esc(p.ejemplo)}</div>`;
+            }
+        }
+        
+        if (p.subpasos) {
+            p.subpasos.forEach(sp => {
+                contenido += `<div class="subpaso">
+                    <span class="letra">${esc(sp.letra)}</span>
+                    <span class="nombre-sub">${esc(sp.nombre)}</span>
+                    <div class="desc-sub">${esc(sp.descripcion)}</div>
+                    ${sp.formato_homeopatia ? `<div class="inserto-box">
+                        <div class="label-ins">Formato para Homeopatía</div>
+                        <div class="formato">${esc(sp.formato_homeopatia)}</div>
+                        <div class="ejemplo-ins"><strong>Ejemplo:</strong> ${esc(sp.ejemplo_homeo)}</div>
+                    </div>` : ''}
+                    ${sp.formato_bach_schussler ? `<div class="inserto-box">
+                        <div class="label-ins">Formato para Bach / Schüssler</div>
+                        <div class="formato">${esc(sp.formato_bach_schussler)}</div>
+                        <div class="ejemplo-ins"><strong>Ejemplo (Bach):</strong> ${esc(sp.ejemplo_bach)}</div>
+                        <div class="ejemplo-ins" style="margin-top:0.3rem"><strong>Ejemplo (Schüssler):</strong> ${esc(sp.ejemplo_schussler)}</div>
+                    </div>` : ''}
+                </div>`;
+            });
+        }
+        
+        if (p.si_no) {
+            contenido += `<div class="alert-si-no"><strong>⚠️ Si la respuesta es NO:</strong> ${esc(p.si_no)}</div>`;
+        }
+        if (p.si_si) {
+            contenido += `<div class="alert-si-no" style="background:#e8f5e9;border-left-color:var(--medical);color:#1b5e20"><strong>✓ Si la respuesta es SI:</strong> ${esc(p.si_si)}</div>`;
+        }
+        if (p.si_no && p.titulo === 'Pregunta de continuación') {
+            // ya manejado arriba
+        }
+        if (p.numero === 'I' && p.si_no) {
+            // ya manejado arriba
+        }
+        
+        return `<div class="paso-card">
+            <div class="paso-header">
+                <div class="paso-numero">${esc(p.numero)}</div>
+                <div class="paso-titulo">
+                    <h3>${esc(p.titulo)}</h3>
+                    <div class="accion">${esc(p.accion)}</div>
+                </div>
+            </div>
+            ${contenido}
+        </div>`;
+    }).join('');
+}
+
+function renderConsideraciones() {
+    const cont = document.getElementById('consideraciones-content');
+    cont.innerHTML = `<div class="consideraciones-list">
+        <h3>💡 Consideraciones prácticas</h3>
+        <ul>
+            ${DATA.manual.consideraciones_practicas.map(c => `<li>${esc(c)}</li>`).join('')}
+        </ul>
+    </div>`;
+}
+
+function renderEjemplo() {
+    const cont = document.getElementById('ejemplo-content');
+    const ej = DATA.manual.ejemplo_consulta_completa;
+    
+    let html = `<div class="consulta-caso">
+        <h3>${esc(ej.titulo)}</h3>
+        <p>${esc(ej.caso)}</p>
+    </div>
+    
+    <table class="dialogo-table">
+        <thead>
+            <tr>
+                <th style="width:90px">Paso</th>
+                <th>Frase del operador</th>
+                <th style="width:90px">Respuesta</th>
+            </tr>
+        </thead>
+        <tbody>`;
+    
+    ej.transcripcion.forEach(t => {
+        let respHTML = '';
+        if (t.respuesta === 'SI') respHTML = '<span class="resp-si">SI</span>';
+        else if (t.respuesta === 'NO') respHTML = '<span class="resp-no">NO</span>';
+        else respHTML = '—';
+        
+        html += `<tr>
+            <td><span class="paso-tag">${esc(t.paso)}</span></td>
+            <td>${esc(t.operador)}</td>
+            <td>${respHTML}</td>
+        </tr>`;
+        if (t.nota) {
+            html += `<tr class="nota"><td colspan="3">→ ${esc(t.nota)}</td></tr>`;
+        }
+    });
+    
+    html += `</tbody></table>
+    
+    <div class="resumen-final">
+        <h4>📋 Resumen de la consulta</h4>
+        <ul>
+            <li><strong>Homeopatía:</strong> ${esc(ej.resumen_consulta['Homeopatía'])}</li>
+            <li><strong>Bach:</strong> ${esc(ej.resumen_consulta['Bach'])}</li>
+            <li><strong>Tiempo total del rastreo:</strong> ${esc(ej.resumen_consulta.tiempo_total_rastreo)}</li>
+        </ul>
+    </div>`;
+    
+    cont.innerHTML = html;
+}
+
+function renderTabla(tab) {
+    const page = document.getElementById('page-' + tab);
+    const meta = META_TABS[tab];
+    const items = DATA[tab];
+    
+    let html = `<div class="container">
+        <div class="section-header">
+            <h2>${esc(meta.titulo)}</h2>
+            <div class="desc">${esc(meta.desc)}</div>
+        </div>
+        <div class="controls" style="border-radius:8px; margin-bottom:1rem; padding:0.8rem 1rem">
+            <input type="text" class="search-box" placeholder="🔍 Buscar..." oninput="filtrarTabla('${tab}', this.value)">
+            <div style="margin-top:0.5rem">
+                <span class="view-toggle">
+                    <button class="active" onclick="cambiarVista('${tab}', 'matriz', this)">📊 Matriz</button>
+                    <button onclick="cambiarVista('${tab}', 'cards', this)">📇 Cards</button>
+                </span>
+            </div>
+        </div>
+        <div id="tabla-content-${tab}"></div>
+    </div>`;
+    page.innerHTML = html;
+    renderVistaMatriz(tab);
+}
+
+function renderVistaMatriz(tab) {
+    const cont = document.getElementById('tabla-content-' + tab);
+    const sectores = {};
+    DATA[tab].forEach((item, idx) => {
+        const s = item.sector;
+        const l = item.lado || '_';
+        if (!sectores[s]) sectores[s] = {};
+        if (!sectores[s][l]) sectores[s][l] = [];
+        sectores[s][l].push({...item, _idx: idx});
+    });
+    
+    let html = '<div class="matriz-container">';
+    Object.entries(sectores).sort((a,b)=>a[0]-b[0]).forEach(([sector, lados]) => {
+        html += `<div class="sector-block">
+            <div class="sector-header">Sector ${sector}</div>
+            <div class="sector-content">`;
+        Object.entries(lados).sort().forEach(([lado, items]) => {
+            const ladoLabel = lado === '_' ? '' : `Lado ${lado}`;
+            html += `<div class="lado-block">${ladoLabel ? `<div class="lado-header">${ladoLabel}</div>` : ''}`;
+            items.sort((a,b) => a.num - b.num).forEach(item => {
+                const nombre = item.nombre || item.nombre_es;
+                html += `<div class="matrix-row" onclick="abrirModal('${tab}', ${item._idx})">
+                    <div class="num">${item.num}</div>
+                    <div class="nombre">${esc(nombre)}</div>
+                    <div class="codigo">${item.codigo_radionico}</div>
+                </div>`;
+            });
+            html += '</div>';
+        });
+        html += '</div></div>';
+    });
+    html += '</div>';
+    cont.innerHTML = html;
+}
+
+function renderVistaCards(tab, busqueda) {
+    const cont = document.getElementById('tabla-content-' + tab);
+    const meta = META_TABS[tab];
+    let arr = [...DATA[tab]];
+    if (busqueda) {
+        const q = busqueda.toLowerCase();
+        arr = arr.filter(d => {
+            const info = d.info || {};
+            const txt = ((d.nombre||'')+' '+(d.nombre_es||'')+' '+(d.nombre_bach||'')+' '+(d.nombre_completo||'')+' '+(info.origen||'')+' '+(info.uso_tradicional||'')).toLowerCase();
+            return txt.includes(q);
+        });
+    }
+    if (arr.length === 0) {
+        cont.innerHTML = '<div style="text-align:center;padding:3rem;color:#999">Sin resultados</div>';
+        return;
+    }
+    cont.innerHTML = '<div class="cards-grid">' + arr.map(d => {
+        const idx = DATA[tab].indexOf(d);
+        const info = d.info || {};
+        const nombre = d.nombre || d.nombre_es;
+        const subname = d.nombre_bach || d.nombre_completo || info.origen || '';
+        return `<div class="card ${meta.clase}" onclick="abrirModal('${tab}', ${idx})">
+            <div class="nombre">${esc(nombre)}</div>
+            ${subname ? `<div class="subname">${esc(subname.substring(0,80))}</div>` : ''}
+            <div class="badges">
+                <span class="badge sector">Sector ${d.sector}</span>
+                ${d.lado ? `<span class="badge">Lado ${d.lado}</span>` : ''}
+                <span class="badge">#${d.num}</span>
+                <span class="badge codigo">${d.codigo_radionico}</span>
+            </div>
+        </div>`;
+    }).join('') + '</div>';
+}
+
+function cambiarVista(tab, vista, btn) {
+    estado.vista = vista;
+    document.querySelectorAll('.view-toggle button').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    if (vista === 'matriz') renderVistaMatriz(tab);
+    else renderVistaCards(tab, '');
+}
+
+function filtrarTabla(tab, busqueda) {
+    if (busqueda) {
+        renderVistaCards(tab, busqueda);
+    } else if (estado.vista === 'matriz') {
+        renderVistaMatriz(tab);
+    } else {
+        renderVistaCards(tab, '');
+    }
+}
+
+function abrirModal(tab, idx) {
+    const d = DATA[tab][idx];
+    const info = d.info || {};
+    const nombre = d.nombre || d.nombre_es;
+    const subname = d.nombre_bach || d.nombre_completo || '';
+    const meta = META_TABS[tab];
+    
+    // Construir el procedimiento completo para este remedio
+    let pasosInsercion = '';
+    if (meta.tienePotencia) {
+        pasosInsercion = `
+            <div class="proc-step"><span class="num-paso">1</span>Abrir circuito bioenergético</div>
+            <div class="proc-step"><span class="num-paso">2</span>MS: <em>"Voy a hacer un rastreo homeopático. Manifiéstame qué necesitas..."</em></div>
+            <div class="proc-step"><span class="num-paso">3</span>Verificar: <em>"¿Sabes qué estamos buscando?"</em> → SI</div>
+            <div class="proc-step"><span class="num-paso">4</span>Rastreo confirma: <strong>Sector ${d.sector}${d.lado ? ', Lado '+d.lado : ''}, Número ${d.num}</strong> → ${esc(nombre)}</div>
+            <div class="proc-step"><span class="num-paso">5</span>Determinar <strong>POTENCIA</strong> (cascada: Familia → Sub-grupo → Potencia específica)</div>
+            <div class="proc-step"><span class="num-paso">6</span>Determinar <strong>PERÍODO</strong> (Período + Número + Unidad: días/semanas/meses)</div>
+            <div class="proc-step"><span class="num-paso">7</span><strong>INSERCIÓN:</strong>
+                <span class="frase">"Inserto: ${esc(nombre)}, código radiónico ${d.codigo_radionico}, activo y pulsante durante [período X] [unidad], a potencia [X]."</span>
+            </div>
+            <div class="proc-step"><span class="num-paso">8</span>Verificar: <em>"¿Este medicamento se está gestionando efectivamente?"</em> → SI/NO</div>
+            <div class="proc-step"><span class="num-paso">9</span>Continuación: <em>"¿Hay otro medicamento que necesites?"</em></div>
+            <div class="proc-step"><span class="num-paso">10</span>Cerrar circuito bioenergético</div>
+        `;
+    } else {
+        const tipo = meta.tipo_inserto;
+        pasosInsercion = `
+            <div class="proc-step"><span class="num-paso">1</span>Abrir circuito bioenergético</div>
+            <div class="proc-step"><span class="num-paso">2</span>MS: <em>"Voy a hacer un rastreo de ${tipo}..."</em></div>
+            <div class="proc-step"><span class="num-paso">3</span>Verificar: <em>"¿Sabes qué estamos buscando?"</em> → SI</div>
+            <div class="proc-step"><span class="num-paso">4</span>Rastreo confirma: <strong>Sector ${d.sector}${d.lado ? ', Lado '+d.lado : ''}, Número ${d.num}</strong> → ${esc(nombre)}</div>
+            <div class="proc-step"><span class="num-paso">5</span>Determinar <strong>PERÍODO</strong> (sin potencia en este sistema)</div>
+            <div class="proc-step"><span class="num-paso">6</span><strong>INSERCIÓN:</strong>
+                <span class="frase">"Inserto: ${esc(nombre)}, código radiónico ${d.codigo_radionico}, activo y pulsante durante [período X] [unidad]."</span>
+            </div>
+            <div class="proc-step"><span class="num-paso">7</span>Verificar: <em>"¿Este ${tipo} se está gestionando efectivamente?"</em> → SI/NO</div>
+            <div class="proc-step"><span class="num-paso">8</span>Continuación: <em>"¿Hay otro ${tipo} que necesites?"</em></div>
+            <div class="proc-step"><span class="num-paso">9</span>Cerrar circuito bioenergético</div>
+        `;
+    }
+    
+    document.getElementById('modal-content').innerHTML = `
+        <h2 style="border-bottom:3px solid var(--${meta.clase});padding-bottom:0.4rem">${esc(nombre)}</h2>
+        ${subname ? `<div class="modal-sub">${esc(subname)}</div>` : ''}
+        
+        <div class="codigo-box">
+            <div>
+                <div class="label">Coordenadas de rastreo</div>
+                <div style="font-size:0.75rem;color:#888;margin-top:2px">
+                    Sector ${d.sector}${d.lado ? ' · Lado '+d.lado : ''} · Número ${d.num}
+                </div>
+            </div>
+            <div class="codigo">${d.codigo_radionico}</div>
+        </div>
+        
+        <div class="procedimiento-completo">
+            <h4>⚙️ Procedimiento completo para este remedio</h4>
+            ${pasosInsercion}
+        </div>
+        
+        ${info.origen ? `<div class="field">
+            <div class="field-label">Origen</div>
+            <div>${esc(info.origen)}</div>
+        </div>` : ''}
+        
+        ${info.composicion ? `<div class="field">
+            <div class="field-label">Composición</div>
+            <div>${esc(info.composicion)}</div>
+        </div>` : ''}
+        
+        ${info.uso_tradicional ? `<div class="section-tradicional">
+            <div class="section-header">📖 Uso tradicional</div>
+            <div>${esc(info.uso_tradicional)}</div>
+        </div>` : ''}
+        
+        ${info.evidencia ? `<div class="section-cientifica">
+            <div class="section-header">⚕️ Evidencia científica</div>
+            <div>${esc(info.evidencia)}</div>
+            ${info.nota ? `<div style="margin-top:0.6rem;padding-top:0.6rem;border-top:1px solid rgba(46,125,50,0.2);font-style:italic">📝 ${esc(info.nota)}</div>` : ''}
+        </div>` : ''}
+        
+        ${info.toxicidad ? `<div class="section-tox">
+            <div class="section-header">⚠️ Toxicidad / Seguridad</div>
+            <div>${esc(info.toxicidad)}</div>
+        </div>` : ''}
+    `;
+    document.getElementById('modal-overlay').classList.add('active');
+}
+
+function cerrarModal() { document.getElementById('modal-overlay').classList.remove('active'); }
+function esc(s) {
+    if (s == null) return '';
+    return String(s).replace(/[&<>"\\']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+
+document.addEventListener('keydown', e => { if (e.key==='Escape') cerrarModal(); });
+init();
+</script>
+</body>
+</html>
