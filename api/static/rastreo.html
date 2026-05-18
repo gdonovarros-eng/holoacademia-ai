@@ -1236,15 +1236,16 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 /* connector lines */
 .bm-conn {
-  stroke: rgba(0,0,0,0.18); stroke-width: 1;
+  stroke: rgba(0,0,0,0.45); stroke-width: 1.5;
   fill: none; pointer-events: none;
+  stroke-dasharray: 4 3;
   transition: stroke 0.2s, stroke-width 0.2s;
 }
-.bm-conn.hovered { stroke: rgba(0,122,255,0.7); stroke-width: 1.5; }
-.bm-conn-post { stroke: rgba(0,0,0,0.12); }
-.bm-conn-post.hovered { stroke: rgba(100,116,139,0.65); }
-.bm-conn-dot { pointer-events: none; fill: rgba(0,0,0,0.25); }
-.bm-conn-dot-post { fill: rgba(0,0,0,0.18); }
+.bm-conn.hovered { stroke: rgba(0,122,255,0.8); stroke-width: 2; }
+.bm-conn-post { stroke: rgba(0,0,0,0.35); stroke-dasharray: 4 3; }
+.bm-conn-post.hovered { stroke: rgba(100,116,139,0.8); }
+.bm-conn-dot { pointer-events: none; fill: rgba(0,0,0,0.0); }
+.bm-conn-dot-post { fill: rgba(0,0,0,0.0); }
 /* labels */
 .bm-label {
   position: absolute; z-index: 6;
@@ -1440,25 +1441,19 @@ table.tref-table td:nth-child(3) { color: #374151; }
         -->
         <svg id="bm-overlay" viewBox="0 0 860 630" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
+          <!-- ── CABEZA: línea vertical desde top-center ── -->
+          <line id="conn-cabeza"  class="bm-conn" x1="430" y1="48" x2="430" y2="68"/>
+
           <!-- ── LÍNEAS CONECTORAS izquierda ── -->
-          <line id="conn-cabeza"  class="bm-conn" x1="174" y1="63"  x2="377" y2="63"/>
-          <circle class="bm-conn-dot" cx="377" cy="63"  r="2.5"/>
-          <line id="conn-cuello"  class="bm-conn" x1="174" y1="118" x2="398" y2="118"/>
-          <circle class="bm-conn-dot" cx="398" cy="118" r="2.5"/>
+          <line id="conn-cuello"  class="bm-conn" x1="174" y1="133" x2="398" y2="133"/>
           <line id="conn-pecho"   class="bm-conn" x1="174" y1="215" x2="348" y2="215"/>
-          <circle class="bm-conn-dot" cx="348" cy="215" r="2.5"/>
-          <line id="conn-abdomen" class="bm-conn" x1="174" y1="330" x2="340" y2="330"/>
-          <circle class="bm-conn-dot" cx="340" cy="330" r="2.5"/>
-          <line id="conn-pelvis"  class="bm-conn" x1="174" y1="414" x2="338" y2="414"/>
-          <circle class="bm-conn-dot" cx="338" cy="414" r="2.5"/>
+          <line id="conn-abdomen" class="bm-conn" x1="174" y1="322" x2="340" y2="322"/>
+          <line id="conn-piernas" class="bm-conn" x1="174" y1="490" x2="336" y2="490"/>
 
           <!-- ── LÍNEAS CONECTORAS derecha ── -->
-          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="222" x2="516" y2="222"/>
-          <circle class="bm-conn-dot bm-conn-dot-post" cx="516" cy="222" r="2.5"/>
-          <line id="conn-brazos"  class="bm-conn" x1="686" y1="308" x2="558" y2="308"/>
-          <circle class="bm-conn-dot" cx="558" cy="308" r="2.5"/>
-          <line id="conn-piernas" class="bm-conn" x1="686" y1="490" x2="512" y2="490"/>
-          <circle class="bm-conn-dot" cx="512" cy="490" r="2.5"/>
+          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="175" x2="516" y2="175"/>
+          <line id="conn-brazos"  class="bm-conn" x1="686" y1="270" x2="558" y2="270"/>
+          <line id="conn-pelvis"  class="bm-conn" x1="686" y1="400" x2="516" y2="400"/>
 
           <!-- Zones in wrapper coordinates (viewBox 860×630) -->
           <!-- HEAD -->
@@ -1500,13 +1495,15 @@ table.tref-table td:nth-child(3) { color: #374151; }
             onclick="selectBodyRegion('espalda')"/>
         </svg>
 
-        <!-- ── ETIQUETAS izquierda ── -->
-        <div class="bm-label" id="lbl-cabeza"  style="top:41px; left:0"
+        <!-- ── CABEZA: top center ── -->
+        <div class="bm-label" id="lbl-cabeza" style="top:5px; left:50%; transform:translateX(-50%)"
           onclick="selectBodyRegion('cabeza')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><span class="bm-label-name">Cabeza</span></div>
           <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
-        <div class="bm-label" id="lbl-cuello"  style="top:96px; left:0"
+
+        <!-- ── ETIQUETAS izquierda ── -->
+        <div class="bm-label" id="lbl-cuello"  style="top:112px; left:0"
           onclick="selectBodyRegion('cuello')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
           <span class="bm-label-count">23 pares biomagnéticos</span>
@@ -1516,46 +1513,41 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><span class="bm-label-name">Pecho</span></div>
           <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
+        <div class="bm-label" id="lbl-abdomen" style="top:300px; left:0"
           onclick="selectBodyRegion('abdomen')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><span class="bm-label-name">Abdomen</span></div>
           <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-pelvis"  style="top:392px; left:0"
-          onclick="selectBodyRegion('pelvis')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
-          <span class="bm-label-count">37 pares · 3 zonas</span>
-        </div>
-
-        <!-- ── ETIQUETAS derecha ── -->
-        <div class="bm-label posterior" id="lbl-espalda" style="top:200px; right:0"
-          onclick="selectBodyRegion('espalda')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><span class="bm-label-name">Espalda</span></div>
-          <span class="bm-label-count">23 pares · posterior</span>
-        </div>
-        <div class="bm-label" id="lbl-brazos"  style="top:286px; right:0"
-          onclick="selectBodyRegion('brazos')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><span class="bm-label-name">Brazos</span></div>
-          <span class="bm-label-count">14 pares biomagnéticos</span>
-        </div>
-        <div class="bm-label" id="lbl-piernas" style="top:468px; right:0"
+        <div class="bm-label" id="lbl-piernas" style="top:468px; left:0"
           onclick="selectBodyRegion('piernas')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><span class="bm-label-name">Piernas</span></div>
           <span class="bm-label-count">17 pares biomagnéticos</span>
         </div>
 
-      </div><!-- /#bm-scanner -->
-        <!-- Pares Especiales — no ligados a zona corporal -->
-        <div class="bm-extras-row">
-          <button class="bm-extras-btn" onclick="selectBodyRegion('extras')">
-            <span class="bm-dot bm-dot-extras" style="width:9px;height:9px;flex-shrink:0"></span>
-            <span class="bm-extras-info">
-              <span class="bm-extras-name">Pares Especiales</span>
-              <span class="bm-extras-sub">388 pares · Variables, Columna, Ejes, Rastreo General</span>
-            </span>
-            <span class="bm-extras-arrow">›</span>
-          </button>
+        <!-- ── ETIQUETAS derecha ── -->
+        <div class="bm-label posterior" id="lbl-espalda" style="top:154px; right:0"
+          onclick="selectBodyRegion('espalda')">
+          <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><span class="bm-label-name">Espalda</span></div>
+          <span class="bm-label-count">23 pares · posterior</span>
         </div>
+        <div class="bm-label" id="lbl-brazos"  style="top:248px; right:0"
+          onclick="selectBodyRegion('brazos')">
+          <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><span class="bm-label-name">Brazos</span></div>
+          <span class="bm-label-count">14 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-pelvis"  style="top:378px; right:0"
+          onclick="selectBodyRegion('pelvis')">
+          <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
+          <span class="bm-label-count">37 pares · 3 zonas</span>
+        </div>
+        <!-- Extras: bottom-right, no body connector -->
+        <div class="bm-label" id="lbl-extras"  style="bottom:22px; right:0"
+          onclick="selectBodyRegion('extras')">
+          <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><span class="bm-label-name">Extras</span></div>
+          <span class="bm-label-count">388 pares · 4 zonas</span>
+        </div>
+
+      </div><!-- /#bm-scanner -->
     </div><!-- /#rastreo-home -->
 
     <!-- Vista wizard pares biomagnéticos -->
