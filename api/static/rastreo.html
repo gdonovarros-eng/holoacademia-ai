@@ -33,7 +33,8 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: var(--bg);
   color: var(--text);
   height: 100dvh;
@@ -1147,6 +1148,19 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .instr-body ol { padding-left: 1.1rem; font-size: 0.84rem; line-height: 1.8; color: #3a3a3c; }
 .instr-body li { margin-bottom: 0.15rem; }
 .instr-body strong { color: #007aff; }
+/* body map region dots */
+.bm-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+}
+.bm-dot-cabeza  { background: #007aff; }
+.bm-dot-cuello  { background: #34aadc; }
+.bm-dot-torax   { background: #ff3b30; }
+.bm-dot-abdomen { background: #ff9500; }
+.bm-dot-pelvis  { background: #af52de; }
+.bm-dot-espalda { background: #8e8e93; }
+.bm-dot-brazos  { background: #34c759; }
+.bm-dot-piernas { background: #5ac8fa; }
+
 /* ── BODY MAP — Apple light style ────────────────────────────────── */
 #bm-scanner {
   position: relative;
@@ -1231,7 +1245,6 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-label::before { display: none; }
 .bm-label-top { display: flex; align-items: center; gap: 6px; }
-.bm-label-icon { font-size: 0.82rem; line-height: 1; }
 .bm-label-name {
   font-size: 0.72rem; font-weight: 600;
   letter-spacing: 0.02em;
@@ -1319,7 +1332,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 <!-- ── HEADER ─────────────────────────────────────────────────── -->
 <header>
   <a href="/" class="home-btn" title="Inicio">⌂</a>
-  <h1>🧲 Rastreo de Imanes</h1>
+  <h1>Rastreo de Imanes</h1>
   <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
   <div class="spacer"></div>
   <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
@@ -1340,7 +1353,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
       <!-- Instrucciones colapsables -->
       <div class="instr-card">
         <div class="instr-hdr" onclick="toggleInstr()">
-          <span>🧲 ¿Cómo realizar el Rastreo de Imanes?</span>
+          <span>¿Cómo realizar el Rastreo de Imanes?</span>
           <span id="instr-chevron">▼</span>
         </div>
         <div class="instr-body" id="instr-body">
@@ -1441,31 +1454,31 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-cabeza"  style="top:35px;  left:0"
           onclick="selectBodyRegion('cabeza')"
           onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
-          <div class="bm-label-top"><span class="bm-label-icon">🧠</span><span class="bm-label-name">Cabeza</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><span class="bm-label-name">Cabeza</span></div>
           <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
         <div class="bm-label" id="lbl-cuello"  style="top:81px;  left:0"
           onclick="selectBodyRegion('cuello')"
           onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
-          <div class="bm-label-top"><span class="bm-label-icon">🫁</span><span class="bm-label-name">Cuello</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
           <span class="bm-label-count">23 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-torax"   style="top:193px; left:0"
           onclick="selectBodyRegion('torax')"
           onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')">
-          <div class="bm-label-top"><span class="bm-label-icon">❤️</span><span class="bm-label-name">Tórax</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-torax"></span><span class="bm-label-name">Tórax</span></div>
           <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
           onclick="selectBodyRegion('abdomen')"
           onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')">
-          <div class="bm-label-top"><span class="bm-label-icon">🫄</span><span class="bm-label-name">Abdomen</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><span class="bm-label-name">Abdomen</span></div>
           <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-pelvis"  style="top:396px; left:0"
           onclick="selectBodyRegion('pelvis')"
           onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
-          <div class="bm-label-top"><span class="bm-label-icon">🦴</span><span class="bm-label-name">Pelvis</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
           <span class="bm-label-count">37 pares · 3 zonas</span>
         </div>
 
@@ -1473,19 +1486,19 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label posterior" id="lbl-espalda" style="top:200px; right:0"
           onclick="selectBodyRegion('espalda')"
           onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')">
-          <div class="bm-label-top"><span class="bm-label-icon">🔙</span><span class="bm-label-name">Espalda</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><span class="bm-label-name">Espalda</span></div>
           <span class="bm-label-count">23 pares · posterior</span>
         </div>
         <div class="bm-label" id="lbl-brazos"  style="top:286px; right:0"
           onclick="selectBodyRegion('brazos')"
           onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')">
-          <div class="bm-label-top"><span class="bm-label-icon">💪</span><span class="bm-label-name">Brazos</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><span class="bm-label-name">Brazos</span></div>
           <span class="bm-label-count">14 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-piernas" style="top:468px; right:0"
           onclick="selectBodyRegion('piernas')"
           onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')">
-          <div class="bm-label-top"><span class="bm-label-icon">🦵</span><span class="bm-label-name">Piernas</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><span class="bm-label-name">Piernas</span></div>
           <span class="bm-label-count">17 pares biomagnéticos</span>
         </div>
 
@@ -1496,8 +1509,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
     <div id="wizard-pares">
       <!-- Tab bar -->
       <div class="wiz-tabs">
-        <button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">🔍 Rastreo Guiado</button>
-        <button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">📋 Tabla de Referencia</button>
+        <button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">Rastreo Guiado</button>
+        <button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">Tabla de Referencia</button>
       </div>
 
       <!-- Tab: rastreo guiado -->
@@ -1553,7 +1566,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;"></div>
       </section>
       <section>
-        <div class="modal-section-title">📋 Pares Confirmados — Instrucciones</div>
+        <div class="modal-section-title">Pares Confirmados — Instrucciones</div>
         <div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;"></div>
       </section>
     </div>
@@ -1565,7 +1578,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 
 // ── CONFIG ────────────────────────────────────────────────────────────────
 const CATEGORIES = [
-  { key: 'pares_biomagneticos', icon: '🧲', label: 'Pares Biomagnéticos' },
+  { key: 'pares_biomagneticos', icon: '', label: 'Pares Biomagnéticos' },
 ];
 
 const TIPO_CLASS = {
@@ -1661,7 +1674,7 @@ function renderCategories() {
     const chip = document.createElement('div');
     chip.className = 'cat-chip';
     chip.dataset.key = cat.key;
-    chip.innerHTML = `<span class="cat-icon">${cat.icon}</span><span class="cat-label">${cat.label}</span>`;
+    chip.innerHTML = `<span class="cat-label">${cat.label}</span>`;
     chip.addEventListener('click', () => selectCategory(cat));
     list.appendChild(chip);
   });
@@ -1682,7 +1695,7 @@ function renderImageStrip() {
   if (!strip) return;
 
   if (!activeImages.length) {
-    strip.innerHTML = `<div class="image-empty"><div class="empty-icon">🖼️</div><div>No hay imágenes para esta categoría</div></div>`;
+    strip.innerHTML = `<div class="image-empty"><div>No hay imágenes para esta categoría</div></div>`;
     if (counter) counter.textContent = '—';
     return;
   }
@@ -1825,7 +1838,7 @@ function renderConfirmedList() {
     card.className = 'confirmed-card';
     card.innerHTML = `
       <div class="confirmed-card-top">
-        ${pair.tipo ? tipoChip(pair.tipo) : '<span style="font-size:.9rem">🧲</span>'}
+        ${pair.tipo ? tipoChip(pair.tipo) : ''}
         <span class="confirmed-card-name">${escHtml(pair.nombre)}</span>
       </div>
       ${pair._path ? `<div class="confirmed-card-sistema">${escHtml(pair._path)}</div>` :
@@ -1915,7 +1928,6 @@ function buildInstructionList() {
       card.innerHTML = `
         <div class="instruction-card-header">
           <div class="instruction-num">${n}</div>
-          <span style="font-size:1rem">🧲</span>
           <span class="instruction-card-name">${escHtml(pair.nombre)}</span>
         </div>
         ${pair._path ? `<div class="instruction-detail">📍 <strong>Zona:</strong> ${escHtml(pair._path)}</div>` : ''}
@@ -1927,20 +1939,18 @@ function buildInstructionList() {
         </div>` : ''}
         ${pair.condiciones ? `<div class="instruction-detail">🔬 <strong>Condiciones asociadas:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
         ${pair.significado_emocional ? `<div class="instruction-detail">💜 <strong>Significado emocional:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
-        ${Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length ? `<div class="instruction-detail">🫁 <strong>Sistemas:</strong> ${escHtml(pair.sistemas_afectados.join(', '))}</div>` : ''}
+        ${Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length ? `<div class="instruction-detail"><strong>Sistemas:</strong> ${escHtml(pair.sistemas_afectados.join(', '))}</div>` : ''}
         <div class="instruction-detail">⏱ <strong>Tiempo:</strong> 20-25 minutos por par</div>
       `;
     } else {
-      const catIcon = CATEGORIES.find(c => c.key === pair._catKey)?.icon || '💊';
       const catName = pair._catLabel || pair._catKey || '';
       card.innerHTML = `
         <div class="instruction-card-header">
           <div class="instruction-num">${n}</div>
-          <span style="font-size:1rem">${catIcon}</span>
           <span class="instruction-card-name">${catName ? escHtml(catName).toUpperCase() + ' — ' : ''}${escHtml(pair.nombre)}</span>
         </div>
-        ${pair.condiciones ? `<div class="instruction-detail">💊 <strong>Indicación:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
-        <div class="instruction-detail">📋 <strong>Modo de uso:</strong> Tomar 4 gotas directas o en agua, 3 veces al día</div>
+        ${pair.condiciones ? `<div class="instruction-detail"><strong>Indicación:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
+        <div class="instruction-detail"><strong>Modo de uso:</strong> Tomar 4 gotas directas o en agua, 3 veces al día</div>
         ${pair.significado_emocional ? `<div class="instruction-detail">💜 <strong>Significado:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
       `;
     }
@@ -2087,7 +2097,7 @@ function wizRenderRegions() {
   wizSetQ('Paso 1 · Región', '¿En qué región del cuerpo?');
   const g = wizGetGrid('g2');
   wizDB.regiones.forEach(r => {
-    const btn = wizMakeBtn(r.icon + ' ' + r.nombre, r.zonas.length + ' zonas');
+    const btn = wizMakeBtn(r.nombre, r.zonas.length + ' zonas');
     btn.onclick = () => { wizRegion = r; wizStep = 'zona'; wizRender(); };
     g.appendChild(btn);
   });
@@ -2129,7 +2139,7 @@ function wizRenderPares() {
 function wizRenderResult() {
   const pairName = wizBloque.pares[wizPar];
   const path = wizRegion.nombre + ' › ' + wizZona.nombre + ' › ' + wizBloque.nombre;
-  wizSetQ('✅ Par encontrado', '');
+  wizSetQ('Par encontrado', '');
   document.getElementById('wizLabel').textContent = 'Par #' + (wizPar + 1);
 
   const g = document.getElementById('wizGrid');
@@ -2143,7 +2153,7 @@ function wizRenderResult() {
     <div class="wiz-result-name">${escHtml(pairName)}</div>
     <div class="wiz-result-path">${escHtml(path)}</div>
     <div class="wiz-result-actions">
-      <button class="wiz-btn-confirm" id="wizBtnConfirm">✓ Confirmar par</button>
+      <button class="wiz-btn-confirm" id="wizBtnConfirm">Confirmar par</button>
       <button class="wiz-btn-change" id="wizBtnChange">Cambiar #</button>
     </div>
   `;
@@ -2552,7 +2562,7 @@ function trefBuild() {
 
     section.innerHTML = `
       <div class="tref-region-hdr" style="background:${color}" onclick="trefToggle(this.closest('.tref-region'))">
-        <span>${reg.icon || ''} ${reg.nombre}</span>
+        <span>${reg.nombre}</span>
         <span style="font-weight:400;opacity:.85;font-size:.72rem;margin-left:6px">${reg.zonas.length} zonas · ${totalPares} pares</span>
         <span class="tref-toggle">▾</span>
       </div>
