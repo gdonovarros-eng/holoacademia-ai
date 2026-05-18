@@ -926,8 +926,7 @@
               "pares": [
                 "Costo Hepático – Hígado",
                 "Colon Transverso – Hígado",
-                "Cola de Páncreas – Hígado",
-                "Colon Ascendente – Hígado"
+                "Cola de Páncreas – Hígado"
               ]
             },
             {
@@ -2946,7 +2945,6 @@
               "nombre": "Rastreo Cervical",
               "numero": 3,
               "pares": [
-                "Cervical (RAS) – Cervical (RAS)",
                 "Dorsal (RAS) – Cervical (RAS)",
                 "Lumbar (RAS) – Cervical (RAS)",
                 "Sacro (RAS) – Cervical (RAS)"
@@ -2958,7 +2956,6 @@
               "numero": 4,
               "pares": [
                 "Cervical (RAS) – Dorsal (RAS)",
-                "Dorsal (RAS) – Dorsal (RAS)",
                 "Lumbar (RAS) – Dorsal (RAS)",
                 "Sacro (RAS) – Dorsal (RAS)"
               ]
@@ -2970,7 +2967,6 @@
               "pares": [
                 "Cervical (RAS) – Lumbar (RAS)",
                 "Dorsal (RAS) – Lumbar (RAS)",
-                "Lumbar (RAS) – Lumbar (RAS)",
                 "Sacro (RAS) – Lumbar (RAS)"
               ]
             },
