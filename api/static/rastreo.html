@@ -1160,6 +1160,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .bm-dot-espalda { background: #8e8e93; }
 .bm-dot-brazos  { background: #34c759; }
 .bm-dot-piernas { background: #5ac8fa; }
+.bm-dot-extras  { background: #ff9f0a; }
 
 /* ── BODY MAP — Apple light style ────────────────────────────────── */
 #bm-scanner {
@@ -1214,23 +1215,6 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-region-img.visible { opacity: 1; }
 
-/* ── Region image hover via CSS :has() — no JS required ── */
-#bm-scanner:has(.bm-zone[data-region="cabeza"]:hover)  .bm-region-img[data-region="cabeza"],
-#bm-scanner:has(#lbl-cabeza:hover)                     .bm-region-img[data-region="cabeza"]  { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="cuello"]:hover)  .bm-region-img[data-region="cuello"],
-#bm-scanner:has(#lbl-cuello:hover)                     .bm-region-img[data-region="cuello"]  { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="pecho"]:hover)   .bm-region-img[data-region="pecho"],
-#bm-scanner:has(#lbl-pecho:hover)                      .bm-region-img[data-region="pecho"]   { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="abdomen"]:hover) .bm-region-img[data-region="abdomen"],
-#bm-scanner:has(#lbl-abdomen:hover)                    .bm-region-img[data-region="abdomen"] { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="pelvis"]:hover)  .bm-region-img[data-region="pelvis"],
-#bm-scanner:has(#lbl-pelvis:hover)                     .bm-region-img[data-region="pelvis"]  { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="brazos"]:hover)  .bm-region-img[data-region="brazos"],
-#bm-scanner:has(#lbl-brazos:hover)                     .bm-region-img[data-region="brazos"]  { opacity: 1; }
-#bm-scanner:has(.bm-zone[data-region="piernas"]:hover) .bm-region-img[data-region="piernas"],
-#bm-scanner:has(#lbl-piernas:hover)                    .bm-region-img[data-region="piernas"] { opacity: 1; }
-/* Espalda — solo desde el label (zone tiene pointer-events:none) */
-#bm-scanner:has(#lbl-espalda:hover)                    .bm-region-img[data-region="espalda"] { opacity: 1; }
 #bm-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 3; overflow: visible;
@@ -1293,6 +1277,29 @@ table.tref-table td:nth-child(3) { color: #374151; }
   box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 .bm-label.posterior .bm-label-count { color: #8e8e93; }
+/* Pares Especiales button */
+.bm-extras-row {
+  display: flex; justify-content: center; padding: 0 1rem;
+  margin-top: -0.25rem;
+}
+.bm-extras-btn {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; max-width: 860px;
+  background: #ffffff; border: 1px solid rgba(0,0,0,0.09);
+  border-radius: 12px; padding: 11px 18px; cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+  transition: box-shadow 0.16s, border-color 0.16s;
+  font-family: inherit;
+}
+.bm-extras-btn:hover {
+  border-color: rgba(255,159,10,0.5);
+  box-shadow: 0 4px 16px rgba(255,159,10,0.14);
+}
+.bm-extras-info { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.bm-extras-name { font-size: 0.76rem; font-weight: 600; color: #1d1d1f; }
+.bm-extras-sub  { font-size: 0.62rem; color: #6e6e73; }
+.bm-extras-arrow { font-size: 0.9rem; color: #6e6e73; }
+
 
 @media (max-width: 780px) {
   #bm-scanner { height: 420px; }
@@ -1454,104 +1461,98 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <!-- HEAD -->
           <ellipse class="bm-zone" data-region="cabeza"
             cx="430" cy="85" rx="53" ry="52"
-            onclick="selectBodyRegion('cabeza')"
-            onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')"/>
+            onclick="selectBodyRegion('cabeza')"/>
           <!-- NECK -->
           <ellipse class="bm-zone" data-region="cuello"
             cx="430" cy="140" rx="32" ry="22"
-            onclick="selectBodyRegion('cuello')"
-            onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')"/>
+            onclick="selectBodyRegion('cuello')"/>
           <!-- PECHO (collar to mid-chest) -->
           <polygon class="bm-zone" data-region="pecho"
             points="348,160 512,160 520,305 340,305"
-            onclick="selectBodyRegion('pecho')"
-            onmouseenter="hoverBodyRegion('pecho')" onmouseleave="unhoverBodyRegion('pecho')"/>
+            onclick="selectBodyRegion('pecho')"/>
           <!-- ABDOMEN -->
           <polygon class="bm-zone" data-region="abdomen"
             points="340,305 520,305 516,408 338,408"
-            onclick="selectBodyRegion('abdomen')"
-            onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')"/>
+            onclick="selectBodyRegion('abdomen')"/>
           <!-- PELVIS -->
           <polygon class="bm-zone" data-region="pelvis"
             points="338,408 516,408 512,472 336,472"
-            onclick="selectBodyRegion('pelvis')"
-            onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')"/>
+            onclick="selectBodyRegion('pelvis')"/>
           <!-- LEFT ARM (viewer's left = image left side) -->
           <polygon class="bm-zone" data-region="brazos"
             points="302,160 350,160 346,460 300,460"
-            onclick="selectBodyRegion('brazos')"
-            onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
+            onclick="selectBodyRegion('brazos')"/>
           <!-- RIGHT ARM -->
           <polygon class="bm-zone" data-region="brazos"
             points="510,160 558,160 556,460 512,460"
-            onclick="selectBodyRegion('brazos')"
-            onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
+            onclick="selectBodyRegion('brazos')"/>
           <!-- LEGS (from hips to feet) -->
           <polygon class="bm-zone" data-region="piernas"
             points="336,472 512,472 508,602 334,602"
-            onclick="selectBodyRegion('piernas')"
-            onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')"/>
+            onclick="selectBodyRegion('piernas')"/>
           <!-- ESPALDA (no-interaction from front — only via right-side label) -->
           <polygon class="bm-zone" data-region="espalda"
             points="340,160 520,160 516,408 338,408"
             style="fill:transparent;stroke:transparent;pointer-events:none"
-            onclick="selectBodyRegion('espalda')"
-            onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')"/>
+            onclick="selectBodyRegion('espalda')"/>
         </svg>
 
         <!-- ── ETIQUETAS izquierda ── -->
         <div class="bm-label" id="lbl-cabeza"  style="top:41px; left:0"
-          onclick="selectBodyRegion('cabeza')"
-          onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
+          onclick="selectBodyRegion('cabeza')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><span class="bm-label-name">Cabeza</span></div>
           <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
         <div class="bm-label" id="lbl-cuello"  style="top:96px; left:0"
-          onclick="selectBodyRegion('cuello')"
-          onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
+          onclick="selectBodyRegion('cuello')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
           <span class="bm-label-count">23 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-pecho"   style="top:193px; left:0"
-          onclick="selectBodyRegion('pecho')"
-          onmouseenter="hoverBodyRegion('pecho')" onmouseleave="unhoverBodyRegion('pecho')">
+          onclick="selectBodyRegion('pecho')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><span class="bm-label-name">Pecho</span></div>
           <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
-          onclick="selectBodyRegion('abdomen')"
-          onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')">
+          onclick="selectBodyRegion('abdomen')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><span class="bm-label-name">Abdomen</span></div>
           <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-pelvis"  style="top:392px; left:0"
-          onclick="selectBodyRegion('pelvis')"
-          onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
+          onclick="selectBodyRegion('pelvis')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
           <span class="bm-label-count">37 pares · 3 zonas</span>
         </div>
 
         <!-- ── ETIQUETAS derecha ── -->
         <div class="bm-label posterior" id="lbl-espalda" style="top:200px; right:0"
-          onclick="selectBodyRegion('espalda')"
-          onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')">
+          onclick="selectBodyRegion('espalda')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><span class="bm-label-name">Espalda</span></div>
           <span class="bm-label-count">23 pares · posterior</span>
         </div>
         <div class="bm-label" id="lbl-brazos"  style="top:286px; right:0"
-          onclick="selectBodyRegion('brazos')"
-          onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')">
+          onclick="selectBodyRegion('brazos')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><span class="bm-label-name">Brazos</span></div>
           <span class="bm-label-count">14 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-piernas" style="top:468px; right:0"
-          onclick="selectBodyRegion('piernas')"
-          onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')">
+          onclick="selectBodyRegion('piernas')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><span class="bm-label-name">Piernas</span></div>
           <span class="bm-label-count">17 pares biomagnéticos</span>
         </div>
 
       </div><!-- /#bm-scanner -->
+        <!-- Pares Especiales — no ligados a zona corporal -->
+        <div class="bm-extras-row">
+          <button class="bm-extras-btn" onclick="selectBodyRegion('extras')">
+            <span class="bm-dot bm-dot-extras" style="width:9px;height:9px;flex-shrink:0"></span>
+            <span class="bm-extras-info">
+              <span class="bm-extras-name">Pares Especiales</span>
+              <span class="bm-extras-sub">388 pares · Variables, Columna, Ejes, Rastreo General</span>
+            </span>
+            <span class="bm-extras-arrow">›</span>
+          </button>
+        </div>
     </div><!-- /#rastreo-home -->
 
     <!-- Vista wizard pares biomagnéticos -->
@@ -2724,6 +2725,7 @@ const BODY_REGION_MAP = {
   espalda: { label: 'Espalda', dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
   brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazos'    },  // → directo a Bloques
   piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Piernas'   },  // → directo a Bloques
+  extras:  { label: 'Pares Especiales', dbNombre: 'Extras', dbZona: null },  // → muestra sub-zonas
 };
 
 function showHome() {
@@ -2776,26 +2778,57 @@ function selectBodyRegion(key) {
   wizRender();
 }
 
-function hoverBodyRegion(key) {
-  // Show region highlight image
-  const img = document.querySelector(`.bm-region-img[data-region="${key}"]`);
-  if (img) img.classList.add('visible');
-  // Label + connector
+function _bmShow(key) {
+  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
+    .forEach(img => img.classList.add('visible'));
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.add('hovered');
   if (conn) conn.classList.add('hovered');
 }
-
-function unhoverBodyRegion(key) {
-  // Hide region highlight image
-  const img = document.querySelector(`.bm-region-img[data-region="${key}"]`);
-  if (img) img.classList.remove('visible');
-  // Label + connector
+function _bmHide(key) {
+  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
+    .forEach(img => img.classList.remove('visible'));
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.remove('hovered');
   if (conn) conn.classList.remove('hovered');
+}
+// Legacy stubs — kept for any remaining inline refs
+function hoverBodyRegion(key)   { _bmShow(key); }
+function unhoverBodyRegion(key) { _bmHide(key); }
+
+function initBodyMapHover() {
+  const overlay = document.getElementById('bm-overlay');
+  if (!overlay) return;
+  let activeKey = null;
+
+  function enter(key) {
+    if (!key || key === activeKey) return;
+    if (activeKey) _bmHide(activeKey);
+    activeKey = key;
+    _bmShow(key);
+  }
+  function leave(key) {
+    if (!key || key !== activeKey) return;
+    _bmHide(key);
+    activeKey = null;
+  }
+
+  // SVG zones — event delegation on overlay (reliable across all browsers)
+  overlay.addEventListener('mousemove', function(e) {
+    const zone = e.target.closest && e.target.closest('.bm-zone[data-region]');
+    enter(zone ? zone.dataset.region : null);
+    if (!zone && activeKey) leave(activeKey);
+  });
+  overlay.addEventListener('mouseleave', function() { if (activeKey) leave(activeKey); });
+
+  // Labels — direct listeners on HTML elements (always reliable)
+  document.querySelectorAll('.bm-label[id^="lbl-"]').forEach(lbl => {
+    const key = lbl.id.slice(4);
+    lbl.addEventListener('mouseenter', () => enter(key));
+    lbl.addEventListener('mouseleave', () => leave(key));
+  });
 }
 
 function toggleInstr() {
@@ -2807,6 +2840,7 @@ function toggleInstr() {
 
 // ── BOOT ──────────────────────────────────────────────────────────────────
 init();
+initBodyMapHover();
 </script>
 </body>
 </html>
