@@ -1389,75 +1389,82 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <svg id="bm-overlay" viewBox="0 0 860 630" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
           <!-- ── LÍNEAS CONECTORAS izquierda ── -->
-          <line id="conn-cabeza"  class="bm-conn" x1="174" y1="57"  x2="388" y2="57"/>
-          <circle class="bm-conn-dot" cx="388" cy="57"  r="2.5"/>
-          <line id="conn-cuello"  class="bm-conn" x1="174" y1="103" x2="370" y2="103"/>
-          <circle class="bm-conn-dot" cx="370" cy="103" r="2.5"/>
-          <line id="conn-torax"   class="bm-conn" x1="174" y1="215" x2="276" y2="215"/>
-          <circle class="bm-conn-dot" cx="276" cy="215" r="2.5"/>
-          <line id="conn-abdomen" class="bm-conn" x1="174" y1="330" x2="268" y2="330"/>
-          <circle class="bm-conn-dot" cx="268" cy="330" r="2.5"/>
-          <line id="conn-pelvis"  class="bm-conn" x1="174" y1="418" x2="270" y2="418"/>
-          <circle class="bm-conn-dot" cx="270" cy="418" r="2.5"/>
+          <line id="conn-cabeza"  class="bm-conn" x1="174" y1="63"  x2="377" y2="63"/>
+          <circle class="bm-conn-dot" cx="377" cy="63"  r="2.5"/>
+          <line id="conn-cuello"  class="bm-conn" x1="174" y1="118" x2="398" y2="118"/>
+          <circle class="bm-conn-dot" cx="398" cy="118" r="2.5"/>
+          <line id="conn-torax"   class="bm-conn" x1="174" y1="215" x2="348" y2="215"/>
+          <circle class="bm-conn-dot" cx="348" cy="215" r="2.5"/>
+          <line id="conn-abdomen" class="bm-conn" x1="174" y1="330" x2="340" y2="330"/>
+          <circle class="bm-conn-dot" cx="340" cy="330" r="2.5"/>
+          <line id="conn-pelvis"  class="bm-conn" x1="174" y1="414" x2="338" y2="414"/>
+          <circle class="bm-conn-dot" cx="338" cy="414" r="2.5"/>
 
           <!-- ── LÍNEAS CONECTORAS derecha ── -->
-          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="222" x2="582" y2="222"/>
-          <circle class="bm-conn-dot bm-conn-dot-post" cx="582" cy="222" r="2.5"/>
-          <line id="conn-brazos"  class="bm-conn" x1="686" y1="308" x2="640" y2="308"/>
-          <circle class="bm-conn-dot" cx="640" cy="308" r="2.5"/>
-          <line id="conn-piernas" class="bm-conn" x1="686" y1="490" x2="590" y2="490"/>
-          <circle class="bm-conn-dot" cx="590" cy="490" r="2.5"/>
+          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="222" x2="516" y2="222"/>
+          <circle class="bm-conn-dot bm-conn-dot-post" cx="516" cy="222" r="2.5"/>
+          <line id="conn-brazos"  class="bm-conn" x1="686" y1="308" x2="558" y2="308"/>
+          <circle class="bm-conn-dot" cx="558" cy="308" r="2.5"/>
+          <line id="conn-piernas" class="bm-conn" x1="686" y1="490" x2="512" y2="490"/>
+          <circle class="bm-conn-dot" cx="512" cy="490" r="2.5"/>
 
-          <!-- ── ZONAS CLICABLES (coord originales 1086×1448 → translate+scale) ── -->
-          <g transform="translate(212,30) scale(0.4004,0.4006)">
-            <ellipse class="bm-zone" data-region="cabeza"
-              cx="543" cy="90" rx="128" ry="138"
-              onclick="selectBodyRegion('cabeza')"
-              onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')"/>
-            <ellipse class="bm-zone" data-region="cuello"
-              cx="543" cy="215" rx="82" ry="52"
-              onclick="selectBodyRegion('cuello')"
-              onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')"/>
-            <polygon class="bm-zone" data-region="torax"
-              points="300,265 790,265 808,570 287,570"
-              onclick="selectBodyRegion('torax')"
-              onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')"/>
-            <polygon class="bm-zone" data-region="abdomen"
-              points="282,570 808,570 818,795 268,795"
-              onclick="selectBodyRegion('abdomen')"
-              onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')"/>
-            <polygon class="bm-zone" data-region="pelvis"
-              points="262,795 822,795 838,950 248,950"
-              onclick="selectBodyRegion('pelvis')"
-              onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')"/>
-            <polygon class="bm-zone" data-region="brazos"
-              points="142,262 296,262 310,888 156,888"
-              onclick="selectBodyRegion('brazos')"
-              onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
-            <polygon class="bm-zone" data-region="brazos"
-              points="793,262 944,262 936,888 804,888"
-              onclick="selectBodyRegion('brazos')"
-              onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
-            <polygon class="bm-zone" data-region="piernas"
-              points="252,950 842,950 848,1448 246,1448"
-              onclick="selectBodyRegion('piernas')"
-              onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')"/>
-            <polygon class="bm-zone" data-region="espalda"
-              points="290,265 800,265 816,795 272,795"
-              style="fill:transparent;stroke:transparent"
-              onclick="selectBodyRegion('espalda')"
-              onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')"/>
-          </g>
+          <!-- Zones in wrapper coordinates (viewBox 860×630) -->
+          <!-- HEAD -->
+          <ellipse class="bm-zone" data-region="cabeza"
+            cx="430" cy="85" rx="53" ry="52"
+            onclick="selectBodyRegion('cabeza')"
+            onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')"/>
+          <!-- NECK -->
+          <ellipse class="bm-zone" data-region="cuello"
+            cx="430" cy="140" rx="32" ry="22"
+            onclick="selectBodyRegion('cuello')"
+            onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')"/>
+          <!-- THORAX (collar to mid-chest) -->
+          <polygon class="bm-zone" data-region="torax"
+            points="348,160 512,160 520,305 340,305"
+            onclick="selectBodyRegion('torax')"
+            onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')"/>
+          <!-- ABDOMEN -->
+          <polygon class="bm-zone" data-region="abdomen"
+            points="340,305 520,305 516,408 338,408"
+            onclick="selectBodyRegion('abdomen')"
+            onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')"/>
+          <!-- PELVIS -->
+          <polygon class="bm-zone" data-region="pelvis"
+            points="338,408 516,408 512,472 336,472"
+            onclick="selectBodyRegion('pelvis')"
+            onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')"/>
+          <!-- LEFT ARM (viewer's left = image left side) -->
+          <polygon class="bm-zone" data-region="brazos"
+            points="302,160 350,160 346,460 300,460"
+            onclick="selectBodyRegion('brazos')"
+            onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
+          <!-- RIGHT ARM -->
+          <polygon class="bm-zone" data-region="brazos"
+            points="510,160 558,160 556,460 512,460"
+            onclick="selectBodyRegion('brazos')"
+            onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
+          <!-- LEGS (from hips to feet) -->
+          <polygon class="bm-zone" data-region="piernas"
+            points="336,472 512,472 508,602 334,602"
+            onclick="selectBodyRegion('piernas')"
+            onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')"/>
+          <!-- ESPALDA (transparent, overlaps torso+abdomen) -->
+          <polygon class="bm-zone" data-region="espalda"
+            points="340,160 520,160 516,408 338,408"
+            style="fill:transparent;stroke:transparent"
+            onclick="selectBodyRegion('espalda')"
+            onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')"/>
         </svg>
 
         <!-- ── ETIQUETAS izquierda ── -->
-        <div class="bm-label" id="lbl-cabeza"  style="top:35px;  left:0"
+        <div class="bm-label" id="lbl-cabeza"  style="top:41px; left:0"
           onclick="selectBodyRegion('cabeza')"
           onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><span class="bm-label-name">Cabeza</span></div>
           <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
-        <div class="bm-label" id="lbl-cuello"  style="top:81px;  left:0"
+        <div class="bm-label" id="lbl-cuello"  style="top:96px; left:0"
           onclick="selectBodyRegion('cuello')"
           onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
@@ -1475,7 +1482,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><span class="bm-label-name">Abdomen</span></div>
           <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-pelvis"  style="top:396px; left:0"
+        <div class="bm-label" id="lbl-pelvis"  style="top:392px; left:0"
           onclick="selectBodyRegion('pelvis')"
           onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
@@ -2011,6 +2018,7 @@ function setupListeners() {
 
 let wizDB = null;
 let wizStep = 'region';   // region | zona | bloque | par | result
+let wizBodyMapKey = null; // UI region key selected from body map
 let wizRegion = null;
 let wizZona   = null;
 let wizBloque = null;
@@ -2054,6 +2062,7 @@ function getMapUrl(bloqueId) {
 function wizInit() { /* DB loaded in init(); wizard renders on category select */ }
 
 function wizReset() {
+  wizBodyMapKey = null;
   wizStep = 'region'; wizRegion = wizZona = wizBloque = wizPar = null;
   showHome();
 }
@@ -2098,7 +2107,7 @@ function wizRenderRegions() {
   const g = wizGetGrid('g2');
   wizDB.regiones.forEach(r => {
     const btn = wizMakeBtn(r.nombre, r.zonas.length + ' zonas');
-    btn.onclick = () => { wizRegion = r; wizStep = 'zona'; wizRender(); };
+    btn.onclick = () => { wizRegion = r; wizStep = 'zona'; wizBodyMapKey = null; wizRender(); };
     g.appendChild(btn);
   });
 }
@@ -2170,8 +2179,17 @@ function wizUpdateBc() {
   const bc = document.getElementById('wizBc');
   bc.innerHTML = '';
   const crumbs = [{ label: '← Mapa', target: 'region' }];
-  if (wizRegion) crumbs.push({ label: wizRegion.nombre, target: 'zona' });
-  if (wizZona)   crumbs.push({ label: wizZona.nombre, target: 'bloque' });
+  if (wizBodyMapKey && BODY_REGION_MAP[wizBodyMapKey] && wizZona) {
+    // Came from body map with direct zone — show UI label only
+    crumbs.push({ label: BODY_REGION_MAP[wizBodyMapKey].label, target: 'bloque' });
+  } else if (wizBodyMapKey && BODY_REGION_MAP[wizBodyMapKey] && wizRegion) {
+    // Came from body map but at zona selection step
+    crumbs.push({ label: BODY_REGION_MAP[wizBodyMapKey].label, target: 'zona' });
+    if (wizZona) crumbs.push({ label: wizZona.nombre, target: 'bloque' });
+  } else {
+    if (wizRegion) crumbs.push({ label: wizRegion.nombre, target: 'zona' });
+    if (wizZona)   crumbs.push({ label: wizZona.nombre, target: 'bloque' });
+  }
   if (wizBloque) crumbs.push({ label: wizBloque.nombre, target: 'par' });
   if (wizStep === 'result') crumbs.push({ label: 'Par #' + (wizPar+1), target: 'result' });
 
@@ -2656,14 +2674,14 @@ function trefFilter(q) {
 
 // dbZona: saltar directo al paso Bloque cuando hay coincidencia exacta en la DB
 const BODY_REGION_MAP = {
-  cabeza:  { dbNombre: 'Cabeza',   dbZona: null        },  // 5 sub-zonas → mostrar paso Zona
-  cuello:  { dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
-  torax:   { dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
-  abdomen: { dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
-  pelvis:  { dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
-  espalda: { dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
-  brazos:  { dbNombre: 'Miembros', dbZona: 'Brazos'    },  // → directo a Bloques
-  piernas: { dbNombre: 'Miembros', dbZona: 'Piernas'   },  // → directo a Bloques
+  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null        },  // 5 sub-zonas → mostrar paso Zona
+  cuello:  { label: 'Cuello',  dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
+  torax:   { label: 'Tórax',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
+  abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
+  pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
+  espalda: { label: 'Espalda', dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
+  brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazos'    },  // → directo a Bloques
+  piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Piernas'   },  // → directo a Bloques
 };
 
 function showHome() {
@@ -2678,6 +2696,7 @@ function hideHome() {
 }
 
 function selectBodyRegion(key) {
+  wizBodyMapKey = key;
   const mapping = BODY_REGION_MAP[key];
   if (!mapping) return;
 
