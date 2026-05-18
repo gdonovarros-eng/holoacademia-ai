@@ -122,7 +122,7 @@ header h1 {
 /* ── MAIN GRID ────────────────────────────────────── */
 .main-grid {
   display: grid;
-  grid-template-columns: var(--col-izq) 1fr var(--col-der);
+  grid-template-columns: 1fr var(--col-der);
   flex: 1;
   overflow: hidden;
 }
@@ -1188,7 +1188,6 @@ table.tref-table td:nth-child(3) { color: #374151; }
 <header>
   <a href="/" class="home-btn" title="Inicio">⌂</a>
   <h1>🧲 Rastreo de Imanes</h1>
-  <button class="mobile-toggle" id="btn-toggle-cat">☰ Cat.</button>
   <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
   <div class="spacer"></div>
   <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
@@ -1200,43 +1199,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
 <!-- ── MAIN GRID ──────────────────────────────────────────────── -->
 <div class="main-grid">
 
-  <!-- COL IZQUIERDA -->
-  <aside class="col-izq" id="col-izq">
-    <div class="col-izq-title">Categorías</div>
-    <div id="cat-list"></div>
-  </aside>
-
   <!-- COL CENTRO -->
   <main class="col-centro">
-
-    <!-- Vista normal: image viewer + pair search -->
-    <div id="normal-view" style="display:flex;flex-direction:column;flex:1;overflow:hidden;">
-      <!-- image viewer (60%) -->
-      <div class="image-viewer">
-        <div class="image-viewer-header">
-          <strong id="active-cat-label">Selecciona una categoría</strong>
-          <div class="image-viewer-spacer"></div>
-          <button class="image-nav-btn" id="btn-prev" disabled>← Ant</button>
-          <span id="img-counter" style="font-size:0.78rem;color:var(--muted)">—</span>
-          <button class="image-nav-btn" id="btn-next" disabled>Sig →</button>
-        </div>
-        <div class="image-strip-wrap" id="image-strip">
-          <div class="image-empty">
-            <div class="empty-icon">🖼️</div>
-            <div>Selecciona una categoría para ver sus imágenes</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- pair search (40%) -->
-      <div class="pair-search-area">
-        <label for="pair-search-input">Buscar & Agregar Pares</label>
-        <input type="text" id="pair-search-input" placeholder="Nombre, condición, tipo…" autocomplete="off">
-        <div id="pair-results">
-          <div class="pair-search-empty">Escribe para buscar pares biomagnéticos</div>
-        </div>
-      </div>
-    </div>
 
     <!-- Vista wizard pares biomagnéticos -->
     <div id="wizard-pares">
@@ -1264,25 +1228,13 @@ table.tref-table td:nth-child(3) { color: #374151; }
       </div>
     </div>
 
-    <!-- Vista microbios -->
-    <div id="microbios-view">
-      <div class="micro-tabs">
-        <button class="micro-tab active" id="microTab0" onclick="microTab(0)">📊 Diagnóstico</button>
-        <button class="micro-tab" id="microTab1" onclick="microTab(1)">🦠 Bacterias G+</button>
-        <button class="micro-tab" id="microTab2" onclick="microTab(2)">🦠 Bacterias G−</button>
-        <button class="micro-tab" id="microTab3" onclick="microTab(3)">🪱 Parásitos &amp; Hongos</button>
-        <button class="micro-tab" id="microTab4" onclick="microTab(4)">🔬 Virus</button>
-      </div>
-      <div class="micro-content" id="micro-content"></div>
-    </div>
-
   </main>
 
   <!-- COL DERECHA -->
   <aside class="col-der">
     <div class="col-der-header">Pares confirmados</div>
     <div id="confirmed-list">
-      <div class="confirmed-empty">Selecciona una categoría y agrega pares al rastreo</div>
+      <div class="confirmed-empty">Agrega pares biomagnéticos al rastreo</div>
     </div>
   </aside>
 
@@ -1324,17 +1276,6 @@ table.tref-table td:nth-child(3) { color: #374151; }
 // ── CONFIG ────────────────────────────────────────────────────────────────
 const CATEGORIES = [
   { key: 'pares_biomagneticos', icon: '🧲', label: 'Pares Biomagnéticos' },
-  { key: 'microbios',           icon: '🦠', label: 'Microbios' },
-  { key: 'holobiomag',          icon: '✨', label: 'Holobiomagnético' },
-  { key: 'flores_bach',         icon: '🌸', label: 'Flores de Bach' },
-  { key: 'sales',               icon: '🧂', label: 'Sales de Schüssler' },
-  { key: 'vitaminas',           icon: '💊', label: 'Vitaminas & Minerales' },
-  { key: 'homeopatia',          icon: '⚗️', label: 'Homeopatía' },
-  { key: 'creencias',           icon: '🧠', label: 'Creencias' },
-  { key: 'miedos',              icon: '😨', label: 'Miedos & Fobias' },
-  { key: 'chakras',             icon: '🔮', label: 'Chakras & Centros Energéticos' },
-  { key: 'cinco_elementos',     icon: '☯️', label: '5 Elementos MTC' },
-  { key: 'aminoacidos',         icon: '🔬', label: 'Aminoácidos & Enzimas' },
 ];
 
 const TIPO_CLASS = {
@@ -1398,6 +1339,7 @@ async function init() {
 
   setupListeners();
   wizInit();
+  selectCategory(CATEGORIES[0]);
 }
 
 function flattenPairs(db) {
@@ -1439,44 +1381,20 @@ function selectCategory(cat) {
   document.querySelectorAll('.cat-chip').forEach(c =>
     c.classList.toggle('active', c.dataset.key === cat.key)
   );
-
-  if (cat.key === 'pares_biomagneticos') {
-    // show wizard, hide normal view and microbios
-    document.getElementById('normal-view').style.display = 'none';
-    document.getElementById('microbios-view').classList.remove('active');
-    document.getElementById('wizard-pares').classList.add('active');
-    wizReset();
-  } else if (cat.key === 'microbios') {
-    // show microbios panel, hide others
-    document.getElementById('normal-view').style.display = 'none';
-    document.getElementById('wizard-pares').classList.remove('active');
-    document.getElementById('microbios-view').classList.add('active');
-    microRender();
-  } else {
-    // show normal view, hide wizard and microbios
-    document.getElementById('wizard-pares').classList.remove('active');
-    document.getElementById('microbios-view').classList.remove('active');
-    document.getElementById('normal-view').style.display = 'flex';
-
-    document.getElementById('active-cat-label').textContent = `${cat.icon} ${cat.label}`;
-    const catData = manifest[cat.key] || {};
-    const imgs = catData.tablas || catData.archivos || [];
-    activeImages = imgs;
-    activeImageIdx = 0;
-    renderImageStrip();
-  }
+  // Always show wizard (only pares_biomagneticos)
+  document.getElementById('wizard-pares').classList.add('active');
+  wizReset();
 }
 
 // ── IMAGES ────────────────────────────────────────────────────────────────
 function renderImageStrip() {
   const strip = document.getElementById('image-strip');
-  const prevBtn = document.getElementById('btn-prev');
-  const nextBtn = document.getElementById('btn-next');
   const counter = document.getElementById('img-counter');
+  if (!strip) return;
 
   if (!activeImages.length) {
     strip.innerHTML = `<div class="image-empty"><div class="empty-icon">🖼️</div><div>No hay imágenes para esta categoría</div></div>`;
-    prevBtn.disabled = true; nextBtn.disabled = true; counter.textContent = '—';
+    if (counter) counter.textContent = '—';
     return;
   }
 
@@ -1491,9 +1409,7 @@ function renderImageStrip() {
     strip.appendChild(img);
   });
 
-  counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
-  prevBtn.disabled = activeImageIdx === 0;
-  nextBtn.disabled = activeImageIdx === activeImages.length - 1;
+  if (counter) counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
   const activeThumb = strip.children[activeImageIdx];
   if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
 }
@@ -1503,11 +1419,13 @@ function navigateImage(delta) {
   document.querySelectorAll('#image-strip .thumb').forEach((t, i) =>
     t.classList.toggle('active', i === activeImageIdx)
   );
-  document.getElementById('img-counter').textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
-  document.getElementById('btn-prev').disabled = activeImageIdx === 0;
-  document.getElementById('btn-next').disabled = activeImageIdx === activeImages.length - 1;
-  const activeThumb = document.getElementById('image-strip').children[activeImageIdx];
-  if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  const counter = document.getElementById('img-counter');
+  if (counter) counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
+  const strip = document.getElementById('image-strip');
+  if (strip) {
+    const activeThumb = strip.children[activeImageIdx];
+    if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
 }
 
 // ── LIGHTBOX ──────────────────────────────────────────────────────────────
@@ -1607,7 +1525,7 @@ function removePair(id) {
 function renderConfirmedList() {
   const list = document.getElementById('confirmed-list');
   if (!confirmedPairs.length) {
-    list.innerHTML = `<div class="confirmed-empty">Selecciona una categoría y agrega pares al rastreo</div>`;
+    list.innerHTML = `<div class="confirmed-empty">Agrega pares biomagnéticos al rastreo</div>`;
     return;
   }
   list.innerHTML = '';
@@ -1757,8 +1675,6 @@ function setupListeners() {
     clearTimeout(globalSearchDebounce);
     globalSearchDebounce = setTimeout(() => searchGlobal(e.target.value), 200);
   });
-  document.getElementById('btn-prev').addEventListener('click', () => navigateImage(-1));
-  document.getElementById('btn-next').addEventListener('click', () => navigateImage(+1));
   document.getElementById('lightbox').addEventListener('click', e => {
     if (e.target === document.getElementById('lightbox')) closeLightbox();
   });
@@ -1784,9 +1700,6 @@ function setupListeners() {
     if (confirm('¿Confirmas iniciar un nuevo rastreo? Se borrarán los pares confirmados.')) {
       confirmedPairs = []; saveSession(); renderConfirmedList(); updateBadge(); closeModal();
     }
-  });
-  document.getElementById('btn-toggle-cat').addEventListener('click', () => {
-    document.getElementById('col-izq').classList.toggle('drawer-open');
   });
   document.getElementById('btn-toggle-confirm').addEventListener('click', () => {
     document.querySelector('.col-der').classList.toggle('drawer-open');
