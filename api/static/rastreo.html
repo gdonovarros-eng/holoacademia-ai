@@ -1220,22 +1220,22 @@ table.tref-table td:nth-child(3) { color: #374151; }
   fill: rgba(0,122,255,0.35) !important;
   stroke: rgba(0,122,255,0.7) !important; stroke-width: 2 !important;
 }
-/* Region highlight images — inside SVG overlay, CSS sibling combinator */
-.bm-zone-img {
-  opacity: 0;
-  transition: opacity 0.22s ease;
+/* Region highlight images — HTML <img> positioned over body-img, toggled via JS */
+.bm-region-img {
+  position: absolute;
+  top: 30px; left: 50%;
+  transform: translateX(-50%);
+  height: 580px; width: auto;
+  z-index: 2;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
 }
-/* Zone hover triggers image via CSS ~ sibling (same reliability as blue fill) */
-.bm-zone[data-region="cabeza"]:hover  ~ .bm-zone-img[data-region="cabeza"],
-.bm-zone[data-region="cuello"]:hover  ~ .bm-zone-img[data-region="cuello"],
-.bm-zone[data-region="pecho"]:hover   ~ .bm-zone-img[data-region="pecho"],
-.bm-zone[data-region="abdomen"]:hover ~ .bm-zone-img[data-region="abdomen"],
-.bm-zone[data-region="pelvis"]:hover  ~ .bm-zone-img[data-region="pelvis"],
-.bm-zone[data-region="brazos"]:hover  ~ .bm-zone-img[data-region="brazos"],
-.bm-zone[data-region="piernas"]:hover ~ .bm-zone-img[data-region="piernas"] { opacity: 1; }
-/* Label hover triggers image via JS (_bmShow targets .bm-zone-img) */
-.bm-zone-img.visible { opacity: 1; }
+.bm-region-img.visible {
+  opacity: 1;
+  filter: drop-shadow(0 0 14px rgba(0,122,255,0.82))
+          saturate(2.5) contrast(1.25) brightness(0.92);
+}
 /* connector lines */
 .bm-conn {
   stroke: rgba(0,0,0,0.45); stroke-width: 1.5;
@@ -1482,38 +1482,22 @@ table.tref-table td:nth-child(3) { color: #374151; }
             points="336,472 512,472 508,602 334,602"
             onclick="selectBodyRegion('piernas')"/>
 
-          <!-- ── REGION HIGHLIGHT IMAGES (SVG-native, positioned over body map) ── -->
-          <!-- body-img: height=580 width≈448 top=30 left≈206 in 860px scanner -->
-          <image class="bm-zone-img" data-region="cabeza"
-            href="/therapy-static/regiones/cabeza.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="cuello"
-            href="/therapy-static/regiones/cuello.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="pecho"
-            href="/therapy-static/regiones/pecho.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="abdomen"
-            href="/therapy-static/regiones/abdomen.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="pelvis"
-            href="/therapy-static/regiones/pelvis.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="espalda"
-            href="/therapy-static/regiones/espalda.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="brazos"
-            href="/therapy-static/regiones/brazos.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
-          <image class="bm-zone-img" data-region="piernas"
-            href="/therapy-static/regiones/piernas.svg"
-            x="206" y="30" width="448" height="580" preserveAspectRatio="xMidYMid meet"/>
           <!-- ESPALDA (no-interaction from front — only via right-side label) -->
           <polygon class="bm-zone" data-region="espalda"
             points="340,160 520,160 516,408 338,408"
             style="fill:transparent;stroke:transparent;pointer-events:none"
             onclick="selectBodyRegion('espalda')"/>
         </svg>
+
+        <!-- ── REGION HIGHLIGHT IMAGES — HTML img, z-index 2, toggled via JS ── -->
+        <img class="bm-region-img" data-region="cabeza"  src="/therapy-static/regiones/cabeza.svg"  alt="">
+        <img class="bm-region-img" data-region="cuello"  src="/therapy-static/regiones/cuello.svg"  alt="">
+        <img class="bm-region-img" data-region="pecho"   src="/therapy-static/regiones/pecho.svg"   alt="">
+        <img class="bm-region-img" data-region="abdomen" src="/therapy-static/regiones/abdomen.svg" alt="">
+        <img class="bm-region-img" data-region="pelvis"  src="/therapy-static/regiones/pelvis.svg"  alt="">
+        <img class="bm-region-img" data-region="espalda" src="/therapy-static/regiones/espalda.svg" alt="">
+        <img class="bm-region-img" data-region="brazos"  src="/therapy-static/regiones/brazos.svg"  alt="">
+        <img class="bm-region-img" data-region="piernas" src="/therapy-static/regiones/piernas.svg" alt="">
 
         <!-- ── CABEZA: top center ── -->
         <div class="bm-label" id="lbl-cabeza" style="top:5px; left:50%; transform:translateX(-50%)"
@@ -2794,7 +2778,7 @@ function selectBodyRegion(key) {
 }
 
 function _bmShow(key) {
-  document.querySelectorAll(`.bm-zone-img[data-region="${key}"]`)
+  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
     .forEach(img => { img.classList.add('visible'); });
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
@@ -2802,7 +2786,7 @@ function _bmShow(key) {
   if (conn) conn.classList.add('hovered');
 }
 function _bmHide(key) {
-  document.querySelectorAll(`.bm-zone-img[data-region="${key}"]`)
+  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
     .forEach(img => { img.classList.remove('visible'); });
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
