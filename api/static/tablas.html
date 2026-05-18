@@ -251,7 +251,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
         <span class="tipo-dot dot-sales"></span>Sales de Schüssler<span class="cat-count">12</span>
       </button>
       <button class="cat-btn" data-cat="bach" onclick="selectCat(this)">
-        <span class="tipo-dot dot-bach"></span>Florales de Bach<span class="cat-count">38</span>
+        <span class="tipo-dot dot-bach"></span>Florales de Bach<span class="cat-count">39</span>
       </button>
       <button class="cat-btn" data-cat="vitaminas" onclick="selectCat(this)">
         <span class="tipo-dot dot-vitaminas"></span>Vitaminas / Minerales<span class="cat-count">26</span>
@@ -270,7 +270,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
         <span class="tipo-dot dot-homeopatico"></span>Policrestos<span class="cat-count">25</span>
       </button>
       <button class="cat-btn" data-cat="semipolicrestos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-homeopatico"></span>Semipolicrestos<span class="cat-count">30</span>
+        <span class="tipo-dot dot-homeopatico"></span>Semipolicrestos<span class="cat-count">36</span>
       </button>
     </div>
 
@@ -334,66 +334,94 @@ let confirmed = [];            // {id, nombre, tipo, cat, sub}
 
 // ─── Static datasets ─────────────────────────────────────────────────────────
 const SALES_SCHUSSLER = [
-  {n:1, nombre:'Calcarea Fluorica (Calc Fluor)', desc:'Tejido elástico, dientes, huesos, várices, hemorroides', emoc:'Inseguridad, falta de firmeza interior'},
-  {n:2, nombre:'Calcarea Phosphorica (Calc Phos)', desc:'Formación ósea, digestión, crecimiento, anemia', emoc:'Descontento, anhelo de novedad, inquietud'},
-  {n:3, nombre:'Calcarea Sulphurica (Calc Sulph)', desc:'Purificación, supuraciones crónicas, acné, eccemas', emoc:'Celos, autoexigencia excesiva'},
-  {n:4, nombre:'Ferrum Phosphoricum (Ferr Phos)', desc:'Inflamaciones en primer estadio, fiebre leve, anemia, debilidad', emoc:'Irritabilidad, agitación emocional'},
-  {n:5, nombre:'Kali Muriaticum (Kali Mur)', desc:'Mucosas, segundo estadio inflamatorio, congestión, catarro', emoc:'Resignación, sensación de peso'},
-  {n:6, nombre:'Kali Phosphoricum (Kali Phos)', desc:'Sistema nervioso, agotamiento mental, depresión, insomnio', emoc:'Agotamiento nervioso, pesimismo'},
-  {n:7, nombre:'Kali Sulphuricum (Kali Sulph)', desc:'Piel, mucosas, tercer estadio inflamatorio, secreciones amarillas', emoc:'Miedo al cambio, inflexibilidad'},
-  {n:8, nombre:'Magnesia Phosphorica (Mag Phos)', desc:'Calambres, espasmos, neuralgias, cólicos, jaquecas', emoc:'Tensión, perfeccionismo, rígidez'},
-  {n:9, nombre:'Natrum Muriaticum (Nat Mur)', desc:'Equilibrio hídrico, sequedad/exceso de líquidos, migrañas', emoc:'Duelo reprimido, sensibilidad emocional'},
-  {n:10,nombre:'Natrum Phosphoricum (Nat Phos)', desc:'Acidez, metabolismo ácido-base, reumatismo, gota', emoc:'Conflictos no resueltos, amargura'},
-  {n:11,nombre:'Natrum Sulphuricum (Nat Sulph)', desc:'Hígado, desintoxicación, asma húmeda, vesícula', emoc:'Tristeza profunda, ganas de morir'},
-  {n:12,nombre:'Silicea (Silica)', desc:'Tejido conectivo, piel, cabello, uñas, abscesos', emoc:'Falta de confianza, timidez extrema'},
+  {n:1, nombre:"Calcium fluoratum (Fluoruro de calcio)", desc:"elasticidad de tejidos (piel, vasos), esmalte dental", emoc:"Inseguridad, falta de firmeza interior"},
+  {n:2, nombre:"Calcium phosphoricum (Fosfato de calcio)", desc:"crecimiento óseo, dentición, recuperación post-fractura", emoc:"Descontento, anhelo de novedad, inquietud"},
+  {n:3, nombre:"Calcium sulfuricum (Sulfato de calcio)", desc:"supuraciones crónicas, infecciones que tardan en sanar", emoc:"Celos, autoexigencia excesiva"},
+  {n:4, nombre:"Kalium phosphoricum (Fosfato de potasio)", desc:"agotamiento nervioso, estados depresivos por sobrecarga mental", emoc:"Agotamiento nervioso, pesimismo"},
+  {n:5, nombre:"Kalium muriaticum (Cloruro de potasio)", desc:"inflamaciones de mucosas (segundo estadio), mocos blancos", emoc:"Resignación, sensación de peso"},
+  {n:6, nombre:"Kalium sulfuricum (Sulfato de potasio)", desc:"inflamaciones crónicas, mocos amarillentos, problemas de piel", emoc:"Miedo al cambio, inflexibilidad"},
+  {n:7, nombre:"Natrum phosphoricum (Fosfato de sodio)", desc:"'desequilibrios ácido-base', acidez, gota, reumatismo", emoc:"Conflictos no resueltos, amargura"},
+  {n:8, nombre:"Natrum muriaticum (Cloruro de sodio)", desc:"regulación de fluidos corporales, mucosas secas, anemia, fatiga", emoc:"Duelo reprimido, sensibilidad emocional"},
+  {n:9, nombre:"Natrum sulfuricum (Sulfato de sodio)", desc:"drenaje hepático y biliar, retención de líquidos", emoc:"Tristeza profunda, ganas de morir"},
+  {n:10, nombre:"Ferrum phosphoricum (Fosfato de hierro)", desc:"'primer estadio' de inflamación, fiebre inicial, anemia leve", emoc:"Irritabilidad, agitación emocional"},
+  {n:11, nombre:"Magnesium phosphoricum (Fosfato de magnesio)", desc:"espasmos, calambres, dolores agudos en relámpagos", emoc:"Tensión, perfeccionismo, rígidez"},
+  {n:12, nombre:"Silicea terra (Dióxido de silicio)", desc:"tejidos conjuntivos, cabello, uñas, abscesos", emoc:"Falta de confianza, timidez extrema"},
 ];
 
 const BACH_FLOWERS = [
-  // Grupo 1 — Miedo
-  {g:'MIEDO', n:1, nombre:'Rock Rose (Helianthemum)', desc:'Terror, pánico, pesadillas, urgencias extremas', emoc:'Miedo paralizante'},
-  {g:'MIEDO', n:2, nombre:'Mimulus (Mimulus guttatus)', desc:'Miedos conocidos y cotidianos: altura, animales, enfermedad', emoc:'Timidez, miedo específico'},
-  {g:'MIEDO', n:3, nombre:'Cherry Plum (Prunus cerasifera)', desc:'Miedo a perder el control, impulsos violentos, colapso mental', emoc:'Desesperación extrema'},
-  {g:'MIEDO', n:4, nombre:'Aspen (Populus tremula)', desc:'Miedos vagos, aprensión sin causa, terrores nocturnos', emoc:'Ansiedad difusa, presagios'},
-  {g:'MIEDO', n:5, nombre:'Red Chestnut (Aesculus carnea)', desc:'Miedo excesivo por seres queridos, catastrofismo', emoc:'Sobreprotección, worry'},
-  // Grupo 2 — Incertidumbre
-  {g:'INCERTIDUMBRE', n:6, nombre:'Cerato (Ceratostigma willmottiana)', desc:'Dudas propias, busca consejo constantemente, no confía en sí', emoc:'Falta de confianza en intuición'},
-  {g:'INCERTIDUMBRE', n:7, nombre:'Scleranthus (Scleranthus annuus)', desc:'Indecisión entre dos opciones, humor variable, inestabilidad', emoc:'Vacilación'},
-  {g:'INCERTIDUMBRE', n:8, nombre:'Gentian (Gentianella amarella)', desc:'Desaliento fácil ante obstáculos, escepticismo, duda', emoc:'Pesimismo leve'},
-  {g:'INCERTIDUMBRE', n:9, nombre:'Gorse (Ulex europaeus)', desc:'Desesperanza total, renuncia, "no vale la pena intentarlo"', emoc:'Desesperanza'},
-  {g:'INCERTIDUMBRE', n:10,nombre:'Hornbeam (Carpinus betulus)', desc:'Fatiga mental matutina, procrastinación, agotamiento ante el deber', emoc:'Inercia'},
-  {g:'INCERTIDUMBRE', n:11,nombre:'Wild Oat (Bromus ramosus)', desc:'Sin rumbo vital, muchos talentos sin dirección, insatisfacción', emoc:'Falta de propósito'},
-  // Grupo 3 — Desinterés por el presente
-  {g:'DESINTERÉS', n:12,nombre:'Clematis (Clematis vitalba)', desc:'Soñar despierto, evasión, poca concentración, vive en el futuro', emoc:'Ensoñación, desconexión'},
-  {g:'DESINTERÉS', n:13,nombre:'Honeysuckle (Lonicera caprifolium)', desc:'Nostálgico, vive en el pasado, añoranza constante', emoc:'Nostalgia'},
-  {g:'DESINTERÉS', n:14,nombre:'Wild Rose (Rosa canina)', desc:'Resignación, apatía, acepta sin luchar, falta de ambición', emoc:'Resignación'},
-  {g:'DESINTERÉS', n:15,nombre:'Olive (Olea europaea)', desc:'Agotamiento total físico y mental tras esfuerzo prolongado', emoc:'Extenuación'},
-  {g:'DESINTERÉS', n:16,nombre:'White Chestnut (Aesculus hippocastanum)', desc:'Pensamientos repetitivos, diálogos mentales, rumiación', emoc:'Obsesión mental'},
-  {g:'DESINTERÉS', n:17,nombre:'Mustard (Sinapis arvensis)', desc:'Depresión sin causa aparente, melancolía que aparece y desaparece', emoc:'Tristeza súbita'},
-  {g:'DESINTERÉS', n:18,nombre:'Chestnut Bud (Aesculus hippocastanum — brote)', desc:'Repite errores, no aprende de la experiencia', emoc:'Falta de aprendizaje'},
-  // Grupo 4 — Soledad
-  {g:'SOLEDAD', n:19,nombre:'Water Violet (Hottonia palustris)', desc:'Orgullo, distancia emocional, reservado, autosuficiente', emoc:'Aislamiento altivo'},
-  {g:'SOLEDAD', n:20,nombre:'Impatiens (Impatiens glandulifera)', desc:'Impaciencia, irritabilidad, necesita que todo sea rápido', emoc:'Impaciencia'},
-  {g:'SOLEDAD', n:21,nombre:'Heather (Calluna vulgaris)', desc:'Egocéntrico, habla mucho de sí mismo, necesita compañía', emoc:'Narcisismo relacional'},
-  // Grupo 5 — Hipersensibilidad a influencias
-  {g:'HIPERSENSIBILIDAD', n:22,nombre:'Agrimony (Agrimonia eupatoria)', desc:'Oculta problemas tras alegría falsa, evita conflictos', emoc:'Máscara alegre'},
-  {g:'HIPERSENSIBILIDAD', n:23,nombre:'Centaury (Centaurium umbellatum)', desc:'No puede decir no, se deja explotar, complacencia excesiva', emoc:'Sometimiento'},
-  {g:'HIPERSENSIBILIDAD', n:24,nombre:'Walnut (Juglans regia)', desc:'Dificultad de adaptación, influenciable, en transiciones de vida', emoc:'Inestabilidad en cambios'},
-  {g:'HIPERSENSIBILIDAD', n:25,nombre:'Holly (Ilex aquifolium)', desc:'Envidia, celos, odio, suspicacia, ira sin causa', emoc:'Emociones negativas intensas'},
-  // Grupo 6 — Desaliento o desesperación
-  {g:'DESALIENTO', n:26,nombre:'Larch (Larix decidua)', desc:'Baja autoestima, miedo al fracaso, no lo intenta', emoc:'Complejo de inferioridad'},
-  {g:'DESALIENTO', n:27,nombre:'Pine (Pinus sylvestris)', desc:'Culpa excesiva, autocrítica, siempre pide perdón', emoc:'Culpa'},
-  {g:'DESALIENTO', n:28,nombre:'Elm (Ulmus procera)', desc:'Abrumado por las responsabilidades, duda de poder con todo', emoc:'Sobrecarga temporal'},
-  {g:'DESALIENTO', n:29,nombre:'Sweet Chestnut (Castanea sativa)', desc:'Angustia extrema, límite del sufrimiento soportable, oscuridad', emoc:'Desesperación existencial'},
-  {g:'DESALIENTO', n:30,nombre:'Star of Bethlehem (Ornithogalum umbellatum)', desc:'Trauma, shock, duelo, consecuencias de malas noticias', emoc:'Trauma no resuelto'},
-  {g:'DESALIENTO', n:31,nombre:'Willow (Salix vitellina)', desc:'Resentimiento, amargura, victimismo, "la vida no es justa"', emoc:'Resentimiento'},
-  {g:'DESALIENTO', n:32,nombre:'Oak (Quercus robur)', desc:'Luchador que no descansa, se exige demasiado, no pide ayuda', emoc:'Sobre-responsabilidad'},
-  {g:'DESALIENTO', n:33,nombre:'Crab Apple (Malus sylvestris)', desc:'Asco de sí mismo, obsesión por limpieza, impureza', emoc:'Autodesprecio'},
-  // Grupo 7 — Preocupación excesiva por otros
-  {g:'PREOCUPACIÓN POR OTROS', n:34,nombre:'Chicory (Cichorium intybus)', desc:'Posesividad, necesita ser necesitado, manipulación sutil', emoc:'Amor posesivo'},
-  {g:'PREOCUPACIÓN POR OTROS', n:35,nombre:'Vervain (Verbena officinalis)', desc:'Fanatismo, exceso de entusiasmo, quiere convencer a todos', emoc:'Tensión ideológica'},
-  {g:'PREOCUPACIÓN POR OTROS', n:36,nombre:'Vine (Vitis vinifera)', desc:'Autoritarismo, dominancia, tiranía, inflexibilidad', emoc:'Control excesivo'},
-  {g:'PREOCUPACIÓN POR OTROS', n:37,nombre:'Beech (Fagus sylvatica)', desc:'Intolerancia, crítica excesiva, hipersensibilidad a los demás', emoc:'Juicio'},
-  {g:'PREOCUPACIÓN POR OTROS', n:38,nombre:'Rock Water (Agua de manantial)', desc:'Autoexigencia extrema, rigidez, mortificación, ascetismo', emoc:'Rigidez interior'},
+  // Grupo — HIPERSENSIBILIDAD
+  {g:"HIPERSENSIBILIDAD", n:1, nombre:"Agrimony / Agrimonia eupatoria", desc:"ocultamiento del sufrimiento tras aparente alegría", emoc:"Agrimonia"},
+  // Grupo — MIEDO
+  {g:"MIEDO", n:2, nombre:"Aspen / Populus tremula", desc:"miedos vagos sin causa identificable, presentimientos", emoc:"Álamo temblón"},
+  // Grupo — PREOCUPACIÓN POR OTROS
+  {g:"PREOCUPACIÓN POR OTROS", n:3, nombre:"Beech / Fagus sylvatica", desc:"intolerancia, crítica, perfeccionismo hacia otros", emoc:"Haya"},
+  // Grupo — HIPERSENSIBILIDAD
+  {g:"HIPERSENSIBILIDAD", n:4, nombre:"Centaury / Centaurium umbellatum", desc:"debilidad de voluntad, servilismo, incapacidad de decir no", emoc:"Centaura"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:5, nombre:"Cerato / Ceratostigma willmottiana", desc:"falta de confianza en propio juicio, buscar consejo constantemente", emoc:"Ceratostigma"},
+  // Grupo — MIEDO
+  {g:"MIEDO", n:6, nombre:"Cherry Plum / Prunus cerasifera", desc:"miedo a perder control mental o físico, impulsos temidos", emoc:"Cerasífera"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:7, nombre:"Chestnut Bud / Aesculus hippocastanum", desc:"incapacidad de aprender de la experiencia, repetir errores", emoc:"Brote de castaño blanco"},
+  // Grupo — PREOCUPACIÓN POR OTROS
+  {g:"PREOCUPACIÓN POR OTROS", n:8, nombre:"Chicory / Cichorium intybus", desc:"amor posesivo, exceso de cuidado controlador", emoc:"Achicoria"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:9, nombre:"Clematis / Clematis vitalba", desc:"ensoñación, falta de presencia, fugarse mentalmente", emoc:"Clematide"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:10, nombre:"Crab Apple / Malus pumila", desc:"'flor de la limpieza', autorrechazo, obsesión por detalles menores", emoc:"Manzano silvestre"},
+  {g:"DESALIENTO", n:11, nombre:"Elm / Ulmus procera", desc:"sentimiento temporal de incompetencia ante responsabilidad", emoc:"Olmo blanco"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:12, nombre:"Gentian / Gentiana amarella", desc:"desánimo después de un revés, fácilmente desalentado", emoc:"Genciana"},
+  {g:"INCERTIDUMBRE", n:13, nombre:"Gorse / Ulex europaeus", desc:"desesperanza total, abandono de la lucha", emoc:"Aulaga"},
+  // Grupo — SOLEDAD
+  {g:"SOLEDAD", n:14, nombre:"Heather / Calluna vulgaris", desc:"locuacidad excesiva por necesidad de atención, miedo a soledad", emoc:"Brezo/brecina"},
+  // Grupo — HIPERSENSIBILIDAD
+  {g:"HIPERSENSIBILIDAD", n:15, nombre:"Holly / Ilex aquifolium", desc:"odio, envidia, celos, sospecha", emoc:"Acebo"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:16, nombre:"Honeysuckle / Lonicera caprifolium", desc:"añoranza del pasado, vivir en lo perdido", emoc:"Madreselva"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:17, nombre:"Hornbeam / Carpinus betulus", desc:"cansancio mental anticipatorio ante tareas, 'lunes por la mañana'", emoc:"Hojarazo/carpe"},
+  // Grupo — SOLEDAD
+  {g:"SOLEDAD", n:18, nombre:"Impatiens / Impatiens glandulifera", desc:"impaciencia, irritabilidad por ritmos ajenos lentos", emoc:"Impaciencia"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:19, nombre:"Larch / Larix decidua", desc:"falta de confianza, anticipación de fracaso", emoc:"Alerce"},
+  // Grupo — MIEDO
+  {g:"MIEDO", n:20, nombre:"Mimulus / Mimulus guttatus", desc:"miedos concretos identificables (alturas, animales, enfermedad)", emoc:"Mímulo"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:21, nombre:"Mustard / Sinapis arvensis", desc:"tristeza profunda y repentina sin causa, depresión 'que cae'", emoc:"Mostaza"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:22, nombre:"Oak / Quercus robur", desc:"lucha incansable contra adversidad, sin descanso ni queja", emoc:"Roble"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:23, nombre:"Olive / Olea europaea", desc:"agotamiento total tras esfuerzo prolongado", emoc:"Olivo"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:24, nombre:"Pine / Pinus sylvestris", desc:"culpa, autorreproche por errores propios o ajenos", emoc:"Pino silvestre"},
+  // Grupo — MIEDO
+  {g:"MIEDO", n:25, nombre:"Red Chestnut / Aesculus carnea", desc:"preocupación excesiva por seres queridos", emoc:"Castaño rojo"},
+  {g:"MIEDO", n:26, nombre:"Rock Rose / Helianthemum nummularium", desc:"terror, pánico paralizante, post-traumático agudo", emoc:"Heliantemo"},
+  // Grupo — PREOCUPACIÓN POR OTROS
+  {g:"PREOCUPACIÓN POR OTROS", n:27, nombre:"Rock Water", desc:"autoexigencia rígida, abnegación, perfeccionismo", emoc:"Agua de roca"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:28, nombre:"Scleranthus / Scleranthus annuus", desc:"indecisión entre dos opciones, oscilación", emoc:"Scleranthus"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:29, nombre:"Star of Bethlehem / Ornithogalum umbellatum", desc:"shock, trauma físico/emocional pasado o reciente", emoc:"Estrella de Belén"},
+  {g:"DESALIENTO", n:30, nombre:"Sweet Chestnut / Castanea sativa", desc:"'oscura noche del alma', desesperación extrema", emoc:"Castaño dulce"},
+  // Grupo — PREOCUPACIÓN POR OTROS
+  {g:"PREOCUPACIÓN POR OTROS", n:31, nombre:"Vervain / Verbena officinalis", desc:"fanatismo, exceso de entusiasmo por causas, sobrecarga voluntaria", emoc:"Verbena"},
+  {g:"PREOCUPACIÓN POR OTROS", n:32, nombre:"Vine / Vitis vinifera", desc:"dominio autoritario, ambición de poder, inflexibilidad", emoc:"Vid"},
+  // Grupo — HIPERSENSIBILIDAD
+  {g:"HIPERSENSIBILIDAD", n:33, nombre:"Walnut / Juglans regia", desc:"protección durante cambios de vida, transiciones", emoc:"Nogal"},
+  // Grupo — SOLEDAD
+  {g:"SOLEDAD", n:34, nombre:"Water Violet / Hottonia palustris", desc:"orgullo solitario, reserva, aislamiento por distancia interior", emoc:"Violeta de agua"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:35, nombre:"White Chestnut / Aesculus hippocastanum", desc:"pensamientos repetitivos, rumiación mental sin solución", emoc:"Castaño blanco"},
+  // Grupo — INCERTIDUMBRE
+  {g:"INCERTIDUMBRE", n:36, nombre:"Wild Oat / Bromus ramosus", desc:"incertidumbre vocacional, no encontrar dirección en vida", emoc:"Avena silvestre-bromo"},
+  // Grupo — DESINTERÉS
+  {g:"DESINTERÉS", n:37, nombre:"Wild Rose / Rosa canina", desc:"apatía, resignación, falta de interés por la vida", emoc:"Escaramujo / Rosa silvestre"},
+  // Grupo — DESALIENTO
+  {g:"DESALIENTO", n:38, nombre:"Willow / Salix vitellina", desc:"resentimiento, victimismo, autoconmiseración", emoc:"Sauce / Mimbre dorado"},
+  // Grupo — PREOCUPACIÓN POR OTROS
+  {g:"PREOCUPACIÓN POR OTROS", n:39, nombre:"Rescue Remedy (mezcla 5 flores)", desc:"situaciones de crisis aguda emocional, shock", emoc:"Remedio de urgencia"},
 ];
 
 const VITAMINAS = [
@@ -469,64 +497,70 @@ const CREENCIAS = [
 ];
 
 const POLICRESTOS = [
-  {n:1,  nombre:'Aconitum Napellus',           desc:'Miedos súbitos, fiebre alta de inicio brusco, ansiedad extrema, palpitaciones'},
-  {n:2,  nombre:'Árnica Montana',              desc:'Traumatismos, golpes, contusiones, fatiga muscular, shock físico y emocional'},
-  {n:3,  nombre:'Arsenicum Album',             desc:'Ansiedad perfeccionista, diarreas ardientes, agotamiento, miedo a la muerte'},
-  {n:4,  nombre:'Belladona',                   desc:'Fiebre alta súbita, inflamaciones rojas y calientes, delirios, convulsiones'},
-  {n:5,  nombre:'Bryonia Alba',                desc:'Dolores que empeoran al moverse, irritabilidad, tos seca, articulaciones'},
-  {n:6,  nombre:'Calcárea Carbónica',          desc:'Personas robustas, frías, sudorosas; huesos, dientes, metabolismo lento'},
-  {n:7,  nombre:'Carbo Vegetabilis',           desc:'Debilidad extrema, flatulencias, mala circulación, colapso vital'},
-  {n:8,  nombre:'Causticum',                   desc:'Parálisis progresivas, ronquera crónica, incontinencia, quemaduras'},
-  {n:9,  nombre:'Chamomilla Vulgaris',         desc:'Irritabilidad extrema, dolores intolerables, dentición infantil, cólicos'},
-  {n:10, nombre:'China Officinalis',           desc:'Debilidad por pérdidas de fluidos, fiebres periódicas, digestión, sangrado'},
-  {n:11, nombre:'Dulcamara',                   desc:'Afecciones por frío y humedad, reumatismo, catarros, verrugas'},
-  {n:12, nombre:'Hepar Sulphuris Calcareum',   desc:'Infecciones purulentas, hipersensibilidad al dolor y al frío, abscesos'},
-  {n:13, nombre:'Hyosciamus Niger',            desc:'Celos patológicos, conductas desinhibidas, convulsiones, insomnio'},
-  {n:14, nombre:'Ipecacuanha',                 desc:'Náuseas constantes, hemorragias, tos espasmódica, vómitos incontrolables'},
-  {n:15, nombre:'Lachesis',                    desc:'Celos, envidia, loquacidad, problemas circulatorios, menopausia'},
-  {n:16, nombre:'Lycopodium Clavatum',         desc:'Inseguridad disfrazada de arrogancia, hígado, digestión, calvicie'},
-  {n:17, nombre:'Mercurius Solubilis',         desc:'Infecciones de mucosas, encías, sudor nocturno, inestabilidad térmica'},
-  {n:18, nombre:'Nux Vomica',                  desc:'Exceso de trabajo, irritabilidad, estreñimiento, abuso de estimulantes'},
-  {n:19, nombre:'Phosphorus',                  desc:'Sensibilidad extrema, hemorragias, pulmones, ansiedad existencial'},
-  {n:20, nombre:'Pulsatilla',                  desc:'Timidez, llanto fácil, mucosidades, afecciones hormonales femeninas'},
-  {n:21, nombre:'Rhus Toxicodendron',          desc:'Dolores que mejoran con el movimiento, reumatismo, piel, herpes'},
-  {n:22, nombre:'Sepia Officinalis',           desc:'Agotamiento, indiferencia afectiva, ptosis de órganos, ginecología'},
-  {n:23, nombre:'Silicea Terra',               desc:'Timidez, debilidad de tejido conectivo, fístulas, abscesos, piel uñas'},
-  {n:24, nombre:'Sulphur',                     desc:'Egocentrismo, piel pruriginosa, calor excesivo, desintoxicación general'},
-  {n:25, nombre:'Veratrum Album',              desc:'Colapso, frialdad extrema, sudor frío, diarreas violentas, delirio'},
+  {n: 1, nombre:"Aconitum Napellus", desc:"estados agudos de inicio súbito con fiebre, miedo, ansiedad"},
+  {n: 2, nombre:"Arnica Montana", desc:"traumatismos, contusiones, dolor muscular post-esfuerzo"},
+  {n: 3, nombre:"Arsenicum Album", desc:"gastroenteritis aguda, ansiedad, agotamiento, quemazón"},
+  {n: 4, nombre:"Belladonna", desc:"fiebre alta súbita, congestión facial, delirio, dolor pulsátil"},
+  {n: 5, nombre:"Bryonia Alba", desc:"dolores que empeoran con movimiento, mucosas secas"},
+  {n: 6, nombre:"Calcarea Carbonica", desc:"constitución 'linfática', sudoración cabeza, dentición tardía"},
+  {n: 7, nombre:"Carbo Vegetabilis", desc:"indigestión con gas, colapso, falta de aire"},
+  {n: 8, nombre:"Causticum", desc:"parálisis, contracciones, parestesias"},
+  {n: 9, nombre:"Chamomilla", desc:"irritabilidad infantil, cólicos del lactante, dolor menstrual"},
+  {n:10, nombre:"China Officinalis", desc:"postraciones, sudoración, periodicidad. Historia: caso original de Hahnemann."},
+  {n:11, nombre:"Dulcamara", desc:"enfermedades agravadas por humedad, eccemas"},
+  {n:12, nombre:"Hepar Sulphur", desc:"supuraciones, sensibilidad al frío y dolor"},
+  {n:13, nombre:"Hyosciamus Niger", desc:"delirio, convulsiones, celos, conductas alteradas"},
+  {n:14, nombre:"Ipecacuanha", desc:"náusea persistente, vómito, hemorragias"},
+  {n:15, nombre:"Lachesis", desc:"trastornos menopáusicos, agravación al despertar, intolerancia a presión"},
+  {n:16, nombre:"Lycopodium Clavatum", desc:"trastornos hepáticos y digestivos, agravación 16-20h, falta de confianza"},
+  {n:17, nombre:"Mercurius Solubilis", desc:"úlceras orales, salivación profusa, supuraciones"},
+  {n:18, nombre:"Nux Vomica", desc:"irritabilidad, hipersensibilidad, excesos alimentarios o de alcohol"},
+  {n:19, nombre:"Phosphorus", desc:"hemorragias, sensibilidad a ambiente, sed de bebidas frías"},
+  {n:20, nombre:"Pulsatilla", desc:"temperamento maleable, lloroso; trastornos menstruales irregulares"},
+  {n:21, nombre:"Rhus Toxicodendron", desc:"rigidez que mejora con movimiento, herpes, eccemas"},
+  {n:22, nombre:"Sepia Officinalis", desc:"agotamiento femenino, indiferencia emocional, trastornos hormonales"},
+  {n:23, nombre:"Silicea", desc:"debilidad constitucional, supuraciones crónicas, falta de calor vital"},
+  {n:24, nombre:"Sulphur", desc:"enfermedades crónicas de piel, calor, prurito"},
+  {n:25, nombre:"Veratrum Album", desc:"colapso, sudor frío, diarrea con vómitos"},
 ];
 
 const SEMIPOLICRESTOS = [
-  {n:1,  nombre:'Antimonium Crudum',       desc:'Irritabilidad, lengua blanca, verrugas, obesidad infantil'},
-  {n:2,  nombre:'Antimonium Tartaricum',   desc:'Bronquitis con mucosidad, somnolencia, falta de reacción vital'},
-  {n:3,  nombre:'Aurum Metallicum',        desc:'Depresión profunda, ideación suicida, hipertensión, huesos'},
-  {n:4,  nombre:'Baryta Carbónica',        desc:'Retraso del desarrollo, timidez infantil, arteriosclerosis, amígdalas'},
-  {n:5,  nombre:'Cannabis Sativa',         desc:'Trastornos urinarios, prostatitis, estados mentales alterados'},
-  {n:6,  nombre:'Cantharis',               desc:'Cistitis ardiente, quemaduras, vejiga, deseo sexual exacerbado'},
-  {n:7,  nombre:'Cicuta Virosa',           desc:'Convulsiones, traumatismos craneales, rigidez del cuello'},
-  {n:8,  nombre:'Coccus Cacti',            desc:'Tos con mucosidades viscosas, urolitiasis, gota'},
-  {n:9,  nombre:'Coffea Cruda',            desc:'Insomnio por mente hiperactiva, excitabilidad nerviosa, dolor dental'},
-  {n:10, nombre:'Colocynthis',             desc:'Neuralgias violentas, cólicos que mejoran con presión, ciática'},
-  {n:11, nombre:'Conium Maculatum',        desc:'Debilidad ascendente, mareos, cáncer de glándulas, parálisis'},
-  {n:12, nombre:'Digitalis Purpurea',      desc:'Insuficiencia cardíaca, pulso lento e irregular, hidropesía'},
-  {n:13, nombre:'Drosera Rotundifolia',    desc:'Tos convulsiva, laringitis, tuberculosis, irritación laringe'},
-  {n:14, nombre:'Ferrum Metallicum',       desc:'Anemia, debilidad con rubor, hemorragias, artritis'},
-  {n:15, nombre:'Graphites',               desc:'Piel húmeda fisurada, estreñimiento, cicatrices, obesidad'},
-  {n:16, nombre:'Ignatia Amara',           desc:'Duelos, contrariedad, suspiros, histeria, labilidad emocional'},
-  {n:17, nombre:'Iodum Metallicum',        desc:'Adelgazamiento con hambre, bocio, glándulas inflamadas, calor'},
-  {n:18, nombre:'Kalmia Latifolia',        desc:'Neuralgias que descienden, cardiopatías reumáticas'},
-  {n:19, nombre:'Ledum Palustre',          desc:'Picaduras, heridas punzantes, gota, frío que alivia, ojos'},
-  {n:20, nombre:'Magnesia Carbónica',      desc:'Dolor nocturno, niños delicados, intolerancia a la leche'},
-  {n:21, nombre:'Magnesia Muriática',      desc:'Hígado, digestión difícil, espasmos, insomnio por agotamiento'},
-  {n:22, nombre:'Natrum Carbonicum',       desc:'Debilidad solar, intolerancia al calor, indigestión, timidez'},
-  {n:23, nombre:'Natrum Muriaticum',       desc:'Duelo retenido, sequedad, migraña, herpes labial recurrente'},
-  {n:24, nombre:'Nitricum Acidum',         desc:'Fisuras dolorosas, verrugas, hemorragias, mal olor corporal'},
-  {n:25, nombre:'Nux Moschata',            desc:'Somnolencia extrema, desmayos, sequedad de mucosas, histeria'},
-  {n:26, nombre:'Opium',                   desc:'Inconsciencia, estreñimiento severo, estupor, respiración ruidosa'},
-  {n:27, nombre:'Petroleum',               desc:'Grietas en piel y mucosas, cinetosis, eccema invernal'},
-  {n:28, nombre:'Phosphoricum Acidum',     desc:'Debilidad por estrés o duelo, pérdida de cabello, acidez'},
-  {n:29, nombre:'Platinum Metallicum',     desc:'Arrogancia, hipersensibilidad genital, neuralgias, orgullo patológico'},
-  {n:30, nombre:'Spigelia',                desc:'Neuralgias faciales y cardíacas, palpitaciones, dolor ocular'},
+  {n: 1, nombre:"Antimonium Crudum", desc:"lengua saburral blanca, indigestiones por excesos, callosidades"},
+  {n: 2, nombre:"Antimonium Tartaricum", desc:"bronquitis con estertores de moco, debilidad"},
+  {n: 3, nombre:"Aurum Metallicum", desc:"estados depresivos profundos, hipertensión, ideas suicidas"},
+  {n: 4, nombre:"Baryta Carbonica", desc:"retraso en desarrollo infantil, debilidad senil"},
+  {n: 5, nombre:"Cannabis Sativa", desc:"trastornos urinarios, distorsiones de percepción del tiempo"},
+  {n: 6, nombre:"Cantharis", desc:"cistitis aguda con ardor intenso, quemaduras"},
+  {n: 7, nombre:"Cicuta Virosa", desc:"convulsiones, distorsiones de imagen corporal"},
+  {n: 8, nombre:"Coccus Cacti", desc:"tos paroxística con expectoración filante"},
+  {n: 9, nombre:"Coffea Cruda", desc:"insomnio por exceso de actividad mental, hipersensibilidad"},
+  {n:10, nombre:"Colocynthis", desc:"cólicos abdominales que mejoran con presión"},
+  {n:11, nombre:"Conium Maculatum", desc:"tumores duros, parálisis ascendente, senilidad"},
+  {n:12, nombre:"Digitalis Purpurea", desc:"pulso lento e irregular, trastornos cardíacos"},
+  {n:13, nombre:"Drosera Rotundifolia", desc:"tos espasmódica, tos ferina"},
+  {n:14, nombre:"Ferrum Metallicum", desc:"anemia con palidez alternada con rubor"},
+  {n:15, nombre:"Graphites", desc:"eccemas crónicos, queloides, fisuras"},
+  {n:16, nombre:"Ignatia Amara", desc:"pena, duelo, suspiros, contradicciones emocionales"},
+  {n:17, nombre:"Iodum Metallicum", desc:"hipertiroidismo, ansiedad, pérdida de peso"},
+  {n:18, nombre:"Kalmia Latifolia", desc:"neuralgias, palpitaciones, dolor migratorio"},
+  {n:19, nombre:"Ledum Palustre", desc:"punciones, picaduras de insectos, contusiones"},
+  {n:20, nombre:"Magnesia Carbonica", desc:"dolores nocturnos, lactantes con cólicos ácidos"},
+  {n:21, nombre:"Magnesia Muriatica", desc:"trastornos hepáticos con estreñimiento"},
+  {n:22, nombre:"Natrum Carbonicum", desc:"agotamiento por calor, debilidad muscular"},
+  {n:23, nombre:"Natrum Muriaticum", desc:"pena retenida, anemia, herpes labial, palpitaciones"},
+  {n:24, nombre:"Nitricum Acidum", desc:"úlceras dolorosas en mucosas, fisuras"},
+  {n:25, nombre:"Nux Moschata", desc:"somnolencia, sequedad de mucosas, confusión"},
+  {n:26, nombre:"Opium", desc:"estupor, falta de respuesta, parálisis post-shock"},
+  {n:27, nombre:"Petroleum", desc:"dermatosis con grietas, mareo de viaje"},
+  {n:28, nombre:"Phosphoricum Acidum", desc:"agotamiento mental post-pena o estudio, apatía"},
+  {n:29, nombre:"Platinum Metallicum", desc:"trastornos femeninos con orgullo o egolatría"},
+  {n:30, nombre:"Spigelia", desc:"neuralgias faciales, palpitaciones, parásitos"},
+  {n:31, nombre:"Stannum Metallicum", desc:"debilidad respiratoria, opresión, tos productiva"},
+  {n:32, nombre:"Staphysagria", desc:"ira reprimida, abuso, prostatitis"},
+  {n:33, nombre:"Stramonium", desc:"terrores nocturnos, convulsiones, miedo a la oscuridad"},
+  {n:34, nombre:"Tartarus Emeticus", desc:"estertores de moco, debilidad por bronquitis"},
+  {n:35, nombre:"Thuja Occidentalis", desc:"verrugas, condilomas, efectos de vacunación"},
+  {n:36, nombre:"Zincum Metallicum", desc:"inquietud motora, agotamiento nervioso"},
 ];
 
 const CHAKRAS_PRIMARIOS = [

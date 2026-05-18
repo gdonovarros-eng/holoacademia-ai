@@ -168,21 +168,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);
       <input type="search" id="searchBox" placeholder="🔍  Buscar par, condición, emoción…" oninput="applyFilters()">
     </div>
     <span class="conf-badge" id="confBadge">0 confirmados</span>
-    <div id="usageBadge" style="display:none;font-size:0.72rem;padding:4px 10px;border-radius:20px;border:1px solid rgba(0,0,0,0.12);white-space:nowrap;"></div>
   </header>
-
-  <!-- Modal paywall -->
-  <div id="modalPaywall" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;">
-    <div style="background:#fff;border-radius:16px;padding:32px;text-align:center;max-width:380px;margin:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-      <div style="font-size:2rem;margin-bottom:12px;">⛔</div>
-      <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Límite mensual alcanzado</div>
-      <div id="paywallMsg" style="font-size:0.85rem;color:#6e6e73;line-height:1.6;margin-bottom:20px;"></div>
-      <a href="https://www.holoacademia.com/miembros" target="_top"
-         style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">
-        Ver planes →
-      </a>
-    </div>
-  </div>
 
   <div class="main">
 
@@ -224,33 +210,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);
 </div>
 
 <script>
-// ── Control de uso mensual (pares) ────────────────────────────────────────────
-(async function checkUsage() {
-  try {
-    const res = await fetch('/api/usage');
-    if (!res.ok) return;
-    const data = await res.json();
-    const u = data.usage?.pares;
-    if (!u) return;
-    const badge = document.getElementById('usageBadge');
-    if (badge) {
-      const pct = u.limit > 0 ? u.used / u.limit : 1;
-      badge.textContent = `${u.used}/${u.limit} sesiones`;
-      badge.style.display = 'inline-block';
-      badge.style.color = !u.allowed ? '#ef4444' : pct >= 0.8 ? '#f59e0b' : '#6e6e73';
-      badge.style.borderColor = !u.allowed ? 'rgba(239,68,68,0.4)' : pct >= 0.8 ? 'rgba(245,158,11,0.4)' : 'rgba(0,0,0,0.12)';
-      if (!u.allowed) showPaywall(u.used, u.limit, data.plan_name);
-    }
-  } catch(e) {}
-})();
-
-function showPaywall(used, limit, planName) {
-  const el = document.getElementById('paywallMsg');
-  if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de Guía de Pares este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
-  const m = document.getElementById('modalPaywall');
-  if (m) m.style.display = 'flex';
-}
-
 // ── State ─────────────────────────────────────────────────────────────────────
 let ALL_PAIRS  = [];
 let confirmed  = [];      // {id, nombre, tipo, zona, zonaLabel, condiciones}
