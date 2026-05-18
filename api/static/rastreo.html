@@ -1442,31 +1442,31 @@ table.tref-table td:nth-child(3) { color: #374151; }
           onclick="selectBodyRegion('cabeza')"
           onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
           <div class="bm-label-top"><span class="bm-label-icon">🧠</span><span class="bm-label-name">Cabeza</span></div>
-          <span class="bm-label-count">314 pares biomagnéticos</span>
+          <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
         <div class="bm-label" id="lbl-cuello"  style="top:81px;  left:0"
           onclick="selectBodyRegion('cuello')"
           onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
           <div class="bm-label-top"><span class="bm-label-icon">🫁</span><span class="bm-label-name">Cuello</span></div>
-          <span class="bm-label-count">70 pares biomagnéticos</span>
+          <span class="bm-label-count">23 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-torax"   style="top:193px; left:0"
           onclick="selectBodyRegion('torax')"
           onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')">
           <div class="bm-label-top"><span class="bm-label-icon">❤️</span><span class="bm-label-name">Tórax</span></div>
-          <span class="bm-label-count">192 pares biomagnéticos</span>
+          <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
           onclick="selectBodyRegion('abdomen')"
           onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')">
           <div class="bm-label-top"><span class="bm-label-icon">🫄</span><span class="bm-label-name">Abdomen</span></div>
-          <span class="bm-label-count">563 pares biomagnéticos</span>
+          <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-pelvis"  style="top:396px; left:0"
           onclick="selectBodyRegion('pelvis')"
           onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
           <div class="bm-label-top"><span class="bm-label-icon">🦴</span><span class="bm-label-name">Pelvis</span></div>
-          <span class="bm-label-count">187 pares biomagnéticos</span>
+          <span class="bm-label-count">37 pares · 3 zonas</span>
         </div>
 
         <!-- ── ETIQUETAS derecha ── -->
@@ -1474,19 +1474,19 @@ table.tref-table td:nth-child(3) { color: #374151; }
           onclick="selectBodyRegion('espalda')"
           onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')">
           <div class="bm-label-top"><span class="bm-label-icon">🔙</span><span class="bm-label-name">Espalda</span></div>
-          <span class="bm-label-count">123 pares · posterior</span>
+          <span class="bm-label-count">23 pares · posterior</span>
         </div>
         <div class="bm-label" id="lbl-brazos"  style="top:286px; right:0"
           onclick="selectBodyRegion('brazos')"
           onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')">
           <div class="bm-label-top"><span class="bm-label-icon">💪</span><span class="bm-label-name">Brazos</span></div>
-          <span class="bm-label-count">94 pares biomagnéticos</span>
+          <span class="bm-label-count">14 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-piernas" style="top:468px; right:0"
           onclick="selectBodyRegion('piernas')"
           onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')">
           <div class="bm-label-top"><span class="bm-label-icon">🦵</span><span class="bm-label-name">Piernas</span></div>
-          <span class="bm-label-count">79 pares biomagnéticos</span>
+          <span class="bm-label-count">17 pares biomagnéticos</span>
         </div>
 
       </div><!-- /#bm-scanner -->
@@ -2644,15 +2644,16 @@ function trefFilter(q) {
 
 // ── MAPA CORPORAL INTERACTIVO ─────────────────────────────────────────────
 
+// dbZona: saltar directo al paso Bloque cuando hay coincidencia exacta en la DB
 const BODY_REGION_MAP = {
-  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza'   },
-  cuello:  { label: 'Cuello',  dbNombre: 'Cabeza'   },
-  torax:   { label: 'Tórax',   dbNombre: 'Tronco'   },
-  abdomen: { label: 'Abdomen', dbNombre: 'Tronco'   },
-  pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis'   },
-  espalda: { label: 'Espalda', dbNombre: 'Tronco'   },
-  brazos:  { label: 'Brazos',  dbNombre: 'Miembros' },
-  piernas: { label: 'Piernas', dbNombre: 'Miembros' },
+  cabeza:  { dbNombre: 'Cabeza',   dbZona: null        },  // 5 sub-zonas → mostrar paso Zona
+  cuello:  { dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
+  torax:   { dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
+  abdomen: { dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
+  pelvis:  { dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
+  espalda: { dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
+  brazos:  { dbNombre: 'Miembros', dbZona: 'Brazos'    },  // → directo a Bloques
+  piernas: { dbNombre: 'Miembros', dbZona: 'Piernas'   },  // → directo a Bloques
 };
 
 function showHome() {
@@ -2669,17 +2670,36 @@ function hideHome() {
 function selectBodyRegion(key) {
   const mapping = BODY_REGION_MAP[key];
   if (!mapping) return;
+
   if (wizDB && wizDB.regiones) {
     const dbRegion = wizDB.regiones.find(r => r.nombre === mapping.dbNombre);
     if (dbRegion) {
       wizRegion = dbRegion;
+      wizZona   = null;
+      wizBloque = null;
+      wizPar    = null;
+
+      // Si hay zona exacta en la DB, saltar directo al paso Bloque
+      if (mapping.dbZona) {
+        const dbZona = dbRegion.zonas.find(z => z.nombre === mapping.dbZona);
+        if (dbZona) {
+          wizZona = dbZona;
+          wizStep = 'bloque';
+          hideHome();
+          wizRender();
+          return;
+        }
+      }
+
+      // Sin zona específica → mostrar sub-zonas
       wizStep = 'zona';
       hideHome();
       wizRender();
       return;
     }
   }
-  // Fallback: entrar al wizard sin región pre-seleccionada
+
+  // Fallback: wizard completo desde el inicio
   hideHome();
   wizStep = 'region';
   wizRender();
