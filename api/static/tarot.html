@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot Terapéutico · Holoacadem-iA</title>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:           #090d1a;
+  --surface:      #111629;
+  --surface2:     #18203a;
+  --border:       rgba(255,255,255,0.08);
+  --text:         #f1f5f9;
+  --muted:        #94a3b8;
+  --acc:          #a855f7;
+  --acc-dark:     #7c3aed;
+  --acc-teal:     #14b8a6;
+  --radius:       16px;
+  --gold:         #f59e0b;
+  --gold-bg:      rgba(245,158,11,0.1);
+  --gold-border:  rgba(245,158,11,0.3);
+  --purple-glow:  rgba(168,85,247,0.15);
+}
+
+html, body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ── STARS BACKGROUND ── */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(168,85,247,0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(20,184,166,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── HEADER ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(9,13,26,0.92);
+  backdrop-filter: blur(12px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-back {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.header-back:hover { color: var(--text); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+.header-title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+.header-icon { font-size: 1.2rem; flex-shrink: 0; }
+.header-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.header-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── MAIN LAYOUT ── */
+.main {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 32px 24px 60px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PAGE TABS ── */
+.page-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+}
+.page-tab-btn {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.page-tab-btn:hover { color: var(--text); background: rgba(255,255,255,0.04); }
+.page-tab-btn.active {
+  background: rgba(168,85,247,0.14);
+  color: #d8b4fe;
+  border: 1px solid rgba(168,85,247,0.3);
+}
+.page-tab-panel { display: none; }
+.page-tab-panel.active { display: block; }
+
+/* ── FORM CARD ── */
+.form-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a855f7, #7c3aed, #a855f7);
+}
+.form-card.gold::before {
+  background: linear-gradient(90deg, #f59e0b, #d97706, #f59e0b);
+}
+.form-card.teal::before {
+  background: linear-gradient(90deg, #14b8a6, #0d9488, #14b8a6);
+}
+
+.form-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.form-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 13px;
+  font-size: 0.87rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+  font-family: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+textarea { resize: vertical; min-height: 72px; }
+input::placeholder, textarea::placeholder { color: rgba(148,163,184,0.4); }
+input:focus, select:focus, textarea:focus {
+  border-color: rgba(168,85,247,0.5);
+  box-shadow: 0 0 0 3px rgba(168,85,247,0.08);
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+  cursor: pointer;
+}
+
+/* Select arrow */
+.select-wrap { position: relative; }
+.select-wrap::after {
+  content: '▾';
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  font-size: 0.8rem;
+  pointer-events: none;
+}
+select { padding-right: 32px; cursor: pointer; }
+
+/* ── CHECKBOX / TOGGLE ── */
+.toggle-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+.toggle-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--acc);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.toggle-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+/* ── SUBMIT BUTTON ── */
+.btn-submit {
+  width: 100%;
+  margin-top: 20px;
+  padding: 13px;
+  background: linear-gradient(135deg, #a855f7, #7c3aed);
+  border: none;
+  border-radius: 12px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: inherit;
+}
+.btn-submit:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px rgba(168,85,247,0.35);
+}
+.btn-submit:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+.btn-submit.teal { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+.btn-submit.teal:hover:not(:disabled) { box-shadow: 0 6px 20px rgba(20,184,166,0.3); }
+
+/* ── CARTAS DYNAMICAS ── */
+.cartas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.carta-row {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+.carta-row-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--acc);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.carta-row-num {
+  background: rgba(168,85,247,0.15);
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.67rem;
+  font-weight: 800;
+  color: #d8b4fe;
+}
+.carta-row-fields {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── STATUS BAR ── */
+.status-bar {
+  background: rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.2);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #d8b4fe;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.status-bar.visible { display: flex; }
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--acc);
+  animation: pulse-dot 1.2s infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── PERFIL CARDS ── */
+.perfil-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.perfil-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+.perfil-card-label {
+  font-size: 0.67rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+.perfil-card-carta {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #d8b4fe;
+  margin-bottom: 4px;
+}
+.perfil-card-kw {
+  font-size: 0.74rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.perfil-card.gold { border-color: var(--gold-border); }
+.perfil-card.gold .perfil-card-carta { color: var(--gold); }
+
+/* ── RESULT AREA ── */
+.result-area {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-top: 20px;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+.result-area::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #a855f7, #f59e0b, #a855f7);
+}
+.result-area.visible { display: block; }
+
+.result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+.result-title {
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ── MARKDOWN STYLES ── */
+.md-output { line-height: 1.75; color: var(--text); }
+.md-output h1, .md-output h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #d8b4fe;
+  margin: 20px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(168,85,247,0.2);
+}
+.md-output h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  margin: 16px 0 6px;
+}
+.md-output p { margin-bottom: 12px; font-size: 0.9rem; }
+.md-output ul, .md-output ol { padding-left: 20px; margin-bottom: 12px; }
+.md-output li { margin-bottom: 5px; font-size: 0.88rem; }
+.md-output strong { color: #f1f5f9; font-weight: 700; }
+.md-output em { color: #fcd34d; }
+.md-output blockquote {
+  border-left: 3px solid var(--acc);
+  padding: 8px 14px;
+  margin: 12px 0;
+  background: rgba(168,85,247,0.06);
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+.md-output hr { border: none; border-top: 1px solid var(--border); margin: 16px 0; }
+
+/* ── STREAMING CURSOR ── */
+.cursor-blink::after {
+  content: '▌';
+  animation: blink 0.8s infinite;
+  color: var(--acc);
+  font-size: 0.9rem;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── COPY BUTTON ── */
+.btn-copy {
+  padding: 6px 12px;
+  background: rgba(168,85,247,0.1);
+  border: 1px solid rgba(168,85,247,0.25);
+  border-radius: 8px;
+  color: #d8b4fe;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.btn-copy:hover { background: rgba(168,85,247,0.18); }
+
+/* ── REFERENCE TABLE ── */
+.ref-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.ref-search {
+  flex: 1;
+  min-width: 160px;
+}
+.ref-table-wrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.ref-table th {
+  background: var(--surface2);
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+}
+.ref-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top;
+}
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table tr:hover td { background: rgba(255,255,255,0.02); }
+.td-nombre { font-weight: 600; color: #d8b4fe; }
+.td-nombre.menor { color: #fcd34d; }
+.td-num {
+  font-size: 0.75rem;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.td-kw { color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
+.palo-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.palo-bastos    { background: rgba(239,68,68,0.12);  color: #fca5a5; }
+.palo-copas     { background: rgba(59,130,246,0.12); color: #93c5fd; }
+.palo-espadas   { background: rgba(250,204,21,0.12); color: #fde047; }
+.palo-pentaculos{ background: rgba(34,197,94,0.12);  color: #86efac; }
+.tipo-mayor     { background: rgba(168,85,247,0.14); color: #d8b4fe; }
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--muted);
+}
+.empty-state .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.empty-state p { font-size: 0.85rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .main { padding: 20px 16px 50px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .perfil-grid { grid-template-columns: 1fr 1fr; }
+  .header { padding: 14px 18px; }
+  .page-tabs { flex-wrap: wrap; }
+  .page-tab-btn { flex: none; flex-basis: calc(33% - 4px); }
+}
+
+/* ── CHAT SECTION ── */
+.chat-section {
+  background: var(--surface);
+  border: 1px solid rgba(20,184,166,0.25);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-top: 16px;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+.chat-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #14b8a6, #a855f7, #14b8a6);
+}
+.chat-section.visible { display: block; }
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.chat-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.chat-hint {
+  font-size: 0.73rem;
+  color: var(--muted);
+}
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding-right: 4px;
+  margin-bottom: 16px;
+}
+.chat-bubble {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.chat-bubble.user { flex-direction: row-reverse; }
+.chat-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.chat-avatar.ai {
+  background: rgba(168,85,247,0.15);
+  border: 1px solid rgba(168,85,247,0.3);
+  color: #d8b4fe;
+}
+.chat-avatar.user-av {
+  background: rgba(20,184,166,0.15);
+  border: 1px solid rgba(20,184,166,0.3);
+  color: var(--acc-teal);
+}
+.chat-body {
+  flex: 1;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 14px;
+  font-size: 0.87rem;
+  line-height: 1.6;
+  max-width: 88%;
+}
+.chat-bubble.user .chat-body {
+  background: rgba(20,184,166,0.07);
+  border-color: rgba(20,184,166,0.2);
+  color: #e2f5f3;
+}
+.chat-body .md-output { line-height: 1.65; }
+.chat-body .md-output p { margin-bottom: 8px; font-size: 0.87rem; }
+.chat-body .md-output h3 { font-size: 0.9rem; margin: 12px 0 5px; color: #c4b5fd; }
+.chat-body .md-output h2 { font-size: 0.92rem; margin: 14px 0 6px; }
+.chat-body .md-output ul, .chat-body .md-output ol { padding-left: 16px; margin-bottom: 8px; }
+.chat-body .md-output li { margin-bottom: 3px; font-size: 0.86rem; }
+.chat-body .md-output blockquote {
+  border-left: 2px solid var(--acc-teal);
+  padding: 6px 12px;
+  margin: 8px 0;
+  background: rgba(20,184,166,0.06);
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.85rem;
+}
+.chat-input-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+.chat-input-row textarea {
+  flex: 1;
+  min-height: 44px;
+  max-height: 120px;
+  resize: vertical;
+  font-size: 0.88rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-family: inherit;
+  transition: border-color 0.15s;
+  line-height: 1.5;
+}
+.chat-input-row textarea:focus { outline: none; border-color: var(--acc-teal); }
+.chat-input-row textarea::placeholder { color: var(--muted); }
+.btn-chat-send {
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #14b8a6, #0d9488);
+  color: #fff;
+  font-size: 0.83rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-chat-send:hover { opacity: 0.88; }
+.btn-chat-send:disabled { opacity: 0.45; cursor: not-allowed; }
+.chat-thinking {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.chat-thinking.visible { display: flex; }
+.chat-thinking-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--acc-teal);
+  animation: pulse-dot 0.9s infinite;
+}
+.chat-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+.chat-sugg-btn {
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(20,184,166,0.25);
+  background: rgba(20,184,166,0.06);
+  color: #5eead4;
+  font-size: 0.73rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.chat-sugg-btn:hover { background: rgba(20,184,166,0.14); border-color: rgba(20,184,166,0.4); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <a class="header-back" href="/">&#8592; Inicio</a>
+  <div class="header-title">
+    <span class="header-icon">🃏</span>
+    <span class="header-name">Tarot Terapéutico</span>
+    <span class="header-badge">IA</span>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- TABS -->
+  <div class="page-tabs">
+    <button class="page-tab-btn active" onclick="switchTab('lectura')">🃏 Lectura</button>
+    <button class="page-tab-btn" onclick="switchTab('perfil')">✨ Perfil</button>
+    <button class="page-tab-btn" onclick="switchTab('referencia')">📚 Referencia</button>
+  </div>
+
+  <!-- ══════════════════════ TAB: LECTURA ══════════════════════ -->
+  <div id="tab-lectura" class="page-tab-panel active">
+
+    <div class="form-card">
+      <div class="form-title">🃏 Nueva Lectura de Tarot</div>
+      <div class="form-sub">Formula una pregunta o intención, elige la tirada y selecciona las cartas para recibir una lectura terapéutica.</div>
+
+      <div class="form-grid">
+        <!-- Pregunta -->
+        <div class="form-group full">
+          <label>Pregunta / Intención</label>
+          <textarea id="pregunta" placeholder="¿Qué quiero explorar en esta lectura? (ej: ¿Cómo puedo avanzar en mi relación de pareja?)" rows="3"></textarea>
+        </div>
+
+        <!-- Tirada -->
+        <div class="form-group full">
+          <label>Tirada</label>
+          <div class="select-wrap">
+            <select id="tiradaSel" onchange="renderCartasInputs()">
+              <option value="carta_del_dia">Carta del Día (1 carta)</option>
+              <option value="tres_cartas">Tres Cartas: Pasado / Presente / Futuro (3)</option>
+              <option value="cruz_simple">Cruz Simple (5 cartas)</option>
+              <option value="herradura">Herradura (7 cartas)</option>
+              <option value="chakras">Tirada de los Chakras (7 cartas)</option>
+              <option value="cruz_celtica" selected>Cruz Céltica (10 cartas)</option>
+              <option value="cinco_centros">Los Cinco Centros — Jodorowsky (15 cartas)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cartas dinámicas -->
+      <div style="margin-top:16px;">
+        <label style="display:block;margin-bottom:10px;">Cartas en la Tirada</label>
+        <div id="cartas-container" class="cartas-container"></div>
+      </div>
+
+      <!-- Opciones avanzadas -->
+      <details style="margin-top:18px;">
+        <summary style="cursor:pointer;font-size:0.8rem;font-weight:600;color:var(--muted);list-style:none;display:flex;align-items:center;gap:6px;">
+          <span>&#9660;</span> Opciones del consultante y enfoque
+        </summary>
+        <div class="form-grid" style="margin-top:14px;">
+          <div class="form-group">
+            <label>Fecha de nacimiento (opcional)</label>
+            <input type="date" id="fechaNac" />
+          </div>
+          <div class="form-group">
+            <label>Signo solar (opcional)</label>
+            <div class="select-wrap">
+              <select id="signoSel">
+                <option value="">Sin signo</option>
+                <option value="aries">Aries</option>
+                <option value="tauro">Tauro</option>
+                <option value="geminis">Géminis</option>
+                <option value="cancer">Cáncer</option>
+                <option value="leo">Leo</option>
+                <option value="virgo">Virgo</option>
+                <option value="libra">Libra</option>
+                <option value="escorpio">Escorpio</option>
+                <option value="sagitario">Sagitario</option>
+                <option value="capricornio">Capricornio</option>
+                <option value="acuario">Acuario</option>
+                <option value="piscis">Piscis</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Profundidad de lectura</label>
+            <div class="select-wrap">
+              <select id="profundidadSel">
+                <option value="rapida">Rápida (3 secciones)</option>
+                <option value="estandar" selected>Estándar (5 secciones)</option>
+                <option value="profunda">Profunda con imaginación activa (7)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Enfoque terapéutico</label>
+            <div class="select-wrap">
+              <select id="enfoquesel">
+                <option value="terapeutico" selected>Terapéutico (espejo psicológico)</option>
+                <option value="orientativo">Orientativo (guía práctica)</option>
+                <option value="espiritual">Espiritual (lenguaje del Alma)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sistema de tarot</label>
+            <div class="select-wrap">
+              <select id="sistemaSel">
+                <option value="rws" selected>RWS — Rider-Waite-Smith</option>
+                <option value="marsella">Marsella</option>
+                <option value="thoth">Thoth</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <button class="btn-submit" id="btnLectura" onclick="generarLectura()">
+        ✨ Generar Lectura
+      </button>
+    </div>
+
+    <!-- Status -->
+    <div class="status-bar" id="statusBar">
+      <span class="status-dot"></span>
+      <span id="statusMsg">Calculando...</span>
+    </div>
+
+    <!-- Resultado -->
+    <div class="result-area" id="resultArea">
+      <div class="result-header">
+        <div class="result-title">🃏 Lectura Tarótica</div>
+        <button class="btn-copy" onclick="copiarResultado()">📋 Copiar</button>
+      </div>
+      <!-- Perfil tarótico (se muestra mientras carga el LLM) -->
+      <div id="perfilResult"></div>
+      <!-- Lectura del LLM -->
+      <div class="md-output" id="mdOutput"></div>
+    </div>
+
+    <!-- Chat de seguimiento -->
+    <div class="chat-section" id="chatSection">
+      <div class="chat-header">
+        <div class="chat-title">💬 Consulta sobre tu lectura</div>
+        <span class="chat-hint">Pregunta sobre cualquier carta o aspecto de tu tirada</span>
+      </div>
+
+      <!-- Sugerencias rápidas -->
+      <div class="chat-suggestions" id="chatSuggestions">
+        <button class="chat-sugg-btn" onclick="usarSugerencia(this)">¿Qué significa la primera carta?</button>
+        <button class="chat-sugg-btn" onclick="usarSugerencia(this)">¿Cómo se relacionan las cartas entre sí?</button>
+        <button class="chat-sugg-btn" onclick="usarSugerencia(this)">¿Qué carta representa el mayor desafío?</button>
+        <button class="chat-sugg-btn" onclick="usarSugerencia(this)">Dame una reflexión final sobre esta lectura</button>
+      </div>
+
+      <!-- Mensajes del chat -->
+      <div class="chat-messages" id="chatMessages"></div>
+
+      <!-- Indicador de escritura -->
+      <div class="chat-thinking" id="chatThinking">
+        <span class="chat-thinking-dot"></span>
+        El tarotista está respondiendo…
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-row">
+        <textarea id="chatInput" placeholder="¿Tienes alguna pregunta sobre tu lectura?" rows="2"
+                  onkeydown="chatKeyDown(event)"></textarea>
+        <button class="btn-chat-send" id="btnChatSend" onclick="enviarMensajeChat()">
+          Enviar ↑
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════ TAB: PERFIL ══════════════════════ -->
+  <div id="tab-perfil" class="page-tab-panel">
+
+    <div class="form-card gold">
+      <div class="form-title">✨ Perfil Tarótico Personal</div>
+      <div class="form-sub">Calcula las cartas personales del consultante sin generar una lectura de IA. Ideal para conocer el arquetipo de personalidad, alma y año personal.</div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Fecha de nacimiento</label>
+          <input type="date" id="perfilFecha" />
+        </div>
+        <div class="form-group">
+          <label>Signo solar</label>
+          <div class="select-wrap">
+            <select id="perfilSigno">
+              <option value="">Sin signo</option>
+              <option value="aries">Aries</option>
+              <option value="tauro">Tauro</option>
+              <option value="geminis">Géminis</option>
+              <option value="cancer">Cáncer</option>
+              <option value="leo">Leo</option>
+              <option value="virgo">Virgo</option>
+              <option value="libra">Libra</option>
+              <option value="escorpio">Escorpio</option>
+              <option value="sagitario">Sagitario</option>
+              <option value="capricornio">Capricornio</option>
+              <option value="acuario">Acuario</option>
+              <option value="piscis">Piscis</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Sistema de tarot</label>
+          <div class="select-wrap">
+            <select id="perfilSistema">
+              <option value="rws" selected>RWS</option>
+              <option value="marsella">Marsella</option>
+              <option value="thoth">Thoth</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-submit" id="btnPerfil" onclick="calcularPerfil()">
+        ✨ Calcular Perfil Tarótico
+      </button>
+    </div>
+
+    <div id="perfilPanel"></div>
+  </div>
+
+  <!-- ══════════════════════ TAB: REFERENCIA ══════════════════════ -->
+  <div id="tab-referencia" class="page-tab-panel">
+
+    <div class="form-card teal">
+      <div class="form-title">📚 Referencia de las 78 Cartas</div>
+      <div class="form-sub">Busca cualquier carta por nombre o filtra por tipo y palo para consultar sus palabras clave y significado terapéutico.</div>
+
+      <div class="ref-controls">
+        <div class="ref-search">
+          <input type="text" id="refSearch" placeholder="Buscar carta..." oninput="filtrarReferencia()" />
+        </div>
+        <div class="select-wrap" style="min-width:120px;">
+          <select id="refTipo" onchange="filtrarReferencia()">
+            <option value="">Todas</option>
+            <option value="mayor">Arcanos Mayores</option>
+            <option value="menor">Arcanos Menores</option>
+          </select>
+        </div>
+        <div class="select-wrap" style="min-width:120px;">
+          <select id="refPalo" onchange="filtrarReferencia()">
+            <option value="">Todos los palos</option>
+            <option value="bastos">Bastos</option>
+            <option value="copas">Copas</option>
+            <option value="espadas">Espadas</option>
+            <option value="pentaculos">Pentáculos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="ref-table-wrap">
+        <table class="ref-table" id="refTable">
+          <thead>
+            <tr>
+              <th>Carta</th>
+              <th>Tipo</th>
+              <th>Palabras clave</th>
+              <th>Pregunta terapéutica</th>
+            </tr>
+          </thead>
+          <tbody id="refTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+// ─── Datos de tiradas ────────────────────────────────────────────────────────
+const TIRADAS_DATA = {
+  carta_del_dia: {
+    posiciones: ["Carta del día"]
+  },
+  tres_cartas: {
+    posiciones: ["Pasado", "Presente", "Futuro / Potencial"]
+  },
+  cruz_simple: {
+    posiciones: ["Centro — La situación", "Arriba — Influencia consciente", "Abajo — Influencia inconsciente", "Izquierda — Pasado", "Derecha — Futuro"]
+  },
+  herradura: {
+    posiciones: ["Pasado distante", "Pasado reciente", "Presente", "Futuro próximo", "Influencias externas", "Esperanzas y miedos", "Resultado probable"]
+  },
+  chakras: {
+    posiciones: ["Raíz (Muladhara)", "Sacro (Svadhisthana)", "Plexo Solar (Manipura)", "Corazón (Anahata)", "Garganta (Vishuddha)", "Tercer Ojo (Ajna)", "Corona (Sahasrara)"]
+  },
+  cruz_celtica: {
+    posiciones: ["El consultante / La situación", "El obstáculo / La cruz", "La corona — Lo consciente", "La base — Lo inconsciente", "El pasado reciente", "El futuro próximo", "Cómo se ve a sí mismo/a", "Las influencias externas", "Esperanzas y miedos", "El resultado final"]
+  },
+  cinco_centros: {
+    posiciones: [
+      "Centro Material — Pasado", "Centro Material — Presente", "Centro Material — Futuro",
+      "Centro Sexual — Pasado", "Centro Sexual — Presente", "Centro Sexual — Futuro",
+      "Centro Emocional — Pasado", "Centro Emocional — Presente", "Centro Emocional — Futuro",
+      "Centro Creativo — Pasado", "Centro Creativo — Presente", "Centro Creativo — Futuro",
+      "Centro Espiritual — Pasado", "Centro Espiritual — Presente", "Centro Espiritual — Síntesis"
+    ]
+  }
+};
+
+// ─── Datos de cartas para referencia ────────────────────────────────────────
+const CARTAS_REF = [
+  // Arcanos Mayores
+  {nombre:"El Loco",tipo:"mayor",palo:"",num:"0",kw:"libertad, inicio, espontaneidad, aventura, confianza",pt:"¿En qué área de tu vida necesitas dar un salto de fe sin garantías?"},
+  {nombre:"El Mago",tipo:"mayor",palo:"",num:"1",kw:"voluntad, manifestación, habilidad, concentración, poder personal",pt:"¿Qué herramientas tienes a tu disposición que aún no estás usando plenamente?"},
+  {nombre:"La Sacerdotisa",tipo:"mayor",palo:"",num:"2",kw:"intuición, misterio, sabiduría interior, silencio, receptividad",pt:"¿Qué sabe tu intuición que tu mente racional aún no acepta?"},
+  {nombre:"La Emperatriz",tipo:"mayor",palo:"",num:"3",kw:"abundancia, fertilidad, naturaleza, creatividad, amor materno",pt:"¿Cómo te nutres a ti mismo/a y qué necesitas para florecer?"},
+  {nombre:"El Emperador",tipo:"mayor",palo:"",num:"4",kw:"autoridad, estructura, protección, orden, paternidad",pt:"¿Dónde necesitas establecer límites y estructura en tu vida?"},
+  {nombre:"El Sumo Sacerdote",tipo:"mayor",palo:"",num:"5",kw:"tradición, enseñanza, creencias, comunidad, guía espiritual",pt:"¿Qué creencias heredadas te limitan y cuáles genuinamente te sostienen?"},
+  {nombre:"Los Amantes",tipo:"mayor",palo:"",num:"6",kw:"elección, amor, valores, integración, unión consciente",pt:"¿Qué elección estás evitando tomar porque temes perder algo?"},
+  {nombre:"El Carro",tipo:"mayor",palo:"",num:"7",kw:"victoria, control, determinación, voluntad, movimiento",pt:"¿Qué fuerzas internas contrarias necesitas integrar para avanzar?"},
+  {nombre:"La Fuerza",tipo:"mayor",palo:"",num:"8",kw:"valentía, compasión, fuerza interior, dominio suave, paciencia",pt:"¿Qué aspecto de ti mismo/a necesitas abrazar con compasión en lugar de reprimir?"},
+  {nombre:"El Ermitaño",tipo:"mayor",palo:"",num:"9",kw:"introspección, guía interior, soledad fértil, sabiduría, búsqueda",pt:"¿Qué encontrarías si te tomaras tiempo de verdadera soledad y silencio interior?"},
+  {nombre:"La Rueda de la Fortuna",tipo:"mayor",palo:"",num:"10",kw:"ciclos, destino, cambio, oportunidad, karma",pt:"¿Qué ciclo de tu vida está llegando a su fin y qué nuevo ciclo quieres iniciar?"},
+  {nombre:"La Justicia",tipo:"mayor",palo:"",num:"11",kw:"equilibrio, verdad, responsabilidad, causa-efecto, claridad",pt:"¿Qué decisión has estado postergando porque requiere asumir una responsabilidad difícil?"},
+  {nombre:"El Colgado",tipo:"mayor",palo:"",num:"12",kw:"pausa, entrega, perspectiva nueva, sacrificio, rendición",pt:"¿Qué necesitas soltar para ver tu situación desde un ángulo completamente diferente?"},
+  {nombre:"La Muerte",tipo:"mayor",palo:"",num:"13",kw:"transformación, fin de ciclo, renacimiento, cambio radical, soltar",pt:"¿Qué parte de ti necesita morir para que puedas renacer?"},
+  {nombre:"La Templanza",tipo:"mayor",palo:"",num:"14",kw:"alquimia, equilibrio, moderación, integración, flujo",pt:"¿Qué aspectos aparentemente contradictorios de tu vida necesitan ser integrados?"},
+  {nombre:"El Diablo",tipo:"mayor",palo:"",num:"15",kw:"sombra, adicción, materialismo consciente, poder, sexualidad",pt:"¿Qué cadenas llevas voluntariamente que podrías soltar en cualquier momento?"},
+  {nombre:"La Torre",tipo:"mayor",palo:"",num:"16",kw:"liberación, revelación, crisis transformadora, caída del ego, ruptura",pt:"¿Qué estructura en tu vida está construida sobre bases falsas y necesita derrumbarse?"},
+  {nombre:"La Estrella",tipo:"mayor",palo:"",num:"17",kw:"esperanza, inspiración, sanación, guía, renovación",pt:"¿Qué esperanza profunda llevas en tu interior que aún no has permitido que guíe tu camino?"},
+  {nombre:"La Luna",tipo:"mayor",palo:"",num:"18",kw:"inconsciente, ilusión, sueños, miedos profundos, intuición onírica",pt:"¿Qué miedos del inconsciente están distorsionando tu percepción de la realidad?"},
+  {nombre:"El Sol",tipo:"mayor",palo:"",num:"19",kw:"alegría, vitalidad, claridad, éxito, autenticidad",pt:"¿Cuándo fue la última vez que brillaste con autenticidad sin preocuparte por lo que pensaban otros?"},
+  {nombre:"El Juicio",tipo:"mayor",palo:"",num:"20",kw:"despertar, llamado, renacimiento, absolución, evaluación",pt:"¿Cuál es el llamado de tu alma que llevas tiempo ignorando?"},
+  {nombre:"El Mundo",tipo:"mayor",palo:"",num:"21",kw:"completitud, integración, logro, plenitud, totalidad",pt:"¿Qué ciclo de tu vida has completado y qué nueva totalidad está emergiendo?"},
+  // Bastos
+  {nombre:"As de Bastos",tipo:"menor",palo:"bastos",num:"1",kw:"inicio, inspiración, potencial creativo, chispa, impulso",pt:"¿Qué nuevo proyecto o impulso creativo sientes que está pugnando por nacer?"},
+  {nombre:"Dos de Bastos",tipo:"menor",palo:"bastos",num:"2",kw:"planificación, visión, espera activa, poder personal, expansión futura",pt:"¿Cuál es la visión a largo plazo que te impulsa pero aún no has comenzado a construir?"},
+  {nombre:"Tres de Bastos",tipo:"menor",palo:"bastos",num:"3",kw:"expansión, colaboración, visión cumplida parcialmente, liderazgo, horizonte",pt:"¿Qué has logrado poner en marcha que ahora requiere paciencia y mirada larga?"},
+  {nombre:"Cuatro de Bastos",tipo:"menor",palo:"bastos",num:"4",kw:"celebración, hogar, estabilidad, cosecha, comunidad",pt:"¿Qué logro o etapa de tu vida mereces celebrar plenamente antes de seguir?"},
+  {nombre:"Cinco de Bastos",tipo:"menor",palo:"bastos",num:"5",kw:"competencia, conflicto creativo, dinamismo, tensión productiva, caos creativo",pt:"¿Qué conflictos externos reflejan tu propio caos creativo interior?"},
+  {nombre:"Seis de Bastos",tipo:"menor",palo:"bastos",num:"6",kw:"victoria, reconocimiento, confianza, liderazgo, triunfo",pt:"¿Puedes reconocer tu propio éxito sin necesitar la validación de otros?"},
+  {nombre:"Siete de Bastos",tipo:"menor",palo:"bastos",num:"7",kw:"defensa, perseverancia, posición ganada, resistencia, valentía",pt:"¿Qué posición o logro tuyo vale la pena defender aunque cueste esfuerzo?"},
+  {nombre:"Ocho de Bastos",tipo:"menor",palo:"bastos",num:"8",kw:"velocidad, movimiento, mensajes, acción rápida, momentum",pt:"¿Qué situación está avanzando rápidamente y necesitas mantenerte enfocado/a?"},
+  {nombre:"Nueve de Bastos",tipo:"menor",palo:"bastos",num:"9",kw:"resistencia, perseverancia final, defensa, casi al final, fortaleza",pt:"¿Qué heridas del pasado te hacen estar en guardia cuando ya no es necesario?"},
+  {nombre:"Diez de Bastos",tipo:"menor",palo:"bastos",num:"10",kw:"responsabilidad, carga, compromiso, completar, esfuerzo final",pt:"¿Qué cargas llevas que no son tuyas o que ya podrías soltar o delegar?"},
+  {nombre:"Paje de Bastos",tipo:"menor",palo:"bastos",num:"11",kw:"entusiasmo, mensajes de aventura, exploración, potencial joven, curiosidad",pt:"¿Qué nuevo interés o llamado a la aventura está despertando en ti?"},
+  {nombre:"Caballero de Bastos",tipo:"menor",palo:"bastos",num:"12",kw:"acción, pasión, aventura, ambición, energía desbordante",pt:"¿Dónde necesitas canalizar tu pasión con más dirección y menos impulsividad?"},
+  {nombre:"Reina de Bastos",tipo:"menor",palo:"bastos",num:"13",kw:"carisma, confianza, liderazgo femenino, determinación, magnetismo",pt:"¿Cómo puedes liderar desde tu carisma natural sin necesitar controlar a otros?"},
+  {nombre:"Rey de Bastos",tipo:"menor",palo:"bastos",num:"14",kw:"liderazgo visionario, carisma maduro, empresario, inspiración, autoridad creativa",pt:"¿Qué visión necesitas comenzar a liderar con madurez y convicción?"},
+  // Copas
+  {nombre:"As de Copas",tipo:"menor",palo:"copas",num:"1",kw:"amor nuevo, abundancia emocional, intuición, apertura del corazón, inicio espiritual",pt:"¿Tu corazón está abierto para recibir amor, tanto de otros como de ti mismo/a?"},
+  {nombre:"Dos de Copas",tipo:"menor",palo:"copas",num:"2",kw:"unión, atracción mutua, partnership, amor recíproco, acuerdo emocional",pt:"¿En tu relación más importante hay genuina reciprocidad y respeto mutuo?"},
+  {nombre:"Tres de Copas",tipo:"menor",palo:"copas",num:"3",kw:"celebración, amistad, comunidad, alegría compartida, apoyo",pt:"¿Tienes una comunidad con la que celebrar y compartir las alegrías de la vida?"},
+  {nombre:"Cuatro de Copas",tipo:"menor",palo:"copas",num:"4",kw:"introspección emocional, meditación, reevaluación, contemplación, descontento",pt:"¿Estás tan enfocado/a en lo que te falta que no ves lo que ya tienes?"},
+  {nombre:"Cinco de Copas",tipo:"menor",palo:"copas",num:"5",kw:"pérdida, duelo, arrepentimiento, tristeza consciente, aprendizaje del dolor",pt:"¿Qué pérdida necesitas llorar completamente para poder ver lo que todavía tienes?"},
+  {nombre:"Seis de Copas",tipo:"menor",palo:"copas",num:"6",kw:"nostalgia, inocencia, infancia, generosidad, recuerdos felices",pt:"¿Qué inocencia o alegría de tu infancia puedes traer al presente?"},
+  {nombre:"Siete de Copas",tipo:"menor",palo:"copas",num:"7",kw:"ilusiones, fantasías, posibilidades, elección, imaginación",pt:"¿Cuáles de tus deseos son ilusiones y cuáles son llamados genuinos de tu alma?"},
+  {nombre:"Ocho de Copas",tipo:"menor",palo:"copas",num:"8",kw:"partir, buscar más, dejar atrás, llamado espiritual, desolación productiva",pt:"¿Qué situación cómoda pero vacía necesitas abandonar para buscar algo más profundo?"},
+  {nombre:"Nueve de Copas",tipo:"menor",palo:"copas",num:"9",kw:"deseos cumplidos, satisfacción, bienestar, plenitud, el deseo del corazón",pt:"¿Qué deseo del corazón genuino mereces permitirte manifestar?"},
+  {nombre:"Diez de Copas",tipo:"menor",palo:"copas",num:"10",kw:"felicidad familiar, armonía, plenitud emocional, hogar, amor duradero",pt:"¿Qué tipo de vida familiar o emocional deseas construir y qué necesitas para ello?"},
+  {nombre:"Paje de Copas",tipo:"menor",palo:"copas",num:"11",kw:"mensajes del corazón, intuición joven, creatividad emocional, apertura, sueños",pt:"¿Qué mensaje intuitivo de tu corazón has estado ignorando por parecerte demasiado simple?"},
+  {nombre:"Caballero de Copas",tipo:"menor",palo:"copas",num:"12",kw:"romanticismo, quijotismo, invitación emocional, sensibilidad, idealismo",pt:"¿Dónde estás siendo un soñador romántico en lugar de comprometerte de verdad?"},
+  {nombre:"Reina de Copas",tipo:"menor",palo:"copas",num:"13",kw:"empatía, intuición profunda, maternidad emocional, compasión, sanación",pt:"¿Cómo puedes cuidar a otros desde tu propia plenitud emocional, no desde el vacío?"},
+  {nombre:"Rey de Copas",tipo:"menor",palo:"copas",num:"14",kw:"madurez emocional, sabiduría afectiva, compasión madura, equilibrio emocional, diplomacia",pt:"¿Puedes guiar a otros con compasión sin perder tu propio equilibrio emocional?"},
+  // Espadas
+  {nombre:"As de Espadas",tipo:"menor",palo:"espadas",num:"1",kw:"verdad, claridad mental, nuevo comienzo intelectual, breakthrough, justicia",pt:"¿Qué verdad necesitas reconocer con claridad, sin suavizarla más?"},
+  {nombre:"Dos de Espadas",tipo:"menor",palo:"espadas",num:"2",kw:"decisión difícil, punto muerto, equilibrio precario, bloqueo, dilema",pt:"¿Qué estás evitando ver o decidir porque la verdad te parece demasiado incómoda?"},
+  {nombre:"Tres de Espadas",tipo:"menor",palo:"espadas",num:"3",kw:"dolor, ruptura, traición, duelo, separación necesaria",pt:"¿Qué dolor del corazón todavía no has permitido que sane completamente?"},
+  {nombre:"Cuatro de Espadas",tipo:"menor",palo:"espadas",num:"4",kw:"descanso, recuperación, meditación, retiro, preparación",pt:"¿Necesitas realmente descansar y recuperarte antes de tu próximo movimiento?"},
+  {nombre:"Cinco de Espadas",tipo:"menor",palo:"espadas",num:"5",kw:"conflicto, victoria pírrica, derrota consciente, límites, retirada estratégica",pt:"¿Qué batallas estás peleando que no valen la pena de ganar?"},
+  {nombre:"Seis de Espadas",tipo:"menor",palo:"espadas",num:"6",kw:"transición, viaje, alejarse del conflicto, esperanza tranquila, sanación gradual",pt:"¿Estás transitando hacia algo nuevo o simplemente huyendo de algo viejo?"},
+  {nombre:"Siete de Espadas",tipo:"menor",palo:"espadas",num:"7",kw:"estrategia, diplomacia, ingenio, movimiento calculado, escape táctico",pt:"¿Estás siendo estratégico o estás engañando a alguien (incluido a ti mismo)?"},
+  {nombre:"Ocho de Espadas",tipo:"menor",palo:"espadas",num:"8",kw:"limitación autopercibida, bloqueo mental, victimismo, restricción, miedo paralizante",pt:"¿Qué creencias mentales te tienen atado/a cuando en realidad podrías moverte libremente?"},
+  {nombre:"Nueve de Espadas",tipo:"menor",palo:"espadas",num:"9",kw:"ansiedad, pesadillas, culpa, preocupación excesiva, mente nocturna",pt:"¿Qué pensamientos nocturnos te torturan y qué verdad ocultan?"},
+  {nombre:"Diez de Espadas",tipo:"menor",palo:"espadas",num:"10",kw:"fin doloroso, derrota total, punto de quiebre, rock bottom, nuevo amanecer",pt:"¿Qué ciclo de pensamiento ha llegado a su fin absoluto, dejando espacio para renacer?"},
+  {nombre:"Paje de Espadas",tipo:"menor",palo:"espadas",num:"11",kw:"curiosidad mental, vigilancia, mensajes intelectuales, aprendizaje rápido, ingenio",pt:"¿Qué información o conocimiento necesitas buscar con más curiosidad y menos prejuicio?"},
+  {nombre:"Caballero de Espadas",tipo:"menor",palo:"espadas",num:"12",kw:"acción intelectual, directness, velocidad mental, determinación, coraje",pt:"¿Estás tan seguro/a de tu verdad que no dejas espacio para escuchar otras perspectivas?"},
+  {nombre:"Reina de Espadas",tipo:"menor",palo:"espadas",num:"13",kw:"claridad mental, independencia, discernimiento, honestidad directa, sabiduría del dolor",pt:"¿Cómo puedes decir tu verdad con claridad sin perder la compasión?"},
+  {nombre:"Rey de Espadas",tipo:"menor",palo:"espadas",num:"14",kw:"autoridad intelectual, justicia, liderazgo mental, ética, toma de decisiones",pt:"¿Puedes ejercer tu autoridad e inteligencia al servicio del bien común, no solo del tuyo?"},
+  // Pentáculos
+  {nombre:"As de Pentáculos",tipo:"menor",palo:"pentaculos",num:"1",kw:"nueva oportunidad material, prosperidad, semilla de abundancia, manifestación, potencial práctico",pt:"¿Qué nueva oportunidad material o práctica se está presentando en tu vida?"},
+  {nombre:"Dos de Pentáculos",tipo:"menor",palo:"pentaculos",num:"2",kw:"equilibrio, malabarismo, adaptabilidad, cambio fluido, gestión de recursos",pt:"¿Cómo estás equilibrando las distintas demandas y responsabilidades de tu vida?"},
+  {nombre:"Tres de Pentáculos",tipo:"menor",palo:"pentaculos",num:"3",kw:"maestría, colaboración, artesanía, reconocimiento del trabajo, aprendizaje",pt:"¿Estás aplicando tu maestría y colaborando con otros para construir algo duradero?"},
+  {nombre:"Cuatro de Pentáculos",tipo:"menor",palo:"pentaculos",num:"4",kw:"seguridad, ahorro, control de recursos, estabilidad, posesión",pt:"¿El miedo a perder lo que tienes te está impidiendo crecer y compartir?"},
+  {nombre:"Cinco de Pentáculos",tipo:"menor",palo:"pentaculos",num:"5",kw:"dificultad material, soledad, crisis, exclusión, escasez percibida",pt:"¿En qué área de tu vida te sientes excluido/a o en escasez, y hay ayuda disponible que no estás viendo?"},
+  {nombre:"Seis de Pentáculos",tipo:"menor",palo:"pentaculos",num:"6",kw:"generosidad, dar y recibir, caridad, equilibrio de poder, flujo de recursos",pt:"¿Hay equilibrio entre lo que das y lo que recibes en tu vida material y afectiva?"},
+  {nombre:"Siete de Pentáculos",tipo:"menor",palo:"pentaculos",num:"7",kw:"inversión a largo plazo, paciencia, evaluación del progreso, cultivo, espera fértil",pt:"¿Estás dispuesto/a a invertir tiempo y paciencia en proyectos que dan frutos a largo plazo?"},
+  {nombre:"Ocho de Pentáculos",tipo:"menor",palo:"pentaculos",num:"8",kw:"diligencia, maestría en progreso, artesanía, dedicación, aprendizaje continuo",pt:"¿Estás dedicando tu esfuerzo al desarrollo de tu verdadera maestría?"},
+  {nombre:"Nueve de Pentáculos",tipo:"menor",palo:"pentaculos",num:"9",kw:"independencia, abundancia merecida, lujo, autosuficiencia, refinamiento",pt:"¿Puedes disfrutar de lo que has construido con orgullo genuino sin necesitar la aprobación de otros?"},
+  {nombre:"Diez de Pentáculos",tipo:"menor",palo:"pentaculos",num:"10",kw:"legado, riqueza familiar, abundancia permanente, herencia, seguridad generacional",pt:"¿Qué legado material, emocional o espiritual deseas dejar a quienes vienen después de ti?"},
+  {nombre:"Paje de Pentáculos",tipo:"menor",palo:"pentaculos",num:"11",kw:"estudio, nuevo proyecto práctico, diligencia joven, aprendizaje, curiosidad material",pt:"¿Qué habilidad o conocimiento práctico necesitas empezar a desarrollar con paciencia?"},
+  {nombre:"Caballero de Pentáculos",tipo:"menor",palo:"pentaculos",num:"12",kw:"trabajo duro, confiabilidad, paciencia, metódico, perseverancia",pt:"¿Estás avanzando con persistencia hacia tus metas o estás atascado en la rutina?"},
+  {nombre:"Reina de Pentáculos",tipo:"menor",palo:"pentaculos",num:"13",kw:"nutrición, abundancia práctica, maternidad material, bienestar, sentido práctico",pt:"¿Cómo nutres tu entorno y creas seguridad material desde un lugar de abundancia interna?"},
+  {nombre:"Rey de Pentáculos",tipo:"menor",palo:"pentaculos",num:"14",kw:"éxito material, madurez financiera, liderazgo práctico, abundancia estable, generosidad",pt:"¿Estás usando tu estabilidad material y tu éxito para el bienestar de quienes te rodean?"},
+];
+
+// ─── Tab switching ────────────────────────────────────────────────────────────
+function switchTab(id) {
+  document.querySelectorAll('.page-tab-btn').forEach((b, i) => {
+    const tabs = ['lectura','perfil','referencia'];
+    b.classList.toggle('active', tabs[i] === id);
+  });
+  document.querySelectorAll('.page-tab-panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + id);
+  });
+  if (id === 'referencia') renderReferencia();
+}
+
+// ─── Render cartas dinámicas ──────────────────────────────────────────────────
+function renderCartasInputs() {
+  const tirada = document.getElementById('tiradaSel').value;
+  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
+  const container = document.getElementById('cartas-container');
+  container.innerHTML = '';
+  posiciones.forEach((pos, i) => {
+    const row = document.createElement('div');
+    row.className = 'carta-row';
+    row.innerHTML = `
+      <div class="carta-row-header">
+        <span class="carta-row-num">${i+1}</span>
+        ${pos}
+      </div>
+      <div class="carta-row-fields">
+        <input type="text" class="carta-nombre" placeholder="Nombre de la carta (ej: El Sol, As de Bastos...)"
+               list="cartas-list" id="carta-${i}" />
+        <label class="toggle-row">
+          <input type="checkbox" class="carta-inv" id="inv-${i}" />
+          <span class="toggle-label">Inv.</span>
+        </label>
+      </div>
+    `;
+    container.appendChild(row);
+  });
+}
+
+// Datalist con todas las cartas
+function crearDatalist() {
+  if (document.getElementById('cartas-list')) return;
+  const dl = document.createElement('datalist');
+  dl.id = 'cartas-list';
+  CARTAS_REF.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c.nombre;
+    dl.appendChild(opt);
+  });
+  document.body.appendChild(dl);
+}
+
+// ─── Generar lectura (SSE streaming) ─────────────────────────────────────────
+let rawText = '';
+let esSource = null;
+
+async function generarLectura() {
+  const pregunta = document.getElementById('pregunta').value.trim();
+  if (!pregunta) { alert('Por favor escribe tu pregunta o intención.'); return; }
+
+  const tirada = document.getElementById('tiradaSel').value;
+  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
+  const cartas = [];
+  let alguna = false;
+  posiciones.forEach((pos, i) => {
+    const nombre = (document.getElementById('carta-'+i)?.value || '').trim();
+    const invertida = document.getElementById('inv-'+i)?.checked || false;
+    if (nombre) alguna = true;
+    cartas.push({ posicion: pos, carta: nombre || 'No especificada', invertida });
+  });
+  if (!alguna) { alert('Por favor ingresa al menos una carta.'); return; }
+
+  const payload = {
+    pregunta,
+    tirada,
+    cartas,
+    fecha_nacimiento: document.getElementById('fechaNac').value || null,
+    signo_solar: document.getElementById('signoSel').value || null,
+    profundidad: document.getElementById('profundidadSel').value,
+    enfoque: document.getElementById('enfoquesel').value,
+    sistema: document.getElementById('sistemaSel').value,
+  };
+
+  // Reset UI
+  document.getElementById('btnLectura').disabled = true;
+  document.getElementById('statusBar').classList.add('visible');
+  document.getElementById('resultArea').classList.remove('visible');
+  document.getElementById('chatSection').classList.remove('visible');
+  document.getElementById('perfilResult').innerHTML = '';
+  document.getElementById('mdOutput').innerHTML = '';
+  rawText = '';
+  chatHistorial = [];
+  chatActivo = false;
+  if (esSource) { esSource.close(); esSource = null; }
+
+  try {
+    const resp = await fetch('/tarot/lectura-stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({ detail: 'Error desconocido' }));
+      throw new Error(err.detail || `HTTP ${resp.status}`);
+    }
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    document.getElementById('resultArea').classList.add('visible');
+
+    const procesarLinea = (line) => {
+      if (!line.startsWith('data: ')) return;
+      const raw = line.slice(6).trim();
+      if (raw === '[DONE]') {
+        finalizarStream();
+        return;
+      }
+      try {
+        const ev = JSON.parse(raw);
+        if (ev.error) {
+          document.getElementById('mdOutput').innerHTML = `<p style="color:#f87171">Error: ${ev.error}</p>`;
+          finalizarStream();
+          return;
+        }
+        if (ev.status) {
+          document.getElementById('statusMsg').textContent = ev.status;
+        }
+        if (ev.perfil) {
+          renderPerfilCards(ev.perfil);
+        }
+        if (ev.token) {
+          rawText += ev.token;
+          document.getElementById('mdOutput').innerHTML =
+            marked.parse(rawText) + '<span class="cursor-blink"></span>';
+          document.getElementById('mdOutput').scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+      } catch (e) { /* ignorar líneas no JSON */ }
+    };
+
+    const read = async () => {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) { finalizarStream(); break; }
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop();
+        lines.forEach(procesarLinea);
+      }
+    };
+    await read();
+
+  } catch (e) {
+    document.getElementById('statusBar').classList.remove('visible');
+    document.getElementById('btnLectura').disabled = false;
+    alert('Error: ' + e.message);
+  }
+}
+
+function finalizarStream() {
+  document.getElementById('statusBar').classList.remove('visible');
+  document.getElementById('btnLectura').disabled = false;
+  if (rawText) {
+    document.getElementById('mdOutput').innerHTML = marked.parse(rawText);
+    // Mostrar el chat de seguimiento una vez que hay lectura
+    abrirChatSeguimiento();
+  }
+}
+
+// ─── Chat de seguimiento sobre la lectura ────────────────────────────────────
+let chatHistorial = [];
+let chatActivo = false;
+
+function abrirChatSeguimiento() {
+  chatHistorial = [];
+  document.getElementById('chatMessages').innerHTML = '';
+  document.getElementById('chatSection').classList.add('visible');
+  document.getElementById('chatSuggestions').style.display = 'flex';
+  // Scroll suave al chat
+  setTimeout(() => {
+    document.getElementById('chatSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 300);
+}
+
+function usarSugerencia(btn) {
+  document.getElementById('chatInput').value = btn.textContent;
+  // Ocultar sugerencias tras usar una
+  document.getElementById('chatSuggestions').style.display = 'none';
+  enviarMensajeChat();
+}
+
+function chatKeyDown(e) {
+  // Enviar con Enter (sin Shift)
+  if (e.key === 'Enter' && !e.shiftKey) {
+    e.preventDefault();
+    enviarMensajeChat();
+  }
+}
+
+function agregarBurbuja(role, contenido, streaming) {
+  const msgs = document.getElementById('chatMessages');
+  const bubble = document.createElement('div');
+  bubble.className = `chat-bubble ${role === 'user' ? 'user' : ''}`;
+  const isUser = role === 'user';
+  bubble.innerHTML = `
+    <div class="chat-avatar ${isUser ? 'user-av' : 'ai'}">${isUser ? '✦' : '🃏'}</div>
+    <div class="chat-body">
+      ${streaming
+        ? `<div class="md-output" id="chatStreamTarget"></div>`
+        : `<div class="md-output">${marked.parse(contenido)}</div>`
+      }
+    </div>`;
+  msgs.appendChild(bubble);
+  msgs.scrollTop = msgs.scrollHeight;
+  return bubble;
+}
+
+async function enviarMensajeChat() {
+  if (chatActivo) return;
+  const input = document.getElementById('chatInput');
+  const pregunta = input.value.trim();
+  if (!pregunta) return;
+  if (!rawText) { alert('Primero genera una lectura.'); return; }
+
+  input.value = '';
+  document.getElementById('chatSuggestions').style.display = 'none';
+
+  // Mostrar mensaje del usuario
+  agregarBurbuja('user', pregunta);
+
+  // Agregar al historial
+  chatHistorial.push({ role: 'user', content: pregunta });
+
+  chatActivo = true;
+  document.getElementById('btnChatSend').disabled = true;
+  document.getElementById('chatThinking').classList.add('visible');
+
+  // Crear burbuja AI con target de streaming
+  const aiBubble = agregarBurbuja('assistant', '', true);
+  const streamTarget = aiBubble.querySelector('#chatStreamTarget');
+  let respuesta = '';
+
+  try {
+    const resp = await fetch('/tarot/chat-stream', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        pregunta,
+        contexto_lectura: rawText,
+        historial: chatHistorial.slice(0, -1),  // excluir la pregunta actual (ya va en el campo)
+      }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(() => ({ detail: 'Error desconocido' }));
+      throw new Error(err.detail || `HTTP ${resp.status}`);
+    }
+
+    document.getElementById('chatThinking').classList.remove('visible');
+
+    const reader = resp.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    const procesarLineaChat = (line) => {
+      if (!line.startsWith('data: ')) return;
+      const raw = line.slice(6).trim();
+      if (raw === '[DONE]') return;
+      try {
+        const ev = JSON.parse(raw);
+        if (ev.error) {
+          streamTarget.innerHTML = `<p style="color:#f87171">Error: ${ev.error}</p>`;
+          return;
+        }
+        if (ev.token) {
+          respuesta += ev.token;
+          streamTarget.innerHTML = marked.parse(respuesta) + '<span class="cursor-blink"></span>';
+          const msgs = document.getElementById('chatMessages');
+          msgs.scrollTop = msgs.scrollHeight;
+        }
+      } catch (_) {}
+    };
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+      buffer = lines.pop();
+      lines.forEach(procesarLineaChat);
+    }
+
+    // Limpiar cursor y renderizar definitivo
+    if (respuesta) {
+      streamTarget.innerHTML = marked.parse(respuesta);
+      chatHistorial.push({ role: 'assistant', content: respuesta });
+    }
+
+  } catch (e) {
+    document.getElementById('chatThinking').classList.remove('visible');
+    streamTarget.innerHTML = `<p style="color:#f87171">Error: ${e.message}</p>`;
+  } finally {
+    chatActivo = false;
+    document.getElementById('btnChatSend').disabled = false;
+  }
+}
+
+function renderPerfilCards(perfil) {
+  if (!perfil || !perfil.personalidad) return;
+  const container = document.getElementById('perfilResult');
+  const cards = [];
+
+  const pers = perfil.personalidad;
+  if (pers?.nombre) cards.push({ label: 'Carta de Personalidad', carta: pers.nombre, kw: (pers.datos?.palabras_clave||[]).join(', '), cls: 'gold' });
+
+  const alma = perfil.alma;
+  if (alma?.nombre) cards.push({ label: 'Carta del Alma', carta: alma.nombre, kw: (alma.datos?.palabras_clave||[]).join(', '), cls: '' });
+
+  const oculto = perfil.factor_oculto;
+  if (oculto?.nombre) cards.push({ label: 'Factor Oculto', carta: oculto.nombre, kw: 'energía a integrar', cls: '' });
+
+  const anioAct = perfil.anio_personal?.actual;
+  if (anioAct?.nombre) cards.push({ label: `Año Personal ${anioAct.anio}`, carta: anioAct.nombre, kw: (anioAct.datos?.palabras_clave||[]).slice(0,3).join(', '), cls: '' });
+
+  const zodiaco = perfil.carta_zodiaco;
+  if (zodiaco?.nombre) cards.push({ label: `Arcano de ${(zodiaco.signo||'').charAt(0).toUpperCase()+(zodiaco.signo||'').slice(1)}`, carta: zodiaco.nombre, kw: '', cls: '' });
+
+  const persona = perfil.carta_persona;
+  if (persona?.nombre) cards.push({ label: 'Carta de Persona', carta: persona.nombre, kw: '', cls: '' });
+
+  if (!cards.length) return;
+
+  container.innerHTML = `
+    <div style="font-size:0.75rem;font-weight:700;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:10px;">
+      Perfil tarótico del consultante
+    </div>
+    <div class="perfil-grid">
+      ${cards.map(c => `
+        <div class="perfil-card ${c.cls}">
+          <div class="perfil-card-label">${c.label}</div>
+          <div class="perfil-card-carta">${c.carta}</div>
+          ${c.kw ? `<div class="perfil-card-kw">${c.kw}</div>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// ─── Copiar resultado ─────────────────────────────────────────────────────────
+function copiarResultado() {
+  const text = rawText || document.getElementById('mdOutput').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.btn-copy');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copiado';
+    setTimeout(() => btn.innerHTML = orig, 2000);
+  }).catch(() => alert('No se pudo copiar al portapapeles.'));
+}
+
+// ─── Calcular perfil (tab Perfil) ────────────────────────────────────────────
+async function calcularPerfil() {
+  const fecha = document.getElementById('perfilFecha').value;
+  if (!fecha) { alert('Por favor ingresa la fecha de nacimiento.'); return; }
+
+  const signo = document.getElementById('perfilSigno').value;
+  const sistema = document.getElementById('perfilSistema').value;
+
+  document.getElementById('btnPerfil').disabled = true;
+  document.getElementById('perfilPanel').innerHTML = `
+    <div class="status-bar visible" style="margin-top:10px;">
+      <span class="status-dot"></span>
+      <span>Calculando perfil tarótico...</span>
+    </div>
+  `;
+
+  try {
+    const params = new URLSearchParams({ fecha, sistema });
+    if (signo) params.append('signo', signo);
+    const resp = await fetch('/tarot/perfil?' + params.toString());
+    const data = await resp.json();
+    if (!data.ok) throw new Error(data.detail || 'Error en el servidor');
+
+    const perfil = data.perfil;
+    const sections = [];
+
+    const makeCard = (label, carta, kw, afirmacion, cls='') => `
+      <div class="perfil-card ${cls}" style="grid-column:span 1">
+        <div class="perfil-card-label">${label}</div>
+        <div class="perfil-card-carta">${carta}</div>
+        ${kw ? `<div class="perfil-card-kw" style="margin-top:4px;">${kw}</div>` : ''}
+        ${afirmacion ? `<div class="perfil-card-kw" style="margin-top:6px;color:#fcd34d;font-style:italic;font-size:0.72rem;">"${afirmacion}"</div>` : ''}
+      </div>
+    `;
+
+    const pers = perfil.personalidad;
+    const alma = perfil.alma;
+    const oculto = perfil.factor_oculto;
+    const anio = perfil.anio_personal;
+    const zodiac = perfil.carta_zodiaco;
+    const persona = perfil.carta_persona;
+    const leccion = perfil.leccion_zodiacal;
+
+    let html = '<div class="perfil-grid" style="grid-template-columns:repeat(auto-fill,minmax(210px,1fr));margin-top:16px;">';
+
+    if (pers?.nombre) {
+      html += makeCard('Carta de Personalidad', pers.nombre,
+        (pers.datos?.palabras_clave||[]).join(' · '),
+        pers.datos?.afirmacion||'', 'gold');
+    }
+    if (alma?.nombre) {
+      html += makeCard('Carta del Alma', alma.nombre,
+        (alma.datos?.palabras_clave||[]).join(' · '),
+        alma.datos?.afirmacion||'');
+    }
+    if (oculto?.nombre) {
+      html += makeCard('Factor Oculto / Sombra', oculto.nombre,
+        'Energía complementaria a integrar',
+        oculto.datos?.pregunta_terapeutica||'');
+    }
+    if (anio?.actual?.nombre) {
+      html += makeCard(`Año Personal ${anio.actual.anio}`, anio.actual.nombre,
+        (anio.actual.datos?.palabras_clave||[]).slice(0,3).join(' · '), '');
+    }
+    if (anio?.siguiente?.nombre) {
+      html += makeCard(`Próximo Año ${anio.siguiente.anio}`, anio.siguiente.nombre,
+        (anio.siguiente.datos?.palabras_clave||[]).slice(0,3).join(' · '), '');
+    }
+    if (zodiac?.nombre) {
+      html += makeCard(`Arcano de ${(zodiac.signo||'').charAt(0).toUpperCase()+(zodiac.signo||'').slice(1)}`,
+        zodiac.nombre,
+        (zodiac.datos?.palabras_clave||[]).join(' · '), '');
+    }
+    if (persona?.nombre) {
+      html += makeCard('Carta de Persona (figura)', persona.nombre,
+        (persona.datos?.palabras_clave||[]).join(' · '), '');
+    }
+    if (leccion?.nombre) {
+      html += makeCard('Lección Zodiacal (decanato)', leccion.nombre,
+        (leccion.datos?.palabras_clave||[]).join(' · '), '');
+    }
+
+    html += '</div>';
+    document.getElementById('perfilPanel').innerHTML = html;
+
+  } catch(e) {
+    document.getElementById('perfilPanel').innerHTML = `<p style="color:#f87171;margin-top:10px;">Error: ${e.message}</p>`;
+  } finally {
+    document.getElementById('btnPerfil').disabled = false;
+  }
+}
+
+// ─── Referencia ───────────────────────────────────────────────────────────────
+let refRendered = false;
+function renderReferencia() {
+  if (refRendered) return;
+  refRendered = true;
+  filtrarReferencia();
+}
+
+function filtrarReferencia() {
+  const q = (document.getElementById('refSearch')?.value || '').toLowerCase();
+  const tipo = document.getElementById('refTipo')?.value || '';
+  const palo = document.getElementById('refPalo')?.value || '';
+
+  const filtered = CARTAS_REF.filter(c => {
+    if (tipo && c.tipo !== tipo) return false;
+    if (palo && c.palo !== palo) return false;
+    if (q && !c.nombre.toLowerCase().includes(q) && !c.kw.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  const tbody = document.getElementById('refTableBody');
+  if (!filtered.length) {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);">Sin resultados</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = filtered.map(c => {
+    const tipoBadge = c.tipo === 'mayor'
+      ? '<span class="palo-badge tipo-mayor">Mayor</span>'
+      : `<span class="palo-badge palo-${c.palo}">${c.palo.charAt(0).toUpperCase()+c.palo.slice(1)}</span>`;
+    return `<tr>
+      <td>
+        <div class="td-nombre ${c.tipo === 'menor' ? 'menor' : ''}">${c.nombre}</div>
+        <div class="td-num">#${c.num}</div>
+      </td>
+      <td>${tipoBadge}</td>
+      <td class="td-kw">${c.kw}</td>
+      <td class="td-kw" style="font-style:italic;font-size:0.76rem;">${c.pt}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  crearDatalist();
+  renderCartasInputs();
+});
+</script>
+</body>
+</html>
