@@ -206,6 +206,21 @@ body.embed-mode .page-footer { display: none; }
 }
 .tool-card:hover .card-cta { gap: 8px; }
 
+/* ── CARD ICON ── */
+.card-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--card-color, var(--muted));
+  opacity: 0.85;
+  flex-shrink: 0;
+}
+.util-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--muted2);
+  flex-shrink: 0;
+}
+
 /* Per-card color tokens */
 .c-sinodal  { --card-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --card-color:#2563eb; --card-border-hover:rgba(59,130,246,0.22); --card-glow:rgba(59,130,246,0.08); }
 .c-rastreo  { --card-accent: linear-gradient(90deg,#6366f1,#818cf8); --card-color:#4f46e5; --card-border-hover:rgba(99,102,241,0.22); --card-glow:rgba(99,102,241,0.08); }
@@ -312,6 +327,11 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-sinodal" href="/alumno">
       <div class="card-category">Tutor · Diplomado</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 10l10-6 10 6-10 6-10-6z"/>
+        <path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/>
+        <line x1="22" y1="10" x2="22" y2="15"/>
+      </svg>
       <div class="card-name">Sinodal IA</div>
       <div class="card-desc">Resuelve dudas sobre cualquier módulo del diplomado. Acceso completo a los manuales del Método Lavín, disponible 24/7.</div>
       <div class="card-cta">Hablar con Sael <span>→</span></div>
@@ -319,6 +339,12 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-rastreo" href="/rastreo">
       <div class="card-category">Paso 2 · Sesión</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <path d="M3 9h18"/>
+        <path d="M3 15h18"/>
+        <path d="M9 3v18"/>
+      </svg>
       <div class="card-name">Tablas de Rastreo</div>
       <div class="card-desc">Consulta los 1,059 pares biomagnéticos, flores de Bach, sales de Schüssler y más. Marca positivos y genera el mapa de imanes.</div>
       <div class="card-cta">Abrir rastreo <span>→</span></div>
@@ -326,6 +352,11 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-pares" href="/pares">
       <div class="card-category">Paso 3 · Aplicación</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 19v-8a6 6 0 0 1 12 0v8"/>
+        <line x1="4" y1="19" x2="8" y2="19"/>
+        <line x1="16" y1="19" x2="20" y2="19"/>
+      </svg>
       <div class="card-name">Guía de Pares</div>
       <div class="card-desc">Ubicación exacta de cada imán, interpretación clínica completa y tipo de patógeno. Busca por nombre o zona corporal.</div>
       <div class="card-cta">Buscar par <span>→</span></div>
@@ -333,6 +364,11 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-terapia" href="/terapeuta">
       <div class="card-category">Paso 4 · En vivo</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M11 2l2.5 5.5L19 10l-5.5 2.5L11 18l-2.5-5.5L3 10l5.5-2.5z"/>
+        <path d="M18.5 2.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>
+        <path d="M5.5 17.5l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z"/>
+      </svg>
       <div class="card-name">Asistente Terapéutico</div>
       <div class="card-desc">IA en tiempo real durante la sesión: síntesis, entrevista guiada, conflictología y protocolos BNE, Hellinger y Psicosomática.</div>
       <div class="card-cta">Iniciar sesión <span>→</span></div>
@@ -348,6 +384,9 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-salud" href="/salud">
       <div class="card-category">Perfil constitucional</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
       <div class="card-name">Astrología Médica</div>
       <div class="card-desc">Vulnerabilidades orgánicas, sistemas a cuidar y tránsitos de salud actuales. Orientación clínica basada en la carta natal.</div>
       <div class="card-cta">Ver perfil <span>→</span></div>
@@ -355,6 +394,10 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-astro" href="/astro-home">
       <div class="card-category">Premium · Módulo completo</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="4.5"/>
+        <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/>
+      </svg>
       <div class="card-name">AstrologiA</div>
       <div class="card-desc">Carta natal, Revolución Solar, sinastría, tránsitos y progresiones con análisis de IA. Basado en Volguine y Astrología Tradicional.</div>
       <div class="card-cta">Abrir módulo <span>→</span></div>
@@ -362,6 +405,12 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-numerologia" href="/numerologia">
       <div class="card-category">Numerología pitagórica</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" y1="9" x2="20" y2="9"/>
+        <line x1="4" y1="15" x2="20" y2="15"/>
+        <line x1="10" y1="3" x2="8" y2="21"/>
+        <line x1="16" y1="3" x2="14" y2="21"/>
+      </svg>
       <div class="card-name">Numerología</div>
       <div class="card-desc">Perfil numerológico completo: número de vida, expresión, alma, personalidad, pináculo y ciclos personales con interpretación de IA.</div>
       <div class="card-cta">Calcular perfil <span>→</span></div>
@@ -369,6 +418,11 @@ body.embed-mode .page-footer { display: none; }
 
     <a class="tool-card c-tarot" href="/tarot">
       <div class="card-category">Tarot terapéutico</div>
+      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2L2 8l10 6 10-6-10-6z"/>
+        <path d="M2 14l10 6 10-6"/>
+        <path d="M2 11l10 6 10-6"/>
+      </svg>
       <div class="card-name">Tarot</div>
       <div class="card-desc">Tiradas con interpretación terapéutica en streaming, perfil tarótico personal, referencia de las 78 cartas y chat de seguimiento con IA.</div>
       <div class="card-cta">Hacer lectura <span>→</span></div>
@@ -383,6 +437,12 @@ body.embed-mode .page-footer { display: none; }
   <div class="util-grid">
 
     <a class="util-card" href="/intake">
+      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+        <rect x="8" y="2" width="8" height="4" rx="1"/>
+        <line x1="8" y1="12" x2="16" y2="12"/>
+        <line x1="8" y1="16" x2="13" y2="16"/>
+      </svg>
       <div class="util-info">
         <div class="util-name">Historial del Paciente</div>
         <div class="util-desc">Registro clínico, genograma familiar y diagnóstico multi-enfoque</div>
@@ -391,6 +451,14 @@ body.embed-mode .page-footer { display: none; }
     </a>
 
     <a class="util-card" href="/tablas">
+      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="8" y1="6" x2="21" y2="6"/>
+        <line x1="8" y1="12" x2="21" y2="12"/>
+        <line x1="8" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="3.01" y2="6"/>
+        <line x1="3" y1="12" x2="3.01" y2="12"/>
+        <line x1="3" y1="18" x2="3.01" y2="18"/>
+      </svg>
       <div class="util-info">
         <div class="util-name">Tablas en texto</div>
         <div class="util-desc">Los 1,059 pares, creencias, miedos y florales en formato de búsqueda rápida</div>
@@ -399,6 +467,9 @@ body.embed-mode .page-footer { display: none; }
     </a>
 
     <a class="util-card" href="/terapias">
+      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22V12M12 12C12 8 7 6 5 3a9 9 0 0 1 14 0c-2 3-7 5-7 9z"/>
+      </svg>
       <div class="util-info">
         <div class="util-name">Terapias Complementarias</div>
         <div class="util-desc">Policrestos, flores de Bach, sales de Schüssler, potencias y protocolos</div>
