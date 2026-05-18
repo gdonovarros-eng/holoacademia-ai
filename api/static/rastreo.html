@@ -1154,7 +1154,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-dot-cabeza  { background: #007aff; }
 .bm-dot-cuello  { background: #34aadc; }
-.bm-dot-torax   { background: #ff3b30; }
+.bm-dot-pecho   { background: #ff3b30; }
 .bm-dot-abdomen { background: #ff9500; }
 .bm-dot-pelvis  { background: #af52de; }
 .bm-dot-espalda { background: #8e8e93; }
@@ -1201,19 +1201,31 @@ table.tref-table td:nth-child(3) { color: #374151; }
   pointer-events: none;
   z-index: 1;
 }
+/* Region highlight images — same size/position as body map */
+.bm-region-img {
+  position: absolute;
+  height: 580px; width: auto;
+  left: 50%; transform: translateX(-50%);
+  top: 30px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+.bm-region-img.visible { opacity: 1; }
 #bm-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  z-index: 2; overflow: visible;
+  z-index: 3; overflow: visible;
 }
-/* zones */
+/* zones — fill handled by region images now */
 .bm-zone {
   fill: transparent; cursor: pointer;
-  transition: fill 0.2s, stroke 0.2s;
+  transition: stroke 0.2s;
   stroke: transparent; stroke-width: 0;
 }
 .bm-zone:hover, .bm-zone.hovered {
-  fill: rgba(0,122,255,0.1);
-  stroke: rgba(0,122,255,0.3); stroke-width: 2;
+  fill: transparent;
+  stroke: rgba(0,122,255,0.0); stroke-width: 0;
 }
 /* connector lines */
 .bm-conn {
@@ -1377,8 +1389,18 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <div class="bm-hud-dot"></div>
         </div>
 
-        <!-- imagen anatómica -->
+        <!-- imagen anatómica base -->
         <img src="/therapy-static/body_map.svg" id="body-img" alt="Mapa anatómico de rastreo biomagnético">
+
+        <!-- imágenes de highlight por región -->
+        <img class="bm-region-img" data-region="cabeza"  src="/therapy-static/regiones/cabeza.svg"  alt="">
+        <img class="bm-region-img" data-region="cuello"  src="/therapy-static/regiones/cuello.svg"  alt="">
+        <img class="bm-region-img" data-region="pecho"   src="/therapy-static/regiones/pecho.svg"   alt="">
+        <img class="bm-region-img" data-region="abdomen" src="/therapy-static/regiones/abdomen.svg" alt="">
+        <img class="bm-region-img" data-region="pelvis"  src="/therapy-static/regiones/pelvis.svg"  alt="">
+        <img class="bm-region-img" data-region="espalda" src="/therapy-static/regiones/espalda.svg" alt="">
+        <img class="bm-region-img" data-region="brazos"  src="/therapy-static/regiones/brazos.svg"  alt="">
+        <img class="bm-region-img" data-region="piernas" src="/therapy-static/regiones/piernas.svg" alt="">
 
         <!--
           SVG overlay único:
@@ -1393,7 +1415,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <circle class="bm-conn-dot" cx="377" cy="63"  r="2.5"/>
           <line id="conn-cuello"  class="bm-conn" x1="174" y1="118" x2="398" y2="118"/>
           <circle class="bm-conn-dot" cx="398" cy="118" r="2.5"/>
-          <line id="conn-torax"   class="bm-conn" x1="174" y1="215" x2="348" y2="215"/>
+          <line id="conn-pecho"   class="bm-conn" x1="174" y1="215" x2="348" y2="215"/>
           <circle class="bm-conn-dot" cx="348" cy="215" r="2.5"/>
           <line id="conn-abdomen" class="bm-conn" x1="174" y1="330" x2="340" y2="330"/>
           <circle class="bm-conn-dot" cx="340" cy="330" r="2.5"/>
@@ -1419,11 +1441,11 @@ table.tref-table td:nth-child(3) { color: #374151; }
             cx="430" cy="140" rx="32" ry="22"
             onclick="selectBodyRegion('cuello')"
             onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')"/>
-          <!-- THORAX (collar to mid-chest) -->
-          <polygon class="bm-zone" data-region="torax"
+          <!-- PECHO (collar to mid-chest) -->
+          <polygon class="bm-zone" data-region="pecho"
             points="348,160 512,160 520,305 340,305"
-            onclick="selectBodyRegion('torax')"
-            onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')"/>
+            onclick="selectBodyRegion('pecho')"
+            onmouseenter="hoverBodyRegion('pecho')" onmouseleave="unhoverBodyRegion('pecho')"/>
           <!-- ABDOMEN -->
           <polygon class="bm-zone" data-region="abdomen"
             points="340,305 520,305 516,408 338,408"
@@ -1470,10 +1492,10 @@ table.tref-table td:nth-child(3) { color: #374151; }
           <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
           <span class="bm-label-count">23 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-torax"   style="top:193px; left:0"
-          onclick="selectBodyRegion('torax')"
-          onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-torax"></span><span class="bm-label-name">Tórax</span></div>
+        <div class="bm-label" id="lbl-pecho"   style="top:193px; left:0"
+          onclick="selectBodyRegion('pecho')"
+          onmouseenter="hoverBodyRegion('pecho')" onmouseleave="unhoverBodyRegion('pecho')">
+          <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><span class="bm-label-name">Pecho</span></div>
           <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
@@ -2676,7 +2698,7 @@ function trefFilter(q) {
 const BODY_REGION_MAP = {
   cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null        },  // 5 sub-zonas → mostrar paso Zona
   cuello:  { label: 'Cuello',  dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
-  torax:   { label: 'Tórax',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
+  pecho:   { label: 'Pecho',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
   abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
   pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
   espalda: { label: 'Espalda', dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
@@ -2735,7 +2757,10 @@ function selectBodyRegion(key) {
 }
 
 function hoverBodyRegion(key) {
-  document.querySelectorAll(`.bm-zone[data-region="${key}"]`).forEach(z => z.classList.add('hovered'));
+  // Show region highlight image
+  const img = document.querySelector(`.bm-region-img[data-region="${key}"]`);
+  if (img) img.classList.add('visible');
+  // Label + connector
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.add('hovered');
@@ -2743,7 +2768,10 @@ function hoverBodyRegion(key) {
 }
 
 function unhoverBodyRegion(key) {
-  document.querySelectorAll(`.bm-zone[data-region="${key}"]`).forEach(z => z.classList.remove('hovered'));
+  // Hide region highlight image
+  const img = document.querySelector(`.bm-region-img[data-region="${key}"]`);
+  if (img) img.classList.remove('visible');
+  // Label + connector
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.remove('hovered');
