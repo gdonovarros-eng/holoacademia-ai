@@ -1213,23 +1213,26 @@ table.tref-table td:nth-child(3) { color: #374151; }
   opacity: 0;
   transition: opacity 0.22s ease;
 }
-.bm-region-img.visible { opacity: 1; }
+.bm-region-img.visible {
+  opacity: 1;
+  mix-blend-mode: multiply;
+}
 
 #bm-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 3; overflow: visible;
 }
-/* zones — fill handled by region images now */
+/* zones */
 .bm-zone {
-  fill: rgba(0,0,0,0.001); /* near-transparent fill to capture pointer events */
+  fill: rgba(0,0,0,0.001);
   cursor: pointer;
   pointer-events: all;
-  transition: stroke 0.2s;
+  transition: fill 0.18s, stroke 0.18s;
   stroke: transparent; stroke-width: 0;
 }
 .bm-zone:hover, .bm-zone.hovered {
-  fill: rgba(0,0,0,0.001);
-  stroke: transparent; stroke-width: 0;
+  fill: rgba(0,122,255,0.18);
+  stroke: rgba(0,122,255,0.45); stroke-width: 1.5;
 }
 /* connector lines */
 .bm-conn {
@@ -2780,7 +2783,7 @@ function selectBodyRegion(key) {
 
 function _bmShow(key) {
   document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
-    .forEach(img => img.classList.add('visible'));
+    .forEach(img => { img.style.opacity = '1'; });
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.add('hovered');
@@ -2788,46 +2791,28 @@ function _bmShow(key) {
 }
 function _bmHide(key) {
   document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
-    .forEach(img => img.classList.remove('visible'));
+    .forEach(img => { img.style.opacity = '0'; });
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.remove('hovered');
   if (conn) conn.classList.remove('hovered');
 }
-// Legacy stubs — kept for any remaining inline refs
 function hoverBodyRegion(key)   { _bmShow(key); }
 function unhoverBodyRegion(key) { _bmHide(key); }
 
 function initBodyMapHover() {
-  const overlay = document.getElementById('bm-overlay');
-  if (!overlay) return;
-  let activeKey = null;
-
-  function enter(key) {
-    if (!key || key === activeKey) return;
-    if (activeKey) _bmHide(activeKey);
-    activeKey = key;
-    _bmShow(key);
-  }
-  function leave(key) {
-    if (!key || key !== activeKey) return;
-    _bmHide(key);
-    activeKey = null;
-  }
-
-  // SVG zones — event delegation on overlay (reliable across all browsers)
-  overlay.addEventListener('mousemove', function(e) {
-    const zone = e.target.closest && e.target.closest('.bm-zone[data-region]');
-    enter(zone ? zone.dataset.region : null);
-    if (!zone && activeKey) leave(activeKey);
+  // Direct event listeners on each SVG zone
+  document.querySelectorAll('.bm-zone[data-region]').forEach(zone => {
+    const key = zone.dataset.region;
+    zone.addEventListener('mouseenter', () => _bmShow(key));
+    zone.addEventListener('mouseleave', () => _bmHide(key));
   });
-  overlay.addEventListener('mouseleave', function() { if (activeKey) leave(activeKey); });
 
-  // Labels — direct listeners on HTML elements (always reliable)
+  // Direct event listeners on labels
   document.querySelectorAll('.bm-label[id^="lbl-"]').forEach(lbl => {
-    const key = lbl.id.slice(4);
-    lbl.addEventListener('mouseenter', () => enter(key));
-    lbl.addEventListener('mouseleave', () => leave(key));
+    const key = lbl.id.slice(4); // 'lbl-cabeza' → 'cabeza'
+    lbl.addEventListener('mouseenter', () => _bmShow(key));
+    lbl.addEventListener('mouseleave', () => _bmHide(key));
   });
 }
 
