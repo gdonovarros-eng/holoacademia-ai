@@ -1146,46 +1146,132 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .instr-body ol { padding-left: 1.1rem; font-size: 0.84rem; line-height: 1.8; color: #374151; }
 .instr-body li { margin-bottom: 0.15rem; }
 .instr-body strong { color: #4338ca; }
-.bm-layout {
-  display: flex; align-items: flex-start; justify-content: center; gap: 0;
+/* ── BODY MAP SCANNER (medical HUD) ─────────────────────────────── */
+#bm-scanner {
+  position: relative;
+  width: min(860px, 100%);
+  height: 630px;
+  margin: 0 auto;
+  background: radial-gradient(ellipse 55% 75% at 50% 38%, #0c1a3e 0%, #060c1e 100%);
+  border-radius: 14px;
+  border: 1px solid rgba(0,198,255,0.15);
+  box-shadow: 0 0 50px rgba(0,80,200,0.12), inset 0 0 80px rgba(0,0,20,0.4);
+  overflow: hidden;
 }
-.bm-labels-col { position: relative; width: 178px; flex-shrink: 0; height: 580px; }
-.bm-center { position: relative; flex-shrink: 0; }
-#body-img { display: block; height: 580px; width: auto; }
-#body-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-.bm-zone { fill: transparent; cursor: pointer; transition: fill 0.18s; }
-.bm-zone.hovered { fill: rgba(99,102,241,0.22); }
-.region-btn {
-  position: absolute; background: #1e1b4b; color: #fff; border: none;
-  border-radius: 7px; padding: 7px 10px; cursor: pointer;
-  display: flex; flex-direction: column; gap: 1px;
-  white-space: nowrap; width: 158px; text-align: center;
-  transition: background 0.15s, transform 0.12s;
+/* dot grid overlay */
+#bm-scanner::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: radial-gradient(rgba(0,198,255,0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none; z-index: 0;
 }
-.region-btn:hover, .region-btn.hovered { background: #4338ca; }
-.left-labels .region-btn  { right: 0; }
-.left-labels .region-btn:hover,
-.left-labels .region-btn.hovered { transform: translateX(-3px); }
-.right-labels .region-btn { left: 0; }
-.right-labels .region-btn:hover,
-.right-labels .region-btn.hovered { transform: translateX(3px); }
-.region-btn .rn { font-size: 0.8rem; font-weight: 700; }
-.region-btn .rc { font-size: 0.68rem; opacity: 0.72; }
-.region-btn.posterior { background: #374151; }
-.region-btn.posterior:hover,
-.region-btn.posterior.hovered { background: #4b5563; }
-.region-btn::after {
-  content: ''; position: absolute; top: 50%;
-  height: 2px; width: 22px; background: #6366f1; transform: translateY(-50%);
+/* scanner title bar */
+.bm-hud-bar {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 10px;
+  z-index: 5; pointer-events: none;
 }
-.left-labels  .region-btn::after { right: -22px; }
-.right-labels .region-btn::after { left:  -22px; }
-.region-btn.posterior::after { background: #9ca3af; }
-@media (max-width: 680px) {
-  .bm-labels-col { width: 110px; }
-  .region-btn { width: 105px; font-size: 0.72rem; }
-  #body-img { height: 400px; }
-  .bm-labels-col { height: 400px; }
+.bm-hud-title {
+  font-size: 0.6rem; font-weight: 700; letter-spacing: 0.18em;
+  color: rgba(0,198,255,0.5); text-transform: uppercase;
+}
+.bm-hud-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #00ff88; box-shadow: 0 0 6px #00ff88;
+  animation: bm-pulse 2s ease-in-out infinite;
+}
+@keyframes bm-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+
+#body-img {
+  position: absolute;
+  height: 580px; width: auto;
+  left: 50%; transform: translateX(-50%);
+  top: 30px;
+  filter: drop-shadow(0 0 22px rgba(0,140,255,0.28)) brightness(1.08) saturate(0.9);
+  pointer-events: none;
+  z-index: 1;
+}
+#bm-overlay {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2; overflow: visible;
+}
+/* zones */
+.bm-zone {
+  fill: transparent; cursor: pointer;
+  transition: fill 0.2s, stroke 0.2s;
+  stroke: transparent; stroke-width: 0;
+}
+.bm-zone:hover, .bm-zone.hovered {
+  fill: rgba(0,198,255,0.14);
+  stroke: rgba(0,198,255,0.4); stroke-width: 2;
+}
+/* connector lines */
+.bm-conn {
+  stroke: rgba(0,198,255,0.38); stroke-width: 1;
+  fill: none; pointer-events: none;
+  transition: stroke 0.2s, stroke-width 0.2s;
+}
+.bm-conn.hovered { stroke: rgba(0,198,255,0.85); stroke-width: 1.5; }
+.bm-conn-post { stroke: rgba(148,163,184,0.3); }
+.bm-conn-post.hovered { stroke: rgba(148,163,184,0.7); }
+.bm-conn-dot { pointer-events: none; fill: rgba(0,198,255,0.65); }
+.bm-conn-dot-post { fill: rgba(148,163,184,0.55); }
+/* labels */
+.bm-label {
+  position: absolute; z-index: 6;
+  width: 168px;
+  background: rgba(5,12,32,0.84);
+  border: 1px solid rgba(0,198,255,0.32);
+  border-radius: 6px; padding: 7px 10px 7px 9px;
+  cursor: pointer; user-select: none;
+  transition: background 0.18s, border-color 0.18s, box-shadow 0.18s, transform 0.14s;
+  backdrop-filter: blur(6px);
+}
+.bm-label:hover, .bm-label.hovered {
+  background: rgba(0,70,150,0.75);
+  border-color: rgba(0,198,255,0.7);
+  box-shadow: 0 0 16px rgba(0,198,255,0.22);
+  transform: scale(1.03);
+}
+/* corner bracket accent */
+.bm-label::before {
+  content: '';
+  position: absolute; top: -1px; left: -1px;
+  width: 8px; height: 8px;
+  border-top: 1.5px solid rgba(0,198,255,0.6);
+  border-left: 1.5px solid rgba(0,198,255,0.6);
+}
+.bm-label-top { display: flex; align-items: center; gap: 6px; }
+.bm-label-icon { font-size: 0.82rem; line-height: 1; }
+.bm-label-name {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: rgba(255,255,255,0.92);
+}
+.bm-label-count {
+  display: block; margin-top: 3px;
+  font-size: 0.6rem; letter-spacing: 0.06em;
+  color: rgba(0,198,255,0.68); font-family: monospace;
+}
+.bm-label.posterior {
+  border-color: rgba(100,116,139,0.35);
+}
+.bm-label.posterior::before {
+  border-color: rgba(100,116,139,0.5);
+}
+.bm-label.posterior:hover, .bm-label.posterior.hovered {
+  border-color: rgba(148,163,184,0.6);
+  box-shadow: 0 0 12px rgba(148,163,184,0.12);
+}
+.bm-label.posterior .bm-label-count { color: rgba(148,163,184,0.6); }
+
+@media (max-width: 780px) {
+  #bm-scanner { height: 420px; }
+  #body-img { height: 375px; top: 22px; }
+  .bm-label { width: 108px; padding: 5px 7px; }
+  .bm-label-name { font-size: 0.6rem; }
+  .bm-label-count { font-size: 0.52rem; }
 }
 
 /* virus tables */
@@ -1285,102 +1371,142 @@ table.tref-table td:nth-child(3) { color: #374151; }
         </div>
       </div>
 
-      <!-- Mapa corporal interactivo -->
-      <div class="bm-layout">
+      <!-- Mapa corporal interactivo — HUD médico -->
+      <div id="bm-scanner">
 
-        <!-- Etiquetas izquierda -->
-        <div class="bm-labels-col left-labels">
-          <button class="region-btn" data-region="cabeza" style="top:2.7%"
-            onclick="selectBodyRegion('cabeza')"
-            onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
-            <span class="rn">🧠 Cabeza</span><span class="rc">314 pares</span>
-          </button>
-          <button class="region-btn" data-region="cuello" style="top:11%"
-            onclick="selectBodyRegion('cuello')"
-            onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
-            <span class="rn">🫁 Cuello</span><span class="rc">70 pares</span>
-          </button>
-          <button class="region-btn" data-region="torax" style="top:24.8%"
-            onclick="selectBodyRegion('torax')"
-            onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')">
-            <span class="rn">❤️ Tórax</span><span class="rc">192 pares</span>
-          </button>
-          <button class="region-btn" data-region="abdomen" style="top:43%"
-            onclick="selectBodyRegion('abdomen')"
-            onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')">
-            <span class="rn">🫄 Abdomen</span><span class="rc">563 pares</span>
-          </button>
-          <button class="region-btn" data-region="pelvis" style="top:56.2%"
-            onclick="selectBodyRegion('pelvis')"
-            onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
-            <span class="rn">🦴 Pelvis</span><span class="rc">187 pares</span>
-          </button>
+        <!-- barra HUD superior -->
+        <div class="bm-hud-bar">
+          <div class="bm-hud-dot"></div>
+          <span class="bm-hud-title">Mapa Anatómico · Selecciona una región</span>
+          <div class="bm-hud-dot"></div>
         </div>
 
-        <!-- Imagen + zonas SVG -->
-        <div class="bm-center">
-          <img src="/therapy-static/body_map.png" id="body-img" alt="Mapa anatómico de rastreo biomagnético">
-          <svg id="body-svg" viewBox="0 0 1086 1448" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <!-- imagen anatómica -->
+        <img src="/therapy-static/body_map.png" id="body-img" alt="Mapa anatómico de rastreo biomagnético">
+
+        <!--
+          SVG overlay único:
+          viewBox 860×630 = dimensiones del wrapper
+          Las zonas usan <g transform> para mapear coordenadas originales 1086×1448
+          a posición real (image left≈212, top≈30, scale≈0.40)
+        -->
+        <svg id="bm-overlay" viewBox="0 0 860 630" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+
+          <!-- ── LÍNEAS CONECTORAS izquierda ── -->
+          <line id="conn-cabeza"  class="bm-conn" x1="174" y1="57"  x2="388" y2="57"/>
+          <circle class="bm-conn-dot" cx="388" cy="57"  r="2.5"/>
+          <line id="conn-cuello"  class="bm-conn" x1="174" y1="103" x2="370" y2="103"/>
+          <circle class="bm-conn-dot" cx="370" cy="103" r="2.5"/>
+          <line id="conn-torax"   class="bm-conn" x1="174" y1="215" x2="276" y2="215"/>
+          <circle class="bm-conn-dot" cx="276" cy="215" r="2.5"/>
+          <line id="conn-abdomen" class="bm-conn" x1="174" y1="330" x2="268" y2="330"/>
+          <circle class="bm-conn-dot" cx="268" cy="330" r="2.5"/>
+          <line id="conn-pelvis"  class="bm-conn" x1="174" y1="418" x2="270" y2="418"/>
+          <circle class="bm-conn-dot" cx="270" cy="418" r="2.5"/>
+
+          <!-- ── LÍNEAS CONECTORAS derecha ── -->
+          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="222" x2="582" y2="222"/>
+          <circle class="bm-conn-dot bm-conn-dot-post" cx="582" cy="222" r="2.5"/>
+          <line id="conn-brazos"  class="bm-conn" x1="686" y1="308" x2="640" y2="308"/>
+          <circle class="bm-conn-dot" cx="640" cy="308" r="2.5"/>
+          <line id="conn-piernas" class="bm-conn" x1="686" y1="490" x2="590" y2="490"/>
+          <circle class="bm-conn-dot" cx="590" cy="490" r="2.5"/>
+
+          <!-- ── ZONAS CLICABLES (coord originales 1086×1448 → translate+scale) ── -->
+          <g transform="translate(212,30) scale(0.4004,0.4006)">
             <ellipse class="bm-zone" data-region="cabeza"
-              cx="543" cy="90" rx="115" ry="130"
+              cx="543" cy="90" rx="128" ry="138"
               onclick="selectBodyRegion('cabeza')"
               onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')"/>
             <ellipse class="bm-zone" data-region="cuello"
-              cx="543" cy="212" rx="78" ry="48"
+              cx="543" cy="215" rx="82" ry="52"
               onclick="selectBodyRegion('cuello')"
               onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')"/>
             <polygon class="bm-zone" data-region="torax"
-              points="305,258 780,258 800,565 290,565"
+              points="300,265 790,265 808,570 287,570"
               onclick="selectBodyRegion('torax')"
               onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')"/>
             <polygon class="bm-zone" data-region="abdomen"
-              points="285,565 800,565 815,790 270,790"
+              points="282,570 808,570 818,795 268,795"
               onclick="selectBodyRegion('abdomen')"
               onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')"/>
             <polygon class="bm-zone" data-region="pelvis"
-              points="265,790 820,790 835,940 250,940"
+              points="262,795 822,795 838,950 248,950"
               onclick="selectBodyRegion('pelvis')"
               onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')"/>
             <polygon class="bm-zone" data-region="brazos"
-              points="150,258 290,258 305,875 160,875"
+              points="142,262 296,262 310,888 156,888"
               onclick="selectBodyRegion('brazos')"
               onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
             <polygon class="bm-zone" data-region="brazos"
-              points="795,258 942,258 932,875 802,875"
+              points="793,262 944,262 936,888 804,888"
               onclick="selectBodyRegion('brazos')"
               onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')"/>
             <polygon class="bm-zone" data-region="piernas"
-              points="255,940 840,940 845,1445 250,1445"
+              points="252,950 842,950 848,1448 246,1448"
               onclick="selectBodyRegion('piernas')"
               onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')"/>
             <polygon class="bm-zone" data-region="espalda"
-              points="290,258 800,258 815,790 270,790"
-              style="fill:transparent"
+              points="290,265 800,265 816,795 272,795"
+              style="fill:transparent;stroke:transparent"
               onclick="selectBodyRegion('espalda')"
               onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')"/>
-          </svg>
+          </g>
+        </svg>
+
+        <!-- ── ETIQUETAS izquierda ── -->
+        <div class="bm-label" id="lbl-cabeza"  style="top:35px;  left:0"
+          onclick="selectBodyRegion('cabeza')"
+          onmouseenter="hoverBodyRegion('cabeza')" onmouseleave="unhoverBodyRegion('cabeza')">
+          <div class="bm-label-top"><span class="bm-label-icon">🧠</span><span class="bm-label-name">Cabeza</span></div>
+          <span class="bm-label-count">314 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-cuello"  style="top:81px;  left:0"
+          onclick="selectBodyRegion('cuello')"
+          onmouseenter="hoverBodyRegion('cuello')" onmouseleave="unhoverBodyRegion('cuello')">
+          <div class="bm-label-top"><span class="bm-label-icon">🫁</span><span class="bm-label-name">Cuello</span></div>
+          <span class="bm-label-count">70 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-torax"   style="top:193px; left:0"
+          onclick="selectBodyRegion('torax')"
+          onmouseenter="hoverBodyRegion('torax')" onmouseleave="unhoverBodyRegion('torax')">
+          <div class="bm-label-top"><span class="bm-label-icon">❤️</span><span class="bm-label-name">Tórax</span></div>
+          <span class="bm-label-count">192 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-abdomen" style="top:308px; left:0"
+          onclick="selectBodyRegion('abdomen')"
+          onmouseenter="hoverBodyRegion('abdomen')" onmouseleave="unhoverBodyRegion('abdomen')">
+          <div class="bm-label-top"><span class="bm-label-icon">🫄</span><span class="bm-label-name">Abdomen</span></div>
+          <span class="bm-label-count">563 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-pelvis"  style="top:396px; left:0"
+          onclick="selectBodyRegion('pelvis')"
+          onmouseenter="hoverBodyRegion('pelvis')" onmouseleave="unhoverBodyRegion('pelvis')">
+          <div class="bm-label-top"><span class="bm-label-icon">🦴</span><span class="bm-label-name">Pelvis</span></div>
+          <span class="bm-label-count">187 pares biomagnéticos</span>
         </div>
 
-        <!-- Etiquetas derecha -->
-        <div class="bm-labels-col right-labels">
-          <button class="region-btn posterior" data-region="espalda" style="top:26.2%"
-            onclick="selectBodyRegion('espalda')"
-            onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')">
-            <span class="rn">🔙 Espalda</span><span class="rc">123 pares · posterior</span>
-          </button>
-          <button class="region-btn" data-region="brazos" style="top:35.5%"
-            onclick="selectBodyRegion('brazos')"
-            onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')">
-            <span class="rn">💪 Brazos</span><span class="rc">94 pares</span>
-          </button>
-          <button class="region-btn" data-region="piernas" style="top:78.7%"
-            onclick="selectBodyRegion('piernas')"
-            onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')">
-            <span class="rn">🦵 Piernas</span><span class="rc">79 pares</span>
-          </button>
+        <!-- ── ETIQUETAS derecha ── -->
+        <div class="bm-label posterior" id="lbl-espalda" style="top:200px; right:0"
+          onclick="selectBodyRegion('espalda')"
+          onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')">
+          <div class="bm-label-top"><span class="bm-label-icon">🔙</span><span class="bm-label-name">Espalda</span></div>
+          <span class="bm-label-count">123 pares · posterior</span>
+        </div>
+        <div class="bm-label" id="lbl-brazos"  style="top:286px; right:0"
+          onclick="selectBodyRegion('brazos')"
+          onmouseenter="hoverBodyRegion('brazos')" onmouseleave="unhoverBodyRegion('brazos')">
+          <div class="bm-label-top"><span class="bm-label-icon">💪</span><span class="bm-label-name">Brazos</span></div>
+          <span class="bm-label-count">94 pares biomagnéticos</span>
+        </div>
+        <div class="bm-label" id="lbl-piernas" style="top:468px; right:0"
+          onclick="selectBodyRegion('piernas')"
+          onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')">
+          <div class="bm-label-top"><span class="bm-label-icon">🦵</span><span class="bm-label-name">Piernas</span></div>
+          <span class="bm-label-count">79 pares biomagnéticos</span>
         </div>
 
-      </div><!-- /.bm-layout -->
+      </div><!-- /#bm-scanner -->
     </div><!-- /#rastreo-home -->
 
     <!-- Vista wizard pares biomagnéticos -->
@@ -2578,12 +2704,18 @@ function selectBodyRegion(key) {
 
 function hoverBodyRegion(key) {
   document.querySelectorAll(`.bm-zone[data-region="${key}"]`).forEach(z => z.classList.add('hovered'));
-  document.querySelectorAll(`.region-btn[data-region="${key}"]`).forEach(b => b.classList.add('hovered'));
+  const lbl  = document.getElementById('lbl-'  + key);
+  const conn = document.getElementById('conn-' + key);
+  if (lbl)  lbl.classList.add('hovered');
+  if (conn) conn.classList.add('hovered');
 }
 
 function unhoverBodyRegion(key) {
   document.querySelectorAll(`.bm-zone[data-region="${key}"]`).forEach(z => z.classList.remove('hovered'));
-  document.querySelectorAll(`.region-btn[data-region="${key}"]`).forEach(b => b.classList.remove('hovered'));
+  const lbl  = document.getElementById('lbl-'  + key);
+  const conn = document.getElementById('conn-' + key);
+  if (lbl)  lbl.classList.remove('hovered');
+  if (conn) conn.classList.remove('hovered');
 }
 
 function toggleInstr() {
