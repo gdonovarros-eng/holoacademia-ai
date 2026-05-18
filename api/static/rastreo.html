@@ -1213,6 +1213,24 @@ table.tref-table td:nth-child(3) { color: #374151; }
   transition: opacity 0.22s ease;
 }
 .bm-region-img.visible { opacity: 1; }
+
+/* ── Region image hover via CSS :has() — no JS required ── */
+#bm-scanner:has(.bm-zone[data-region="cabeza"]:hover)  .bm-region-img[data-region="cabeza"],
+#bm-scanner:has(#lbl-cabeza:hover)                     .bm-region-img[data-region="cabeza"]  { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="cuello"]:hover)  .bm-region-img[data-region="cuello"],
+#bm-scanner:has(#lbl-cuello:hover)                     .bm-region-img[data-region="cuello"]  { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="pecho"]:hover)   .bm-region-img[data-region="pecho"],
+#bm-scanner:has(#lbl-pecho:hover)                      .bm-region-img[data-region="pecho"]   { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="abdomen"]:hover) .bm-region-img[data-region="abdomen"],
+#bm-scanner:has(#lbl-abdomen:hover)                    .bm-region-img[data-region="abdomen"] { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="pelvis"]:hover)  .bm-region-img[data-region="pelvis"],
+#bm-scanner:has(#lbl-pelvis:hover)                     .bm-region-img[data-region="pelvis"]  { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="brazos"]:hover)  .bm-region-img[data-region="brazos"],
+#bm-scanner:has(#lbl-brazos:hover)                     .bm-region-img[data-region="brazos"]  { opacity: 1; }
+#bm-scanner:has(.bm-zone[data-region="piernas"]:hover) .bm-region-img[data-region="piernas"],
+#bm-scanner:has(#lbl-piernas:hover)                    .bm-region-img[data-region="piernas"] { opacity: 1; }
+/* Espalda — solo desde el label (zone tiene pointer-events:none) */
+#bm-scanner:has(#lbl-espalda:hover)                    .bm-region-img[data-region="espalda"] { opacity: 1; }
 #bm-overlay {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 3; overflow: visible;
@@ -1227,7 +1245,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-zone:hover, .bm-zone.hovered {
   fill: rgba(0,0,0,0.001);
-  stroke: rgba(0,122,255,0.25); stroke-width: 1.5;
+  stroke: transparent; stroke-width: 0;
 }
 /* connector lines */
 .bm-conn {
@@ -1473,10 +1491,10 @@ table.tref-table td:nth-child(3) { color: #374151; }
             points="336,472 512,472 508,602 334,602"
             onclick="selectBodyRegion('piernas')"
             onmouseenter="hoverBodyRegion('piernas')" onmouseleave="unhoverBodyRegion('piernas')"/>
-          <!-- ESPALDA (transparent, overlaps torso+abdomen) -->
+          <!-- ESPALDA (no-interaction from front — only via right-side label) -->
           <polygon class="bm-zone" data-region="espalda"
             points="340,160 520,160 516,408 338,408"
-            style="fill:transparent;stroke:transparent"
+            style="fill:transparent;stroke:transparent;pointer-events:none"
             onclick="selectBodyRegion('espalda')"
             onmouseenter="hoverBodyRegion('espalda')" onmouseleave="unhoverBodyRegion('espalda')"/>
         </svg>
