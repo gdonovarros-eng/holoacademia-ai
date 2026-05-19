@@ -1166,7 +1166,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 #bm-scanner {
   position: relative;
   width: min(860px, 100%);
-  height: 630px;
+  height: 660px;
   margin: 0 auto;
   background: #ffffff;
   border-radius: 18px;
@@ -1197,16 +1197,18 @@ table.tref-table td:nth-child(3) { color: #374151; }
   position: absolute;
   height: 580px; width: auto;
   left: 50%; transform: translateX(-50%);
-  top: 30px;
+  top: 60px;
   filter: drop-shadow(0 4px 18px rgba(0,0,0,0.1));
   pointer-events: none;
   z-index: 1;
-  transition: opacity 0.25s ease;
 }
-#body-img.dimmed { opacity: 0.15; }
-/* Cabeza chip — compact, no count line, stays above the head */
-#lbl-cabeza { padding: 4px 13px; }
-#lbl-cabeza .bm-label-count { display: none; }
+/* region label number */
+.bm-label-region {
+  display: block;
+  font-size: 0.5rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 1px;
+}
 
 
 #bm-overlay {
@@ -1225,22 +1227,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
   fill: rgba(0,122,255,0.35) !important;
   stroke: rgba(0,122,255,0.7) !important; stroke-width: 2 !important;
 }
-/* Region highlight images — HTML <img> positioned over body-img, toggled via JS */
-.bm-region-img {
-  position: absolute;
-  top: 30px; left: 50%;
-  transform: translateX(-50%);
-  height: 580px; width: auto;
-  z-index: 2;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.25s ease;
-}
-.bm-region-img.visible {
-  opacity: 1;
-  filter: drop-shadow(0 0 14px rgba(0,122,255,0.82))
-          saturate(2.5) contrast(1.25) brightness(0.92);
-}
+/* region images hidden — src-swap approach, no overlay needed */
+.bm-region-img { display: none; }
 /* connector lines */
 .bm-conn {
   stroke: rgba(0,0,0,0.45); stroke-width: 1.5;
@@ -1437,122 +1425,113 @@ table.tref-table td:nth-child(3) { color: #374151; }
           Las zonas usan <g transform> para mapear coordenadas originales 1086×1448
           a posición real (image left≈212, top≈30, scale≈0.40)
         -->
-        <svg id="bm-overlay" viewBox="0 0 860 630" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+        <svg id="bm-overlay" viewBox="0 0 860 660" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
 
           <!-- ── CABEZA: línea vertical desde top-center ── -->
-          <line id="conn-cabeza"  class="bm-conn" x1="430" y1="32" x2="430" y2="55"/>
+          <line id="conn-cabeza"  class="bm-conn" x1="430" y1="55" x2="430" y2="88"/>
 
           <!-- ── LÍNEAS CONECTORAS izquierda ── -->
-          <line id="conn-cuello"  class="bm-conn" x1="174" y1="108" x2="398" y2="108"/>
-          <line id="conn-pecho"   class="bm-conn" x1="174" y1="185" x2="348" y2="185"/>
-          <line id="conn-abdomen" class="bm-conn" x1="174" y1="290" x2="340" y2="290"/>
-          <line id="conn-piernas" class="bm-conn" x1="174" y1="455" x2="336" y2="455"/>
+          <line id="conn-cuello"  class="bm-conn" x1="174" y1="163" x2="398" y2="163"/>
+          <line id="conn-pecho"   class="bm-conn" x1="174" y1="245" x2="348" y2="245"/>
+          <line id="conn-abdomen" class="bm-conn" x1="174" y1="352" x2="340" y2="352"/>
+          <line id="conn-piernas" class="bm-conn" x1="174" y1="520" x2="336" y2="520"/>
 
           <!-- ── LÍNEAS CONECTORAS derecha ── -->
-          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="148" x2="516" y2="148"/>
-          <line id="conn-brazos"  class="bm-conn" x1="686" y1="240" x2="558" y2="240"/>
-          <line id="conn-pelvis"  class="bm-conn" x1="686" y1="368" x2="516" y2="368"/>
+          <line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="205" x2="516" y2="205"/>
+          <line id="conn-brazos"  class="bm-conn" x1="686" y1="300" x2="558" y2="300"/>
+          <line id="conn-pelvis"  class="bm-conn" x1="686" y1="430" x2="516" y2="430"/>
 
-          <!-- Zones in wrapper coordinates (viewBox 860×630) -->
+          <!-- Zones in wrapper coordinates (viewBox 860×660, body-img top=60) -->
           <!-- HEAD -->
           <ellipse class="bm-zone" data-region="cabeza"
-            cx="430" cy="85" rx="53" ry="52"
+            cx="430" cy="115" rx="53" ry="52"
             onclick="selectBodyRegion('cabeza')"/>
           <!-- NECK -->
           <ellipse class="bm-zone" data-region="cuello"
-            cx="430" cy="140" rx="32" ry="22"
+            cx="430" cy="170" rx="32" ry="22"
             onclick="selectBodyRegion('cuello')"/>
           <!-- PECHO (collar to mid-chest) -->
           <polygon class="bm-zone" data-region="pecho"
-            points="348,160 512,160 520,305 340,305"
+            points="348,190 512,190 520,335 340,335"
             onclick="selectBodyRegion('pecho')"/>
           <!-- ABDOMEN -->
           <polygon class="bm-zone" data-region="abdomen"
-            points="340,305 520,305 516,408 338,408"
+            points="340,335 520,335 516,438 338,438"
             onclick="selectBodyRegion('abdomen')"/>
           <!-- PELVIS -->
           <polygon class="bm-zone" data-region="pelvis"
-            points="338,408 516,408 512,472 336,472"
+            points="338,438 516,438 512,502 336,502"
             onclick="selectBodyRegion('pelvis')"/>
-          <!-- LEFT ARM (viewer's left = image left side) -->
+          <!-- LEFT ARM -->
           <polygon class="bm-zone" data-region="brazos"
-            points="302,160 350,160 346,460 300,460"
+            points="302,190 350,190 346,490 300,490"
             onclick="selectBodyRegion('brazos')"/>
           <!-- RIGHT ARM -->
           <polygon class="bm-zone" data-region="brazos"
-            points="510,160 558,160 556,460 512,460"
+            points="510,190 558,190 556,490 512,490"
             onclick="selectBodyRegion('brazos')"/>
           <!-- LEGS (from hips to feet) -->
           <polygon class="bm-zone" data-region="piernas"
-            points="336,472 512,472 508,602 334,602"
+            points="336,502 512,502 508,648 334,648"
             onclick="selectBodyRegion('piernas')"/>
 
           <!-- ESPALDA (no-interaction from front — only via right-side label) -->
           <polygon class="bm-zone" data-region="espalda"
-            points="340,160 520,160 516,408 338,408"
+            points="340,190 520,190 516,438 338,438"
             style="fill:transparent;stroke:transparent;pointer-events:none"
             onclick="selectBodyRegion('espalda')"/>
         </svg>
 
         <!-- ── REGION HIGHLIGHT IMAGES — HTML img, z-index 2, toggled via JS ── -->
-        <img class="bm-region-img" data-region="cabeza"  src="/therapy-static/regiones/cabeza.svg"  alt="">
-        <img class="bm-region-img" data-region="cuello"  src="/therapy-static/regiones/cuello.svg"  alt="">
-        <img class="bm-region-img" data-region="pecho"   src="/therapy-static/regiones/pecho.svg"   alt="">
-        <img class="bm-region-img" data-region="abdomen" src="/therapy-static/regiones/abdomen.svg" alt="">
-        <img class="bm-region-img" data-region="pelvis"  src="/therapy-static/regiones/pelvis.svg"  alt="">
-        <img class="bm-region-img" data-region="espalda" src="/therapy-static/regiones/espalda.svg" alt="">
-        <img class="bm-region-img" data-region="brazos"  src="/therapy-static/regiones/brazos.svg"  alt="">
-        <img class="bm-region-img" data-region="piernas" src="/therapy-static/regiones/piernas.svg" alt="">
-
         <!-- ── CABEZA: top center ── -->
         <div class="bm-label" id="lbl-cabeza" style="top:5px; left:50%; transform:translateX(-50%)"
           onclick="selectBodyRegion('cabeza')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><span class="bm-label-name">Cabeza</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><div><span class="bm-label-region">Región 1</span><span class="bm-label-name">Cabeza</span></div></div>
           <span class="bm-label-count">103 pares · 5 zonas</span>
         </div>
 
         <!-- ── ETIQUETAS izquierda ── -->
-        <div class="bm-label" id="lbl-cuello"  style="top:87px; left:0"
+        <div class="bm-label" id="lbl-cuello"  style="top:142px; left:0"
           onclick="selectBodyRegion('cuello')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><span class="bm-label-name">Cuello</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><div><span class="bm-label-region">Región 2</span><span class="bm-label-name">Cuello</span></div></div>
           <span class="bm-label-count">23 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-pecho"   style="top:164px; left:0"
+        <div class="bm-label" id="lbl-pecho"   style="top:223px; left:0"
           onclick="selectBodyRegion('pecho')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><span class="bm-label-name">Pecho</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><div><span class="bm-label-region">Región 3</span><span class="bm-label-name">Pecho</span></div></div>
           <span class="bm-label-count">44 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-abdomen" style="top:269px; left:0"
+        <div class="bm-label" id="lbl-abdomen" style="top:330px; left:0"
           onclick="selectBodyRegion('abdomen')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><span class="bm-label-name">Abdomen</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><div><span class="bm-label-region">Región 4</span><span class="bm-label-name">Abdomen</span></div></div>
           <span class="bm-label-count">53 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-piernas" style="top:434px; left:0"
+        <div class="bm-label" id="lbl-piernas" style="top:498px; left:0"
           onclick="selectBodyRegion('piernas')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><span class="bm-label-name">Piernas</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><div><span class="bm-label-region">Región 6</span><span class="bm-label-name">Piernas</span></div></div>
           <span class="bm-label-count">17 pares biomagnéticos</span>
         </div>
 
         <!-- ── ETIQUETAS derecha ── -->
-        <div class="bm-label posterior" id="lbl-espalda" style="top:127px; right:0"
+        <div class="bm-label posterior" id="lbl-espalda" style="top:184px; right:0"
           onclick="selectBodyRegion('espalda')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><span class="bm-label-name">Espalda</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><div><span class="bm-label-region">Región 8</span><span class="bm-label-name">Espalda</span></div></div>
           <span class="bm-label-count">23 pares · posterior</span>
         </div>
-        <div class="bm-label" id="lbl-brazos"  style="top:219px; right:0"
+        <div class="bm-label" id="lbl-brazos"  style="top:278px; right:0"
           onclick="selectBodyRegion('brazos')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><span class="bm-label-name">Brazos</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><div><span class="bm-label-region">Región 7</span><span class="bm-label-name">Brazos</span></div></div>
           <span class="bm-label-count">14 pares biomagnéticos</span>
         </div>
-        <div class="bm-label" id="lbl-pelvis"  style="top:347px; right:0"
+        <div class="bm-label" id="lbl-pelvis"  style="top:408px; right:0"
           onclick="selectBodyRegion('pelvis')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><span class="bm-label-name">Pelvis</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><div><span class="bm-label-region">Región 5</span><span class="bm-label-name">Pelvis</span></div></div>
           <span class="bm-label-count">37 pares · 3 zonas</span>
         </div>
         <!-- Extras: bottom-right, no body connector -->
         <div class="bm-label" id="lbl-extras"  style="bottom:22px; right:0"
           onclick="selectBodyRegion('extras')">
-          <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><span class="bm-label-name">Extras</span></div>
+          <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div>
           <span class="bm-label-count">388 pares · 4 zonas</span>
         </div>
 
@@ -2782,21 +2761,33 @@ function selectBodyRegion(key) {
   wizRender();
 }
 
+const REGION_IMAGES = {
+  cabeza:  '/therapy-static/regiones/cabeza2.svg',
+  cuello:  '/therapy-static/regiones/cuello2.svg',
+  pecho:   '/therapy-static/regiones/pecho2.svg',
+  abdomen: '/therapy-static/regiones/abdomen2.svg',
+  pelvis:  '/therapy-static/regiones/pelvis2.svg',
+  piernas: '/therapy-static/regiones/piernas2.svg',
+  brazos:  '/therapy-static/regiones/brazos2.svg',
+  espalda: '/therapy-static/regiones/espalda2.svg',
+};
+const BM_DEFAULT_IMG = '/therapy-static/regiones/body_map.svg';
+// Preload all region images
+(function() {
+  Object.values(REGION_IMAGES).forEach(src => { const img = new Image(); img.src = src; });
+})();
+
 function _bmShow(key) {
-  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
-    .forEach(img => { img.classList.add('visible'); });
   const bodyImg = document.getElementById('body-img');
-  if (bodyImg) bodyImg.classList.add('dimmed');
+  if (bodyImg && REGION_IMAGES[key]) bodyImg.src = REGION_IMAGES[key];
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.add('hovered');
   if (conn) conn.classList.add('hovered');
 }
 function _bmHide(key) {
-  document.querySelectorAll(`.bm-region-img[data-region="${key}"]`)
-    .forEach(img => { img.classList.remove('visible'); });
   const bodyImg = document.getElementById('body-img');
-  if (bodyImg) bodyImg.classList.remove('dimmed');
+  if (bodyImg) bodyImg.src = BM_DEFAULT_IMG;
   const lbl  = document.getElementById('lbl-'  + key);
   const conn = document.getElementById('conn-' + key);
   if (lbl)  lbl.classList.remove('hovered');
