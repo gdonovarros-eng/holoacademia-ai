@@ -1147,6 +1147,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .instr-body.open { display: block; }
 .instr-body ol { padding-left: 1.1rem; font-size: 0.84rem; line-height: 1.8; color: #3a3a3c; }
 .instr-body li { margin-bottom: 0.15rem; }
+.instr-body p { font-size: 0.84rem; line-height: 1.7; color: #3a3a3c; margin-bottom: 0.5rem; }
+.instr-body p:last-child { margin-bottom: 0; }
 .instr-body strong { color: #007aff; }
 /* body map region dots */
 .bm-dot {
@@ -1388,20 +1390,14 @@ table.tref-table td:nth-child(3) { color: #374151; }
     <!-- ── HOME: MAPA CORPORAL ──────────────────────────────── -->
     <div id="rastreo-home" class="visible">
 
-      <!-- Instrucciones colapsables -->
+      <!-- Introducción -->
       <div class="instr-card">
-        <div class="instr-hdr" onclick="toggleInstr()">
-          <span>¿Cómo realizar el Rastreo de Imanes?</span>
-          <span id="instr-chevron">▼</span>
+        <div class="instr-hdr">
+          <span>La lista más completa de pares biomagnéticos</span>
         </div>
-        <div class="instr-body" id="instr-body">
-          <ol>
-            <li>Identifica la <strong>Región Corporal</strong> con sintomatología o bajo estudio</li>
-            <li>Selecciónala en el mapa anatómico — resalta la zona al pasar el cursor</li>
-            <li>Navega: <strong>Mapa Anatómico → Zona de Rastreo → Par Biomagnético</strong></li>
-            <li>Confirma el par y agrégalo a la sesión activa</li>
-            <li>Al finalizar, genera el <strong>mapa de colocación de imanes</strong> para el paciente</li>
-          </ol>
+        <div class="instr-body open">
+          <p>Para comenzar tu rastreo, explora las regiones del mapa anatómico general.</p>
+          <p>Primera pregunta: <strong>¿Hay algún par que necesites de la Región 1?</strong> Si es así, haz clic en ella para explorar sus zonas de rastreo.</p>
         </div>
       </div>
 
