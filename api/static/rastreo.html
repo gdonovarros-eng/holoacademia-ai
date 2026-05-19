@@ -1500,7 +1500,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-abdomen" style="top:360px; left:0"
           onclick="selectBodyRegion('abdomen')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><div><span class="bm-label-region">Región 4</span><span class="bm-label-name">Abdomen</span></div></div>
-          <span class="bm-label-count">53 pares biomagnéticos</span>
+          <span class="bm-label-count">52 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-piernas" style="top:528px; left:0"
           onclick="selectBodyRegion('piernas')">
@@ -1528,7 +1528,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-extras"  style="bottom:22px; right:0"
           onclick="selectBodyRegion('extras')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div>
-          <span class="bm-label-count">388 pares · 4 zonas</span>
+          <span class="bm-label-count">46 pares · 3 zonas</span>
         </div>
 
       </div><!-- /#bm-scanner -->
@@ -2696,14 +2696,14 @@ function trefFilter(q) {
 
 // dbZona: saltar directo al paso Bloque cuando hay coincidencia exacta en la DB
 const BODY_REGION_MAP = {
-  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null        },  // 5 sub-zonas → mostrar paso Zona
+  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null,        excludeZonas: ['Cuello'] },  // zonas 1-5 (Cuello es tarjeta separada)
   cuello:  { label: 'Cuello',  dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
   pecho:   { label: 'Pecho',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
   abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
   pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
   espalda: { label: 'Espalda', dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
-  brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazos'    },  // → directo a Bloques
-  piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Piernas'   },  // → directo a Bloques
+  brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazo'     },  // → directo a Bloques
+  piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Pierna'    },  // → directo a Bloques
   extras:  { label: 'Pares Especiales', dbNombre: 'Extras', dbZona: null },  // → muestra sub-zonas
 };
 
@@ -2726,7 +2726,14 @@ function selectBodyRegion(key) {
   if (wizDB && wizDB.regiones) {
     const dbRegion = wizDB.regiones.find(r => r.nombre === mapping.dbNombre);
     if (dbRegion) {
-      wizRegion = dbRegion;
+      // Aplicar filtro de zonas si existe (ej: Cabeza excluye Cuello que tiene su propia tarjeta)
+      if (mapping.excludeZonas && mapping.excludeZonas.length) {
+        wizRegion = Object.assign({}, dbRegion, {
+          zonas: dbRegion.zonas.filter(z => !mapping.excludeZonas.includes(z.nombre))
+        });
+      } else {
+        wizRegion = dbRegion;
+      }
       wizZona   = null;
       wizBloque = null;
       wizPar    = null;
