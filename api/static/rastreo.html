@@ -1483,36 +1483,36 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-cabeza" style="top:35px; left:50%; transform:translateX(-50%)"
           onclick="selectBodyRegion('cabeza')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><div><span class="bm-label-region">Región 1</span><span class="bm-label-name">Cabeza</span></div></div>
-          <span class="bm-label-count">237 pares · 5 zonas</span>
+          <span class="bm-label-count">223 pares · 5 zonas</span>
         </div>
 
         <!-- ── ETIQUETAS izquierda ── -->
         <div class="bm-label" id="lbl-cuello"  style="top:172px; left:0"
           onclick="selectBodyRegion('cuello')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><div><span class="bm-label-region">Región 2</span><span class="bm-label-name">Cuello</span></div></div>
-          <span class="bm-label-count">80 pares biomagnéticos</span>
+          <span class="bm-label-count">92 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-pecho"   style="top:253px; left:0"
           onclick="selectBodyRegion('pecho')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><div><span class="bm-label-region">Región 3</span><span class="bm-label-name">Pecho</span></div></div>
-          <span class="bm-label-count">146 pares biomagnéticos</span>
+          <span class="bm-label-count">143 pares biomagnéticos</span>
         </div>
         <div class="bm-label" id="lbl-abdomen" style="top:360px; left:0"
           onclick="selectBodyRegion('abdomen')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><div><span class="bm-label-region">Región 4</span><span class="bm-label-name">Abdomen</span></div></div>
-          <span class="bm-label-count">226 pares biomagnéticos</span>
+          <span class="bm-label-count">256 pares · 2 zonas</span>
         </div>
         <div class="bm-label" id="lbl-piernas" style="top:528px; left:0"
           onclick="selectBodyRegion('piernas')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><div><span class="bm-label-region">Región 6</span><span class="bm-label-name">Piernas</span></div></div>
-          <span class="bm-label-count">49 pares biomagnéticos</span>
+          <span class="bm-label-count">48 pares biomagnéticos</span>
         </div>
 
         <!-- ── ETIQUETAS derecha ── -->
         <div class="bm-label posterior" id="lbl-espalda" style="top:214px; right:0"
           onclick="selectBodyRegion('espalda')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><div><span class="bm-label-region">Región 8</span><span class="bm-label-name">Espalda</span></div></div>
-          <span class="bm-label-count">29 pares · posterior</span>
+          <span class="bm-label-count">68 pares · 2 zonas</span>
         </div>
         <div class="bm-label" id="lbl-brazos"  style="top:308px; right:0"
           onclick="selectBodyRegion('brazos')">
@@ -1522,13 +1522,13 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-pelvis"  style="top:438px; right:0"
           onclick="selectBodyRegion('pelvis')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><div><span class="bm-label-region">Región 5</span><span class="bm-label-name">Pelvis</span></div></div>
-          <span class="bm-label-count">186 pares · 3 zonas</span>
+          <span class="bm-label-count">172 pares · 3 zonas</span>
         </div>
         <!-- Extras: bottom-right, no body connector -->
         <div class="bm-label" id="lbl-extras"  style="bottom:22px; right:0"
           onclick="selectBodyRegion('extras')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div>
-          <span class="bm-label-count">62 pares · 3 zonas</span>
+          <span class="bm-label-count">25 pares · 2 zonas</span>
         </div>
 
       </div><!-- /#bm-scanner -->
@@ -2695,16 +2695,21 @@ function trefFilter(q) {
 // ── MAPA CORPORAL INTERACTIVO ─────────────────────────────────────────────
 
 // dbZona: saltar directo al paso Bloque cuando hay coincidencia exacta en la DB
+// sources[]: combinar zonas de distintas regiones DB bajo una sola región UI
+// includeZonas[]: filtrar solo estas zonas de dbNombre
 const BODY_REGION_MAP = {
-  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null,        excludeZonas: ['Cuello'] },  // zonas 1-5 (Cuello es tarjeta separada)
+  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null,   excludeZonas: ['Cuello'] },  // zonas 1-5 (Cuello es tarjeta separada)
   cuello:  { label: 'Cuello',  dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
   pecho:   { label: 'Pecho',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
-  abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: 'Abdomen'   },  // → directo a Bloques
+  abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: null,   includeZonas: ['Abdomen', 'Hepatitis'] },  // 2 sub-zonas
   pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
-  espalda: { label: 'Espalda', dbNombre: 'Tronco',   dbZona: 'Espalda'   },  // → directo a Bloques
+  espalda: { label: 'Espalda', sources: [                                    // 2 fuentes DB distintas
+    { dbNombre: 'Tronco',  zonaNombre: 'Espalda'           },
+    { dbNombre: 'Extras',  zonaNombre: 'Columna Vertebral' },
+  ]},
   brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazo'     },  // → directo a Bloques
   piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Pierna'    },  // → directo a Bloques
-  extras:  { label: 'Pares Especiales', dbNombre: 'Extras', dbZona: null },  // → muestra sub-zonas
+  extras:  { label: 'Pares Especiales', dbNombre: 'Extras', dbZona: null, excludeZonas: ['Columna Vertebral'] },  // Variables + Ejes
 };
 
 function showHome() {
@@ -2724,19 +2729,49 @@ function selectBodyRegion(key) {
   if (!mapping) return;
 
   if (wizDB && wizDB.regiones) {
+
+    // ── Caso A: fuentes múltiples (zonas de distintas regiones DB) ───────────
+    if (mapping.sources) {
+      const combinedZonas = [];
+      for (const src of mapping.sources) {
+        const dbReg = wizDB.regiones.find(r => r.nombre === src.dbNombre);
+        if (dbReg) {
+          const zona = dbReg.zonas.find(z => z.nombre === src.zonaNombre);
+          if (zona) combinedZonas.push(zona);
+        }
+      }
+      if (combinedZonas.length) {
+        wizRegion  = { nombre: mapping.label, zonas: combinedZonas };
+        wizZona    = null; wizBloque = null; wizPar = null;
+        // Si solo hay una zona, saltar directo a bloques
+        if (combinedZonas.length === 1) {
+          wizZona = combinedZonas[0];
+          wizStep = 'bloque';
+        } else {
+          wizStep = 'zona';
+        }
+        hideHome();
+        wizRender();
+        return;
+      }
+    }
+
+    // ── Caso B: región única con filtros opcionales ───────────────────────────
     const dbRegion = wizDB.regiones.find(r => r.nombre === mapping.dbNombre);
     if (dbRegion) {
-      // Aplicar filtro de zonas si existe (ej: Cabeza excluye Cuello que tiene su propia tarjeta)
+      let zonas = dbRegion.zonas;
+
+      // Excluir zonas reservadas para otra tarjeta UI
       if (mapping.excludeZonas && mapping.excludeZonas.length) {
-        wizRegion = Object.assign({}, dbRegion, {
-          zonas: dbRegion.zonas.filter(z => !mapping.excludeZonas.includes(z.nombre))
-        });
-      } else {
-        wizRegion = dbRegion;
+        zonas = zonas.filter(z => !mapping.excludeZonas.includes(z.nombre));
       }
-      wizZona   = null;
-      wizBloque = null;
-      wizPar    = null;
+      // Incluir solo zonas específicas
+      if (mapping.includeZonas && mapping.includeZonas.length) {
+        zonas = zonas.filter(z => mapping.includeZonas.includes(z.nombre));
+      }
+
+      wizRegion = Object.assign({}, dbRegion, { zonas });
+      wizZona   = null; wizBloque = null; wizPar = null;
 
       // Si hay zona exacta en la DB, saltar directo al paso Bloque
       if (mapping.dbZona) {
