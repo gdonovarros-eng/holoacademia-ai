@@ -1,7 +1,7 @@
 {
-  "version": "2.0",
+  "version": "3.0",
   "fuente": "Tablas Holoacademia - Alejandro Lavín",
-  "total": 371,
+  "total": 675,
   "duplicados_eliminados": 1,
   "regiones": [
     {
@@ -54,6 +54,53 @@
                 "Parietal (RAS) - Riñón CONTLAT",
                 "Parietal IZQ - Colon Transverso",
                 "Cerebro RAS - Riñón RAS"
+              ]
+            },
+            {
+              "id": "1.1.5",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Hemangioma - Lengua",
+                "Amígdala Cerebral - Amígdala Cerebral",
+                "Apófisis Mastoides - Riñón Izquierdo",
+                "Apófisis Mastoides - Clavícula",
+                "Apófisis Mastoides Izquierda - Riñón Izquierdo",
+                "Arco Cigomático - Parietal",
+                "Articulación Temporooccipital - Temporooccipital",
+                "Bulbo Raquídeo - Pineal",
+                "Bulbo Raquídeo - Cerebelo",
+                "Bulbo Raquídeo - Cerebelo Conducta",
+                "Cabeza de Páncreas - Páncreas",
+                "Cabeza de Fémur - Cabeza de Fémur",
+                "Capitis - Capitis",
+                "Cardias - Temporal Derecho",
+                "Ceja - Sincicial Respiratorio",
+                "Ceja Derecha - Hígado",
+                "Cerebelo - Cola de Caballo",
+                "Cerebelo - Hipófisis",
+                "Cerebelo - Piso Orbital",
+                "Cerebelo - Riñón",
+                "Cerebelo - Supraespinoso",
+                "Cerebelo - Yeyuno",
+                "Cerebelo - Bulbo Raquídeo Newcastle",
+                "Cerebro - Riñón Mismo Lado",
+                "Cervical - Cisura Media",
+                "Cerebelo Izquierdo - Cerebelo Izquierdo",
+                "Cisura Lambda - Cisura Lambda",
+                "Cisura Silvio - Cisura Silvio",
+                "Cisura Temporooccipital - Cisura Temporooccipital",
+                "Clavícula Media Derecha - Submaxilar Izquierdo",
+                "Clavícula Media Izquierda - Submaxilar Derecho",
+                "Colon Transverso - Parietal",
+                "Corona - Hipófisis",
+                "Corona Hipófisis - Depresión",
+                "Cuerpo Calloso Derecho - Cerebelo",
+                "Dental - Riñón Mismo Lado",
+                "Dental Derecho - Riñón Derecho",
+                "Dental Izquierdo - Riñón Izquierdo",
+                "Epoglotis - Nariz",
+                "Esternocleidomastoideo Derecho - Mastoides",
+                "Esternocleidomastoideo Izquierdo - Hipófisis"
               ]
             }
           ]
@@ -163,6 +210,17 @@
                 "Parótida DER - Tiroides",
                 "Parótida DER - Corazón"
               ]
+            },
+            {
+              "id": "1.3.7",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Cisura Silvio - Percepción",
+                "Conducto Oído - Conducto Oído",
+                "Cresta Iliaca Frontal Derecha - Perone Lateral",
+                "Complejo Hipófisis Bulbo - Raquídeo Diabetes",
+                "Complejo Hipófisis Suprarrenales - Misheles"
+              ]
             }
           ]
         },
@@ -204,6 +262,19 @@
                 "Interciliar - Sacro",
                 "Seno Frontal - Seno Frontal",
                 "Ceja - Ceja"
+              ]
+            },
+            {
+              "id": "1.4.4",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Hipófisis - Suprarrenales",
+                "Tálamo - Hipófisis",
+                "Tálamo - Corteza",
+                "Tálamo - Amígdala",
+                "Hipotálamo - Hipotálamo",
+                "Hipotálamo - Tiroides",
+                "Hipotálamo - Sacro"
               ]
             }
           ]
@@ -317,6 +388,60 @@
                 "Cervical 7 - Dorsal 1",
                 "Supraespinoso - Supraespinoso"
               ]
+            },
+            {
+              "id": "1.6.5",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Angina - Herpes 2",
+                "Angina - Laringe Derecha",
+                "Garganta - Vejiga",
+                "Laringe - Tabique Nasal",
+                "Laringe - Duodeno",
+                "Laringe - Bordetella Pertussis",
+                "Tiroides - Timo",
+                "Tiroides - Tallo Cerebral",
+                "Tiroides - Bulbo Raquídeo",
+                "Tiroides - Duodeno",
+                "Tiroides - Cuádriceps Izquierdo",
+                "Tiroides - Escápula Derecha",
+                "Tiroides - Disfunción Tiroides",
+                "Tiroides Derecha - Paratiroides Izquierda",
+                "Paratiroides Derecha - Riñón Derecho",
+                "Paratiroides Derecho - Corazón",
+                "Paratiroides Derecho - Tiroides 1ra",
+                "Pómulo Derecho - Tiroides",
+                "Pómulo - Tiroides",
+                "Riñón Izquierdo - Tiroides",
+                "Esternocleidomastoideo Derecho - Clavícula",
+                "Esternocleidomastoideo Derecho - Piloro",
+                "Esternocleidomastoideo Derecho - Timo",
+                "Esternocleidomastoideo Izquierdo - Esternón",
+                "Esternocleidomastoideo Izquierdo - Riñón",
+                "Esternocleidomastoideo Izquierdo - Clavícula",
+                "Cuello de Fémur Derecho - Calcáneo Izquierdo",
+                "Bulbo Raquídeo - Tiroides",
+                "Cervical 1 - Esternocleidomastoideo Derecho",
+                "Conducto Eferente - Laringe",
+                "Conducto Eferente - Laringe Rotavirus",
+                "Cuello - Blastocystis Hominis",
+                "Cuello - Pneumocystis Carini",
+                "Duodeno - Laringe",
+                "Duodeno - Tiroides",
+                "Duodeno Tiroides - Obesidad Extrema",
+                "Esófago - Subclavia",
+                "Estómago - Subclavia Derecha",
+                "Hueco Garganta - Glúteo Izquierdo",
+                "Muñeca Derecha - Tiroides",
+                "Subclavia - Bacilo Difteroide",
+                "Testículo - Angina",
+                "Testículo Derecho - Angina",
+                "Testículo - Garganta",
+                "Vagina - Angina",
+                "Vagina - Garganta",
+                "Vagina - Garganta - Testículo",
+                "Vesícula - Paratiroides"
+              ]
             }
           ]
         }
@@ -426,6 +551,75 @@
                 "Pleura DER - Pleura DER",
                 "Pleura - Peritoneo",
                 "Pleura - Apéndice"
+              ]
+            },
+            {
+              "id": "2.1.10",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Corazón - Costilla Falsa Izquierda",
+                "Corazón - Estómago",
+                "Corazón - Hígado",
+                "Corazón - Riñón",
+                "Corazón - Suprapópleo",
+                "Corazón - Afín Izquierdo",
+                "Corazón - Esternón",
+                "Corazón - Corazón Negatividad",
+                "Corazón - Escápula Izquierda",
+                "Corazón - Ira Explosiva",
+                "Arteria Axilar - Arteria Axilar",
+                "Arteria Axilar Derecha - Arteria Axilar Izquierda",
+                "Axila - Timo",
+                "Bazo - Pulmón",
+                "Bazo - Timo",
+                "Botón Aórtico - Pericardio",
+                "Bronquio - Bronquio",
+                "Bronquio Derecho - Pericardio",
+                "Bulbo Raquídeo - Corazón",
+                "Bulbo Raquídeo - Corazón Crueldad",
+                "Cardias - Corazón",
+                "Cardias - Píloro",
+                "Cardias - Testículo",
+                "Cardias - Testículo Derecho",
+                "Cardias - Apéndice",
+                "Cardias - Coronarias",
+                "Cardias - Esófago Disfunción",
+                "Cardias - Suprarrenales Bacteria",
+                "Cardias - Testículo Derecho Izquierdo",
+                "Cardias - Vagina",
+                "Cardias - Vejiga Derecha",
+                "Cardias - Suprarrenales Streptococcus",
+                "Carótida - Aorta",
+                "Cava - Timo",
+                "Cava - Cava Ansiedad",
+                "Cava Derecha - Plexo Cervical Izquierdo",
+                "Cava Izquierda - Plexo Cervical Derecho",
+                "Clítoris - Timo",
+                "Colón Descendente - Pulmón Izquierdo",
+                "Condral Derecho - Bronquio Derecho",
+                "Coronaria - Pulmón",
+                "Coronaria - Tendón Pectoral",
+                "Coronarias - Pulmón",
+                "Coronarias - Pulmón Streptococcus",
+                "Coronarias Pulmón - Streptococcus Alfa",
+                "Costillas 1 al 12 - Riñón",
+                "Cuerpo de Páncreas - Corazón",
+                "ECM - Timo",
+                "Escápula Derecha - Pulmón",
+                "Esófago - Pulmón",
+                "Esternocleidomastoideo Derecho - Esternón",
+                "Esternón - Suprarrenales",
+                "Esternón - Timo",
+                "Estómago - Timo",
+                "Apéndice - Pleura",
+                "Apéndice - Pleura Complejo",
+                "Apéndice Pleura - Staphylococcus Aureus",
+                "Aorta - Aorta",
+                "1a Costilla - 1a Costilla",
+                "7a Costilla - 7a Costilla",
+                "1a Costilla - Vejiga",
+                "Corazón - Corazón Amargura",
+                "CORON ARIA - Tendón Pectoral"
               ]
             }
           ]
@@ -581,6 +775,81 @@
                 "Colon Descendente - Recto",
                 "Sigmoides - Recto"
               ]
+            },
+            {
+              "id": "2.3.11",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Bazo - Bazo",
+                "Bazo - Riñón",
+                "Bazo - Suprarrenales",
+                "Bazo - Vejiga",
+                "Bazo Bazo - Yersinia Pestis",
+                "Bazo Bazo - Leucemia",
+                "Bazo Hígado - Brucella Abortus",
+                "Bazo Punta del Páncreas - Verruga",
+                "Borde Costal - Hígado",
+                "Bulbo Raquídeo - Colon Descendente",
+                "Cápsula Glisson - Píloro",
+                "Cápsula Renal Derecha - Riñón Derecho",
+                "Cápsula Renal Derecha - Riñón Izquierdo",
+                "Cápsula Renal Derecha - Vejiga",
+                "Cápsula Renal Derecha - Vesícula",
+                "Ciego - Hígado",
+                "Ciego - Riñón",
+                "Ciego - Riñón Derecho",
+                "Ciego Riñón Derecho - Trichomonas",
+                "Cirrosis Hepática - Hígado Riñón",
+                "Clítoris - Ano",
+                "Cola de Páncreas - Colon Descendente",
+                "Cola de Páncreas - Hígado Hepatitis",
+                "Cola de Páncreas - Punta de Páncreas",
+                "Cola de Páncreas - Riñón Ipsilateral",
+                "Cola de Páncreas - Riñón Izquierdo",
+                "Cola de Páncreas - Hígado Complejo",
+                "Ano - Colon Ascendente",
+                "Ano - Próstata",
+                "Ano - Píloro",
+                "Ano - Testículo",
+                "Ano Ano - Papiloma",
+                "Ano Píloro - Levadura",
+                "Ano Testículo - Izquierdo Ecuador",
+                "Apéndice - Testículo Bilateral",
+                "Apéndice - Testículo Derecho",
+                "Apéndice - Uretra",
+                "Apéndice - Vagina",
+                "Apéndice - Testículo Hongo",
+                "Apófisis Mastoides - Duodeno",
+                "Apófisis Mastoides - Riñón Ipsilateral",
+                "Área Visual - Riñón",
+                "Articulación - Riñón Derecho",
+                "Ascendente - Hígado",
+                "Ascendente - Riñón Derecho",
+                "Atlas - Píloro",
+                "Atlas Píloro - Plasmodium Falciparum",
+                "Auriculoventricular - Riñón Izquierdo",
+                "Bazo - Bazo Horizontal Yersinia",
+                "Bazo - Bazo Vertical Leucemia",
+                "Cabeza de Páncreas - Estómago",
+                "Cabeza de Páncreas - Hígado Hepatitis",
+                "Cabeza de Páncreas - Pleura",
+                "Cabeza de Páncreas - Punta de Páncreas",
+                "Cabeza de Páncreas - Píloro",
+                "Cabeza de Páncreas - Suprarrenales",
+                "Cabeza de Páncreas - Vejiga Izquierda",
+                "Cabeza Páncreas - Suprarrenales Staphylococcus",
+                "Capsula Renal - Riñón Mismo Lado",
+                "Capsula Renal Derecha - Riñón Izquierdo Reservorio",
+                "Carina - Ano",
+                "Cervical 1 - Píloro",
+                "Cervical 1 - Píloro Plasmodium",
+                "Cervical 78 Dorsal - Pasciano",
+                "Cervical - Cápsula Renal",
+                "Cervicales - Riñón Derecho Izquierdo",
+                "Cervicales - Riñones",
+                "Cervicales - Suprarrenales",
+                "CICATRIZ - Riñón"
+              ]
             }
           ]
         },
@@ -687,6 +956,58 @@
                 "Trocánter Mayor - Riñón HOMOLAT",
                 "Trocánter Menor - Trocánter Menor"
               ]
+            },
+            {
+              "id": "3.1.4",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Atlas - Testículo",
+                "Atlas - Útero",
+                "Atlas Útero - Linda Celos",
+                "Articulación Sacroilíaca - Articulación Sacroilíaca",
+                "Articulación - Nervio Inguinal",
+                "Bulbo Raquídeo - Vejiga",
+                "Bulbo Raquídeo - Vejiga Dengue",
+                "Cáliz Renal - Uretero",
+                "Cáliz Renal - Uretero Herpes",
+                "Cáliz Renal - Uretero ADNpatógeno",
+                "Carótica Yugular - Streptococcus Pneumoniae",
+                "Cervical 1 - Coxis",
+                "Cervical 3 - Sacro Parasimpático",
+                "Cervical - Sacro Contralateral",
+                "Cervicales - Sacro",
+                "Cervicales - Utero",
+                "Ciático Derecho - Útero",
+                "Clítoris - Uretra",
+                "Clítoris - Pelvis Hueso Pélvico",
+                "Colón Transverso - Vejiga",
+                "Conducto Eferente - Sacro",
+                "Coxis - Ciática",
+                "Coxis - Ciático",
+                "Coxis - Coxis Vertical",
+                "Coxis - Plexo Cervical",
+                "Coxis Ciático - Calambres Piernas",
+                "Coxis Plexo - Cervical Ácido",
+                "Cérvico - Útero",
+                "Cérvico Cérvico - Útero Insomnio",
+                "Cérvico Útero - Infección Vaginal",
+                "Dorsal 6 - Sacro",
+                "e + Trompa - Trompa",
+                "e Glúteo - Glúteo",
+                "Epiplón - Epiplón Staphylococcus",
+                "Esfínter Uretral - Esfínter Uretral",
+                "Esfínter de la Uretra - Esfínter",
+                "Esfínter Uretra - Esfínter Uretra",
+                "Estómago - Próstata o Vagina",
+                "Esófago - Vejiga Izquierda",
+                "Gen - Vejiga",
+                "Glúteo - Vena Femoral",
+                "Glúteo Derecho - Hiato",
+                "Glúteo Izquierdo - Aquiles Izquierdo",
+                "Glúteo Izquierdo - Aquiles",
+                "Glúteo Izquierdo - Hiato",
+                "Glúteo Medio - Glúteo Medio"
+              ]
             }
           ]
         },
@@ -722,6 +1043,33 @@
                 "Glúteo - Femoral",
                 "Rama Isquiática - Rama Isquiática",
                 "Isquion - Isquion"
+              ]
+            },
+            {
+              "id": "3.2.4",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Glúteo Medio - Vena Femoral",
+                "Glúteo Menor Derecho - Sacro",
+                "Glúteo - Ganglios Mesentéricos",
+                "Glúteo - Glúteo Bacteria",
+                "Glúteo - Hiato",
+                "Glúteo Vena - Femoral Babesia",
+                "Hiato - Testículo Izquierdo",
+                "Hiato - Testículo",
+                "Hiato - Testículo Derecho",
+                "Hiato - Vagina",
+                "HIATO ESOFÁGICO - Vagina",
+                "Hiato Esofágico - Testículo Derecho",
+                "Hiporasis - Útero",
+                "HIPÓFISIS - Útero",
+                "Hoyuelo del Glúteo Derecho - Lumbar 2",
+                "Hoyuelo del Glúteo Izquierdo - Lumbar 2",
+                "Hoyuelo del Glúteo - Lumbar 2",
+                "Hueco - Glúteo Izquierdo",
+                "154 + Sacro - Sacro",
+                "5 + Cáliz - Uretra",
+                "Braquial Derecho - Braquial Izquierdo"
               ]
             }
           ]
@@ -760,6 +1108,15 @@
                 "Testículo - Testículo",
                 "Próstata - Próstata",
                 "Próstata - Recto"
+              ]
+            },
+            {
+              "id": "3.3.4",
+              "nombre": "Compilado Externo",
+              "pares": [
+                "Cervical - Útero",
+                "Estómago - Próstata",
+                "Glúteo Izquierdo - Tendón Aquiles Derecho"
               ]
             }
           ]
@@ -4718,5 +5075,15 @@
       "polo2": "Sacro 2",
       "tipo": "cruzado"
     }
-  ]
+  ],
+  "fuentes": [
+    "Tablas Holoacademia - Alejandro Lavín (fuente primaria)",
+    "Atlas Consolidado de Pares Biomagnéticos - Gerardo Donovarros (muestra parcial, 5 fuentes externas)"
+  ],
+  "consolidacion": {
+    "pares_holoacademia": 371,
+    "pares_externos_agregados": 303,
+    "duplicados_eliminados": 50,
+    "total_consolidado": 675
+  }
 }
