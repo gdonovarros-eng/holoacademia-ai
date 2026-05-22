@@ -175,14 +175,14 @@ def build_pdf(db, region_data):
     story.append(Spacer(1, 0.4*cm))
 
     # ── Duplicados entre regiones UI ──────────────────────────────────────────
-    pair_to_regions = defaultdict(list)
+    pair_to_regions = defaultdict(set)
     for ui_region, zonas_data in region_data.items():
         for (zona_nombre, bloques) in zonas_data:
             for (bloque_nombre, pares) in bloques:
                 for par in pares:
-                    pair_to_regions[par.strip()].append(ui_region)
+                    pair_to_regions[par.strip()].add(ui_region)
 
-    dupes = {p: rs for p, rs in pair_to_regions.items() if len(rs) > 1}
+    dupes = {p: sorted(rs) for p, rs in pair_to_regions.items() if len(rs) > 1}
     if dupes:
         story.append(Paragraph(
             f"<b>⚠ Duplicados entre regiones UI: {len(dupes)}</b>",
