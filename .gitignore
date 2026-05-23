@@ -14,3 +14,29 @@ data/ses_warmup_failures.csv
 data/ses_warmup_plan.json
 data/ses_warmup_runs.jsonl
 data/ses_warmup_state.json
+
+# ── Tooling local ────────────────────────────────────────────
+.claude/
+.idea/
+.vscode/
+
+# ── Temporales / dashboards generados ────────────────────────
+salud_*_tmp.html
+salud_*_latest_tmp.html
+salud_*_current_tmp.html
+*.tmp.html
+
+# ── Archivos > 100MB (bloqueados por GitHub) ─────────────────
+pares_biomagnéticos_v4.pdf
+data/embeddings/library_vectors.npy
+
+# ── Proyectos separados (deberían tener sus propios repos) ──
+Cotizador web AP/
+Reporte Emision Salud/
+Reporte Emision Salud Windows/
+Motor academico/
+Motor terapeutico/
+
+# ── Audio crudo (pesado, está en cloud) ──────────────────────
+data/audio_raw/
+data/processed_library/audio/

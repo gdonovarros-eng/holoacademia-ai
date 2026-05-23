@@ -521,6 +521,93 @@ async def tablas_images_manifest():
     return {"ok": True, "categories": data}
 
 
+@app.get("/api/pares-clasificacion", include_in_schema=False)
+async def pares_clasificacion():
+    """Sirve clasificación por par (tipo + patógeno + enfermedades + transmisión)."""
+    import json as _json
+    path = BASE_DIR / "data" / "pares_clasificacion.json"
+    if not path.exists():
+        return {"ok": False, "clasificaciones": []}
+    with open(path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
+@app.get("/api/pares-fichas-mapping", include_in_schema=False)
+async def pares_fichas_mapping():
+    """Sirve el mapeo de fichas Symbelia (ficha PNG ↔ par DB)."""
+    import json as _json
+    path = BASE_DIR / "data" / "fichas_mapping.json"
+    if not path.exists():
+        return {"ok": False, "mappings": []}
+    with open(path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
+@app.get("/api/point-to-maps", include_in_schema=False)
+async def point_to_maps():
+    """Sirve el índice de PUNTO → mapa anatómico (donde está cada órgano/punto)."""
+    import json as _json
+    path = BASE_DIR / "data" / "point_to_maps.json"
+    if not path.exists():
+        return {"ok": False, "puntos": {}}
+    with open(path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
+@app.get("/api/pares-lista-completa", include_in_schema=False)
+async def pares_lista_completa():
+    """Sirve la lista maestra ordenada por bloques (con matriz de análisis por par)."""
+    import json as _json
+    path = BASE_DIR / "data" / "lista_pares_completa.json"
+    if not path.exists():
+        return {"ok": False, "entries": []}
+    with open(path, encoding="utf-8") as f:
+        data = _json.load(f)
+    return data
+
+
+@app.get("/api/fichas/{ficha_filename}", include_in_schema=False)
+async def get_ficha(ficha_filename: str):
+    """Sirve una ficha individual aprobada (PNG)."""
+    from fastapi import HTTPException
+    safe = ficha_filename.replace("..", "").replace("/", "").replace("\\", "")
+    if not safe.endswith(".png"):
+        raise HTTPException(404, "Not found")
+    path = BASE_DIR / "data" / "fichas_pares" / safe
+    if not path.exists():
+        raise HTTPException(404, "Ficha no encontrada")
+    return FileResponse(path, headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/api/mapas-anatomicos/{zone_filename}", include_in_schema=False)
+async def get_mapa_anatomico(zone_filename: str):
+    """Sirve un mapa anatómico por zona (PNG)."""
+    from fastapi import HTTPException
+    safe = zone_filename.replace("..", "").replace("/", "").replace("\\", "")
+    if not safe.endswith(".png"):
+        raise HTTPException(404, "Not found")
+    path = BASE_DIR / "data" / "mapas_anatomicos" / safe
+    if not path.exists():
+        raise HTTPException(404, "Mapa no encontrado")
+    return FileResponse(path, headers={"Cache-Control": "public, max-age=86400"})
+
+
+@app.get("/api/pares-thumbnails/{thumb_filename}", include_in_schema=False)
+async def get_thumbnail(thumb_filename: str):
+    """Sirve un thumbnail por par (PNG)."""
+    from fastapi import HTTPException
+    safe = thumb_filename.replace("..", "").replace("/", "").replace("\\", "")
+    if not safe.endswith(".png"):
+        raise HTTPException(404, "Not found")
+    path = BASE_DIR / "data" / "thumbnails" / safe
+    if not path.exists():
+        raise HTTPException(404, "Thumbnail no encontrado")
+    return FileResponse(path, headers={"Cache-Control": "public, max-age=86400"})
+
+
 @app.get("/rastreo", include_in_schema=False)
 async def rastreo_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "rastreo.html", headers=_no_cache_headers())
