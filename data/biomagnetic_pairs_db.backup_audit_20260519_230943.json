@@ -1,0 +1,5551 @@
+{
+  "version": "v4.1",
+  "fuente": "Tablas Holoacademia - Alejandro Lavín",
+  "total": 1142,
+  "duplicados_eliminados": 1,
+  "regiones": [
+    {
+      "id": 1,
+      "nombre": "Cabeza",
+      "zonas": [
+        {
+          "id": "1.1",
+          "nombre": "Coronilla",
+          "bloques": [
+            {
+              "id": "1.1.1",
+              "nombre": "Pineal",
+              "pares": [
+                "Pineal - Pineal",
+                "Pineal - Bulbo",
+                "Pineal - Cerebelo",
+                "Pineal - Próstata/Útero",
+                "Pineal - Páncreas",
+                "Pineal - Hipotálamo",
+                "Pineal - Tiroides",
+                "Bulbo Raquídeo - Pineal",
+                "Pineal - Bulbo Raquídeo",
+                "Pineal - Útero",
+                "Pineal - Hipófisis",
+                "Pineal - Próstata",
+                "Pineal - Duodeno",
+                "Pineal - Puente de Varolo",
+                "Post Pineal - Post Pineal",
+                "Post Pineal - Bulbo Raquídeo",
+                "Pineal - Empeine",
+                "Pineal - Mama",
+                "Pineal - Planta del Pie",
+                "Pineal - Hígado",
+                "Prepineal - Prepineal",
+                "Prepolo - Bulbo Raquídeo",
+                "Prepolo - Antepolo"
+              ]
+            },
+            {
+              "id": "1.1.2",
+              "nombre": "Corona",
+              "pares": [
+                "Prepineal - Vejiga",
+                "Postpineal - Postpineal",
+                "Núcleos Basales - Hipófisis",
+                "Núcleos Basales - Bulbo",
+                "Corona - Hipófisis",
+                "Corona Hipófisis - Depresión"
+              ]
+            },
+            {
+              "id": "1.1.3",
+              "nombre": "Callosidad",
+              "pares": [
+                "Cuerpo Calloso - Cuerpo Calloso",
+                "Borde Calloso DER - Borde Calloso DER",
+                "Borde Calloso IZQ - Borde Calloso IZQ",
+                "Cisura Media - Cisura Media",
+                "Capitis - Capitis",
+                "Cisura Lambda - Cisura Lambda",
+                "Cisura Silvio - Cisura Silvio",
+                "Cuerpo Calloso Derecho - Cerebelo",
+                "Borde Calloso DER - Borde Calloso IZQ"
+              ]
+            },
+            {
+              "id": "1.1.4",
+              "nombre": "Parietal",
+              "pares": [
+                "Parietal - Parietal",
+                "Parietal - Bulbo",
+                "Parietal (RAS) - Riñón CONTLAT",
+                "Parietal IZQ - Colon Transverso",
+                "Cerebro RAS - Riñón RAS",
+                "Parietal - Riñón Contralateral",
+                "Parietal Derecho Posterior - Parietal Derecho Posterior",
+                "Parietales - Colon Transverso",
+                "Tallo Parietal - Cerebelo",
+                "Parietal (RAS) - Riñón"
+              ]
+            },
+            {
+              "id": "1.1.7",
+              "nombre": "Cerebro",
+              "pares": [
+                "Amígdala Cerebral - Amígdala Cerebral",
+                "Cerebro - Riñón Mismo Lado",
+                "Tálamo - Hipófisis",
+                "Tálamo - Corteza",
+                "Tálamo - Amígdala",
+                "Hipocampo - Hipocampo"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.2",
+          "nombre": "Posterior",
+          "bloques": [
+            {
+              "id": "1.2.1",
+              "nombre": "Bulbo",
+              "pares": [
+                "Bulbo - Bulbo",
+                "Bulbo - Cerebelo",
+                "Bulbo - Tiroides",
+                "Bulbo - Corazón",
+                "Bulbo - Vejiga",
+                "Cuarto Ventrículo - Bulbo",
+                "Tallo Cerebral - Tallo Cerebral"
+              ]
+            },
+            {
+              "id": "1.2.2",
+              "nombre": "Occipital",
+              "pares": [
+                "Occipital - Occipital",
+                "Occipital - Parótida IZQ",
+                "Occipital - Timo",
+                "Occipital - Testículo RAS/Vagina",
+                "Occipital - Riñón",
+                "Occipital - Testículo",
+                "Base de Cráneo - Base de Cráneo",
+                "Cisura Temporooccipital - Cisura Temporooccipital",
+                "Occipital - Testículo IZQ",
+                "Cerebelo RAS - Riñón RAS"
+              ]
+            },
+            {
+              "id": "1.2.3",
+              "nombre": "Cerebelo",
+              "pares": [
+                "Cerebelo - Cerebelo",
+                "Cerebelo - Bulbo",
+                "Cerebelo - Sacro",
+                "Cisura de Silvio - Cisura de Silvio",
+                "Cerebelo - Arriba del Bulbo Raquídeo",
+                "Articulación Temporooccipital - Temporooccipital",
+                "Bulbo Raquídeo - Cerebelo",
+                "Bulbo Raquídeo - Cerebelo Conducta",
+                "Cerebelo - Cola de Caballo",
+                "Cerebelo - Hipófisis",
+                "Cerebelo - Piso Orbital",
+                "Cerebelo - Riñón",
+                "Cerebelo - Supraespinoso",
+                "Cerebelo - Yeyuno",
+                "Cerebelo - Bulbo Raquídeo Newcastle",
+                "Cerebelo Izquierdo - Cerebelo Izquierdo",
+                "Cerebelo - Tiroides",
+                "Cerebelo - Corazón"
+              ]
+            },
+            {
+              "id": "1.2.6",
+              "nombre": "Mastoides",
+              "pares": [
+                "Apófisis Mastoides - Bulbo",
+                "Apófisis Mastoides - Pericardio",
+                "Apófisis Mastoides - Apófisis Mastoides",
+                "Apófisis Mastoides Izquierdas - Apófisis Mastoides Derecho",
+                "Apófisis Mastoides - Riñón Izquierdo",
+                "Apófisis Mastoides - Clavícula",
+                "Apófisis Mastoides Izquierda - Riñón Izquierdo"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.3",
+          "nombre": "Lateral",
+          "bloques": [
+            {
+              "id": "1.3.1",
+              "nombre": "Temporal",
+              "pares": [
+                "Frontoparietal - Temporal IZQ",
+                "Amígdala Cerebral - Suprarrenal",
+                "Temporal - Temporal",
+                "Temporal DER - Temporal DER",
+                "Temporal IZQ - Temporal IZQ",
+                "Temporal IZQ - Hipófisis",
+                "Amígdala Cerebral - Timo",
+                "Cisura Silvio - Percepción",
+                "Temporal - Oído",
+                "Temporal - Bulbo Raquídeo",
+                "Temporal - Yugular",
+                "Temporal Derecho - Temporal Derecho",
+                "Temporal Izquierdo - Temporal Izquierdo",
+                "Temporooccipital - Temporooccipital",
+                "Fronto-parietal IZQ",
+                "Temporal - Temporal DER",
+                "Temporal - Temporal IZQ",
+                "Temporal RAS - Hipófisis",
+                "Temporal RAS - Riñón"
+              ]
+            },
+            {
+              "id": "1.3.2",
+              "nombre": "Aurícula",
+              "pares": [
+                "Oreja - Oreja",
+                "Oído - Oído",
+                "Oído - Riñón CONTLAT",
+                "Oído DER - Ovario/Testículo DER",
+                "Conducto Oído - Conducto Oído",
+                "Presín - Canal Auditivo",
+                "Oído - Riñón Contralateral",
+                "Yunque - Riñón Ipsilateral",
+                "Oído DER - Riñón CONTLAT",
+                "Oído DER - Testículo DER/Ovario DER"
+              ]
+            },
+            {
+              "id": "1.3.3",
+              "nombre": "Posterior",
+              "pares": [
+                "Temporoccipital - Temporoccipital",
+                "Retromastoides - Retromastoides",
+                "Mastoides - Mastoides",
+                "Mastoides - Corazón",
+                "Mastoides - Hipófisis",
+                "Temporo-occipital - Temporo-occipital",
+                "Retro-mastoides - Retro-mastoides",
+                "Mastoides RAS - Cervical"
+              ]
+            },
+            {
+              "id": "1.3.4",
+              "nombre": "Sien",
+              "pares": [
+                "Quiasma - Quiasma",
+                "Sien - Sien",
+                "Sien DER - Corazón",
+                "Polígono de Willis - Polígono de Willis",
+                "Sien - Suprarrenal",
+                "Sien - Riñón",
+                "Sien Derecha - Sien Derecha",
+                "Sien - Bulbo Raquídeo",
+                "Ángulo Derecho - Ángulo Derecho"
+              ]
+            },
+            {
+              "id": "1.3.5",
+              "nombre": "Mandibular",
+              "pares": [
+                "Preauricular - Preauricular",
+                "Preauricular - Vejiga",
+                "Rama Mandibular - Rama Mandibular",
+                "Rama Mandibular - Cola de Páncreas",
+                "Ángulo Gonión - Ángulo Gonión",
+                "Rama Mandibular Lateral - Rama Mandibular Lateral",
+                "Arco Cigomático - Parietal",
+                "Arco Cigomático - Arco Cigomático",
+                "Ángulo Gonión - Ángulo",
+                "Cola de Mandibular - Páncreas"
+              ]
+            },
+            {
+              "id": "1.3.6",
+              "nombre": "Parótida",
+              "pares": [
+                "Parótida - Parótida",
+                "Parótida IZQ - Pineal",
+                "Parótida DER - Ojo IZQ",
+                "Parótida DER - Tiroides",
+                "Parótida DER - Corazón",
+                "Parótida - Timo",
+                "Parótida Izquierda - Pineal",
+                "Parótida IZQ - Pineal IZQ"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.4",
+          "nombre": "Frente",
+          "bloques": [
+            {
+              "id": "1.4.1",
+              "nombre": "Frente Alta",
+              "pares": [
+                "Tálamo - Tálamo",
+                "Polo - Polo",
+                "Antecuerno - Antecuerno",
+                "Frontal DER - Frontal DER",
+                "Frontal IZQ - Frontal IZQ"
+              ]
+            },
+            {
+              "id": "1.4.2",
+              "nombre": "Hipófisis",
+              "pares": [
+                "Hipófisis - Hipófisis",
+                "Hipófisis - Supraciliar",
+                "Hipófisis - Bulbo",
+                "Hipófisis - Mastoides IZQ",
+                "Hipófisis - Tiroides",
+                "Hipófisis - Vejiga",
+                "Hipófisis - Testículo/Ovario",
+                "Hipófisis - Suprarrenales",
+                "Complejo Hipófisis Bulbo - Raquídeo Diabetes",
+                "Complejo Hipófisis Suprarrenales - Misheles",
+                "Adenohipofisis - Riñón Izquierdo",
+                "Suprasensorial - Hipófisis",
+                "Hipófisis - Suprarrenal",
+                "Hipófisis - Testículo / Ovario IZQ",
+                "Hipófisis - Ovario",
+                "Hipófisis - Frontal DER"
+              ]
+            },
+            {
+              "id": "1.4.3",
+              "nombre": "Frente Baja",
+              "pares": [
+                "Supraciliar - Bulbo",
+                "Interciliar - Bulbo",
+                "Interciliar - Riñón RAS",
+                "Interciliar - Sacro",
+                "Seno Frontal - Seno Frontal",
+                "Ceja - Ceja",
+                "Supraciliar - Bulbo Raquídeo",
+                "Interciliar - Bulbo Raquídeo",
+                "Ceja - Sincicial Respiratorio",
+                "Ceja Derecha - Hígado",
+                "Supraciliar - Supraciliar (Polo)",
+                "Intercilliar - Bulbo",
+                "Intercilliar - Riñón RAS",
+                "Intercilliar - Sacro"
+              ]
+            },
+            {
+              "id": "1.4.6",
+              "nombre": "Hipotálamo",
+              "pares": [
+                "Hipotálamo - Hipotálamo",
+                "Hipotálamo - Tiroides",
+                "Hipotálamo - Sacro"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.5",
+          "nombre": "Rostro",
+          "bloques": [
+            {
+              "id": "1.5.1",
+              "nombre": "Ojo",
+              "pares": [
+                "Párpado - Párpado",
+                "Ojo - Ojo",
+                "Ojo - Cerebelo",
+                "Ojo - Escápula RAS",
+                "Unguis - Unguis",
+                "Ojo Derecho - Riñón Derecho",
+                "Ojo Izquierdo - Riñón Izquierdo",
+                "Canto de Ojo - Canto de Ojo"
+              ]
+            },
+            {
+              "id": "1.5.2",
+              "nombre": "Anillo Ocular",
+              "pares": [
+                "Piso Orbital - Piso Orbital",
+                "Piso Orbital - Cerebelo",
+                "Canto - Canto",
+                "Craneal - Craneal",
+                "Lacrimal - Lacrimal",
+                "Canto RAS - Riñón RAS",
+                "Seno frontal - Seno frontal IZQ",
+                "Maxilar IZQ - Cola de Páncreas"
+              ]
+            },
+            {
+              "id": "1.5.3",
+              "nombre": "Pómulo",
+              "pares": [
+                "Pómulo - Pómulo",
+                "Pómulo - Riñón",
+                "Pómulo DER - Tiroides",
+                "Pómulo IZQ - Riñón DER",
+                "Malar - Malar",
+                "Malar Derecho - Malar Izquierdo"
+              ]
+            },
+            {
+              "id": "1.5.4",
+              "nombre": "Nariz",
+              "pares": [
+                "Nariz - Nariz",
+                "Seno Nasal - Seno Nasal",
+                "Maxilar Superior DER - Cola de Páncreas",
+                "Lengua - Lengua",
+                "Lengua IZQ - Corazón",
+                "Lengua IZQ - Hígado",
+                "Adenoides - Adenoides",
+                "Maxilar - Maxilar",
+                "Seno Esfenoidal - Seno Esfenoidal",
+                "Seno Etmoidal - Seno Etmoidal",
+                "Seno Paranasal - Seno Paranasal",
+                "Retronasal - Retronasal",
+                "Maxilar Superior - Cola de Páncreas",
+                "Maxilar Sup - Cola de Páncreas"
+              ]
+            },
+            {
+              "id": "1.5.5",
+              "nombre": "Boca",
+              "pares": [
+                "Comisura - Comisura",
+                "Dental RAS - Riñón RAS",
+                "Mandíbula - Mandíbula",
+                "Mentón - Mentón",
+                "Alveolo - Alveolo",
+                "Dental - Riñón",
+                "Lengua - Mandíbula",
+                "Lengua - Timo",
+                "Lengua Izquierda - Corazón",
+                "Lengua Izquierda - Hígado",
+                "Labio - Labio",
+                "Labio Superior - Labio Inferior",
+                "Glándula Palatina - Riñón Lateral",
+                "Hemangioma - Lengua",
+                "Dental - Riñón Mismo Lado",
+                "Dental Derecho - Riñón Derecho",
+                "Dental Izquierdo - Riñón Izquierdo"
+              ]
+            },
+            {
+              "id": "1.5.8",
+              "nombre": "Amígdalas",
+              "pares": [
+                "Amígdala - Amígdala",
+                "Amígdala Derecha - Amígdala Izquierda",
+                "Amígdala - Hígado"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "1.6",
+          "nombre": "Cuello",
+          "bloques": [
+            {
+              "id": "1.6.1",
+              "nombre": "Garganta Central",
+              "pares": [
+                "Laringe - Laringe",
+                "Angina - Angina",
+                "Carótida - Carótida",
+                "Esternocleidomastoideo - Esternocleidomastoideo",
+                "Esternocleidomastoideo IZQ - Hipófisis",
+                "Esternocleidomastoideo IZQ - Riñón IZQ",
+                "Angina - Herpes 2",
+                "Angina - Laringe Derecha",
+                "Laringe - Tabique Nasal",
+                "Laringe - Duodeno",
+                "Laringe - Bordetella Pertussis",
+                "Conducto Eferente - Laringe",
+                "Conducto Eferente - Laringe Rotavirus",
+                "Duodeno - Laringe",
+                "Testículo - Angina",
+                "Testículo Derecho - Angina",
+                "Testículo - Garganta",
+                "Vagina - Angina",
+                "Vagina - Garganta",
+                "Vagina - Garganta - Testículo",
+                "Epoglotis - Nariz",
+                "Angina - Cerebelo",
+                "Hioides - Hioides",
+                "ECM - ECM",
+                "ECM - Riñón IZQ"
+              ]
+            },
+            {
+              "id": "1.6.2",
+              "nombre": "Garganta Baja",
+              "pares": [
+                "Tiroides - Tiroides",
+                "Tiroides - Bulbo",
+                "Hueco de Garganta - Glúteo IZQ",
+                "Paratiroides - Paratiroides",
+                "Cuello - Cuello",
+                "Garganta - Vejiga",
+                "Tiroides - Timo",
+                "Tiroides - Tallo Cerebral",
+                "Tiroides - Bulbo Raquídeo",
+                "Tiroides - Duodeno",
+                "Tiroides - Cuádriceps Izquierdo",
+                "Tiroides - Escápula Derecha",
+                "Tiroides - Disfunción Tiroides",
+                "Tiroides Derecha - Paratiroides Izquierda",
+                "Paratiroides Derecha - Riñón Derecho",
+                "Paratiroides Derecho - Corazón",
+                "Paratiroides Derecho - Tiroides 1ra",
+                "Pómulo Derecho - Tiroides",
+                "Pómulo - Tiroides",
+                "Riñón Izquierdo - Tiroides",
+                "Bulbo Raquídeo - Tiroides",
+                "Cuello - Blastocystis Hominis",
+                "Cuello - Pneumocystis Carini",
+                "Duodeno - Tiroides",
+                "Duodeno Tiroides - Obesidad Extrema",
+                "Muñeca Derecha - Tiroides",
+                "Vesícula - Paratiroides",
+                "Tiroides - Páncreas",
+                "Tiroides - Hígado",
+                "Tiroides Derecha - Tiroides Izquierda"
+              ]
+            },
+            {
+              "id": "1.6.3",
+              "nombre": "Garganta Lateral",
+              "pares": [
+                "Nervio Vago - Nervio Vago",
+                "Nervio Vago - Cardias",
+                "Nervio Vago - Riñón RAS",
+                "Nudo - Nudo",
+                "Plexo Cervical - Plexo Cervical",
+                "Plexo Cervical - Deltoides",
+                "Esternocleidomastoideo Derecho - Clavícula",
+                "Esternocleidomastoideo Derecho - Piloro",
+                "Esternocleidomastoideo Derecho - Timo",
+                "Esternocleidomastoideo Izquierdo - Esternón",
+                "Esternocleidomastoideo Izquierdo - Riñón",
+                "Esternocleidomastoideo Izquierdo - Clavícula",
+                "Esófago - Subclavia",
+                "Estómago - Subclavia Derecha",
+                "Subclavia - Bacilo Difteroide",
+                "Esternocleidomastoideo Derecho - Mastoides",
+                "Esternocleidomastoideo Izquierdo - Hipófisis",
+                "Carótica Yugular - Streptococcus Pneumoniae",
+                "ECM Derecho - ECM Izquierdo",
+                "Yugular - Temporal",
+                "Yugular - Carótida",
+                "Yugular - Yugular",
+                "Plexo Cervical - Bulbo Raquídeo",
+                "Plexo Cervical - Entre Clavícula y Cuello",
+                "Subclavia - Esófago"
+              ]
+            },
+            {
+              "id": "1.6.4",
+              "nombre": "Nuca",
+              "pares": [
+                "Atlas - Atlas",
+                "Atlas IZQ - Útero",
+                "Cervical 3-4 - Suprarrenal",
+                "Cervical 3 - Sacro 2",
+                "Cervical 7 - Dorsal 1",
+                "Supraespinoso - Supraespinoso",
+                "Cervical 1 - Esternocleidomastoideo Derecho",
+                "Hueco Garganta - Glúteo Izquierdo",
+                "Cervical - Cisura Media",
+                "Clavícula Media Derecha - Submaxilar Izquierdo",
+                "Clavícula Media Izquierda - Submaxilar Derecho",
+                "Plexo Cervical - Sacro",
+                "Plexo Cervical - Útero",
+                "Primera Cervical - Útero",
+                "Cervical 5 - Sacro"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Tronco",
+      "zonas": [
+        {
+          "id": "2.1",
+          "nombre": "Tórax",
+          "bloques": [
+            {
+              "id": "2.1.1",
+              "nombre": "Collar",
+              "pares": [
+                "Mango del Esternón - Mango del Esternón",
+                "Costilla 1 - Costilla 1",
+                "Subclavia - Subclavia",
+                "Epiclavio - Epiclavio",
+                "Mediastino - Mediastino",
+                "Mediastino - Cerebelo",
+                "Costillas 1 al 12 - Riñón",
+                "Esternocleidomastoideo Derecho - Esternón",
+                "Esternón - Suprarrenales",
+                "Esternón - Timo",
+                "1a Costilla - 1a Costilla",
+                "7a Costilla - 7a Costilla",
+                "1a Costilla - Vejiga",
+                "Costilla del Mismo Lado - Punta Baja del Corazón",
+                "Costillas 1 a 12 - Riñón",
+                "1ª Costilla - 1ª Costilla",
+                "7ª Costilla - 7ª Costilla",
+                "Mediastino Superior - Mediastino Inferior",
+                "Mediastino Superior - Hipotálamo",
+                "Mediastino - Pericardio",
+                "Mediastino - Suprarrenales",
+                "Mango - Mango",
+                "Mango del - Mango del"
+              ]
+            },
+            {
+              "id": "2.1.2",
+              "nombre": "Timo",
+              "pares": [
+                "Timo - Timo",
+                "Timo - Hipófisis",
+                "Timo - Parietal",
+                "Timo - Testículo RAS/Ovario RAS",
+                "Timo - Recto",
+                "Axila - Timo",
+                "Bazo - Timo",
+                "Cava - Timo",
+                "Clítoris - Timo",
+                "ECM - Timo",
+                "Estómago - Timo",
+                "Timo - Axila",
+                "Timo - Suprarrenales",
+                "Timo - Apéndice",
+                "Timo - Cardias",
+                "Timo - Bazo"
+              ]
+            },
+            {
+              "id": "2.1.3",
+              "nombre": "Anahata",
+              "pares": [
+                "Esternón - Suprarrenal",
+                "Esternón - Bazo",
+                "Tráquea - Tráquea",
+                "Tráquea - Corazón",
+                "Esófago - Esófago",
+                "Esófago - Hiato Esofágico",
+                "Esófago - Vejiga IZQ",
+                "Bronquio - Bronquio",
+                "Bronquio Derecho - Pericardio",
+                "Condral Derecho - Bronquio Derecho",
+                "Esófago - Pulmón",
+                "Esófago - Colon Descendente",
+                "Esternón - Esternón"
+              ]
+            },
+            {
+              "id": "2.1.4",
+              "nombre": "Pecho Bajo",
+              "pares": [
+                "Carina - Carina",
+                "Hiato Esofágico - Lengua",
+                "Hiato Esofágico - Esófago",
+                "Hiato Esofágico - Testículo DER/Ovario DER",
+                "Cardias - Suprarrenal",
+                "Cardias - Corazón",
+                "Cardias - Píloro",
+                "Cardias - Testículo",
+                "Cardias - Testículo Derecho",
+                "Cardias - Apéndice",
+                "Cardias - Coronarias",
+                "Cardias - Esófago Disfunción",
+                "Cardias - Suprarrenales Bacteria",
+                "Cardias - Testículo Derecho Izquierdo",
+                "Cardias - Vagina",
+                "Cardias - Vejiga Derecha",
+                "Cardias - Suprarrenales Streptococcus",
+                "Peritoneo - Pleura Derecha",
+                "Cardias - Carina"
+              ]
+            },
+            {
+              "id": "2.1.5",
+              "nombre": "Cavidad",
+              "pares": [
+                "Cardias - Esófago",
+                "Cardias - Testículo/Ovario DER",
+                "Condral - Condral"
+              ]
+            },
+            {
+              "id": "2.1.6",
+              "nombre": "Diafragma",
+              "pares": [
+                "Diafragma - Diafragma",
+                "Diafragma - Riñón IZQ",
+                "Costilla 7 - Costilla 7",
+                "Peritoneo - Peritoneo"
+              ]
+            },
+            {
+              "id": "2.1.7",
+              "nombre": "Corazón",
+              "pares": [
+                "Coronarias - Pulmón IZQ",
+                "Seno Auriculoventricular - Riñón IZQ",
+                "Corazón - Corazón",
+                "Corazón - Páncreas",
+                "Corazón - Vejiga",
+                "Pericardio - Pericardio",
+                "Corazón - Costilla Falsa Izquierda",
+                "Corazón - Estómago",
+                "Corazón - Hígado",
+                "Corazón - Riñón",
+                "Corazón - Suprapópleo",
+                "Corazón - Afín Izquierdo",
+                "Corazón - Esternón",
+                "Corazón - Corazón Negatividad",
+                "Corazón - Escápula Izquierda",
+                "Corazón - Ira Explosiva",
+                "Botón Aórtico - Pericardio",
+                "Bulbo Raquídeo - Corazón",
+                "Bulbo Raquídeo - Corazón Crueldad",
+                "Carótida - Aorta",
+                "Cava - Cava Ansiedad",
+                "Cava Derecha - Plexo Cervical Izquierdo",
+                "Cava Izquierda - Plexo Cervical Derecho",
+                "Coronaria - Pulmón",
+                "Coronaria - Tendón Pectoral",
+                "Coronarias - Pulmón",
+                "Coronarias - Pulmón Streptococcus",
+                "Coronarias Pulmón - Streptococcus Alfa",
+                "Cuerpo de Páncreas - Corazón",
+                "Aorta - Aorta",
+                "Corazón - Corazón Amargura",
+                "Coronaria - Tendón Pectoral",
+                "Corazón - Paratiroides Derecho",
+                "Pericardio - Mastoides",
+                "Pericardio - Temporal Derecho",
+                "Pulmón Derecho - Corazón",
+                "Pulmón Izquierdo - Corazón",
+                "Aurículo Ventricular - Riñón Izquierdo",
+                "Seno Aurículo Ventricular - Riñón Izquierdo",
+                "Seno Auriculo - Riñón IZQ"
+              ]
+            },
+            {
+              "id": "2.1.8",
+              "nombre": "Pecho Lateral",
+              "pares": [
+                "Pectoral Interior - Pectoral Interior",
+                "Pectoral - Pectoral",
+                "Pezón DER - Gemelos IZQ",
+                "Axila - Axila",
+                "Arteria Axilar - Arteria Axilar",
+                "Arteria Axilar Derecha - Arteria Axilar Izquierda",
+                "Escápula Derecha - Pulmón",
+                "Escápula - Pulmón",
+                "Pecho - Pecho",
+                "Pectoral Mayor - Pectoral Mayor",
+                "Pectoral Mayor - Pulmón Contralateral",
+                "Plexo Axilar - Supraespinoso",
+                "Infraaxilar - Infraaxilar",
+                "Pectoral Izquierdo - Tendón Cuádriceps Izquierdo",
+                "Pectoral DER - Gemelos IZQ"
+              ]
+            },
+            {
+              "id": "2.1.9",
+              "nombre": "Pleura",
+              "pares": [
+                "Pleura - Pleura",
+                "Pleura DER - Pleura DER",
+                "Pleura - Peritoneo",
+                "Pleura - Apéndice",
+                "Bazo - Pulmón",
+                "Colón Descendente - Pulmón Izquierdo",
+                "Apéndice - Pleura",
+                "Apéndice - Pleura Complejo",
+                "Apéndice Pleura - Staphylococcus Aureus",
+                "Pleura - Hígado",
+                "Pleura Derecha - Apéndice",
+                "Pleura Derecha - Pulmón Derecho",
+                "Pleura Derecha - Peritoneo",
+                "Pulmón - Riñón Izquierdo",
+                "Pulmón Derecho - Bulbo Raquídeo",
+                "Pleura - Pleura IZQ"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.2",
+          "nombre": "Hepatitis",
+          "bloques": [
+            {
+              "id": "2.2.1",
+              "nombre": "Hepático 1",
+              "pares": [
+                "Colon Descendente - Hígado",
+                "Hígado - Pleura",
+                "Hígado - Hígado",
+                "Duodeno - Hígado"
+              ]
+            },
+            {
+              "id": "2.2.2",
+              "nombre": "Hepático 2",
+              "pares": [
+                "Colon Ascendente - Hígado",
+                "Costo Hepático - Hígado",
+                "Colon Transverso - Hígado",
+                "Cola de Páncreas - Hígado"
+              ]
+            },
+            {
+              "id": "2.2.3",
+              "nombre": "Hepático 3",
+              "pares": [
+                "Bazo - Hígado",
+                "Píloro - Hígado",
+                "Cabeza de Páncreas - Hígado",
+                "Timo - Hígado"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.3",
+          "nombre": "Abdomen",
+          "bloques": [
+            {
+              "id": "2.3.1",
+              "nombre": "Estómago",
+              "pares": [
+                "Estómago - Estómago",
+                "Estómago - Corazón",
+                "Estómago - Píloro",
+                "Estómago - Suprarrenal",
+                "Cardias - Temporal Derecho",
+                "Estómago - Próstata",
+                "Estómago - Hígado",
+                "Estómago - Duodeno",
+                "Estómago - Suprarrenales",
+                "Estómago - Cola de Páncreas",
+                "Estómago - Vejiga",
+                "Cardias - Cardias",
+                "Cardias - Nervio Vago"
+              ]
+            },
+            {
+              "id": "2.3.2",
+              "nombre": "Píloro",
+              "pares": [
+                "Píloro - Píloro",
+                "Píloro - Lengua IZQ",
+                "Píloro - Riñón IZQ",
+                "Píloro - Uretero RAS",
+                "Píloro - Glúteo IZQ",
+                "Cápsula Glisson - Píloro",
+                "Ano - Píloro",
+                "Atlas - Píloro",
+                "Atlas Píloro - Plasmodium Falciparum",
+                "Cabeza de Páncreas - Estómago",
+                "Cabeza de Páncreas - Píloro",
+                "Cervical 1 - Píloro",
+                "Cervical 1 - Píloro Plasmodium",
+                "Esófago - Píloro",
+                "Piloro - Estómago",
+                "Piloro - Ano",
+                "Piloro - Riñones",
+                "Piloro - Colon Ascendente",
+                "Piloro - Ureteros",
+                "Piloro - Lengua Contralateral",
+                "Piloro - Colon Transverso",
+                "Piloro - Cardias",
+                "Piloro - Glúteo",
+                "Piloro - Riñón Izquierdo"
+              ]
+            },
+            {
+              "id": "2.3.3",
+              "nombre": "Hígado",
+              "pares": [
+                "Hígado - Corazón",
+                "Hígado - Páncreas",
+                "Hígado - Píloro",
+                "Hígado - Riñón IZQ",
+                "Borde Costal - Hígado",
+                "Ciego - Hígado",
+                "Cirrosis Hepática - Hígado Riñón",
+                "Cola de Páncreas - Hígado Hepatitis",
+                "Cola de Páncreas - Hígado Complejo",
+                "Ascendente - Hígado",
+                "Auriculoventricular - Riñón Izquierdo",
+                "Cabeza de Páncreas - Hígado Hepatitis",
+                "Hígado - Riñón Izquierdo",
+                "Hígado - Suprarrenales",
+                "Hígado - Cola de Páncreas",
+                "Hígado - Riñón Derecho",
+                "Hígado Lóbulo Posterior - Riñón Derecho",
+                "Hígado Lóbulo Posterior - Riñón Izquierdo",
+                "Lóbulo Hepático Izquierdo - Riñón Izquierdo",
+                "Vena Porta - Colon Transverso",
+                "Vena Porta - Hígado",
+                "Vena Porta - Tendón Pectoral",
+                "Vena Porta - Páncreas",
+                "Vena Porta - Vena Porta",
+                "Hígado - Vejiga"
+              ]
+            },
+            {
+              "id": "2.3.4",
+              "nombre": "Zona Hepática",
+              "pares": [
+                "Ligamento Hepático - Riñón DER",
+                "Perihepático - Perihepático",
+                "Costal - Costal",
+                "Conducto Central Hepático - Mucosa del Colon Descendente",
+                "Ligamento Hepático - Costohepático",
+                "Ligamento Hepático - Riñón Derecho",
+                "Retrohepático - Retrohepático",
+                "Retrohepático - Riñón Derecho",
+                "Peripancreático - Peripancreático",
+                "Subdiafragma - Subdiafragma",
+                "Subdiafragma - Riñón Lateral",
+                "Suprahepático - Suprahepático"
+              ]
+            },
+            {
+              "id": "2.3.5",
+              "nombre": "Vesícula",
+              "pares": [
+                "Vesícula - Vesícula",
+                "Vesícula - Riñón DER",
+                "Conducto de Vesícula - Riñón DER",
+                "Vesícula - Riñón Derecho",
+                "Vesícula - Riñón",
+                "Vesícula - Cápsula Renal",
+                "Vesícula - Escápula",
+                "Vesícula - Uretra",
+                "Vesícula - Páncreas"
+              ]
+            },
+            {
+              "id": "2.3.6",
+              "nombre": "Bazo",
+              "pares": [
+                "Bazo Horizontal - Bazo Horizontal",
+                "Bazo Vertical - Bazo Vertical",
+                "Bazo - Hipotálamo",
+                "Bazo - Duodeno",
+                "Bazo - Pulmón Izquierdo",
+                "Costo Diafragmático - Costo Diafragmático",
+                "Bazo - Bazo",
+                "Bazo - Riñón",
+                "Bazo - Suprarrenales",
+                "Bazo - Vejiga",
+                "Bazo Bazo - Yersinia Pestis",
+                "Bazo Bazo - Leucemia",
+                "Bazo Hígado - Brucella Abortus",
+                "Bazo Punta del Páncreas - Verruga",
+                "Bazo - Bazo Horizontal Yersinia",
+                "Bazo - Bazo Vertical Leucemia",
+                "Bazo - Punta de Páncreas",
+                "Bazo - Páncreas",
+                "Duodeno - Bazo",
+                "Estómago - Bazo",
+                "Páncreas - Bazo",
+                "Bazo - Bazo (Vertical)",
+                "Bazo - Bazo (Horizontal)",
+                "Bazo - Costo-Diafragmático"
+              ]
+            },
+            {
+              "id": "2.3.7",
+              "nombre": "Páncreas",
+              "pares": [
+                "Cabeza de Páncreas - Suprarrenal",
+                "Cuerpo de Páncreas - Cola de Páncreas",
+                "Punta de Páncreas - Bazo",
+                "Punta de Páncreas - Riñón IZQ",
+                "Ligamento Pancreático - Bazo",
+                "Ligamento Pancreático - Colon Descendente",
+                "Conducto de Páncreas - Riñón IZQ",
+                "Cola de Páncreas - Colon Descendente",
+                "Cola de Páncreas - Punta de Páncreas",
+                "Cola de Páncreas - Riñón Ipsilateral",
+                "Cola de Páncreas - Riñón Izquierdo",
+                "Cabeza de Páncreas - Pleura",
+                "Cabeza de Páncreas - Punta de Páncreas",
+                "Cabeza de Páncreas - Suprarrenales",
+                "Cabeza de Páncreas - Vejiga Izquierda",
+                "Cabeza Páncreas - Suprarrenales Staphylococcus",
+                "Cabeza de Páncreas - Páncreas",
+                "Páncreas - Estómago",
+                "Páncreas - Páncreas",
+                "Páncreas - Duodeno",
+                "Páncreas - Hígado",
+                "Páncreas - Suprarrenales",
+                "Punta de Páncreas - Riñón Izquierdo",
+                "Suprarrenal - Páncreas"
+              ]
+            },
+            {
+              "id": "2.3.8",
+              "nombre": "Ombligo",
+              "pares": [
+                "Epiplón - Epiplón",
+                "Uretero - Uretero",
+                "Uretero RAS - Riñón RAS",
+                "Duodeno - Duodeno",
+                "Duodeno - Riñón DER",
+                "Duodeno - Riñón IZQ",
+                "Epiplón - Epiplón Staphylococcus",
+                "Apófisis Mastoides - Duodeno",
+                "Apófisis Mastoides - Riñón Ipsilateral",
+                "Agujero - Agujero",
+                "Duodeno - Esófago",
+                "Duodeno - Riñón Izquierdo",
+                "Duodeno - Riñón Derecho",
+                "Duodeno - Vaso",
+                "Línea Arcuata - Vena Mesentérica",
+                "Ombligo - Ombligo",
+                "Ombligo Derecho - Izquierdo",
+                "Uretero - Recto",
+                "Uretero - Vejiga",
+                "Uretero - Cáliz Renal",
+                "Uretero - Riñón Ipsilateral",
+                "Uretero - Riñón Mismo Lado",
+                "Xifoides - Xifoides",
+                "Uréter - Trompa",
+                "Uréter Izquierdo - Recto",
+                "Uretero - Trompa de Falopio",
+                "Uretero (RAS) - Riñón (RAS)"
+              ]
+            },
+            {
+              "id": "2.3.9",
+              "nombre": "Intersección",
+              "pares": [
+                "Válvula Ileocecal - Riñón DER",
+                "Ciego - Ciego",
+                "Ciego - Riñón DER",
+                "Contraciego - Contraciego",
+                "Apéndice - Timo",
+                "Apéndice - Pleura IZQ",
+                "Ciego - Riñón",
+                "Ciego - Riñón Derecho",
+                "Ciego Riñón Derecho - Trichomonas",
+                "Apéndice - Testículo Bilateral",
+                "Apéndice - Testículo Derecho",
+                "Apéndice - Uretra",
+                "Apéndice - Vagina",
+                "Apéndice - Testículo Hongo",
+                "Apéndice - Contraciego",
+                "Apéndice - Apéndice Xifoides",
+                "Apéndice - Peritoneo",
+                "Apéndice - Lengua Izquierda",
+                "Intestino Delgado - Intestino Delgado",
+                "Intestino Delgado - Intestino Grueso",
+                "Intestino Grueso - Intestino Grueso",
+                "Micelio Intestinal - Micelio Intestinal",
+                "Peritoneo - Apéndice",
+                "Peritoneo - Peroné",
+                "Válvula Ileocecal - Válvula Ileocecal",
+                "Válvula Ileocecal - Estómago",
+                "Válvula Ileocecal - Riñón Derecho",
+                "Válvula Ileocecal - Prominencia Occipital",
+                "Apéndice - Ovario Derecho",
+                "Apéndice - Nervio Femoral",
+                "Apéndice - Gracilis Superior",
+                "Apéndice - Cabeza de Fémur Derecha",
+                "Contracrágo - Contracrágo"
+              ]
+            },
+            {
+              "id": "2.3.10",
+              "nombre": "Colon",
+              "pares": [
+                "Colon Ascendente - Colon Descendente",
+                "Colon Ascendente - Riñón DER",
+                "Colon Transverso - Colon Transverso",
+                "Colon Transverso - Vejiga Media",
+                "Colon Transverso - Testículo RAS/Ovario RAS",
+                "Colon Descendente - Colon Descendente",
+                "Colon Descendente - Recto",
+                "Sigmoides - Recto",
+                "Bulbo Raquídeo - Colon Descendente",
+                "Clítoris - Ano",
+                "Ano - Colon Ascendente",
+                "Ano - Próstata",
+                "Ano - Testículo",
+                "Ano Ano - Papiloma",
+                "Ano Píloro - Levadura",
+                "Ano Testículo - Izquierdo Ecuador",
+                "Carina - Ano",
+                "Cervical 78 Dorsal - Pasciano",
+                "Ano - Lengua",
+                "Colon Ascendente - Colon Ascendente",
+                "Colon Ascendente - Riñón Derecho",
+                "Colon Ascendente - Colon Transverso",
+                "Colon Descendente - Vejiga",
+                "Colon Descendente - Riñón Izquierdo",
+                "Colon Sigmoides - Colon Sigmoides",
+                "Colon Sigmoides - Recto",
+                "Estómago - Colon Transverso",
+                "Yeyuno - Yeyuno",
+                "Yeyuno - Riñón",
+                "Colon Transverso - Parietal",
+                "Colon Transverso - Testículo (RAS) / Ovario (RAS)"
+              ]
+            },
+            {
+              "id": "2.3.13",
+              "nombre": "Riñón",
+              "pares": [
+                "Cápsula Renal Derecha - Riñón Derecho",
+                "Cápsula Renal Derecha - Riñón Izquierdo",
+                "Cápsula Renal Derecha - Vejiga",
+                "Cápsula Renal Derecha - Vesícula",
+                "Área Visual - Riñón",
+                "Articulación - Riñón Derecho",
+                "Ascendente - Riñón Derecho",
+                "Capsula Renal - Riñón Mismo Lado",
+                "Capsula Renal Derecha - Riñón Izquierdo Reservorio",
+                "Cervical - Cápsula Renal",
+                "Cervicales - Riñón Derecho Izquierdo",
+                "Cervicales - Riñones",
+                "Cervicales - Suprarrenales",
+                "CICATRIZ - Riñón",
+                "Cápsula Renal - Riñón",
+                "Riñón - Escápula",
+                "Riñón - Deltoides",
+                "Riñón - Sacro Contralateral",
+                "Riñón - Riñón Inferior",
+                "Riñón Derecho - Hígado",
+                "Riñón Derecho - Duodeno",
+                "Riñón Izquierdo - Mastoides",
+                "Riñón Izquierdo - Ojo",
+                "Riñón Izquierdo - Conducto del Páncreas",
+                "Riñón Izquierdo - Útero",
+                "Riñones - Interiliaco"
+              ]
+            },
+            {
+              "id": "2.3.14",
+              "nombre": "Suprarrenal",
+              "pares": [
+                "Suprarrenal - Pulmón Bilateral",
+                "Suprarrenal - Frente del Cuerpo",
+                "Suprarrenal - Suprarrenales",
+                "Zona Suprarrenal - Riñón Opuesto"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "2.4",
+          "nombre": "Espalda",
+          "bloques": [
+            {
+              "id": "2.4.1",
+              "nombre": "Dorsales",
+              "pares": [
+                "Dorsal 2 - Dorsal 2",
+                "Dorsal 5 - Corazón",
+                "Dorso 5 RAS - Lumbar 2 RAS",
+                "Dorsal 6 - Dorsal 6",
+                "Dorsal 10ª - Dorsal 11ª",
+                "Dorsal - Lumbar",
+                "Plexo Dorsal - Plexo Dorsal",
+                "Dorsal 3 (RAS) - Lumbar (2 RAS)"
+              ]
+            },
+            {
+              "id": "2.4.2",
+              "nombre": "Espalda Alta",
+              "pares": [
+                "Cava - Cava",
+                "Suprarrenal - Suprarrenal",
+                "Suprarrenal - Pulmón RAS",
+                "Suprarrenal - Hígado",
+                "Suprarrenal - Recto",
+                "Suprarrenal - Pulmón (RAS)"
+              ]
+            },
+            {
+              "id": "2.4.3",
+              "nombre": "Homóplato",
+              "pares": [
+                "Pulmón - Pulmón",
+                "Pulmón DER - Bulbo",
+                "Escápula - Escápula",
+                "Supraespinoso - Cerebelo",
+                "Espina de la Escápula - Espina de la Escápula",
+                "Retro Axilar - Retro Axilar",
+                "Pulmón DER - Bazo"
+              ]
+            },
+            {
+              "id": "2.4.4",
+              "nombre": "Retrohepático",
+              "pares": [
+                "Lóbulo Posterior del Hígado - Riñón IZQ",
+                "Flanco - Flanco"
+              ]
+            },
+            {
+              "id": "2.4.5",
+              "nombre": "Riñón",
+              "pares": [
+                "Cápsula Renal - Cápsula Renal",
+                "Cápsula Renal - Riñón DER",
+                "Riñón - Riñón",
+                "Riñón IZQ - Ojo RAS",
+                "Riñón IZQ - Tiroides",
+                "Cáliz Renal RAS - Uretero RAS"
+              ]
+            },
+            {
+              "id": "2.4.6",
+              "nombre": "Espalda Baja",
+              "pares": [
+                "Lumbar 4 - Lumbar 4",
+                "Cuadrado - Cuadrado",
+                "Staquibraquis - Staquibraquis"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Pelvis",
+      "zonas": [
+        {
+          "id": "3.1",
+          "nombre": "Delantera",
+          "bloques": [
+            {
+              "id": "3.1.1",
+              "nombre": "Pubis",
+              "pares": [
+                "Vejiga - Vejiga",
+                "Suprapúbico - Suprapúbico",
+                "Pudendo - Pudendo",
+                "Bulbo Raquídeo - Vejiga",
+                "Bulbo Raquídeo - Vejiga Dengue",
+                "Clítoris - Uretra",
+                "Clítoris - Pelvis Hueso Pélvico",
+                "Colón Transverso - Vejiga",
+                "Esfínter Uretral - Esfínter Uretral",
+                "Esfínter de la Uretra - Esfínter",
+                "Esfínter Uretra - Esfínter Uretra",
+                "Esófago - Vejiga Izquierda",
+                "Gen - Vejiga",
+                "Esfínter de la Uretra - Esfínter de la Uretra",
+                "Gen-Ombligo - Órgano",
+                "Vejiga - Hipófisis",
+                "Vejiga - Bulbo",
+                "Vejiga - Ano",
+                "Vejiga - Timo",
+                "Vejiga - Riñón",
+                "Vejiga - Cadera",
+                "Vejiga - Colon Transverso",
+                "Vejiga - Vagina",
+                "Vejiga - Sacro",
+                "Cáliz Renal - Uretero ADNpatógeno"
+              ]
+            },
+            {
+              "id": "3.1.2",
+              "nombre": "Cadera",
+              "pares": [
+                "Cadera - Cadera",
+                "Cresta Ilíaca - Cresta Ilíaca",
+                "Nervio Inguinal - Nervio Inguinal",
+                "Nervio Inguinal - Hígado",
+                "Articulación Sacroilíaca - Articulación Sacroilíaca",
+                "Articulación - Nervio Inguinal",
+                "Coxis Derecho - Coxis Izquierdo",
+                "Iliaco - Cápsula Renal Izquierda",
+                "Ingle - Ingle",
+                "Nervio Femoral - Nervio Femoral",
+                "Nervio Inguinal - Articulaciones",
+                "Nervio Inguinal Derecho - Hígado",
+                "Nervio Vago - Riñón Contralateral",
+                "Nervio Vago - Suprarrenal",
+                "Plexo Lumbar - Plexo Lumbar",
+                "Rama Isquion - Rama Isquion"
+              ]
+            },
+            {
+              "id": "3.1.3",
+              "nombre": "Fémur",
+              "pares": [
+                "Cuello de Fémur - Cuello de Fémur",
+                "Trocánter Mayor - Trocánter Mayor",
+                "Trocánter Mayor - Riñón HOMOLAT",
+                "Trocánter Menor - Trocánter Menor",
+                "Cabeza de Fémur - Cabeza de Fémur",
+                "Cresta Iliaca Frontal Derecha - Perone Lateral",
+                "Cuello de Fémur Derecho - Calcáneo Izquierdo",
+                "Cervical 3ª - Supraespinoso",
+                "Trocánter Menor - Riñón HOMOLAT"
+              ]
+            },
+            {
+              "id": "3.1.6",
+              "nombre": "Conexiones Sistémicas",
+              "pares": [
+                "Atlas - Testículo",
+                "Atlas - Útero",
+                "Atlas Útero - Linda Celos",
+                "Cáliz Renal - Uretero",
+                "Cáliz Renal - Uretero Herpes",
+                "Cervical 1 - Coxis",
+                "Cervical 3 - Sacro Parasimpático",
+                "Cervical - Sacro Contralateral",
+                "Cervicales - Sacro",
+                "Cervicales - Utero",
+                "Ciático Derecho - Útero",
+                "Conducto Eferente - Sacro",
+                "Coxis - Ciática",
+                "Coxis - Ciático",
+                "Coxis - Coxis Vertical",
+                "Coxis - Plexo Cervical",
+                "Coxis Ciático - Calambres Piernas",
+                "Coxis Plexo - Cervical Ácido",
+                "Cérvico - Útero",
+                "Cérvico Cérvico - Útero Insomnio",
+                "Cérvico Útero - Infección Vaginal",
+                "Dorsal 6 - Sacro",
+                "Estómago - Próstata o Vagina",
+                "Cervical - Útero",
+                "Cervical 3ª - Sacro Contrario",
+                "Útero - Sacro",
+                "Uretra - Sacro",
+                "Útero - Atlas"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.2",
+          "nombre": "Trasera",
+          "bloques": [
+            {
+              "id": "3.2.1",
+              "nombre": "Sacro",
+              "pares": [
+                "Interiliaco - Sacro",
+                "Iliaco - Iliaco",
+                "Sacro - Sacro",
+                "Saco de Douglas - Femoral",
+                "154 + Sacro - Sacro",
+                "Articulación Sacro-Ilíaca - Articulación Sacro-Ilíaca",
+                "Sacro - Coxis",
+                "Sacro - Riñón Contralateral",
+                "Sacro - Ciático",
+                "Sacro - Cervical",
+                "Sacro - Útero",
+                "Sacro - Vejiga",
+                "Sacro - Femoral",
+                "Sacro IZQ - Femoral"
+              ]
+            },
+            {
+              "id": "3.2.2",
+              "nombre": "Coxis",
+              "pares": [
+                "Coxis - Coxis",
+                "Recto - Recto",
+                "Recto - Ano",
+                "Ano - Ano",
+                "5 + Cáliz - Uretra",
+                "Coccígeo - Coccígeo"
+              ]
+            },
+            {
+              "id": "3.2.3",
+              "nombre": "Trasero",
+              "pares": [
+                "Glúteo - Glúteo",
+                "Glúteo - Femoral",
+                "Rama Isquiática - Rama Isquiática",
+                "Isquion - Isquion",
+                "Glúteo Medio - Glúteo Medio",
+                "Glúteo - Vena Femoral",
+                "Glúteo Derecho - Hiato",
+                "Glúteo Izquierdo - Aquiles Izquierdo",
+                "Glúteo Izquierdo - Aquiles",
+                "Glúteo Izquierdo - Hiato",
+                "e Glúteo - Glúteo",
+                "Glúteo Medio - Vena Femoral",
+                "Glúteo Menor Derecho - Sacro",
+                "Glúteo - Ganglios Mesentéricos",
+                "Glúteo - Glúteo Bacteria",
+                "Glúteo - Hiato",
+                "Glúteo Vena - Femoral Babesia",
+                "Hiato - Testículo Izquierdo",
+                "Hiato - Testículo",
+                "Hiato - Testículo Derecho",
+                "Hiato - Vagina",
+                "HIATO ESOFÁGICO - Vagina",
+                "Hiato Esofágico - Testículo Derecho",
+                "Hoyuelo del Glúteo Derecho - Lumbar 2",
+                "Hoyuelo del Glúteo Izquierdo - Lumbar 2",
+                "Hoyuelo del Glúteo - Lumbar 2",
+                "Hueco - Glúteo Izquierdo",
+                "Glúteo Izquierdo - Tendón Aquiles Derecho",
+                "Hiporasis - Útero",
+                "HIPÓFISIS - Útero",
+                "Rama - Rama Isquiática"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "3.3",
+          "nombre": "Sexo",
+          "bloques": [
+            {
+              "id": "3.3.1",
+              "nombre": "Fémina A",
+              "pares": [
+                "Útero - Útero",
+                "Útero - Ovario RAS",
+                "Clítoris - Clítoris",
+                "Clítoris - Sacro",
+                "Uretra - Uretra",
+                "Uretra - Pelvis",
+                "Uretra - Uretero",
+                "Uretra - Vagina",
+                "Uretra - Clítoris",
+                "Uretra - Ureteros"
+              ]
+            },
+            {
+              "id": "3.3.2",
+              "nombre": "Fémina B",
+              "pares": [
+                "Vagina - Vagina",
+                "Vagina - Vejiga Media",
+                "Trompa RAS - Trompa",
+                "Trompa RAS - Útero",
+                "Ovario - Ovario",
+                "e + Trompa - Trompa",
+                "Anexo - Anexo",
+                "Anexo - Ano",
+                "Anexo - Riñón del Mismo Lado",
+                "Ovario - Suprarrenales",
+                "Ovario - Riñón",
+                "Ovario - Útero",
+                "Saco de Douglas - Vena Femoral",
+                "Trompa de Falopio - Trompa de Falopio",
+                "Trompa - Ovario del Mismo Lado",
+                "Útero - Riñón",
+                "Útero - Recto",
+                "Útero - Ovario",
+                "Útero - Hígado",
+                "Vagina - Ovario",
+                "Vagina - Útero",
+                "Vagina - Recto",
+                "Vagina - Riñón Izquierdo",
+                "Vagina - Riñón Derecho",
+                "Trompa (RAS) - Trompa",
+                "Sacro - Ovario",
+                "Sacro - Ovario IZQ"
+              ]
+            },
+            {
+              "id": "3.3.3",
+              "nombre": "Macho",
+              "pares": [
+                "Cuerpo Cavernoso - Cuerpo Cavernoso",
+                "Testículo - Testículo",
+                "Próstata - Próstata",
+                "Próstata - Recto",
+                "Ano - Testículo Izquierdo",
+                "Pene - Pene",
+                "Timo - Pene",
+                "Recto - Timo",
+                "Timo - Testículos",
+                "Timo - Ovarios",
+                "Testículo - Próstata",
+                "Testículo - Recto"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "nombre": "Miembros",
+      "zonas": [
+        {
+          "id": "4.1",
+          "nombre": "Brazo",
+          "bloques": [
+            {
+              "id": "4.1.1",
+              "nombre": "Brazo Alto",
+              "pares": [
+                "Deltoides - Deltoides",
+                "Deltoides DER - Riñón DER",
+                "Bursa - Bursa",
+                "Húmero - Húmero",
+                "Acromion - Acromion",
+                "Acromium - Acromium",
+                "Deltoides - Riñón Lateral",
+                "Deltoides Derecho - Deltoides Izquierdo",
+                "Escápula MI - Centro del Omóplato",
+                "Omóplato - Omóplato",
+                "Latísimus - Latísimus",
+                "Braquial Derecho - Braquial Izquierdo",
+                "Deltoides - Bursa"
+              ]
+            },
+            {
+              "id": "4.1.2",
+              "nombre": "Brazo Medio",
+              "pares": [
+                "Codo - Codo",
+                "Braquial - Braquial",
+                "Radio - Radio",
+                "Cúbito - Cúbito",
+                "Bursa - Codo",
+                "Ulna - Ulna"
+              ]
+            },
+            {
+              "id": "4.1.3",
+              "nombre": "Mano",
+              "pares": [
+                "Muñeca Anterior - Muñeca Anterior",
+                "Muñeca Posterior - Muñeca Posterior",
+                "Palma - Palma",
+                "Palma RAS - Plantar RAS",
+                "Dorso Mano - Dorso Mano",
+                "Índice - Índice",
+                "Palma Mano - Palma Mano",
+                "Dedo Pulgar - Dedo Pulgar",
+                "Dedo Anular - Dedo Anular",
+                "Dedo Meñique - Dedo Meñique",
+                "Dedo Medio - Dedo Medio",
+                "Muñeca - Muñeca",
+                "Muñeca Derecha - Rodilla Externa",
+                "Muñeca Anterior - Anterior",
+                "Posterior - Posterior",
+                "Palma (RAS) - Planta (RAS)"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "4.2",
+          "nombre": "Pierna",
+          "bloques": [
+            {
+              "id": "4.2.1",
+              "nombre": "Pierna Alta",
+              "pares": [
+                "Aductor Menor - Aductor Menor",
+                "Aductor - Aductor",
+                "Cuádriceps - Cuádriceps",
+                "Tensor Fascia Lata - Tensor Fascia Lata",
+                "Retrotensor de la Fascia Lata - Rectoral",
+                "Fémur - Fémur",
+                "Fémur Posterior - Fémur Posterior",
+                "Músculo Psoasilíaco - Músculo Psoasilíaco",
+                "Poplíteo - Región Inguinal",
+                "Tensor Fascia Lata - Sartorio",
+                "Tensor Fascia Lata - Cuádriceps",
+                "Tensor Fascia Lata - Espina Ilíaca Posterior",
+                "Tensor Fascia Lata - Gracilis Superior",
+                "Trocánter Mayor - Riñón Lateral",
+                "Trocánter Mayor - Tensor Fascia Lata",
+                "Trocánter Mayor - Trocánter Menor",
+                "Triángulo de Scarpa - Triángulo de Scarpa"
+              ]
+            },
+            {
+              "id": "4.2.2",
+              "nombre": "Pierna Media",
+              "pares": [
+                "Ligamento Externo de Rodilla - Mesenterio",
+                "Rótula - Rótula",
+                "Tibia - Tibia",
+                "Peroné - Peroné",
+                "Rodilla - Rodilla",
+                "Tibia Inferior - Tibia Inferior",
+                "Tibia Media - Tibia Media",
+                "Tobillo - Tobillo",
+                "Úlcera Varicosa - Úlcera Varicosa",
+                "Plexo Rodilla - Plexo Rodilla",
+                "Semimembranoso - Semimembranoso"
+              ]
+            },
+            {
+              "id": "4.2.3",
+              "nombre": "Pierna Trasera",
+              "pares": [
+                "Ciático - Ciático",
+                "Poplíteo - Poplíteo",
+                "Aquiles Alto - Aquiles Alto",
+                "Aquiles - Aquiles",
+                "Aquiles Bajo - Aquiles Bajo",
+                "Aquiles Superior - Aquiles Superior",
+                "Aquiles Derecho - Aquiles Derecho",
+                "Aquiles - Triceps Derecho",
+                "Aquiles Derecho - Punta Escápula Izquierda",
+                "Aquiles Inferior - Aquiles Inferior",
+                "Aquiles Medio - Aquiles Medio"
+              ]
+            },
+            {
+              "id": "4.2.4",
+              "nombre": "Pie",
+              "pares": [
+                "Empeine - Empeine",
+                "Dedo Gordo - Dedo Gordo",
+                "Calcáneo - Calcáneo",
+                "Plantar - Plantar",
+                "Arco del Pie - Arco del Pie",
+                "Metatarso - Metatarso",
+                "Planta del Pie - Planta del Pie",
+                "Talón - Talón",
+                "Tarso - Tarso"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "nombre": "Extras",
+      "zonas": [
+        {
+          "id": "5.1",
+          "nombre": "Variables",
+          "bloques": [
+            {
+              "id": "5.1.1",
+              "nombre": "Pares Generales",
+              "pares": [
+                "Suprarrenal - Todo el frente (A-F)",
+                "Par Gen Ombligo - Órgano/Tejido/Punto RAS",
+                "Nervio Inguinal DER - Articulación Dolorosa 1-13 RAS",
+                "Afin - Afin",
+                "Área de Dolor - Riñón Mismo Lado",
+                "Articulación - Riñón Izquierdo",
+                "Pulso Radial - Bazo",
+                "V-8 - V-8",
+                "Vago - Riñón",
+                "Vago - Riñón Contralateral",
+                "Espíclavia - Espíclavia"
+              ]
+            },
+            {
+              "id": "5.1.2",
+              "nombre": "Traumatismo",
+              "pares": [
+                "Nervio Inguinal DER - Articulación Dolorosa 1-13",
+                "Punto Trauma - Punto Trauma",
+                "Punto Trauma - Riñón HOMOLAT",
+                "Punto Trauma Sedante (-)",
+                "Punto Trauma Estimulante (+)",
+                "Punto Trauma - Sedante (-)",
+                "Punto Trauma - Estimulante (+)"
+              ]
+            },
+            {
+              "id": "5.1.3",
+              "nombre": "Personalizados",
+              "pares": [
+                "Par Nuevo",
+                "Biomagnetopuntura",
+                "Par Vacuna"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5.2",
+          "nombre": "Columna Vertebral",
+          "bloques": [
+            {
+              "id": "5.2.1",
+              "nombre": "Predeterminados",
+              "pares": [
+                "Cervical 1 - Cervical 7",
+                "Dorsal 1 - Dorsal 12",
+                "Lumbar 1 - Lumbar 5",
+                "Sacro 1 - Sacro 1",
+                "Coxis 1 - Sacro 4",
+                "Cervical 1ª - Piloro",
+                "Cervical 1ª - Coxis",
+                "Lumbar 4ª - Lumbar 4ª",
+                "4ª Lumbar Derecha - Izquierda",
+                "Lumbar 2 - Lumbar 2",
+                "Vértebra Lumbar - Riñón Izquierdo",
+                "Dorsales - Lumbares",
+                "Primera Cervical - Primera Cervical",
+                "Canal Medular - Canal Medular",
+                "Dorsal 2 - Dorsal 12",
+                "Coxis 1 - Coxis 1"
+              ]
+            },
+            {
+              "id": "5.2.2",
+              "nombre": "Homólogos",
+              "pares": [
+                "Cervical RAS - Cervical RAS",
+                "Dorsal RAS - Dorsal RAS",
+                "Lumbar RAS - Lumbar RAS",
+                "Sacro RAS - Sacro RAS",
+                "Coxis RAS - Coxis RAS",
+                "Cervical (RAS) - Cervical (RAS)",
+                "Dorsal (RAS) - Dorsal (RAS)",
+                "Lumbar (RAS) - Lumbar (RAS)"
+              ]
+            },
+            {
+              "id": "5.2.3",
+              "nombre": "Rastreo Cervical",
+              "pares": [
+                "Cervical RAS - Dorsal RAS",
+                "Cervical RAS - Lumbar RAS",
+                "Cervical RAS - Sacro RAS",
+                "Cervical RAS - Coxis RAS",
+                "Cervical (RAS) - Dorsal (RAS)",
+                "Cervical (RAS) - Lumbar (RAS)",
+                "Cervical (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "id": "5.2.4",
+              "nombre": "Rastreo Dorsal",
+              "pares": [
+                "Dorsal RAS - Cervical RAS",
+                "Dorsal RAS - Lumbar RAS",
+                "Dorsal RAS - Sacro RAS",
+                "Dorsal RAS - Coxis RAS",
+                "Dorsal (RAS) - Cervical (RAS)",
+                "Dorsal (RAS) - Sacro (RAS)",
+                "Dorsal (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "id": "5.2.5",
+              "nombre": "Rastreo Lumbar",
+              "pares": [
+                "Lumbar RAS - Cervical RAS",
+                "Lumbar RAS - Dorsal RAS",
+                "Lumbar RAS - Sacro RAS",
+                "Lumbar RAS - Coxis RAS",
+                "Lumbar (RAS) - Cervical (RAS)",
+                "Lumbar (RAS) - Sacro (RAS)",
+                "Lumbar (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "id": "5.2.6",
+              "nombre": "Rastreo Sacro",
+              "pares": [
+                "Sacro RAS - Cervical RAS",
+                "Sacro RAS - Dorsal RAS",
+                "Sacro RAS - Lumbar RAS",
+                "Sacro RAS - Coxis RAS",
+                "Sacro (RAS) - Dorsal (RAS)",
+                "Sacro (RAS) - Lumbar (RAS)"
+              ]
+            },
+            {
+              "id": "5.2.7",
+              "nombre": "Rastreo Coxis",
+              "pares": [
+                "Coxis RAS - Cervical RAS",
+                "Coxis RAS - Dorsal RAS",
+                "Coxis RAS - Lumbar RAS",
+                "Coxis RAS - Sacro RAS",
+                "Coxis (RAS) - Cervical (RAS)",
+                "Coxis (RAS) - Dorsal (RAS)",
+                "Coxis (RAS) - Lumbar (RAS)"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "5.3",
+          "nombre": "Ejes Corporales",
+          "bloques": [
+            {
+              "id": "5.3.1",
+              "nombre": "Eje Vertical",
+              "pares": [
+                "Pulmón Frontal DER - Nervio Inguinal DER",
+                "Pulmón Frontal IZQ - Nervio Inguinal IZQ",
+                "Frontal DER - Sacro",
+                "Frontal IZQ - Sacro"
+              ]
+            },
+            {
+              "id": "5.3.2",
+              "nombre": "Eje Horizontal",
+              "pares": [
+                "Frente - Sacro"
+              ]
+            },
+            {
+              "id": "5.3.3",
+              "nombre": "Eje Transverso",
+              "pares": [
+                "Suprarrenales - Suprarrenales",
+                "Dorsal 2 - Sacro 2",
+                "Dorsal 2 - Sacro"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pairs": [
+    {
+      "id": "C1.1.1.1",
+      "nombre": "Pineal - Pineal",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Pineal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.1.2",
+      "nombre": "Pineal - Bulbo",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.1.3",
+      "nombre": "Pineal - Cerebelo",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Cerebelo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.1.4",
+      "nombre": "Pineal - Próstata/Útero",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Próstata/Útero",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.1.5",
+      "nombre": "Pineal - Páncreas",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.1.6",
+      "nombre": "Pineal - Hipotálamo",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Hipotálamo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.1.7",
+      "nombre": "Pineal - Tiroides",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal",
+      "polo1": "Pineal",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.2.1",
+      "nombre": "Prepineal - Vejiga",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Corona",
+      "polo1": "Prepineal",
+      "polo2": "Vejiga",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.2.2",
+      "nombre": "Postpineal - Postpineal",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Corona",
+      "polo1": "Postpineal",
+      "polo2": "Postpineal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.2.3",
+      "nombre": "Núcleos Basales - Hipófisis",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Corona",
+      "polo1": "Núcleos Basales",
+      "polo2": "Hipófisis",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.2.4",
+      "nombre": "Núcleos Basales - Bulbo",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Corona",
+      "polo1": "Núcleos Basales",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.3.1",
+      "nombre": "Cuerpo Calloso - Cuerpo Calloso",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Callosidad",
+      "polo1": "Cuerpo Calloso",
+      "polo2": "Cuerpo Calloso",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.3.2",
+      "nombre": "Borde Calloso DER - Borde Calloso DER",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Callosidad",
+      "polo1": "Borde Calloso DER",
+      "polo2": "Borde Calloso DER",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.3.3",
+      "nombre": "Borde Calloso IZQ - Borde Calloso IZQ",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Callosidad",
+      "polo1": "Borde Calloso IZQ",
+      "polo2": "Borde Calloso IZQ",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.3.4",
+      "nombre": "Cisura Media - Cisura Media",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Callosidad",
+      "polo1": "Cisura Media",
+      "polo2": "Cisura Media",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.4.1",
+      "nombre": "Parietal - Parietal",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal",
+      "polo1": "Parietal",
+      "polo2": "Parietal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.1.4.2",
+      "nombre": "Parietal - Bulbo",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal",
+      "polo1": "Parietal",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.4.3",
+      "nombre": "Parietal (RAS) - Riñón CONTLAT",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal",
+      "polo1": "Parietal (RAS)",
+      "polo2": "Riñón CONTLAT",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.4.4",
+      "nombre": "Parietal IZQ - Colon Transverso",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal",
+      "polo1": "Parietal IZQ",
+      "polo2": "Colon Transverso",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.1.4.5",
+      "nombre": "Cerebro RAS - Riñón RAS",
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal",
+      "polo1": "Cerebro RAS",
+      "polo2": "Riñón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.1.1",
+      "nombre": "Bulbo - Bulbo",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo",
+      "polo1": "Bulbo",
+      "polo2": "Bulbo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.2.1.2",
+      "nombre": "Bulbo - Cerebelo",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo",
+      "polo1": "Bulbo",
+      "polo2": "Cerebelo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.1.3",
+      "nombre": "Bulbo - Tiroides",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo",
+      "polo1": "Bulbo",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.1.4",
+      "nombre": "Bulbo - Corazón",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo",
+      "polo1": "Bulbo",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.1.5",
+      "nombre": "Bulbo - Vejiga",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo",
+      "polo1": "Bulbo",
+      "polo2": "Vejiga",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.2.1",
+      "nombre": "Occipital - Occipital",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Occipital",
+      "polo1": "Occipital",
+      "polo2": "Occipital",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.2.2.2",
+      "nombre": "Occipital - Parótida IZQ",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Occipital",
+      "polo1": "Occipital",
+      "polo2": "Parótida IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.2.3",
+      "nombre": "Occipital - Timo",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Occipital",
+      "polo1": "Occipital",
+      "polo2": "Timo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.2.4",
+      "nombre": "Occipital - Testículo RAS/Vagina",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Occipital",
+      "polo1": "Occipital",
+      "polo2": "Testículo RAS/Vagina",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.3.1",
+      "nombre": "Cerebelo - Cerebelo",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo",
+      "polo1": "Cerebelo",
+      "polo2": "Cerebelo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.2.3.2",
+      "nombre": "Cerebelo - Bulbo",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo",
+      "polo1": "Cerebelo",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.3.3",
+      "nombre": "Cerebelo - Sacro",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo",
+      "polo1": "Cerebelo",
+      "polo2": "Sacro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.2.3.4",
+      "nombre": "Cisura de Silvio - Cisura de Silvio",
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo",
+      "polo1": "Cisura de Silvio",
+      "polo2": "Cisura de Silvio",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.1.1",
+      "nombre": "Frontoparietal - Temporal IZQ",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Frontoparietal",
+      "polo2": "Temporal IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.1.2",
+      "nombre": "Amígdala Cerebral - Suprarrenal",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Amígdala Cerebral",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.1.3",
+      "nombre": "Temporal - Temporal",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Temporal",
+      "polo2": "Temporal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.1.4",
+      "nombre": "Temporal DER - Temporal DER",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Temporal DER",
+      "polo2": "Temporal DER",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.1.5",
+      "nombre": "Temporal IZQ - Temporal IZQ",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Temporal IZQ",
+      "polo2": "Temporal IZQ",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.1.6",
+      "nombre": "Temporal IZQ - Hipófisis",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal",
+      "polo1": "Temporal IZQ",
+      "polo2": "Hipófisis",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.2.1",
+      "nombre": "Oreja - Oreja",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula",
+      "polo1": "Oreja",
+      "polo2": "Oreja",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.2.2",
+      "nombre": "Oído - Oído",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula",
+      "polo1": "Oído",
+      "polo2": "Oído",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.2.3",
+      "nombre": "Oído - Riñón CONTLAT",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula",
+      "polo1": "Oído",
+      "polo2": "Riñón CONTLAT",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.2.4",
+      "nombre": "Oído DER - Ovario/Testículo DER",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula",
+      "polo1": "Oído DER",
+      "polo2": "Ovario/Testículo DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.3.1",
+      "nombre": "Temporoccipital - Temporoccipital",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior",
+      "polo1": "Temporoccipital",
+      "polo2": "Temporoccipital",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.3.2",
+      "nombre": "Retromastoides - Retromastoides",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior",
+      "polo1": "Retromastoides",
+      "polo2": "Retromastoides",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.3.3",
+      "nombre": "Mastoides - Mastoides",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior",
+      "polo1": "Mastoides",
+      "polo2": "Mastoides",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.3.4",
+      "nombre": "Mastoides - Corazón",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior",
+      "polo1": "Mastoides",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.3.5",
+      "nombre": "Mastoides - Hipófisis",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior",
+      "polo1": "Mastoides",
+      "polo2": "Hipófisis",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.4.1",
+      "nombre": "Quiasma - Quiasma",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien",
+      "polo1": "Quiasma",
+      "polo2": "Quiasma",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.4.2",
+      "nombre": "Sien - Sien",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien",
+      "polo1": "Sien",
+      "polo2": "Sien",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.4.3",
+      "nombre": "Sien DER - Corazón",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien",
+      "polo1": "Sien DER",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.4.4",
+      "nombre": "Polígono de Willis - Polígono de Willis",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien",
+      "polo1": "Polígono de Willis",
+      "polo2": "Polígono de Willis",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.5.1",
+      "nombre": "Preauricular - Preauricular",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular",
+      "polo1": "Preauricular",
+      "polo2": "Preauricular",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.5.2",
+      "nombre": "Preauricular - Vejiga",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular",
+      "polo1": "Preauricular",
+      "polo2": "Vejiga",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.5.3",
+      "nombre": "Rama Mandibular - Rama Mandibular",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular",
+      "polo1": "Rama Mandibular",
+      "polo2": "Rama Mandibular",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.5.4",
+      "nombre": "Rama Mandibular - Cola de Páncreas",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular",
+      "polo1": "Rama Mandibular",
+      "polo2": "Cola de Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.5.5",
+      "nombre": "Ángulo Gonión - Ángulo Gonión",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular",
+      "polo1": "Ángulo Gonión",
+      "polo2": "Ángulo Gonión",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.6.1",
+      "nombre": "Parótida - Parótida",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida",
+      "polo1": "Parótida",
+      "polo2": "Parótida",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.3.6.2",
+      "nombre": "Parótida IZQ - Pineal",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida",
+      "polo1": "Parótida IZQ",
+      "polo2": "Pineal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.6.3",
+      "nombre": "Parótida DER - Ojo IZQ",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida",
+      "polo1": "Parótida DER",
+      "polo2": "Ojo IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.6.4",
+      "nombre": "Parótida DER - Tiroides",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida",
+      "polo1": "Parótida DER",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.3.6.5",
+      "nombre": "Parótida DER - Corazón",
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida",
+      "polo1": "Parótida DER",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.1.1",
+      "nombre": "Tálamo - Tálamo",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta",
+      "polo1": "Tálamo",
+      "polo2": "Tálamo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.1.2",
+      "nombre": "Polo - Polo",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta",
+      "polo1": "Polo",
+      "polo2": "Polo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.1.3",
+      "nombre": "Antecuerno - Antecuerno",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta",
+      "polo1": "Antecuerno",
+      "polo2": "Antecuerno",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.1.4",
+      "nombre": "Frontal DER - Frontal DER",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta",
+      "polo1": "Frontal DER",
+      "polo2": "Frontal DER",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.1.5",
+      "nombre": "Frontal IZQ - Frontal IZQ",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta",
+      "polo1": "Frontal IZQ",
+      "polo2": "Frontal IZQ",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.2.1",
+      "nombre": "Hipófisis - Hipófisis",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Hipófisis",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.2.2",
+      "nombre": "Hipófisis - Supraciliar",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Supraciliar",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.2.3",
+      "nombre": "Hipófisis - Bulbo",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.2.4",
+      "nombre": "Hipófisis - Mastoides IZQ",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Mastoides IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.2.5",
+      "nombre": "Hipófisis - Tiroides",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.2.6",
+      "nombre": "Hipófisis - Vejiga",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Vejiga",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.2.7",
+      "nombre": "Hipófisis - Testículo/Ovario",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis",
+      "polo1": "Hipófisis",
+      "polo2": "Testículo/Ovario",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.3.1",
+      "nombre": "Supraciliar - Bulbo",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Supraciliar",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.3.2",
+      "nombre": "Interciliar - Bulbo",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Interciliar",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.3.3",
+      "nombre": "Interciliar - Riñón RAS",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Interciliar",
+      "polo2": "Riñón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.3.4",
+      "nombre": "Interciliar - Sacro",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Interciliar",
+      "polo2": "Sacro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.4.3.5",
+      "nombre": "Seno Frontal - Seno Frontal",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Seno Frontal",
+      "polo2": "Seno Frontal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.4.3.6",
+      "nombre": "Ceja - Ceja",
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja",
+      "polo1": "Ceja",
+      "polo2": "Ceja",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.1.1",
+      "nombre": "Párpado - Párpado",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Ojo",
+      "polo1": "Párpado",
+      "polo2": "Párpado",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.1.2",
+      "nombre": "Ojo - Ojo",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Ojo",
+      "polo1": "Ojo",
+      "polo2": "Ojo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.1.3",
+      "nombre": "Ojo - Cerebelo",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Ojo",
+      "polo1": "Ojo",
+      "polo2": "Cerebelo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.1.4",
+      "nombre": "Ojo - Escápula RAS",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Ojo",
+      "polo1": "Ojo",
+      "polo2": "Escápula RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.2.1",
+      "nombre": "Piso Orbital - Piso Orbital",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Anillo Ocular",
+      "polo1": "Piso Orbital",
+      "polo2": "Piso Orbital",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.2.2",
+      "nombre": "Piso Orbital - Cerebelo",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Anillo Ocular",
+      "polo1": "Piso Orbital",
+      "polo2": "Cerebelo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.2.3",
+      "nombre": "Canto - Canto",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Anillo Ocular",
+      "polo1": "Canto",
+      "polo2": "Canto",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.2.4",
+      "nombre": "Craneal - Craneal",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Anillo Ocular",
+      "polo1": "Craneal",
+      "polo2": "Craneal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.2.5",
+      "nombre": "Lacrimal - Lacrimal",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Anillo Ocular",
+      "polo1": "Lacrimal",
+      "polo2": "Lacrimal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.3.1",
+      "nombre": "Pómulo - Pómulo",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo",
+      "polo1": "Pómulo",
+      "polo2": "Pómulo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.3.2",
+      "nombre": "Pómulo - Riñón",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo",
+      "polo1": "Pómulo",
+      "polo2": "Riñón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.3.3",
+      "nombre": "Pómulo DER - Tiroides",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo",
+      "polo1": "Pómulo DER",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.3.4",
+      "nombre": "Pómulo IZQ - Riñón DER",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo",
+      "polo1": "Pómulo IZQ",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.4.1",
+      "nombre": "Nariz - Nariz",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Nariz",
+      "polo2": "Nariz",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.4.2",
+      "nombre": "Seno Nasal - Seno Nasal",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Seno Nasal",
+      "polo2": "Seno Nasal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.4.3",
+      "nombre": "Maxilar Superior DER - Cola de Páncreas",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Maxilar Superior DER",
+      "polo2": "Cola de Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.4.4",
+      "nombre": "Lengua - Lengua",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Lengua",
+      "polo2": "Lengua",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.4.5",
+      "nombre": "Lengua IZQ - Corazón",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Lengua IZQ",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.4.6",
+      "nombre": "Lengua IZQ - Hígado",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Nariz",
+      "polo1": "Lengua IZQ",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.5.1",
+      "nombre": "Comisura - Comisura",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca",
+      "polo1": "Comisura",
+      "polo2": "Comisura",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.5.2",
+      "nombre": "Dental RAS - Riñón RAS",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca",
+      "polo1": "Dental RAS",
+      "polo2": "Riñón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.5.5.3",
+      "nombre": "Mandíbula - Mandíbula",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca",
+      "polo1": "Mandíbula",
+      "polo2": "Mandíbula",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.5.5.4",
+      "nombre": "Mentón - Mentón",
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca",
+      "polo1": "Mentón",
+      "polo2": "Mentón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.1.1",
+      "nombre": "Laringe - Laringe",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Laringe",
+      "polo2": "Laringe",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.1.2",
+      "nombre": "Angina - Angina",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Angina",
+      "polo2": "Angina",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.1.3",
+      "nombre": "Carótida - Carótida",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Carótida",
+      "polo2": "Carótida",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.1.4",
+      "nombre": "Esternocleidomastoideo - Esternocleidomastoideo",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Esternocleidomastoideo",
+      "polo2": "Esternocleidomastoideo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.1.5",
+      "nombre": "Esternocleidomastoideo IZQ - Hipófisis",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Esternocleidomastoideo IZQ",
+      "polo2": "Hipófisis",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.1.6",
+      "nombre": "Esternocleidomastoideo IZQ - Riñón IZQ",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central",
+      "polo1": "Esternocleidomastoideo IZQ",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.2.1",
+      "nombre": "Tiroides - Tiroides",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja",
+      "polo1": "Tiroides",
+      "polo2": "Tiroides",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.2.2",
+      "nombre": "Tiroides - Bulbo",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja",
+      "polo1": "Tiroides",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.2.3",
+      "nombre": "Hueco de Garganta - Glúteo IZQ",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja",
+      "polo1": "Hueco de Garganta",
+      "polo2": "Glúteo IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.2.4",
+      "nombre": "Paratiroides - Paratiroides",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja",
+      "polo1": "Paratiroides",
+      "polo2": "Paratiroides",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.2.5",
+      "nombre": "Cuello - Cuello",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja",
+      "polo1": "Cuello",
+      "polo2": "Cuello",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.3.1",
+      "nombre": "Nervio Vago - Nervio Vago",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Nervio Vago",
+      "polo2": "Nervio Vago",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.3.2",
+      "nombre": "Nervio Vago - Cardias",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Nervio Vago",
+      "polo2": "Cardias",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.3.3",
+      "nombre": "Nervio Vago - Riñón RAS",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Nervio Vago",
+      "polo2": "Riñón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.3.4",
+      "nombre": "Nudo - Nudo",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Nudo",
+      "polo2": "Nudo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.3.5",
+      "nombre": "Plexo Cervical - Plexo Cervical",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Plexo Cervical",
+      "polo2": "Plexo Cervical",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.3.6",
+      "nombre": "Plexo Cervical - Deltoides",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral",
+      "polo1": "Plexo Cervical",
+      "polo2": "Deltoides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.4.1",
+      "nombre": "Atlas - Atlas",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Atlas",
+      "polo2": "Atlas",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "C1.6.4.2",
+      "nombre": "Atlas IZQ - Útero",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Atlas IZQ",
+      "polo2": "Útero",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.4.3",
+      "nombre": "Cervical 3-4 - Suprarrenal",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Cervical 3-4",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.4.4",
+      "nombre": "Cervical 3 - Sacro 2",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Cervical 3",
+      "polo2": "Sacro 2",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.4.5",
+      "nombre": "Cervical 7 - Dorsal 1",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Cervical 7",
+      "polo2": "Dorsal 1",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "C1.6.4.6",
+      "nombre": "Supraespinoso - Supraespinoso",
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca",
+      "polo1": "Supraespinoso",
+      "polo2": "Supraespinoso",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.1",
+      "nombre": "Mango del Esternón - Mango del Esternón",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Mango del Esternón",
+      "polo2": "Mango del Esternón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.2",
+      "nombre": "Costilla 1 - Costilla 1",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Costilla 1",
+      "polo2": "Costilla 1",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.3",
+      "nombre": "Subclavia - Subclavia",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Subclavia",
+      "polo2": "Subclavia",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.4",
+      "nombre": "Epiclavio - Epiclavio",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Epiclavio",
+      "polo2": "Epiclavio",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.5",
+      "nombre": "Mediastino - Mediastino",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Mediastino",
+      "polo2": "Mediastino",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.1.6",
+      "nombre": "Mediastino - Cerebelo",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar",
+      "polo1": "Mediastino",
+      "polo2": "Cerebelo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.2.1",
+      "nombre": "Timo - Timo",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo",
+      "polo1": "Timo",
+      "polo2": "Timo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.2.2",
+      "nombre": "Timo - Hipófisis",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo",
+      "polo1": "Timo",
+      "polo2": "Hipófisis",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.2.3",
+      "nombre": "Timo - Parietal",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo",
+      "polo1": "Timo",
+      "polo2": "Parietal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.2.4",
+      "nombre": "Timo - Testículo RAS/Ovario RAS",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo",
+      "polo1": "Timo",
+      "polo2": "Testículo RAS/Ovario RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.2.5",
+      "nombre": "Timo - Recto",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo",
+      "polo1": "Timo",
+      "polo2": "Recto",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.3.1",
+      "nombre": "Esternón - Suprarrenal",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Esternón",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.3.2",
+      "nombre": "Esternón - Bazo",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Esternón",
+      "polo2": "Bazo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.3.3",
+      "nombre": "Tráquea - Tráquea",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Tráquea",
+      "polo2": "Tráquea",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.3.4",
+      "nombre": "Tráquea - Corazón",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Tráquea",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.3.5",
+      "nombre": "Esófago - Esófago",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Esófago",
+      "polo2": "Esófago",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.3.6",
+      "nombre": "Esófago - Hiato Esofágico",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Esófago",
+      "polo2": "Hiato Esofágico",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.3.7",
+      "nombre": "Esófago - Vejiga IZQ",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata",
+      "polo1": "Esófago",
+      "polo2": "Vejiga IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.4.1",
+      "nombre": "Carina - Carina",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo",
+      "polo1": "Carina",
+      "polo2": "Carina",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.4.2",
+      "nombre": "Hiato Esofágico - Lengua",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo",
+      "polo1": "Hiato Esofágico",
+      "polo2": "Lengua",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.4.3",
+      "nombre": "Hiato Esofágico - Esófago",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo",
+      "polo1": "Hiato Esofágico",
+      "polo2": "Esófago",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.4.4",
+      "nombre": "Hiato Esofágico - Testículo DER/Ovario DER",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo",
+      "polo1": "Hiato Esofágico",
+      "polo2": "Testículo DER/Ovario DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.4.5",
+      "nombre": "Cardias - Suprarrenal",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo",
+      "polo1": "Cardias",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.5.1",
+      "nombre": "Cardias - Esófago",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Cavidad",
+      "polo1": "Cardias",
+      "polo2": "Esófago",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.5.2",
+      "nombre": "Cardias - Testículo/Ovario DER",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Cavidad",
+      "polo1": "Cardias",
+      "polo2": "Testículo/Ovario DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.5.3",
+      "nombre": "Condral - Condral",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Cavidad",
+      "polo1": "Condral",
+      "polo2": "Condral",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.6.1",
+      "nombre": "Diafragma - Diafragma",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma",
+      "polo1": "Diafragma",
+      "polo2": "Diafragma",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.6.2",
+      "nombre": "Diafragma - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma",
+      "polo1": "Diafragma",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.6.3",
+      "nombre": "Costilla 7 - Costilla 7",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma",
+      "polo1": "Costilla 7",
+      "polo2": "Costilla 7",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.6.4",
+      "nombre": "Peritoneo - Peritoneo",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma",
+      "polo1": "Peritoneo",
+      "polo2": "Peritoneo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.7.1",
+      "nombre": "Coronarias - Pulmón IZQ",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Coronarias",
+      "polo2": "Pulmón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.7.2",
+      "nombre": "Seno Auriculoventricular - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Seno Auriculoventricular",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.7.3",
+      "nombre": "Corazón - Corazón",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Corazón",
+      "polo2": "Corazón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.7.4",
+      "nombre": "Corazón - Páncreas",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Corazón",
+      "polo2": "Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.7.5",
+      "nombre": "Corazón - Vejiga",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Corazón",
+      "polo2": "Vejiga",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.7.6",
+      "nombre": "Pericardio - Pericardio",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón",
+      "polo1": "Pericardio",
+      "polo2": "Pericardio",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.8.1",
+      "nombre": "Pectoral Interior - Pectoral Interior",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Lateral",
+      "polo1": "Pectoral Interior",
+      "polo2": "Pectoral Interior",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.8.2",
+      "nombre": "Pectoral - Pectoral",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Lateral",
+      "polo1": "Pectoral",
+      "polo2": "Pectoral",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.8.3",
+      "nombre": "Pezón DER - Gemelos IZQ",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Lateral",
+      "polo1": "Pezón DER",
+      "polo2": "Gemelos IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.8.4",
+      "nombre": "Axila - Axila",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Lateral",
+      "polo1": "Axila",
+      "polo2": "Axila",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.9.1",
+      "nombre": "Pleura - Pleura",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura",
+      "polo1": "Pleura",
+      "polo2": "Pleura",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.9.2",
+      "nombre": "Pleura DER - Pleura DER",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura",
+      "polo1": "Pleura DER",
+      "polo2": "Pleura DER",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.1.9.3",
+      "nombre": "Pleura - Peritoneo",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura",
+      "polo1": "Pleura",
+      "polo2": "Peritoneo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.1.9.4",
+      "nombre": "Pleura - Apéndice",
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura",
+      "polo1": "Pleura",
+      "polo2": "Apéndice",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.1.1",
+      "nombre": "Colon Descendente - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 1",
+      "polo1": "Colon Descendente",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.1.2",
+      "nombre": "Hígado - Pleura",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 1",
+      "polo1": "Hígado",
+      "polo2": "Pleura",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.1.3",
+      "nombre": "Hígado - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 1",
+      "polo1": "Hígado",
+      "polo2": "Hígado",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.2.1.4",
+      "nombre": "Duodeno - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 1",
+      "polo1": "Duodeno",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.2.1",
+      "nombre": "Colon Ascendente - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 2",
+      "polo1": "Colon Ascendente",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.2.2",
+      "nombre": "Costo Hepático - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 2",
+      "polo1": "Costo Hepático",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.2.3",
+      "nombre": "Colon Transverso - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 2",
+      "polo1": "Colon Transverso",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.2.4",
+      "nombre": "Cola de Páncreas - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 2",
+      "polo1": "Cola de Páncreas",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.3.1",
+      "nombre": "Bazo - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 3",
+      "polo1": "Bazo",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.3.2",
+      "nombre": "Píloro - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 3",
+      "polo1": "Píloro",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.3.3",
+      "nombre": "Cabeza de Páncreas - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 3",
+      "polo1": "Cabeza de Páncreas",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.2.3.4",
+      "nombre": "Timo - Hígado",
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 3",
+      "polo1": "Timo",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.1.1",
+      "nombre": "Estómago - Estómago",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago",
+      "polo1": "Estómago",
+      "polo2": "Estómago",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.1.2",
+      "nombre": "Estómago - Corazón",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago",
+      "polo1": "Estómago",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.1.3",
+      "nombre": "Estómago - Píloro",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago",
+      "polo1": "Estómago",
+      "polo2": "Píloro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.1.4",
+      "nombre": "Estómago - Suprarrenal",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago",
+      "polo1": "Estómago",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.2.1",
+      "nombre": "Píloro - Píloro",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro",
+      "polo1": "Píloro",
+      "polo2": "Píloro",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.2.2",
+      "nombre": "Píloro - Lengua IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro",
+      "polo1": "Píloro",
+      "polo2": "Lengua IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.2.3",
+      "nombre": "Píloro - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro",
+      "polo1": "Píloro",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.2.4",
+      "nombre": "Píloro - Uretero RAS",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro",
+      "polo1": "Píloro",
+      "polo2": "Uretero RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.2.5",
+      "nombre": "Píloro - Glúteo IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro",
+      "polo1": "Píloro",
+      "polo2": "Glúteo IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.3.1",
+      "nombre": "Hígado - Corazón",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado",
+      "polo1": "Hígado",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.3.2",
+      "nombre": "Hígado - Páncreas",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado",
+      "polo1": "Hígado",
+      "polo2": "Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.3.3",
+      "nombre": "Hígado - Píloro",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado",
+      "polo1": "Hígado",
+      "polo2": "Píloro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.3.4",
+      "nombre": "Hígado - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado",
+      "polo1": "Hígado",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.4.1",
+      "nombre": "Ligamento Hepático - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Zona Hepática",
+      "polo1": "Ligamento Hepático",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.4.2",
+      "nombre": "Perihepático - Perihepático",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Zona Hepática",
+      "polo1": "Perihepático",
+      "polo2": "Perihepático",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.4.3",
+      "nombre": "Costal - Costal",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Zona Hepática",
+      "polo1": "Costal",
+      "polo2": "Costal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.5.1",
+      "nombre": "Vesícula - Vesícula",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Vesícula",
+      "polo1": "Vesícula",
+      "polo2": "Vesícula",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.5.2",
+      "nombre": "Vesícula - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Vesícula",
+      "polo1": "Vesícula",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.5.3",
+      "nombre": "Conducto de Vesícula - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Vesícula",
+      "polo1": "Conducto de Vesícula",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.6.1",
+      "nombre": "Bazo Horizontal - Bazo Horizontal",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Bazo Horizontal",
+      "polo2": "Bazo Horizontal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.6.2",
+      "nombre": "Bazo Vertical - Bazo Vertical",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Bazo Vertical",
+      "polo2": "Bazo Vertical",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.6.3",
+      "nombre": "Bazo - Hipotálamo",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Bazo",
+      "polo2": "Hipotálamo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.6.4",
+      "nombre": "Bazo - Duodeno",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Bazo",
+      "polo2": "Duodeno",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.6.5",
+      "nombre": "Bazo - Pulmón Izquierdo",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Bazo",
+      "polo2": "Pulmón Izquierdo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.6.6",
+      "nombre": "Costo Diafragmático - Costo Diafragmático",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo",
+      "polo1": "Costo Diafragmático",
+      "polo2": "Costo Diafragmático",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.7.1",
+      "nombre": "Cabeza de Páncreas - Suprarrenal",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Cabeza de Páncreas",
+      "polo2": "Suprarrenal",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.2",
+      "nombre": "Cuerpo de Páncreas - Cola de Páncreas",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Cuerpo de Páncreas",
+      "polo2": "Cola de Páncreas",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.3",
+      "nombre": "Punta de Páncreas - Bazo",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Punta de Páncreas",
+      "polo2": "Bazo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.4",
+      "nombre": "Punta de Páncreas - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Punta de Páncreas",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.5",
+      "nombre": "Ligamento Pancreático - Bazo",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Ligamento Pancreático",
+      "polo2": "Bazo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.6",
+      "nombre": "Ligamento Pancreático - Colon Descendente",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Ligamento Pancreático",
+      "polo2": "Colon Descendente",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.7.7",
+      "nombre": "Conducto de Páncreas - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas",
+      "polo1": "Conducto de Páncreas",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.8.1",
+      "nombre": "Epiplón - Epiplón",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Epiplón",
+      "polo2": "Epiplón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.8.2",
+      "nombre": "Uretero - Uretero",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Uretero",
+      "polo2": "Uretero",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.8.3",
+      "nombre": "Uretero RAS - Riñón RAS",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Uretero RAS",
+      "polo2": "Riñón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.8.4",
+      "nombre": "Duodeno - Duodeno",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Duodeno",
+      "polo2": "Duodeno",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.8.5",
+      "nombre": "Duodeno - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Duodeno",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.8.6",
+      "nombre": "Duodeno - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo",
+      "polo1": "Duodeno",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.9.1",
+      "nombre": "Válvula Ileocecal - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Válvula Ileocecal",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.9.2",
+      "nombre": "Ciego - Ciego",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Ciego",
+      "polo2": "Ciego",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.9.3",
+      "nombre": "Ciego - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Ciego",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.9.4",
+      "nombre": "Contraciego - Contraciego",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Contraciego",
+      "polo2": "Contraciego",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.9.5",
+      "nombre": "Apéndice - Timo",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Apéndice",
+      "polo2": "Timo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.9.6",
+      "nombre": "Apéndice - Pleura IZQ",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección",
+      "polo1": "Apéndice",
+      "polo2": "Pleura IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.1",
+      "nombre": "Colon Ascendente - Colon Descendente",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Ascendente",
+      "polo2": "Colon Descendente",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.2",
+      "nombre": "Colon Ascendente - Riñón DER",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Ascendente",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.3",
+      "nombre": "Colon Transverso - Colon Transverso",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Transverso",
+      "polo2": "Colon Transverso",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.10.4",
+      "nombre": "Colon Transverso - Vejiga Media",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Transverso",
+      "polo2": "Vejiga Media",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.5",
+      "nombre": "Colon Transverso - Testículo RAS/Ovario RAS",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Transverso",
+      "polo2": "Testículo RAS/Ovario RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.6",
+      "nombre": "Colon Descendente - Colon Descendente",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Descendente",
+      "polo2": "Colon Descendente",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.3.10.7",
+      "nombre": "Colon Descendente - Recto",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Colon Descendente",
+      "polo2": "Recto",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.3.10.8",
+      "nombre": "Sigmoides - Recto",
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon",
+      "polo1": "Sigmoides",
+      "polo2": "Recto",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.1.1",
+      "nombre": "Dorsal 2 - Dorsal 2",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales",
+      "polo1": "Dorsal 2",
+      "polo2": "Dorsal 2",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.1.2",
+      "nombre": "Dorsal 5 - Corazón",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales",
+      "polo1": "Dorsal 5",
+      "polo2": "Corazón",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.1.3",
+      "nombre": "Dorso 5 RAS - Lumbar 2 RAS",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales",
+      "polo1": "Dorso 5 RAS",
+      "polo2": "Lumbar 2 RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.1.4",
+      "nombre": "Dorsal 6 - Dorsal 6",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales",
+      "polo1": "Dorsal 6",
+      "polo2": "Dorsal 6",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.2.1",
+      "nombre": "Cava - Cava",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Alta",
+      "polo1": "Cava",
+      "polo2": "Cava",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.2.2",
+      "nombre": "Suprarrenal - Suprarrenal",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Alta",
+      "polo1": "Suprarrenal",
+      "polo2": "Suprarrenal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.2.3",
+      "nombre": "Suprarrenal - Pulmón RAS",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Alta",
+      "polo1": "Suprarrenal",
+      "polo2": "Pulmón RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.2.4",
+      "nombre": "Suprarrenal - Hígado",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Alta",
+      "polo1": "Suprarrenal",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.2.5",
+      "nombre": "Suprarrenal - Recto",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Alta",
+      "polo1": "Suprarrenal",
+      "polo2": "Recto",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.3.1",
+      "nombre": "Pulmón - Pulmón",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Homóplato",
+      "polo1": "Pulmón",
+      "polo2": "Pulmón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.3.2",
+      "nombre": "Pulmón DER - Bulbo",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Homóplato",
+      "polo1": "Pulmón DER",
+      "polo2": "Bulbo",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.3.3",
+      "nombre": "Escápula - Escápula",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Homóplato",
+      "polo1": "Escápula",
+      "polo2": "Escápula",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.4.1",
+      "nombre": "Lóbulo Posterior del Hígado - Riñón IZQ",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Retrohepático",
+      "polo1": "Lóbulo Posterior del Hígado",
+      "polo2": "Riñón IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.4.2",
+      "nombre": "Flanco - Flanco",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Retrohepático",
+      "polo1": "Flanco",
+      "polo2": "Flanco",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.5.1",
+      "nombre": "Cápsula Renal - Cápsula Renal",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Cápsula Renal",
+      "polo2": "Cápsula Renal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.5.2",
+      "nombre": "Cápsula Renal - Riñón DER",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Cápsula Renal",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.5.3",
+      "nombre": "Riñón - Riñón",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Riñón",
+      "polo2": "Riñón",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.5.4",
+      "nombre": "Riñón IZQ - Ojo RAS",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Riñón IZQ",
+      "polo2": "Ojo RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.5.5",
+      "nombre": "Riñón IZQ - Tiroides",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Riñón IZQ",
+      "polo2": "Tiroides",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.5.6",
+      "nombre": "Cáliz Renal RAS - Uretero RAS",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Riñón",
+      "polo1": "Cáliz Renal RAS",
+      "polo2": "Uretero RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "T2.4.6.1",
+      "nombre": "Lumbar 4 - Lumbar 4",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Baja",
+      "polo1": "Lumbar 4",
+      "polo2": "Lumbar 4",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.6.2",
+      "nombre": "Cuadrado - Cuadrado",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Baja",
+      "polo1": "Cuadrado",
+      "polo2": "Cuadrado",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "T2.4.6.3",
+      "nombre": "Staquibraquis - Staquibraquis",
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Baja",
+      "polo1": "Staquibraquis",
+      "polo2": "Staquibraquis",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.1.1",
+      "nombre": "Vejiga - Vejiga",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis",
+      "polo1": "Vejiga",
+      "polo2": "Vejiga",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.1.2",
+      "nombre": "Suprapúbico - Suprapúbico",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis",
+      "polo1": "Suprapúbico",
+      "polo2": "Suprapúbico",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.1.3",
+      "nombre": "Pudendo - Pudendo",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis",
+      "polo1": "Pudendo",
+      "polo2": "Pudendo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.2.1",
+      "nombre": "Cadera - Cadera",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera",
+      "polo1": "Cadera",
+      "polo2": "Cadera",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.2.2",
+      "nombre": "Cresta Ilíaca - Cresta Ilíaca",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera",
+      "polo1": "Cresta Ilíaca",
+      "polo2": "Cresta Ilíaca",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.2.3",
+      "nombre": "Nervio Inguinal - Nervio Inguinal",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera",
+      "polo1": "Nervio Inguinal",
+      "polo2": "Nervio Inguinal",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.2.4",
+      "nombre": "Nervio Inguinal - Hígado",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera",
+      "polo1": "Nervio Inguinal",
+      "polo2": "Hígado",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.1.3.1",
+      "nombre": "Cuello de Fémur - Cuello de Fémur",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Fémur",
+      "polo1": "Cuello de Fémur",
+      "polo2": "Cuello de Fémur",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.3.2",
+      "nombre": "Trocánter Mayor - Trocánter Mayor",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Fémur",
+      "polo1": "Trocánter Mayor",
+      "polo2": "Trocánter Mayor",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.1.3.3",
+      "nombre": "Trocánter Mayor - Riñón HOMOLAT",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Fémur",
+      "polo1": "Trocánter Mayor",
+      "polo2": "Riñón HOMOLAT",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.1.3.4",
+      "nombre": "Trocánter Menor - Trocánter Menor",
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Fémur",
+      "polo1": "Trocánter Menor",
+      "polo2": "Trocánter Menor",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.1.1",
+      "nombre": "Interiliaco - Sacro",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro",
+      "polo1": "Interiliaco",
+      "polo2": "Sacro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.2.1.2",
+      "nombre": "Iliaco - Iliaco",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro",
+      "polo1": "Iliaco",
+      "polo2": "Iliaco",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.1.3",
+      "nombre": "Sacro - Sacro",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro",
+      "polo1": "Sacro",
+      "polo2": "Sacro",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.1.4",
+      "nombre": "Saco de Douglas - Femoral",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro",
+      "polo1": "Saco de Douglas",
+      "polo2": "Femoral",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.2.2.1",
+      "nombre": "Coxis - Coxis",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Coxis",
+      "polo1": "Coxis",
+      "polo2": "Coxis",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.2.2",
+      "nombre": "Recto - Recto",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Coxis",
+      "polo1": "Recto",
+      "polo2": "Recto",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.2.3",
+      "nombre": "Recto - Ano",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Coxis",
+      "polo1": "Recto",
+      "polo2": "Ano",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.2.2.4",
+      "nombre": "Ano - Ano",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Coxis",
+      "polo1": "Ano",
+      "polo2": "Ano",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.3.1",
+      "nombre": "Glúteo - Glúteo",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero",
+      "polo1": "Glúteo",
+      "polo2": "Glúteo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.3.2",
+      "nombre": "Glúteo - Femoral",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero",
+      "polo1": "Glúteo",
+      "polo2": "Femoral",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.2.3.3",
+      "nombre": "Rama Isquiática - Rama Isquiática",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero",
+      "polo1": "Rama Isquiática",
+      "polo2": "Rama Isquiática",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.2.3.4",
+      "nombre": "Isquion - Isquion",
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero",
+      "polo1": "Isquion",
+      "polo2": "Isquion",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.1.1",
+      "nombre": "Útero - Útero",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A",
+      "polo1": "Útero",
+      "polo2": "Útero",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.1.2",
+      "nombre": "Útero - Ovario RAS",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A",
+      "polo1": "Útero",
+      "polo2": "Ovario RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.3.1.3",
+      "nombre": "Clítoris - Clítoris",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A",
+      "polo1": "Clítoris",
+      "polo2": "Clítoris",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.1.4",
+      "nombre": "Clítoris - Sacro",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A",
+      "polo1": "Clítoris",
+      "polo2": "Sacro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.3.1.5",
+      "nombre": "Uretra - Uretra",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A",
+      "polo1": "Uretra",
+      "polo2": "Uretra",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.2.1",
+      "nombre": "Vagina - Vagina",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B",
+      "polo1": "Vagina",
+      "polo2": "Vagina",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.2.2",
+      "nombre": "Vagina - Vejiga Media",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B",
+      "polo1": "Vagina",
+      "polo2": "Vejiga Media",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.3.2.3",
+      "nombre": "Trompa RAS - Trompa",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B",
+      "polo1": "Trompa RAS",
+      "polo2": "Trompa",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.3.2.4",
+      "nombre": "Trompa RAS - Útero",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B",
+      "polo1": "Trompa RAS",
+      "polo2": "Útero",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "P3.3.2.5",
+      "nombre": "Ovario - Ovario",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B",
+      "polo1": "Ovario",
+      "polo2": "Ovario",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.3.1",
+      "nombre": "Cuerpo Cavernoso - Cuerpo Cavernoso",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho",
+      "polo1": "Cuerpo Cavernoso",
+      "polo2": "Cuerpo Cavernoso",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.3.2",
+      "nombre": "Testículo - Testículo",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho",
+      "polo1": "Testículo",
+      "polo2": "Testículo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.3.3",
+      "nombre": "Próstata - Próstata",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho",
+      "polo1": "Próstata",
+      "polo2": "Próstata",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "P3.3.3.4",
+      "nombre": "Próstata - Recto",
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho",
+      "polo1": "Próstata",
+      "polo2": "Recto",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "M4.1.1.1",
+      "nombre": "Deltoides - Deltoides",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto",
+      "polo1": "Deltoides",
+      "polo2": "Deltoides",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.1.2",
+      "nombre": "Deltoides DER - Riñón DER",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto",
+      "polo1": "Deltoides DER",
+      "polo2": "Riñón DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "M4.1.1.3",
+      "nombre": "Bursa - Bursa",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto",
+      "polo1": "Bursa",
+      "polo2": "Bursa",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.1.4",
+      "nombre": "Húmero - Húmero",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto",
+      "polo1": "Húmero",
+      "polo2": "Húmero",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.2.1",
+      "nombre": "Codo - Codo",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Medio",
+      "polo1": "Codo",
+      "polo2": "Codo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.2.2",
+      "nombre": "Braquial - Braquial",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Medio",
+      "polo1": "Braquial",
+      "polo2": "Braquial",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.2.3",
+      "nombre": "Radio - Radio",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Medio",
+      "polo1": "Radio",
+      "polo2": "Radio",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.2.4",
+      "nombre": "Cúbito - Cúbito",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Medio",
+      "polo1": "Cúbito",
+      "polo2": "Cúbito",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.3.1",
+      "nombre": "Muñeca Anterior - Muñeca Anterior",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Muñeca Anterior",
+      "polo2": "Muñeca Anterior",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.3.2",
+      "nombre": "Muñeca Posterior - Muñeca Posterior",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Muñeca Posterior",
+      "polo2": "Muñeca Posterior",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.3.3",
+      "nombre": "Palma - Palma",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Palma",
+      "polo2": "Palma",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.3.4",
+      "nombre": "Palma RAS - Plantar RAS",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Palma RAS",
+      "polo2": "Plantar RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "M4.1.3.5",
+      "nombre": "Dorso Mano - Dorso Mano",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Dorso Mano",
+      "polo2": "Dorso Mano",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.1.3.6",
+      "nombre": "Índice - Índice",
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano",
+      "polo1": "Índice",
+      "polo2": "Índice",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.1.1",
+      "nombre": "Aductor Menor - Aductor Menor",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Alta",
+      "polo1": "Aductor Menor",
+      "polo2": "Aductor Menor",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.1.2",
+      "nombre": "Aductor - Aductor",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Alta",
+      "polo1": "Aductor",
+      "polo2": "Aductor",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.1.3",
+      "nombre": "Cuádriceps - Cuádriceps",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Alta",
+      "polo1": "Cuádriceps",
+      "polo2": "Cuádriceps",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.1.4",
+      "nombre": "Tensor Fascia Lata - Tensor Fascia Lata",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Alta",
+      "polo1": "Tensor Fascia Lata",
+      "polo2": "Tensor Fascia Lata",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.2.1",
+      "nombre": "Ligamento Externo de Rodilla - Mesenterio",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Media",
+      "polo1": "Ligamento Externo de Rodilla",
+      "polo2": "Mesenterio",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "M4.2.2.2",
+      "nombre": "Rótula - Rótula",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Media",
+      "polo1": "Rótula",
+      "polo2": "Rótula",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.2.3",
+      "nombre": "Tibia - Tibia",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Media",
+      "polo1": "Tibia",
+      "polo2": "Tibia",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.2.4",
+      "nombre": "Peroné - Peroné",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Media",
+      "polo1": "Peroné",
+      "polo2": "Peroné",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.3.1",
+      "nombre": "Ciático - Ciático",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera",
+      "polo1": "Ciático",
+      "polo2": "Ciático",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.3.2",
+      "nombre": "Poplíteo - Poplíteo",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera",
+      "polo1": "Poplíteo",
+      "polo2": "Poplíteo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.3.3",
+      "nombre": "Aquiles Alto - Aquiles Alto",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera",
+      "polo1": "Aquiles Alto",
+      "polo2": "Aquiles Alto",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.3.4",
+      "nombre": "Aquiles - Aquiles",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera",
+      "polo1": "Aquiles",
+      "polo2": "Aquiles",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.3.5",
+      "nombre": "Aquiles Bajo - Aquiles Bajo",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera",
+      "polo1": "Aquiles Bajo",
+      "polo2": "Aquiles Bajo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.4.1",
+      "nombre": "Empeine - Empeine",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pie",
+      "polo1": "Empeine",
+      "polo2": "Empeine",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.4.2",
+      "nombre": "Dedo Gordo - Dedo Gordo",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pie",
+      "polo1": "Dedo Gordo",
+      "polo2": "Dedo Gordo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.4.3",
+      "nombre": "Calcáneo - Calcáneo",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pie",
+      "polo1": "Calcáneo",
+      "polo2": "Calcáneo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "M4.2.4.4",
+      "nombre": "Plantar - Plantar",
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pie",
+      "polo1": "Plantar",
+      "polo2": "Plantar",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.1.1",
+      "nombre": "Suprarrenal - Todo el frente (A-F)",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Pares Generales",
+      "polo1": "Suprarrenal",
+      "polo2": "Todo el frente (A-F)",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.1.1.2",
+      "nombre": "Par Gen Ombligo - Órgano/Tejido/Punto RAS",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Pares Generales",
+      "polo1": "Par Gen Ombligo",
+      "polo2": "Órgano/Tejido/Punto RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.1.1.3",
+      "nombre": "Nervio Inguinal DER - Articulación Dolorosa 1-13 RAS",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Pares Generales",
+      "polo1": "Nervio Inguinal DER",
+      "polo2": "Articulación Dolorosa 1-13 RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.1.2.2",
+      "nombre": "Nervio Inguinal DER - Articulación Dolorosa 1-13",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Traumatismo",
+      "polo1": "Nervio Inguinal DER",
+      "polo2": "Articulación Dolorosa 1-13",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.1.2.3",
+      "nombre": "Punto Trauma - Punto Trauma",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Traumatismo",
+      "polo1": "Punto Trauma",
+      "polo2": "Punto Trauma",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.2.4",
+      "nombre": "Punto Trauma - Riñón HOMOLAT",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Traumatismo",
+      "polo1": "Punto Trauma",
+      "polo2": "Riñón HOMOLAT",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.1.2.5",
+      "nombre": "Punto Trauma Sedante (-)",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Traumatismo",
+      "polo1": "Punto Trauma Sedante (-)",
+      "polo2": "Punto Trauma Sedante (-)",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.2.6",
+      "nombre": "Punto Trauma Estimulante (+)",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Traumatismo",
+      "polo1": "Punto Trauma Estimulante (+)",
+      "polo2": "Punto Trauma Estimulante (+)",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.3.1",
+      "nombre": "Par Nuevo",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Personalizados",
+      "polo1": "Par Nuevo",
+      "polo2": "Par Nuevo",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.3.2",
+      "nombre": "Biomagnetopuntura",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Personalizados",
+      "polo1": "Biomagnetopuntura",
+      "polo2": "Biomagnetopuntura",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.1.3.3",
+      "nombre": "Par Vacuna",
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Personalizados",
+      "polo1": "Par Vacuna",
+      "polo2": "Par Vacuna",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.1.1",
+      "nombre": "Cervical 1 - Cervical 7",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados",
+      "polo1": "Cervical 1",
+      "polo2": "Cervical 7",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.1.2",
+      "nombre": "Dorsal 1 - Dorsal 12",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados",
+      "polo1": "Dorsal 1",
+      "polo2": "Dorsal 12",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.1.3",
+      "nombre": "Lumbar 1 - Lumbar 5",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados",
+      "polo1": "Lumbar 1",
+      "polo2": "Lumbar 5",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.1.4",
+      "nombre": "Sacro 1 - Sacro 1",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados",
+      "polo1": "Sacro 1",
+      "polo2": "Sacro 1",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.1.5",
+      "nombre": "Coxis 1 - Sacro 4",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados",
+      "polo1": "Coxis 1",
+      "polo2": "Sacro 4",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.2.1",
+      "nombre": "Cervical RAS - Cervical RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Homólogos",
+      "polo1": "Cervical RAS",
+      "polo2": "Cervical RAS",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.2.2",
+      "nombre": "Dorsal RAS - Dorsal RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Homólogos",
+      "polo1": "Dorsal RAS",
+      "polo2": "Dorsal RAS",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.2.3",
+      "nombre": "Lumbar RAS - Lumbar RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Homólogos",
+      "polo1": "Lumbar RAS",
+      "polo2": "Lumbar RAS",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.2.4",
+      "nombre": "Sacro RAS - Sacro RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Homólogos",
+      "polo1": "Sacro RAS",
+      "polo2": "Sacro RAS",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.2.5",
+      "nombre": "Coxis RAS - Coxis RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Homólogos",
+      "polo1": "Coxis RAS",
+      "polo2": "Coxis RAS",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.2.3.1",
+      "nombre": "Cervical RAS - Dorsal RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Cervical",
+      "polo1": "Cervical RAS",
+      "polo2": "Dorsal RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.3.2",
+      "nombre": "Cervical RAS - Lumbar RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Cervical",
+      "polo1": "Cervical RAS",
+      "polo2": "Lumbar RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.3.3",
+      "nombre": "Cervical RAS - Sacro RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Cervical",
+      "polo1": "Cervical RAS",
+      "polo2": "Sacro RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.3.4",
+      "nombre": "Cervical RAS - Coxis RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Cervical",
+      "polo1": "Cervical RAS",
+      "polo2": "Coxis RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.4.1",
+      "nombre": "Dorsal RAS - Cervical RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Dorsal",
+      "polo1": "Dorsal RAS",
+      "polo2": "Cervical RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.4.2",
+      "nombre": "Dorsal RAS - Lumbar RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Dorsal",
+      "polo1": "Dorsal RAS",
+      "polo2": "Lumbar RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.4.3",
+      "nombre": "Dorsal RAS - Sacro RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Dorsal",
+      "polo1": "Dorsal RAS",
+      "polo2": "Sacro RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.4.4",
+      "nombre": "Dorsal RAS - Coxis RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Dorsal",
+      "polo1": "Dorsal RAS",
+      "polo2": "Coxis RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.5.1",
+      "nombre": "Lumbar RAS - Cervical RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Lumbar",
+      "polo1": "Lumbar RAS",
+      "polo2": "Cervical RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.5.2",
+      "nombre": "Lumbar RAS - Dorsal RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Lumbar",
+      "polo1": "Lumbar RAS",
+      "polo2": "Dorsal RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.5.3",
+      "nombre": "Lumbar RAS - Sacro RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Lumbar",
+      "polo1": "Lumbar RAS",
+      "polo2": "Sacro RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.5.4",
+      "nombre": "Lumbar RAS - Coxis RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Lumbar",
+      "polo1": "Lumbar RAS",
+      "polo2": "Coxis RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.6.1",
+      "nombre": "Sacro RAS - Cervical RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Sacro",
+      "polo1": "Sacro RAS",
+      "polo2": "Cervical RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.6.2",
+      "nombre": "Sacro RAS - Dorsal RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Sacro",
+      "polo1": "Sacro RAS",
+      "polo2": "Dorsal RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.6.3",
+      "nombre": "Sacro RAS - Lumbar RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Sacro",
+      "polo1": "Sacro RAS",
+      "polo2": "Lumbar RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.6.4",
+      "nombre": "Sacro RAS - Coxis RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Sacro",
+      "polo1": "Sacro RAS",
+      "polo2": "Coxis RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.7.1",
+      "nombre": "Coxis RAS - Cervical RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Coxis",
+      "polo1": "Coxis RAS",
+      "polo2": "Cervical RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.7.2",
+      "nombre": "Coxis RAS - Dorsal RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Coxis",
+      "polo1": "Coxis RAS",
+      "polo2": "Dorsal RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.7.3",
+      "nombre": "Coxis RAS - Lumbar RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Coxis",
+      "polo1": "Coxis RAS",
+      "polo2": "Lumbar RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.2.7.4",
+      "nombre": "Coxis RAS - Sacro RAS",
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Rastreo Coxis",
+      "polo1": "Coxis RAS",
+      "polo2": "Sacro RAS",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.3.1.1",
+      "nombre": "Pulmón Frontal DER - Nervio Inguinal DER",
+      "region": "Extras",
+      "zona": "Ejes Corporales",
+      "bloque": "Eje Vertical",
+      "polo1": "Pulmón Frontal DER",
+      "polo2": "Nervio Inguinal DER",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.3.1.2",
+      "nombre": "Pulmón Frontal IZQ - Nervio Inguinal IZQ",
+      "region": "Extras",
+      "zona": "Ejes Corporales",
+      "bloque": "Eje Vertical",
+      "polo1": "Pulmón Frontal IZQ",
+      "polo2": "Nervio Inguinal IZQ",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.3.2.1",
+      "nombre": "Frente - Sacro",
+      "region": "Extras",
+      "zona": "Ejes Corporales",
+      "bloque": "Eje Horizontal",
+      "polo1": "Frente",
+      "polo2": "Sacro",
+      "tipo": "cruzado"
+    },
+    {
+      "id": "E5.3.3.1",
+      "nombre": "Suprarrenales - Suprarrenales",
+      "region": "Extras",
+      "zona": "Ejes Corporales",
+      "bloque": "Eje Transverso",
+      "polo1": "Suprarrenales",
+      "polo2": "Suprarrenales",
+      "tipo": "bilateral"
+    },
+    {
+      "id": "E5.3.3.2",
+      "nombre": "Dorsal 2 - Sacro 2",
+      "region": "Extras",
+      "zona": "Ejes Corporales",
+      "bloque": "Eje Transverso",
+      "polo1": "Dorsal 2",
+      "polo2": "Sacro 2",
+      "tipo": "cruzado"
+    }
+  ],
+  "fuentes": [
+    "Tablas Holoacademia - Alejandro Lavín (fuente primaria)",
+    "Atlas Consolidado de Pares Biomagnéticos - Gerardo Donovarros",
+    "Biomagnetismo Cuántico - Catálogo alfabético ~1056 pares (BIOMAGNETISMO-CUANTICO.pdf)",
+    "Biomagnetismo - Lista General + enfermedades ~350 pares (BIOMAGNETISMO.pdf)",
+    "Manual de Biomagnetismo 2021 Mod.2 (Manual-Biomagnetismo-2021.pdf)",
+    "HoloBiomagnetismo Parte 2 (Psicosomática) - Lavín"
+  ],
+  "consolidacion": {
+    "pares_holoacademia_base": 371,
+    "pares_compilado_externo_v3": 303,
+    "pares_pdfs_nuevos_v4": 383,
+    "duplicados_eliminados": 272,
+    "zonas_no_encontradas": 0,
+    "total_v4": 1058,
+    "pares_parte2_agregados": 85
+  }
+}

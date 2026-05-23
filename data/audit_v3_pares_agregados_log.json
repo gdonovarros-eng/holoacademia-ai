@@ -1,0 +1,2597 @@
+{
+  "timestamp": "20260519_231518",
+  "backup": "/Users/highdata/Desktop/New Project/data/biomagnetic_pairs_db.backup_v3_20260519_231518.json",
+  "total_agregados": 259,
+  "pares_agregados": [
+    {
+      "par_clean": "Braquial - Codo",
+      "par_original": "Braquial - Codo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 3,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Medio"
+    },
+    {
+      "par_clean": "Calcáneo - Muñeca",
+      "par_original": "Calcáne o - Muñeca",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pie"
+    },
+    {
+      "par_clean": "Cardias - Suprarrenales",
+      "par_original": "Cardias - suprarrenales",
+      "tipo": "Bacteria",
+      "patogeno": "Estreptococo Beta hemolitico",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo"
+    },
+    {
+      "par_clean": "Carótida - Pudendo",
+      "par_original": "Carotida - Pudendo",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central"
+    },
+    {
+      "par_clean": "Cervical - Deltoides",
+      "par_original": "Cervical - Deltoide s",
+      "tipo": "Bacteria",
+      "patogeno": "Balantidium",
+      "sources_count": 3,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto"
+    },
+    {
+      "par_clean": "Cervical 1 - Deltoides",
+      "par_original": "Cervical 1 - Deltoide s",
+      "tipo": "Parásito",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto"
+    },
+    {
+      "par_clean": "Cervical 5 - Cervical 5",
+      "par_original": "Cervical 5 - Cervical 5",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca"
+    },
+    {
+      "par_clean": "Cervical 7 - Cervical 7",
+      "par_original": "Cervical 7 - Cervical 7",
+      "tipo": "Sin clasificar",
+      "patogeno": "Stap hyloc occu sCapit is",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca"
+    },
+    {
+      "par_clean": "Cervicales - Cápsula Renal",
+      "par_original": "Cervical es - Capsula Renal",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cervicales - Dorsales",
+      "par_original": "Cervical es - Dorsales",
+      "tipo": "Sin clasificar",
+      "patogeno": "Pasci ano oTenn isElbo w",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cervicales - Plexo Cervical",
+      "par_original": "Cervical es - Plexo cervical",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral"
+    },
+    {
+      "par_clean": "Cervicales - Deltoides DER",
+      "par_original": "Cervicales - Deltoides Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cervicales - Dorsal",
+      "par_original": "Cervicales - Dorsal",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cervicales - Lumbares",
+      "par_original": "Cervicales - Lumbares",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cervicales - Plexo Cervical Derecho",
+      "par_original": "Cervicales - Plexo Cervical Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Ciático Derecho - Lumbar 1",
+      "par_original": "Ciatico Derecho - Lumbar 1",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Ciático Derecho - Lumbar 2",
+      "par_original": "Ciatico Derecho - Lumbar 2",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Ciático Derecho - Lumbar 4",
+      "par_original": "Ciatico Derecho - Lumbar 4",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Espalda Baja"
+    },
+    {
+      "par_clean": "Ciático Derecho - Lumbar 5",
+      "par_original": "Ciatico Derecho - Lumbar 5",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Ciático - Labio",
+      "par_original": "Ciático - Labio",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera"
+    },
+    {
+      "par_clean": "Clítoris - Ciático",
+      "par_original": "Clitoris - ciático",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A"
+    },
+    {
+      "par_clean": "Clítoris - Suprapúbico",
+      "par_original": "Clitoris - Suprapú bico",
+      "tipo": "Bacteria",
+      "patogeno": "Espiroqueta",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Cola de Caballo - Cola de Caballo",
+      "par_original": "Cola de caballo - Cola de caballo",
+      "tipo": "Virus",
+      "patogeno": "Herp es",
+      "sources_count": 4,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo"
+    },
+    {
+      "par_clean": "Colon Ascendente - COLON",
+      "par_original": "Colon Ascendente - Colon",
+      "tipo": "Sin clasificar",
+      "patogeno": "Herpes",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Colon Ascendente - Sacro",
+      "par_original": "Colon Ascendente - Sacro",
+      "tipo": "Bacteria",
+      "patogeno": "Burkholderia Cepacia",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Colon Desc - Hígado",
+      "par_original": "Colon Desc. - Hígado",
+      "tipo": "Bacteria",
+      "patogeno": "Pasteurella",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Colón Descendente - Riñón",
+      "par_original": "Colon Descendente - Riñon",
+      "tipo": "Sin clasificar",
+      "patogeno": "Pasteur ella",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Colón Transverso - Nervio Inguinal",
+      "par_original": "Colon Transver so - Nervio Inguinal",
+      "tipo": "Parásito",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Colón Transverso - Colón Descendente",
+      "par_original": "Colon Transverso - Colon Descendente",
+      "tipo": "Sin clasificar",
+      "patogeno": "Giardia Lamblia",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Colón Transverso - Sacro",
+      "par_original": "Colon Transverso - Sacro",
+      "tipo": "Sin clasificar",
+      "patogeno": "Chlamydia Intestinalis",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Colón Transverso - Testículo Derecho",
+      "par_original": "Colon Transverso - Testiculo Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Conducto Páncreas - Riñón Izquierdo",
+      "par_original": "Conduct o páncreas - Riñón Izq.",
+      "tipo": "Bacteria",
+      "patogeno": "Espiroqueta",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Conducto Páncreas - Riñón Derecho",
+      "par_original": "Conducto Pancreas - Riñon Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobaterium Leprae",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Conducto Vesícula - Riñón Derecho",
+      "par_original": "Conducto Vesicula - Riñon Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Espiroqueta",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Contraciego - Riñón Izquierdo",
+      "par_original": "Contra Ciego - Riñon Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Bordetella pertussis",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Coronaria - Pulmón IZQ",
+      "par_original": "Coronari a - Pulmón Izq",
+      "tipo": "Bacteria",
+      "patogeno": "streptococo ayuda",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Costal - Hígado",
+      "par_original": "Costal - Higado",
+      "tipo": "Bacteria",
+      "patogeno": "Borrelia",
+      "sources_count": 6,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Costo Diafragmático - Costo",
+      "par_original": "Costo Diafragmatico - Costo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo"
+    },
+    {
+      "par_clean": "Costo Hepático - Costo Hepático",
+      "par_original": "Costo Hepático - Costo Hepático",
+      "tipo": "Bacteria",
+      "patogeno": "Borrelia",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Hepatitis",
+      "bloque": "Hepático 2"
+    },
+    {
+      "par_clean": "Cresta Ilíaca - Rama Isquiática",
+      "par_original": "Cresta iliaca - Rama isquiátic a",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus C",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Cuarto Ventrículo - Bulbo Raquídeo",
+      "par_original": "Cuarto Ventriculo - Bulbo Raquideo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Cuerpo de Páncreas - Glúteo Derecho",
+      "par_original": "Cuerpo De Pancreas - Gluteo Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Cuerpo de Páncreas - Hígado",
+      "par_original": "Cuerpo De Pancreas - Higado",
+      "tipo": "Sin clasificar",
+      "patogeno": "Escherichia Colli",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Cuerpo de Páncreas - Riñón Derecho",
+      "par_original": "Cuerpo De Pancreas - Riñon Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": "Escherichia Colli",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Cuerpo de Páncreas - Útero",
+      "par_original": "Cuerpo De Pancreas - Utero",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Cuádriceps - Duodeno",
+      "par_original": "Cuádrice ps - Duodeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Cápsula Renal - Vejiga",
+      "par_original": "Cápsula renal - Vejiga",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial Toxi nasdel riñón",
+      "sources_count": 3,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Dedo Anular - Dedo Pulgar",
+      "par_original": "Dedo anular - Dedo pulgar",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano"
+    },
+    {
+      "par_clean": "Dedo Meñique - Dedo Anular",
+      "par_original": "Dedo meñique - Dedo Anular.",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano"
+    },
+    {
+      "par_clean": "Dedo Pulgar - Dedo Meñique",
+      "par_original": "Dedo pulgar - Dedo Meñique",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano"
+    },
+    {
+      "par_clean": "Deltoides - Riñón del Mismo Lado",
+      "par_original": "DELTOID ES - Riñón del mismo lado",
+      "tipo": "Hongo",
+      "patogeno": "Leish maní a",
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto"
+    },
+    {
+      "par_clean": "Deltoides - Cuadrado",
+      "par_original": "Deltoide s - Cuadrad o",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto"
+    },
+    {
+      "par_clean": "Deltoides - Riñón Mismo Lado",
+      "par_original": "Deltoide s - Riñón mismo lado",
+      "tipo": "Parásito",
+      "patogeno": "Leishmania",
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Brazo Alto"
+    },
+    {
+      "par_clean": "Deltoides Izquierdo - Cervical",
+      "par_original": "Deltoides Izquierdo - Cervical",
+      "tipo": "Bacteria",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Deltoides Izquierdo - Riñón Izquierdo",
+      "par_original": "Deltoides Izquierdo - Riñon Izquierdo",
+      "tipo": "Parásito",
+      "patogeno": "Leishmania",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Dental - Riñón del Mismo Lado",
+      "par_original": "Dental - Riñón DEL MISMO LADO",
+      "tipo": "Reservorio",
+      "patogeno": "GOIZ",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca"
+    },
+    {
+      "par_clean": "Diafragma - Duodeno",
+      "par_original": "DIAFRA GMA - Duodeno",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Diafragma - Píloro",
+      "par_original": "DIAFRA GMA - Píloro",
+      "tipo": "Virus",
+      "patogeno": "Astro virus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Diafragma - Riñón Ipsilateral",
+      "par_original": "DIAFRA GMA - Riñón Ipsilatera l",
+      "tipo": "Bacteria",
+      "patogeno": "Brucella abortus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma"
+    },
+    {
+      "par_clean": "Diafragma - Esófago",
+      "par_original": "Diafragm a - Esófago",
+      "tipo": "Hongo",
+      "patogeno": "virus que lo",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata"
+    },
+    {
+      "par_clean": "Diafragma - Riñón Mismo Lado",
+      "par_original": "Diafragm a - Riñón mismo lado",
+      "tipo": "Bacteria",
+      "patogeno": "Bruc elaabort us",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Diafragma"
+    },
+    {
+      "par_clean": "DOLOR - Riñón Lateral",
+      "par_original": "Dolor - Riñon Lateral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca"
+    },
+    {
+      "par_clean": "Dorsal - Dorsal 2",
+      "par_original": "Dorsal - Dorsal 2",
+      "tipo": "Sin clasificar",
+      "patogeno": "E. Coli",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales"
+    },
+    {
+      "par_clean": "Dorsal 1 - Dorsal 1",
+      "par_original": "Dorsal 1 - Dorsal 1",
+      "tipo": "Sin clasificar",
+      "patogeno": "Blast ocisti s homi nis o Prote us Vulg aris",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Nuca"
+    },
+    {
+      "par_clean": "Dorsal 12 - Dorsal 12",
+      "par_original": "Dorsal 12 - Dorsal 12",
+      "tipo": "Bacteria",
+      "patogeno": "Neu moc oco ó Estre ptoc ocos pneu moni ae.",
+      "sources_count": 3,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Dorsal 12 - Lumbar",
+      "par_original": "Dorsal 12 - Lumbar",
+      "tipo": "Sin clasificar",
+      "patogeno": "Meni ngoc oco.",
+      "sources_count": 2,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Dorsal 12 - Lumbar 1",
+      "par_original": "Dorsal 12 - Lumbar 1",
+      "tipo": "Virus",
+      "patogeno": "Nork walk virus",
+      "sources_count": 2,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Dorsal 5 - Dorsal 5",
+      "par_original": "Dorsal 5 - Dorsal 5",
+      "tipo": "Bacteria",
+      "patogeno": "Esch erich iaColli",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales"
+    },
+    {
+      "par_clean": "Dorsal 5 - Lumbar 2",
+      "par_original": "Dorsal 5 - Lumbar 2",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria meningitidis",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Duodeno - Colon Desc",
+      "par_original": "Duodeno - Colon Desc.",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Duodeno - Conducto Vesícula",
+      "par_original": "Duodeno - Conducto Vesicula",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Duodeno - Riñones",
+      "par_original": "Duodeno - Riñones",
+      "tipo": "Sin clasificar",
+      "patogeno": "Solitaria",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Escápula Izquierda - Ombligo",
+      "par_original": "Escapula Izquierda - Ombligo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Esófago - Bulbo Raquídeo",
+      "par_original": "Esofago - Bulbo Raquideo",
+      "tipo": "Parásito",
+      "patogeno": "Cisticerco",
+      "sources_count": 5,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata"
+    },
+    {
+      "par_clean": "Esófago - Vejiga",
+      "par_original": "Esofago - Vejiga",
+      "tipo": "Sin clasificar",
+      "patogeno": "Citoplasma Caps",
+      "sources_count": 3,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Estómago - Colon Ascendente",
+      "par_original": "Estomago - Colon Ascendente",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago"
+    },
+    {
+      "par_clean": "Estómago - Riñón Izquierdo",
+      "par_original": "Estomago - Riñon Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago"
+    },
+    {
+      "par_clean": "Estómago - Sacro",
+      "par_original": "Estomago - Sacro",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia intestinalis",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago"
+    },
+    {
+      "par_clean": "Estómago - Bulbo",
+      "par_original": "Estómag o - Bulbo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago"
+    },
+    {
+      "par_clean": "Estómago - Cava",
+      "par_original": "Estómag o - Cava",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Estómago"
+    },
+    {
+      "par_clean": "Esófago - Hiato",
+      "par_original": "Esófago - Hiato",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria",
+      "sources_count": 7,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Ganglios Mesentéricos - Riñón Izquierdo",
+      "par_original": "Ganglios mesente ricos - Riñón izq.",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Garganta - Duodeno",
+      "par_original": "Garganta - Duodeno",
+      "tipo": "Hongo",
+      "patogeno": "Mico sis",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Gen - Pineal",
+      "par_original": "Gen - Pineal",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Glándula Palatina - Glándula Palatina",
+      "par_original": "Glandula Palatina - Glandula Palatina",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca"
+    },
+    {
+      "par_clean": "Glúteo Derecho - Píloro",
+      "par_original": "Gluteo Derecho - Piloro",
+      "tipo": "Bacteria",
+      "patogeno": "Vellonella",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Hiato - Cardias",
+      "par_original": "Hiato - Cardias",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Bajo"
+    },
+    {
+      "par_clean": "Hiato - Hiato",
+      "par_original": "Hiato - Hiato",
+      "tipo": "Disfunción",
+      "patogeno": "Disfu nció n",
+      "sources_count": 3,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Hiato - Lengua",
+      "par_original": "Hiato - Lengua",
+      "tipo": "Parásito",
+      "patogeno": "Triquinella",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Hiato - Pulmón Frontal DER",
+      "par_original": "Hiato - Pulmon Frontal Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Hiato Esofágico - Hígado",
+      "par_original": "Hiato Esofagico - Higado",
+      "tipo": "Reservorio",
+      "patogeno": "Mycobaterium Tuberculosis RESERVORIO",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Hígado - Ligamento Pancreático",
+      "par_original": "Higado - Ligamento Pancreatico",
+      "tipo": "Hongo",
+      "patogeno": "Rhizopus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Hígado - Parietal IZQ",
+      "par_original": "Higado - Parietal izq.",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Hígado - Prominencia Occipital",
+      "par_original": "Higado - Prominencia Occipital",
+      "tipo": "Reservorio",
+      "patogeno": "Universal",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Hígado - Riñón",
+      "par_original": "Higado - Riñon",
+      "tipo": "Bacteria",
+      "patogeno": "Pasteurella",
+      "sources_count": 5,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Hipófisis - Ovario Derecho",
+      "par_original": "Hipofisis - Ovario Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 3,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Hipófisis - Subclavia Derecha",
+      "par_original": "Hipofisis - Subclavia Derecha",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Hipófisis - Mama",
+      "par_original": "Hipófisis - Mama",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Interciliar - Suprarrenales",
+      "par_original": "Interciliar - Suprarrenales",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Baja"
+    },
+    {
+      "par_clean": "Lengua - Apéndice",
+      "par_original": "Lengua - Apéndice",
+      "tipo": "Complejo",
+      "patogeno": "Viruela",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección"
+    },
+    {
+      "par_clean": "Ligamento Pancreático - Riñón Derecho",
+      "par_original": "Ligamento Pancreatico - Riñon Derecho",
+      "tipo": "Virus",
+      "patogeno": "Adenovirus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Línea Arcuata - Línea Arcuata",
+      "par_original": "Linea Arcuata - Linea Arcuata",
+      "tipo": "Bacteria",
+      "patogeno": "Staphylococcus aureus",
+      "sources_count": 5,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Lóbulo posterior Hígado - Riñón Izquierdo",
+      "par_original": "Lobulo posterior Higado - riñon izq.",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Toxi na. Enve nena mien to. Metal oides , Intox icaci ón por metal es",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Lumbar 1 - Cervical 7",
+      "par_original": "Lumbar 1 - Cervical 7",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Lumbar 1 - Lumbar 1",
+      "par_original": "LUMBAR 1 - Lumbar 1",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas maHomi nis",
+      "sources_count": 3,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Lumbar 2 - Lumbar",
+      "par_original": "Lumbar 2 - lumbar",
+      "tipo": "Sin clasificar",
+      "patogeno": "Clostridium Dificike",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Lumbar 4 - Riñón Izquierdo",
+      "par_original": "Lumbar 4 - Riñon izq.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Lumbar 4 - Sacro",
+      "par_original": "LUMBAR 4 - Sacro",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Lumbar 5 - Lumbar 5",
+      "par_original": "Lumbar 5 - Lumbar 5",
+      "tipo": "Bacteria",
+      "patogeno": "Stap hyloc occu s Dora do (-) o aure us",
+      "sources_count": 3,
+      "region": "Extras",
+      "zona": "Columna Vertebral",
+      "bloque": "Predeterminados"
+    },
+    {
+      "par_clean": "Lunar - Riñón Mismo Lado",
+      "par_original": "Lunar - riñón mismo lado",
+      "tipo": "Virus",
+      "patogeno": "Virus Porroedores",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Cerebro"
+    },
+    {
+      "par_clean": "Lóbulo Hepático Izquierdo - Vena Mesentérica",
+      "par_original": "Lóbulo hepático izq. - Vena mesenté rica",
+      "tipo": "Virus",
+      "patogeno": "Papiloma virus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Malar - Riñón Contralateral",
+      "par_original": "Malar - Riñón contralat eral",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo"
+    },
+    {
+      "par_clean": "Malar Izquierdo - Riñón Derecho",
+      "par_original": "Malar Izquierdo - Riñon Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Paludismo Fibromialgia",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Mastoides - Bulbo",
+      "par_original": "Mastoide s - Bulbo",
+      "tipo": "Hongo",
+      "patogeno": "VIRUS QUESOPORTA",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo"
+    },
+    {
+      "par_clean": "Mastoides - Duodeno",
+      "par_original": "Mastoide s - Duodeno",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Mastoides - Riñón Mismo Lado",
+      "par_original": "Mastoide s - Riñón mismo lado",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Posterior"
+    },
+    {
+      "par_clean": "Mastoides derecha - Corazón",
+      "par_original": "Mastoides Derecha - Corazon",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Mastoides derecha - Hipófisis",
+      "par_original": "Mastoides Derecha - Hipofisis",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 3,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Mastoides derecha - Duodeno",
+      "par_original": "Mastoides Derecho - Duodeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Mastoides derecha - Riñón Derecho",
+      "par_original": "Mastoides Derecho - Riñon Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Mediastino Superior - Mediastino",
+      "par_original": "Mediasti no Superior - Mediasti no",
+      "tipo": "Bacteria",
+      "patogeno": "Prote usmira billis",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar"
+    },
+    {
+      "par_clean": "Mediastino - Riñón Derecho",
+      "par_original": "Mediastino - Riñon Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar"
+    },
+    {
+      "par_clean": "Muñeca - Rodilla",
+      "par_original": "Muñeca - Rodilla",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano"
+    },
+    {
+      "par_clean": "Muñeca - Rodilla Externa",
+      "par_original": "Muñeca - Rodilla externa",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Brazo",
+      "bloque": "Mano"
+    },
+    {
+      "par_clean": "Muñeca Derecha - Riñón Izquierdo",
+      "par_original": "Muñeca Derecha - Riñon Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Nervio Inguinal - Testículo",
+      "par_original": "NERVIO INGUINA L - testiculo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera"
+    },
+    {
+      "par_clean": "Nervio Inguinal - Útero",
+      "par_original": "NERVIO INGUINA L - Utero",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Nervio Inguinal - Riñón Contralateral",
+      "par_original": "Nervio inguinal - Riñón contralat eral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera"
+    },
+    {
+      "par_clean": "Nervio Vago - Riñón",
+      "par_original": "Nervio vago - Riñon",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Bena vides",
+      "sources_count": 4,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Nuca - Sacro",
+      "par_original": "Nuca - Sacro",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 4,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Occipital - Duodeno",
+      "par_original": "OCCIPIT AL - Duodeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Oído DER - Ovario Derecho",
+      "par_original": "Oido Derecho - Ovario Derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula"
+    },
+    {
+      "par_clean": "Oído DER - Temporal IZQ",
+      "par_original": "Oido Derecho - Temporal Izquierdo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Pseudomona aeruginosa",
+      "sources_count": 3,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal"
+    },
+    {
+      "par_clean": "Oído DER - Testículo Derecho",
+      "par_original": "Oido Derecho - Testiculo Derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula"
+    },
+    {
+      "par_clean": "Ojo - Píloro",
+      "par_original": "Ojo - Píloro",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia trachomatis",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Ojo Derecho - Bazo",
+      "par_original": "Ojo Derecho - Bazo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo"
+    },
+    {
+      "par_clean": "Ojo Derecho - Garganta",
+      "par_original": "Ojo Derecho - Garganta",
+      "tipo": "Sin clasificar",
+      "patogeno": "Helicobacter Pylori",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Central"
+    },
+    {
+      "par_clean": "OJOS - Cerebelo",
+      "par_original": "Ojos - Cerebelo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo"
+    },
+    {
+      "par_clean": "Ombligo - Hígado",
+      "par_original": "Ombligo - Higado",
+      "tipo": "Bacteria",
+      "patogeno": "Eche richi aColli",
+      "sources_count": 5,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Ombligo - Lumbar",
+      "par_original": "Ombligo - Lumbar",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Ombligo - Testículo Derecho",
+      "par_original": "Ombligo - Testiculo Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Ombligo - Uretero",
+      "par_original": "Ombligo - Uretero",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Ombligo - Útero",
+      "par_original": "Ombligo - Utero",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Trini",
+      "sources_count": 3,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Ovario - Trompa",
+      "par_original": "Ovario - Trompa",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 4,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B"
+    },
+    {
+      "par_clean": "Ovario Derecho - Riñón Izquierdo",
+      "par_original": "Ovario Derecho - Riñon Izquierdo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Paratiroides - Hipófisis",
+      "par_original": "Paratiroi des - Hipofisis.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Paratiroides - Riñón Contralateral",
+      "par_original": "Paratiroi des - riñon contralat eral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja"
+    },
+    {
+      "par_clean": "Parietal - Occipital",
+      "par_original": "Parietal - Occipital",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 3,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Occipital"
+    },
+    {
+      "par_clean": "Parótida DER - Riñón Derecho",
+      "par_original": "Parotida Derecha - Riñon Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Parótida - Riñón Contralateral",
+      "par_original": "Parótida - riñon contralat eral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Parótida"
+    },
+    {
+      "par_clean": "Pene - Ano",
+      "par_original": "Pene - Ano",
+      "tipo": "Virus",
+      "patogeno": "Cándida Albicans",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Pene - Pelvis",
+      "par_original": "Pene - Pelvis",
+      "tipo": "Sin clasificar",
+      "patogeno": "Treponema Espiroqueta E",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho"
+    },
+    {
+      "par_clean": "Pericardio - Mastoides IZQ",
+      "par_original": "Pericardio - Mastoides Izquierda",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Pineal - Suprarrenal",
+      "par_original": "Pineal - Suprarrenal",
+      "tipo": "Virus",
+      "patogeno": "RNA",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Pineal - Temporal IZQ",
+      "par_original": "Pineal - Temporal Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Pleura - Escápula Derecha",
+      "par_original": "Pleura - Escapula derecha.",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura"
+    },
+    {
+      "par_clean": "Pleura - Esternón",
+      "par_original": "Pleura - Esternón",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus Muta ns o angis",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura"
+    },
+    {
+      "par_clean": "Pleura - Pulmón Derecho",
+      "par_original": "Pleura - Pulmón derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Eipst einBarr",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pleura"
+    },
+    {
+      "par_clean": "Pleura IZQ - Esternón",
+      "par_original": "Pleura Izquierda - Esternon",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Mutans",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata"
+    },
+    {
+      "par_clean": "Plexo Axilar - Plexo Axilar",
+      "par_original": "Plexo axilar - Plexo axilar",
+      "tipo": "Virus",
+      "patogeno": "Virus Verruga",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Pecho Lateral"
+    },
+    {
+      "par_clean": "Plexo Cervical - Supraespinoso",
+      "par_original": "Plexo Cervical - Supraes pinoso",
+      "tipo": "Bacteria",
+      "patogeno": "Myco bacte rium Aviu m",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral"
+    },
+    {
+      "par_clean": "Plexo Cervical Derecho - Bulbo Raquídeo",
+      "par_original": "Plexo Cervical Derecho - Bulbo Raquideo",
+      "tipo": "Bacteria",
+      "patogeno": "Serratia Fonticola",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Plexo Cervical Derecho - Útero",
+      "par_original": "Plexo Cervical Derecho - Utero",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Polo - Uretra",
+      "par_original": "POLO - Uretra",
+      "tipo": "Bacteria",
+      "patogeno": "Serra tiaMarc ens",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A"
+    },
+    {
+      "par_clean": "Pómulo DER - Riñón Izquierdo",
+      "par_original": "Pomulo Derecho - Riñon Izquierdo",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Post Pineal - Vejiga",
+      "par_original": "POSTPIN EAL - Vejiga",
+      "tipo": "Hongo",
+      "patogeno": "Cryto cocc us",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Post Pineal - Bulbo",
+      "par_original": "PostPine al - Bulbo",
+      "tipo": "Sin clasificar",
+      "patogeno": "QUIT O",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo"
+    },
+    {
+      "par_clean": "Post Pineal - Cerebelo",
+      "par_original": "Postpine al - cerebelo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo"
+    },
+    {
+      "par_clean": "Preauricular - Temporooccipital",
+      "par_original": "Preauric ular - Temporo occipital",
+      "tipo": "Virus",
+      "patogeno": "Gripe Aviar",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular"
+    },
+    {
+      "par_clean": "Prepineal - Bulbo Raquídeo",
+      "par_original": "Prepineal - Bulbo Raquideo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Presín - Presín",
+      "par_original": "Presin - Presin",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Aurícula"
+    },
+    {
+      "par_clean": "Primera Cervical - Píloro",
+      "par_original": "Primera cervical - Píloro",
+      "tipo": "Sin clasificar",
+      "patogeno": "Plasmodium Vivax Falciporum",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Próstata - Dorsal",
+      "par_original": "Prostata - Dorsal",
+      "tipo": "Sin clasificar",
+      "patogeno": "Treponema Espiroqueta E",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Macho"
+    },
+    {
+      "par_clean": "Pudendo - Articulaciones",
+      "par_original": "Pudendo - Articulac iones",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Pulmón - Corazón",
+      "par_original": "PULMÓN - Corazón",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Kado",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Pulmón - Timo",
+      "par_original": "Pulmón - Timo",
+      "tipo": "Sin clasificar",
+      "patogeno": "Disfu ncio n yEspe cial",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo"
+    },
+    {
+      "par_clean": "Pulso Radial - Pulso Radial",
+      "par_original": "Pulso Radial - Pulso Radial",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Pares Generales"
+    },
+    {
+      "par_clean": "Páncreas - Glúteo",
+      "par_original": "Páncrea s - Glúteo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas"
+    },
+    {
+      "par_clean": "Páncreas - Riñón Derecho",
+      "par_original": "Páncrea s - Riñón derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Escherichia coli",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas"
+    },
+    {
+      "par_clean": "Páncreas - Timo",
+      "par_original": "Páncrea s - Timo",
+      "tipo": "Bacteria",
+      "patogeno": "Fasci olop sisBusk i",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo"
+    },
+    {
+      "par_clean": "Páncreas - Útero",
+      "par_original": "Páncrea s - Utero",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Páncreas"
+    },
+    {
+      "par_clean": "Píloro - Lengua",
+      "par_original": "Píloro - Lengua",
+      "tipo": "Parásito",
+      "patogeno": "Cisticerco",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Píloro - Útero",
+      "par_original": "Píloro - Utero",
+      "tipo": "Virus",
+      "patogeno": "Hantavirus",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Pómulo - Riñón Contralateral",
+      "par_original": "PÓMULO - Riñón contralat eral",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Pómulo"
+    },
+    {
+      "par_clean": "Recto - Píloro",
+      "par_original": "Recto - Piloro",
+      "tipo": "Hongo",
+      "patogeno": "Amorfo entre levadura y",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Riñón - Cuerpo de Páncreas",
+      "par_original": "Riñon - Cuerpo de Pancrea s",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Riñón - Glúteo",
+      "par_original": "Riñon - Gluteo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Trasero"
+    },
+    {
+      "par_clean": "Riñón - Mastoides",
+      "par_original": "Riñon - Mastoide s",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Riñón Derecho - Escápula Derecha",
+      "par_original": "Riñon Derecho - Escapula Derecha",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Riñón Derecho - Píloro",
+      "par_original": "Riñon Derecho - Piloro",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Píloro"
+    },
+    {
+      "par_clean": "Riñón Derecho - Sacro IZQ",
+      "par_original": "Riñon Derecho - Sacro Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Riñón Derecho - Uretra",
+      "par_original": "Riñon Derecho - Uretra",
+      "tipo": "Disfunción",
+      "patogeno": "Providencia Stuarti",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A"
+    },
+    {
+      "par_clean": "Riñón - Cáp Renal",
+      "par_original": "Riñón - Cap.Ren al",
+      "tipo": "Reservorio",
+      "patogeno": "Rese rvori o , Espe cial y disfu nció n",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Riñón Derecho - Paratiroides",
+      "par_original": "Riñón Der. - Paratiroi des",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial Goiz",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Rodilla - Pineal",
+      "par_original": "Rodilla - Pineal",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Saco de Douglas - Nervio Inguinal",
+      "par_original": "Saco de Douglas - Nervio inguinal",
+      "tipo": "Virus",
+      "patogeno": "Norw alk",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Cadera"
+    },
+    {
+      "par_clean": "Sacro - Bazo",
+      "par_original": "Sacro - Bazo",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo"
+    },
+    {
+      "par_clean": "Sacro - Ciático Derecho",
+      "par_original": "Sacro - Ciatico Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Seno Aurículo Ventricular - Corazón",
+      "par_original": "Seno Auriculo Ventricular - Corazon",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Corazón"
+    },
+    {
+      "par_clean": "Sien DER - Bulbo Raquídeo",
+      "par_original": "Sien Derecha - Bulbo Raquideo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien"
+    },
+    {
+      "par_clean": "Sien DER - Suprarrenales",
+      "par_original": "Sien Derecha - Suprarrenales",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Sien"
+    },
+    {
+      "par_clean": "Sigmoides - Nervio Inguinal IZQ",
+      "par_original": "Sigmoid es - Nervio inguinal izq.",
+      "tipo": "Bacteria",
+      "patogeno": "Shigella",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Suprapúbico - Suprarrenales",
+      "par_original": "Supra Pubico - Suprarrenales",
+      "tipo": "Sin clasificar",
+      "patogeno": "Staphylococcus Aureus Coagulasa",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Suprarrenal - Bulbo",
+      "par_original": "Suprarre nal - Bulbo",
+      "tipo": "Virus",
+      "patogeno": "Adenovirus",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Bulbo"
+    },
+    {
+      "par_clean": "Suprarrenal - Timo",
+      "par_original": "Suprarre nal - Timo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo"
+    },
+    {
+      "par_clean": "Suprarrenales - Todo El Frente",
+      "par_original": "Suprarre nales - Todo el frente",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Asm a alérg ico",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Collar"
+    },
+    {
+      "par_clean": "Suprarrenales - Recto",
+      "par_original": "Suprarrenales - recto",
+      "tipo": "Parásito",
+      "patogeno": "Leptospirosis",
+      "sources_count": 3,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B"
+    },
+    {
+      "par_clean": "TALLO - Cerebelo",
+      "par_original": "TALLO - Cerebelo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Posterior",
+      "bloque": "Cerebelo"
+    },
+    {
+      "par_clean": "Temporal DER - Temporal IZQ",
+      "par_original": "Temporal Derecho - Temporal Izquierdo",
+      "tipo": "Virus",
+      "patogeno": "Polio",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Temporal"
+    },
+    {
+      "par_clean": "Tendón tríceps der. - Aquiles Derecho",
+      "par_original": "Tendón tríceps derecho - Aquiles derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 3,
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera"
+    },
+    {
+      "par_clean": "Testículo Derecho - Recto",
+      "par_original": "Testiculo Derecho - Recto",
+      "tipo": "Virus",
+      "patogeno": "Papiloma",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Tibia - Tibia Inferior",
+      "par_original": "Tibia - Tibia inferior",
+      "tipo": "Hongo",
+      "patogeno": "Malassezia furfur",
+      "sources_count": 3,
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Media"
+    },
+    {
+      "par_clean": "Timo - Bulbo",
+      "par_original": "Timo - Bulbo",
+      "tipo": "Virus",
+      "patogeno": "Meni ngiti sviral",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo"
+    },
+    {
+      "par_clean": "Trompa - Útero",
+      "par_original": "TROMPA - Utero",
+      "tipo": "Sin clasificar",
+      "patogeno": "Paty",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B"
+    },
+    {
+      "par_clean": "Vago - riñón contra latera",
+      "par_original": "Vago – riñón contra latera",
+      "tipo": "Sin clasificar",
+      "patogeno": "Benavides",
+      "sources_count": 2,
+      "region": "Extras",
+      "zona": "Variables",
+      "bloque": "Pares Generales"
+    },
+    {
+      "par_clean": "Vejiga - Riñón Izquierdo",
+      "par_original": "Vejiga - Riñon Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Escherichia coli",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Pubis"
+    },
+    {
+      "par_clean": "Vena Porta - Aquiles Derecho",
+      "par_original": "Vena Porta - Aquiles Derecho",
+      "tipo": "Virus",
+      "patogeno": "Cándida",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Vena Porta - COLON",
+      "par_original": "Vena Porta - Colon",
+      "tipo": "Virus",
+      "patogeno": "Papiloma",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Vesícula - Escápula Izquierda",
+      "par_original": "Vesicula - Escapula Izquierda",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Vesícula"
+    },
+    {
+      "par_clean": "Yeyuno - Riñón Derecho",
+      "par_original": "Yeyuno - Riñon Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Camoylobacter Jejuni",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Ángulo - Ángulo",
+      "par_original": "Ángulo - Ángulo",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus fragilis",
+      "sources_count": 4,
+      "region": "Cabeza",
+      "zona": "Lateral",
+      "bloque": "Mandibular"
+    },
+    {
+      "par_clean": "Dorso - Lumbar",
+      "par_original": "Dorso – Lumbar",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Meningococo. alteraciones en meningocele, mielocele y meningomielocele , espina bífida, es la vía de entrada del cisticerco al cerebro; si se asocia con el gonococo produce artritis reumática deformante",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Espalda",
+      "bloque": "Dorsales"
+    },
+    {
+      "par_clean": "Pleura Derecha - Hígado",
+      "par_original": "Pleura derecha- Hígado",
+      "tipo": "Virus",
+      "patogeno": "Única de ADN",
+      "sources_count": 4,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Uréter - Uréter",
+      "par_original": "Uréter – Uréter",
+      "tipo": "Virus",
+      "patogeno": "Varicela",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Uretra - Uretra(Clítoris En Mujer)",
+      "par_original": "Uretra-Uretra(Clítoris En Mujer)",
+      "tipo": "Virus",
+      "patogeno": "Corona",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina A"
+    },
+    {
+      "par_clean": "Articulación dolorosa - Riñón Mismo Lado",
+      "par_original": "Articulación dolorosa- Riñón mismo lado",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Cerebro"
+    },
+    {
+      "par_clean": "Costal derecho - Hígado",
+      "par_original": "Costal derecho - Hígado",
+      "tipo": "Bacteria",
+      "patogeno": "Borrelia (Espiroqueta)",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "CICATRIZ - CICATRIZ",
+      "par_original": "Cicatriz - Cicatriz",
+      "tipo": "Reservorio",
+      "patogeno": "UNIVERSAL",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Costal - Costo Hepático",
+      "par_original": "Costal- Costohe pático",
+      "tipo": "Bacteria",
+      "patogeno": "Espir oque ta Borr elia, hepa titis F",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Zona Hepática"
+    },
+    {
+      "par_clean": "Tallo Parietal - Tallo Parietal",
+      "par_original": "Tallo parietal - Tallo parietal",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Parietal"
+    },
+    {
+      "par_clean": "Bulbo Raquídeo - Bulbo Raquídeo",
+      "par_original": "BULBO RAQUIDEO - BULBO RAQUIDEO",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Cápsula Renal Izquierda - Riñón Izquierdo",
+      "par_original": "CAPSULA RENAL IZQUIERDA - RIÑON IZQUIERDO",
+      "tipo": "Reservorio",
+      "patogeno": "DEL V.I.H",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Colón Transverso - Timo",
+      "par_original": "COLON TRANSVERSO – TIMO",
+      "tipo": "Reservorio",
+      "patogeno": "BACTERIAS MYCOBATERIUM LEPRAE",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Timo"
+    },
+    {
+      "par_clean": "Duodeno - Colón Descendente",
+      "par_original": "DUODENO - COLON DESCENDENTE",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Hipófisis - Bulbo Raquídeo",
+      "par_original": "HIPOFISIS - BULBO RAQUIDEO",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Hipófisis"
+    },
+    {
+      "par_clean": "Lengua IZQ - Mandíbula",
+      "par_original": "LENGUA IZQUIERDA - MANDIBULA",
+      "tipo": "Parásito",
+      "patogeno": "Triquinosis y Trichinella Spiralis y",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Rostro",
+      "bloque": "Boca"
+    },
+    {
+      "par_clean": "Mama - Mama",
+      "par_original": "MAMA - MAMA",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Coronilla",
+      "bloque": "Pineal"
+    },
+    {
+      "par_clean": "Mastoides IZQ - Riñón Izquierdo",
+      "par_original": "MASTOIDES IZQUIERDO - RIÑON IZQUIERDO",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "MUÑECA IZQUIERDA - Tiroides",
+      "par_original": "MUÑECA IZQUIERDA - TIROIDES",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja"
+    },
+    {
+      "par_clean": "Ovario Derecho - Útero",
+      "par_original": "OVARIO DERECHO - UTERO",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Meningococcus",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Delantera",
+      "bloque": "Conexiones Sistémicas"
+    },
+    {
+      "par_clean": "Ovario IZQ - Útero",
+      "par_original": "OVARIO IZQUIERDO - UTERO",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Meningococo",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B"
+    },
+    {
+      "par_clean": "Parietal IZQ - Riñón Derecho",
+      "par_original": "PARIETAL IZQUIERDO - RIÑON DERECHO",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium Vivax Falciporum",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Peritoneo - Pleura IZQ",
+      "par_original": "PERITONEO - PLEURA IZQUIERDA",
+      "tipo": "Bacteria",
+      "patogeno": "RESERVORIO DE MENINGOCOCCUS",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Intersección"
+    },
+    {
+      "par_clean": "Plexo Cervical Derecho - Sacro",
+      "par_original": "PLEXO CERVICAL DERECHO - SACRO",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Plexo Cervical Izquierdo - Sacro",
+      "par_original": "PLEXO CERVICAL IZQUIERDO - SACRO",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Trasera",
+      "bloque": "Sacro"
+    },
+    {
+      "par_clean": "Riñón Derecho - Cápsula Renal Izquierda",
+      "par_original": "RIÑON DERECHO - CAPSULA RENAL IZQUIERDA",
+      "tipo": "Reservorio",
+      "patogeno": "DEL V.I.H",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Riñón"
+    },
+    {
+      "par_clean": "Vesícula - Bazo",
+      "par_original": "VESICULA - BAZO",
+      "tipo": "Virus",
+      "patogeno": "AH1N7",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Bazo"
+    },
+    {
+      "par_clean": "Colon Ascendente - Riñón",
+      "par_original": "COLON ASCENDENTE - RIÑON",
+      "tipo": "Disfunción",
+      "patogeno": "Colon Transverso, Bochornos con transpiración, Dolor de cabeza",
+      "sources_count": 3,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Colon"
+    },
+    {
+      "par_clean": "Cuello de Fémur - Cuello",
+      "par_original": "CUELLO DE FÉMUR - CUELLO",
+      "tipo": "Hongo",
+      "patogeno": "Cándida",
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Baja"
+    },
+    {
+      "par_clean": "Costal - Costo",
+      "par_original": "COSTAL - COSTO",
+      "tipo": "Bacteria",
+      "patogeno": "Borrelia",
+      "sources_count": 4,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Zona Hepática"
+    },
+    {
+      "par_clean": "Vena Porta - VENA",
+      "par_original": "VENA PORTA - VENA",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Aquiles Inferior - Aquiles",
+      "par_original": "AQUILES INFERIOR - AQUILES",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma",
+      "sources_count": 2,
+      "region": "Miembros",
+      "zona": "Pierna",
+      "bloque": "Pierna Trasera"
+    },
+    {
+      "par_clean": "Esófago - COLON",
+      "par_original": "ESOFAGO - COLON",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata"
+    },
+    {
+      "par_clean": "Plexo Cervical - PLEXO",
+      "par_original": "PLEXO CERVICAL - PLEXO",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus",
+      "sources_count": 4,
+      "region": "Cabeza",
+      "zona": "Cuello",
+      "bloque": "Garganta Lateral"
+    },
+    {
+      "par_clean": "Vagina - Riñón",
+      "par_original": "VAGINA - RIÑON",
+      "tipo": "Bacteria",
+      "patogeno": "Escherichia",
+      "sources_count": 2,
+      "region": "Pelvis",
+      "zona": "Sexo",
+      "bloque": "Fémina B"
+    },
+    {
+      "par_clean": "Duodeno - Riñón",
+      "par_original": "DUODENO - RIÑON",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia",
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Ombligo"
+    },
+    {
+      "par_clean": "Hígado - COLON",
+      "par_original": "HIGADO - COLON",
+      "tipo": null,
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Tronco",
+      "zona": "Abdomen",
+      "bloque": "Hígado"
+    },
+    {
+      "par_clean": "Esófago - Dorsal",
+      "par_original": "ESOFAGO - DORSAL",
+      "tipo": "Hongo",
+      "patogeno": "Cándida",
+      "sources_count": 7,
+      "region": "Tronco",
+      "zona": "Tórax",
+      "bloque": "Anahata"
+    },
+    {
+      "par_clean": "Antecuerno - ANTE",
+      "par_original": "ANTE CUERNO - ANTE",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "region": "Cabeza",
+      "zona": "Frente",
+      "bloque": "Frente Alta"
+    }
+  ]
+}

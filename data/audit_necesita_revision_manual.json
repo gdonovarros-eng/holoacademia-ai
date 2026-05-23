@@ -1,0 +1,1609 @@
+{
+  "total": 217,
+  "descripcion": "Pares con OCR garbage o sin clasificación. Requieren revisión manual antes de agregar.",
+  "entradas": [
+    {
+      "original": "5ª Dorsal - 2ª Lumbar",
+      "cleaned": "5ª Dorsal - 2ª Lumbar",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria meningitidis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Base - Base",
+      "cleaned": "Base - Base",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Borde calloso - Borde calloso",
+      "cleaned": "Borde calloso - Borde calloso",
+      "tipo": "Reservorio",
+      "patogeno": "Tube rculo sisMont errey",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Bíceps - Biceps",
+      "cleaned": "Bíceps - Bíceps",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Bíceps - Biceps Izquierd o",
+      "cleaned": "Bíceps - Biceps Izquierd o",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "C. cavernos o - C.cavern oso",
+      "cleaned": "C. cavernos o - C. cavernos o",
+      "tipo": "Sin clasificar",
+      "patogeno": "Disf unci óneréct il",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cabeza de Perone. - Cabeza de Perone.",
+      "cleaned": "Cabeza de Perone. - Cabeza de Perone.",
+      "tipo": "Disfunción",
+      "patogeno": "RESERVORIO",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Calis renal derecho - uretero ipsilatera l",
+      "cleaned": "Calis renal derecho - uretero ipsilatera l",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Caliz Renal der. - Gemelo der.",
+      "cleaned": "Caliz Renal Derecho - Gemelo Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Cyclospora cayetanensis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Capsula R. - Riñon (mismo lado)",
+      "cleaned": "Capsula R. - Riñón Mismo Lado",
+      "tipo": "Reservorio",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Carótida der. - Yugular der",
+      "cleaned": "CAROTIDA DERECHA - YUGULAR DERECHA",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus Pneu moni ae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 2 - Axis",
+      "cleaned": "Cervical 2 - Axis",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus DBovi s",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 2 - Cervical 2",
+      "cleaned": "Cervical 2 - Cervical 2",
+      "tipo": "Bacteria",
+      "patogeno": "Legi onell a",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 3Ra - Cervical 3Ra",
+      "cleaned": "Cervical 3Ra - Cervical 3Ra",
+      "tipo": "Virus",
+      "patogeno": "Rhinovirus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 3Ra - Supraespinoso Derecho",
+      "cleaned": "Cervical 3Ra - Supraespinoso Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 4 - Cervical 4",
+      "cleaned": "Cervical 4 - Cervical 4",
+      "tipo": "Bacteria",
+      "patogeno": "Pseudomona aeruginosa",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 4A - Supraespinoso Derecho",
+      "cleaned": "Cervical 4A - Supraespinoso Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 6 - Cervical 6",
+      "cleaned": "Cervical 6 - Cervical 6",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia pneumoniae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervicales - Deltoides Derecho",
+      "cleaned": "Cervicales - Deltoides DER",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Cervico Superior - Cervico Superior",
+      "cleaned": "Cervico Superior - Cervico Superior",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "CICATRI CES - Riñón",
+      "cleaned": "CICATRI CES - Riñón",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Cigomáti co - Cervical 3",
+      "cleaned": "Cigomáti co - Cervical 3",
+      "tipo": "Bacteria",
+      "patogeno": "Listeria monocytogenes",
+      "sources_count": 3,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Cisterna de Quilo - Cisterna de Quilo",
+      "cleaned": "Cisterna de Quilo - Cisterna de Quilo",
+      "tipo": "Virus",
+      "patogeno": "Nork walk Virus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Clavícula media - Submaxi lar",
+      "cleaned": "Clavícula media - Submaxi lar",
+      "tipo": "Bacteria",
+      "patogeno": "Bordetella Pertussis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Coledoco - Coledoco",
+      "cleaned": "Coledoco - Coledoco",
+      "tipo": "Hongo",
+      "patogeno": "Cryptococus Neoformans",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Colon Asc. - Colon Desc.",
+      "cleaned": "Colon Asc. - Colón Desc.",
+      "tipo": "Virus",
+      "patogeno": "Herp es 1 Zóst er(eruptiv o)",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Colon asc. - Riñón der",
+      "cleaned": "Colon Asc. - Riñón Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella pneumoniae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Colon Decende nte - Recto",
+      "cleaned": "Colon Decende nte - Recto",
+      "tipo": "Disfunción",
+      "patogeno": "Obst rucci ónIntes tinal",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Colon Desc. - Colon Desc.",
+      "cleaned": "Colón Desc. - Colón Desc.",
+      "tipo": "Bacteria",
+      "patogeno": "Enterobacter cloacae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Colon trasnv. - Suprapú bico izq.",
+      "cleaned": "Colon trasnv. - Suprapú bico izq.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Colón Desc. - Riñón Izqdo.",
+      "cleaned": "Colón Desc. - Riñón Izqdo.",
+      "tipo": "Bacteria",
+      "patogeno": "Pasteurella",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Conduct o lactófilo - Conduct o lactófilo",
+      "cleaned": "Conduct o lactófilo - Conduct o lactófilo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Coronari a - Pulmón Izq",
+      "cleaned": "Coronaria - Pulmón IZQ",
+      "tipo": "Bacteria",
+      "patogeno": "streptococo ayuda",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Corporis - corporis",
+      "cleaned": "Corporis - Corporis",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cresta Iliaca Izquierdo - Isquion Izquierdo",
+      "cleaned": "Cresta Iliaca Izquierdo - Isquion Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cruris - cruris",
+      "cleaned": "Cruris - Cruris",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cuadrado Lumbar - Cuadrado Lumbar",
+      "cleaned": "Cuadrado Lumbar - Cuadrado Lumbar",
+      "tipo": "Bacteria",
+      "patogeno": "Treponema pallidum",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cuerda bucal - Cuerda bucal",
+      "cleaned": "Cuerda bucal - Cuerda bucal",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cuádrice ps - Cuádrice ps. (INVERS O)",
+      "cleaned": "Cuádriceps - Cuádrice ps. (INVERS O)",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Dedo Indice - Dedo Indice",
+      "cleaned": "Dedo Indice - Dedo Indice",
+      "tipo": "Reservorio",
+      "patogeno": "virus y E",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dedos del 2 al 5 - Dedos del 2 al 5",
+      "cleaned": "Dedos del 2 al 5 - Dedos del 2 al 5",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Deltoides Incersion - Deltoides Incersion",
+      "cleaned": "Deltoides Incersion - Deltoides Incersion",
+      "tipo": "Bacteria",
+      "patogeno": "Treponema buccalis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 10 - Dorsal 10",
+      "cleaned": "Dorsal 10 - Dorsal 10",
+      "tipo": "Virus",
+      "patogeno": "Influenza",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 11 - Dorsal 11",
+      "cleaned": "Dorsal 11 - Dorsal 11",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 12Va - Dorsal 12Va",
+      "cleaned": "Dorsal 12Va - Dorsal 12Va",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Neumonía",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 12Va - Lumbar 1Ra",
+      "cleaned": "Dorsal 12Va - Lumbar 1Ra",
+      "tipo": "Sin clasificar",
+      "patogeno": "Norwalk o Norovirus es lo mismo",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 1Ra - Dorsal 1Ra",
+      "cleaned": "Dorsal 1Ra - Dorsal 1Ra",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 1ª a 12ª - Dorsal 1ª a 12ª",
+      "cleaned": "Dorsal 1ª a 12ª - Dorsal 1ª a 12ª",
+      "tipo": "Sin clasificar",
+      "patogeno": "Radi culo patia s",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 3 - Dorsal 3",
+      "cleaned": "Dorsal 3 - Dorsal 3",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium tuberculosis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 3 - Dorsal 7",
+      "cleaned": "Dorsal 3 - Dorsal 7",
+      "tipo": "Virus",
+      "patogeno": "virus Variedad de",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 4 - Dorsal 4",
+      "cleaned": "Dorsal 4 - Dorsal 4",
+      "tipo": "Virus",
+      "patogeno": "virus Fiebre",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 1ª",
+      "cleaned": "Dorsal 4 - Lumbar 1ª",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 2 ó 3",
+      "cleaned": "Dorsal 4 - Lumbar 2 ó 3",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria meningitidis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 3",
+      "cleaned": "Dorsal 4 - Lumbar 3",
+      "tipo": "Sin clasificar",
+      "patogeno": "Neisseria meningitidis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 7 - Dorsal 7",
+      "cleaned": "Dorsal 7 - Dorsal 7",
+      "tipo": "Bacteria",
+      "patogeno": "Vibrio cholerae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal 9 - Dorsal 9",
+      "cleaned": "Dorsal 9 - Dorsal 9",
+      "tipo": "Virus",
+      "patogeno": "Influenza",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorsal Dos - Dorsal Dos",
+      "cleaned": "Dorsal Dos - Dorsal Dos",
+      "tipo": "Complejo",
+      "patogeno": "Legionella",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Dorso Mano Derecha - Talon Derecho",
+      "cleaned": "Dorso Mano Derecha - Talon Derecho",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Doudeno - Riñon Izquierd o",
+      "cleaned": "Doudeno - Riñón izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": "Chla modi a Trac hom atis. Eche rechi a colli",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Elevador - Proximal deltoides",
+      "cleaned": "Elevador - Proximal deltoides",
+      "tipo": "Sin clasificar",
+      "patogeno": "Genu Valg o",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Envoltur a Riñón - Envoltur a Riñón",
+      "cleaned": "Envoltur a Riñón - Envoltur a Riñón",
+      "tipo": "Bacteria",
+      "patogeno": "Myco bactr iumbovis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Epigastri o - Epigastri o",
+      "cleaned": "Epigastrio - Epigastrio",
+      "tipo": "Parásito",
+      "patogeno": "Giardia lamblia",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Epiglotis - Epiglotis",
+      "cleaned": "Epiglotis - Epiglotis",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Escotad ura - Escotad ura",
+      "cleaned": "Escotad ura - Escotad ura",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria catarralis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Femur Bajo - Femur Bajo",
+      "cleaned": "Femur Bajo - Femur Bajo",
+      "tipo": "Bacteria",
+      "patogeno": "Bacterium Lactis Aerogenes",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Flexor Largo - Flexor Largo",
+      "cleaned": "Flexor Largo - Flexor Largo",
+      "tipo": "Bacteria",
+      "patogeno": "Clostridium difficile",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Frontal izquierd o - Frontal izquierd o",
+      "cleaned": "Frontal izquierd o - Frontal izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Gemelo - Gemelo Derecho",
+      "cleaned": "Gemelo - Gemelo Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Glandula Salivar - Glandula Salivar",
+      "cleaned": "Glandula Salivar - Glandula Salivar",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Vulgaris",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Gluteo izq - T.Aquile s D.",
+      "cleaned": "Glúteo IZQ - T.Aquile s D.",
+      "tipo": "Reservorio",
+      "patogeno": "Rese rvori o",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Glándula salival - Glándula salival",
+      "cleaned": "Glándula salival - Glándula salival",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Hiato - Pulmon Frontal Derecho",
+      "cleaned": "Hiato - Pulmón Frontal DER",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hiato esofatico - Hiato esofatico",
+      "cleaned": "Hiato esofatico - Hiato esofatico",
+      "tipo": "Hongo",
+      "patogeno": "Muco r",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Higado - Parietal izq.",
+      "cleaned": "Hígado - Parietal IZQ",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Huastec as - Huastec as",
+      "cleaned": "Huastec as - Huastec as",
+      "tipo": "Virus",
+      "patogeno": "Virus deDolor",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueco max. Sup - Cola de páncreas",
+      "cleaned": "Hueco max. Sup - Cola de Páncreas",
+      "tipo": "Bacteria",
+      "patogeno": "Diplo coco",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueco max. Sup. - Hueco max. Sup.",
+      "cleaned": "Hueco max. Sup - Hueco max. Sup",
+      "tipo": "Bacteria",
+      "patogeno": "Klep siella Pneu moni ae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueco max.inf. - Hueco max.inf.",
+      "cleaned": "Hueco max.inf. - Hueco max.inf.",
+      "tipo": "Bacteria",
+      "patogeno": "Enterobacter cloacae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueco P. - Hueco P.",
+      "cleaned": "Hueco P. - Hueco P.",
+      "tipo": "Bacteria",
+      "patogeno": "Dtrep toco ccus Pneu moni ae ó Neu moc oco",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueco P. - Rodilla ipsilatera l",
+      "cleaned": "Hueco P. - Rodilla ipsilatera l",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium leprae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueso H. - Hueso H.",
+      "cleaned": "Hueso H. - Hueso H.",
+      "tipo": "Virus",
+      "patogeno": "Sindr ome de Sjogr en",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Hueso Hioides - Hueso Hioides",
+      "cleaned": "Hueso hioides - Hueso hioides",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Iliaco - Borde Cuadrice ps",
+      "cleaned": "Iliaco - Borde Cuadrice ps",
+      "tipo": "Virus",
+      "patogeno": "Norw ark",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Infra Cuadriceps - Infra Cuadriceps",
+      "cleaned": "Infra Cuadriceps - Infra Cuadriceps",
+      "tipo": "Hongo",
+      "patogeno": "Mucor flúor",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Infra Isquion - Infra Isquion",
+      "cleaned": "Infra Isquion - Infra Isquion",
+      "tipo": "Virus",
+      "patogeno": "Enterovirus Vermiculares",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Infra Popliteo - Infra Popliteo",
+      "cleaned": "Infra Popliteo - Infra Popliteo",
+      "tipo": "Bacteria",
+      "patogeno": "Kinguella Kingae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Inframenton - Inframenton",
+      "cleaned": "Inframenton - Inframenton",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Infraxilar - infraxilar",
+      "cleaned": "Infraxilar - Infraxilar",
+      "tipo": "Virus",
+      "patogeno": "Pleur itis Viral",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Insercio n d. - Insercio n d.",
+      "cleaned": "Insercio n d. - Insercio n d.",
+      "tipo": "Bacteria",
+      "patogeno": "Trep one ma Buca liis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Intercilia co - Riñón DERECH O",
+      "cleaned": "Intercilia co - Riñón DERECH O",
+      "tipo": "Reservorio",
+      "patogeno": "Pará sitos",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Intercilia co - Riñón IZDO.",
+      "cleaned": "Intercilia co - Riñón IZDO.",
+      "tipo": "Reservorio",
+      "patogeno": "Pará sitos",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Isquion Izquierdo - Occipital Izquierdo",
+      "cleaned": "Isquion Izquierdo - Occipital Izquierdo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Isquión interior - Isquión interior",
+      "cleaned": "Isquión interior - Isquión interior",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas ma",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lagrimal - Lagrimal",
+      "cleaned": "Lagrimal - Lagrimal",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella pneumoniae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Latissimus - Latissimus",
+      "cleaned": "Latissimus - Latissimus",
+      "tipo": "Bacteria",
+      "patogeno": "Yersinia Pneumaniae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Ligamen tos - Ligamen tos",
+      "cleaned": "Ligamen tos - Ligamen tos",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Locus ceruleus - Nervio vago bilateral",
+      "cleaned": "Locus ceruleus - Nervio vago bilateral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lumbar 1Ra - Lumbar 1Ra",
+      "cleaned": "Lumbar 1Ra - Lumbar 1Ra",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma Hominis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lumbar 3 - Dorsal 3",
+      "cleaned": "Lumbar 3 - Dorsal 3",
+      "tipo": "Virus",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "LUMBAR 3 - Lumbar 3",
+      "cleaned": "Lumbar 3 - Lumbar 3",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lumbar 3Ra - Biceps Femoral Derecho",
+      "cleaned": "Lumbar 3Ra - Biceps Femoral Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Actinomyces",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lumbar 3Ra - Dorsal 3Ra",
+      "cleaned": "Lumbar 3Ra - Dorsal 3Ra",
+      "tipo": "Virus",
+      "patogeno": "Adenovirus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Lóbulo oreja - Lóbulo oreja",
+      "cleaned": "Lóbulo oreja - Lóbulo oreja",
+      "tipo": "Bacteria",
+      "patogeno": "Clostridium tetani",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Maleolo externo - Maleolo externo",
+      "cleaned": "Maleolo externo - Maleolo externo",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "MANDÍB ULA - Plana mandibu lar",
+      "cleaned": "Mandíbula - Plana mandibu lar",
+      "tipo": "Sin clasificar",
+      "patogeno": "Stap hyloc occu sEpid",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Mango Del Esternon Derecho - Sigmoide",
+      "cleaned": "Mango Del Esternon Derecho - Sigmoide",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "MEDIAS TINO SUP. - Hipotála mo",
+      "cleaned": "MEDIAS TINO SUP. - Hipotálamo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Mejilla - Mejilla",
+      "cleaned": "Mejilla - Mejilla",
+      "tipo": "Virus",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Mesocar dio - Mesocar dio",
+      "cleaned": "Mesocar dio - Mesocar dio",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Mordedura - Axila Del Mismo Lado",
+      "cleaned": "Mordedura - Axila Del Mismo Lado",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "MORDID A - Axila",
+      "cleaned": "MORDID A - Axila",
+      "tipo": "Sin clasificar",
+      "patogeno": "RUF O",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Musculo Recto Anterior - Musculo Recto",
+      "cleaned": "Musculo Recto Anterior - Musculo Recto",
+      "tipo": "Sin clasificar",
+      "patogeno": "Fragilis Bacteroides",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Muñeca Izquierda - Tibia Derecha",
+      "cleaned": "Muñeca Izquierda - Tibia Derecha",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Muñon - Muñon",
+      "cleaned": "Muñón - Muñón",
+      "tipo": "Reservorio",
+      "patogeno": "UNIVERSAL",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Músculo Psoas - Riñón Contral.",
+      "cleaned": "Músculo Psoas - Riñón Contral.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nano Cardias - Nano Cardias",
+      "cleaned": "Nano Cardias - Nano Cardias",
+      "tipo": "Bacteria",
+      "patogeno": "Nanobacterlum Sanguínea",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nervio ciático muslo - Nervio ciático muslo",
+      "cleaned": "Nervio ciático muslo - Nervio ciático muslo",
+      "tipo": "Sin clasificar",
+      "patogeno": "Polio",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nervio facial - Nervio facial",
+      "cleaned": "Nervio facial - Nervio facial",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nervio inguinal - Articulac ión + riñon",
+      "cleaned": "Nervio Inguinal - Articulac ión + riñon",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Nervio Trigemino - Nervio Trigemino",
+      "cleaned": "Nervio trigémin o - Nervio trigémin o",
+      "tipo": "Reservorio",
+      "patogeno": "RESERVORIO",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nucleos - Bulbo raquideo s",
+      "cleaned": "Nucleos - Bulbo raquideo s",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Nudo braquial - Nudo braquial",
+      "cleaned": "Nudo braquial - Nudo braquial",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial LOJ A",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Nutricia - Nutricia",
+      "cleaned": "Nutricia - Nutricia",
+      "tipo": "Reservorio",
+      "patogeno": "TEMUCO",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Occipital Derecho - Humero Derecho",
+      "cleaned": "Occipital Derecho - Humero Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Oido Derecho - Ovario Derecho",
+      "cleaned": "Oído DER - Ovario Derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Oido Derecho - Temporal Izquierdo",
+      "cleaned": "Oído DER - Temporal IZQ",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Pseudomona aeruginosa",
+      "sources_count": 3,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Oido Derecho - Testiculo Derecho",
+      "cleaned": "Oído DER - Testículo Derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Oído derecho - oído izquierd o",
+      "cleaned": "Oído DER - oído izquierd o",
+      "tipo": "Parásito",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Palma Derecha - Talon Derecho",
+      "cleaned": "Palma Derecha - Talon Derecho",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Paravert ebral - paravert ebral",
+      "cleaned": "Para vertebral - Para vertebral",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Parotida Derecha - Pudendo Izquierdo",
+      "cleaned": "Parótida DER - Pudendo Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Parotida Derecha - Riñon Derecho",
+      "cleaned": "Parótida DER - Riñón Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Parpado Inferior - Parpado Inferior",
+      "cleaned": "Parpado Inferior - Parpado Inferior",
+      "tipo": "Bacteria",
+      "patogeno": "Neissería Catarrhalis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pata de ganzo - Pata de ganzo",
+      "cleaned": "Pata de ganzo - Pata de ganzo",
+      "tipo": "Virus",
+      "patogeno": "virus Coro navir",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pectoral derecho - Tendón",
+      "cleaned": "Pectoral DER - Tendón",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pectoral izq. - Cuadrice ps mismo lado",
+      "cleaned": "Pectoral Izquierdo - Cuadrice ps mismo lado",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pedís - Pedis",
+      "cleaned": "Pedís - Pedís",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Peri Renal - Peri Renal Derecho",
+      "cleaned": "Peri Renal - Peri Renal Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium tuberculosis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pericardio - Mastoides Izquierda",
+      "cleaned": "Pericardio - Mastoides IZQ",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Perineal - Perineal",
+      "cleaned": "Perineal - Perineal",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Perirrena l - Perirrena l",
+      "cleaned": "Perirrena l - Perirrena l",
+      "tipo": "Bacteria",
+      "patogeno": "Micr obac teriu m tuber culos is bovis",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pezon - Pezon",
+      "cleaned": "Pezon - Pezon",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pezon Derecho - Popliteo Derecho",
+      "cleaned": "Pezón DER - Popliteo Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": "Propionobacterium Acnes",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pezón derecho - Gemelo izquierd o",
+      "cleaned": "Pezón DER - Gemelo izquierd o",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pineal - Temporal Izquierdo",
+      "cleaned": "Pineal - Temporal IZQ",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Plantar Derecho - Calcaneo Derecho",
+      "cleaned": "Plantar Derecho - Calcaneo Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Staphylococcus aureus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pleura - pleura ipsilatera l",
+      "cleaned": "Pleura - pleura ipsilatera l",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Pleura Izquierda - Esternon",
+      "cleaned": "Pleura IZQ - Esternón",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Mutans",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Plexo Braquial - Codo Ipsilatera l",
+      "cleaned": "Plexo Braquial - Codo Ipsilatera l",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium leprae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Plexo Braquial - Plexo Braquial",
+      "cleaned": "Plexo Braquial - Plexo Braquial",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Plexo muñeca - Plexo M uñeca.",
+      "cleaned": "Plexo muñeca - Plexo muñeca",
+      "tipo": "Virus",
+      "patogeno": "Herpes V",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pliegue del brazo - Pliegue del brazo.",
+      "cleaned": "Pliegue del brazo - Pliegue del brazo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pomulo Derecho - Riñon Izquierdo",
+      "cleaned": "Pómulo DER - Riñón Izquierdo",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Porta - Porta",
+      "cleaned": "Porta - Porta",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Primer ortejón - Primer ortejón",
+      "cleaned": "Primer ortejón - Primer ortejón",
+      "tipo": "Hongo",
+      "patogeno": "Trico pyto n",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Primera costilla - Primera",
+      "cleaned": "Primera costilla - Primera",
+      "tipo": "Hongo",
+      "patogeno": "Trycophyto",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pulgar - Pulgar",
+      "cleaned": "Pulgar - Pulgar",
+      "tipo": "Hongo",
+      "patogeno": "Klesbiella Pneomonae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pulso - Pulso",
+      "cleaned": "Pulso - Pulso",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Punta de páncreas - Suprailia co",
+      "cleaned": "Punta de Páncreas - Suprailia co",
+      "tipo": "Sin clasificar",
+      "patogeno": "Rosá ceaPúrp úra",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "PÍLORO - Uretero IZQUIER DO",
+      "cleaned": "Píloro - Uretero IZQUIER DO",
+      "tipo": "Hongo",
+      "patogeno": "Micel iointes tinali s",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Retroma stoideo - Retroma stoideo",
+      "cleaned": "Retroma stoideo - Retroma stoideo",
+      "tipo": "Parásito",
+      "patogeno": "Cisticerco",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Retroten sor de la facualata - Pectoral",
+      "cleaned": "Retroten sor de la facualata - Pectoral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Riñon - Riñon unilatera l",
+      "cleaned": "Riñón - Riñon unilatera l",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Riñon Derecho - Sacro Izquierdo",
+      "cleaned": "Riñón Derecho - Sacro IZQ",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "RIÑÓN - Escápula m.l.",
+      "cleaned": "Riñón - Escápula m.l.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "RIÑÓN DERECH O - Duodeno",
+      "cleaned": "Riñón DERECH O - Duodeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "RIÑÓN DERECH O - Uretra",
+      "cleaned": "Riñón DERECH O - Uretra",
+      "tipo": "Sin clasificar",
+      "patogeno": "Provi denc eStuar",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Riñón sup. - Riñón inferior",
+      "cleaned": "Riñón sup. - Riñón Inferior",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Rodilla - herco Popliteo IZq",
+      "cleaned": "Rodilla - herco Popliteo IZq",
+      "tipo": "Bacteria",
+      "patogeno": "Myco bacte riun Lepr ae",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Rodilla interna - Rodilla interna.",
+      "cleaned": "Rodilla interna - Rodilla interna",
+      "tipo": "Bacteria",
+      "patogeno": "Myco dacte rium tuber culos is",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Semitendinoso - Semitendinoso",
+      "cleaned": "Semitendinoso - Semitendinoso",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Seno A. Ventricular - Riñón Izquierdo",
+      "cleaned": "Seno A. Ventricular - Riñón Izquierdo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "AnaAlicia",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Seno etmiodal - Seno etmiodal",
+      "cleaned": "Seno etmiodal - Seno etmiodal",
+      "tipo": "Virus",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Seno Frontal Derecho - Sien Izquierda",
+      "cleaned": "Seno Frontal Derecho - Sien Izquierda",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Sien Derecha - Bulbo Raquideo",
+      "cleaned": "Sien DER - Bulbo Raquídeo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Sien Derecha - Suprarrenales",
+      "cleaned": "Sien DER - Suprarrenales",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Sigmoid es - Nervio inguinal izq.",
+      "cleaned": "Sigmoides - Nervio Inguinal IZQ",
+      "tipo": "Bacteria",
+      "patogeno": "Shigella",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Soleo - Soleo",
+      "cleaned": "Soleo - Soleo",
+      "tipo": "Parásito",
+      "patogeno": "Entamoeba Gingivales",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Suelo pelvico - Suelo pelvico",
+      "cleaned": "Suelo pelvico - Suelo pelvico",
+      "tipo": "Reservorio",
+      "patogeno": "CHIE",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supra empeine - Infratibia l",
+      "cleaned": "Supra empeine - Infratibial",
+      "tipo": "Bacteria",
+      "patogeno": "Stap hyloc occu sEpid ermi s",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supra Escapular - Supra Escapular",
+      "cleaned": "Supra Escapular - Supra Escapular",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Viridans",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supra Popliteo - Supra Popliteo",
+      "cleaned": "Supra Popliteo - Supra Popliteo",
+      "tipo": "Parásito",
+      "patogeno": "Gusano Nematodo",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supra Popliteo Derecho - Musculo Recto",
+      "cleaned": "Supra Popliteo Derecho - Musculo Recto",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supra Umbilical - Lumbar 2Da",
+      "cleaned": "Supra Umbilical - Lumbar 2Da",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Suprahe p. - Suprahe p.",
+      "cleaned": "Suprahep - Suprahep",
+      "tipo": "Bacteria",
+      "patogeno": "Clost ridiu mmalig num",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Supranal ga - Supranal ga",
+      "cleaned": "Supranal ga - Supranal ga",
+      "tipo": "Hongo",
+      "patogeno": "Staq uibot rix",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Suprapo pítleo - Suprapo pítleo",
+      "cleaned": "Suprapo pítleo - Suprapo pítleo",
+      "tipo": "Sin clasificar",
+      "patogeno": "Gusa noNem atod o",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Temporal Derecho - Temporal Izquierdo",
+      "cleaned": "Temporal DER - Temporal IZQ",
+      "tipo": "Virus",
+      "patogeno": "Polio",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Temporal Derecho - Yugular Izquierdo",
+      "cleaned": "Temporal DER - Yugular Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Temporo lateral - Temporo lateral",
+      "cleaned": "Temporo lateral - Temporo lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas ma",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Tensor facial lata superior - espina",
+      "cleaned": "Tensor facial lata superior - espina",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Tensor Fasc. - Tensor Fasc.",
+      "cleaned": "Tensor Fasc. - Tensor Fasc.",
+      "tipo": "Bacteria",
+      "patogeno": "Gard nerel aVagi nalis",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Trigemino Derecho - Hemisferio Izquierdo",
+      "cleaned": "Trigemino Derecho - Hemisferio Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "URETER IZQUIER DO - Recto",
+      "cleaned": "URETER IZQUIER DO - Recto",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "Uretero Derecho - Caliz Renal Derecho",
+      "cleaned": "Uretero Derecho - Caliz Renal Derecho",
+      "tipo": "Virus",
+      "patogeno": "Herpes I",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Uretero Derecho - Trompa Izquierda",
+      "cleaned": "Uretero Derecho - Trompa Izquierda",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococous BAgalactiae",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Vasto Lateral - Vasto Lateral",
+      "cleaned": "Vasto Lateral - Vasto Lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma Fermentans",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Zona lesionad a - Escápula",
+      "cleaned": "Zona lesionad a - Escápula",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Punt oAlcal ino",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "ÍLEON - Ileón",
+      "cleaned": "Ileón - Ileón",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorso - Dorso",
+      "cleaned": "Dorso - Dorso",
+      "tipo": "Reservorio",
+      "patogeno": "Universal",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Gemelo-. Gemelo",
+      "cleaned": "Gemelo - Gemelo",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus G",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Maléolo interno - Maleolo interno",
+      "cleaned": "Maléolo interno - Maléolo interno",
+      "tipo": "Bacteria",
+      "patogeno": "Acti mom ices",
+      "razon": "no_classification"
+    },
+    {
+      "original": "CANTO DEL OJO - CANTO DEL OJO",
+      "cleaned": "Canto Del Ojo - Canto Del Ojo",
+      "tipo": "Hongo",
+      "patogeno": "Aspergillus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "LENGUA IZQUIERDA - MANDIBULA",
+      "cleaned": "Lengua IZQ - Mandíbula",
+      "tipo": "Parásito",
+      "patogeno": "Triquinosis y Trichinella Spiralis y",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "MASTOIDES IZQUIERDO - RIÑON IZQUIERDO",
+      "cleaned": "Mastoides IZQ - Riñón Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "OIDO IZQUIERDO - TEMPORAL DERECHO",
+      "cleaned": "Oido Izquierdo - Temporal DER",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Goiz",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "OVARIO IZQUIERDO - UTERO",
+      "cleaned": "Ovario IZQ - Útero",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": "Meningococo",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "OVARIO IZQUIERDO -TROMPA DERECHA",
+      "cleaned": "Ovario IZQ - TROMPA DERECHA",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "PARIETAL IZQUIERDO - RIÑON DERECHO",
+      "cleaned": "Parietal IZQ - Riñón Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium Vivax Falciporum",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "PERITONEO - PLEURA IZQUIERDA",
+      "cleaned": "Peritoneo - Pleura IZQ",
+      "tipo": "Bacteria",
+      "patogeno": "RESERVORIO DE MENINGOCOCCUS",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "POLIGONO DE WILLIS DERECHO - MASTOIDES IZQUIERDA",
+      "cleaned": "POLIGONO DE WILLIS DERECHO - Mastoides IZQ",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "TEMPORAL IZQUIERDO - YUGULAR DERECHO",
+      "cleaned": "Temporal IZQ - YUGULAR DERECHA",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "VACUNA - RIÑON DEL",
+      "cleaned": "Vacuna - RIÑON DEL",
+      "tipo": "Reservorio",
+      "patogeno": "Mycobacterium",
+      "sources_count": 3,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "TROCANTER MAYOR (RAS) - TENSOR DE",
+      "cleaned": "TROCANTER MAYOR (RAS) - TENSOR DE",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    },
+    {
+      "original": "LUMBAR 3RA - BICEPS",
+      "cleaned": "Lumbar 3Ra - Bíceps",
+      "tipo": "Bacteria",
+      "patogeno": "Actinomyces",
+      "razon": "no_classification"
+    },
+    {
+      "original": "SUPRA ESCAPULAR - SUPRA",
+      "cleaned": "Supra Escapular - SUPRA",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus",
+      "razon": "no_classification"
+    },
+    {
+      "original": "VACUNA - SUPRAESPINOSO DEL",
+      "cleaned": "Vacuna - SUPRAESPINOSO DEL",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium",
+      "sources_count": 2,
+      "razon": "ocr_garbage_after_clean"
+    }
+  ]
+}

@@ -1,0 +1,2757 @@
+{
+  "total_para_revision": 348,
+  "descripcion": "Pares con OCR no normalizable. Requieren revisión humana.",
+  "entradas": [
+    {
+      "original": "1ª Costilla - Vegiga",
+      "failed_side": "Vegiga",
+      "tipo": "Hongo",
+      "patogeno": "Histoplasma",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "5ª Dorsal - 2ª Lumbar",
+      "failed_side": "5ª Dorsal",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria meningitidis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Adenohi pofisis - Riñón izquierd o",
+      "failed_side": "Riñón izquierd o",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Apófisis - Bulbo",
+      "failed_side": "Apófisis",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Base - Base",
+      "failed_side": "Base",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Bazo - Suprearr enales",
+      "failed_side": "Suprearr enales",
+      "tipo": "Virus",
+      "patogeno": "Rotavirus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Borde calloso - Borde calloso",
+      "failed_side": "Borde calloso",
+      "tipo": "Reservorio",
+      "patogeno": "Tube rculo sisMont errey",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "BRAQUI AL - Bursa subdelto idea",
+      "failed_side": "Bursa subdelto idea",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ocus Bhem olític o",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Bronqui o - Bronqui o (bilateral )",
+      "failed_side": "Bronqui o (bilateral )",
+      "tipo": "Virus",
+      "patogeno": "MMJ B",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Bíceps - Biceps",
+      "failed_side": "Bíceps",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 4,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Bíceps - Biceps Izquierd o",
+      "failed_side": "Bíceps",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "C. cavernos o - C.cavern oso",
+      "failed_side": "C. cavernos o",
+      "tipo": "Sin clasificar",
+      "patogeno": "Disf unci óneréct il",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "C.Transv erso - Cuadrice ps",
+      "failed_side": "C.Transv erso",
+      "tipo": "Bacteria",
+      "patogeno": "Bact eria entér ica",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "C.Transv erso - Parietal",
+      "failed_side": "C.Transv erso",
+      "tipo": "Bacteria",
+      "patogeno": "Enta moe ba Histo litica",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cabeza de Perone. - Cabeza de Perone.",
+      "failed_side": "Cabeza de Perone.",
+      "tipo": "Disfunción",
+      "patogeno": "RESERVORIO",
+      "sources_count": 4,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Calis renal derecho - uretero ipsilatera l",
+      "failed_side": "Calis renal derecho",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Caliz Renal der. - Gemelo der.",
+      "failed_side": "Caliz Renal der.",
+      "tipo": "Parásito",
+      "patogeno": "Cyclospora cayetanensis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Capsula R. - Riñon (mismo lado)",
+      "failed_side": "Capsula R.",
+      "tipo": "Reservorio",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Carótida der. - Yugular der",
+      "failed_side": "Carótida der.",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus Pneu moni ae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cerebelo - axila peripanc reatica",
+      "failed_side": "axila peripanc reatica",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 1Ra - Coxis",
+      "failed_side": "Cervical 1Ra",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 1Ra - Piloro",
+      "failed_side": "Cervical 1Ra",
+      "tipo": "Reservorio",
+      "patogeno": "Plasmodium Vivax, Falciporum",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 2 - Axis",
+      "failed_side": "Cervical 2",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus DBovi s",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 2 - Cervical 2",
+      "failed_side": "Cervical 2",
+      "tipo": "Bacteria",
+      "patogeno": "Legi onell a",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 3A - Supraespinoso Izquierdo",
+      "failed_side": "Supraespinoso Izquierdo",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 3Ra - Cervical 3Ra",
+      "failed_side": "Cervical 3Ra",
+      "tipo": "Virus",
+      "patogeno": "Rhinovirus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 3Ra - Supraespinoso Derecho",
+      "failed_side": "Cervical 3Ra",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 4 - Cervical 4",
+      "failed_side": "Cervical 4",
+      "tipo": "Bacteria",
+      "patogeno": "Pseudomona aeruginosa",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 4A - Supraespinoso Derecho",
+      "failed_side": "Cervical 4A",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 6 - Cervical 6",
+      "failed_side": "Cervical 6",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia pneumoniae",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervical 7 - Dorsal 1Ra",
+      "failed_side": "Dorsal 1Ra",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervicales - Supra Espinoso Izquierdo",
+      "failed_side": "Supra Espinoso Izquierdo",
+      "tipo": "Parásito",
+      "patogeno": "Balantidium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cervico Superior - Cervico Superior",
+      "failed_side": "Cervico Superior",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ciatico Derecho - Lumbar 3",
+      "failed_side": "Lumbar 3",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CICATRI CES - Riñón",
+      "failed_side": "CICATRI CES",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cigomáti co - Cervical 3",
+      "failed_side": "Cigomáti co",
+      "tipo": "Bacteria",
+      "patogeno": "Listeria monocytogenes",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cisterna de Quilo - Cisterna de Quilo",
+      "failed_side": "Cisterna de Quilo",
+      "tipo": "Virus",
+      "patogeno": "Nork walk Virus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Clavícula media - Submaxi lar",
+      "failed_side": "Clavícula media",
+      "tipo": "Bacteria",
+      "patogeno": "Bordetella Pertussis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Clítoris - Eretra",
+      "failed_side": "Eretra",
+      "tipo": "Bacteria",
+      "patogeno": "Espiroqueta",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CODO - Braquial lateral",
+      "failed_side": "Braquial lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Espiroqueta",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CODO - Bursa subdelto idea",
+      "failed_side": "Bursa subdelto idea",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ocus Bhem olític o",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cola de caballo - Dorsal 4",
+      "failed_side": "Dorsal 4",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "COLA DE PÁNCRE AS - Riñón izquierd o",
+      "failed_side": "Riñón izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": "Chlo stryd ium Botul inum ó Hepa titis H",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Coledoco - Coledoco",
+      "failed_side": "Coledoco",
+      "tipo": "Hongo",
+      "patogeno": "Cryptococus Neoformans",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon Asc. - Colon Desc.",
+      "failed_side": "Colon Asc.",
+      "tipo": "Virus",
+      "patogeno": "Herp es 1 Zóst er(eruptiv o)",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon asc. - Riñón der",
+      "failed_side": "Colon asc.",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella pneumoniae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon Decende nte - Recto",
+      "failed_side": "Colon Decende nte",
+      "tipo": "Disfunción",
+      "patogeno": "Obst rucci ónIntes tinal",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon Desc. - Colon Desc.",
+      "cleaned": "Colon Desc - Colon Desc",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Colon Transver so - Parpado Izquierd o",
+      "failed_side": "Parpado Izquierd o",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon Transverso - Cuadriceps Derecho",
+      "failed_side": "Cuadriceps Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colon trasnv. - Suprapú bico izq.",
+      "failed_side": "Colon trasnv.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "COLOR TRANSV ERSO - Testículo",
+      "failed_side": "COLOR TRANSV ERSO",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colón Desc. - Riñón Izqdo.",
+      "failed_side": "Riñón Izqdo.",
+      "tipo": "Bacteria",
+      "patogeno": "Pasteurella",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colón Descend ente - Pulmon Izquierd o",
+      "failed_side": "Pulmon Izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Colón Transv. - Vejiga",
+      "failed_side": "Colón Transv.",
+      "tipo": "Bacteria",
+      "patogeno": "Vibrio cholerae",
+      "sources_count": 4,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Conduct o lactófilo - Conduct o lactófilo",
+      "failed_side": "Conduct o lactófilo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CORAZÓ N - Costilla lateral",
+      "failed_side": "Costilla lateral",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Corazón - Suprapo pitleo",
+      "failed_side": "Suprapo pitleo",
+      "tipo": "Bacteria",
+      "patogeno": "Actinomyces",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Coronilla - Hipotala mo",
+      "failed_side": "Coronilla",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Corporis - corporis",
+      "failed_side": "Corporis",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CRESTA ILIACA - Cresta iliaca lateral",
+      "failed_side": "Cresta iliaca lateral",
+      "tipo": "Parásito",
+      "patogeno": "Parásito quetransmiten",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cresta Iliaca Derecha - Ombligo",
+      "failed_side": "Cresta Iliaca Derecha",
+      "tipo": "Virus",
+      "patogeno": "Aftosa",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cresta Iliaca Izquierdo - Isquion Izquierdo",
+      "failed_side": "Cresta Iliaca Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cruris - cruris",
+      "failed_side": "Cruris",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cuadrado Lumbar - Cuadrado Lumbar",
+      "cleaned": "Cuadrado Lumbar - Cuadrado Lumbar",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cuerda bucal - Cuerda bucal",
+      "failed_side": "Cuerda bucal",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cuádrice ps - Cuádrice ps. (INVERS O)",
+      "failed_side": "Cuádrice ps. (INVERS O)",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Cáliz Renal - Uretero (mismo lado)",
+      "failed_side": "Uretero (mismo lado)",
+      "tipo": "Virus",
+      "patogeno": "Virus ADNpatógeno",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dedo Indice - Dedo Indice",
+      "failed_side": "Dedo Indice",
+      "tipo": "Reservorio",
+      "patogeno": "virus y E",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dedo Medio - Dedo Medio Mano Derecha",
+      "failed_side": "Dedo Medio Mano Derecha",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dedos del 2 al 5 - Dedos del 2 al 5",
+      "failed_side": "Dedos del 2 al 5",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "DELTOID ES - Tensor escápula",
+      "failed_side": "Tensor escápula",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Deltoides Incersion - Deltoides Incersion",
+      "failed_side": "Deltoides Incersion",
+      "tipo": "Bacteria",
+      "patogeno": "Treponema buccalis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Diafragma Derecho - Riñon Derecho",
+      "failed_side": "Diafragma Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Brucella abortus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 10 - Dorsal 10",
+      "failed_side": "Dorsal 10",
+      "tipo": "Virus",
+      "patogeno": "Influenza",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 11 - Dorsal 11",
+      "failed_side": "Dorsal 11",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 12Va - Dorsal 12Va",
+      "failed_side": "Dorsal 12Va",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Neumonía",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 12Va - Lumbar 1Ra",
+      "failed_side": "Dorsal 12Va",
+      "tipo": "Sin clasificar",
+      "patogeno": "Norwalk o Norovirus es lo mismo",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 1Ra - Dorsal 1Ra",
+      "failed_side": "Dorsal 1Ra",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 1ª a 12ª - Dorsal 1ª a 12ª",
+      "failed_side": "Dorsal 1ª a 12ª",
+      "tipo": "Sin clasificar",
+      "patogeno": "Radi culo patia s",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 3 - Dorsal 3",
+      "failed_side": "Dorsal 3",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium tuberculosis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 3 - Dorsal 7",
+      "failed_side": "Dorsal 3",
+      "tipo": "Virus",
+      "patogeno": "virus Variedad de",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 4 - Dorsal 4",
+      "failed_side": "Dorsal 4",
+      "tipo": "Virus",
+      "patogeno": "virus Fiebre",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 1ª",
+      "failed_side": "Dorsal 4",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 2 ó 3",
+      "failed_side": "Dorsal 4",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria meningitidis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 4 - Lumbar 3",
+      "failed_side": "Dorsal 4",
+      "tipo": "Sin clasificar",
+      "patogeno": "Neisseria meningitidis",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 7 - Dorsal 7",
+      "failed_side": "Dorsal 7",
+      "tipo": "Bacteria",
+      "patogeno": "Vibrio cholerae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal 9 - Dorsal 9",
+      "failed_side": "Dorsal 9",
+      "tipo": "Virus",
+      "patogeno": "Influenza",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorsal Dos - Dorsal Dos",
+      "failed_side": "Dorsal Dos",
+      "tipo": "Complejo",
+      "patogeno": "Legionella",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Dorso Mano Derecha - Talon Derecho",
+      "failed_side": "Dorso Mano Derecha",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Doudeno - Laringe",
+      "failed_side": "Doudeno",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Doudeno - Píloro",
+      "failed_side": "Doudeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Doudeno - Riñon Izquierd o",
+      "failed_side": "Doudeno",
+      "tipo": "Bacteria",
+      "patogeno": "Chla modi a Trac hom atis. Eche rechi a colli",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Doudeno - Riñones",
+      "failed_side": "Doudeno",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Duodeno - Riñón Izqdo.",
+      "failed_side": "Riñón Izqdo.",
+      "tipo": "Bacteria",
+      "patogeno": "Chlamydia trachomatis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ecm - Riñón izquierd o",
+      "failed_side": "Riñón izquierd o",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Elevador - Proximal deltoides",
+      "failed_side": "Elevador",
+      "tipo": "Sin clasificar",
+      "patogeno": "Genu Valg o",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Envoltur a Riñón - Envoltur a Riñón",
+      "cleaned": "ENVOLTURA RIÑON - ENVOLTURA RIÑON",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Epigastri o - Epigastri o",
+      "cleaned": "Epigastrio - Epigastrio",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Epiglotis - Epiglotis",
+      "failed_side": "Epiglotis",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Escotad ura - Escotad ura",
+      "failed_side": "Escotad ura",
+      "tipo": "Bacteria",
+      "patogeno": "Neisseria catarralis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Estómag o - Colon Tranvers o",
+      "failed_side": "Colon Tranvers o",
+      "tipo": "Bacteria",
+      "patogeno": "Clam ydia Afrei cana o Tuca ns",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Esófago - C.Desce ndente",
+      "failed_side": "C.Desce ndente",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas maHomi nis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Femur Bajo - Femur Bajo",
+      "failed_side": "Femur Bajo",
+      "tipo": "Bacteria",
+      "patogeno": "Bacterium Lactis Aerogenes",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Flexor Largo - Flexor Largo",
+      "failed_side": "Flexor Largo",
+      "tipo": "Bacteria",
+      "patogeno": "Clostridium difficile",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "FRENTE PULMON ES - Suprarre nales",
+      "failed_side": "FRENTE PULMON ES",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Frontal izquierd o - Frontal izquierd o",
+      "failed_side": "Frontal izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Gemelo - Gemelo Derecho",
+      "failed_side": "Gemelo",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Gen - Parte Afectada",
+      "failed_side": "Parte Afectada",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Glandula Salivar - Glandula Salivar",
+      "failed_side": "Glandula Salivar",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Vulgaris",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Gluteo izq - T.Aquile s D.",
+      "failed_side": "T.Aquile s D.",
+      "tipo": "Reservorio",
+      "patogeno": "Rese rvori o",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Glándula salival - Glándula salival",
+      "failed_side": "Glándula salival",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Herida - Gen",
+      "failed_side": "Herida",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hiato - Testículo dcho.",
+      "failed_side": "Testículo dcho.",
+      "tipo": "Bacteria",
+      "patogeno": "Helicobacter pylori",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hiato esofatico - Hiato esofatico",
+      "failed_side": "Hiato esofatico",
+      "tipo": "Hongo",
+      "patogeno": "Muco r",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "HIATO ESOFÁG ICO - Pulmón frontal",
+      "failed_side": "Pulmón frontal",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Higado - C. Descend ente",
+      "failed_side": "C. Descend ente",
+      "tipo": "Bacteria",
+      "patogeno": "Pasteurella",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hipofisis - Hipotalamo Derecho",
+      "failed_side": "Hipotalamo Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hipofisis - Mango Del Esternon Izquierdo",
+      "failed_side": "Mango Del Esternon Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hipotalamo Derecho - Sacro",
+      "failed_side": "Hipotalamo Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma Hominis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hombro Posterior Izquierdo - Cardias",
+      "failed_side": "Hombro Posterior Izquierdo",
+      "tipo": "Virus",
+      "patogeno": "Creyptocides Primordialis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Huastec as - Huastec as",
+      "failed_side": "Huastec as",
+      "tipo": "Virus",
+      "patogeno": "Virus deDolor",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueco max. Sup - Cola de páncreas",
+      "failed_side": "Hueco max. Sup",
+      "tipo": "Bacteria",
+      "patogeno": "Diplo coco",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueco max. Sup. - Hueco max. Sup.",
+      "failed_side": "Hueco max. Sup.",
+      "tipo": "Bacteria",
+      "patogeno": "Klep siella Pneu moni ae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueco max.inf. - Hueco max.inf.",
+      "failed_side": "Hueco max.inf.",
+      "tipo": "Bacteria",
+      "patogeno": "Enterobacter cloacae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueco P. - Hueco P.",
+      "failed_side": "Hueco P.",
+      "tipo": "Bacteria",
+      "patogeno": "Dtrep toco ccus Pneu moni ae ó Neu moc oco",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueco P. - Rodilla ipsilatera l",
+      "failed_side": "Hueco P.",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium leprae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueso H. - Hueso H.",
+      "failed_side": "Hueso H.",
+      "tipo": "Virus",
+      "patogeno": "Sindr ome de Sjogr en",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Hueso Hioides - Hueso Hioides",
+      "cleaned": "Hueso hioides - Hueso hioides",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Hígado - Riñón izquierd o.",
+      "failed_side": "Riñón izquierd o.",
+      "tipo": "Parásito",
+      "patogeno": "Ameba",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Iliaco - Borde Cuadrice ps",
+      "failed_side": "Borde Cuadrice ps",
+      "tipo": "Virus",
+      "patogeno": "Norw ark",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Iliaco Derecho - Capsula Renal Izquierda",
+      "failed_side": "Iliaco Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Bartonella",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Infra Cuadriceps - Infra Cuadriceps",
+      "failed_side": "Infra Cuadriceps",
+      "tipo": "Hongo",
+      "patogeno": "Mucor flúor",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Infra Isquion - Infra Isquion",
+      "failed_side": "Infra Isquion",
+      "tipo": "Virus",
+      "patogeno": "Enterovirus Vermiculares",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Infra Popliteo - Infra Popliteo",
+      "failed_side": "Infra Popliteo",
+      "tipo": "Bacteria",
+      "patogeno": "Kinguella Kingae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Inframenton - Inframenton",
+      "failed_side": "Inframenton",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Infraxilar - infraxilar",
+      "failed_side": "Infraxilar",
+      "tipo": "Virus",
+      "patogeno": "Pleur itis Viral",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Insercio n d. - Insercio n d.",
+      "failed_side": "Insercio n d.",
+      "tipo": "Bacteria",
+      "patogeno": "Trep one ma Buca liis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Intercilia co - Riñón DERECH O",
+      "failed_side": "Intercilia co",
+      "tipo": "Reservorio",
+      "patogeno": "Pará sitos",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Intercilia co - Riñón IZDO.",
+      "failed_side": "Intercilia co",
+      "tipo": "Reservorio",
+      "patogeno": "Pará sitos",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Interiliaco Derecho - Sacro",
+      "failed_side": "Interiliaco Derecho",
+      "tipo": "Reservorio",
+      "patogeno": "RESERVORIO",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Isquion Izquierdo - Occipital Izquierdo",
+      "failed_side": "Isquion Izquierdo",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Isquión interior - Isquión interior",
+      "failed_side": "Isquión interior",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas ma",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Juanete - Riñón mismo lado",
+      "failed_side": "Juanete",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Juanetes - Riñon Del Mismo Lado",
+      "failed_side": "Juanetes",
+      "tipo": "Reservorio",
+      "patogeno": "UNIVERSAL",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lagrimal - Lagrimal",
+      "failed_side": "Lagrimal",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella pneumoniae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Latissimus - Latissimus",
+      "failed_side": "Latissimus",
+      "tipo": "Bacteria",
+      "patogeno": "Yersinia Pneumaniae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lengua Derecha - Mandibula",
+      "failed_side": "Lengua Derecha",
+      "tipo": "Virus",
+      "patogeno": "Triquinosis y Trichinella Spiralis y",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ligamen to Hepático - Riñón Izquierd o",
+      "failed_side": "Riñón Izquierd o",
+      "tipo": "Virus",
+      "patogeno": "Influenza",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ligamen tos - Ligamen tos",
+      "failed_side": "Ligamen tos",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ligamento Pancreas - Bazo",
+      "failed_side": "Ligamento Pancreas",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ligamento Redondo - Higado",
+      "failed_side": "Ligamento Redondo",
+      "tipo": "Hongo",
+      "patogeno": "Pneumosystis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Locus ceruleus - Nervio vago bilateral",
+      "failed_side": "Locus ceruleus",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 1Ra - Lumbar 1Ra",
+      "failed_side": "Lumbar 1Ra",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma Hominis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3 - Condral derecho",
+      "failed_side": "Lumbar 3",
+      "tipo": "Bacteria",
+      "patogeno": "Urea plas maUreal yctic um",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3 - Dorsal 3",
+      "failed_side": "Lumbar 3",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "LUMBAR 3 - Lumbar 3",
+      "failed_side": "LUMBAR 3",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3 - Ovario",
+      "failed_side": "Lumbar 3",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3Ra - Biceps Femoral Derecho",
+      "failed_side": "Lumbar 3Ra",
+      "tipo": "Bacteria",
+      "patogeno": "Actinomyces",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3Ra - Condral Derecha",
+      "failed_side": "Lumbar 3Ra",
+      "tipo": "Sin clasificar",
+      "patogeno": "Ureaplasma Urealyticum",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 3Ra - Dorsal 3Ra",
+      "failed_side": "Lumbar 3Ra",
+      "tipo": "Virus",
+      "patogeno": "Adenovirus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 4 ó 5 - Sacro",
+      "failed_side": "Lumbar 4 ó 5",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lumbar 4Ta - Sacro",
+      "failed_side": "Lumbar 4Ta",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lunar Del Cuerpo - Riñon Derecho",
+      "failed_side": "Lunar Del Cuerpo",
+      "tipo": "Virus",
+      "patogeno": "Hanta",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Lóbulo oreja - Lóbulo oreja",
+      "failed_side": "Lóbulo oreja",
+      "tipo": "Bacteria",
+      "patogeno": "Clostridium tetani",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Macula - Cerebelo",
+      "failed_side": "Macula",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "VICT OR",
+      "sources_count": 4,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Maleolo externo - Maleolo externo",
+      "failed_side": "Maleolo externo",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mama Derecha - Nervio Inguinal Derecho",
+      "failed_side": "Mama Derecha",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mama Derecha - Riñon Derecho",
+      "failed_side": "Mama Derecha",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "MANDÍB ULA - Plana mandibu lar",
+      "failed_side": "Plana mandibu lar",
+      "tipo": "Sin clasificar",
+      "patogeno": "Stap hyloc occu sEpid",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "MANGO - Dorsal 7",
+      "failed_side": "Dorsal 7",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mango - Mango esternon",
+      "failed_side": "Mango esternon",
+      "tipo": "Virus",
+      "patogeno": "Cock sacki eviruz",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mango Del Esternon Derecho - Sigmoide",
+      "failed_side": "Mango Del Esternon Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "MEDIAS TINO SUP. - Hipotála mo",
+      "failed_side": "MEDIAS TINO SUP.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mejilla - Mejilla",
+      "failed_side": "Mejilla",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mesocar dio - Mesocar dio",
+      "failed_side": "Mesocar dio",
+      "tipo": "Bacteria",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Mordedura - Axila Del Mismo Lado",
+      "failed_side": "Mordedura",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "MORDID A - Axila",
+      "failed_side": "MORDID A",
+      "tipo": "Sin clasificar",
+      "patogeno": "RUF O",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Musculo Recto Anterior - Musculo Recto",
+      "failed_side": "Musculo Recto Anterior",
+      "tipo": "Sin clasificar",
+      "patogeno": "Fragilis Bacteroides",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Muñeca - Tibia interior contralat eral.",
+      "failed_side": "Tibia interior contralat eral.",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Muñeca Derecha - Tobillo Izquierdo",
+      "failed_side": "Tobillo Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Muñeca Izquierda - Tibia Derecha",
+      "failed_side": "Tibia Derecha",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Muñon - Muñon",
+      "cleaned": "Muñón - Muñón",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Músculo Psoas - Riñón Contral.",
+      "failed_side": "Músculo Psoas",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nano Cardias - Nano Cardias",
+      "failed_side": "Nano Cardias",
+      "tipo": "Bacteria",
+      "patogeno": "Nanobacterlum Sanguínea",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio ciático muslo - Nervio ciático muslo",
+      "failed_side": "Nervio ciático muslo",
+      "tipo": "Sin clasificar",
+      "patogeno": "Polio",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio facial - Nervio facial",
+      "failed_side": "Nervio facial",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio inguinal - Articulac ión + riñon",
+      "failed_side": "Articulac ión + riñon",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio Inguinal Derecho - Riñón Contral.",
+      "failed_side": "Riñón Contral.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio Trigemino - Nervio Trigemino",
+      "failed_side": "Nervio Trigemino",
+      "tipo": "Reservorio",
+      "patogeno": "RESERVORIO",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nervio trigémin o - Sacro",
+      "failed_side": "Nervio trigémin o",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nucleos - Bulbo raquideo s",
+      "failed_side": "Nucleos",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nudo braquial - Nudo braquial",
+      "failed_side": "Nudo braquial",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial LOJ A",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Nutricia - Nutricia",
+      "failed_side": "Nutricia",
+      "tipo": "Reservorio",
+      "patogeno": "TEMUCO",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Occipital Derecho - Duodeno",
+      "failed_side": "Occipital Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Occipital Derecho - Humero Derecho",
+      "failed_side": "Occipital Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Occipital Derecho - Riñon Izquierdo",
+      "failed_side": "Occipital Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Oido Izquierdo - Riñon Derecho",
+      "failed_side": "Oido Izquierdo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Ombligo - Diafragma Derecho",
+      "failed_side": "Diafragma Derecho",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Oído - Ovario o testículo derecho",
+      "failed_side": "Ovario o testículo derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Oído derecho - oído izquierd o",
+      "failed_side": "oído izquierd o",
+      "tipo": "Parásito",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Palatina - Riñón",
+      "failed_side": "Palatina",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Palma Derecha - Talon Derecho",
+      "failed_side": "Palma Derecha",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Paravert ebral - paravert ebral",
+      "cleaned": "Para vertebral - Para vertebral",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Parietal Derecho - Riñon Izquierdo",
+      "failed_side": "Parietal Derecho",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium Vivax Falciporum",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Parietal izquierd o - diafragm a",
+      "failed_side": "Parietal izquierd o",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Parotida Derecha - Pudendo Izquierdo",
+      "failed_side": "Pudendo Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Parpado Inferior - Parpado Inferior",
+      "failed_side": "Parpado Inferior",
+      "tipo": "Bacteria",
+      "patogeno": "Neissería Catarrhalis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pata de ganzo - Pata de ganzo",
+      "failed_side": "Pata de ganzo",
+      "tipo": "Virus",
+      "patogeno": "virus Coro navir",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pectoral - Pulmón contralat",
+      "failed_side": "Pulmón contralat",
+      "tipo": "Hongo",
+      "patogeno": "Mico plas ma",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pectoral derecho - Tendón",
+      "failed_side": "Tendón",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pectoral izq. - Cuadrice ps mismo lado",
+      "failed_side": "Cuadrice ps mismo lado",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pedís - Pedis",
+      "failed_side": "Pedís",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Peri Renal - Peri Renal Derecho",
+      "failed_side": "Peri Renal",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium tuberculosis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pericardio - Dorsal 7",
+      "failed_side": "Dorsal 7",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Perineal - Perineal",
+      "failed_side": "Perineal",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Perirrena l - Perirrena l",
+      "failed_side": "Perirrena l",
+      "tipo": "Bacteria",
+      "patogeno": "Micr obac teriu m tuber culos is bovis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Peritoneo - Sien Izquierda",
+      "failed_side": "Sien Izquierda",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pezon - Pezon",
+      "cleaned": "PEZON - PEZON",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Pezon Derecho - Popliteo Derecho",
+      "failed_side": "Popliteo Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": "Propionobacterium Acnes",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pezón derecho - Gemelo izquierd o",
+      "failed_side": "Gemelo izquierd o",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Piercing - Riñon Lateral",
+      "failed_side": "Piercing",
+      "tipo": "Tóxico",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Piloro - Pieza Dental",
+      "failed_side": "Pieza Dental",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Piloro - Uretero Derecho",
+      "failed_side": "Uretero Derecho",
+      "tipo": "Hongo",
+      "patogeno": "Micelio Intestinalis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pineal - Empeine Derecho",
+      "failed_side": "Empeine Derecho",
+      "tipo": "Virus",
+      "patogeno": "Guillain Barre oPolirradiculo",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Piso Orbital Derecho - Riñon Derecho",
+      "failed_side": "Piso Orbital Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Salmonella Thiphy",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Plantar Derecho - Calcaneo Derecho",
+      "failed_side": "Plantar Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Staphylococcus aureus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pleura - Pleura del mismo lado",
+      "failed_side": "Pleura del mismo lado",
+      "tipo": "Bacteria",
+      "patogeno": "Pseudomonas",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pleura - pleura ipsilatera l",
+      "failed_side": "pleura ipsilatera l",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pleura - Pleura lateral",
+      "failed_side": "Pleura lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Pseudomona aeruginosa",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Plexo Braquial - Codo Ipsilatera l",
+      "failed_side": "Plexo Braquial",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium leprae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Plexo Braquial - Plexo Braquial",
+      "failed_side": "Plexo Braquial",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Plexo dorsal - Lumbo sacro",
+      "failed_side": "Lumbo sacro",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Plexo muñeca - Plexo M uñeca.",
+      "failed_side": "Plexo muñeca",
+      "tipo": "Virus",
+      "patogeno": "Herpes V",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pliegue del brazo - Pliegue del brazo.",
+      "failed_side": "Pliegue del brazo",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Popliteo Izquierdo - Gluteo Derecho",
+      "failed_side": "Popliteo Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": "Malassezia globosa",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Porta - Higado",
+      "failed_side": "Porta",
+      "tipo": "Virus",
+      "patogeno": "Papiloma virus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Porta - Porta",
+      "failed_side": "Porta",
+      "tipo": "Bacteria",
+      "patogeno": "Klebsiella",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Porta - Páncrea s",
+      "failed_side": "Porta",
+      "tipo": "Virus",
+      "patogeno": "Papiloma virus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Porta - Recto",
+      "failed_side": "Porta",
+      "tipo": "Virus",
+      "patogeno": "Papiloma virus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Postpineal - Hipotalamo Izquierdo",
+      "failed_side": "Hipotalamo Izquierdo",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Primer ortejón - Primer ortejón",
+      "failed_side": "Primer ortejón",
+      "tipo": "Hongo",
+      "patogeno": "Trico pyto n",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Primera costilla - Primera",
+      "failed_side": "Primera costilla",
+      "tipo": "Hongo",
+      "patogeno": "Trycophyto",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pulgar - Pulgar",
+      "failed_side": "Pulgar",
+      "tipo": "Hongo",
+      "patogeno": "Klesbiella Pneomonae",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pulmone s - Suprarre nales",
+      "failed_side": "Pulmone s",
+      "tipo": "Bacteria",
+      "patogeno": "P. Aeru gino sa",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pulmones - Timo",
+      "failed_side": "Pulmones",
+      "tipo": "Disfunción",
+      "patogeno": "Y ESPECIAL",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Pulso - Pulso",
+      "failed_side": "Pulso",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Punta de páncreas - Suprailia co",
+      "failed_side": "Suprailia co",
+      "tipo": "Sin clasificar",
+      "patogeno": "Rosá ceaPúrp úra",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "PÍLORO - Uretero IZQUIER DO",
+      "failed_side": "Uretero IZQUIER DO",
+      "tipo": "Hongo",
+      "patogeno": "Micel iointes tinali s",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Retroma stoideo - Retroma stoideo",
+      "failed_side": "Retroma stoideo",
+      "tipo": "Parásito",
+      "patogeno": "Cisticerco",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Retroten sor de la facualata - Pectoral",
+      "failed_side": "Retroten sor de la facualata",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñon - escapula ipsilatera",
+      "failed_side": "escapula ipsilatera",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñon - Ojo Izquierd o",
+      "failed_side": "Ojo Izquierd o",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñon - Riñon unilatera l",
+      "failed_side": "Riñon unilatera l",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñon - uretéro ( mismo lado)",
+      "failed_side": "uretéro ( mismo lado)",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Virus Herp es",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN - Escápula m.l.",
+      "failed_side": "Escápula m.l.",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN - Pómulo Contralat eral",
+      "failed_side": "Pómulo Contralat eral",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñón - Pómulo contralat.",
+      "failed_side": "Pómulo contralat.",
+      "tipo": "Parásito",
+      "patogeno": "Plasmodium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN - Uretero lateral",
+      "failed_side": "Uretero lateral",
+      "tipo": "Sin clasificar",
+      "patogeno": "Mach ín",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN DERECH O - Duodeno",
+      "failed_side": "RIÑÓN DERECH O",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN DERECH O - Uretra",
+      "failed_side": "RIÑÓN DERECH O",
+      "tipo": "Sin clasificar",
+      "patogeno": "Provi denc eStuar",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑÓN IZQUIER DO - Mastoide s",
+      "failed_side": "RIÑÓN IZQUIER DO",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Riñón sup. - Riñón inferior",
+      "failed_side": "Riñón sup.",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Espe cial",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Rodilla - herco Popliteo IZq",
+      "failed_side": "herco Popliteo IZq",
+      "tipo": "Bacteria",
+      "patogeno": "Myco bacte riun Lepr ae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Rodilla - hueco Popliteo",
+      "failed_side": "hueco Popliteo",
+      "tipo": "Bacteria",
+      "patogeno": "Myco bacte rium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Rodilla interna - Rodilla interna.",
+      "failed_side": "Rodilla interna",
+      "tipo": "Bacteria",
+      "patogeno": "Myco dacte rium tuber culos is",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Rotula Izquierda - Braquial Izquierdo",
+      "failed_side": "Rotula Izquierda",
+      "tipo": "Virus",
+      "patogeno": "Molluscumn Contagiosum",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Semitendinoso - Semitendinoso",
+      "failed_side": "Semitendinoso",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Seno A. Ventricular - Riñón Izquierdo",
+      "failed_side": "Seno A. Ventricular",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "AnaAlicia",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Seno etmiodal - Seno etmiodal",
+      "failed_side": "Seno etmiodal",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Seno Frontal Derecho - Sien Izquierda",
+      "failed_side": "Seno Frontal Derecho",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Sien Izquierda - Riñon Derecho",
+      "failed_side": "Sien Izquierda",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Soleo - Soleo",
+      "cleaned": "SOLEO - SOLEO",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Subdiafragma Derecho - Riñon Derecho",
+      "failed_side": "Subdiafragma Derecho",
+      "tipo": "Reservorio",
+      "patogeno": "UNIVERSAL",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Suelo pelvico - Suelo pelvico",
+      "failed_side": "Suelo pelvico",
+      "tipo": "Reservorio",
+      "patogeno": "CHIE",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra empeine - Infratibia l",
+      "failed_side": "Supra empeine",
+      "tipo": "Bacteria",
+      "patogeno": "Stap hyloc occu sEpid ermi s",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Escapular - Supra Escapular",
+      "failed_side": "Supra Escapular",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus Viridans",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Espinoso Derecho - Vejiga",
+      "failed_side": "Supra Espinoso Derecho",
+      "tipo": "Hongo",
+      "patogeno": "Sporothrix",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Espinoso Izquierdo - Cerebelo",
+      "failed_side": "Supra Espinoso Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Neissería Catarrhalis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Popliteo - Supra Popliteo",
+      "failed_side": "Supra Popliteo",
+      "tipo": "Parásito",
+      "patogeno": "Gusano Nematodo",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Popliteo Derecho - Musculo Recto",
+      "failed_side": "Supra Popliteo Derecho",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Umbilical - Lumbar 2Da",
+      "failed_side": "Supra Umbilical",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supra Umbilical - Timo",
+      "failed_side": "Supra Umbilical",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus B",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Suprahe p. - Suprahe p.",
+      "failed_side": "Suprahe p.",
+      "tipo": "Bacteria",
+      "patogeno": "Clost ridiu mmalig num",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Supranal ga - Supranal ga",
+      "failed_side": "Supranal ga",
+      "tipo": "Hongo",
+      "patogeno": "Staq uibot rix",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Suprapo pítleo - Suprapo pítleo",
+      "failed_side": "Suprapo pítleo",
+      "tipo": "Sin clasificar",
+      "patogeno": "Gusa noNem atod o",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tempora l - temporal izquierd o",
+      "failed_side": "temporal izquierd o",
+      "tipo": "Virus",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Temporal Derecho - Yugular Izquierdo",
+      "failed_side": "Yugular Izquierdo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Temporo lateral - Temporo lateral",
+      "failed_side": "Temporo lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Myco plas ma",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tensor - Cuadrice ps",
+      "failed_side": "Tensor",
+      "tipo": "Bacteria",
+      "patogeno": "Riket sia",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tensor De La Fascia Lata - Sartorio",
+      "failed_side": "Tensor De La Fascia Lata",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tensor facial lata superior - espina",
+      "failed_side": "Tensor facial lata superior",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tensor Fasc. - Tensor Fasc.",
+      "failed_side": "Tensor Fasc.",
+      "tipo": "Bacteria",
+      "patogeno": "Gard nerel aVagi nalis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tiriodes - escapula.",
+      "failed_side": "Tiriodes",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tiriodes - pomulo",
+      "failed_side": "Tiriodes",
+      "tipo": "Sin clasificar",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tiriodes - Páncrea s",
+      "failed_side": "Tiriodes",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Trigemino Derecho - Hemisferio Izquierdo",
+      "failed_side": "Trigemino Derecho",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Trocanter Menor - Trocanter Meno",
+      "failed_side": "Trocanter Meno",
+      "tipo": "Virus",
+      "patogeno": "HTLV oHPV",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "URETER IZQUIER DO - Recto",
+      "failed_side": "URETER IZQUIER DO",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus A",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Uretero - trompa del falopio",
+      "failed_side": "trompa del falopio",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Estrp toco co Beta Hem olitic o o Agal actia e",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Uretero Derecho - Caliz Renal Derecho",
+      "failed_side": "Uretero Derecho",
+      "tipo": "Virus",
+      "patogeno": "Herpes I",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Uretero Derecho - Trompa Izquierda",
+      "failed_side": "Uretero Derecho",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococous BAgalactiae",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vacuna - Riñon Del Mismo Lado",
+      "failed_side": "Vacuna",
+      "tipo": "Reservorio",
+      "patogeno": "Mycobacterium Tuberculoso RESERVORIO",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vagina - Musculo Sartorio Izquierdo",
+      "failed_side": "Musculo Sartorio Izquierdo",
+      "tipo": "Bacteria",
+      "patogeno": "Lactobacilus Acidophilus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vagina - Riñón izquierd o",
+      "failed_side": "Riñón izquierd o",
+      "tipo": "Bacteria",
+      "patogeno": "Esch erich iacolli",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vago Derecho - Riñon Izquierdo",
+      "failed_side": "Vago Derecho",
+      "tipo": "Reservorio",
+      "patogeno": "UNIVERSAL",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vago Derecho - Suprarrenales",
+      "failed_side": "Vago Derecho",
+      "tipo": "Reservorio",
+      "patogeno": "Universal de Bacterias, Parásitos, Virus y Hongos                  RESERVORIO UNIVERSAL",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Valvula Ileocecal Derecha - Estomago",
+      "failed_side": "Valvula Ileocecal Derecha",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vasto Lateral - Vasto Lateral",
+      "failed_side": "Vasto Lateral",
+      "tipo": "Bacteria",
+      "patogeno": "Mycoplasma Fermentans",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vena Porta - Cresta Iliaca Derecha",
+      "failed_side": "Cresta Iliaca Derecha",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Vesicula - Uretra En Mujeres",
+      "failed_side": "Uretra En Mujeres",
+      "tipo": "Virus",
+      "patogeno": "Papiloma",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Zona lesionad a - Escápula",
+      "failed_side": "Zona lesionad a",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Punt oAlcal ino",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Área Dolor - Riñón mismo lado",
+      "failed_side": "Área Dolor",
+      "tipo": "Emocional/Psicoemocional",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "ÍLEON - Ileón",
+      "cleaned": "ILEON - ILEON",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Dorso - Dorso",
+      "cleaned": "Dorso - Dorso",
+      "razon": "no_classification"
+    },
+    {
+      "original": "Cervical 3 - Deltoide s Medio",
+      "failed_side": "Deltoide s Medio",
+      "tipo": "Bacteria",
+      "patogeno": "Bala ntidi um tifo",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Gemelo-. Gemelo",
+      "failed_side": "Gemelo",
+      "tipo": "Bacteria",
+      "patogeno": "Strep toco ccus G",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Maléolo interno - Maleolo interno",
+      "failed_side": "Maléolo interno",
+      "tipo": "Bacteria",
+      "patogeno": "Acti mom ices",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "PINEAL - Puente de Variolo",
+      "failed_side": "Puente de Variolo",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "Tibia – Tibia superior",
+      "failed_side": "Tibia superior",
+      "tipo": "Hongo",
+      "patogeno": "actin omyc es",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "AXILA DERECHA - TIMO",
+      "failed_side": "AXILA DERECHA",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "AXILA IZQUIERDA - TIMO",
+      "failed_side": "AXILA IZQUIERDA",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "BRAQUIAL IZQUIERDO - CODO DERECHO",
+      "failed_side": "CODO DERECHO",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium Leprae RESERVORIO",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CANTO DEL OJO - CANTO DEL OJO",
+      "failed_side": "CANTO DEL OJO",
+      "tipo": "Hongo",
+      "patogeno": "Aspergillus",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CEREBELO - PISO ORBITAL DERECHO",
+      "failed_side": "PISO ORBITAL DERECHO",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CEREBELO - PISO ORBITAL IZQUIERDO",
+      "failed_side": "PISO ORBITAL IZQUIERDO",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "COLON TRANSVERSO - PARIETAL DERECHO",
+      "failed_side": "PARIETAL DERECHO",
+      "tipo": "Parásito",
+      "patogeno": "Entamooeba Histolitica",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CONDUCTO DEFERENTE – LARINGE",
+      "failed_side": "CONDUCTO DEFERENTE",
+      "tipo": "Virus",
+      "patogeno": "VHS1 y VHS2 y Rotavirus",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "INTERILIACO IZQUIERDO – SACRO",
+      "failed_side": "INTERILIACO IZQUIERDO",
+      "tipo": "Reservorio",
+      "patogeno": "Proteus Mirabilis",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "OIDO IZQUIERDO - TEMPORAL DERECHO",
+      "failed_side": "OIDO IZQUIERDO",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Goiz",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "OVARIO IZQUIERDO -TROMPA DERECHA",
+      "failed_side": "TROMPA DERECHA",
+      "tipo": "Especial/Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "POLIGONO DE WILLIS DERECHO - MASTOIDES IZQUIERDA",
+      "failed_side": "POLIGONO DE WILLIS DERECHO",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑON DERECHO - URETERO IZQUIERDO",
+      "failed_side": "URETERO IZQUIERDO",
+      "tipo": "Especial/Disfunción",
+      "patogeno": "Providencia Stuartii",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "RIÑON IZQUIERDO - URETERO DERECHO",
+      "failed_side": "URETERO DERECHO",
+      "tipo": "Bacteria",
+      "patogeno": "Providencia Stuartii",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "TEMPORAL IZQUIERDO - YUGULAR DERECHO",
+      "failed_side": "YUGULAR DERECHO",
+      "tipo": "Disfunción",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "VACUNA - RIÑON",
+      "failed_side": "VACUNA",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "VACUNA - RIÑON DEL",
+      "failed_side": "VACUNA",
+      "tipo": "Reservorio",
+      "patogeno": "Mycobacterium",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "CORONARIA - TENDON",
+      "failed_side": "TENDON",
+      "tipo": "Bacteria",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "BRAQUIAL (RAS) - BURSA",
+      "failed_side": "BRAQUIAL (RAS)",
+      "tipo": "Reservorio",
+      "patogeno": null,
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "TROCANTER MAYOR (RAS) - TENSOR DE",
+      "failed_side": "TROCANTER MAYOR (RAS)",
+      "tipo": "Hongo",
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "LUMBAR 3RA - BICEPS",
+      "failed_side": "LUMBAR 3RA",
+      "tipo": "Bacteria",
+      "patogeno": "Actinomyces",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "ARTERIA AXILAR - ARTERIA",
+      "failed_side": "ARTERIA",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus G",
+      "sources_count": 4,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "SUPRA ESCAPULAR - SUPRA",
+      "failed_side": "SUPRA ESCAPULAR",
+      "tipo": "Bacteria",
+      "patogeno": "Streptococcus",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "HUECO MAXILAR - HUECO",
+      "failed_side": "HUECO MAXILAR",
+      "tipo": "Bacteria",
+      "patogeno": "Enterobacter",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "VESICULA - CAPSULA",
+      "failed_side": "CAPSULA",
+      "tipo": "Bacteria",
+      "patogeno": "Escherichia",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "DERECHO – HIGADO",
+      "failed_side": "DERECHO",
+      "tipo": "Bacteria",
+      "patogeno": "Staphylococcus",
+      "sources_count": 3,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "VACUNA - INDICE",
+      "failed_side": "VACUNA",
+      "tipo": null,
+      "patogeno": null,
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    },
+    {
+      "original": "VACUNA - SUPRAESPINOSO DEL",
+      "failed_side": "VACUNA",
+      "tipo": "Bacteria",
+      "patogeno": "Mycobacterium",
+      "sources_count": 2,
+      "razon": "side_not_in_atom_dict"
+    }
+  ]
+}
