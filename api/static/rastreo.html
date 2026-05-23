@@ -1182,6 +1182,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 #rastreo-home {
   display: none; flex-direction: column; gap: 1rem;
   padding: 1.2rem 1rem 1.5rem;
+  overflow-y: auto; flex: 1;
 }
 #rastreo-home.visible { display: flex; }
 .instr-card {
@@ -1371,6 +1372,63 @@ table.tref-table td:nth-child(3) { color: #374151; }
 #bm-scanner {
   transform-origin: top center;
   transition: transform 0.18s ease-out;
+}
+
+/* ── MOBILE BODY MAP — grid de 9 regiones ─────────────────────── */
+@media (max-width: 560px) {
+  #rastreo-home {
+    padding: 0.8rem 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  /* Convertir scanner en grid responsivo */
+  #bm-scanner {
+    height: auto !important;
+    overflow: visible !important;
+    background: transparent;
+    border-radius: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    padding: 0;
+  }
+
+  /* Ocultar imagen y SVG */
+  #body-img, #bm-overlay, .bm-hud-bar { display: none !important; }
+
+  /* Convertir labels de absolute a static */
+  .bm-label {
+    position: static !important;
+    top: auto !important; bottom: auto !important;
+    left: auto !important; right: auto !important;
+    transform: none !important;
+    width: auto !important;
+    padding: 10px 8px !important;
+    border-radius: 12px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    min-height: 64px;
+  }
+  .bm-label-top { gap: 5px; }
+  .bm-label-name { font-size: 0.72rem !important; font-weight: 700; }
+  .bm-label-count { font-size: 0.58rem !important; margin-top: 2px; line-height: 1.3; }
+  .bm-label-region { font-size: 0.48rem !important; }
+
+  /* Orden natural anatómico: Cabeza, Cuello, Pecho, Espalda, Abdomen, Brazos, Pelvis, Piernas, Extras */
+  #lbl-cabeza  { order: 1; }
+  #lbl-cuello  { order: 2; }
+  #lbl-pecho   { order: 3; }
+  #lbl-espalda { order: 4; }
+  #lbl-abdomen { order: 5; }
+  #lbl-brazos  { order: 6; }
+  #lbl-pelvis  { order: 7; }
+  #lbl-piernas { order: 8; }
+  #lbl-extras  { order: 9; }
+
+  /* Quitar row separada de extras (es parte del grid ahora) */
+  .bm-extras-row { display: none; }
 }
 
 /* virus tables */
@@ -1592,7 +1650,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div class="bm-label" id="lbl-extras"  style="bottom:22px; right:0"
           onclick="selectBodyRegion('extras')">
           <div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div>
-          <span class="bm-label-count">25 pares · 2 zonas</span>
+          <span class="bm-label-count">24 pares · 2 zonas</span>
         </div>
 
       </div><!-- /#bm-scanner -->
