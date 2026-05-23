@@ -1,0 +1,2105 @@
+{
+  "total_fichas": 107,
+  "matched": 105,
+  "unmatched": 0,
+  "mappings": [
+    {
+      "ficha_file": "000_Timo_Esternon_plantilla_aprobada.png",
+      "ficha_number": 0,
+      "side_a_from_filename": "Timo",
+      "side_b_from_filename": "Esternon",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Collar",
+      "db_par": "Esternón - Timo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Collar",
+          "par": "Esternón - Timo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "001_Bazo_Higado.png",
+      "ficha_number": 1,
+      "side_a_from_filename": "Bazo",
+      "side_b_from_filename": "Higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 3",
+      "db_par": "Bazo - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 3",
+          "par": "Bazo - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "002_Pleura_Pleura_corregida.png",
+      "ficha_number": 2,
+      "side_a_from_filename": "Pleura",
+      "side_b_from_filename": "Pleura",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pleura",
+      "db_par": "Pleura - Pleura",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pleura",
+          "par": "Pleura - Pleura"
+        }
+      ]
+    },
+    {
+      "ficha_file": "003_Muneca_Muneca.png",
+      "ficha_number": 3,
+      "side_a_from_filename": "Muneca",
+      "side_b_from_filename": "Muneca",
+      "db_region": "Miembros",
+      "db_zona": "Brazo",
+      "db_bloque": "Mano",
+      "db_par": "Muñeca - Muñeca",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Brazo",
+          "bloque": "Mano",
+          "par": "Muñeca - Muñeca"
+        }
+      ]
+    },
+    {
+      "ficha_file": "004_Vejiga_Vejiga.png",
+      "ficha_number": 4,
+      "side_a_from_filename": "Vejiga",
+      "side_b_from_filename": "Vejiga",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Pubis",
+      "db_par": "Vejiga - Vejiga",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Pubis",
+          "par": "Vejiga - Vejiga"
+        }
+      ]
+    },
+    {
+      "ficha_file": "005_Laringe_Laringe.png",
+      "ficha_number": 5,
+      "side_a_from_filename": "Laringe",
+      "side_b_from_filename": "Laringe",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Garganta Central",
+      "db_par": "Laringe - Laringe",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Garganta Central",
+          "par": "Laringe - Laringe"
+        }
+      ]
+    },
+    {
+      "ficha_file": "006_Recto_Recto.png",
+      "ficha_number": 6,
+      "side_a_from_filename": "Recto",
+      "side_b_from_filename": "Recto",
+      "db_region": "Pelvis",
+      "db_zona": "Trasera",
+      "db_bloque": "Coxis",
+      "db_par": "Recto - Recto",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Coxis",
+          "par": "Recto - Recto"
+        }
+      ]
+    },
+    {
+      "ficha_file": "007_Vagina_Vagina.png",
+      "ficha_number": 7,
+      "side_a_from_filename": "Vagina",
+      "side_b_from_filename": "Vagina",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina B",
+      "db_par": "Vagina - Vagina",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Vagina - Vagina"
+        }
+      ]
+    },
+    {
+      "ficha_file": "008_Sacro_Sacro.png",
+      "ficha_number": 8,
+      "side_a_from_filename": "Sacro",
+      "side_b_from_filename": "Sacro",
+      "db_region": "Pelvis",
+      "db_zona": "Trasera",
+      "db_bloque": "Sacro",
+      "db_par": "Sacro - Sacro",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Sacro",
+          "par": "Sacro - Sacro"
+        }
+      ]
+    },
+    {
+      "ficha_file": "009_Escapula_Escapula.png",
+      "ficha_number": 9,
+      "side_a_from_filename": "Escapula",
+      "side_b_from_filename": "Escapula",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Homóplato",
+      "db_par": "Escápula - Escápula",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Homóplato",
+          "par": "Escápula - Escápula"
+        }
+      ]
+    },
+    {
+      "ficha_file": "010_Duodeno_Rinon_Izquierdo.png",
+      "ficha_number": 10,
+      "side_a_from_filename": "Duodeno",
+      "side_b_from_filename": "Rinon Izquierdo",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Ombligo",
+      "db_par": "Duodeno - Riñón IZQ",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Ombligo",
+          "par": "Duodeno - Riñón IZQ"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Ombligo",
+          "par": "Duodeno - Riñón Izquierdo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "011_Malar_Malar.png",
+      "ficha_number": 11,
+      "side_a_from_filename": "Malar",
+      "side_b_from_filename": "Malar",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Pómulo",
+      "db_par": "Malar - Malar",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Pómulo",
+          "par": "Malar - Malar"
+        }
+      ]
+    },
+    {
+      "ficha_file": "012_Tibia_Tibia_Inferior.png",
+      "ficha_number": 12,
+      "side_a_from_filename": "Tibia",
+      "side_b_from_filename": "Tibia Inferior",
+      "db_region": "Miembros",
+      "db_zona": "Pierna",
+      "db_bloque": "Pierna Media",
+      "db_par": "Tibia - Tibia Inferior",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Pierna",
+          "bloque": "Pierna Media",
+          "par": "Tibia - Tibia Inferior"
+        }
+      ]
+    },
+    {
+      "ficha_file": "013_Dorso_Lumbar.png",
+      "ficha_number": 13,
+      "side_a_from_filename": "Dorso",
+      "side_b_from_filename": "Lumbar",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Dorsales",
+      "db_par": "Dorso - Lumbar",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Dorsales",
+          "par": "Dorso - Lumbar"
+        }
+      ]
+    },
+    {
+      "ficha_file": "014_Timo_Parietal.png",
+      "ficha_number": 14,
+      "side_a_from_filename": "Timo",
+      "side_b_from_filename": "Parietal",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Timo",
+      "db_par": "Timo - Parietal",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Timo",
+          "par": "Timo - Parietal"
+        }
+      ]
+    },
+    {
+      "ficha_file": "015_Higado_Pleura.png",
+      "ficha_number": 15,
+      "side_a_from_filename": "Higado",
+      "side_b_from_filename": "Pleura",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pleura",
+      "db_par": "Pleura - Hígado",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pleura",
+          "par": "Pleura - Hígado"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 1",
+          "par": "Hígado - Pleura"
+        }
+      ]
+    },
+    {
+      "ficha_file": "016_Pericardio_pericardio.png",
+      "ficha_number": 16,
+      "side_a_from_filename": "Pericardio",
+      "side_b_from_filename": "pericardio",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Corazón",
+      "db_par": "Pericardio - Pericardio",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Corazón",
+          "par": "Pericardio - Pericardio"
+        }
+      ]
+    },
+    {
+      "ficha_file": "017_Cerebelo_Piso_orbital.png",
+      "ficha_number": 17,
+      "side_a_from_filename": "Cerebelo",
+      "side_b_from_filename": "Piso orbital",
+      "db_region": "Cabeza",
+      "db_zona": "Posterior",
+      "db_bloque": "Cerebelo",
+      "db_par": "Cerebelo - Piso Orbital",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Posterior",
+          "bloque": "Cerebelo",
+          "par": "Cerebelo - Piso Orbital"
+        },
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Anillo Ocular",
+          "par": "Piso Orbital - Cerebelo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "018_Deltoides_deltoides.png",
+      "ficha_number": 18,
+      "side_a_from_filename": "Deltoides",
+      "side_b_from_filename": "deltoides",
+      "db_region": "Miembros",
+      "db_zona": "Brazo",
+      "db_bloque": "Brazo Alto",
+      "db_par": "Deltoides - Deltoides",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Brazo",
+          "bloque": "Brazo Alto",
+          "par": "Deltoides - Deltoides"
+        }
+      ]
+    },
+    {
+      "ficha_file": "019_Rinon_rinon.png",
+      "ficha_number": 19,
+      "side_a_from_filename": "Rinon",
+      "side_b_from_filename": "rinon",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Riñón",
+      "db_par": "Riñón - Riñón",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Riñón",
+          "par": "Riñón - Riñón"
+        }
+      ]
+    },
+    {
+      "ficha_file": "020_Cuello_Cuello_CORRECTO.png",
+      "ficha_number": 20,
+      "side_a_from_filename": "Cuello",
+      "side_b_from_filename": "Cuello",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Garganta Baja",
+      "db_par": "Cuello - Cuello",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Garganta Baja",
+          "par": "Cuello - Cuello"
+        }
+      ]
+    },
+    {
+      "ficha_file": "021_Frontal_derecho_Frontal_derecho.png",
+      "ficha_number": 21,
+      "side_a_from_filename": "Frontal derecho",
+      "side_b_from_filename": "Frontal derecho",
+      "db_region": "Cabeza",
+      "db_zona": "Frente",
+      "db_bloque": "Frente Alta",
+      "db_par": "Frontal DER - Frontal DER",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Frente",
+          "bloque": "Frente Alta",
+          "par": "Frontal DER - Frontal DER"
+        }
+      ]
+    },
+    {
+      "ficha_file": "022_Lengua_Lengua.png",
+      "ficha_number": 22,
+      "side_a_from_filename": "Lengua",
+      "side_b_from_filename": "Lengua",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Nariz",
+      "db_par": "Lengua - Lengua",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Nariz",
+          "par": "Lengua - Lengua"
+        }
+      ]
+    },
+    {
+      "ficha_file": "023_Mediastino_Mediastino.png",
+      "ficha_number": 23,
+      "side_a_from_filename": "Mediastino",
+      "side_b_from_filename": "Mediastino",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Collar",
+      "db_par": "Mediastino - Mediastino",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Collar",
+          "par": "Mediastino - Mediastino"
+        }
+      ]
+    },
+    {
+      "ficha_file": "024_Parotida_Parotida.png",
+      "ficha_number": 24,
+      "side_a_from_filename": "Parotida",
+      "side_b_from_filename": "Parotida",
+      "db_region": "Cabeza",
+      "db_zona": "Lateral",
+      "db_bloque": "Parótida",
+      "db_par": "Parótida - Parótida",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Lateral",
+          "bloque": "Parótida",
+          "par": "Parótida - Parótida"
+        }
+      ]
+    },
+    {
+      "ficha_file": "025_Apendice_Pleura.png",
+      "ficha_number": 25,
+      "side_a_from_filename": "Apendice",
+      "side_b_from_filename": "Pleura",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pleura",
+      "db_par": "Pleura - Apéndice",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pleura",
+          "par": "Pleura - Apéndice"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pleura",
+          "par": "Apéndice - Pleura"
+        }
+      ]
+    },
+    {
+      "ficha_file": "026_Braquial_Braquial.png",
+      "ficha_number": 26,
+      "side_a_from_filename": "Braquial",
+      "side_b_from_filename": "Braquial",
+      "db_region": "Miembros",
+      "db_zona": "Brazo",
+      "db_bloque": "Brazo Medio",
+      "db_par": "Braquial - Braquial",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Brazo",
+          "bloque": "Brazo Medio",
+          "par": "Braquial - Braquial"
+        }
+      ]
+    },
+    {
+      "ficha_file": "027_Cardias_suprarrenales.png",
+      "ficha_number": 27,
+      "side_a_from_filename": "Cardias",
+      "side_b_from_filename": "suprarrenales",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pecho Bajo",
+      "db_par": "Cardias - Suprarrenales",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pecho Bajo",
+          "par": "Cardias - Suprarrenales"
+        }
+      ]
+    },
+    {
+      "ficha_file": "028_Ciego_Ciego.png",
+      "ficha_number": 28,
+      "side_a_from_filename": "Ciego",
+      "side_b_from_filename": "Ciego",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Intersección",
+      "db_par": "Ciego - Ciego",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Intersección",
+          "par": "Ciego - Ciego"
+        }
+      ]
+    },
+    {
+      "ficha_file": "029_Cola_de_pancreas_higado.png",
+      "ficha_number": 29,
+      "side_a_from_filename": "Cola de pancreas",
+      "side_b_from_filename": "higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 2",
+      "db_par": "Cola de Páncreas - Hígado",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 2",
+          "par": "Cola de Páncreas - Hígado"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Hígado",
+          "par": "Hígado - Cola de Páncreas"
+        }
+      ]
+    },
+    {
+      "ficha_file": "030_Craneal_craneal.png",
+      "ficha_number": 30,
+      "side_a_from_filename": "Craneal",
+      "side_b_from_filename": "craneal",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Anillo Ocular",
+      "db_par": "Craneal - Craneal",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Anillo Ocular",
+          "par": "Craneal - Craneal"
+        }
+      ]
+    },
+    {
+      "ficha_file": "031_Cuerpo_Calloso_Cuerpo_Calloso.png",
+      "ficha_number": 31,
+      "side_a_from_filename": "Cuerpo Calloso",
+      "side_b_from_filename": "Cuerpo Calloso",
+      "db_region": "Cabeza",
+      "db_zona": "Coronilla",
+      "db_bloque": "Callosidad",
+      "db_par": "Cuerpo Calloso - Cuerpo Calloso",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Coronilla",
+          "bloque": "Callosidad",
+          "par": "Cuerpo Calloso - Cuerpo Calloso"
+        }
+      ]
+    },
+    {
+      "ficha_file": "032_Capsula_renal_capsula_renal.png",
+      "ficha_number": 32,
+      "side_a_from_filename": "Capsula renal",
+      "side_b_from_filename": "capsula renal",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Riñón",
+      "db_par": "Cápsula Renal - Cápsula Renal",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Riñón",
+          "par": "Cápsula Renal - Cápsula Renal"
+        }
+      ]
+    },
+    {
+      "ficha_file": "033_Duodeno_higado.png",
+      "ficha_number": 33,
+      "side_a_from_filename": "Duodeno",
+      "side_b_from_filename": "higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 1",
+      "db_par": "Duodeno - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 1",
+          "par": "Duodeno - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "034_Epiplon_epiplon.png",
+      "ficha_number": 34,
+      "side_a_from_filename": "Epiplon",
+      "side_b_from_filename": "epiplon",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Ombligo",
+      "db_par": "Epiplón - Epiplón",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Ombligo",
+          "par": "Epiplón - Epiplón"
+        }
+      ]
+    },
+    {
+      "ficha_file": "035_Estomago_piloro.png",
+      "ficha_number": 35,
+      "side_a_from_filename": "Estomago",
+      "side_b_from_filename": "piloro",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Estómago",
+      "db_par": "Estómago - Píloro",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Estómago",
+          "par": "Estómago - Píloro"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Píloro",
+          "par": "Piloro - Estómago"
+        }
+      ]
+    },
+    {
+      "ficha_file": "036_Higado_Nervio_inguinal.png",
+      "ficha_number": 36,
+      "side_a_from_filename": "Higado",
+      "side_b_from_filename": "Nervio inguinal",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Cadera",
+      "db_par": "Nervio Inguinal - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Cadera",
+          "par": "Nervio Inguinal - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "037_Parpado_parpado.png",
+      "ficha_number": 37,
+      "side_a_from_filename": "Parpado",
+      "side_b_from_filename": "parpado",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Ojo",
+      "db_par": "Párpado - Párpado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Ojo",
+          "par": "Párpado - Párpado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "038_Uretra_Uretra.png",
+      "ficha_number": 38,
+      "side_a_from_filename": "Uretra",
+      "side_b_from_filename": "Uretra",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina A",
+      "db_par": "Uretra - Uretra",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina A",
+          "par": "Uretra - Uretra"
+        }
+      ]
+    },
+    {
+      "ficha_file": "039_Cadera_cadera.png",
+      "ficha_number": 39,
+      "side_a_from_filename": "Cadera",
+      "side_b_from_filename": "cadera",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Cadera",
+      "db_par": "Cadera - Cadera",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Cadera",
+          "par": "Cadera - Cadera"
+        }
+      ]
+    },
+    {
+      "ficha_file": "040_Costal_Higado.png",
+      "ficha_number": 40,
+      "side_a_from_filename": "Costal",
+      "side_b_from_filename": "Higado",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Hígado",
+      "db_par": "Costal - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Hígado",
+          "par": "Costal - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "041_Dorsal_2_dorsal_2.png",
+      "ficha_number": 41,
+      "side_a_from_filename": "Dorsal 2",
+      "side_b_from_filename": "dorsal 2",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Dorsales",
+      "db_par": "Dorsal 2 - Dorsal 2",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Dorsales",
+          "par": "Dorsal 2 - Dorsal 2"
+        }
+      ]
+    },
+    {
+      "ficha_file": "042_Estomago_Suprarrenales.png",
+      "ficha_number": 42,
+      "side_a_from_filename": "Estomago",
+      "side_b_from_filename": "Suprarrenales",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Estómago",
+      "db_par": "Estómago - Suprarrenales",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Estómago",
+          "par": "Estómago - Suprarrenales"
+        }
+      ]
+    },
+    {
+      "ficha_file": "043_Flanco_flanco.png",
+      "ficha_number": 43,
+      "side_a_from_filename": "Flanco",
+      "side_b_from_filename": "flanco",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Retrohepático",
+      "db_par": "Flanco - Flanco",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Retrohepático",
+          "par": "Flanco - Flanco"
+        }
+      ]
+    },
+    {
+      "ficha_file": "044_Nariz_Nariz.png",
+      "ficha_number": 44,
+      "side_a_from_filename": "Nariz",
+      "side_b_from_filename": "Nariz",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Nariz",
+      "db_par": "Nariz - Nariz",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Nariz",
+          "par": "Nariz - Nariz"
+        }
+      ]
+    },
+    {
+      "ficha_file": "045_Occipital_Parotida_izquierda.png",
+      "ficha_number": 45,
+      "side_a_from_filename": "Occipital",
+      "side_b_from_filename": "Parotida izquierda",
+      "db_region": "Cabeza",
+      "db_zona": "Posterior",
+      "db_bloque": "Occipital",
+      "db_par": "Occipital - Parótida IZQ",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Posterior",
+          "bloque": "Occipital",
+          "par": "Occipital - Parótida IZQ"
+        }
+      ]
+    },
+    {
+      "ficha_file": "046_Pleura_Pulmon_derecho.png",
+      "ficha_number": 46,
+      "side_a_from_filename": "Pleura",
+      "side_b_from_filename": "Pulmon derecho",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pleura",
+      "db_par": "Pleura - Pulmón Derecho",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pleura",
+          "par": "Pleura - Pulmón Derecho"
+        }
+      ]
+    },
+    {
+      "ficha_file": "047_Plexo_cervical_plexo_cervical.png",
+      "ficha_number": 47,
+      "side_a_from_filename": "Plexo cervical",
+      "side_b_from_filename": "plexo cervical",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Garganta Lateral",
+      "db_par": "Plexo Cervical - Plexo Cervical",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Garganta Lateral",
+          "par": "Plexo Cervical - Plexo Cervical"
+        }
+      ]
+    },
+    {
+      "ficha_file": "048_Popliteo_popliteo.png",
+      "ficha_number": 48,
+      "side_a_from_filename": "Popliteo",
+      "side_b_from_filename": "popliteo",
+      "db_region": "Miembros",
+      "db_zona": "Pierna",
+      "db_bloque": "Pierna Trasera",
+      "db_par": "Poplíteo - Poplíteo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Pierna",
+          "bloque": "Pierna Trasera",
+          "par": "Poplíteo - Poplíteo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "049_Testiculo_testiculo.png",
+      "ficha_number": 49,
+      "side_a_from_filename": "Testiculo",
+      "side_b_from_filename": "testiculo",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Macho",
+      "db_par": "Testículo - Testículo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Macho",
+          "par": "Testículo - Testículo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "050_Utero_Utero.png",
+      "ficha_number": 50,
+      "side_a_from_filename": "Utero",
+      "side_b_from_filename": "Utero",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina A",
+      "db_par": "Útero - Útero",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina A",
+          "par": "Útero - Útero"
+        }
+      ]
+    },
+    {
+      "ficha_file": "051_Vesicula_Vesicula.png",
+      "ficha_number": 51,
+      "side_a_from_filename": "Vesicula",
+      "side_b_from_filename": "Vesicula",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Vesícula",
+      "db_par": "Vesícula - Vesícula",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Vesícula",
+          "par": "Vesícula - Vesícula"
+        }
+      ]
+    },
+    {
+      "ficha_file": "052_Temporal_Derecho_Temporal_Izquierdo.png",
+      "ficha_number": 52,
+      "side_a_from_filename": "Temporal Derecho",
+      "side_b_from_filename": "Temporal Izquierdo",
+      "db_region": "Cabeza",
+      "db_zona": "Lateral",
+      "db_bloque": "Temporal",
+      "db_par": "Temporal DER - Temporal IZQ",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Lateral",
+          "bloque": "Temporal",
+          "par": "Temporal DER - Temporal IZQ"
+        }
+      ]
+    },
+    {
+      "ficha_file": "053_Carina_Carina.png",
+      "ficha_number": 53,
+      "side_a_from_filename": "Carina",
+      "side_b_from_filename": "Carina",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Pecho Bajo",
+      "db_par": "Carina - Carina",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Pecho Bajo",
+          "par": "Carina - Carina"
+        }
+      ]
+    },
+    {
+      "ficha_file": "054_Ojo_Ojo.png",
+      "ficha_number": 54,
+      "side_a_from_filename": "Ojo",
+      "side_b_from_filename": "Ojo",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Ojo",
+      "db_par": "Ojo - Ojo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Ojo",
+          "par": "Ojo - Ojo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "055_Rinon_Uretero.png",
+      "ficha_number": 55,
+      "side_a_from_filename": "Rinon",
+      "side_b_from_filename": "Uretero",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Ombligo",
+      "db_par": "Uretero (RAS) - Riñón (RAS)",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Ombligo",
+          "par": "Uretero (RAS) - Riñón (RAS)"
+        }
+      ]
+    },
+    {
+      "ficha_file": "056_Ano_Lengua.png",
+      "ficha_number": 56,
+      "side_a_from_filename": "Ano",
+      "side_b_from_filename": "Lengua",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Colon",
+      "db_par": "Ano - Lengua",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Colon",
+          "par": "Ano - Lengua"
+        }
+      ]
+    },
+    {
+      "ficha_file": "057_Ojo_Cerebelo.png",
+      "ficha_number": 57,
+      "side_a_from_filename": "Ojo",
+      "side_b_from_filename": "Cerebelo",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Ojo",
+      "db_par": "Ojo - Cerebelo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Ojo",
+          "par": "Ojo - Cerebelo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "058_Parietal_Parietal.png",
+      "ficha_number": 58,
+      "side_a_from_filename": "Parietal",
+      "side_b_from_filename": "Parietal",
+      "db_region": "Cabeza",
+      "db_zona": "Coronilla",
+      "db_bloque": "Parietal",
+      "db_par": "Parietal - Parietal",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Coronilla",
+          "bloque": "Parietal",
+          "par": "Parietal - Parietal"
+        }
+      ]
+    },
+    {
+      "ficha_file": "059_Prostata_Recto.png",
+      "ficha_number": 59,
+      "side_a_from_filename": "Prostata",
+      "side_b_from_filename": "Recto",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Macho",
+      "db_par": "Próstata - Recto",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Macho",
+          "par": "Próstata - Recto"
+        }
+      ]
+    },
+    {
+      "ficha_file": "060_SACRO_Plexo_cervical.png",
+      "ficha_number": 60,
+      "side_a_from_filename": "SACRO",
+      "side_b_from_filename": "Plexo cervical",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Nuca",
+      "db_par": "Plexo Cervical - Sacro",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Nuca",
+          "par": "Plexo Cervical - Sacro"
+        }
+      ]
+    },
+    {
+      "ficha_file": "061_SACRO_Vejiga.png",
+      "ficha_number": 61,
+      "side_a_from_filename": "SACRO",
+      "side_b_from_filename": "Vejiga",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Pubis",
+      "db_par": "Vejiga - Sacro",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Pubis",
+          "par": "Vejiga - Sacro"
+        },
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Sacro",
+          "par": "Sacro - Vejiga"
+        }
+      ]
+    },
+    {
+      "ficha_file": "062_Subclavia_Subclavia.png",
+      "ficha_number": 62,
+      "side_a_from_filename": "Subclavia",
+      "side_b_from_filename": "Subclavia",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Collar",
+      "db_par": "Subclavia - Subclavia",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Collar",
+          "par": "Subclavia - Subclavia"
+        }
+      ]
+    },
+    {
+      "ficha_file": "063_Trompa_Trompa.png",
+      "ficha_number": 63,
+      "side_a_from_filename": "Trompa",
+      "side_b_from_filename": "Trompa",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina B",
+      "db_par": "Trompa (RAS) - Trompa",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Trompa (RAS) - Trompa"
+        }
+      ]
+    },
+    {
+      "ficha_file": "064_Traquea_Traquea.png",
+      "ficha_number": 64,
+      "side_a_from_filename": "Traquea",
+      "side_b_from_filename": "Traquea",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Anahata",
+      "db_par": "Tráquea - Tráquea",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Anahata",
+          "par": "Tráquea - Tráquea"
+        }
+      ]
+    },
+    {
+      "ficha_file": "065_Aquiles_aquiles.png",
+      "ficha_number": 65,
+      "side_a_from_filename": "Aquiles",
+      "side_b_from_filename": "aquiles",
+      "db_region": "Miembros",
+      "db_zona": "Pierna",
+      "db_bloque": "Pierna Trasera",
+      "db_par": "Aquiles - Aquiles",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Pierna",
+          "bloque": "Pierna Trasera",
+          "par": "Aquiles - Aquiles"
+        }
+      ]
+    },
+    {
+      "ficha_file": "066_Colon_Transverso_Parietal.png",
+      "ficha_number": 66,
+      "side_a_from_filename": "Colon Transverso",
+      "side_b_from_filename": "Parietal",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Colon",
+      "db_par": "Colon Transverso - Parietal",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Colon",
+          "par": "Colon Transverso - Parietal"
+        }
+      ]
+    },
+    {
+      "ficha_file": "067_Esofago_Esofago.png",
+      "ficha_number": 67,
+      "side_a_from_filename": "Esofago",
+      "side_b_from_filename": "Esofago",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Anahata",
+      "db_par": "Esófago - Esófago",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Anahata",
+          "par": "Esófago - Esófago"
+        }
+      ]
+    },
+    {
+      "ficha_file": "068_Mandibula_mandibula.png",
+      "ficha_number": 68,
+      "side_a_from_filename": "Mandibula",
+      "side_b_from_filename": "mandibula",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Boca",
+      "db_par": "Mandíbula - Mandíbula",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Boca",
+          "par": "Mandíbula - Mandíbula"
+        }
+      ]
+    },
+    {
+      "ficha_file": "069_PENE_TIMO.png",
+      "ficha_number": 69,
+      "side_a_from_filename": "PENE",
+      "side_b_from_filename": "TIMO",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Macho",
+      "db_par": "Timo - Pene",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Macho",
+          "par": "Timo - Pene"
+        }
+      ]
+    },
+    {
+      "ficha_file": "070_Rinon_Capsula_Renal.png",
+      "ficha_number": 70,
+      "side_a_from_filename": "Rinon",
+      "side_b_from_filename": "Capsula Renal",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Riñón",
+      "db_par": "Cápsula Renal - Riñón",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Riñón",
+          "par": "Cápsula Renal - Riñón"
+        }
+      ]
+    },
+    {
+      "ficha_file": "071_Rodilla_Rodilla.png",
+      "ficha_number": 71,
+      "side_a_from_filename": "Rodilla",
+      "side_b_from_filename": "Rodilla",
+      "db_region": "Miembros",
+      "db_zona": "Pierna",
+      "db_bloque": "Pierna Media",
+      "db_par": "Rodilla - Rodilla",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Pierna",
+          "bloque": "Pierna Media",
+          "par": "Rodilla - Rodilla"
+        }
+      ]
+    },
+    {
+      "ficha_file": "072_SACRO_Utero.png",
+      "ficha_number": 72,
+      "side_a_from_filename": "SACRO",
+      "side_b_from_filename": "Utero",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Conexiones Sistémicas",
+      "db_par": "Útero - Sacro",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Conexiones Sistémicas",
+          "par": "Útero - Sacro"
+        },
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Sacro",
+          "par": "Sacro - Útero"
+        }
+      ]
+    },
+    {
+      "ficha_file": "073_Ano_Piloro.png",
+      "ficha_number": 73,
+      "side_a_from_filename": "Ano",
+      "side_b_from_filename": "Piloro",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Píloro",
+      "db_par": "Ano - Píloro",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Píloro",
+          "par": "Ano - Píloro"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Píloro",
+          "par": "Piloro - Ano"
+        }
+      ]
+    },
+    {
+      "ficha_file": "074_Atlas_Utero.png",
+      "ficha_number": 74,
+      "side_a_from_filename": "Atlas",
+      "side_b_from_filename": "Utero",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Conexiones Sistémicas",
+      "db_par": "Atlas - Útero",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Conexiones Sistémicas",
+          "par": "Atlas - Útero"
+        },
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Conexiones Sistémicas",
+          "par": "Útero - Atlas"
+        }
+      ]
+    },
+    {
+      "ficha_file": "075_Axila_Timo.png",
+      "ficha_number": 75,
+      "side_a_from_filename": "Axila",
+      "side_b_from_filename": "Timo",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Timo",
+      "db_par": "Axila - Timo",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Timo",
+          "par": "Axila - Timo"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Timo",
+          "par": "Timo - Axila"
+        }
+      ]
+    },
+    {
+      "ficha_file": "076_Bazo_Duodeno.png",
+      "ficha_number": 76,
+      "side_a_from_filename": "Bazo",
+      "side_b_from_filename": "Duodeno",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Bazo",
+      "db_par": "Bazo - Duodeno",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Bazo",
+          "par": "Bazo - Duodeno"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Bazo",
+          "par": "Duodeno - Bazo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "077_Braquial_Codo.png",
+      "ficha_number": 77,
+      "side_a_from_filename": "Braquial",
+      "side_b_from_filename": "Codo",
+      "db_region": "Miembros",
+      "db_zona": "Brazo",
+      "db_bloque": "Brazo Medio",
+      "db_par": "Braquial - Codo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Brazo",
+          "bloque": "Brazo Medio",
+          "par": "Braquial - Codo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "078_Canto_Canto.png",
+      "ficha_number": 78,
+      "side_a_from_filename": "Canto",
+      "side_b_from_filename": "Canto",
+      "db_region": "Cabeza",
+      "db_zona": "Rostro",
+      "db_bloque": "Anillo Ocular",
+      "db_par": "Canto - Canto",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Rostro",
+          "bloque": "Anillo Ocular",
+          "par": "Canto - Canto"
+        }
+      ]
+    },
+    {
+      "ficha_file": "079_Carotida_Aorta.png",
+      "ficha_number": 79,
+      "side_a_from_filename": "Carotida",
+      "side_b_from_filename": "Aorta",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Corazón",
+      "db_par": "Carótida - Aorta",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Corazón",
+          "par": "Carótida - Aorta"
+        }
+      ]
+    },
+    {
+      "ficha_file": "080_Carotida_Pudendo.png",
+      "ficha_number": 80,
+      "side_a_from_filename": "Carotida",
+      "side_b_from_filename": "Pudendo",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Garganta Central",
+      "db_par": "Carótida - Pudendo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Garganta Central",
+          "par": "Carótida - Pudendo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "081_Clitoris_sacro.png",
+      "ficha_number": 81,
+      "side_a_from_filename": "Clitoris",
+      "side_b_from_filename": "sacro",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina A",
+      "db_par": "Clítoris - Sacro",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina A",
+          "par": "Clítoris - Sacro"
+        }
+      ]
+    },
+    {
+      "ficha_file": "082_Cola_de_pancreas_Rinon_izq.png",
+      "ficha_number": 82,
+      "side_a_from_filename": "Cola de pancreas",
+      "side_b_from_filename": "Rinon izq",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Páncreas",
+      "db_par": "Cola de Páncreas - Riñón Izquierdo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Páncreas",
+          "par": "Cola de Páncreas - Riñón Izquierdo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "083_Colon_descendente_higado.png",
+      "ficha_number": 83,
+      "side_a_from_filename": "Colon descendente",
+      "side_b_from_filename": "higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 1",
+      "db_par": "Colon Descendente - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 1",
+          "par": "Colon Descendente - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "084_Colon_transverso_higado.png",
+      "ficha_number": 84,
+      "side_a_from_filename": "Colon transverso",
+      "side_b_from_filename": "higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 2",
+      "db_par": "Colon Transverso - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 2",
+          "par": "Colon Transverso - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "085_Conducto_de_pancreas_rinon_izquierdo.png",
+      "ficha_number": 85,
+      "side_a_from_filename": "Conducto de pancreas",
+      "side_b_from_filename": "rinon izquierdo",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Páncreas",
+      "db_par": "Conducto de Páncreas - Riñón IZQ",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Páncreas",
+          "par": "Conducto de Páncreas - Riñón IZQ"
+        }
+      ]
+    },
+    {
+      "ficha_file": "086_Contraciego_contraciego.png",
+      "ficha_number": 86,
+      "side_a_from_filename": "Contraciego",
+      "side_b_from_filename": "contraciego",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Intersección",
+      "db_par": "Contraciego - Contraciego",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Intersección",
+          "par": "Contraciego - Contraciego"
+        }
+      ]
+    },
+    {
+      "ficha_file": "087_Cuadrado_cuadrado.png",
+      "ficha_number": 87,
+      "side_a_from_filename": "Cuadrado",
+      "side_b_from_filename": "cuadrado",
+      "db_region": "Tronco",
+      "db_zona": "Espalda",
+      "db_bloque": "Espalda Baja",
+      "db_par": "Cuadrado - Cuadrado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Espalda",
+          "bloque": "Espalda Baja",
+          "par": "Cuadrado - Cuadrado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "089_Gluteo_Vena_femoral.png",
+      "ficha_number": 89,
+      "side_a_from_filename": "Gluteo",
+      "side_b_from_filename": "Vena femoral",
+      "db_region": "Pelvis",
+      "db_zona": "Trasera",
+      "db_bloque": "Trasero",
+      "db_par": "Glúteo - Vena Femoral",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Trasero",
+          "par": "Glúteo - Vena Femoral"
+        }
+      ]
+    },
+    {
+      "ficha_file": "090_Gluteo_Gluteo.png",
+      "ficha_number": 90,
+      "side_a_from_filename": "Gluteo",
+      "side_b_from_filename": "Gluteo",
+      "db_region": "Pelvis",
+      "db_zona": "Trasera",
+      "db_bloque": "Trasero",
+      "db_par": "Glúteo - Glúteo",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Trasera",
+          "bloque": "Trasero",
+          "par": "Glúteo - Glúteo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "091_Higado_Higado.png",
+      "ficha_number": 91,
+      "side_a_from_filename": "Higado",
+      "side_b_from_filename": "Higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 1",
+      "db_par": "Hígado - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 1",
+          "par": "Hígado - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "092_Higado_Rinon_der.png",
+      "ficha_number": 92,
+      "side_a_from_filename": "Higado",
+      "side_b_from_filename": "Rinon der",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Hígado",
+      "db_par": "Hígado - Riñón Derecho",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Hígado",
+          "par": "Hígado - Riñón Derecho"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Riñón",
+          "par": "Riñón Derecho - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "093_Higado_piloro.png",
+      "ficha_number": 93,
+      "side_a_from_filename": "Higado",
+      "side_b_from_filename": "piloro",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 3",
+      "db_par": "Píloro - Hígado",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 3",
+          "par": "Píloro - Hígado"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Hígado",
+          "par": "Hígado - Píloro"
+        }
+      ]
+    },
+    {
+      "ficha_file": "095_Ovario_Trompa.png",
+      "ficha_number": 95,
+      "side_a_from_filename": "Ovario",
+      "side_b_from_filename": "Trompa",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina B",
+      "db_par": "Ovario - Trompa",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Ovario - Trompa"
+        }
+      ]
+    },
+    {
+      "ficha_file": "096_Ovario_Utero.png",
+      "ficha_number": 96,
+      "side_a_from_filename": "Ovario",
+      "side_b_from_filename": "Utero",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina B",
+      "db_par": "Ovario - Útero",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Ovario - Útero"
+        },
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Útero - Ovario"
+        }
+      ]
+    },
+    {
+      "ficha_file": "097_POLO_Uretra.png",
+      "ficha_number": 97,
+      "side_a_from_filename": "POLO",
+      "side_b_from_filename": "Uretra",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina A",
+      "db_par": "Polo - Uretra",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina A",
+          "par": "Polo - Uretra"
+        }
+      ]
+    },
+    {
+      "ficha_file": "098_Plexo_Rodilla_Plexo_Rodilla.png",
+      "ficha_number": 98,
+      "side_a_from_filename": "Plexo Rodilla",
+      "side_b_from_filename": "Plexo Rodilla",
+      "db_region": "Miembros",
+      "db_zona": "Pierna",
+      "db_bloque": "Pierna Media",
+      "db_par": "Plexo Rodilla - Plexo Rodilla",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Miembros",
+          "zona": "Pierna",
+          "bloque": "Pierna Media",
+          "par": "Plexo Rodilla - Plexo Rodilla"
+        }
+      ]
+    },
+    {
+      "ficha_file": "099_Recto_Timo.png",
+      "ficha_number": 99,
+      "side_a_from_filename": "Recto",
+      "side_b_from_filename": "Timo",
+      "db_region": "Tronco",
+      "db_zona": "Tórax",
+      "db_bloque": "Timo",
+      "db_par": "Timo - Recto",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Tórax",
+          "bloque": "Timo",
+          "par": "Timo - Recto"
+        },
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Macho",
+          "par": "Recto - Timo"
+        }
+      ]
+    },
+    {
+      "ficha_file": "100_Supraespinoso_supraespinoso.png",
+      "ficha_number": 100,
+      "side_a_from_filename": "Supraespinoso",
+      "side_b_from_filename": "supraespinoso",
+      "db_region": "Cabeza",
+      "db_zona": "Cuello",
+      "db_bloque": "Nuca",
+      "db_par": "Supraespinoso - Supraespinoso",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Cabeza",
+          "zona": "Cuello",
+          "bloque": "Nuca",
+          "par": "Supraespinoso - Supraespinoso"
+        }
+      ]
+    },
+    {
+      "ficha_file": "101_Timo_Higado.png",
+      "ficha_number": 101,
+      "side_a_from_filename": "Timo",
+      "side_b_from_filename": "Higado",
+      "db_region": "Tronco",
+      "db_zona": "Hepatitis",
+      "db_bloque": "Hepático 3",
+      "db_par": "Timo - Hígado",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Hepatitis",
+          "bloque": "Hepático 3",
+          "par": "Timo - Hígado"
+        }
+      ]
+    },
+    {
+      "ficha_file": "102_Trocanter_mayor_trocanter_mayor.png",
+      "ficha_number": 102,
+      "side_a_from_filename": "Trocanter mayor",
+      "side_b_from_filename": "trocanter mayor",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Fémur",
+      "db_par": "Trocánter Mayor - Trocánter Mayor",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Fémur",
+          "par": "Trocánter Mayor - Trocánter Mayor"
+        }
+      ]
+    },
+    {
+      "ficha_file": "103_Uretero_Vejiga.png",
+      "ficha_number": 103,
+      "side_a_from_filename": "Uretero",
+      "side_b_from_filename": "Vejiga",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Ombligo",
+      "db_par": "Uretero - Vejiga",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Ombligo",
+          "par": "Uretero - Vejiga"
+        }
+      ]
+    },
+    {
+      "ficha_file": "104_Vagina_Ovario.png",
+      "ficha_number": 104,
+      "side_a_from_filename": "Vagina",
+      "side_b_from_filename": "Ovario",
+      "db_region": "Pelvis",
+      "db_zona": "Sexo",
+      "db_bloque": "Fémina B",
+      "db_par": "Vagina - Ovario",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Sexo",
+          "bloque": "Fémina B",
+          "par": "Vagina - Ovario"
+        }
+      ]
+    },
+    {
+      "ficha_file": "105_Vejiga_Ano.png",
+      "ficha_number": 105,
+      "side_a_from_filename": "Vejiga",
+      "side_b_from_filename": "Ano",
+      "db_region": "Pelvis",
+      "db_zona": "Delantera",
+      "db_bloque": "Pubis",
+      "db_par": "Vejiga - Ano",
+      "multiple_matches": false,
+      "all_candidates": [
+        {
+          "region": "Pelvis",
+          "zona": "Delantera",
+          "bloque": "Pubis",
+          "par": "Vejiga - Ano"
+        }
+      ]
+    },
+    {
+      "ficha_file": "106_Vesicula_Rinon_derecho.png",
+      "ficha_number": 106,
+      "side_a_from_filename": "Vesicula",
+      "side_b_from_filename": "Rinon derecho",
+      "db_region": "Tronco",
+      "db_zona": "Abdomen",
+      "db_bloque": "Vesícula",
+      "db_par": "Vesícula - Riñón DER",
+      "multiple_matches": true,
+      "all_candidates": [
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Vesícula",
+          "par": "Vesícula - Riñón DER"
+        },
+        {
+          "region": "Tronco",
+          "zona": "Abdomen",
+          "bloque": "Vesícula",
+          "par": "Vesícula - Riñón Derecho"
+        }
+      ]
+    }
+  ],
+  "unmatched_files": []
+}

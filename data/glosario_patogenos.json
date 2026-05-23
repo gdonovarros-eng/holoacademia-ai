@@ -1,0 +1,2865 @@
+{
+  "total": 286,
+  "entries": [
+    {
+      "nombre": "I VIRUS Adenoviridae",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 11,
+      "enfermedades_reales": "Resfriados · Conjuntivitis · Gastroenteritis · Neumonía",
+      "transmision": "Aérea, contacto, fecal-oral",
+      "tratamiento_medico": "Soporte; algunos antivirales (cidofovir) en inmunosuprimidos",
+      "nota": "Más de 50 serotipos. Resistentes en superficies. Citomegalovirus (HHV-5)"
+    },
+    {
+      "nombre": "Citomegalovirus (HHV-5)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Citomegalovirus",
+      "transmision": "Fluidos corporales",
+      "tratamiento_medico": "Ganciclovir",
+      "nota": "Sinónimo de Citomegalovirus. Citomegalovirus humano (HHV-5) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Citomegalovirus humano (HHV-5)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Asintomática en sanos; severa en inmunosuprimidos y feto",
+      "transmision": "Contacto con fluidos corporales, vertical",
+      "tratamiento_medico": "Ganciclovir, valganciclovir en casos graves",
+      "nota": "Causa más común de infección congénita; puede causar sordera y retraso mental. Coronavirus humanos (HCoV-229E, OC43, NL63, HKU1, SARS-CoV-1, MERS-CoV, SARS-CoV-2) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Coronavirus humanos (HCoV-229E, OC43, NL63, HKU1, SARS-CoV-1, MERS-CoV, SARS-CoV-2)",
+      "categoria": "VIRUS",
+      "tipo": "Virus (familia Coronaviridae)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Resfriado común (4 cepas comunes) · SARS (2003) · MERS (2012) · COVID-19 (SARS-CoV-2, pandemia 2020+)",
+      "transmision": "Aérea (gotitas y aerosoles)",
+      "tratamiento_medico": "Soporte; antivirales específicos para SARS-CoV-2 (paxlovid, remdesivir); vacunas",
+      "nota": "Familia conocida décadas antes de COVID-19. SARS-CoV-2 causó >7 millones de muertes confirmadas. Coxsackievirus (Enterovirus) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Coxsackievirus (Enterovirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Enfermedad mano-pie-boca · Herpangina · Miocarditis · Meningitis aséptica",
+      "transmision": "Fecal-oral, respiratoria",
+      "tratamiento_medico": "Soporte",
+      "nota": "Tipos A causan mano-pie-boca; tipos B asociados a miocarditis."
+    },
+    {
+      "nombre": "Enterovirus spp. (polio, coxsackie, echovirus, EV-D68, EV-A71)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Síndromes meníngeos, mano-pie-boca, miocarditis, conjuntivitis hemorrágica",
+      "transmision": "Fecal-oral, respiratoria",
+      "tratamiento_medico": "Soporte; pleconaril en investigación",
+      "nota": "Familia amplia. EV-A71 causa formas graves de mano-pie-boca. HIV-1 — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "HIV-1",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Retrovirus)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "VIH/SIDA (cepa más común mundialmente)",
+      "transmision": "Sexual, parenteral, vertical",
+      "tratamiento_medico": "Terapia antirretroviral",
+      "nota": "Cepa responsable del ~95% de infecciones por VIH a nivel global. HIV-2 — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "HIV-2",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Retrovirus)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Infección por VIH, generalmente con progresión más lenta",
+      "transmision": "Similar a VIH-1 pero menos eficiente",
+      "tratamiento_medico": "TAR (algunos antirretrovirales menos efectivos que contra VIH-1)",
+      "nota": "Mayormente endémico en África Occidental. Progresión a SIDA más lenta que VIH-1. HSV-1 (Herpes Simplex tipo 1) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "HSV-1 (Herpes Simplex tipo 1)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Herpes labial principalmente; también genital",
+      "transmision": "Contacto oral, saliva",
+      "tratamiento_medico": "Aciclovir, valaciclovir tópico/oral",
+      "nota": "60-90% de población adulta es seropositiva. Recurrencias por estrés, fiebre, luz solar. HSV-2 (Herpes Simplex tipo 2) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "HSV-2 (Herpes Simplex tipo 2)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Herpes genital recurrente",
+      "transmision": "Contacto sexual",
+      "tratamiento_medico": "Antivirales orales supresivos",
+      "nota": "ITS común; aumenta riesgo de transmisión de VIH 2-3x."
+    },
+    {
+      "nombre": "Hantaviridae",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Fiebre hemorrágica con síndrome renal · Síndrome cardiopulmonar por hantavirus (Américas)",
+      "transmision": "Aerosolización de excretas de roedores",
+      "tratamiento_medico": "Soporte; sin antiviral específico",
+      "nota": "Alta mortalidad en forma cardiopulmonar (~35%). Influenza (común) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Influenza (común)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Ver Influenza",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Ver Influenza",
+      "nota": "Término popular para influenza. Influenza A, B, C — usado en 17 pares biomagnéticos"
+    },
+    {
+      "nombre": "Influenza A, B, C",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 17,
+      "enfermedades_reales": "Gripe estacional · Pandemias (H1N1, H5N1)",
+      "transmision": "Aérea (gotitas respiratorias)",
+      "tratamiento_medico": "Oseltamivir, zanamivir; vacunación anual",
+      "nota": "Causa 250,000-500,000 muertes anuales globalmente. Mutación constante. Papillomavirus — usado en 15 pares biomagnéticos"
+    },
+    {
+      "nombre": "Papillomavirus",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 15,
+      "enfermedades_reales": "Ver VPH",
+      "transmision": "Ver VPH",
+      "tratamiento_medico": "Ver VPH",
+      "nota": "Sinónimo común de VPH en literatura. Paramyxoviridae (familia) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Paramyxoviridae (familia)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Sarampión, parotiditis, parainfluenza, virus sincitial respiratorio",
+      "transmision": "Respiratoria",
+      "tratamiento_medico": "Específico por agente",
+      "nota": "'Paramoxivirus' es ortografía errónea común de 'Paramyxovirus'."
+    },
+    {
+      "nombre": "Parvovirus B19",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Eritema infeccioso (5ta enfermedad) · Crisis aplásicas en anemias · Hidrops fetal",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Soporte; IgIV en inmunosuprimidos",
+      "nota": "Riesgo en embarazo: hidrops fetal. Poliovirus (3 serotipos) — usado en 9 pares biomagnéticos"
+    },
+    {
+      "nombre": "Poliovirus (3 serotipos)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 9,
+      "enfermedades_reales": "Poliomielitis (parálisis flácida)",
+      "transmision": "Fecal-oral",
+      "tratamiento_medico": "Vacunación preventiva (OPV oral, IPV inyectable)",
+      "nota": "Cerca de erradicación global. Circulación endémica solo en Afganistán y Pakistán. Rhabdoviridae"
+    },
+    {
+      "nombre": "Rhabdoviridae",
+      "categoria": "VIRUS",
+      "tipo": "Virus (familia)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Rabia (Lyssavirus); estomatitis vesicular",
+      "transmision": "Variable",
+      "tratamiento_medico": "Profilaxis post-exposición para rabia",
+      "nota": "Familia incluye Lyssavirus (rabia). 'Rabdovirus RNA' del biomag se refiere a esta familia. Rhabdovirus (Lyssavirus) — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Rhabdovirus (Lyssavirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Encefalitis rábica - prácticamente 100% mortal una vez sintomática",
+      "transmision": "Mordedura de mamífero infectado (perros, murciélagos)",
+      "tratamiento_medico": "Profilaxis post-exposición (PEP): vacuna + inmunoglobulina, dentro de 24-72h",
+      "nota": "Una vez aparecen síntomas, no hay tratamiento curativo. PEP previene infección si se aplica oportunamente. Rinovirus humano — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Rinovirus humano",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Resfriado común (causa principal) · Exacerbaciones de asma y EPOC",
+      "transmision": "Contacto, aérea",
+      "tratamiento_medico": "Soporte; sin antiviral específico",
+      "nota": "Más de 100 serotipos. Causa principal del resfriado común."
+    },
+    {
+      "nombre": "Rotavirus",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Gastroenteritis pediátrica",
+      "transmision": "Fecal-oral",
+      "tratamiento_medico": "Rehidratación; vacuna oral preventiva",
+      "nota": "Vacuna ha reducido mortalidad infantil drásticamente. VHA"
+    },
+    {
+      "nombre": "VHA",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Hepatovirus)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Hepatitis aguda autolimitada",
+      "transmision": "Fecal-oral (agua/alimentos contaminados)",
+      "tratamiento_medico": "Soporte. Vacuna preventiva disponible.",
+      "nota": "Generalmente autolimitada, no se cronifica. VHB — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "VHB",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Hepadnavirus)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Hepatitis aguda y crónica · Cirrosis · Carcinoma hepatocelular",
+      "transmision": "Sangre, sexual, vertical",
+      "tratamiento_medico": "Antivirales (tenofovir, entecavir). Vacuna preventiva muy efectiva.",
+      "nota": "Cronicidad en 5-10% adultos, hasta 90% en lactantes infectados. Vacuna en calendarios nacionales. VHC — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "VHC",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Hepacivirus)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Hepatitis crónica · Cirrosis · Carcinoma hepatocelular",
+      "transmision": "Sangre (transfusiones antiguas, uso de drogas IV)",
+      "tratamiento_medico": "Antivirales de acción directa (sofosbuvir, etc.) curan >95% de casos en 8-12 semanas.",
+      "nota": "No hay vacuna. Cronifica en 70-85% de infectados. Cura farmacológica disponible desde ~2014. VHD — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "VHD",
+      "categoria": "VIRUS",
+      "tipo": "Virus defectivo",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Coinfección o sobreinfección con VHB, acelera el daño hepático",
+      "transmision": "Solo en presencia de VHB",
+      "tratamiento_medico": "Bulevirtide; nuevos antivirales en desarrollo",
+      "nota": "Requiere VHB para replicarse. Forma más severa de hepatitis viral crónica."
+    },
+    {
+      "nombre": "VHE",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Hepevirus)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Hepatitis aguda; severa en embarazadas",
+      "transmision": "Fecal-oral, zoonosis (cerdos)",
+      "tratamiento_medico": "Soporte; ribavirina en casos crónicos en inmunosuprimidos",
+      "nota": "Mortalidad hasta 25% en gestantes en tercer trimestre. Variola virus — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Variola virus",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Viruela (ERRADICADA en 1980 por OMS)",
+      "transmision": "Aérea, contacto",
+      "tratamiento_medico": "Vacunación (ya no se administra rutinariamente)",
+      "nota": "Única enfermedad humana erradicada. Stocks conservados solo en laboratorios CDC y VECTOR. Virus Dengue (Flavivirus, 4 serotipos) — usado en 10 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus Dengue (Flavivirus, 4 serotipos)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 10,
+      "enfermedades_reales": "Dengue clásico · Dengue grave (hemorrágico/shock)",
+      "transmision": "Vector: mosquito Aedes aegypti",
+      "tratamiento_medico": "Soporte, hidratación. Vacuna disponible con limitaciones.",
+      "nota": "Infección secundaria por serotipo diferente puede causar dengue grave. Virus Epstein-Barr (HHV-4) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus Epstein-Barr (HHV-4)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Mononucleosis infecciosa · Linfoma de Burkitt · Carcinoma nasofaríngeo",
+      "transmision": "Saliva ('enfermedad del beso')",
+      "tratamiento_medico": "Soporte; sin antiviral específico aprobado",
+      "nota": "Asociado a varios cánceres; >90% de adultos infectados. Virus Linfotrópico T Humano (HTLV-1, HTLV-2) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus Linfotrópico T Humano (HTLV-1, HTLV-2)",
+      "categoria": "VIRUS",
+      "tipo": "Virus (retrovirus)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Leucemia/linfoma T del adulto (ATL) · Paraparesia espástica tropical (HAM/TSP)",
+      "transmision": "Sangre, sexual, vertical (lactancia)",
+      "tratamiento_medico": "Tratamiento de leucemia; no hay antiviral efectivo",
+      "nota": "Endémico en Japón, Caribe, África. Largo período latente."
+    },
+    {
+      "nombre": "Virus Sincitial Respiratorio (VRS)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Bronquiolitis aguda en lactantes · Neumonía en ancianos e inmunosuprimidos",
+      "transmision": "Aérea, contacto",
+      "tratamiento_medico": "Soporte; palivizumab profiláctico en prematuros; vacunas recientes (>60 años)",
+      "nota": "Principal causa de hospitalización pediátrica por causa respiratoria. Virus Varicela-Zoster (VZV) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus Varicela-Zoster (VZV)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Varicela (infección primaria) · Herpes Zoster/Culebrilla (reactivación)",
+      "transmision": "Aérea, contacto con lesiones",
+      "tratamiento_medico": "Aciclovir; vacuna preventiva",
+      "nota": "Permanece latente en ganglios nerviosos; puede reactivarse décadas después. Virus Zika (Flavivirus)"
+    },
+    {
+      "nombre": "Virus Zika (Flavivirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Síndrome febril leve; microcefalia y otras anomalías congénitas si infecta embarazada",
+      "transmision": "Vector: Aedes; también sexual y vertical",
+      "tratamiento_medico": "Soporte; sin antiviral específico ni vacuna",
+      "nota": "Epidemia 2015-16 causó miles de casos de microcefalia en Brasil. Virus de Inmunodeficiencia Humana (HIV-1, HIV-2) — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus de Inmunodeficiencia Humana (HIV-1, HIV-2)",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Retrovirus)",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Infección por VIH · SIDA (estadio avanzado)",
+      "transmision": "Contacto sexual sin protección, sangre contaminada, transmisión vertical madre-hijo",
+      "tratamiento_medico": "Terapia antirretroviral (TAR) — controla la replicación viral pero NO cura. Adherencia de por vida prolonga expectativa cerca de la normal.",
+      "nota": "El VIH ataca células CD4+ del sistema inmune. Sin tratamiento progresa a SIDA en 8-10 años. La medicina antirretroviral es la única intervención con evidencia clínica robusta. Virus de la Rubéola (Rubivirus) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "única intervención con evidencia clínica robusta. Virus de la Rubéola (Rubivirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Rubéola (sarampión alemán) · Síndrome de Rubéola Congénita",
+      "transmision": "Aérea (gotitas respiratorias)",
+      "tratamiento_medico": "Soporte; vacuna triple viral (SRP/MMR) muy efectiva",
+      "nota": "Teratogénica: infección en embarazo causa malformaciones severas. Casi erradicada en países con vacunación."
+    },
+    {
+      "nombre": "Virus de las Paperas (Rubulavirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Paperas (inflamación de parótidas) · Orquitis (en hombres pospuberales) · Meningitis aséptica",
+      "transmision": "Aérea, saliva",
+      "tratamiento_medico": "Soporte; vacuna triple viral",
+      "nota": "Complicación temida: orquitis bilateral con riesgo de esterilidad. Virus del Herpes (HSV-1, HSV-2, VZV, EBV, CMV, HHV-6,7,8) — usado en 29 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus del Herpes (HSV-1, HSV-2, VZV, EBV, CMV, HHV-6,7,8)",
+      "categoria": "VIRUS",
+      "tipo": "Virus (Herpesviridae - familia)",
+      "ocurrencias_biomag": 29,
+      "enfermedades_reales": "Herpes labial y genital (HSV) · Varicela/Zoster (VZV) · Mononucleosis (EBV) · Sarcoma de Kaposi (HHV-8)",
+      "transmision": "Contacto directo (saliva, fluidos, lesiones)",
+      "tratamiento_medico": "Antivirales (aciclovir, valaciclovir) - controlan brotes, NO erradican.",
+      "nota": "Los herpesvirus permanecen latentes de por vida tras infección primaria. Virus del Papiloma Humano (>200 tipos) — usado en 14 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus del Papiloma Humano (>200 tipos)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 14,
+      "enfermedades_reales": "Verrugas comunes/plantares · Verrugas genitales (condilomas) · Cáncer cervicouterino, anal, orofaríngeo (tipos 16, 18)",
+      "transmision": "Contacto piel/sexual",
+      "tratamiento_medico": "Vacunación preventiva (Gardasil 9). Tratamiento de lesiones (crioterapia, conización).",
+      "nota": "Causa el 99% de cánceres cervicales. Vacunación universal recomendada antes de inicio sexual. Virus del Sarampión (Morbillivirus) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus del Sarampión (Morbillivirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Sarampión - fiebre alta, exantema, complicaciones respiratorias y neurológicas",
+      "transmision": "Aérea (extremadamente contagioso, R0 ~12-18)",
+      "tratamiento_medico": "Soporte, vitamina A; vacuna triple viral",
+      "nota": "Causaba ~2.6 millones de muertes/año pre-vacuna. Resurgimientos por antivacunación. Virus vaccinia (Orthopoxvirus) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus vaccinia (Orthopoxvirus)",
+      "categoria": "VIRUS",
+      "tipo": "Virus",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Usado como vacuna contra viruela; rara vez causa enfermedad",
+      "transmision": "Por contacto con vacunados",
+      "tratamiento_medico": "Tecovirimat si infección grave",
+      "nota": "Virus de la vacuna antiviruela. No el virus de la viruela misma."
+    },
+    {
+      "nombre": "I BACTERIAS Actinomyces israelii (más común)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (filamentosa, gram positiva)",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Actinomicosis cervicofacial, torácica, abdominal, pélvica (asociada a DIU)",
+      "transmision": "Endógena (flora oral, intestinal); no contagiosa de persona a persona",
+      "tratamiento_medico": "Penicilina prolongada (semanas-meses)",
+      "nota": "Forma 'gránulos de azufre' característicos. Crónica si no se trata. Aerobacter aerogenes (ahora reclasificada como Klebsiella aerogenes o Enterobacter aerogenes) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Aerobacter aerogenes (ahora reclasificada como Klebsiella aerogenes o Enterobacter aerogenes)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Infecciones nosocomiales, urinarias",
+      "transmision": "Nosocomial",
+      "tratamiento_medico": "Cefalosporinas (resistencia variable)",
+      "nota": "Nombre antiguo; ya no se usa en taxonomía actual. Bacillus anthracis — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Bacillus anthracis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (bacilo gram positivo, formador de esporas)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Carbunco/Ántrax cutáneo, pulmonar, gastrointestinal",
+      "transmision": "Contacto con animales/productos infectados, esporas (bioterrorismo)",
+      "tratamiento_medico": "Ciprofloxacino o doxiciclina (alta letalidad sin tratamiento temprano)",
+      "nota": "Esporas extremadamente resistentes; arma biológica potencial. Bartonella spp. (B. henselae, B. quintana, B. bacilliformis) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Bartonella spp. (B. henselae, B. quintana, B. bacilliformis)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (intracelular)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Enfermedad por arañazo de gato (B. henselae) · Fiebre de las trincheras (B. quintana) · Angiomatosis bacilar",
+      "transmision": "Arañazo/mordedura de gato (henselae); piojos (quintana); mosca de la arena (bacilliformis)",
+      "tratamiento_medico": "Azitromicina, doxiciclina",
+      "nota": "Causa común de linfadenopatía regional en niños tras contacto con gatos. Bordetella pertussis — usado en 11 pares biomagnéticos"
+    },
+    {
+      "nombre": "Bordetella pertussis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocobacilo gram negativo)",
+      "ocurrencias_biomag": 11,
+      "enfermedades_reales": "Tos ferina (coqueluche)",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Azitromicina o eritromicina; vacuna DPT/Tdap preventiva",
+      "nota": "Grave en lactantes <6 meses. Vacuna en calendario; protección decae, requiriendo refuerzos."
+    },
+    {
+      "nombre": "Borrelia burgdorferi",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (espiroqueta)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Enfermedad de Lyme: eritema migratorio, artritis, neuroborreliosis, carditis",
+      "transmision": "Picadura de garrapata Ixodes",
+      "tratamiento_medico": "Doxiciclina (estándar)",
+      "nota": "Endémica en EE.UU. (noreste), Europa. Tratamiento temprano cura la mayoría. Brucella spp. (B. melitensis, B. abortus, B. suis) — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Brucella spp. (B. melitensis, B. abortus, B. suis)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocobacilo gram negativo)",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Brucelosis (fiebre ondulante o de Malta)",
+      "transmision": "Lácteos no pasteurizados, contacto con animales infectados",
+      "tratamiento_medico": "Doxiciclina + rifampicina o estreptomicina, 6 semanas",
+      "nota": "Zoonosis. Endémica en regiones mediterráneas, Medio Oriente, América Latina. Campylobacter jejuni — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Campylobacter jejuni",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Enteritis (causa común de gastroenteritis bacteriana) · Asociado a Guillain-Barré post-infección",
+      "transmision": "Carne de pollo mal cocida, lácteos no pasteurizados",
+      "tratamiento_medico": "Soporte; azitromicina si severa",
+      "nota": "Causa bacteriana más común de diarrea en países desarrollados. Causada por M. leprae — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Causada por M. leprae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Ver Mycobacterium leprae",
+      "transmision": "Contacto prolongado",
+      "tratamiento_medico": "Poliquimioterapia OMS gratuita mundialmente",
+      "nota": "Eliminada como problema de salud pública en mayoría de países; persiste en zonas focales. Causada por Mycobacterium tuberculosis — usado en 17 pares biomagnéticos"
+    },
+    {
+      "nombre": "Causada por Mycobacterium tuberculosis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 17,
+      "enfermedades_reales": "Ver Mycobacterium tuberculosis",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Antibióticos combinados 6+ meses",
+      "nota": "Sinónimo con M. tuberculosis."
+    },
+    {
+      "nombre": "Chlamydia pneumoniae (ahora Chlamydophila)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Neumonía atípica · Bronquitis · Faringitis",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Doxiciclina, azitromicina, levofloxacino",
+      "nota": "Causa común de neumonía adquirida en comunidad, especialmente en adultos jóvenes. Chlamydia trachomatis — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Chlamydia trachomatis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria intracelular obligada",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Clamidiasis (ITS común, frecuentemente asintomática) · Tracoma (causa de ceguera) · Linfogranuloma venéreo",
+      "transmision": "Sexual, vertical, contacto ocular (tracoma)",
+      "tratamiento_medico": "Azitromicina dosis única o doxiciclina 7 días",
+      "nota": "ITS bacteriana más común. Asintomática en 70-80% mujeres; causa enfermedad pélvica inflamatoria e infertilidad si no se trata. Clostridioides difficile — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Clostridioides difficile",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (anaerobio)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Colitis pseudomembranosa · Diarrea asociada a antibióticos",
+      "transmision": "Esporas en ambiente hospitalario, fecal-oral",
+      "tratamiento_medico": "Vancomicina oral, fidaxomicina; trasplante fecal en recurrencias",
+      "nota": "Infección nosocomial común tras uso de antibióticos amplio espectro. Clostridium perfringens — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Clostridium perfringens",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria anaerobia",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Gangrena gaseosa · Intoxicación alimentaria",
+      "transmision": "Heridas profundas (gangrena); alimentos contaminados",
+      "tratamiento_medico": "Penicilina + clindamicina; cirugía/desbridamiento en gangrena",
+      "nota": "Gangrena gaseosa es emergencia quirúrgica. Clostridium tetani — usado en 8 pares biomagnéticos"
+    },
+    {
+      "nombre": "Clostridium tetani",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (anaerobio)",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Tétanos",
+      "transmision": "Heridas contaminadas con esporas del suelo",
+      "tratamiento_medico": "Antitoxina + metronidazol + soporte; vacunación preventiva",
+      "nota": "La toxina tetánica causa parálisis espástica. Vacuna en calendario infantil (DPT/dT)."
+    },
+    {
+      "nombre": "Corynebacterium diphtheriae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Difteria (faringoamigdalitis con pseudomembrana, miocarditis, parálisis)",
+      "transmision": "Aérea, contacto",
+      "tratamiento_medico": "Antitoxina diftérica + eritromicina/penicilina",
+      "nota": "Vacunación (DPT) ha hecho rara la enfermedad en países desarrollados. Mortalidad 5-10% incluso con tratamiento. Diplococos: Neisseria spp., Streptococcus pneumoniae — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Diplococos: Neisseria spp., Streptococcus pneumoniae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (forma morfológica)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Ver bacterias específicas",
+      "transmision": "Variable según especie",
+      "tratamiento_medico": "Específico",
+      "nota": "'Diplococo' es término morfológico (pares de cocos), no género específico. Enterobacter aerogenes (reclasificada como Klebsiella aerogenes) — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Enterobacter aerogenes (reclasificada como Klebsiella aerogenes)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Neumonía, ITU, sepsis nosocomial",
+      "transmision": "Nosocomial",
+      "tratamiento_medico": "Carbapenémicos",
+      "nota": "Sin embargo, 'Enterobacter pneumoniae' como especie no existe formalmente; podría confundirse con Klebsiella pneumoniae. Enterobacter cloacae — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Enterobacter cloacae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Ver Enterobacter",
+      "transmision": "Nosocomial",
+      "tratamiento_medico": "Ver Enterobacter",
+      "nota": "Especie más común del género. Enterobacter spp. (E. cloacae, E. aerogenes) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Enterobacter spp. (E. cloacae, E. aerogenes)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Infecciones nosocomiales: urinarias, respiratorias, sepsis",
+      "transmision": "Nosocomial",
+      "tratamiento_medico": "Cefepime, carbapenémicos (resistencia a cefalosporinas comunes)",
+      "nota": "Productor de AmpC; resistencia intrínseca a cefalosporinas de 1ra/2da generación."
+    },
+    {
+      "nombre": "Escherichia coli",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (Enterobacterales, gram negativa)",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Diarrea (ETEC, EPEC, EHEC O157:H7) · Infecciones urinarias · Septicemia · Síndrome urémico-hemolítico",
+      "transmision": "Fecal-oral; algunas cepas comensales del intestino",
+      "tratamiento_medico": "Antibióticos según cepa y sitio; NO en EHEC (puede empeorar SUH)",
+      "nota": "Mayoría de cepas son comensales inofensivas. EHEC O157:H7 puede causar daño renal grave. Escherichia coli — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Escherichia coli",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Ver Escherichia coli",
+      "transmision": "Ver Escherichia coli",
+      "tratamiento_medico": "Ver Escherichia coli",
+      "nota": "Abreviatura común de Escherichia coli. Gardnerella vaginalis — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Gardnerella vaginalis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Vaginosis bacteriana (disbiosis vaginal con flujo de olor a pescado)",
+      "transmision": "Endógena (disbiosis); asociada a actividad sexual",
+      "tratamiento_medico": "Metronidazol oral o tópico, clindamicina",
+      "nota": "No es ITS estricta sino disbiosis. Frecuente; trata si sintomática o en embarazo. Haemophilus influenzae (tipo b: Hib)"
+    },
+    {
+      "nombre": "Haemophilus influenzae (tipo b: Hib)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocobacilo gram negativo)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Meningitis (Hib) · Epiglotitis · Otitis media · Neumonía",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Ceftriaxona, ampicilina; vacuna Hib en calendario infantil",
+      "nota": "A pesar del nombre, no causa influenza. Vacuna eliminó meningitis por Hib en países que vacunan. Helicobacter pylori — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Helicobacter pylori",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (espiral, gram negativa)",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Gastritis crónica · Úlcera péptica gástrica y duodenal · Cáncer gástrico · Linfoma MALT",
+      "transmision": "Fecal-oral, oral-oral",
+      "tratamiento_medico": "Triple terapia: IBP + claritromicina + amoxicilina (o cuádruple con bismuto)",
+      "nota": "Marshall y Warren (Nobel 2005) demostraron causalidad con úlcera. Erradicación cura la mayoría de úlceras. 50% población mundial colonizada."
+    },
+    {
+      "nombre": "Klebsiella pneumoniae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (Enterobacterales gram negativa)",
+      "ocurrencias_biomag": 9,
+      "enfermedades_reales": "Neumonía · Infección urinaria · Sepsis · Infecciones nosocomiales",
+      "transmision": "Endógena, nosocomial",
+      "tratamiento_medico": "Carbapenémicos; resistencia creciente (KPC, NDM)",
+      "nota": "Productora de carbapenemasas (CRE) - alerta sanitaria global por resistencia. Klebsiella spp. — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Klebsiella spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Ver Klebsiella pneumoniae",
+      "transmision": "Nosocomial",
+      "tratamiento_medico": "Carbapenémicos",
+      "nota": "K. pneumoniae es la especie principal. Listeria monocytogenes — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Listeria monocytogenes",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (bacilo gram positivo)",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Listeriosis · Meningitis · Sepsis neonatal · Aborto",
+      "transmision": "Alimentos contaminados (lácteos no pasteurizados, embutidos)",
+      "tratamiento_medico": "Ampicilina + gentamicina",
+      "nota": "Particularmente peligrosa en embarazadas, ancianos, inmunosuprimidos. Crece a temperaturas de refrigeración. Moraxella catarrhalis — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Moraxella catarrhalis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Ver Naisseria catarrhalis",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Amoxicilina-clavulanato",
+      "nota": "Tercera causa de otitis media bacteriana y exacerbación de EPOC. Moraxella catarrhalis — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Moraxella catarrhalis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Ver Naisseria catarrhalis",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Amoxicilina-clavulanato",
+      "nota": "Antes Neisseria catarrhalis."
+    },
+    {
+      "nombre": "Moraxella catarrhalis (antes Neisseria catarrhalis)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Otitis media, sinusitis, exacerbación de EPOC",
+      "transmision": "Aérea, contacto",
+      "tratamiento_medico": "Amoxicilina-clavulanato (productora de beta-lactamasa)",
+      "nota": "Reclasificada del género Neisseria a Moraxella. Morganella morganii — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Morganella morganii",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Infecciones urinarias, sepsis, infecciones de heridas",
+      "transmision": "Endógena, nosocomial",
+      "tratamiento_medico": "Carbapenémicos, cefepime (resistente a múltiples antibióticos)",
+      "nota": "Productora de AmpC inducible. Resistencia intrínseca a colistina. Mycobacterium leprae — usado en 15 pares biomagnéticos"
+    },
+    {
+      "nombre": "Mycobacterium leprae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (mycobacteria)",
+      "ocurrencias_biomag": 15,
+      "enfermedades_reales": "Lepra (enfermedad de Hansen)",
+      "transmision": "Contacto prolongado con gotículas; baja contagiosidad",
+      "tratamiento_medico": "Poliquimioterapia OMS: dapsona + rifampicina + clofazimina, 6-12 meses",
+      "nota": "Endémica en países tropicales. Curable. Discapacidad por daño nervioso si no se trata. Mycobacterium tuberculosis — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Mycobacterium tuberculosis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (mycobacteria)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Tuberculosis pulmonar · TB extrapulmonar (ganglionar, meníngea, miliar, ósea)",
+      "transmision": "Aérea (gotículas)",
+      "tratamiento_medico": "Esquema RIPE: rifampicina + isoniazida + pirazinamida + etambutol, 6+ meses",
+      "nota": "Una de las enfermedades infecciosas más mortales globalmente (~1.3 millones muertes/año). TB multirresistente (MDR) es desafío creciente. Mycoplasma pneumoniae — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "desafío creciente. Mycoplasma pneumoniae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (sin pared celular)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Neumonía atípica ('caminante') · Bronquitis",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Azitromicina, doxiciclina (no betalactámicos por carecer de pared)",
+      "nota": "Causa común de neumonía leve en niños y adultos jóvenes."
+    },
+    {
+      "nombre": "Neisseria gonorrhoeae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (diplococo gram negativo)",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Gonorrea (uretritis, cervicitis) · Enfermedad pélvica inflamatoria · Infección gonocócica diseminada · Oftalmia neonatal",
+      "transmision": "Sexual, vertical",
+      "tratamiento_medico": "Ceftriaxona IM dosis única + azitromicina (resistencias crecientes)",
+      "nota": "Resistencia antibiótica creciente: OMS la cataloga como amenaza prioritaria. Neisseria meningitidis (meningococo) — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Neisseria meningitidis (meningococo)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Meningitis meningocócica · Meningococemia (sepsis fulminante)",
+      "transmision": "Aérea (gotitas)",
+      "tratamiento_medico": "Ceftriaxona; profilaxis a contactos (ciprofloxacino, rifampicina)",
+      "nota": "Emergencia médica. Mortalidad hasta 10% incluso con tratamiento. Vacunas (A, B, C, W, Y) disponibles. No existe 'Yersinia pneumoniae' como especie reconocida — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "No existe 'Yersinia pneumoniae' como especie reconocida",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (atribución incorrecta)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Probablemente referencia a Yersinia pestis (peste neumónica)",
+      "transmision": "Ver Yersinia pestis",
+      "tratamiento_medico": "Ver Yersinia pestis",
+      "nota": "Nombre erróneo. La peste neumónica es causada por Yersinia pestis. Klebsiella pneumoniae es otra bacteria. Nocardia spp. (nombre correcto, no 'Neocardia') — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Nocardia spp. (nombre correcto, no 'Neocardia')",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (filamentosa)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Nocardiosis pulmonar, cerebral, cutánea",
+      "transmision": "Ambiental (suelo, polvo)",
+      "tratamiento_medico": "Trimetoprim-sulfametoxazol, prolongado",
+      "nota": "Patógeno oportunista, principalmente en inmunosuprimidos. Pasteurella multocida — usado en 8 pares biomagnéticos"
+    },
+    {
+      "nombre": "Pasteurella multocida",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocobacilo gram negativo)",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Infecciones por mordeduras (perros, gatos)",
+      "transmision": "Mordedura/arañazo de animales",
+      "tratamiento_medico": "Amoxicilina-clavulanato",
+      "nota": "Causa infección común en heridas por mordedura de gato (~50%)."
+    },
+    {
+      "nombre": "Proteus mirabilis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (Enterobacterales gram negativa)",
+      "ocurrencias_biomag": 18,
+      "enfermedades_reales": "Infección urinaria · Pielonefritis · Cálculos renales (estruvita)",
+      "transmision": "Endógena (intestinal), nosocomial",
+      "tratamiento_medico": "Ampicilina, cefalosporinas, ciprofloxacino",
+      "nota": "Productor de ureasa; alcaliniza la orina y forma cálculos. Pseudomonas aeruginosa — usado en 9 pares biomagnéticos"
+    },
+    {
+      "nombre": "Pseudomonas aeruginosa",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (bacilo gram negativo)",
+      "ocurrencias_biomag": 9,
+      "enfermedades_reales": "Neumonía nosocomial · Infecciones de quemaduras y heridas · Sepsis · Infecciones en fibrosis quística",
+      "transmision": "Hospitalaria, ambiental (agua, humedad)",
+      "tratamiento_medico": "Piperacilina-tazobactam, ceftazidima, carbapenémicos. Resistencia creciente.",
+      "nota": "Patógeno oportunista importante en hospitales. Forma biofilms difíciles de erradicar. Rickettsia spp. — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Rickettsia spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria intracelular obligada",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Fiebre maculosa de las Montañas Rocosas · Tifus epidémico · Tifus murino",
+      "transmision": "Vectores: garrapatas, piojos, pulgas, ácaros",
+      "tratamiento_medico": "Doxiciclina",
+      "nota": "Tratamiento empírico ante sospecha; demora aumenta mortalidad. Salmonella spp. — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Salmonella spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (Enterobacterales, gram negativa)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Salmonelosis (gastroenteritis) · Fiebre tifoidea (S. typhi) · Fiebre paratifoidea",
+      "transmision": "Fecal-oral (alimentos, agua contaminados; huevos, pollo crudo)",
+      "tratamiento_medico": "Soporte; antibióticos solo en casos graves (ciprofloxacino, ceftriaxona)",
+      "nota": "Cientos de serotipos. Causa común de intoxicación alimentaria. Shigella spp. — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Shigella spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Disentería bacilar",
+      "transmision": "Fecal-oral (baja dosis infectante)",
+      "tratamiento_medico": "Ciprofloxacino, azitromicina",
+      "nota": "Causa común de diarrea en zonas con saneamiento deficiente."
+    },
+    {
+      "nombre": "Spirochaetales (orden bacteriano)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (grupo morfológico, no género)",
+      "ocurrencias_biomag": 27,
+      "enfermedades_reales": "Sífilis (Treponema) · Enfermedad de Lyme (Borrelia) · Leptospirosis (Leptospira)",
+      "transmision": "Variable según especie",
+      "tratamiento_medico": "Penicilinas, doxiciclina",
+      "nota": "'Espiroqueta' es término morfológico, no especie. Incluye varios géneros patógenos. Staphylococcus aureus — usado en 15 pares biomagnéticos"
+    },
+    {
+      "nombre": "Staphylococcus aureus",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocos gram positivos)",
+      "ocurrencias_biomag": 15,
+      "enfermedades_reales": "Infecciones de piel y partes blandas · Endocarditis · Osteomielitis · Bacteriemia · Síndrome de shock tóxico",
+      "transmision": "Contacto directo, colonización nasal",
+      "tratamiento_medico": "Cefalexina, dicloxacilina (sensible); vancomicina, linezolid (SARM)",
+      "nota": "SARM (MRSA) resistente a meticilina es desafío clínico mayor. Colonización nasal en ~30% de personas. Staphylococcus spp. — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Staphylococcus spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Ver Staphylococcus aureus",
+      "transmision": "Contacto, colonización",
+      "tratamiento_medico": "Variable según especie y resistencia",
+      "nota": "S. aureus es el más patógeno. S. epidermidis es comensal cutáneo. Streptococcus agalactiae (Grupo B) — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Streptococcus agalactiae (Grupo B)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Sepsis neonatal · Meningitis neonatal · Infecciones en embarazadas y diabéticos",
+      "transmision": "Vertical (parto), contacto",
+      "tratamiento_medico": "Penicilina; profilaxis intraparto en colonizadas",
+      "nota": "Causa principal de sepsis neonatal. Tamizaje universal en embarazo en muchos países. Streptococcus pneumoniae — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Streptococcus pneumoniae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Ver Streptococcus pneumoniae",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Penicilina, ceftriaxona; vacunas conjugadas",
+      "nota": "Nombre común de S. pneumoniae."
+    },
+    {
+      "nombre": "Streptococcus pneumoniae (neumococo)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Neumonía bacteriana · Otitis media · Sinusitis · Meningitis bacteriana",
+      "transmision": "Gotitas respiratorias",
+      "tratamiento_medico": "Penicilina/amoxicilina, ceftriaxona en resistentes; vacunas conjugadas (PCV13/15/20)",
+      "nota": "Principal causa de neumonía adquirida en comunidad. Vacunación reduce mortalidad infantil. Streptococcus pyogenes (Grupo A) — usado en 14 pares biomagnéticos"
+    },
+    {
+      "nombre": "Streptococcus pyogenes (Grupo A)",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (cocos gram positivos)",
+      "ocurrencias_biomag": 14,
+      "enfermedades_reales": "Faringitis estreptocócica · Escarlatina · Impétigo · Fascitis necrosante · Fiebre reumática · Glomerulonefritis postestreptocócica",
+      "transmision": "Gotitas respiratorias, contacto",
+      "tratamiento_medico": "Penicilina (sigue siendo de elección), amoxicilina",
+      "nota": "Causa principal de faringitis bacteriana. Complicaciones autoinmunes (fiebre reumática) si no se trata. Streptococcus spp."
+    },
+    {
+      "nombre": "Streptococcus spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Variable según especie",
+      "transmision": "Aérea, contacto",
+      "tratamiento_medico": "Penicilina sigue siendo elección para muchos",
+      "nota": "Múltiples especies con diferente patogenicidad. Treponema pallidum — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Treponema pallidum",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria/ITS",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Ver Treponema pallidum",
+      "transmision": "Sexual, vertical",
+      "tratamiento_medico": "Penicilina G",
+      "nota": "Resurgimiento global. Detección con VDRL/RPR + FTA-ABS confirmatoria. Treponema pallidum subsp. pallidum — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Treponema pallidum subsp. pallidum",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (espiroqueta)",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Sífilis (primaria, secundaria, latente, terciaria, neurosífilis, congénita)",
+      "transmision": "Sexual, vertical",
+      "tratamiento_medico": "Penicilina G benzatínica (sin resistencia conocida en >70 años)",
+      "nota": "ITS de declaración obligatoria. Resurgimiento global en últimas décadas."
+    },
+    {
+      "nombre": "Veillonella spp.",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria anaerobia",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Comensal oral; rara vez causa endocarditis, infecciones de piel",
+      "transmision": "Endógena",
+      "tratamiento_medico": "Penicilina, metronidazol",
+      "nota": "Poco patógena. Infecciones polimicrobianas. Ver Bordetella pertussis"
+    },
+    {
+      "nombre": "Ver Bordetella pertussis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Tos ferina (coqueluche)",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Ver Bordetella pertussis",
+      "nota": "Vacunación previene formas graves; resurgimiento por inmunidad disminuida. Vibrio cholerae — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Vibrio cholerae",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (bacilo curvo gram negativo)",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Cólera (diarrea acuosa profusa con deshidratación severa)",
+      "transmision": "Agua y alimentos contaminados",
+      "tratamiento_medico": "Rehidratación oral/IV; antibióticos (doxiciclina) reducen duración",
+      "nota": "Epidemias en zonas con saneamiento deficiente. Letalidad <1% con tratamiento adecuado. Yersinia pestis — usado en 10 pares biomagnéticos"
+    },
+    {
+      "nombre": "Yersinia pestis",
+      "categoria": "BACTERIAS",
+      "tipo": "Bacteria (Enterobacterales, gram negativa)",
+      "ocurrencias_biomag": 10,
+      "enfermedades_reales": "Peste bubónica · Peste septicémica · Peste neumónica",
+      "transmision": "Picadura de pulga infectada (roedores), gotitas respiratorias (peste neumónica)",
+      "tratamiento_medico": "Antibióticos: estreptomicina, gentamicina, doxiciclina, ciprofloxacino",
+      "nota": "Causó la Peste Negra (1346-1353, ~25-50M muertes). Hoy ~1000-3000 casos/año mundial, mayormente en África, Madagascar. Letalidad alta sin tratamiento."
+    },
+    {
+      "nombre": "I HONGOS Aspergillus spp.",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (moho filamentoso)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Aspergilosis broncopulmonar alérgica · Aspergiloma · Aspergilosis invasiva (inmunosuprimidos)",
+      "transmision": "Inhalación de esporas (ambientales)",
+      "tratamiento_medico": "Voriconazol, anfotericina B",
+      "nota": "Hongo ambiental común; patógeno oportunista grave en inmunosuprimidos. Candida albicans — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Candida albicans",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (levadura)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Candidiasis oral/vaginal/intertriginosa · Candidiasis sistémica (inmunosuprimidos)",
+      "transmision": "Endógena (comensal), oportunista",
+      "tratamiento_medico": "Tópico: clotrimazol, nistatina. Sistémico: fluconazol",
+      "nota": "Comensal normal de boca, intestino, vagina; causa enfermedad cuando hay desequilibrio. Candida spp. — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Candida spp.",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (levadura)",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Ver Candida albicans",
+      "transmision": "Endógena/oportunista",
+      "tratamiento_medico": "Azoles, equinocandinas",
+      "nota": "Género con varias especies; C. albicans más común. C. auris emergente y resistente. Microsporum spp. (M. canis, M. audouinii) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Microsporum spp. (M. canis, M. audouinii)",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (dermatofito)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Tinea capitis (más en niños) · Tinea corporis",
+      "transmision": "Contacto con animales (M. canis) o personas",
+      "tratamiento_medico": "Antifúngicos sistémicos (griseofulvina, terbinafina, itraconazol)",
+      "nota": "Causa común de tiña del cuero cabelludo en niños. M. canis se asocia a gatos/perros. Pie de atleta"
+    },
+    {
+      "nombre": "Pie de atleta",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (dermatofitosis)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Tiña",
+      "transmision": "Contacto, humedad",
+      "tratamiento_medico": "Antifúngicos tópicos",
+      "nota": "Forma más común de tiña."
+    },
+    {
+      "nombre": "Pneumocystis jirovecii (antes P. carinii)",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (atípico)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Neumonía por Pneumocystis (PCP/PJP) - oportunista en inmunosuprimidos",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Trimetoprim-sulfametoxazol",
+      "nota": "Clasificado como hongo desde 1988. Marcador clásico de SIDA. P. carinii afecta ratas; P. jirovecii a humanos. Trichophyton, Microsporum, Epidermophyton spp. — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trichophyton, Microsporum, Epidermophyton spp.",
+      "categoria": "HONGOS",
+      "tipo": "Hongo (dermatofito)",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Tinea capitis (cuero cabelludo) · Tinea corporis (cuerpo) · Tinea pedis (pie de atleta) · Tinea cruris (ingle) · Onicomicosis",
+      "transmision": "Contacto directo, fomites, suelo",
+      "tratamiento_medico": "Tópico (clotrimazol, terbinafina) o sistémico (terbinafina, itraconazol)",
+      "nota": "Infecciones cutáneas comunes, contagiosas, no graves."
+    },
+    {
+      "nombre": "I PARÁSITOS Anisakis simplex",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, nematodo)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Anisakiasis (dolor abdominal agudo, reacción alérgica)",
+      "transmision": "Pescado crudo o mal cocido (sushi, ceviche)",
+      "tratamiento_medico": "Extracción endoscópica; albendazol",
+      "nota": "Larvas en pescado marino. Congelar a -20°C por 7 días previene infección. Ascaris lumbricoides — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Ascaris lumbricoides",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, nematodo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Ascariosis · Obstrucción intestinal, neumonitis migratoria",
+      "transmision": "Fecal-oral (huevos en alimentos/agua)",
+      "tratamiento_medico": "Albendazol, mebendazol",
+      "nota": "Helminto humano más común. Infecta ~1 billón globalmente. Frecuente en zonas tropicales. Babesia spp. (B. microti, B. divergens) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Babesia spp. (B. microti, B. divergens)",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo intraeritrocitario)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Babesiosis: fiebre, hemólisis, similar a malaria",
+      "transmision": "Picadura de garrapata (Ixodes); transfusional",
+      "tratamiento_medico": "Atovaquona + azitromicina; clindamicina + quinina en severos",
+      "nota": "Endémica en EE.UU., Europa. Coinfección frecuente con Lyme. Balantidium coli (ahora Balantioides coli) — usado en 10 pares biomagnéticos"
+    },
+    {
+      "nombre": "Balantidium coli (ahora Balantioides coli)",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo ciliado)",
+      "ocurrencias_biomag": 10,
+      "enfermedades_reales": "Balantidiosis (diarrea con sangre y moco)",
+      "transmision": "Fecal-oral, contacto con cerdos",
+      "tratamiento_medico": "Tetraciclina, metronidazol",
+      "nota": "Único ciliado patógeno para humanos. Más frecuente en criadores de cerdos. Blastocystis hominis — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Blastocystis hominis",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Posible diarrea, distensión abdominal (patogenicidad controvertida)",
+      "transmision": "Fecal-oral",
+      "tratamiento_medico": "Metronidazol, nitazoxanida si sintomático",
+      "nota": "Comensal o patógeno débil. Tratamiento solo si síntomas sin otra causa."
+    },
+    {
+      "nombre": "Cisticerco (larva de Taenia solium)",
+      "categoria": "PARÁSITOS",
+      "tipo": "Larva de helminto",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Cisticercosis · Neurocisticercosis (causa común de epilepsia adquirida)",
+      "transmision": "Ingesta de huevos en alimentos/agua contaminados con heces humanas",
+      "tratamiento_medico": "Albendazol, praziquantel + corticoides",
+      "nota": "Causa principal de epilepsia adquirida en países en desarrollo. NO confundir con teniasis (parasitosis intestinal). Echinococcus granulosus — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Echinococcus granulosus",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, cestodo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Hidatidosis/Equinococosis quística (quistes en hígado, pulmón)",
+      "transmision": "Ingestión de huevos (heces de perros)",
+      "tratamiento_medico": "Albendazol; cirugía/punción percutánea de quistes",
+      "nota": "Zoonosis ovino-canina. Endémica en zonas ganaderas. Entamoeba histolytica (patogénica) — usado en 10 pares biomagnéticos"
+    },
+    {
+      "nombre": "Entamoeba histolytica (patogénica)",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo)",
+      "ocurrencias_biomag": 10,
+      "enfermedades_reales": "Amebiasis intestinal (disentería) · Absceso hepático amebiano",
+      "transmision": "Fecal-oral (agua/alimentos contaminados)",
+      "tratamiento_medico": "Metronidazol + paromomicina (luminal)",
+      "nota": "Importante distinguir E. histolytica (patógena) de E. dispar (comensal, morfológicamente idéntica). Enterobius vermicularis — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Enterobius vermicularis",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, nematodo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Enterobiasis (oxiuriasis): prurito anal nocturno",
+      "transmision": "Fecal-oral (huevos en manos, ropa, sábanas)",
+      "tratamiento_medico": "Mebendazol o pamoato de pirantel; repetir a las 2 semanas",
+      "nota": "Parásito intestinal más común en niños. Tratar a toda la familia. Fasciolopsis buski — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Fasciolopsis buski",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, trematodo)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Fasciolopsiasis (diarrea, dolor abdominal)",
+      "transmision": "Ingesta de plantas acuáticas con metacercarias",
+      "tratamiento_medico": "Praziquantel, triclabendazol",
+      "nota": "Endémica en Asia (China, India, sudeste asiático)."
+    },
+    {
+      "nombre": "Giardia lamblia (G. duodenalis, G. intestinalis)",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo flagelado)",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Giardiasis: diarrea crónica, malabsorción, distensión abdominal",
+      "transmision": "Agua contaminada, fecal-oral",
+      "tratamiento_medico": "Metronidazol, tinidazol, nitazoxanida",
+      "nota": "Causa común de diarrea del viajero. Quistes resistentes en agua. Leishmania spp. — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Leishmania spp.",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo flagelado)",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Leishmaniasis cutánea, mucocutánea, visceral (kala-azar)",
+      "transmision": "Vector: flebótomo",
+      "tratamiento_medico": "Antimoniales pentavalentes, anfotericina B liposomal",
+      "nota": "Forma visceral es mortal sin tratamiento. Onchocerca volvulus — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Onchocerca volvulus",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, filaria)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Oncocercosis (ceguera de los ríos)",
+      "transmision": "Vector: simúlido (mosca negra)",
+      "tratamiento_medico": "Ivermectina",
+      "nota": "Causa importante de ceguera prevenible en África. Programas de eliminación efectivos. Plasmodium falciparum, P. vivax, P. malariae, P. ovale, P. knowlesi — usado en 14 pares biomagnéticos"
+    },
+    {
+      "nombre": "Plasmodium falciparum, P. vivax, P. malariae, P. ovale, P. knowlesi",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo)",
+      "ocurrencias_biomag": 14,
+      "enfermedades_reales": "Paludismo/Malaria",
+      "transmision": "Vector: mosquito Anopheles hembra",
+      "tratamiento_medico": "Artemisinina y combinados; cloroquina (en algunas zonas)",
+      "nota": "P. falciparum es la forma más letal. Causa ~600,000 muertes/año, mayormente niños africanos. Sarcoptes scabiei var. hominis — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Sarcoptes scabiei var. hominis",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (ácaro)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Escabiosis (sarna)",
+      "transmision": "Contacto piel-piel prolongado",
+      "tratamiento_medico": "Permetrina tópica al 5%, ivermectina oral",
+      "nota": "Prurito intenso nocturno. Tratar contactos. Brotes en residencias y familias."
+    },
+    {
+      "nombre": "Schistosoma haematobium",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Esquistosomiasis urinaria; asociada a cáncer de vejiga",
+      "transmision": "Contacto con agua dulce contaminada",
+      "tratamiento_medico": "Praziquantel",
+      "nota": "Causa hematuria. Endémica en África. Schistosoma haematobium, S. mansoni, S. japonicum — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Schistosoma haematobium, S. mansoni, S. japonicum",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, trematodo)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Esquistosomiasis intestinal, urinaria; fibrosis hepática",
+      "transmision": "Larvas en agua dulce penetran piel (contacto con caracoles infectados)",
+      "tratamiento_medico": "Praziquantel",
+      "nota": "Segunda enfermedad parasitaria más común tras malaria. Endémica en África, Asia, Sudamérica. Taenia solium, T. saginata"
+    },
+    {
+      "nombre": "Taenia solium, T. saginata",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, cestodo)",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Teniasis intestinal; cisticercosis (T. solium)",
+      "transmision": "Ingesta de carne cruda o poco cocida (cerdo o vacuno)",
+      "tratamiento_medico": "Praziquantel, niclosamida",
+      "nota": "T. solium causa cisticercosis si se ingieren huevos. Toxocara canis, T. cati — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Toxocara canis, T. cati",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Toxocariasis (larva migrans visceral u ocular)",
+      "transmision": "Ingesta de huevos en suelo/arena contaminados con heces de perros/gatos",
+      "tratamiento_medico": "Albendazol, corticoides si síntomas inflamatorios",
+      "nota": "Frecuente en niños. Larva migrans ocular puede causar ceguera unilateral. Toxoplasma gondii — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Toxoplasma gondii",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Toxoplasmosis (asintomática usualmente) · Toxoplasmosis congénita (severa) · Reactivación en inmunosuprimidos (encefalitis)",
+      "transmision": "Carne cruda, heces de gatos, vertical",
+      "tratamiento_medico": "Pirimetamina + sulfadiazina + ácido folínico",
+      "nota": "~30% de población mundial infectada. Grave solo en embarazo e inmunosupresión."
+    },
+    {
+      "nombre": "Trichinella spiralis",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (helminto, nematodo)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Triquinosis",
+      "transmision": "Carne de cerdo o jabalí mal cocida",
+      "tratamiento_medico": "Albendazol o mebendazol + corticoides",
+      "nota": "Larvas se enquistan en músculo. Inspección sanitaria de carnes reduce incidencia. Trichomonas vaginalis — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trichomonas vaginalis",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo flagelado)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Tricomoniasis (ITS): flujo vaginal espumoso, uretritis",
+      "transmision": "Sexual",
+      "tratamiento_medico": "Metronidazol oral",
+      "nota": "ITS curable común. Tratar pareja simultáneamente. Trypanosoma cruzi — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trypanosoma cruzi",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito (protozoo flagelado)",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Enfermedad de Chagas (aguda y crónica con cardiomiopatía/megacolon)",
+      "transmision": "Vector: chinche triatómino (vinchuca); también transfusional, vertical",
+      "tratamiento_medico": "Benznidazol o nifurtimox (efectividad limitada en fase crónica)",
+      "nota": "Endémica en América Latina. Cardiomiopatía chagásica es causa importante de insuficiencia cardíaca. Ver Amibas — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Ver Amibas",
+      "categoria": "PARÁSITOS",
+      "tipo": "Parásito",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Ver Amibas",
+      "transmision": "Fecal-oral",
+      "tratamiento_medico": "Metronidazol",
+      "nota": "Ver Amibas."
+    },
+    {
+      "nombre": "I ENFERMEDADES CRÓNICAS Artritis gotosa",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad metabólica",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Inflamación articular por cristales de ácido úrico",
+      "transmision": "No transmisible. Hiperuricemia, dieta rica en purinas.",
+      "tratamiento_medico": "Crisis: colchicina, AINE, corticoides. Profilaxis: alopurinol",
+      "nota": "Crisis aguda muy dolorosa. Tratamiento crónico reduce eventos. Diabetes mellitus — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Diabetes mellitus",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad metabólica",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Ver Diabetes",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver Diabetes",
+      "nota": "Nombre formal completo de la diabetes (distinguir de diabetes insípida). Diabetes mellitus tipo 1 y 2 — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Diabetes mellitus tipo 1 y 2",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad metabólica crónica",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Tipo 1: autoinmune, déficit absoluto de insulina · Tipo 2: resistencia a insulina + déficit relativo",
+      "transmision": "No transmisible. Factores: genéticos, autoinmunes (T1), obesidad/sedentarismo (T2)",
+      "tratamiento_medico": "T1: insulina obligatoria. T2: metformina, otros antidiabéticos, insulina si avanzada. Cambios estilo de vida.",
+      "nota": "529 millones de personas afectadas (2021). Complicaciones: retinopatía, nefropatía, neuropatía, cardiovascular. NO se cura con biomagnetismo. Enfermedad de Alzheimer — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "biomagnetismo. Enfermedad de Alzheimer",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad neurodegenerativa",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Demencia progresiva",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Donepezilo, memantina; lecanemab/donanemab (anti-amiloide)",
+      "nota": "Causa más común de demencia. Diagnóstico clínico + biomarcadores (PET, LCR). Enfermedad de Parkinson — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Enfermedad de Parkinson",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad neurodegenerativa",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Temblor de reposo, rigidez, bradicinesia, inestabilidad postural",
+      "transmision": "No transmisible. Factores: edad, genética, ambientales",
+      "tratamiento_medico": "Levodopa (estándar de oro), agonistas dopaminérgicos, IMAO-B; estimulación cerebral profunda",
+      "nota": "Pérdida de neuronas dopaminérgicas en sustancia negra. Sin cura."
+    },
+    {
+      "nombre": "Esclerosis Lateral Amiotrófica (ELA)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad neurodegenerativa",
+      "ocurrencias_biomag": 31,
+      "enfermedades_reales": "Degeneración progresiva de motoneuronas superiores e inferiores",
+      "transmision": "No transmisible. 5-10% formas familiares (mutaciones SOD1, C9orf72)",
+      "tratamiento_medico": "Riluzol, edaravone (extienden vida modestamente); soporte respiratorio",
+      "nota": "Mortalidad usualmente en 3-5 años por insuficiencia respiratoria. Sin cura. Esclerosis múltiple (EM)"
+    },
+    {
+      "nombre": "Esclerosis múltiple (EM)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad autoinmune del SNC",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Desmielinización inflamatoria del SNC con brotes y discapacidad",
+      "transmision": "No transmisible. Asociación con EBV recientemente fuerte.",
+      "tratamiento_medico": "Modificadores de enfermedad (interferón, glatirámero, fingolimod, ocrelizumab, etc.)",
+      "nota": "Tratamiento moderno cambió drásticamente pronóstico. Diagnóstico por RMN + LCR. Glándula tiroides"
+    },
+    {
+      "nombre": "Glándula tiroides",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Glándula endocrina",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Hipotiroidismo, hipertiroidismo, nódulos, cáncer, tiroiditis",
+      "transmision": "Variable",
+      "tratamiento_medico": "Específico según patología",
+      "nota": "TSH es prueba inicial para evaluar función. Hipertiroidismo (Graves, nódulos tóxicos)"
+    },
+    {
+      "nombre": "Hipertiroidismo (Graves, nódulos tóxicos)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad endocrina",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Pérdida de peso, taquicardia, ansiedad, exoftalmos (Graves)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Tiamazol/metimazol, beta-bloqueantes, yodo radiactivo, tiroidectomía",
+      "nota": "Tormenta tiroidea es emergencia (mortalidad alta sin tratamiento). Hipotiroidismo (primario, secundario) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Hipotiroidismo (primario, secundario)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad endocrina",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Fatiga, intolerancia al frío, ganancia ponderal, bradipsiquia",
+      "transmision": "No transmisible. Causa más común: Hashimoto (autoinmune)",
+      "tratamiento_medico": "Levotiroxina",
+      "nota": "Sustitución hormonal de por vida. Monitoreo TSH periódico."
+    },
+    {
+      "nombre": "Lupus eritematoso sistémico (LES)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad autoinmune",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Afectación cutánea, articular, renal (nefritis lúpica), hematológica, neurológica",
+      "transmision": "No transmisible. Factores: genéticos, hormonales, ambientales",
+      "tratamiento_medico": "Hidroxicloroquina, corticoides, inmunosupresores (micofenolato, belimumab)",
+      "nota": "Predomina en mujeres jóvenes. Pronóstico mejorado con tratamiento moderno. Psoriasis"
+    },
+    {
+      "nombre": "Psoriasis",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad inflamatoria autoinmune crónica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Placas eritematoescamosas, artritis psoriásica",
+      "transmision": "No transmisible. Genética + inmunológica.",
+      "tratamiento_medico": "Tópicos, fototerapia, metotrexato, biológicos (anti-TNF, anti-IL17, anti-IL23)",
+      "nota": "Tratamientos biológicos revolucionaron pronóstico. NO es contagiosa. Síndrome de Guillain-Barré (SGB) — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Síndrome de Guillain-Barré (SGB)",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad autoinmune neurológica",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Polineuropatía desmielinizante aguda; parálisis ascendente",
+      "transmision": "No transmisible. Postinfecciosa (Campylobacter, CMV, EBV, Zika).",
+      "tratamiento_medico": "IgIV o plasmaféresis; soporte respiratorio",
+      "nota": "Emergencia neurológica. Mortalidad 3-7% pese a tratamiento. Ver Guillain-Barré"
+    },
+    {
+      "nombre": "Ver Guillain-Barré",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad autoinmune neurológica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Guillain-Barré",
+      "transmision": "Postinfecciosa",
+      "tratamiento_medico": "Ver Guillain-Barré",
+      "nota": "Ver Guillain-Barré. Vitiligo — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Vitiligo",
+      "categoria": "ENFERMEDADES CRÓNICAS",
+      "tipo": "Enfermedad autoinmune cutánea",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Despigmentación cutánea por destrucción de melanocitos",
+      "transmision": "No transmisible. Autoinmune, factores genéticos.",
+      "tratamiento_medico": "Corticoides tópicos, inhibidores de calcineurina, fototerapia UVB, JAK-inhibidores tópicos (recientes)",
+      "nota": "Crónica, sin cura definitiva pero con tratamientos efectivos. No es contagioso."
+    },
+    {
+      "nombre": "II CÁNCERES Adenocarcinoma colorrectal",
+      "categoria": "CÁNCERES",
+      "tipo": "Neoplasia maligna",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Cáncer de colon/recto",
+      "transmision": "No transmisible. Factores: edad, antecedentes familiares, EII, dieta",
+      "tratamiento_medico": "Cirugía + quimioterapia adyuvante",
+      "nota": "Tamizaje con colonoscopia desde los 45-50 años reduce mortalidad. Adenocarcinoma de próstata — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Adenocarcinoma de próstata",
+      "categoria": "CÁNCERES",
+      "tipo": "Neoplasia maligna",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Cáncer prostático localizado o avanzado",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Vigilancia activa, prostatectomía, radioterapia, hormonoterapia",
+      "nota": "Frecuente en >50 años. Muchos casos indolentes; sobrediagnóstico es preocupación. Carcinoma broncogénico (CPNCP, CPCP)"
+    },
+    {
+      "nombre": "Carcinoma broncogénico (CPNCP, CPCP)",
+      "categoria": "CÁNCERES",
+      "tipo": "Neoplasia maligna",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Adenocarcinoma, escamoso, células grandes, microcítico",
+      "transmision": "No transmisible. Tabaquismo es causa principal.",
+      "tratamiento_medico": "Cirugía, quimio, radio, inmunoterapia (pembrolizumab), terapias dirigidas (EGFR, ALK)",
+      "nota": "Cáncer más mortal. Cesación tabáquica es prevención principal. Carcinoma de mama — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Carcinoma de mama",
+      "categoria": "CÁNCERES",
+      "tipo": "Neoplasia maligna",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Carcinoma ductal (más común) · Lobulillar · HER2+ · Triple negativo",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Cirugía, radioterapia, quimioterapia, hormonoterapia (tamoxifeno), terapia dirigida (trastuzumab)",
+      "nota": "Cáncer más común en mujeres. Detección temprana por mamografía mejora sobrevida significativamente. Leiomiomas uterinos"
+    },
+    {
+      "nombre": "Leiomiomas uterinos",
+      "categoria": "CÁNCERES",
+      "tipo": "Tumores benignos",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Sangrado, dolor, infertilidad",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Observación, hormonal, miomectomía, embolización, histerectomía",
+      "nota": "Tumores benignos hormono-dependientes. Frecuentes (~70% mujeres)."
+    },
+    {
+      "nombre": "Leucemia aguda y crónica, linfoide y mieloide",
+      "categoria": "CÁNCERES",
+      "tipo": "Cáncer hematológico",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "LLA, LMA, LLC, LMC (4 tipos principales)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Quimioterapia, trasplante de médula, inhibidores específicos (imatinib en LMC), CAR-T",
+      "nota": "Pronóstico muy variable. LLA pediátrica curable en >80%. LMC con imatinib pasó de mortal a crónica. Linfoma de Hodgkin y no Hodgkin (múltiples subtipos)"
+    },
+    {
+      "nombre": "Linfoma de Hodgkin y no Hodgkin (múltiples subtipos)",
+      "categoria": "CÁNCERES",
+      "tipo": "Cáncer del sistema linfático",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Linfoma de Hodgkin · LNH: difuso de células B grandes, folicular, Burkitt, etc.",
+      "transmision": "No transmisible (asociaciones con EBV, VIH, H. pylori en MALT)",
+      "tratamiento_medico": "Quimioterapia, radioterapia, inmunoterapia (rituximab), CAR-T",
+      "nota": "Hodgkin curable en >80%. LNH varía mucho por subtipo. Neoplasia maligna epitelial — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Neoplasia maligna epitelial",
+      "categoria": "CÁNCERES",
+      "tipo": "Tipo de cáncer",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Múltiples tipos según tejido",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Según tipo y estadio",
+      "nota": "Carcinoma = cáncer de células epiteliales. Tipo más común de cáncer."
+    },
+    {
+      "nombre": "I SALUD MENTAL Y EMOCIONAL Anorexia nerviosa",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno alimentario",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Restricción severa, distorsión corporal, miedo a engordar",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Multidisciplinario: psicoterapia, nutrición, médico",
+      "nota": "Trastorno mental con MAYOR mortalidad. Atención especializada urgente. Bulimia nerviosa"
+    },
+    {
+      "nombre": "Bulimia nerviosa",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno alimentario",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Atracones + conductas compensatorias (vómitos, laxantes)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Psicoterapia (TCC), ISRS",
+      "nota": "Complicaciones: alteraciones electrolíticas, esofagitis, caries. Duelo (5 fases de Kübler-Ross descripción clásica)"
+    },
+    {
+      "nombre": "Duelo (5 fases de Kübler-Ross descripción clásica)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Proceso emocional normal",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Duelo complicado o prolongado",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Acompañamiento; psicoterapia si complicado",
+      "nota": "Proceso adaptativo. Si afecta funcionamiento >1 año: duelo complicado. Epilepsia (múltiples síndromes) — usado en 10 pares biomagnéticos"
+    },
+    {
+      "nombre": "Epilepsia (múltiples síndromes)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno neurológico crónico",
+      "ocurrencias_biomag": 10,
+      "enfermedades_reales": "Crisis convulsivas recurrentes no provocadas",
+      "transmision": "No transmisible. Causas: genéticas, estructurales, infecciosas, metabólicas, idiopáticas",
+      "tratamiento_medico": "Fármacos antiepilépticos (levetiracetam, lamotrigina, valproato, etc.), cirugía en refractarias",
+      "nota": "~50 millones de personas afectadas globalmente. Control farmacológico en 70%. Esquizofrenia — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Esquizofrenia",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental grave",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Alucinaciones, delirios, desorganización, síntomas negativos",
+      "transmision": "No transmisible. Alta heredabilidad.",
+      "tratamiento_medico": "Antipsicóticos (segunda generación), psicoeducación, rehabilitación",
+      "nota": "Trastorno mental grave con tratamiento de por vida. NO es 'doble personalidad'."
+    },
+    {
+      "nombre": "Estilos de apego (Bowlby)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Vínculo emocional",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Trastorno de apego (TRA)",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Psicoterapia",
+      "nota": "Patrones formados en infancia; influyen en relaciones adultas. Insuficiencia venosa crónica con varices — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Insuficiencia venosa crónica con varices",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno vascular",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "Várices en miembros inferiores principalmente",
+      "transmision": "No transmisible. Factores: genética, embarazo, sedentarismo, edad, obesidad",
+      "tratamiento_medico": "Medias de compresión, esclerosis, ablación endovenosa con láser/radiofrecuencia, cirugía",
+      "nota": "Tratamientos modernos mínimamente invasivos muy efectivos. Migraña con o sin aura — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Migraña con o sin aura",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno neurológico",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Cefalea pulsátil, fotofobia, fonofobia, náuseas",
+      "transmision": "No transmisible. Genética, hormonal, disparadores específicos.",
+      "tratamiento_medico": "Triptanes (aguda), profilaxis: betabloqueantes, topiramato, anti-CGRP (modernos muy efectivos)",
+      "nota": "Anticuerpos anti-CGRP (erenumab, fremanezumab) revolucionaron tratamiento. Porfirias (varios tipos)"
+    },
+    {
+      "nombre": "Porfirias (varios tipos)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno metabólico",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Aguda intermitente, cutánea tarda, etc.",
+      "transmision": "Mayoría hereditarias",
+      "tratamiento_medico": "Evitar disparadores, hemo IV en crisis",
+      "nota": "Crisis pueden ser graves. 'Vampirismo' histórico atribuido a algunas porfirias. Soledad"
+    },
+    {
+      "nombre": "Soledad",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Estado emocional/social",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Crónica: factor de riesgo de mortalidad, depresión, demencia",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Conexión social, terapia",
+      "nota": "OMS declaró pandemia de soledad. Comparable a fumar 15 cigarrillos/día en mortalidad."
+    },
+    {
+      "nombre": "Trastorno Obsesivo-Compulsivo",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 57,
+      "enfermedades_reales": "Obsesiones (pensamientos intrusivos) + compulsiones (rituales)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "ISRS a dosis altas, terapia con exposición y prevención de respuesta (ERP)",
+      "nota": "Trastorno tratable. TCC con ERP es tratamiento de elección. Trastorno bipolar — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno bipolar",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Ver Trastorno bipolar",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver Trastorno bipolar",
+      "nota": "Ver Trastorno bipolar. Trastorno bipolar tipo I, II, ciclotimia — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno bipolar tipo I, II, ciclotimia",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Episodios de manía/hipomanía + episodios depresivos",
+      "transmision": "No transmisible. Alta heredabilidad.",
+      "tratamiento_medico": "Estabilizadores del ánimo: litio (estándar), valproato, lamotrigina, antipsicóticos",
+      "nota": "Trastorno mental grave. Litio reduce significativamente riesgo de suicidio. Trastorno de insomnio — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno de insomnio",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno del sueño",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Insomnio primario o secundario (a otras condiciones)",
+      "transmision": "No transmisible. Causas: estrés, ansiedad, depresión, dolor, fármacos, apnea del sueño",
+      "tratamiento_medico": "Higiene del sueño, terapia cognitivo-conductual (TCC-i, gold standard), hipnóticos selectivos (cuidado con dependencia)",
+      "nota": "TCC para insomnio (TCC-i) es más efectivo que fármacos a largo plazo. Trastorno de pánico — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno de pánico",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Crisis de pánico recurrentes",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "ISRS, TCC con exposición",
+      "nota": "Crisis: <30 min, intensos síntomas autonómicos."
+    },
+    {
+      "nombre": "Trastorno del Espectro Autista (TEA)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno del neurodesarrollo",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Dificultades en comunicación social, conductas/intereses restringidos y repetitivos",
+      "transmision": "No transmisible. Causas genéticas y de neurodesarrollo. NO causado por vacunas (rotundamente refutado).",
+      "tratamiento_medico": "Intervenciones conductuales (ABA), terapia ocupacional, del lenguaje; soporte educativo",
+      "nota": "Espectro amplio. Diagnóstico temprano e intervención mejoran resultados. NO existe 'cura'. El biomagnetismo NO trata autismo. Trastorno depresivo mayor — usado en 21 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno depresivo mayor",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 21,
+      "enfermedades_reales": "Estado de ánimo bajo persistente, anhedonia, alteraciones del sueño y apetito, ideación suicida",
+      "transmision": "No transmisible. Factores: genéticos, neuroquímicos, psicosociales",
+      "tratamiento_medico": "ISRS, IRSN, psicoterapia (TCC, interpersonal), TEC en refractarios, ketamina",
+      "nota": "280 millones afectados globalmente. Aumento de riesgo suicida si no se trata. ALERTA si hay ideación suicida — atención profesional URGENTE. Trastorno fóbico — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "profesional URGENTE. Trastorno fóbico",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno de ansiedad",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Específica, social, agorafobia",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Exposición terapéutica, ISRS",
+      "nota": "Muy tratable con terapia de exposición. Trastorno por Déficit de Atención e Hiperactividad"
+    },
+    {
+      "nombre": "Trastorno por Déficit de Atención e Hiperactividad",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno del neurodesarrollo",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Hiperactividad",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver Hiperactividad",
+      "nota": "Ver Hiperactividad. Trastorno por Déficit de Atención e Hiperactividad (TDAH) — usado en 7 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastorno por Déficit de Atención e Hiperactividad (TDAH)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Síntoma o trastorno",
+      "ocurrencias_biomag": 7,
+      "enfermedades_reales": "TDAH (combinado, predominio inatento, predominio hiperactivo)",
+      "transmision": "No transmisible. Origen neurobiológico, hereditario.",
+      "tratamiento_medico": "Conductual + farmacológico (metilfenidato, atomoxetina); soporte educativo",
+      "nota": "TDAH es trastorno del neurodesarrollo real, con sólida evidencia. El biomagnetismo NO trata TDAH."
+    },
+    {
+      "nombre": "Trastorno por Estrés Postraumático",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Trauma",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver Trauma",
+      "nota": "Ver Trauma. Trastorno por Estrés Postraumático (TEPT)"
+    },
+    {
+      "nombre": "Trastorno por Estrés Postraumático (TEPT)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Trauma",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver Trauma",
+      "nota": "Ver Trauma. Trastornos de ansiedad (TAG, pánico, fobias, TOC, TEPT) — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastornos de ansiedad (TAG, pánico, fobias, TOC, TEPT)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno mental",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Preocupación excesiva, síntomas autonómicos, evitación",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "ISRS, ISRSN; psicoterapia (TCC, exposición); benzodiazepinas (corto plazo)",
+      "nota": "Trastornos mentales más prevalentes. Buena respuesta a tratamiento. Trastornos fóbicos (fobias específicas, social, agorafobia) — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastornos fóbicos (fobias específicas, social, agorafobia)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Reacción emocional / Trastorno mental",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Fobias específicas · Trastorno de ansiedad social · Agorafobia",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Terapia cognitivo-conductual con exposición (alta efectividad), ISRS",
+      "nota": "Miedo es emoción normal; fobia es miedo desproporcionado que afecta funcionamiento. Trastornos por uso de sustancias (DSM-5) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Trastornos por uso de sustancias (DSM-5)",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Trastorno por uso de sustancias",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Alcohol, opioides, estimulantes, tabaco, etc.",
+      "transmision": "No transmisible. Factores: genéticos, ambientales, neurobiológicos",
+      "tratamiento_medico": "Detoxificación + tratamiento prolongado: terapia, grupos de apoyo, farmacoterapia (naltrexona, metadona, buprenorfina, varenicline)",
+      "nota": "Enfermedad cerebral crónica recidivante. Estigma dificulta acceso a tratamiento. NO se trata con biomagnetismo."
+    },
+    {
+      "nombre": "Vértigo central o periférico",
+      "categoria": "SALUD MENTAL Y EMOCIONAL",
+      "tipo": "Síntoma de trastorno vestibular",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "VPPB (más común) · Enfermedad de Ménière · Neuritis vestibular · ACV (central)",
+      "transmision": "Depende de causa",
+      "tratamiento_medico": "Maniobras de reposición (Epley en VPPB), antihistamínicos, betahistina",
+      "nota": "VPPB se cura con maniobras simples; vértigo central requiere descartar ACV."
+    },
+    {
+      "nombre": "I SÍNTOMAS Y SIGNOS Artritis (>100 tipos)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación articular (muchas causas)",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Reumatoide · Osteoartritis · Psoriásica · Gotosa · Séptica · Juvenil idiopática",
+      "transmision": "No transmisible (excepto séptica)",
+      "tratamiento_medico": "Variable: AINEs, DMARDs (metotrexato), biológicos (anti-TNF), reemplazo articular",
+      "nota": "Causa principal de discapacidad. Tratamiento revolucionado con biológicos en últimas 2 décadas. Bronquitis aguda o crónica — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Bronquitis aguda o crónica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación bronquial",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Aguda: viral mayoritariamente · Crónica: parte de EPOC",
+      "transmision": "Aguda viral, sí",
+      "tratamiento_medico": "Soporte; antibióticos solo si sobreinfección bacteriana documentada",
+      "nota": "Bronquitis aguda raramente requiere antibióticos (es viral). Cefalea (primarias y secundarias) — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Cefalea (primarias y secundarias)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Tensional (más común) · Migraña · En racimos · Secundarias (alarma)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Analgésicos, triptanes, profilaxis según tipo",
+      "nota": "Cefaleas de alarma ('signo de bandera roja'): inicio súbito, fiebre, déficit neurológico — atención URGENTE. Ciática / Lumbociática — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Ciática / Lumbociática",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Dolor neuropático",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Compresión radicular L4-S1 (hernia discal, estenosis)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "AINE, gabapentina, fisioterapia; cirugía si déficit progresivo",
+      "nota": "90% mejora con tratamiento conservador en 6-12 semanas. Colitis (múltiples causas) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Colitis (múltiples causas)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación del colon",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Colitis ulcerosa · Colitis infecciosa · Colitis isquémica · Colitis microscópica",
+      "transmision": "Infecciosa transmisible; otras no",
+      "tratamiento_medico": "Variable: 5-ASA, corticoides, biológicos en EII; antibióticos en infecciosas",
+      "nota": "Importante distinguir tipo. Colitis ulcerosa es enfermedad inflamatoria intestinal crónica."
+    },
+    {
+      "nombre": "Conjuntivitis viral, bacteriana, alérgica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación conjuntival",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Adenovirus (mayoría virales) · Bacterianas: S. aureus, H. influenzae",
+      "transmision": "Viral muy contagiosa",
+      "tratamiento_medico": "Soporte (viral); antibiótico tópico (bacteriana)",
+      "nota": "Virales muy contagiosas. Lavado frecuente de manos. Dermatitis (múltiples tipos) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Dermatitis (múltiples tipos)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación cutánea",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Atópica, de contacto, seborreica, etc.",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Tópicos específicos según tipo",
+      "nota": "Diagnóstico dermatológico preciso es importante. Dermatitis atópica o eccema"
+    },
+    {
+      "nombre": "Dermatitis atópica o eccema",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación cutánea",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Dermatitis atópica, de contacto, dishidrótico",
+      "transmision": "No transmisible. Factores: atopia, irritantes, alergenos.",
+      "tratamiento_medico": "Emolientes, corticoides tópicos, inhibidores de calcineurina, dupilumab (severa)",
+      "nota": "Frecuente en niños; puede mejorar con edad. Diarrea aguda o crónica — usado en 17 pares biomagnéticos"
+    },
+    {
+      "nombre": "Diarrea aguda o crónica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma (no enfermedad por sí mismo)",
+      "ocurrencias_biomag": 17,
+      "enfermedades_reales": "Causas: infecciosa (viral, bacteriana, parasitaria), inflamatoria (Crohn, CU), funcional (SII), medicamentos",
+      "transmision": "Depende de la causa",
+      "tratamiento_medico": "Rehidratación; específico según causa",
+      "nota": "Diarrea aguda en adultos sanos generalmente autolimitada. Diarrea crónica requiere evaluación médica. Dolor (nociceptivo, neuropático, mixto) — usado en 11 pares biomagnéticos"
+    },
+    {
+      "nombre": "Dolor (nociceptivo, neuropático, mixto)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 11,
+      "enfermedades_reales": "Innumerables causas según localización",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Dolor crónico requiere evaluación multimodal."
+    },
+    {
+      "nombre": "Dolor abdominal (múltiples causas)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Quirúrgicas (apendicitis, colecistitis) y médicas",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Dolor abdominal con signos de alarma: emergencia (apendicitis, isquemia, embarazo ectópico). Encefalitis (viral, bacteriana, autoinmune) — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Encefalitis (viral, bacteriana, autoinmune)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación cerebral",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Múltiples agentes: HSV, arbovirus, autoinmune (anti-NMDAR)",
+      "transmision": "Variable",
+      "tratamiento_medico": "Aciclovir empírico ante sospecha de HSV; inmunoterapia en autoinmunes",
+      "nota": "Encefalitis por HSV: emergencia, aciclovir EV inmediato. Diagnóstico tardío deja secuelas graves. Faringitis (viral o bacteriana) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Faringitis (viral o bacteriana)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación faríngea",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Mayoría virales (rinovirus, adenovirus) · Bacterianas: Streptococcus A",
+      "transmision": "Aérea",
+      "tratamiento_medico": "Penicilina si confirmada estreptocócica",
+      "nota": "Solo ~30% son bacterianas. Test rápido para estreptococo evita antibióticos innecesarios. Fatiga — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Fatiga",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Múltiples causas: anemia, hipotiroidismo, depresión, apnea del sueño, fibromialgia, cáncer, fármacos",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Tratar causa",
+      "nota": "Fatiga persistente >6 meses sin causa: síndrome de fatiga crónica/EM. Fibromialgia — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Fibromialgia",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síndrome doloroso crónico",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Dolor musculoesquelético generalizado, fatiga, alteración del sueño",
+      "transmision": "No transmisible. Etiología poco clara, sensibilización central",
+      "tratamiento_medico": "Pregabalina, duloxetina, ejercicio aeróbico, terapia cognitivo-conductual",
+      "nota": "Diagnóstico clínico. Sin biomarcadores. Mejora con tratamiento multimodal."
+    },
+    {
+      "nombre": "Gastritis aguda o crónica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación gástrica",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "H. pylori, AINEs, autoinmune, alcohol",
+      "transmision": "Infecciosa por H. pylori",
+      "tratamiento_medico": "IBP, erradicación de H. pylori, evitar irritantes",
+      "nota": "Si crónica: descartar H. pylori; si autoinmune (anti-células parietales), riesgo de cáncer gástrico. Hemiplejía (parálisis de un lado del cuerpo) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Hemiplejía (parálisis de un lado del cuerpo)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma neurológico",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "ACV (causa más común) · TCE · Tumores cerebrales · Esclerosis múltiple",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa; rehabilitación",
+      "nota": "Aparición súbita: emergencia (probable ACV). Activar protocolo FAST. Hepatitis (etiología múltiple) — usado en 18 pares biomagnéticos"
+    },
+    {
+      "nombre": "Hepatitis (etiología múltiple)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación del hígado (varias causas)",
+      "ocurrencias_biomag": 18,
+      "enfermedades_reales": "Hepatitis virales (A-E) · Hepatitis alcohólica · Hepatitis autoinmune · Hepatitis medicamentosa",
+      "transmision": "Depende del tipo: fecal-oral (A, E), sangre/sexual (B, C, D)",
+      "tratamiento_medico": "Específico según causa. Hepatitis C ahora curable con antivirales directos (>95% éxito).",
+      "nota": "No es una sola enfermedad. Las hepatitis B y C crónicas son las causas principales de cirrosis y hepatocarcinoma a nivel mundial. Hipertermia patológica — usado en 12 pares biomagnéticos"
+    },
+    {
+      "nombre": "mundial. Hipertermia patológica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 12,
+      "enfermedades_reales": "Síntoma de infección, inflamación, neoplasia, fármacos",
+      "transmision": "Depende de causa",
+      "tratamiento_medico": "Antitérmicos; tratar causa",
+      "nota": "Fiebre es respuesta inmune; bajarla no siempre es necesario. >38.5°C en niños o >39°C en adultos: evaluación médica. Infección (múltiples patógenos) — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Infección (múltiples patógenos)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma/proceso",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Bacteriana, viral, fúngica, parasitaria",
+      "transmision": "Variable",
+      "tratamiento_medico": "Específico según agente",
+      "nota": "Término genérico; siempre requiere identificación etiológica."
+    },
+    {
+      "nombre": "Irritabilidad o irritación tisular",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma inespecífico",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Múltiples causas",
+      "transmision": "Variable",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Término amplio. Laringitis aguda o crónica"
+    },
+    {
+      "nombre": "Laringitis aguda o crónica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación laríngea",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Aguda generalmente viral · Crónica: reflujo, tabaco, sobre uso vocal",
+      "transmision": "Aguda viral, sí",
+      "tratamiento_medico": "Reposo vocal, soporte; tratar reflujo si crónica",
+      "nota": "Disfonía aguda generalmente autolimitada. Lumbalgia, dorsalgia"
+    },
+    {
+      "nombre": "Lumbalgia, dorsalgia",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Mecánica (>90%) · Patológica (compresión, infección, tumor)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Mecánica: AINE, ejercicio, fisioterapia; patológica: específico",
+      "nota": "Signos de alarma (red flags): fiebre, pérdida de peso, déficit neurológico — descartar patología grave. Meningitis bacteriana, viral, fúngica, tuberculosa — usado en 8 pares biomagnéticos"
+    },
+    {
+      "nombre": "Meningitis bacteriana, viral, fúngica, tuberculosa",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación de meninges",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Emergencia médica si bacteriana",
+      "transmision": "Bacteriana y viral: aérea",
+      "tratamiento_medico": "Ceftriaxona + vancomicina empírica; ajustar según gérmenes",
+      "nota": "Punción lumbar urgente. Meningococo: emergencia con riesgo de muerte en horas. Mialgia — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Mialgia",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Muchas causas: sobreuso, infecciones virales, estatinas, fibromialgia, polimiositis",
+      "transmision": "No transmisible (per se)",
+      "tratamiento_medico": "Reposo, calor, AINE; tratar causa",
+      "nota": "Si severo o con CPK elevada: descartar rabdomiolisis."
+    },
+    {
+      "nombre": "Neuralgia (del trigémino, postherpética, etc.)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Dolor neuropático",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Dolor en territorio de un nervio",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Carbamazepina, gabapentinoides, antidepresivos tricíclicos",
+      "nota": "Neuralgia del trigémino: 'el dolor más severo'. Tratamiento neuroquirúrgico en refractarios. Obstrucción (intestinal, urinaria, vascular) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Obstrucción (intestinal, urinaria, vascular)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma/signo",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Múltiples causas según tipo",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según tipo (frecuentemente quirúrgico)",
+      "nota": "Obstrucción intestinal aguda: emergencia quirúrgica. Otitis media, externa, interna — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Otitis media, externa, interna",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación del oído",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Aguda (S. pneumoniae, H. influenzae, M. catarrhalis) · Crónica con efusión",
+      "transmision": "Variable",
+      "tratamiento_medico": "Amoxicilina si bacteriana; analgesia; tubos de ventilación en crónica",
+      "nota": "Frecuente en niños. Muchas se resuelven sin antibióticos. Prostatitis (aguda bacteriana, crónica) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Prostatitis (aguda bacteriana, crónica)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación prostática",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Síntomas urinarios, dolor pélvico",
+      "transmision": "Bacteriana usualmente endógena",
+      "tratamiento_medico": "Antibióticos prolongados; alfa-bloqueantes",
+      "nota": "Crónica puede ser difícil de tratar. Rinitis (alérgica, vasomotora, infecciosa)"
+    },
+    {
+      "nombre": "Rinitis (alérgica, vasomotora, infecciosa)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación nasal",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Ver Rinitis alérgica",
+      "transmision": "Variable",
+      "tratamiento_medico": "Específico según tipo",
+      "nota": "Diagnóstico diferencial amplio."
+    },
+    {
+      "nombre": "Rinosinusitis aguda o crónica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación de senos paranasales",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Aguda: viral, bacteriana, fúngica · Crónica: >12 semanas",
+      "transmision": "Aguda viral es contagiosa; bacteriana no",
+      "tratamiento_medico": "Lavados nasales, antiinflamatorios; antibióticos si bacteriana confirmada; cirugía endoscópica en crónica refractaria",
+      "nota": "Mayoría de sinusitis agudas son virales; uso excesivo de antibióticos es problema. Síndrome de Otelo, celotipia"
+    },
+    {
+      "nombre": "Síndrome de Otelo, celotipia",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma psicológico",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Asociado a trastornos delirantes, paranoia",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Antipsicóticos, psicoterapia",
+      "nota": "Diferente de celos normales en relaciones. Síntomas gastrointestinales inespecíficos — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Síntomas gastrointestinales inespecíficos",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntomas variados",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Múltiples causas: SII, dispepsia, ERGE, enfermedad celíaca, etc.",
+      "transmision": "Depende de causa",
+      "tratamiento_medico": "Específico según diagnóstico",
+      "nota": "Término genérico. Síntomas persistentes requieren evaluación médica. Tinnitus/acúfenos — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Tinnitus/acúfenos",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Síntoma auditivo",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Percepción de sonido sin estímulo externo",
+      "transmision": "No transmisible. Causas: pérdida auditiva, fármacos, vascular",
+      "tratamiento_medico": "Terapia sonora, TCC, audífonos",
+      "nota": "Muchas causas; tratamiento poco efectivo a veces. Vaginitis (causas múltiples) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Vaginitis (causas múltiples)",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación vaginal",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Candidiasis, vaginosis bacteriana, tricomoniasis",
+      "transmision": "Variable",
+      "tratamiento_medico": "Específico según causa (azoles, metronidazol)",
+      "nota": "Causas principales: Candida (35%), Gardnerella/disbiosis (40%), Trichomonas (20%)."
+    },
+    {
+      "nombre": "Ver Encefalitis",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Inflamación cerebral por virus",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "HSV, arbovirus, enterovirus, rabia",
+      "transmision": "Variable según virus",
+      "tratamiento_medico": "Específico (aciclovir HSV; soporte para resto)",
+      "nota": "HSV es causa más común y tratable."
+    },
+    {
+      "nombre": "II TÉRMINOS DEL BIOMAGNETISMO (sin validez médica) De la 'Nueva Medicina Germánica' (Hamer) - pseudociencia",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Concepto pseudocientífico",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "No reconocidas por la medicina",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable - asociado a casos de muerte por rechazar tratamiento oncológico real",
+      "nota": "ATENCIÓN: La 'Nueva Medicina Germánica' de Ryke Geerd Hamer ha sido condenada por organismos de salud y asociada a muertes por rechazar tratamientos oncológicos. NO usar. No aplicable"
+    },
+    {
+      "nombre": "muertes por rechazar tratamientos oncológicos. NO usar. No aplicable",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Categoría del biomagnetismo",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Categoría del biomagnetismo. No corresponde a entidad médica. No corresponde a entidad biomédica — usado en 46 pares biomagnéticos"
+    },
+    {
+      "nombre": "No corresponde a entidad biomédica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Categoría del biomagnetismo (no médica)",
+      "ocurrencias_biomag": 46,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Concepto del biomagnetismo: 'lugar donde se 'esconderían' bacterias'. En microbiología real, los reservorios de patógenos son ambientes específicos (animales, agua, suelo) — no zonas anatómicas del cuerpo humano. NO hay evidencia de los 'reservorios biomagnéticos'. No corresponde a entidad biomédica — usado en 46 pares biomagnéticos"
+    },
+    {
+      "nombre": "ambientes específicos (animales, agua, suelo) — no zonas anatómicas del cuerpo humano. NO hay evidencia de los 'reservorios biomagnéticos'. No corresponde a entidad biomédica",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Concepto del biomagnetismo (no médico)",
+      "ocurrencias_biomag": 46,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Concepto exclusivo del biomagnetismo, sin equivalencia médica."
+    },
+    {
+      "nombre": "No corresponde a entidad biomédica establecida",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Categoría del biomagnetismo (no médica)",
+      "ocurrencias_biomag": 207,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Término del biomagnetismo para pares 'especiales' o 'disfuncionales'. NO corresponde a un patógeno o entidad biomédica reconocida. La medicina basada en evidencia no usa esta categoría. No corresponde a entidad biomédica establecida — usado en 207 pares biomagnéticos"
+    },
+    {
+      "nombre": "reconocida. La medicina basada en evidencia no usa esta categoría. No corresponde a entidad biomédica establecida",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Categoría del biomagnetismo (no médica)",
+      "ocurrencias_biomag": 207,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Categoría del biomagnetismo. NO es una entidad nosológica reconocida en medicina. Si hay síntomas reales, deben evaluarse por su causa médica específica. No corresponde a entidad biomédica reconocida — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "por su causa médica específica. No corresponde a entidad biomédica reconocida",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Concepto del biomagnetismo",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Frase del biomagnetismo. Alteraciones del LCR (hidrocefalia, hipertensión intracraneal) son condiciones médicas reales que requieren atención neuroquirúrgica. No es diagnóstico médico — usado en 49 pares biomagnéticos"
+    },
+    {
+      "nombre": "requieren atención neuroquirúrgica. No es diagnóstico médico",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Categoría del biomagnetismo",
+      "ocurrencias_biomag": 49,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Término genérico del biomagnetismo. En medicina, 'disfunción' siempre debe especificar el órgano y mecanismo (ej: disfunción tiroidea, hepática, etc.). Ver Reservorio bacteriano — usado en 12 pares biomagnéticos"
+    },
+    {
+      "nombre": "tiroidea, hepática, etc.). Ver Reservorio bacteriano",
+      "categoria": "SÍNTOMAS Y SIGNOS",
+      "tipo": "Concepto del biomagnetismo",
+      "ocurrencias_biomag": 12,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Ver Reservorio bacteriano. NO confundir con 'reservorio epidemiológico' (concepto real en epidemiología)."
+    },
+    {
+      "nombre": "I OTRAS CONDICIONES Accidente Cerebrovascular (ACV/ictus)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad cerebrovascular",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Isquémico (87%) o hemorrágico (13%)",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Isquémico: trombólisis (rtPA) o trombectomía en ventana terapéutica. Hemorrágico: control de TA, neurocirugía",
+      "nota": "Emergencia. 'Tiempo es cerebro'. Reconocer signos FAST. Acné vulgar"
+    },
+    {
+      "nombre": "Acné vulgar",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad cutánea inflamatoria",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Comedones, pápulas, pústulas, nódulos",
+      "transmision": "No transmisible. Factores: hormonales, Cutibacterium acnes, sebo, queratinización",
+      "tratamiento_medico": "Retinoides tópicos, antibióticos, isotretinoína (severo)",
+      "nota": "No es solo problema cosmético; puede dejar cicatrices y afectar autoestima. Anemia (múltiples tipos) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Anemia (múltiples tipos)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Reducción de hemoglobina",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Ferropénica (más común) · Megaloblástica (B12, ácido fólico) · Hemolítica · De enfermedad crónica · Aplásica",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Anemia es signo, no diagnóstico. Siempre identificar causa. Asma bronquial — usado en 36 pares biomagnéticos"
+    },
+    {
+      "nombre": "Asma bronquial",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad respiratoria crónica",
+      "ocurrencias_biomag": 36,
+      "enfermedades_reales": "Inflamación crónica e hiperreactividad bronquial",
+      "transmision": "No transmisible. Factores: alergias, genética, contaminación, infecciones virales",
+      "tratamiento_medico": "Broncodilatadores (salbutamol), corticoides inhalados, biológicos (omalizumab, mepolizumab)",
+      "nota": "Tratable y controlable. Crisis graves pueden ser letales. NO se cura con biomagnetismo. Asociado a trastornos de apego, TLP — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Asociado a trastornos de apego, TLP",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Vivencia/Trauma psicológico",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Trastorno límite de personalidad puede manifestarlo",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Psicoterapia (DBT en TLP)",
+      "nota": "Sensación dolorosa, frecuente en TLP."
+    },
+    {
+      "nombre": "Causada por Plasmodium spp.",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad parasitaria",
+      "ocurrencias_biomag": 8,
+      "enfermedades_reales": "Ver Plasmodium",
+      "transmision": "Vectorial (Anopheles)",
+      "tratamiento_medico": "Artemisinina-combinadas",
+      "nota": "Paludismo y malaria son sinónimos. Celos — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Celos",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Si patológicos: ver Celos patológicos",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Terapia si problemáticos",
+      "nota": "Emoción humana; patológica si delirante. Cirrosis hepática — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Cirrosis hepática",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad hepática crónica",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Causas: alcohol, hepatitis B/C, esteatohepatitis no alcohólica (NASH), autoinmune",
+      "transmision": "No transmisible (las causas virales sí)",
+      "tratamiento_medico": "Tratar causa, prevenir complicaciones; trasplante en avanzada",
+      "nota": "Cirrosis descompensada es indicación de trasplante hepático. Cistitis (ITU baja) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Cistitis (ITU baja)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Infección urinaria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Disuria, polaquiuria, urgencia",
+      "transmision": "Mayormente endógena (E. coli)",
+      "tratamiento_medico": "Nitrofurantoína, fosfomicina, trimetoprim-sulfa",
+      "nota": "Mujeres más afectadas por anatomía. ITU recurrente en algunas. Conducta agresiva — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Conducta agresiva",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Comportamiento",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Asociada a múltiples trastornos: TLP, antisocial, demencia, TEPT",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Investigar causa subyacente cuando es desproporcionada o frecuente."
+    },
+    {
+      "nombre": "Conducta prosocial",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Rasgo de personalidad",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "No es entidad médica",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "Es rasgo positivo, no patología. El biomagnetismo lo asocia a pares, sin base médica. Culpa adaptativa o patológica — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Culpa adaptativa o patológica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción/Cognición",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Patológica: depresión, TOC, TEPT",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "TCC, psicoterapia",
+      "nota": "Culpa moderada es adaptativa; excesiva indica patología. Demencia (múltiples causas) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Demencia (múltiples causas)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Síndrome neurodegenerativo",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Alzheimer (60%) · Vascular · Cuerpos de Lewy · Frontotemporal",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según tipo",
+      "nota": "Distinguir de delirio (agudo, reversible). Drenaje (abscesos, derrames) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Drenaje (abscesos, derrames)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Procedimiento médico",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "No es enfermedad sino procedimiento",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Específico según indicación",
+      "nota": "Procedimiento médico, no patología. Endometriosis"
+    },
+    {
+      "nombre": "Endometriosis",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad ginecológica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Dolor pélvico, dismenorrea, infertilidad",
+      "transmision": "No transmisible. Etiología incierta (teoría de Sampson)",
+      "tratamiento_medico": "AINE, anticonceptivos hormonales, GnRH análogos, cirugía",
+      "nota": "Diagnóstico promedio tras 7-10 años. Cirugía + manejo médico."
+    },
+    {
+      "nombre": "Enfermedad Pulmonar Obstructiva Crónica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad respiratoria crónica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Limitación de flujo aéreo no totalmente reversible",
+      "transmision": "No transmisible. Causa principal: tabaquismo",
+      "tratamiento_medico": "Broncodilatadores LABA/LAMA, corticoides inhalados, oxígeno, rehabilitación pulmonar",
+      "nota": "4ta causa de muerte mundial. Cesación tabáquica es esencial. Enfermedades reumáticas (>100 entidades) — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Término genérico antiguo",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Artritis reumatoide, osteoartritis, lupus, espondilitis, gota, fibromialgia, etc.",
+      "transmision": "Mayoría no transmisibles",
+      "tratamiento_medico": "Específico según diagnóstico real",
+      "nota": "Término coloquial impreciso. La medicina moderna usa diagnósticos específicos. Estado afectivo — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Estado afectivo",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción humana normal (no enfermedad)",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Si es persistente y disfuncional: ver Depresión",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Si es temporal: apoyo psicológico, autocuidado. Si es persistente: evaluación profesional para descartar depresión",
+      "nota": "Tristeza no es lo mismo que depresión clínica. Si dura >2 semanas y afecta funcionamiento, buscar ayuda. Estado fetal no tranquilizador — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Estado fetal no tranquilizador",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emergencia obstétrica",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Hipoxia fetal aguda",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Cesárea de emergencia generalmente",
+      "nota": "Emergencia obstétrica. Atención inmediata. Factor femenino"
+    },
+    {
+      "nombre": "Factor femenino",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Condición reproductiva",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Tubárico, ovulatorio, uterino, endometriosis",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico; reproducción asistida",
+      "nota": "Edad es factor principal."
+    },
+    {
+      "nombre": "Factor masculino de infertilidad",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Condición reproductiva",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Azoospermia, oligozoospermia, varicocele",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa; FIV con ICSI",
+      "nota": "40% de infertilidad. Evaluación con espermiograma. Fertilización / Concepción — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Fertilización / Concepción",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Proceso fisiológico",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "No aplicable per se",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Evaluación si infertilidad",
+      "nota": "Proceso normal. Si dificultades: evaluación de infertilidad. Fibrilación auricular"
+    },
+    {
+      "nombre": "Fibrilación auricular",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Arritmia cardíaca",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Arritmia más común; riesgo de ACV embólico",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Control de frecuencia/ritmo, anticoagulación (warfarina o DOACs)",
+      "nota": "Anticoagulación reduce drásticamente riesgo de ACV. Fiebre tifoidea por Salmonella typhi — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Fiebre tifoidea por Salmonella typhi",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad bacteriana",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Fiebre prolongada, malestar, esplenomegalia, exantema, complicaciones intestinales",
+      "transmision": "Fecal-oral (agua/alimentos contaminados)",
+      "tratamiento_medico": "Ciprofloxacino, azitromicina, ceftriaxona (resistencias crecientes)",
+      "nota": "Endémica en zonas con saneamiento deficiente. Vacuna disponible. Frustración"
+    },
+    {
+      "nombre": "Frustración",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción normal",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "No es entidad médica per se",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Terapia si crónica",
+      "nota": "Emoción humana normal."
+    },
+    {
+      "nombre": "Físico: traumatismo / Psicológico: Trastorno de Estrés Postraumático (TEPT)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Lesión física O psicológica",
+      "ocurrencias_biomag": 12,
+      "enfermedades_reales": "Físico: variable según lesión · TEPT: revivencias, evitación, hiperalerta",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Físico: según lesión. TEPT: TCC con exposición, EMDR, ISRS",
+      "nota": "TEPT es condición tratable con buena evidencia para psicoterapia específica. Hemocromatosis hereditaria (mutación HFE)"
+    },
+    {
+      "nombre": "Hemocromatosis hereditaria (mutación HFE)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad genética",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Sobrecarga de hierro: cirrosis, diabetes, cardiomiopatía",
+      "transmision": "Hereditaria (autosómica recesiva)",
+      "tratamiento_medico": "Flebotomías periódicas",
+      "nota": "Detección temprana previene daño orgánico. Hipertensión arterial (HTA) — usado en 19 pares biomagnéticos"
+    },
+    {
+      "nombre": "Hipertensión arterial (HTA)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad cardiovascular crónica",
+      "ocurrencias_biomag": 19,
+      "enfermedades_reales": "Por sí misma; factor de riesgo principal para ACV, infarto, nefropatía, retinopatía",
+      "transmision": "No transmisible. Factores: edad, genética, obesidad, sodio, alcohol, estrés",
+      "tratamiento_medico": "IECA/ARA-II, calcioantagonistas, diuréticos; cambios de estilo de vida",
+      "nota": "Asesino silencioso. >1 billón de personas afectadas. Control reduce drásticamente eventos cardiovasculares. Hostilidad/Resentimiento — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Hostilidad/Resentimiento",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción compleja",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "No es trastorno mental por sí; asociado a problemas relacionales",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Psicoterapia si interfiere con la vida",
+      "nota": "Emoción humana, no enfermedad. Infarto agudo de miocardio (IAM)"
+    },
+    {
+      "nombre": "Infarto agudo de miocardio (IAM)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Necrosis tisular",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Necrosis miocárdica por oclusión coronaria",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Angioplastía urgente, fibrinolíticos, antiplaquetarios, estatinas",
+      "nota": "Emergencia: 'tiempo es músculo'. Mortalidad reducida drásticamente con tratamiento moderno."
+    },
+    {
+      "nombre": "Infertilidad (1 año sin concepción)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Condición reproductiva",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Causas: factor masculino (40%), femenino (40%), mixto/inexplicado",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Inducción ovulatoria, IIU, FIV/ICSI, donación de gametos",
+      "nota": "Afecta ~15% de parejas. Causas variables; evaluación médica esencial. Edad es factor principal. Ira/Enojo — usado en 25 pares biomagnéticos"
+    },
+    {
+      "nombre": "Ira/Enojo",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción primaria",
+      "ocurrencias_biomag": 25,
+      "enfermedades_reales": "Si descontrolada: trastorno explosivo intermitente",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "TCC, manejo emocional",
+      "nota": "Emoción normal; problemática cuando es desproporcionada o descontrolada. Menopausia (cese de menstruación >12 meses)"
+    },
+    {
+      "nombre": "Menopausia (cese de menstruación >12 meses)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Fase fisiológica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Síntomas vasomotores, osteoporosis, atrofia urogenital",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Terapia hormonal de reemplazo si síntomas severos; bisfosfonatos para osteoporosis",
+      "nota": "Proceso fisiológico, no enfermedad. THR efectiva en sofocos pero con riesgos. Miedo — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Miedo",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Emoción primaria",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Si patológico: ver Fobias",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "TCC con exposición",
+      "nota": "Miedo es función de supervivencia; fobia es miedo patológico. Mycosis — usado en 17 pares biomagnéticos"
+    },
+    {
+      "nombre": "Mycosis",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Infección fúngica (término general)",
+      "ocurrencias_biomag": 17,
+      "enfermedades_reales": "Cualquier infección por hongos: superficial, cutánea, subcutánea, sistémica",
+      "transmision": "Variable",
+      "tratamiento_medico": "Antifúngicos según tipo",
+      "nota": "Término genérico, no enfermedad específica."
+    },
+    {
+      "nombre": "Neoplasia maligna (múltiples tipos)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Conjunto de enfermedades por crecimiento celular desregulado",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": ">200 tipos: carcinomas, sarcomas, leucemias, linfomas",
+      "transmision": "Generalmente no transmisible (algunos virales: VPH, VHB/C, EBV, H. pylori)",
+      "tratamiento_medico": "Cirugía, quimioterapia, radioterapia, inmunoterapia, terapias dirigidas; según tipo y estadio",
+      "nota": "Segunda causa de muerte mundial. Detección temprana mejora pronóstico drásticamente. El biomagnetismo NO trata cáncer. Neoplasias benignas o malignas — usado en 24 pares biomagnéticos"
+    },
+    {
+      "nombre": "Neoplasias benignas o malignas",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Crecimiento celular anormal",
+      "ocurrencias_biomag": 24,
+      "enfermedades_reales": "Ver Cáncer (para malignos) · Benignos: lipomas, fibromas, miomas, etc.",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Depende de tipo, ubicación, malignidad",
+      "nota": "Tumor ≠ cáncer. Muchos tumores son benignos. Estudio histopatológico es esencial. Neumonía bacteriana, viral, fúngica, atípica — usado en 3 pares biomagnéticos"
+    },
+    {
+      "nombre": "Neumonía bacteriana, viral, fúngica, atípica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Infección pulmonar",
+      "ocurrencias_biomag": 3,
+      "enfermedades_reales": "Adquirida en comunidad o nosocomial",
+      "transmision": "Aérea generalmente",
+      "tratamiento_medico": "Antibióticos empíricos: amoxicilina, macrólidos; ceftriaxona en hospitalizada",
+      "nota": "Causa importante de mortalidad. S. pneumoniae es agente más común en NAC. Neumotórax (aire en pleura)"
+    },
+    {
+      "nombre": "Neumotórax (aire en pleura)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Patología pulmonar",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Espontáneo o traumático; a tensión es emergencia",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Drenaje torácico; toracoscopia si recurrente",
+      "nota": "A tensión: emergencia con descompresión inmediata. No es entidad médica — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "No es entidad médica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Comportamiento",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Terapia de pareja si afecta relación",
+      "nota": "Asunto interpersonal y ético, no médico."
+    },
+    {
+      "nombre": "No es entidad médica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Concepto no médico",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "No aplicable",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Apoyo psicológico si genera angustia parental",
+      "nota": "Concepto del biomagnetismo sin base médica. No es entidad nosológica — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "No es entidad nosológica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Rasgo de personalidad",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Si severo y persistente: puede asociarse a depresión, distimia",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "TCC si afecta funcionamiento",
+      "nota": "Rasgo, no enfermedad. Si causa sufrimiento: evaluación. Obesidad (IMC ≥30) — usado en 13 pares biomagnéticos"
+    },
+    {
+      "nombre": "Obesidad (IMC ≥30)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad crónica multifactorial",
+      "ocurrencias_biomag": 13,
+      "enfermedades_reales": "Asociada a: DM2, hipertensión, dislipidemia, cardiopatía, varios cánceres, apnea del sueño",
+      "transmision": "No transmisible. Factores: dieta, sedentarismo, genéticos, hormonales, ambientales",
+      "tratamiento_medico": "Cambios estilo de vida, farmacoterapia (GLP-1: semaglutida), cirugía bariátrica",
+      "nota": "Pandemia global. Tratamiento médico moderno con análogos de GLP-1 muy efectivo. Obsesiones (componente del TOC)"
+    },
+    {
+      "nombre": "Obsesiones (componente del TOC)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Pensamiento intrusivo",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "TOC",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Ver TOC",
+      "nota": "Si frecuentes y angustiantes: evaluar TOC. Orientación de valores materialistas — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Orientación de valores materialistas",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Rasgo de personalidad/valor (no enfermedad)",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "No es enfermedad mental",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "No aplicable",
+      "nota": "El materialismo no es entidad nosológica. El biomagnetismo lo asocia a pares específicos, sin base científica."
+    },
+    {
+      "nombre": "Osteoartritis (OA)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad articular degenerativa",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Degeneración del cartílago articular",
+      "transmision": "No transmisible. Factores: edad, sobrepeso, trauma, genética",
+      "tratamiento_medico": "Analgesia, fisioterapia, infiltraciones; reemplazo articular en avanzada",
+      "nota": "Forma más común de artritis. Diferente de artritis reumatoide (autoinmune). Plaquetopenia — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Plaquetopenia",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Alteración hematológica",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "PTI, PTT, sepsis, fármacos, hipertensión gestacional",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Según causa",
+      "nota": "Plaquetas <150,000. Riesgo de sangrado si <20,000-50,000. Proceso inflamatorio — usado en 6 pares biomagnéticos"
+    },
+    {
+      "nombre": "Proceso inflamatorio",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Respuesta biológica",
+      "ocurrencias_biomag": 6,
+      "enfermedades_reales": "Componente de múltiples enfermedades",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Antiinflamatorios; tratar causa subyacente",
+      "nota": "La inflamación es respuesta protectora; cronicidad es patológica. Púrpura (palpable o no palpable)"
+    },
+    {
+      "nombre": "Púrpura (palpable o no palpable)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Lesión cutánea hemorrágica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "PTI, PTT, vasculitis, alteraciones de coagulación",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según causa",
+      "nota": "Diagnóstico diferencial amplio. Reacción de hipersensibilidad (tipos I-IV) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "Reacción de hipersensibilidad (tipos I-IV)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Reacción inmunológica",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Rinitis alérgica, asma, anafilaxia, dermatitis, urticaria, alergia alimentaria",
+      "transmision": "No transmisible. Predisposición genética.",
+      "tratamiento_medico": "Evitación, antihistamínicos, corticoides, adrenalina (anafilaxia), inmunoterapia específica",
+      "nota": "Anafilaxia puede ser mortal: epinefrina IM inmediata."
+    },
+    {
+      "nombre": "Rinitis alérgica estacional o perenne",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad alérgica",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "Síntomas nasales por alergenos",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Antihistamínicos, corticoides nasales, inmunoterapia específica",
+      "nota": "Una de las enfermedades crónicas más comunes. Rosácea — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Rosácea",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad cutánea inflamatoria crónica",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Eritema facial, telangiectasias, pápulas, pústulas",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Metronidazol tópico, ivermectina, doxiciclina, láser",
+      "nota": "Asociación con Demodex folliculorum (ácaro). Síndrome de Fatiga Crónica / Encefalomielitis Miálgica"
+    },
+    {
+      "nombre": "Síndrome de Fatiga Crónica / Encefalomielitis Miálgica",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Síndrome",
+      "ocurrencias_biomag": null,
+      "enfermedades_reales": "EM/SFC",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Manejo sintomático, pacing, evitar ejercicio gradual excesivo",
+      "nota": "Reconocida como enfermedad real; mucha investigación post-COVID. Síndrome de Inmunodeficiencia Adquirida — usado en 5 pares biomagnéticos"
+    },
+    {
+      "nombre": "Síndrome de Inmunodeficiencia Adquirida",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Síndrome (estadio avanzado de infección por VIH)",
+      "ocurrencias_biomag": 5,
+      "enfermedades_reales": "Infecciones oportunistas · Sarcoma de Kaposi · Linfomas asociados · Tuberculosis · Candidiasis sistémica",
+      "transmision": "Es el estadio terminal de la infección por VIH no tratada",
+      "tratamiento_medico": "Terapia antirretroviral intensiva + tratamiento de infecciones oportunistas",
+      "nota": "SIDA y VIH no son sinónimos: SIDA es el estadio avanzado. Con TAR efectivo, muchas personas con VIH nunca desarrollan SIDA. Síndrome general de adaptación (Selye) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "SIDA. Síndrome general de adaptación (Selye)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Respuesta fisiológica/psicológica",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Crónico: HTA, cardiopatía, depresión, ansiedad, inmunosupresión",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Técnicas de manejo, terapia, ejercicio, mindfulness; tratar causa",
+      "nota": "Estrés agudo es adaptativo; crónico es patológico."
+    },
+    {
+      "nombre": "Trastorno por uso de nicotina",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Adicción",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Causa: cáncer de pulmón, EPOC, cardiopatía isquémica, ACV",
+      "transmision": "No transmisible. Adicción.",
+      "tratamiento_medico": "Terapia conductual, reemplazo nicotínico, vareniclina, bupropión",
+      "nota": "Causa principal de muerte prevenible mundial. Cesación reduce drásticamente riesgo de cáncer y cardiopatía. Vacunación / Inmunización — usado en 2 pares biomagnéticos"
+    },
+    {
+      "nombre": "Vacunación / Inmunización",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Intervención preventiva",
+      "ocurrencias_biomag": 2,
+      "enfermedades_reales": "Prevención de enfermedades infecciosas",
+      "transmision": "No aplicable",
+      "tratamiento_medico": "Las vacunas SON una intervención preventiva, no requieren tratamiento",
+      "nota": "Las vacunas son uno de los mayores avances de la medicina. Salvan millones de vidas/año. Mitos antivacunas refutados por evidencia masiva. NO causan autismo (estudio fraudulento de Wakefield retractado). Virus de la enfermedad de Newcastle (Avulavirus) — usado en 4 pares biomagnéticos"
+    },
+    {
+      "nombre": "evidencia masiva. NO causan autismo (estudio fraudulento de Wakefield retractado). Virus de la enfermedad de Newcastle (Avulavirus)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad viral aviar (zoonosis menor)",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Enfermedad de Newcastle en aves; conjuntivitis leve autolimitada en humanos por exposición",
+      "transmision": "Entre aves; humanos por exposición ocupacional",
+      "tratamiento_medico": "Vacunación aviar",
+      "nota": "Enfermedad principalmente avícola. En humanos solo causa conjuntivitis leve. Virus del moquillo canino (Canine distemper virus, Morbillivirus) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Virus del moquillo canino (Canine distemper virus, Morbillivirus)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Enfermedad viral animal (NO humana)",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Moquillo canino - NO afecta humanos clínicamente",
+      "transmision": "Entre perros y otros canidos",
+      "tratamiento_medico": "Vacunación canina; soporte en animales infectados",
+      "nota": "El moquillo es enfermedad VETERINARIA. No causa enfermedad humana documentada. Su mención en pares de biomagnetismo no tiene fundamento microbiológico. Ya no se usa en clasificaciones modernas (DSM-5, ICD-11) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "biomagnetismo no tiene fundamento microbiológico. Ya no se usa en clasificaciones modernas (DSM-5, ICD-11)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Término obsoleto",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Concepto histórico para trastornos de ansiedad/depresivos sin pérdida de realidad",
+      "transmision": "No transmisible",
+      "tratamiento_medico": "Específico según diagnóstico actual",
+      "nota": "Término freudiano descartado en clasificaciones diagnósticas modernas. Ahora se usan diagnósticos específicos."
+    },
+    {
+      "nombre": "Ácaros (Sarcoptes, Demodex, Dermatophagoides)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Artrópodos microscópicos",
+      "ocurrencias_biomag": 4,
+      "enfermedades_reales": "Sarna (Sarcoptes) · Demodicidosis · Alergia respiratoria (ácaros del polvo)",
+      "transmision": "Contacto, ambiental",
+      "tratamiento_medico": "Permetrina, ivermectina; control ambiental para alergia",
+      "nota": "Ácaros del polvo (Dermatophagoides) son alérgenos importantes. Úlcera (péptica, varicosa, por presión, etc.) — usado en 1 pares biomagnéticos"
+    },
+    {
+      "nombre": "Úlcera (péptica, varicosa, por presión, etc.)",
+      "categoria": "OTRAS CONDICIONES",
+      "tipo": "Lesión",
+      "ocurrencias_biomag": 1,
+      "enfermedades_reales": "Gástrica, duodenal, varicosa, decúbito",
+      "transmision": "Péptica por H. pylori, sí",
+      "tratamiento_medico": "IBP + erradicación de H. pylori (péptica); cuidados de heridas",
+      "nota": "Revolución de Marshall: H. pylori causa la mayoría de úlceras pépticas, NO el estrés (mito)."
+    }
+  ]
+}
