@@ -1,0 +1,18 @@
+{
+  "cursor": 31515,
+  "total_sent": 31515,
+  "run_count": 0,
+  "history": [],
+  "pending_run": {
+    "date": "2026-04-10",
+    "run_number": 1,
+    "run_span_start": 1,
+    "run_span_end": 1,
+    "days_caught_up": 1,
+    "target_limit": 999999,
+    "combined_limits": [
+      999999
+    ],
+    "processed": 31515
+  }
+}

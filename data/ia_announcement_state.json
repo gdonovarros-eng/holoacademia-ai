@@ -1,0 +1,62 @@
+{
+  "cursor": 49667,
+  "total_sent": 48820,
+  "run_count": 3,
+  "history": [
+    {
+      "run_number": 1,
+      "run_span_start": 1,
+      "run_span_end": 1,
+      "days_caught_up": 1,
+      "date": "2026-04-08",
+      "started_at_utc": "2026-04-08T17:18:25Z",
+      "finished_at_utc": "2026-04-08T22:26:29Z",
+      "target_limit": 16556,
+      "combined_limits": [
+        16556
+      ],
+      "attempted": 15555,
+      "sent": 15555,
+      "failed": 0,
+      "cursor_after_run": 16556,
+      "mode": "execute"
+    },
+    {
+      "run_number": 2,
+      "run_span_start": 2,
+      "run_span_end": 2,
+      "days_caught_up": 1,
+      "date": "2026-04-09",
+      "started_at_utc": "2026-04-09T15:52:13Z",
+      "finished_at_utc": "2026-04-09T21:17:13Z",
+      "target_limit": 16556,
+      "combined_limits": [
+        16556
+      ],
+      "attempted": 16388,
+      "sent": 16388,
+      "failed": 0,
+      "cursor_after_run": 33112,
+      "mode": "execute"
+    },
+    {
+      "run_number": 3,
+      "run_span_start": 3,
+      "run_span_end": 3,
+      "days_caught_up": 1,
+      "date": "2026-04-10",
+      "started_at_utc": "2026-04-10T14:01:51Z",
+      "finished_at_utc": "2026-04-10T19:32:58Z",
+      "target_limit": 16555,
+      "combined_limits": [
+        16555
+      ],
+      "attempted": 16555,
+      "sent": 16555,
+      "failed": 0,
+      "cursor_after_run": 49667,
+      "mode": "execute"
+    }
+  ],
+  "last_run_date": "2026-04-10"
+}

@@ -1,0 +1,11 @@
+{
+  "daily_limits": [
+    16556,
+    16556,
+    16555
+  ],
+  "default_rate_per_second": 1.0,
+  "pause_after_plan": true,
+  "pause_message": "La campana de anuncio de 3 dias ya termino. Antes de extenderla, revisa metricas y decide si quieres una nueva tanda.",
+  "notes": "Campana separada del warm-up. Audiencia deduplicada de Clientes Holo 1, Clientes Holo 2 y Base de Datos Brevo. Ejecutar una sola tanda por dia, despues de las 08:00 hora local, con catch-up automatico si el equipo estuvo suspendido."
+}
