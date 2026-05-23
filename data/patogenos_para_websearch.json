@@ -1,0 +1,685 @@
+{
+  "total": 136,
+  "lista": [
+    {
+      "patogeno": "Espiroqueta",
+      "patogeno_clean_attempt": "Espiroquetas (filo Spirochaetes: Treponema, Borrelia, Leptospira)",
+      "ocurrencias": 8
+    },
+    {
+      "patogeno": "Trycophyto",
+      "patogeno_clean_attempt": "Trichophyton",
+      "ocurrencias": 4
+    },
+    {
+      "patogeno": "Cryptococus Neoformans",
+      "patogeno_clean_attempt": "Cryptococcus neoformans",
+      "ocurrencias": 3
+    },
+    {
+      "patogeno": "Herpes V",
+      "patogeno_clean_attempt": "Herpesvirus",
+      "ocurrencias": 3
+    },
+    {
+      "patogeno": "Flavivicus",
+      "patogeno_clean_attempt": "Flavivirus",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "DE BACTERIAS GENERALES",
+      "patogeno_clean_attempt": "DE BACTERIAS GENERALES",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Mico sis",
+      "patogeno_clean_attempt": "Micosis",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "VIH 1 (SID A)",
+      "patogeno_clean_attempt": "VIH 1 (SID A)",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Polig lobul ina",
+      "patogeno_clean_attempt": "Polig lobul ina",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Reservorio DE MENINGOCOCCUS",
+      "patogeno_clean_attempt": "Reservorio DE MENINGOCOCCUS",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Amor fo entre levad ura y hong o",
+      "patogeno_clean_attempt": "Sin clasificar (forma amorfa entre levadura y hongo)",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "DEL VIH",
+      "patogeno_clean_attempt": "VIH",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "hongo vadonde",
+      "patogeno_clean_attempt": "hongo vadonde",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Bena vides",
+      "patogeno_clean_attempt": "Bena vides",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Durá n",
+      "patogeno_clean_attempt": "Durá n",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "Malassezia Furfur",
+      "patogeno_clean_attempt": "Malassezia Furfur",
+      "ocurrencias": 2
+    },
+    {
+      "patogeno": "pineal",
+      "patogeno_clean_attempt": "pineal",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Serratia Fonticola",
+      "patogeno_clean_attempt": "Serratia fonticola",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Criptocococus",
+      "patogeno_clean_attempt": "Cryptococcus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Tiña del Cuero Cabelludo",
+      "patogeno_clean_attempt": "Tiña del cuero cabelludo (Trichophyton)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "QUIT O",
+      "patogeno_clean_attempt": "QUIT O",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Chap ingo",
+      "patogeno_clean_attempt": "Chap ingo",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Tifo exantemático",
+      "patogeno_clean_attempt": "Tifo exantemático (Rickettsia prowazekii)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Berlí n",
+      "patogeno_clean_attempt": "Berlí n",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Filaria",
+      "patogeno_clean_attempt": "Wuchereria bancrofti / Brugia",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Neocardia americana",
+      "patogeno_clean_attempt": "Nocardia americana",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Estaf iloco co epide rmis",
+      "patogeno_clean_attempt": "Estaf iloco co epide rmis",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Gripe Aviar",
+      "patogeno_clean_attempt": "Influenza A H5N1 (Gripe aviar)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Disf. Glan dular",
+      "patogeno_clean_attempt": "Disf. Glan dular",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Carácter (David)",
+      "patogeno_clean_attempt": "Carácter (David)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Sinu sitis front al",
+      "patogeno_clean_attempt": "Sinu sitis front al",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Sincicial Resp",
+      "patogeno_clean_attempt": "Sincicial Resp",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "hongo debe estar",
+      "patogeno_clean_attempt": "hongo debe estar",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Toxoides",
+      "patogeno_clean_attempt": "Toxoides",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Escabiosis o sama. Problemas cutáneos tipo dermatitis, causa la alopecia ariata (se cae el pelo por mechones), se trasmite por el pelo de animales al asociarse con otro da falso Cáncer de lengua o laringe",
+      "patogeno_clean_attempt": "Escabiosis o sama. Problemas cutáneos tipo dermatitis, causa la alopecia ariata (se cae el pelo por mechones), se trasmite por el pelo de animales al asociarse con otro da falso Cáncer de lengua o laringe",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "RhinoVirus",
+      "patogeno_clean_attempt": "RhinoVirus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Rosario PAR MOMENTÁNEO",
+      "patogeno_clean_attempt": "Rosario PAR MOMENTÁNEO",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Diste mper canin oMoq uillo",
+      "patogeno_clean_attempt": "Diste mper canin oMoq uillo",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "ARACELI",
+      "patogeno_clean_attempt": "ARACELI",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Herpes II",
+      "patogeno_clean_attempt": "Herpes II",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Marimar",
+      "patogeno_clean_attempt": "Marimar",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "MMJ B",
+      "patogeno_clean_attempt": "MMJ B",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Generales Reservorio",
+      "patogeno_clean_attempt": "Generales Reservorio",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Serra tiafonti cola",
+      "patogeno_clean_attempt": "Serratia fonticola",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Poliglobulia (Lucio)",
+      "patogeno_clean_attempt": "Poliglobulia (Lucio)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Eritr ocito s",
+      "patogeno_clean_attempt": "Eritr ocito s",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Álvaro",
+      "patogeno_clean_attempt": "Álvaro",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Legionella",
+      "patogeno_clean_attempt": "Legionella",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "hongo directo al",
+      "patogeno_clean_attempt": "hongo directo al",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Aftosa",
+      "patogeno_clean_attempt": "Aftosa",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Triquinosis",
+      "patogeno_clean_attempt": "Triquinosis",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Bortonella Henselae",
+      "patogeno_clean_attempt": "Bortonella Henselae",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Hlico bacte rPylor i",
+      "patogeno_clean_attempt": "Hlico bacte rPylor i",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Estreptococo Beta Hemolítico",
+      "patogeno_clean_attempt": "Streptococcus beta hemolítico",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Estreptococo alfa",
+      "patogeno_clean_attempt": "Estreptococo alfa",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Togaviridae del genero Rubivirus Rubéola",
+      "patogeno_clean_attempt": "Togaviridae del genero Rubivirus Rubéola",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Kado",
+      "patogeno_clean_attempt": "Kado",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Mycoplasma Pneumoniae 2 y/o Strep toco cus A Pyog enes",
+      "patogeno_clean_attempt": "Mycoplasma Pneumoniae 2 y/o Strep toco cus A Pyog enes",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Pleuritis",
+      "patogeno_clean_attempt": "Pleuritis",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Reservorio (Moisés)",
+      "patogeno_clean_attempt": "Reservorio (Moisés)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Rubé n",
+      "patogeno_clean_attempt": "Rubé n",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Epstein Bar Reservorio",
+      "patogeno_clean_attempt": "Epstein Bar Reservorio",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Pueb la",
+      "patogeno_clean_attempt": "Pueb la",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Zoster ysu Reservorio",
+      "patogeno_clean_attempt": "Zoster ysu Reservorio",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Estómago – Suprarrenales",
+      "patogeno_clean_attempt": "Estómago – Suprarrenales",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Endilomax Nana",
+      "patogeno_clean_attempt": "Endilomax Nana",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "CHACHIT A",
+      "patogeno_clean_attempt": "CHACHIT A",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Vello nella Oste omye litis",
+      "patogeno_clean_attempt": "Vello nella Oste omye litis",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Vellonella",
+      "patogeno_clean_attempt": "Vellonella",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Amorfo entre levadura y",
+      "patogeno_clean_attempt": "Amorfo entre levadura y",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Derecho",
+      "patogeno_clean_attempt": "Derecho",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Klep siella Pneu moni ae",
+      "patogeno_clean_attempt": "Klep siella Pneu moni ae",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Rhizopus",
+      "patogeno_clean_attempt": "Rhizopus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Toxacara",
+      "patogeno_clean_attempt": "Toxacara",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "DEL Herpes ZOSTER",
+      "patogeno_clean_attempt": "DEL Herpes ZOSTER",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Rabla",
+      "patogeno_clean_attempt": "Rabla",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Chlostrydium Malignum",
+      "patogeno_clean_attempt": "Chlostrydium Malignum",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "PRA DA",
+      "patogeno_clean_attempt": "PRA DA",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Parásito intestinal no",
+      "patogeno_clean_attempt": "Parásito intestinal no",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "AH1N7",
+      "patogeno_clean_attempt": "AH1N7",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Ramsés Adenovirus 36",
+      "patogeno_clean_attempt": "Ramsés Adenovirus 36",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Verru gas",
+      "patogeno_clean_attempt": "Verru gas",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Chlostrydium Botulinum",
+      "patogeno_clean_attempt": "Chlostrydium Botulinum",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "I ntoxicación por metales pesados. Pancreatitis. Se produce una toxina (metales como mercurio o plomo)que genera un estado psicológico en el paciente con conductas atípicas afectando al SNC Se asocia con la faciola hepática",
+      "patogeno_clean_attempt": "I ntoxicación por metales pesados. Pancreatitis. Se produce una toxina (metales como mercurio o plomo)que genera un estado psicológico en el paciente con conductas atípicas afectando al SNC Se asocia con la faciola hepática",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Disfu nció nDuod enal",
+      "patogeno_clean_attempt": "Disfu nció nDuod enal",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Tiña delas Manos",
+      "patogeno_clean_attempt": "Tiña delas Manos",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Providencia Stuartil",
+      "patogeno_clean_attempt": "Providencia Stuartil",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Solitaria",
+      "patogeno_clean_attempt": "Solitaria",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Tricomonas",
+      "patogeno_clean_attempt": "Tricomonas",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Vacci niaExan temá tica",
+      "patogeno_clean_attempt": "Vacci niaExan temá tica",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Herpes 1",
+      "patogeno_clean_attempt": "Herpes 1",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Viruela Exantemática",
+      "patogeno_clean_attempt": "Viruela Exantemática",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Hongo Inguinal",
+      "patogeno_clean_attempt": "Hongo Inguinal",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Herpes Zoster",
+      "patogeno_clean_attempt": "Herpes Zoster",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "BSRAO SV",
+      "patogeno_clean_attempt": "BSRAO SV",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Entoameba histolítica",
+      "patogeno_clean_attempt": "Entoameba histolítica",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Colon Transverso, Bochornos con transpiración, Dolor de cabeza",
+      "patogeno_clean_attempt": "Colon Transverso, Bochornos con transpiración, Dolor de cabeza",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "VIH Reservorio",
+      "patogeno_clean_attempt": "VIH Reservorio",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "V.LHRESERVORIO",
+      "patogeno_clean_attempt": "V.LHRESERVORIO",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Alex",
+      "patogeno_clean_attempt": "Alex",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Disfu nció nintes tinal",
+      "patogeno_clean_attempt": "Disfu nció nintes tinal",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Providencia Stuartii",
+      "patogeno_clean_attempt": "Providencia Stuartii",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Pasci ano oTenn isElbo w",
+      "patogeno_clean_attempt": "Pasci ano oTenn isElbo w",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Reservorio Especial y Disfunción",
+      "patogeno_clean_attempt": "Reservorio Especial y Disfunción",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Legionella Asoc iado",
+      "patogeno_clean_attempt": "Legionella Asoc iado",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Cocc idiod o Inmit is Neisseria Meningitis Meni ngoc oco.",
+      "patogeno_clean_attempt": "Cocc idiod o Inmit is Neisseria Meningitis Meni ngoc oco.",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "E. Coli",
+      "patogeno_clean_attempt": "E. Coli",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Regula sistema nervioso",
+      "patogeno_clean_attempt": "Regula sistema nervioso",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Leptospira",
+      "patogeno_clean_attempt": "Leptospira",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "HTL V3 Retrovirus",
+      "patogeno_clean_attempt": "HTL V3 Retrovirus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Citoplasma caps.",
+      "patogeno_clean_attempt": "Citoplasma caps.",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Especial Toxi nasdel riñón",
+      "patogeno_clean_attempt": "Especial Toxi nasdel riñón",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Citoplasma Caps",
+      "patogeno_clean_attempt": "Citoplasma Caps",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Cryto cocc us",
+      "patogeno_clean_attempt": "Cryto cocc us",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Tripanosoma gambi",
+      "patogeno_clean_attempt": "Tripanosoma gambi",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Roseóla",
+      "patogeno_clean_attempt": "Roséola infantil (HHV-6, HHV-7)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Reumatis moArtic ular",
+      "patogeno_clean_attempt": "Reumatismo articular",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Reumatismo",
+      "patogeno_clean_attempt": "Reumatismo (artritis reumatoide)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Rose ola. Neur oder matit is Herpes 6",
+      "patogeno_clean_attempt": "Rose ola. Neur oder matit is Herpes 6",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Disfu nció nPara simp ática",
+      "patogeno_clean_attempt": "Disfu nció nPara simp ática",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Especial Vegi nitis",
+      "patogeno_clean_attempt": "Especial Vegi nitis",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Faek alAlkal inzin g",
+      "patogeno_clean_attempt": "Faek alAlkal inzin g",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Regula el S. N. Parasimpático",
+      "patogeno_clean_attempt": "Regula el S. N. Parasimpático",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Burkholderia Cepacia",
+      "patogeno_clean_attempt": "Burkholderia cepacia",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Herpe V",
+      "patogeno_clean_attempt": "Herpesvirus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Intestinal yVirus",
+      "patogeno_clean_attempt": "Intestinal yVirus",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Parásitos intestinales",
+      "patogeno_clean_attempt": "Parásitos intestinales",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Ureoplasma Urealyticum",
+      "patogeno_clean_attempt": "Ureaplasma urealyticum",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Serra tiaMarc ens",
+      "patogeno_clean_attempt": "Serra tiaMarc ens",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Providencia Stuarti",
+      "patogeno_clean_attempt": "Providencia stuartii",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "de ovarios",
+      "patogeno_clean_attempt": "de ovarios",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Leptospirosis",
+      "patogeno_clean_attempt": "Leptospira interrogans",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Castañeda",
+      "patogeno_clean_attempt": "Castañeda",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Intoxicación por bismuto",
+      "patogeno_clean_attempt": "Intoxicación por bismuto",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Ebola",
+      "patogeno_clean_attempt": "Virus Ebola (Filoviridae)",
+      "ocurrencias": 1
+    },
+    {
+      "patogeno": "Especial óHallu xValg us",
+      "patogeno_clean_attempt": "Especial óHallu xValg us",
+      "ocurrencias": 1
+    }
+  ]
+}

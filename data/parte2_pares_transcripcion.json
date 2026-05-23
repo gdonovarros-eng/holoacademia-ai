@@ -1,0 +1,903 @@
+{
+  "fuente": "HoloBiomagnetismo Parte 2 (Psicosomática) - Alejandro Lavín",
+  "paginas_origen": "138-145",
+  "metodo": "Transcripción manual desde imágenes renderizadas (visión multimodal)",
+  "regiones": [
+    {
+      "nombre": "Cabeza",
+      "zonas": [
+        {
+          "nombre": "Coronilla",
+          "bloques": [
+            {
+              "nombre": "Pineal",
+              "pares": [
+                "Pineal - Pineal",
+                "Pineal - Bulbo",
+                "Pineal - Cerebelo",
+                "Pineal - Próstata/Útero",
+                "Pineal - Páncreas",
+                "Pineal - Hipotálamo",
+                "Pineal - Tiroides"
+              ]
+            },
+            {
+              "nombre": "Corona",
+              "pares": [
+                "Prepineal - Vejiga",
+                "Postpineal - Postpineal",
+                "Núcleos Basales - Hipófisis",
+                "Cuerpo Calloso - Cuerpo Calloso"
+              ]
+            },
+            {
+              "nombre": "Callosidad",
+              "pares": [
+                "Borde Calloso DER - Borde Calloso IZQ",
+                "Parietal IZQ - Colon Transverso",
+                "Cisura Media - Cisura Media"
+              ]
+            },
+            {
+              "nombre": "Parietal",
+              "pares": [
+                "Parietal - Parietal",
+                "Parietal - Bulbo",
+                "Parietal (RAS) - Riñón",
+                "Cerebro RAS - Riñón RAS"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Posterior",
+          "bloques": [
+            {
+              "nombre": "Bulbo",
+              "pares": [
+                "Bulbo - Bulbo",
+                "Bulbo - Cerebelo",
+                "Bulbo - Tiroides",
+                "Bulbo - Corazón",
+                "Bulbo - Hipófisis"
+              ]
+            },
+            {
+              "nombre": "Occipital",
+              "pares": [
+                "Occipital - Occipital",
+                "Occipital - Testículo IZQ",
+                "Occipital - Parótida IZQ",
+                "Cerebelo RAS - Riñón RAS"
+              ]
+            },
+            {
+              "nombre": "Cerebelo",
+              "pares": [
+                "Cerebelo - Cerebelo",
+                "Cerebelo - Bulbo",
+                "Cerebelo - Hipófisis",
+                "Cerebelo - Tiroides",
+                "Cerebelo - Corazón",
+                "Cisura de Silvio - Cisura de Silvio"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Lateral",
+          "bloques": [
+            {
+              "nombre": "Temporal",
+              "pares": [
+                "Fronto-parietal IZQ",
+                "Amígdala Cerebral - Suprarrenal",
+                "Temporal - Temporal DER",
+                "Temporal - Temporal IZQ",
+                "Temporal RAS - Hipófisis",
+                "Temporal RAS - Riñón"
+              ]
+            },
+            {
+              "nombre": "Auricula",
+              "pares": [
+                "Oreja - Oreja",
+                "Oído - Oído",
+                "Oído DER - Riñón CONTLAT",
+                "Oído DER - Testículo DER/Ovario DER"
+              ]
+            },
+            {
+              "nombre": "Posterior",
+              "pares": [
+                "Temporo-occipital - Temporo-occipital",
+                "Retro-mastoides - Retro-mastoides",
+                "Mastoides - Mastoides",
+                "Mastoides RAS - Cervical",
+                "Mastoides - Hipófisis"
+              ]
+            },
+            {
+              "nombre": "Zona de Sien",
+              "pares": [
+                "Sien - Sien",
+                "Sien DER - Corazón",
+                "Quiasma - Quiasma",
+                "Polígono de Willis - Polígono de Willis"
+              ]
+            },
+            {
+              "nombre": "Mandibular",
+              "pares": [
+                "Preauricular - Preauricular",
+                "Preauricular - Vejiga",
+                "Rama Mandibular - Rama Mandibular",
+                "Cola de Mandibular - Páncreas",
+                "Ángulo (Gonión) - Ángulo (Gonión)"
+              ]
+            },
+            {
+              "nombre": "Parótida",
+              "pares": [
+                "Parótida - Parótida",
+                "Parótida IZQ - Pineal IZQ",
+                "Parótida DER - Ojo IZQ",
+                "Parótida DER - Tiroides",
+                "Parótida DER - Corazón"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Frente",
+          "bloques": [
+            {
+              "nombre": "Frente alta",
+              "pares": [
+                "Tálamo - Tálamo",
+                "Polo - Polo",
+                "Antecuerno - Antecuerno",
+                "Frontal DER - Frontal DER"
+              ]
+            },
+            {
+              "nombre": "Hipófisis",
+              "pares": [
+                "Hipófisis - Hipófisis",
+                "Hipófisis - Suprarrenal",
+                "Hipófisis - Mastoides IZQ",
+                "Hipófisis - Vejiga",
+                "Hipófisis - Testículo / Ovario IZQ",
+                "Hipófisis - Ovario",
+                "Hipófisis - Frontal DER"
+              ]
+            },
+            {
+              "nombre": "Frente Baja",
+              "pares": [
+                "Supraciliar - Supraciliar (Polo)",
+                "Intercilliar - Bulbo",
+                "Intercilliar - Riñón RAS",
+                "Intercilliar - Sacro",
+                "Seno frontal - Seno frontal"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Rostro",
+          "bloques": [
+            {
+              "nombre": "Ojo",
+              "pares": [
+                "Párpado - Párpado",
+                "Ojo - Ojo",
+                "Ojo - Cerebelo",
+                "Ojo - Escápula RAS"
+              ]
+            },
+            {
+              "nombre": "Anillo ocular",
+              "pares": [
+                "Piso Orbital - Piso Orbital",
+                "Piso Orbital - Cerebelo",
+                "Canto - Canto",
+                "Canto RAS - Riñón RAS",
+                "Seno frontal - Seno frontal IZQ",
+                "Maxilar IZQ - Cola de Páncreas"
+              ]
+            },
+            {
+              "nombre": "Pómulo",
+              "pares": [
+                "Pómulo - Pómulo",
+                "Pómulo - Riñón",
+                "Seno Nasal - Seno Nasal"
+              ]
+            },
+            {
+              "nombre": "Nariz",
+              "pares": [
+                "Nariz - Nariz",
+                "Maxilar Superior - Cola de Páncreas",
+                "Lengua - Lengua",
+                "Mexilar Sup - Cola de Páncreas"
+              ]
+            },
+            {
+              "nombre": "Boca",
+              "pares": [
+                "Comisura - Comisura",
+                "Dental RAS - Riñón RAS",
+                "Mandíbula - Mandíbula",
+                "Mentón - Mentón"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Cuello",
+          "bloques": [
+            {
+              "nombre": "Garganta central",
+              "pares": [
+                "Laringe - Laringe",
+                "Angina - Angina",
+                "Tiroides - Tiroides",
+                "Carótida - Carótida",
+                "Esterno-cleidomastoideo - Esterno-cleidomastoideo",
+                "Esterno-cleidomastoideo - Riñón IZQ"
+              ]
+            },
+            {
+              "nombre": "Garganta baja",
+              "pares": [
+                "Tiroides - Tiroides",
+                "Tiroides - Bulbo",
+                "Hueco de garganta - Glúteo IZQ",
+                "Paratiroides - Paratiroides",
+                "Cuello - Cuello"
+              ]
+            },
+            {
+              "nombre": "Garganta lateral",
+              "pares": [
+                "Nervio Vago - Nervio Vago",
+                "Nervio Vago - Cardias",
+                "Nudo - Nudo",
+                "Plexo cervical - Plexo cervical",
+                "Plexo cervical - Detoides"
+              ]
+            },
+            {
+              "nombre": "Mandibular",
+              "pares": [
+                "Atlas - Atlas",
+                "Atlas IZQ - Útero",
+                "Cervical 3-4 - Suprarrenal",
+                "Cervical 5 - Sacro"
+              ]
+            },
+            {
+              "nombre": "Nuca",
+              "pares": [
+                "Cervical 7 - Dorsal 1",
+                "Supraespinoso - Supraespinoso"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Tronco",
+      "zonas": [
+        {
+          "nombre": "Tórax",
+          "bloques": [
+            {
+              "nombre": "Collar",
+              "pares": [
+                "Mango del - Mango del",
+                "Costilla 1 - Costilla 1",
+                "Subclavia - Subclavia",
+                "Epiclavio - Epiclavio",
+                "Mediastino - Mediastino",
+                "Mediastino - Cerebelo"
+              ]
+            },
+            {
+              "nombre": "Timo",
+              "pares": [
+                "Timo - Timo",
+                "Timo - Hipófisis",
+                "Timo - Parietal",
+                "Timo - Testículo RAS / Ovario RAS",
+                "Timo - Recto",
+                "Timo - Bazo"
+              ]
+            },
+            {
+              "nombre": "Anahata",
+              "pares": [
+                "Esternón - Esternón",
+                "Esternón - Bazo",
+                "Tráquea - Tráquea",
+                "Tráquea - Corazón",
+                "Esófago - Esófago",
+                "Esófago - Hiato esofágico",
+                "Esófago - Vejiga IZQ"
+              ]
+            },
+            {
+              "nombre": "Pecho bajo",
+              "pares": [
+                "Cardias - Carina",
+                "Hiato esofágico - Lengua",
+                "Hiato esofágico - Testículo DER / Ovario DER",
+                "Hiato esofágico - Esófago"
+              ]
+            },
+            {
+              "nombre": "Costal",
+              "pares": [
+                "Cardias - Suprarrenal",
+                "Cardias - Esófago",
+                "Cardias - Testículo / Ovario DER",
+                "Condral - Condral"
+              ]
+            },
+            {
+              "nombre": "Diafragma",
+              "pares": [
+                "Diafragma - Diafragma",
+                "Diafragma - Riñón IZQ",
+                "Costilla 7 - Costilla 7"
+              ]
+            },
+            {
+              "nombre": "Corazón",
+              "pares": [
+                "Coronarias - Pulmón IZQ",
+                "Seno Auriculo - Riñón IZQ",
+                "Corazón - Corazón",
+                "Corazón - Páncreas"
+              ]
+            },
+            {
+              "nombre": "Pecho lateral",
+              "pares": [
+                "Pectoral Interior - Pectoral Interior",
+                "Pectoral - Pectoral",
+                "Pectoral DER - Gemelos IZQ",
+                "Axila - Axila"
+              ]
+            },
+            {
+              "nombre": "Pleura",
+              "pares": [
+                "Pleura - Pleura",
+                "Pleura DER - Pleura DER",
+                "Pleura - Peritoneo",
+                "Pleura - Pleura IZQ"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Hepatitis",
+          "bloques": [
+            {
+              "nombre": "Bloque 1",
+              "pares": [
+                "Colon Descendente - Hígado",
+                "Hígado - Pleura",
+                "Hígado - Hígado",
+                "Duodeno - Hígado"
+              ]
+            },
+            {
+              "nombre": "Bloque 2",
+              "pares": [
+                "Colon Ascendente - Hígado",
+                "Costo hepático - Hígado",
+                "Colon Transverso - Hígado",
+                "Cola de Páncreas - Hígado"
+              ]
+            },
+            {
+              "nombre": "Bloque 3",
+              "pares": [
+                "Bazo - Hígado",
+                "Píloro - Hígado",
+                "Cabeza de Páncreas - Hígado",
+                "Timo - Hígado"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Abdomen",
+          "bloques": [
+            {
+              "nombre": "Estómago",
+              "pares": [
+                "Estómago - Estómago",
+                "Estómago - Bazo",
+                "Estómago - Hígado",
+                "Estómago - Suprarrenal"
+              ]
+            },
+            {
+              "nombre": "Píloro",
+              "pares": [
+                "Píloro - Píloro",
+                "Píloro - Lengua IZQ",
+                "Píloro - Ano",
+                "Píloro - Riñón IZQ",
+                "Píloro - Glúteo IZQ"
+              ]
+            },
+            {
+              "nombre": "Hígado",
+              "pares": [
+                "Hígado - Hígado",
+                "Hígado - Corazón",
+                "Hígado - Vejiga",
+                "Hígado - Cola de Páncreas",
+                "Hígado - Riñón IZQ",
+                "Ligamento Hepático - Riñón DER"
+              ]
+            },
+            {
+              "nombre": "Zona Hepática",
+              "pares": [
+                "Perihepático - Perihepático",
+                "Costal - Costal",
+                "Vesícula - Vesícula"
+              ]
+            },
+            {
+              "nombre": "Vesícula",
+              "pares": [
+                "Vesícula - Riñón DER",
+                "Conducto de Vesícula - Riñón DER",
+                "Vesícula - Páncreas"
+              ]
+            },
+            {
+              "nombre": "Bazo",
+              "pares": [
+                "Bazo - Bazo (Vertical)",
+                "Bazo - Bazo (Horizontal)",
+                "Bazo - Hipotálamo",
+                "Bazo - Duodeno",
+                "Bazo - Pulmón Izquierdo",
+                "Bazo - Costo-Diafragmático"
+              ]
+            },
+            {
+              "nombre": "Páncreas",
+              "pares": [
+                "Cabeza de Páncreas - Suprarrenal",
+                "Cuerpo de Páncreas - Cola de Páncreas",
+                "Punta de Páncreas - Bazo",
+                "Punta de Páncreas - Riñón IZQ",
+                "Ligamento Pancreático - Bazo",
+                "Conducto de Páncreas - Riñón IZQ"
+              ]
+            },
+            {
+              "nombre": "Ombligo",
+              "pares": [
+                "Epiplón - Epiplón",
+                "Uretero - Uretero",
+                "Uretero (RAS) - Riñón (RAS)",
+                "Duodeno - Duodeno",
+                "Duodeno - Hígado",
+                "Duodeno - Riñón IZQ"
+              ]
+            },
+            {
+              "nombre": "Intersección",
+              "pares": [
+                "Válvula Ileocecal - Riñón DER",
+                "Ciego - Ciego",
+                "Ciego - Riñón DER",
+                "Contracrágo - Contracrágo",
+                "Apéndice - Timo",
+                "Apéndice - Pleura IZQ"
+              ]
+            },
+            {
+              "nombre": "Colon",
+              "pares": [
+                "Colon Ascendente - Colon Descendente",
+                "Colon Ascendente - Colon Transverso",
+                "Colon Transverso - Vejiga Media",
+                "Colon Transverso - Testículo (RAS) / Ovario (RAS)",
+                "Colon Descendente - Colon Descendente",
+                "Colon Descendente - Recto",
+                "Colon Descendente - Recto",
+                "Sigmoides - Recto"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Espalda",
+          "bloques": [
+            {
+              "nombre": "Dorsales",
+              "pares": [
+                "Dorsal 2 - Dorsal 2",
+                "Dorsal 3 (RAS) - Lumbar (2 RAS)"
+              ]
+            },
+            {
+              "nombre": "Espalda alta",
+              "pares": [
+                "Cava - Cava",
+                "Suprarrenal - Suprarrenal",
+                "Suprarrenal - Pulmón (RAS)",
+                "Suprarrenal - Hígado",
+                "Suprarrenal - Recto"
+              ]
+            },
+            {
+              "nombre": "Homóplato",
+              "pares": [
+                "Pulmón - Pulmón",
+                "Pulmón DER - Bazo",
+                "Escápula - Escápula"
+              ]
+            },
+            {
+              "nombre": "Retrohepático",
+              "pares": [
+                "Lóbulo Posterior del Hígado - Riñón IZQ",
+                "Cápsula Renal - Riñón DER",
+                "Cápsula Renal - Riñón DER"
+              ]
+            },
+            {
+              "nombre": "Riñón",
+              "pares": [
+                "Riñón - Riñón",
+                "Riñón IZQ - Tiroides",
+                "Cáliz Renal (RAS) - Uretero (RAS)",
+                "Lumbar 4 - Lumbar 4",
+                "Cuadrado - Cuadrado",
+                "Staquibraquis - Staquibraquis"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Pelvis",
+      "zonas": [
+        {
+          "nombre": "Delantera",
+          "bloques": [
+            {
+              "nombre": "Pubis",
+              "pares": [
+                "Vejiga - Vejiga",
+                "Suprapúbico - Suprapúbico",
+                "Pudendo - Pudendo"
+              ]
+            },
+            {
+              "nombre": "Cadera",
+              "pares": [
+                "Cadera - Cadera",
+                "Cresta Ilíaca - Cresta Ilíaca",
+                "Nervio Inguinal - Nervio Inguinal"
+              ]
+            },
+            {
+              "nombre": "Fémur",
+              "pares": [
+                "Cuello de Fémur - Cuello de Fémur",
+                "Nervio Inguinal - Hígado",
+                "Trocánter Mayor - Trocánter Mayor",
+                "Trocánter Menor - Riñón HOMOLAT",
+                "Trocánter Mayor - Trocánter Menor"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Trasera",
+          "bloques": [
+            {
+              "nombre": "Sacro",
+              "pares": [
+                "Interilíaco - Sacro",
+                "Ilíaco - Ilíaco",
+                "Sacro - Sacro",
+                "Sacro IZQ - Femoral"
+              ]
+            },
+            {
+              "nombre": "Coxis",
+              "pares": [
+                "Coxis - Coxis",
+                "Recto - Recto",
+                "Ano - Ano"
+              ]
+            },
+            {
+              "nombre": "Trasero",
+              "pares": [
+                "Glúteo - Glúteo",
+                "Glúteo - Femoral",
+                "Rama - Rama Isquiática",
+                "Isquión - Isquión"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Sexo",
+          "bloques": [
+            {
+              "nombre": "Fémina A",
+              "pares": [
+                "Útero - Útero",
+                "Útero - Ovario (RAS)",
+                "Clítoris - Clítoris",
+                "Clítoris - Sacro",
+                "Uretra - Uretra"
+              ]
+            },
+            {
+              "nombre": "Fémina B",
+              "pares": [
+                "Vagina - Vagina",
+                "Vagina - Vejiga Media",
+                "Trompa (RAS) - Trompa",
+                "Sacro - Ovario",
+                "Sacro - Ovario IZQ"
+              ]
+            },
+            {
+              "nombre": "Macho",
+              "pares": [
+                "Cuerpo cavernoso - Cuerpo cavernoso",
+                "Testículo - Testículo",
+                "Próstata - Próstata",
+                "Próstata - Recto"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Miembros",
+      "zonas": [
+        {
+          "nombre": "Brazo",
+          "bloques": [
+            {
+              "nombre": "Brazo alto",
+              "pares": [
+                "Deltoides DER - Riñón DER",
+                "Deltoides - Bursa",
+                "Bursa - Bursa",
+                "Humero - Humero"
+              ]
+            },
+            {
+              "nombre": "Brazo Medio",
+              "pares": [
+                "Codo - Codo",
+                "Braquial - Braquial",
+                "Radio - Radio",
+                "Cúbito - Cúbito"
+              ]
+            },
+            {
+              "nombre": "Mano",
+              "pares": [
+                "Muñeca - Muñeca",
+                "Muñeca Anterior - Anterior",
+                "Muñeca - Muñeca",
+                "Posterior - Posterior",
+                "Palma - Palma",
+                "Palma (RAS) - Planta (RAS)",
+                "Dorso Mano - Dorso Mano",
+                "Índice - Índice"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Pierna",
+          "bloques": [
+            {
+              "nombre": "Pierna alta",
+              "pares": [
+                "Aductor Menor - Aductor Menor",
+                "Aductor - Aductor",
+                "Cuadriceps - Cuadriceps",
+                "Tensor Fascia Lata - Tensor Fascia Lata",
+                "Ligamento externo de rodilla - Mesenterio"
+              ]
+            },
+            {
+              "nombre": "Pierna media",
+              "pares": [
+                "Rótula - Rótula",
+                "Tibia - Tibia",
+                "Peroné - Peroné",
+                "Cíatico - Cíatico"
+              ]
+            },
+            {
+              "nombre": "Pierna baja",
+              "pares": [
+                "Aquiles alto - Aquiles alto",
+                "Aquiles bajo - Aquiles bajo",
+                "Empeine - Empeine",
+                "Poplíteo - Poplíteo"
+              ]
+            },
+            {
+              "nombre": "Pie",
+              "pares": [
+                "Dedo Gordo - Dedo Gordo",
+                "Calcáneo - Calcáneo",
+                "Plantar - Plantar"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "nombre": "Extras",
+      "zonas": [
+        {
+          "nombre": "Variables",
+          "bloques": [
+            {
+              "nombre": "Bloque 1 (Variables A)",
+              "pares": [
+                "Suprarrenal - Todo el Frente (A-F)",
+                "Par Gen (Ombligo) - Órgano/Tejido/Punto RAS",
+                "Nervio Inguinal DER - Articulación Dolorosa (1-13 RAS)"
+              ]
+            },
+            {
+              "nombre": "Bloque 2 (Variables B)",
+              "pares": [
+                "Punto Trauma - Punto Trauma",
+                "Punto Trauma - Riñón HOMOLAT",
+                "Punto Trauma - Sedante (-)",
+                "Punto Trauma - Estimulante (+)"
+              ]
+            },
+            {
+              "nombre": "Bloque 3 (Personalizado)",
+              "pares": [
+                "Par Nuevo",
+                "Biomagnetoacupuntura",
+                "Par seacuna"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Columna Vertebral",
+          "bloques": [
+            {
+              "nombre": "Predeterminados",
+              "pares": [
+                "Cervical 1 - Cervical 7",
+                "Dorsal 2 - Dorsal 12",
+                "Lumbar 1 - Lumbar 5",
+                "Sacro 1 - Sacro 1",
+                "Coxis 1 - Coxis 1"
+              ]
+            },
+            {
+              "nombre": "Homólogos",
+              "pares": [
+                "Cervical (RAS) - Cervical (RAS)",
+                "Dorsal (RAS) - Dorsal (RAS)",
+                "Lumbar (RAS) - Lumbar (RAS)",
+                "Sacro (RAS) - Sacro (RAS)",
+                "Coxis (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "nombre": "Rastreo Cervical",
+              "pares": [
+                "Cervical (RAS) - Dorsal (RAS)",
+                "Cervical (RAS) - Lumbar (RAS)",
+                "Cervical (RAS) - Sacro (RAS)",
+                "Cervical (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "nombre": "Rastreo Dorsal",
+              "pares": [
+                "Dorsal (RAS) - Cervical (RAS)",
+                "Dorsal (RAS) - Lumbar (RAS)",
+                "Dorsal (RAS) - Sacro (RAS)",
+                "Dorsal (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "nombre": "Rastreo Lumbar",
+              "pares": [
+                "Lumbar (RAS) - Cervical (RAS)",
+                "Lumbar (RAS) - Dorsal (RAS)",
+                "Lumbar (RAS) - Sacro (RAS)",
+                "Lumbar (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "nombre": "Rastreo Sacro",
+              "pares": [
+                "Sacro (RAS) - Cervical (RAS)",
+                "Sacro (RAS) - Dorsal (RAS)",
+                "Sacro (RAS) - Lumbar (RAS)",
+                "Sacro (RAS) - Coxis (RAS)"
+              ]
+            },
+            {
+              "nombre": "Rastreo coxis",
+              "pares": [
+                "Coxis (RAS) - Cervical (RAS)",
+                "Coxis (RAS) - Dorsal (RAS)",
+                "Coxis (RAS) - Lumbar (RAS)",
+                "Coxis (RAS) - Sacro (RAS)"
+              ]
+            }
+          ]
+        },
+        {
+          "nombre": "Ejes Corporales",
+          "bloques": [
+            {
+              "nombre": "Eje Vertical",
+              "pares": [
+                "Frontal DER - Sacro",
+                "Frontal IZQ - Sacro"
+              ]
+            },
+            {
+              "nombre": "Eje Horizontal",
+              "pares": [
+                "Suprarrenales (RAS) - Suprarrenales (RAS)"
+              ]
+            },
+            {
+              "nombre": "Eje Transverso",
+              "pares": [
+                "Frente - Sacro",
+                "Dorsal 2 - Sacro"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pares_de_traumatismo": {
+    "descripcion": "Pares especiales de la sección Variables - sistema de 6 pares (A-F) para traumatismos",
+    "pares": [
+      "A: Par Gen (Ombligo) - Órgano/Tejido/Punto RAS",
+      "B: Nervio Inguinal DER - Articulación Dolorosa (1-13)",
+      "C: Punto Trauma - Punto Trauma",
+      "D: Punto Trauma - Riñón RAS",
+      "E: Punto Trauma - Sedante (-)",
+      "F: Punto Trauma - Estimulante (+)"
+    ]
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "fuente": "HoloBiomagnetismo Parte 2 (Psicosomática) - Alejandro Lavín",
+  "paginas_origen": "168-171",
+  "titulo": "NUEVOS PUNTOS DE RASTREO",
+  "descripcion": "Puntos anatómicos NUEVOS que Lavín agrega en Parte 2 (no estaban en Parte 1 / Bioenergética). Estos son PUNTOS individuales, no pares — pero pueden formar pares al combinarse con otros puntos existentes.",
+  "metodo": "Transcripción manual desde imágenes de cuerpo humano con etiquetas",
+  "puntos": {
+    "frente_cuerpo": {
+      "pagina": 168,
+      "lista": [
+        "Bursa subdeltoidea",
+        "Pectoral mayor",
+        "Arteria axilar",
+        "Infratimo",
+        "Infracarina",
+        "Colédoco",
+        "Gánglios mesentéricos",
+        "Uréter",
+        "Intestino delgado e intestino grueso (BUSCAR EN ABDOMEN)",
+        "Garganta",
+        "Clavícula media",
+        "Tendón pectoral",
+        "Suprapíloro",
+        "Supracuerpo / contra de páncreas",
+        "Vena porta",
+        "Supraumbilical",
+        "Colon descendente s.III",
+        "Línea arcuata",
+        "Conducto espermático",
+        "Músculo recto anterior",
+        "Dedo medio",
+        "Vasto lateral",
+        "Cabeza de peroné",
+        "Maleolo interno",
+        "Base meñique del pie"
+      ]
+    },
+    "espalda_cuerpo": {
+      "pagina": 169,
+      "lista": [
+        "Suprapulmón",
+        "Supraescapular",
+        "Retroaxilar",
+        "Latissimus",
+        "Cáliz renal interno",
+        "Dorso ancho",
+        "Perirrenal",
+        "Glúteo menor",
+        "Bíceps femoral",
+        "Fémur posterior",
+        "Suprapoplíteo",
+        "Gemelos",
+        "Infragemelos",
+        "Soleo",
+        "Tobillo",
+        "Talón"
+      ]
+    },
+    "cara_frente": {
+      "pagina": 170,
+      "lista": [
+        "Arco cigomático",
+        "Párpado superior",
+        "Párpado inferior",
+        "Infrapómulo",
+        "Maxilar inferior",
+        "Labio",
+        "Labio superior",
+        "Labio inferior",
+        "Retronasal",
+        "Nervio facial"
+      ]
+    },
+    "cabeza_posterior_inferior": {
+      "pagina": 171,
+      "lista": [
+        "Borde cuerpo calloso",
+        "Punta de nariz",
+        "Inframentón",
+        "Submaxilar",
+        "Yugular"
+      ]
+    }
+  },
+  "asignacion_region_DB": {
+    "Cabeza > Coronilla": ["Borde cuerpo calloso"],
+    "Cabeza > Rostro": ["Arco cigomático", "Párpado superior", "Párpado inferior", "Infrapómulo", "Maxilar inferior", "Labio", "Labio superior", "Labio inferior", "Retronasal", "Nervio facial", "Punta de nariz", "Inframentón", "Submaxilar"],
+    "Cabeza > Cuello": ["Garganta", "Yugular"],
+    "Tronco > Tórax": ["Bursa subdeltoidea", "Pectoral mayor", "Arteria axilar", "Infratimo", "Infracarina", "Clavícula media", "Tendón pectoral", "Suprapulmón", "Supraescapular", "Retroaxilar", "Latissimus", "Dorso ancho"],
+    "Tronco > Abdomen": ["Colédoco", "Gánglios mesentéricos", "Uréter", "Intestino delgado e intestino grueso", "Suprapíloro", "Supracuerpo / contra de páncreas", "Vena porta", "Supraumbilical", "Colon descendente s.III", "Línea arcuata", "Conducto espermático", "Músculo recto anterior", "Cáliz renal interno", "Perirrenal"],
+    "Pelvis > Trasera": ["Glúteo menor"],
+    "Miembros > Brazo": ["Dedo medio"],
+    "Miembros > Pierna": ["Vasto lateral", "Cabeza de peroné", "Maleolo interno", "Base meñique del pie", "Bíceps femoral", "Fémur posterior", "Suprapoplíteo", "Gemelos", "Infragemelos", "Soleo", "Tobillo", "Talón"]
+  },
+  "total_puntos_nuevos": 56,
+  "nota": "Estos puntos son la base para formar nuevos pares — al combinarse con otros puntos anatómicos generan pares que probablemente NO están en biomagnetic_pairs_db.json. Lavín los marca como 'nuevos' porque amplió el atlas anatómico en Parte 2."
+}

@@ -1,0 +1,2076 @@
+{
+  "total_pares_con_patogeno": 677,
+  "patogenos_unicos": 414,
+  "lista": [
+    {
+      "patogeno": "Especial",
+      "ocurrencias": 49,
+      "norm": "especial"
+    },
+    {
+      "patogeno": "Papiloma",
+      "ocurrencias": 10,
+      "norm": "papiloma"
+    },
+    {
+      "patogeno": "UNIVERSAL",
+      "ocurrencias": 8,
+      "norm": "universal"
+    },
+    {
+      "patogeno": "Proteus Mirabilis",
+      "ocurrencias": 8,
+      "norm": "proteus mirabilis"
+    },
+    {
+      "patogeno": "Enterobacter Pneumoniae",
+      "ocurrencias": 8,
+      "norm": "enterobacter pneumoniae"
+    },
+    {
+      "patogeno": "Espiroqueta",
+      "ocurrencias": 8,
+      "norm": "espiroqueta"
+    },
+    {
+      "patogeno": "Disfunción",
+      "ocurrencias": 7,
+      "norm": "disfuncion"
+    },
+    {
+      "patogeno": "Helicobacter Pylori",
+      "ocurrencias": 7,
+      "norm": "helicobacter pylori"
+    },
+    {
+      "patogeno": "Adenovirus",
+      "ocurrencias": 6,
+      "norm": "adenovirus"
+    },
+    {
+      "patogeno": "Plasmodium",
+      "ocurrencias": 5,
+      "norm": "plasmodium"
+    },
+    {
+      "patogeno": "Yersinia Pestis",
+      "ocurrencias": 5,
+      "norm": "yersinia pestis"
+    },
+    {
+      "patogeno": "Guillain-Barré o Polirradiculo Reservorio",
+      "ocurrencias": 5,
+      "norm": "guillain-barre o polirradiculo reservorio"
+    },
+    {
+      "patogeno": "Pasteurella",
+      "ocurrencias": 5,
+      "norm": "pasteurella"
+    },
+    {
+      "patogeno": "Borrelia",
+      "ocurrencias": 5,
+      "norm": "borrelia"
+    },
+    {
+      "patogeno": "Herpes",
+      "ocurrencias": 4,
+      "norm": "herpes"
+    },
+    {
+      "patogeno": "Influenza",
+      "ocurrencias": 4,
+      "norm": "influenza"
+    },
+    {
+      "patogeno": "Streptococcus B",
+      "ocurrencias": 4,
+      "norm": "streptococcus b"
+    },
+    {
+      "patogeno": "Rotavirus",
+      "ocurrencias": 4,
+      "norm": "rotavirus"
+    },
+    {
+      "patogeno": "Cándida",
+      "ocurrencias": 4,
+      "norm": "candida"
+    },
+    {
+      "patogeno": "Bordetella Pertussis",
+      "ocurrencias": 4,
+      "norm": "bordetella pertussis"
+    },
+    {
+      "patogeno": "Trycophyto",
+      "ocurrencias": 4,
+      "norm": "trycophyto"
+    },
+    {
+      "patogeno": "Estafilococo aureus",
+      "ocurrencias": 4,
+      "norm": "estafilococo aureus"
+    },
+    {
+      "patogeno": "Chlamydia Trachomatis",
+      "ocurrencias": 4,
+      "norm": "chlamydia trachomatis"
+    },
+    {
+      "patogeno": "Escherichia Colli",
+      "ocurrencias": 4,
+      "norm": "escherichia colli"
+    },
+    {
+      "patogeno": "Mycobacterium Leprae",
+      "ocurrencias": 4,
+      "norm": "mycobacterium leprae"
+    },
+    {
+      "patogeno": "Cryptococus Neoformans",
+      "ocurrencias": 3,
+      "norm": "cryptococus neoformans"
+    },
+    {
+      "patogeno": "Newcastle",
+      "ocurrencias": 3,
+      "norm": "newcastle"
+    },
+    {
+      "patogeno": "Polioma",
+      "ocurrencias": 3,
+      "norm": "polioma"
+    },
+    {
+      "patogeno": "Listeria",
+      "ocurrencias": 3,
+      "norm": "listeria"
+    },
+    {
+      "patogeno": "Moraxella Catarrhalis",
+      "ocurrencias": 3,
+      "norm": "moraxella catarrhalis"
+    },
+    {
+      "patogeno": "Streptococcus A",
+      "ocurrencias": 3,
+      "norm": "streptococcus a"
+    },
+    {
+      "patogeno": "Cisticerco",
+      "ocurrencias": 3,
+      "norm": "cisticerco"
+    },
+    {
+      "patogeno": "Mycoplasma",
+      "ocurrencias": 3,
+      "norm": "mycoplasma"
+    },
+    {
+      "patogeno": "Staphylococcus Aureus Coagulasa",
+      "ocurrencias": 3,
+      "norm": "staphylococcus aureus coagulasa"
+    },
+    {
+      "patogeno": "Klebsiella Pneumoniae",
+      "ocurrencias": 3,
+      "norm": "klebsiella pneumoniae"
+    },
+    {
+      "patogeno": "Vibrio Cholerae",
+      "ocurrencias": 3,
+      "norm": "vibrio cholerae"
+    },
+    {
+      "patogeno": "Brucella",
+      "ocurrencias": 3,
+      "norm": "brucella"
+    },
+    {
+      "patogeno": "Escherichia Coli",
+      "ocurrencias": 3,
+      "norm": "escherichia coli"
+    },
+    {
+      "patogeno": "Leishmania",
+      "ocurrencias": 3,
+      "norm": "leishmania"
+    },
+    {
+      "patogeno": "Herpes V",
+      "ocurrencias": 3,
+      "norm": "herpes v"
+    },
+    {
+      "patogeno": "Reservorio",
+      "ocurrencias": 3,
+      "norm": "reservorio"
+    },
+    {
+      "patogeno": "Streptococcus C",
+      "ocurrencias": 3,
+      "norm": "streptococcus c"
+    },
+    {
+      "patogeno": "Dieg uer. LIND A",
+      "ocurrencias": 3,
+      "norm": "dieg uer. lind a"
+    },
+    {
+      "patogeno": "Parvovirus",
+      "ocurrencias": 3,
+      "norm": "parvovirus"
+    },
+    {
+      "patogeno": "Actinomyces",
+      "ocurrencias": 3,
+      "norm": "actinomyces"
+    },
+    {
+      "patogeno": "Guilli anBarré",
+      "ocurrencias": 2,
+      "norm": "guilli anbarre"
+    },
+    {
+      "patogeno": "Encefalitis",
+      "ocurrencias": 2,
+      "norm": "encefalitis"
+    },
+    {
+      "patogeno": "Especial Goiz",
+      "ocurrencias": 2,
+      "norm": "especial goiz"
+    },
+    {
+      "patogeno": "Entamoeba Histolytica",
+      "ocurrencias": 2,
+      "norm": "entamoeba histolytica"
+    },
+    {
+      "patogeno": "Meningitis Meni ngoc occu s",
+      "ocurrencias": 2,
+      "norm": "meningitis meni ngoc occu s"
+    },
+    {
+      "patogeno": "Dengue",
+      "ocurrencias": 2,
+      "norm": "dengue"
+    },
+    {
+      "patogeno": "Neisseria Catarralis",
+      "ocurrencias": 2,
+      "norm": "neisseria catarralis"
+    },
+    {
+      "patogeno": "Viruela",
+      "ocurrencias": 2,
+      "norm": "viruela"
+    },
+    {
+      "patogeno": "Flavivicus",
+      "ocurrencias": 2,
+      "norm": "flavivicus"
+    },
+    {
+      "patogeno": "Myco plas maHomi nis",
+      "ocurrencias": 2,
+      "norm": "myco plas mahomi nis"
+    },
+    {
+      "patogeno": "DE BACTERIAS GENERALES",
+      "ocurrencias": 2,
+      "norm": "de bacterias generales"
+    },
+    {
+      "patogeno": "Triquinella",
+      "ocurrencias": 2,
+      "norm": "triquinella"
+    },
+    {
+      "patogeno": "Streptococcus beta",
+      "ocurrencias": 2,
+      "norm": "streptococcus beta"
+    },
+    {
+      "patogeno": "Disfunción Glandular",
+      "ocurrencias": 2,
+      "norm": "disfuncion glandular"
+    },
+    {
+      "patogeno": "Mico sis",
+      "ocurrencias": 2,
+      "norm": "mico sis"
+    },
+    {
+      "patogeno": "Meningitis",
+      "ocurrencias": 2,
+      "norm": "meningitis"
+    },
+    {
+      "patogeno": "Bacilo Staphiloccocus A",
+      "ocurrencias": 2,
+      "norm": "bacilo staphiloccocus a"
+    },
+    {
+      "patogeno": "Streptococcus",
+      "ocurrencias": 2,
+      "norm": "streptococcus"
+    },
+    {
+      "patogeno": "Proteus Mirabillis",
+      "ocurrencias": 2,
+      "norm": "proteus mirabillis"
+    },
+    {
+      "patogeno": "Prote usmira billis",
+      "ocurrencias": 2,
+      "norm": "prote usmira billis"
+    },
+    {
+      "patogeno": "VIH 1 (SID A)",
+      "ocurrencias": 2,
+      "norm": "vih 1 (sid a)"
+    },
+    {
+      "patogeno": "Polig lobul ina",
+      "ocurrencias": 2,
+      "norm": "polig lobul ina"
+    },
+    {
+      "patogeno": "DEPAT XI",
+      "ocurrencias": 2,
+      "norm": "depat xi"
+    },
+    {
+      "patogeno": "Eipst einBarr",
+      "ocurrencias": 2,
+      "norm": "eipst einbarr"
+    },
+    {
+      "patogeno": "Ángeles",
+      "ocurrencias": 2,
+      "norm": "angeles"
+    },
+    {
+      "patogeno": "Streptococcus S Borta de la Pertu sis",
+      "ocurrencias": 2,
+      "norm": "streptococcus s borta de la pertu sis"
+    },
+    {
+      "patogeno": "Reservorio DE MENINGOCOCCUS",
+      "ocurrencias": 2,
+      "norm": "reservorio de meningococcus"
+    },
+    {
+      "patogeno": "Rabia",
+      "ocurrencias": 2,
+      "norm": "rabia"
+    },
+    {
+      "patogeno": "Hepatitis B",
+      "ocurrencias": 2,
+      "norm": "hepatitis b"
+    },
+    {
+      "patogeno": "Chlostirium botulinum",
+      "ocurrencias": 2,
+      "norm": "chlostirium botulinum"
+    },
+    {
+      "patogeno": "Listeria y",
+      "ocurrencias": 2,
+      "norm": "listeria y"
+    },
+    {
+      "patogeno": "Clostridium perfringes",
+      "ocurrencias": 2,
+      "norm": "clostridium perfringes"
+    },
+    {
+      "patogeno": "Chlamydia intestinalis",
+      "ocurrencias": 2,
+      "norm": "chlamydia intestinalis"
+    },
+    {
+      "patogeno": "Amor fo entre levad ura y hong o",
+      "ocurrencias": 2,
+      "norm": "amor fo entre levad ura y hong o"
+    },
+    {
+      "patogeno": "Amibiasis Intestinal",
+      "ocurrencias": 2,
+      "norm": "amibiasis intestinal"
+    },
+    {
+      "patogeno": "Plasmodium Vivax Falciporum",
+      "ocurrencias": 2,
+      "norm": "plasmodium vivax falciporum"
+    },
+    {
+      "patogeno": "Cirrosis hepática",
+      "ocurrencias": 2,
+      "norm": "cirrosis hepatica"
+    },
+    {
+      "patogeno": "Eche richi aColli",
+      "ocurrencias": 2,
+      "norm": "eche richi acolli"
+    },
+    {
+      "patogeno": "Borrelia Espiroqueta",
+      "ocurrencias": 2,
+      "norm": "borrelia espiroqueta"
+    },
+    {
+      "patogeno": "DEL VIH",
+      "ocurrencias": 2,
+      "norm": "del vih"
+    },
+    {
+      "patogeno": "virus obacterias",
+      "ocurrencias": 2,
+      "norm": "virus obacterias"
+    },
+    {
+      "patogeno": "Papiloma Virus",
+      "ocurrencias": 2,
+      "norm": "papiloma virus"
+    },
+    {
+      "patogeno": "LEUCEMI A",
+      "ocurrencias": 2,
+      "norm": "leucemi a"
+    },
+    {
+      "patogeno": "virus papil omav",
+      "ocurrencias": 2,
+      "norm": "virus papil omav"
+    },
+    {
+      "patogeno": "Equinococcus Granulosus",
+      "ocurrencias": 2,
+      "norm": "equinococcus granulosus"
+    },
+    {
+      "patogeno": "Virus delNilo",
+      "ocurrencias": 2,
+      "norm": "virus delnilo"
+    },
+    {
+      "patogeno": "Anisakis",
+      "ocurrencias": 2,
+      "norm": "anisakis"
+    },
+    {
+      "patogeno": "Varicela",
+      "ocurrencias": 2,
+      "norm": "varicela"
+    },
+    {
+      "patogeno": "Giardia Lambia",
+      "ocurrencias": 2,
+      "norm": "giardia lambia"
+    },
+    {
+      "patogeno": "Staphylococcus Aureus",
+      "ocurrencias": 2,
+      "norm": "staphylococcus aureus"
+    },
+    {
+      "patogeno": "Vaccinia Exantemática Reservorio",
+      "ocurrencias": 2,
+      "norm": "vaccinia exantematica reservorio"
+    },
+    {
+      "patogeno": "Gardnerella Vaginalis B",
+      "ocurrencias": 2,
+      "norm": "gardnerella vaginalis b"
+    },
+    {
+      "patogeno": "hongo vadonde",
+      "ocurrencias": 2,
+      "norm": "hongo vadonde"
+    },
+    {
+      "patogeno": "Shigella",
+      "ocurrencias": 2,
+      "norm": "shigella"
+    },
+    {
+      "patogeno": "Bena vides",
+      "ocurrencias": 2,
+      "norm": "bena vides"
+    },
+    {
+      "patogeno": "Pseudomona aeruginosa",
+      "ocurrencias": 2,
+      "norm": "pseudomona aeruginosa"
+    },
+    {
+      "patogeno": "Treponema Pallidum",
+      "ocurrencias": 2,
+      "norm": "treponema pallidum"
+    },
+    {
+      "patogeno": "Chlamydia T.",
+      "ocurrencias": 2,
+      "norm": "chlamydia t."
+    },
+    {
+      "patogeno": "Streptococcus G",
+      "ocurrencias": 2,
+      "norm": "streptococcus g"
+    },
+    {
+      "patogeno": "Barto nella",
+      "ocurrencias": 2,
+      "norm": "barto nella"
+    },
+    {
+      "patogeno": "Balantidium",
+      "ocurrencias": 2,
+      "norm": "balantidium"
+    },
+    {
+      "patogeno": "Babe sia",
+      "ocurrencias": 2,
+      "norm": "babe sia"
+    },
+    {
+      "patogeno": "virus Síntomas en",
+      "ocurrencias": 2,
+      "norm": "virus sintomas en"
+    },
+    {
+      "patogeno": "Durá n",
+      "ocurrencias": 2,
+      "norm": "dura n"
+    },
+    {
+      "patogeno": "Escherichia",
+      "ocurrencias": 2,
+      "norm": "escherichia"
+    },
+    {
+      "patogeno": "Treponema Espiroqueta E",
+      "ocurrencias": 2,
+      "norm": "treponema espiroqueta e"
+    },
+    {
+      "patogeno": "Malassezia Furfur",
+      "ocurrencias": 2,
+      "norm": "malassezia furfur"
+    },
+    {
+      "patogeno": "Rickettsia",
+      "ocurrencias": 2,
+      "norm": "rickettsia"
+    },
+    {
+      "patogeno": "pineal",
+      "ocurrencias": 1,
+      "norm": "pineal"
+    },
+    {
+      "patogeno": "scaret",
+      "ocurrencias": 1,
+      "norm": "scaret"
+    },
+    {
+      "patogeno": "SARI TA",
+      "ocurrencias": 1,
+      "norm": "sari ta"
+    },
+    {
+      "patogeno": "RNA",
+      "ocurrencias": 1,
+      "norm": "rna"
+    },
+    {
+      "patogeno": "Serratia Fonticola",
+      "ocurrencias": 1,
+      "norm": "serratia fonticola"
+    },
+    {
+      "patogeno": "Criptocococus",
+      "ocurrencias": 1,
+      "norm": "criptocococus"
+    },
+    {
+      "patogeno": "Rueda",
+      "ocurrencias": 1,
+      "norm": "rueda"
+    },
+    {
+      "patogeno": "Tiña del Cuero Cabelludo",
+      "ocurrencias": 1,
+      "norm": "tina del cuero cabelludo"
+    },
+    {
+      "patogeno": "DE VIRUS GENERALES",
+      "ocurrencias": 1,
+      "norm": "de virus generales"
+    },
+    {
+      "patogeno": "Sor",
+      "ocurrencias": 1,
+      "norm": "sor"
+    },
+    {
+      "patogeno": "Entamoeba Histo litica",
+      "ocurrencias": 1,
+      "norm": "entamoeba histo litica"
+    },
+    {
+      "patogeno": "Virus Porroedores",
+      "ocurrencias": 1,
+      "norm": "virus porroedores"
+    },
+    {
+      "patogeno": "VIRUS QUESOPORTA",
+      "ocurrencias": 1,
+      "norm": "virus quesoporta"
+    },
+    {
+      "patogeno": "QUIT O",
+      "ocurrencias": 1,
+      "norm": "quit o"
+    },
+    {
+      "patogeno": "Epstein-Barr Mononucleosis Herpes 8",
+      "ocurrencias": 1,
+      "norm": "epstein-barr mononucleosis herpes 8"
+    },
+    {
+      "patogeno": "Chap ingo",
+      "ocurrencias": 1,
+      "norm": "chap ingo"
+    },
+    {
+      "patogeno": "Tifo exantemático",
+      "ocurrencias": 1,
+      "norm": "tifo exantematico"
+    },
+    {
+      "patogeno": "Berlí n",
+      "ocurrencias": 1,
+      "norm": "berli n"
+    },
+    {
+      "patogeno": "Pseudomona",
+      "ocurrencias": 1,
+      "norm": "pseudomona"
+    },
+    {
+      "patogeno": "Coronavirus",
+      "ocurrencias": 1,
+      "norm": "coronavirus"
+    },
+    {
+      "patogeno": "Tuberculosis Avis",
+      "ocurrencias": 1,
+      "norm": "tuberculosis avis"
+    },
+    {
+      "patogeno": "Toxoplasma",
+      "ocurrencias": 1,
+      "norm": "toxoplasma"
+    },
+    {
+      "patogeno": "Universal Reservorio UNIVERSAL",
+      "ocurrencias": 1,
+      "norm": "universal reservorio universal"
+    },
+    {
+      "patogeno": "Mycoplasma Pneumoniae ó Mycobacterium tuber culos",
+      "ocurrencias": 1,
+      "norm": "mycoplasma pneumoniae o mycobacterium tuber culos"
+    },
+    {
+      "patogeno": "Cisticercos",
+      "ocurrencias": 1,
+      "norm": "cisticercos"
+    },
+    {
+      "patogeno": "Filaria",
+      "ocurrencias": 1,
+      "norm": "filaria"
+    },
+    {
+      "patogeno": "Virus Luci na",
+      "ocurrencias": 1,
+      "norm": "virus luci na"
+    },
+    {
+      "patogeno": "Disfunción vascular",
+      "ocurrencias": 1,
+      "norm": "disfuncion vascular"
+    },
+    {
+      "patogeno": "Staphylococcus Epidermis",
+      "ocurrencias": 1,
+      "norm": "staphylococcus epidermis"
+    },
+    {
+      "patogeno": "Neocardia americana",
+      "ocurrencias": 1,
+      "norm": "neocardia americana"
+    },
+    {
+      "patogeno": "Estaf iloco co epide rmis",
+      "ocurrencias": 1,
+      "norm": "estaf iloco co epide rmis"
+    },
+    {
+      "patogeno": "Gripe Aviar",
+      "ocurrencias": 1,
+      "norm": "gripe aviar"
+    },
+    {
+      "patogeno": "Streptococcus Fragilis",
+      "ocurrencias": 1,
+      "norm": "streptococcus fragilis"
+    },
+    {
+      "patogeno": "Parot iditis oPape ras",
+      "ocurrencias": 1,
+      "norm": "parot iditis opape ras"
+    },
+    {
+      "patogeno": "Aero bacte raero genu s",
+      "ocurrencias": 1,
+      "norm": "aero bacte raero genu s"
+    },
+    {
+      "patogeno": "Disf. Glan dular",
+      "ocurrencias": 1,
+      "norm": "disf. glan dular"
+    },
+    {
+      "patogeno": "Diab etes insípi da",
+      "ocurrencias": 1,
+      "norm": "diab etes insipi da"
+    },
+    {
+      "patogeno": "Carácter (David)",
+      "ocurrencias": 1,
+      "norm": "caracter (david)"
+    },
+    {
+      "patogeno": "Sinu sitis front al",
+      "ocurrencias": 1,
+      "norm": "sinu sitis front al"
+    },
+    {
+      "patogeno": "Sincicial Resp",
+      "ocurrencias": 1,
+      "norm": "sincicial resp"
+    },
+    {
+      "patogeno": "Mora xela Cata eallis",
+      "ocurrencias": 1,
+      "norm": "mora xela cata eallis"
+    },
+    {
+      "patogeno": "Citomegalovirus",
+      "ocurrencias": 1,
+      "norm": "citomegalovirus"
+    },
+    {
+      "patogeno": "virus ReoProblemas",
+      "ocurrencias": 1,
+      "norm": "virus reoproblemas"
+    },
+    {
+      "patogeno": "hongo debe estar",
+      "ocurrencias": 1,
+      "norm": "hongo debe estar"
+    },
+    {
+      "patogeno": "Bacilo ántrax",
+      "ocurrencias": 1,
+      "norm": "bacilo antrax"
+    },
+    {
+      "patogeno": "Enter oviru s",
+      "ocurrencias": 1,
+      "norm": "enter oviru s"
+    },
+    {
+      "patogeno": "Enterovirus",
+      "ocurrencias": 1,
+      "norm": "enterovirus"
+    },
+    {
+      "patogeno": "Toxoides",
+      "ocurrencias": 1,
+      "norm": "toxoides"
+    },
+    {
+      "patogeno": "Rinovirus",
+      "ocurrencias": 1,
+      "norm": "rinovirus"
+    },
+    {
+      "patogeno": "Escabiosis o sama. Problemas cutáneos tipo dermatitis, causa la alopecia ariata (se cae el pelo por mechones), se trasmite por el pelo de animales al asociarse con otro da falso Cáncer de lengua o laringe",
+      "ocurrencias": 1,
+      "norm": "escabiosis o sama. problemas cutaneos tipo dermatitis, causa la alopecia ariata (se cae el pelo por mechones), se trasmite por el pelo de animales al asociarse con otro da falso cancer de lengua o laringe"
+    },
+    {
+      "patogeno": "RhinoVirus",
+      "ocurrencias": 1,
+      "norm": "rhinovirus"
+    },
+    {
+      "patogeno": "Sinusitis",
+      "ocurrencias": 1,
+      "norm": "sinusitis"
+    },
+    {
+      "patogeno": "Aspergillus",
+      "ocurrencias": 1,
+      "norm": "aspergillus"
+    },
+    {
+      "patogeno": "Diplococo",
+      "ocurrencias": 1,
+      "norm": "diplococo"
+    },
+    {
+      "patogeno": "Neisseria gonorreae",
+      "ocurrencias": 1,
+      "norm": "neisseria gonorreae"
+    },
+    {
+      "patogeno": "virus de la",
+      "ocurrencias": 1,
+      "norm": "virus de la"
+    },
+    {
+      "patogeno": "Rosario PAR MOMENTÁNEO",
+      "ocurrencias": 1,
+      "norm": "rosario par momentaneo"
+    },
+    {
+      "patogeno": "Diste mper canin oMoq uillo",
+      "ocurrencias": 1,
+      "norm": "diste mper canin omoq uillo"
+    },
+    {
+      "patogeno": "ARACELI",
+      "ocurrencias": 1,
+      "norm": "araceli"
+    },
+    {
+      "patogeno": "GOIZ",
+      "ocurrencias": 1,
+      "norm": "goiz"
+    },
+    {
+      "patogeno": "Bacil o oBordetella Pertussis",
+      "ocurrencias": 1,
+      "norm": "bacil o obordetella pertussis"
+    },
+    {
+      "patogeno": "Herpes II",
+      "ocurrencias": 1,
+      "norm": "herpes ii"
+    },
+    {
+      "patogeno": "Marimar",
+      "ocurrencias": 1,
+      "norm": "marimar"
+    },
+    {
+      "patogeno": "Streptococcus Pyrogenes",
+      "ocurrencias": 1,
+      "norm": "streptococcus pyrogenes"
+    },
+    {
+      "patogeno": "Yersinia Pestis y Stap hyloc",
+      "ocurrencias": 1,
+      "norm": "yersinia pestis y stap hyloc"
+    },
+    {
+      "patogeno": "MMJ B",
+      "ocurrencias": 1,
+      "norm": "mmj b"
+    },
+    {
+      "patogeno": "Disfunción S. N. Simp ática",
+      "ocurrencias": 1,
+      "norm": "disfuncion s. n. simp atica"
+    },
+    {
+      "patogeno": "Blast ocisti shomi nis",
+      "ocurrencias": 1,
+      "norm": "blast ocisti shomi nis"
+    },
+    {
+      "patogeno": "Generales Reservorio",
+      "ocurrencias": 1,
+      "norm": "generales reservorio"
+    },
+    {
+      "patogeno": "Streptococcus Faecalis",
+      "ocurrencias": 1,
+      "norm": "streptococcus faecalis"
+    },
+    {
+      "patogeno": "Bala ntadi umTifo",
+      "ocurrencias": 1,
+      "norm": "bala ntadi umtifo"
+    },
+    {
+      "patogeno": "Epstein-Barr y Guillian Barre Reservorio",
+      "ocurrencias": 1,
+      "norm": "epstein-barr y guillian barre reservorio"
+    },
+    {
+      "patogeno": "Chiostrycium Perfringens",
+      "ocurrencias": 1,
+      "norm": "chiostrycium perfringens"
+    },
+    {
+      "patogeno": "Serra tiafonti cola",
+      "ocurrencias": 1,
+      "norm": "serra tiafonti cola"
+    },
+    {
+      "patogeno": "Mycobacterium Avium",
+      "ocurrencias": 1,
+      "norm": "mycobacterium avium"
+    },
+    {
+      "patogeno": "Mycobacterium Tuberculosis",
+      "ocurrencias": 1,
+      "norm": "mycobacterium tuberculosis"
+    },
+    {
+      "patogeno": "Staphylococcus Capitis",
+      "ocurrencias": 1,
+      "norm": "staphylococcus capitis"
+    },
+    {
+      "patogeno": "Blast ocisti s homi nis o Proteus Vulgaris",
+      "ocurrencias": 1,
+      "norm": "blast ocisti s homi nis o proteus vulgaris"
+    },
+    {
+      "patogeno": "Coxsackie",
+      "ocurrencias": 1,
+      "norm": "coxsackie"
+    },
+    {
+      "patogeno": "Bacilo Difteroide",
+      "ocurrencias": 1,
+      "norm": "bacilo difteroide"
+    },
+    {
+      "patogeno": "Poliglobulia (Lucio)",
+      "ocurrencias": 1,
+      "norm": "poliglobulia (lucio)"
+    },
+    {
+      "patogeno": "Eritr ocito s",
+      "ocurrencias": 1,
+      "norm": "eritr ocito s"
+    },
+    {
+      "patogeno": "Aspe rguill us",
+      "ocurrencias": 1,
+      "norm": "aspe rguill us"
+    },
+    {
+      "patogeno": "Rubéola",
+      "ocurrencias": 1,
+      "norm": "rubeola"
+    },
+    {
+      "patogeno": "Escherichia Transgénica",
+      "ocurrencias": 1,
+      "norm": "escherichia transgenica"
+    },
+    {
+      "patogeno": "Álvaro",
+      "ocurrencias": 1,
+      "norm": "alvaro"
+    },
+    {
+      "patogeno": "Legionella",
+      "ocurrencias": 1,
+      "norm": "legionella"
+    },
+    {
+      "patogeno": "Disfunción yEspe cial",
+      "ocurrencias": 1,
+      "norm": "disfuncion yespe cial"
+    },
+    {
+      "patogeno": "Fasci olop sisBusk i",
+      "ocurrencias": 1,
+      "norm": "fasci olop sisbusk i"
+    },
+    {
+      "patogeno": "Meni ngiti sviral",
+      "ocurrencias": 1,
+      "norm": "meni ngiti sviral"
+    },
+    {
+      "patogeno": "BACTERIAS MYCOBATERIUM LEPRAE",
+      "ocurrencias": 1,
+      "norm": "bacterias mycobaterium leprae"
+    },
+    {
+      "patogeno": "Hepatitis L",
+      "ocurrencias": 1,
+      "norm": "hepatitis l"
+    },
+    {
+      "patogeno": "Fasci olop sisbuski",
+      "ocurrencias": 1,
+      "norm": "fasci olop sisbuski"
+    },
+    {
+      "patogeno": "hongo directo al",
+      "ocurrencias": 1,
+      "norm": "hongo directo al"
+    },
+    {
+      "patogeno": "Mycoplasma Hominis",
+      "ocurrencias": 1,
+      "norm": "mycoplasma hominis"
+    },
+    {
+      "patogeno": "virus que lo",
+      "ocurrencias": 1,
+      "norm": "virus que lo"
+    },
+    {
+      "patogeno": "Aftosa",
+      "ocurrencias": 1,
+      "norm": "aftosa"
+    },
+    {
+      "patogeno": "Triquinosis",
+      "ocurrencias": 1,
+      "norm": "triquinosis"
+    },
+    {
+      "patogeno": "Streptococcus Beta Hemolítico",
+      "ocurrencias": 1,
+      "norm": "streptococcus beta hemolitico"
+    },
+    {
+      "patogeno": "Bortonella Henselae",
+      "ocurrencias": 1,
+      "norm": "bortonella henselae"
+    },
+    {
+      "patogeno": "Hlico bacte rPylor i",
+      "ocurrencias": 1,
+      "norm": "hlico bacte rpylor i"
+    },
+    {
+      "patogeno": "Estreptococo Beta Hemolítico",
+      "ocurrencias": 1,
+      "norm": "estreptococo beta hemolitico"
+    },
+    {
+      "patogeno": "Candía albicans",
+      "ocurrencias": 1,
+      "norm": "candia albicans"
+    },
+    {
+      "patogeno": "Brucella abortus",
+      "ocurrencias": 1,
+      "norm": "brucella abortus"
+    },
+    {
+      "patogeno": "Bruc elaabort us",
+      "ocurrencias": 1,
+      "norm": "bruc elaabort us"
+    },
+    {
+      "patogeno": "Resentimiento",
+      "ocurrencias": 1,
+      "norm": "resentimiento"
+    },
+    {
+      "patogeno": "Estreptococo alfa",
+      "ocurrencias": 1,
+      "norm": "estreptococo alfa"
+    },
+    {
+      "patogeno": "Togaviridae del genero Rubivirus Rubéola",
+      "ocurrencias": 1,
+      "norm": "togaviridae del genero rubivirus rubeola"
+    },
+    {
+      "patogeno": "streptococo ayuda",
+      "ocurrencias": 1,
+      "norm": "streptococo ayuda"
+    },
+    {
+      "patogeno": "Kado",
+      "ocurrencias": 1,
+      "norm": "kado"
+    },
+    {
+      "patogeno": "Streptococcus G Reservorio",
+      "ocurrencias": 1,
+      "norm": "streptococcus g reservorio"
+    },
+    {
+      "patogeno": "Pneu mococo",
+      "ocurrencias": 1,
+      "norm": "pneu mococo"
+    },
+    {
+      "patogeno": "Mycoplasma Pneumoniae 2 y/o Strep toco cus A Pyog enes",
+      "ocurrencias": 1,
+      "norm": "mycoplasma pneumoniae 2 y/o strep toco cus a pyog enes"
+    },
+    {
+      "patogeno": "Virus Verruga",
+      "ocurrencias": 1,
+      "norm": "virus verruga"
+    },
+    {
+      "patogeno": "Pleuritis",
+      "ocurrencias": 1,
+      "norm": "pleuritis"
+    },
+    {
+      "patogeno": "Reservorio (Moisés)",
+      "ocurrencias": 1,
+      "norm": "reservorio (moises)"
+    },
+    {
+      "patogeno": "Rubé n",
+      "ocurrencias": 1,
+      "norm": "rube n"
+    },
+    {
+      "patogeno": "Epstein Bar Reservorio",
+      "ocurrencias": 1,
+      "norm": "epstein bar reservorio"
+    },
+    {
+      "patogeno": "Pueb la",
+      "ocurrencias": 1,
+      "norm": "pueb la"
+    },
+    {
+      "patogeno": "Streptococcus Muta ns o angis",
+      "ocurrencias": 1,
+      "norm": "streptococcus muta ns o angis"
+    },
+    {
+      "patogeno": "Hepatitis C",
+      "ocurrencias": 1,
+      "norm": "hepatitis c"
+    },
+    {
+      "patogeno": "Hepatitis D",
+      "ocurrencias": 1,
+      "norm": "hepatitis d"
+    },
+    {
+      "patogeno": "Sarampión",
+      "ocurrencias": 1,
+      "norm": "sarampion"
+    },
+    {
+      "patogeno": "Cory neba cteri um, Dipht erae ó Dere cho mnat itis.",
+      "ocurrencias": 1,
+      "norm": "cory neba cteri um, dipht erae o dere cho mnat itis."
+    },
+    {
+      "patogeno": "Hepatitis M",
+      "ocurrencias": 1,
+      "norm": "hepatitis m"
+    },
+    {
+      "patogeno": "Zoster ysu Reservorio",
+      "ocurrencias": 1,
+      "norm": "zoster ysu reservorio"
+    },
+    {
+      "patogeno": "Estómago – Suprarrenales",
+      "ocurrencias": 1,
+      "norm": "estomago – suprarrenales"
+    },
+    {
+      "patogeno": "Clostridium Difícil",
+      "ocurrencias": 1,
+      "norm": "clostridium dificil"
+    },
+    {
+      "patogeno": "Falciparum",
+      "ocurrencias": 1,
+      "norm": "falciparum"
+    },
+    {
+      "patogeno": "Clost ridiu mperfri nges",
+      "ocurrencias": 1,
+      "norm": "clost ridiu mperfri nges"
+    },
+    {
+      "patogeno": "Endilomax Nana",
+      "ocurrencias": 1,
+      "norm": "endilomax nana"
+    },
+    {
+      "patogeno": "CHACHIT A",
+      "ocurrencias": 1,
+      "norm": "chachit a"
+    },
+    {
+      "patogeno": "Vello nella Oste omye litis",
+      "ocurrencias": 1,
+      "norm": "vello nella oste omye litis"
+    },
+    {
+      "patogeno": "Astro virus",
+      "ocurrencias": 1,
+      "norm": "astro virus"
+    },
+    {
+      "patogeno": "Vellonella",
+      "ocurrencias": 1,
+      "norm": "vellonella"
+    },
+    {
+      "patogeno": "Hantavirus",
+      "ocurrencias": 1,
+      "norm": "hantavirus"
+    },
+    {
+      "patogeno": "Amorfo entre levadura y",
+      "ocurrencias": 1,
+      "norm": "amorfo entre levadura y"
+    },
+    {
+      "patogeno": "Derecho",
+      "ocurrencias": 1,
+      "norm": "derecho"
+    },
+    {
+      "patogeno": "Ameba hepática",
+      "ocurrencias": 1,
+      "norm": "ameba hepatica"
+    },
+    {
+      "patogeno": "Stap hiloc occu s aure ous cuag ulasa +",
+      "ocurrencias": 1,
+      "norm": "stap hiloc occu s aure ous cuag ulasa +"
+    },
+    {
+      "patogeno": "Klep siella Pneu moni ae",
+      "ocurrencias": 1,
+      "norm": "klep siella pneu moni ae"
+    },
+    {
+      "patogeno": "Treponema Espiroqueta",
+      "ocurrencias": 1,
+      "norm": "treponema espiroqueta"
+    },
+    {
+      "patogeno": "Zoster",
+      "ocurrencias": 1,
+      "norm": "zoster"
+    },
+    {
+      "patogeno": "Mycobaterium Tuberculosis Reservorio",
+      "ocurrencias": 1,
+      "norm": "mycobaterium tuberculosis reservorio"
+    },
+    {
+      "patogeno": "Rhizopus",
+      "ocurrencias": 1,
+      "norm": "rhizopus"
+    },
+    {
+      "patogeno": "Toxacara",
+      "ocurrencias": 1,
+      "norm": "toxacara"
+    },
+    {
+      "patogeno": "Única de ADN",
+      "ocurrencias": 1,
+      "norm": "unica de adn"
+    },
+    {
+      "patogeno": "Morganella",
+      "ocurrencias": 1,
+      "norm": "morganella"
+    },
+    {
+      "patogeno": "DEL Herpes ZOSTER",
+      "ocurrencias": 1,
+      "norm": "del herpes zoster"
+    },
+    {
+      "patogeno": "Rabla",
+      "ocurrencias": 1,
+      "norm": "rabla"
+    },
+    {
+      "patogeno": "Chlostrydium Malignum",
+      "ocurrencias": 1,
+      "norm": "chlostrydium malignum"
+    },
+    {
+      "patogeno": "PRA DA",
+      "ocurrencias": 1,
+      "norm": "pra da"
+    },
+    {
+      "patogeno": "Clostridium",
+      "ocurrencias": 1,
+      "norm": "clostridium"
+    },
+    {
+      "patogeno": "Treponema Reservorio",
+      "ocurrencias": 1,
+      "norm": "treponema reservorio"
+    },
+    {
+      "patogeno": "Trypanosoma cruzi, Tryp anos omia sis",
+      "ocurrencias": 1,
+      "norm": "trypanosoma cruzi, tryp anos omia sis"
+    },
+    {
+      "patogeno": "Parásito intestinal no",
+      "ocurrencias": 1,
+      "norm": "parasito intestinal no"
+    },
+    {
+      "patogeno": "AH1N7",
+      "ocurrencias": 1,
+      "norm": "ah1n7"
+    },
+    {
+      "patogeno": "Ramsés Adenovirus 36",
+      "ocurrencias": 1,
+      "norm": "ramses adenovirus 36"
+    },
+    {
+      "patogeno": "Pasteurella Picornaviridae",
+      "ocurrencias": 1,
+      "norm": "pasteurella picornaviridae"
+    },
+    {
+      "patogeno": "Verru gas",
+      "ocurrencias": 1,
+      "norm": "verru gas"
+    },
+    {
+      "patogeno": "Chlostrydium Botulinum",
+      "ocurrencias": 1,
+      "norm": "chlostrydium botulinum"
+    },
+    {
+      "patogeno": "I ntoxicación por metales pesados. Pancreatitis. Se produce una toxina (metales como mercurio o plomo)que genera un estado psicológico en el paciente con conductas atípicas afectando al SNC Se asocia con la faciola hepática",
+      "ocurrencias": 1,
+      "norm": "i ntoxicacion por metales pesados. pancreatitis. se produce una toxina (metales como mercurio o plomo)que genera un estado psicologico en el paciente con conductas atipicas afectando al snc se asocia con la faciola hepatica"
+    },
+    {
+      "patogeno": "Paramoxivirus",
+      "ocurrencias": 1,
+      "norm": "paramoxivirus"
+    },
+    {
+      "patogeno": "Staphylococcus albus",
+      "ocurrencias": 1,
+      "norm": "staphylococcus albus"
+    },
+    {
+      "patogeno": "Disfu nció nDuod enal",
+      "ocurrencias": 1,
+      "norm": "disfu ncio nduod enal"
+    },
+    {
+      "patogeno": "Diab etes Mellit us Verd ader a",
+      "ocurrencias": 1,
+      "norm": "diab etes mellit us verd ader a"
+    },
+    {
+      "patogeno": "Chlamydia Trachomatis Pterigones",
+      "ocurrencias": 1,
+      "norm": "chlamydia trachomatis pterigones"
+    },
+    {
+      "patogeno": "Tiña delas Manos",
+      "ocurrencias": 1,
+      "norm": "tina delas manos"
+    },
+    {
+      "patogeno": "Providencia Stuartil",
+      "ocurrencias": 1,
+      "norm": "providencia stuartil"
+    },
+    {
+      "patogeno": "Solitaria",
+      "ocurrencias": 1,
+      "norm": "solitaria"
+    },
+    {
+      "patogeno": "Chlamydia",
+      "ocurrencias": 1,
+      "norm": "chlamydia"
+    },
+    {
+      "patogeno": "Bordetella pertusis",
+      "ocurrencias": 1,
+      "norm": "bordetella pertusis"
+    },
+    {
+      "patogeno": "Tricomonas",
+      "ocurrencias": 1,
+      "norm": "tricomonas"
+    },
+    {
+      "patogeno": "Vacci niaExan temá tica",
+      "ocurrencias": 1,
+      "norm": "vacci niaexan tema tica"
+    },
+    {
+      "patogeno": "Herpes 1",
+      "ocurrencias": 1,
+      "norm": "herpes 1"
+    },
+    {
+      "patogeno": "Viruela Exantemática",
+      "ocurrencias": 1,
+      "norm": "viruela exantematica"
+    },
+    {
+      "patogeno": "Trichomonas",
+      "ocurrencias": 1,
+      "norm": "trichomonas"
+    },
+    {
+      "patogeno": "Virus Vaccinia",
+      "ocurrencias": 1,
+      "norm": "virus vaccinia"
+    },
+    {
+      "patogeno": "Hongo Inguinal",
+      "ocurrencias": 1,
+      "norm": "hongo inguinal"
+    },
+    {
+      "patogeno": "Herpes Zoster",
+      "ocurrencias": 1,
+      "norm": "herpes zoster"
+    },
+    {
+      "patogeno": "Enterobacter Cloacae",
+      "ocurrencias": 1,
+      "norm": "enterobacter cloacae"
+    },
+    {
+      "patogeno": "Obstrucción intestinal",
+      "ocurrencias": 1,
+      "norm": "obstruccion intestinal"
+    },
+    {
+      "patogeno": "BSRAO SV",
+      "ocurrencias": 1,
+      "norm": "bsrao sv"
+    },
+    {
+      "patogeno": "Clost ridu m Difici le",
+      "ocurrencias": 1,
+      "norm": "clost ridu m difici le"
+    },
+    {
+      "patogeno": "Campylobacter Jejuni",
+      "ocurrencias": 1,
+      "norm": "campylobacter jejuni"
+    },
+    {
+      "patogeno": "Entoameba histolítica",
+      "ocurrencias": 1,
+      "norm": "entoameba histolitica"
+    },
+    {
+      "patogeno": "Giardia Lamblia",
+      "ocurrencias": 1,
+      "norm": "giardia lamblia"
+    },
+    {
+      "patogeno": "Cándida Albicans",
+      "ocurrencias": 1,
+      "norm": "candida albicans"
+    },
+    {
+      "patogeno": "Camoylobacter Jejuni",
+      "ocurrencias": 1,
+      "norm": "camoylobacter jejuni"
+    },
+    {
+      "patogeno": "Colon Transverso, Bochornos con transpiración, Dolor de cabeza",
+      "ocurrencias": 1,
+      "norm": "colon transverso, bochornos con transpiracion, dolor de cabeza"
+    },
+    {
+      "patogeno": "VIH Reservorio",
+      "ocurrencias": 1,
+      "norm": "vih reservorio"
+    },
+    {
+      "patogeno": "V.LHRESERVORIO",
+      "ocurrencias": 1,
+      "norm": "v.lhreservorio"
+    },
+    {
+      "patogeno": "Alex",
+      "ocurrencias": 1,
+      "norm": "alex"
+    },
+    {
+      "patogeno": "Leis maní a",
+      "ocurrencias": 1,
+      "norm": "leis mani a"
+    },
+    {
+      "patogeno": "Disfu nció nintes tinal",
+      "ocurrencias": 1,
+      "norm": "disfu ncio nintes tinal"
+    },
+    {
+      "patogeno": "Providencia Stuartii",
+      "ocurrencias": 1,
+      "norm": "providencia stuartii"
+    },
+    {
+      "patogeno": "Pasci ano oTenn isElbo w",
+      "ocurrencias": 1,
+      "norm": "pasci ano otenn iselbo w"
+    },
+    {
+      "patogeno": "Mycobaterium Leprae",
+      "ocurrencias": 1,
+      "norm": "mycobaterium leprae"
+    },
+    {
+      "patogeno": "Paludismo Fibromialgia",
+      "ocurrencias": 1,
+      "norm": "paludismo fibromialgia"
+    },
+    {
+      "patogeno": "Reservorio Especial y Disfunción",
+      "ocurrencias": 1,
+      "norm": "reservorio especial y disfuncion"
+    },
+    {
+      "patogeno": "Pseudomona Aeru gino",
+      "ocurrencias": 1,
+      "norm": "pseudomona aeru gino"
+    },
+    {
+      "patogeno": "Legionella Asoc iado",
+      "ocurrencias": 1,
+      "norm": "legionella asoc iado"
+    },
+    {
+      "patogeno": "Cocc idiod o Inmit is Neisseria Meningitis Meni ngoc oco.",
+      "ocurrencias": 1,
+      "norm": "cocc idiod o inmit is neisseria meningitis meni ngoc oco."
+    },
+    {
+      "patogeno": "Meningococos",
+      "ocurrencias": 1,
+      "norm": "meningococos"
+    },
+    {
+      "patogeno": "E. Coli",
+      "ocurrencias": 1,
+      "norm": "e. coli"
+    },
+    {
+      "patogeno": "Esch erich iaColli",
+      "ocurrencias": 1,
+      "norm": "esch erich iacolli"
+    },
+    {
+      "patogeno": "Meningococo. alteraciones en meningocele, mielocele y meningomielocele , espina bífida, es la vía de entrada del cisticerco al cerebro; si se asocia con el gonococo produce artritis reumática deformante",
+      "ocurrencias": 1,
+      "norm": "meningococo. alteraciones en meningocele, mielocele y meningomielocele , espina bifida, es la via de entrada del cisticerco al cerebro; si se asocia con el gonococo produce artritis reumatica deformante"
+    },
+    {
+      "patogeno": "Trichophyton",
+      "ocurrencias": 1,
+      "norm": "trichophyton"
+    },
+    {
+      "patogeno": "Regula sistema nervioso",
+      "ocurrencias": 1,
+      "norm": "regula sistema nervioso"
+    },
+    {
+      "patogeno": "Leptospira",
+      "ocurrencias": 1,
+      "norm": "leptospira"
+    },
+    {
+      "patogeno": "Mycobaterium Pneomaniae",
+      "ocurrencias": 1,
+      "norm": "mycobaterium pneomaniae"
+    },
+    {
+      "patogeno": "Yersinia intestinalis",
+      "ocurrencias": 1,
+      "norm": "yersinia intestinalis"
+    },
+    {
+      "patogeno": "streptococo A",
+      "ocurrencias": 1,
+      "norm": "streptococo a"
+    },
+    {
+      "patogeno": "HTL V3 Retrovirus",
+      "ocurrencias": 1,
+      "norm": "htl v3 retrovirus"
+    },
+    {
+      "patogeno": "virus oParot",
+      "ocurrencias": 1,
+      "norm": "virus oparot"
+    },
+    {
+      "patogeno": "virus delDeng",
+      "ocurrencias": 1,
+      "norm": "virus deldeng"
+    },
+    {
+      "patogeno": "Citoplasma caps.",
+      "ocurrencias": 1,
+      "norm": "citoplasma caps."
+    },
+    {
+      "patogeno": "Enter ococ o",
+      "ocurrencias": 1,
+      "norm": "enter ococ o"
+    },
+    {
+      "patogeno": "Meni ngoc oco",
+      "ocurrencias": 1,
+      "norm": "meni ngoc oco"
+    },
+    {
+      "patogeno": "Conc epció n",
+      "ocurrencias": 1,
+      "norm": "conc epcio n"
+    },
+    {
+      "patogeno": "Especial Toxi nasdel riñón",
+      "ocurrencias": 1,
+      "norm": "especial toxi nasdel rinon"
+    },
+    {
+      "patogeno": "Citoplasma Caps",
+      "ocurrencias": 1,
+      "norm": "citoplasma caps"
+    },
+    {
+      "patogeno": "Cryto cocc us",
+      "ocurrencias": 1,
+      "norm": "cryto cocc us"
+    },
+    {
+      "patogeno": "Tripanosoma gambi",
+      "ocurrencias": 1,
+      "norm": "tripanosoma gambi"
+    },
+    {
+      "patogeno": "VIH",
+      "ocurrencias": 1,
+      "norm": "vih"
+    },
+    {
+      "patogeno": "Roseóla",
+      "ocurrencias": 1,
+      "norm": "roseola"
+    },
+    {
+      "patogeno": "Reumatis moArtic ular",
+      "ocurrencias": 1,
+      "norm": "reumatis moartic ular"
+    },
+    {
+      "patogeno": "Reumatismo",
+      "ocurrencias": 1,
+      "norm": "reumatismo"
+    },
+    {
+      "patogeno": "Rose ola. Neur oder matit is Herpes 6",
+      "ocurrencias": 1,
+      "norm": "rose ola. neur oder matit is herpes 6"
+    },
+    {
+      "patogeno": "Enter ococ cusfaeca lis",
+      "ocurrencias": 1,
+      "norm": "enter ococ cusfaeca lis"
+    },
+    {
+      "patogeno": "Norwalk",
+      "ocurrencias": 1,
+      "norm": "norwalk"
+    },
+    {
+      "patogeno": "DE VIRUS",
+      "ocurrencias": 1,
+      "norm": "de virus"
+    },
+    {
+      "patogeno": "Salmonela tiphy",
+      "ocurrencias": 1,
+      "norm": "salmonela tiphy"
+    },
+    {
+      "patogeno": "Virus linfotropo",
+      "ocurrencias": 1,
+      "norm": "virus linfotropo"
+    },
+    {
+      "patogeno": "Cándida Glabrata",
+      "ocurrencias": 1,
+      "norm": "candida glabrata"
+    },
+    {
+      "patogeno": "Virus",
+      "ocurrencias": 1,
+      "norm": "virus"
+    },
+    {
+      "patogeno": "Disfu nció nPara simp ática",
+      "ocurrencias": 1,
+      "norm": "disfu ncio npara simp atica"
+    },
+    {
+      "patogeno": "Especial Vegi nitis",
+      "ocurrencias": 1,
+      "norm": "especial vegi nitis"
+    },
+    {
+      "patogeno": "virus Trastornos pélvicos",
+      "ocurrencias": 1,
+      "norm": "virus trastornos pelvicos"
+    },
+    {
+      "patogeno": "Úrico",
+      "ocurrencias": 1,
+      "norm": "urico"
+    },
+    {
+      "patogeno": "Faek alAlkal inzin g",
+      "ocurrencias": 1,
+      "norm": "faek alalkal inzin g"
+    },
+    {
+      "patogeno": "Trini",
+      "ocurrencias": 1,
+      "norm": "trini"
+    },
+    {
+      "patogeno": "Meningococcus",
+      "ocurrencias": 1,
+      "norm": "meningococcus"
+    },
+    {
+      "patogeno": "Proteus",
+      "ocurrencias": 1,
+      "norm": "proteus"
+    },
+    {
+      "patogeno": "Regula el S. N. Parasimpático",
+      "ocurrencias": 1,
+      "norm": "regula el s. n. parasimpatico"
+    },
+    {
+      "patogeno": "Burkholderia Cepacia",
+      "ocurrencias": 1,
+      "norm": "burkholderia cepacia"
+    },
+    {
+      "patogeno": "virus ódiver",
+      "ocurrencias": 1,
+      "norm": "virus odiver"
+    },
+    {
+      "patogeno": "Herpe V",
+      "ocurrencias": 1,
+      "norm": "herpe v"
+    },
+    {
+      "patogeno": "Intestinal yVirus",
+      "ocurrencias": 1,
+      "norm": "intestinal yvirus"
+    },
+    {
+      "patogeno": "Estreptococo C",
+      "ocurrencias": 1,
+      "norm": "estreptococo c"
+    },
+    {
+      "patogeno": "Oncoch Volvul",
+      "ocurrencias": 1,
+      "norm": "oncoch volvul"
+    },
+    {
+      "patogeno": "Parásitos intestinales",
+      "ocurrencias": 1,
+      "norm": "parasitos intestinales"
+    },
+    {
+      "patogeno": "Ureoplasma Urealyticum",
+      "ocurrencias": 1,
+      "norm": "ureoplasma urealyticum"
+    },
+    {
+      "patogeno": "Helicobacter pilori",
+      "ocurrencias": 1,
+      "norm": "helicobacter pilori"
+    },
+    {
+      "patogeno": "Helic obác terPilori",
+      "ocurrencias": 1,
+      "norm": "helic obac terpilori"
+    },
+    {
+      "patogeno": "Neisseria Meningitidis",
+      "ocurrencias": 1,
+      "norm": "neisseria meningitidis"
+    },
+    {
+      "patogeno": "Neisseria",
+      "ocurrencias": 1,
+      "norm": "neisseria"
+    },
+    {
+      "patogeno": "Clostridium Dificike",
+      "ocurrencias": 1,
+      "norm": "clostridium dificike"
+    },
+    {
+      "patogeno": "Virus Asoc iado",
+      "ocurrencias": 1,
+      "norm": "virus asoc iado"
+    },
+    {
+      "patogeno": "Yersinia Pestis Yola nda. Y Estre ptoc occu s aure us coag ulasa",
+      "ocurrencias": 1,
+      "norm": "yersinia pestis yola nda. y estre ptoc occu s aure us coag ulasa"
+    },
+    {
+      "patogeno": "Serra tiaMarc ens",
+      "ocurrencias": 1,
+      "norm": "serra tiamarc ens"
+    },
+    {
+      "patogeno": "Providencia Stuarti",
+      "ocurrencias": 1,
+      "norm": "providencia stuarti"
+    },
+    {
+      "patogeno": "Corona",
+      "ocurrencias": 1,
+      "norm": "corona"
+    },
+    {
+      "patogeno": "de ovarios",
+      "ocurrencias": 1,
+      "norm": "de ovarios"
+    },
+    {
+      "patogeno": "virus No se",
+      "ocurrencias": 1,
+      "norm": "virus no se"
+    },
+    {
+      "patogeno": "Proteus Vulgaris",
+      "ocurrencias": 1,
+      "norm": "proteus vulgaris"
+    },
+    {
+      "patogeno": "Norwalk Norm aviru s",
+      "ocurrencias": 1,
+      "norm": "norwalk norm aviru s"
+    },
+    {
+      "patogeno": "Papiloma Humano",
+      "ocurrencias": 1,
+      "norm": "papiloma humano"
+    },
+    {
+      "patogeno": "Leptospirosis",
+      "ocurrencias": 1,
+      "norm": "leptospirosis"
+    },
+    {
+      "patogeno": "Paty",
+      "ocurrencias": 1,
+      "norm": "paty"
+    },
+    {
+      "patogeno": "Yersinia pneumoniae",
+      "ocurrencias": 1,
+      "norm": "yersinia pneumoniae"
+    },
+    {
+      "patogeno": "Castañeda",
+      "ocurrencias": 1,
+      "norm": "castaneda"
+    },
+    {
+      "patogeno": "Streptococcus Agalactiae",
+      "ocurrencias": 1,
+      "norm": "streptococcus agalactiae"
+    },
+    {
+      "patogeno": "Microsporum",
+      "ocurrencias": 1,
+      "norm": "microsporum"
+    },
+    {
+      "patogeno": "TOM AS",
+      "ocurrencias": 1,
+      "norm": "tom as"
+    },
+    {
+      "patogeno": "Escherichia collí atípica",
+      "ocurrencias": 1,
+      "norm": "escherichia colli atipica"
+    },
+    {
+      "patogeno": "Klebsiella con",
+      "ocurrencias": 1,
+      "norm": "klebsiella con"
+    },
+    {
+      "patogeno": "Ricketssia",
+      "ocurrencias": 1,
+      "norm": "ricketssia"
+    },
+    {
+      "patogeno": "virus conADN",
+      "ocurrencias": 1,
+      "norm": "virus conadn"
+    },
+    {
+      "patogeno": "Intoxicación por bismuto",
+      "ocurrencias": 1,
+      "norm": "intoxicacion por bismuto"
+    },
+    {
+      "patogeno": "Gardnerella Vaginalis",
+      "ocurrencias": 1,
+      "norm": "gardnerella vaginalis"
+    },
+    {
+      "patogeno": "Salm onell atifo",
+      "ocurrencias": 1,
+      "norm": "salm onell atifo"
+    },
+    {
+      "patogeno": "Staphylococcus Dorado",
+      "ocurrencias": 1,
+      "norm": "staphylococcus dorado"
+    },
+    {
+      "patogeno": "Malassezia Furfur en costas y lugares calurosos. fluorescente con luz negra. Simula escarlatina o psoriasis, manchas en la piel, origina úlceras, moretones o cambios de coloración, común en diabéticos y mujeres",
+      "ocurrencias": 1,
+      "norm": "malassezia furfur en costas y lugares calurosos. fluorescente con luz negra. simula escarlatina o psoriasis, manchas en la piel, origina ulceras, moretones o cambios de coloracion, comun en diabeticos y mujeres"
+    },
+    {
+      "patogeno": "Polio mielit is",
+      "ocurrencias": 1,
+      "norm": "polio mielit is"
+    },
+    {
+      "patogeno": "Polio",
+      "ocurrencias": 1,
+      "norm": "polio"
+    },
+    {
+      "patogeno": "Neumococo",
+      "ocurrencias": 1,
+      "norm": "neumococo"
+    },
+    {
+      "patogeno": "E. Colli",
+      "ocurrencias": 1,
+      "norm": "e. colli"
+    },
+    {
+      "patogeno": "Mycoplasma neu moni ae",
+      "ocurrencias": 1,
+      "norm": "mycoplasma neu moni ae"
+    },
+    {
+      "patogeno": "Stap hyloc occu sAure",
+      "ocurrencias": 1,
+      "norm": "stap hyloc occu saure"
+    },
+    {
+      "patogeno": "Ebola",
+      "ocurrencias": 1,
+      "norm": "ebola"
+    },
+    {
+      "patogeno": "Especial óHallu xValg us",
+      "ocurrencias": 1,
+      "norm": "especial ohallu xvalg us"
+    },
+    {
+      "patogeno": "Strep toco cus A Pyog enes y Guilli an Barré",
+      "ocurrencias": 1,
+      "norm": "strep toco cus a pyog enes y guilli an barre"
+    },
+    {
+      "patogeno": "Benavides",
+      "ocurrencias": 1,
+      "norm": "benavides"
+    },
+    {
+      "patogeno": "Nisseria gonorrhoeae",
+      "ocurrencias": 1,
+      "norm": "nisseria gonorrhoeae"
+    },
+    {
+      "patogeno": "Clost ridiu mdificil e",
+      "ocurrencias": 1,
+      "norm": "clost ridiu mdificil e"
+    },
+    {
+      "patogeno": "Leuc emia virus",
+      "ocurrencias": 1,
+      "norm": "leuc emia virus"
+    },
+    {
+      "patogeno": "Neu moc oco ó Estre ptoc ocos pneu moni ae.",
+      "ocurrencias": 1,
+      "norm": "neu moc oco o estre ptoc ocos pneu moni ae."
+    },
+    {
+      "patogeno": "Meni ngoc oco.",
+      "ocurrencias": 1,
+      "norm": "meni ngoc oco."
+    },
+    {
+      "patogeno": "Nork walk virus",
+      "ocurrencias": 1,
+      "norm": "nork walk virus"
+    },
+    {
+      "patogeno": "Staphylococcus Dorado (-) o aure us",
+      "ocurrencias": 1,
+      "norm": "staphylococcus dorado (-) o aure us"
+    }
+  ]
+}

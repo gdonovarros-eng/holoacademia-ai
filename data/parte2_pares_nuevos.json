@@ -1,0 +1,537 @@
+{
+  "fuente_comparacion": "HoloBiomagnetismo Parte 2 - Lavín vs biomagnetic_pairs_db.json",
+  "total_pares_parte2": 360,
+  "ya_en_db": 272,
+  "nuevos": 88,
+  "pares_nuevos": [
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Coronilla",
+      "bloque_sugerido": "Callosidad",
+      "par": "Borde Calloso DER - Borde Calloso IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Coronilla",
+      "bloque_sugerido": "Parietal",
+      "par": "Parietal (RAS) - Riñón"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Posterior",
+      "bloque_sugerido": "Occipital",
+      "par": "Occipital - Testículo IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Posterior",
+      "bloque_sugerido": "Occipital",
+      "par": "Cerebelo RAS - Riñón RAS"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Posterior",
+      "bloque_sugerido": "Cerebelo",
+      "par": "Cerebelo - Tiroides"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Posterior",
+      "bloque_sugerido": "Cerebelo",
+      "par": "Cerebelo - Corazón"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Temporal",
+      "par": "Fronto-parietal IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Temporal",
+      "par": "Temporal - Temporal DER"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Temporal",
+      "par": "Temporal - Temporal IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Temporal",
+      "par": "Temporal RAS - Hipófisis"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Temporal",
+      "par": "Temporal RAS - Riñón"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Auricula",
+      "par": "Oído DER - Riñón CONTLAT"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Auricula",
+      "par": "Oído DER - Testículo DER/Ovario DER"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Posterior",
+      "par": "Temporo-occipital - Temporo-occipital"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Posterior",
+      "par": "Retro-mastoides - Retro-mastoides"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Posterior",
+      "par": "Mastoides RAS - Cervical"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Mandibular",
+      "par": "Cola de Mandibular - Páncreas"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Lateral",
+      "bloque_sugerido": "Parótida",
+      "par": "Parótida IZQ - Pineal IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Hipófisis",
+      "par": "Hipófisis - Suprarrenal"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Hipófisis",
+      "par": "Hipófisis - Testículo / Ovario IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Hipófisis",
+      "par": "Hipófisis - Ovario"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Hipófisis",
+      "par": "Hipófisis - Frontal DER"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Frente Baja",
+      "par": "Supraciliar - Supraciliar (Polo)"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Frente Baja",
+      "par": "Intercilliar - Bulbo"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Frente Baja",
+      "par": "Intercilliar - Riñón RAS"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Frente",
+      "bloque_sugerido": "Frente Baja",
+      "par": "Intercilliar - Sacro"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Rostro",
+      "bloque_sugerido": "Anillo ocular",
+      "par": "Canto RAS - Riñón RAS"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Rostro",
+      "bloque_sugerido": "Anillo ocular",
+      "par": "Seno frontal - Seno frontal IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Rostro",
+      "bloque_sugerido": "Anillo ocular",
+      "par": "Maxilar IZQ - Cola de Páncreas"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Rostro",
+      "bloque_sugerido": "Nariz",
+      "par": "Maxilar Superior - Cola de Páncreas"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Rostro",
+      "bloque_sugerido": "Nariz",
+      "par": "Mexilar Sup - Cola de Páncreas"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Cuello",
+      "bloque_sugerido": "Garganta central",
+      "par": "Esterno-cleidomastoideo - Esterno-cleidomastoideo"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Cuello",
+      "bloque_sugerido": "Garganta central",
+      "par": "Esterno-cleidomastoideo - Riñón IZQ"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Cuello",
+      "bloque_sugerido": "Garganta lateral",
+      "par": "Plexo cervical - Detoides"
+    },
+    {
+      "region_sugerida": "Cabeza",
+      "zona_sugerida": "Cuello",
+      "bloque_sugerido": "Mandibular",
+      "par": "Cervical 5 - Sacro"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Collar",
+      "par": "Mango del - Mango del"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Anahata",
+      "par": "Esternón - Esternón"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Pecho bajo",
+      "par": "Cardias - Carina"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Corazón",
+      "par": "Seno Auriculo - Riñón IZQ"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Pecho lateral",
+      "par": "Pectoral DER - Gemelos IZQ"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Tórax",
+      "bloque_sugerido": "Pleura",
+      "par": "Pleura - Pleura IZQ"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Hígado",
+      "par": "Hígado - Vejiga"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Vesícula",
+      "par": "Vesícula - Páncreas"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Bazo",
+      "par": "Bazo - Bazo (Vertical)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Bazo",
+      "par": "Bazo - Bazo (Horizontal)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Bazo",
+      "par": "Bazo - Costo-Diafragmático"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Ombligo",
+      "par": "Uretero (RAS) - Riñón (RAS)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Intersección",
+      "par": "Contracrágo - Contracrágo"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Abdomen",
+      "bloque_sugerido": "Colon",
+      "par": "Colon Transverso - Testículo (RAS) / Ovario (RAS)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Espalda",
+      "bloque_sugerido": "Dorsales",
+      "par": "Dorsal 3 (RAS) - Lumbar (2 RAS)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Espalda",
+      "bloque_sugerido": "Espalda alta",
+      "par": "Suprarrenal - Pulmón (RAS)"
+    },
+    {
+      "region_sugerida": "Tronco",
+      "zona_sugerida": "Espalda",
+      "bloque_sugerido": "Homóplato",
+      "par": "Pulmón DER - Bazo"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Delantera",
+      "bloque_sugerido": "Fémur",
+      "par": "Trocánter Menor - Riñón HOMOLAT"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Trasera",
+      "bloque_sugerido": "Sacro",
+      "par": "Sacro IZQ - Femoral"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Trasera",
+      "bloque_sugerido": "Trasero",
+      "par": "Rama - Rama Isquiática"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Sexo",
+      "bloque_sugerido": "Fémina B",
+      "par": "Trompa (RAS) - Trompa"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Sexo",
+      "bloque_sugerido": "Fémina B",
+      "par": "Sacro - Ovario"
+    },
+    {
+      "region_sugerida": "Pelvis",
+      "zona_sugerida": "Sexo",
+      "bloque_sugerido": "Fémina B",
+      "par": "Sacro - Ovario IZQ"
+    },
+    {
+      "region_sugerida": "Miembros",
+      "zona_sugerida": "Brazo",
+      "bloque_sugerido": "Brazo alto",
+      "par": "Deltoides - Bursa"
+    },
+    {
+      "region_sugerida": "Miembros",
+      "zona_sugerida": "Brazo",
+      "bloque_sugerido": "Mano",
+      "par": "Muñeca Anterior - Anterior"
+    },
+    {
+      "region_sugerida": "Miembros",
+      "zona_sugerida": "Brazo",
+      "bloque_sugerido": "Mano",
+      "par": "Posterior - Posterior"
+    },
+    {
+      "region_sugerida": "Miembros",
+      "zona_sugerida": "Brazo",
+      "bloque_sugerido": "Mano",
+      "par": "Palma (RAS) - Planta (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Variables",
+      "bloque_sugerido": "Bloque 2 (Variables B)",
+      "par": "Punto Trauma - Sedante (-)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Variables",
+      "bloque_sugerido": "Bloque 2 (Variables B)",
+      "par": "Punto Trauma - Estimulante (+)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Variables",
+      "bloque_sugerido": "Bloque 3 (Personalizado)",
+      "par": "Biomagnetoacupuntura"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Variables",
+      "bloque_sugerido": "Bloque 3 (Personalizado)",
+      "par": "Par seacuna"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Predeterminados",
+      "par": "Dorsal 2 - Dorsal 12"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Predeterminados",
+      "par": "Coxis 1 - Coxis 1"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Homólogos",
+      "par": "Cervical (RAS) - Cervical (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Homólogos",
+      "par": "Dorsal (RAS) - Dorsal (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Homólogos",
+      "par": "Lumbar (RAS) - Lumbar (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Cervical",
+      "par": "Cervical (RAS) - Dorsal (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Cervical",
+      "par": "Cervical (RAS) - Lumbar (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Cervical",
+      "par": "Cervical (RAS) - Coxis (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Dorsal",
+      "par": "Dorsal (RAS) - Cervical (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Dorsal",
+      "par": "Dorsal (RAS) - Sacro (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Dorsal",
+      "par": "Dorsal (RAS) - Coxis (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Lumbar",
+      "par": "Lumbar (RAS) - Cervical (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Lumbar",
+      "par": "Lumbar (RAS) - Sacro (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Lumbar",
+      "par": "Lumbar (RAS) - Coxis (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Sacro",
+      "par": "Sacro (RAS) - Dorsal (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo Sacro",
+      "par": "Sacro (RAS) - Lumbar (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo coxis",
+      "par": "Coxis (RAS) - Cervical (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo coxis",
+      "par": "Coxis (RAS) - Dorsal (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Columna Vertebral",
+      "bloque_sugerido": "Rastreo coxis",
+      "par": "Coxis (RAS) - Lumbar (RAS)"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Ejes Corporales",
+      "bloque_sugerido": "Eje Vertical",
+      "par": "Frontal DER - Sacro"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Ejes Corporales",
+      "bloque_sugerido": "Eje Vertical",
+      "par": "Frontal IZQ - Sacro"
+    },
+    {
+      "region_sugerida": "Extras",
+      "zona_sugerida": "Ejes Corporales",
+      "bloque_sugerido": "Eje Transverso",
+      "par": "Dorsal 2 - Sacro"
+    }
+  ],
+  "advertencia": "Estos pares NO han sido añadidos a la DB. Solo se reportan para revisión del usuario."
+}
