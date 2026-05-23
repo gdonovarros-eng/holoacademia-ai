@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>Rastreo de Imanes · Holoacadem-iA</title>
 <style>
 :root {
@@ -611,6 +614,55 @@ header h1 {
   margin: 0 auto;
 }
 
+/* Grid de mapas por PUNTO (Negativo + Positivo lado a lado) */
+.point-maps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin: 8px 0 4px;
+}
+.point-map-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.point-map-pol {
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.point-map-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text, #1a1a1a);
+  padding: 8px 10px 2px;
+}
+.point-map-loc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0 10px 6px;
+  border-bottom: 1px solid var(--border);
+}
+.point-map-img {
+  max-height: 320px !important;
+  object-fit: contain;
+  background: #fafafa;
+}
+.point-map-noimg {
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
 /* instruction cards */
 .instruction-card {
   background: var(--bg);
@@ -1176,6 +1228,12 @@ table.tref-table td:nth-child(3) { color: #374151; }
   box-shadow: none;
   overflow: hidden;
 }
+/* Wrapper que escala todo el scanner proporcionalmente en pantallas angostas */
+.bm-scanner-frame {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
 #bm-scanner::before { display: none; }
 
 /* scanner title bar */
@@ -1302,12 +1360,17 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .bm-extras-arrow { font-size: 0.9rem; color: #6e6e73; }
 
 
-@media (max-width: 780px) {
-  #bm-scanner { height: 420px; }
-  #body-img { height: 375px; top: 22px; }
-  .bm-label { width: 105px; padding: 5px 7px; }
-  .bm-label-name { font-size: 0.6rem; }
-  .bm-label-count { font-size: 0.52rem; }
+/* Escala TODO el scanner proporcionalmente cuando el viewport es más angosto que 860px.
+   Esto preserva la posición pixel-exacta de las etiquetas (Cabeza, Cuello, Pecho,
+   Abdomen, Brazos, Pelvis, Espalda, Piernas y Extras) sin cortar nada.
+   El factor de escala se calcula vía JS porque transform: scale() necesita un número
+   sin unidades. */
+.bm-scanner-frame {
+  position: relative;
+}
+#bm-scanner {
+  transform-origin: top center;
+  transition: transform 0.18s ease-out;
 }
 
 /* virus tables */
@@ -1402,6 +1465,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
       </div>
 
       <!-- Mapa corporal interactivo — HUD médico -->
+      <div class="bm-scanner-frame">
       <div id="bm-scanner">
 
         <!-- barra HUD superior -->
@@ -1532,6 +1596,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         </div>
 
       </div><!-- /#bm-scanner -->
+      </div><!-- /.bm-scanner-frame -->
     </div><!-- /#rastreo-home -->
 
     <!-- Vista wizard pares biomagnéticos -->
@@ -1637,32 +1702,144 @@ let globalSearchDebounce = null;
 
 // ── SESSION PERSISTENCE ───────────────────────────────────────────────────
 function loadSession() {
-  try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch { return []; }
+  try {
+    const raw = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+    return sanitizeSession(raw);
+  } catch { return []; }
 }
 function saveSession() {
   try { localStorage.setItem(LS_KEY, JSON.stringify(confirmedPairs)); } catch {}
 }
+// Limpia entradas viejas corruptas: sin nombre, o con _path "undefined › ..."
+function sanitizeSession(arr) {
+  if (!Array.isArray(arr)) return [];
+  let removed = 0;
+  const clean = arr.filter(p => {
+    if (!p || typeof p !== 'object') { removed++; return false; }
+    // Sin nombre real → descartar
+    if (!p.nombre || typeof p.nombre !== 'string' || !p.nombre.trim()) { removed++; return false; }
+    return true;
+  }).map(p => {
+    // Reparar _path corrupto
+    if (typeof p._path === 'string' && p._path.includes('undefined')) {
+      delete p._path;
+    }
+    return p;
+  });
+  if (removed > 0) {
+    console.warn(`[rastreo] Sesión saneada: ${removed} entrada(s) corrupta(s) eliminada(s)`);
+    try { localStorage.setItem(LS_KEY, JSON.stringify(clean)); } catch {}
+  }
+  return clean;
+}
 
 // ── INIT ──────────────────────────────────────────────────────────────────
+// ── Enriquecimiento por par (clasificación + fichas Symbelia) ─────────────
+let pairClassifications = {};   // key -> {tipo, patogeno, enfermedades, ...}
+let pairFichas = {};            // key -> ficha_filename
+let pointToMaps = {};           // punto_normalizado -> {canonical, map_zona, map_bloque, ...}
+
+// Normalizador idéntico al backend (sin acentos, lowercase, trim)
+function normalizePoint(s) {
+  if (!s) return '';
+  const base = String(s).normalize('NFD');
+  const noAccents = base.split('').filter(c => c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) > 0x036f).join('');
+  return noAccents.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+// Parsea "Pineal - Útero" → ["Pineal", "Útero"]; quita "(invertido)", "(RAS)"
+function splitPairPoints(pairName) {
+  if (!pairName) return [];
+  return String(pairName)
+    .split(/\s*[-–—]\s*/)
+    .map(p => p.replace(/\s*\([^)]*\)\s*/g, '').trim())
+    .filter(Boolean);
+}
+
+// Para un par dado, devuelve array de {punto, canonical, map_zona, map_bloque, region, zona, bloque}
+// Si los dos puntos son el mismo (bipolar tipo "Pineal - Pineal") solo devuelve uno.
+function lookupPairMaps(pairName) {
+  const points = splitPairPoints(pairName);
+  const seen = new Set();
+  const out = [];
+  points.forEach(pt => {
+    const key = normalizePoint(pt);
+    if (!key || seen.has(key)) return;
+    seen.add(key);
+    const entry = pointToMaps[key];
+    if (entry) {
+      out.push({
+        punto: pt,
+        canonical: entry.canonical,
+        region: entry.region,
+        zona: entry.zona,
+        bloque: entry.bloque,
+        map_zona: entry.map_zona,
+        map_bloque: entry.map_bloque,
+      });
+    } else {
+      // Punto no indexado — devolver placeholder
+      out.push({ punto: pt, canonical: pt, map_zona: null, map_bloque: null });
+    }
+  });
+  return out;
+}
+
+function pairKey(region, zona, bloque, par) {
+  return `${region}|${zona}|${bloque}|${par}`;
+}
+
 async function init() {
   renderCategories();
   renderConfirmedList();
   updateBadge();
 
-  const [pairsData, manifestData] = await Promise.allSettled([
+  const [pairsData, manifestData, clasifData, fichasData, pointMapsData] = await Promise.allSettled([
     fetch('/api/pares-db').then(r => r.json()),
     fetch('/api/tablas-images').then(r => r.json()),
+    fetch('/api/pares-clasificacion').then(r => r.json()),
+    fetch('/api/pares-fichas-mapping').then(r => r.json()),
+    fetch('/api/point-to-maps').then(r => r.json()),
   ]);
 
+  // 1) Clasificación por par (tipo, patógeno, enfermedades, transmisión)
+  if (clasifData.status === 'fulfilled' && clasifData.value && clasifData.value.clasificaciones) {
+    clasifData.value.clasificaciones.forEach(c => {
+      pairClassifications[pairKey(c.region, c.zona, c.bloque, c.par)] = {
+        tipo: c.tipo,
+        patogeno: c.patogeno_canonico || c.patogeno,
+        enfermedades: c.enfermedades_reales,
+        transmision: c.transmision,
+        descripcion: c.descripcion,
+        fuentes_count: c.fuentes_count,
+      };
+    });
+    console.log(`[rastreo] Cargadas ${clasifData.value.clasificaciones.length} clasificaciones`);
+  }
+
+  // 2) Mapeo fichas Symbelia
+  if (fichasData.status === 'fulfilled' && fichasData.value && fichasData.value.mappings) {
+    fichasData.value.mappings.forEach(m => {
+      pairFichas[pairKey(m.db_region, m.db_zona, m.db_bloque, m.db_par)] = m.ficha_file;
+    });
+    console.log(`[rastreo] Cargadas ${fichasData.value.mappings.length} fichas Symbelia`);
+  }
+
+  // 2.5) Índice punto → mapa anatómico
+  if (pointMapsData.status === 'fulfilled' && pointMapsData.value && pointMapsData.value.puntos) {
+    pointToMaps = pointMapsData.value.puntos;
+    console.log(`[rastreo] Cargados ${Object.keys(pointToMaps).length} puntos → mapas`);
+  }
+
+  // 3) DB principal (después de cargar clasificación para enriquecer)
   if (pairsData.status === 'fulfilled') {
     const d = pairsData.value;
-    // pares-db now returns the guided DB structure; keep for wizard
-    wizDB = d;
-    // also flatten for search
+    // Construir wizDB con las 9 REGIONES UI (no las 5 DB internas)
+    wizDB = buildUiDB(d);
     if (Array.isArray(d)) { allPairs = d; }
     else if (d.pairs) { allPairs = d.pairs; }
-    // if new structure, flatten from regiones
     else if (d.regiones) { allPairs = flattenPairs(d); }
+    console.log(`[rastreo] DB v${d.version || '?'} cargada con ${allPairs.length} pares (${wizDB.regiones.length} regiones UI)`);
   }
 
   if (manifestData.status === 'fulfilled' && manifestData.value.ok) {
@@ -1680,10 +1857,21 @@ function flattenPairs(db) {
     (r.zonas || []).forEach(z => {
       (z.bloques || []).forEach(b => {
         (b.pares || []).forEach((name, i) => {
+          const key = pairKey(r.nombre, z.nombre, b.nombre, name);
+          const clf = pairClassifications[key] || {};
           out.push({
             id: b.id + '_' + i,
             nombre: name,
-            tipo: null,
+            region: r.nombre,
+            zona: z.nombre,
+            bloque: b.nombre,
+            tipo: clf.tipo || null,
+            patogeno: clf.patogeno || null,
+            enfermedades: clf.enfermedades || null,
+            transmision: clf.transmision || null,
+            descripcion: clf.descripcion || null,
+            fuentes_count: clf.fuentes_count || 0,
+            ficha_file: pairFichas[key] || null,
             condiciones: null,
             sistemas_afectados: [],
           });
@@ -1692,6 +1880,84 @@ function flattenPairs(db) {
     });
   });
   return out;
+}
+
+// Helper para que cualquier vista pueda obtener metadata por par
+function getPairMeta(region, zona, bloque, par) {
+  const key = pairKey(region, zona, bloque, par);
+  return {
+    classification: pairClassifications[key] || {},
+    ficha_file: pairFichas[key] || null,
+  };
+}
+
+// ── Construye estructura UI (9 regiones) desde la DB (5 regiones internas) ──
+// Cada región UI tiene su numero (1-9), cada zona "1.1", cada bloque "1.1.1"
+const UI_REGIONS_DEF = [
+  // [numero, label_ui, [(db_region, db_zona), ...]]
+  [1, 'Cabeza',  [['Cabeza','Coronilla'], ['Cabeza','Posterior'], ['Cabeza','Lateral'], ['Cabeza','Frente'], ['Cabeza','Rostro']]],
+  [2, 'Cuello',  [['Cabeza','Cuello']]],
+  [3, 'Pecho',   [['Tronco','Tórax']]],
+  [4, 'Abdomen', [['Tronco','Abdomen'], ['Tronco','Hepatitis']]],
+  [5, 'Espalda', [['Tronco','Espalda'], ['Extras','Columna Vertebral']]],
+  [6, 'Pelvis',  [['Pelvis','Delantera'], ['Pelvis','Trasera'], ['Pelvis','Sexo']]],
+  [7, 'Brazos',  [['Miembros','Brazo']]],
+  [8, 'Piernas', [['Miembros','Pierna']]],
+  [9, 'Extras',  [['Extras','Variables'], ['Extras','Ejes Corporales']]],
+];
+
+function buildUiDB(db) {
+  if (!db || !db.regiones) return { regiones: [] };
+  // Index DB zonas por (region, zona) -> objeto zona
+  const dbZonaIndex = {};
+  db.regiones.forEach(r => {
+    (r.zonas || []).forEach(z => {
+      dbZonaIndex[`${r.nombre}|${z.nombre}`] = { region: r, zona: z };
+    });
+  });
+
+  const uiRegiones = [];
+  UI_REGIONS_DEF.forEach(([num, label, sources]) => {
+    const zonas = [];
+    let zonaIdx = 1;
+    sources.forEach(([dbReg, dbZon]) => {
+      const refs = dbZonaIndex[`${dbReg}|${dbZon}`];
+      if (!refs) return;
+      const z = refs.zona;
+      // Cada bloque con su numero "x.y.z"
+      const bloques = (z.bloques || []).map((b, i) => ({
+        id: b.id,
+        nombre: b.nombre,
+        numero: `${num}.${zonaIdx}.${i + 1}`,
+        pares: b.pares || [],
+        db_region: dbReg,
+        db_zona: dbZon,
+      }));
+      const totalPares = bloques.reduce((a, b) => a + b.pares.length, 0);
+      zonas.push({
+        id: z.id,
+        nombre: z.nombre,
+        numero: `${num}.${zonaIdx}`,
+        bloques: bloques,
+        total_pares: totalPares,
+        db_region: dbReg,
+        db_zona: dbZon,
+      });
+      zonaIdx++;
+    });
+    if (zonas.length) {
+      const totalPares = zonas.reduce((a, z) => a + z.total_pares, 0);
+      uiRegiones.push({
+        id: num,
+        nombre: label,
+        numero: String(num),
+        zonas: zonas,
+        total_pares: totalPares,
+      });
+    }
+  });
+
+  return { version: db.version, regiones: uiRegiones };
 }
 
 // ── CATEGORIES ────────────────────────────────────────────────────────────
@@ -1953,7 +2219,34 @@ function buildInstructionList() {
     const card = document.createElement('div');
     card.className = 'instruction-card';
     if (isPair) {
-      const mapUrl = getMapUrl(pair._bloqueId);
+      // Buscar mapas por cada PUNTO del par (Pineal, Útero, etc.)
+      const pointMaps = lookupPairMaps(pair.nombre);
+      // Polaridades: el primer punto = NEGRO (Negativo), segundo = ROJO (Positivo)
+      // Si solo hay un punto único (bipolar tipo "Pineal - Pineal"), es BIPOLAR
+      const polarityLabels = pointMaps.length === 1
+        ? ['BIPOLAR (imán doble polaridad)']
+        : ['IMÁN NEGRO · Polo Negativo (−)', 'IMÁN ROJO · Polo Positivo (+)'];
+      let mapsHtml = '';
+      if (pointMaps.length) {
+        const cards = pointMaps.map((pm, idx) => {
+          const polLabel = polarityLabels[idx] || `Punto ${idx + 1}`;
+          const polBg = idx === 0 ? '#1a1a1a' : (idx === 1 ? '#c41e3a' : '#5b4b8a');
+          const mapImg = pm.map_zona || pm.map_bloque;
+          const locTxt = pm.region ? `${pm.region} · ${pm.zona} · ${pm.bloque}` : '';
+          return `
+            <div class="point-map-card" data-point="${escHtml(pm.canonical)}">
+              <div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div>
+              <div class="point-map-name">📍 ${escHtml(pm.canonical)}</div>
+              ${locTxt ? `<div class="point-map-loc">${escHtml(locTxt)}</div>` : ''}
+              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Ubicación: ${escHtml(pm.canonical)}" loading="lazy">` : `<div class="point-map-noimg">Sin mapa anatómico disponible</div>`}
+            </div>
+          `;
+        }).join('');
+        mapsHtml = `
+          <div class="instruction-map-label">🗺️ <strong>Ubicación anatómica de los puntos</strong> — toca para ampliar</div>
+          <div class="point-maps-grid">${cards}</div>
+        `;
+      }
       card.innerHTML = `
         <div class="instruction-card-header">
           <div class="instruction-num">${n}</div>
@@ -1961,11 +2254,7 @@ function buildInstructionList() {
         </div>
         ${pair._path ? `<div class="instruction-detail">📍 <strong>Zona:</strong> ${escHtml(pair._path)}</div>` : ''}
         ${pair.tipo ? `<div class="instruction-row"><span class="instruction-label">Tipo:</span>${tipoChip(pair.tipo)}</div>` : ''}
-        ${mapUrl ? `
-        <div class="instruction-map-wrap">
-          <p class="instruction-map-label">🗺️ <strong>Mapa de ubicación</strong> — toca para ampliar</p>
-          <img class="instruction-map-img" src="${mapUrl}" alt="Mapa: ${escHtml(pair.nombre)}" loading="lazy">
-        </div>` : ''}
+        ${mapsHtml}
         ${pair.condiciones ? `<div class="instruction-detail">🔬 <strong>Condiciones asociadas:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
         ${pair.significado_emocional ? `<div class="instruction-detail">💜 <strong>Significado emocional:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
         ${Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length ? `<div class="instruction-detail"><strong>Sistemas:</strong> ${escHtml(pair.sistemas_afectados.join(', '))}</div>` : ''}
@@ -2125,32 +2414,42 @@ function wizRenderRegions() {
     document.getElementById('wizGrid').innerHTML = '';
     return;
   }
-  wizSetQ('Paso 1 · Región', '¿En qué región del cuerpo?');
-  const g = wizGetGrid('g2');
+  wizSetQ('Paso 1 · Región', '¿En qué región del cuerpo? (9 regiones)');
+  const g = wizGetGrid('gauto');
   wizDB.regiones.forEach(r => {
-    const btn = wizMakeBtn(r.nombre, r.zonas.length + ' zonas');
+    const sub = r.zonas.length + ' zona' + (r.zonas.length===1?'':'s') + ' · ' + r.total_pares + ' pares';
+    const btn = wizMakeBtn(r.numero + '. ' + r.nombre, sub);
     btn.onclick = () => { wizRegion = r; wizStep = 'zona'; wizBodyMapKey = null; wizRender(); };
     g.appendChild(btn);
   });
 }
 
 function wizRenderZonas() {
-  wizSetQ('Paso 2 · Zona', '¿En qué zona de ' + wizRegion.nombre + '?');
+  wizSetQ('Paso 2 · Zona', '¿En qué zona de ' + wizRegion.numero + '. ' + wizRegion.nombre + '?');
+  // Si solo hay 1 zona, saltar directo a bloques
+  if (wizRegion.zonas.length === 1) {
+    wizZona = wizRegion.zonas[0];
+    wizStep = 'bloque';
+    wizRender();
+    return;
+  }
   const cols = wizRegion.zonas.length <= 3 ? 'g2' : 'gauto';
   const g = wizGetGrid(cols);
   wizRegion.zonas.forEach(z => {
-    const nPares = z.bloques.reduce((a,b) => a + b.pares.length, 0);
-    const btn = wizMakeBtn(z.numero + '. ' + z.nombre, z.bloques.length + ' bloques · ' + nPares + ' pares');
+    const nBloques = z.bloques.length;
+    const sub = nBloques + ' bloque' + (nBloques===1?'':'s') + ' · ' + z.total_pares + ' pares';
+    const btn = wizMakeBtn(z.numero + ' ' + z.nombre, sub);
     btn.onclick = () => { wizZona = z; wizStep = 'bloque'; wizRender(); };
     g.appendChild(btn);
   });
 }
 
 function wizRenderBloques() {
-  wizSetQ('Paso 3 · Bloque', '¿Qué bloque dentro de ' + wizZona.nombre + '?');
+  wizSetQ('Paso 3 · Bloque', '¿Qué bloque dentro de ' + wizZona.numero + ' ' + wizZona.nombre + '?');
   const g = wizGetGrid('gauto');
   wizZona.bloques.forEach(b => {
-    const btn = wizMakeBtn(b.numero + '. ' + b.nombre, b.pares.length + ' pares');
+    const nP = b.pares.length;
+    const btn = wizMakeBtn(b.numero + ' ' + b.nombre, nP + ' par' + (nP===1?'':'es'));
     btn.onclick = () => { wizBloque = b; wizStep = 'par'; wizRender(); };
     g.appendChild(btn);
   });
@@ -2694,22 +2993,18 @@ function trefFilter(q) {
 
 // ── MAPA CORPORAL INTERACTIVO ─────────────────────────────────────────────
 
-// dbZona: saltar directo al paso Bloque cuando hay coincidencia exacta en la DB
-// sources[]: combinar zonas de distintas regiones DB bajo una sola región UI
-// includeZonas[]: filtrar solo estas zonas de dbNombre
+// Mapea las keys del SVG corporal (cabeza, pecho, brazos…) a las 9 regiones UI
+// que vienen de buildUiDB(). Solo guardamos el label UI — el resto se busca por nombre.
 const BODY_REGION_MAP = {
-  cabeza:  { label: 'Cabeza',  dbNombre: 'Cabeza',   dbZona: null,   excludeZonas: ['Cuello'] },  // zonas 1-5 (Cuello es tarjeta separada)
-  cuello:  { label: 'Cuello',  dbNombre: 'Cabeza',   dbZona: 'Cuello'    },  // → directo a Bloques
-  pecho:   { label: 'Pecho',   dbNombre: 'Tronco',   dbZona: 'Tórax'     },  // → directo a Bloques
-  abdomen: { label: 'Abdomen', dbNombre: 'Tronco',   dbZona: null,   includeZonas: ['Abdomen', 'Hepatitis'] },  // 2 sub-zonas
-  pelvis:  { label: 'Pelvis',  dbNombre: 'Pelvis',   dbZona: null        },  // 3 sub-zonas → mostrar paso Zona
-  espalda: { label: 'Espalda', sources: [                                    // 2 fuentes DB distintas
-    { dbNombre: 'Tronco',  zonaNombre: 'Espalda'           },
-    { dbNombre: 'Extras',  zonaNombre: 'Columna Vertebral' },
-  ]},
-  brazos:  { label: 'Brazos',  dbNombre: 'Miembros', dbZona: 'Brazo'     },  // → directo a Bloques
-  piernas: { label: 'Piernas', dbNombre: 'Miembros', dbZona: 'Pierna'    },  // → directo a Bloques
-  extras:  { label: 'Pares Especiales', dbNombre: 'Extras', dbZona: null, excludeZonas: ['Columna Vertebral'] },  // Variables + Ejes
+  cabeza:  { label: 'Cabeza'  },
+  cuello:  { label: 'Cuello'  },
+  pecho:   { label: 'Pecho'   },
+  abdomen: { label: 'Abdomen' },
+  pelvis:  { label: 'Pelvis'  },
+  espalda: { label: 'Espalda' },
+  brazos:  { label: 'Brazos'  },
+  piernas: { label: 'Piernas' },
+  extras:  { label: 'Extras'  },
 };
 
 function showHome() {
@@ -2729,64 +3024,19 @@ function selectBodyRegion(key) {
   if (!mapping) return;
 
   if (wizDB && wizDB.regiones) {
+    // Buscar la región UI por su label (Cabeza, Cuello, Pecho, …, Extras)
+    const uiRegion = wizDB.regiones.find(r => r.nombre === mapping.label);
+    if (uiRegion) {
+      wizRegion = uiRegion;
+      wizZona = null; wizBloque = null; wizPar = null;
 
-    // ── Caso A: fuentes múltiples (zonas de distintas regiones DB) ───────────
-    if (mapping.sources) {
-      const combinedZonas = [];
-      for (const src of mapping.sources) {
-        const dbReg = wizDB.regiones.find(r => r.nombre === src.dbNombre);
-        if (dbReg) {
-          const zona = dbReg.zonas.find(z => z.nombre === src.zonaNombre);
-          if (zona) combinedZonas.push(zona);
-        }
+      // Si la región UI tiene una sola zona, saltar directo al paso Bloque
+      if (uiRegion.zonas.length === 1) {
+        wizZona = uiRegion.zonas[0];
+        wizStep = 'bloque';
+      } else {
+        wizStep = 'zona';
       }
-      if (combinedZonas.length) {
-        wizRegion  = { nombre: mapping.label, zonas: combinedZonas };
-        wizZona    = null; wizBloque = null; wizPar = null;
-        // Si solo hay una zona, saltar directo a bloques
-        if (combinedZonas.length === 1) {
-          wizZona = combinedZonas[0];
-          wizStep = 'bloque';
-        } else {
-          wizStep = 'zona';
-        }
-        hideHome();
-        wizRender();
-        return;
-      }
-    }
-
-    // ── Caso B: región única con filtros opcionales ───────────────────────────
-    const dbRegion = wizDB.regiones.find(r => r.nombre === mapping.dbNombre);
-    if (dbRegion) {
-      let zonas = dbRegion.zonas;
-
-      // Excluir zonas reservadas para otra tarjeta UI
-      if (mapping.excludeZonas && mapping.excludeZonas.length) {
-        zonas = zonas.filter(z => !mapping.excludeZonas.includes(z.nombre));
-      }
-      // Incluir solo zonas específicas
-      if (mapping.includeZonas && mapping.includeZonas.length) {
-        zonas = zonas.filter(z => mapping.includeZonas.includes(z.nombre));
-      }
-
-      wizRegion = Object.assign({}, dbRegion, { zonas });
-      wizZona   = null; wizBloque = null; wizPar = null;
-
-      // Si hay zona exacta en la DB, saltar directo al paso Bloque
-      if (mapping.dbZona) {
-        const dbZona = dbRegion.zonas.find(z => z.nombre === mapping.dbZona);
-        if (dbZona) {
-          wizZona = dbZona;
-          wizStep = 'bloque';
-          hideHome();
-          wizRender();
-          return;
-        }
-      }
-
-      // Sin zona específica → mostrar sub-zonas
-      wizStep = 'zona';
       hideHome();
       wizRender();
       return;
@@ -2857,9 +3107,31 @@ function toggleInstr() {
   chevron.textContent = body.classList.contains('open') ? '▲' : '▼';
 }
 
+// ── ESCALADO RESPONSIVO DEL MAPA CORPORAL ─────────────────────────────────
+// El scanner está diseñado para 860×690 px. En pantallas más angostas,
+// escalamos TODO con transform: scale() para no cortar etiquetas.
+function fitBodyMap() {
+  const scanner = document.getElementById('bm-scanner');
+  const frame   = document.querySelector('.bm-scanner-frame');
+  if (!scanner || !frame) return;
+  const designW = 860;
+  const designH = 690;
+  const availW  = Math.max(frame.clientWidth - 8, 280); // 4px de margen a cada lado
+  const scale   = Math.min(1, availW / designW);
+  scanner.style.transform = `scale(${scale})`;
+  // Reserva la altura visual para que el flujo del documento siga después del mapa
+  frame.style.height = `${designH * scale}px`;
+}
+window.addEventListener('resize', fitBodyMap);
+// Llamar después de que init() haya montado el DOM y la imagen haya cargado
+window.addEventListener('load', fitBodyMap);
+setTimeout(fitBodyMap, 50);
+setTimeout(fitBodyMap, 300);
+
 // ── BOOT ──────────────────────────────────────────────────────────────────
 init();
 initBodyMapHover();
+fitBodyMap();
 </script>
 </body>
 </html>
