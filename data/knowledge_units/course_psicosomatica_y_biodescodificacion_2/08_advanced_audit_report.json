@@ -1,0 +1,27 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_biodescodificacion",
+    "FAQ poco específica: faq_que_es_emision",
+    "FAQ poco específica: faq_que_es_profesion",
+    "FAQ poco específica: faq_que_es_proteccion",
+    "Concepto poco conectado: preocupacion_padre_pensar",
+    "Concepto poco conectado: emision",
+    "Concepto poco conectado: profesion",
+    "Concepto poco conectado: provision",
+    "Concepto poco conectado: competicion_familia",
+    "Concepto poco conectado: reconocimiento_hogar",
+    "Concepto poco conectado: verticalidad_recepcion",
+    "Concepto poco conectado: vocacion"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

@@ -1,0 +1,398 @@
+[
+  {
+    "id": "intake_001",
+    "pregunta": "Aprender a preguntarle.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_002"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_002",
+    "pregunta": "Por eso yo en mis protocolos, muchachos, les pongo cómo preguntarle.¿Cuál es la pregunta concisa que le tengo?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_003"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_003",
+    "pregunta": "Y unas chicas me preguntan, les dije, no, que yo sepa eso online.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_004"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_004",
+    "pregunta": "Me preguntaban hace un momento también unas alumnas que si estas autoterapias eran una especie de cursos o no, no, no.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_005"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_005",
+    "pregunta": "Y aprender a preguntarle, aprender a interrogarla.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_006"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_006",
+    "pregunta": "Y finalmente, después de hacer este interrogatorio, este cuestionamiento, estas preguntas correctamente al subconsciente, aprendiendo a preguntar sin que interviniera mi sistema de creencias, vi que toda la información l…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_007"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_007",
+    "pregunta": "Y cuando empecé a preguntarle a mi subconsciente qué era lo que yo tenía, por qué tenía ese problema, pues así tan fuerte, y además a mi edad.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_008"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_008",
+    "pregunta": "Y que si podía quitar esos problemas, reprogramar esa mente subconsciente, preguntarle incluso qué podía tomar o no tomar, qué tipo de ejercicios podía hacer o no hacer.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_009"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_009",
+    "pregunta": "Aprender a preguntarle, aprender a comunicarnos con ella, confiar en eso, interiorizar creencias que nos hagan desconectarnos de nuestro sistema de creencias, valga la redundancia, para poderle hacer caso a esa sabiduría…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_010"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_010",
+    "pregunta": "Es decir, que no me conteste mi sistema de creencias en esas preguntas, sino que realmente me conteste la profundidad y la inteligencia de mi mente subconsciente.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_011"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_011",
+    "pregunta": "La sanación energética integral va dirigida a eso, no sólo a sanarnos físicamente, que eso lo vimos también mucho más en el del año pasado, las emociones, claro, pero también en nuestra vida, ¿no?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_012"
+    ],
+    "relacionado_conceptos": [
+      "sanacion_energetica_integral"
+    ],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_012",
+    "pregunta": "Entonces, pues como eran muchos los, la información que recibíamos, la verdad no le hice mucho caso, no entendí qué era lo que me estaba diciendo, ahí le pregunté después, oye, el video, y me mandó un video de esa misma…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_013"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_013",
+    "pregunta": "Yo les puedo asegurar que todos ustedes tienen la capacidad en ese subconsciente, en esa mente tan poderosa, de arreglar cualquier tipo de conflicto, si se desapegan de sus creencias y aprenden a preguntarle.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_014"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_014",
+    "pregunta": "Al final pueden hacer preguntas, claro, de las dudas que tengan.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_015"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_015",
+    "pregunta": "Desafortunadamente algunas alumnas me preguntaron y yo como no sabía, pues les dije que no, pero sí, sí se puede.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_016"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_016",
+    "pregunta": "Por ejemplo, el conflicto emocional, el miedo, el trauma emocional, y vimos técnicas así súper novedosas como el masaje emocional y otras cosas, ¿no?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_017"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_017",
+    "pregunta": "Entonces, si me preguntan, sí soy muy práctico en ese sentido, pero en algunos casos sí he tenido que profundizar un poco más.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_018"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_018",
+    "pregunta": "Y ahí me tienen preguntando y todo.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "sanacion_energetica_integral",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  }
+]

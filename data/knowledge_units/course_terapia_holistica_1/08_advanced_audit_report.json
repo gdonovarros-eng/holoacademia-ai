@@ -1,0 +1,26 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_terapia",
+    "FAQ poco específica: faq_que_es_laringitis",
+    "FAQ poco específica: faq_que_es_tuberculosis",
+    "Concepto poco conectado: funcion_respiracion",
+    "Concepto poco conectado: captar_o2",
+    "Concepto poco conectado: eliminar_co2",
+    "Concepto poco conectado: a_conductora",
+    "Concepto poco conectado: b_respiratoria",
+    "Concepto poco conectado: c_mecanica"
+  ],
+  "elementos_excelentes": [
+    "Concepto bien anclado y conectable: terapia"
+  ],
+  "listo_para_rag": true
+}

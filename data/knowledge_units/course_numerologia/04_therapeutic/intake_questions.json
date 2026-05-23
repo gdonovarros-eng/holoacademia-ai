@@ -1,0 +1,374 @@
+[
+  {
+    "id": "intake_001",
+    "pregunta": "Primero voy a hacer algunos ejemplos, quiero que entendamos de qué se trata esto y después me voy a meter a la teoría y al fundamento para que, número uno, ustedes entiendan por qué esto sí funciona y, número dos, por si…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_002"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_002",
+    "pregunta": "Reglas del juego, preguntas, va a haber una sesión, más al ratito ya la abriremos y discúlpenme, pido una gran disculpa porque a partir de este momento todo lo que voy a decir a continuación, considérenlo puras y llanas…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_003"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_003",
+    "pregunta": "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_004"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_004",
+    "pregunta": "Yo te pregunto, ¿mataste al presentador?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_006"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_006",
+    "pregunta": "Por eso siempre le llegan a pedir consejo, siempre le preguntan cosas, aunque él no asuma ningún liderazgo.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_007"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_007",
+    "pregunta": "Cuando le preguntan al señor conocedor, oiga, ¿usted qué ha aprendido del río en estos años de vivir aquí pegado?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_008"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_008",
+    "pregunta": "Y le preguntan al señor del enfrente, oiga señor que es el sabio, ¿usted qué ha aprendido del río?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_009"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_009",
+    "pregunta": "Ahora, la pregunta es, oye Alejandro, no mames, ¿y de dónde sacaste todas esas mamadas?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_010"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_010",
+    "pregunta": "Si no, pregúntenle al Gary.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_011"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_011",
+    "pregunta": "Para mis amigos los escépticos, preguntarán, ¿está diciendo huevadas?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_012"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_012",
+    "pregunta": "En este procedimiento, seguramente muchos se están preguntando, oye, ya tengo todo, pero los que nacen los días 10 de cada mes, o los que nacen en octubre, me dicen, Alejandro, yo todavía no sé si es 10 o 1, entonces me…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_013"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_013",
+    "pregunta": "Eso significa que podemos preguntarle a nuestra mente profunda, a nuestra conciencia, podemos preguntar exactamente cuál es nuestro dígito de cierta posición del pentagrama numerológico.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_014"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_014",
+    "pregunta": "Para poder preguntarle a la mente profunda si nuestro dígito de alguna posición es 1 o es 10.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_015"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_015",
+    "pregunta": "Y claro que los que ya saben usar el péndulo, pues esto ya no lo necesitan porque con el péndulo le preguntas, manifiestame un no, a veces es con el reloj, manifiestame un sí, a veces es contra reloj, las personas varías…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_016"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_016",
+    "pregunta": "Dentro de lo negativo, en el aspecto social, si decimos que en lo positivo él acepta a quien sea, es bien peace and love, vive, deja vivir, etc., en lo negativo al revés, súper intolerante, grosero con lo que no conoce…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_017"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_017",
+    "pregunta": "En lo emocional es una persona dentro de lo positivo muy sensible, súper cariñosa, es un trato amable, ¿quién es el amable?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_018"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_018",
+    "pregunta": "Ahora, ¿cuál es la misión emocional del uno?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  }
+]

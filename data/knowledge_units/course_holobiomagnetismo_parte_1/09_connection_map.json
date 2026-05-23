@@ -1,0 +1,20 @@
+{
+  "id": "connection_map",
+  "curso": "holobiomagnetismo_parte_1",
+  "linea": "salud",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [],
+  "concept_to_reasoning": [],
+  "reasoning_to_protocol": [
+    {
+      "id": "patron_001__secuencia_colocar_dos_lineas_tu_estas_haciendo_que_la_informacion_regrese_esos_45_grados",
+      "curso": "holobiomagnetismo_parte_1",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_001",
+      "protocol_id": "secuencia_colocar_dos_lineas_tu_estas_haciendo_que_la_informacion_regrese_esos_45_grados"
+    }
+  ]
+}

@@ -1,0 +1,1176 @@
+[
+  {
+    "id": "rastreo_conflictologico",
+    "nombre": "Rastreo conflictológico",
+    "objetivo": "Ejecutar la secuencia operativa asociada a rastreo conflictológico.",
+    "descripcion": "RASTREO CONFLICTOLÓGICO (PSICOSOMÁTICO) LOCAL NO – Hacer el rastreo conflictológico general (Módulo 0 p215) NO – Hacer el rastreo conflictológico general NO – Hacer el rastreo conflictológico global",
+    "cuando_usarlo": [
+      "Usar cuando el material fuente indique esta secuencia o ejercicio."
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "NO – Hacer el rastreo conflictológico general (Módulo 0 p215)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_1",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "SI - ¿Es algún conflicto nasal? ¿Laringeo? ¿Etc…?",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_2",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "NO – Hacer el rastreo conflictológico general",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_3",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "SI – Repetir procedimiento.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_4",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "MS: ¿Algún microbio respiratorio típico está implicado en tu síntoma X?",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_5",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "NO – Hacer el rastreo microbiológico general (Módulo 0 p12)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_6",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Paso 7",
+        "instruccion": "SI - ¿Es bacteria? ¿virus? ¿Etc…?",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_7",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 8,
+        "titulo": "Paso 8",
+        "instruccion": "NO – Hacer el rastreo conflictológico global",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_8",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 9,
+        "titulo": "Paso 9",
+        "instruccion": "MS: Manifiestame el par con mayor potencia desintoxicante del microbio X",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_9",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 10,
+        "titulo": "Paso 10",
+        "instruccion": "NO - Hacer el rastreo biomagnético general (Módulo 0. 57)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_10",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "manual_protocolos_de_rastreo_alejandrolavn_txt",
+    "source": "manual",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  },
+  {
+    "id": "protocolo_de_solucion_transgeneracional",
+    "nombre": "Protocolo de solución transgeneracional",
+    "objetivo": "Ejecutar la secuencia operativa asociada a protocolo de solución transgeneracional.",
+    "descripcion": "(Aplicando EFT) Aunque has tenido X problema, vivido en X emoción con X holograma, en este Nuestro sistema energético se reinicia en el nombre del amor, la verdad y la justicia. Buscar exclusión: ¿Este síntoma/ciclo/historia/drama tiene memoria de exclusión? Buscar ancestro excluido (Tarot/Rastreo) (Directo/Lateral) (Extra 1)",
+    "cuando_usarlo": [
+      "Márcame cuando esta memoria dolorosa se vuelva consciente y se desactive.”"
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "“Abro campo mórfico transgeneracional” (Guardar en circuito).",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_1",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Sintonizo conscientemente con la memoria dolorosa de ancestro X, con problemática X, en contexto",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_2",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "(Aplicando EFT) Aunque has tenido X problema, vivido en X emoción con X holograma, en este",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_3",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "(Reencuadrar aplicando EFT)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_4",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Márcame cuando esta memoria dolorosa se vuelva consciente y se desactive.”",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_5",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "“Abro campo mórfico transgeneracional” (Guardar en circuito)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_6",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Paso 7",
+        "instruccion": "Buscar exclusión: ¿Este síntoma/ciclo/historia/drama tiene memoria de exclusión? SI/NO",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_7",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 8,
+        "titulo": "Paso 8",
+        "instruccion": "Buscar ancestro excluido (Tarot/Rastreo) (Directo/Lateral) (Extra 1)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_8",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 9,
+        "titulo": "Paso 9",
+        "instruccion": "“Manifiéstame el instante de exclusión” (Edad/Mes/Día) (Pag 26)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_9",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 10,
+        "titulo": "Paso 10",
+        "instruccion": "¿Hay holograma implicado? (Buscar 1/12) (Pag 88)",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_10",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "protocolos_de_solucion_transgen_alejandro_lavin_1_txt",
+    "source": "merged",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  },
+  {
+    "id": "aplicacion_de_eft",
+    "nombre": "Aplicación de EFT",
+    "objetivo": "Ejecutar la secuencia operativa asociada a aplicación de eft.",
+    "descripcion": "Dura 12 meses, comenzamos con sistema respiratorio, nos seguimos con digestivo y vamos a ir viendo sistema por sistema hasta el último llegar a lo que es terapia sistémica. La auriculoterapia, pues nada más les digo bien cómo se hace y ya. Entonces necesitamos que nuestro paciente exprese el conflicto. Y entonces yo cuando hice el rastreo pregunté los conflictos involucrados en las causas o las secuelas del cuadro visual.",
+    "cuando_usarlo": [
+      "Porque cuando, claro, pasa una crisis y lo primero que entra uno es en shock."
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Preguntan que si el diplomado tiene un costo de inscripción y no, no cuesta nada inscribirse, nada más pagas tú tu mes y ya está.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_1",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Repite conmigo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_2",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Hacer que ella lo solucione, lo suelte.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_3",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Inhala, lleva la energía de la respiración, mantén los ojos, mantén, mantén, llévala los ojos al corazón, libera.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_4",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Inhala, lleva la energía, lleva la energía, mantén la mirada, mantén el corazón, exhala, deja que salga, que se libere.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_5",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "Inhala, mantén, deja que limpie, que purifique, que despegue, exhala.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_6",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Paso 7",
+        "instruccion": "Presionamos y ahí donde presionamos, este acupresor no se desliza.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "aplicacion_de_eft_paso_7",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "modulo_6",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [
+      "terapia"
+    ],
+    "relacionado_reasoning": []
+  },
+  {
+    "id": "sedacion_del_triple_calentador",
+    "nombre": "Sedación del triple calentador",
+    "objetivo": "Ejecutar la secuencia operativa asociada a sedación del triple calentador.",
+    "descripcion": "Técnicas psicoemocionales como la psicosomática, la biodescodificación, el transgeneracional, la liberación emocional, la programación neurolingüística y las técnicas bioquímicas como la alimentación inteligente, protocolos de desintoxicación, la homeopatía, las sales de Schussler. Igual, las mismas estrategias e inclusive rastreos y la chingada. Porque puedes tú ser un máster del rastreo y poder rastrear de qué color hoy manchó Justin Bieber los calzones. ¿Saben cuál es la, no es más un contra, el contra de este ejercicio que les voy a poner?",
+    "cuando_usarlo": [
+      "El chiste es que hay alguna lista de síntomas que en lo que generan físicamente y en lo que generan emocionalmente, casi casi que estás describiendo a alguien."
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Hagan ese ejercicio, escuchen, de verdad, escuchen.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_1",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Sube, pasa a través de la panza, baja, este es el colon descendente.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_2",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Pregunta por acá.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_3",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Pregunta por acá que si en ese caso el neurobiomagnetismo aplica.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_4",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Hacerle una incisión en el epitelio que tal vez llegue hasta el tejido óseos, diariamente y quitarle para que su cuerpo...",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_5",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "Pregúntale que qué quiere.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_6",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "modulo_14",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  }
+]

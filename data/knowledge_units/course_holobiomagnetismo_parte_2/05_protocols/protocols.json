@@ -1,0 +1,351 @@
+[
+  {
+    "id": "sedacion_del_triple_calentador",
+    "nombre": "Sedación del triple calentador",
+    "objetivo": "Ejecutar la secuencia operativa asociada a sedación del triple calentador.",
+    "descripcion": "¿Alguna otra pareja significativa que recuerdes además de Adam y de Rubén? Adam fue tu primer amor, estuviste cinco años con él, tronaste y tiempo después empezaste con Rubén. Híjole, la que ocupaba terapia era tu hermana, pero bueno, ya te tocó a ti. Mi hermana nunca había venido a estas jaladas, la traje de los pelos y me dijo, yo no voy por el curso, voy por la terapia.",
+    "cuando_usarlo": [
+      "Porque yo me sentía, me sentí mal y fui al hospital como, ah, te sientes mal, voy a que me revisen porque me duele el estómago, porque era como dolor de estómago, pero en el hospit…"
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Observamos cómo el aire entra y sale y es una sensación agradable sentir cómo el aire que inhalamos refresca las cavernas internas del rostro",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_1",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Observa esto.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_2",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Busca en tu cuerpo, activa tu conciencia corporal.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_3",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Busca en tu cuerpo dónde es este lugar, tal vez es uno de los lugares que mencioné, tal vez no.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_4",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Sube el volumen de esa emoción.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_5",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "Sube la intensidad de eso y que se maximice por todo tu cuerpo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_6",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Paso 7",
+        "instruccion": "Busca una, dos, tal vez tres palabras que describan emocionalmente eso que se siente en la cadera.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_7",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 8,
+        "titulo": "Paso 8",
+        "instruccion": "Inhala y yo hacerlo, pero el hecho de que haya contacto, y aunque mi intención está fija, el hecho de que mi intención genere ya un movimiento, es lo mismo que hace la magia.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_8",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 9,
+        "titulo": "Paso 9",
+        "instruccion": "Pregunta uno.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_9",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 10,
+        "titulo": "Paso 10",
+        "instruccion": "Pregunta dos.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_10",
+        "curso": "holobiomagnetismo_parte_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "holobiomagnetismo_parte_2",
+    "linea": "salud",
+    "modulo": "modulo_2",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  }
+]

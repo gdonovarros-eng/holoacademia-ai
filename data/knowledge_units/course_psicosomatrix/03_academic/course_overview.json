@@ -1,0 +1,28 @@
+{
+  "id": "course_overview",
+  "curso": "psicosomatrix",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "overview_academico",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_curso": "Psicosomatrix",
+  "tipo": "Curso",
+  "nota_edicion": "",
+  "descripcion": "Psicosomatrix organizado como unidad de conocimiento para asistentes académicos, terapéuticos y guías de protocolos. La descripción se construyó automáticamente a partir de transcripciones, manuales e índices disponibles.",
+  "ejes_principales": [
+    "Y LA",
+    "CAMPO UNIFICADO",
+    "DE LAS",
+    "Preocupación          Padre                    Pensar",
+    "Competición                                                          Familia",
+    "Reconocimiento                                                          Hogar",
+    "Verticalidad                                                        Recepción"
+  ],
+  "posicionamiento": "",
+  "prerrequisitos": [],
+  "modulos_detectados": [
+    1,
+    2
+  ]
+}

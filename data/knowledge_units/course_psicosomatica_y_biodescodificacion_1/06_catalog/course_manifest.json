@@ -1,0 +1,151 @@
+{
+  "id": "course_manifest",
+  "curso": "psicosomatica_y_biodescodificacion_1",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Curso Psicosomática y Biodescodificación 1",
+  "archivos_fuente_usados": [
+    "Psicosomática y Biodescodificación 1 - Conflicto sistémico - TCUMC - Alejandro Lavín.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Teoría del Campo Unificado",
+    "De la Medicina Complementaria",
+    "PSICOSOMÁTICA Y",
+    "TEORÍA DEL",
+    "CAMPO UNIFICADO",
+    "REMEDIOS VIBRACIONALES",
+    "TERAPIA SISTÉMICA",
+    "TERAPIA PSICOEMOCIONAL"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "cantidad_de_conceptos_extraidos": 14,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 1,
+  "ambiguedades_detectadas": [],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "biodescodificacion",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "biomagnetismo",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "campo_unificado",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "condicion_sobrecompensacion_degenerativa",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_003",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "protocolo_de_solucion_transgeneracional",
+        "curso": "psicosomatica_y_biodescodificacion_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "biodescodificacion",
+      "biomagnetismo",
+      "campo_unificado",
+      "condicion_sobrecompensacion_degenerativa"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_007"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_003"
+    ],
+    "protocolos_clave": [
+      "protocolo_de_solucion_transgeneracional"
+    ]
+  }
+}

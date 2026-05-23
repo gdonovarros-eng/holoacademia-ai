@@ -1,0 +1,286 @@
+[
+  {
+    "id": "intake_001",
+    "pregunta": "¿Y cuál es la emoción típica para asegurar la sobrevivencia?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_002"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_002",
+    "pregunta": "Mientras tú estás cagado del miedo, mientras tu mujer tiene el teléfono, tu mujer empieza a preguntarte, oye, ¿por qué Juan el mecánico está tan buena y te envía esas fotos?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_003"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_003",
+    "pregunta": "Entonces te lo pregunta y tú puedes ver que la cabeza la tiene roja y tiene aquí una vena palpitándole en el párpado.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_004"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_004",
+    "pregunta": "Le preguntas, ¿desde hace cuánto te duele?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_005"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_005",
+    "pregunta": "Ahora, ellos proponen que es la mente originando cambios emocionales lo que lleva a la enfermedad, ¿ok?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_006"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_006",
+    "pregunta": "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_008"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_008",
+    "pregunta": "¿Qué antecedentes relevantes conviene explorar antes de interpretar el caso?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_011"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_011",
+    "pregunta": "Pregunta hasta el final.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_012"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_012",
+    "pregunta": "No puedo decir que infalible porque no todos hasta el 100% se componen de aquello con lo que vinieron, yo considero que simplemente es cuestión de tener más tiempo de sesiones, pero hay pacientes que pues nada más vienen…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_013"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_013",
+    "pregunta": "Si veo que estás reparando a mamá un montón, la primera pregunta sería, a ver, cuéntame de tu mamá.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_014"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_014",
+    "pregunta": "Vamos a tener un break de preguntas al final.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_015"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_015",
+    "pregunta": "nutrición y cuidado la mujer la energía femenina dentro de sus capacidades neurológicas diferentes tiene mayor sensibilidad mayor empatía mayor capacidad de contención emocional la madre es la que te enseña el lenguaje l…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_017"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_017",
+    "pregunta": "Mientras tú estás cagado del miedo, mientras tu mujer tiene el teléfono, tu mujer empieza a preguntarte, oye, ¿por qué Juan el mecánico está tan buena?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  }
+]

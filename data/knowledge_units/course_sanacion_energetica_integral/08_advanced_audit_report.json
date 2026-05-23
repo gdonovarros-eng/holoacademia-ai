@@ -1,0 +1,28 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "Concepto poco conectado: dr_h_c_hector_rodriguez",
+    "Concepto poco conectado: menu_sei",
+    "Concepto poco conectado: rastreo_sei",
+    "Concepto poco conectado: renuncio_a_toda_energia_pesada",
+    "Concepto poco conectado: oscura_o_discordante_que_interfiera",
+    "Concepto poco conectado: el_poder_de_la_mente_subconsciente",
+    "Concepto poco conectado: ampliando_el_tema_covid_patogenos_ocultos",
+    "Concepto poco conectado: ampliando_el_tema_emocional_centros_emocionales",
+    "Concepto poco conectado: emocion_contraida",
+    "Concepto poco conectado: reflejo_emocional",
+    "Concepto poco conectado: holograma_14",
+    "Concepto poco conectado: almacenamiento_de_informacion",
+    "Concepto poco conectado: procesamiento_automatico"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

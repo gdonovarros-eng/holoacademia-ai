@@ -1,0 +1,159 @@
+[
+  {
+    "id": "protocolo_de_solucion_transgeneracional",
+    "nombre": "Protocolo de solución transgeneracional",
+    "objetivo": "Ejecutar la secuencia operativa asociada a protocolo de solución transgeneracional.",
+    "descripcion": "alguna vez en un chequeo de rutina o algo así te han detectado más de 115? Pero me dice, voy a la terapia neural y me dijeron que no sé qué. Porque la mayoría de las personas que vienen a decirme, es que el que me pone los imanes me rastreó que no sé qué y le salió quién sabe cuál, son, no sé, diagnósticos bien fatalistas. Mente supraconsciente, voy a hacer un rastreo psicosomático.",
+    "cuando_usarlo": [
+      "Si coincide el cansancio, dificultad en las mañanas para pararse, el pelo se me cae y aumento de peso, es muy característico el cuadro que bien me puede hablar de que traes algo al…"
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Hagamos un método inductivo con testeo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_1",
+        "curso": "psicosomatica_y_biodescodificacion_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Sube más los estrógenos.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_2",
+        "curso": "psicosomatica_y_biodescodificacion_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Buscar cuáles son las situaciones que a ti más te han hecho sentir deprimida, especialmente después de los 21 años.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_3",
+        "curso": "psicosomatica_y_biodescodificacion_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Sube la prolactina y sus pechos, aunque no estén embarazadas, empiezan a secretar leche materna.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "protocolo_de_solucion_transgeneracional_paso_4",
+        "curso": "psicosomatica_y_biodescodificacion_2",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "psicosomatica_y_biodescodificacion_2",
+    "linea": "salud",
+    "modulo": "modulo_7",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  }
+]

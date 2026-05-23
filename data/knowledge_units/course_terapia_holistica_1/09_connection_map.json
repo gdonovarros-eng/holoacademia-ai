@@ -1,0 +1,30 @@
+{
+  "id": "connection_map",
+  "curso": "terapia_holistica_1",
+  "linea": "diplomados",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [
+    {
+      "id": "terapia__aplicacion_de_eft",
+      "curso": "terapia_holistica_1",
+      "linea": "diplomados",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "terapia",
+      "protocol_id": "aplicacion_de_eft"
+    }
+  ],
+  "concept_to_reasoning": [
+    {
+      "id": "terapia__patron_007",
+      "curso": "terapia_holistica_1",
+      "linea": "diplomados",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "terapia",
+      "reasoning_id": "patron_007"
+    }
+  ],
+  "reasoning_to_protocol": []
+}

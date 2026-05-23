@@ -1,0 +1,158 @@
+{
+  "id": "course_manifest",
+  "curso": "holobiomagnetismo_parte_1",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Curso Holobiomagnetismo Parte 1",
+  "archivos_fuente_usados": [
+    "HoloBiomagnetismo Parte 1 (Bioenergética) versión 2024 - Alejandro Lavín .pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Miguel Ojeda Ríos-",
+    "PILARES DEL",
+    "Samuel Hahnemann - Homeopatía",
+    "Willhelm Heinrich Schüssler - Sales de Schüssler",
+    "Albert Abrams - Radiónica",
+    "Erich Körbler - Nueva Homeopatía",
+    "Wolf Grigoryevich Messing - Psicotrónica",
+    "Semyon y Valentina Kirlian - Tecnología Kirlian"
+  ],
+  "modulos_detectados": [
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "cantidad_de_conceptos_extraidos": 15,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 2,
+  "ambiguedades_detectadas": [],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "7_interferencias",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "agentes_de_transformacion",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "albert_abrams_radionica",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "biomagnetismo",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "secuencia_colocar_dos_lineas_tu_estas_haciendo_que_la_informacion_regrese_esos_45_grados",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "sedacion_del_triple_calentador",
+        "curso": "holobiomagnetismo_parte_1",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "7_interferencias",
+      "agentes_de_transformacion",
+      "albert_abrams_radionica",
+      "biomagnetismo"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": [
+      "secuencia_colocar_dos_lineas_tu_estas_haciendo_que_la_informacion_regrese_esos_45_grados",
+      "sedacion_del_triple_calentador"
+    ]
+  }
+}

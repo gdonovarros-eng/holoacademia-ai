@@ -1,0 +1,218 @@
+{
+  "id": "course_manifest",
+  "curso": "terapia_holistica_1",
+  "linea": "diplomados",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Diplomado Terapia Holística 1",
+  "archivos_fuente_usados": [
+    "Manual del Módulo 1.pdf",
+    "Manual del Módulo 10.pdf",
+    "Manual del Módulo 11.pdf",
+    "Manual del Módulo 12.pdf",
+    "Manual del Módulo 2.pdf",
+    "Manual del Módulo 3.pdf",
+    "Manual del Módulo 4.pdf",
+    "Manual del Módulo 5.pdf",
+    "Manual del Módulo 6.pdf",
+    "Manual del Módulo 7.pdf",
+    "Manual del Módulo 8.pdf",
+    "Manual del Módulo 9.pdf",
+    "Manual del Propedéutico.pdf",
+    "Manual-Protocolos-de-rastreo-AlejandroLavn.pdf",
+    "Modulo2-Sistemadigestivo-AlejandroLavin.pdf",
+    "Modulo3-Problemasalimenticios-AlejandroLavn.pdf",
+    "Modulo4-Sistemaendcrinometablico-MtodoLavndeterapiaholsticaActualizado62efb040d4004.pdf",
+    "Modulo5-Sistemacardiovascularcompleto-MtodoLavnTerapiaHolstica63374ab36e7ff.pdf",
+    "Modulo6-Sistemaosteomuscularcompleto-MtodoLavnTerapiaHolstica6339a906cb02f.pdf",
+    "Modulo7-Sistemalipofascial-MtodoLavnTerapiaHolstica63668384e7a3b.pdf",
+    "Módulo1-Propedeutico-Terapia-Holistica.pdf",
+    "Protocolos de Rastreo - Módulo 1.pdf",
+    "Protocolos de Rastreo - Módulo 2.pdf",
+    "Protocolos de solución transgen - Alejandro Lavín (1).pdf",
+    "equivalencia cartas de la corte.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "DIPLOMADO DE",
+    "-MÉTODO LAVÍN-",
+    "PRINCIPIOS DEL SISTEMA RESPIRATORIO",
+    "Función: Respiración",
+    "Captar O2",
+    "Eliminar CO2",
+    "A) Conductora",
+    "B) Respiratoria"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22
+  ],
+  "cantidad_de_conceptos_extraidos": 9,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 4,
+  "ambiguedades_detectadas": [
+    "Al tratarse de un diplomado, algunas fuentes mezclan módulo, manual complementario y material de apoyo; puede haber superposición conceptual."
+  ],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "terapia",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "a_conductora",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "b_respiratoria",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "c_mecanica",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_007",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_003",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "protocolo_de_solucion_transgeneracional",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "rastreo_conflictologico",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "manual",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "aplicacion_de_eft",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "sedacion_del_triple_calentador",
+        "curso": "terapia_holistica_1",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "terapia",
+      "a_conductora",
+      "b_respiratoria",
+      "c_mecanica"
+    ],
+    "reasoning_clave": [
+      "patron_007",
+      "patron_001"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_003"
+    ],
+    "protocolos_clave": [
+      "protocolo_de_solucion_transgeneracional",
+      "rastreo_conflictologico",
+      "aplicacion_de_eft",
+      "sedacion_del_triple_calentador"
+    ]
+  }
+}

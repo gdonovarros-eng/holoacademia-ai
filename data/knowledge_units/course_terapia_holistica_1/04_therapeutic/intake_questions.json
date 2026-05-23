@@ -1,0 +1,396 @@
+[
+  {
+    "id": "intake_001",
+    "pregunta": "Muchos en Internet nos preguntaban, ¿y qué chingados es propedéutico?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_002"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_002",
+    "pregunta": "Y cuando le preguntaban, oigan, ¿y qué los hace terapeutas tan chingones?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_003"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_003",
+    "pregunta": "Y le preguntan, bueno, el que no estaba tan traumado, tú criticas mucho estas cosas, pero a ver, yo la verdad desconozco.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_004"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_004",
+    "pregunta": "Por preguntarte de tu mamá o por...",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_005"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_005",
+    "pregunta": "Las páginas de creencias es para rastrear si hay algún tipo de programa en el inconsciente que motive a un estado psicológico o emocional, después una paginita de arquetipos que tiene que ver con los reflejos de informac…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_006"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_006",
+    "pregunta": "La pregunta es, ¿quién tiene la razón?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_007"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_007",
+    "pregunta": "Ah, sí, entonces pregúntale a cualquier ingeniero en telemática, que son los güeyes que se trepan a las antenas y que están en centro de controles de un chingo de redes de telecomunicaciones, pregúntales qué tanto sufren…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_008"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_008",
+    "pregunta": "¿Qué son las emociones?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_009"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_009",
+    "pregunta": "¿Qué es la emoción?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_010"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_010",
+    "pregunta": "Que no trabaja, siempre tiene pretextos para todo, ni siquiera ha podido ser padre de sus hijos porque la que dice, la que no sé qué, la que le preguntan es a mí.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_011"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_011",
+    "pregunta": "Luego, échale la carga de los nueve meses de gestación, si había dinero, si tu papá estaba en que estoy pero no estoy, si le preguntó, ¿y si será mío?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_012"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_012",
+    "pregunta": "Y entonces llega la persona y el mal pregunta, ¿cómo te llamas Pepe?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_013"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_013",
+    "pregunta": "¿Y qué significa alivio de sus síntomas?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_014"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_014",
+    "pregunta": "¿Cuáles son las preguntas que vamos a hacer?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_015"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_015",
+    "pregunta": "Vamos a preguntar algunas cosas para ver si no hay contraindicaciones con algunas técnicas que debíamos utilizar.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_016"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_016",
+    "pregunta": "Ahora, la pregunta es, ¿cómo saber si mi paciente, aunque esté en quimio o radio, tiene la suficiente fortaleza energética como para soportar esto que se llama crisis curativa?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_017"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_017",
+    "pregunta": "Y la respuesta es, cuando no sepas algo, pregúntale a la mente profunda del paciente.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_018"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_018",
+    "pregunta": "Preguntas, ¿resulta en armonía para tu salud impactarte magnéticamente?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "terapia_holistica_1",
+    "linea": "diplomados",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  }
+]

@@ -1,0 +1,135 @@
+{
+  "id": "course_manifest",
+  "curso": "psicosomatrix",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Psicosomatrix",
+  "archivos_fuente_usados": [
+    "Psicosomatrix - teoría del campo unificado.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Y LA",
+    "CAMPO UNIFICADO",
+    "DE LAS",
+    "Preocupación          Padre                    Pensar",
+    "Competición                                                          Familia",
+    "Reconocimiento                                                          Hogar",
+    "Verticalidad                                                        Recepción"
+  ],
+  "modulos_detectados": [
+    1,
+    2
+  ],
+  "cantidad_de_conceptos_extraidos": 13,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 0,
+  "ambiguedades_detectadas": [
+    "No se detectaron protocolos suficientemente estructurados de forma automática."
+  ],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "bajo"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "administracion",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "campo_unificado",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "competicion_familia",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "contribucion",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "psicosomatrix",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": []
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "administracion",
+      "campo_unificado",
+      "competicion_familia",
+      "contribucion"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": []
+  }
+}

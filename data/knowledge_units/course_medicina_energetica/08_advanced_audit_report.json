@@ -1,0 +1,22 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_bioretroalimentacion",
+    "FAQ poco específica: faq_que_es_meridianos",
+    "FAQ poco específica: faq_que_es_r27",
+    "FAQ poco específica: faq_que_es_timo",
+    "FAQ poco específica: faq_que_es_chakras",
+    "FAQ poco específica: faq_que_es_chakra",
+    "FAQ poco específica: faq_que_es_aura"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

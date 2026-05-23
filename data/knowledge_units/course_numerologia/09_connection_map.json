@@ -1,0 +1,20 @@
+{
+  "id": "connection_map",
+  "curso": "numerologia",
+  "linea": "mistica",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [],
+  "concept_to_reasoning": [
+    {
+      "id": "numerologia__patron_001",
+      "curso": "numerologia",
+      "linea": "mistica",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "numerologia",
+      "reasoning_id": "patron_001"
+    }
+  ],
+  "reasoning_to_protocol": []
+}

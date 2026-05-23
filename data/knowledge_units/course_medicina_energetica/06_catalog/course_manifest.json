@@ -1,0 +1,196 @@
+{
+  "id": "course_manifest",
+  "curso": "medicina_energetica",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Medicina Energética",
+  "archivos_fuente_usados": [
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Bioretroalimentación",
+    "Meridianos",
+    "R27",
+    "Timo",
+    "Chakras",
+    "Chakra",
+    "Aura",
+    "Triple Calentador"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25
+  ],
+  "cantidad_de_conceptos_extraidos": 19,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 5,
+  "ambiguedades_detectadas": [
+    "No se encontró manual textual local; la unidad depende principalmente de la transcripción y del índice."
+  ],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "chakra",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "cinco_elementos",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "chakras",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "triple_calentador",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_003",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_003",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_004",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "activacion_de_puntos_r27",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "secuencia_coloca_ambos_pies_sobre_el_piso",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+        "curso": "medicina_energetica",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "chakra",
+      "cinco_elementos",
+      "chakras",
+      "triple_calentador"
+    ],
+    "reasoning_clave": [
+      "patron_003",
+      "patron_001"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_003",
+      "guide_004"
+    ],
+    "protocolos_clave": [
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec",
+      "activacion_de_puntos_r27",
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo"
+    ]
+  }
+}

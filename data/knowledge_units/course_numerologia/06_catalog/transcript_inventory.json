@@ -1,0 +1,35 @@
+[
+  {
+    "id": "transcript_modulo_1_bloque_1",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_1",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 11:39:01",
+    "chars": 117180,
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "transcript_modulo_2_bloque_1",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_2",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 11:44:34",
+    "chars": 86502,
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "transcript_modulo_3_bloque_1",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_3",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 11:50:38",
+    "chars": 91382,
+    "source": "transcript",
+    "confidence": "high"
+  }
+]

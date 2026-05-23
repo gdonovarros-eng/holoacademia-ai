@@ -1,0 +1,352 @@
+[
+  {
+    "id": "intake_001",
+    "pregunta": "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_004"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_004",
+    "pregunta": "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_005"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_005",
+    "pregunta": "No sé, déjame, te pregunto de tu apellido, siquiera, puta madre, ya, te quieren ya, coger ya.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_006"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_006",
+    "pregunta": "Entonces, lo que podemos hacer es un rastreo para preguntarle a la inteligencia biológica cuál químico nos falta y googleamos literalmente en internet qué alimentos son ricos en ese mineral o en esa vitamina o en ese ami…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_007"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_007",
+    "pregunta": "Bueno, para que abra el chat, les quiero preguntar si hay alguien que nunca ha tomado una clase de rastreo.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_008"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_008",
+    "pregunta": "Y si vas a preguntar todos los minerales, todas las vitaminas, etc., pues te toma un rato.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_009"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_009",
+    "pregunta": "A la pregunta que tú hagas.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_010"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_010",
+    "pregunta": "Yo lo uso para detectar creencias del inconsciente, para saber qué pares biomagnéticos hay que poner, para saber cuál es la mejor homeopatía que tienes que utilizar, para saber cuál es el punto de acupuntura que tienes q…",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_011"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_011",
+    "pregunta": "Haces esto y preguntas, supraconsciente, ¿sabes qué estamos buscando?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_012"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_012",
+    "pregunta": "Pero vamos a preguntar.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_013"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_013",
+    "pregunta": "Entonces pregunto, ¿me falta alguna enzima del sector 3 bloque A?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_014"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_014",
+    "pregunta": "Por ahí me preguntaban, ¿qué opinas del sistema de David Duarte?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_015"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_015",
+    "pregunta": "Esa gente que todavía sigue preguntando, ¿y qué como?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_016"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_016",
+    "pregunta": "Por eso tiene la desfachatez de preguntar, ¿y qué como?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_017"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_017",
+    "pregunta": "La pregunta es, ¿cómo chingados sé para qué cosa si tonifico o sedo?",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [
+      "intake_018"
+    ],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "intake_018",
+    "pregunta": "Ahí tienes para cada cosa cuáles puntos son, preguntas de esos cuáles necesitas, en cada uno de esos preguntas si es tonificar o sedar, haces la estimulación, y ya.",
+    "objetivo": "orientar entrevista clínica",
+    "cuando_usarla": [
+      "durante entrevista clínica"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "entrevista_clinica",
+    "source": "merged",
+    "confidence": "high",
+    "flujo": "profundizacion",
+    "prioridad": "media",
+    "siguiente_posible": [],
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [],
+    "relacionado_protocolos": []
+  }
+]

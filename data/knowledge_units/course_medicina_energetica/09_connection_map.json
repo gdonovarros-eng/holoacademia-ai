@@ -1,0 +1,165 @@
+{
+  "id": "connection_map",
+  "curso": "medicina_energetica",
+  "linea": "salud",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [
+    {
+      "id": "r27__activacion_de_puntos_r27",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "r27",
+      "protocol_id": "activacion_de_puntos_r27"
+    },
+    {
+      "id": "chakras__secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakras",
+      "protocol_id": "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo"
+    },
+    {
+      "id": "chakras__secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakras",
+      "protocol_id": "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    },
+    {
+      "id": "chakra__secuencia_coloca_ambos_pies_sobre_el_piso",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakra",
+      "protocol_id": "secuencia_coloca_ambos_pies_sobre_el_piso"
+    },
+    {
+      "id": "chakra__sedacion_del_triple_calentador",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakra",
+      "protocol_id": "sedacion_del_triple_calentador"
+    },
+    {
+      "id": "chakra__secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakra",
+      "protocol_id": "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo"
+    },
+    {
+      "id": "chakra__secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "chakra",
+      "protocol_id": "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    },
+    {
+      "id": "triple_calentador__sedacion_del_triple_calentador",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "triple_calentador",
+      "protocol_id": "sedacion_del_triple_calentador"
+    },
+    {
+      "id": "tu_brazo__sedacion_del_triple_calentador",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "tu_brazo",
+      "protocol_id": "sedacion_del_triple_calentador"
+    }
+  ],
+  "concept_to_reasoning": [
+    {
+      "id": "meridianos__patron_canal_exceso",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "meridianos",
+      "reasoning_id": "patron_canal_exceso"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_miedo",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_miedo"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_enojo",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_enojo"
+    },
+    {
+      "id": "cinco_elementos__patron_qi_tristeza",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_qi_tristeza"
+    },
+    {
+      "id": "cinco_elementos__patron_metal_social",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_metal_social"
+    },
+    {
+      "id": "cinco_elementos__patron_madera_direccion",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_madera_direccion"
+    },
+    {
+      "id": "cinco_elementos__patron_fuego_expresion",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "cinco_elementos",
+      "reasoning_id": "patron_fuego_expresion"
+    },
+    {
+      "id": "wayne_cook__patron_003",
+      "curso": "medicina_energetica",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "wayne_cook",
+      "reasoning_id": "patron_003"
+    }
+  ],
+  "reasoning_to_protocol": []
+}

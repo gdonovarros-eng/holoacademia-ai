@@ -1,0 +1,178 @@
+{
+  "id": "course_manifest",
+  "curso": "numerhologia",
+  "linea": "mistica",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Curso Numerhología",
+  "archivos_fuente_usados": [
+    "Manual Numerhología.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Alejandro González Lavín ©",
+    "ESCUELA DE MAGIA MENTAL",
+    "Medicina     China,   Homeopatía,     Medicina",
+    "Germánica,    Biodescodificación,    Radiónica,",
+    "Nutrigenómica, Hipnosis, PNL, EFT, Ciencias",
+    "Chile, Uruguay, Reino Unido, España y México.",
+    "LÍNEAS DE ESTUDIO",
+    "LÍNEA SALUD"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "cantidad_de_conceptos_extraidos": 14,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 5,
+  "ambiguedades_detectadas": [],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "confiado_solitario",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "consonantes_impresion",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "creativo_inflexible",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "escuela_de_magia_mental",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_008",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "secuencia_hacer_que_lo_negativo_del_numero_pendule_hacia_lo_positivo_se_transforme_a_lo_p",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "protocolo_de_solucion_transgeneracional",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "secuencia_levanta_tu_mano_please_para_que_le_watchen",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "aplicacion_de_eft",
+        "curso": "numerhologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "confiado_solitario",
+      "consonantes_impresion",
+      "creativo_inflexible",
+      "escuela_de_magia_mental"
+    ],
+    "reasoning_clave": [
+      "patron_008",
+      "patron_001"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": [
+      "secuencia_hacer_que_lo_negativo_del_numero_pendule_hacia_lo_positivo_se_transforme_a_lo_p",
+      "protocolo_de_solucion_transgeneracional",
+      "secuencia_levanta_tu_mano_please_para_que_le_watchen",
+      "aplicacion_de_eft"
+    ]
+  }
+}

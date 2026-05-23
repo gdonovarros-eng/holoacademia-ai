@@ -1,0 +1,27 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "Concepto poco conectado: humedad_ligeramente_humeda_traduce",
+    "Concepto poco conectado: zonas_ig_id_v",
+    "Concepto poco conectado: id_intestino_delgado",
+    "Concepto poco conectado: r_rinon",
+    "Concepto poco conectado: id_ig_v_vejiga",
+    "Concepto poco conectado: v_ig_intestino_grueso",
+    "Concepto poco conectado: e_estomago",
+    "Concepto poco conectado: b_bazo",
+    "Concepto poco conectado: h_higado",
+    "Concepto poco conectado: p_pulmon",
+    "Concepto poco conectado: p_c_corazon",
+    "Concepto poco conectado: llagas_enrojecimiento"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

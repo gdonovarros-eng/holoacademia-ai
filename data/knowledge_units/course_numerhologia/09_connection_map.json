@@ -1,0 +1,20 @@
+{
+  "id": "connection_map",
+  "curso": "numerhologia",
+  "linea": "mistica",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [],
+  "concept_to_reasoning": [],
+  "reasoning_to_protocol": [
+    {
+      "id": "patron_008__secuencia_levanta_tu_mano_please_para_que_le_watchen",
+      "curso": "numerhologia",
+      "linea": "mistica",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_008",
+      "protocol_id": "secuencia_levanta_tu_mano_please_para_que_le_watchen"
+    }
+  ]
+}

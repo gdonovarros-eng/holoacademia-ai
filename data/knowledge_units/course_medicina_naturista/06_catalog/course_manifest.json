@@ -1,0 +1,146 @@
+{
+  "id": "course_manifest",
+  "curso": "medicina_naturista",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Taller Medicina Naturista",
+  "archivos_fuente_usados": [
+    "Manual Taller Medicina Naturista.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "PRINCIPIOS DE LA SALUD",
+    "HUMEDAD: Ligeramente húmeda. Traduce",
+    "ZONAS                 , IG, ID, V",
+    "ID: Intestino Delgado",
+    "R: Riñón",
+    "ID        IG                      V: Vejiga",
+    "V                           IG: Intestino grueso",
+    "E: Estómago"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3
+  ],
+  "cantidad_de_conceptos_extraidos": 13,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 1,
+  "ambiguedades_detectadas": [],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "b_bazo",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "e_estomago",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "h_higado",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "humedad_ligeramente_humeda_traduce",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "sedacion_del_triple_calentador",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "b_bazo",
+      "e_estomago",
+      "h_higado",
+      "humedad_ligeramente_humeda_traduce"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_004",
+      "intake_005",
+      "intake_006"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": [
+      "sedacion_del_triple_calentador"
+    ]
+  }
+}

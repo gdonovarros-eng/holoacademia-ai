@@ -1,0 +1,23 @@
+[
+  {
+    "source_id": "taller-medicina-naturista-source-001",
+    "tipo": "manual",
+    "archivo_original": "Manual Taller Medicina Naturista.pdf",
+    "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/Manual Taller Medicina Naturista.pdf",
+    "local_text_available": true
+  },
+  {
+    "source_id": "taller-medicina-naturista-source-002",
+    "tipo": "indice",
+    "archivo_original": "index_modulos.csv",
+    "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/index_modulos.csv",
+    "local_text_available": true
+  },
+  {
+    "source_id": "taller-medicina-naturista-source-003",
+    "tipo": "transcripcion",
+    "archivo_original": "transcripcion_completa.txt",
+    "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/transcripcion_completa.txt",
+    "local_text_available": true
+  }
+]

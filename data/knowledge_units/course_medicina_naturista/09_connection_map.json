@@ -1,0 +1,20 @@
+{
+  "id": "connection_map",
+  "curso": "medicina_naturista",
+  "linea": "salud",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [],
+  "concept_to_reasoning": [],
+  "reasoning_to_protocol": [
+    {
+      "id": "patron_001__sedacion_del_triple_calentador",
+      "curso": "medicina_naturista",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_001",
+      "protocol_id": "sedacion_del_triple_calentador"
+    }
+  ]
+}

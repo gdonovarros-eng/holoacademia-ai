@@ -1,0 +1,164 @@
+{
+  "id": "course_manifest",
+  "curso": "holopsicosomatica_2020",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Holopsicosomática 2020",
+  "archivos_fuente_usados": [
+    "Holopsicosomática 2020.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "IMPARTIDO POR:",
+    "C O N",
+    "Alejandro González Lavín ©",
+    "LÍNEA DE SALUD         A) LÍNEA TERAPÉUTICA",
+    "LÍNEA PROFESIONAL",
+    "LÍNEA MÍSTICA",
+    "Línea Terapéutica",
+    "EMOCIÓN                                                        TOMA DE CONSCIENCIA"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "cantidad_de_conceptos_extraidos": 13,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 2,
+  "ambiguedades_detectadas": [],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "holobiomagnetismo",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "asociacion_microbiana",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "bloqueos_de_curacion",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "c_o_n",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "sedacion_del_triple_calentador",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      },
+      {
+        "tipo": "protocol",
+        "id": "rastreo_conflictologico",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "holobiomagnetismo",
+      "asociacion_microbiana",
+      "bloqueos_de_curacion",
+      "c_o_n"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": [
+      "sedacion_del_triple_calentador",
+      "rastreo_conflictologico"
+    ]
+  }
+}

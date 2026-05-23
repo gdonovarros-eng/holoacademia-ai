@@ -1,0 +1,42 @@
+{
+  "course_id": "curso-holobiomagnetismo-parte-2",
+  "course_name": "Curso Holobiomagnetismo Parte 2",
+  "linea": "Salud",
+  "tipo": "Curso",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_2",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-2",
+  "sources": [
+    {
+      "source_id": "curso-holobiomagnetismo-parte-2-source-001",
+      "tipo": "manual",
+      "archivo_original": "HoloBiomagnetismo Parte 2 (Psicosomática) - Actualizado - Alejandro Lavín.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_2/HoloBiomagnetismo Parte 2 (Psicosomática) - Actualizado - Alejandro Lavín.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-2/sources/HoloBiomagnetismo_Parte_2_(Psicosomática)_-_Actualizado_-_Alejandro_Lavín.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 855834
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-parte-2-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_2/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-2/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 4048
+    },
+    {
+      "source_id": "curso-holobiomagnetismo-parte-2-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/HOLOBIOMAGNETISMO_PARTE_2/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-holobiomagnetismo-parte-2/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 541496
+    }
+  ]
+}

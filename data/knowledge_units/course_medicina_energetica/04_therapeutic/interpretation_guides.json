@@ -1,0 +1,277 @@
+[
+  {
+    "id": "guide_001",
+    "contexto": "Cuando se observa el patrón: Llamada así en honor a Wayne Cook, especialista que trataba a pacientes tartamudos.",
+    "interpretacion": "Llamada así en honor a Wayne Cook, especialista que trataba a pacientes tartamudos.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "wayne_cook",
+      "r27"
+    ],
+    "relacionado_protocolos": [
+      "activacion_de_puntos_r27"
+    ]
+  },
+  {
+    "id": "guide_002",
+    "contexto": "Cuando se observa el patrón: Es un sistema increíble si vives según tu reloj biológico.",
+    "interpretacion": "Es un sistema increíble si vives según tu reloj biológico.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_003",
+    "contexto": "Cuando se observa el patrón: En el caso de Markay, veamos el masaje que te diste fue así de fuerte.",
+    "interpretacion": "En el caso de Markay, veamos el masaje que te diste fue así de fuerte.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakra",
+      "triple_calentador",
+      "tu_brazo"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_004",
+    "contexto": "Cuando se observa el patrón: Presiona la parte interna de los muslos y mira si sientes dolor.",
+    "interpretacion": "Presiona la parte interna de los muslos y mira si sientes dolor.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakras",
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_005",
+    "contexto": "Cuando se observa el patrón: Porque muchos vienen a nuestros talleres y se sienten muy entusiasmados y emocionados, pero una gran verdad sobre el sistema de dona es que, por desgracia, solo funciona si lo aplicas.",
+    "interpretacion": "Porque muchos vienen a nuestros talleres y se sienten muy entusiasmados y emocionados, pero una gran verdad sobre el sistema de dona es que, por desgracia, solo funciona si lo aplicas.",
+    "factores_clave": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakras",
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_006",
+    "contexto": "Cuando se observa el patrón: Algunos lo hacen cuando se bañan o se duchan, porque aquí no creemos en que sin dolor no hay ganancia, sino al contrario.",
+    "interpretacion": "Algunos lo hacen cuando se bañan o se duchan, porque aquí no creemos en que sin dolor no hay ganancia, sino al contrario.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakras",
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_007",
+    "contexto": "Cuando se observa el patrón: De hecho, cuando tenía mi consulta, era una época en la que la medicina energética no era muy popular ni conocida, y a veces venía gente que no creía en ella y su mente iba en dirección contraria.",
+    "interpretacion": "De hecho, cuando tenía mi consulta, era una época en la que la medicina energética no era muy popular ni conocida, y a veces venía gente que no creía en ella y su mente iba en dirección contraria.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakras",
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  },
+  {
+    "id": "guide_008",
+    "contexto": "Cuando se observa el patrón: Si pudieras ver a un bebé dentro del vientre y cómo se mueve y gira, sus órganos están muy enganchados con los puntos linfáticos.",
+    "interpretacion": "Si pudieras ver a un bebé dentro del vientre y cómo se mueve y gira, sus órganos están muy enganchados con los puntos linfáticos.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "chakras",
+      "chakra"
+    ],
+    "relacionado_protocolos": [
+      "secuencia_coloca_ambos_pies_sobre_el_piso",
+      "sedacion_del_triple_calentador",
+      "secuencia_haz_el_conector_y_eso_te_regresara_a_tu_cuerpo",
+      "secuencia_inhala_otra_vez_cruza_las_energias_hacia_abajo_una_vez_mas_pero_esta_vez_conec"
+    ]
+  }
+]

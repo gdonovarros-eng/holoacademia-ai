@@ -1,0 +1,444 @@
+[
+  {
+    "id": "rastreo_conflictologico",
+    "nombre": "Rastreo conflictológico",
+    "objetivo": "Ejecutar la secuencia operativa asociada a rastreo conflictológico.",
+    "descripcion": "No le voy a dar energía a algo que no me funciona, que no me sirve o que no lo necesito. Nos habla aquí un conflicto de separación, y el matiz que ella nos da en su rastreo es un grave conflicto de pérdida, ¿ok? El matiz que en ella nos habla en su rastreo es que ese ataque a la integridad viene de un agresor oculto. Ustedes siempre sálganse de dudas con el rastreo.",
+    "cuando_usarlo": [
+      "Qué bueno, si todavía no llega ese síntoma, qué bueno."
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Tocas y decides que estás conectado.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_1",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Tocas sus pantorrillas, haces un movimiento gentil para que sepa que va a ser un movimiento relajado.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_2",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Levantas y no pasa nada.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_3",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Levantas, abres, cierras, abres, cierras.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_4",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Repite conmigo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "rastreo_conflictologico_paso_5",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "holopsicosomatica_2020",
+    "linea": "salud",
+    "modulo": "modulo_5",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  },
+  {
+    "id": "sedacion_del_triple_calentador",
+    "nombre": "Sedación del triple calentador",
+    "objetivo": "Ejecutar la secuencia operativa asociada a sedación del triple calentador.",
+    "descripcion": "Realmente lo más terapéutico sería que el paciente tuviera una o dos semanas intermedias de gestión entre sesión y sesión. Angie me comentaba hace ratito que durmió muy pesado, que estaba muy cansadona, eso nos habla de que hay movimiento energético, ¿por qué digo? Mente supraconsciente, voy a hacer un rastreo conflictológico, manifiéstame toda la información involucrada con el conflicto de grave conflicto de pérdida. No está nada mal su aproximación, le ha funcionado, pero a veces para encontrar el resentir hay que escarbar y escarbar y escarbar y hacer trance y hacer una línea de tiempo, usar PNL y varios protocolos que yo digo, pues, o sea, está divertido, pero ¿pa' qué nos aventamos todo ese pedo?",
+    "cuando_usarlo": [
+      "Si uno acepta una muerte, uno recuerda a la persona, recuerda buenos momentos, a veces es padre, a veces causa nostalgia, pero dolor, dolor y como que una actitud de que no me late…"
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Busca en tu cuerpo, escanea en qué parte, en tu mente ubícala.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_1",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Inhala, mantén al máximo, respira normalmente.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_2",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Inhala, mantén al máximo, deja que esté en tu rostro esa energía, deja que limpie, purifique, sueltas.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_3",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Inhala, mantén al máximo, mantén la energía en tu rostro, que limpie, que purifique, sueltas.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_4",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Inhala, llévala a tus piernas, lleva esa energía a tus piernas, que limpie y que purifique, exhala, respira normalmente.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_5",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 6,
+        "titulo": "Paso 6",
+        "instruccion": "Inhala, mantén al máximo, que limpie y que purifique, exhala, respira normalmente.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_6",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 7,
+        "titulo": "Paso 7",
+        "instruccion": "Repites esa respiración, el golpeteo y cuando exhalas la sacudida dos o tres veces y listo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_7",
+        "curso": "holopsicosomatica_2020",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "holopsicosomatica_2020",
+    "linea": "salud",
+    "modulo": "modulo_9",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": []
+  }
+]

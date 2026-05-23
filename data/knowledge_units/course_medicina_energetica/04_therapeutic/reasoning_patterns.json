@@ -1,0 +1,446 @@
+[
+  {
+    "id": "patron_001",
+    "trigger": "Es un sistema increíble si vives según tu reloj biológico.",
+    "interpretacion": "Es un sistema increíble si vives según tu reloj biológico.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_002",
+    "trigger": "En el caso de Markay, veamos el masaje que te diste fue así de fuerte.",
+    "interpretacion": "En el caso de Markay, veamos el masaje que te diste fue así de fuerte.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_003",
+    "trigger": "Llamada así en honor a Wayne Cook, especialista que trataba a pacientes tartamudos.",
+    "interpretacion": "Llamada así en honor a Wayne Cook, especialista que trataba a pacientes tartamudos.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [
+      "wayne_cook"
+    ],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_004",
+    "trigger": "Presiona la parte interna de los muslos y mira si sientes dolor.",
+    "interpretacion": "Presiona la parte interna de los muslos y mira si sientes dolor.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_005",
+    "trigger": "Porque muchos vienen a nuestros talleres y se sienten muy entusiasmados y emocionados, pero una gran verdad sobre el sistema de dona es que, por desgracia, solo funciona si lo aplicas.",
+    "interpretacion": "Porque muchos vienen a nuestros talleres y se sienten muy entusiasmados y emocionados, pero una gran verdad sobre el sistema de dona es que, por desgracia, solo funciona si lo aplicas.",
+    "que_observar": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_006",
+    "trigger": "Algunos lo hacen cuando se bañan o se duchan, porque aquí no creemos en que sin dolor no hay ganancia, sino al contrario.",
+    "interpretacion": "Algunos lo hacen cuando se bañan o se duchan, porque aquí no creemos en que sin dolor no hay ganancia, sino al contrario.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_007",
+    "trigger": "De hecho, cuando tenía mi consulta, era una época en la que la medicina energética no era muy popular ni conocida, y a veces venía gente que no creía en ella y su mente iba en dirección contraria.",
+    "interpretacion": "De hecho, cuando tenía mi consulta, era una época en la que la medicina energética no era muy popular ni conocida, y a veces venía gente que no creía en ella y su mente iba en dirección contraria.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_008",
+    "trigger": "Si pudieras ver a un bebé dentro del vientre y cómo se mueve y gira, sus órganos están muy enganchados con los puntos linfáticos.",
+    "interpretacion": "Si pudieras ver a un bebé dentro del vientre y cómo se mueve y gira, sus órganos están muy enganchados con los puntos linfáticos.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_009",
+    "trigger": "De hecho, una de nuestras estudiantes, que ahora es maestra, tiene una cesta de cucharas en su consultorio y le entrega una a cada paciente cuando se va.",
+    "interpretacion": "De hecho, una de nuestras estudiantes, que ahora es maestra, tiene una cesta de cucharas en su consultorio y le entrega una a cada paciente cuando se va.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_010",
+    "trigger": "Sea lo que sea, mental, emocional, físico, si estás haciendo la rutina energética diaria y no parece funcionar tan bien como antes, quizás sea porque estás muy homolateral, lo que significa que el pat…",
+    "interpretacion": "Sea lo que sea, mental, emocional, físico, si estás haciendo la rutina energética diaria y no parece funcionar tan bien como antes, quizás sea porque estás muy homolateral, lo que significa que el patrón está más arraigado y no puedes corregirlo solo con cruza…",
+    "que_observar": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_011",
+    "trigger": "Sí, y una historia más de cuando vivíamos en Ashland, Oregon.",
+    "interpretacion": "Sí, y una historia más de cuando vivíamos en Ashland, Oregon.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_012",
+    "trigger": "También puedes practicar cuando ya tienes síntomas físicos para revertirlos.",
+    "interpretacion": "También puedes practicar cuando ya tienes síntomas físicos para revertirlos.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_013",
+    "trigger": "Como siempre, la haremos al inicio de cada clase.",
+    "interpretacion": "Como siempre, la haremos al inicio de cada clase.",
+    "que_observar": [
+      "Observar especialmente el inicio del cuadro",
+      "su relación temporal con eventos relevantes"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_014",
+    "trigger": "En este caso puedes seguir a Titania y si no puedes hacerlo como yo, con el pie derecho sobre la pierna izquierda, tomando el tobillo con la mano izquierda y la planta del pie con la mano derecha.",
+    "interpretacion": "En este caso puedes seguir a Titania y si no puedes hacerlo como yo, con el pie derecho sobre la pierna izquierda, tomando el tobillo con la mano izquierda y la planta del pie con la mano derecha.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_015",
+    "trigger": "Me emocioné muchísimo cuando pude entender este diagrama.",
+    "interpretacion": "Me emocioné muchísimo cuando pude entender este diagrama.",
+    "que_observar": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_energetica",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "Ahora pregunto, ¿alguien aquí se siente como desconectado?",
+      "Me pregunto si..."
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  }
+]

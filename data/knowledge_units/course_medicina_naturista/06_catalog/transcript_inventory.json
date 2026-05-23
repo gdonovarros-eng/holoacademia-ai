@@ -1,0 +1,35 @@
+[
+  {
+    "id": "transcript_modulo_1_bloque_1",
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "modulo_1",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 12:26:21",
+    "chars": 107603,
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "transcript_modulo_2_bloque_1",
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "modulo_2",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 12:33:22",
+    "chars": 101030,
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "transcript_modulo_3_bloque_1",
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "modulo_3",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-27 12:38:00",
+    "chars": 68363,
+    "source": "transcript",
+    "confidence": "high"
+  }
+]

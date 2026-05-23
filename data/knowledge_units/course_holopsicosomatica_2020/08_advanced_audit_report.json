@@ -1,0 +1,24 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_holobiomagnetismo",
+    "FAQ poco específica: faq_que_es_sentimiento",
+    "Concepto poco conectado: c_o_n",
+    "Concepto poco conectado: linea_de_salud_a_linea_terapeutica",
+    "Concepto poco conectado: emocion_toma_de_consciencia",
+    "Concepto poco conectado: estres_qumico",
+    "Concepto poco conectado: conflicto_psicologico"
+  ],
+  "elementos_excelentes": [
+    "Concepto bien anclado y conectable: holobiomagnetismo"
+  ],
+  "listo_para_rag": true
+}

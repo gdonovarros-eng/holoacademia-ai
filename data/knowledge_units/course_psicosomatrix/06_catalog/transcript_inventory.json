@@ -1,0 +1,24 @@
+[
+  {
+    "id": "transcript_modulo_1_bloque_1",
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "modulo_1",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-26 22:56:08",
+    "chars": 107168,
+    "source": "transcript",
+    "confidence": "high"
+  },
+  {
+    "id": "transcript_modulo_2_bloque_1",
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "modulo_2",
+    "seccion": "bloque_1",
+    "fecha_proceso": "2026-03-26 23:02:20",
+    "chars": 107097,
+    "source": "transcript",
+    "confidence": "high"
+  }
+]

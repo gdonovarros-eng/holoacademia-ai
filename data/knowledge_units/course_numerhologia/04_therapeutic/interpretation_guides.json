@@ -1,0 +1,58 @@
+[
+  {
+    "id": "guide_001",
+    "contexto": "Cuando se observa el patrón: Cuando una persona no tiene la palabra para expresar esa emoción que trae dentro, esa persona se enferma.",
+    "interpretacion": "Cuando una persona no tiene la palabra para expresar esa emoción que trae dentro, esa persona se enferma.",
+    "factores_clave": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "numerhologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [
+      "secuencia_levanta_tu_mano_please_para_que_le_watchen"
+    ]
+  },
+  {
+    "id": "guide_002",
+    "contexto": "Cuando se observa el patrón: Y seamos prácticos, si un día tú vas a llevar esto a tu consulta, en tu teléfono tú puedes tener tus 40 pinches manuales y checarlos ahí y yo me acuerdo cuando iba a dar terapia, agarraba mi mochila…",
+    "interpretacion": "Y seamos prácticos, si un día tú vas a llevar esto a tu consulta, en tu teléfono tú puedes tener tus 40 pinches manuales y checarlos ahí y yo me acuerdo cuando iba a dar terapia, agarraba mi mochila, el manual de kinesiología, el de medicina china, el de los p…",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "numerhologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [
+      "aplicacion_de_eft"
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_biomagnetismo",
+    "FAQ poco específica: faq_que_es_introduccion",
+    "Concepto poco conectado: eft_pro_338",
+    "Concepto poco conectado: introduccion",
+    "Concepto poco conectado: holobiomagnetismo_parte_1_bioenergetica",
+    "Concepto poco conectado: samuel_hahnemann_homeopatia",
+    "Concepto poco conectado: willhelm_heinrich_schussler_sales_de_schussler",
+    "Concepto poco conectado: albert_abrams_radionica",
+    "Concepto poco conectado: erich_korbler_nueva_homeopatia",
+    "Concepto poco conectado: wolf_grigoryevich_messing_psicotronica",
+    "Concepto poco conectado: semyon_y_valentina_kirlian_tecnologia_kirlian",
+    "Concepto poco conectado: uri_geller_psiquismo",
+    "Concepto poco conectado: isaac_goiz_duran_par_biomagnetico",
+    "Concepto poco conectado: miguel_ojeda_rios_microbioenergetica",
+    "Concepto poco conectado: moises_goiz_codica",
+    "Concepto poco conectado: introduccion_a",
+    "Concepto poco conectado: holobiomagnetismo_parte_2_psicosomatica",
+    "Concepto poco conectado: claude_sabbah_psicosomatica"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

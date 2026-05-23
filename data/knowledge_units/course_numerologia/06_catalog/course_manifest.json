@@ -1,0 +1,137 @@
+{
+  "id": "course_manifest",
+  "curso": "numerologia",
+  "linea": "mistica",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Taller Numerología",
+  "archivos_fuente_usados": [
+    "Taller Numerología 2020.pdf",
+    "index_modulos.csv",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "IMPARTIDO POR:",
+    "Alejandro González Lavín ©",
+    "LÍNEA DE SALUD",
+    "B) Línea Profesional",
+    "LÍNEA PROFESIONAL",
+    "LÍNEA MÍSTICA",
+    "9    TEORÍA",
+    "Radiofrecuencia Cuántica Diferencial"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3
+  ],
+  "cantidad_de_conceptos_extraidos": 7,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 0,
+  "ambiguedades_detectadas": [
+    "No se detectaron protocolos suficientemente estructurados de forma automática."
+  ],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "bajo"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "numerologia",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "activacion",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "b_linea_profesional",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "linea_profesional",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "numerologia",
+        "linea": "mistica",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": []
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "numerologia",
+      "activacion",
+      "b_linea_profesional",
+      "linea_profesional"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": []
+  }
+}

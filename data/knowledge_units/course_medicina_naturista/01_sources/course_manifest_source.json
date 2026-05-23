@@ -1,0 +1,42 @@
+{
+  "course_id": "taller-medicina-naturista",
+  "course_name": "Taller Medicina Naturista",
+  "linea": "Salud",
+  "tipo": "Taller",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/taller-medicina-naturista",
+  "sources": [
+    {
+      "source_id": "taller-medicina-naturista-source-001",
+      "tipo": "manual",
+      "archivo_original": "Manual Taller Medicina Naturista.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/Manual Taller Medicina Naturista.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/taller-medicina-naturista/sources/Manual_Taller_Medicina_Naturista.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 64768
+    },
+    {
+      "source_id": "taller-medicina-naturista-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/taller-medicina-naturista/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 643
+    },
+    {
+      "source_id": "taller-medicina-naturista-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/TALLER_MEDICINA_NATURISTA/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/taller-medicina-naturista/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 277852
+    }
+  ]
+}

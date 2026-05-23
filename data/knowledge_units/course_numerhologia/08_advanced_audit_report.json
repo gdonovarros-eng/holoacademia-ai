@@ -1,0 +1,29 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_numerhologia",
+    "FAQ poco específica: faq_que_es_introduccion",
+    "Concepto poco conectado: numerhologia",
+    "Concepto poco conectado: medicina_china_homeopatia_medicina",
+    "Concepto poco conectado: germanica_biodescodificacion_radionica",
+    "Concepto poco conectado: nutrigenomica_hipnosis_pnl_eft_ciencias",
+    "Concepto poco conectado: lineas_de_estudio",
+    "Concepto poco conectado: linea_profesional",
+    "Concepto poco conectado: introduccion",
+    "Concepto poco conectado: todas_las_vocales_digito_de_impulso",
+    "Concepto poco conectado: todas_las_consonantes_digito_de_impresion",
+    "Concepto poco conectado: consonantes_impresion",
+    "Concepto poco conectado: confiado_solitario",
+    "Concepto poco conectado: creativo_inflexible"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

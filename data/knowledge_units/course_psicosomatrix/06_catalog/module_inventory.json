@@ -1,0 +1,24 @@
+[
+  {
+    "id": "inventory_modulo_1",
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "modulo_1",
+    "seccion": "",
+    "titulo": "Módulo 1",
+    "estado": "listo",
+    "source": "merged",
+    "confidence": "high"
+  },
+  {
+    "id": "inventory_modulo_2",
+    "curso": "psicosomatrix",
+    "linea": "salud",
+    "modulo": "modulo_2",
+    "seccion": "",
+    "titulo": "Módulo 2",
+    "estado": "listo",
+    "source": "merged",
+    "confidence": "high"
+  }
+]

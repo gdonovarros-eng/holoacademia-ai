@@ -1,0 +1,193 @@
+[
+  {
+    "id": "sedacion_del_triple_calentador",
+    "nombre": "Sedación del triple calentador",
+    "objetivo": "Ejecutar la secuencia operativa asociada a sedación del triple calentador.",
+    "descripcion": "Entonces mejor me traje ropa cómoda porque hasta ejercicio vamos a hacer en este taller. Entonces la enfermedad es una demostración de energía del cuerpo y es una demostración de inteligencia. Vamos a ver un protocolo básico de limpiar el tubo digestivo, muy sencillito, que te toma literal tres minutos en la mañana. En el tema de la nutrición vamos a hacer un rastreo, vamos a aprender a rastrear nutrientes o el déficit de los mismos dentro del cuerpo para ver ahora sí como que de qué lado cogeamos en el tema nutrimental y vamos a aprender a ver si nos falta alguna vitamina, algún mineral, alguna enzima, algún aminoácido.",
+    "cuando_usarlo": [
+      "Digo, si ya se puede ver en el pie, en la cara, en las manos, seguramente ya estás enfermon y ni cuenta te has dado, pero no estás en el nivel de enfermedad aguda, que es súper dol…"
+    ],
+    "prerequisitos": [
+      "Revisar la fuente original antes de usar clínicamente.",
+      "Confirmar que el contexto del caso corresponde al procedimiento."
+    ],
+    "pasos": [
+      {
+        "orden": 1,
+        "titulo": "Paso 1",
+        "instruccion": "Bajar grasa y subir músculo.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_1",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 2,
+        "titulo": "Paso 2",
+        "instruccion": "Masajea de ambos lados y después damos tirones.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_2",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 3,
+        "titulo": "Paso 3",
+        "instruccion": "Subes o bajas.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_3",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 4,
+        "titulo": "Paso 4",
+        "instruccion": "Caminan así.",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_4",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      },
+      {
+        "orden": 5,
+        "titulo": "Paso 5",
+        "instruccion": "Hazme un zoom out para que se vea la cara de...",
+        "objetivo_del_paso": "Ejecutar la acción operacional descrita en la fuente.",
+        "que_observar": [
+          "Respuesta del paciente",
+          "continuidad de la secuencia",
+          "señales relevantes del caso"
+        ],
+        "que_registrar": [
+          "Resultado del paso",
+          "observaciones relevantes"
+        ],
+        "notas": [
+          "Paso extraído automáticamente"
+        ],
+        "id": "sedacion_del_triple_calentador_paso_5",
+        "curso": "medicina_naturista",
+        "linea": "salud",
+        "source": "transcript",
+        "confidence": "low",
+        "decision_points": [
+          "Si la información obtenida todavía no es suficiente para cumplir el objetivo del paso, profundizar antes de avanzar."
+        ],
+        "errores_comunes": [
+          "Avanzar sin registrar los hallazgos de este paso."
+        ],
+        "criterios_de_avance": [
+          "Ejecutar la acción operacional descrita en la fuente."
+        ]
+      }
+    ],
+    "observaciones": [
+      "Protocolo detectado heurísticamente a partir de manuales, guías o secuencias docentes en transcripción."
+    ],
+    "advertencias": [
+      "Validar contra la fuente original antes de integrarlo en operación clínica final."
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "modulo_1",
+    "seccion": "protocolos",
+    "source": "transcript",
+    "confidence": "low",
+    "relacionado_conceptos": [],
+    "relacionado_reasoning": [
+      "patron_001"
+    ]
+  }
+]

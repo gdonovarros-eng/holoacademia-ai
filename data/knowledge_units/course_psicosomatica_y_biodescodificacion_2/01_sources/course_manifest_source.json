@@ -1,0 +1,42 @@
+{
+  "course_id": "curso-psicosomatica-y-biodescodificacion-2",
+  "course_name": "Curso Psicosomática y Biodescodificación 2",
+  "linea": "Salud",
+  "tipo": "Curso",
+  "audiencia": "Alumnos",
+  "idioma": "es",
+  "source_course_dir": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATICA_Y_BIODESCODIFICACIÓN_2",
+  "output_course_dir": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-psicosomatica-y-biodescodificacion-2",
+  "sources": [
+    {
+      "source_id": "curso-psicosomatica-y-biodescodificacion-2-source-001",
+      "tipo": "manual",
+      "archivo_original": "Psicosomática y Biodescodificación 2 - Estrategias de descarga - TCUMC - Alejandro Lavín.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATICA_Y_BIODESCODIFICACIÓN_2/Psicosomática y Biodescodificación 2 - Estrategias de descarga - TCUMC - Alejandro Lavín.pdf",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-psicosomatica-y-biodescodificacion-2/sources/Psicosomática_y_Biodescodificación_2_-_Estrategias_de_descarga_-_TCUMC_-_Alejandro_Lavín.txt",
+      "status": "ok",
+      "extraction_method": "pdftotext",
+      "chars": 851809
+    },
+    {
+      "source_id": "curso-psicosomatica-y-biodescodificacion-2-source-002",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATICA_Y_BIODESCODIFICACIÓN_2/index_modulos.csv",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-psicosomatica-y-biodescodificacion-2/sources/index_modulos.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 1577
+    },
+    {
+      "source_id": "curso-psicosomatica-y-biodescodificacion-2-source-003",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/PSICOSOMATICA_Y_BIODESCODIFICACIÓN_2/transcripcion_completa.txt",
+      "text_path": "/Users/m2/Documents/New project/data/processed_library/Salud/curso-psicosomatica-y-biodescodificacion-2/sources/transcripcion_completa.txt",
+      "status": "ok",
+      "extraction_method": "copy_text",
+      "chars": 668745
+    }
+  ]
+}

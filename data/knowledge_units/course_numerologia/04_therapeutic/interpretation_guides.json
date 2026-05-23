@@ -1,0 +1,56 @@
+[
+  {
+    "id": "guide_001",
+    "contexto": "Cuando se observa el patrón: Cuando yo estuve dando consultas hasta hace dos años, prácticamente casi que todo el paciente que llegaba a la consulta, fuera por lo que fuera, yo le hacía la numerología, aunque no se la dijera a él…",
+    "interpretacion": "Cuando yo estuve dando consultas hasta hace dos años, prácticamente casi que todo el paciente que llegaba a la consulta, fuera por lo que fuera, yo le hacía la numerología, aunque no se la dijera a él.",
+    "factores_clave": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [
+      "numerologia"
+    ],
+    "relacionado_protocolos": []
+  },
+  {
+    "id": "guide_002",
+    "contexto": "Cuando se observa el patrón: Y por último, a mí me encanta decirlas y la verdad es que si alguno de ustedes les parece bastante ofensivo y se empieza a poner en crisis nerviosa, no se preocupen, vamos a dar olobiomagnetismo pront…",
+    "interpretacion": "Y por último, a mí me encanta decirlas y la verdad es que si alguno de ustedes les parece bastante ofensivo y se empieza a poner en crisis nerviosa, no se preocupen, vamos a dar olobiomagnetismo pronto y ahí enseñamos liberación emocional para que puedan liber…",
+    "factores_clave": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "errores_comunes": [
+      "Aplicar esta guía sin verificar antes que el contexto realmente corresponde al caso.",
+      "Usar la interpretación como conclusión cerrada sin contrastarla con entrevista o protocolo."
+    ],
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "",
+    "seccion": "guias_de_interpretacion",
+    "source": "merged",
+    "confidence": "low",
+    "cuando_no_aplica": [
+      "Cuando el patrón o contexto descrito no aparece en el caso."
+    ],
+    "nivel_riesgo": "medio",
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": []
+  }
+]

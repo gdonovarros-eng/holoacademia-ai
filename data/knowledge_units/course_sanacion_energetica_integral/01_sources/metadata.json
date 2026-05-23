@@ -1,0 +1,79 @@
+{
+  "course_id": "diplomado-sanacion-energetica-integral",
+  "course_name": "Diplomado Sanación Energética Integral",
+  "linea": "Diplomados",
+  "tipo": "Diplomado",
+  "idioma": "es",
+  "fuentes": [
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-001",
+      "tipo": "manual",
+      "archivo_original": "Cierre del Diplomado SEI.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Cierre del Diplomado SEI.pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-002",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 1.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 1.pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-003",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 2 (1).pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 2 (1).pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-004",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 3 (2).pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 3 (2).pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-005",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 4.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 4.pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-006",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 5.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 5.pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-007",
+      "tipo": "manual",
+      "archivo_original": "Diplomado SEI Módulo 6 (1).pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Diplomado SEI Módulo 6 (1).pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-008",
+      "tipo": "manual",
+      "archivo_original": "Manual Diplomado SEI Módulo 2.pdf",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/Manual Diplomado SEI Módulo 2.pdf",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-009",
+      "tipo": "indice",
+      "archivo_original": "index_modulos.csv",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/index_modulos.csv",
+      "local_text_available": true
+    },
+    {
+      "source_id": "diplomado-sanacion-energetica-integral-source-010",
+      "tipo": "transcripcion",
+      "archivo_original": "transcripcion_completa.txt",
+      "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Diplomados/SANACION_ENERGETICA_INTEGRAL/transcripcion_completa.txt",
+      "local_text_available": true
+    }
+  ]
+}

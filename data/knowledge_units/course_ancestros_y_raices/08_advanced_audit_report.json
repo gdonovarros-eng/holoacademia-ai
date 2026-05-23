@@ -1,0 +1,26 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "Concepto poco conectado: impartido_por_elvia_gomez_hernandez",
+    "Concepto poco conectado: sanadora_transgeneracional_consteladora_familiar",
+    "Concepto poco conectado: alma_familiar_dones_ancestrales",
+    "Concepto poco conectado: policia_soldado",
+    "Concepto poco conectado: velador_portero",
+    "Concepto poco conectado: electricidad_carpintero",
+    "Concepto poco conectado: salomon_sellam",
+    "Concepto poco conectado: angeles_wolder",
+    "Concepto poco conectado: resonancias_limbica",
+    "Concepto poco conectado: bipolaridad_toc",
+    "Concepto poco conectado: impartido_por_lpc_elvia"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

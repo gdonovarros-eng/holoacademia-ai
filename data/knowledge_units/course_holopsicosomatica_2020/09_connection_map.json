@@ -1,0 +1,48 @@
+{
+  "id": "connection_map",
+  "curso": "holopsicosomatica_2020",
+  "linea": "salud",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [
+    {
+      "id": "holobiomagnetismo__entrevista_inicial_de_rastreo",
+      "curso": "holopsicosomatica_2020",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "protocol_id": "entrevista_inicial_de_rastreo"
+    },
+    {
+      "id": "holobiomagnetismo__rastreo_holobiomagnetico_condensado",
+      "curso": "holopsicosomatica_2020",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "protocol_id": "rastreo_holobiomagnetico_condensado"
+    }
+  ],
+  "concept_to_reasoning": [
+    {
+      "id": "holobiomagnetismo__patron_subyacente_vs_sintoma",
+      "curso": "holopsicosomatica_2020",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "reasoning_id": "patron_subyacente_vs_sintoma"
+    },
+    {
+      "id": "holobiomagnetismo__patron_conflicto_emocional",
+      "curso": "holopsicosomatica_2020",
+      "linea": "salud",
+      "source": "merged",
+      "confidence": "high",
+      "concept_id": "holobiomagnetismo",
+      "reasoning_id": "patron_conflicto_emocional"
+    }
+  ],
+  "reasoning_to_protocol": []
+}

@@ -1,0 +1,35 @@
+[
+  {
+    "id": "inventory_modulo_1",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_1",
+    "seccion": "",
+    "titulo": "Módulo 1",
+    "estado": "listo",
+    "source": "merged",
+    "confidence": "high"
+  },
+  {
+    "id": "inventory_modulo_2",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_2",
+    "seccion": "",
+    "titulo": "Módulo 2",
+    "estado": "listo",
+    "source": "merged",
+    "confidence": "high"
+  },
+  {
+    "id": "inventory_modulo_3",
+    "curso": "numerologia",
+    "linea": "mistica",
+    "modulo": "modulo_3",
+    "seccion": "",
+    "titulo": "Módulo 3",
+    "estado": "listo",
+    "source": "merged",
+    "confidence": "high"
+  }
+]

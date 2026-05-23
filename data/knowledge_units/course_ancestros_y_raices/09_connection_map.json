@@ -1,0 +1,29 @@
+{
+  "id": "connection_map",
+  "curso": "ancestros_y_raices",
+  "linea": "diplomados",
+  "source": "merged",
+  "confidence": "high",
+  "concept_to_protocol": [],
+  "concept_to_reasoning": [],
+  "reasoning_to_protocol": [
+    {
+      "id": "patron_001__protocolo_de_solucion_transgeneracional",
+      "curso": "ancestros_y_raices",
+      "linea": "diplomados",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_001",
+      "protocol_id": "protocolo_de_solucion_transgeneracional"
+    },
+    {
+      "id": "patron_002__protocolo_de_solucion_transgeneracional",
+      "curso": "ancestros_y_raices",
+      "linea": "diplomados",
+      "source": "merged",
+      "confidence": "high",
+      "reasoning_id": "patron_002",
+      "protocol_id": "protocolo_de_solucion_transgeneracional"
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+[
+  {
+    "id": "patron_001",
+    "trigger": "Digo, si ya se puede ver en el pie, en la cara, en las manos, seguramente ya estás enfermon y ni cuenta te has dado, pero no estás en el nivel de enfermedad aguda, que es súper doloroso, súper inflama…",
+    "interpretacion": "Digo, si ya se puede ver en el pie, en la cara, en las manos, seguramente ya estás enfermon y ni cuenta te has dado, pero no estás en el nivel de enfermedad aguda, que es súper doloroso, súper inflamante.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [
+      "sedacion_del_triple_calentador"
+    ],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_002",
+    "trigger": "Un inicio rebelde de la ceja, una persona intuitiva.",
+    "interpretacion": "Un inicio rebelde de la ceja, una persona intuitiva.",
+    "que_observar": [
+      "Observar especialmente el inicio del cuadro",
+      "su relación temporal con eventos relevantes"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_003",
+    "trigger": "Pero si la lengua tiembla desde el inicio, si yo la saco y mi lengua hace esto, está temblorosa.",
+    "interpretacion": "Pero si la lengua tiembla desde el inicio, si yo la saco y mi lengua hace esto, está temblorosa.",
+    "que_observar": [
+      "Observar especialmente el inicio del cuadro",
+      "su relación temporal con eventos relevantes"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_004",
+    "trigger": "Si la persona fumó antes de venir a consulta, entonces la saburra, que es una capita que sale encima de la lengua, va a estar amarillenta.",
+    "interpretacion": "Si la persona fumó antes de venir a consulta, entonces la saburra, que es una capita que sale encima de la lengua, va a estar amarillenta.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_005",
+    "trigger": "De entrada, si alguna de las zonas de esa lengua tiene llagas, literalmente la piel pierde la continuidad, hay como pequeñas cortaditas, tal vez estén infectadas, tal vez tengan una corteza blanquecin…",
+    "interpretacion": "De entrada, si alguna de las zonas de esa lengua tiene llagas, literalmente la piel pierde la continuidad, hay como pequeñas cortaditas, tal vez estén infectadas, tal vez tengan una corteza blanquecina, esas llagas nos hablan de que hay una hipersidez en el ór…",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_006",
+    "trigger": "Si la saburra, esa capita aterciopelada en la lengua, en vez de estar blanca, está negruzca, color violácea, oscura, eso es un síntoma de alarma.",
+    "interpretacion": "Si la saburra, esa capita aterciopelada en la lengua, en vez de estar blanca, está negruzca, color violácea, oscura, eso es un síntoma de alarma.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_007",
+    "trigger": "Si tu riñón no limpia la sangre, esa sangre sucia te va a envenenar el cuerpo poco a poco, todo, porque todo está irrigado por la sangre, y si toda la sangre está envenenada, todos los órganos se van…",
+    "interpretacion": "Si tu riñón no limpia la sangre, esa sangre sucia te va a envenenar el cuerpo poco a poco, todo, porque todo está irrigado por la sangre, y si toda la sangre está envenenada, todos los órganos se van a envenenar.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_008",
+    "trigger": "Si el enrojecimiento es en cierta zona de la lengua, significa que es en cierto órgano donde está esa contención energética.",
+    "interpretacion": "Si el enrojecimiento es en cierta zona de la lengua, significa que es en cierto órgano donde está esa contención energética.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_009",
+    "trigger": "Si en vez de estar roja la lengua o alguna de sus zonas, tiene puntos rojos, significa que el sistema nervioso relativo a esos órganos está como sobrecargado y está como intentando hiperactivar el tem…",
+    "interpretacion": "Si en vez de estar roja la lengua o alguna de sus zonas, tiene puntos rojos, significa que el sistema nervioso relativo a esos órganos está como sobrecargado y está como intentando hiperactivar el tema energético porque se siente en estrés esa parte del órgano…",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_010",
+    "trigger": "Si por último, las puntas de la lengua, que sería acá, y en los extremos de las franjas hay unos puntitos rojos, significa que las emociones están muy desequilibradas y tal vez haya un tema con sustan…",
+    "interpretacion": "Si por último, las puntas de la lengua, que sería acá, y en los extremos de las franjas hay unos puntitos rojos, significa que las emociones están muy desequilibradas y tal vez haya un tema con sustancias, ya sean drogas o sea alcohol.",
+    "que_observar": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_011",
+    "trigger": "Entonces si en los dedos vemos granos, llagas, articulaciones dolorosas, bolas, nudillos hinchados, etc., nos habla del órgano en cuestión.",
+    "interpretacion": "Entonces si en los dedos vemos granos, llagas, articulaciones dolorosas, bolas, nudillos hinchados, etc., nos habla del órgano en cuestión.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_012",
+    "trigger": "De hecho, el pulmón para la medicina china es el órgano de la tristeza porque sin energía de oxígeno, entonces nuestro cuerpo mete las nalgas, apaga los hombros, arrastra las patas como si estuviéramo…",
+    "interpretacion": "De hecho, el pulmón para la medicina china es el órgano de la tristeza porque sin energía de oxígeno, entonces nuestro cuerpo mete las nalgas, apaga los hombros, arrastra las patas como si estuviéramos tristes.",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_013",
+    "trigger": "Porque eso es el inicio de un infarto, especialmente si es en el lado izquierdo.",
+    "interpretacion": "Porque eso es el inicio de un infarto, especialmente si es en el lado izquierdo.",
+    "que_observar": [
+      "Observar especialmente el inicio del cuadro",
+      "su relación temporal con eventos relevantes"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_014",
+    "trigger": "ahí el hígado tiene problemas, está sobrecargado, tiene toxemia, y si el hígado está mal, muchas cosas van a estar mal, psicológicamente podemos ver temas del enojo, y por último vamos a ver un test d…",
+    "interpretacion": "ahí el hígado tiene problemas, está sobrecargado, tiene toxemia, y si el hígado está mal, muchas cosas van a estar mal, psicológicamente podemos ver temas del enojo, y por último vamos a ver un test de circulación que se da en cualquier uña, y ese test nos pue…",
+    "que_observar": [
+      "Observar síntoma",
+      "cronología",
+      "conflicto asociado",
+      "contexto del caso"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  },
+  {
+    "id": "patron_015",
+    "trigger": "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, s…",
+    "interpretacion": "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y empieza por toda la parte trasera del cuer…",
+    "que_observar": [
+      "Observar la emoción asociada",
+      "el contexto en que se activó"
+    ],
+    "acciones_sugeridas": [
+      "profundizar entrevista",
+      "contrastar con rastreo clínico"
+    ],
+    "curso": "medicina_naturista",
+    "linea": "salud",
+    "modulo": "",
+    "seccion": "razonamiento_terapeutico",
+    "source": "transcript",
+    "confidence": "high",
+    "preguntas_clave": [
+      "¿Con qué evento o momento de inicio se relaciona el síntoma o conflicto?",
+      "vamos a decir que vaso sube por aquí, hígado sube por acá, estómago sube por acá, vesícula biliar sube por acá y empieza a darle toda la vuelta a la parte lateral del cuerpo, y vejiga comienza aquí, se viene por acá y em…"
+    ],
+    "nivel_confianza": "medio",
+    "errores_comunes": [],
+    "relacionado_conceptos": [],
+    "relacionado_protocolos": [],
+    "relacionado_intake": []
+  }
+]

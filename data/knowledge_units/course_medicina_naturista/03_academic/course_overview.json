@@ -1,0 +1,30 @@
+{
+  "id": "course_overview",
+  "curso": "medicina_naturista",
+  "linea": "salud",
+  "modulo": "",
+  "seccion": "overview_academico",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_curso": "Taller Medicina Naturista",
+  "tipo": "Taller",
+  "nota_edicion": "",
+  "descripcion": "Taller Medicina Naturista organizado como unidad de conocimiento para asistentes académicos, terapéuticos y guías de protocolos. La descripción se construyó automáticamente a partir de transcripciones, manuales e índices disponibles.",
+  "ejes_principales": [
+    "PRINCIPIOS DE LA SALUD",
+    "HUMEDAD: Ligeramente húmeda. Traduce",
+    "ZONAS                 , IG, ID, V",
+    "ID: Intestino Delgado",
+    "R: Riñón",
+    "ID        IG                      V: Vejiga",
+    "V                           IG: Intestino grueso",
+    "E: Estómago"
+  ],
+  "posicionamiento": "",
+  "prerrequisitos": [],
+  "modulos_detectados": [
+    1,
+    2,
+    3
+  ]
+}

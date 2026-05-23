@@ -1,0 +1,200 @@
+{
+  "id": "course_manifest",
+  "curso": "ancestros_y_raices",
+  "linea": "diplomados",
+  "modulo": "",
+  "seccion": "catalogo_general",
+  "source": "merged",
+  "confidence": "high",
+  "nombre_del_curso": "Diplomado Ancestros y Raíces",
+  "archivos_fuente_usados": [
+    "Ancestros y Raíces_Manual_Clase_1.pdf",
+    "Libro_Genogramas en la Evaluación Familiar.pdf",
+    "Módulo 3 - Ancestros y Raíces.pdf",
+    "diplomadoraices.pdf",
+    "diplomadoraices4.pdf",
+    "diplomadoraicesmodulo5.pdf",
+    "index_modulos.csv",
+    "modulo 6 ancestros y raices .pdf",
+    "transcripcion_completa.txt"
+  ],
+  "temas_principales": [
+    "Impartido por Elvia Gómez Hernández",
+    "Sanadora Transgeneracional & Consteladora Familiar",
+    "Alma Familiar Dones ancestrales",
+    "Policia        Soldado",
+    "Velador        Portero",
+    "Electricidad   Carpintero",
+    "Salomón Sellam",
+    "LOS SECRETOS FAMILIARES PERPETUAN"
+  ],
+  "modulos_detectados": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49
+  ],
+  "cantidad_de_conceptos_extraidos": 16,
+  "cantidad_de_patrones_terapeuticos_extraidos": 15,
+  "cantidad_de_protocolos_extraidos": 1,
+  "ambiguedades_detectadas": [
+    "Al tratarse de un diplomado, algunas fuentes mezclan módulo, manual complementario y material de apoyo; puede haber superposición conceptual."
+  ],
+  "vacios_detectados": [],
+  "nivel_de_preparacion": {
+    "academic": "medio-alto",
+    "therapeutic": "medio",
+    "protocols": "medio"
+  },
+  "observacion_general": "Unidad generada automáticamente para estandarizar la base de conocimiento del curso. Conviene revisión humana para usos clínicos o docentes de máxima precisión.",
+  "entry_points": {
+    "aprendizaje": [
+      {
+        "tipo": "concepto",
+        "id": "alma_familiar_dones_ancestrales",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "angeles_wolder",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "bert_hellinger",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "high"
+      },
+      {
+        "tipo": "concepto",
+        "id": "bipolaridad_toc",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "high"
+      }
+    ],
+    "terapia": [
+      {
+        "tipo": "reasoning",
+        "id": "patron_001",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "reasoning",
+        "id": "patron_002",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "high"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_001",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low"
+      },
+      {
+        "tipo": "guide",
+        "id": "guide_002",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "merged",
+        "confidence": "low"
+      }
+    ],
+    "protocolos": [
+      {
+        "tipo": "protocol",
+        "id": "protocolo_de_solucion_transgeneracional",
+        "curso": "ancestros_y_raices",
+        "linea": "diplomados",
+        "source": "transcript",
+        "confidence": "low"
+      }
+    ]
+  },
+  "mapa_conocimiento": {
+    "conceptos_centrales": [
+      "alma_familiar_dones_ancestrales",
+      "angeles_wolder",
+      "bert_hellinger",
+      "bipolaridad_toc"
+    ],
+    "reasoning_clave": [
+      "patron_001",
+      "patron_002"
+    ],
+    "preguntas_de_entrada": [
+      "intake_001",
+      "intake_002",
+      "intake_003",
+      "intake_004"
+    ],
+    "guias_interpretativas": [
+      "guide_001",
+      "guide_002"
+    ],
+    "protocolos_clave": [
+      "protocolo_de_solucion_transgeneracional"
+    ]
+  }
+}

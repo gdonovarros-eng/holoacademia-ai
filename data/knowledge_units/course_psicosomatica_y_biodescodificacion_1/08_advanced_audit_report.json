@@ -1,0 +1,27 @@
+{
+  "errores_criticos": [],
+  "mejoras_aplicadas": [
+    "Se añadieron relaciones explícitas entre conceptos, razonamientos y protocolos.",
+    "Se enriquecieron pasos de protocolos con puntos de decisión, errores comunes y criterios de avance.",
+    "Se enriquecieron preguntas de intake con flujo, prioridad y siguiente_posible.",
+    "Se completaron respuestas de FAQ con base en conceptos y protocolos del propio curso.",
+    "Se convirtió course_manifest.json en un router con entry_points por uso."
+  ],
+  "campos_faltantes": [],
+  "elementos_debiles": [
+    "FAQ poco específica: faq_que_es_biodescodificacion",
+    "FAQ poco específica: faq_que_es_biomagnetismo",
+    "Concepto poco conectado: teoria_del_campo_unificado",
+    "Concepto poco conectado: campo_unificado",
+    "Concepto poco conectado: remedios_vibracionales",
+    "Concepto poco conectado: terapia_sistemica",
+    "Concepto poco conectado: terapia_psicoemocional",
+    "Concepto poco conectado: mental_adaptativo",
+    "Concepto poco conectado: fomentada_transgen_sistemico",
+    "Concepto poco conectado: psicoemocional_conductual_fisica",
+    "Concepto poco conectado: sensacion_emocion",
+    "Concepto poco conectado: condicion_sobrecompensacion_degenerativa"
+  ],
+  "elementos_excelentes": [],
+  "listo_para_rag": true
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "source_id": "medicina-energetica-source-001",
+    "tipo": "indice",
+    "archivo_original": "index_modulos.csv",
+    "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/MEDICINA_ENERGÉTICA/index_modulos.csv",
+    "local_text_available": true
+  },
+  {
+    "source_id": "medicina-energetica-source-002",
+    "tipo": "transcripcion",
+    "archivo_original": "transcripcion_completa.txt",
+    "source_path": "/Users/m2/Desktop/holo_pipeline/02_biblioteca/Salud/MEDICINA_ENERGÉTICA/transcripcion_completa.txt",
+    "local_text_available": true
+  }
+]
