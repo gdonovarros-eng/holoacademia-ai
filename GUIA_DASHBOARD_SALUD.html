@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Uso | Dashboard Quálitas Salud</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --ink:#1a2540;
+      --mut:#5e6a84;
+      --line:#dbe3ef;
+      --turq:#0d9ab0;
+      --purple:#8a2b8f;
+      --soft:rgba(138,43,143,.10);
+      --shadow:0 16px 38px rgba(26,37,64,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(13,154,176,.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(138,43,143,.10), transparent 24%),
+        var(--bg);
+    }
+    .wrap{max-width:1240px;margin:0 auto;padding:28px 20px 44px}
+    .hero{
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(219,227,239,.9);
+      border-radius:32px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .hero-top{
+      display:flex;
+      justify-content:space-between;
+      gap:18px;
+      align-items:flex-start;
+      padding:28px 30px 18px;
+      border-bottom:1px solid var(--line);
+      flex-wrap:wrap;
+    }
+    .brand h1{margin:0;font-size:34px;line-height:1.02}
+    .brand p{margin:10px 0 0;color:var(--mut);font-size:16px;max-width:760px}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:var(--soft);
+      color:var(--purple);
+      font-weight:700;
+      font-size:14px;
+    }
+    .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;padding:22px}
+    .card{
+      grid-column:span 12;
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow:0 10px 24px rgba(26,37,64,.04);
+      min-width:0;
+    }
+    .span-4{grid-column:span 4}
+    .span-6{grid-column:span 6}
+    .span-8{grid-column:span 8}
+    .span-12{grid-column:span 12}
+    h2{margin:0 0 10px;font-size:22px}
+    h3{margin:0 0 10px;font-size:17px}
+    p{margin:0;color:var(--mut);line-height:1.55}
+    ul{margin:10px 0 0 18px;color:var(--mut);line-height:1.6;padding:0}
+    li+li{margin-top:6px}
+    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .chip{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      color:var(--ink);
+      background:#fbfcff;
+    }
+    .kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:14px}
+    .kpi{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      background:#fbfdff;
+    }
+    .kpi b{display:block;font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--mut)}
+    .kpi span{display:block;margin-top:10px;font-size:15px;font-weight:700;color:var(--ink)}
+    .step-list{display:grid;gap:12px;margin-top:14px}
+    .step{
+      display:grid;
+      grid-template-columns:44px 1fr;
+      gap:12px;
+      align-items:flex-start;
+      padding:14px 16px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      background:#fbfdff;
+    }
+    .num{
+      width:44px;height:44px;border-radius:999px;
+      display:grid;place-items:center;
+      background:var(--soft);
+      color:var(--purple);
+      font-weight:800;
+    }
+    .table-wrap{
+      margin-top:14px;
+      border:1px solid var(--line);
+      border-radius:18px;
+      overflow:hidden;
+    }
+    table{width:100%;border-collapse:collapse;background:#fff}
+    th,td{padding:12px 14px;border-bottom:1px solid #edf2f7;text-align:left;font-size:14px;vertical-align:top}
+    th{background:#f8fbff;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+    tr:last-child td{border-bottom:none}
+    .note{
+      margin-top:14px;
+      padding:14px 16px;
+      border-radius:18px;
+      background:#fff8ef;
+      border:1px solid #f3ddba;
+      color:#8a5b00;
+      font-size:14px;
+      line-height:1.5;
+    }
+    .duo{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px;
+      background:#fbfdff;
+    }
+    .accent-prod{color:var(--turq);font-weight:700}
+    .accent-cob{color:var(--purple);font-weight:700}
+    .foot{padding:0 22px 22px;color:var(--mut);font-size:13px}
+    @media (max-width:980px){
+      .span-4,.span-6,.span-8{grid-column:span 12}
+      .kpi-grid,.duo{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="hero">
+      <div class="hero-top">
+        <div class="brand">
+          <h1>Guía de Uso e Interpretación</h1>
+          <p>Dashboard Dirección | Producción y Cobranza de Quálitas Salud. Este archivo explica cómo navegar el tablero, qué significa cada bloque y cómo interpretar correctamente la información.</p>
+        </div>
+        <div class="badge">Versión visual para consulta rápida</div>
+      </div>
+
+      <div class="grid">
+        <section class="card span-12">
+          <h2>1. Objetivo del Dashboard</h2>
+          <p>El dashboard concentra en una sola vista el comportamiento de la <span class="accent-prod">Producción</span>, la <span class="accent-cob">Cobranza</span>, el saldo <b>Deudor No Acomulado</b>, el ranking de oficinas, la composición por subramo y el detalle operativo por oficina.</p>
+          <div class="chips">
+            <div class="chip">Análisis por Oficina</div>
+            <div class="chip">Comparativo anual</div>
+            <div class="chip">Top oficinas y agentes</div>
+            <div class="chip">Tipo de movimiento</div>
+            <div class="chip">Detalle de oficina</div>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <h2>2. Filtros Principales</h2>
+          <div class="step-list">
+            <div class="step">
+              <div class="num">1</div>
+              <div>
+                <h3>Oficina</h3>
+                <p>Permite analizar el total general o una oficina específica. Cuando se elige una oficina, todas las métricas y gráficas se recalculan con ese filtro.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <div>
+                <h3>Año</h3>
+                <p>Define el periodo anual de análisis. Afecta KPIs, comparativos, ranking y detalle.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <div>
+                <h3>Mes</h3>
+                <p>Puede elegirse un mes específico o <b>Todos</b>. En <b>Todos</b>, el tablero acumula el año completo.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="num">4</div>
+              <div>
+                <h3>Subramo</h3>
+                <p>Permite limitar el análisis a un subramo o revisar el total de todos los subramos.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <h2>3. Selector de Vista y Hoja</h2>
+          <div class="duo">
+            <div class="panel">
+              <h3>Vista</h3>
+              <p><span class="accent-prod">Producción</span> muestra la prima neta emitida.</p>
+              <p style="margin-top:8px"><span class="accent-cob">Cobranza</span> muestra la prima neta cobrada.</p>
+            </div>
+            <div class="panel">
+              <h3>Hoja</h3>
+              <p><b>Dashboard</b>: vista ejecutiva con KPIs, comparativos, tops y detalle resumido.</p>
+              <p style="margin-top:8px"><b>Detalle oficina</b>: mapa, subramos y tabla detallada de pólizas.</p>
+            </div>
+          </div>
+          <div class="note">Regla importante: todos los filtros se mantienen al cambiar entre Dashboard y Detalle oficina.</div>
+        </section>
+
+        <section class="card span-12">
+          <h2>4. Interpretación de los KPIs Superiores</h2>
+          <div class="kpi-grid">
+            <div class="kpi">
+              <b>Producción (Prima Neta)</b>
+              <span>Total emitido bajo el filtro actual.</span>
+            </div>
+            <div class="kpi">
+              <b>Cobranza (Prima Neta)</b>
+              <span>Total cobrado bajo el filtro actual.</span>
+            </div>
+            <div class="kpi">
+              <b>Deudor No Acomulado</b>
+              <span>Diferencia entre Producción menos Cobranza.</span>
+            </div>
+            <div class="kpi">
+              <b>Ranking Oficinas</b>
+              <span>Lugar de la oficina dentro del comparativo anual.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-8">
+          <h2>5. Qué significa cada bloque del Dashboard</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Bloque</th>
+                  <th>Qué muestra</th>
+                  <th>Cómo interpretarlo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Subramos destacados</td>
+                  <td>Salud Individual, Accidentes Personales, Salud Colectivo y Colectivo Empleados QMX.</td>
+                  <td>Permite ver rápidamente cuál subramo aporta más volumen dentro del filtro elegido.</td>
+                </tr>
+                <tr>
+                  <td>Comparativo por año</td>
+                  <td>Producción vs Cobranza por año.</td>
+                  <td>Sirve para comparar la evolución histórica del negocio y detectar crecimiento o caídas.</td>
+                </tr>
+                <tr>
+                  <td>Top 10 Oficinas</td>
+                  <td>Las oficinas con mayor monto en la vista activa.</td>
+                  <td>Útil para identificar concentración de volumen y peso relativo de cada oficina.</td>
+                </tr>
+                <tr>
+                  <td>Tipo de movimiento</td>
+                  <td>Composición del resultado por tipo de operación o movimiento.</td>
+                  <td>Ayuda a entender si el resultado proviene de emisión nueva, renovaciones, endosos u otros movimientos.</td>
+                </tr>
+                <tr>
+                  <td>Top 10 Agentes</td>
+                  <td>Los agentes con mayor prima neta bajo el filtro activo.</td>
+                  <td>Permite detectar concentración comercial y agentes de mayor peso.</td>
+                </tr>
+                <tr>
+                  <td>Detalle mensual por oficina</td>
+                  <td>Tabla por oficina con montos mensuales y total.</td>
+                  <td>Sirve para revisar estacionalidad y comparación entre oficinas dentro del año.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card span-4">
+          <h2>6. Reglas Prácticas de Lectura</h2>
+          <ul>
+            <li>Si <b>Mes = Todos</b>, los montos son acumulados del año seleccionado.</li>
+            <li>Si eliges una oficina, esa oficina se resalta y se prioriza en la tabla inferior.</li>
+            <li>La vista activa cambia el color y el contenido del tablero.</li>
+            <li>Cuando el filtro es muy específico, algunos tops pueden mostrar menos de 10 elementos.</li>
+          </ul>
+        </section>
+
+        <section class="card span-12">
+          <h2>7. Hoja “Detalle oficina”</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Componente</th>
+                  <th>Función</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mapa por estado</td>
+                  <td>Agrupa oficinas por estado y muestra el monto correspondiente según la vista y filtros seleccionados.</td>
+                </tr>
+                <tr>
+                  <td>Subramos destacados</td>
+                  <td>Replica los subramos principales dentro del contexto de detalle.</td>
+                </tr>
+                <tr>
+                  <td>Tabla detallada</td>
+                  <td>Muestra póliza, endoso, agente, asegurado, prima neta, fecha de emisión, vigencia desde y vigencia hasta.</td>
+                </tr>
+                <tr>
+                  <td>Encabezados fijos</td>
+                  <td>Permiten revisar tablas largas sin perder el nombre de las columnas.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <h2>8. Cómo usarlo correctamente</h2>
+          <div class="step-list">
+            <div class="step">
+              <div class="num">1</div>
+              <div><h3>Define el alcance</h3><p>Selecciona Oficina, Año, Mes y Subramo según la pregunta que quieras responder.</p></div>
+            </div>
+            <div class="step">
+              <div class="num">2</div>
+              <div><h3>Elige la vista</h3><p>Usa Producción para emisión y Cobranza para cobro real.</p></div>
+            </div>
+            <div class="step">
+              <div class="num">3</div>
+              <div><h3>Interpreta KPIs y tops</h3><p>Compara primero el total, luego subramos, oficinas y agentes.</p></div>
+            </div>
+            <div class="step">
+              <div class="num">4</div>
+              <div><h3>Profundiza en el detalle</h3><p>Si encuentras una diferencia o comportamiento atípico, cambia a Detalle oficina.</p></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card span-6">
+          <h2>9. Preguntas que responde el tablero</h2>
+          <ul>
+            <li>¿Cuánto se produjo o cobró en un periodo específico?</li>
+            <li>¿Qué oficina tiene mayor volumen?</li>
+            <li>¿Qué subramo domina el resultado?</li>
+            <li>¿Qué agentes generan más prima neta?</li>
+            <li>¿Cómo va el año actual contra años anteriores?</li>
+            <li>¿En qué estado se concentra el volumen al agrupar oficinas?</li>
+          </ul>
+        </section>
+
+        <section class="card span-12">
+          <h2>10. Recomendación de Uso</h2>
+          <p>Para revisión ejecutiva, empieza en <b>Total general + Año + Todos + Todos</b>. Después baja a una oficina específica solo cuando quieras explicar una variación, un ranking o un comportamiento operativo puntual.</p>
+          <div class="note">Sugerencia: comparte esta guía junto con el HTML del dashboard para que cualquier usuario entienda rápidamente cómo leerlo e interpretarlo.</div>
+        </section>
+      </div>
+
+      <div class="foot">
+        Guía generada para acompañar el dashboard de Quálitas Salud. Puede abrirse como archivo HTML local y compartirse junto con el reporte.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
