@@ -657,6 +657,13 @@ header h1 {
   background: #f7f7f7;
   cursor: zoom-in;
 }
+.point-map-zoom-hint {
+  font-size: 0.65rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 5px 8px 7px;
+  letter-spacing: 0.02em;
+}
 .point-map-noimg {
   padding: 20px;
   text-align: center;
@@ -2297,7 +2304,7 @@ function buildInstructionList() {
             <div class="point-map-card" data-point="${escHtml(pm.canonical)}">
               <div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div>
               <div class="point-map-name">📍 ${escHtml(pm.canonical)}</div>
-              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Ubicación: ${escHtml(pm.canonical)}" loading="lazy">` : `<div class="point-map-noimg">Sin imagen disponible</div>`}
+              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Ubicación: ${escHtml(pm.canonical)}" loading="lazy"><div class="point-map-zoom-hint">🔍 Toca para ampliar</div>` : `<div class="point-map-noimg">Sin imagen disponible</div>`}
             </div>
           `;
         }).join('');
