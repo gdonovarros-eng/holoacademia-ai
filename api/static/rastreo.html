@@ -617,9 +617,9 @@ header h1 {
 /* Grid de mapas por PUNTO (Negativo + Positivo lado a lado) */
 .point-maps-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 12px;
-  margin: 8px 0 4px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  margin: 4px 0 0;
 }
 .point-map-card {
   border: 1px solid var(--border);
@@ -651,9 +651,11 @@ header h1 {
   border-bottom: 1px solid var(--border);
 }
 .point-map-img {
-  max-height: 320px !important;
+  width: 100%;
+  max-height: 460px !important;
   object-fit: contain;
-  background: #fafafa;
+  background: #f7f7f7;
+  cursor: zoom-in;
 }
 .point-map-noimg {
   padding: 20px;
@@ -668,7 +670,7 @@ header h1 {
   background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px 16px;
+  padding: 12px 14px 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -1718,7 +1720,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
         <div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;"></div>
       </section>
       <section>
-        <div class="modal-section-title">Pares Confirmados — Instrucciones</div>
+        <div class="modal-section-title">🗺️ Ubicación de Imanes por Par</div>
         <div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;"></div>
       </section>
     </div>
@@ -2295,28 +2297,18 @@ function buildInstructionList() {
             <div class="point-map-card" data-point="${escHtml(pm.canonical)}">
               <div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div>
               <div class="point-map-name">📍 ${escHtml(pm.canonical)}</div>
-              ${locTxt ? `<div class="point-map-loc">${escHtml(locTxt)}</div>` : ''}
-              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Ubicación: ${escHtml(pm.canonical)}" loading="lazy">` : `<div class="point-map-noimg">Sin mapa anatómico disponible</div>`}
+              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Ubicación: ${escHtml(pm.canonical)}" loading="lazy">` : `<div class="point-map-noimg">Sin imagen disponible</div>`}
             </div>
           `;
         }).join('');
-        mapsHtml = `
-          <div class="instruction-map-label">🗺️ <strong>Ubicación anatómica de los puntos</strong> — toca para ampliar</div>
-          <div class="point-maps-grid">${cards}</div>
-        `;
+        mapsHtml = `<div class="point-maps-grid">${cards}</div>`;
       }
       card.innerHTML = `
         <div class="instruction-card-header">
           <div class="instruction-num">${n}</div>
           <span class="instruction-card-name">${escHtml(pair.nombre)}</span>
         </div>
-        ${pair._path ? `<div class="instruction-detail">📍 <strong>Zona:</strong> ${escHtml(pair._path)}</div>` : ''}
-        ${pair.tipo ? `<div class="instruction-row"><span class="instruction-label">Tipo:</span>${tipoChip(pair.tipo)}</div>` : ''}
-        ${mapsHtml}
-        ${pair.condiciones ? `<div class="instruction-detail">🔬 <strong>Condiciones asociadas:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
-        ${pair.significado_emocional ? `<div class="instruction-detail">💜 <strong>Significado emocional:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
-        ${Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length ? `<div class="instruction-detail"><strong>Sistemas:</strong> ${escHtml(pair.sistemas_afectados.join(', '))}</div>` : ''}
-        <div class="instruction-detail">⏱ <strong>Tiempo:</strong> 20-25 minutos por par</div>
+        ${mapsHtml || `<div class="point-map-noimg">Sin mapa anatómico disponible para este par</div>`}
       `;
     } else {
       const catName = pair._catLabel || pair._catKey || '';
