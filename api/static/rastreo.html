@@ -2419,13 +2419,28 @@ const BLOQUE_MAP = {
   predeterminados:'p0057',homologos:'p0057',
   rastreo_cervical:'p0057',rastreo_dorsal:'p0057',rastreo_lumbar:'p0057',
   rastreo_sacro:'p0057',rastreo_coxis:'p0057',
-  eje_vertical:'p0058',eje_horizontal:'p0058',eje_transverso:'p0058'
+  eje_vertical:'p0058',eje_horizontal:'p0058',eje_transverso:'p0058',
+  // v4.0 bloque aliases
+  hepatico_1:'p0048',hepatico_2:'p0048',hepatico_3:'p0048',
+  personalizados:'p0057',pares_generales:'p0057',traumatismo:'p0057',
+  posterior:'p0041',mastoides:'p0041',
+  cerebro:'p0040',hipotalamo:'p0040',amigdalas:'p0040',
+  suprarrenal:'p0049',conexiones_sistemicas:'p0049'
 };
 
+function normBloqueKey(s) {
+  if (!s) return '';
+  const base = String(s).normalize('NFD');
+  const noAccents = base.split('').filter(c => c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) > 0x036f).join('');
+  return noAccents.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+}
+
 function getMapUrl(bloqueId) {
-  const page = BLOQUE_MAP[bloqueId];
+  if (!bloqueId) return null;
+  // Try direct key, then normalized name
+  const page = BLOQUE_MAP[bloqueId] || BLOQUE_MAP[normBloqueKey(bloqueId)];
   if (!page) return null;
-  return `/tablas-assets/pares_biomagneticos/maps_landscape/map_${page}.jpg`;
+  return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
 }
 
 function wizInit() { /* DB loaded in init(); wizard renders on category select */ }
@@ -2548,7 +2563,7 @@ function wizRenderResult() {
   g.appendChild(card);
 
   document.getElementById('wizBtnConfirm').onclick = () => {
-    addPairFromWizard(pairName, wizBloque.id, wizBloque.nombre, wizZona.nombre, wizRegion.nombre, path);
+    addPairFromWizard(pairName, normBloqueKey(wizBloque.nombre), wizBloque.nombre, wizZona.nombre, wizRegion.nombre, path);
     wizReset();
   };
   document.getElementById('wizBtnChange').onclick = () => { wizStep = 'par'; wizRender(); };
