@@ -3083,6 +3083,8 @@ const BODY_REGION_MAP = {
 function showHome() {
   document.getElementById('rastreo-home').classList.add('visible');
   document.getElementById('wizard-pares').classList.remove('active');
+  // Recalculate map scale now that home is visible (clientWidth was 0 while hidden)
+  requestAnimationFrame(fitBodyMap);
 }
 
 function hideHome() {
