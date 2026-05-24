@@ -1497,7 +1497,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
   <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
   <div class="spacer"></div>
   <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
-  <button id="btn-finalizar">
+  <button id="btn-finalizar" onclick="openModal()">
     Finalizar ✓ <span id="confirmed-badge">0</span>
   </button>
 </header>
@@ -2342,10 +2342,14 @@ function escHtml(str) {
 
 // ── LISTENERS ─────────────────────────────────────────────────────────────
 function setupListeners() {
-  document.getElementById('pair-search-input').addEventListener('input', e => {
-    clearTimeout(searchDebounce);
-    searchDebounce = setTimeout(() => searchPairs(e.target.value), 200);
-  });
+  // pair-search-input may not exist if left column is hidden — guard all lookups
+  const pairSearchInput = document.getElementById('pair-search-input');
+  if (pairSearchInput) {
+    pairSearchInput.addEventListener('input', e => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => searchPairs(e.target.value), 200);
+    });
+  }
   document.getElementById('global-search').addEventListener('input', e => {
     clearTimeout(globalSearchDebounce);
     globalSearchDebounce = setTimeout(() => searchGlobal(e.target.value), 200);
