@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Precios — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; background: #fff; }
+  section { padding: 96px 5%; background: #fff; }
+  .inner { max-width: 1080px; margin: 0 auto; }
+  .center { text-align: center; margin-bottom: 56px; }
+  .tag { font-size: 12px; font-weight: 700; color: #7C3AED; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #111827; letter-spacing: -1px; margin-bottom: 12px; }
+  .sub { font-size: 16px; color: #6B7280; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+  .card { border-radius: 20px; padding: 32px 28px; position: relative; transition: all 0.25s; opacity: 0; transform: translateY(48px); }
+  .card.visible { opacity: 1; transform: none; }
+  .card--normal { border: 1.5px solid #E5E7EB; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+  .card--featured { border: 2px solid #7C3AED; background: #F5F3FF; box-shadow: 0 16px 48px rgba(124,58,237,0.14); transform: scale(1.03) translateY(48px); }
+  .card--featured.visible { transform: scale(1.03) translateY(0); }
+  .card:nth-child(2) { transition-delay: 0.15s; }
+  .card:nth-child(3) { transition-delay: 0.3s; }
+  .popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #7C3AED; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; }
+  .plan-name { font-size: 13px; font-weight: 700; margin-bottom: 4px; letter-spacing: 0.03em; }
+  .plan-tagline { font-size: 12px; color: #6B7280; margin-bottom: 12px; }
+  .price { font-size: 40px; font-weight: 900; color: #111827; letter-spacing: -2px; margin-bottom: 2px; }
+  .price-sub { font-size: 13px; color: #6B7280; margin-bottom: 24px; }
+  .features { border-top: 1px solid #F3F4F6; padding-top: 20px; margin-bottom: 24px; }
+  .feature { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; color: #374151; margin-bottom: 11px; }
+  .check { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .cta { display: block; text-align: center; padding: 13px; border-radius: 10px; font-size: 14px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
+  .cta--filled { background: #7C3AED; color: #fff; }
+  .cta--filled:hover { background: #5B21B6; }
+  .cta--outline-gray { border: 1.5px solid #D1D5DB; color: #374151; }
+  .cta--outline-gray:hover { background: #F5F3FF; color: #7C3AED; }
+  .cta--outline-amber { border: 1.5px solid #D97706; color: #D97706; }
+  .cta--outline-amber:hover { background: #F5F3FF; color: #7C3AED; }
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: 1fr; }
+    .card--featured { transform: scale(1) translateY(48px); }
+    .card--featured.visible { transform: scale(1); }
+  }
+</style>
+</head>
+<body>
+<section>
+  <div class="inner">
+    <div class="center">
+      <div class="tag">Planes</div>
+      <h2>Elige cómo empezar</h2>
+      <p class="sub">Prueba gratis. Cancela cuando quieras. Sin letra pequeña.</p>
+    </div>
+    <div class="grid">
+      <!-- Plan 1 -->
+      <div class="card card--normal">
+        <div class="plan-name" style="color:#6B7280">Holoconexión</div>
+        <div class="plan-tagline">Para conocer la plataforma</div>
+        <div class="price">Gratis</div>
+        <div class="price-sub">Para siempre</div>
+        <div class="features">
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>9 programas gratuitos</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Clases de muestra</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Comunidad de terapeutas</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Soporte básico</div>
+        </div>
+        <a href="https://www.holoacademia.com" class="cta cta--outline-gray">Empezar sin costo</a>
+      </div>
+      <!-- Plan 2 (Featured) -->
+      <div class="card card--featured">
+        <div class="popular-badge">MÁS POPULAR</div>
+        <div class="plan-name" style="color:#7C3AED">Iniciación Elite</div>
+        <div class="plan-tagline">Todo lo que necesitas para ejercer</div>
+        <div class="price">$297</div>
+        <div class="price-sub">MXN / mes</div>
+        <div class="features">
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>+75 cursos certificados</div>
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>Motor Académico IA</div>
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>Motor Terapéutico IA</div>
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>Motor de Protocolos IA</div>
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>Holovisión+ incluido</div>
+          <div class="feature"><span class="check" style="color:#7C3AED">✓</span>Comunidad premium</div>
+        </div>
+        <a href="https://www.holoacademia.com" class="cta cta--filled">Probar 7 días gratis</a>
+      </div>
+      <!-- Plan 3 -->
+      <div class="card card--normal">
+        <div class="plan-name" style="color:#D97706">Acceso Premium</div>
+        <div class="plan-tagline">Para construir una práctica profesional</div>
+        <div class="price">$497</div>
+        <div class="price-sub">MXN / mes</div>
+        <div class="features">
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>+75 cursos con certificación</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Diplomados con aval SEP</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Todos los motores IA</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Holovisión+ ilimitado</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Mentoría grupal</div>
+          <div class="feature"><span class="check" style="color:#10B981">✓</span>Soporte prioritario</div>
+        </div>
+        <a href="https://www.holoacademia.com" class="cta cta--outline-amber">Quiero el acceso completo</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+const cards = document.querySelectorAll('.card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+cards.forEach(c => io.observe(c));
+
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

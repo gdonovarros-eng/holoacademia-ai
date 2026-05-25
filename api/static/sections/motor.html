@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motor IA — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; background: #fff; }
+  section { padding: 96px 5%; background: #fff; }
+  .inner { max-width: 1200px; margin: 0 auto; }
+  .center { text-align: center; margin-bottom: 64px; }
+  .tag { font-size: 12px; font-weight: 700; color: #7C3AED; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; color: #111827; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .sub { font-size: 16px; color: #6B7280; max-width: 540px; margin: 0 auto; line-height: 1.65; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 56px; }
+  .card { border-radius: 20px; border: 1.5px solid #F3F4F6; background: #FAFAFA; padding: 28px 24px; transition: all 0.25s; display: flex; flex-direction: column; opacity: 0; transform: translateY(40px); }
+  .card.visible { opacity: 1; transform: none; }
+  .card:nth-child(2) { transition-delay: 0.1s; }
+  .card:nth-child(3) { transition-delay: 0.2s; }
+  .card:nth-child(4) { transition-delay: 0.1s; }
+  .card:nth-child(5) { transition-delay: 0.2s; }
+  .card:nth-child(6) { transition-delay: 0.3s; }
+  .card:hover { background: #fff; transform: translateY(-4px); }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .emoji { font-size: 36px; }
+  .badge { font-size: 10px; font-weight: 800; border-radius: 20px; padding: 3px 10px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .name { font-weight: 800; font-size: 16px; color: #111827; margin-bottom: 10px; line-height: 1.3; }
+  .desc { font-size: 13.5px; color: #6B7280; line-height: 1.65; margin-bottom: 18px; }
+  .bullets { margin-top: auto; border-top: 1px solid #F3F4F6; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .bullet { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #374151; }
+  .dot-outer { width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .dot-inner { width: 5px; height: 5px; border-radius: 50%; display: block; }
+
+  .banner { padding: 28px 36px; border-radius: 20px; background: linear-gradient(135deg, #1E1B4B 0%, #2D1B69 100%); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .banner-title { font-weight: 800; font-size: 18px; color: #fff; margin-bottom: 6px; }
+  .banner-sub { font-size: 14px; color: rgba(255,255,255,0.55); }
+  .banner-btn { padding: 13px 28px; border-radius: 10px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; font-size: 14px; font-weight: 800; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(245,158,11,0.35); transition: all 0.2s; flex-shrink: 0; display: inline-block; }
+  .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.45); }
+
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } .banner { flex-direction: column; text-align: center; } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<section>
+  <div class="inner">
+    <div class="center">
+      <div class="tag">Motor IA</div>
+      <h2>Un asistente con 6 módulos.<br>Todo lo que el terapeuta necesita.</h2>
+      <p class="sub">No es un chatbot genérico. Es un motor especializado en terapia holística, entrenado para acompañarte en cada sesión con herramientas que ninguna otra plataforma tiene.</p>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="banner">
+      <div>
+        <div class="banner-title">¿Quieres verlo en acción?</div>
+        <div class="banner-sub">Prueba el Motor Terapéutico gratis. Sin tarjeta. Sin compromiso.</div>
+      </div>
+      <a href="https://www.holoacademia.com" class="banner-btn">Activar mi Motor — Es Gratis →</a>
+    </div>
+  </div>
+</section>
+<script>
+const MODULES = [
+  { emoji: '💜', name: 'Motor Terapéutico', tag: 'El núcleo', color: '#7C3AED',
+    desc: 'Describe el caso de tu paciente y recibe el origen emocional del conflicto, guía de rastreo y protocolo de liberación — en tiempo real. Tu sesión queda documentada automáticamente.',
+    bullets: ['Análisis de conflicto emocional', 'Protocolo de liberación personalizado', 'Historial de sesiones del paciente'] },
+  { emoji: '🧲', name: 'Rastreo Asistido de Imanes', tag: 'Biomagnetismo', color: '#7C3AED',
+    desc: 'El motor te guía par a par durante el rastreo biomagnético. Indica zonas de colocación, polaridad y tiempo de exposición según el caso clínico activo.',
+    bullets: ['Guía de colocación par a par', 'Indicación de polaridad y tiempo', 'Registro del rastreo completo'] },
+  { emoji: '🔢', name: 'Módulo de Numerología', tag: 'Análisis personal', color: '#059669',
+    desc: 'Genera el mapa numerológico completo del paciente: número de misión de vida, camino del destino, talentos ocultos y ciclos personales activos.',
+    bullets: ['Mapa numerológico completo', 'Ciclos personales y años universales', 'Integración con el perfil del paciente'] },
+  { emoji: '⭐', name: 'Astrología Médica', tag: 'Diagnóstico ampliado', color: '#D97706',
+    desc: 'Identifica las predisposiciones físicas y emocionales del paciente a partir de su carta natal. Conecta signos, casas y planetas con los órganos y sistemas del cuerpo.',
+    bullets: ['Predisposiciones por signo y planeta', 'Relación astro-órgano sistémica', 'Complemento al diagnóstico holístico'] },
+  { emoji: '🌙', name: 'Carta Natal y Astrología', tag: 'Autoconocimiento', color: '#6D28D9',
+    desc: 'El motor interpreta la carta natal del paciente: ascendente, planetas en casas, aspectos y tránsitos actuales. Un perfil profundo de quién es y qué está viviendo.',
+    bullets: ['Lectura de carta natal completa', 'Ascendente y planetas en casas', 'Tránsitos y ciclos actuales'] },
+  { emoji: '☀️', name: 'Horóscopo Terapéutico', tag: 'Seguimiento continuo', color: '#0891B2',
+    desc: 'Pronóstico energético semanal y mensual para el paciente basado en su carta natal. Una herramienta de seguimiento que añade valor a cada consulta de seguimiento.',
+    bullets: ['Pronóstico semanal y mensual', 'Alertas de tránsitos relevantes', 'Entregable para el paciente'] },
+];
+
+const grid = document.getElementById('grid');
+MODULES.forEach(m => {
+  const bulletsHtml = m.bullets.map(b => `
+    <div class="bullet">
+      <div class="dot-outer" style="background:${m.color}18">
+        <span class="dot-inner" style="background:${m.color}"></span>
+      </div>${b}
+    </div>`).join('');
+  grid.insertAdjacentHTML('beforeend', `
+    <div class="card" style="--c:${m.color}"
+      onmouseenter="this.style.borderColor='${m.color}44';this.style.boxShadow='0 16px 40px ${m.color}14'"
+      onmouseleave="this.style.borderColor='#F3F4F6';this.style.boxShadow='none'">
+      <div class="card-top">
+        <div class="emoji">${m.emoji}</div>
+        <div class="badge" style="color:${m.color};background:${m.color}14;border:1px solid ${m.color}28">${m.tag}</div>
+      </div>
+      <div class="name">${m.name}</div>
+      <p class="desc">${m.desc}</p>
+      <div class="bullets">${bulletsHtml}</div>
+    </div>`);
+});
+
+const cards = document.querySelectorAll('.card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+cards.forEach(c => io.observe(c));
+
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

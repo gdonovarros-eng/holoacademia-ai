@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+  footer { background: #0C0A1A; padding: 64px 5% 28px; }
+  .grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.6fr repeat(4, 1fr); gap: 40px; margin-bottom: 52px; }
+  .logo { font-weight: 800; font-size: 20px; color: #fff; margin-bottom: 14px; }
+  .logo span { color: #A78BFA; }
+  .tagline { font-size: 13px; color: rgba(255,255,255,0.38); line-height: 1.7; max-width: 220px; }
+  .col-title { font-weight: 700; font-size: 11px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
+  .col-link { display: block; color: rgba(255,255,255,0.42); font-size: 13px; text-decoration: none; margin-bottom: 9px; transition: color 0.2s; }
+  .col-link:hover { color: #fff; }
+  .bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; max-width: 1100px; margin: 0 auto; }
+  .copy { font-size: 12px; color: rgba(255,255,255,0.28); }
+  .socials { display: flex; gap: 14px; }
+  .social { font-size: 17px; text-decoration: none; opacity: 0.45; transition: opacity 0.2s; }
+  .social:hover { opacity: 1; }
+  @media (max-width: 820px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 500px) {
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<footer>
+  <div class="grid">
+    <div>
+      <div class="logo"><span>Holo</span>academia</div>
+      <p class="tagline">La plataforma de IA para terapeutas holísticos hispanohablantes.</p>
+    </div>
+    <div>
+      <div class="col-title">Plataforma</div>
+      <a href="#" class="col-link">Motor Académico</a>
+      <a href="#" class="col-link">Motor Terapéutico</a>
+      <a href="#" class="col-link">Motor de Protocolos</a>
+      <a href="#" class="col-link">Holovisión+</a>
+    </div>
+    <div>
+      <div class="col-title">Cursos</div>
+      <a href="#" class="col-link">Biomagnetismo</a>
+      <a href="#" class="col-link">Biodescodificación</a>
+      <a href="#" class="col-link">Psicosomática</a>
+      <a href="#" class="col-link">MTC</a>
+      <a href="#" class="col-link">Fitoterapia</a>
+    </div>
+    <div>
+      <div class="col-title">Comunidad</div>
+      <a href="#" class="col-link">Foro de terapeutas</a>
+      <a href="#" class="col-link">Directorio</a>
+      <a href="#" class="col-link">Blog</a>
+      <a href="#" class="col-link">Eventos</a>
+    </div>
+    <div>
+      <div class="col-title">Legal</div>
+      <a href="#" class="col-link">Privacidad</a>
+      <a href="#" class="col-link">Términos de uso</a>
+      <a href="#" class="col-link">Aviso legal</a>
+      <a href="#" class="col-link">Cookies</a>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="copy">© 2025 Holoacademia. Todos los derechos reservados.</div>
+    <div class="socials">
+      <a href="#" class="social">📘</a>
+      <a href="#" class="social">📸</a>
+      <a href="#" class="social">🎵</a>
+      <a href="#" class="social">▶️</a>
+    </div>
+  </div>
+</footer>
+<script>
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

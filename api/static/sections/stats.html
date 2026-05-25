@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stats — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+  .stats { background: #1E1B4B; padding: 52px 5%; }
+  .grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+  .item { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .item.visible { opacity: 1; transform: none; }
+  .item:nth-child(2) { transition-delay: 0.1s; }
+  .item:nth-child(3) { transition-delay: 0.2s; }
+  .item:nth-child(4) { transition-delay: 0.3s; }
+  .num { font-size: 40px; font-weight: 900; color: #fff; letter-spacing: -2px; }
+  .lbl { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+  @media (max-width: 600px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  }
+</style>
+</head>
+<body>
+<section class="stats">
+  <div class="grid">
+    <div class="item"><div class="num" data-target="75" data-suffix="+">75+</div><div class="lbl">Cursos certificados</div></div>
+    <div class="item"><div class="num" data-target="5000" data-prefix="+">+5,000</div><div class="lbl">Terapeutas activos</div></div>
+    <div class="item"><div class="num" data-target="3">3</div><div class="lbl">Motores de IA</div></div>
+    <div class="item"><div class="num" data-target="9">9</div><div class="lbl">Disciplinas</div></div>
+  </div>
+</section>
+<script>
+const items = document.querySelectorAll('.item');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('visible');
+    const numEl = entry.target.querySelector('.num');
+    const target = +numEl.dataset.target;
+    const prefix = numEl.dataset.prefix || '';
+    const suffix = numEl.dataset.suffix || '';
+    let val = 0;
+    const start = performance.now();
+    const dur = 1800;
+    function tick(now) {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      val = Math.round(target * ease);
+      numEl.textContent = prefix + (val >= 1000 ? val.toLocaleString('es') : val) + suffix;
+      if (t < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    io.unobserve(entry.target);
+  });
+}, { threshold: 0.3 });
+items.forEach(el => io.observe(el));
+
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

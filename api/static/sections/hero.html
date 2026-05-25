@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; background: #F5F3FF; }
+
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(160deg, #F5F3FF 0%, #ffffff 55%, #F5F3FF 100%);
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding: 80px 5% 64px;
+  }
+  .blob1 { position: absolute; top: 5%; right: -8%; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%); pointer-events: none; }
+  .blob2 { position: absolute; bottom: -10%; left: -6%; width: 460px; height: 460px; border-radius: 50%; background: radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); pointer-events: none; }
+
+  .grid { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+  .badge { display: inline-flex; align-items: center; gap: 7px; background: #EDE9FE; border: 1px solid #C4B5FD; border-radius: 100px; padding: 6px 16px; font-size: 13px; color: #5B21B6; margin-bottom: 28px; font-weight: 600; opacity: 0; animation: fadeUp 0.5s 0.2s ease forwards; }
+  h1 { font-size: clamp(2.2rem, 4.2vw, 3.5rem); font-weight: 900; line-height: 1.07; letter-spacing: -2px; margin-bottom: 22px; opacity: 0; animation: fadeUp 0.6s 0.35s ease forwards; }
+  .line1 { display: block; color: #111827; }
+  .line2 { display: block; background: linear-gradient(90deg, #7C3AED 0%, #F59E0B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .sub { font-size: 17px; color: #6B7280; line-height: 1.72; max-width: 500px; opacity: 0; animation: fadeUp 0.5s 0.5s ease forwards; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.5s 0.65s ease forwards; }
+  .btn-primary { padding: 15px 28px; border-radius: 10px; background: #7C3AED; color: #fff; font-size: 15px; font-weight: 800; text-decoration: none; transition: all 0.2s; box-shadow: 0 6px 24px rgba(124,58,237,0.35); letter-spacing: -0.2px; }
+  .btn-primary:hover { background: #5B21B6; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(91,33,182,0.45); }
+  .btn-ghost { padding: 15px 22px; border-radius: 10px; border: 1.5px solid #D1D5DB; color: #111827; font-size: 15px; font-weight: 600; text-decoration: none; transition: all 0.2s; background: #fff; }
+  .btn-ghost:hover { border-color: #7C3AED; color: #7C3AED; }
+  .note { font-size: 12.5px; color: #9CA3AF; letter-spacing: 0.02em; opacity: 0; animation: fadeUp 0.4s 0.78s ease forwards; }
+
+  /* Chat mockup */
+  .chat-wrap { display: flex; justify-content: center; opacity: 0; animation: fadeRight 0.7s 0.5s ease forwards; }
+  .chat-card { background: #fff; border-radius: 20px; box-shadow: 0 24px 80px rgba(91,33,182,0.12), 0 4px 24px rgba(0,0,0,0.06); border: 1px solid #EDE9FE; padding: 18px 18px 14px; width: 100%; max-width: 420px; }
+  .chat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; padding-bottom: 12px; border-bottom: 1px solid #F3F4F6; }
+  .chat-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #5B21B6); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+  .chat-name { font-weight: 700; font-size: 13px; color: #111827; }
+  .chat-status { font-size: 11px; color: #10B981; display: flex; align-items: center; gap: 4px; margin-top: 1px; }
+  .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #10B981; }
+  .chat-demo { font-size: 10px; font-weight: 700; color: #F59E0B; background: #FFFBEB; border: 1px solid #FDE68A; padding: 3px 9px; border-radius: 6px; letter-spacing: 0.05em; margin-left: auto; }
+  .chat-msgs { display: flex; flex-direction: column; gap: 9px; max-height: 300px; overflow: hidden; }
+  .msg-user { display: flex; justify-content: flex-end; }
+  .bubble-user { max-width: 84%; padding: 10px 13px; border-radius: 14px 14px 4px 14px; background: linear-gradient(135deg, #7C3AED, #5B21B6); color: #fff; font-size: 12.5px; line-height: 1.6; }
+  .msg-ai { display: flex; justify-content: flex-start; }
+  .bubble-ai { max-width: 88%; padding: 11px 14px; border-radius: 14px 14px 14px 4px; background: #F5F3FF; border: 1px solid #EDE9FE; color: #111827; font-size: 12.5px; line-height: 1.7; white-space: pre-line; }
+  .msg-success { display: flex; justify-content: center; }
+  .bubble-success { background: #F0FDF4; border: 1px solid #BBF7D0; border-radius: 10px; padding: 8px 14px; font-size: 12px; color: #059669; font-weight: 600; }
+  .typing-dots { display: flex; align-items: center; gap: 5px; padding: 11px 16px; background: #F5F3FF; border-radius: 14px 14px 14px 4px; border: 1px solid #EDE9FE; width: fit-content; }
+  .typing-dots span { width: 7px; height: 7px; border-radius: 50%; background: #7C3AED; opacity: 0.6; animation: bounce 0.8s ease-in-out infinite; }
+  .typing-dots span:nth-child(2) { animation-delay: 0.12s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.24s; }
+  .chat-input { margin-top: 12px; display: flex; gap: 8px; align-items: center; background: #F9FAFB; border-radius: 12px; padding: 9px 12px; border: 1px solid #F3F4F6; }
+  .chat-input-text { flex: 1; font-size: 12px; color: #9CA3AF; font-family: inherit; }
+  .send-btn { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, #F59E0B, #D97706); display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; flex-shrink: 0; box-shadow: 0 2px 8px rgba(245,158,11,0.35); color: #fff; font-weight: 700; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+  @keyframes fadeRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: none; } }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+  @keyframes msgIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .msg-enter { animation: msgIn 0.25s ease; }
+
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+    .chat-wrap { justify-content: center; }
+    .ctas { justify-content: center; }
+    .sub { margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="blob1"></div>
+  <div class="blob2"></div>
+  <div class="grid">
+    <div>
+      <div class="badge">✦ El asistente IA para terapeutas holísticos</div>
+      <h1>
+        <span class="line1">Llevas años estudiando.</span>
+        <span class="line2">Tu primer paciente te está esperando.</span>
+      </h1>
+      <p class="sub">El Motor Terapéutico IA analiza cada caso contigo: te explica el origen emocional, te guía paso a paso en el rastreo y genera el protocolo — todo en tiempo real. Tu conocimiento ya está. Ahora tienes el respaldo para usarlo.</p>
+      <div class="ctas">
+        <a href="https://www.holoacademia.com" class="btn-primary">Activar mi Motor Terapéutico — Es Gratis</a>
+        <a href="https://www.holoacademia.com/programas" class="btn-ghost">Explorar los +75 cursos →</a>
+      </div>
+      <p class="note">Sin tarjeta · Sin permanencia · +5,000 terapeutas confían en Holoacademia</p>
+    </div>
+    <div class="chat-wrap">
+      <div class="chat-card">
+        <div class="chat-header">
+          <div class="chat-avatar">🤖</div>
+          <div>
+            <div class="chat-name">Motor Terapéutico IA</div>
+            <div class="chat-status"><span class="status-dot"></span> En línea · Biodescodificación</div>
+          </div>
+          <div class="chat-demo">DEMO</div>
+        </div>
+        <div class="chat-msgs" id="msgs"></div>
+        <div class="chat-input">
+          <span class="chat-input-text">Escribe una enfermedad o síntoma...</span>
+          <div class="send-btn">↑</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const CHAT = [
+  { from: 'user', text: 'Es mi primera sesión. Tengo una paciente con fibromialgia. No sé por dónde empezar 😰', delay: 600 },
+  { from: 'ai', text: '🔍 Fibromialgia — Conflicto emocional:\n\nConflicto de desvalorización global: la persona no se siente valorada en ningún aspecto de su vida. El cuerpo "grita" lo que la mente calla.\n\nPregunta clave: ¿Siente que nada de lo que hace es suficiente para los demás?', delay: 1800 },
+  { from: 'user', text: 'Sí, exacto. ¿Me das el protocolo?', delay: 900 },
+  { from: 'ai', text: '📋 Protocolo de liberación:\n\n1. Validación emocional: "Lo que haces sí tiene valor"\n2. Carta de autovaloración (escribir y leer en voz alta)\n3. Técnica de liberación corporal: movimiento suave 10 min\n4. Afirmación diaria de merecimiento\n5. Seguimiento 21 días ✓', delay: 2000 },
+  { from: 'success', text: '✅ Primera sesión completada con éxito', delay: 700 },
+];
+
+const msgsEl = document.getElementById('msgs');
+let loop = 0;
+
+async function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+function addEl(html) {
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  const el = div.firstElementChild;
+  el.classList.add('msg-enter');
+  msgsEl.appendChild(el);
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+  return el;
+}
+
+async function runChat() {
+  msgsEl.innerHTML = '';
+  await wait(800);
+  for (let i = 0; i < CHAT.length; i++) {
+    const m = CHAT[i];
+    if (m.from === 'user') {
+      await wait(i === 0 ? 300 : m.delay);
+      addEl(`<div class="msg-user"><div class="bubble-user">${m.text}</div></div>`);
+    } else if (m.from === 'ai') {
+      const dots = addEl(`<div class="msg-ai"><div class="typing-dots"><span></span><span></span><span></span></div></div>`);
+      await wait(m.delay);
+      dots.remove();
+      // Typewriter
+      const bubble = addEl(`<div class="msg-ai"><div class="bubble-ai"></div></div>`);
+      const inner = bubble.querySelector('.bubble-ai');
+      let idx = 0;
+      await new Promise(res => {
+        const id = setInterval(() => {
+          idx++;
+          inner.textContent = m.text.slice(0, idx);
+          msgsEl.scrollTop = msgsEl.scrollHeight;
+          if (idx >= m.text.length) { clearInterval(id); res(); }
+        }, 14);
+      });
+    } else {
+      await wait(m.delay);
+      addEl(`<div class="msg-success"><div class="bubble-success">${m.text}</div></div>`);
+    }
+    await wait(80);
+  }
+  await wait(4500);
+  runChat();
+}
+
+runChat();
+
+// Auto-resize for Wix iframe
+function reportHeight() {
+  const h = document.documentElement.scrollHeight;
+  window.parent.postMessage({ action: 'setHeight', height: h }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

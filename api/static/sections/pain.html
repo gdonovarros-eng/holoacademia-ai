@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pain Points — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; background: #fff; }
+  section { padding: 96px 5%; background: #fff; }
+  .center { text-align: center; margin-bottom: 56px; }
+  .tag { font-size: 12px; font-weight: 700; color: #7C3AED; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; color: #111827; letter-spacing: -1px; line-height: 1.1; margin-bottom: 16px; }
+  .sub { font-size: 16px; color: #6B7280; max-width: 520px; margin: 0 auto; line-height: 1.65; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+  .card { border-radius: 18px; padding: 32px 28px; position: relative; transition: all 0.25s; opacity: 0; transform: translateY(40px); }
+  .card.visible { opacity: 1; transform: none; }
+  .card:nth-child(2) { transition-delay: 0.15s; }
+  .card:nth-child(3) { transition-delay: 0.3s; }
+  .card--normal { border: 1.5px solid #EDE9FE; background: #FAFAFA; box-shadow: 0 2px 12px rgba(0,0,0,0.03); }
+  .card--featured { border: 2px solid #7C3AED; background: #F5F3FF; box-shadow: 0 12px 40px rgba(124,58,237,0.12); }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(124,58,237,0.15); }
+  .badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #7C3AED; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 100px; white-space: nowrap; letter-spacing: 0.05em; }
+  .icon { font-size: 32px; margin-bottom: 16px; }
+  .pain { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 14px; line-height: 1.4; }
+  .divider { width: 32px; height: 2px; border-radius: 2px; margin-bottom: 14px; }
+  .divider--v { background: #7C3AED; }
+  .divider--g { background: #D1D5DB; }
+  .sol { font-size: 14px; color: #6B7280; line-height: 1.65; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<section>
+  <div class="center">
+    <div class="tag">El problema</div>
+    <h2>El problema no es lo que sabes.<br>Es el miedo a equivocarte sola.</h2>
+    <p class="sub">Más cursos no quitan la inseguridad. Lo que necesitas es práctica con respaldo — y eso es exactamente lo que da el Motor.</p>
+  </div>
+  <div class="grid">
+    <div class="card card--normal">
+      <div class="icon">🎓</div>
+      <p class="pain">"Llevas cursos, certificados… y aún no te atreves a cobrar"</p>
+      <div class="divider divider--g"></div>
+      <p class="sol">La verdad: ya sabes. Lo que te falta no está en otro curso — está en el respaldo para aplicarlo.</p>
+    </div>
+    <div class="card card--featured">
+      <div class="badge">EL MÁS COMÚN</div>
+      <div class="icon">😰</div>
+      <p class="pain">"Llega un paciente y la mente se queda en blanco"</p>
+      <div class="divider divider--v"></div>
+      <p class="sol">¿Por dónde empiezo? ¿Y si me equivoco? El motor responde esas preguntas antes de que las hagas.</p>
+    </div>
+    <div class="card card--normal">
+      <div class="icon">🔄</div>
+      <p class="pain">"Sales de la sesión sin saber si lo hiciste bien"</p>
+      <div class="divider divider--g"></div>
+      <p class="sol">Sin feedback, sin protocolo, sin estructura. Esa incertidumbre es lo que detiene tu práctica.</p>
+    </div>
+  </div>
+</section>
+<script>
+const cards = document.querySelectorAll('.card');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.15 });
+cards.forEach(c => io.observe(c));
+
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>

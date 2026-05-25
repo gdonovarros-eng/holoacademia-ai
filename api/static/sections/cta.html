@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CTA Final — Holoacademia</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+  section { padding: 96px 5%; background: #1E1B4B; text-align: center; }
+  .inner { max-width: 620px; margin: 0 auto; }
+  .inner > * { opacity: 0; transform: translateY(24px); }
+  .inner.visible > * { animation: fadeUp 0.55s ease forwards; }
+  .inner.visible > *:nth-child(2) { animation-delay: 0.12s; }
+  .inner.visible > *:nth-child(3) { animation-delay: 0.24s; }
+  .inner.visible > *:nth-child(4) { animation-delay: 0.36s; }
+  .inner.visible > *:nth-child(5) { animation-delay: 0.48s; }
+  .tag { font-size: 12px; font-weight: 700; color: #A5B4FC; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+  h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: #fff; letter-spacing: -1.5px; line-height: 1.08; margin-bottom: 20px; }
+  .sub { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .btn { display: inline-block; padding: 17px 36px; border-radius: 12px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; font-size: 16px; font-weight: 900; text-decoration: none; box-shadow: 0 8px 32px rgba(245,158,11,0.4); transition: all 0.2s; letter-spacing: -0.3px; }
+  .btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 14px 40px rgba(245,158,11,0.5); }
+  .note { margin-top: 18px; font-size: 13px; color: rgba(255,255,255,0.35); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<section>
+  <div class="inner" id="inner">
+    <div class="tag">No hay momento perfecto</div>
+    <h2>Cada semana que esperas es una semana que otra terapeuta cobró lo que tú mereces.</h2>
+    <p class="sub">Tu conocimiento ya está ahí. Tus pacientes te están buscando. El único ingrediente que faltaba es el respaldo para dar ese primer paso.</p>
+    <a href="https://www.holoacademia.com" class="btn">Activar mi Motor Terapéutico — Es Gratis</a>
+    <p class="note">Se une una terapeuta nueva cada 4 horas</p>
+  </div>
+</section>
+<script>
+const inner = document.getElementById('inner');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.2 });
+io.observe(inner);
+
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>
