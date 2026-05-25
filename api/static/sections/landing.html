@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HoloacademIA — Ya tienes el conocimiento. Ahora cobra por él.</title>
+<title>HoloacademIA — La IA especializada para terapeutas holísticos</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -137,18 +137,25 @@
     letter-spacing: 0.02em;
   }
   .hero h1 {
-    font-size: clamp(40px, 5.5vw, 68px); font-weight: 900;
-    letter-spacing: -3px; line-height: 1.04; margin-bottom: 22px; color: #fff;
+    font-size: clamp(38px, 5vw, 64px); font-weight: 900;
+    letter-spacing: -3px; line-height: 1.05; margin-bottom: 22px; color: #fff;
   }
   .hero h1 .gradient-text {
     background: linear-gradient(135deg, #F9A8D4 0%, #C084FC 55%, #A78BFA 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
   .hero-sub {
-    font-size: 1.08rem; color: var(--text-50); margin-bottom: 34px;
+    font-size: 1.05rem; color: var(--text-50); margin-bottom: 16px;
     line-height: 1.72; max-width: 480px;
   }
   .hero-sub strong { color: var(--text-70); font-weight: 600; }
+  .expert-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.22);
+    border-radius: 12px; padding: 10px 16px; margin-bottom: 28px;
+    font-size: 0.82rem; color: rgba(245,158,11,0.85); line-height: 1.4;
+  }
+  .expert-badge strong { color: #F59E0B; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
   .btn-primary {
     background: linear-gradient(135deg, #F59E0B, #D97706); color: #000;
@@ -192,7 +199,7 @@
     background: rgba(147,51,234,0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 32px 0;
   }
   .stats-grid { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
-  .stat-item { text-align: center; padding: 14px 44px; position: relative; }
+  .stat-item { text-align: center; padding: 14px 36px; position: relative; }
   .stat-item:not(:last-child)::after { content:''; position:absolute; right:0; top:10%; bottom:10%; width:1px; background: var(--glass-border); }
   .stat-num { font-size: 2.2rem; font-weight: 900; color: #fff; letter-spacing: -1.5px; display: block; text-shadow: 0 0 30px rgba(192,132,252,0.4); }
   .stat-label { font-size: 0.75rem; color: var(--text-30); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -205,7 +212,22 @@
     border-radius: 50px; margin-bottom: 18px;
   }
   .section-h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; line-height: 1.08; }
-  .section-sub { font-size: 1rem; color: var(--text-50); max-width: 540px; line-height: 1.7; }
+  .section-sub { font-size: 1rem; color: var(--text-50); max-width: 580px; line-height: 1.7; }
+
+  /* ── DIFERENCIADOR IA ────────────────────────────── */
+  .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  .diff-card { padding: 28px 24px; border-radius: 20px; }
+  .diff-no { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); }
+  .diff-yes { background: linear-gradient(160deg, rgba(147,51,234,0.15), rgba(107,33,168,0.1)); border: 1px solid rgba(147,51,234,0.35); }
+  .diff-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .diff-label.no-label { color: var(--text-30); }
+  .diff-label.yes-label { color: var(--violet-light); }
+  .diff-items { display: flex; flex-direction: column; gap: 11px; }
+  .diff-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; line-height: 1.5; }
+  .diff-item.bad { color: var(--text-30); }
+  .diff-item.good { color: var(--text-70); }
+  .diff-item.good strong { color: #fff; }
+  .diff-icon { flex-shrink: 0; margin-top: 1px; font-size: 0.9rem; }
 
   /* ── PROBLEM ─────────────────────────────────────── */
   .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
@@ -219,14 +241,46 @@
   .problem-card h3 { font-size: 1rem; font-weight: 800; line-height: 1.35; }
   .problem-card p { font-size: 0.86rem; color: var(--text-50); line-height: 1.65; }
 
-  /* ── SOLUTION ────────────────────────────────────── */
-  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .bullet-list { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
-  .bullet-item { display: flex; gap: 14px; align-items: flex-start; font-size: 0.9rem; color: var(--text-50); line-height: 1.55; }
-  .bullet-dot { width: 8px; height: 8px; background: var(--violet-light); border-radius: 50%; flex-shrink: 0; margin-top: 6px; box-shadow: 0 0 8px rgba(192,132,252,0.5); }
-  .bullet-item strong { color: #fff; }
-  .solution-chat { padding: 24px; }
+  /* ── PILLARS ─────────────────────────────────────── */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .pillar-card { padding: 32px 26px; transition: border-color 0.3s, transform 0.3s; }
+  .pillar-card:hover { transform: translateY(-4px); }
+  .pillar-num { font-size: 0.65rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--violet-light); margin-bottom: 12px; display: block; }
+  .pillar-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .pillar-card h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; }
+  .pillar-card p { font-size: 0.855rem; color: var(--text-50); line-height: 1.68; }
+  .pillar-card .pill-detail { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--glass-border); font-size: 0.78rem; color: var(--violet-light); font-weight: 700; }
+
+  /* ── ASESOR TERAPÉUTICO ──────────────────────────── */
+  .advisor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 52px; }
+  .advisor-steps { display: flex; flex-direction: column; gap: 22px; }
+  .advisor-step { display: flex; gap: 18px; align-items: flex-start; }
+  .advisor-step-num {
+    width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0;
+    background: linear-gradient(135deg, rgba(147,51,234,0.3), rgba(107,33,168,0.3));
+    border: 1px solid rgba(147,51,234,0.4);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem; font-weight: 900; color: var(--violet-light); letter-spacing: 0.5px;
+  }
+  .advisor-step-body h4 { font-size: 0.94rem; font-weight: 800; margin-bottom: 5px; }
+  .advisor-step-body p { font-size: 0.84rem; color: var(--text-50); line-height: 1.6; }
+  .advisor-note {
+    margin-top: 24px; padding: 16px 20px; border-radius: 14px;
+    background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.2);
+    font-size: 0.84rem; color: rgba(245,158,11,0.85); line-height: 1.6;
+  }
+  .advisor-note strong { color: #F59E0B; }
+  .advisor-chat { padding: 22px; }
   .case-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--violet-light); margin-bottom: 14px; display: block; }
+
+  /* ── BIOMAGNETIC ─────────────────────────────────── */
+  .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 52px; }
+  .bio-areas { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 22px; }
+  .bio-area { padding: 12px 14px; border-radius: 12px; background: rgba(147,51,234,0.08); border: 1px solid rgba(147,51,234,0.2); font-size: 0.78rem; font-weight: 700; color: var(--violet-light); text-align: center; }
+  .bio-stat-row { display: flex; gap: 22px; margin-top: 24px; }
+  .bio-stat { text-align: center; flex: 1; padding: 16px; border-radius: 14px; background: var(--glass-bg); border: 1px solid var(--glass-border); }
+  .bio-stat-num { font-size: 1.8rem; font-weight: 900; color: #fff; letter-spacing: -1px; }
+  .bio-stat-label { font-size: 0.72rem; color: var(--text-30); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
 
   /* ── TABLE ───────────────────────────────────────── */
   .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--glass-border); }
@@ -243,6 +297,15 @@
   .t-cross { color: var(--text-15); font-size: 1.1rem; }
   .t-partial { font-size: 0.75rem; color: rgba(245,158,11,0.65); font-weight: 700; }
 
+  /* ── LIBRARY ─────────────────────────────────────── */
+  .library-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .library-card { padding: 28px 24px; transition: border-color 0.3s, transform 0.3s; }
+  .library-card:hover { transform: translateY(-4px); border-color: rgba(192,132,252,0.22); }
+  .library-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .library-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+  .library-card p { font-size: 0.855rem; color: var(--text-50); line-height: 1.65; }
+  .library-detail { margin-top: 12px; font-size: 0.78rem; color: var(--violet-light); font-weight: 700; }
+
   /* ── HOW IT WORKS ────────────────────────────────── */
   .steps-wrap { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
   .steps-line { position: absolute; top: 52px; left: calc(33.33%/2 + 24px); right: calc(33.33%/2 + 24px); height: 0; border-top: 2px dashed rgba(147,51,234,0.35); z-index: 0; }
@@ -252,18 +315,6 @@
   .step-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
   .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
   .step-card p { font-size: 0.83rem; color: var(--text-50); line-height: 1.6; }
-
-  /* ── MODULES ─────────────────────────────────────── */
-  .modules-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
-  .module-card { padding: 26px 22px; transition: border-color 0.3s, transform 0.3s; }
-  .module-card:hover { transform: translateY(-4px); }
-  .module-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
-  .module-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; background: rgba(147,51,234,0.18); border: 1px solid rgba(192,132,252,0.28); color: var(--violet-light); margin-bottom: 10px; }
-  .module-card h3 { font-size: 0.98rem; font-weight: 800; margin-bottom: 8px; }
-  .module-card p { font-size: 0.82rem; color: var(--text-50); line-height: 1.6; }
-  .module-bullets { margin-top: 14px; border-top: 1px solid var(--glass-border); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
-  .module-bullet { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-50); }
-  .module-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
 
   /* ── TESTIMONIALS ────────────────────────────────── */
   .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
@@ -337,28 +388,32 @@
 
   /* ── RESPONSIVE ──────────────────────────────────── */
   @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-inner, .advisor-grid, .bio-grid, .diff-grid, .solution-grid { grid-template-columns: 1fr; text-align: center; }
     .hero-ctas { justify-content: center; }
     .hero-trust { justify-content: center; }
-    .hero-sub { margin: 0 auto 34px; }
+    .hero-sub { margin: 0 auto 16px; }
+    .expert-badge { justify-content: center; }
     .hero-chat { max-width: 480px; margin: 0 auto; }
-    .problem-grid, .solution-grid, .steps-wrap, .testi-grid { grid-template-columns: 1fr; }
+    .problem-grid, .pillars-grid, .steps-wrap, .testi-grid, .library-grid { grid-template-columns: 1fr; }
     .steps-line { display: none; }
-    .modules-grid { grid-template-columns: repeat(2,1fr); }
     .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
     .price-card.featured { transform: none; }
     .price-card.featured:hover { transform: translateY(-4px); }
     .stat-item { padding: 12px 24px; }
+    .bio-areas { grid-template-columns: repeat(2,1fr); }
+    .advisor-steps { text-align: left; }
   }
   @media (max-width: 600px) {
     .hero h1 { letter-spacing: -1.5px; }
-    .modules-grid { grid-template-columns: 1fr; }
     .section { padding: 64px 0; }
     .stats-grid { flex-wrap: wrap; }
     .stat-item { width: 50%; }
     .stat-item:not(:last-child)::after { display: none; }
     .stat-item:nth-child(odd) { border-right: 1px solid var(--glass-border); }
     .stat-item { padding: 16px 20px; border-bottom: 1px solid var(--glass-border); }
+    .diff-grid { grid-template-columns: 1fr; }
+    .bio-stat-row { flex-direction: column; }
+    .bio-areas { grid-template-columns: repeat(2,1fr); }
   }
 </style>
 </head>
@@ -375,7 +430,8 @@
     <a href="https://www.holoacademia.com" target="_blank" class="nav-logo">Holo<em>academ</em>IA</a>
     <div class="nav-links">
       <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
-      <a href="#modulos">Motor IA</a>
+      <a href="#asesor">Asesor IA</a>
+      <a href="#biomagnetismo">Biomagnetismo</a>
       <a href="#precios">Planes</a>
     </div>
     <div class="nav-actions">
@@ -390,13 +446,16 @@
   <div class="container">
     <div class="hero-inner">
       <div class="hero-left fade-up">
-        <div class="hero-badge">✨ La primera IA para terapeutas holísticos hispanohablantes</div>
-        <h1>Ya tienes el conocimiento.<br><span class="gradient-text">Ahora cobra por él.</span></h1>
+        <div class="hero-badge">💜 La IA especializada para terapeutas holísticos hispanohablantes</div>
+        <h1>La IA que sabe<br>lo que tú sabes.<br><span class="gradient-text">Y más.</span></h1>
         <p class="hero-sub">
-          HoloacademIA es la única plataforma donde <strong>aprendes y tienes una IA especializada contigo en cada consulta real</strong> — para que nunca más te quedes paralizada frente a un paciente.
+          Aprende con cursos reales. Practica con IA real. <strong>HoloacademIA está entrenada por más de 15 especialistas</strong> en biomagnetismo, biodescodificación y medicina energética — no es ChatGPT que falla en cada consulta.
         </p>
+        <div class="expert-badge">
+          🎓 <div><strong>+140 años de experiencia sumada · Miles de horas de aprendizaje</strong><br>Entrenada con información real de 15+ especialistas en terapias holísticas</div>
+        </div>
         <div class="hero-ctas">
-          <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary">Activar mi Motor Terapéutico — Es Gratis</a>
+          <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary">Probar HoloacademIA — Es Gratis</a>
           <a href="https://www.holoacademia.com/programas" target="_blank" class="btn-outline">Ver los +75 cursos →</a>
         </div>
         <div class="hero-trust">
@@ -405,6 +464,8 @@
           <span>Acceso inmediato</span>
           <span class="trust-dot"></span>
           <span>Cancela cuando quieras</span>
+          <span class="trust-dot"></span>
+          <span>Desde $299 MXN/mes</span>
         </div>
       </div>
       <!-- Chat card -->
@@ -413,14 +474,14 @@
           <div class="chat-header">
             <div class="chat-avatar">💜</div>
             <div>
-              <div class="chat-title">Motor Terapéutico IA</div>
-              <div class="chat-status">● En sesión activa</div>
+              <div class="chat-title">Asesor Terapéutico IA</div>
+              <div class="chat-status">● Sesión activa</div>
             </div>
           </div>
           <div class="msgs">
-            <div class="msg msg-user">Paciente, 42 años. Dolor lumbar crónico sin causa orgánica. Empezó cuando murió su mamá hace un año.</div>
-            <div class="msg msg-ai">Conflicto emocional: "carga que no puede soltar". Correlaciona con L4-L5 en biodescodificación. Te genero el protocolo de liberación.</div>
-            <div class="msg msg-ai">✅ Protocolo generado · 📋 Sesión documentada</div>
+            <div class="msg msg-user">Paciente 42 años, dolor lumbar crónico sin causa orgánica. Empezó cuando murió su mamá hace un año.</div>
+            <div class="msg msg-ai">Origen emocional probable: "carga que no puede soltar" — correlaciona con L4-L5 en biodescodificación. Desde biomagnetismo: pares Riñón-Riñón y Psoas-Psoas como prioritarios.</div>
+            <div class="msg msg-ai">✅ Protocolo de liberación generado · 📋 Sesión documentada automáticamente</div>
             <div class="glass typing" style="border-radius:14px;">
               <div class="typing-dot"></div>
               <div class="typing-dot"></div>
@@ -437,67 +498,239 @@
 <div class="stats-strip">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-item fade-up"><span class="stat-num">75+</span><span class="stat-label">Cursos certificados</span></div>
-      <div class="stat-item fade-up" style="transition-delay:.1s"><span class="stat-num">3</span><span class="stat-label">Motores de IA</span></div>
-      <div class="stat-item fade-up" style="transition-delay:.2s"><span class="stat-num">+5,000</span><span class="stat-label">Terapeutas activos</span></div>
+      <div class="stat-item fade-up"><span class="stat-num">15+</span><span class="stat-label">Especialistas reales</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.1s"><span class="stat-num">75+</span><span class="stat-label">Cursos certificados</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.2s"><span class="stat-num">1,400+</span><span class="stat-label">Pares biomagnéticos</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.25s"><span class="stat-num">1,500+</span><span class="stat-label">Libros especializados</span></div>
       <div class="stat-item fade-up" style="transition-delay:.3s"><span class="stat-num">9</span><span class="stat-label">Disciplinas</span></div>
     </div>
   </div>
 </div>
 
-<!-- ══ PROBLEM ══════════════════════════════════════════ -->
+<!-- ══ IA REAL vs CHATGPT ════════════════════════════════ -->
 <section class="section">
   <div class="container">
-    <div class="fade-up">
-      <div class="section-tag">El problema que nadie dice en voz alta</div>
-      <h2 class="section-h2">Sabes. Dudas. No cobras.<br>Y el tiempo pasa.</h2>
-      <p class="section-sub">No es falta de conocimiento. Es que estudiar sola no te preparó para el momento en que el paciente está frente a ti y necesitas una respuesta.</p>
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Por qué importa la diferencia</div>
+      <h2 class="section-h2">No es ChatGPT. Es una IA<br>entrenada para tu trabajo.</h2>
+      <p class="section-sub" style="margin:0 auto 0;">ChatGPT no conoce los pares biomagnéticos correctos. No entiende la psicosomática. Inventa protocolos. HoloacademIA fue construida desde cero con especialistas reales para que nunca te falle en una consulta.</p>
     </div>
-    <div class="problem-grid">
-      <div class="glass problem-card fade-up" style="transition-delay:.1s">
-        <div class="problem-icon">🧠</div>
-        <h3>"Sé la teoría, pero en la consulta real me bloqueo"</h3>
-        <p>Los cursos te dieron el mapa. Nadie te acompañó en el camino. Ese vacío entre el conocimiento y la práctica cuesta una fortuna en pacientes que nunca llegaron.</p>
+    <div class="diff-grid fade-up" style="transition-delay:.15s">
+      <div class="diff-card diff-no">
+        <div class="diff-label no-label">✗ &nbsp;IA genérica (ChatGPT y similares)</div>
+        <div class="diff-items">
+          <div class="diff-item bad"><span class="diff-icon">✗</span>Inventa pares biomagnéticos que no existen</div>
+          <div class="diff-item bad"><span class="diff-icon">✗</span>No conoce biodescodificación ni psicosomática real</div>
+          <div class="diff-item bad"><span class="diff-icon">✗</span>Da información genérica de internet, no clínica</div>
+          <div class="diff-item bad"><span class="diff-icon">✗</span>Sin contexto de tus pacientes ni historial de sesiones</div>
+          <div class="diff-item bad"><span class="diff-icon">✗</span>No genera protocolos terapéuticos reales</div>
+          <div class="diff-item bad"><span class="diff-icon">✗</span>Puede confundirte justo cuando más la necesitas</div>
+        </div>
       </div>
-      <div class="glass problem-card featured-card fade-up" style="transition-delay:.2s">
-        <div class="problem-icon">😰</div>
-        <h3>"¿Y si me equivoco? No puedo arriesgarme con un paciente real"</h3>
-        <p>El síndrome del impostor no se cura con más estudios. Se cura con un segundo criterio que te respalde mientras ganas confianza. Eso es exactamente lo que no tenías.</p>
-      </div>
-      <div class="glass problem-card fade-up" style="transition-delay:.3s">
-        <div class="problem-icon">💸</div>
-        <h3>Mientras esperas "estar lista", otra terapeuta está cobrando</h3>
-        <p>Tu paciente existe hoy. Está buscando ayuda hoy. Cada semana de espera es dinero que alguien más recibe — por el mismo conocimiento que tú ya tienes.</p>
+      <div class="diff-card diff-yes">
+        <div class="diff-label yes-label">✓ &nbsp;HoloacademIA — IA especializada</div>
+        <div class="diff-items">
+          <div class="diff-item good"><span class="diff-icon">✓</span><span><strong>+1,400 pares biomagnéticos reales</strong> en 9 áreas de rastreo</span></div>
+          <div class="diff-item good"><span class="diff-icon">✓</span><span>Entrenada en biodescodificación, psicosomática y medicina energética por especialistas</span></div>
+          <div class="diff-item good"><span class="diff-icon">✓</span><span><strong>140+ años de experiencia sumada</strong> de 15+ especialistas reales</span></div>
+          <div class="diff-item good"><span class="diff-icon">✓</span><span>Guarda el historial de cada paciente y documenta las sesiones</span></div>
+          <div class="diff-item good"><span class="diff-icon">✓</span><span><strong>Protocolos terapéuticos reales</strong> basados en el caso específico</span></div>
+          <div class="diff-item good"><span class="diff-icon">✓</span><span>Responde desde múltiples técnicas al mismo tiempo — visión integral</span></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ SOLUTION ══════════════════════════════════════════ -->
+<!-- ══ 3 PILARES ════════════════════════════════════════ -->
 <section class="section" style="padding-top:0;">
   <div class="container">
-    <div class="solution-grid">
-      <div class="solution-left fade-up">
-        <div class="section-tag">La diferencia que cambia todo</div>
-        <h2 class="section-h2">No más teoría sin práctica. IA contigo en cada sesión real.</h2>
-        <p style="color:var(--text-50);font-size:.94rem;margin-bottom:24px;line-height:1.7;">HoloacademIA combina 75+ cursos con un motor de IA especializado que te acompaña en tiempo real mientras atiendes. No es un chatbot — es tu colega más experimentada, siempre disponible.</p>
-        <div class="bullet-list">
-          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>Aprendes con 75+ cursos en 9 disciplinas</strong> — Biomagnetismo, biodescodificación, psicosomática, numerología y más.</div></div>
-          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>IA activa mientras atiendes</strong> — Describes el caso, el Motor analiza, orienta y genera el protocolo en tiempo real.</div></div>
-          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>Cada sesión documentada automáticamente</strong> — Historial de pacientes y protocolos generados sin perder tiempo escribiendo.</div></div>
-          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>De "no me siento lista" a lista de espera en semanas</strong> — El respaldo correcto para dar ese primer paso con seguridad.</div></div>
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Todo en un solo lugar</div>
+      <h2 class="section-h2">Tres pilares. Un ecosistema<br>diseñado para tu práctica.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="glass pillar-card fade-up" style="transition-delay:.1s">
+        <span class="pillar-num">Pilar 01</span>
+        <span class="pillar-icon">📚</span>
+        <h3>Aprende con IA que entiende tu disciplina</h3>
+        <p>+75 cursos certificados en 9 disciplinas holísticas. La IA te acompaña mientras estudias — resuelve dudas del curso con información real, no respuestas genéricas de internet.</p>
+        <div class="pill-detail">Cursos nuevos cada semana · 9 disciplinas</div>
+      </div>
+      <div class="glass pillar-card fade-up" style="transition-delay:.2s">
+        <span class="pillar-num">Pilar 02</span>
+        <span class="pillar-icon">💜</span>
+        <h3>Asesor IA contigo en cada consulta real</h3>
+        <p>El Asesor Terapéutico analiza el caso de tu paciente, encuentra el origen emocional, cruza múltiples técnicas y genera el protocolo. Todo en tiempo real mientras tú atiendes.</p>
+        <div class="pill-detail">Multi-técnica · Historial de pacientes · Protocolos automáticos</div>
+      </div>
+      <div class="glass pillar-card fade-up" style="transition-delay:.3s">
+        <span class="pillar-num">Pilar 03</span>
+        <span class="pillar-icon">⚡</span>
+        <h3>Módulos especializados que te ahorran horas</h3>
+        <p>Rastreo biomagnético con +1,400 pares, numerología, astrología médica, carta natal — herramientas específicas para cada técnica que usas, sin consultar manuales.</p>
+        <div class="pill-detail">+1,400 pares biomagnéticos · 9 áreas de rastreo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ EL PROBLEMA ══════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">El problema que nadie dice en voz alta</div>
+      <h2 class="section-h2">Sabes. Dudas. No cobras.<br>El tiempo sigue pasando.</h2>
+      <p class="section-sub" style="margin:0 auto;">No es falta de conocimiento — es que estudiaste sola y nadie te acompañó en la práctica real.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="glass problem-card fade-up" style="transition-delay:.1s">
+        <div class="problem-icon">🧠</div>
+        <h3>"Sé la teoría, pero frente al paciente me bloqueo"</h3>
+        <p>Los cursos te dieron el mapa. Nadie te acompañó en el camino. Ese vacío entre el conocimiento y la práctica cuesta una fortuna en pacientes que no llegan.</p>
+      </div>
+      <div class="glass problem-card featured-card fade-up" style="transition-delay:.2s">
+        <div class="problem-icon">😰</div>
+        <h3>"¿Y si me equivoco? No puedo arriesgarme con una persona real"</h3>
+        <p>El síndrome del impostor no se cura con más estudios. Se cura con un segundo criterio experto que te respalde. Eso exactamente es lo que nunca tuviste — hasta ahora.</p>
+      </div>
+      <div class="glass problem-card fade-up" style="transition-delay:.3s">
+        <div class="problem-icon">💸</div>
+        <h3>Mientras esperas "estar lista", otra terapeuta está cobrando</h3>
+        <p>Tu paciente existe hoy. Está buscando ayuda hoy. Cada semana que pasa es dinero que alguien más cobra — por el mismo conocimiento que tú ya tienes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ASESOR TERAPÉUTICO ════════════════════════════════ -->
+<section class="section" id="asesor">
+  <div class="container">
+    <div class="fade-up" style="text-align:center; margin-bottom:0;">
+      <div class="section-tag">El corazón de HoloacademIA</div>
+      <h2 class="section-h2">El Asesor Terapéutico.<br>Tu segundo criterio experto.</h2>
+      <p class="section-sub" style="margin:0 auto;">No te da respuestas genéricas. Analiza el caso real de tu paciente desde múltiples técnicas al mismo tiempo — para que veas el problema desde todos los ángulos y tomes la mejor decisión.</p>
+    </div>
+    <div class="advisor-grid">
+      <div class="fade-up" style="transition-delay:.1s">
+        <div class="advisor-steps">
+          <div class="advisor-step">
+            <div class="advisor-step-num">01</div>
+            <div class="advisor-step-body">
+              <h4>Describes el caso en lenguaje natural</h4>
+              <p>Síntomas, historial emocional, lo que el paciente te dijo. Sin tecnicismos ni formularios. Como hablarle a una colega de confianza.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">02</div>
+            <div class="advisor-step-body">
+              <h4>Encuentra el origen emocional del problema</h4>
+              <p>La IA cruza biodescodificación, psicosomática, numerología y otras técnicas al mismo tiempo para mostrarte el conflicto emocional desde varios puntos de vista.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">03</div>
+            <div class="advisor-step-body">
+              <h4>Te acompaña durante toda la sesión</h4>
+              <p>Responde tus dudas en tiempo real mientras atiendes. Orienta el rastreo, sugiere preguntas y te ayuda a ver lo que quizás no estás viendo.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">04</div>
+            <div class="advisor-step-body">
+              <h4>Genera el protocolo de liberación y documenta</h4>
+              <p>Al terminar, tienes el protocolo completo para el paciente y la sesión documentada automáticamente. Sin escribir nada extra.</p>
+            </div>
+          </div>
+        </div>
+        <div class="advisor-note">
+          <strong>No sustituye al terapeuta — lo potencializa.</strong><br>
+          Tú eres quien toma las decisiones clínicas. La IA es tu segundo criterio más experimentado, siempre disponible, que nunca se cansa ni se olvida de nada.
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.25s">
+        <div class="glass advisor-chat">
+          <span class="case-label">💜 Asesor Terapéutico — Análisis en tiempo real</span>
+          <div class="msgs">
+            <div class="msg msg-user">Paciente mujer, 38 años. Fibromialgia desde hace 3 años, fatiga crónica, dice que "todo la cansa". Cuida a su mamá enferma desde hace 4 años.</div>
+            <div class="msg msg-ai">🧠 Origen emocional: "responsabilidad no elegida que somatiza como peso físico". Desde biodescodificación: músculo como "obligación de sostener". Desde psicosomática: agotamiento del cuidador.</div>
+            <div class="msg msg-ai">Pares prioritarios en biomagnetismo: Hígado-Hígado (resentimiento acumulado), Riñón-Riñón (miedo al futuro), Timo-Bazo (sistema inmune deprimido por estrés crónico).</div>
+            <div class="msg msg-user">¿Qué más me puede dar información sobre ella?</div>
+            <div class="msg msg-ai">✨ Con su fecha de nacimiento puedo calcular su número de vida y carta natal. El número 6 (cuidador nato) confirma el patrón. Tránsito de Saturno activo — ciclo de límites y aprendizaje. Protocolo completo listo para compartirle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÓDULO BIOMAGNÉTICO ══════════════════════════════ -->
+<section class="section" id="biomagnetismo" style="padding-top:0;">
+  <div class="container">
+    <div class="bio-grid">
+      <div class="fade-up">
+        <div class="section-tag">Para biomagnetistas</div>
+        <h2 class="section-h2">+1,400 pares. 9 áreas.<br>Rastreo rápido y preciso.</h2>
+        <p style="color:var(--text-50);font-size:.94rem;line-height:1.72;margin-bottom:22px;">El módulo de Rastreo de Imanes está diseñado específicamente para biomagnetistas. Olvídate de consultar manuales durante la sesión — tienes toda la información al momento, organizada por área corporal.</p>
+        <div class="bio-stat-row">
+          <div class="bio-stat"><div class="bio-stat-num">1,400+</div><div class="bio-stat-label">Pares biomagnéticos</div></div>
+          <div class="bio-stat"><div class="bio-stat-num">9</div><div class="bio-stat-label">Áreas de rastreo</div></div>
+          <div class="bio-stat"><div class="bio-stat-num">0</div><div class="bio-stat-label">Manuales que consultar</div></div>
+        </div>
+        <div class="bio-areas" style="margin-top:22px;">
+          <div class="bio-area">Cabeza y SNC</div>
+          <div class="bio-area">Órganos torácicos</div>
+          <div class="bio-area">Digestivo</div>
+          <div class="bio-area">Urogenital</div>
+          <div class="bio-area">Sistema músculo-esq.</div>
+          <div class="bio-area">Glándulas</div>
+          <div class="bio-area">Sistema linfático</div>
+          <div class="bio-area">Emocional</div>
+          <div class="bio-area">Especiales</div>
         </div>
       </div>
       <div class="fade-up" style="transition-delay:.2s">
-        <div class="glass solution-chat">
-          <span class="case-label">🧲 Motor Terapéutico — Análisis en tiempo real</span>
+        <div class="glass advisor-chat">
+          <span class="case-label">🧲 Módulo de Rastreo — Biomagnetismo</span>
           <div class="msgs">
-            <div class="msg msg-user">Paciente, mujer 42 años. Fibromialgia 3 años, fatiga crónica, insomnio. Dice que "todo la cansa".</div>
-            <div class="msg msg-ai">📋 Conflicto probable: "peso de responsabilidades no reconocidas". Pares prioritarios: Hígado-Hígado, Riñón-Riñón, Timo-Bazo. Iniciando protocolo anti-inflamatorio + liberación emocional.</div>
-            <div class="msg msg-user">¿Complemento con numerología?</div>
-            <div class="msg msg-ai">✨ Número de vida 7 — tendencia a somatizar la introspección. Recomiendo también carta natal para ciclos de sanación. Protocolo completo listo.</div>
+            <div class="msg msg-user">Rastreo para dolor de cabeza crónico con náuseas, peor por las mañanas, mejora al moverse.</div>
+            <div class="msg msg-ai">🧲 Área Cabeza/SNC — Pares prioritarios:<br>• Cerebro-Cerebro (hipertensión intracraneal)<br>• Hígado-Hígado (toxicidad que sube en ayunas)<br>• Estómago-Páncreas (digestión matutina)</div>
+            <div class="msg msg-ai">Polaridad y tiempo: Norte en occipital 8 min · Sur en hepático 5 min · Confirma con test kinesiológico antes de aplicar.</div>
+            <div class="msg msg-user">¿Hay correlación emocional?</div>
+            <div class="msg msg-ai">✅ Sí — desde biodescodificación: cefalea = "no quiero ver lo que está frente a mí". Sugiero explorar situación familiar o laboral reciente. Protocolo completo registrado.</div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BIBLIOTECA Y ENTRETENIMIENTO ════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Mucho más que cursos</div>
+      <h2 class="section-h2">Tu formación completa.<br>Sin límites.</h2>
+      <p class="section-sub" style="margin:0 auto;">HoloacademIA no es solo una app de consultas. Es el ecosistema completo para que crezcas como terapeuta y como persona.</p>
+    </div>
+    <div class="library-grid">
+      <div class="glass library-card fade-up" style="transition-delay:.1s">
+        <span class="library-icon">📚</span>
+        <h3>Biblioteca especializada</h3>
+        <p>Más de 1,500 libros sobre biomagnetismo, medicina energética, psicosomática, nutrición holística, bienestar mental y espiritualidad. Todo curado por especialistas.</p>
+        <div class="library-detail">+1,500 libros · Actualización continua</div>
+      </div>
+      <div class="glass library-card fade-up" style="transition-delay:.2s">
+        <span class="library-icon">🎬</span>
+        <h3>Documentales, series y películas</h3>
+        <p>Miles de horas de contenido audiovisual seleccionado: documentales de salud, series de bienestar y películas que amplían tu comprensión del ser humano y la sanación.</p>
+        <div class="library-detail">Miles de horas · Nuevo contenido semanal</div>
+      </div>
+      <div class="glass library-card fade-up" style="transition-delay:.3s">
+        <span class="library-icon">🎓</span>
+        <h3>Cursos nuevos cada semana</h3>
+        <p>La plataforma crece contigo. Cada semana se agregan cursos nuevos en las 9 disciplinas — siempre hay algo más que aprender, sin costo adicional.</p>
+        <div class="library-detail">+75 cursos · Nuevos cada semana · 9 disciplinas</div>
       </div>
     </div>
   </div>
@@ -508,8 +741,8 @@
   <div class="container">
     <div class="fade-up" style="text-align:center;">
       <div class="section-tag">Comparativa</div>
-      <h2 class="section-h2">Por qué un curso normal no es suficiente</h2>
-      <p class="section-sub" style="margin:0 auto 48px;">No es que los cursos sean malos. Es que terminan justo cuando más los necesitas — cuando llega el paciente real.</p>
+      <h2 class="section-h2">Lo que ninguna otra plataforma<br>te puede dar</h2>
+      <p class="section-sub" style="margin:0 auto 48px;">Los cursos normales terminan cuando los terminas. HoloacademIA empieza a ser útil justo cuando llega el paciente real.</p>
     </div>
     <div class="table-wrap fade-up">
       <table>
@@ -518,17 +751,19 @@
             <th style="text-align:left;">Qué obtienes</th>
             <th class="col-holo">HoloacademIA</th>
             <th>Curso Online</th>
-            <th>Academia Tradicional</th>
+            <th>Academia Holística</th>
           </tr>
         </thead>
         <tbody>
           <tr><td>Aprendes el método</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td></tr>
-          <tr><td>IA activa durante tus consultas reales</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
-          <tr><td>Acompañamiento cuando el paciente está frente a ti</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
-          <tr><td>Protocolos personalizados por caso</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>IA especializada (no ChatGPT) durante tus consultas</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Respuestas desde múltiples técnicas al mismo tiempo</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>+1,400 pares biomagnéticos listos al instante</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Protocolos personalizados por cada caso</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
           <tr><td>Historial y documentación de sesiones</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
-          <tr><td>9 disciplinas integradas en un solo lugar</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-partial">Raro</span></td><td><span class="t-cross">✗</span></td></tr>
-          <tr><td>Acceso gratuito para empezar hoy</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Biblioteca de +1,500 libros especializados</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-partial">Raro</span></td></tr>
+          <tr><td>Documentales, series y películas de bienestar</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Cursos nuevos cada semana</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-partial">A veces</span></td></tr>
           <tr><td>Cancela cuando quieras</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td></tr>
         </tbody>
       </table>
@@ -548,42 +783,27 @@
       <div class="glass step-card fade-up" style="transition-delay:.1s">
         <span class="step-num">01</span>
         <span class="step-icon">💬</span>
-        <h3>Describes el caso en lenguaje natural</h3>
-        <p>Síntomas, historial emocional, lo que el paciente te dijo. Sin tecnicismos, sin formularios. Como hablarle a una colega.</p>
+        <h3>Describes el caso en tus propias palabras</h3>
+        <p>Síntomas, historia emocional, lo que el paciente te dice. Sin tecnicismos. Como hablarle a una colega de confianza.</p>
       </div>
       <div class="glass step-card fade-up" style="transition-delay:.2s">
         <span class="step-num">02</span>
-        <span class="step-icon">⚡</span>
-        <h3>El Motor analiza y te orienta en tiempo real</h3>
-        <p>Identifica el conflicto emocional, correlaciona disciplinas y te guía paso a paso en el rastreo.</p>
+        <span class="step-icon">🔍</span>
+        <h3>La IA analiza desde todas las técnicas que dominas</h3>
+        <p>Biodescodificación, psicosomática, numerología, biomagnetismo — respuestas reales de múltiples técnicas al mismo tiempo, no información genérica.</p>
       </div>
       <div class="glass step-card fade-up" style="transition-delay:.3s">
         <span class="step-num">03</span>
         <span class="step-icon">📋</span>
-        <h3>Obtienes el protocolo y la sesión queda documentada</h3>
-        <p>Listo para compartir con el paciente o archivar en su historial. Sin perder tiempo escribiendo después.</p>
+        <h3>Tienes el protocolo y la sesión documentada</h3>
+        <p>Listo para compartir con el paciente o guardar en su historial. Sin escribir nada extra después de la consulta.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ MÓDULOS ══════════════════════════════════════════ -->
-<section class="section" id="modulos" style="padding-top:0;">
-  <div class="container">
-    <div class="fade-up" style="text-align:center;">
-      <div class="section-tag">El Motor Terapéutico</div>
-      <h2 class="section-h2">6 módulos. Todo lo que necesitas<br>para atender con plena confianza.</h2>
-      <p class="section-sub" style="margin:0 auto;">No es un chatbot genérico. Está entrenado en las disciplinas que tú practicas.</p>
-    </div>
-    <div class="modules-grid" id="mods-grid"></div>
-    <div style="text-align:center;margin-top:44px;" class="fade-up">
-      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary" style="padding:15px 44px;font-size:1rem;">Activar mi Motor — Es Gratis</a>
     </div>
   </div>
 </section>
 
 <!-- ══ TESTIMONIOS ══════════════════════════════════════ -->
-<section class="section">
+<section class="section" style="padding-top:0;">
   <div class="container">
     <div class="fade-up" style="text-align:center;">
       <div class="section-tag">Terapeutas reales. Resultados reales.</div>
@@ -592,7 +812,7 @@
     <div class="testi-grid">
       <div class="glass testi-card fade-up" style="transition-delay:.1s">
         <div class="stars">★★★★★</div>
-        <p class="testi-quote">"Llevaba 8 meses con el título guardado, sin cobrar. Tenía miedo de equivocarme. La primera semana con HoloacademIA atendí 3 pacientes. El Motor no me dio respuestas — me dio la seguridad de que yo ya sabía. Solo necesitaba estructura."</p>
+        <p class="testi-quote">"Llevaba 8 meses con mi título guardado, sin atender. Tenía miedo de equivocarme. La primera semana con HoloacademIA atendí 3 pacientes. El Asesor no me da las respuestas — me confirma que yo ya sé. Solo necesitaba esa seguridad."</p>
         <div class="testi-footer">
           <div class="testi-avatar" style="background:linear-gradient(135deg,#9D174D,#6B21A8)">MJ</div>
           <div><div class="testi-name">María José Hernández</div><div class="testi-role">Biomagnetismo · Guadalajara, México</div></div>
@@ -600,7 +820,7 @@
       </div>
       <div class="glass testi-card fade-up" style="transition-delay:.2s">
         <div class="stars">★★★★★</div>
-        <p class="testi-quote">"Antes de cada sesión me temblaban las manos. Ahora describo el caso, el Motor me orienta y trabajo con calma total. Mis pacientes dicen que se sienten en manos expertas. No saben que tengo el mejor segundo criterio del mundo abierto en otra pantalla."</p>
+        <p class="testi-quote">"Lo que más me sorprendió es que me responde desde varias técnicas al mismo tiempo. Antes tardaba una hora buscando en mis notas y manuales. Ahora en 5 minutos tengo el análisis completo y puedo enfocarme en el paciente."</p>
         <div class="testi-footer">
           <div class="testi-avatar" style="background:linear-gradient(135deg,#065F46,#059669)">CR</div>
           <div><div class="testi-name">Carolina Ríos</div><div class="testi-role">Biodescodificación · Bogotá, Colombia</div></div>
@@ -608,10 +828,10 @@
       </div>
       <div class="glass testi-card fade-up" style="transition-delay:.3s">
         <div class="stars">★★★★★</div>
-        <p class="testi-quote">"En 90 días: de no saber por dónde empezar a tener lista de espera. Los protocolos del Motor me hicieron sentir — por primera vez — como la terapeuta que siempre quise ser. Y cobro el doble de lo que cobraba antes."</p>
+        <p class="testi-quote">"El módulo de biomagnetismo vale el precio completo de la suscripción. Tengo +1,400 pares al momento, sin buscar en manuales. En 90 días pasé de insegura a tener lista de espera. Y cobro el doble de lo que cobraba antes."</p>
         <div class="testi-footer">
           <div class="testi-avatar" style="background:linear-gradient(135deg,#92400E,#D97706)">AV</div>
-          <div><div class="testi-name">Ana Lucía Vargas</div><div class="testi-role">Terapeuta Holística · Buenos Aires, Argentina</div></div>
+          <div><div class="testi-name">Ana Lucía Vargas</div><div class="testi-role">Biomagnetismo · Buenos Aires, Argentina</div></div>
         </div>
       </div>
     </div>
@@ -624,16 +844,16 @@
     <div class="fade-up" style="text-align:center;">
       <div class="section-tag">Planes</div>
       <h2 class="section-h2">Empieza gratis hoy.<br>Escala cuando quieras.</h2>
-      <p class="section-sub" style="margin:0 auto;">Sin compromisos. Sin tarjeta para el plan gratuito. Precios en pesos mexicanos.</p>
+      <p class="section-sub" style="margin:0 auto;">Sin compromisos. Sin tarjeta para el plan gratuito. Precios en pesos mexicanos. Cancela cuando quieras.</p>
     </div>
     <div class="pricing-grid">
       <div class="glass price-card fade-up" style="transition-delay:.1s">
         <div class="price-name">HOLOCONEXIÓN</div>
         <div class="price-amount"><span class="currency">$</span>0<span class="period"> MXN/mes</span></div>
-        <div class="price-desc">Para dar el primer paso sin riesgo. Empieza hoy mismo.</div>
+        <div class="price-desc">Para dar el primer paso sin riesgo. Empieza hoy mismo, sin tarjeta.</div>
         <div class="price-features">
           <div class="price-feature"><span class="check">✓</span> 9 programas de estudio gratuitos</div>
-          <div class="price-feature"><span class="check">✓</span> Acceso básico al Motor Terapéutico</div>
+          <div class="price-feature"><span class="check">✓</span> Acceso básico al Asesor Terapéutico IA</div>
           <div class="price-feature"><span class="check">✓</span> Comunidad de terapeutas holísticas</div>
           <div class="price-feature"><span class="check">✓</span> Soporte por email</div>
         </div>
@@ -642,15 +862,17 @@
       <div class="price-card featured fade-up" style="transition-delay:.2s">
         <div class="popular-badge">⭐ MÁS POPULAR</div>
         <div class="price-name">INICIACIÓN ELITE</div>
-        <div class="price-amount"><span class="currency">$</span>297<span class="period"> MXN/mes</span></div>
+        <div class="price-amount"><span class="currency">$</span>299<span class="period"> MXN/mes</span></div>
         <div class="price-desc">Para la terapeuta que ya decidió cobrar con confianza total.</div>
         <div class="price-features">
           <div class="price-feature"><span class="check">✓</span> +75 cursos certificados completos</div>
-          <div class="price-feature"><span class="check">✓</span> Motor Terapéutico IA sin límites</div>
+          <div class="price-feature"><span class="check">✓</span> Asesor Terapéutico IA sin límites</div>
+          <div class="price-feature"><span class="check">✓</span> Módulo Biomagnético (+1,400 pares)</div>
           <div class="price-feature"><span class="check">✓</span> Protocolos personalizados por caso</div>
           <div class="price-feature"><span class="check">✓</span> Historial de sesiones ilimitado</div>
+          <div class="price-feature"><span class="check">✓</span> Biblioteca +1,500 libros especializados</div>
+          <div class="price-feature"><span class="check">✓</span> Documentales, series y películas</div>
           <div class="price-feature"><span class="check">✓</span> Holovisión+ — clases en vivo</div>
-          <div class="price-feature"><span class="check">✓</span> Biblioteca de recursos premium</div>
         </div>
         <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-primary">Comenzar prueba gratis →</a>
       </div>
@@ -678,11 +900,11 @@
   <div class="container cta-content">
     <div class="fade-up">
       <h2>Cada semana que esperas<br>es dinero que alguien más cobra.</h2>
-      <p class="cta-sub">Tu conocimiento ya está ahí. Tus pacientes te están buscando ahora mismo. Lo único que les falta a los dos es que tú des ese primer paso con la seguridad que mereces.</p>
+      <p class="cta-sub">Tu conocimiento ya está ahí. La IA especializada está aquí. Tus pacientes te están buscando ahora mismo. Lo único que falta es que des el primer paso con la seguridad que mereces.</p>
       <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-amber" style="font-size:1.05rem;padding:15px 36px;display:inline-block;">
-        Activar mi Motor Terapéutico — Es Gratis →
+        Activar mi HoloacademIA — Es Gratis →
       </a>
-      <p class="cta-note">Sin tarjeta · Sin compromiso · Se une una terapeuta nueva cada 4 horas</p>
+      <p class="cta-note">Sin tarjeta · Sin compromiso · Desde $299 MXN/mes · Cancela cuando quieras</p>
     </div>
   </div>
 </section>
@@ -695,21 +917,25 @@
       <h2 class="section-h2">Preguntas frecuentes</h2>
     </div>
     <div class="faq-list">
+      <div class="faq-item fade-up" style="transition-delay:.05s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Es lo mismo que usar ChatGPT? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. ChatGPT es una IA genérica entrenada con información de internet que puede inventar pares biomagnéticos, dar protocolos incorrectos o simplemente no conocer las técnicas que tú usas. HoloacademIA fue construida desde cero con más de 15 especialistas reales en terapias holísticas, con más de 140 años de experiencia sumada y miles de horas de aprendizaje en biomagnetismo, biodescodificación y medicina energética. No es lo mismo.</div></div>
+      </div>
       <div class="faq-item fade-up" style="transition-delay:.1s">
-        <button class="faq-question" onclick="toggleFaq(this)">¿El Motor me dice qué pares biomagnéticos aplicar? <span class="faq-arrow">▼</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">No. Esa es una decisión clínica que siempre toma la terapeuta. El Motor te ayuda a identificar el origen emocional del conflicto y genera el protocolo — pero el rastreo y la decisión terapéutica son siempre tuyas. El Motor es tu segundo criterio, no tu primer criterio.</div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">¿El Asesor me dice qué pares biomagnéticos aplicar? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">El Asesor te orienta — te da información especializada sobre pares relacionados con el caso, el origen emocional, los protocolos posibles. Pero la decisión terapéutica y el rastreo siempre son tuyos. No sustituye tu criterio clínico: lo potencializa. Tú eres la terapeuta, la IA es tu segundo criterio más experimentado.</div></div>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.15s">
         <button class="faq-question" onclick="toggleFaq(this)">¿Necesito saber de tecnología o inteligencia artificial? <span class="faq-arrow">▼</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Absolutamente no. Si puedes escribirle un WhatsApp a una amiga, puedes usar el Motor. Solo describes el caso en tus propias palabras y la IA hace el resto. Sin cursos de tecnología, sin manuales técnicos. En menos de 10 minutos puedes hacer tu primera consulta.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutamente no. Si puedes escribirle un WhatsApp a una amiga, puedes usar HoloacademIA. Solo describes el caso en tus propias palabras y la IA hace el resto. Sin manuales, sin configuraciones, sin aprender nada nuevo. En menos de 10 minutos puedes hacer tu primera consulta asistida.</div></div>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.2s">
-        <button class="faq-question" onclick="toggleFaq(this)">¿Puedo cancelar cuando quiera? <span class="faq-arrow">▼</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">Sí, sin preguntas ni penalizaciones. Cancelas desde tu panel con un clic y tu acceso continúa hasta el fin del período pagado. Sin letras pequeñas, sin llamadas para convencerte de quedarte.</div></div>
+        <button class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si cancelo? ¿Pierdo mis datos? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Cancelas cuando quieras desde tu panel, con un clic. Tu acceso continúa hasta el fin del período pagado. Sin llamadas para convencerte, sin letras pequeñas, sin penalizaciones. Y tu historial de pacientes queda guardado en tu cuenta por 90 días después de cancelar.</div></div>
       </div>
       <div class="faq-item fade-up" style="transition-delay:.25s">
         <button class="faq-question" onclick="toggleFaq(this)">¿Esto reemplaza mi formación como terapeuta? <span class="faq-arrow">▼</span></button>
-        <div class="faq-answer"><div class="faq-answer-inner">No. HoloacademIA potencia tu formación, no la sustituye. Eres tú la terapeuta. La IA es tu colega de confianza que te respalda. Cuanto más sepas, más poderosa será la combinación entre tu criterio y el Motor.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">No. HoloacademIA potencia tu formación, no la sustituye. Cuanto más sabes tú, más poderosa es la combinación con la IA. Terapeutas con más experiencia le sacan más partido porque saben qué preguntar y cómo interpretar las respuestas. La IA es tu herramienta — tú eres quien la dirige.</div></div>
       </div>
     </div>
   </div>
@@ -733,44 +959,12 @@
 <script>
 /* ── INTERSECTION OBSERVER ── */
 const observer = new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  }),
+  { threshold: 0.10, rootMargin: '0px 0px -40px 0px' }
 );
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-/* ── AI MODULES ── */
-const MODS = [
-  { emoji:'💜', name:'Motor Terapéutico', tag:'El núcleo', c:'#A855F7',
-    desc:'Describe el caso y recibe: origen emocional, guía de rastreo y protocolo de liberación en tiempo real.',
-    bullets:['Análisis de conflicto emocional','Protocolo de liberación personalizado','Historial de sesiones del paciente'] },
-  { emoji:'🧲', name:'Rastreo de Imanes', tag:'Biomagnetismo', c:'#9333EA',
-    desc:'Te guía par a par durante el rastreo biomagnético: zonas, polaridad y tiempo de exposición según el caso.',
-    bullets:['Guía de colocación par a par','Polaridad y tiempo de exposición','Registro del rastreo completo'] },
-  { emoji:'🔢', name:'Módulo Numerología', tag:'Análisis personal', c:'#16A34A',
-    desc:'Mapa numerológico completo: misión de vida, camino del destino, talentos ocultos y ciclos personales activos.',
-    bullets:['Mapa numerológico completo','Ciclos personales activos','Integrado al perfil del paciente'] },
-  { emoji:'⭐', name:'Astrología Médica', tag:'Diagnóstico ampliado', c:'#D97706',
-    desc:'Predisposiciones físicas y emocionales desde la carta natal. Conecta signos, casas y planetas con órganos y sistemas.',
-    bullets:['Predisposiciones por signo y planeta','Relación astro-órgano sistémica','Complemento al diagnóstico holístico'] },
-  { emoji:'🌙', name:'Carta Natal', tag:'Autoconocimiento', c:'#7C3AED',
-    desc:'Interpreta la carta natal del paciente: ascendente, planetas en casas, aspectos y tránsitos actuales.',
-    bullets:['Lectura de carta natal completa','Ascendente y planetas en casas','Tránsitos y ciclos actuales'] },
-  { emoji:'☀️', name:'Horóscopo Terapéutico', tag:'Seguimiento continuo', c:'#0891B2',
-    desc:'Pronóstico energético semanal y mensual basado en la carta natal. Fideliza a tu paciente con valor continuo.',
-    bullets:['Pronóstico semanal y mensual','Alertas de tránsitos relevantes','Entregable para el paciente'] },
-];
-const grid = document.getElementById('mods-grid');
-MODS.forEach((m, i) => {
-  const bullets = m.bullets.map(b => `<div class="module-bullet"><span class="module-dot" style="background:${m.c}"></span>${b}</div>`).join('');
-  const card = document.createElement('div');
-  card.className = 'glass module-card fade-up';
-  card.style.transitionDelay = (i % 3 * 0.08) + 's';
-  card.innerHTML = `<span class="module-emoji">${m.emoji}</span><div class="module-badge" style="color:${m.c};background:${m.c}18;border-color:${m.c}30">${m.tag}</div><h3>${m.name}</h3><p>${m.desc}</p><div class="module-bullets">${bullets}</div>`;
-  card.addEventListener('mouseenter', () => { card.style.borderColor = m.c + '40'; card.style.transform = 'translateY(-4px)'; });
-  card.addEventListener('mouseleave', () => { card.style.borderColor = ''; card.style.transform = ''; });
-  grid.appendChild(card);
-  observer.observe(card);
-});
 
 /* ── FAQ ── */
 function toggleFaq(btn) {
