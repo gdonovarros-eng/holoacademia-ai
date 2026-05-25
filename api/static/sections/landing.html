@@ -3,556 +3,499 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HoloacademIA — La IA que acompaña tu práctica holística</title>
+<title>HoloacademIA — Ya tienes el conocimiento. Ahora cobra por él.</title>
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  background: #0C0812;
-  color: #fff;
-  overflow-x: hidden;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ── AURORA ORBS ─────────────────────────────────────── */
-.aurora-root {
-  position: fixed; inset: 0; z-index: 0;
-  pointer-events: none; overflow: hidden;
-}
-.orb {
-  position: absolute; border-radius: 50%;
-  filter: blur(90px); opacity: 0;
-  animation: orb-breathe 14s ease-in-out infinite;
-}
-.orb-1 {
-  width: 600px; height: 600px; top: -200px; left: -100px;
-  background: radial-gradient(circle, rgba(168,85,247,0.35) 0%, transparent 70%);
-  animation-delay: 0s;
-}
-.orb-2 {
-  width: 500px; height: 500px; top: -150px; right: 0;
-  background: radial-gradient(circle, rgba(190,24,93,0.25) 0%, transparent 70%);
-  animation-delay: -5s;
-}
-.orb-3 {
-  width: 400px; height: 400px; top: 30vh; left: 30%;
-  background: radial-gradient(circle, rgba(217,119,6,0.15) 0%, transparent 70%);
-  animation-delay: -9s;
-}
-@keyframes orb-breathe {
-  0%,100% { opacity:0.6; transform: scale(1) translate(0,0); }
-  33% { opacity:1; transform: scale(1.1) translate(30px,-20px); }
-  66% { opacity:0.7; transform: scale(0.95) translate(-20px,15px); }
-}
+  :root {
+    --bg: #0C0812;
+    --violet: #9333EA;
+    --violet-light: #C084FC;
+    --rose: #BE185D;
+    --amber: #F59E0B;
+    --amber-dark: #D97706;
+    --text: #ffffff;
+    --text-70: rgba(255,255,255,0.70);
+    --text-50: rgba(255,255,255,0.50);
+    --text-30: rgba(255,255,255,0.30);
+    --text-15: rgba(255,255,255,0.15);
+    --glass-bg: rgba(255,255,255,0.05);
+    --glass-border: rgba(255,255,255,0.10);
+  }
 
-/* ── Z LAYERS ─────────────────────────────────────────── */
-section, nav, footer { position: relative; z-index: 1; }
+  html { scroll-behavior: smooth; }
 
-/* ── NAV ─────────────────────────────────────────────── */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(12,8,18,0.85);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 62px;
-}
-.nav-logo { font-size: 18px; font-weight: 900; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
-.nav-logo em { font-style: normal; color: #C084FC; }
-.nav-links { display: flex; gap: 28px; }
-.nav-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: rgba(255,255,255,0.85); }
-.nav-right { display: flex; gap: 12px; align-items: center; }
-.nav-ghost { font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; padding: 8px 16px; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; transition: all 0.2s; }
-.nav-ghost:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-.nav-cta { font-size: 13px; font-weight: 800; color: #000; text-decoration: none; padding: 9px 20px; border-radius: 8px; background: linear-gradient(135deg, #F59E0B, #D97706); box-shadow: 0 4px 20px rgba(217,119,6,0.4); transition: all 0.2s; }
-.nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 28px rgba(217,119,6,0.55); }
-@media (max-width: 700px) { .nav-links { display: none; } }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
 
-/* ── HERO ─────────────────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  display: flex; align-items: center;
-  padding: 100px 5% 80px;
-}
-.hero-inner { max-width: 780px; margin: 0 auto; text-align: center; }
-.hero-tag {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid rgba(192,132,252,0.35);
-  background: rgba(168,85,247,0.1);
-  border-radius: 40px; padding: 6px 16px;
-  font-size: 11px; font-weight: 700; color: #C084FC;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  margin-bottom: 32px;
-}
-#hero h1 {
-  font-size: clamp(2.4rem, 5.5vw, 4rem);
-  font-weight: 900; letter-spacing: -2.5px;
-  line-height: 1.02; margin-bottom: 24px;
-  color: #fff;
-}
-#hero h1 .glow-word {
-  background: linear-gradient(135deg, #F9A8D4 0%, #C084FC 50%, #A78BFA 100%);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: clamp(15px, 2vw, 18px);
-  color: rgba(255,255,255,0.58); line-height: 1.72;
-  margin-bottom: 40px; max-width: 580px; margin-left: auto; margin-right: auto;
-}
-.hero-sub strong { color: rgba(255,255,255,0.85); font-weight: 600; }
-.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 22px; }
-.btn-gold {
-  display: inline-block; padding: 17px 34px; border-radius: 12px;
-  background: linear-gradient(135deg, #F59E0B, #D97706);
-  color: #000; font-size: 15px; font-weight: 900;
-  text-decoration: none; letter-spacing: -0.3px;
-  box-shadow: 0 6px 30px rgba(217,119,6,0.45);
-  transition: all 0.2s;
-}
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(217,119,6,0.6); }
-.btn-outline {
-  display: inline-block; padding: 17px 28px; border-radius: 12px;
-  border: 1.5px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.75); font-size: 15px; font-weight: 600;
-  text-decoration: none; transition: all 0.2s;
-}
-.btn-outline:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
-.hero-trust { font-size: 12px; color: rgba(255,255,255,0.28); }
-.hero-trust span { margin: 0 8px; }
+  /* ── ORBs ─────────────────────────────────────────── */
+  .orb {
+    position: fixed; border-radius: 50%;
+    pointer-events: none; z-index: 0; filter: blur(110px); opacity: 0.3;
+  }
+  .orb-1 {
+    width: 640px; height: 640px; top: -180px; left: -120px;
+    background: radial-gradient(circle, #9333EA 0%, #6B21A8 100%);
+    animation: drift1 20s ease-in-out infinite alternate;
+  }
+  .orb-2 {
+    width: 520px; height: 520px; top: 35%; right: -160px;
+    background: radial-gradient(circle, #BE185D 0%, #9D174D 100%);
+    animation: drift2 25s ease-in-out infinite alternate;
+    opacity: 0.2;
+  }
+  .orb-3 {
+    width: 460px; height: 460px; bottom: 8%; left: 22%;
+    background: radial-gradient(circle, #D97706 0%, #92400E 100%);
+    animation: drift3 30s ease-in-out infinite alternate;
+    opacity: 0.15;
+  }
+  @keyframes drift1 {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(80px,120px) scale(1.12); }
+    100% { transform: translate(-40px,60px) scale(0.96); }
+  }
+  @keyframes drift2 {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(-100px,-80px) scale(1.18); }
+    100% { transform: translate(60px,100px) scale(0.88); }
+  }
+  @keyframes drift3 {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(120px,-60px) scale(1.06); }
+    100% { transform: translate(-80px,40px) scale(1.1); }
+  }
 
-/* ── STATS ─────────────────────────────────────────────── */
-#stats {
-  padding: 52px 5%;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-.stats-row {
-  max-width: 900px; margin: 0 auto;
-  display: grid; grid-template-columns: repeat(4,1fr);
-  text-align: center;
-}
-.stat-item { padding: 0 20px; }
-.stat-item + .stat-item { border-left: 1px solid rgba(255,255,255,0.08); }
-.stat-num {
-  font-size: 44px; font-weight: 900; letter-spacing: -2px;
-  color: #fff; margin-bottom: 6px;
-  text-shadow: 0 0 40px rgba(192,132,252,0.5);
-}
-.stat-lbl { font-size: 12px; color: rgba(255,255,255,0.38); letter-spacing: 0.06em; text-transform: uppercase; }
-@media (max-width: 600px) { .stats-row { grid-template-columns: repeat(2,1fr); gap: 28px; } .stat-item + .stat-item { border-left: none; } }
+  /* ── GLASS ───────────────────────────────────────── */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+  }
 
-/* ── SECTION COMMON ───────────────────────────────────── */
-.s-tag {
-  font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
-  text-transform: uppercase; color: #C084FC; margin-bottom: 14px;
-}
-.s-h2 {
-  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-  font-weight: 900; letter-spacing: -1.2px; line-height: 1.08;
-  margin-bottom: 16px; color: #fff;
-}
-.s-sub { font-size: 16px; color: rgba(255,255,255,0.52); line-height: 1.7; }
-.s-inner { max-width: 1100px; margin: 0 auto; }
-.s-inner.narrow { max-width: 780px; }
+  /* ── FADE-UP ─────────────────────────────────────── */
+  .fade-up {
+    opacity: 0; transform: translateY(36px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: none; }
 
-/* ── PAIN ─────────────────────────────────────────────── */
-#pain { padding: 96px 5%; }
-.pain-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
-  margin-top: 52px;
-}
-.pain-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px; padding: 32px 26px;
-  transition: all 0.3s;
-  opacity: 0; transform: translateY(28px);
-}
-.pain-card.visible { opacity:1; transform: none; }
-.pain-card.center-card {
-  border-color: rgba(192,132,252,0.3);
-  background: rgba(168,85,247,0.07);
-}
-.pain-card:hover { border-color: rgba(192,132,252,0.25); background: rgba(168,85,247,0.06); }
-.pain-icon { font-size: 36px; margin-bottom: 16px; }
-.pain-card h3 { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 10px; line-height: 1.35; }
-.pain-card p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.7; }
-@media (max-width: 900px) { .pain-grid { grid-template-columns: 1fr; } }
+  /* ── LAYOUT ──────────────────────────────────────── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  .section { padding: 96px 0; }
 
-/* ── SOLUTION ─────────────────────────────────────────── */
-#solution { padding: 96px 5%; }
-.sol-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 52px; align-items: start; }
-.sol-points { display: flex; flex-direction: column; gap: 28px; }
-.sol-point { display: flex; gap: 18px; align-items: flex-start; }
-.sol-line {
-  display: flex; flex-direction: column; align-items: center; flex-shrink: 0;
-  padding-top: 4px;
-}
-.sol-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: #A78BFA; flex-shrink: 0;
-  box-shadow: 0 0 10px rgba(167,139,250,0.6);
-}
-.sol-point h4 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 7px; line-height: 1.3; }
-.sol-point p { font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.65; }
-.chat-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px; padding: 24px;
-}
-.chat-card-hd {
-  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
-  padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.chat-av {
-  width: 36px; height: 36px; border-radius: 50%;
-  background: linear-gradient(135deg, #A855F7, #7C3AED);
-  display: flex; align-items: center; justify-content: center; font-size: 16px;
-}
-.chat-name { font-size: 13px; font-weight: 700; color: #fff; }
-.chat-status { font-size: 11px; color: #4ADE80; margin-top: 1px; }
-.chat-msgs { display: flex; flex-direction: column; gap: 14px; }
-.msg { max-width: 88%; }
-.msg.ai { align-self: flex-start; }
-.msg.usr { align-self: flex-end; }
-.msg-name { font-size: 10px; color: rgba(255,255,255,0.3); margin-bottom: 5px; }
-.msg-bub { padding: 11px 15px; border-radius: 14px; font-size: 12.5px; line-height: 1.55; }
-.msg.ai .msg-bub { background: rgba(168,85,247,0.18); color: rgba(255,255,255,0.82); border-radius: 4px 14px 14px 14px; border: 1px solid rgba(168,85,247,0.2); }
-.msg.usr .msg-bub { background: rgba(245,158,11,0.12); color: rgba(255,255,255,0.7); border-radius: 14px 4px 14px 14px; }
-@media (max-width: 900px) { .sol-grid { grid-template-columns: 1fr; gap: 40px; } }
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    position: sticky; top: 0; z-index: 1000;
+    background: rgba(12,8,18,0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+  }
+  .nav-inner {
+    max-width: 1180px; margin: 0 auto; padding: 0 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo { font-size: 1.2rem; font-weight: 800; color: #fff; text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo em { font-style: normal; color: var(--violet-light); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 0.875rem; color: var(--text-50); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-ghost {
+    background: transparent; border: 1px solid var(--glass-border);
+    color: var(--text-50); padding: 8px 18px; border-radius: 10px;
+    font-size: 0.875rem; text-decoration: none; transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.28); color: #fff; }
+  .btn-amber {
+    background: linear-gradient(135deg, #F59E0B, #D97706); color: #000;
+    font-weight: 800; padding: 9px 20px; border-radius: 10px;
+    font-size: 0.875rem; text-decoration: none; border: none;
+    box-shadow: 0 0 20px rgba(245,158,11,0.4), 0 0 40px rgba(245,158,11,0.15);
+    transition: box-shadow 0.2s, transform 0.2s; display: inline-block;
+  }
+  .btn-amber:hover { box-shadow: 0 0 30px rgba(245,158,11,0.65), 0 0 60px rgba(245,158,11,0.25); transform: translateY(-1px); }
+  @media (max-width: 700px) { .nav-links { display: none; } }
 
-/* ── COMPARISON ─────────────────────────────────────────── */
-#comparativa { padding: 96px 5%; }
-.table-wrap { margin-top: 52px; overflow-x: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.07); }
-table { width: 100%; border-collapse: collapse; }
-thead th {
-  padding: 18px 22px; font-size: 13px; font-weight: 800;
-  text-align: center; border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-thead th:first-child { text-align: left; color: rgba(255,255,255,0.4); }
-thead th.col-normal { color: rgba(255,255,255,0.4); font-weight: 500; }
-thead th.col-holo {
-  color: #C084FC; background: rgba(168,85,247,0.1);
-  position: relative;
-  border-top: 2px solid rgba(192,132,252,0.5);
-}
-tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
-tbody tr:last-child { border-bottom: none; }
-tbody tr:hover { background: rgba(255,255,255,0.02); }
-tbody td { padding: 14px 22px; font-size: 13.5px; color: rgba(255,255,255,0.65); }
-tbody td:first-child { font-weight: 600; color: rgba(255,255,255,0.75); }
-tbody td:not(:first-child) { text-align: center; }
-tbody td.col-holo { background: rgba(168,85,247,0.06); }
-.t-check { color: #C084FC; font-size: 17px; font-weight: 900; }
-.t-cross { color: rgba(255,255,255,0.15); font-size: 15px; }
-.t-partial { font-size: 12px; color: rgba(245,158,11,0.7); font-weight: 700; }
+  /* ── HERO ────────────────────────────────────────── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 0; }
+  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 50px; font-size: 0.78rem; font-weight: 700;
+    margin-bottom: 24px; background: rgba(147,51,234,0.14);
+    border: 1px solid rgba(192,132,252,0.35); color: var(--violet-light);
+    letter-spacing: 0.02em;
+  }
+  .hero h1 {
+    font-size: clamp(40px, 5.5vw, 68px); font-weight: 900;
+    letter-spacing: -3px; line-height: 1.04; margin-bottom: 22px; color: #fff;
+  }
+  .hero h1 .gradient-text {
+    background: linear-gradient(135deg, #F9A8D4 0%, #C084FC 55%, #A78BFA 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .hero-sub {
+    font-size: 1.08rem; color: var(--text-50); margin-bottom: 34px;
+    line-height: 1.72; max-width: 480px;
+  }
+  .hero-sub strong { color: var(--text-70); font-weight: 600; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+  .btn-primary {
+    background: linear-gradient(135deg, #F59E0B, #D97706); color: #000;
+    font-weight: 800; padding: 14px 28px; border-radius: 12px;
+    font-size: 0.98rem; text-decoration: none; border: none;
+    box-shadow: 0 0 28px rgba(245,158,11,0.5), 0 0 60px rgba(245,158,11,0.2);
+    transition: box-shadow 0.2s, transform 0.2s; display: inline-block; letter-spacing: -0.2px;
+  }
+  .btn-primary:hover { box-shadow: 0 0 40px rgba(245,158,11,0.7), 0 0 80px rgba(245,158,11,0.3); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent; border: 1px solid rgba(255,255,255,0.24);
+    color: #fff; font-weight: 600; padding: 14px 28px; border-radius: 12px;
+    font-size: 0.98rem; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.06); }
+  .hero-trust { font-size: 0.78rem; color: var(--text-30); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .trust-dot { width: 3px; height: 3px; background: var(--text-30); border-radius: 50%; }
 
-/* ── HOW ─────────────────────────────────────────────── */
-#como { padding: 96px 5%; text-align: center; }
-.steps-row {
-  display: flex; gap: 0; margin-top: 60px; position: relative;
-  max-width: 900px; margin-left: auto; margin-right: auto;
-}
-.steps-line {
-  position: absolute; top: 20px; left: calc(16.7% + 20px); right: calc(16.7% + 20px);
-  height: 1px; background: linear-gradient(90deg, rgba(192,132,252,0.6), rgba(192,132,252,0.15), rgba(192,132,252,0.6));
-}
-.step { flex: 1; padding: 0 20px; }
-.step-circle {
-  width: 40px; height: 40px; border-radius: 50%;
-  margin: 0 auto 20px; font-size: 14px; font-weight: 900;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; z-index: 1;
-}
-.step-circle.active {
-  background: linear-gradient(135deg, #A855F7, #7C3AED);
-  color: #fff; box-shadow: 0 0 20px rgba(168,85,247,0.5);
-}
-.step-circle.inactive {
-  background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.3);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-.step-emoji { font-size: 26px; margin-bottom: 14px; }
-.step h3 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.35; }
-.step p { font-size: 13px; color: rgba(255,255,255,0.42); line-height: 1.65; }
-@media (max-width: 700px) {
-  .steps-row { flex-direction: column; gap: 32px; }
-  .steps-line { display: none; }
-  .step { display: flex; align-items: flex-start; gap: 16px; text-align: left; padding: 0; }
-  .step-circle { margin: 0; flex-shrink: 0; }
-}
+  /* Chat card */
+  .hero-chat { padding: 24px; display: flex; flex-direction: column; gap: 12px; animation: float 6s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .chat-header {
+    display: flex; align-items: center; gap: 10px; padding-bottom: 14px;
+    border-bottom: 1px solid var(--glass-border); margin-bottom: 4px;
+  }
+  .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, #9333EA, #6B21A8); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .chat-title { font-weight: 700; font-size: 0.88rem; }
+  .chat-status { font-size: 0.7rem; color: #4ADE80; margin-top: 1px; }
+  .msgs { display: flex; flex-direction: column; gap: 10px; }
+  .msg { padding: 10px 14px; border-radius: 14px; font-size: 0.8rem; line-height: 1.5; max-width: 88%; }
+  .msg-ai { background: rgba(147,51,234,0.18); border: 1px solid rgba(147,51,234,0.28); border-bottom-left-radius: 4px; align-self: flex-start; color: rgba(255,255,255,0.88); }
+  .msg-user { background: rgba(245,158,11,0.13); border: 1px solid rgba(245,158,11,0.22); border-bottom-right-radius: 4px; align-self: flex-end; color: rgba(255,255,255,0.82); }
+  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 10px 14px; align-self: flex-start; }
+  .typing-dot { width: 6px; height: 6px; background: var(--violet-light); border-radius: 50%; animation: bounce 1.2s ease-in-out infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100% { transform: translateY(0); opacity:0.4; } 30% { transform: translateY(-6px); opacity:1; } }
 
-/* ── MODULES ─────────────────────────────────────────── */
-#modulos { padding: 96px 5%; }
-.mods-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; }
-.mod-card {
-  background: rgba(255,255,255,0.025);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 18px; padding: 26px 22px;
-  transition: all 0.25s;
-  opacity: 0; transform: translateY(28px);
-}
-.mod-card.visible { opacity: 1; transform: none; }
-.mod-card:hover { background: rgba(255,255,255,0.05); }
-.mod-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
-.mod-emoji { font-size: 32px; }
-.mod-badge { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.04em; text-transform: uppercase; }
-.mod-name { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 8px; }
-.mod-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 16px; }
-.mod-bullets { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
-.mod-bullet { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.55); }
-.mod-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
-@media (max-width: 900px) { .mods-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 600px) { .mods-grid { grid-template-columns: 1fr; } }
+  /* ── STATS ───────────────────────────────────────── */
+  .stats-strip {
+    background: rgba(147,51,234,0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); padding: 32px 0;
+  }
+  .stats-grid { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .stat-item { text-align: center; padding: 14px 44px; position: relative; }
+  .stat-item:not(:last-child)::after { content:''; position:absolute; right:0; top:10%; bottom:10%; width:1px; background: var(--glass-border); }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: #fff; letter-spacing: -1.5px; display: block; text-shadow: 0 0 30px rgba(192,132,252,0.4); }
+  .stat-label { font-size: 0.75rem; color: var(--text-30); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
 
-/* ── TESTIMONIALS ─────────────────────────────────────── */
-#testimonios { padding: 96px 5%; text-align: center; }
-.testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 52px; text-align: left; }
-.testi-card {
-  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px 24px;
-  opacity: 0; transform: translateY(28px); transition: all 0.5s;
-}
-.testi-card.visible { opacity:1; transform:none; }
-.testi-card:hover { border-color: rgba(192,132,252,0.2); }
-.t-stars { font-size: 14px; color: #F59E0B; letter-spacing: 3px; margin-bottom: 14px; }
-.t-quote { font-size: 13.5px; color: rgba(255,255,255,0.72); line-height: 1.78; margin-bottom: 22px; font-style: italic; }
-.t-author { display: flex; align-items: center; gap: 10px; }
-.t-av { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 900; color: #fff; flex-shrink: 0; }
-.t-name { font-size: 13px; font-weight: 700; color: #fff; }
-.t-role { font-size: 11.5px; color: rgba(255,255,255,0.38); margin-top: 2px; }
-@media (max-width: 900px) { .testi-grid { grid-template-columns: 1fr; } }
+  /* ── SECTION TAGS ─────────────────────────────────── */
+  .section-tag {
+    display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--violet-light); padding: 4px 12px;
+    background: rgba(147,51,234,0.14); border: 1px solid rgba(192,132,252,0.28);
+    border-radius: 50px; margin-bottom: 18px;
+  }
+  .section-h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; line-height: 1.08; }
+  .section-sub { font-size: 1rem; color: var(--text-50); max-width: 540px; line-height: 1.7; }
 
-/* ── PRICING ─────────────────────────────────────────── */
-#precios { padding: 96px 5%; text-align: center; }
-.pricing-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 60px; align-items: start; }
-.p-card { border-radius: 20px; padding: 32px 26px; position: relative; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); transition: all 0.2s; }
-.p-card:hover { transform: translateY(-4px); }
-.p-card.featured { border-color: rgba(192,132,252,0.45); background: rgba(168,85,247,0.1); box-shadow: 0 0 60px rgba(168,85,247,0.2); }
-.popular { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; font-size: 11px; font-weight: 900; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
-.p-name { font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #C084FC; margin-bottom: 10px; }
-.p-price-row { margin-bottom: 6px; }
-.p-amount { font-size: 48px; font-weight: 900; color: #fff; letter-spacing: -2px; }
-.p-cur { font-size: 20px; vertical-align: top; margin-top: 12px; display: inline-block; color: rgba(255,255,255,0.4); }
-.p-period { font-size: 13px; color: rgba(255,255,255,0.4); margin-bottom: 20px; }
-.p-desc { font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-.p-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; text-align: left; }
-.p-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: rgba(255,255,255,0.68); }
-.p-features li::before { content: '✓'; color: #A78BFA; font-weight: 900; flex-shrink: 0; }
-.btn-plan-gold { display: block; width: 100%; padding: 14px; border-radius: 10px; text-align: center; font-size: 14px; font-weight: 800; text-decoration: none; background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; box-shadow: 0 4px 20px rgba(217,119,6,0.35); transition: all 0.2s; }
-.btn-plan-gold:hover { box-shadow: 0 8px 30px rgba(217,119,6,0.5); transform: translateY(-1px); }
-.btn-plan-ghost { display: block; width: 100%; padding: 14px; border-radius: 10px; text-align: center; font-size: 14px; font-weight: 700; text-decoration: none; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); transition: all 0.2s; }
-.btn-plan-ghost:hover { border-color: rgba(255,255,255,0.3); color: #fff; }
-@media (max-width: 900px) { .pricing-row { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+  /* ── PROBLEM ─────────────────────────────────────── */
+  .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .problem-card {
+    padding: 32px 26px; display: flex; flex-direction: column; gap: 14px;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .problem-card:hover { border-color: rgba(192,132,252,0.25); transform: translateY(-4px); }
+  .problem-card.featured-card { border-color: rgba(192,132,252,0.2); background: rgba(147,51,234,0.07); }
+  .problem-icon { font-size: 2.2rem; }
+  .problem-card h3 { font-size: 1rem; font-weight: 800; line-height: 1.35; }
+  .problem-card p { font-size: 0.86rem; color: var(--text-50); line-height: 1.65; }
 
-/* ── CTA ─────────────────────────────────────────────── */
-#cta-final {
-  padding: 100px 5%; text-align: center;
-  position: relative; overflow: hidden;
-}
-#cta-final::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(168,85,247,0.25) 0%, transparent 70%);
-  pointer-events: none;
-}
-#cta-final .inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
-#cta-final h2 {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  font-weight: 900; color: #fff; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 18px;
-}
-#cta-final p { font-size: 16px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 36px; }
-.cta-note { margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.25); }
+  /* ── SOLUTION ────────────────────────────────────── */
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .bullet-list { display: flex; flex-direction: column; gap: 18px; margin-top: 8px; }
+  .bullet-item { display: flex; gap: 14px; align-items: flex-start; font-size: 0.9rem; color: var(--text-50); line-height: 1.55; }
+  .bullet-dot { width: 8px; height: 8px; background: var(--violet-light); border-radius: 50%; flex-shrink: 0; margin-top: 6px; box-shadow: 0 0 8px rgba(192,132,252,0.5); }
+  .bullet-item strong { color: #fff; }
+  .solution-chat { padding: 24px; }
+  .case-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--violet-light); margin-bottom: 14px; display: block; }
 
-/* ── FAQ ─────────────────────────────────────────────── */
-#faq { padding: 96px 5%; }
-.faq-inner { max-width: 700px; margin: 0 auto; }
-.faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 0; }
-.faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
-.faq-q {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 20px 0; cursor: pointer; gap: 16px;
-  font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.85);
-  user-select: none; transition: color 0.2s;
-}
-.faq-q:hover { color: #fff; }
-.faq-arr { font-size: 14px; color: #A78BFA; flex-shrink: 0; transition: transform 0.3s; }
-.faq-item.open .faq-arr { transform: rotate(180deg); }
-.faq-item.open .faq-q { color: #fff; }
-.faq-a { display: none; padding-bottom: 20px; font-size: 13.5px; color: rgba(255,255,255,0.5); line-height: 1.75; }
-.faq-item.open .faq-a { display: block; }
+  /* ── TABLE ───────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--glass-border); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  thead th { padding: 16px 22px; text-align: center; font-weight: 700; font-size: 0.88rem; border-bottom: 1px solid var(--glass-border); color: var(--text-50); }
+  thead th:first-child { text-align: left; }
+  thead th.col-holo { background: rgba(147,51,234,0.1); border-top: 2px solid var(--violet); color: #fff; }
+  tbody tr:nth-child(odd) td { background: rgba(255,255,255,0.015); }
+  tbody tr:hover td { background: rgba(255,255,255,0.025); }
+  tbody td { padding: 14px 22px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.04); color: var(--text-50); }
+  tbody td:first-child { text-align: left; color: var(--text-70); font-weight: 500; }
+  tbody td.col-holo { background: rgba(147,51,234,0.07); font-weight: 700; }
+  .t-check { color: var(--violet-light); font-size: 1.1rem; font-weight: 700; }
+  .t-cross { color: var(--text-15); font-size: 1.1rem; }
+  .t-partial { font-size: 0.75rem; color: rgba(245,158,11,0.65); font-weight: 700; }
 
-/* ── FOOTER ─────────────────────────────────────────── */
-footer {
-  padding: 52px 5% 32px;
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-.footer-logo { font-size: 18px; font-weight: 900; color: #fff; margin-bottom: 6px; }
-.footer-logo em { font-style: normal; color: #C084FC; }
-.footer-tag { font-size: 12px; color: rgba(255,255,255,0.28); margin-bottom: 40px; }
-.footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); }
-.footer-links { display: flex; gap: 16px; }
-.footer-links a { font-size: 12px; color: rgba(255,255,255,0.28); text-decoration: none; transition: color 0.2s; }
-.footer-links a:hover { color: rgba(255,255,255,0.6); }
+  /* ── HOW IT WORKS ────────────────────────────────── */
+  .steps-wrap { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+  .steps-line { position: absolute; top: 52px; left: calc(33.33%/2 + 24px); right: calc(33.33%/2 + 24px); height: 0; border-top: 2px dashed rgba(147,51,234,0.35); z-index: 0; }
+  .step-card { padding: 30px 24px; text-align: center; position: relative; z-index: 1; transition: border-color 0.3s, transform 0.3s; }
+  .step-card:hover { border-color: rgba(147,51,234,0.4); transform: translateY(-4px); }
+  .step-num { font-size: 0.68rem; font-weight: 800; letter-spacing: 2px; color: var(--violet-light); margin-bottom: 10px; display: block; }
+  .step-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; }
+  .step-card p { font-size: 0.83rem; color: var(--text-50); line-height: 1.6; }
 
-/* ── FADE-UP ─────────────────────────────────────────── */
-.fu { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.fu.visible { opacity: 1; transform: none; }
-.fu.d1 { transition-delay: 0.08s; }
-.fu.d2 { transition-delay: 0.16s; }
-.fu.d3 { transition-delay: 0.24s; }
-.fu.d4 { transition-delay: 0.32s; }
+  /* ── MODULES ─────────────────────────────────────── */
+  .modules-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .module-card { padding: 26px 22px; transition: border-color 0.3s, transform 0.3s; }
+  .module-card:hover { transform: translateY(-4px); }
+  .module-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
+  .module-badge { display: inline-block; font-size: 0.62rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; background: rgba(147,51,234,0.18); border: 1px solid rgba(192,132,252,0.28); color: var(--violet-light); margin-bottom: 10px; }
+  .module-card h3 { font-size: 0.98rem; font-weight: 800; margin-bottom: 8px; }
+  .module-card p { font-size: 0.82rem; color: var(--text-50); line-height: 1.6; }
+  .module-bullets { margin-top: 14px; border-top: 1px solid var(--glass-border); padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
+  .module-bullet { display: flex; align-items: center; gap: 8px; font-size: 0.75rem; color: var(--text-50); }
+  .module-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── TESTIMONIALS ────────────────────────────────── */
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .testi-card { padding: 28px 24px; transition: border-color 0.3s; }
+  .testi-card:hover { border-color: rgba(192,132,252,0.22); }
+  .stars { color: var(--amber); font-size: 0.95rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .testi-quote { font-style: italic; color: var(--text-70); font-size: 0.875rem; line-height: 1.78; margin-bottom: 20px; }
+  .testi-footer { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.82rem; flex-shrink: 0; }
+  .testi-name { font-weight: 700; font-size: 0.86rem; }
+  .testi-role { font-size: 0.73rem; color: var(--text-30); margin-top: 2px; }
+
+  /* ── PRICING ─────────────────────────────────────── */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; align-items: start; }
+  .price-card { padding: 32px 26px; transition: border-color 0.3s, transform 0.3s; }
+  .price-card:hover { transform: translateY(-4px); }
+  .price-card.featured {
+    background: linear-gradient(160deg, rgba(147,51,234,0.28), rgba(107,33,168,0.28));
+    border: 1px solid rgba(147,51,234,0.5);
+    box-shadow: 0 0 40px rgba(147,51,234,0.22), 0 0 80px rgba(147,51,234,0.1);
+    transform: scale(1.03);
+  }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .popular-badge { display: inline-block; background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; font-size: 0.62rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 16px; }
+  .price-name { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--violet-light); }
+  .price-amount { font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; color: #fff; }
+  .price-amount .currency { font-size: 1.1rem; font-weight: 600; vertical-align: super; color: var(--text-50); }
+  .price-amount .period { font-size: 0.88rem; font-weight: 400; color: var(--text-30); letter-spacing: 0; }
+  .price-desc { font-size: 0.8rem; color: var(--text-30); margin-bottom: 22px; line-height: 1.5; }
+  .price-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.84rem; color: var(--text-50); }
+  .price-feature .check { color: var(--violet-light); font-size: 0.88rem; flex-shrink: 0; margin-top: 2px; }
+  .btn-price { width: 100%; display: block; text-align: center; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 0.88rem; text-decoration: none; transition: all 0.2s; letter-spacing: -0.2px; }
+  .btn-price-primary { background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; box-shadow: 0 0 20px rgba(245,158,11,0.4); }
+  .btn-price-primary:hover { box-shadow: 0 0 32px rgba(245,158,11,0.65); transform: translateY(-1px); }
+  .btn-price-ghost { background: transparent; border: 1px solid var(--glass-border); color: var(--text-50); }
+  .btn-price-ghost:hover { border-color: rgba(255,255,255,0.28); color: #fff; }
+
+  /* ── CTA ─────────────────────────────────────────── */
+  .cta-section { position: relative; overflow: hidden; padding: 100px 0; text-align: center; }
+  .cta-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #4A1D96 0%, #7C3AED 50%, #4A1D96 100%); z-index: 0; }
+  .cta-noise {
+    position: absolute; inset: 0; z-index: 1; opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px; animation: noiseDrift 8s linear infinite;
+  }
+  @keyframes noiseDrift { 0% { background-position: 0 0; } 100% { background-position: 200px 200px; } }
+  .cta-content { position: relative; z-index: 2; }
+  .cta-section h2 { font-size: clamp(30px, 4vw, 52px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; }
+  .cta-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 36px; line-height: 1.65; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-note { margin-top: 18px; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+  /* ── FAQ ─────────────────────────────────────────── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 52px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .faq-item { border: 1px solid var(--glass-border); border-radius: 16px; background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); overflow: hidden; transition: border-color 0.3s; }
+  .faq-item.open { border-color: rgba(147,51,234,0.4); border-left: 3px solid var(--violet); }
+  .faq-question { width: 100%; background: none; border: none; color: #fff; font-size: 0.94rem; font-weight: 700; text-align: left; padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; }
+  .faq-arrow { font-size: 0.78rem; color: var(--violet-light); transition: transform 0.3s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-50); font-size: 0.88rem; line-height: 1.72; }
+  .faq-answer-inner { padding: 0 24px 20px; }
+  .faq-item.open .faq-answer { max-height: 320px; }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer { border-top: 1px solid var(--glass-border); padding: 40px 0; background: rgba(12,8,18,0.95); position: relative; z-index: 1; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .footer-copy { font-size: 0.78rem; color: var(--text-30); margin-top: 4px; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.84rem; color: var(--text-50); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-trust { justify-content: center; }
+    .hero-sub { margin: 0 auto 34px; }
+    .hero-chat { max-width: 480px; margin: 0 auto; }
+    .problem-grid, .solution-grid, .steps-wrap, .testi-grid { grid-template-columns: 1fr; }
+    .steps-line { display: none; }
+    .modules-grid { grid-template-columns: repeat(2,1fr); }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-4px); }
+    .stat-item { padding: 12px 24px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { letter-spacing: -1.5px; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .section { padding: 64px 0; }
+    .stats-grid { flex-wrap: wrap; }
+    .stat-item { width: 50%; }
+    .stat-item:not(:last-child)::after { display: none; }
+    .stat-item:nth-child(odd) { border-right: 1px solid var(--glass-border); }
+    .stat-item { padding: 16px 20px; border-bottom: 1px solid var(--glass-border); }
+  }
 </style>
 </head>
 <body>
 
-<!-- AURORA ORBs -->
-<div class="aurora-root" aria-hidden="true">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
+<!-- ORBs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
 
-<!-- NAV -->
+<!-- ══ NAV ════════════════════════════════════════════ -->
 <nav>
-  <a href="https://www.holoacademia.com" target="_blank" class="nav-logo">Holo<em>academ</em>IA</a>
-  <div class="nav-links">
-    <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
-    <a href="#modulos">Motor IA</a>
-    <a href="#precios">Planes</a>
-  </div>
-  <div class="nav-right">
-    <a href="https://www.holoacademia.com/miembros" target="_blank" class="nav-ghost">Iniciar sesión</a>
-    <a href="https://www.holoacademia.com/planes" target="_blank" class="nav-cta">Prueba Gratis</a>
+  <div class="nav-inner">
+    <a href="https://www.holoacademia.com" target="_blank" class="nav-logo">Holo<em>academ</em>IA</a>
+    <div class="nav-links">
+      <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
+      <a href="#modulos">Motor IA</a>
+      <a href="#precios">Planes</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://www.holoacademia.com/miembros" target="_blank" class="btn-ghost">Iniciar sesión</a>
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-amber">Prueba Gratis</a>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-inner">
-    <div class="hero-tag fu"><span>✨</span> La primera IA para terapeutas holísticos hispanohablantes</div>
-
-    <h1 class="fu d1">
-      Ya tienes el conocimiento.<br>
-      <span class="glow-word">Ahora cobra por él.</span>
-    </h1>
-
-    <p class="hero-sub fu d2">
-      HoloacademIA es la única plataforma donde <strong>aprendes y tienes una IA especializada contigo en cada consulta real</strong> — para que nunca más te quedes paralizada frente a un paciente.
-    </p>
-
-    <div class="hero-actions fu d3">
-      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-gold">Activar mi Motor Terapéutico — Es Gratis</a>
-      <a href="https://www.holoacademia.com/programas" target="_blank" class="btn-outline">Ver los +75 cursos →</a>
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left fade-up">
+        <div class="hero-badge">✨ La primera IA para terapeutas holísticos hispanohablantes</div>
+        <h1>Ya tienes el conocimiento.<br><span class="gradient-text">Ahora cobra por él.</span></h1>
+        <p class="hero-sub">
+          HoloacademIA es la única plataforma donde <strong>aprendes y tienes una IA especializada contigo en cada consulta real</strong> — para que nunca más te quedes paralizada frente a un paciente.
+        </p>
+        <div class="hero-ctas">
+          <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary">Activar mi Motor Terapéutico — Es Gratis</a>
+          <a href="https://www.holoacademia.com/programas" target="_blank" class="btn-outline">Ver los +75 cursos →</a>
+        </div>
+        <div class="hero-trust">
+          <span>Sin tarjeta de crédito</span>
+          <span class="trust-dot"></span>
+          <span>Acceso inmediato</span>
+          <span class="trust-dot"></span>
+          <span>Cancela cuando quieras</span>
+        </div>
+      </div>
+      <!-- Chat card -->
+      <div class="fade-up" style="transition-delay:0.2s;">
+        <div class="glass hero-chat">
+          <div class="chat-header">
+            <div class="chat-avatar">💜</div>
+            <div>
+              <div class="chat-title">Motor Terapéutico IA</div>
+              <div class="chat-status">● En sesión activa</div>
+            </div>
+          </div>
+          <div class="msgs">
+            <div class="msg msg-user">Paciente, 42 años. Dolor lumbar crónico sin causa orgánica. Empezó cuando murió su mamá hace un año.</div>
+            <div class="msg msg-ai">Conflicto emocional: "carga que no puede soltar". Correlaciona con L4-L5 en biodescodificación. Te genero el protocolo de liberación.</div>
+            <div class="msg msg-ai">✅ Protocolo generado · 📋 Sesión documentada</div>
+            <div class="glass typing" style="border-radius:14px;">
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+              <div class="typing-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <p class="hero-trust fu d4">
-      Sin tarjeta de crédito <span>·</span> Acceso inmediato <span>·</span> Cancela cuando quieras
-    </p>
   </div>
 </section>
 
-<!-- STATS -->
-<section id="stats">
-  <div class="stats-row">
-    <div class="stat-item fu"><div class="stat-num">75+</div><div class="stat-lbl">Cursos certificados</div></div>
-    <div class="stat-item fu d1"><div class="stat-num">3</div><div class="stat-lbl">Motores de IA</div></div>
-    <div class="stat-item fu d2"><div class="stat-num">+5,000</div><div class="stat-lbl">Terapeutas activos</div></div>
-    <div class="stat-item fu d3"><div class="stat-num">9</div><div class="stat-lbl">Disciplinas</div></div>
-  </div>
-</section>
-
-<!-- PAIN -->
-<section id="pain">
-  <div class="s-inner">
-    <div class="fu">
-      <div class="s-tag">El problema que nadie dice en voz alta</div>
-      <h2 class="s-h2">Sabes. Dudas. No cobras.<br>Y el tiempo pasa.</h2>
-      <p class="s-sub" style="max-width:540px">No es falta de conocimiento. Es que estudiar sola no te preparó para el momento en que el paciente está frente a ti y necesitas una respuesta.</p>
+<!-- ══ STATS ════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up"><span class="stat-num">75+</span><span class="stat-label">Cursos certificados</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.1s"><span class="stat-num">3</span><span class="stat-label">Motores de IA</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.2s"><span class="stat-num">+5,000</span><span class="stat-label">Terapeutas activos</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.3s"><span class="stat-num">9</span><span class="stat-label">Disciplinas</span></div>
     </div>
-    <div class="pain-grid">
-      <div class="pain-card fu">
-        <div class="pain-icon">🧠</div>
+  </div>
+</div>
+
+<!-- ══ PROBLEM ══════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up">
+      <div class="section-tag">El problema que nadie dice en voz alta</div>
+      <h2 class="section-h2">Sabes. Dudas. No cobras.<br>Y el tiempo pasa.</h2>
+      <p class="section-sub">No es falta de conocimiento. Es que estudiar sola no te preparó para el momento en que el paciente está frente a ti y necesitas una respuesta.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="glass problem-card fade-up" style="transition-delay:.1s">
+        <div class="problem-icon">🧠</div>
         <h3>"Sé la teoría, pero en la consulta real me bloqueo"</h3>
         <p>Los cursos te dieron el mapa. Nadie te acompañó en el camino. Ese vacío entre el conocimiento y la práctica cuesta una fortuna en pacientes que nunca llegaron.</p>
       </div>
-      <div class="pain-card center-card fu d1">
-        <div class="pain-icon">😰</div>
+      <div class="glass problem-card featured-card fade-up" style="transition-delay:.2s">
+        <div class="problem-icon">😰</div>
         <h3>"¿Y si me equivoco? No puedo arriesgarme con un paciente real"</h3>
         <p>El síndrome del impostor no se cura con más estudios. Se cura con un segundo criterio que te respalde mientras ganas confianza. Eso es exactamente lo que no tenías.</p>
       </div>
-      <div class="pain-card fu d2">
-        <div class="pain-icon">💸</div>
+      <div class="glass problem-card fade-up" style="transition-delay:.3s">
+        <div class="problem-icon">💸</div>
         <h3>Mientras esperas "estar lista", otra terapeuta está cobrando</h3>
-        <p>Tu paciente existe hoy. Está buscando ayuda hoy. Cada semana de espera es dinero que otra persona está recibiendo — por el mismo conocimiento que tú ya tienes.</p>
+        <p>Tu paciente existe hoy. Está buscando ayuda hoy. Cada semana de espera es dinero que alguien más recibe — por el mismo conocimiento que tú ya tienes.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SOLUTION -->
-<section id="solution">
-  <div class="s-inner">
-    <div class="fu">
-      <div class="s-tag">La diferencia que cambia todo</div>
-      <h2 class="s-h2">No más teoría sin práctica.<br>IA contigo en cada sesión real.</h2>
-      <p class="s-sub" style="max-width:520px">HoloacademIA combina 75+ cursos certificados con un motor de IA especializado que te acompaña en tiempo real mientras atiendes pacientes. No es un chatbot — es tu colega más experimentada, siempre disponible.</p>
-    </div>
-    <div class="sol-grid fu d1">
-      <div class="sol-points">
-        <div class="sol-point">
-          <div class="sol-line"><div class="sol-dot"></div></div>
-          <div>
-            <h4>Aprendes con 75+ cursos en 9 disciplinas holísticas</h4>
-            <p>Biomagnetismo, biodescodificación, psicosomática, numerología, astrología médica y más — todo en una sola plataforma, a tu ritmo.</p>
-          </div>
-        </div>
-        <div class="sol-point">
-          <div class="sol-line"><div class="sol-dot"></div></div>
-          <div>
-            <h4>IA especializada activa mientras atiendes</h4>
-            <p>Describes el caso. El Motor analiza el origen emocional, te orienta en el rastreo y genera el protocolo — todo mientras el paciente está frente a ti.</p>
-          </div>
-        </div>
-        <div class="sol-point">
-          <div class="sol-line"><div class="sol-dot"></div></div>
-          <div>
-            <h4>Cada sesión queda documentada automáticamente</h4>
-            <p>Historial de pacientes, protocolos generados, evolución de casos. Sin perder tiempo escribiendo después de cada consulta.</p>
-          </div>
-        </div>
-        <div class="sol-point">
-          <div class="sol-line"><div class="sol-dot"></div></div>
-          <div>
-            <h4>De "no me siento lista" a lista de espera — en semanas</h4>
-            <p>No necesitas más años de estudio. Necesitas el respaldo correcto para dar ese primer paso con seguridad.</p>
-          </div>
+<!-- ══ SOLUTION ══════════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="solution-grid">
+      <div class="solution-left fade-up">
+        <div class="section-tag">La diferencia que cambia todo</div>
+        <h2 class="section-h2">No más teoría sin práctica. IA contigo en cada sesión real.</h2>
+        <p style="color:var(--text-50);font-size:.94rem;margin-bottom:24px;line-height:1.7;">HoloacademIA combina 75+ cursos con un motor de IA especializado que te acompaña en tiempo real mientras atiendes. No es un chatbot — es tu colega más experimentada, siempre disponible.</p>
+        <div class="bullet-list">
+          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>Aprendes con 75+ cursos en 9 disciplinas</strong> — Biomagnetismo, biodescodificación, psicosomática, numerología y más.</div></div>
+          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>IA activa mientras atiendes</strong> — Describes el caso, el Motor analiza, orienta y genera el protocolo en tiempo real.</div></div>
+          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>Cada sesión documentada automáticamente</strong> — Historial de pacientes y protocolos generados sin perder tiempo escribiendo.</div></div>
+          <div class="bullet-item"><div class="bullet-dot"></div><div><strong>De "no me siento lista" a lista de espera en semanas</strong> — El respaldo correcto para dar ese primer paso con seguridad.</div></div>
         </div>
       </div>
-      <div class="chat-card">
-        <div class="chat-card-hd">
-          <div class="chat-av">💜</div>
-          <div>
-            <div class="chat-name">Motor Terapéutico IA</div>
-            <div class="chat-status">● En sesión activa</div>
-          </div>
-        </div>
-        <div class="chat-msgs">
-          <div class="msg usr">
-            <div class="msg-name">Tú</div>
-            <div class="msg-bub">Paciente mujer, 42 años. Dolor lumbar crónico L4-L5 sin causa orgánica. Desde que su mamá murió hace un año. No puede "cargar" con el duelo.</div>
-          </div>
-          <div class="msg ai">
-            <div class="msg-name">Motor IA</div>
-            <div class="msg-bub">Conflicto emocional identificado: "carga que no puede soltar". En biodescodificación correlaciona con la zona lumbar (L4-L5 = responsabilidad familiar, duelo no procesado). Te recomiendo trabajar el permiso inconsciente para "soltar la carga" antes del rastreo biomagnético.</div>
-          </div>
-          <div class="msg ai">
-            <div class="msg-name">Motor IA</div>
-            <div class="msg-bub">✅ Protocolo de liberación generado · 📋 Sesión documentada · 🔮 Próxima sesión sugerida en 21 días</div>
+      <div class="fade-up" style="transition-delay:.2s">
+        <div class="glass solution-chat">
+          <span class="case-label">🧲 Motor Terapéutico — Análisis en tiempo real</span>
+          <div class="msgs">
+            <div class="msg msg-user">Paciente, mujer 42 años. Fibromialgia 3 años, fatiga crónica, insomnio. Dice que "todo la cansa".</div>
+            <div class="msg msg-ai">📋 Conflicto probable: "peso de responsabilidades no reconocidas". Pares prioritarios: Hígado-Hígado, Riñón-Riñón, Timo-Bazo. Iniciando protocolo anti-inflamatorio + liberación emocional.</div>
+            <div class="msg msg-user">¿Complemento con numerología?</div>
+            <div class="msg msg-ai">✨ Número de vida 7 — tendencia a somatizar la introspección. Recomiendo también carta natal para ciclos de sanación. Protocolo completo listo.</div>
           </div>
         </div>
       </div>
@@ -560,233 +503,225 @@ footer {
   </div>
 </section>
 
-<!-- COMPARATIVA -->
-<section id="comparativa">
-  <div class="s-inner narrow">
-    <div class="fu">
-      <div class="s-tag">La diferencia real</div>
-      <h2 class="s-h2">Por qué un curso normal<br>no es suficiente</h2>
-      <p class="s-sub">No es que los cursos normales sean malos. Es que terminan cuando más los necesitas — justo cuando llega el paciente.</p>
+<!-- ══ COMPARATIVA ══════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Comparativa</div>
+      <h2 class="section-h2">Por qué un curso normal no es suficiente</h2>
+      <p class="section-sub" style="margin:0 auto 48px;">No es que los cursos sean malos. Es que terminan justo cuando más los necesitas — cuando llega el paciente real.</p>
     </div>
-    <div class="table-wrap fu d1">
+    <div class="table-wrap fade-up">
       <table>
         <thead>
           <tr>
-            <th></th>
-            <th class="col-normal">Curso Normal</th>
+            <th style="text-align:left;">Qué obtienes</th>
             <th class="col-holo">HoloacademIA</th>
+            <th>Curso Online</th>
+            <th>Academia Tradicional</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>Aprendes el método</td><td><span class="t-check">✓</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>IA activa durante tus consultas reales</td><td><span class="t-cross">✗</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>Acompañamiento cuando el paciente está frente a ti</td><td><span class="t-cross">✗</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>Protocolos personalizados por caso</td><td><span class="t-cross">✗</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>Historial y documentación de sesiones</td><td><span class="t-cross">✗</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>9 disciplinas en un solo lugar</td><td><span class="t-partial">Raro</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
-          <tr><td>Acceso gratuito para empezar hoy</td><td><span class="t-cross">✗</span></td><td class="col-holo"><span class="t-check">✓</span></td></tr>
+          <tr><td>Aprendes el método</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td></tr>
+          <tr><td>IA activa durante tus consultas reales</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Acompañamiento cuando el paciente está frente a ti</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Protocolos personalizados por caso</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Historial y documentación de sesiones</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>9 disciplinas integradas en un solo lugar</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-partial">Raro</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Acceso gratuito para empezar hoy</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Cancela cuando quieras</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td></tr>
         </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- CÓMO FUNCIONA -->
-<section id="como">
-  <div class="s-inner">
-    <div class="fu">
-      <div class="s-tag">¿Cómo funciona?</div>
-      <h2 class="s-h2">Tres pasos. Una consulta diferente.</h2>
-      <p class="s-sub" style="max-width:500px">No aprendes a usar IA. Describes el caso como si le hablaras a una colega — y el Motor hace el resto.</p>
+<!-- ══ CÓMO FUNCIONA ════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">¿Cómo funciona?</div>
+      <h2 class="section-h2">Tres pasos. Una consulta diferente.</h2>
     </div>
-    <div class="steps-row fu d1">
+    <div class="steps-wrap">
       <div class="steps-line"></div>
-      <div class="step">
-        <div class="step-circle inactive">01</div>
-        <div class="step-emoji">💬</div>
+      <div class="glass step-card fade-up" style="transition-delay:.1s">
+        <span class="step-num">01</span>
+        <span class="step-icon">💬</span>
         <h3>Describes el caso en lenguaje natural</h3>
-        <p>Síntomas, historial emocional, lo que el paciente te dijo. Sin tecnicismos, sin formularios.</p>
+        <p>Síntomas, historial emocional, lo que el paciente te dijo. Sin tecnicismos, sin formularios. Como hablarle a una colega.</p>
       </div>
-      <div class="step">
-        <div class="step-circle active">02</div>
-        <div class="step-emoji">⚡</div>
+      <div class="glass step-card fade-up" style="transition-delay:.2s">
+        <span class="step-num">02</span>
+        <span class="step-icon">⚡</span>
         <h3>El Motor analiza y te orienta en tiempo real</h3>
-        <p>Identifica el conflicto emocional, correlaciona disciplinas, te guía paso a paso.</p>
+        <p>Identifica el conflicto emocional, correlaciona disciplinas y te guía paso a paso en el rastreo.</p>
       </div>
-      <div class="step">
-        <div class="step-circle inactive">03</div>
-        <div class="step-emoji">📋</div>
+      <div class="glass step-card fade-up" style="transition-delay:.3s">
+        <span class="step-num">03</span>
+        <span class="step-icon">📋</span>
         <h3>Obtienes el protocolo y la sesión queda documentada</h3>
-        <p>Listo para compartir con el paciente o archivar en su historial.</p>
+        <p>Listo para compartir con el paciente o archivar en su historial. Sin perder tiempo escribiendo después.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MÓDULOS -->
-<section id="modulos">
-  <div class="s-inner">
-    <div class="fu">
-      <div class="s-tag">El Motor Terapéutico</div>
-      <h2 class="s-h2">6 módulos. Todo lo que necesitas<br>para atender con plena confianza.</h2>
-      <p class="s-sub" style="max-width:520px">No es un chatbot genérico. Está entrenado específicamente en las disciplinas que tú practicas.</p>
+<!-- ══ MÓDULOS ══════════════════════════════════════════ -->
+<section class="section" id="modulos" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">El Motor Terapéutico</div>
+      <h2 class="section-h2">6 módulos. Todo lo que necesitas<br>para atender con plena confianza.</h2>
+      <p class="section-sub" style="margin:0 auto;">No es un chatbot genérico. Está entrenado en las disciplinas que tú practicas.</p>
     </div>
-    <div class="mods-grid" id="mods-grid"></div>
-    <div style="text-align:center;margin-top:44px;" class="fu">
-      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-gold" style="padding:16px 44px;font-size:15px;">Activar mi Motor — Es Gratis</a>
+    <div class="modules-grid" id="mods-grid"></div>
+    <div style="text-align:center;margin-top:44px;" class="fade-up">
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary" style="padding:15px 44px;font-size:1rem;">Activar mi Motor — Es Gratis</a>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIOS -->
-<section id="testimonios">
-  <div class="s-inner">
-    <div class="fu" style="text-align:center">
-      <div class="s-tag">Terapeutas reales. Resultados reales.</div>
-      <h2 class="s-h2">De "no me siento lista"<br>a agenda llena</h2>
-      <p class="s-sub">Más de 5,000 terapeutas ya dieron el primer paso. Esto es lo que pasó después.</p>
+<!-- ══ TESTIMONIOS ══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Terapeutas reales. Resultados reales.</div>
+      <h2 class="section-h2">De "no me siento lista" a agenda llena</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"Llevaba 8 meses con el título guardado, sin cobrar. Tenía miedo de equivocarme. La primera semana con HoloacademIA atendí 3 pacientes. El Motor no me dio respuestas — me dio la seguridad de que yo ya sabía. Solo necesitaba estructura."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,#9D174D,#6B21A8)">MJ</div>
-          <div>
-            <div class="t-name">María José Hernández</div>
-            <div class="t-role">Biomagnetismo · Guadalajara, México</div>
-          </div>
+      <div class="glass testi-card fade-up" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Llevaba 8 meses con el título guardado, sin cobrar. Tenía miedo de equivocarme. La primera semana con HoloacademIA atendí 3 pacientes. El Motor no me dio respuestas — me dio la seguridad de que yo ya sabía. Solo necesitaba estructura."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9D174D,#6B21A8)">MJ</div>
+          <div><div class="testi-name">María José Hernández</div><div class="testi-role">Biomagnetismo · Guadalajara, México</div></div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"Antes de cada sesión me temblaban las manos. Ahora describo el caso, el Motor me orienta y trabajo con calma total. Mis pacientes dicen que se sienten en manos expertas. No saben que tengo el mejor segundo criterio del mundo abierto en otra pantalla."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,#065F46,#059669)">CR</div>
-          <div>
-            <div class="t-name">Carolina Ríos</div>
-            <div class="t-role">Biodescodificación · Bogotá, Colombia</div>
-          </div>
+      <div class="glass testi-card fade-up" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Antes de cada sesión me temblaban las manos. Ahora describo el caso, el Motor me orienta y trabajo con calma total. Mis pacientes dicen que se sienten en manos expertas. No saben que tengo el mejor segundo criterio del mundo abierto en otra pantalla."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#065F46,#059669)">CR</div>
+          <div><div class="testi-name">Carolina Ríos</div><div class="testi-role">Biodescodificación · Bogotá, Colombia</div></div>
         </div>
       </div>
-      <div class="testi-card">
-        <div class="t-stars">★★★★★</div>
-        <p class="t-quote">"En 90 días: de no saber por dónde empezar a tener lista de espera. Los protocolos del Motor me hicieron sentir — por primera vez — como la terapeuta que siempre quise ser. Y cobro el doble de lo que cobraba antes."</p>
-        <div class="t-author">
-          <div class="t-av" style="background:linear-gradient(135deg,#92400E,#D97706)">AV</div>
-          <div>
-            <div class="t-name">Ana Lucía Vargas</div>
-            <div class="t-role">Terapeuta Holística · Buenos Aires, Argentina</div>
-          </div>
+      <div class="glass testi-card fade-up" style="transition-delay:.3s">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"En 90 días: de no saber por dónde empezar a tener lista de espera. Los protocolos del Motor me hicieron sentir — por primera vez — como la terapeuta que siempre quise ser. Y cobro el doble de lo que cobraba antes."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#92400E,#D97706)">AV</div>
+          <div><div class="testi-name">Ana Lucía Vargas</div><div class="testi-role">Terapeuta Holística · Buenos Aires, Argentina</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRECIOS -->
-<section id="precios">
-  <div class="s-inner">
-    <div class="fu" style="text-align:center">
-      <div class="s-tag">Planes</div>
-      <h2 class="s-h2">Empieza gratis hoy.<br>Escala cuando quieras.</h2>
-      <p class="s-sub">Sin compromisos. Sin tarjeta para el plan gratuito. Precios en pesos mexicanos.</p>
+<!-- ══ PRECIOS ══════════════════════════════════════════ -->
+<section class="section" id="precios" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Planes</div>
+      <h2 class="section-h2">Empieza gratis hoy.<br>Escala cuando quieras.</h2>
+      <p class="section-sub" style="margin:0 auto;">Sin compromisos. Sin tarjeta para el plan gratuito. Precios en pesos mexicanos.</p>
     </div>
-    <div class="pricing-row">
-      <div class="p-card fu">
-        <div class="p-name">HOLOCONEXIÓN</div>
-        <div class="p-price-row"><span class="p-cur">$</span><span class="p-amount">0</span></div>
-        <div class="p-period">Gratis para siempre</div>
-        <div class="p-desc">Para la terapeuta que quiere dar el primer paso sin riesgo. Empieza hoy mismo.</div>
-        <ul class="p-features">
-          <li>9 programas de estudio gratuitos</li>
-          <li>Acceso básico al Motor Terapéutico</li>
-          <li>Comunidad de terapeutas holísticas</li>
-          <li>Soporte por email</li>
-        </ul>
-        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-plan-ghost">Empezar gratis</a>
+    <div class="pricing-grid">
+      <div class="glass price-card fade-up" style="transition-delay:.1s">
+        <div class="price-name">HOLOCONEXIÓN</div>
+        <div class="price-amount"><span class="currency">$</span>0<span class="period"> MXN/mes</span></div>
+        <div class="price-desc">Para dar el primer paso sin riesgo. Empieza hoy mismo.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> 9 programas de estudio gratuitos</div>
+          <div class="price-feature"><span class="check">✓</span> Acceso básico al Motor Terapéutico</div>
+          <div class="price-feature"><span class="check">✓</span> Comunidad de terapeutas holísticas</div>
+          <div class="price-feature"><span class="check">✓</span> Soporte por email</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-ghost">Empezar gratis</a>
       </div>
-
-      <div class="p-card featured fu d1">
-        <div class="popular">⭐ MÁS POPULAR</div>
-        <div class="p-name">INICIACIÓN ELITE</div>
-        <div class="p-price-row"><span class="p-cur">$</span><span class="p-amount">297</span></div>
-        <div class="p-period">MXN / mes</div>
-        <div class="p-desc">Para la terapeuta que ya decidió cobrar por lo que sabe y quiere hacerlo con confianza total.</div>
-        <ul class="p-features">
-          <li>+75 cursos certificados completos</li>
-          <li>Motor Terapéutico IA sin límites</li>
-          <li>Generación de protocolos personalizados</li>
-          <li>Historial de sesiones ilimitado</li>
-          <li>Holovisión+ — clases en vivo</li>
-          <li>Biblioteca de recursos premium</li>
-        </ul>
-        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-plan-gold">Comenzar prueba gratis</a>
+      <div class="price-card featured fade-up" style="transition-delay:.2s">
+        <div class="popular-badge">⭐ MÁS POPULAR</div>
+        <div class="price-name">INICIACIÓN ELITE</div>
+        <div class="price-amount"><span class="currency">$</span>297<span class="period"> MXN/mes</span></div>
+        <div class="price-desc">Para la terapeuta que ya decidió cobrar con confianza total.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> +75 cursos certificados completos</div>
+          <div class="price-feature"><span class="check">✓</span> Motor Terapéutico IA sin límites</div>
+          <div class="price-feature"><span class="check">✓</span> Protocolos personalizados por caso</div>
+          <div class="price-feature"><span class="check">✓</span> Historial de sesiones ilimitado</div>
+          <div class="price-feature"><span class="check">✓</span> Holovisión+ — clases en vivo</div>
+          <div class="price-feature"><span class="check">✓</span> Biblioteca de recursos premium</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-primary">Comenzar prueba gratis →</a>
       </div>
-
-      <div class="p-card fu d2">
-        <div class="p-name">ACCESO PREMIUM</div>
-        <div class="p-price-row"><span class="p-cur">$</span><span class="p-amount">497</span></div>
-        <div class="p-period">MXN / mes</div>
-        <div class="p-desc">Para la terapeuta que quiere diferenciarse con certificaciones y diplomados oficiales.</div>
-        <ul class="p-features">
-          <li>Todo lo de Iniciación Elite</li>
-          <li>Certificaciones oficiales incluidas</li>
-          <li>Diplomados SEP (próximamente)</li>
-          <li>Acceso prioritario a módulos nuevos</li>
-          <li>Soporte premium con respuesta rápida</li>
-        </ul>
-        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-plan-ghost">Comenzar prueba gratis</a>
+      <div class="glass price-card fade-up" style="transition-delay:.3s">
+        <div class="price-name">ACCESO PREMIUM</div>
+        <div class="price-amount"><span class="currency">$</span>497<span class="period"> MXN/mes</span></div>
+        <div class="price-desc">Para diferenciarte con certificaciones y diplomados oficiales.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> Todo lo de Iniciación Elite</div>
+          <div class="price-feature"><span class="check">✓</span> Certificaciones oficiales incluidas</div>
+          <div class="price-feature"><span class="check">✓</span> Diplomados SEP (próximamente)</div>
+          <div class="price-feature"><span class="check">✓</span> Acceso prioritario a módulos nuevos</div>
+          <div class="price-feature"><span class="check">✓</span> Soporte premium con respuesta rápida</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-ghost">Comenzar prueba gratis</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section id="cta-final">
-  <div class="inner fu">
-    <div class="s-tag">No hay momento perfecto</div>
-    <h2>Cada semana que esperas<br>es dinero que alguien más cobra.</h2>
-    <p>Tu conocimiento ya está ahí. Tus pacientes te están buscando ahora mismo. Lo único que les falta a los dos es que tú des ese primer paso con la seguridad que mereces.</p>
-    <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-gold" style="font-size:16px;padding:18px 44px;">Activar mi Motor Terapéutico — Es Gratis</a>
-    <p class="cta-note">Sin tarjeta · Sin compromiso · Se une una terapeuta nueva cada 4 horas</p>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="faq-inner">
-    <div class="fu" style="text-align:center">
-      <div class="s-tag">Preguntas frecuentes</div>
-      <h2 class="s-h2">Lo que todas preguntan antes<br>de dar el paso</h2>
-    </div>
-    <div class="faq-list fu d1">
-      <div class="faq-item">
-        <div class="faq-q">¿El Motor me dice qué pares biomagnéticos aplicar? <span class="faq-arr">▼</span></div>
-        <div class="faq-a">No. Esa es una decisión clínica que siempre toma la terapeuta. El Motor te ayuda a identificar el origen emocional del conflicto, te orienta en el contexto del caso y genera el protocolo — pero el rastreo y la decisión terapéutica son tuyas. Siempre.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Necesito saber de tecnología o inteligencia artificial? <span class="faq-arr">▼</span></div>
-        <div class="faq-a">Absolutamente no. Si puedes escribirle un WhatsApp a una amiga, puedes usar el Motor. Solo describes el caso en tus propias palabras y la IA hace el resto. Sin cursos de tecnología, sin manuales técnicos.</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Puedo cancelar cuando quiera? <span class="faq-arr">▼</span></div>
-        <div class="faq-a">Sí, sin preguntas ni penalizaciones. Cancelas desde tu panel y tu acceso continúa hasta el fin del período ya pagado. Sin letras pequeñas. Sin retenciones. Sin llamadas para "convencerte de quedarte".</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q">¿Esto reemplaza mi formación como terapeuta? <span class="faq-arr">▼</span></div>
-        <div class="faq-a">No. HoloacademIA potencia tu formación — no la sustituye. Eres tú la terapeuta. La IA es tu segundo criterio, tu colega de confianza que te respalda. Cuanto más sepas, más poderosa será la combinación entre tu criterio y el Motor.</div>
-      </div>
+<!-- ══ CTA FINAL ════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-noise"></div>
+  <div class="container cta-content">
+    <div class="fade-up">
+      <h2>Cada semana que esperas<br>es dinero que alguien más cobra.</h2>
+      <p class="cta-sub">Tu conocimiento ya está ahí. Tus pacientes te están buscando ahora mismo. Lo único que les falta a los dos es que tú des ese primer paso con la seguridad que mereces.</p>
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-amber" style="font-size:1.05rem;padding:15px 36px;display:inline-block;">
+        Activar mi Motor Terapéutico — Es Gratis →
+      </a>
+      <p class="cta-note">Sin tarjeta · Sin compromiso · Se une una terapeuta nueva cada 4 horas</p>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ══ FAQ ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Lo que todas preguntan antes de dar el paso</div>
+      <h2 class="section-h2">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up" style="transition-delay:.1s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿El Motor me dice qué pares biomagnéticos aplicar? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. Esa es una decisión clínica que siempre toma la terapeuta. El Motor te ayuda a identificar el origen emocional del conflicto y genera el protocolo — pero el rastreo y la decisión terapéutica son siempre tuyas. El Motor es tu segundo criterio, no tu primer criterio.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.15s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Necesito saber de tecnología o inteligencia artificial? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutamente no. Si puedes escribirle un WhatsApp a una amiga, puedes usar el Motor. Solo describes el caso en tus propias palabras y la IA hace el resto. Sin cursos de tecnología, sin manuales técnicos. En menos de 10 minutos puedes hacer tu primera consulta.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.2s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Puedo cancelar cuando quiera? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Sí, sin preguntas ni penalizaciones. Cancelas desde tu panel con un clic y tu acceso continúa hasta el fin del período pagado. Sin letras pequeñas, sin llamadas para convencerte de quedarte.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.25s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Esto reemplaza mi formación como terapeuta? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. HoloacademIA potencia tu formación, no la sustituye. Eres tú la terapeuta. La IA es tu colega de confianza que te respalda. Cuanto más sepas, más poderosa será la combinación entre tu criterio y el Motor.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
 <footer>
-  <div class="footer-logo">Holo<em>academ</em>IA</div>
-  <div class="footer-tag">La primera IA para terapeutas holísticos hispanohablantes</div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2025 HoloacademIA. Todos los derechos reservados.</div>
+  <div class="footer-inner">
+    <div>
+      <a href="https://www.holoacademia.com" target="_blank" class="nav-logo" style="font-size:1.1rem;">Holo<em>academ</em>IA</a>
+      <div class="footer-copy">© 2025 HoloacademIA. Todos los derechos reservados.</div>
+    </div>
     <div class="footer-links">
       <a href="https://www.holoacademia.com/planes" target="_blank">Planes</a>
       <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
@@ -797,21 +732,22 @@ footer {
 
 <script>
 /* ── INTERSECTION OBSERVER ── */
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.fu, .pain-card, .mod-card, .testi-card').forEach(el => io.observe(el));
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 /* ── AI MODULES ── */
 const MODS = [
   { emoji:'💜', name:'Motor Terapéutico', tag:'El núcleo', c:'#A855F7',
-    desc:'Describe el caso y recibe: origen emocional del conflicto, guía de rastreo y protocolo de liberación en tiempo real.',
+    desc:'Describe el caso y recibe: origen emocional, guía de rastreo y protocolo de liberación en tiempo real.',
     bullets:['Análisis de conflicto emocional','Protocolo de liberación personalizado','Historial de sesiones del paciente'] },
   { emoji:'🧲', name:'Rastreo de Imanes', tag:'Biomagnetismo', c:'#9333EA',
-    desc:'Te guía par a par durante el rastreo biomagnético: zonas de colocación, polaridad y tiempo de exposición según el caso activo.',
+    desc:'Te guía par a par durante el rastreo biomagnético: zonas, polaridad y tiempo de exposición según el caso.',
     bullets:['Guía de colocación par a par','Polaridad y tiempo de exposición','Registro del rastreo completo'] },
   { emoji:'🔢', name:'Módulo Numerología', tag:'Análisis personal', c:'#16A34A',
-    desc:'Mapa numerológico completo del paciente: misión de vida, camino del destino, talentos ocultos y ciclos activos.',
+    desc:'Mapa numerológico completo: misión de vida, camino del destino, talentos ocultos y ciclos personales activos.',
     bullets:['Mapa numerológico completo','Ciclos personales activos','Integrado al perfil del paciente'] },
   { emoji:'⭐', name:'Astrología Médica', tag:'Diagnóstico ampliado', c:'#D97706',
     desc:'Predisposiciones físicas y emocionales desde la carta natal. Conecta signos, casas y planetas con órganos y sistemas.',
@@ -820,39 +756,29 @@ const MODS = [
     desc:'Interpreta la carta natal del paciente: ascendente, planetas en casas, aspectos y tránsitos actuales.',
     bullets:['Lectura de carta natal completa','Ascendente y planetas en casas','Tránsitos y ciclos actuales'] },
   { emoji:'☀️', name:'Horóscopo Terapéutico', tag:'Seguimiento continuo', c:'#0891B2',
-    desc:'Pronóstico energético semanal y mensual basado en la carta natal. Una herramienta de seguimiento que fideliza al paciente.',
+    desc:'Pronóstico energético semanal y mensual basado en la carta natal. Fideliza a tu paciente con valor continuo.',
     bullets:['Pronóstico semanal y mensual','Alertas de tránsitos relevantes','Entregable para el paciente'] },
 ];
-
 const grid = document.getElementById('mods-grid');
 MODS.forEach((m, i) => {
-  const bullets = m.bullets.map(b => `<div class="mod-bullet"><span class="mod-dot" style="background:${m.c}"></span>${b}</div>`).join('');
+  const bullets = m.bullets.map(b => `<div class="module-bullet"><span class="module-dot" style="background:${m.c}"></span>${b}</div>`).join('');
   const card = document.createElement('div');
-  card.className = 'mod-card';
-  card.style.transitionDelay = (i % 3 * 0.09) + 's';
-  card.innerHTML = `
-    <div class="mod-top">
-      <div class="mod-emoji">${m.emoji}</div>
-      <div class="mod-badge" style="color:${m.c};background:${m.c}18;border:1px solid ${m.c}30">${m.tag}</div>
-    </div>
-    <div class="mod-name">${m.name}</div>
-    <p class="mod-desc">${m.desc}</p>
-    <div class="mod-bullets">${bullets}</div>`;
-  card.addEventListener('mouseenter', () => { card.style.borderColor = m.c + '40'; card.style.boxShadow = `0 12px 40px ${m.c}18`; });
-  card.addEventListener('mouseleave', () => { card.style.borderColor = ''; card.style.boxShadow = ''; });
+  card.className = 'glass module-card fade-up';
+  card.style.transitionDelay = (i % 3 * 0.08) + 's';
+  card.innerHTML = `<span class="module-emoji">${m.emoji}</span><div class="module-badge" style="color:${m.c};background:${m.c}18;border-color:${m.c}30">${m.tag}</div><h3>${m.name}</h3><p>${m.desc}</p><div class="module-bullets">${bullets}</div>`;
+  card.addEventListener('mouseenter', () => { card.style.borderColor = m.c + '40'; card.style.transform = 'translateY(-4px)'; });
+  card.addEventListener('mouseleave', () => { card.style.borderColor = ''; card.style.transform = ''; });
   grid.appendChild(card);
-  io.observe(card);
+  observer.observe(card);
 });
 
-/* ── FAQ ACCORDION ── */
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  });
-});
+/* ── FAQ ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
 
 /* ── HEIGHT REPORTING ── */
 function rh() { window.parent.postMessage({ action:'setHeight', height: document.documentElement.scrollHeight }, '*'); }
