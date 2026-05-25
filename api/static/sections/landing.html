@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoloacademIA — La IA para Terapeutas Holísticos</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #111827;
+    background: #fff;
+    overflow-x: hidden;
+  }
+
+  /* ── UTILS ─────────────────────────────────────────────── */
+  .fade-up { opacity: 0; transform: translateY(32px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+  .fade-up:nth-child(2) { transition-delay: 0.1s; }
+  .fade-up:nth-child(3) { transition-delay: 0.2s; }
+  .fade-up:nth-child(4) { transition-delay: 0.3s; }
+  .fade-up:nth-child(5) { transition-delay: 0.4s; }
+
+  /* ── NAV ─────────────────────────────────────────────────*/
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,10,40,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-size: 18px; font-weight: 900; color: #fff;
+    letter-spacing: -0.5px; text-decoration: none;
+  }
+  .nav-logo span { color: #A78BFA; }
+  .nav-cta {
+    display: inline-block;
+    padding: 9px 20px; border-radius: 8px;
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #000; font-size: 13px; font-weight: 800;
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(245,158,11,0.4); }
+
+  /* ── HERO ───────────────────────────────────────────────*/
+  #hero {
+    background: linear-gradient(160deg, #0C0A28 0%, #1A0A3B 40%, #0F0720 100%);
+    padding: 100px 5% 80px;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: 780px; margin: 0 auto;
+    text-align: center; position: relative; z-index: 1;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,58,237,0.15); border: 1px solid rgba(124,58,237,0.3);
+    border-radius: 40px; padding: 6px 16px;
+    font-size: 12px; font-weight: 700; color: #C4B5FD;
+    letter-spacing: 0.04em; margin-bottom: 28px;
+  }
+  .hero-badge span { font-size: 14px; }
+  #hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900; color: #fff;
+    letter-spacing: -2px; line-height: 1.05;
+    margin-bottom: 22px;
+  }
+  #hero h1 em { font-style: normal; color: #A78BFA; }
+  .hero-sub {
+    font-size: clamp(15px, 2vw, 18px);
+    color: rgba(255,255,255,0.65); line-height: 1.7;
+    margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;
+  }
+  .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+  .btn-primary {
+    display: inline-block; padding: 17px 32px; border-radius: 12px;
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #000; font-size: 15px; font-weight: 900;
+    text-decoration: none; box-shadow: 0 8px 32px rgba(245,158,11,0.4);
+    transition: all 0.2s; letter-spacing: -0.3px;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(245,158,11,0.5); }
+  .btn-ghost {
+    display: inline-block; padding: 17px 28px; border-radius: 12px;
+    border: 1.5px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8);
+    font-size: 15px; font-weight: 700; text-decoration: none;
+    transition: all 0.2s; letter-spacing: -0.3px;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+  .hero-trust { font-size: 12.5px; color: rgba(255,255,255,0.3); }
+  .hero-trust span { margin: 0 6px; }
+
+  /* ── PROBLEM ────────────────────────────────────────────*/
+  #problem {
+    background: #F9F5FF;
+    padding: 96px 5%;
+  }
+  .section-tag {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #7C3AED; margin-bottom: 12px;
+  }
+  .section-h2 {
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    font-weight: 900; color: #111827;
+    letter-spacing: -1px; line-height: 1.1;
+    margin-bottom: 14px;
+  }
+  .section-sub {
+    font-size: 16px; color: #6B7280; line-height: 1.7;
+    max-width: 560px;
+  }
+  .problem-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+    margin-top: 52px;
+  }
+  .problem-card {
+    background: #fff; border-radius: 18px;
+    border: 1.5px solid #EDE9FE;
+    padding: 30px 26px;
+    box-shadow: 0 2px 16px rgba(124,58,237,0.05);
+  }
+  .problem-card .icon { font-size: 32px; margin-bottom: 14px; }
+  .problem-card h3 { font-size: 15px; font-weight: 800; color: #111827; margin-bottom: 10px; line-height: 1.35; }
+  .problem-card p { font-size: 13.5px; color: #6B7280; line-height: 1.65; }
+
+  /* ── SOLUTION ────────────────────────────────────────────*/
+  #solution {
+    background: #1E1B4B;
+    padding: 96px 5%;
+  }
+  #solution .section-tag { color: #A78BFA; }
+  #solution .section-h2 { color: #fff; }
+  #solution .section-sub { color: rgba(255,255,255,0.6); }
+  .solution-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+    margin-top: 56px; align-items: center;
+  }
+  .solution-points { display: flex; flex-direction: column; gap: 24px; }
+  .solution-point {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .sp-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: rgba(167,139,250,0.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .sp-text h4 { font-size: 15px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .sp-text p { font-size: 13.5px; color: rgba(255,255,255,0.55); line-height: 1.65; }
+  .solution-visual {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 28px 24px;
+  }
+  .chat-header {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .chat-avatar {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: linear-gradient(135deg, #7C3AED, #4A1D96);
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+  }
+  .chat-title { font-size: 13px; font-weight: 700; color: #fff; }
+  .chat-status { font-size: 11px; color: #34D399; }
+  .chat-msgs { display: flex; flex-direction: column; gap: 12px; }
+  .msg { max-width: 85%; }
+  .msg.user { align-self: flex-end; }
+  .msg-bubble {
+    padding: 10px 14px; border-radius: 14px;
+    font-size: 12.5px; line-height: 1.55;
+  }
+  .msg.ai .msg-bubble {
+    background: rgba(124,58,237,0.2); color: rgba(255,255,255,0.85);
+    border-radius: 4px 14px 14px 14px;
+  }
+  .msg.user .msg-bubble {
+    background: rgba(245,158,11,0.15); color: rgba(255,255,255,0.75);
+    border-radius: 14px 4px 14px 14px;
+  }
+  .msg-name { font-size: 10px; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+
+  /* ── COMPARISON TABLE ───────────────────────────────────*/
+  #comparativa { padding: 96px 5%; background: #fff; }
+  .table-wrap { margin-top: 52px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; }
+  table thead tr th {
+    padding: 16px 20px; text-align: center; font-size: 14px; font-weight: 800;
+    border-bottom: 2px solid #E5E7EB;
+  }
+  thead th:first-child { text-align: left; }
+  thead th.col-normal { color: #6B7280; }
+  thead th.col-holo {
+    color: #7C3AED;
+    background: #F5F3FF; border-radius: 12px 12px 0 0;
+    position: relative;
+  }
+  thead th.col-holo::after {
+    content: '⭐ MEJOR OPCIÓN';
+    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; font-weight: 800; color: #7C3AED;
+    background: #EDE9FE; border-radius: 20px; padding: 3px 10px;
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid #F3F4F6; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 14px 20px; font-size: 13.5px; }
+  tbody td:first-child { font-weight: 600; color: #374151; }
+  tbody td:not(:first-child) { text-align: center; }
+  tbody td.col-holo { background: #F5F3FF; }
+  .check { color: #7C3AED; font-weight: 900; font-size: 16px; }
+  .cross { color: #D1D5DB; font-size: 16px; }
+  .partial { color: #F59E0B; font-size: 13px; font-weight: 700; }
+
+  /* ── HOW IT WORKS ───────────────────────────────────────*/
+  #como {
+    background: linear-gradient(160deg, #0F0720 0%, #1E1B4B 100%);
+    padding: 96px 5%;
+  }
+  #como .section-tag { color: #A78BFA; }
+  #como .section-h2 { color: #fff; }
+  #como .section-sub { color: rgba(255,255,255,0.55); }
+  .steps { display: flex; gap: 0; margin-top: 56px; position: relative; }
+  .steps::before {
+    content: '';
+    position: absolute; top: 28px; left: calc(16.6% + 28px); right: calc(16.6% + 28px);
+    height: 2px;
+    background: linear-gradient(90deg, rgba(124,58,237,0.6), rgba(167,139,250,0.3), rgba(124,58,237,0.6));
+  }
+  .step {
+    flex: 1; text-align: center; padding: 0 16px; position: relative;
+  }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 900; margin: 0 auto 20px;
+    position: relative; z-index: 1;
+  }
+  .step-num.active {
+    background: linear-gradient(135deg, #7C3AED, #4A1D96);
+    color: #fff; box-shadow: 0 0 0 6px rgba(124,58,237,0.2);
+  }
+  .step-num.inactive {
+    background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.1);
+  }
+  .step-emoji { font-size: 24px; margin-bottom: 12px; }
+  .step h3 { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+  .step p { font-size: 12.5px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* ── MODULES ─────────────────────────────────────────────*/
+  #modulos { background: #fff; padding: 96px 5%; }
+  .modules-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+    margin-top: 52px;
+  }
+  .module-card {
+    border-radius: 18px; border: 1.5px solid #F3F4F6;
+    background: #FAFAFA; padding: 26px 22px;
+    transition: all 0.25s;
+    opacity: 0; transform: translateY(32px);
+  }
+  .module-card.visible { opacity: 1; transform: none; }
+  .module-card:hover {
+    transform: translateY(-4px);
+    background: #fff;
+  }
+  .mc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .mc-emoji { font-size: 32px; }
+  .mc-badge {
+    font-size: 10px; font-weight: 800; border-radius: 20px;
+    padding: 3px 10px; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .mc-name { font-size: 15px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+  .mc-desc { font-size: 13px; color: #6B7280; line-height: 1.65; margin-bottom: 16px; }
+  .mc-bullets { border-top: 1px solid #F3F4F6; padding-top: 14px; display: flex; flex-direction: column; gap: 7px; }
+  .mc-bullet { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #374151; }
+  .mc-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── TESTIMONIALS ───────────────────────────────────────*/
+  #testimonios { background: #F5F3FF; padding: 96px 5%; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .testi-card {
+    background: #fff; border: 1.5px solid #EDE9FE; border-radius: 18px;
+    padding: 28px 24px; box-shadow: 0 4px 20px rgba(124,58,237,0.06);
+    transition: all 0.25s;
+  }
+  .testi-card.visible { opacity: 1; transform: none; }
+  .stars { color: #F59E0B; font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
+  .testi-quote { font-size: 13.5px; color: #374151; line-height: 1.75; margin-bottom: 20px; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .testi-name { font-weight: 700; font-size: 13px; color: #111827; }
+  .testi-role { font-size: 11.5px; color: #6B7280; margin-top: 2px; }
+
+  /* ── PRICING ─────────────────────────────────────────────*/
+  #precios { background: #fff; padding: 96px 5%; }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 22px;
+    margin-top: 52px; align-items: start;
+  }
+  .pricing-card {
+    border-radius: 20px; border: 1.5px solid #E5E7EB;
+    padding: 32px 26px; position: relative;
+    transition: all 0.2s;
+  }
+  .pricing-card:hover { transform: translateY(-4px); }
+  .pricing-card.featured {
+    border-color: #7C3AED; background: #1E1B4B;
+    box-shadow: 0 20px 60px rgba(124,58,237,0.25);
+  }
+  .popular-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: #000; font-size: 11px; font-weight: 900;
+    padding: 4px 16px; border-radius: 20px; white-space: nowrap;
+  }
+  .plan-name { font-size: 13px; font-weight: 800; color: #7C3AED; letter-spacing: 0.04em; margin-bottom: 8px; }
+  .pricing-card.featured .plan-name { color: #A78BFA; }
+  .plan-price { margin-bottom: 6px; }
+  .plan-amount { font-size: 40px; font-weight: 900; color: #111827; letter-spacing: -2px; }
+  .pricing-card.featured .plan-amount { color: #fff; }
+  .plan-currency { font-size: 18px; font-weight: 700; vertical-align: top; margin-top: 8px; display: inline-block; color: #6B7280; }
+  .pricing-card.featured .plan-currency { color: rgba(255,255,255,0.6); }
+  .plan-period { font-size: 13px; color: #6B7280; margin-bottom: 22px; }
+  .pricing-card.featured .plan-period { color: rgba(255,255,255,0.5); }
+  .plan-desc { font-size: 13px; color: #6B7280; line-height: 1.6; margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #F3F4F6; }
+  .pricing-card.featured .plan-desc { color: rgba(255,255,255,0.55); border-bottom-color: rgba(255,255,255,0.1); }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #374151; }
+  .pricing-card.featured .plan-features li { color: rgba(255,255,255,0.75); }
+  .plan-features li::before { content: '✓'; color: #7C3AED; font-weight: 900; flex-shrink: 0; margin-top: 1px; }
+  .pricing-card.featured .plan-features li::before { color: #A78BFA; }
+  .plan-cta-btn {
+    display: block; width: 100%; padding: 14px 20px; border-radius: 10px;
+    text-align: center; font-size: 14px; font-weight: 800;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .plan-cta-btn.light {
+    background: #F5F3FF; color: #7C3AED;
+  }
+  .plan-cta-btn.light:hover { background: #EDE9FE; }
+  .plan-cta-btn.amber {
+    background: linear-gradient(135deg, #F59E0B, #D97706); color: #000;
+    box-shadow: 0 6px 20px rgba(245,158,11,0.35);
+  }
+  .plan-cta-btn.amber:hover { transform: translateY(-1px); box-shadow: 0 10px 30px rgba(245,158,11,0.45); }
+
+  /* ── CTA FINAL ───────────────────────────────────────────*/
+  #cta-final {
+    background: linear-gradient(160deg, #1E1B4B, #4A1D96);
+    padding: 96px 5%; text-align: center;
+  }
+  #cta-final .section-tag { color: #C4B5FD; }
+  #cta-final h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; color: #fff; letter-spacing: -1.5px;
+    line-height: 1.1; margin-bottom: 18px;
+  }
+  #cta-final p { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 36px; line-height: 1.6; }
+  #cta-final .note { margin-top: 20px; font-size: 12.5px; color: rgba(255,255,255,0.3); }
+
+  /* ── FAQ ────────────────────────────────────────────────*/
+  #faq { background: #fff; padding: 96px 5%; }
+  .faq-list { margin-top: 48px; display: flex; flex-direction: column; gap: 14px; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .faq-item {
+    border: 1.5px solid #F3F4F6; border-radius: 14px;
+    overflow: hidden; transition: border-color 0.2s;
+  }
+  .faq-item.open { border-color: #DDD6FE; }
+  .faq-q {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 22px; cursor: pointer; gap: 16px;
+    font-size: 14.5px; font-weight: 700; color: #111827;
+    user-select: none;
+  }
+  .faq-q:hover { background: #FAFAFA; }
+  .faq-arrow { font-size: 16px; color: #7C3AED; flex-shrink: 0; transition: transform 0.3s; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    display: none; padding: 0 22px 18px;
+    font-size: 13.5px; color: #6B7280; line-height: 1.7;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── FOOTER ─────────────────────────────────────────────*/
+  footer {
+    background: #0C0A1A; padding: 56px 5% 32px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .footer-logo { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 8px; }
+  .footer-logo span { color: #A78BFA; }
+  .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.35); margin-bottom: 48px; }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  /* ── RESPONSIVE ─────────────────────────────────────────*/
+  @media (max-width: 960px) {
+    .problem-grid, .modules-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .solution-grid { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; gap: 28px; }
+    .steps::before { display: none; }
+    .step { display: flex; align-items: flex-start; gap: 16px; text-align: left; }
+    .step-num { margin: 0; flex-shrink: 0; }
+    .step-emoji { margin-bottom: 4px; }
+  }
+  @media (max-width: 640px) {
+    .problem-grid, .modules-grid, .testi-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    thead th.col-holo::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══════════════════════════════════════════════ -->
+<nav>
+  <a href="https://www.holoacademia.com" target="_blank" class="nav-logo">Holo<span>academ</span>IA</a>
+  <a href="https://www.holoacademia.com/planes" target="_blank" class="nav-cta">Prueba Gratis →</a>
+</nav>
+
+<!-- ══ HERO ═════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-badge fade-up"><span>🤖</span> La primera IA para terapeutas holísticos hispanohablantes</div>
+    <h1 class="fade-up">Aprende. Practica. <em>Cobra con confianza.</em></h1>
+    <p class="hero-sub fade-up">
+      No es solo una plataforma de cursos. Es el único sistema donde aprendes biomagnetismo, biodescodificación y más, <strong style="color:rgba(255,255,255,0.85)">y tienes una IA entrenada contigo en cada consulta real</strong> — para que nunca te quedes sin respuestas.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary">Activar mi Motor Terapéutico — Es Gratis</a>
+      <a href="https://www.holoacademia.com/programas" target="_blank" class="btn-ghost">Ver los +75 cursos →</a>
+    </div>
+    <p class="hero-trust fade-up">Sin tarjeta de crédito <span>·</span> Acceso inmediato <span>·</span> Cancela cuando quieras</p>
+  </div>
+</section>
+
+<!-- ══ PROBLEM ═══════════════════════════════════════════ -->
+<section id="problem">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="fade-up">
+      <div class="section-tag">El problema con los cursos normales</div>
+      <h2 class="section-h2">Tienes el título. Tienes el conocimiento.<br>Pero cuando llega el paciente, te quedas sola.</h2>
+      <p class="section-sub">Invirtes meses y miles de pesos aprendiendo. Y el día que intentas aplicarlo, aparece la duda. Sin mentora. Sin respaldo. Sin saber si vas por buen camino.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card fade-up">
+        <div class="icon">📚</div>
+        <h3>Los cursos normales te dan teoría, no acompañamiento</h3>
+        <p>Aprendes el protocolo, pero nadie te dice si lo estás aplicando bien en el caso real de tu paciente.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="icon">😰</div>
+        <h3>"¿Y si me equivoco?" — el miedo que paraliza tu agenda</h3>
+        <p>La inseguridad no es falta de conocimiento. Es falta de un segundo criterio cuando más lo necesitas.</p>
+      </div>
+      <div class="problem-card fade-up">
+        <div class="icon">💸</div>
+        <h3>El título guardado no paga facturas</h3>
+        <p>Cada semana que esperas "estar lista" es dinero que se va. Los pacientes no esperan a que te sientas perfecta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SOLUTION ══════════════════════════════════════════ -->
+<section id="solution">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="fade-up">
+      <div class="section-tag">La solución</div>
+      <h2 class="section-h2" style="color:#fff;">HoloacademIA: aprendes <em style="font-style:normal;color:#A78BFA">y</em> tienes IA contigo en cada sesión</h2>
+      <p class="section-sub">No es un chatbot genérico. Es un motor especializado en terapia holística que te guía en tiempo real mientras atiendes a tus pacientes reales.</p>
+    </div>
+    <div class="solution-grid">
+      <div class="solution-points">
+        <div class="solution-point fade-up">
+          <div class="sp-icon">🧠</div>
+          <div class="sp-text">
+            <h4>75+ cursos certificados en terapia holística</h4>
+            <p>Biomagnetismo, biodescodificación, psicosomática, astrología médica, numerología y más — todo en una sola plataforma.</p>
+          </div>
+        </div>
+        <div class="solution-point fade-up">
+          <div class="sp-icon">⚡</div>
+          <div class="sp-text">
+            <h4>IA especializada activa durante tus consultas reales</h4>
+            <p>Describes el caso, el motor analiza, te orienta y genera el protocolo. Todo mientras el paciente está frente a ti.</p>
+          </div>
+        </div>
+        <div class="solution-point fade-up">
+          <div class="sp-icon">📋</div>
+          <div class="sp-text">
+            <h4>Protocolos personalizados generados al instante</h4>
+            <p>Cada sesión queda documentada automáticamente. Nunca más la hoja en blanco después de la consulta.</p>
+          </div>
+        </div>
+        <div class="solution-point fade-up">
+          <div class="sp-icon">🚀</div>
+          <div class="sp-text">
+            <h4>De estudiante a terapeuta que cobra — en semanas</h4>
+            <p>El Motor Terapéutico te da el respaldo para atender con confianza desde tu primera sesión paga.</p>
+          </div>
+        </div>
+      </div>
+      <div class="solution-visual fade-up">
+        <div class="chat-header">
+          <div class="chat-avatar">💜</div>
+          <div>
+            <div class="chat-title">Motor Terapéutico IA</div>
+            <div class="chat-status">● En línea</div>
+          </div>
+        </div>
+        <div class="chat-msgs">
+          <div class="msg ai">
+            <div class="msg-name">Motor IA</div>
+            <div class="msg-bubble">Hola! Describe el caso de tu paciente y te guío en el rastreo biomagnético. ¿Cuáles son los síntomas principales?</div>
+          </div>
+          <div class="msg user">
+            <div class="msg-name">Tú</div>
+            <div class="msg-bubble">Paciente, 38 años, dolor lumbar crónico + ansiedad desde hace 6 meses. Sin causa médica aparente.</div>
+          </div>
+          <div class="msg ai">
+            <div class="msg-name">Motor IA</div>
+            <div class="msg-bubble">Basándome en el cuadro: sugiero explorar el conflicto emocional de "sentirse cargando con todo". En biodescodificación correlaciona con la zona lumbar L4-L5. Te genero el protocolo completo ahora.</div>
+          </div>
+          <div class="msg ai">
+            <div class="msg-name">Motor IA</div>
+            <div class="msg-bubble">✅ Protocolo generado · 📋 Sesión documentada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARATIVA ════════════════════════════════════════ -->
+<section id="comparativa">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="fade-up">
+      <div class="section-tag">Comparativa</div>
+      <h2 class="section-h2">Curso normal vs HoloacademIA</h2>
+      <p class="section-sub">No es una cuestión de precio. Es una cuestión de qué pasa después de que terminas de estudiar.</p>
+    </div>
+    <div class="table-wrap fade-up" style="margin-top:52px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40%"></th>
+            <th class="col-normal">Curso Normal</th>
+            <th class="col-holo" style="padding-top:36px;">HoloacademIA</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Aprendes el método</td>
+            <td><span class="check">✓</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Acompañamiento durante tus consultas reales</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>IA activa mientras atiendes pacientes</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Generación de protocolos personalizados</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Historial y documentación de sesiones</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Múltiples disciplinas en un solo lugar</td>
+            <td><span class="partial">A veces</span></td>
+            <td class="col-holo"><span class="check">✓ 9 disciplinas</span></td>
+          </tr>
+          <tr>
+            <td>Cursos certificados + Motor IA integrado</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Acceso gratuito para empezar</td>
+            <td><span class="cross">✗</span></td>
+            <td class="col-holo"><span class="check">✓ Plan gratis disponible</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CÓMO FUNCIONA ══════════════════════════════════════ -->
+<section id="como">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;">
+    <div class="fade-up">
+      <div class="section-tag">¿Cómo funciona?</div>
+      <h2 class="section-h2">Tres pasos. Una consulta más segura.</h2>
+      <p class="section-sub">No necesitas aprender a usar la IA. Solo describes el caso y el Motor hace el trabajo.</p>
+    </div>
+    <div class="steps fade-up">
+      <div class="step">
+        <div class="step-num inactive">01</div>
+        <div>
+          <div class="step-emoji">💬</div>
+          <h3>Describes el caso de tu paciente</h3>
+          <p>Síntomas, historial emocional, motivo de consulta. En lenguaje natural, como lo harías con una colega.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num active">02</div>
+        <div>
+          <div class="step-emoji">⚡</div>
+          <h3>El Motor analiza y te orienta en tiempo real</h3>
+          <p>Identifica el conflicto emocional, correlaciona disciplinas y te guía paso a paso en el rastreo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num inactive">03</div>
+        <div>
+          <div class="step-emoji">📋</div>
+          <h3>Recibes tu protocolo personalizado</h3>
+          <p>Documentado, listo para compartir con el paciente o guardar en su historial.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÓDULOS ════════════════════════════════════════════ -->
+<section id="modulos">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="fade-up">
+      <div class="section-tag">El Motor Terapéutico</div>
+      <h2 class="section-h2">6 módulos. Todo lo que necesitas para atender con confianza.</h2>
+      <p class="section-sub">No es un chatbot genérico. Está entrenado en las disciplinas que tú practicas.</p>
+    </div>
+    <div class="modules-grid" id="modules-grid">
+      <!-- rendered by JS -->
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="fade-up">
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary" style="padding:16px 40px;font-size:15px;">Activar mi Motor Terapéutico — Es Gratis</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIOS ════════════════════════════════════════ -->
+<section id="testimonios">
+  <div style="max-width:1100px;margin:0 auto;text-align:center;">
+    <div class="fade-up">
+      <div class="section-tag">Testimonios</div>
+      <h2 class="section-h2">De "no me siento lista" a agenda llena</h2>
+      <p class="section-sub">Más de 5,000 terapeutas ya dieron el primer paso. Esto es lo que dicen.</p>
+    </div>
+    <div class="testi-grid" style="margin-top:52px;">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Llevaba 8 meses con el título guardado, sin cobrar. La primera semana con HoloacademIA atendí 3 pacientes. El motor no solo me dio respuestas — me dio la seguridad de que yo ya sabía, solo necesitaba estructura."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#7C3AED">MJ</div>
+          <div>
+            <div class="testi-name">María José Hernández</div>
+            <div class="testi-role">Biomagnetismo · Guadalajara</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"Antes de cada sesión me temblaban las manos. Ahora describo el caso, el motor me orienta y trabajo con calma. Mis pacientes dicen que se sienten en manos expertas. No saben que tengo el mejor 'segundo criterio' del mundo abierto."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#059669">CR</div>
+          <div>
+            <div class="testi-name">Carolina Ríos</div>
+            <div class="testi-role">Biodescodificación · Bogotá</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">"En 90 días: de no saber por dónde empezar a tener lista de espera. Los protocolos del motor me hicieron sentir — por primera vez — como la terapeuta que siempre quise ser. Y encima aprendí 4 disciplinas nuevas."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#D97706">AV</div>
+          <div>
+            <div class="testi-name">Ana Lucía Vargas</div>
+            <div class="testi-role">Terapeuta Holística · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRECIOS ════════════════════════════════════════════ -->
+<section id="precios">
+  <div style="max-width:1000px;margin:0 auto;text-align:center;">
+    <div class="fade-up">
+      <div class="section-tag">Planes</div>
+      <h2 class="section-h2">Empieza gratis. Escala cuando quieras.</h2>
+      <p class="section-sub">Sin compromisos. Sin tarjeta de crédito para el plan gratuito. Precios en pesos mexicanos.</p>
+    </div>
+    <div class="pricing-grid" style="margin-top:60px;">
+
+      <!-- PLAN 1 -->
+      <div class="pricing-card fade-up">
+        <div class="plan-name">HOLOCONEXIÓN</div>
+        <div class="plan-price">
+          <span class="plan-currency">$</span><span class="plan-amount">0</span>
+        </div>
+        <div class="plan-period">Gratis para siempre</div>
+        <div class="plan-desc">Comienza a explorar la plataforma y el Motor Terapéutico sin costo.</div>
+        <ul class="plan-features">
+          <li>9 programas de estudio gratuitos</li>
+          <li>Acceso básico al Motor Terapéutico</li>
+          <li>Comunidad de terapeutas</li>
+          <li>Soporte por email</li>
+        </ul>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="plan-cta-btn light">Empezar gratis</a>
+      </div>
+
+      <!-- PLAN 2 FEATURED -->
+      <div class="pricing-card featured fade-up">
+        <div class="popular-badge">⭐ MÁS POPULAR</div>
+        <div class="plan-name">INICIACIÓN ELITE</div>
+        <div class="plan-price">
+          <span class="plan-currency" style="color:rgba(255,255,255,0.5)">$</span>
+          <span class="plan-amount" style="color:#fff">297</span>
+        </div>
+        <div class="plan-period">MXN / mes</div>
+        <div class="plan-desc">Todo lo que necesitas para atender pacientes con confianza desde el primer día.</div>
+        <ul class="plan-features">
+          <li>+75 cursos certificados completos</li>
+          <li>Motor Terapéutico IA sin límites</li>
+          <li>Motor de Protocolos personalizados</li>
+          <li>Holovisión+ (clases en vivo)</li>
+          <li>Biblioteca de recursos premium</li>
+          <li>Historial de sesiones ilimitado</li>
+        </ul>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="plan-cta-btn amber">Comenzar prueba gratis</a>
+      </div>
+
+      <!-- PLAN 3 -->
+      <div class="pricing-card fade-up">
+        <div class="plan-name">ACCESO PREMIUM</div>
+        <div class="plan-price">
+          <span class="plan-currency">$</span><span class="plan-amount">497</span>
+        </div>
+        <div class="plan-period">MXN / mes</div>
+        <div class="plan-desc">Para la terapeuta que quiere diferenciarse con certificaciones y diplomados oficiales.</div>
+        <ul class="plan-features">
+          <li>Todo lo de Iniciación Elite</li>
+          <li>Cursos con certificación oficial</li>
+          <li>Diplomados SEP (próximamente)</li>
+          <li>Acceso prioritario a nuevos módulos</li>
+          <li>Soporte premium con respuesta rápida</li>
+        </ul>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="plan-cta-btn light">Comenzar prueba gratis</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══════════════════════════════════════════ -->
+<section id="cta-final">
+  <div style="max-width:620px;margin:0 auto;" class="fade-up">
+    <div class="section-tag">No hay momento perfecto</div>
+    <h2>Cada semana que esperas es una semana que otra terapeuta cobró lo que tú mereces.</h2>
+    <p>Tu conocimiento ya está ahí. Tus pacientes te están buscando. El único ingrediente que faltaba es el respaldo para dar ese primer paso con seguridad.</p>
+    <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary" style="font-size:16px;padding:18px 40px;">Activar mi Motor Terapéutico — Es Gratis</a>
+    <p class="note">Sin tarjeta de crédito · Se une una terapeuta nueva cada 4 horas</p>
+  </div>
+</section>
+
+<!-- ══ FAQ ════════════════════════════════════════════════ -->
+<section id="faq">
+  <div style="max-width:720px;margin:0 auto;text-align:center;" class="fade-up">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-h2">Preguntas frecuentes</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">¿Necesito experiencia previa con IA para usar el Motor Terapéutico? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No. El Motor está diseñado para terapeutas, no para técnicos. Solo describes el caso de tu paciente en lenguaje natural, como si le hablaras a una colega. La IA hace el análisis por ti.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿El Motor Terapéutico reemplaza mi criterio como terapeuta? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">No, y ese es exactamente el punto. El Motor es tu segundo criterio, no tu primer criterio. Tú sigues siendo la terapeuta. El Motor te da perspectiva, referencias y protocolos — pero la decisión final siempre es tuya. Es como tener una colega muy experimentada siempre disponible.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Puedo cancelar el plan de pago en cualquier momento? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Sí, sin preguntas ni penalizaciones. Cancelas cuando quieras desde tu panel y tu acceso continúa hasta el fin del período ya pagado. Sin letras pequeñas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">¿Los cursos tienen certificado oficial? <span class="faq-arrow">▼</span></div>
+      <div class="faq-a">Los planes de pago incluyen cursos con certificación de HoloacademIA. El plan Acceso Premium incluye además cursos con certificación oficial y diplomados SEP (próximamente). Consulta la página de planes para el detalle de cada certificación disponible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Holo<span>academ</span>IA</div>
+  <div class="footer-tagline">La primera IA para terapeutas holísticos hispanohablantes</div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 HoloacademIA. Todos los derechos reservados.</div>
+    <div style="display:flex;gap:14px;">
+      <a href="https://www.holoacademia.com/planes" target="_blank" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Planes</a>
+      <a href="https://www.holoacademia.com/programas" target="_blank" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Cursos</a>
+      <a href="https://www.holoacademia.com/miembros" target="_blank" style="font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;">Acceder</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── INTERSECTION OBSERVER ── */
+const fadeEls = document.querySelectorAll('.fade-up');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+fadeEls.forEach(el => io.observe(el));
+
+/* ── MODULES GRID ── */
+const MODULES = [
+  { emoji: '💜', name: 'Motor Terapéutico', tag: 'El núcleo', color: '#7C3AED',
+    desc: 'Describe el caso y recibe el origen emocional del conflicto, guía de rastreo y protocolo de liberación en tiempo real.',
+    bullets: ['Análisis de conflicto emocional', 'Protocolo de liberación personalizado', 'Historial de sesiones'] },
+  { emoji: '🧲', name: 'Rastreo de Imanes', tag: 'Biomagnetismo', color: '#7C3AED',
+    desc: 'Te guía par a par durante el rastreo biomagnético: zonas, polaridad y tiempo de exposición según el caso.',
+    bullets: ['Guía de colocación par a par', 'Polaridad y tiempo de exposición', 'Registro del rastreo completo'] },
+  { emoji: '🔢', name: 'Módulo Numerología', tag: 'Análisis personal', color: '#059669',
+    desc: 'Mapa numerológico completo: misión de vida, camino del destino, talentos y ciclos personales activos.',
+    bullets: ['Mapa numerológico completo', 'Ciclos personales activos', 'Integración con el perfil del paciente'] },
+  { emoji: '⭐', name: 'Astrología Médica', tag: 'Diagnóstico ampliado', color: '#D97706',
+    desc: 'Predisposiciones físicas y emocionales desde la carta natal. Conecta signos, casas y planetas con órganos y sistemas.',
+    bullets: ['Predisposiciones por signo y planeta', 'Relación astro-órgano', 'Complemento al diagnóstico holístico'] },
+  { emoji: '🌙', name: 'Carta Natal', tag: 'Autoconocimiento', color: '#6D28D9',
+    desc: 'Interpreta la carta natal del paciente: ascendente, planetas en casas, aspectos y tránsitos actuales.',
+    bullets: ['Lectura de carta natal completa', 'Ascendente y planetas en casas', 'Tránsitos y ciclos actuales'] },
+  { emoji: '☀️', name: 'Horóscopo Terapéutico', tag: 'Seguimiento continuo', color: '#0891B2',
+    desc: 'Pronóstico energético semanal y mensual basado en la carta natal. Una herramienta de seguimiento que añade valor.',
+    bullets: ['Pronóstico semanal y mensual', 'Alertas de tránsitos relevantes', 'Entregable para el paciente'] },
+];
+
+const grid = document.getElementById('modules-grid');
+MODULES.forEach((m, i) => {
+  const bulletsHtml = m.bullets.map(b => `
+    <div class="mc-bullet">
+      <span class="mc-dot" style="background:${m.color}"></span>${b}
+    </div>`).join('');
+  const card = document.createElement('div');
+  card.className = 'module-card';
+  card.style.transitionDelay = (i * 0.08) + 's';
+  card.innerHTML = `
+    <div class="mc-top">
+      <div class="mc-emoji">${m.emoji}</div>
+      <div class="mc-badge" style="color:${m.color};background:${m.color}14;border:1px solid ${m.color}28">${m.tag}</div>
+    </div>
+    <div class="mc-name">${m.name}</div>
+    <p class="mc-desc">${m.desc}</p>
+    <div class="mc-bullets">${bulletsHtml}</div>`;
+  card.addEventListener('mouseenter', () => {
+    card.style.borderColor = m.color + '44';
+    card.style.boxShadow = `0 16px 40px ${m.color}14`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.borderColor = '';
+    card.style.boxShadow = '';
+  });
+  grid.appendChild(card);
+});
+
+/* observe module cards */
+const moduleIO = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); moduleIO.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.module-card').forEach(c => moduleIO.observe(c));
+
+/* ── FAQ TOGGLE ── */
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+/* ── HEIGHT REPORTING ── */
+function reportHeight() {
+  window.parent.postMessage({ action: 'setHeight', height: document.documentElement.scrollHeight }, '*');
+}
+window.addEventListener('load', reportHeight);
+new ResizeObserver(reportHeight).observe(document.body);
+</script>
+</body>
+</html>
