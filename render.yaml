@@ -1,4 +1,9 @@
 services:
+  - type: static
+    name: holoacademia-sections
+    staticPublishPath: api/static/sections
+    pullRequestPreviewsEnabled: false
+
   - type: web
     name: holoacademia-ai
     runtime: docker
