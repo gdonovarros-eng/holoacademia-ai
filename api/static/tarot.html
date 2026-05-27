@@ -760,6 +760,519 @@ select { padding-right: 32px; cursor: pointer; }
   white-space: nowrap;
 }
 .chat-sugg-btn:hover { background: rgba(20,184,166,0.14); border-color: rgba(20,184,166,0.4); }
+
+/* ════════════════════════════════════════════════════════════════════════
+   CARTAS PREMIUM · Sistema visual Rider-Waite-Smith con animaciones 3D
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Toolbar superior del spread (Shuffle, Auto-deal, Clear) */
+.spread-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0 16px;
+}
+.spread-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(168,85,247,0.3);
+  background: rgba(168,85,247,0.08);
+  color: #d8b4fe;
+  cursor: pointer;
+  transition: all 0.18s;
+  user-select: none;
+}
+.spread-btn:hover {
+  background: rgba(168,85,247,0.18);
+  border-color: rgba(168,85,247,0.55);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(168,85,247,0.18);
+}
+.spread-btn.gold {
+  border-color: rgba(245,158,11,0.35);
+  background: rgba(245,158,11,0.08);
+  color: var(--gold);
+}
+.spread-btn.gold:hover {
+  background: rgba(245,158,11,0.18);
+  border-color: rgba(245,158,11,0.55);
+}
+.spread-btn.danger { color: #fca5a5; border-color: rgba(239,68,68,0.3); background: rgba(239,68,68,0.05); }
+.spread-btn.danger:hover { background: rgba(239,68,68,0.15); }
+
+/* Grid del spread con cartas visuales */
+.spread-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 18px;
+  margin-top: 12px;
+}
+
+/* Slot individual de carta */
+.carta-slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+.carta-slot-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 18px;
+}
+.carta-slot-num {
+  background: rgba(168,85,247,0.15);
+  border: 1px solid rgba(168,85,247,0.3);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #d8b4fe;
+  flex-shrink: 0;
+}
+
+/* Card 3D ── perspective container */
+.carta-3d {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 0.585;        /* proporción real RWS = 70mm / 120mm */
+  perspective: 1400px;
+  cursor: pointer;
+}
+.carta-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+.carta-3d.revealed .carta-inner {
+  transform: rotateY(180deg);
+}
+.carta-3d.inversa.revealed .carta-inner {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+/* Dorso (face-down) */
+.carta-dorso {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background:
+    radial-gradient(ellipse at center, #2d1b69 0%, #1a0f3d 60%, #0a0620 100%);
+  border: 1px solid rgba(245,158,11,0.4);
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.5),
+    inset 0 0 30px rgba(168,85,247,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+.carta-dorso::before {
+  content: '';
+  position: absolute;
+  inset: 6%;
+  border: 1.5px solid rgba(245,158,11,0.4);
+  border-radius: 8px;
+  pointer-events: none;
+}
+.carta-dorso::after {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(245,158,11,0.2);
+  border-radius: 6px;
+  pointer-events: none;
+}
+.carta-dorso-sigil {
+  width: 60%;
+  height: 60%;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 6px rgba(245,158,11,0.4));
+  animation: sigil-pulse 4s ease-in-out infinite;
+}
+@keyframes sigil-pulse {
+  0%, 100% { opacity: 0.85; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+/* Cara (face-up) */
+.carta-cara {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(180deg);
+  background: #1a0f3d;
+  box-shadow:
+    0 4px 20px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(245,158,11,0.4);
+}
+.carta-cara img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+.carta-cara-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 8px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.85));
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Slot vacío (placeholder) */
+.carta-slot.empty .carta-dorso {
+  border-style: dashed;
+  border-color: rgba(168,85,247,0.35);
+}
+.carta-slot.empty .carta-dorso-sigil {
+  opacity: 0.4;
+}
+.carta-slot.empty .carta-dorso::before {
+  border-color: rgba(168,85,247,0.25);
+  border-style: dashed;
+}
+.carta-slot.empty:hover .carta-dorso {
+  border-color: rgba(245,158,11,0.55);
+  box-shadow:
+    0 6px 28px rgba(245,158,11,0.18),
+    inset 0 0 30px rgba(245,158,11,0.1);
+  transform: translateY(-2px);
+}
+.carta-slot.empty:hover .carta-dorso-sigil {
+  opacity: 0.7;
+}
+.carta-slot.empty:hover .carta-dorso::before {
+  border-color: rgba(245,158,11,0.55);
+}
+
+/* Hover lift en cartas reveladas */
+.carta-slot.filled:hover .carta-3d {
+  transform: translateY(-4px);
+  transition: transform 0.3s;
+}
+.carta-slot.filled .carta-cara {
+  transition: box-shadow 0.3s;
+}
+.carta-slot.filled:hover .carta-cara {
+  box-shadow:
+    0 8px 32px rgba(245,158,11,0.3),
+    0 0 0 1.5px rgba(245,158,11,0.7);
+}
+
+/* Animación entrante (deal): card cae desde arriba con leve rotación */
+.carta-slot.dealing .carta-3d {
+  animation: deal-in 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+@keyframes deal-in {
+  0%   { transform: translateY(-300px) translateX(-100px) rotateZ(-15deg); opacity: 0; }
+  60%  { transform: translateY(15px) translateX(0) rotateZ(3deg); opacity: 1; }
+  100% { transform: translateY(0) translateX(0) rotateZ(0); opacity: 1; }
+}
+
+/* Shimmer en cartas invertidas */
+.carta-3d.inversa .carta-cara::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    transparent 30%,
+    rgba(168,85,247,0.18) 50%,
+    transparent 70%);
+  pointer-events: none;
+  animation: shimmer 3s ease-in-out infinite;
+}
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.9; }
+}
+
+/* Toggle invertida (botón pequeño) */
+.carta-inv-toggle {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(245,158,11,0.4);
+  color: var(--gold);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 5;
+}
+.carta-slot.filled:hover .carta-inv-toggle { opacity: 1; }
+.carta-inv-toggle:hover { transform: scale(1.1); background: rgba(0,0,0,0.85); }
+.carta-3d.inversa .carta-inv-toggle { background: rgba(168,85,247,0.7); border-color: rgba(168,85,247,1); color: #fff; opacity: 1; }
+
+/* Remover carta */
+.carta-clear {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(239,68,68,0.4);
+  color: #fca5a5;
+  font-size: 0.9rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  z-index: 5;
+}
+.carta-slot.filled:hover .carta-clear { opacity: 1; }
+.carta-clear:hover { transform: scale(1.1); background: rgba(239,68,68,0.3); }
+
+/* Drag & drop */
+.carta-slot.dragging .carta-3d { opacity: 0.4; transform: scale(0.96); }
+.carta-slot.drag-over .carta-dorso,
+.carta-slot.drag-over .carta-cara {
+  outline: 2.5px dashed var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── Animación SHUFFLE ── */
+.shuffle-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9,13,26,0.92);
+  backdrop-filter: blur(10px);
+  z-index: 950;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+}
+.shuffle-overlay.visible { display: flex; }
+.shuffle-deck {
+  position: relative;
+  width: 160px;
+  height: 270px;
+}
+.shuffle-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(ellipse at center, #2d1b69 0%, #1a0f3d 60%, #0a0620 100%);
+  border: 1px solid rgba(245,158,11,0.45);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.55);
+}
+.shuffle-card::before {
+  content: '';
+  position: absolute;
+  inset: 8%;
+  border: 1.5px solid rgba(245,158,11,0.4);
+  border-radius: 8px;
+}
+.shuffle-card:nth-child(1) { animation: shuffle-c1 1.4s ease-in-out infinite; }
+.shuffle-card:nth-child(2) { animation: shuffle-c2 1.4s ease-in-out infinite; }
+.shuffle-card:nth-child(3) { animation: shuffle-c3 1.4s ease-in-out infinite; }
+.shuffle-card:nth-child(4) { animation: shuffle-c4 1.4s ease-in-out infinite; }
+.shuffle-card:nth-child(5) { animation: shuffle-c5 1.4s ease-in-out infinite; }
+@keyframes shuffle-c1 { 0%,100% { transform: translateX(-50px) rotateZ(-12deg); } 50% { transform: translateX(50px) rotateZ(12deg); } }
+@keyframes shuffle-c2 { 0%,100% { transform: translateX(-30px) rotateZ(-7deg); } 50% { transform: translateX(30px) rotateZ(7deg); } }
+@keyframes shuffle-c3 { 0%,100% { transform: translateY(-10px) rotateZ(2deg); } 50% { transform: translateY(10px) rotateZ(-2deg); } }
+@keyframes shuffle-c4 { 0%,100% { transform: translateX(30px) rotateZ(8deg); } 50% { transform: translateX(-30px) rotateZ(-8deg); } }
+@keyframes shuffle-c5 { 0%,100% { transform: translateX(50px) rotateZ(14deg); } 50% { transform: translateX(-50px) rotateZ(-14deg); } }
+.shuffle-text {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  animation: pulse-text 1.4s ease-in-out infinite;
+}
+@keyframes pulse-text { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+
+/* ── MODAL SELECTOR DE CARTA ── */
+.picker-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9,13,26,0.92);
+  backdrop-filter: blur(14px);
+  z-index: 900;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 16px 24px;
+  overflow-y: auto;
+  animation: picker-fade 0.3s ease-out;
+}
+.picker-overlay.visible { display: flex; }
+@keyframes picker-fade { from { opacity: 0; } to { opacity: 1; } }
+.picker-modal {
+  width: 100%;
+  max-width: 980px;
+  background: var(--surface);
+  border: 1px solid rgba(245,158,11,0.3);
+  border-radius: 18px;
+  padding: 22px 24px 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  animation: picker-slide 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes picker-slide { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.picker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.picker-title {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.picker-title-main {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+}
+.picker-title-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.picker-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.picker-close:hover { background: rgba(255,255,255,0.12); color: var(--text); transform: rotate(90deg); }
+.picker-search {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-family: inherit;
+  margin-bottom: 14px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.picker-search:focus { border-color: rgba(245,158,11,0.5); }
+.picker-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.picker-tab {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.16s;
+}
+.picker-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.18); }
+.picker-tab.active { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.45); color: var(--gold); }
+.picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+  gap: 12px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 4px;
+}
+.picker-card {
+  position: relative;
+  aspect-ratio: 0.585;
+  border-radius: 9px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  background: #1a0f3d;
+}
+.picker-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+}
+.picker-card-name {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 18px 4px 5px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.92));
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  line-height: 1.15;
+}
+.picker-card:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: var(--gold);
+  box-shadow: 0 10px 30px rgba(245,158,11,0.3);
+  z-index: 2;
+}
+.picker-card.dim { opacity: 0.25; }
+.picker-card.dim:hover { opacity: 1; }
 </style>
 </head>
 <body>
@@ -815,10 +1328,24 @@ select { padding-right: 32px; cursor: pointer; }
         </div>
       </div>
 
-      <!-- Cartas dinámicas -->
+      <!-- Cartas dinámicas (versión visual premium) -->
       <div style="margin-top:16px;">
-        <label style="display:block;margin-bottom:10px;">Cartas en la Tirada</label>
-        <div id="cartas-container" class="cartas-container"></div>
+        <label style="display:block;margin-bottom:6px;">Cartas en la Tirada</label>
+        <div class="spread-toolbar">
+          <button type="button" class="spread-btn gold" onclick="shuffleAndDeal()" title="Baraja + reparte cartas aleatorias en todas las posiciones">
+            🌀 Barajar y repartir
+          </button>
+          <button type="button" class="spread-btn" onclick="revealAll()" title="Voltea todas las cartas">
+            ✨ Revelar todas
+          </button>
+          <button type="button" class="spread-btn" onclick="hideAll()" title="Deja todas las cartas boca abajo">
+            🃏 Ocultar todas
+          </button>
+          <button type="button" class="spread-btn danger" onclick="clearAllCards()" title="Quita todas las cartas asignadas">
+            🗑 Limpiar
+          </button>
+        </div>
+        <div id="cartas-container" class="spread-grid"></div>
       </div>
 
       <!-- Opciones avanzadas -->
@@ -1041,6 +1568,43 @@ select { padding-right: 32px; cursor: pointer; }
 
 </main>
 
+<!-- ─── OVERLAY: Shuffle animation ──────────────────────────────────────── -->
+<div class="shuffle-overlay" id="shuffleOverlay">
+  <div class="shuffle-deck">
+    <div class="shuffle-card"></div>
+    <div class="shuffle-card"></div>
+    <div class="shuffle-card"></div>
+    <div class="shuffle-card"></div>
+    <div class="shuffle-card"></div>
+  </div>
+  <div class="shuffle-text">Barajando el mazo…</div>
+</div>
+
+<!-- ─── MODAL: Card picker ──────────────────────────────────────────────── -->
+<div class="picker-overlay" id="cardPickerOverlay" onclick="if(event.target===this) cardPickerClose()">
+  <div class="picker-modal">
+    <div class="picker-header">
+      <div class="picker-title">
+        <span class="picker-title-main" id="pickerTitleMain">Elige una carta</span>
+        <span class="picker-title-sub" id="pickerTitleSub">Toca cualquier carta para asignarla</span>
+      </div>
+      <button class="picker-close" onclick="cardPickerClose()" title="Cerrar">×</button>
+    </div>
+    <input type="text" class="picker-search" id="pickerSearch"
+           placeholder="Buscar carta por nombre, palo o palabra clave…"
+           oninput="pickerFilter()" />
+    <div class="picker-tabs">
+      <button class="picker-tab active" data-filter="todos"  onclick="pickerSetFilter('todos')">Todas (78)</button>
+      <button class="picker-tab"        data-filter="mayor"  onclick="pickerSetFilter('mayor')">Arcanos Mayores (22)</button>
+      <button class="picker-tab"        data-filter="bastos" onclick="pickerSetFilter('bastos')">Bastos</button>
+      <button class="picker-tab"        data-filter="copas"  onclick="pickerSetFilter('copas')">Copas</button>
+      <button class="picker-tab"        data-filter="espadas" onclick="pickerSetFilter('espadas')">Espadas</button>
+      <button class="picker-tab"        data-filter="pentaculos" onclick="pickerSetFilter('pentaculos')">Pentáculos</button>
+    </div>
+    <div class="picker-grid" id="pickerGrid"></div>
+  </div>
+</div>
+
 <script>
 // ─── Datos de tiradas ────────────────────────────────────────────────────────
 const TIRADAS_DATA = {
@@ -1172,34 +1736,57 @@ function switchTab(id) {
   if (id === 'referencia') renderReferencia();
 }
 
-// ─── Render cartas dinámicas ──────────────────────────────────────────────────
-function renderCartasInputs() {
-  const tirada = document.getElementById('tiradaSel').value;
-  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
-  const container = document.getElementById('cartas-container');
-  container.innerHTML = '';
-  posiciones.forEach((pos, i) => {
-    const row = document.createElement('div');
-    row.className = 'carta-row';
-    row.innerHTML = `
-      <div class="carta-row-header">
-        <span class="carta-row-num">${i+1}</span>
-        ${pos}
-      </div>
-      <div class="carta-row-fields">
-        <input type="text" class="carta-nombre" placeholder="Nombre de la carta (ej: El Sol, As de Bastos...)"
-               list="cartas-list" id="carta-${i}" />
-        <label class="toggle-row">
-          <input type="checkbox" class="carta-inv" id="inv-${i}" />
-          <span class="toggle-label">Inv.</span>
-        </label>
-      </div>
-    `;
-    container.appendChild(row);
-  });
+// ═══════════════════════════════════════════════════════════════════════
+// SISTEMA VISUAL DE CARTAS · Rider-Waite-Smith con animaciones premium
+// ═══════════════════════════════════════════════════════════════════════
+
+let CARD_IMAGES = {};  // { "El Loco": "/therapy-static/tarot-cards/00_loco.jpg", ... }
+let CARD_IMAGES_READY = false;
+let _pickerTargetSlot = -1;  // slot que se está editando vía el picker
+let _pickerFilter = "todos";
+
+// SVG sigil decorativo del dorso (estrella de 8 puntas + luna)
+const DORSO_SIGIL_SVG = `
+<svg class="carta-dorso-sigil" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="sigilG" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fcd34d" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.2"/>
+    </radialGradient>
+  </defs>
+  <!-- Estrella de 8 puntas -->
+  <g stroke="url(#sigilG)" stroke-width="1.2" fill="none">
+    <circle cx="50" cy="50" r="42"/>
+    <circle cx="50" cy="50" r="30"/>
+    <circle cx="50" cy="50" r="18"/>
+    <path d="M50 8 L50 92 M8 50 L92 50 M20.3 20.3 L79.7 79.7 M79.7 20.3 L20.3 79.7"/>
+  </g>
+  <!-- Luna creciente central -->
+  <circle cx="50" cy="50" r="9" fill="url(#sigilG)" opacity="0.4"/>
+  <path d="M44 50 A 8 8 0 1 0 56 50 A 6 6 0 1 1 44 50 Z" fill="#fcd34d" opacity="0.8"/>
+</svg>`;
+
+// Carga el mapping de imágenes RWS
+async function loadCardImages() {
+  try {
+    const resp = await fetch('/therapy-static/tarot-cards/card_images.json?v=' + Date.now());
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    CARD_IMAGES = data.mapping || {};
+    CARD_IMAGES_READY = true;
+    console.log(`✓ Tarot: ${Object.keys(CARD_IMAGES).length} cartas cargadas`);
+  } catch (e) {
+    console.warn('No se pudo cargar card_images.json:', e);
+  }
 }
 
-// Datalist con todas las cartas
+// Devuelve URL o null
+function cardImageUrl(name) {
+  return CARD_IMAGES[name] || null;
+}
+
+// Datalist para fallback de input text (compat con código viejo)
 function crearDatalist() {
   if (document.getElementById('cartas-list')) return;
   const dl = document.createElement('datalist');
@@ -1210,6 +1797,288 @@ function crearDatalist() {
     dl.appendChild(opt);
   });
   document.body.appendChild(dl);
+}
+
+// ─── Render cartas dinámicas (versión visual premium) ─────────────────────────
+function renderCartasInputs() {
+  const tirada = document.getElementById('tiradaSel').value;
+  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
+  const container = document.getElementById('cartas-container');
+  container.innerHTML = '';
+  posiciones.forEach((pos, i) => {
+    const slot = document.createElement('div');
+    slot.className = 'carta-slot empty';
+    slot.id = 'slot-' + i;
+    slot.dataset.idx = i;
+    slot.draggable = false;  // se activa cuando hay carta asignada
+    slot.innerHTML = `
+      <div class="carta-slot-label">
+        <span class="carta-slot-num">${i+1}</span>
+        <span>${pos}</span>
+      </div>
+      <div class="carta-3d" onclick="onSlotClick(${i})">
+        <div class="carta-inner">
+          <div class="carta-dorso">${DORSO_SIGIL_SVG}</div>
+          <div class="carta-cara"></div>
+        </div>
+        <button type="button" class="carta-clear" onclick="event.stopPropagation(); clearSlot(${i})" title="Quitar carta">×</button>
+        <button type="button" class="carta-inv-toggle" onclick="event.stopPropagation(); toggleInversa(${i})" title="Marcar como invertida">↕</button>
+      </div>
+      <!-- Inputs ocultos para compat con generarLectura() -->
+      <input type="hidden" id="carta-${i}" value="" />
+      <input type="hidden" id="inv-${i}" value="" data-checked="false" />
+    `;
+    container.appendChild(slot);
+
+    // Drag & drop
+    slot.addEventListener('dragstart', onDragStart);
+    slot.addEventListener('dragend',   onDragEnd);
+    slot.addEventListener('dragover',  onDragOver);
+    slot.addEventListener('dragleave', onDragLeave);
+    slot.addEventListener('drop',      onDrop);
+  });
+}
+
+// Click en slot: si vacío abre picker, si lleno alterna flip
+function onSlotClick(idx) {
+  const slot = document.getElementById('slot-' + idx);
+  if (slot.classList.contains('empty')) {
+    openCardPicker(idx);
+  } else {
+    // Toggle revelación de la carta
+    const c3d = slot.querySelector('.carta-3d');
+    c3d.classList.toggle('revealed');
+  }
+}
+
+// Asignar carta a slot con flip animation
+function assignCard(idx, cardName, invertida = false, withDeal = false) {
+  const slot = document.getElementById('slot-' + idx);
+  if (!slot) return;
+  const url = cardImageUrl(cardName);
+  if (!url) {
+    console.warn('Sin imagen para:', cardName);
+  }
+  const cara = slot.querySelector('.carta-cara');
+  cara.innerHTML = url
+    ? `<img src="${url}" alt="${cardName}" loading="lazy" /><div class="carta-cara-name">${cardName}${invertida ? ' (inv.)' : ''}</div>`
+    : `<div class="carta-cara-name">${cardName}</div>`;
+  slot.classList.remove('empty');
+  slot.classList.add('filled');
+  slot.draggable = true;
+
+  // Inputs ocultos
+  document.getElementById('carta-' + idx).value = cardName;
+  const invHidden = document.getElementById('inv-' + idx);
+  invHidden.dataset.checked = invertida ? 'true' : 'false';
+  invHidden.value = invertida ? 'on' : '';
+
+  const c3d = slot.querySelector('.carta-3d');
+  c3d.classList.toggle('inversa', invertida);
+
+  if (withDeal) {
+    slot.classList.add('dealing');
+    c3d.classList.remove('revealed');
+    // Reveal después de la animación deal
+    setTimeout(() => {
+      slot.classList.remove('dealing');
+      c3d.classList.add('revealed');
+    }, 700);
+  } else {
+    // Reveal con flip inmediato
+    c3d.classList.remove('revealed');
+    requestAnimationFrame(() => requestAnimationFrame(() => c3d.classList.add('revealed')));
+  }
+}
+
+function clearSlot(idx) {
+  const slot = document.getElementById('slot-' + idx);
+  if (!slot) return;
+  const c3d = slot.querySelector('.carta-3d');
+  c3d.classList.remove('revealed', 'inversa');
+  slot.querySelector('.carta-cara').innerHTML = '';
+  slot.classList.remove('filled');
+  slot.classList.add('empty');
+  slot.draggable = false;
+  document.getElementById('carta-' + idx).value = '';
+  const invHidden = document.getElementById('inv-' + idx);
+  invHidden.value = '';
+  invHidden.dataset.checked = 'false';
+}
+
+function toggleInversa(idx) {
+  const slot = document.getElementById('slot-' + idx);
+  if (!slot || slot.classList.contains('empty')) return;
+  const c3d = slot.querySelector('.carta-3d');
+  const nowInv = !c3d.classList.contains('inversa');
+  c3d.classList.toggle('inversa', nowInv);
+  const invHidden = document.getElementById('inv-' + idx);
+  invHidden.dataset.checked = nowInv ? 'true' : 'false';
+  invHidden.value = nowInv ? 'on' : '';
+  // Re-renderiza el nombre con marca (inv.)
+  const cardName = document.getElementById('carta-' + idx).value;
+  const url = cardImageUrl(cardName);
+  if (url && cardName) {
+    slot.querySelector('.carta-cara').innerHTML =
+      `<img src="${url}" alt="${cardName}" /><div class="carta-cara-name">${cardName}${nowInv ? ' (inv.)' : ''}</div>`;
+  }
+}
+
+function revealAll() {
+  document.querySelectorAll('.carta-slot.filled .carta-3d').forEach((c, i) => {
+    setTimeout(() => c.classList.add('revealed'), i * 100);
+  });
+}
+function hideAll() {
+  document.querySelectorAll('.carta-slot.filled .carta-3d').forEach(c => c.classList.remove('revealed'));
+}
+function clearAllCards() {
+  if (!confirm('¿Quitar todas las cartas asignadas?')) return;
+  document.querySelectorAll('.carta-slot.filled').forEach(s => clearSlot(+s.dataset.idx));
+}
+
+// ─── Shuffle + Auto-deal ──────────────────────────────────────────────────────
+async function shuffleAndDeal() {
+  const tirada = document.getElementById('tiradaSel').value;
+  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
+  const total = posiciones.length;
+
+  // Mostrar overlay shuffle
+  const ov = document.getElementById('shuffleOverlay');
+  ov.classList.add('visible');
+
+  // Reset slots
+  posiciones.forEach((_, i) => clearSlot(i));
+
+  // Esperar la animación
+  await new Promise(r => setTimeout(r, 1600));
+  ov.classList.remove('visible');
+
+  // Sacar N cartas aleatorias únicas
+  const todas = Object.keys(CARD_IMAGES);
+  if (todas.length === 0) {
+    // Fallback: usar CARTAS_REF
+    CARTAS_REF.forEach(c => { if (!CARD_IMAGES[c.nombre]) todas.push(c.nombre); });
+  }
+  const baraja = [...todas].sort(() => Math.random() - 0.5);
+  const sacadas = baraja.slice(0, total);
+
+  // Deal secuencial
+  for (let i = 0; i < total; i++) {
+    const invertida = Math.random() < 0.2;  // 20% probabilidad inversa
+    assignCard(i, sacadas[i], invertida, true);
+    await new Promise(r => setTimeout(r, 180));
+  }
+}
+
+// ─── Card Picker Modal ────────────────────────────────────────────────────────
+function openCardPicker(idx) {
+  _pickerTargetSlot = idx;
+  const tirada = document.getElementById('tiradaSel').value;
+  const posiciones = TIRADAS_DATA[tirada]?.posiciones || ["Carta"];
+  document.getElementById('pickerTitleMain').textContent =
+    `Carta ${idx + 1}: ${posiciones[idx] || ''}`;
+  document.getElementById('pickerTitleSub').textContent =
+    'Toca cualquier carta para asignarla a esta posición';
+  document.getElementById('pickerSearch').value = '';
+  pickerSetFilter('todos');
+  pickerRenderGrid();
+  document.getElementById('cardPickerOverlay').classList.add('visible');
+}
+function cardPickerClose() {
+  document.getElementById('cardPickerOverlay').classList.remove('visible');
+  _pickerTargetSlot = -1;
+}
+function pickerSetFilter(f) {
+  _pickerFilter = f;
+  document.querySelectorAll('.picker-tab').forEach(t => t.classList.toggle('active', t.dataset.filter === f));
+  pickerRenderGrid();
+}
+function pickerFilter() { pickerRenderGrid(); }
+
+function pickerRenderGrid() {
+  const grid = document.getElementById('pickerGrid');
+  const q = document.getElementById('pickerSearch').value.trim().toLowerCase();
+  grid.innerHTML = '';
+  CARTAS_REF.forEach(c => {
+    // Filtro tipo/palo
+    if (_pickerFilter !== 'todos') {
+      if (_pickerFilter === 'mayor') {
+        if (c.tipo !== 'mayor') return;
+      } else {
+        if (c.palo !== _pickerFilter) return;
+      }
+    }
+    // Filtro texto
+    if (q) {
+      const blob = `${c.nombre} ${c.kw} ${c.palo}`.toLowerCase();
+      if (!blob.includes(q)) return;
+    }
+    const url = cardImageUrl(c.nombre);
+    const div = document.createElement('div');
+    div.className = 'picker-card';
+    div.title = c.nombre + ' · ' + c.kw;
+    div.innerHTML = `
+      ${url ? `<img src="${url}" alt="${c.nombre}" loading="lazy" />` : ''}
+      <div class="picker-card-name">${c.nombre}</div>
+    `;
+    div.onclick = () => {
+      if (_pickerTargetSlot >= 0) {
+        assignCard(_pickerTargetSlot, c.nombre, false, false);
+      }
+      cardPickerClose();
+    };
+    grid.appendChild(div);
+  });
+  if (!grid.children.length) {
+    grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 20px;">Sin resultados.</div>`;
+  }
+}
+
+// ─── Drag & Drop entre slots ──────────────────────────────────────────────────
+let _dragSourceIdx = -1;
+function onDragStart(e) {
+  const slot = e.currentTarget;
+  if (slot.classList.contains('empty')) { e.preventDefault(); return; }
+  _dragSourceIdx = +slot.dataset.idx;
+  slot.classList.add('dragging');
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', String(_dragSourceIdx));
+}
+function onDragEnd(e) {
+  e.currentTarget.classList.remove('dragging');
+  document.querySelectorAll('.drag-over').forEach(s => s.classList.remove('drag-over'));
+  _dragSourceIdx = -1;
+}
+function onDragOver(e) {
+  if (_dragSourceIdx < 0) return;
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+  e.currentTarget.classList.add('drag-over');
+}
+function onDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+function onDrop(e) {
+  e.preventDefault();
+  const targetIdx = +e.currentTarget.dataset.idx;
+  e.currentTarget.classList.remove('drag-over');
+  if (_dragSourceIdx < 0 || _dragSourceIdx === targetIdx) return;
+
+  // Swap entre slots
+  const src = {
+    name: document.getElementById('carta-' + _dragSourceIdx).value,
+    inv:  document.getElementById('inv-' + _dragSourceIdx).dataset.checked === 'true',
+  };
+  const tgt = {
+    name: document.getElementById('carta-' + targetIdx).value,
+    inv:  document.getElementById('inv-' + targetIdx).dataset.checked === 'true',
+  };
+  // Asignar target → source y source → target
+  if (tgt.name) {
+    assignCard(_dragSourceIdx, tgt.name, tgt.inv, false);
+  } else {
+    clearSlot(_dragSourceIdx);
+  }
+  assignCard(targetIdx, src.name, src.inv, false);
 }
 
 // ─── Generar lectura (SSE streaming) ─────────────────────────────────────────
@@ -1226,7 +2095,9 @@ async function generarLectura() {
   let alguna = false;
   posiciones.forEach((pos, i) => {
     const nombre = (document.getElementById('carta-'+i)?.value || '').trim();
-    const invertida = document.getElementById('inv-'+i)?.checked || false;
+    const invEl = document.getElementById('inv-'+i);
+    // Compat: el viejo input era checkbox; el nuevo es hidden con dataset.checked
+    const invertida = invEl?.dataset?.checked === 'true' || invEl?.checked === true;
     if (nombre) alguna = true;
     cartas.push({ posicion: pos, carta: nombre || 'No especificada', invertida });
   });
@@ -1656,9 +2527,18 @@ function filtrarReferencia() {
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   crearDatalist();
+  await loadCardImages();   // Carga el mapping de 78 cartas RWS
   renderCartasInputs();
+  // Cerrar picker con ESC
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('cardPickerOverlay').classList.contains('visible')) {
+        cardPickerClose();
+      }
+    }
+  });
 });
 </script>
 </body>
