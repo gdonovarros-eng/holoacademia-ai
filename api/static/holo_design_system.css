@@ -1,177 +1,91 @@
 /* ═════════════════════════════════════════════════════════════════════════
-   HOLO DESIGN SYSTEM · v3.0 · "Aurora Tech"
-   Mindvalley-inspired premium digital experience for holistic therapists
-   Dark immersive · vibrant gradients · bold display typography · dramatic motion
+   HOLO DESIGN SYSTEM · v4.0 · "Mindvalley Clean"
+   Premium wellness aspirational · clean white · photographic cards
+   Inspirado en mindvalley.com (referencia oficial del cliente)
    ═════════════════════════════════════════════════════════════════════════ */
 
-/* ── 1 · TIPOGRAFÍA ─────────────────────────────────────────────────────── */
+/* ── TIPOGRAFÍA · Inter sola, simple y moderna ────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* Inter (body + UI) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
-/* Familjen Grotesk — display moderno, geométrico, premium tech */
-@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap');
-
-/* Instrument Serif — para acentos italic puntuales */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-
-/* ── 2 · VARIABLES ──────────────────────────────────────────────────────── */
 :root {
-  /* ─── Tipografía ─── */
+  /* ─── Fuentes ─── */
   --holo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --holo-font-display: 'Familjen Grotesk', 'Inter', sans-serif;
-  --holo-font-italic: 'Instrument Serif', Georgia, serif;
-  --holo-font-mono: 'SF Mono', Menlo, Monaco, 'Cascadia Mono', monospace;
+  --holo-font-display: 'Inter', sans-serif;
+  --holo-font-mono: 'SF Mono', Menlo, Monaco, monospace;
 
-  /* ─── PALETA · Mindvalley-tier vibrant ─── */
+  /* ─── PALETA · Mindvalley clean ─── */
 
-  /* Deep space — fondos oscuros premium */
-  --holo-deep-950: #07060F;
-  --holo-deep-900: #0C0A1A;
-  --holo-deep-850: #110E26;
-  --holo-deep-800: #18142F;
-  --holo-deep-700: #221C3E;
-  --holo-deep-600: #2D2552;
-  --holo-deep-500: #3A2F6B;
+  /* Whites y greys (base) */
+  --holo-white:      #FFFFFF;
+  --holo-bg:         #FFFFFF;
+  --holo-bg-soft:    #FAFAFA;
+  --holo-bg-cream:   #F8F6F1;
+  --holo-bg-muted:   #F4F4F5;
 
-  /* Electric violet — primario espiritual moderno */
-  --holo-violet-50:  #F3EEFE;
-  --holo-violet-100: #E1D2FC;
-  --holo-violet-200: #C5A8F9;
-  --holo-violet-300: #A77FF5;
-  --holo-violet-400: #8B5CF6;   /* electric violet */
-  --holo-violet-500: #7C3AED;
-  --holo-violet-600: #6D28D9;
-  --holo-violet-700: #5B21B6;
-  --holo-violet-800: #4C1D95;
+  /* Charcoal text (Mindvalley usa charcoal oscuro casi negro) */
+  --holo-text:        #0E1116;
+  --holo-text-strong: #000000;
+  --holo-text-muted:  #4A4F5C;
+  --holo-text-subtle: #8B8F9A;
 
-  /* Electric pink/magenta — energía, acentos */
-  --holo-pink-300: #F9A8D4;
-  --holo-pink-400: #F472B6;
-  --holo-pink-500: #EC4899;   /* hot pink */
-  --holo-pink-600: #DB2777;
+  /* Border / dividers */
+  --holo-border:        #EAEAEA;
+  --holo-border-strong: #D4D4D4;
 
-  /* Amber gold — calidez holística + premium CTA */
-  --holo-amber-300: #FCD34D;
-  --holo-amber-400: #FBBF24;
-  --holo-amber-500: #F59E0B;   /* gold */
-  --holo-amber-600: #D97706;
+  /* Brand colors */
+  --holo-teal:       #0EA5A4;   /* CTA principal Mindvalley */
+  --holo-teal-dark:  #0F8281;
+  --holo-teal-light: #5EEAD4;
 
-  /* Teal/cyan — bright accent técnico */
-  --holo-teal-300: #5EEAD4;
-  --holo-teal-400: #2DD4BF;
-  --holo-teal-500: #14B8A6;
+  --holo-violet:       #6D5896;
+  --holo-violet-dark:  #4C3F71;
+  --holo-violet-light: #B19FD0;
 
-  /* Coral/terracotta — calidez */
-  --holo-coral-300: #FCA5A5;
-  --holo-coral-400: #FB7185;
-  --holo-coral-500: #F43F5E;
+  --holo-amber:       #D97706;
+  --holo-amber-light: #F59E0B;
+  --holo-amber-soft:  #FBBF24;
 
-  /* Sage — naturaleza sutil */
-  --holo-sage-300: #86EFAC;
-  --holo-sage-400: #4ADE80;
-  --holo-sage-500: #22C55E;
+  --holo-coral:       #DC2626;
+  --holo-coral-soft:  #F87171;
 
-  /* Stone/neutral — texto sobre dark */
-  --holo-stone-50:  #FAFAF9;
-  --holo-stone-100: #F4F4F2;
-  --holo-stone-200: #E5E3DE;
-  --holo-stone-300: #C9C5BC;
-  --holo-stone-400: #9A968B;
-  --holo-stone-500: #6E6B62;
-  --holo-stone-600: #4A4842;
-  --holo-stone-700: #2E2D29;
-  --holo-stone-800: #1B1A18;
-  --holo-stone-900: #0E0D0C;
+  --holo-sage:        #4F7942;
+  --holo-sage-soft:   #7BAE6B;
 
-  /* ─── GRADIENTS · vibrantes Mindvalley-style ─── */
+  --holo-pink:        #C2185B;
+  --holo-pink-soft:   #EC4899;
 
-  /* Gradients lineales (text, borders, buttons) */
-  --holo-grad-electric:  linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
-  --holo-grad-violet:    linear-gradient(135deg, #A77FF5 0%, #7C3AED 100%);
-  --holo-grad-aurora:    linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-  --holo-grad-sunset:    linear-gradient(135deg, #EC4899 0%, #F59E0B 100%);
-  --holo-grad-cosmic:    linear-gradient(135deg, #7C3AED 0%, #2DD4BF 100%);
-  --holo-grad-gold:      linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
-  --holo-grad-magenta:   linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
-  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #14B8A6 100%);
+  /* Gradients clean (solo para image blocks de cards) */
+  --holo-grad-violet:    linear-gradient(135deg, #B19FD0 0%, #6D5896 100%);
+  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #0EA5A4 100%);
+  --holo-grad-amber:     linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+  --holo-grad-coral:     linear-gradient(135deg, #F87171 0%, #DC2626 100%);
+  --holo-grad-sage:      linear-gradient(135deg, #86EFAC 0%, #4F7942 100%);
+  --holo-grad-pink:      linear-gradient(135deg, #F472B6 0%, #C2185B 100%);
+  --holo-grad-sky:       linear-gradient(135deg, #93C5FD 0%, #1E40AF 100%);
+  --holo-grad-sunset:    linear-gradient(135deg, #FBBF24 0%, #F87171 50%, #C2185B 100%);
+  --holo-grad-aurora:    linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #F0ABFC 100%);
 
-  /* Mesh radial — para fondos hero dramáticos */
-  --holo-grad-mesh:
-    radial-gradient(at 15% 18%, rgba(139, 92, 246, 0.45) 0px, transparent 50%),
-    radial-gradient(at 85% 25%, rgba(236, 72, 153, 0.38) 0px, transparent 50%),
-    radial-gradient(at 50% 80%, rgba(245, 158, 11, 0.32) 0px, transparent 50%),
-    radial-gradient(at 80% 90%, rgba(45, 212, 191, 0.28) 0px, transparent 50%),
-    radial-gradient(at 10% 80%, rgba(124, 58, 237, 0.40) 0px, transparent 55%);
-
-  /* Glass morphism · dark */
-  --holo-glass-bg: rgba(24, 20, 47, 0.55);
-  --holo-glass-bg-strong: rgba(34, 28, 62, 0.75);
-  --holo-glass-border: rgba(255, 255, 255, 0.10);
-  --holo-glass-border-bright: rgba(255, 255, 255, 0.18);
-  --holo-glass-blur: saturate(180%) blur(24px);
-
-  /* Tamaños tipográficos · escala más agresiva para hero impact */
+  /* Tipografía sizes (escala moderna ajustada) */
   --holo-text-xs:   0.75rem;
   --holo-text-sm:   0.875rem;
   --holo-text-base: 1rem;
   --holo-text-lg:   1.125rem;
-  --holo-text-xl:   1.375rem;
-  --holo-text-2xl:  1.75rem;
-  --holo-text-3xl:  2.5rem;
-  --holo-text-4xl:  3.5rem;
-  --holo-text-5xl:  5rem;
-  --holo-text-6xl:  7rem;
-  --holo-text-7xl:  9rem;
+  --holo-text-xl:   1.25rem;
+  --holo-text-2xl:  1.5rem;
+  --holo-text-3xl:  2rem;
+  --holo-text-4xl:  2.75rem;
+  --holo-text-5xl:  3.75rem;
+  --holo-text-6xl:  5rem;
 
   /* Pesos */
-  --holo-weight-light:    300;
-  --holo-weight-normal:   400;
+  --holo-weight-regular:  400;
   --holo-weight-medium:   500;
   --holo-weight-semibold: 600;
   --holo-weight-bold:     700;
   --holo-weight-black:    800;
   --holo-weight-ultra:    900;
 
-  /* Line heights */
-  --holo-leading-none:    0.95;
-  --holo-leading-tight:   1.05;
-  --holo-leading-snug:    1.2;
-  --holo-leading-normal:  1.5;
-  --holo-leading-relaxed: 1.7;
-
-  /* Letter spacing — tighter para display moderno */
-  --holo-tracking-ultra:   -0.04em;
-  --holo-tracking-tight:   -0.025em;
-  --holo-tracking-normal:  0;
-  --holo-tracking-wide:    0.05em;
-  --holo-tracking-wider:   0.12em;
-  --holo-tracking-widest:  0.18em;
-
-  /* ─── ROLES SEMÁNTICOS · DARK MODE BASE ─── */
-  --holo-bg:           var(--holo-deep-900);
-  --holo-bg-subtle:    var(--holo-deep-850);
-  --holo-bg-elevated:  var(--holo-deep-800);
-  --holo-bg-overlay:   rgba(7, 6, 15, 0.7);
-  --holo-bg-inverse:   var(--holo-stone-50);
-
-  --holo-text:           var(--holo-stone-50);
-  --holo-text-strong:    #FFFFFF;
-  --holo-text-muted:     rgba(244, 244, 242, 0.72);
-  --holo-text-subtle:    rgba(244, 244, 242, 0.50);
-  --holo-text-dim:       rgba(244, 244, 242, 0.35);
-  --holo-text-inverse:   var(--holo-deep-900);
-
-  --holo-border:         rgba(255, 255, 255, 0.08);
-  --holo-border-strong:  rgba(255, 255, 255, 0.16);
-  --holo-border-bright:  rgba(255, 255, 255, 0.30);
-
-  --holo-accent:         var(--holo-violet-400);
-  --holo-accent-hover:   var(--holo-violet-300);
-  --holo-gold:           var(--holo-amber-400);
-
-  /* ─── SPACING ─── */
-  --holo-space-0:   0;
+  /* Spacing */
   --holo-space-1:   0.25rem;
   --holo-space-2:   0.5rem;
   --holo-space-3:   0.75rem;
@@ -185,528 +99,272 @@
   --holo-space-20:  5rem;
   --holo-space-24:  6rem;
   --holo-space-32:  8rem;
-  --holo-space-40:  10rem;
 
-  /* ─── RADIUS ─── */
-  --holo-radius-sm:    8px;
-  --holo-radius-md:    12px;
-  --holo-radius-lg:    18px;
-  --holo-radius-xl:    24px;
-  --holo-radius-2xl:   32px;
-  --holo-radius-3xl:   40px;
-  --holo-radius-full:  9999px;
+  /* Radius */
+  --holo-radius-sm:   6px;
+  --holo-radius-md:   10px;
+  --holo-radius-lg:   16px;
+  --holo-radius-xl:   20px;
+  --holo-radius-2xl:  28px;
+  --holo-radius-full: 9999px;
 
-  /* ─── SHADOWS · with color for premium glow ─── */
-  --holo-shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.25);
-  --holo-shadow-md:  0 8px 24px rgba(0, 0, 0, 0.32);
-  --holo-shadow-lg:  0 20px 50px rgba(0, 0, 0, 0.45);
-  --holo-shadow-xl:  0 32px 80px rgba(0, 0, 0, 0.55);
+  /* Shadows clean (no glow) */
+  --holo-shadow-sm: 0 1px 2px rgba(14, 17, 22, 0.05);
+  --holo-shadow-md: 0 4px 12px rgba(14, 17, 22, 0.07);
+  --holo-shadow-lg: 0 12px 28px rgba(14, 17, 22, 0.10);
+  --holo-shadow-xl: 0 24px 50px rgba(14, 17, 22, 0.14);
 
-  --holo-glow-violet: 0 0 40px rgba(139, 92, 246, 0.45), 0 12px 32px rgba(124, 58, 237, 0.35);
-  --holo-glow-pink:   0 0 40px rgba(236, 72, 153, 0.45), 0 12px 32px rgba(219, 39, 119, 0.35);
-  --holo-glow-amber:  0 0 40px rgba(245, 158, 11, 0.45), 0 12px 32px rgba(217, 119, 6, 0.35);
-  --holo-glow-teal:   0 0 40px rgba(45, 212, 191, 0.45), 0 12px 32px rgba(20, 184, 166, 0.35);
-  --holo-glow-coral:  0 0 40px rgba(244, 63, 94, 0.45), 0 12px 32px rgba(225, 29, 72, 0.35);
-
-  /* ─── TRANSITIONS ─── */
+  /* Transitions */
   --holo-ease:           cubic-bezier(0.22, 1, 0.36, 1);
-  --holo-ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
-  --holo-ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
-  --holo-duration-fast:  0.18s;
-  --holo-duration-base:  0.35s;
-  --holo-duration-slow:  0.7s;
+  --holo-duration-fast:  0.15s;
+  --holo-duration-base:  0.25s;
+  --holo-duration-slow:  0.5s;
 }
 
-/* ── 3 · RESET / BASE ───────────────────────────────────────────────────── */
+/* ── RESET / BASE ─────────────────────────────────────────────────────── */
 .holo, .holo *, .holo *::before, .holo *::after {
   box-sizing: border-box;
 }
 
 html.holo-html {
   font-family: var(--holo-font-body);
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background: var(--holo-deep-900);
-  color: var(--holo-text);
 }
 
 body.holo-body {
   margin: 0;
   font-family: var(--holo-font-body);
   font-size: var(--holo-text-base);
-  line-height: var(--holo-leading-normal);
+  line-height: 1.5;
   color: var(--holo-text);
-  background: var(--holo-deep-900);
-  min-height: 100vh;
+  background: var(--holo-bg);
 }
 
-/* ── 4 · TIPOGRAFÍA · escala ─────────────────────────────────────────────── */
-.holo-display {
+/* ── TIPOGRAFÍA · escala ─────────────────────────────────────────────── */
+.holo-h1 {
   font-family: var(--holo-font-display);
-  font-weight: var(--holo-weight-bold);
-  line-height: var(--holo-leading-tight);
-  letter-spacing: var(--holo-tracking-tight);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   color: var(--holo-text-strong);
 }
-
-.holo-h1 { font-family: var(--holo-font-display); font-size: var(--holo-text-6xl); font-weight: 700; line-height: 0.95; letter-spacing: -0.035em; color: var(--holo-text-strong); }
-.holo-h2 { font-family: var(--holo-font-display); font-size: var(--holo-text-5xl); font-weight: 700; line-height: 1.0;  letter-spacing: -0.03em;  color: var(--holo-text-strong); }
-.holo-h3 { font-family: var(--holo-font-display); font-size: var(--holo-text-4xl); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; color: var(--holo-text-strong); }
-.holo-h4 { font-family: var(--holo-font-display); font-size: var(--holo-text-3xl); font-weight: 600; line-height: 1.1;  letter-spacing: -0.02em;  color: var(--holo-text-strong); }
-.holo-h5 { font-family: var(--holo-font-display); font-size: var(--holo-text-2xl); font-weight: 600; line-height: 1.2;  letter-spacing: -0.015em; color: var(--holo-text-strong); }
-.holo-h6 { font-family: var(--holo-font-body);    font-size: var(--holo-text-xl);  font-weight: 600; line-height: 1.3;  color: var(--holo-text-strong); }
+.holo-h2 {
+  font-family: var(--holo-font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--holo-text-strong);
+}
+.holo-h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.holo-h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
 
 .holo-eyebrow {
-  font-family: var(--holo-font-body);
-  font-size: var(--holo-text-xs);
-  font-weight: var(--holo-weight-semibold);
-  letter-spacing: var(--holo-tracking-widest);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--holo-amber-400);
+  color: var(--holo-text-muted);
 }
 
 .holo-lead {
-  font-size: var(--holo-text-lg);
-  line-height: var(--holo-leading-relaxed);
+  font-size: 1.125rem;
+  line-height: 1.65;
   color: var(--holo-text-muted);
-  font-weight: var(--holo-weight-normal);
-  max-width: 60ch;
+  font-weight: 400;
 }
 
-.holo-body { font-size: var(--holo-text-base); line-height: var(--holo-leading-normal); }
-.holo-small { font-size: var(--holo-text-sm); }
-.holo-tiny { font-size: var(--holo-text-xs); }
 .holo-muted { color: var(--holo-text-muted); }
 
-/* ── 5 · COMPONENTES · Botones ──────────────────────────────────────────── */
+/* ── BOTONES ──────────────────────────────────────────────────────────── */
 .holo-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--holo-space-2);
   font-family: var(--holo-font-body);
-  font-weight: var(--holo-weight-semibold);
-  font-size: var(--holo-text-sm);
-  letter-spacing: 0.01em;
-  border: 1px solid transparent;
-  border-radius: var(--holo-radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.005em;
+  border: 0;
+  border-radius: var(--holo-radius-md);
   padding: 14px 28px;
   cursor: pointer;
-  transition: all var(--holo-duration-base) var(--holo-ease);
+  transition: all var(--holo-duration-fast) var(--holo-ease);
   white-space: nowrap;
   text-decoration: none;
   user-select: none;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
 }
 .holo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Variant: primary · gradient electric */
+/* Variant: primary (teal Mindvalley) */
 .holo-btn-primary {
-  background: var(--holo-grad-electric);
-  background-size: 200% 200%;
-  background-position: 0% 50%;
+  background: var(--holo-teal);
   color: #FFFFFF;
-  border: none;
-  box-shadow: var(--holo-glow-violet);
 }
 .holo-btn-primary:hover:not(:disabled) {
-  background-position: 100% 50%;
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), 0 20px 40px rgba(236, 72, 153, 0.4);
+  background: var(--holo-teal-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(14, 165, 164, 0.3);
 }
 
-/* Variant: gold */
-.holo-btn-gold {
-  background: var(--holo-grad-gold);
-  color: var(--holo-deep-900);
-  border: none;
-  box-shadow: var(--holo-glow-amber);
-  font-weight: var(--holo-weight-bold);
+/* Variant: dark (charcoal) */
+.holo-btn-dark {
+  background: var(--holo-text);
+  color: #FFFFFF;
 }
-.holo-btn-gold:hover:not(:disabled) {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 60px rgba(245, 158, 11, 0.7), 0 20px 40px rgba(217, 119, 6, 0.5);
+.holo-btn-dark:hover:not(:disabled) {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: var(--holo-shadow-md);
 }
 
-/* Variant: outline glass */
+/* Variant: outline */
 .holo-btn-outline {
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  color: var(--holo-text-strong);
-  border-color: var(--holo-border-strong);
+  background: transparent;
+  color: var(--holo-text);
+  border: 1.5px solid var(--holo-border-strong);
 }
 .holo-btn-outline:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: var(--holo-border-bright);
-  transform: translateY(-2px);
+  background: var(--holo-bg-soft);
+  border-color: var(--holo-text);
 }
 
 /* Variant: ghost */
 .holo-btn-ghost {
   background: transparent;
   color: var(--holo-text-muted);
-  border-color: transparent;
 }
 .holo-btn-ghost:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--holo-text-strong);
+  color: var(--holo-text);
+  background: var(--holo-bg-soft);
 }
 
-/* Sizes */
-.holo-btn-sm { padding: 10px 20px; font-size: var(--holo-text-xs); }
-.holo-btn-lg { padding: 18px 36px; font-size: var(--holo-text-base); }
-
-/* ── 6 · COMPONENTES · Cards ────────────────────────────────────────────── */
+/* ── CARDS ────────────────────────────────────────────────────────────── */
 .holo-card {
-  background: var(--holo-glass-bg);
-  backdrop-filter: var(--holo-glass-blur);
-  -webkit-backdrop-filter: var(--holo-glass-blur);
-  border: 1px solid var(--holo-glass-border);
-  border-radius: var(--holo-radius-xl);
+  background: var(--holo-bg);
+  border: 1px solid var(--holo-border);
+  border-radius: var(--holo-radius-lg);
   padding: var(--holo-space-6);
   transition: all var(--holo-duration-base) var(--holo-ease);
-  color: var(--holo-text);
 }
-.holo-card-elevated {
+.holo-card-hover:hover {
+  border-color: var(--holo-border-strong);
+  transform: translateY(-2px);
   box-shadow: var(--holo-shadow-md);
 }
-.holo-card-interactive {
-  cursor: pointer;
-}
-.holo-card-interactive:hover {
-  transform: translateY(-4px);
-  border-color: var(--holo-border-bright);
-  box-shadow: var(--holo-shadow-lg);
-}
 
-.holo-card-padded { padding: var(--holo-space-8); }
-.holo-card-tight { padding: var(--holo-space-4); }
-
-/* ── 7 · COMPONENTES · Badges ───────────────────────────────────────────── */
+/* ── BADGES ───────────────────────────────────────────────────────────── */
 .holo-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-2);
-  font-family: var(--holo-font-body);
-  font-size: var(--holo-text-xs);
-  font-weight: var(--holo-weight-semibold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 6px 14px;
+  gap: var(--holo-space-1);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 4px 12px;
   border-radius: var(--holo-radius-full);
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--holo-border-strong);
-  color: var(--holo-text);
+  background: var(--holo-bg-muted);
+  color: var(--holo-text-muted);
 }
-.holo-badge-violet { background: rgba(139, 92, 246, 0.15); color: var(--holo-violet-200); border-color: rgba(139, 92, 246, 0.4); }
-.holo-badge-amber  { background: rgba(245, 158, 11, 0.15); color: var(--holo-amber-300); border-color: rgba(245, 158, 11, 0.4); }
-.holo-badge-pink   { background: rgba(236, 72, 153, 0.15); color: var(--holo-pink-300); border-color: rgba(236, 72, 153, 0.4); }
-.holo-badge-teal   { background: rgba(45, 212, 191, 0.15); color: var(--holo-teal-300); border-color: rgba(45, 212, 191, 0.4); }
-.holo-badge-coral  { background: rgba(244, 63, 94, 0.15); color: var(--holo-coral-300); border-color: rgba(244, 63, 94, 0.4); }
-.holo-badge-sage   { background: rgba(34, 197, 94, 0.15); color: var(--holo-sage-300); border-color: rgba(34, 197, 94, 0.4); }
+.holo-badge-teal  { background: rgba(14, 165, 164, 0.12); color: var(--holo-teal-dark); }
+.holo-badge-amber { background: rgba(217, 119, 6, 0.12);  color: var(--holo-amber); }
 
-/* ── 8 · COMPONENTES · Inputs ───────────────────────────────────────────── */
+/* ── INPUTS ───────────────────────────────────────────────────────────── */
 .holo-input,
 .holo-textarea,
 .holo-select {
   width: 100%;
   font-family: var(--holo-font-body);
   font-size: var(--holo-text-base);
-  color: var(--holo-text-strong);
-  background: rgba(255, 255, 255, 0.04);
+  color: var(--holo-text);
+  background: var(--holo-bg);
   border: 1px solid var(--holo-border-strong);
   border-radius: var(--holo-radius-md);
-  padding: var(--holo-space-3) var(--holo-space-4);
-  transition: all var(--holo-duration-fast) var(--holo-ease);
+  padding: 12px 16px;
+  transition: border-color var(--holo-duration-fast);
   outline: none;
 }
-.holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-dim); }
+.holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-subtle); }
 .holo-input:focus, .holo-textarea:focus, .holo-select:focus {
-  border-color: var(--holo-violet-400);
-  background: rgba(255, 255, 255, 0.07);
-  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+  border-color: var(--holo-teal);
+  box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.10);
 }
-.holo-textarea { resize: vertical; min-height: 80px; line-height: var(--holo-leading-normal); }
 
-/* ── 9 · CONTENEDORES ───────────────────────────────────────────────────── */
+/* ── CONTENEDORES ─────────────────────────────────────────────────────── */
 .holo-container {
-  max-width: 1320px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 var(--holo-space-8);
+  padding: 0 var(--holo-space-6);
 }
 @media (max-width: 768px) {
-  .holo-container { padding: 0 var(--holo-space-5); }
+  .holo-container { padding: 0 var(--holo-space-4); }
 }
 
-.holo-section {
-  padding: var(--holo-space-24) 0;
-}
-@media (max-width: 768px) {
-  .holo-section { padding: var(--holo-space-16) 0; }
-}
+/* ── UTILIDADES ───────────────────────────────────────────────────────── */
+.holo-stack { display: flex; flex-direction: column; gap: var(--holo-space-4); }
+.holo-row { display: flex; align-items: center; gap: var(--holo-space-3); flex-wrap: wrap; }
+.holo-grid { display: grid; gap: var(--holo-space-6); }
 
-/* ── 10 · UTILIDADES ───────────────────────────────────────────────────── */
 .holo-divider {
   height: 1px;
   background: var(--holo-border);
   border: 0;
-  margin: var(--holo-space-8) 0;
+  margin: var(--holo-space-12) 0;
 }
 
-.holo-stack { display: flex; flex-direction: column; gap: var(--holo-space-4); }
-.holo-stack-sm { gap: var(--holo-space-2); }
-.holo-stack-lg { gap: var(--holo-space-8); }
-
-.holo-row { display: flex; align-items: center; gap: var(--holo-space-3); flex-wrap: wrap; }
-
-.holo-grid {
-  display: grid;
-  gap: var(--holo-space-6);
-}
-.holo-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.holo-grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-.holo-grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-
-/* ── 11 · ICONOGRAFÍA SVG INLINE ────────────────────────────────────────── */
+/* ── ICONOS SVG ──────────────────────────────────────────────────────── */
 .holo-icon {
   width: 1em;
   height: 1em;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.75;
+  stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   display: inline-block;
   vertical-align: -0.125em;
   flex-shrink: 0;
 }
-.holo-icon-lg { width: 1.5em; height: 1.5em; }
-.holo-icon-2x { width: 2em; height: 2em; }
-.holo-icon-3x { width: 3em; height: 3em; }
 
-/* ── 12 · GRADIENT TEXT ─────────────────────────────────────────────────── */
-.holo-gradient-text {
-  background: var(--holo-grad-electric);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: holo-gradient-shift 8s ease-in-out infinite;
-}
-.holo-gradient-text-violet {
-  background: var(--holo-grad-violet);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-.holo-gradient-text-sunset {
-  background: var(--holo-grad-sunset);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-.holo-gradient-text-gold {
-  background: var(--holo-grad-gold);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-}
-
-@keyframes holo-gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50%      { background-position: 100% 50%; }
-}
-
-/* ── 13 · GLASS MORPHISM ────────────────────────────────────────────────── */
-.holo-glass {
-  background: var(--holo-glass-bg);
-  backdrop-filter: var(--holo-glass-blur);
-  -webkit-backdrop-filter: var(--holo-glass-blur);
-  border: 1px solid var(--holo-glass-border);
-}
-.holo-glass-strong {
-  background: var(--holo-glass-bg-strong);
-  backdrop-filter: var(--holo-glass-blur);
-  -webkit-backdrop-filter: var(--holo-glass-blur);
-  border: 1px solid var(--holo-glass-border-bright);
-}
-
-/* ── 14 · GRADIENT BORDER ───────────────────────────────────────────────── */
-.holo-gradient-border {
-  position: relative;
-  background: var(--holo-bg-elevated);
-  border-radius: var(--holo-radius-xl);
-}
-.holo-gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1.5px;
-  border-radius: inherit;
-  background: var(--holo-grad-electric);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-/* ── 15 · ORBS · BLUR ABSTRACT SHAPES ───────────────────────────────────── */
-.holo-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  opacity: 0.7;
-  will-change: transform;
-}
-.holo-orb-violet {
-  background: radial-gradient(circle, var(--holo-violet-400) 0%, transparent 70%);
-}
-.holo-orb-pink {
-  background: radial-gradient(circle, var(--holo-pink-500) 0%, transparent 70%);
-}
-.holo-orb-amber {
-  background: radial-gradient(circle, var(--holo-amber-400) 0%, transparent 70%);
-}
-.holo-orb-teal {
-  background: radial-gradient(circle, var(--holo-teal-400) 0%, transparent 70%);
-}
-.holo-orb-coral {
-  background: radial-gradient(circle, var(--holo-coral-400) 0%, transparent 70%);
-}
-
-@keyframes holo-orb-drift {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33%      { transform: translate(60px, -40px) scale(1.08); }
-  66%      { transform: translate(-40px, 50px) scale(0.94); }
-}
-.holo-orb-anim {
-  animation: holo-orb-drift 20s ease-in-out infinite;
-}
-
-/* ── 16 · MESH BACKGROUND ───────────────────────────────────────────────── */
-.holo-mesh-bg {
-  position: absolute;
-  inset: 0;
-  background: var(--holo-grad-mesh);
-  filter: blur(30px);
-  opacity: 0.85;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* ── 17 · GRAIN/NOISE OVERLAY ───────────────────────────────────────────── */
-.holo-grain {
-  position: relative;
-}
-.holo-grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.06;
-  z-index: 1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
-}
-
-/* ── 18 · ANIMACIONES ───────────────────────────────────────────────────── */
+/* ── ANIMACIONES SIMPLES (CPU-friendly) ──────────────────────────────── */
 @keyframes holo-fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 @keyframes holo-fade-up {
-  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
-  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes holo-scale-in {
-  from { opacity: 0; transform: scale(0.94); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes holo-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-12px); }
-}
-@keyframes holo-pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.6); }
-  50%      { box-shadow: 0 0 0 12px rgba(139, 92, 246, 0); }
-}
-@keyframes holo-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
-}
+.holo-anim-fade { animation: holo-fade-in 0.4s var(--holo-ease) both; }
+.holo-anim-up   { animation: holo-fade-up 0.5s var(--holo-ease) both; }
 
-.holo-anim-fade { animation: holo-fade-in var(--holo-duration-base) var(--holo-ease) both; }
-.holo-anim-up   { animation: holo-fade-up var(--holo-duration-slow) var(--holo-ease) both; }
-.holo-anim-scale { animation: holo-scale-in var(--holo-duration-base) var(--holo-ease) both; }
-.holo-floating { animation: holo-float 5s ease-in-out infinite; }
-.holo-floating-slow { animation: holo-float 7s ease-in-out infinite; }
-.holo-pulse-glow { animation: holo-pulse-glow 2.4s infinite; }
+/* Stagger delays */
+.holo-stagger-1 { animation-delay: 0.05s; }
+.holo-stagger-2 { animation-delay: 0.10s; }
+.holo-stagger-3 { animation-delay: 0.15s; }
+.holo-stagger-4 { animation-delay: 0.20s; }
+.holo-stagger-5 { animation-delay: 0.25s; }
+.holo-stagger-6 { animation-delay: 0.30s; }
+.holo-stagger-7 { animation-delay: 0.35s; }
+.holo-stagger-8 { animation-delay: 0.40s; }
+.holo-stagger-9 { animation-delay: 0.45s; }
 
-.holo-shimmer {
-  position: relative;
-  overflow: hidden;
-}
-.holo-shimmer::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
-  transform: translateX(-100%);
-  animation: holo-shimmer 3.5s infinite;
-  pointer-events: none;
-}
-
-/* Stagger fade-in para grids */
-.holo-stagger > * {
-  animation: holo-fade-up 0.9s var(--holo-ease) both;
-}
-.holo-stagger > *:nth-child(1) { animation-delay: 0.05s; }
-.holo-stagger > *:nth-child(2) { animation-delay: 0.12s; }
-.holo-stagger > *:nth-child(3) { animation-delay: 0.19s; }
-.holo-stagger > *:nth-child(4) { animation-delay: 0.26s; }
-.holo-stagger > *:nth-child(5) { animation-delay: 0.33s; }
-.holo-stagger > *:nth-child(6) { animation-delay: 0.40s; }
-.holo-stagger > *:nth-child(7) { animation-delay: 0.47s; }
-.holo-stagger > *:nth-child(8) { animation-delay: 0.54s; }
-.holo-stagger > *:nth-child(9) { animation-delay: 0.61s; }
-
-/* ── 19 · LIGHT MODE OVERRIDE (opcional, módulos específicos) ────────────── */
-.holo-light {
-  --holo-bg:           #FAFAF9;
-  --holo-bg-subtle:    #F4F4F2;
-  --holo-bg-elevated:  #FFFFFF;
-  --holo-text:         var(--holo-stone-800);
-  --holo-text-strong:  var(--holo-stone-900);
-  --holo-text-muted:   var(--holo-stone-600);
-  --holo-text-subtle:  var(--holo-stone-500);
-  --holo-border:       rgba(0, 0, 0, 0.08);
-  --holo-border-strong: rgba(0, 0, 0, 0.16);
-}
-
-/* ── 20 · PRINT ─────────────────────────────────────────────────────────── */
+/* ── PRINT ────────────────────────────────────────────────────────────── */
 @media print {
   .holo-btn, .holo-no-print { display: none !important; }
   body.holo-body { background: white; color: black; }
-}
-
-/* ── 21 · REDUCED MOTION ────────────────────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
 }
