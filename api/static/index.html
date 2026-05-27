@@ -7,7 +7,7 @@
 <meta name="description" content="Sistema integrado de IA para terapeutas holísticos. Biomagnetismo, biodescodificación, astrología, numerología, tarot y más.">
 
 <!-- Design system -->
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=1">
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=2">
 
 <style>
 /* ── ÍNDICE · estilos específicos de la página principal ────────────── */
@@ -71,60 +71,148 @@
   border-radius: var(--holo-radius-full);
 }
 
-/* HERO */
+/* Background ambiental global con orbs flotando */
+body.holo-body {
+  background: var(--holo-cream-100);
+  overflow-x: hidden;
+}
+.idx-bg-ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* HERO con aurora animada */
 .idx-hero {
-  padding: var(--holo-space-20) 0 var(--holo-space-16);
+  position: relative;
+  padding: var(--holo-space-24) 0 var(--holo-space-16);
   text-align: center;
-  background:
-    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(109, 88, 150, 0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(212, 165, 116, 0.12) 0%, transparent 50%);
+  overflow: hidden;
+  isolation: isolate;
+}
+.idx-hero-inner {
+  position: relative;
+  z-index: 2;
 }
 .idx-hero-eyebrow {
-  color: var(--holo-amber-500);
+  color: var(--holo-amber-600);
   font-family: var(--holo-font-body);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  margin-bottom: var(--holo-space-4);
+  margin-bottom: var(--holo-space-5);
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-2);
+  gap: var(--holo-space-3);
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 165, 116, 0.4);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.12);
   animation: holo-fade-in 0.6s var(--holo-ease) both;
 }
-.idx-hero-eyebrow::before, .idx-hero-eyebrow::after {
+.idx-hero-eyebrow::before {
   content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--holo-amber-300);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--holo-amber-400);
+  animation: holo-pulse-glow 2.4s infinite;
 }
 .idx-hero h1 {
   font-family: var(--holo-font-display);
-  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.025em;
+  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
   color: var(--holo-stone-900);
   margin: 0 auto var(--holo-space-6);
-  max-width: 18ch;
-  animation: holo-fade-in-up 0.7s var(--holo-ease) both;
+  max-width: 16ch;
+  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
   animation-delay: 0.1s;
 }
 .idx-hero h1 em {
   font-style: italic;
-  color: var(--holo-violet-600);
   font-weight: 400;
+  background: linear-gradient(135deg, #8A6BAF 0%, #C97B5C 50%, #D4A574 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  position: relative;
 }
 .idx-hero p {
   font-family: var(--holo-font-body);
-  font-size: 1.0625rem;
-  font-weight: 300;
-  line-height: 1.65;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.7;
   color: var(--holo-stone-500);
-  max-width: 580px;
-  margin: 0 auto;
-  animation: holo-fade-in-up 0.7s var(--holo-ease) both;
+  max-width: 620px;
+  margin: 0 auto var(--holo-space-8);
+  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
   animation-delay: 0.2s;
+}
+
+/* CTA del hero */
+.idx-hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-3);
+  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
+  animation-delay: 0.3s;
+}
+.idx-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+  background: var(--holo-stone-900);
+  color: var(--holo-cream-50);
+  padding: 14px 28px;
+  border-radius: var(--holo-radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--holo-duration-base) var(--holo-ease);
+  position: relative;
+  overflow: hidden;
+}
+.idx-hero-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.7s var(--holo-ease);
+}
+.idx-hero-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(15, 13, 10, 0.3);
+}
+.idx-hero-cta:hover::after { transform: translateX(200%); }
+.idx-hero-cta svg { width: 16px; height: 16px; stroke-width: 2; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--holo-duration-fast); }
+.idx-hero-cta:hover svg { transform: translateX(3px); }
+
+.idx-hero-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+  color: var(--holo-stone-700);
+  padding: 14px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: var(--holo-radius-full);
+  transition: all var(--holo-duration-fast);
+}
+.idx-hero-cta-secondary:hover {
+  color: var(--holo-stone-900);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 /* SECTION HEADERS */
@@ -177,58 +265,94 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--holo-bg-elevated);
-  border: 1px solid var(--holo-border);
-  border-radius: var(--holo-radius-lg);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: var(--holo-radius-xl);
   padding: var(--holo-space-6);
   text-decoration: none;
   color: inherit;
-  transition: all var(--holo-duration-base) var(--holo-ease);
+  transition: all 0.4s var(--holo-ease);
   overflow: hidden;
   isolation: isolate;
+  box-shadow: 0 4px 20px rgba(15, 13, 10, 0.04);
 }
+/* Glow contextual al hover (tinta del card-color) */
 .idx-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, var(--card-tint, transparent) 0%, transparent 60%);
+  background: radial-gradient(120% 80% at 50% 0%, var(--card-tint, transparent) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity var(--holo-duration-base);
+  transition: opacity 0.4s var(--holo-ease);
   pointer-events: none;
   z-index: -1;
 }
+/* Gradient border al hover */
+.idx-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, var(--card-grad-1, rgba(138, 107, 175, 0.6)) 0%, var(--card-grad-2, rgba(212, 165, 116, 0.6)) 100%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s var(--holo-ease);
+  pointer-events: none;
+}
 .idx-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--holo-border-strong);
-  box-shadow: var(--holo-shadow-lg);
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 28px 60px rgba(15, 13, 10, 0.14), 0 8px 20px rgba(15, 13, 10, 0.06);
+  background: rgba(255, 255, 255, 0.85);
 }
 .idx-card:hover::before { opacity: 1; }
+.idx-card:hover::after { opacity: 1; }
 
-/* Card structure */
+/* Card structure · icono con gradient */
 .idx-card-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--holo-radius-md);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--card-icon-bg, var(--holo-stone-50));
+  background: var(--card-icon-bg, linear-gradient(135deg, var(--holo-stone-50), var(--holo-stone-100)));
   color: var(--card-icon-color, var(--holo-stone-700));
   margin-bottom: var(--holo-space-5);
-  transition: all var(--holo-duration-base);
+  transition: all 0.4s var(--holo-ease);
+  position: relative;
+  box-shadow: 0 2px 8px rgba(15, 13, 10, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.idx-card-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: var(--card-icon-glow, transparent);
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.4s var(--holo-ease);
+  z-index: -1;
 }
 .idx-card-icon svg {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   stroke-width: 1.5;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
+  transition: transform 0.4s var(--holo-ease);
 }
 .idx-card:hover .idx-card-icon {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(-3deg);
 }
+.idx-card:hover .idx-card-icon::before { opacity: 0.6; }
+.idx-card:hover .idx-card-icon svg { transform: scale(1.05); }
 
 .idx-card-category {
   font-family: var(--holo-font-body);
@@ -281,16 +405,89 @@
 .idx-card:hover .idx-card-cta { color: var(--card-icon-color, var(--holo-violet-600)); }
 .idx-card:hover .idx-card-cta svg { transform: translateX(4px); }
 
-/* Color tints por categoría (sutiles, no chillones) */
-.tint-sinodal     { --card-tint: rgba(109, 88, 150, 0.06);  --card-icon-bg: var(--holo-violet-50); --card-icon-color: var(--holo-violet-600); }
-.tint-rastreo     { --card-tint: rgba(74, 130, 148, 0.06); --card-icon-bg: var(--holo-sky-50);    --card-icon-color: var(--holo-sky-500); }
-.tint-pares       { --card-tint: rgba(74, 130, 148, 0.06); --card-icon-bg: var(--holo-sky-50);    --card-icon-color: var(--holo-sky-500); }
-.tint-terapia     { --card-tint: rgba(212, 165, 116, 0.08); --card-icon-bg: var(--holo-amber-50);  --card-icon-color: var(--holo-amber-600); }
-.tint-salud       { --card-tint: rgba(188, 92, 79, 0.06);  --card-icon-bg: var(--holo-rose-50);   --card-icon-color: var(--holo-rose-500); }
-.tint-astro       { --card-tint: rgba(109, 88, 150, 0.06);  --card-icon-bg: var(--holo-violet-50); --card-icon-color: var(--holo-violet-600); }
-.tint-numerologia { --card-tint: rgba(104, 130, 87, 0.06);  --card-icon-bg: var(--holo-sage-50);   --card-icon-color: var(--holo-sage-500); }
-.tint-tarot       { --card-tint: rgba(168, 95, 64, 0.06);  --card-icon-bg: var(--holo-terra-50);  --card-icon-color: var(--holo-terra-500); }
-.tint-horoscopo   { --card-tint: rgba(212, 165, 116, 0.08); --card-icon-bg: var(--holo-amber-50);  --card-icon-color: var(--holo-amber-600); }
+/* Color tints por categoría — cada uno con su atmósfera única */
+.tint-sinodal {
+  --card-tint: rgba(138, 107, 175, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #E8E0F2, #D1C2E5);
+  --card-icon-color: #553F7A;
+  --card-icon-glow: rgba(138, 107, 175, 0.6);
+  --card-grad-1: rgba(138, 107, 175, 0.7);
+  --card-grad-2: rgba(177, 159, 208, 0.7);
+}
+.tint-rastreo {
+  --card-tint: rgba(74, 130, 148, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #D1E4EA, #A0C5D2);
+  --card-icon-color: #244B57;
+  --card-icon-glow: rgba(74, 130, 148, 0.6);
+  --card-grad-1: rgba(74, 130, 148, 0.7);
+  --card-grad-2: rgba(160, 197, 210, 0.7);
+}
+.tint-pares {
+  --card-tint: rgba(74, 130, 148, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #D1E4EA, #A0C5D2);
+  --card-icon-color: #244B57;
+  --card-icon-glow: rgba(74, 130, 148, 0.6);
+  --card-grad-1: rgba(74, 130, 148, 0.7);
+  --card-grad-2: rgba(138, 107, 175, 0.7);
+}
+.tint-terapia {
+  --card-tint: rgba(212, 165, 116, 0.20);
+  --card-icon-bg: linear-gradient(135deg, #FAEAD4, #F2D29D);
+  --card-icon-color: #8F6420;
+  --card-icon-glow: rgba(232, 181, 103, 0.7);
+  --card-grad-1: rgba(232, 181, 103, 0.8);
+  --card-grad-2: rgba(201, 123, 92, 0.7);
+}
+.tint-salud {
+  --card-tint: rgba(214, 121, 112, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #F2D4D0, #E6A5A0);
+  --card-icon-color: #95483D;
+  --card-icon-glow: rgba(214, 121, 112, 0.6);
+  --card-grad-1: rgba(214, 121, 112, 0.7);
+  --card-grad-2: rgba(232, 181, 103, 0.7);
+}
+.tint-astro {
+  --card-tint: rgba(85, 63, 122, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #D1C2E5, #B19FD0);
+  --card-icon-color: #2A1D40;
+  --card-icon-glow: rgba(138, 107, 175, 0.7);
+  --card-grad-1: rgba(85, 63, 122, 0.8);
+  --card-grad-2: rgba(177, 159, 208, 0.7);
+}
+.tint-numerologia {
+  --card-tint: rgba(104, 130, 87, 0.15);
+  --card-icon-bg: linear-gradient(135deg, #DCE5D5, #B5C5A8);
+  --card-icon-color: #3A4A30;
+  --card-icon-glow: rgba(138, 163, 120, 0.6);
+  --card-grad-1: rgba(104, 130, 87, 0.7);
+  --card-grad-2: rgba(232, 181, 103, 0.7);
+}
+.tint-tarot {
+  --card-tint: rgba(201, 123, 92, 0.18);
+  --card-icon-bg: linear-gradient(135deg, #F5DCD0, #ECB99F);
+  --card-icon-color: #5C311F;
+  --card-icon-glow: rgba(201, 123, 92, 0.7);
+  --card-grad-1: rgba(201, 123, 92, 0.7);
+  --card-grad-2: rgba(168, 95, 64, 0.7);
+}
+.tint-horoscopo {
+  --card-tint: rgba(212, 165, 116, 0.18);
+  --card-icon-bg: linear-gradient(135deg, #FAEAD4, #F2D29D);
+  --card-icon-color: #8F6420;
+  --card-icon-glow: rgba(232, 181, 103, 0.7);
+  --card-grad-1: rgba(212, 165, 116, 0.7);
+  --card-grad-2: rgba(138, 107, 175, 0.7);
+}
+
+/* Stagger animation cuando entran las cards */
+.idx-card {
+  animation: holo-fade-up-blur 0.8s var(--holo-ease) both;
+}
+.idx-grid > .idx-card:nth-child(1) { animation-delay: 0.05s; }
+.idx-grid > .idx-card:nth-child(2) { animation-delay: 0.12s; }
+.idx-grid > .idx-card:nth-child(3) { animation-delay: 0.19s; }
+.idx-grid > .idx-card:nth-child(4) { animation-delay: 0.26s; }
+.idx-grid > .idx-card:nth-child(5) { animation-delay: 0.33s; }
 
 /* UTILITY ROW · cards horizontales */
 .idx-util-grid {
@@ -406,17 +603,29 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO con aurora animada -->
 <section class="idx-hero">
-  <div class="holo-container">
-    <div class="idx-hero-eyebrow">Plataforma holística de inteligencia artificial</div>
+  <div class="holo-aurora"></div>
+  <div class="holo-orb holo-orb-rose"></div>
+  <div class="holo-orb holo-orb-terra"></div>
+  <div class="holo-container idx-hero-inner">
+    <span class="idx-hero-eyebrow">Plataforma holística con IA</span>
     <h1>Todo lo que un terapeuta necesita,<br><em>en un solo lugar</em></h1>
     <p>Herramientas integradas de biomagnetismo, biodescodificación, astrología, numerología y tarot — diseñadas para acompañar tu práctica clínica desde el primer contacto con el consultante hasta la elaboración del protocolo.</p>
+    <div class="idx-hero-actions">
+      <a class="idx-hero-cta" href="#practica">
+        Comenzar ahora
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="idx-hero-cta-secondary" href="#lecturas">
+        Explorar módulos
+      </a>
+    </div>
   </div>
 </section>
 
 <!-- ═══════ SECCIÓN 1 · PRÁCTICA CLÍNICA ═══════ -->
-<section class="idx-section">
+<section class="idx-section" id="practica">
   <div class="holo-container">
     <div class="idx-section-head">
       <div>
@@ -496,7 +705,7 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
 </section>
 
 <!-- ═══════ SECCIÓN 2 · LECTURAS Y ANÁLISIS ═══════ -->
-<section class="idx-section">
+<section class="idx-section" id="lecturas">
   <div class="holo-container">
     <div class="idx-section-head">
       <div>

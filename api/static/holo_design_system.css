@@ -11,18 +11,47 @@
 
 /* ── 1 · TIPOGRAFÍA ─────────────────────────────────────────────────────── */
 
-/* Inter (body + UI) — fuente del cuerpo, peso variable */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* Inter (body + UI) — variable, todos los pesos */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Cormorant Garamond (display + headlines) — estética holística */
+/* Instrument Serif — display moderno con personalidad */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+/* Cormorant Garamond — backup para casos editoriales */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 /* ── 2 · VARIABLES ──────────────────────────────────────────────────────── */
 :root {
   /* ─── Tipografía ─── */
   --holo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --holo-font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --holo-font-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --holo-font-display-alt: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   --holo-font-mono: 'SF Mono', Menlo, Monaco, 'Cascadia Mono', monospace;
+
+  /* ─── Gradients animados (auroras Mindvalley) ─── */
+  --holo-grad-aurora-1: radial-gradient(circle at 20% 30%, rgba(139, 107, 175, 0.4) 0%, transparent 50%);
+  --holo-grad-aurora-2: radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.35) 0%, transparent 55%);
+  --holo-grad-aurora-3: radial-gradient(circle at 50% 90%, rgba(201, 123, 92, 0.3) 0%, transparent 50%);
+  --holo-grad-aurora-4: radial-gradient(circle at 70% 20%, rgba(188, 92, 79, 0.25) 0%, transparent 45%);
+
+  --holo-grad-mesh:
+    radial-gradient(circle at 15% 20%, rgba(177, 159, 208, 0.55) 0%, transparent 45%),
+    radial-gradient(circle at 85% 30%, rgba(232, 181, 103, 0.5) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(214, 121, 112, 0.4) 0%, transparent 55%),
+    radial-gradient(circle at 25% 75%, rgba(138, 107, 175, 0.35) 0%, transparent 50%);
+
+  /* Gradients lineales para text/borders */
+  --holo-grad-text-1: linear-gradient(135deg, #8A6BAF 0%, #C97B5C 50%, #D4A574 100%);
+  --holo-grad-text-2: linear-gradient(135deg, #553F7A 0%, #8A6BAF 100%);
+  --holo-grad-text-warm: linear-gradient(135deg, #B8852E 0%, #C97B5C 50%, #BC5C4F 100%);
+  --holo-grad-violet: linear-gradient(135deg, #6D5896 0%, #553F7A 100%);
+  --holo-grad-amber: linear-gradient(135deg, #E8B567 0%, #B8852E 100%);
+  --holo-grad-border: linear-gradient(135deg, rgba(138, 107, 175, 0.6) 0%, rgba(212, 165, 116, 0.6) 100%);
+
+  /* Glass morphism */
+  --holo-glass-bg: rgba(255, 255, 255, 0.6);
+  --holo-glass-border: rgba(255, 255, 255, 0.6);
+  --holo-glass-blur: saturate(180%) blur(20px);
 
   /* Tamaños tipográficos modulares (1.25 ratio) */
   --holo-text-xs:   0.75rem;   /* 12 */
@@ -510,4 +539,207 @@ body.holo-body {
 @media print {
   .holo-btn, .holo-no-print { display: none !important; }
   body.holo-body { background: white; color: black; }
+}
+
+/* ════════════════════════════════════════════════════════════════════════
+   15 · MOVIMIENTO · Aurora animada, orbs flotantes, glass, gradient text
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Aurora background animada (para hero/section principal) */
+.holo-aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.holo-aurora::before,
+.holo-aurora::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.65;
+  animation: holo-orb-float 18s ease-in-out infinite;
+}
+.holo-aurora::before {
+  width: 60vw;
+  height: 60vw;
+  max-width: 720px;
+  max-height: 720px;
+  top: -15%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(138, 107, 175, 0.55) 0%, rgba(85, 63, 122, 0.2) 50%, transparent 80%);
+}
+.holo-aurora::after {
+  width: 50vw;
+  height: 50vw;
+  max-width: 640px;
+  max-height: 640px;
+  top: 10%;
+  right: -15%;
+  background: radial-gradient(circle, rgba(212, 165, 116, 0.5) 0%, rgba(184, 133, 46, 0.18) 50%, transparent 80%);
+  animation-delay: -9s;
+  animation-direction: reverse;
+}
+@keyframes holo-orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25%      { transform: translate(40px, 30px) scale(1.05); }
+  50%      { transform: translate(-30px, 50px) scale(0.95); }
+  75%      { transform: translate(20px, -40px) scale(1.02); }
+}
+
+/* Orbs adicionales (terceros) */
+.holo-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  pointer-events: none;
+  opacity: 0.5;
+  animation: holo-orb-float 22s ease-in-out infinite;
+}
+.holo-orb-rose {
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  background: radial-gradient(circle, rgba(214, 121, 112, 0.5) 0%, transparent 70%);
+  bottom: -10%;
+  left: 30%;
+  animation-delay: -5s;
+}
+.holo-orb-terra {
+  width: 35vw;
+  height: 35vw;
+  max-width: 420px;
+  max-height: 420px;
+  background: radial-gradient(circle, rgba(201, 123, 92, 0.45) 0%, transparent 70%);
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -12s;
+}
+
+/* Gradient text (titulares emocionales) */
+.holo-gradient-text {
+  background: var(--holo-grad-text-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.holo-gradient-text-warm {
+  background: var(--holo-grad-text-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.holo-gradient-text-violet {
+  background: var(--holo-grad-text-2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Glass morphism */
+.holo-glass {
+  background: var(--holo-glass-bg);
+  backdrop-filter: var(--holo-glass-blur);
+  -webkit-backdrop-filter: var(--holo-glass-blur);
+  border: 1px solid var(--holo-glass-border);
+}
+
+/* Gradient border (sutil, holístico) */
+.holo-gradient-border {
+  position: relative;
+  background: var(--holo-bg-elevated);
+  border-radius: var(--holo-radius-lg);
+}
+.holo-gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: var(--holo-grad-border);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity var(--holo-duration-base);
+  pointer-events: none;
+}
+.holo-gradient-border:hover::before { opacity: 1; }
+
+/* Shimmer (efecto brillo CTA) */
+@keyframes holo-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+.holo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.holo-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: holo-shimmer 3s infinite;
+  pointer-events: none;
+}
+
+/* Floating animation (íconos / cards sutilmente flotantes) */
+@keyframes holo-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.holo-floating {
+  animation: holo-float 4s ease-in-out infinite;
+}
+.holo-floating-slow {
+  animation: holo-float 6s ease-in-out infinite;
+}
+
+/* Stagger fade-in (cards) */
+@keyframes holo-fade-up-blur {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.holo-fade-up {
+  animation: holo-fade-up-blur 0.8s var(--holo-ease) both;
+}
+.holo-fade-up:nth-child(1) { animation-delay: 0.05s; }
+.holo-fade-up:nth-child(2) { animation-delay: 0.12s; }
+.holo-fade-up:nth-child(3) { animation-delay: 0.19s; }
+.holo-fade-up:nth-child(4) { animation-delay: 0.26s; }
+.holo-fade-up:nth-child(5) { animation-delay: 0.33s; }
+.holo-fade-up:nth-child(6) { animation-delay: 0.40s; }
+.holo-fade-up:nth-child(7) { animation-delay: 0.47s; }
+.holo-fade-up:nth-child(8) { animation-delay: 0.54s; }
+.holo-fade-up:nth-child(9) { animation-delay: 0.61s; }
+
+/* Pulse glow (badges, dots) */
+@keyframes holo-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.5); }
+  50%      { box-shadow: 0 0 0 8px rgba(212, 165, 116, 0); }
+}
+.holo-pulse-glow {
+  animation: holo-pulse-glow 2.4s infinite;
+}
+
+/* Grain/noise texture overlay (tech feel sutil) */
+.holo-grain {
+  position: relative;
+}
+.holo-grain::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 0;
 }
