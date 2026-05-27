@@ -384,6 +384,83 @@ async def chat_sobre_lectura(
     )
 
 
+@router.get("/decks/scan")
+async def tarot_decks_scan():
+    """
+    Escanea las carpetas de cada deck visualmente disponible y devuelve el mapeo
+    nombre_español → URL servida.
+
+    - RWS: api/static/tarot-cards/ (78 cartas, public domain 1909)
+    - Marsella: api/static/tarot-cards-marsella/ (Conver 1760, public domain)
+    - Thoth: api/static/tarot-cards-thoth/ (UPLOAD del usuario, uso personal)
+    """
+    import os, json as _json
+    from pathlib import Path as _Path
+
+    STATIC_DIR = _Path(__file__).parent.parent / "static"
+
+    def _scan(deck_dir: _Path, route_prefix: str) -> dict:
+        """Lee card_images.json del deck si existe, sino lo autogenera escaneando *.jpg/png."""
+        mapping_file = deck_dir / "card_images.json"
+        if not deck_dir.is_dir():
+            return {"total": 0, "mapping": {}}
+
+        # Si hay mapping pre-escrito, usarlo
+        if mapping_file.exists():
+            try:
+                data = _json.loads(mapping_file.read_text(encoding="utf-8"))
+                # Pero validar que los archivos siguen existiendo
+                live_mapping = {
+                    name: url for name, url in (data.get("mapping") or {}).items()
+                    if (STATIC_DIR / url.replace("/therapy-static/", "")).exists()
+                }
+                if live_mapping:
+                    return {"deck": data.get("deck", ""), "total": len(live_mapping), "mapping": live_mapping, "note": data.get("note", "")}
+            except Exception:
+                pass
+
+        # Autogenerar mapping desde archivos del directorio
+        # Convención de nombres: 00_loco.jpg, 01_mago.jpg, ..., bastos_01_as.jpg, etc.
+        SLUG_TO_NAME = {
+            "00_loco": "El Loco", "01_mago": "El Mago", "02_sacerdotisa": "La Sacerdotisa",
+            "03_emperatriz": "La Emperatriz", "04_emperador": "El Emperador",
+            "05_sumo_sacerdote": "El Sumo Sacerdote", "06_amantes": "Los Amantes",
+            "07_carro": "El Carro", "08_fuerza": "La Fuerza", "08_justicia": "La Justicia",
+            "09_ermitano": "El Ermitaño", "10_rueda": "La Rueda de la Fortuna",
+            "11_fuerza": "La Fuerza", "11_justicia": "La Justicia",
+            "12_colgado": "El Colgado", "13_muerte": "La Muerte",
+            "14_templanza": "La Templanza", "15_diablo": "El Diablo",
+            "16_torre": "La Torre", "17_estrella": "La Estrella", "18_luna": "La Luna",
+            "19_sol": "El Sol", "20_juicio": "El Juicio", "21_mundo": "El Mundo",
+        }
+        RANKS = {"01":"As","02":"Dos","03":"Tres","04":"Cuatro","05":"Cinco","06":"Seis",
+                 "07":"Siete","08":"Ocho","09":"Nueve","10":"Diez",
+                 "11":"Paje","12":"Caballero","13":"Reina","14":"Rey"}
+        SUITS = {"bastos":"Bastos","copas":"Copas","espadas":"Espadas","pentaculos":"Pentáculos"}
+
+        out = {}
+        for f in sorted(deck_dir.glob("*.jpg")) + sorted(deck_dir.glob("*.png")):
+            stem = f.stem
+            if stem in SLUG_TO_NAME:
+                out[SLUG_TO_NAME[stem]] = f"{route_prefix}/{f.name}"
+                continue
+            # Patrón menor: suit_NN_rank
+            parts = stem.split("_")
+            if len(parts) >= 2 and parts[0] in SUITS and parts[1] in RANKS:
+                rank_es = RANKS[parts[1]]
+                suit_es = SUITS[parts[0]]
+                name_es = f"As de {suit_es}" if rank_es == "As" else f"{rank_es} de {suit_es}"
+                out[name_es] = f"{route_prefix}/{f.name}"
+        return {"total": len(out), "mapping": out}
+
+    decks = {
+        "rws":      _scan(STATIC_DIR / "tarot-cards",          "/therapy-static/tarot-cards"),
+        "marsella": _scan(STATIC_DIR / "tarot-cards-marsella", "/therapy-static/tarot-cards-marsella"),
+        "thoth":    _scan(STATIC_DIR / "tarot-cards-thoth",    "/therapy-static/tarot-cards-thoth"),
+    }
+    return {"ok": True, "decks": decks}
+
+
 @router.get("/health")
 async def tarot_health():
     """Verifica que el motor de tarot está disponible."""

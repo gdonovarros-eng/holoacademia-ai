@@ -1847,11 +1847,20 @@ select { padding-right: 32px; cursor: pointer; }
         </div>
       </div>
 
-      <!-- Toggle vista Tabla / Galería -->
-      <div class="ref-view-toggle">
-        <button type="button" class="active" id="btnViewTabla" onclick="setRefView('tabla')">📋 Tabla</button>
-        <button type="button" id="btnViewGaleria" onclick="setRefView('galeria')">🎴 Galería</button>
+      <!-- Selector de deck visual -->
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:14px;">
+        <div class="ref-view-toggle">
+          <button type="button" class="active" id="btnViewTabla" onclick="setRefView('tabla')">📋 Tabla</button>
+          <button type="button" id="btnViewGaleria" onclick="setRefView('galeria')">🎴 Galería</button>
+        </div>
+        <div class="ref-view-toggle" style="margin-left:auto;">
+          <button type="button" class="active" id="btnDeckRws"      onclick="setRefDeck('rws')">RWS</button>
+          <button type="button"                id="btnDeckMarsella" onclick="setRefDeck('marsella')">Marsella</button>
+          <button type="button"                id="btnDeckThoth"    onclick="setRefDeck('thoth')">Thoth</button>
+        </div>
       </div>
+      <!-- Notice si el deck activo está vacío (Thoth sin uploads) -->
+      <div id="deckNotice" style="display:none;background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.3);border-radius:10px;padding:12px 16px;margin-bottom:14px;font-size:0.85rem;color:#fcd34d;line-height:1.55;"></div>
 
       <div class="ref-table-wrap row-click" id="refTableWrap">
         <table class="ref-table" id="refTable">
@@ -2054,10 +2063,14 @@ function switchTab(id) {
 // SISTEMA VISUAL DE CARTAS · Rider-Waite-Smith con animaciones premium
 // ═══════════════════════════════════════════════════════════════════════
 
-let CARD_IMAGES = {};  // { "El Loco": "/therapy-static/tarot-cards/00_loco.jpg", ... }
+let CARD_IMAGES = {};  // legacy: alias del deck activo (compat)
 let CARD_IMAGES_READY = false;
-let _pickerTargetSlot = -1;  // slot que se está editando vía el picker
+let _pickerTargetSlot = -1;
 let _pickerFilter = "todos";
+
+// Decks disponibles: RWS, Marsella, Thoth (user-uploaded)
+let DECKS = { rws: {}, marsella: {}, thoth: {} };
+let ACTIVE_DECK = "rws";  // 'rws' | 'marsella' | 'thoth'
 
 // SVG sigil decorativo del dorso (estrella de 8 puntas + luna)
 const DORSO_SIGIL_SVG = `
@@ -2081,23 +2094,63 @@ const DORSO_SIGIL_SVG = `
   <path d="M44 50 A 8 8 0 1 0 56 50 A 6 6 0 1 1 44 50 Z" fill="#fcd34d" opacity="0.8"/>
 </svg>`;
 
-// Carga el mapping de imágenes RWS
+// Carga los 3 decks (RWS, Marsella, Thoth)
 async function loadCardImages() {
   try {
-    const resp = await fetch('/therapy-static/tarot-cards/card_images.json?v=' + Date.now());
+    const resp = await fetch('/tarot/decks/scan?v=' + Date.now());
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
-    CARD_IMAGES = data.mapping || {};
+    DECKS.rws      = (data.decks?.rws?.mapping) || {};
+    DECKS.marsella = (data.decks?.marsella?.mapping) || {};
+    DECKS.thoth    = (data.decks?.thoth?.mapping) || {};
+    // Conectar al selector global de sistema (Lectura)
+    const sistemaSel = document.getElementById('sistemaSel');
+    if (sistemaSel) {
+      ACTIVE_DECK = sistemaSel.value || 'rws';
+      sistemaSel.addEventListener('change', e => setActiveDeck(e.target.value));
+    }
+    CARD_IMAGES = DECKS[ACTIVE_DECK] || DECKS.rws;
     CARD_IMAGES_READY = true;
-    console.log(`✓ Tarot: ${Object.keys(CARD_IMAGES).length} cartas cargadas`);
+    console.log(`✓ Tarot decks cargados — RWS: ${Object.keys(DECKS.rws).length}, Marsella: ${Object.keys(DECKS.marsella).length}, Thoth: ${Object.keys(DECKS.thoth).length}`);
   } catch (e) {
-    console.warn('No se pudo cargar card_images.json:', e);
+    console.warn('No se pudo cargar /tarot/decks/scan, fallback a RWS solo:', e);
+    try {
+      const resp = await fetch('/therapy-static/tarot-cards/card_images.json');
+      const data = await resp.json();
+      DECKS.rws = data.mapping || {};
+      CARD_IMAGES = DECKS.rws;
+      CARD_IMAGES_READY = true;
+    } catch (e2) { console.error(e2); }
   }
 }
 
-// Devuelve URL o null
+// Cambia el deck activo y re-renderiza vistas que dependen de imágenes
+function setActiveDeck(deck) {
+  if (!DECKS[deck]) return;
+  ACTIVE_DECK = deck;
+  CARD_IMAGES = DECKS[deck];
+  // Re-renderizar referencia si está abierta
+  if (refRendered) filtrarReferencia();
+  // Re-renderizar slots ya asignados con la nueva imagen
+  document.querySelectorAll('.carta-slot.filled').forEach(slot => {
+    const idx = +slot.dataset.idx;
+    const nombre = document.getElementById('carta-' + idx).value;
+    const inv = document.getElementById('inv-' + idx).dataset.checked === 'true';
+    if (nombre) assignCard(idx, nombre, inv, false);
+  });
+  // Si picker está abierto, refrescar
+  if (document.getElementById('cardPickerOverlay').classList.contains('visible')) {
+    pickerRenderGrid();
+  }
+}
+
+// Devuelve URL del deck activo o null
 function cardImageUrl(name) {
-  return CARD_IMAGES[name] || null;
+  return (DECKS[ACTIVE_DECK] || {})[name] || null;
+}
+// URL en cualquier deck específico (para selector de Referencia)
+function cardImageUrlInDeck(name, deck) {
+  return (DECKS[deck] || {})[name] || null;
 }
 
 // Datalist para fallback de input text (compat con código viejo)
@@ -2817,6 +2870,46 @@ function setRefView(view) {
   filtrarReferencia();
 }
 
+// Deck activo SOLO para la pestaña Referencia (no afecta Lectura)
+let refDeck = 'rws';
+
+function setRefDeck(deck) {
+  refDeck = deck;
+  document.getElementById('btnDeckRws').classList.toggle('active', deck === 'rws');
+  document.getElementById('btnDeckMarsella').classList.toggle('active', deck === 'marsella');
+  document.getElementById('btnDeckThoth').classList.toggle('active', deck === 'thoth');
+
+  // Notice si el deck está vacío
+  const notice = document.getElementById('deckNotice');
+  const count = Object.keys(DECKS[deck] || {}).length;
+  if (deck === 'thoth' && count === 0) {
+    notice.style.display = 'block';
+    notice.innerHTML = `
+      <strong>⚠ Deck Thoth vacío</strong><br>
+      El Tarot Thoth (Crowley/Harris, 1969) sigue bajo copyright vigente hasta ~2042 — no podemos
+      distribuir sus imágenes públicamente.<br><br>
+      Para usarlo personalmente, copiá tus archivos a:
+      <code style="background:rgba(0,0,0,0.4);padding:2px 8px;border-radius:6px;color:#fff;font-size:0.78rem;">
+      api/static/tarot-cards-thoth/
+      </code>
+      <br>
+      Con nombres como <code style="opacity:0.8">00_loco.jpg, 01_mago.jpg, bastos_01_as.jpg, copas_14_rey.jpg</code>, etc.
+      Después recargá esta página y aparecerán acá.
+    `;
+  } else if (deck === 'marsella') {
+    notice.style.display = 'block';
+    notice.innerHTML = `
+      <strong>ℹ Tarot de Marsella · Conver 1760</strong> — solo arcanos mayores (22 cartas).
+      Los arcanos menores tradicionales del Marsella son "pip cards" simples (sin escenas) y se
+      muestran con el dorso decorado y el nombre cuando seleccionas alguno.
+    `;
+  } else {
+    notice.style.display = 'none';
+  }
+
+  filtrarReferencia();
+}
+
 function filtrarReferencia() {
   const q = (document.getElementById('refSearch')?.value || '').toLowerCase();
   const tipo = document.getElementById('refTipo')?.value || '';
@@ -2844,7 +2937,7 @@ function renderRefTabla(filtered) {
     const tipoBadge = c.tipo === 'mayor'
       ? '<span class="palo-badge tipo-mayor">Mayor</span>'
       : `<span class="palo-badge palo-${c.palo}">${c.palo.charAt(0).toUpperCase()+c.palo.slice(1)}</span>`;
-    const url = cardImageUrl(c.nombre);
+    const url = cardImageUrlInDeck(c.nombre, refDeck);
     const thumb = url
       ? `<div class="ref-thumb"><img src="${url}" alt="${c.nombre}" loading="lazy"></div>`
       : `<div class="ref-thumb"></div>`;
@@ -2870,7 +2963,7 @@ function renderRefGaleria(filtered) {
     return;
   }
   grid.innerHTML = filtered.map(c => {
-    const url = cardImageUrl(c.nombre);
+    const url = cardImageUrlInDeck(c.nombre, refDeck);
     return `
       <div class="ref-gallery-card" onclick="openCardDetail('${c.nombre.replace(/'/g, "\\'")}')" title="${c.kw}">
         ${url ? `<img src="${url}" alt="${c.nombre}" loading="lazy">` : ''}
@@ -2893,7 +2986,10 @@ async function openCardDetail(nombre) {
     if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
     const data = await resp.json();
     const datos = data.datos || {};
-    const url = cardImageUrl(nombre);
+    // Usar el deck seleccionado en Referencia (si la pestaña está activa) o el activo global
+    const tabRefActive = document.getElementById('tab-referencia')?.classList.contains('active');
+    const deckForDetail = tabRefActive ? refDeck : ACTIVE_DECK;
+    const url = cardImageUrlInDeck(nombre, deckForDetail);
 
     // Construir chips de metadata (lo que esté disponible)
     const chips = [];

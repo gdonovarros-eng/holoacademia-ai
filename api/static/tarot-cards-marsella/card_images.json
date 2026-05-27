@@ -1,0 +1,30 @@
+{
+  "deck": "Tarot de Marsella (Public Domain — varios autores)",
+  "source": "Wikimedia Commons (búsqueda)",
+  "total": 22,
+  "mapping": {
+    "El Loco": "/therapy-static/tarot-cards-marsella/00_loco.jpg",
+    "El Mago": "/therapy-static/tarot-cards-marsella/01_mago.jpg",
+    "La Sacerdotisa": "/therapy-static/tarot-cards-marsella/02_sacerdotisa.jpg",
+    "La Emperatriz": "/therapy-static/tarot-cards-marsella/03_emperatriz.jpg",
+    "El Emperador": "/therapy-static/tarot-cards-marsella/04_emperador.jpg",
+    "El Sumo Sacerdote": "/therapy-static/tarot-cards-marsella/05_sumo_sacerdote.jpg",
+    "Los Amantes": "/therapy-static/tarot-cards-marsella/06_amantes.jpg",
+    "El Carro": "/therapy-static/tarot-cards-marsella/07_carro.jpg",
+    "La Justicia": "/therapy-static/tarot-cards-marsella/08_justicia.jpg",
+    "El Ermitaño": "/therapy-static/tarot-cards-marsella/09_ermitano.jpg",
+    "La Rueda de la Fortuna": "/therapy-static/tarot-cards-marsella/10_rueda.jpg",
+    "La Fuerza": "/therapy-static/tarot-cards-marsella/11_fuerza.jpg",
+    "El Colgado": "/therapy-static/tarot-cards-marsella/12_colgado.jpg",
+    "La Templanza": "/therapy-static/tarot-cards-marsella/14_templanza.jpg",
+    "El Diablo": "/therapy-static/tarot-cards-marsella/15_diablo.jpg",
+    "La Torre": "/therapy-static/tarot-cards-marsella/16_torre.jpg",
+    "La Estrella": "/therapy-static/tarot-cards-marsella/17_estrella.jpg",
+    "La Luna": "/therapy-static/tarot-cards-marsella/18_luna.jpg",
+    "El Sol": "/therapy-static/tarot-cards-marsella/19_sol.jpg",
+    "El Juicio": "/therapy-static/tarot-cards-marsella/20_juicio.jpg",
+    "El Mundo": "/therapy-static/tarot-cards-marsella/21_mundo.jpg",
+    "La Muerte": "/therapy-static/tarot-cards-marsella/13_muerte.jpg"
+  },
+  "note": "Solo arcanos mayores (22). Los menores son pip cards simples."
+}
