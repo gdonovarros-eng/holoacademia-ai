@@ -1570,6 +1570,18 @@ select { padding-right: 32px; cursor: pointer; }
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+/* Footer con créditos / atribución de copyright */
+.detail-credits {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 14px 28px 18px;
+  font-size: 0.72rem;
+  line-height: 1.55;
+  color: var(--muted);
+  background: rgba(0,0,0,0.18);
+}
+.detail-credits strong { color: var(--text); font-weight: 600; }
+.detail-credits em { color: var(--muted); font-style: italic; }
 </style>
 </head>
 <body>
@@ -2879,35 +2891,48 @@ function setRefDeck(deck) {
   document.getElementById('btnDeckMarsella').classList.toggle('active', deck === 'marsella');
   document.getElementById('btnDeckThoth').classList.toggle('active', deck === 'thoth');
 
-  // Notice si el deck está vacío
+  // Leyenda de créditos + estado del deck
   const notice = document.getElementById('deckNotice');
   const count = Object.keys(DECKS[deck] || {}).length;
+
   if (deck === 'thoth' && count === 0) {
     notice.style.display = 'block';
     notice.innerHTML = `
-      <strong>⚠ Deck Thoth vacío</strong><br>
-      El Tarot Thoth (Crowley/Harris, 1969) sigue bajo copyright vigente hasta ~2042 — no podemos
-      distribuir sus imágenes públicamente.<br><br>
-      Para usarlo personalmente, copiá tus archivos a:
-      <code style="background:rgba(0,0,0,0.4);padding:2px 8px;border-radius:6px;color:#fff;font-size:0.78rem;">
-      api/static/tarot-cards-thoth/
-      </code>
-      <br>
-      Con nombres como <code style="opacity:0.8">00_loco.jpg, 01_mago.jpg, bastos_01_as.jpg, copas_14_rey.jpg</code>, etc.
-      Después recargá esta página y aparecerán acá.
-    `;
-  } else if (deck === 'marsella') {
-    notice.style.display = 'block';
-    notice.innerHTML = `
-      <strong>ℹ Tarot de Marsella · Conver 1760</strong> — solo arcanos mayores (22 cartas).
-      Los arcanos menores tradicionales del Marsella son "pip cards" simples (sin escenas) y se
-      muestran con el dorso decorado y el nombre cuando seleccionas alguno.
+      <strong>⚠ Deck Thoth no cargado.</strong>
+      Copiá tus archivos a
+      <code style="background:rgba(0,0,0,0.4);padding:2px 8px;border-radius:6px;color:#fff;font-size:0.78rem;">api/static/tarot-cards-thoth/</code>
+      con nombres tipo <code style="opacity:0.8">00_loco.jpg, bastos_01_as.jpg, copas_14_rey.jpg</code>.
     `;
   } else {
-    notice.style.display = 'none';
+    notice.style.display = 'block';
+    notice.innerHTML = deckCreditNotice(deck);
   }
 
   filtrarReferencia();
+}
+
+// Leyenda de atribución de cada deck (uso de referencia, sin fines de lucro)
+function deckCreditNotice(deck) {
+  if (deck === 'rws') {
+    return `
+      <strong>Rider-Waite-Smith (1909)</strong> — Arte: Pamela Colman Smith · Concepto: Arthur Edward Waite.<br>
+      Imágenes utilizadas únicamente con fines de referencia educativa y terapéutica, sin lucro. Las obras están en dominio público en la mayoría de jurisdicciones por antigüedad.
+    `;
+  }
+  if (deck === 'marsella') {
+    return `
+      <strong>Tarot de Marsella — Nicolas Conver (1760)</strong>. Restauración digital vía Wikimedia Commons.<br>
+      Imágenes utilizadas únicamente con fines de referencia educativa y terapéutica, sin lucro. Las obras están en dominio público.
+      <em>Nota: solo arcanos mayores; los menores tradicionales son "pip cards" simples.</em>
+    `;
+  }
+  if (deck === 'thoth') {
+    return `
+      <strong>Tarot Thoth (1969)</strong> — Arte: Lady Frieda Harris · Concepto: Aleister Crowley.<br>
+      <strong>© Ordo Templi Orientis</strong>. Las imágenes son <strong>propiedad de sus respectivos titulares de derechos de autor</strong> y se muestran aquí <strong>únicamente con fines de referencia educativa y terapéutica</strong>, <strong>sin fines de lucro</strong>. Todos los derechos reservados a sus propietarios.
+    `;
+  }
+  return '';
 }
 
 function filtrarReferencia() {
@@ -3053,6 +3078,7 @@ async function openCardDetail(nombre) {
             </div>` : ''}
         </div>
       </div>
+      <div class="detail-credits">${deckCreditNotice(deckForDetail)}</div>
     `;
     content.className = '';
     content.innerHTML = html;
