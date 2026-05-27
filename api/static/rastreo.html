@@ -7,6 +7,10 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Rastreo de Imanes · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <style>
 :root {
   --bg: #f5f5f7;
@@ -1499,16 +1503,28 @@ table.tref-table td:nth-child(3) { color: #374151; }
 </head>
 <body>
 
-<!-- ── HEADER ─────────────────────────────────────────────────── -->
-<header>
-  <a href="https://www.holoacademia.com/asistenteia" class="home-btn" title="Inicio">⌂</a>
-  <h1>Rastreo de Imanes</h1>
-  <input type="text" id="global-search" placeholder="Buscar par, condición, tipo…" autocomplete="off">
-  <div class="spacer"></div>
-  <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
-  <button id="btn-finalizar" onclick="openModal()">
-    Finalizar ✓ <span id="confirmed-badge">0</span>
-  </button>
+<!-- ── HEADER UNIFICADO ─────────────────────────────────────── -->
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-teal">
+        <svg viewBox="0 0 24 24"><path d="M6 19v-8a6 6 0 0 1 12 0v8"/><line x1="4" y1="19" x2="8" y2="19"/><line x1="16" y1="19" x2="20" y2="19"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Sesión clínica</div>
+        <div class="holo-module-title">Rastreo de imanes</div>
+      </div>
+    </div>
+    <input type="text" id="global-search" placeholder="Buscar par, condición…" autocomplete="off">
+    <button class="mobile-toggle" id="btn-toggle-confirm">✓ Confirmados</button>
+    <button id="btn-finalizar" onclick="openModal()">
+      Finalizar <span id="confirmed-badge">0</span>
+    </button>
+  </div>
 </header>
 
 <!-- ── MAIN GRID ──────────────────────────────────────────────── -->

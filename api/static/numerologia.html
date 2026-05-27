@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Numerhología · Holoacadem-iA</title>
+<title>Numerología · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -660,13 +664,23 @@ select { padding-right: 32px; cursor: pointer; }
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" id="appHeader">
-  <a class="header-back" href="/astro-home" id="backBtn">← Holoacadem-iA</a>
-  <div class="header-title">
-    <span class="header-icon">🔢</span>
-    <span class="header-name">Numerhología · Holoacadem-iA</span>
-    <span class="header-badge">Holoacadem-iA</span>
+<!-- HEADER UNIFICADO -->
+<header class="holo-module-header" id="appHeader">
+  <div class="holo-module-header-inner">
+    <a href="/astro-home" class="holo-module-back" id="backBtn">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Astrología</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-sage">
+        <svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Numerología pitagórica</div>
+        <div class="holo-module-title">Numerología</div>
+      </div>
+    </div>
+    <span class="holo-module-badge">IA</span>
   </div>
 </header>
 

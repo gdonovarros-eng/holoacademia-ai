@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sinodal IA · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -377,16 +381,25 @@
 
 <div class="app">
 
-  <!-- Header -->
-  <header class="header">
-    <a href="https://www.holoacademia.com/asistenteia" class="home-btn" title="Inicio">⌂</a>
-    <div class="header-avatar">🤖</div>
-    <div class="header-info">
-      <div class="header-name">Sael — Tutor del Diplomado</div>
-      <div class="header-status">● Activo · Holoacadem-iA</div>
+  <!-- Header unificado -->
+  <header class="holo-module-header">
+    <div class="holo-module-header-inner">
+      <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        <span>Inicio</span>
+      </a>
+      <div class="holo-module-identity">
+        <div class="holo-module-icon mod-violet">
+          <svg viewBox="0 0 24 24"><path d="M2 10l10-6 10 6-10 6-10-6z"/><path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/></svg>
+        </div>
+        <div class="holo-module-title-wrap">
+          <div class="holo-module-category">Tutor IA · 24/7</div>
+          <div class="holo-module-title">Sinodal IA · Sael</div>
+        </div>
+      </div>
+      <div id="usageBadge" class="holo-module-badge" style="display:none;"></div>
+      <button class="header-new" onclick="resetChat()">Nueva conversación</button>
     </div>
-    <div id="usageBadge" style="display:none;font-size:0.72rem;padding:4px 10px;border-radius:20px;border:1px solid rgba(255,255,255,0.1);white-space:nowrap;"></div>
-    <button class="header-new" onclick="resetChat()">Nueva conversación</button>
   </header>
 
   <!-- Modal paywall -->

@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astrología Médica · Holoacadem-iA</title>
+<title>Perfil de Salud · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -561,13 +565,23 @@ input:focus {
 </head>
 <body>
 
-<!-- HEADER -->
-<header class="header" id="appHeader">
-  <a class="header-back" href="https://www.holoacademia.com/asistenteia" id="backBtn">← Holoacadem-iA</a>
-  <div class="header-title">
-    <span class="header-icon">🩺</span>
-    <span class="header-name">Astrología Médica</span>
-    <span class="header-badge">Holoacadem-iA</span>
+<!-- HEADER UNIFICADO -->
+<header class="holo-module-header" id="appHeader">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back" id="backBtn">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-coral">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Astrología médica</div>
+        <div class="holo-module-title">Perfil de Salud</div>
+      </div>
+    </div>
+    <span class="holo-module-badge">IA</span>
   </div>
 </header>
 

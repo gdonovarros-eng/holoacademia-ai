@@ -1,0 +1,182 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   HOLO MODULE · Header + Layout base reutilizable para todos los módulos
+   Importar DESPUÉS de holo_design_system.css
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ─── HEADER UNIFICADO ──────────────────────────────────────────────── */
+.holo-module-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--holo-border);
+  backdrop-filter: saturate(180%) blur(12px);
+  -webkit-backdrop-filter: saturate(180%) blur(12px);
+}
+
+.holo-module-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Botón "volver" a holoacademia.com */
+.holo-module-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--holo-font-body);
+  font-size: 0.825rem;
+  font-weight: 500;
+  color: var(--holo-text-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--holo-border);
+  background: var(--holo-bg);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.holo-module-back:hover {
+  color: var(--holo-text-strong);
+  border-color: var(--holo-border-strong);
+  background: var(--holo-bg-soft);
+}
+.holo-module-back svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Identidad del módulo: ícono + título + badge categoría */
+.holo-module-identity {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.holo-module-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  background: var(--module-grad, var(--holo-grad-violet));
+  flex-shrink: 0;
+}
+.holo-module-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.holo-module-title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  overflow: hidden;
+}
+.holo-module-title {
+  font-family: var(--holo-font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--holo-text-strong);
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.holo-module-category {
+  font-family: var(--holo-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  line-height: 1.2;
+}
+
+/* Badge IA */
+.holo-module-badge {
+  font-family: var(--holo-font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--holo-teal-dark);
+  background: rgba(14, 165, 164, 0.12);
+  border: 1px solid rgba(14, 165, 164, 0.25);
+  padding: 4px 10px;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* ─── PAGE CONTAINER ─────────────────────────────────────────────────── */
+.holo-module-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+@media (max-width: 768px) {
+  .holo-module-page { padding: 20px 16px 40px; }
+  .holo-module-header-inner { padding: 12px 16px; gap: 10px; }
+  .holo-module-title { font-size: 0.95rem; }
+  .holo-module-category { font-size: 0.65rem; }
+  .holo-module-back { padding: 6px 10px; font-size: 0.78rem; }
+  .holo-module-back span { display: none; }
+}
+
+/* ─── COLOR GRADS DEL ICONO POR MÓDULO ──────────────────────────────── */
+.mod-violet { --module-grad: linear-gradient(135deg, #B19FD0 0%, #6D5896 100%); }
+.mod-teal   { --module-grad: linear-gradient(135deg, #5EEAD4 0%, #0EA5A4 100%); }
+.mod-sky    { --module-grad: linear-gradient(135deg, #93C5FD 0%, #2563EB 100%); }
+.mod-amber  { --module-grad: linear-gradient(135deg, #FCD34D 0%, #D97706 100%); }
+.mod-coral  { --module-grad: linear-gradient(135deg, #FCA5A5 0%, #DC2626 100%); }
+.mod-pink   { --module-grad: linear-gradient(135deg, #F472B6 0%, #C2185B 100%); }
+.mod-sage   { --module-grad: linear-gradient(135deg, #86EFAC 0%, #4F7942 100%); }
+.mod-terra  { --module-grad: linear-gradient(135deg, #FCA5A5 0%, #B45309 100%); }
+.mod-aurora { --module-grad: linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #F472B6 100%); }
+
+/* ─── SECTION TITLE EN MÓDULO ────────────────────────────────────────── */
+.holo-module-section-title {
+  font-family: var(--holo-font-body);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--holo-text-strong);
+  margin: 0 0 12px;
+}
+.holo-module-section-eyebrow {
+  font-family: var(--holo-font-body);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  margin-bottom: 8px;
+}
+.holo-module-section-sub {
+  font-family: var(--holo-font-body);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--holo-text-muted);
+  margin: 0 0 32px;
+  max-width: 680px;
+}

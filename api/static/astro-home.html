@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astrolog iA — Holoacadem-iA</title>
+<title>Astrología · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -346,20 +350,25 @@ body::before {
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <a class="nav-back" href="https://www.holoacademia.com/asistenteia">
-    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-      <path d="M10 12L6 8l4-4" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    Holoacadem-iA
-  </a>
-  <div class="nav-brand">
-    <div class="nav-brand-dot"></div>
-    Astrolog iA
+<!-- HEADER UNIFICADO -->
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back nav-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-aurora">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">5 módulos integrados</div>
+        <div class="holo-module-title">Astrología</div>
+      </div>
+    </div>
+    <span class="holo-module-badge">Premium</span>
   </div>
-  <div class="nav-badge">Premium</div>
-</nav>
+</header>
 
 <!-- HERO -->
 <div class="hero">

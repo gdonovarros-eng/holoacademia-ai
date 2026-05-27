@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Asistente Terapéutico · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -591,17 +595,26 @@
 
 <div class="app">
 
-  <!-- Header -->
-  <header class="header">
-    <a href="https://www.holoacademia.com/asistenteia" class="home-btn" title="Inicio">⌂</a>
-    <div class="header-icon">🩺</div>
-    <div class="header-info">
-      <div class="header-title" id="headerTitle">Asistente Terapéutico Holoacadem-iA</div>
-      <div class="header-sub" id="headerSub"></div>
+  <!-- Header unificado -->
+  <header class="holo-module-header">
+    <div class="holo-module-header-inner">
+      <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+        <span>Inicio</span>
+      </a>
+      <div class="holo-module-identity">
+        <div class="holo-module-icon mod-amber">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div class="holo-module-title-wrap">
+          <div class="holo-module-category">Análisis en vivo</div>
+          <div class="holo-module-title" id="headerTitle">Asistente Terapéutico</div>
+        </div>
+      </div>
+      <div id="usageBadge" class="holo-module-badge" style="display:none;"></div>
+      <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
+      <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
     </div>
-    <div id="usageBadge" style="display:none;font-size:0.72rem;color:var(--muted);white-space:nowrap;"></div>
-    <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
-    <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
   </header>
 
   <!-- Modal paywall (límite alcanzado) -->
