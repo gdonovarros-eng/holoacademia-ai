@@ -1273,6 +1273,303 @@ select { padding-right: 32px; cursor: pointer; }
 }
 .picker-card.dim { opacity: 0.25; }
 .picker-card.dim:hover { opacity: 1; }
+
+/* ════════════════════════════════════════════════════════════════════════
+   REFERENCIA · Tab con thumbnails + Galería + Modal detalle
+   ════════════════════════════════════════════════════════════════════════ */
+
+/* Toggle de vista (Tabla / Galería) */
+.ref-view-toggle {
+  display: inline-flex;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 2px;
+  margin-bottom: 12px;
+}
+.ref-view-toggle button {
+  padding: 6px 16px;
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.ref-view-toggle button.active {
+  background: rgba(245,158,11,0.18);
+  color: var(--gold);
+}
+.ref-view-toggle button:hover:not(.active) { color: var(--text); }
+
+/* Thumbnail en celda de la tabla */
+.ref-thumb {
+  width: 56px;
+  aspect-ratio: 0.585;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1.5px solid transparent;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  background: #1a0f3d;
+  flex-shrink: 0;
+  transition: all 0.18s;
+  cursor: pointer;
+}
+.ref-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.ref-table tr:hover .ref-thumb {
+  border-color: var(--gold);
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(245,158,11,0.4);
+}
+.ref-table td:first-child {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ref-table-wrap.row-click tbody tr { cursor: pointer; }
+
+/* Vista GALERÍA */
+.ref-gallery {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  margin-top: 8px;
+}
+.ref-gallery.visible { display: grid; }
+.ref-gallery-card {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a0f3d;
+  aspect-ratio: 0.585;
+  border: 1.5px solid transparent;
+}
+.ref-gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 9px;
+}
+.ref-gallery-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 26px 6px 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(180deg, transparent, rgba(0,0,0,0.95) 60%);
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  line-height: 1.2;
+}
+.ref-gallery-card:hover {
+  transform: translateY(-5px) scale(1.04);
+  border-color: var(--gold);
+  box-shadow: 0 12px 32px rgba(245,158,11,0.32);
+  z-index: 3;
+}
+
+/* Tabla: con vista galería, ocultar tabla; viceversa */
+.ref-table-wrap.hidden { display: none; }
+
+/* ── MODAL DE DETALLE DE CARTA ────────────────────────────────────────── */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9,13,26,0.94);
+  backdrop-filter: blur(16px);
+  z-index: 920;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 32px 16px;
+  overflow-y: auto;
+  animation: detail-fade 0.3s ease-out;
+}
+.detail-overlay.visible { display: flex; }
+@keyframes detail-fade { from { opacity: 0; } to { opacity: 1; } }
+
+.detail-modal {
+  width: 100%;
+  max-width: 880px;
+  background: linear-gradient(180deg, var(--surface) 0%, rgba(17,22,41,0.9) 100%);
+  border: 1px solid rgba(245,158,11,0.4);
+  border-radius: 20px;
+  box-shadow: 0 28px 80px rgba(0,0,0,0.7);
+  overflow: hidden;
+  animation: detail-slide 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+}
+@keyframes detail-slide { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.detail-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 5;
+}
+.detail-close:hover { background: rgba(0,0,0,0.85); transform: rotate(90deg); }
+
+.detail-body {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 28px;
+  padding: 32px 28px;
+}
+@media (max-width: 720px) {
+  .detail-body { grid-template-columns: 1fr; padding: 24px 18px; }
+}
+
+.detail-card-img {
+  width: 100%;
+  aspect-ratio: 0.585;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow:
+    0 12px 36px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(245,158,11,0.45);
+  background: #1a0f3d;
+  position: relative;
+}
+.detail-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.detail-card-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.18));
+}
+
+.detail-info { display: flex; flex-direction: column; gap: 16px; }
+.detail-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin: 0;
+}
+.detail-subname {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.detail-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 4px 0 8px;
+}
+.detail-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(168,85,247,0.12);
+  border: 1px solid rgba(168,85,247,0.3);
+  color: #d8b4fe;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.detail-chip.gold { background: rgba(245,158,11,0.12); border-color: rgba(245,158,11,0.35); color: var(--gold); }
+.detail-chip.teal { background: rgba(20,184,166,0.12); border-color: rgba(20,184,166,0.32); color: #5eead4; }
+.detail-section {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 14px;
+}
+.detail-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.detail-section-body {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+.detail-section-body.italic { font-style: italic; }
+.detail-section-body.kw {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.detail-kw-pill {
+  background: rgba(168,85,247,0.08);
+  border: 1px solid rgba(168,85,247,0.22);
+  color: #e9d5ff;
+  padding: 4px 11px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+}
+.detail-section-body.kw.sombra .detail-kw-pill {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.2);
+  color: #fecaca;
+}
+.detail-afirmacion {
+  background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(168,85,247,0.06));
+  border: 1px solid rgba(245,158,11,0.22);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.55;
+  position: relative;
+}
+.detail-afirmacion::before {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  left: 14px;
+  background: var(--surface);
+  padding: 0 6px;
+  font-size: 1rem;
+}
+.detail-loading {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
 </style>
 </head>
 <body>
@@ -1550,7 +1847,13 @@ select { padding-right: 32px; cursor: pointer; }
         </div>
       </div>
 
-      <div class="ref-table-wrap">
+      <!-- Toggle vista Tabla / Galería -->
+      <div class="ref-view-toggle">
+        <button type="button" class="active" id="btnViewTabla" onclick="setRefView('tabla')">📋 Tabla</button>
+        <button type="button" id="btnViewGaleria" onclick="setRefView('galeria')">🎴 Galería</button>
+      </div>
+
+      <div class="ref-table-wrap row-click" id="refTableWrap">
         <table class="ref-table" id="refTable">
           <thead>
             <tr>
@@ -1563,6 +1866,9 @@ select { padding-right: 32px; cursor: pointer; }
           <tbody id="refTableBody"></tbody>
         </table>
       </div>
+
+      <!-- Vista Galería: grid grande de cartas -->
+      <div class="ref-gallery" id="refGallery"></div>
     </div>
   </div>
 
@@ -1578,6 +1884,14 @@ select { padding-right: 32px; cursor: pointer; }
     <div class="shuffle-card"></div>
   </div>
   <div class="shuffle-text">Barajando el mazo…</div>
+</div>
+
+<!-- ─── MODAL: Detalle de carta (Referencia) ────────────────────────────── -->
+<div class="detail-overlay" id="cardDetailOverlay" onclick="if(event.target===this) closeCardDetail()">
+  <div class="detail-modal" id="cardDetailModal">
+    <button class="detail-close" onclick="closeCardDetail()" title="Cerrar">×</button>
+    <div id="cardDetailContent" class="detail-loading">Cargando…</div>
+  </div>
 </div>
 
 <!-- ─── MODAL: Card picker ──────────────────────────────────────────────── -->
@@ -2486,9 +2800,20 @@ async function calcularPerfil() {
 
 // ─── Referencia ───────────────────────────────────────────────────────────────
 let refRendered = false;
+let refView = 'tabla';  // 'tabla' | 'galeria'
+
 function renderReferencia() {
   if (refRendered) return;
   refRendered = true;
+  filtrarReferencia();
+}
+
+function setRefView(view) {
+  refView = view;
+  document.getElementById('btnViewTabla').classList.toggle('active', view === 'tabla');
+  document.getElementById('btnViewGaleria').classList.toggle('active', view === 'galeria');
+  document.getElementById('refTableWrap').classList.toggle('hidden', view !== 'tabla');
+  document.getElementById('refGallery').classList.toggle('visible', view === 'galeria');
   filtrarReferencia();
 }
 
@@ -2504,6 +2829,11 @@ function filtrarReferencia() {
     return true;
   });
 
+  if (refView === 'tabla') renderRefTabla(filtered);
+  else                     renderRefGaleria(filtered);
+}
+
+function renderRefTabla(filtered) {
   const tbody = document.getElementById('refTableBody');
   if (!filtered.length) {
     tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:var(--muted);">Sin resultados</td></tr>';
@@ -2514,10 +2844,17 @@ function filtrarReferencia() {
     const tipoBadge = c.tipo === 'mayor'
       ? '<span class="palo-badge tipo-mayor">Mayor</span>'
       : `<span class="palo-badge palo-${c.palo}">${c.palo.charAt(0).toUpperCase()+c.palo.slice(1)}</span>`;
-    return `<tr>
+    const url = cardImageUrl(c.nombre);
+    const thumb = url
+      ? `<div class="ref-thumb"><img src="${url}" alt="${c.nombre}" loading="lazy"></div>`
+      : `<div class="ref-thumb"></div>`;
+    return `<tr onclick="openCardDetail('${c.nombre.replace(/'/g, "\\'")}')">
       <td>
-        <div class="td-nombre ${c.tipo === 'menor' ? 'menor' : ''}">${c.nombre}</div>
-        <div class="td-num">#${c.num}</div>
+        ${thumb}
+        <div>
+          <div class="td-nombre ${c.tipo === 'menor' ? 'menor' : ''}">${c.nombre}</div>
+          <div class="td-num">#${c.num}</div>
+        </div>
       </td>
       <td>${tipoBadge}</td>
       <td class="td-kw">${c.kw}</td>
@@ -2526,16 +2863,125 @@ function filtrarReferencia() {
   }).join('');
 }
 
+function renderRefGaleria(filtered) {
+  const grid = document.getElementById('refGallery');
+  if (!filtered.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--muted);padding:50px;">Sin resultados</div>';
+    return;
+  }
+  grid.innerHTML = filtered.map(c => {
+    const url = cardImageUrl(c.nombre);
+    return `
+      <div class="ref-gallery-card" onclick="openCardDetail('${c.nombre.replace(/'/g, "\\'")}')" title="${c.kw}">
+        ${url ? `<img src="${url}" alt="${c.nombre}" loading="lazy">` : ''}
+        <div class="ref-gallery-card-label">${c.nombre}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ─── MODAL: Detalle de carta ──────────────────────────────────────────────────
+async function openCardDetail(nombre) {
+  const overlay = document.getElementById('cardDetailOverlay');
+  const content = document.getElementById('cardDetailContent');
+  overlay.classList.add('visible');
+  content.className = 'detail-loading';
+  content.textContent = 'Cargando…';
+
+  try {
+    const resp = await fetch(`/tarot/carta/${encodeURIComponent(nombre)}`);
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    const datos = data.datos || {};
+    const url = cardImageUrl(nombre);
+
+    // Construir chips de metadata (lo que esté disponible)
+    const chips = [];
+    if (datos.elemento)      chips.push(`<span class="detail-chip">🜄 ${datos.elemento}</span>`);
+    if (datos.planeta)       chips.push(`<span class="detail-chip">🪐 ${datos.planeta}</span>`);
+    if (datos.signo)         chips.push(`<span class="detail-chip">♈ ${datos.signo}</span>`);
+    if (datos.letra_hebrea)  chips.push(`<span class="detail-chip gold">𐤀 ${datos.letra_hebrea}</span>`);
+    if (datos.numero !== undefined) chips.push(`<span class="detail-chip teal">#${datos.numero}</span>`);
+    if (datos.palo)          chips.push(`<span class="detail-chip">${datos.palo}</span>`);
+    if (datos.rango)         chips.push(`<span class="detail-chip">${datos.rango}</span>`);
+
+    // Lista de palabras clave / sombra
+    const kwList = (datos.palabras_clave || []).map(k => `<span class="detail-kw-pill">${k}</span>`).join('');
+    const sombraList = (datos.sombra || []).map(k => `<span class="detail-kw-pill">${k}</span>`).join('');
+
+    // Sub-nombre (otras nomenclaturas)
+    const subnames = [];
+    if (datos.nombre_marsella) subnames.push(`Marsella: ${datos.nombre_marsella}`);
+    if (datos.nombre_thoth)    subnames.push(`Thoth: ${datos.nombre_thoth}`);
+
+    const html = `
+      <div class="detail-body">
+        <div class="detail-card-img">
+          ${url ? `<img src="${url}" alt="${nombre}">` : '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--muted);">Sin imagen</div>'}
+        </div>
+        <div class="detail-info">
+          <div>
+            <h2 class="detail-name">${nombre}</h2>
+            ${subnames.length ? `<div class="detail-subname">${subnames.join(' · ')}</div>` : ''}
+          </div>
+          ${chips.length ? `<div class="detail-meta">${chips.join('')}</div>` : ''}
+
+          ${datos.arquetipo ? `
+            <div class="detail-section">
+              <div class="detail-section-title">⟁ Arquetipo</div>
+              <div class="detail-section-body">${datos.arquetipo}</div>
+            </div>` : ''}
+
+          ${kwList ? `
+            <div class="detail-section">
+              <div class="detail-section-title">✦ Palabras clave</div>
+              <div class="detail-section-body kw">${kwList}</div>
+            </div>` : ''}
+
+          ${sombraList ? `
+            <div class="detail-section">
+              <div class="detail-section-title">⚠ Sombra</div>
+              <div class="detail-section-body kw sombra">${sombraList}</div>
+            </div>` : ''}
+
+          ${datos.pregunta_terapeutica ? `
+            <div class="detail-section">
+              <div class="detail-section-title">❓ Pregunta terapéutica</div>
+              <div class="detail-section-body italic">"${datos.pregunta_terapeutica}"</div>
+            </div>` : ''}
+
+          ${datos.afirmacion ? `
+            <div class="detail-section">
+              <div class="detail-section-title">🌟 Afirmación</div>
+              <div class="detail-afirmacion">${datos.afirmacion}</div>
+            </div>` : ''}
+        </div>
+      </div>
+    `;
+    content.className = '';
+    content.innerHTML = html;
+  } catch (e) {
+    content.className = 'detail-loading';
+    content.innerHTML = `<div style="color:#f87171;">Error: ${e.message}</div>`;
+  }
+}
+
+function closeCardDetail() {
+  document.getElementById('cardDetailOverlay').classList.remove('visible');
+}
+
 // ─── Init ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   crearDatalist();
   await loadCardImages();   // Carga el mapping de 78 cartas RWS
   renderCartasInputs();
-  // Cerrar picker con ESC
+  // Cerrar overlays con ESC
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
       if (document.getElementById('cardPickerOverlay').classList.contains('visible')) {
         cardPickerClose();
+      } else if (document.getElementById('cardDetailOverlay').classList.contains('visible')) {
+        closeCardDetail();
       }
     }
   });
