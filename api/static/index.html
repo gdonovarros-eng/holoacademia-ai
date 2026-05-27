@@ -1,497 +1,668 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="holo-html">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holoacadem-iA</title>
+<title>Holoacadem-iA · Plataforma holística para terapeutas</title>
+<meta name="description" content="Sistema integrado de IA para terapeutas holísticos. Biomagnetismo, biodescodificación, astrología, numerología, tarot y más.">
+
+<!-- Design system -->
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=1">
+
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── ÍNDICE · estilos específicos de la página principal ────────────── */
 
-:root {
-  --bg:        #f2f3f6;
-  --surface:   #ffffff;
-  --surface2:  #f7f8fa;
-  --border:    rgba(0,0,0,0.07);
-  --border2:   rgba(0,0,0,0.12);
-  --text:      #1a1d27;
-  --muted:     #6b7280;
-  --muted2:    #9ca3af;
-  --radius:    14px;
-
-  /* accents */
-  --blue:      #3b82f6;
-  --indigo:    #6366f1;
-  --violet:    #8b5cf6;
-  --purple:    #a855f7;
-  --teal:      #0d9488;
-  --gold:      #d97706;
-  --rose:      #e11d48;
-  --sky:       #0ea5e9;
+/* HEADER */
+.idx-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 247, 242, 0.85);
+  backdrop-filter: saturate(180%) blur(14px);
+  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  border-bottom: 1px solid var(--holo-border);
 }
-
-html, body {
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-/* ── EMBED MODE ── */
-body.embed-mode { background: transparent; min-height: unset; }
-body.embed-mode .page-footer { display: none; }
-
-/* ── HEADER ── */
-.site-header {
+.idx-header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--holo-space-4) var(--holo-space-6);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 32px;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  background: rgba(242,243,246,0.92);
-  backdrop-filter: blur(16px);
-  z-index: 100;
+  gap: var(--holo-space-4);
 }
-.header-brand {
+.idx-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--holo-space-3);
 }
-.header-logo {
-  height: 36px;
-  width: auto;
+.idx-brand-logo {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--holo-radius-sm);
+  background: linear-gradient(135deg, var(--holo-violet-500), var(--holo-violet-700));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--holo-cream-50);
 }
-.header-name {
-  font-size: 1rem;
-  font-weight: 700;
+.idx-brand-name {
+  font-family: var(--holo-font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--text);
+  color: var(--holo-text);
 }
-.header-name span { color: var(--indigo); }
-.header-badge {
-  font-size: 0.62rem;
+.idx-brand-name em {
+  font-style: italic;
+  color: var(--holo-violet-500);
+  font-weight: 500;
+}
+.idx-badge {
+  font-family: var(--holo-font-body);
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--muted);
-  border: 1px solid var(--border2);
-  border-radius: 20px;
-  padding: 3px 10px;
+  color: var(--holo-amber-500);
+  background: var(--holo-amber-50);
+  border: 1px solid var(--holo-amber-200);
+  padding: 4px 10px;
+  border-radius: var(--holo-radius-full);
 }
 
-/* ── HERO ── */
-.hero {
-  max-width: 600px;
-  margin: 0 auto;
+/* HERO */
+.idx-hero {
+  padding: var(--holo-space-20) 0 var(--holo-space-16);
   text-align: center;
-  padding: 72px 24px 56px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(109, 88, 150, 0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 30%, rgba(212, 165, 116, 0.12) 0%, transparent 50%);
 }
-.hero-eyebrow {
+.idx-hero-eyebrow {
+  color: var(--holo-amber-500);
+  font-family: var(--holo-font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: var(--holo-space-4);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+  animation: holo-fade-in 0.6s var(--holo-ease) both;
+}
+.idx-hero-eyebrow::before, .idx-hero-eyebrow::after {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--holo-amber-300);
+}
+.idx-hero h1 {
+  font-family: var(--holo-font-display);
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: var(--holo-stone-900);
+  margin: 0 auto var(--holo-space-6);
+  max-width: 18ch;
+  animation: holo-fade-in-up 0.7s var(--holo-ease) both;
+  animation-delay: 0.1s;
+}
+.idx-hero h1 em {
+  font-style: italic;
+  color: var(--holo-violet-600);
+  font-weight: 400;
+}
+.idx-hero p {
+  font-family: var(--holo-font-body);
+  font-size: 1.0625rem;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--holo-stone-500);
+  max-width: 580px;
+  margin: 0 auto;
+  animation: holo-fade-in-up 0.7s var(--holo-ease) both;
+  animation-delay: 0.2s;
+}
+
+/* SECTION HEADERS */
+.idx-section {
+  padding: var(--holo-space-12) 0 var(--holo-space-8);
+}
+.idx-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--holo-space-4);
+  margin-bottom: var(--holo-space-8);
+  padding-bottom: var(--holo-space-4);
+  border-bottom: 1px solid var(--holo-border);
+}
+.idx-section-eyebrow {
+  font-family: var(--holo-font-body);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 20px;
+  color: var(--holo-stone-400);
 }
-.hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  font-weight: 800;
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  margin-bottom: 16px;
+.idx-section-title {
+  font-family: var(--holo-font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--holo-stone-800);
+  margin-top: 4px;
 }
-.hero h1 em {
-  font-style: normal;
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-sub {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.7;
+.idx-section-meta {
+  font-family: var(--holo-font-body);
+  font-size: 0.8rem;
+  color: var(--holo-text-muted);
 }
 
-/* ── SECTIONS ── */
-.section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 28px 56px;
-}
-.section-label {
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted2);
-  margin-bottom: 18px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border);
-}
-
-/* ── TOOL GRID ── */
-.tool-grid {
+/* TOOL CARDS · grid principal */
+.idx-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--holo-space-6);
 }
-.tool-grid.two-col {
-  grid-template-columns: repeat(2, 1fr);
+@media (min-width: 1024px) {
+  .idx-grid { grid-template-columns: repeat(4, 1fr); }
+  .idx-grid-2 { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* ── TOOL CARD ── */
-.tool-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 22px 20px 18px;
-  text-decoration: none;
+.idx-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  position: relative;
+  background: var(--holo-bg-elevated);
+  border: 1px solid var(--holo-border);
+  border-radius: var(--holo-radius-lg);
+  padding: var(--holo-space-6);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--holo-duration-base) var(--holo-ease);
   overflow: hidden;
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  isolation: isolate;
 }
-.tool-card::before {
+.idx-card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  border-radius: var(--radius) var(--radius) 0 0;
-  background: var(--card-accent, var(--blue));
-  opacity: 0.55;
-  transition: opacity 0.18s;
+  inset: 0;
+  background: linear-gradient(135deg, var(--card-tint, transparent) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--holo-duration-base);
+  pointer-events: none;
+  z-index: -1;
 }
-.tool-card:hover {
-  border-color: var(--card-border-hover, rgba(0,0,0,0.14));
-  box-shadow: 0 8px 28px var(--card-glow, rgba(59,130,246,0.1));
+.idx-card:hover {
   transform: translateY(-3px);
+  border-color: var(--holo-border-strong);
+  box-shadow: var(--holo-shadow-lg);
 }
-.tool-card:hover::before { opacity: 1; }
+.idx-card:hover::before { opacity: 1; }
 
-.card-category {
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--card-color, var(--muted));
-}
-.card-name {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--text);
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-}
-.card-desc {
-  font-size: 0.8rem;
-  color: var(--muted);
-  line-height: 1.6;
-  flex: 1;
-}
-.card-cta {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--card-color, var(--muted));
-  margin-top: 4px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  transition: gap 0.15s;
-}
-.tool-card:hover .card-cta { gap: 8px; }
-
-/* ── CARD ICON ── */
-.card-icon {
-  width: 28px;
-  height: 28px;
-  color: var(--card-color, var(--muted));
-  opacity: 0.85;
-  flex-shrink: 0;
-}
-.util-icon {
-  width: 18px;
-  height: 18px;
-  color: var(--muted2);
-  flex-shrink: 0;
-}
-
-/* Per-card color tokens */
-.c-horoscopo { --card-accent: linear-gradient(90deg,#6366f1,#818cf8); --card-color:#4f46e5; --card-border-hover:rgba(99,102,241,0.22); --card-glow:rgba(99,102,241,0.08); }
-.c-sinodal  { --card-accent: linear-gradient(90deg,#3b82f6,#60a5fa); --card-color:#2563eb; --card-border-hover:rgba(59,130,246,0.22); --card-glow:rgba(59,130,246,0.08); }
-.c-rastreo  { --card-accent: linear-gradient(90deg,#6366f1,#818cf8); --card-color:#4f46e5; --card-border-hover:rgba(99,102,241,0.22); --card-glow:rgba(99,102,241,0.08); }
-.c-pares    { --card-accent: linear-gradient(90deg,#8b5cf6,#a78bfa); --card-color:#7c3aed; --card-border-hover:rgba(139,92,246,0.22); --card-glow:rgba(139,92,246,0.08); }
-.c-terapia  { --card-accent: linear-gradient(90deg,#a855f7,#c084fc); --card-color:#9333ea; --card-border-hover:rgba(168,85,247,0.22); --card-glow:rgba(168,85,247,0.08); }
-.c-salud    { --card-accent: linear-gradient(90deg,#0d9488,#14b8a6); --card-color:#0d9488; --card-border-hover:rgba(13,148,136,0.22); --card-glow:rgba(13,148,136,0.08); }
-.c-astro    { --card-accent: linear-gradient(90deg,#d97706,#f59e0b); --card-color:#b45309; --card-border-hover:rgba(217,119,6,0.25); --card-glow:rgba(217,119,6,0.08); }
-.c-numerologia { --card-accent: linear-gradient(90deg,#e11d48,#f43f5e); --card-color:#be123c; --card-border-hover:rgba(225,29,72,0.22); --card-glow:rgba(225,29,72,0.08); }
-.c-tarot    { --card-accent: linear-gradient(90deg,#a855f7,#d946ef); --card-color:#9333ea; --card-border-hover:rgba(168,85,247,0.22); --card-glow:rgba(168,85,247,0.08); }
-
-/* Astrology card — subtle warm parchment */
-.c-astro {
-  background: #fffef9;
-}
-
-/* ── UTILITY CARDS (compact row) ── */
-.util-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-.util-card {
-  background: var(--surface2);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 18px;
-  text-decoration: none;
+/* Card structure */
+.idx-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--holo-radius-md);
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  transition: border-color 0.15s, background 0.15s;
+  justify-content: center;
+  background: var(--card-icon-bg, var(--holo-stone-50));
+  color: var(--card-icon-color, var(--holo-stone-700));
+  margin-bottom: var(--holo-space-5);
+  transition: all var(--holo-duration-base);
 }
-.util-card:hover {
-  border-color: rgba(0,0,0,0.14);
-  background: var(--surface);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+.idx-card-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.5;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
-.util-info { flex: 1; min-width: 0; }
-.util-name {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: var(--text);
+.idx-card:hover .idx-card-icon {
+  transform: scale(1.05);
 }
-.util-desc {
-  font-size: 0.75rem;
-  color: var(--muted);
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+.idx-card-category {
+  font-family: var(--holo-font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--holo-stone-400);
+  margin-bottom: var(--holo-space-2);
 }
-.util-arrow {
-  font-size: 0.85rem;
-  color: var(--muted2);
+.idx-card-title {
+  font-family: var(--holo-font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--holo-stone-800);
+  margin-bottom: var(--holo-space-3);
+  line-height: 1.2;
+}
+.idx-card-desc {
+  font-family: var(--holo-font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--holo-stone-500);
+  margin-bottom: var(--holo-space-5);
+  flex: 1;
+}
+.idx-card-cta {
+  font-family: var(--holo-font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--holo-stone-700);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+  transition: all var(--holo-duration-fast);
+  margin-top: auto;
+}
+.idx-card-cta svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.75;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--holo-duration-fast);
+}
+.idx-card:hover .idx-card-cta { color: var(--card-icon-color, var(--holo-violet-600)); }
+.idx-card:hover .idx-card-cta svg { transform: translateX(4px); }
+
+/* Color tints por categoría (sutiles, no chillones) */
+.tint-sinodal     { --card-tint: rgba(109, 88, 150, 0.06);  --card-icon-bg: var(--holo-violet-50); --card-icon-color: var(--holo-violet-600); }
+.tint-rastreo     { --card-tint: rgba(74, 130, 148, 0.06); --card-icon-bg: var(--holo-sky-50);    --card-icon-color: var(--holo-sky-500); }
+.tint-pares       { --card-tint: rgba(74, 130, 148, 0.06); --card-icon-bg: var(--holo-sky-50);    --card-icon-color: var(--holo-sky-500); }
+.tint-terapia     { --card-tint: rgba(212, 165, 116, 0.08); --card-icon-bg: var(--holo-amber-50);  --card-icon-color: var(--holo-amber-600); }
+.tint-salud       { --card-tint: rgba(188, 92, 79, 0.06);  --card-icon-bg: var(--holo-rose-50);   --card-icon-color: var(--holo-rose-500); }
+.tint-astro       { --card-tint: rgba(109, 88, 150, 0.06);  --card-icon-bg: var(--holo-violet-50); --card-icon-color: var(--holo-violet-600); }
+.tint-numerologia { --card-tint: rgba(104, 130, 87, 0.06);  --card-icon-bg: var(--holo-sage-50);   --card-icon-color: var(--holo-sage-500); }
+.tint-tarot       { --card-tint: rgba(168, 95, 64, 0.06);  --card-icon-bg: var(--holo-terra-50);  --card-icon-color: var(--holo-terra-500); }
+.tint-horoscopo   { --card-tint: rgba(212, 165, 116, 0.08); --card-icon-bg: var(--holo-amber-50);  --card-icon-color: var(--holo-amber-600); }
+
+/* UTILITY ROW · cards horizontales */
+.idx-util-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--holo-space-4);
+}
+.idx-util {
+  display: flex;
+  align-items: center;
+  gap: var(--holo-space-4);
+  padding: var(--holo-space-4) var(--holo-space-5);
+  background: var(--holo-bg-elevated);
+  border: 1px solid var(--holo-border);
+  border-radius: var(--holo-radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--holo-duration-fast) var(--holo-ease);
+}
+.idx-util:hover {
+  border-color: var(--holo-border-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--holo-shadow-sm);
+}
+.idx-util-icon {
   flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--holo-radius-sm);
+  background: var(--holo-stone-50);
+  color: var(--holo-stone-600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+.idx-util-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.5;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.idx-util-body { flex: 1; min-width: 0; }
+.idx-util-title {
+  font-family: var(--holo-font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--holo-stone-800);
+  margin-bottom: 2px;
+}
+.idx-util-desc {
+  font-family: var(--holo-font-body);
+  font-size: 0.78rem;
+  color: var(--holo-stone-500);
+  line-height: 1.4;
+}
+.idx-util-arrow {
+  flex-shrink: 0;
+  color: var(--holo-stone-400);
+  transition: all var(--holo-duration-fast);
+}
+.idx-util-arrow svg {
+  width: 16px; height: 16px; stroke-width: 1.75;
+  fill: none; stroke: currentColor;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.idx-util:hover .idx-util-arrow { color: var(--holo-stone-700); transform: translateX(3px); }
 
-/* ── FOOTER ── */
-.page-footer {
+/* FOOTER */
+.idx-footer {
+  margin-top: var(--holo-space-16);
+  padding: var(--holo-space-8) 0;
+  border-top: 1px solid var(--holo-border);
   text-align: center;
-  padding: 28px 24px 40px;
-  font-size: 0.75rem;
-  color: var(--muted2);
-  border-top: 1px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--holo-stone-400);
+  font-family: var(--holo-font-body);
+}
+.idx-footer-mark {
+  display: inline-block;
+  font-family: var(--holo-font-display);
+  font-style: italic;
+  color: var(--holo-violet-500);
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 1100px) {
-  .tool-grid { grid-template-columns: repeat(2, 1fr); }
-  .tool-grid.two-col { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 640px) {
-  .tool-grid, .tool-grid.two-col, .util-grid { grid-template-columns: 1fr; }
-  .hero { padding: 48px 20px 40px; }
-  .section { padding: 0 18px 44px; }
-  .site-header { padding: 14px 18px; }
-  .header-logo { height: 28px; }
+/* Embed mode (iframe) */
+body.embed-mode .idx-header { display: none; }
+body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
+
+@media (max-width: 768px) {
+  .idx-hero { padding: var(--holo-space-12) 0 var(--holo-space-10); }
+  .idx-section-head { flex-direction: column; align-items: flex-start; gap: var(--holo-space-2); }
 }
 </style>
 </head>
-<body>
+<body class="holo-body">
 
 <!-- HEADER -->
-<header class="site-header">
-  <div class="header-brand">
-    <img class="header-logo" src="/therapy-static/logo.png" alt="Holoacadem-iA">
-    <span class="header-name">Holoac<span>adem</span>-iA</span>
+<header class="idx-header">
+  <div class="idx-header-inner">
+    <div class="idx-brand">
+      <div class="idx-brand-logo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/>
+        </svg>
+      </div>
+      <span class="idx-brand-name">Holoacad<em>em</em>-iA</span>
+    </div>
+    <span class="idx-badge">Beta</span>
   </div>
-  <span class="header-badge">Beta</span>
 </header>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-eyebrow">Plataforma de IA Holística</div>
-  <h1>Todo lo que necesitas,<br><em>en un solo lugar</em></h1>
-  <p class="hero-sub">Herramientas de inteligencia artificial diseñadas para terapeutas holísticos. Clinica, lecturas y análisis integrados.</p>
+<section class="idx-hero">
+  <div class="holo-container">
+    <div class="idx-hero-eyebrow">Plataforma holística de inteligencia artificial</div>
+    <h1>Todo lo que un terapeuta necesita,<br><em>en un solo lugar</em></h1>
+    <p>Herramientas integradas de biomagnetismo, biodescodificación, astrología, numerología y tarot — diseñadas para acompañar tu práctica clínica desde el primer contacto con el consultante hasta la elaboración del protocolo.</p>
+  </div>
 </section>
 
-<!-- SECCIÓN: CLÍNICA -->
-<div class="section">
-  <div class="section-label">Clínica terapéutica</div>
-  <div class="tool-grid">
-
-    <a class="tool-card c-sinodal" href="/alumno">
-      <div class="card-category">Tutor · Diplomado</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 10l10-6 10 6-10 6-10-6z"/>
-        <path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/>
-        <line x1="22" y1="10" x2="22" y2="15"/>
-      </svg>
-      <div class="card-name">Sinodal IA</div>
-      <div class="card-desc">Resuelve dudas sobre cualquier módulo del diplomado. Acceso completo a los manuales del Método Lavín, disponible 24/7.</div>
-      <div class="card-cta">Hablar con Sael <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-rastreo" href="/rastreo">
-      <div class="card-category">Paso 2 · Sesión</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 19v-8a6 6 0 0 1 12 0v8"/>
-        <line x1="4" y1="19" x2="8" y2="19"/>
-        <line x1="16" y1="19" x2="20" y2="19"/>
-      </svg>
-      <div class="card-name">Rastreo de Imanes</div>
-      <div class="card-desc">Mapa interactivo del cuerpo. Marca pares biomagnéticos positivos con rastreo guiado por zona, busca por condición y genera el reporte de sesión.</div>
-      <div class="card-cta">Iniciar rastreo <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-pares" href="/pares">
-      <div class="card-category">Paso 3 · Aplicación</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M6 19v-8a6 6 0 0 1 12 0v8"/>
-        <line x1="4" y1="19" x2="8" y2="19"/>
-        <line x1="16" y1="19" x2="20" y2="19"/>
-      </svg>
-      <div class="card-name">Guía de Pares</div>
-      <div class="card-desc">Ubicación exacta de cada imán, interpretación clínica completa y tipo de patógeno. Busca por nombre o zona corporal.</div>
-      <div class="card-cta">Buscar par <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-terapia" href="/terapeuta">
-      <div class="card-category">Paso 4 · En vivo</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M11 2l2.5 5.5L19 10l-5.5 2.5L11 18l-2.5-5.5L3 10l5.5-2.5z"/>
-        <path d="M18.5 2.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/>
-        <path d="M5.5 17.5l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z"/>
-      </svg>
-      <div class="card-name">Asistente Terapéutico</div>
-      <div class="card-desc">IA en tiempo real durante la sesión: síntesis, entrevista guiada, conflictología y protocolos BNE, Hellinger y Psicosomática.</div>
-      <div class="card-cta">Iniciar sesión <span>→</span></div>
-    </a>
-
-  </div>
-</div>
-
-<!-- SECCIÓN: LECTURAS & ANÁLISIS -->
-<div class="section">
-  <div class="section-label">Lecturas y análisis</div>
-  <div class="tool-grid">
-
-    <a class="tool-card c-salud" href="/salud">
-      <div class="card-category">Perfil constitucional</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-      </svg>
-      <div class="card-name">Astrología Médica</div>
-      <div class="card-desc">Vulnerabilidades orgánicas, sistemas a cuidar y tránsitos de salud actuales. Orientación clínica basada en la carta natal.</div>
-      <div class="card-cta">Ver perfil <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-astro" href="/astro-home">
-      <div class="card-category">Premium · Módulo completo</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="4.5"/>
-        <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/>
-      </svg>
-      <div class="card-name">AstrologiA</div>
-      <div class="card-desc">Carta natal, Revolución Solar, sinastría, tránsitos y progresiones con análisis de IA. Basado en Volguine y Astrología Tradicional.</div>
-      <div class="card-cta">Abrir módulo <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-numerologia" href="/numerologia">
-      <div class="card-category">Numerología pitagórica</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="4" y1="9" x2="20" y2="9"/>
-        <line x1="4" y1="15" x2="20" y2="15"/>
-        <line x1="10" y1="3" x2="8" y2="21"/>
-        <line x1="16" y1="3" x2="14" y2="21"/>
-      </svg>
-      <div class="card-name">Numerología</div>
-      <div class="card-desc">Perfil numerológico completo: número de vida, expresión, alma, personalidad, pináculo y ciclos personales con interpretación de IA.</div>
-      <div class="card-cta">Calcular perfil <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-tarot" href="/tarot">
-      <div class="card-category">Tarot terapéutico</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2L2 8l10 6 10-6-10-6z"/>
-        <path d="M2 14l10 6 10-6"/>
-        <path d="M2 11l10 6 10-6"/>
-      </svg>
-      <div class="card-name">Tarot</div>
-      <div class="card-desc">Tiradas con interpretación terapéutica en streaming, perfil tarótico personal, referencia de las 78 cartas y chat de seguimiento con IA.</div>
-      <div class="card-cta">Hacer lectura <span>→</span></div>
-    </a>
-
-    <a class="tool-card c-horoscopo" href="/horoscopo">
-      <div class="card-category">Horóscopo · Zodiacal</div>
-      <svg class="card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3l2.5 5.5L21 9.5l-4.5 4.4 1.1 6.3L12 17l-5.6 3.2 1.1-6.3L3 9.5l6.5-1z"/>
-      </svg>
-      <div class="card-name">Horóscopo</div>
-      <div class="card-desc">Predicciones zodiacales personalizadas por signo solar. Perfil arquetípico, energías actuales, amor, trabajo, salud y mensaje espiritual.</div>
-      <div class="card-cta">Ver horóscopo <span>→</span></div>
-    </a>
-
-  </div>
-</div>
-
-<!-- SECCIÓN: UTILIDADES -->
-<div class="section">
-  <div class="section-label">Utilidades</div>
-  <div class="util-grid">
-
-    <a class="util-card" href="/intake">
-      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-        <rect x="8" y="2" width="8" height="4" rx="1"/>
-        <line x1="8" y1="12" x2="16" y2="12"/>
-        <line x1="8" y1="16" x2="13" y2="16"/>
-      </svg>
-      <div class="util-info">
-        <div class="util-name">Historial del Paciente</div>
-        <div class="util-desc">Registro clínico, genograma familiar y diagnóstico multi-enfoque</div>
+<!-- ═══════ SECCIÓN 1 · PRÁCTICA CLÍNICA ═══════ -->
+<section class="idx-section">
+  <div class="holo-container">
+    <div class="idx-section-head">
+      <div>
+        <div class="idx-section-eyebrow">Núcleo terapéutico</div>
+        <div class="idx-section-title">Práctica clínica</div>
       </div>
-      <span class="util-arrow">→</span>
-    </a>
+      <div class="idx-section-meta">Tutor, rastreo, pares y asistente en vivo</div>
+    </div>
 
-    <a class="util-card" href="/tablas">
-      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="8" y1="6" x2="21" y2="6"/>
-        <line x1="8" y1="12" x2="21" y2="12"/>
-        <line x1="8" y1="18" x2="21" y2="18"/>
-        <line x1="3" y1="6" x2="3.01" y2="6"/>
-        <line x1="3" y1="12" x2="3.01" y2="12"/>
-        <line x1="3" y1="18" x2="3.01" y2="18"/>
-      </svg>
-      <div class="util-info">
-        <div class="util-name">Tablas en texto</div>
-        <div class="util-desc">Los 1,059 pares, creencias, miedos y florales en formato de búsqueda rápida</div>
-      </div>
-      <span class="util-arrow">→</span>
-    </a>
+    <div class="idx-grid">
 
-    <a class="util-card" href="/terapias">
-      <svg class="util-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 22V12M12 12C12 8 7 6 5 3a9 9 0 0 1 14 0c-2 3-7 5-7 9z"/>
-      </svg>
-      <div class="util-info">
-        <div class="util-name">Terapias Complementarias</div>
-        <div class="util-desc">Policrestos, flores de Bach, sales de Schüssler, potencias y protocolos</div>
-      </div>
-      <span class="util-arrow">→</span>
-    </a>
+      <a class="idx-card tint-sinodal" href="/alumno">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M2 10l10-6 10 6-10 6-10-6z"/>
+            <path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/>
+            <line x1="22" y1="10" x2="22" y2="15"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Tutor · Diplomado</div>
+        <h3 class="idx-card-title">Sinodal IA</h3>
+        <p class="idx-card-desc">Resuelve dudas sobre cualquier módulo del diplomado. Acceso completo a los manuales del Método Lavín, disponible las 24 horas.</p>
+        <span class="idx-card-cta">Hablar con Sael
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
 
+      <a class="idx-card tint-rastreo" href="/rastreo">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 19v-8a6 6 0 0 1 12 0v8"/>
+            <line x1="4" y1="19" x2="8" y2="19"/>
+            <line x1="16" y1="19" x2="20" y2="19"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Sesión · Paso 2</div>
+        <h3 class="idx-card-title">Rastreo de Imanes</h3>
+        <p class="idx-card-desc">Mapa interactivo del cuerpo. Marca los pares biomagnéticos positivos por zona, busca por condición y genera el reporte completo de la sesión.</p>
+        <span class="idx-card-cta">Iniciar rastreo
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-pares" href="/pares">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="8" cy="12" r="3"/>
+            <circle cx="16" cy="12" r="3"/>
+            <path d="M11 12h2"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Referencia · Paso 3</div>
+        <h3 class="idx-card-title">Guía de Pares</h3>
+        <p class="idx-card-desc">Ubicación exacta de cada imán, interpretación clínica completa y tipo de patógeno asociado. Búsqueda por nombre, zona corporal o sistema.</p>
+        <span class="idx-card-cta">Buscar par
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-terapia" href="/terapeuta">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">En vivo · Paso 4</div>
+        <h3 class="idx-card-title">Asistente Terapéutico</h3>
+        <p class="idx-card-desc">IA en tiempo real durante la sesión: síntesis del caso, entrevista guiada, conflictología y protocolos biomagnéticos, sistémicos y psicosomáticos.</p>
+        <span class="idx-card-cta">Iniciar sesión
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+    </div>
   </div>
-</div>
+</section>
 
-<footer class="page-footer">
-  Holoacadem-iA &mdash; Uso exclusivo para terapeutas certificados
+<!-- ═══════ SECCIÓN 2 · LECTURAS Y ANÁLISIS ═══════ -->
+<section class="idx-section">
+  <div class="holo-container">
+    <div class="idx-section-head">
+      <div>
+        <div class="idx-section-eyebrow">Astrología, numerología y tarot</div>
+        <div class="idx-section-title">Lecturas y análisis</div>
+      </div>
+      <div class="idx-section-meta">Cinco módulos · interpretación con IA</div>
+    </div>
+
+    <div class="idx-grid">
+
+      <a class="idx-card tint-salud" href="/salud">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Astrología médica</div>
+        <h3 class="idx-card-title">Perfil de Salud</h3>
+        <p class="idx-card-desc">Vulnerabilidades orgánicas, sistemas a cuidar y tránsitos de salud actuales. Orientación clínica basada en la carta natal del consultante.</p>
+        <span class="idx-card-cta">Ver perfil
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-astro" href="/astro-home">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4.5"/>
+            <ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Módulo completo</div>
+        <h3 class="idx-card-title">Astrología</h3>
+        <p class="idx-card-desc">Carta natal, Revolución Solar, sinastría, tránsitos y progresiones con interpretación de IA. Basado en Volguine y astrología tradicional.</p>
+        <span class="idx-card-cta">Abrir módulo
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-numerologia" href="/numerologia">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <line x1="4" y1="9" x2="20" y2="9"/>
+            <line x1="4" y1="15" x2="20" y2="15"/>
+            <line x1="10" y1="3" x2="8" y2="21"/>
+            <line x1="16" y1="3" x2="14" y2="21"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Pitagórica</div>
+        <h3 class="idx-card-title">Numerología</h3>
+        <p class="idx-card-desc">Perfil numerológico completo: número de vida, expresión, alma, personalidad, pináculo y ciclos personales con interpretación de IA.</p>
+        <span class="idx-card-cta">Calcular perfil
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-tarot" href="/tarot">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="6" y="3" width="12" height="18" rx="1.5"/>
+            <line x1="6" y1="9" x2="18" y2="9"/>
+            <circle cx="12" cy="14.5" r="2"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Terapéutico</div>
+        <h3 class="idx-card-title">Tarot</h3>
+        <p class="idx-card-desc">Tiradas con interpretación terapéutica en streaming, perfil tarótico personal, referencia de las 78 cartas y chat de seguimiento con IA.</p>
+        <span class="idx-card-cta">Hacer lectura
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-card tint-horoscopo" href="/horoscopo">
+        <div class="idx-card-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 3l2.5 5.5L21 9.5l-4.5 4.4 1.1 6.3L12 17l-5.6 3.2 1.1-6.3L3 9.5l6.5-1z"/>
+          </svg>
+        </div>
+        <div class="idx-card-category">Zodiacal</div>
+        <h3 class="idx-card-title">Horóscopo</h3>
+        <p class="idx-card-desc">Predicciones zodiacales personalizadas por signo solar. Perfil arquetípico, energías actuales, amor, trabajo, salud y mensaje espiritual.</p>
+        <span class="idx-card-cta">Ver horóscopo
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SECCIÓN 3 · UTILIDADES ═══════ -->
+<section class="idx-section">
+  <div class="holo-container">
+    <div class="idx-section-head">
+      <div>
+        <div class="idx-section-eyebrow">Herramientas de soporte</div>
+        <div class="idx-section-title">Utilidades</div>
+      </div>
+      <div class="idx-section-meta">Historial, tablas y terapias complementarias</div>
+    </div>
+
+    <div class="idx-util-grid">
+
+      <a class="idx-util" href="/intake">
+        <div class="idx-util-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+            <rect x="8" y="2" width="8" height="4" rx="1"/>
+            <line x1="8" y1="12" x2="16" y2="12"/>
+            <line x1="8" y1="16" x2="13" y2="16"/>
+          </svg>
+        </div>
+        <div class="idx-util-body">
+          <div class="idx-util-title">Historial del paciente</div>
+          <div class="idx-util-desc">Registro clínico, genograma familiar y diagnóstico multi-enfoque</div>
+        </div>
+        <span class="idx-util-arrow">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-util" href="/tablas">
+        <div class="idx-util-icon">
+          <svg viewBox="0 0 24 24">
+            <line x1="8" y1="6" x2="21" y2="6"/>
+            <line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/>
+            <circle cx="4" cy="6" r="1"/>
+            <circle cx="4" cy="12" r="1"/>
+            <circle cx="4" cy="18" r="1"/>
+          </svg>
+        </div>
+        <div class="idx-util-body">
+          <div class="idx-util-title">Tablas en texto</div>
+          <div class="idx-util-desc">Más de 1,400 pares, creencias, miedos y florales en búsqueda rápida</div>
+        </div>
+        <span class="idx-util-arrow">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+      <a class="idx-util" href="/terapias">
+        <div class="idx-util-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 22V12"/>
+            <path d="M12 12C12 8 7 6 5 3a9 9 0 0 1 14 0c-2 3-7 5-7 9z"/>
+          </svg>
+        </div>
+        <div class="idx-util-body">
+          <div class="idx-util-title">Terapias complementarias</div>
+          <div class="idx-util-desc">Policrestos, flores de Bach, sales de Schüssler, potencias y protocolos</div>
+        </div>
+        <span class="idx-util-arrow">
+          <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<footer class="idx-footer">
+  <div class="holo-container">
+    <span class="idx-footer-mark">Holoacadem-iA</span> — Uso exclusivo para terapeutas certificados
+  </div>
 </footer>
 
 <script>
@@ -499,7 +670,7 @@ body.embed-mode .page-footer { display: none; }
   const p = new URLSearchParams(window.location.search);
   if (!p.has('embed')) return;
   document.body.classList.add('embed-mode');
-  document.querySelectorAll('a.tool-card, a.util-card').forEach(function(a) {
+  document.querySelectorAll('a.idx-card, a.idx-util').forEach(function(a) {
     a.target = '_top';
   });
   function sendHeight() {

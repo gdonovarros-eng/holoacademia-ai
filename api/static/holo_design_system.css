@@ -1,0 +1,513 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   HOLO DESIGN SYSTEM · v1.0
+   Sistema de diseño unificado para todos los módulos de Holoacadem-iA
+   Inspiración: Mindvalley · estética holística premium
+
+   USO: importar este archivo PRIMERO en cualquier página:
+     <link rel="stylesheet" href="/therapy-static/holo_design_system.css">
+
+   Después se pueden agregar overrides específicos por módulo.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1 · TIPOGRAFÍA ─────────────────────────────────────────────────────── */
+
+/* Inter (body + UI) — fuente del cuerpo, peso variable */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* Cormorant Garamond (display + headlines) — estética holística */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+
+/* ── 2 · VARIABLES ──────────────────────────────────────────────────────── */
+:root {
+  /* ─── Tipografía ─── */
+  --holo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --holo-font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --holo-font-mono: 'SF Mono', Menlo, Monaco, 'Cascadia Mono', monospace;
+
+  /* Tamaños tipográficos modulares (1.25 ratio) */
+  --holo-text-xs:   0.75rem;   /* 12 */
+  --holo-text-sm:   0.875rem;  /* 14 */
+  --holo-text-base: 1rem;      /* 16 */
+  --holo-text-lg:   1.125rem;  /* 18 */
+  --holo-text-xl:   1.375rem;  /* 22 */
+  --holo-text-2xl:  1.75rem;   /* 28 */
+  --holo-text-3xl:  2.25rem;   /* 36 */
+  --holo-text-4xl:  3rem;      /* 48 */
+  --holo-text-5xl:  4rem;      /* 64 */
+
+  /* Pesos */
+  --holo-weight-light:    300;
+  --holo-weight-normal:   400;
+  --holo-weight-medium:   500;
+  --holo-weight-semibold: 600;
+  --holo-weight-bold:     700;
+  --holo-weight-black:    800;
+
+  /* Line heights */
+  --holo-leading-tight:    1.1;
+  --holo-leading-snug:     1.3;
+  --holo-leading-normal:   1.5;
+  --holo-leading-relaxed:  1.7;
+  --holo-leading-loose:    2;
+
+  /* Letter spacing */
+  --holo-tracking-tight:   -0.02em;
+  --holo-tracking-normal:  0;
+  --holo-tracking-wide:    0.05em;
+  --holo-tracking-wider:   0.1em;
+  --holo-tracking-widest:  0.15em;
+
+  /* ─── PALETA ─── */
+
+  /* Base — cream / parchment (background light) */
+  --holo-cream-50:   #FDFBF7;
+  --holo-cream-100:  #FAF7F2;
+  --holo-cream-200:  #F5EFE5;
+  --holo-cream-300:  #EDE3D2;
+  --holo-cream-400:  #D9C9AC;
+
+  /* Stone / neutral — texto y bordes */
+  --holo-stone-50:   #F8F7F5;
+  --holo-stone-100:  #EDEAE3;
+  --holo-stone-200:  #DCD7CB;
+  --holo-stone-300:  #B8B1A0;
+  --holo-stone-400:  #8B8474;
+  --holo-stone-500:  #5C5749;
+  --holo-stone-600:  #3F3B33;
+  --holo-stone-700:  #2A2723;
+  --holo-stone-800:  #1A1814;
+  --holo-stone-900:  #0F0D0A;
+
+  /* Violet — color primario espiritual */
+  --holo-violet-50:  #F5F2FA;
+  --holo-violet-100: #E8E0F2;
+  --holo-violet-200: #D1C2E5;
+  --holo-violet-300: #B19FD0;
+  --holo-violet-400: #8A6BAF;
+  --holo-violet-500: #6D5896;
+  --holo-violet-600: #553F7A;
+  --holo-violet-700: #3F2D5C;
+  --holo-violet-800: #2A1D40;
+  --holo-violet-900: #1A1228;
+
+  /* Amber — gold / acentos CTA */
+  --holo-amber-50:   #FDF8F0;
+  --holo-amber-100:  #FAEAD4;
+  --holo-amber-200:  #F2D29D;
+  --holo-amber-300:  #E8B567;
+  --holo-amber-400:  #D4A574;
+  --holo-amber-500:  #B8852E;
+  --holo-amber-600:  #8F6420;
+  --holo-amber-700:  #6B4915;
+  --holo-amber-800:  #4A310C;
+
+  /* Terracotta — calidez, segundos planos cálidos */
+  --holo-terra-50:   #FBF1ED;
+  --holo-terra-100:  #F5DCD0;
+  --holo-terra-200:  #ECB99F;
+  --holo-terra-300:  #DC957A;
+  --holo-terra-400:  #C97B5C;
+  --holo-terra-500:  #A85F40;
+  --holo-terra-600:  #82452D;
+  --holo-terra-700:  #5C311F;
+
+  /* Sage — verde sutil, naturaleza */
+  --holo-sage-50:    #F0F4EE;
+  --holo-sage-100:   #DCE5D5;
+  --holo-sage-200:   #B5C5A8;
+  --holo-sage-300:   #8AA378;
+  --holo-sage-400:   #688257;
+  --holo-sage-500:   #4E6541;
+  --holo-sage-600:   #3A4A30;
+
+  /* Sky — azul calmo */
+  --holo-sky-50:     #EEF5F7;
+  --holo-sky-100:    #D1E4EA;
+  --holo-sky-200:    #A0C5D2;
+  --holo-sky-300:    #6FA3B5;
+  --holo-sky-400:    #4A8294;
+  --holo-sky-500:    #336572;
+  --holo-sky-600:    #244B57;
+
+  /* Rose — toques cálidos secundarios */
+  --holo-rose-50:    #FAEFEE;
+  --holo-rose-100:   #F2D4D0;
+  --holo-rose-200:   #E6A5A0;
+  --holo-rose-300:   #D67970;
+  --holo-rose-400:   #BC5C4F;
+  --holo-rose-500:   #95483D;
+
+  /* Estado funcional */
+  --holo-success: #688257;
+  --holo-warning: #D4A574;
+  --holo-error:   #BC5C4F;
+  --holo-info:    #4A8294;
+
+  /* ─── ROLES SEMÁNTICOS ─── */
+  /* Light mode (default) */
+  --holo-bg:           var(--holo-cream-100);
+  --holo-bg-subtle:    var(--holo-cream-200);
+  --holo-bg-elevated:  #FFFFFF;
+  --holo-bg-inverse:   var(--holo-stone-800);
+
+  --holo-text:           var(--holo-stone-800);
+  --holo-text-muted:     var(--holo-stone-500);
+  --holo-text-subtle:    var(--holo-stone-400);
+  --holo-text-inverse:   var(--holo-cream-100);
+  --holo-text-on-accent: #FFFFFF;
+
+  --holo-border:         rgba(60, 50, 40, 0.10);
+  --holo-border-strong:  rgba(60, 50, 40, 0.18);
+
+  --holo-accent:         var(--holo-violet-500);
+  --holo-accent-soft:    var(--holo-violet-100);
+  --holo-accent-hover:   var(--holo-violet-600);
+
+  --holo-gold:           var(--holo-amber-400);
+  --holo-gold-soft:      var(--holo-amber-100);
+
+  /* ─── SPACING (escala 4px) ─── */
+  --holo-space-0:   0;
+  --holo-space-1:   0.25rem;   /* 4 */
+  --holo-space-2:   0.5rem;    /* 8 */
+  --holo-space-3:   0.75rem;   /* 12 */
+  --holo-space-4:   1rem;      /* 16 */
+  --holo-space-5:   1.25rem;   /* 20 */
+  --holo-space-6:   1.5rem;    /* 24 */
+  --holo-space-8:   2rem;      /* 32 */
+  --holo-space-10:  2.5rem;    /* 40 */
+  --holo-space-12:  3rem;      /* 48 */
+  --holo-space-16:  4rem;      /* 64 */
+  --holo-space-20:  5rem;      /* 80 */
+  --holo-space-24:  6rem;      /* 96 */
+  --holo-space-32:  8rem;      /* 128 */
+
+  /* ─── RADIUS ─── */
+  --holo-radius-sm:    6px;
+  --holo-radius-md:    10px;
+  --holo-radius-lg:    16px;
+  --holo-radius-xl:    22px;
+  --holo-radius-2xl:   28px;
+  --holo-radius-full:  9999px;
+
+  /* ─── SHADOWS (suaves, holísticas) ─── */
+  --holo-shadow-xs:  0 1px 2px rgba(15, 13, 10, 0.04);
+  --holo-shadow-sm:  0 2px 6px rgba(15, 13, 10, 0.05);
+  --holo-shadow-md:  0 6px 18px rgba(15, 13, 10, 0.08);
+  --holo-shadow-lg:  0 16px 40px rgba(15, 13, 10, 0.12);
+  --holo-shadow-xl:  0 24px 60px rgba(15, 13, 10, 0.16);
+
+  /* Shadows con color (CTA glow) */
+  --holo-shadow-violet:  0 8px 28px rgba(109, 88, 150, 0.25);
+  --holo-shadow-amber:   0 8px 28px rgba(184, 133, 46, 0.22);
+
+  /* ─── TRANSITIONS ─── */
+  --holo-ease:           cubic-bezier(0.22, 1, 0.36, 1);
+  --holo-ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+  --holo-duration-fast:  0.18s;
+  --holo-duration-base:  0.3s;
+  --holo-duration-slow:  0.6s;
+}
+
+/* ── 3 · RESET / BASE ───────────────────────────────────────────────────── */
+.holo, .holo *, .holo *::before, .holo *::after {
+  box-sizing: border-box;
+}
+
+html.holo-html {
+  font-family: var(--holo-font-body);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body.holo-body {
+  margin: 0;
+  font-family: var(--holo-font-body);
+  font-size: var(--holo-text-base);
+  line-height: var(--holo-leading-normal);
+  color: var(--holo-text);
+  background: var(--holo-bg);
+}
+
+/* ── 4 · TIPOGRAFÍA · escala ─────────────────────────────────────────────── */
+.holo-display {
+  font-family: var(--holo-font-display);
+  font-weight: var(--holo-weight-semibold);
+  line-height: var(--holo-leading-tight);
+  letter-spacing: var(--holo-tracking-tight);
+  color: var(--holo-text);
+}
+
+.holo-h1 { font-size: var(--holo-text-5xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
+.holo-h2 { font-size: var(--holo-text-4xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.1;  letter-spacing: -0.02em; }
+.holo-h3 { font-size: var(--holo-text-3xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.2;  letter-spacing: -0.01em; }
+.holo-h4 { font-size: var(--holo-text-2xl); font-family: var(--holo-font-body);    font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
+.holo-h5 { font-size: var(--holo-text-xl);  font-family: var(--holo-font-body);    font-weight: 700; line-height: 1.3; }
+.holo-h6 { font-size: var(--holo-text-lg);  font-family: var(--holo-font-body);    font-weight: 600; line-height: 1.4; }
+
+.holo-eyebrow {
+  font-family: var(--holo-font-body);
+  font-size: var(--holo-text-xs);
+  font-weight: var(--holo-weight-semibold);
+  letter-spacing: var(--holo-tracking-widest);
+  text-transform: uppercase;
+  color: var(--holo-amber-500);
+}
+
+.holo-lead {
+  font-size: var(--holo-text-lg);
+  line-height: var(--holo-leading-relaxed);
+  color: var(--holo-text-muted);
+  font-weight: var(--holo-weight-light);
+  max-width: 65ch;
+}
+
+.holo-body { font-size: var(--holo-text-base); line-height: var(--holo-leading-normal); }
+.holo-small { font-size: var(--holo-text-sm); }
+.holo-tiny { font-size: var(--holo-text-xs); }
+.holo-muted { color: var(--holo-text-muted); }
+
+/* ── 5 · COMPONENTES · Botones ──────────────────────────────────────────── */
+.holo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--holo-space-2);
+  font-family: var(--holo-font-body);
+  font-weight: var(--holo-weight-semibold);
+  font-size: var(--holo-text-sm);
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  border-radius: var(--holo-radius-full);
+  padding: var(--holo-space-3) var(--holo-space-6);
+  cursor: pointer;
+  transition: all var(--holo-duration-fast) var(--holo-ease);
+  white-space: nowrap;
+  text-decoration: none;
+  user-select: none;
+}
+.holo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Variant: primary (CTA principal) */
+.holo-btn-primary {
+  background: var(--holo-stone-800);
+  color: var(--holo-cream-50);
+  border-color: var(--holo-stone-800);
+}
+.holo-btn-primary:hover:not(:disabled) {
+  background: var(--holo-stone-900);
+  transform: translateY(-1px);
+  box-shadow: var(--holo-shadow-md);
+}
+
+/* Variant: gold (acción premium) */
+.holo-btn-gold {
+  background: linear-gradient(135deg, var(--holo-amber-400) 0%, var(--holo-amber-500) 100%);
+  color: #FFFFFF;
+  border-color: var(--holo-amber-500);
+}
+.holo-btn-gold:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--holo-amber-500) 0%, var(--holo-amber-600) 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--holo-shadow-amber);
+}
+
+/* Variant: violet */
+.holo-btn-violet {
+  background: var(--holo-violet-500);
+  color: #FFFFFF;
+  border-color: var(--holo-violet-500);
+}
+.holo-btn-violet:hover:not(:disabled) {
+  background: var(--holo-violet-600);
+  transform: translateY(-1px);
+  box-shadow: var(--holo-shadow-violet);
+}
+
+/* Variant: outline */
+.holo-btn-outline {
+  background: transparent;
+  color: var(--holo-text);
+  border-color: var(--holo-border-strong);
+}
+.holo-btn-outline:hover:not(:disabled) {
+  background: var(--holo-bg-subtle);
+  border-color: var(--holo-stone-400);
+}
+
+/* Variant: ghost */
+.holo-btn-ghost {
+  background: transparent;
+  color: var(--holo-text-muted);
+  border-color: transparent;
+}
+.holo-btn-ghost:hover:not(:disabled) {
+  background: var(--holo-bg-subtle);
+  color: var(--holo-text);
+}
+
+/* Sizes */
+.holo-btn-sm { padding: var(--holo-space-2) var(--holo-space-4); font-size: var(--holo-text-xs); }
+.holo-btn-lg { padding: var(--holo-space-4) var(--holo-space-8); font-size: var(--holo-text-base); }
+
+/* ── 6 · COMPONENTES · Cards ────────────────────────────────────────────── */
+.holo-card {
+  background: var(--holo-bg-elevated);
+  border: 1px solid var(--holo-border);
+  border-radius: var(--holo-radius-lg);
+  padding: var(--holo-space-6);
+  transition: all var(--holo-duration-base) var(--holo-ease);
+}
+.holo-card-elevated {
+  box-shadow: var(--holo-shadow-md);
+}
+.holo-card-interactive {
+  cursor: pointer;
+}
+.holo-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--holo-shadow-lg);
+  border-color: var(--holo-border-strong);
+}
+
+.holo-card-padded { padding: var(--holo-space-8); }
+.holo-card-tight { padding: var(--holo-space-4); }
+
+/* ── 7 · COMPONENTES · Badges / chips ───────────────────────────────────── */
+.holo-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-1);
+  font-family: var(--holo-font-body);
+  font-size: var(--holo-text-xs);
+  font-weight: var(--holo-weight-semibold);
+  letter-spacing: 0.04em;
+  padding: var(--holo-space-1) var(--holo-space-3);
+  border-radius: var(--holo-radius-full);
+  border: 1px solid;
+}
+.holo-badge-violet { background: var(--holo-violet-50); color: var(--holo-violet-600); border-color: var(--holo-violet-200); }
+.holo-badge-amber  { background: var(--holo-amber-50);  color: var(--holo-amber-700);  border-color: var(--holo-amber-200); }
+.holo-badge-sage   { background: var(--holo-sage-50);   color: var(--holo-sage-500);   border-color: var(--holo-sage-200); }
+.holo-badge-sky    { background: var(--holo-sky-50);    color: var(--holo-sky-500);    border-color: var(--holo-sky-200); }
+.holo-badge-terra  { background: var(--holo-terra-50);  color: var(--holo-terra-500);  border-color: var(--holo-terra-200); }
+.holo-badge-rose   { background: var(--holo-rose-50);   color: var(--holo-rose-500);   border-color: var(--holo-rose-200); }
+.holo-badge-stone  { background: var(--holo-stone-50);  color: var(--holo-stone-600);  border-color: var(--holo-stone-200); }
+
+/* ── 8 · COMPONENTES · Inputs ───────────────────────────────────────────── */
+.holo-input,
+.holo-textarea,
+.holo-select {
+  width: 100%;
+  font-family: var(--holo-font-body);
+  font-size: var(--holo-text-base);
+  color: var(--holo-text);
+  background: var(--holo-bg-elevated);
+  border: 1px solid var(--holo-border-strong);
+  border-radius: var(--holo-radius-md);
+  padding: var(--holo-space-3) var(--holo-space-4);
+  transition: all var(--holo-duration-fast) var(--holo-ease);
+  outline: none;
+}
+.holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-subtle); }
+.holo-input:focus, .holo-textarea:focus, .holo-select:focus {
+  border-color: var(--holo-violet-400);
+  box-shadow: 0 0 0 3px rgba(109, 88, 150, 0.10);
+}
+.holo-textarea { resize: vertical; min-height: 80px; line-height: var(--holo-leading-normal); }
+
+/* ── 9 · CONTENEDORES ───────────────────────────────────────────────────── */
+.holo-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--holo-space-6);
+}
+@media (max-width: 768px) {
+  .holo-container { padding: 0 var(--holo-space-4); }
+}
+
+.holo-section {
+  padding: var(--holo-space-16) 0;
+}
+@media (max-width: 768px) {
+  .holo-section { padding: var(--holo-space-10) 0; }
+}
+
+/* ── 10 · UTILIDADES ───────────────────────────────────────────────────── */
+.holo-divider {
+  height: 1px;
+  background: var(--holo-border);
+  border: 0;
+  margin: var(--holo-space-8) 0;
+}
+
+.holo-stack { display: flex; flex-direction: column; gap: var(--holo-space-4); }
+.holo-stack-sm { gap: var(--holo-space-2); }
+.holo-stack-lg { gap: var(--holo-space-8); }
+
+.holo-row { display: flex; align-items: center; gap: var(--holo-space-3); flex-wrap: wrap; }
+.holo-row-tight { gap: var(--holo-space-2); }
+.holo-row-loose { gap: var(--holo-space-6); }
+
+.holo-grid {
+  display: grid;
+  gap: var(--holo-space-6);
+}
+.holo-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.holo-grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.holo-grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+/* ── 11 · ICONOGRAFÍA SVG INLINE ────────────────────────────────────────── */
+/* Iconos minimal-line. Usar como <svg class="holo-icon">...</svg> */
+.holo-icon {
+  width: 1em;
+  height: 1em;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: inline-block;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+.holo-icon-lg { width: 1.5em; height: 1.5em; }
+.holo-icon-2x { width: 2em; height: 2em; }
+.holo-icon-3x { width: 3em; height: 3em; }
+
+/* ── 12 · ANIMACIONES ───────────────────────────────────────────────────── */
+@keyframes holo-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes holo-fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes holo-scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.holo-anim-fade { animation: holo-fade-in var(--holo-duration-base) var(--holo-ease) both; }
+.holo-anim-up   { animation: holo-fade-in-up var(--holo-duration-slow) var(--holo-ease) both; }
+.holo-anim-scale { animation: holo-scale-in var(--holo-duration-base) var(--holo-ease) both; }
+
+/* ── 13 · DARK MODE (opcional, módulos como tarot) ──────────────────────── */
+.holo-dark {
+  --holo-bg:           var(--holo-stone-900);
+  --holo-bg-subtle:    var(--holo-stone-800);
+  --holo-bg-elevated:  var(--holo-stone-700);
+  --holo-text:         var(--holo-cream-100);
+  --holo-text-muted:   var(--holo-stone-300);
+  --holo-text-subtle:  var(--holo-stone-400);
+  --holo-border:       rgba(250, 247, 242, 0.08);
+  --holo-border-strong: rgba(250, 247, 242, 0.16);
+}
+
+/* ── 14 · PRINT (impresión) ─────────────────────────────────────────────── */
+@media print {
+  .holo-btn, .holo-no-print { display: none !important; }
+  body.holo-body { background: white; color: black; }
+}
