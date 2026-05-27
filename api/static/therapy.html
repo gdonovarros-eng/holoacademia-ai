@@ -318,23 +318,12 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════
-             ANÁLISIS PROFUNDO · Diálogo guiado para descubrir el evento
+             ANÁLISIS PROFUNDO · Se inicia automáticamente al "Analizar caso"
              ═══════════════════════════════════════════════════════════════ -->
-        <section class="panel" id="akinator-panel">
+        <section class="panel hidden" id="akinator-panel">
           <div class="panel-head">
             <h2>Análisis profundo del caso</h2>
-            <p>Diálogo guiado para identificar el evento biológico activo. Respondé las preguntas que aparecen — el sistema ajusta hipótesis en tiempo real y, al alcanzar suficiente certeza, entrega la ficha clínica completa con interpretación, ejemplos similares, protocolo y pares biomagnéticos.</p>
-          </div>
-
-          <!-- CTA inicial -->
-          <div id="akinator-cta" class="akinator-start-cta">
-            <div class="akinator-start-cta-title">Profundizar el caso</div>
-            <div class="akinator-start-cta-sub">
-              Completá al menos el motivo de consulta arriba. El sistema analizará los datos iniciales y te hará entre 3 y 12 preguntas clínicas dirigidas. Verás las hipótesis ajustarse con cada respuesta y, al confirmar, recibirás la ficha clínica detallada.
-            </div>
-            <button type="button" class="btn-start-akinator" id="btn-start-akinator">
-              Iniciar análisis guiado
-            </button>
+            <p>Respondé las preguntas clínicas dirigidas — el sistema ajusta las hipótesis en tiempo real y, al alcanzar suficiente certeza, entrega la ficha completa con interpretación, ejemplos similares, protocolo y pares biomagnéticos.</p>
           </div>
 
           <!-- Grid: hipótesis (izq) + chat (der). Oculto hasta iniciar -->
@@ -621,6 +610,6 @@
     </template>
 
     <script src="/therapy-static/therapy.js?v=20260510d"></script>
-    <script src="/therapy-static/therapy_akinator.js?v=2"></script>
+    <script src="/therapy-static/therapy_akinator.js?v=3"></script>
   </body>
 </html>

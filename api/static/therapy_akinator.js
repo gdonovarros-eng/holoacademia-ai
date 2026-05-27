@@ -176,31 +176,37 @@
     return resp.json();
   }
 
-  // ─── Iniciar diálogo ─────────────────────────────────────────────────
+  // ─── Iniciar análisis profundo (se dispara automáticamente desde "Analizar caso") ──
   async function iniciarAkinator() {
-    const btn = $('btn-start-akinator');
-    if (btn) { btn.disabled = true; btn.innerHTML = '<span class="akinator-loading"></span> Iniciando diálogo…'; }
-
     const intake = gatherIntake();
     if (Object.keys(intake).length === 0) {
-      alert('Primero completa al menos el motivo de consulta en el formulario.');
-      if (btn) { btn.disabled = false; btn.textContent = '🧬 Iniciar diálogo guiado'; }
+      // No hay datos suficientes — silenciosamente no arrancamos
       return;
     }
 
-    // Ocultar CTA inicial, mostrar el grid Akinator
-    const cta = $('akinator-cta');
+    // Mostrar el panel completo (estaba oculto) y resetear estado previo
+    const panel = $('akinator-panel');
+    if (panel) panel.classList.remove('hidden');
     const grid = $('akinator-grid');
-    if (cta) cta.style.display = 'none';
     if (grid) grid.style.display = 'grid';
+
+    // Limpiar conversación previa si existía
+    $('chat-stream').innerHTML = '';
+    $('hipotesis-list').innerHTML = '';
+    $('ficha-clinica').classList.add('hidden');
+    $('ficha-clinica').innerHTML = '';
+    sessionId = null;
+    isAnswering = false;
+
+    // Scroll al panel para que el terapeuta lo vea
+    setTimeout(() => panel?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
 
     try {
       const data = await apiStart(intake);
       if (data.error) throw new Error(data.error);
       sessionId = data.session_id;
 
-      addSystemMsg('🧬 Diálogo iniciado. Cada respuesta refina las hipótesis sobre el evento desencadenante.');
-      addIaMsg('Hola. Voy a hacerte preguntas dirigidas para descubrir qué evento biológico está activo. Mirá las hipótesis a la izquierda — verás cómo se ajustan con cada respuesta. Cuando una hipótesis pase del 72% te entregaré una ficha clínica completa con protocolo + pares biomagnéticos.');
+      addIaMsg('Voy a hacerte preguntas clínicas dirigidas para identificar el evento activo. Las hipótesis a la izquierda se ajustarán con cada respuesta. Al alcanzar suficiente certeza, recibirás la ficha clínica completa.');
 
       renderHipotesis(data.hipotesis);
 
@@ -212,8 +218,7 @@
         }, 600);
       }
     } catch (e) {
-      addSystemMsg('⚠ Error al iniciar: ' + e.message);
-      if (btn) { btn.disabled = false; btn.textContent = '🧬 Iniciar diálogo guiado'; }
+      addSystemMsg('⚠ Error al iniciar análisis: ' + e.message);
     }
   }
 
@@ -386,7 +391,7 @@
     container.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
-  // ─── Reiniciar diálogo ───────────────────────────────────────────────
+  // ─── Reiniciar conversación (mantiene panel visible, limpia estado) ──
   function reiniciar() {
     sessionId = null;
     isAnswering = false;
@@ -395,22 +400,26 @@
     $('hipotesis-list').innerHTML = '';
     $('ficha-clinica').classList.add('hidden');
     $('ficha-clinica').innerHTML = '';
-    const cta = $('akinator-cta');
-    const grid = $('akinator-grid');
-    if (cta) cta.style.display = 'block';
-    if (grid) grid.style.display = 'none';
-    const btn = $('btn-start-akinator');
-    if (btn) { btn.disabled = false; btn.textContent = '🧬 Iniciar diálogo guiado'; }
+    // Re-iniciar inmediatamente
+    iniciarAkinator();
   }
 
   // ─── Wiring DOM ──────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
-    const start = $('btn-start-akinator');
-    if (start) start.addEventListener('click', iniciarAkinator);
+    // El botón "Analizar caso" del formulario dispara automáticamente el análisis profundo
+    const analyzeBtn = $('analyze-case');
+    if (analyzeBtn) {
+      analyzeBtn.addEventListener('click', () => {
+        // Delay para que el análisis tradicional del therapy.js arranque primero
+        setTimeout(iniciarAkinator, 250);
+      });
+    }
+    // Botones de respuesta del chat
     document.querySelectorAll('.ans-btn').forEach(b => {
       b.addEventListener('click', () => responder(b.dataset.resp));
       b.disabled = true;
     });
+    // Botón "Reiniciar" dentro del chat
     const reset = $('btn-reset-akinator');
     if (reset) reset.addEventListener('click', reiniciar);
   });
