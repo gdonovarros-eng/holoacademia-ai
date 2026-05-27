@@ -3,29 +3,123 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Holoacadem-iA · Plataforma holística para terapeutas</title>
-<meta name="description" content="Sistema integrado de IA para terapeutas holísticos. Biomagnetismo, biodescodificación, astrología, numerología, tarot y más.">
+<title>Holoacadem-iA · Plataforma de IA para terapeutas holísticos</title>
+<meta name="description" content="Plataforma de inteligencia artificial para terapeutas holísticos. Biomagnetismo, biodescodificación, astrología, numerología y tarot.">
 
 <!-- Design system -->
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=2">
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=3">
 
 <style>
-/* ── ÍNDICE · estilos específicos de la página principal ────────────── */
+/* ═══════════════════════════════════════════════════════════════════════
+   ÍNDICE · Estilos específicos · Aurora Tech edition
+   ═══════════════════════════════════════════════════════════════════════ */
 
-/* HEADER */
+body.holo-body {
+  background: var(--holo-deep-900);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ─── GLOBAL AMBIENT BACKGROUND ──────────────────────────────────────── */
+.idx-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at top, rgba(124, 58, 237, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom right, rgba(236, 72, 153, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at bottom left, rgba(45, 212, 191, 0.08) 0%, transparent 60%),
+    var(--holo-deep-900);
+}
+
+.idx-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  will-change: transform;
+}
+.idx-bg-orb-1 {
+  width: 700px; height: 700px;
+  top: -200px; left: -200px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.55) 0%, transparent 65%);
+  animation: idx-orb-drift-1 28s ease-in-out infinite;
+}
+.idx-bg-orb-2 {
+  width: 650px; height: 650px;
+  top: 10%; right: -150px;
+  background: radial-gradient(circle, rgba(236, 72, 153, 0.42) 0%, transparent 65%);
+  animation: idx-orb-drift-2 32s ease-in-out infinite;
+}
+.idx-bg-orb-3 {
+  width: 580px; height: 580px;
+  bottom: 5%; left: 20%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.32) 0%, transparent 65%);
+  animation: idx-orb-drift-3 26s ease-in-out infinite;
+}
+.idx-bg-orb-4 {
+  width: 500px; height: 500px;
+  bottom: 30%; right: 25%;
+  background: radial-gradient(circle, rgba(45, 212, 191, 0.28) 0%, transparent 65%);
+  animation: idx-orb-drift-4 34s ease-in-out infinite;
+}
+
+@keyframes idx-orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(120px, 80px) scale(1.1); }
+  66%      { transform: translate(-60px, 120px) scale(0.95); }
+}
+@keyframes idx-orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(-100px, 60px) scale(0.95); }
+  66%      { transform: translate(80px, -80px) scale(1.1); }
+}
+@keyframes idx-orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(80px, -60px) scale(1.05); }
+}
+@keyframes idx-orb-drift-4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(-90px, 70px) scale(1.08); }
+}
+
+/* Grid overlay sutil · tech feel */
+.idx-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+}
+
+/* Noise overlay */
+.idx-bg-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ─── HEADER ─────────────────────────────────────────────────────────── */
 .idx-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(250, 247, 242, 0.85);
-  backdrop-filter: saturate(180%) blur(14px);
-  -webkit-backdrop-filter: saturate(180%) blur(14px);
+  background: rgba(12, 10, 26, 0.65);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
   border-bottom: 1px solid var(--holo-border);
 }
 .idx-header-inner {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: var(--holo-space-4) var(--holo-space-6);
+  padding: var(--holo-space-4) var(--holo-space-8);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -37,26 +131,52 @@
   gap: var(--holo-space-3);
 }
 .idx-brand-logo {
-  width: 32px;
-  height: 32px;
-  border-radius: var(--holo-radius-sm);
-  background: linear-gradient(135deg, var(--holo-violet-500), var(--holo-violet-700));
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--holo-grad-electric);
+  background-size: 200% 200%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--holo-cream-50);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.4);
+  animation: holo-gradient-shift 6s ease-in-out infinite;
 }
 .idx-brand-name {
   font-family: var(--holo-font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--holo-text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--holo-text-strong);
 }
 .idx-brand-name em {
+  font-family: var(--holo-font-italic);
   font-style: italic;
-  color: var(--holo-violet-500);
+  font-weight: 400;
+  background: var(--holo-grad-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.idx-header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+}
+.idx-header-link {
+  font-family: var(--holo-font-body);
+  font-size: 0.85rem;
   font-weight: 500;
+  color: var(--holo-text-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--holo-radius-full);
+  transition: all var(--holo-duration-fast) var(--holo-ease);
+}
+.idx-header-link:hover {
+  color: var(--holo-text-strong);
+  background: rgba(255, 255, 255, 0.05);
 }
 .idx-badge {
   font-family: var(--holo-font-body);
@@ -64,231 +184,318 @@
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--holo-amber-500);
-  background: var(--holo-amber-50);
-  border: 1px solid var(--holo-amber-200);
-  padding: 4px 10px;
+  color: var(--holo-amber-300);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 5px 12px;
   border-radius: var(--holo-radius-full);
 }
 
-/* Background ambiental global con orbs flotando */
-body.holo-body {
-  background: var(--holo-cream-100);
-  overflow-x: hidden;
-}
-.idx-bg-ambient {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-/* HERO con aurora animada */
+/* ─── HERO ───────────────────────────────────────────────────────────── */
 .idx-hero {
   position: relative;
-  padding: var(--holo-space-24) 0 var(--holo-space-16);
+  padding: var(--holo-space-32) 0 var(--holo-space-20);
   text-align: center;
-  overflow: hidden;
   isolation: isolate;
+  z-index: 1;
 }
-.idx-hero-inner {
-  position: relative;
-  z-index: 2;
+@media (max-width: 768px) {
+  .idx-hero { padding: var(--holo-space-20) 0 var(--holo-space-16); }
 }
+
 .idx-hero-eyebrow {
-  color: var(--holo-amber-600);
-  font-family: var(--holo-font-body);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  margin-bottom: var(--holo-space-5);
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-3);
-  padding: 8px 18px;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(212, 165, 116, 0.4);
-  border-radius: 999px;
-  box-shadow: 0 4px 16px rgba(212, 165, 116, 0.12);
-  animation: holo-fade-in 0.6s var(--holo-ease) both;
+  gap: 10px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--holo-border-strong);
+  border-radius: var(--holo-radius-full);
+  font-family: var(--holo-font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  margin-bottom: var(--holo-space-8);
+  animation: holo-fade-in 0.7s var(--holo-ease) both;
 }
-.idx-hero-eyebrow::before {
-  content: '';
+.idx-hero-eyebrow-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--holo-amber-400);
+  background: var(--holo-violet-400);
+  box-shadow: 0 0 12px var(--holo-violet-400);
   animation: holo-pulse-glow 2.4s infinite;
 }
+.idx-hero-eyebrow-divider {
+  width: 1px;
+  height: 12px;
+  background: var(--holo-border-strong);
+}
+
 .idx-hero h1 {
   font-family: var(--holo-font-display);
-  font-size: clamp(2.8rem, 6.5vw, 5.5rem);
-  font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.03em;
-  color: var(--holo-stone-900);
-  margin: 0 auto var(--holo-space-6);
+  font-size: clamp(3rem, 9vw, 7.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--holo-text-strong);
+  margin: 0 auto var(--holo-space-8);
   max-width: 16ch;
-  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
+  animation: holo-fade-up 1s var(--holo-ease) both;
   animation-delay: 0.1s;
 }
-.idx-hero h1 em {
-  font-style: italic;
-  font-weight: 400;
-  background: linear-gradient(135deg, #8A6BAF 0%, #C97B5C 50%, #D4A574 100%);
+.idx-hero h1 .grad {
+  background: var(--holo-grad-electric);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  position: relative;
+  animation: holo-gradient-shift 8s ease-in-out infinite;
+  display: inline-block;
 }
-.idx-hero p {
-  font-family: var(--holo-font-body);
-  font-size: 1.125rem;
+.idx-hero h1 .italic {
+  font-family: var(--holo-font-italic);
+  font-style: italic;
   font-weight: 400;
-  line-height: 1.7;
-  color: var(--holo-stone-500);
-  max-width: 620px;
-  margin: 0 auto var(--holo-space-8);
-  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
-  animation-delay: 0.2s;
+  letter-spacing: -0.02em;
 }
 
-/* CTA del hero */
+.idx-hero p {
+  font-family: var(--holo-font-body);
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--holo-text-muted);
+  max-width: 640px;
+  margin: 0 auto var(--holo-space-10);
+  animation: holo-fade-up 1s var(--holo-ease) both;
+  animation-delay: 0.25s;
+}
+
 .idx-hero-actions {
   display: inline-flex;
   align-items: center;
   gap: var(--holo-space-3);
-  animation: holo-fade-up-blur 0.9s var(--holo-ease) both;
-  animation-delay: 0.3s;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: holo-fade-up 1s var(--holo-ease) both;
+  animation-delay: 0.4s;
 }
+
 .idx-hero-cta {
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-2);
-  background: var(--holo-stone-900);
-  color: var(--holo-cream-50);
-  padding: 14px 28px;
+  gap: 10px;
+  background: var(--holo-grad-electric);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #FFFFFF;
+  padding: 16px 32px;
   border-radius: var(--holo-radius-full);
-  font-size: 0.9rem;
+  font-family: var(--holo-font-body);
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   text-decoration: none;
-  transition: all var(--holo-duration-base) var(--holo-ease);
+  transition: all 0.4s var(--holo-ease);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 40px rgba(139, 92, 246, 0.45), 0 12px 32px rgba(124, 58, 237, 0.35);
+  isolation: isolate;
 }
 .idx-hero-cta::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.28) 50%, transparent 70%);
   transform: translateX(-100%);
-  transition: transform 0.7s var(--holo-ease);
+  transition: transform 0.8s var(--holo-ease);
 }
 .idx-hero-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(15, 13, 10, 0.3);
+  transform: translateY(-3px) scale(1.02);
+  background-position: 100% 50%;
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), 0 20px 50px rgba(236, 72, 153, 0.45);
 }
 .idx-hero-cta:hover::after { transform: translateX(200%); }
-.idx-hero-cta svg { width: 16px; height: 16px; stroke-width: 2; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--holo-duration-fast); }
-.idx-hero-cta:hover svg { transform: translateX(3px); }
+.idx-hero-cta svg { width: 18px; height: 18px; stroke-width: 2.25; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; transition: transform var(--holo-duration-fast); }
+.idx-hero-cta:hover svg { transform: translateX(4px); }
 
 .idx-hero-cta-secondary {
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-2);
-  color: var(--holo-stone-700);
-  padding: 14px 24px;
-  font-size: 0.9rem;
+  gap: 10px;
+  color: var(--holo-text-strong);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--holo-border-strong);
+  padding: 15px 28px;
+  font-family: var(--holo-font-body);
+  font-size: 0.95rem;
   font-weight: 600;
   text-decoration: none;
   border-radius: var(--holo-radius-full);
-  transition: all var(--holo-duration-fast);
+  transition: all var(--holo-duration-base) var(--holo-ease);
 }
 .idx-hero-cta-secondary:hover {
-  color: var(--holo-stone-900);
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--holo-border-bright);
+  transform: translateY(-2px);
+}
+.idx-hero-cta-secondary svg { width: 16px; height: 16px; stroke-width: 2; stroke: currentColor; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Stats row */
+.idx-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--holo-space-12);
+  margin-top: var(--holo-space-16);
+  flex-wrap: wrap;
+  animation: holo-fade-up 1s var(--holo-ease) both;
+  animation-delay: 0.55s;
+}
+.idx-hero-stat {
+  text-align: center;
+}
+.idx-hero-stat-num {
+  font-family: var(--holo-font-display);
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: var(--holo-grad-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+.idx-hero-stat-label {
+  font-family: var(--holo-font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  margin-top: 6px;
 }
 
-/* SECTION HEADERS */
+/* ─── SECTION HEADERS ────────────────────────────────────────────────── */
 .idx-section {
-  padding: var(--holo-space-12) 0 var(--holo-space-8);
+  padding: var(--holo-space-16) 0;
+  position: relative;
+  z-index: 1;
 }
+@media (max-width: 768px) {
+  .idx-section { padding: var(--holo-space-12) 0; }
+}
+
 .idx-section-head {
   display: flex;
-  align-items: baseline;
+  align-items: flex-end;
   justify-content: space-between;
-  gap: var(--holo-space-4);
-  margin-bottom: var(--holo-space-8);
-  padding-bottom: var(--holo-space-4);
-  border-bottom: 1px solid var(--holo-border);
+  gap: var(--holo-space-6);
+  margin-bottom: var(--holo-space-12);
 }
 .idx-section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--holo-font-body);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--holo-stone-400);
+  color: var(--holo-text-muted);
+  margin-bottom: var(--holo-space-3);
+}
+.idx-section-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent, var(--holo-violet-400));
+  box-shadow: 0 0 10px var(--accent, var(--holo-violet-400));
 }
 .idx-section-title {
   font-family: var(--holo-font-display);
-  font-size: 1.75rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--holo-stone-800);
-  margin-top: 4px;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  color: var(--holo-text-strong);
+  max-width: 22ch;
+}
+.idx-section-title em {
+  font-family: var(--holo-font-italic);
+  font-style: italic;
+  font-weight: 400;
+  background: var(--holo-grad-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 .idx-section-meta {
   font-family: var(--holo-font-body);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--holo-text-muted);
+  max-width: 32ch;
+  line-height: 1.5;
+  flex-shrink: 0;
+  text-align: right;
+}
+@media (max-width: 768px) {
+  .idx-section-head { flex-direction: column; align-items: flex-start; }
+  .idx-section-meta { text-align: left; }
 }
 
-/* TOOL CARDS · grid principal */
+/* ─── CARDS GRID ─────────────────────────────────────────────────────── */
 .idx-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--holo-space-6);
+  gap: var(--holo-space-5);
 }
 @media (min-width: 1024px) {
   .idx-grid { grid-template-columns: repeat(4, 1fr); }
-  .idx-grid-2 { grid-template-columns: repeat(2, 1fr); }
 }
 
 .idx-card {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: saturate(180%) blur(20px);
-  -webkit-backdrop-filter: saturate(180%) blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: var(--holo-radius-xl);
-  padding: var(--holo-space-6);
+  background: rgba(24, 20, 47, 0.55);
+  backdrop-filter: saturate(180%) blur(24px);
+  -webkit-backdrop-filter: saturate(180%) blur(24px);
+  border: 1px solid var(--holo-glass-border);
+  border-radius: var(--holo-radius-2xl);
+  padding: var(--holo-space-8) var(--holo-space-6) var(--holo-space-6);
   text-decoration: none;
   color: inherit;
-  transition: all 0.4s var(--holo-ease);
+  transition: all 0.5s var(--holo-ease);
   overflow: hidden;
   isolation: isolate;
-  box-shadow: 0 4px 20px rgba(15, 13, 10, 0.04);
+  min-height: 320px;
+  cursor: pointer;
 }
-/* Glow contextual al hover (tinta del card-color) */
+
+/* Color glow contextual (mancha de tinta) */
 .idx-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: radial-gradient(120% 80% at 50% 0%, var(--card-tint, transparent) 0%, transparent 70%);
+  top: -50%;
+  left: -20%;
+  width: 140%;
+  height: 100%;
+  background: radial-gradient(ellipse at 50% 100%, var(--card-glow, transparent) 0%, transparent 60%);
   opacity: 0;
-  transition: opacity 0.4s var(--holo-ease);
+  transition: opacity 0.5s var(--holo-ease);
   pointer-events: none;
   z-index: -1;
+  filter: blur(30px);
 }
+
 /* Gradient border al hover */
 .idx-card::after {
   content: '';
@@ -296,237 +503,279 @@ body.holo-body {
   inset: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: linear-gradient(135deg, var(--card-grad-1, rgba(138, 107, 175, 0.6)) 0%, var(--card-grad-2, rgba(212, 165, 116, 0.6)) 100%);
+  background: linear-gradient(135deg, var(--card-grad-1, rgba(139, 92, 246, 0.7)) 0%, var(--card-grad-2, rgba(236, 72, 153, 0.7)) 100%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
           mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.4s var(--holo-ease);
+  transition: opacity 0.5s var(--holo-ease);
   pointer-events: none;
 }
+
 .idx-card:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 28px 60px rgba(15, 13, 10, 0.14), 0 8px 20px rgba(15, 13, 10, 0.06);
-  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-8px);
+  background: rgba(34, 28, 62, 0.75);
+  border-color: var(--holo-border-bright);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px var(--card-shadow, rgba(139, 92, 246, 0.25));
 }
 .idx-card:hover::before { opacity: 1; }
 .idx-card:hover::after { opacity: 1; }
 
-/* Card structure · icono con gradient */
+/* Icon · gradient block */
 .idx-card-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--card-icon-bg, linear-gradient(135deg, var(--holo-stone-50), var(--holo-stone-100)));
-  color: var(--card-icon-color, var(--holo-stone-700));
-  margin-bottom: var(--holo-space-5);
-  transition: all 0.4s var(--holo-ease);
+  background: var(--card-icon-bg, linear-gradient(135deg, var(--holo-violet-500), var(--holo-violet-700)));
+  color: #FFFFFF;
+  margin-bottom: var(--holo-space-6);
+  transition: all 0.5s var(--holo-ease);
   position: relative;
-  box-shadow: 0 2px 8px rgba(15, 13, 10, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 24px var(--card-icon-shadow, rgba(124, 58, 237, 0.4)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 .idx-card-icon::before {
   content: '';
   position: absolute;
-  inset: 0;
+  inset: -4px;
   border-radius: inherit;
-  background: var(--card-icon-glow, transparent);
+  background: inherit;
   opacity: 0;
-  filter: blur(12px);
-  transition: opacity 0.4s var(--holo-ease);
+  filter: blur(18px);
+  transition: opacity 0.5s var(--holo-ease);
   z-index: -1;
 }
 .idx-card-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke-width: 1.5;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform 0.4s var(--holo-ease);
-}
-.idx-card:hover .idx-card-icon {
-  transform: scale(1.08) rotate(-3deg);
-}
-.idx-card:hover .idx-card-icon::before { opacity: 0.6; }
-.idx-card:hover .idx-card-icon svg { transform: scale(1.05); }
-
-.idx-card-category {
-  font-family: var(--holo-font-body);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--holo-stone-400);
-  margin-bottom: var(--holo-space-2);
-}
-.idx-card-title {
-  font-family: var(--holo-font-display);
-  font-size: 1.5rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--holo-stone-800);
-  margin-bottom: var(--holo-space-3);
-  line-height: 1.2;
-}
-.idx-card-desc {
-  font-family: var(--holo-font-body);
-  font-size: 0.875rem;
-  line-height: 1.6;
-  color: var(--holo-stone-500);
-  margin-bottom: var(--holo-space-5);
-  flex: 1;
-}
-.idx-card-cta {
-  font-family: var(--holo-font-body);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  color: var(--holo-stone-700);
-  display: inline-flex;
-  align-items: center;
-  gap: var(--holo-space-2);
-  transition: all var(--holo-duration-fast);
-  margin-top: auto;
-}
-.idx-card-cta svg {
-  width: 14px;
-  height: 14px;
+  width: 28px;
+  height: 28px;
   stroke-width: 1.75;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform var(--holo-duration-fast);
+  transition: transform 0.5s var(--holo-ease);
 }
-.idx-card:hover .idx-card-cta { color: var(--card-icon-color, var(--holo-violet-600)); }
-.idx-card:hover .idx-card-cta svg { transform: translateX(4px); }
+.idx-card:hover .idx-card-icon {
+  transform: scale(1.08) rotate(-4deg);
+}
+.idx-card:hover .idx-card-icon::before { opacity: 0.7; }
+.idx-card:hover .idx-card-icon svg { transform: scale(1.1); }
 
-/* Color tints por categoría — cada uno con su atmósfera única */
+.idx-card-category {
+  font-family: var(--holo-font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-cat-color, var(--holo-text-subtle));
+  margin-bottom: var(--holo-space-3);
+}
+
+.idx-card-title {
+  font-family: var(--holo-font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--holo-text-strong);
+  margin-bottom: var(--holo-space-3);
+  line-height: 1.05;
+}
+
+.idx-card-desc {
+  font-family: var(--holo-font-body);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--holo-text-muted);
+  margin-bottom: var(--holo-space-6);
+  flex: 1;
+}
+
+.idx-card-cta {
+  font-family: var(--holo-font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--holo-text-strong);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--holo-space-2);
+  transition: all var(--holo-duration-base) var(--holo-ease);
+  margin-top: auto;
+}
+.idx-card-cta-arrow {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--holo-border-strong);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--holo-duration-base) var(--holo-ease);
+}
+.idx-card-cta-arrow svg {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--holo-duration-base) var(--holo-ease);
+}
+.idx-card:hover .idx-card-cta-arrow {
+  background: var(--card-icon-bg, var(--holo-grad-electric));
+  border-color: transparent;
+  transform: scale(1.1);
+}
+.idx-card:hover .idx-card-cta-arrow svg { transform: translateX(2px); }
+
+/* ─── Color tints por categoría ──────────────────────────────────────── */
+
+/* Sinodal — violet (tutor IA) */
 .tint-sinodal {
-  --card-tint: rgba(138, 107, 175, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #E8E0F2, #D1C2E5);
-  --card-icon-color: #553F7A;
-  --card-icon-glow: rgba(138, 107, 175, 0.6);
-  --card-grad-1: rgba(138, 107, 175, 0.7);
-  --card-grad-2: rgba(177, 159, 208, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #A77FF5 0%, #6D28D9 100%);
+  --card-icon-shadow: rgba(124, 58, 237, 0.55);
+  --card-glow: rgba(139, 92, 246, 0.35);
+  --card-shadow: rgba(139, 92, 246, 0.3);
+  --card-grad-1: rgba(167, 127, 245, 0.8);
+  --card-grad-2: rgba(124, 58, 237, 0.6);
+  --card-cat-color: rgba(199, 168, 252, 0.85);
 }
+/* Rastreo — teal (técnico) */
 .tint-rastreo {
-  --card-tint: rgba(74, 130, 148, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #D1E4EA, #A0C5D2);
-  --card-icon-color: #244B57;
-  --card-icon-glow: rgba(74, 130, 148, 0.6);
-  --card-grad-1: rgba(74, 130, 148, 0.7);
-  --card-grad-2: rgba(160, 197, 210, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #5EEAD4 0%, #0891B2 100%);
+  --card-icon-shadow: rgba(20, 184, 166, 0.55);
+  --card-glow: rgba(45, 212, 191, 0.35);
+  --card-shadow: rgba(45, 212, 191, 0.3);
+  --card-grad-1: rgba(94, 234, 212, 0.8);
+  --card-grad-2: rgba(20, 184, 166, 0.6);
+  --card-cat-color: rgba(94, 234, 212, 0.9);
 }
+/* Pares — pink/magenta */
 .tint-pares {
-  --card-tint: rgba(74, 130, 148, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #D1E4EA, #A0C5D2);
-  --card-icon-color: #244B57;
-  --card-icon-glow: rgba(74, 130, 148, 0.6);
-  --card-grad-1: rgba(74, 130, 148, 0.7);
-  --card-grad-2: rgba(138, 107, 175, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #F472B6 0%, #BE185D 100%);
+  --card-icon-shadow: rgba(236, 72, 153, 0.55);
+  --card-glow: rgba(236, 72, 153, 0.35);
+  --card-shadow: rgba(236, 72, 153, 0.3);
+  --card-grad-1: rgba(244, 114, 182, 0.8);
+  --card-grad-2: rgba(190, 24, 93, 0.6);
+  --card-cat-color: rgba(249, 168, 212, 0.9);
 }
+/* Terapeuta — amber/gold */
 .tint-terapia {
-  --card-tint: rgba(212, 165, 116, 0.20);
-  --card-icon-bg: linear-gradient(135deg, #FAEAD4, #F2D29D);
-  --card-icon-color: #8F6420;
-  --card-icon-glow: rgba(232, 181, 103, 0.7);
-  --card-grad-1: rgba(232, 181, 103, 0.8);
-  --card-grad-2: rgba(201, 123, 92, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+  --card-icon-shadow: rgba(245, 158, 11, 0.55);
+  --card-glow: rgba(251, 191, 36, 0.35);
+  --card-shadow: rgba(245, 158, 11, 0.3);
+  --card-grad-1: rgba(252, 211, 77, 0.85);
+  --card-grad-2: rgba(217, 119, 6, 0.65);
+  --card-cat-color: rgba(252, 211, 77, 0.95);
 }
+/* Salud — coral */
 .tint-salud {
-  --card-tint: rgba(214, 121, 112, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #F2D4D0, #E6A5A0);
-  --card-icon-color: #95483D;
-  --card-icon-glow: rgba(214, 121, 112, 0.6);
-  --card-grad-1: rgba(214, 121, 112, 0.7);
-  --card-grad-2: rgba(232, 181, 103, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #FB7185 0%, #BE123C 100%);
+  --card-icon-shadow: rgba(244, 63, 94, 0.55);
+  --card-glow: rgba(251, 113, 133, 0.35);
+  --card-shadow: rgba(244, 63, 94, 0.3);
+  --card-grad-1: rgba(251, 113, 133, 0.8);
+  --card-grad-2: rgba(190, 18, 60, 0.6);
+  --card-cat-color: rgba(252, 165, 165, 0.9);
 }
+/* Astro — deep purple/violet */
 .tint-astro {
-  --card-tint: rgba(85, 63, 122, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #D1C2E5, #B19FD0);
-  --card-icon-color: #2A1D40;
-  --card-icon-glow: rgba(138, 107, 175, 0.7);
-  --card-grad-1: rgba(85, 63, 122, 0.8);
-  --card-grad-2: rgba(177, 159, 208, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #8B5CF6 0%, #4C1D95 100%);
+  --card-icon-shadow: rgba(124, 58, 237, 0.6);
+  --card-glow: rgba(139, 92, 246, 0.4);
+  --card-shadow: rgba(124, 58, 237, 0.35);
+  --card-grad-1: rgba(139, 92, 246, 0.85);
+  --card-grad-2: rgba(76, 29, 149, 0.7);
+  --card-cat-color: rgba(199, 168, 252, 0.9);
 }
+/* Numerología — sage/teal */
 .tint-numerologia {
-  --card-tint: rgba(104, 130, 87, 0.15);
-  --card-icon-bg: linear-gradient(135deg, #DCE5D5, #B5C5A8);
-  --card-icon-color: #3A4A30;
-  --card-icon-glow: rgba(138, 163, 120, 0.6);
-  --card-grad-1: rgba(104, 130, 87, 0.7);
-  --card-grad-2: rgba(232, 181, 103, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #86EFAC 0%, #15803D 100%);
+  --card-icon-shadow: rgba(34, 197, 94, 0.55);
+  --card-glow: rgba(74, 222, 128, 0.3);
+  --card-shadow: rgba(34, 197, 94, 0.3);
+  --card-grad-1: rgba(134, 239, 172, 0.8);
+  --card-grad-2: rgba(21, 128, 61, 0.6);
+  --card-cat-color: rgba(134, 239, 172, 0.9);
 }
+/* Tarot — magenta + violet (mystical) */
 .tint-tarot {
-  --card-tint: rgba(201, 123, 92, 0.18);
-  --card-icon-bg: linear-gradient(135deg, #F5DCD0, #ECB99F);
-  --card-icon-color: #5C311F;
-  --card-icon-glow: rgba(201, 123, 92, 0.7);
-  --card-grad-1: rgba(201, 123, 92, 0.7);
-  --card-grad-2: rgba(168, 95, 64, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #EC4899 0%, #6D28D9 100%);
+  --card-icon-shadow: rgba(219, 39, 119, 0.6);
+  --card-glow: rgba(236, 72, 153, 0.4);
+  --card-shadow: rgba(219, 39, 119, 0.35);
+  --card-grad-1: rgba(236, 72, 153, 0.85);
+  --card-grad-2: rgba(109, 40, 217, 0.7);
+  --card-cat-color: rgba(244, 114, 182, 0.9);
 }
+/* Horoscopo — amber + pink (zodiacal warmth) */
 .tint-horoscopo {
-  --card-tint: rgba(212, 165, 116, 0.18);
-  --card-icon-bg: linear-gradient(135deg, #FAEAD4, #F2D29D);
-  --card-icon-color: #8F6420;
-  --card-icon-glow: rgba(232, 181, 103, 0.7);
-  --card-grad-1: rgba(212, 165, 116, 0.7);
-  --card-grad-2: rgba(138, 107, 175, 0.7);
+  --card-icon-bg: linear-gradient(135deg, #FBBF24 0%, #EC4899 100%);
+  --card-icon-shadow: rgba(245, 158, 11, 0.55);
+  --card-glow: rgba(251, 191, 36, 0.35);
+  --card-shadow: rgba(245, 158, 11, 0.3);
+  --card-grad-1: rgba(251, 191, 36, 0.85);
+  --card-grad-2: rgba(236, 72, 153, 0.6);
+  --card-cat-color: rgba(252, 211, 77, 0.9);
 }
 
-/* Stagger animation cuando entran las cards */
-.idx-card {
-  animation: holo-fade-up-blur 0.8s var(--holo-ease) both;
-}
-.idx-grid > .idx-card:nth-child(1) { animation-delay: 0.05s; }
-.idx-grid > .idx-card:nth-child(2) { animation-delay: 0.12s; }
-.idx-grid > .idx-card:nth-child(3) { animation-delay: 0.19s; }
-.idx-grid > .idx-card:nth-child(4) { animation-delay: 0.26s; }
-.idx-grid > .idx-card:nth-child(5) { animation-delay: 0.33s; }
-
-/* UTILITY ROW · cards horizontales */
+/* ─── UTILITY CARDS (horizontal) ─────────────────────────────────────── */
 .idx-util-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--holo-space-4);
 }
 .idx-util {
   display: flex;
   align-items: center;
   gap: var(--holo-space-4);
-  padding: var(--holo-space-4) var(--holo-space-5);
-  background: var(--holo-bg-elevated);
-  border: 1px solid var(--holo-border);
-  border-radius: var(--holo-radius-md);
+  padding: var(--holo-space-5);
+  background: rgba(24, 20, 47, 0.45);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--holo-glass-border);
+  border-radius: var(--holo-radius-lg);
   text-decoration: none;
   color: inherit;
-  transition: all var(--holo-duration-fast) var(--holo-ease);
+  transition: all var(--holo-duration-base) var(--holo-ease);
 }
 .idx-util:hover {
-  border-color: var(--holo-border-strong);
-  transform: translateY(-1px);
-  box-shadow: var(--holo-shadow-sm);
+  border-color: var(--holo-border-bright);
+  background: rgba(34, 28, 62, 0.7);
+  transform: translateY(-2px);
 }
 .idx-util-icon {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: var(--holo-radius-sm);
-  background: var(--holo-stone-50);
-  color: var(--holo-stone-600);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--holo-border-strong);
+  color: var(--holo-text-strong);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all var(--holo-duration-base) var(--holo-ease);
+}
+.idx-util:hover .idx-util-icon {
+  background: var(--holo-grad-electric);
+  border-color: transparent;
+  color: #FFFFFF;
 }
 .idx-util-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke-width: 1.5;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.75;
   fill: none;
   stroke: currentColor;
   stroke-linecap: round;
@@ -534,92 +783,168 @@ body.holo-body {
 }
 .idx-util-body { flex: 1; min-width: 0; }
 .idx-util-title {
-  font-family: var(--holo-font-body);
-  font-size: 0.95rem;
+  font-family: var(--holo-font-display);
+  font-size: 1.05rem;
   font-weight: 600;
-  color: var(--holo-stone-800);
-  margin-bottom: 2px;
+  letter-spacing: -0.015em;
+  color: var(--holo-text-strong);
+  margin-bottom: 3px;
 }
 .idx-util-desc {
   font-family: var(--holo-font-body);
-  font-size: 0.78rem;
-  color: var(--holo-stone-500);
-  line-height: 1.4;
+  font-size: 0.82rem;
+  color: var(--holo-text-muted);
+  line-height: 1.45;
 }
 .idx-util-arrow {
   flex-shrink: 0;
-  color: var(--holo-stone-400);
-  transition: all var(--holo-duration-fast);
+  color: var(--holo-text-subtle);
+  transition: all var(--holo-duration-base) var(--holo-ease);
 }
 .idx-util-arrow svg {
-  width: 16px; height: 16px; stroke-width: 1.75;
+  width: 18px; height: 18px; stroke-width: 2;
   fill: none; stroke: currentColor;
   stroke-linecap: round; stroke-linejoin: round;
 }
-.idx-util:hover .idx-util-arrow { color: var(--holo-stone-700); transform: translateX(3px); }
+.idx-util:hover .idx-util-arrow { color: var(--holo-text-strong); transform: translateX(4px); }
 
-/* FOOTER */
+/* ─── FOOTER ─────────────────────────────────────────────────────────── */
 .idx-footer {
-  margin-top: var(--holo-space-16);
-  padding: var(--holo-space-8) 0;
+  position: relative;
+  z-index: 1;
+  margin-top: var(--holo-space-20);
+  padding: var(--holo-space-12) 0 var(--holo-space-8);
   border-top: 1px solid var(--holo-border);
   text-align: center;
-  font-size: 0.78rem;
-  color: var(--holo-stone-400);
+  font-size: 0.82rem;
+  color: var(--holo-text-subtle);
   font-family: var(--holo-font-body);
 }
 .idx-footer-mark {
   display: inline-block;
   font-family: var(--holo-font-display);
+  font-weight: 700;
+  background: var(--holo-grad-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.idx-footer-mark em {
+  font-family: var(--holo-font-italic);
   font-style: italic;
-  color: var(--holo-violet-500);
+  font-weight: 400;
 }
 
-/* Embed mode (iframe) */
+/* ─── EMBED MODE ─────────────────────────────────────────────────────── */
 body.embed-mode .idx-header { display: none; }
-body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
+body.embed-mode .idx-hero { padding-top: var(--holo-space-16); }
 
-@media (max-width: 768px) {
-  .idx-hero { padding: var(--holo-space-12) 0 var(--holo-space-10); }
-  .idx-section-head { flex-direction: column; align-items: flex-start; gap: var(--holo-space-2); }
+/* ─── STAGGER REVEAL (IntersectionObserver-driven) ───────────────────── */
+@keyframes idx-card-reveal {
+  from { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.idx-card.is-revealed,
+.idx-util.is-revealed {
+  animation: idx-card-reveal 0.9s var(--holo-ease) both;
+}
+.idx-grid > .idx-card.is-revealed:nth-child(1) { animation-delay: 0.00s; }
+.idx-grid > .idx-card.is-revealed:nth-child(2) { animation-delay: 0.08s; }
+.idx-grid > .idx-card.is-revealed:nth-child(3) { animation-delay: 0.16s; }
+.idx-grid > .idx-card.is-revealed:nth-child(4) { animation-delay: 0.24s; }
+.idx-grid > .idx-card.is-revealed:nth-child(5) { animation-delay: 0.32s; }
+.idx-grid > .idx-card.is-revealed:nth-child(6) { animation-delay: 0.40s; }
+.idx-util-grid > .idx-util.is-revealed:nth-child(1) { animation-delay: 0.00s; }
+.idx-util-grid > .idx-util.is-revealed:nth-child(2) { animation-delay: 0.08s; }
+.idx-util-grid > .idx-util.is-revealed:nth-child(3) { animation-delay: 0.16s; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .idx-header-nav { display: none; }
+  .idx-hero-stats { gap: var(--holo-space-6); margin-top: var(--holo-space-10); }
+  .idx-hero-stat-num { font-size: 1.75rem; }
+  .idx-card { min-height: 280px; padding: var(--holo-space-6) var(--holo-space-5) var(--holo-space-5); }
+  .idx-card-title { font-size: 1.4rem; }
 }
 </style>
 </head>
 <body class="holo-body">
+
+<!-- AMBIENT BACKGROUND · global -->
+<div class="idx-bg">
+  <div class="idx-bg-grid"></div>
+  <div class="idx-bg-orb idx-bg-orb-1"></div>
+  <div class="idx-bg-orb idx-bg-orb-2"></div>
+  <div class="idx-bg-orb idx-bg-orb-3"></div>
+  <div class="idx-bg-orb idx-bg-orb-4"></div>
+  <div class="idx-bg-noise"></div>
+</div>
 
 <!-- HEADER -->
 <header class="idx-header">
   <div class="idx-header-inner">
     <div class="idx-brand">
       <div class="idx-brand-logo">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="9"/>
           <path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/>
         </svg>
       </div>
       <span class="idx-brand-name">Holoacad<em>em</em>-iA</span>
     </div>
-    <span class="idx-badge">Beta</span>
+    <nav class="idx-header-nav">
+      <a href="#practica" class="idx-header-link">Práctica</a>
+      <a href="#lecturas" class="idx-header-link">Lecturas</a>
+      <a href="#utilidades" class="idx-header-link">Utilidades</a>
+      <span class="idx-badge">Beta</span>
+    </nav>
   </div>
 </header>
 
-<!-- HERO con aurora animada -->
+<!-- HERO -->
 <section class="idx-hero">
-  <div class="holo-aurora"></div>
-  <div class="holo-orb holo-orb-rose"></div>
-  <div class="holo-orb holo-orb-terra"></div>
-  <div class="holo-container idx-hero-inner">
-    <span class="idx-hero-eyebrow">Plataforma holística con IA</span>
-    <h1>Todo lo que un terapeuta necesita,<br><em>en un solo lugar</em></h1>
-    <p>Herramientas integradas de biomagnetismo, biodescodificación, astrología, numerología y tarot — diseñadas para acompañar tu práctica clínica desde el primer contacto con el consultante hasta la elaboración del protocolo.</p>
+  <div class="holo-container">
+    <span class="idx-hero-eyebrow">
+      <span class="idx-hero-eyebrow-dot"></span>
+      Inteligencia artificial holística
+      <span class="idx-hero-eyebrow-divider"></span>
+      v3.0
+    </span>
+
+    <h1>
+      La práctica del terapeuta,
+      <span class="grad">amplificada</span>
+      <span class="italic">por IA</span>.
+    </h1>
+
+    <p>
+      Una plataforma integrada que combina biomagnetismo, biodescodificación, astrología, numerología y tarot — diseñada para acompañar tu sesión clínica desde la primera entrevista hasta el protocolo final.
+    </p>
+
     <div class="idx-hero-actions">
       <a class="idx-hero-cta" href="#practica">
         Comenzar ahora
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
       <a class="idx-hero-cta-secondary" href="#lecturas">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>
         Explorar módulos
       </a>
+    </div>
+
+    <div class="idx-hero-stats">
+      <div class="idx-hero-stat">
+        <div class="idx-hero-stat-num">9</div>
+        <div class="idx-hero-stat-label">Módulos integrados</div>
+      </div>
+      <div class="idx-hero-stat">
+        <div class="idx-hero-stat-num">1.4k+</div>
+        <div class="idx-hero-stat-label">Pares biomagnéticos</div>
+      </div>
+      <div class="idx-hero-stat">
+        <div class="idx-hero-stat-num">24/7</div>
+        <div class="idx-hero-stat-label">Tutor IA disponible</div>
+      </div>
     </div>
   </div>
 </section>
@@ -629,10 +954,13 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
   <div class="holo-container">
     <div class="idx-section-head">
       <div>
-        <div class="idx-section-eyebrow">Núcleo terapéutico</div>
-        <div class="idx-section-title">Práctica clínica</div>
+        <div class="idx-section-eyebrow" style="--accent: #A77FF5;">
+          <span class="idx-section-eyebrow-dot"></span>
+          Núcleo terapéutico
+        </div>
+        <h2 class="idx-section-title">Práctica <em>clínica</em></h2>
       </div>
-      <div class="idx-section-meta">Tutor, rastreo, pares y asistente en vivo</div>
+      <div class="idx-section-meta">Tutor, rastreo, pares y asistente en vivo — los cuatro pasos del Método Lavín.</div>
     </div>
 
     <div class="idx-grid">
@@ -647,9 +975,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Tutor · Diplomado</div>
         <h3 class="idx-card-title">Sinodal IA</h3>
-        <p class="idx-card-desc">Resuelve dudas sobre cualquier módulo del diplomado. Acceso completo a los manuales del Método Lavín, disponible las 24 horas.</p>
-        <span class="idx-card-cta">Hablar con Sael
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Resuelve dudas sobre cualquier módulo del diplomado. Acceso completo a los manuales del Método Lavín, 24 horas.</p>
+        <span class="idx-card-cta">
+          Hablar con Sael
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -663,9 +992,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Sesión · Paso 2</div>
         <h3 class="idx-card-title">Rastreo de Imanes</h3>
-        <p class="idx-card-desc">Mapa interactivo del cuerpo. Marca los pares biomagnéticos positivos por zona, busca por condición y genera el reporte completo de la sesión.</p>
-        <span class="idx-card-cta">Iniciar rastreo
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Mapa interactivo del cuerpo. Marca los pares biomagnéticos positivos por zona y genera el reporte completo.</p>
+        <span class="idx-card-cta">
+          Iniciar rastreo
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -679,9 +1009,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Referencia · Paso 3</div>
         <h3 class="idx-card-title">Guía de Pares</h3>
-        <p class="idx-card-desc">Ubicación exacta de cada imán, interpretación clínica completa y tipo de patógeno asociado. Búsqueda por nombre, zona corporal o sistema.</p>
-        <span class="idx-card-cta">Buscar par
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Ubicación exacta de cada imán, interpretación clínica y patógeno asociado. Búsqueda por nombre, zona o sistema.</p>
+        <span class="idx-card-cta">
+          Buscar par
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -694,9 +1025,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">En vivo · Paso 4</div>
         <h3 class="idx-card-title">Asistente Terapéutico</h3>
-        <p class="idx-card-desc">IA en tiempo real durante la sesión: síntesis del caso, entrevista guiada, conflictología y protocolos biomagnéticos, sistémicos y psicosomáticos.</p>
-        <span class="idx-card-cta">Iniciar sesión
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">IA en tiempo real durante la sesión: síntesis del caso, entrevista guiada, conflictología y protocolos.</p>
+        <span class="idx-card-cta">
+          Iniciar sesión
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -709,10 +1041,13 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
   <div class="holo-container">
     <div class="idx-section-head">
       <div>
-        <div class="idx-section-eyebrow">Astrología, numerología y tarot</div>
-        <div class="idx-section-title">Lecturas y análisis</div>
+        <div class="idx-section-eyebrow" style="--accent: #EC4899;">
+          <span class="idx-section-eyebrow-dot"></span>
+          Astrología, numerología y tarot
+        </div>
+        <h2 class="idx-section-title">Lecturas y <em>análisis</em></h2>
       </div>
-      <div class="idx-section-meta">Cinco módulos · interpretación con IA</div>
+      <div class="idx-section-meta">Cinco módulos de interpretación simbólica con IA, integrados al historial del consultante.</div>
     </div>
 
     <div class="idx-grid">
@@ -725,9 +1060,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Astrología médica</div>
         <h3 class="idx-card-title">Perfil de Salud</h3>
-        <p class="idx-card-desc">Vulnerabilidades orgánicas, sistemas a cuidar y tránsitos de salud actuales. Orientación clínica basada en la carta natal del consultante.</p>
-        <span class="idx-card-cta">Ver perfil
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Vulnerabilidades orgánicas, sistemas a cuidar y tránsitos actuales. Orientación clínica desde la carta natal.</p>
+        <span class="idx-card-cta">
+          Ver perfil
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -740,9 +1076,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Módulo completo</div>
         <h3 class="idx-card-title">Astrología</h3>
-        <p class="idx-card-desc">Carta natal, Revolución Solar, sinastría, tránsitos y progresiones con interpretación de IA. Basado en Volguine y astrología tradicional.</p>
-        <span class="idx-card-cta">Abrir módulo
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Carta natal, Revolución Solar, sinastría, tránsitos y progresiones interpretadas con IA basada en Volguine.</p>
+        <span class="idx-card-cta">
+          Abrir módulo
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -757,9 +1094,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Pitagórica</div>
         <h3 class="idx-card-title">Numerología</h3>
-        <p class="idx-card-desc">Perfil numerológico completo: número de vida, expresión, alma, personalidad, pináculo y ciclos personales con interpretación de IA.</p>
-        <span class="idx-card-cta">Calcular perfil
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Perfil completo: número de vida, expresión, alma, personalidad, pináculo y ciclos personales.</p>
+        <span class="idx-card-cta">
+          Calcular perfil
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -773,9 +1111,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Terapéutico</div>
         <h3 class="idx-card-title">Tarot</h3>
-        <p class="idx-card-desc">Tiradas con interpretación terapéutica en streaming, perfil tarótico personal, referencia de las 78 cartas y chat de seguimiento con IA.</p>
-        <span class="idx-card-cta">Hacer lectura
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Tiradas con interpretación terapéutica en streaming, perfil tarótico personal y chat de seguimiento.</p>
+        <span class="idx-card-cta">
+          Hacer lectura
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -787,9 +1126,10 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
         </div>
         <div class="idx-card-category">Zodiacal</div>
         <h3 class="idx-card-title">Horóscopo</h3>
-        <p class="idx-card-desc">Predicciones zodiacales personalizadas por signo solar. Perfil arquetípico, energías actuales, amor, trabajo, salud y mensaje espiritual.</p>
-        <span class="idx-card-cta">Ver horóscopo
-          <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <p class="idx-card-desc">Predicciones zodiacales por signo solar. Arquetipo, energías actuales, amor, trabajo y mensaje espiritual.</p>
+        <span class="idx-card-cta">
+          Ver horóscopo
+          <span class="idx-card-cta-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
         </span>
       </a>
 
@@ -798,14 +1138,17 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
 </section>
 
 <!-- ═══════ SECCIÓN 3 · UTILIDADES ═══════ -->
-<section class="idx-section">
+<section class="idx-section" id="utilidades">
   <div class="holo-container">
     <div class="idx-section-head">
       <div>
-        <div class="idx-section-eyebrow">Herramientas de soporte</div>
-        <div class="idx-section-title">Utilidades</div>
+        <div class="idx-section-eyebrow" style="--accent: #FBBF24;">
+          <span class="idx-section-eyebrow-dot"></span>
+          Herramientas de soporte
+        </div>
+        <h2 class="idx-section-title">Utilidades</h2>
       </div>
-      <div class="idx-section-meta">Historial, tablas y terapias complementarias</div>
+      <div class="idx-section-meta">Historial, tablas de referencia y terapias complementarias siempre a mano.</div>
     </div>
 
     <div class="idx-util-grid">
@@ -870,23 +1213,61 @@ body.embed-mode .idx-hero { padding-top: var(--holo-space-10); }
 
 <footer class="idx-footer">
   <div class="holo-container">
-    <span class="idx-footer-mark">Holoacadem-iA</span> — Uso exclusivo para terapeutas certificados
+    <span class="idx-footer-mark">Holoacad<em>em</em>-iA</span> — Uso exclusivo para terapeutas certificados
   </div>
 </footer>
 
 <script>
 (function() {
+  // Embed mode
   const p = new URLSearchParams(window.location.search);
-  if (!p.has('embed')) return;
-  document.body.classList.add('embed-mode');
-  document.querySelectorAll('a.idx-card, a.idx-util').forEach(function(a) {
-    a.target = '_top';
-  });
-  function sendHeight() {
-    window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+  if (p.has('embed')) {
+    document.body.classList.add('embed-mode');
+    document.querySelectorAll('a.idx-card, a.idx-util').forEach(function(a) {
+      a.target = '_top';
+    });
+    function sendHeight() {
+      window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+    }
+    sendHeight();
+    window.addEventListener('resize', sendHeight);
   }
-  sendHeight();
-  window.addEventListener('resize', sendHeight);
+
+  // Stagger reveal via IntersectionObserver (cards + utils)
+  const revealEls = document.querySelectorAll('.idx-card, .idx-util');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) {
+        if (en.isIntersecting) {
+          en.target.classList.add('is-revealed');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach(function(el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function(el) { el.classList.add('is-revealed'); });
+  }
+
+  // Subtle parallax on background orbs (mouse-driven)
+  const orbs = document.querySelectorAll('.idx-bg-orb');
+  if (orbs.length && window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+    let mx = 0, my = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', function(e) {
+      mx = (e.clientX / window.innerWidth - 0.5) * 30;
+      my = (e.clientY / window.innerHeight - 0.5) * 30;
+    });
+    function loop() {
+      tx += (mx - tx) * 0.06;
+      ty += (my - ty) * 0.06;
+      orbs.forEach(function(orb, i) {
+        const f = (i + 1) * 0.4;
+        orb.style.translate = (tx * f).toFixed(1) + 'px ' + (ty * f).toFixed(1) + 'px';
+      });
+      requestAnimationFrame(loop);
+    }
+    loop();
+  }
 })();
 </script>
 </body>

@@ -1,68 +1,128 @@
 /* ═════════════════════════════════════════════════════════════════════════
-   HOLO DESIGN SYSTEM · v1.0
-   Sistema de diseño unificado para todos los módulos de Holoacadem-iA
-   Inspiración: Mindvalley · estética holística premium
-
-   USO: importar este archivo PRIMERO en cualquier página:
-     <link rel="stylesheet" href="/therapy-static/holo_design_system.css">
-
-   Después se pueden agregar overrides específicos por módulo.
+   HOLO DESIGN SYSTEM · v3.0 · "Aurora Tech"
+   Mindvalley-inspired premium digital experience for holistic therapists
+   Dark immersive · vibrant gradients · bold display typography · dramatic motion
    ═════════════════════════════════════════════════════════════════════════ */
 
 /* ── 1 · TIPOGRAFÍA ─────────────────────────────────────────────────────── */
 
-/* Inter (body + UI) — variable, todos los pesos */
+/* Inter (body + UI) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Instrument Serif — display moderno con personalidad */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+/* Familjen Grotesk — display moderno, geométrico, premium tech */
+@import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap');
 
-/* Cormorant Garamond — backup para casos editoriales */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+/* Instrument Serif — para acentos italic puntuales */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 /* ── 2 · VARIABLES ──────────────────────────────────────────────────────── */
 :root {
   /* ─── Tipografía ─── */
   --holo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --holo-font-display: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
-  --holo-font-display-alt: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --holo-font-display: 'Familjen Grotesk', 'Inter', sans-serif;
+  --holo-font-italic: 'Instrument Serif', Georgia, serif;
   --holo-font-mono: 'SF Mono', Menlo, Monaco, 'Cascadia Mono', monospace;
 
-  /* ─── Gradients animados (auroras Mindvalley) ─── */
-  --holo-grad-aurora-1: radial-gradient(circle at 20% 30%, rgba(139, 107, 175, 0.4) 0%, transparent 50%);
-  --holo-grad-aurora-2: radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.35) 0%, transparent 55%);
-  --holo-grad-aurora-3: radial-gradient(circle at 50% 90%, rgba(201, 123, 92, 0.3) 0%, transparent 50%);
-  --holo-grad-aurora-4: radial-gradient(circle at 70% 20%, rgba(188, 92, 79, 0.25) 0%, transparent 45%);
+  /* ─── PALETA · Mindvalley-tier vibrant ─── */
 
+  /* Deep space — fondos oscuros premium */
+  --holo-deep-950: #07060F;
+  --holo-deep-900: #0C0A1A;
+  --holo-deep-850: #110E26;
+  --holo-deep-800: #18142F;
+  --holo-deep-700: #221C3E;
+  --holo-deep-600: #2D2552;
+  --holo-deep-500: #3A2F6B;
+
+  /* Electric violet — primario espiritual moderno */
+  --holo-violet-50:  #F3EEFE;
+  --holo-violet-100: #E1D2FC;
+  --holo-violet-200: #C5A8F9;
+  --holo-violet-300: #A77FF5;
+  --holo-violet-400: #8B5CF6;   /* electric violet */
+  --holo-violet-500: #7C3AED;
+  --holo-violet-600: #6D28D9;
+  --holo-violet-700: #5B21B6;
+  --holo-violet-800: #4C1D95;
+
+  /* Electric pink/magenta — energía, acentos */
+  --holo-pink-300: #F9A8D4;
+  --holo-pink-400: #F472B6;
+  --holo-pink-500: #EC4899;   /* hot pink */
+  --holo-pink-600: #DB2777;
+
+  /* Amber gold — calidez holística + premium CTA */
+  --holo-amber-300: #FCD34D;
+  --holo-amber-400: #FBBF24;
+  --holo-amber-500: #F59E0B;   /* gold */
+  --holo-amber-600: #D97706;
+
+  /* Teal/cyan — bright accent técnico */
+  --holo-teal-300: #5EEAD4;
+  --holo-teal-400: #2DD4BF;
+  --holo-teal-500: #14B8A6;
+
+  /* Coral/terracotta — calidez */
+  --holo-coral-300: #FCA5A5;
+  --holo-coral-400: #FB7185;
+  --holo-coral-500: #F43F5E;
+
+  /* Sage — naturaleza sutil */
+  --holo-sage-300: #86EFAC;
+  --holo-sage-400: #4ADE80;
+  --holo-sage-500: #22C55E;
+
+  /* Stone/neutral — texto sobre dark */
+  --holo-stone-50:  #FAFAF9;
+  --holo-stone-100: #F4F4F2;
+  --holo-stone-200: #E5E3DE;
+  --holo-stone-300: #C9C5BC;
+  --holo-stone-400: #9A968B;
+  --holo-stone-500: #6E6B62;
+  --holo-stone-600: #4A4842;
+  --holo-stone-700: #2E2D29;
+  --holo-stone-800: #1B1A18;
+  --holo-stone-900: #0E0D0C;
+
+  /* ─── GRADIENTS · vibrantes Mindvalley-style ─── */
+
+  /* Gradients lineales (text, borders, buttons) */
+  --holo-grad-electric:  linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F59E0B 100%);
+  --holo-grad-violet:    linear-gradient(135deg, #A77FF5 0%, #7C3AED 100%);
+  --holo-grad-aurora:    linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+  --holo-grad-sunset:    linear-gradient(135deg, #EC4899 0%, #F59E0B 100%);
+  --holo-grad-cosmic:    linear-gradient(135deg, #7C3AED 0%, #2DD4BF 100%);
+  --holo-grad-gold:      linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
+  --holo-grad-magenta:   linear-gradient(135deg, #F472B6 0%, #EC4899 100%);
+  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #14B8A6 100%);
+
+  /* Mesh radial — para fondos hero dramáticos */
   --holo-grad-mesh:
-    radial-gradient(circle at 15% 20%, rgba(177, 159, 208, 0.55) 0%, transparent 45%),
-    radial-gradient(circle at 85% 30%, rgba(232, 181, 103, 0.5) 0%, transparent 50%),
-    radial-gradient(circle at 50% 90%, rgba(214, 121, 112, 0.4) 0%, transparent 55%),
-    radial-gradient(circle at 25% 75%, rgba(138, 107, 175, 0.35) 0%, transparent 50%);
+    radial-gradient(at 15% 18%, rgba(139, 92, 246, 0.45) 0px, transparent 50%),
+    radial-gradient(at 85% 25%, rgba(236, 72, 153, 0.38) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(245, 158, 11, 0.32) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(45, 212, 191, 0.28) 0px, transparent 50%),
+    radial-gradient(at 10% 80%, rgba(124, 58, 237, 0.40) 0px, transparent 55%);
 
-  /* Gradients lineales para text/borders */
-  --holo-grad-text-1: linear-gradient(135deg, #8A6BAF 0%, #C97B5C 50%, #D4A574 100%);
-  --holo-grad-text-2: linear-gradient(135deg, #553F7A 0%, #8A6BAF 100%);
-  --holo-grad-text-warm: linear-gradient(135deg, #B8852E 0%, #C97B5C 50%, #BC5C4F 100%);
-  --holo-grad-violet: linear-gradient(135deg, #6D5896 0%, #553F7A 100%);
-  --holo-grad-amber: linear-gradient(135deg, #E8B567 0%, #B8852E 100%);
-  --holo-grad-border: linear-gradient(135deg, rgba(138, 107, 175, 0.6) 0%, rgba(212, 165, 116, 0.6) 100%);
+  /* Glass morphism · dark */
+  --holo-glass-bg: rgba(24, 20, 47, 0.55);
+  --holo-glass-bg-strong: rgba(34, 28, 62, 0.75);
+  --holo-glass-border: rgba(255, 255, 255, 0.10);
+  --holo-glass-border-bright: rgba(255, 255, 255, 0.18);
+  --holo-glass-blur: saturate(180%) blur(24px);
 
-  /* Glass morphism */
-  --holo-glass-bg: rgba(255, 255, 255, 0.6);
-  --holo-glass-border: rgba(255, 255, 255, 0.6);
-  --holo-glass-blur: saturate(180%) blur(20px);
-
-  /* Tamaños tipográficos modulares (1.25 ratio) */
-  --holo-text-xs:   0.75rem;   /* 12 */
-  --holo-text-sm:   0.875rem;  /* 14 */
-  --holo-text-base: 1rem;      /* 16 */
-  --holo-text-lg:   1.125rem;  /* 18 */
-  --holo-text-xl:   1.375rem;  /* 22 */
-  --holo-text-2xl:  1.75rem;   /* 28 */
-  --holo-text-3xl:  2.25rem;   /* 36 */
-  --holo-text-4xl:  3rem;      /* 48 */
-  --holo-text-5xl:  4rem;      /* 64 */
+  /* Tamaños tipográficos · escala más agresiva para hero impact */
+  --holo-text-xs:   0.75rem;
+  --holo-text-sm:   0.875rem;
+  --holo-text-base: 1rem;
+  --holo-text-lg:   1.125rem;
+  --holo-text-xl:   1.375rem;
+  --holo-text-2xl:  1.75rem;
+  --holo-text-3xl:  2.5rem;
+  --holo-text-4xl:  3.5rem;
+  --holo-text-5xl:  5rem;
+  --holo-text-6xl:  7rem;
+  --holo-text-7xl:  9rem;
 
   /* Pesos */
   --holo-weight-light:    300;
@@ -71,171 +131,90 @@
   --holo-weight-semibold: 600;
   --holo-weight-bold:     700;
   --holo-weight-black:    800;
+  --holo-weight-ultra:    900;
 
   /* Line heights */
-  --holo-leading-tight:    1.1;
-  --holo-leading-snug:     1.3;
-  --holo-leading-normal:   1.5;
-  --holo-leading-relaxed:  1.7;
-  --holo-leading-loose:    2;
+  --holo-leading-none:    0.95;
+  --holo-leading-tight:   1.05;
+  --holo-leading-snug:    1.2;
+  --holo-leading-normal:  1.5;
+  --holo-leading-relaxed: 1.7;
 
-  /* Letter spacing */
-  --holo-tracking-tight:   -0.02em;
+  /* Letter spacing — tighter para display moderno */
+  --holo-tracking-ultra:   -0.04em;
+  --holo-tracking-tight:   -0.025em;
   --holo-tracking-normal:  0;
   --holo-tracking-wide:    0.05em;
-  --holo-tracking-wider:   0.1em;
-  --holo-tracking-widest:  0.15em;
+  --holo-tracking-wider:   0.12em;
+  --holo-tracking-widest:  0.18em;
 
-  /* ─── PALETA ─── */
+  /* ─── ROLES SEMÁNTICOS · DARK MODE BASE ─── */
+  --holo-bg:           var(--holo-deep-900);
+  --holo-bg-subtle:    var(--holo-deep-850);
+  --holo-bg-elevated:  var(--holo-deep-800);
+  --holo-bg-overlay:   rgba(7, 6, 15, 0.7);
+  --holo-bg-inverse:   var(--holo-stone-50);
 
-  /* Base — cream / parchment (background light) */
-  --holo-cream-50:   #FDFBF7;
-  --holo-cream-100:  #FAF7F2;
-  --holo-cream-200:  #F5EFE5;
-  --holo-cream-300:  #EDE3D2;
-  --holo-cream-400:  #D9C9AC;
+  --holo-text:           var(--holo-stone-50);
+  --holo-text-strong:    #FFFFFF;
+  --holo-text-muted:     rgba(244, 244, 242, 0.72);
+  --holo-text-subtle:    rgba(244, 244, 242, 0.50);
+  --holo-text-dim:       rgba(244, 244, 242, 0.35);
+  --holo-text-inverse:   var(--holo-deep-900);
 
-  /* Stone / neutral — texto y bordes */
-  --holo-stone-50:   #F8F7F5;
-  --holo-stone-100:  #EDEAE3;
-  --holo-stone-200:  #DCD7CB;
-  --holo-stone-300:  #B8B1A0;
-  --holo-stone-400:  #8B8474;
-  --holo-stone-500:  #5C5749;
-  --holo-stone-600:  #3F3B33;
-  --holo-stone-700:  #2A2723;
-  --holo-stone-800:  #1A1814;
-  --holo-stone-900:  #0F0D0A;
+  --holo-border:         rgba(255, 255, 255, 0.08);
+  --holo-border-strong:  rgba(255, 255, 255, 0.16);
+  --holo-border-bright:  rgba(255, 255, 255, 0.30);
 
-  /* Violet — color primario espiritual */
-  --holo-violet-50:  #F5F2FA;
-  --holo-violet-100: #E8E0F2;
-  --holo-violet-200: #D1C2E5;
-  --holo-violet-300: #B19FD0;
-  --holo-violet-400: #8A6BAF;
-  --holo-violet-500: #6D5896;
-  --holo-violet-600: #553F7A;
-  --holo-violet-700: #3F2D5C;
-  --holo-violet-800: #2A1D40;
-  --holo-violet-900: #1A1228;
-
-  /* Amber — gold / acentos CTA */
-  --holo-amber-50:   #FDF8F0;
-  --holo-amber-100:  #FAEAD4;
-  --holo-amber-200:  #F2D29D;
-  --holo-amber-300:  #E8B567;
-  --holo-amber-400:  #D4A574;
-  --holo-amber-500:  #B8852E;
-  --holo-amber-600:  #8F6420;
-  --holo-amber-700:  #6B4915;
-  --holo-amber-800:  #4A310C;
-
-  /* Terracotta — calidez, segundos planos cálidos */
-  --holo-terra-50:   #FBF1ED;
-  --holo-terra-100:  #F5DCD0;
-  --holo-terra-200:  #ECB99F;
-  --holo-terra-300:  #DC957A;
-  --holo-terra-400:  #C97B5C;
-  --holo-terra-500:  #A85F40;
-  --holo-terra-600:  #82452D;
-  --holo-terra-700:  #5C311F;
-
-  /* Sage — verde sutil, naturaleza */
-  --holo-sage-50:    #F0F4EE;
-  --holo-sage-100:   #DCE5D5;
-  --holo-sage-200:   #B5C5A8;
-  --holo-sage-300:   #8AA378;
-  --holo-sage-400:   #688257;
-  --holo-sage-500:   #4E6541;
-  --holo-sage-600:   #3A4A30;
-
-  /* Sky — azul calmo */
-  --holo-sky-50:     #EEF5F7;
-  --holo-sky-100:    #D1E4EA;
-  --holo-sky-200:    #A0C5D2;
-  --holo-sky-300:    #6FA3B5;
-  --holo-sky-400:    #4A8294;
-  --holo-sky-500:    #336572;
-  --holo-sky-600:    #244B57;
-
-  /* Rose — toques cálidos secundarios */
-  --holo-rose-50:    #FAEFEE;
-  --holo-rose-100:   #F2D4D0;
-  --holo-rose-200:   #E6A5A0;
-  --holo-rose-300:   #D67970;
-  --holo-rose-400:   #BC5C4F;
-  --holo-rose-500:   #95483D;
-
-  /* Estado funcional */
-  --holo-success: #688257;
-  --holo-warning: #D4A574;
-  --holo-error:   #BC5C4F;
-  --holo-info:    #4A8294;
-
-  /* ─── ROLES SEMÁNTICOS ─── */
-  /* Light mode (default) */
-  --holo-bg:           var(--holo-cream-100);
-  --holo-bg-subtle:    var(--holo-cream-200);
-  --holo-bg-elevated:  #FFFFFF;
-  --holo-bg-inverse:   var(--holo-stone-800);
-
-  --holo-text:           var(--holo-stone-800);
-  --holo-text-muted:     var(--holo-stone-500);
-  --holo-text-subtle:    var(--holo-stone-400);
-  --holo-text-inverse:   var(--holo-cream-100);
-  --holo-text-on-accent: #FFFFFF;
-
-  --holo-border:         rgba(60, 50, 40, 0.10);
-  --holo-border-strong:  rgba(60, 50, 40, 0.18);
-
-  --holo-accent:         var(--holo-violet-500);
-  --holo-accent-soft:    var(--holo-violet-100);
-  --holo-accent-hover:   var(--holo-violet-600);
-
+  --holo-accent:         var(--holo-violet-400);
+  --holo-accent-hover:   var(--holo-violet-300);
   --holo-gold:           var(--holo-amber-400);
-  --holo-gold-soft:      var(--holo-amber-100);
 
-  /* ─── SPACING (escala 4px) ─── */
+  /* ─── SPACING ─── */
   --holo-space-0:   0;
-  --holo-space-1:   0.25rem;   /* 4 */
-  --holo-space-2:   0.5rem;    /* 8 */
-  --holo-space-3:   0.75rem;   /* 12 */
-  --holo-space-4:   1rem;      /* 16 */
-  --holo-space-5:   1.25rem;   /* 20 */
-  --holo-space-6:   1.5rem;    /* 24 */
-  --holo-space-8:   2rem;      /* 32 */
-  --holo-space-10:  2.5rem;    /* 40 */
-  --holo-space-12:  3rem;      /* 48 */
-  --holo-space-16:  4rem;      /* 64 */
-  --holo-space-20:  5rem;      /* 80 */
-  --holo-space-24:  6rem;      /* 96 */
-  --holo-space-32:  8rem;      /* 128 */
+  --holo-space-1:   0.25rem;
+  --holo-space-2:   0.5rem;
+  --holo-space-3:   0.75rem;
+  --holo-space-4:   1rem;
+  --holo-space-5:   1.25rem;
+  --holo-space-6:   1.5rem;
+  --holo-space-8:   2rem;
+  --holo-space-10:  2.5rem;
+  --holo-space-12:  3rem;
+  --holo-space-16:  4rem;
+  --holo-space-20:  5rem;
+  --holo-space-24:  6rem;
+  --holo-space-32:  8rem;
+  --holo-space-40:  10rem;
 
   /* ─── RADIUS ─── */
-  --holo-radius-sm:    6px;
-  --holo-radius-md:    10px;
-  --holo-radius-lg:    16px;
-  --holo-radius-xl:    22px;
-  --holo-radius-2xl:   28px;
+  --holo-radius-sm:    8px;
+  --holo-radius-md:    12px;
+  --holo-radius-lg:    18px;
+  --holo-radius-xl:    24px;
+  --holo-radius-2xl:   32px;
+  --holo-radius-3xl:   40px;
   --holo-radius-full:  9999px;
 
-  /* ─── SHADOWS (suaves, holísticas) ─── */
-  --holo-shadow-xs:  0 1px 2px rgba(15, 13, 10, 0.04);
-  --holo-shadow-sm:  0 2px 6px rgba(15, 13, 10, 0.05);
-  --holo-shadow-md:  0 6px 18px rgba(15, 13, 10, 0.08);
-  --holo-shadow-lg:  0 16px 40px rgba(15, 13, 10, 0.12);
-  --holo-shadow-xl:  0 24px 60px rgba(15, 13, 10, 0.16);
+  /* ─── SHADOWS · with color for premium glow ─── */
+  --holo-shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.25);
+  --holo-shadow-md:  0 8px 24px rgba(0, 0, 0, 0.32);
+  --holo-shadow-lg:  0 20px 50px rgba(0, 0, 0, 0.45);
+  --holo-shadow-xl:  0 32px 80px rgba(0, 0, 0, 0.55);
 
-  /* Shadows con color (CTA glow) */
-  --holo-shadow-violet:  0 8px 28px rgba(109, 88, 150, 0.25);
-  --holo-shadow-amber:   0 8px 28px rgba(184, 133, 46, 0.22);
+  --holo-glow-violet: 0 0 40px rgba(139, 92, 246, 0.45), 0 12px 32px rgba(124, 58, 237, 0.35);
+  --holo-glow-pink:   0 0 40px rgba(236, 72, 153, 0.45), 0 12px 32px rgba(219, 39, 119, 0.35);
+  --holo-glow-amber:  0 0 40px rgba(245, 158, 11, 0.45), 0 12px 32px rgba(217, 119, 6, 0.35);
+  --holo-glow-teal:   0 0 40px rgba(45, 212, 191, 0.45), 0 12px 32px rgba(20, 184, 166, 0.35);
+  --holo-glow-coral:  0 0 40px rgba(244, 63, 94, 0.45), 0 12px 32px rgba(225, 29, 72, 0.35);
 
   /* ─── TRANSITIONS ─── */
   --holo-ease:           cubic-bezier(0.22, 1, 0.36, 1);
+  --holo-ease-bounce:    cubic-bezier(0.34, 1.56, 0.64, 1);
   --holo-ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
   --holo-duration-fast:  0.18s;
-  --holo-duration-base:  0.3s;
-  --holo-duration-slow:  0.6s;
+  --holo-duration-base:  0.35s;
+  --holo-duration-slow:  0.7s;
 }
 
 /* ── 3 · RESET / BASE ───────────────────────────────────────────────────── */
@@ -245,10 +224,12 @@
 
 html.holo-html {
   font-family: var(--holo-font-body);
-  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'ss01';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  background: var(--holo-deep-900);
+  color: var(--holo-text);
 }
 
 body.holo-body {
@@ -257,24 +238,25 @@ body.holo-body {
   font-size: var(--holo-text-base);
   line-height: var(--holo-leading-normal);
   color: var(--holo-text);
-  background: var(--holo-bg);
+  background: var(--holo-deep-900);
+  min-height: 100vh;
 }
 
 /* ── 4 · TIPOGRAFÍA · escala ─────────────────────────────────────────────── */
 .holo-display {
   font-family: var(--holo-font-display);
-  font-weight: var(--holo-weight-semibold);
+  font-weight: var(--holo-weight-bold);
   line-height: var(--holo-leading-tight);
   letter-spacing: var(--holo-tracking-tight);
-  color: var(--holo-text);
+  color: var(--holo-text-strong);
 }
 
-.holo-h1 { font-size: var(--holo-text-5xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; }
-.holo-h2 { font-size: var(--holo-text-4xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.1;  letter-spacing: -0.02em; }
-.holo-h3 { font-size: var(--holo-text-3xl); font-family: var(--holo-font-display); font-weight: 600; line-height: 1.2;  letter-spacing: -0.01em; }
-.holo-h4 { font-size: var(--holo-text-2xl); font-family: var(--holo-font-body);    font-weight: 700; line-height: 1.25; letter-spacing: -0.01em; }
-.holo-h5 { font-size: var(--holo-text-xl);  font-family: var(--holo-font-body);    font-weight: 700; line-height: 1.3; }
-.holo-h6 { font-size: var(--holo-text-lg);  font-family: var(--holo-font-body);    font-weight: 600; line-height: 1.4; }
+.holo-h1 { font-family: var(--holo-font-display); font-size: var(--holo-text-6xl); font-weight: 700; line-height: 0.95; letter-spacing: -0.035em; color: var(--holo-text-strong); }
+.holo-h2 { font-family: var(--holo-font-display); font-size: var(--holo-text-5xl); font-weight: 700; line-height: 1.0;  letter-spacing: -0.03em;  color: var(--holo-text-strong); }
+.holo-h3 { font-family: var(--holo-font-display); font-size: var(--holo-text-4xl); font-weight: 600; line-height: 1.05; letter-spacing: -0.025em; color: var(--holo-text-strong); }
+.holo-h4 { font-family: var(--holo-font-display); font-size: var(--holo-text-3xl); font-weight: 600; line-height: 1.1;  letter-spacing: -0.02em;  color: var(--holo-text-strong); }
+.holo-h5 { font-family: var(--holo-font-display); font-size: var(--holo-text-2xl); font-weight: 600; line-height: 1.2;  letter-spacing: -0.015em; color: var(--holo-text-strong); }
+.holo-h6 { font-family: var(--holo-font-body);    font-size: var(--holo-text-xl);  font-weight: 600; line-height: 1.3;  color: var(--holo-text-strong); }
 
 .holo-eyebrow {
   font-family: var(--holo-font-body);
@@ -282,15 +264,15 @@ body.holo-body {
   font-weight: var(--holo-weight-semibold);
   letter-spacing: var(--holo-tracking-widest);
   text-transform: uppercase;
-  color: var(--holo-amber-500);
+  color: var(--holo-amber-400);
 }
 
 .holo-lead {
   font-size: var(--holo-text-lg);
   line-height: var(--holo-leading-relaxed);
   color: var(--holo-text-muted);
-  font-weight: var(--holo-weight-light);
-  max-width: 65ch;
+  font-weight: var(--holo-weight-normal);
+  max-width: 60ch;
 }
 
 .holo-body { font-size: var(--holo-text-base); line-height: var(--holo-leading-normal); }
@@ -310,60 +292,58 @@ body.holo-body {
   letter-spacing: 0.01em;
   border: 1px solid transparent;
   border-radius: var(--holo-radius-full);
-  padding: var(--holo-space-3) var(--holo-space-6);
+  padding: 14px 28px;
   cursor: pointer;
-  transition: all var(--holo-duration-fast) var(--holo-ease);
+  transition: all var(--holo-duration-base) var(--holo-ease);
   white-space: nowrap;
   text-decoration: none;
   user-select: none;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 .holo-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Variant: primary (CTA principal) */
+/* Variant: primary · gradient electric */
 .holo-btn-primary {
-  background: var(--holo-stone-800);
-  color: var(--holo-cream-50);
-  border-color: var(--holo-stone-800);
+  background: var(--holo-grad-electric);
+  background-size: 200% 200%;
+  background-position: 0% 50%;
+  color: #FFFFFF;
+  border: none;
+  box-shadow: var(--holo-glow-violet);
 }
 .holo-btn-primary:hover:not(:disabled) {
-  background: var(--holo-stone-900);
-  transform: translateY(-1px);
-  box-shadow: var(--holo-shadow-md);
+  background-position: 100% 50%;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), 0 20px 40px rgba(236, 72, 153, 0.4);
 }
 
-/* Variant: gold (acción premium) */
+/* Variant: gold */
 .holo-btn-gold {
-  background: linear-gradient(135deg, var(--holo-amber-400) 0%, var(--holo-amber-500) 100%);
-  color: #FFFFFF;
-  border-color: var(--holo-amber-500);
+  background: var(--holo-grad-gold);
+  color: var(--holo-deep-900);
+  border: none;
+  box-shadow: var(--holo-glow-amber);
+  font-weight: var(--holo-weight-bold);
 }
 .holo-btn-gold:hover:not(:disabled) {
-  background: linear-gradient(135deg, var(--holo-amber-500) 0%, var(--holo-amber-600) 100%);
-  transform: translateY(-1px);
-  box-shadow: var(--holo-shadow-amber);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 60px rgba(245, 158, 11, 0.7), 0 20px 40px rgba(217, 119, 6, 0.5);
 }
 
-/* Variant: violet */
-.holo-btn-violet {
-  background: var(--holo-violet-500);
-  color: #FFFFFF;
-  border-color: var(--holo-violet-500);
-}
-.holo-btn-violet:hover:not(:disabled) {
-  background: var(--holo-violet-600);
-  transform: translateY(-1px);
-  box-shadow: var(--holo-shadow-violet);
-}
-
-/* Variant: outline */
+/* Variant: outline glass */
 .holo-btn-outline {
-  background: transparent;
-  color: var(--holo-text);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--holo-text-strong);
   border-color: var(--holo-border-strong);
 }
 .holo-btn-outline:hover:not(:disabled) {
-  background: var(--holo-bg-subtle);
-  border-color: var(--holo-stone-400);
+  background: rgba(255, 255, 255, 0.10);
+  border-color: var(--holo-border-bright);
+  transform: translateY(-2px);
 }
 
 /* Variant: ghost */
@@ -373,21 +353,24 @@ body.holo-body {
   border-color: transparent;
 }
 .holo-btn-ghost:hover:not(:disabled) {
-  background: var(--holo-bg-subtle);
-  color: var(--holo-text);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--holo-text-strong);
 }
 
 /* Sizes */
-.holo-btn-sm { padding: var(--holo-space-2) var(--holo-space-4); font-size: var(--holo-text-xs); }
-.holo-btn-lg { padding: var(--holo-space-4) var(--holo-space-8); font-size: var(--holo-text-base); }
+.holo-btn-sm { padding: 10px 20px; font-size: var(--holo-text-xs); }
+.holo-btn-lg { padding: 18px 36px; font-size: var(--holo-text-base); }
 
 /* ── 6 · COMPONENTES · Cards ────────────────────────────────────────────── */
 .holo-card {
-  background: var(--holo-bg-elevated);
-  border: 1px solid var(--holo-border);
-  border-radius: var(--holo-radius-lg);
+  background: var(--holo-glass-bg);
+  backdrop-filter: var(--holo-glass-blur);
+  -webkit-backdrop-filter: var(--holo-glass-blur);
+  border: 1px solid var(--holo-glass-border);
+  border-radius: var(--holo-radius-xl);
   padding: var(--holo-space-6);
   transition: all var(--holo-duration-base) var(--holo-ease);
+  color: var(--holo-text);
 }
 .holo-card-elevated {
   box-shadow: var(--holo-shadow-md);
@@ -396,34 +379,38 @@ body.holo-body {
   cursor: pointer;
 }
 .holo-card-interactive:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  border-color: var(--holo-border-bright);
   box-shadow: var(--holo-shadow-lg);
-  border-color: var(--holo-border-strong);
 }
 
 .holo-card-padded { padding: var(--holo-space-8); }
 .holo-card-tight { padding: var(--holo-space-4); }
 
-/* ── 7 · COMPONENTES · Badges / chips ───────────────────────────────────── */
+/* ── 7 · COMPONENTES · Badges ───────────────────────────────────────────── */
 .holo-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--holo-space-1);
+  gap: var(--holo-space-2);
   font-family: var(--holo-font-body);
   font-size: var(--holo-text-xs);
   font-weight: var(--holo-weight-semibold);
-  letter-spacing: 0.04em;
-  padding: var(--holo-space-1) var(--holo-space-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
   border-radius: var(--holo-radius-full);
-  border: 1px solid;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--holo-border-strong);
+  color: var(--holo-text);
 }
-.holo-badge-violet { background: var(--holo-violet-50); color: var(--holo-violet-600); border-color: var(--holo-violet-200); }
-.holo-badge-amber  { background: var(--holo-amber-50);  color: var(--holo-amber-700);  border-color: var(--holo-amber-200); }
-.holo-badge-sage   { background: var(--holo-sage-50);   color: var(--holo-sage-500);   border-color: var(--holo-sage-200); }
-.holo-badge-sky    { background: var(--holo-sky-50);    color: var(--holo-sky-500);    border-color: var(--holo-sky-200); }
-.holo-badge-terra  { background: var(--holo-terra-50);  color: var(--holo-terra-500);  border-color: var(--holo-terra-200); }
-.holo-badge-rose   { background: var(--holo-rose-50);   color: var(--holo-rose-500);   border-color: var(--holo-rose-200); }
-.holo-badge-stone  { background: var(--holo-stone-50);  color: var(--holo-stone-600);  border-color: var(--holo-stone-200); }
+.holo-badge-violet { background: rgba(139, 92, 246, 0.15); color: var(--holo-violet-200); border-color: rgba(139, 92, 246, 0.4); }
+.holo-badge-amber  { background: rgba(245, 158, 11, 0.15); color: var(--holo-amber-300); border-color: rgba(245, 158, 11, 0.4); }
+.holo-badge-pink   { background: rgba(236, 72, 153, 0.15); color: var(--holo-pink-300); border-color: rgba(236, 72, 153, 0.4); }
+.holo-badge-teal   { background: rgba(45, 212, 191, 0.15); color: var(--holo-teal-300); border-color: rgba(45, 212, 191, 0.4); }
+.holo-badge-coral  { background: rgba(244, 63, 94, 0.15); color: var(--holo-coral-300); border-color: rgba(244, 63, 94, 0.4); }
+.holo-badge-sage   { background: rgba(34, 197, 94, 0.15); color: var(--holo-sage-300); border-color: rgba(34, 197, 94, 0.4); }
 
 /* ── 8 · COMPONENTES · Inputs ───────────────────────────────────────────── */
 .holo-input,
@@ -432,36 +419,37 @@ body.holo-body {
   width: 100%;
   font-family: var(--holo-font-body);
   font-size: var(--holo-text-base);
-  color: var(--holo-text);
-  background: var(--holo-bg-elevated);
+  color: var(--holo-text-strong);
+  background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--holo-border-strong);
   border-radius: var(--holo-radius-md);
   padding: var(--holo-space-3) var(--holo-space-4);
   transition: all var(--holo-duration-fast) var(--holo-ease);
   outline: none;
 }
-.holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-subtle); }
+.holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-dim); }
 .holo-input:focus, .holo-textarea:focus, .holo-select:focus {
   border-color: var(--holo-violet-400);
-  box-shadow: 0 0 0 3px rgba(109, 88, 150, 0.10);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
 }
 .holo-textarea { resize: vertical; min-height: 80px; line-height: var(--holo-leading-normal); }
 
 /* ── 9 · CONTENEDORES ───────────────────────────────────────────────────── */
 .holo-container {
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 var(--holo-space-6);
+  padding: 0 var(--holo-space-8);
 }
 @media (max-width: 768px) {
-  .holo-container { padding: 0 var(--holo-space-4); }
+  .holo-container { padding: 0 var(--holo-space-5); }
 }
 
 .holo-section {
-  padding: var(--holo-space-16) 0;
+  padding: var(--holo-space-24) 0;
 }
 @media (max-width: 768px) {
-  .holo-section { padding: var(--holo-space-10) 0; }
+  .holo-section { padding: var(--holo-space-16) 0; }
 }
 
 /* ── 10 · UTILIDADES ───────────────────────────────────────────────────── */
@@ -477,25 +465,22 @@ body.holo-body {
 .holo-stack-lg { gap: var(--holo-space-8); }
 
 .holo-row { display: flex; align-items: center; gap: var(--holo-space-3); flex-wrap: wrap; }
-.holo-row-tight { gap: var(--holo-space-2); }
-.holo-row-loose { gap: var(--holo-space-6); }
 
 .holo-grid {
   display: grid;
   gap: var(--holo-space-6);
 }
-.holo-grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.holo-grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-.holo-grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.holo-grid-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.holo-grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.holo-grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 
 /* ── 11 · ICONOGRAFÍA SVG INLINE ────────────────────────────────────────── */
-/* Iconos minimal-line. Usar como <svg class="holo-icon">...</svg> */
 .holo-icon {
   width: 1em;
   height: 1em;
   stroke: currentColor;
   fill: none;
-  stroke-width: 1.5;
+  stroke-width: 1.75;
   stroke-linecap: round;
   stroke-linejoin: round;
   display: inline-block;
@@ -506,231 +491,123 @@ body.holo-body {
 .holo-icon-2x { width: 2em; height: 2em; }
 .holo-icon-3x { width: 3em; height: 3em; }
 
-/* ── 12 · ANIMACIONES ───────────────────────────────────────────────────── */
-@keyframes holo-fade-in {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes holo-fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes holo-scale-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-.holo-anim-fade { animation: holo-fade-in var(--holo-duration-base) var(--holo-ease) both; }
-.holo-anim-up   { animation: holo-fade-in-up var(--holo-duration-slow) var(--holo-ease) both; }
-.holo-anim-scale { animation: holo-scale-in var(--holo-duration-base) var(--holo-ease) both; }
-
-/* ── 13 · DARK MODE (opcional, módulos como tarot) ──────────────────────── */
-.holo-dark {
-  --holo-bg:           var(--holo-stone-900);
-  --holo-bg-subtle:    var(--holo-stone-800);
-  --holo-bg-elevated:  var(--holo-stone-700);
-  --holo-text:         var(--holo-cream-100);
-  --holo-text-muted:   var(--holo-stone-300);
-  --holo-text-subtle:  var(--holo-stone-400);
-  --holo-border:       rgba(250, 247, 242, 0.08);
-  --holo-border-strong: rgba(250, 247, 242, 0.16);
-}
-
-/* ── 14 · PRINT (impresión) ─────────────────────────────────────────────── */
-@media print {
-  .holo-btn, .holo-no-print { display: none !important; }
-  body.holo-body { background: white; color: black; }
-}
-
-/* ════════════════════════════════════════════════════════════════════════
-   15 · MOVIMIENTO · Aurora animada, orbs flotantes, glass, gradient text
-   ════════════════════════════════════════════════════════════════════════ */
-
-/* Aurora background animada (para hero/section principal) */
-.holo-aurora {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
-.holo-aurora::before,
-.holo-aurora::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.65;
-  animation: holo-orb-float 18s ease-in-out infinite;
-}
-.holo-aurora::before {
-  width: 60vw;
-  height: 60vw;
-  max-width: 720px;
-  max-height: 720px;
-  top: -15%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(138, 107, 175, 0.55) 0%, rgba(85, 63, 122, 0.2) 50%, transparent 80%);
-}
-.holo-aurora::after {
-  width: 50vw;
-  height: 50vw;
-  max-width: 640px;
-  max-height: 640px;
-  top: 10%;
-  right: -15%;
-  background: radial-gradient(circle, rgba(212, 165, 116, 0.5) 0%, rgba(184, 133, 46, 0.18) 50%, transparent 80%);
-  animation-delay: -9s;
-  animation-direction: reverse;
-}
-@keyframes holo-orb-float {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25%      { transform: translate(40px, 30px) scale(1.05); }
-  50%      { transform: translate(-30px, 50px) scale(0.95); }
-  75%      { transform: translate(20px, -40px) scale(1.02); }
-}
-
-/* Orbs adicionales (terceros) */
-.holo-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  pointer-events: none;
-  opacity: 0.5;
-  animation: holo-orb-float 22s ease-in-out infinite;
-}
-.holo-orb-rose {
-  width: 40vw;
-  height: 40vw;
-  max-width: 500px;
-  max-height: 500px;
-  background: radial-gradient(circle, rgba(214, 121, 112, 0.5) 0%, transparent 70%);
-  bottom: -10%;
-  left: 30%;
-  animation-delay: -5s;
-}
-.holo-orb-terra {
-  width: 35vw;
-  height: 35vw;
-  max-width: 420px;
-  max-height: 420px;
-  background: radial-gradient(circle, rgba(201, 123, 92, 0.45) 0%, transparent 70%);
-  bottom: 20%;
-  right: 10%;
-  animation-delay: -12s;
-}
-
-/* Gradient text (titulares emocionales) */
+/* ── 12 · GRADIENT TEXT ─────────────────────────────────────────────────── */
 .holo-gradient-text {
-  background: var(--holo-grad-text-1);
+  background: var(--holo-grad-electric);
+  background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-}
-.holo-gradient-text-warm {
-  background: var(--holo-grad-text-warm);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  animation: holo-gradient-shift 8s ease-in-out infinite;
 }
 .holo-gradient-text-violet {
-  background: var(--holo-grad-text-2);
+  background: var(--holo-grad-violet);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.holo-gradient-text-sunset {
+  background: var(--holo-grad-sunset);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+.holo-gradient-text-gold {
+  background: var(--holo-grad-gold);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Glass morphism */
+@keyframes holo-gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ── 13 · GLASS MORPHISM ────────────────────────────────────────────────── */
 .holo-glass {
   background: var(--holo-glass-bg);
   backdrop-filter: var(--holo-glass-blur);
   -webkit-backdrop-filter: var(--holo-glass-blur);
   border: 1px solid var(--holo-glass-border);
 }
+.holo-glass-strong {
+  background: var(--holo-glass-bg-strong);
+  backdrop-filter: var(--holo-glass-blur);
+  -webkit-backdrop-filter: var(--holo-glass-blur);
+  border: 1px solid var(--holo-glass-border-bright);
+}
 
-/* Gradient border (sutil, holístico) */
+/* ── 14 · GRADIENT BORDER ───────────────────────────────────────────────── */
 .holo-gradient-border {
   position: relative;
   background: var(--holo-bg-elevated);
-  border-radius: var(--holo-radius-lg);
+  border-radius: var(--holo-radius-xl);
 }
 .holo-gradient-border::before {
   content: '';
   position: absolute;
   inset: 0;
-  padding: 1px;
+  padding: 1.5px;
   border-radius: inherit;
-  background: var(--holo-grad-border);
+  background: var(--holo-grad-electric);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
-  opacity: 0;
-  transition: opacity var(--holo-duration-base);
+  opacity: 0.6;
   pointer-events: none;
 }
-.holo-gradient-border:hover::before { opacity: 1; }
 
-/* Shimmer (efecto brillo CTA) */
-@keyframes holo-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(200%); }
+/* ── 15 · ORBS · BLUR ABSTRACT SHAPES ───────────────────────────────────── */
+.holo-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.7;
+  will-change: transform;
 }
-.holo-shimmer {
-  position: relative;
-  overflow: hidden;
+.holo-orb-violet {
+  background: radial-gradient(circle, var(--holo-violet-400) 0%, transparent 70%);
 }
-.holo-shimmer::after {
-  content: '';
+.holo-orb-pink {
+  background: radial-gradient(circle, var(--holo-pink-500) 0%, transparent 70%);
+}
+.holo-orb-amber {
+  background: radial-gradient(circle, var(--holo-amber-400) 0%, transparent 70%);
+}
+.holo-orb-teal {
+  background: radial-gradient(circle, var(--holo-teal-400) 0%, transparent 70%);
+}
+.holo-orb-coral {
+  background: radial-gradient(circle, var(--holo-coral-400) 0%, transparent 70%);
+}
+
+@keyframes holo-orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(60px, -40px) scale(1.08); }
+  66%      { transform: translate(-40px, 50px) scale(0.94); }
+}
+.holo-orb-anim {
+  animation: holo-orb-drift 20s ease-in-out infinite;
+}
+
+/* ── 16 · MESH BACKGROUND ───────────────────────────────────────────────── */
+.holo-mesh-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
-  transform: translateX(-100%);
-  animation: holo-shimmer 3s infinite;
+  background: var(--holo-grad-mesh);
+  filter: blur(30px);
+  opacity: 0.85;
   pointer-events: none;
+  z-index: 0;
 }
 
-/* Floating animation (íconos / cards sutilmente flotantes) */
-@keyframes holo-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-.holo-floating {
-  animation: holo-float 4s ease-in-out infinite;
-}
-.holo-floating-slow {
-  animation: holo-float 6s ease-in-out infinite;
-}
-
-/* Stagger fade-in (cards) */
-@keyframes holo-fade-up-blur {
-  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
-  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-.holo-fade-up {
-  animation: holo-fade-up-blur 0.8s var(--holo-ease) both;
-}
-.holo-fade-up:nth-child(1) { animation-delay: 0.05s; }
-.holo-fade-up:nth-child(2) { animation-delay: 0.12s; }
-.holo-fade-up:nth-child(3) { animation-delay: 0.19s; }
-.holo-fade-up:nth-child(4) { animation-delay: 0.26s; }
-.holo-fade-up:nth-child(5) { animation-delay: 0.33s; }
-.holo-fade-up:nth-child(6) { animation-delay: 0.40s; }
-.holo-fade-up:nth-child(7) { animation-delay: 0.47s; }
-.holo-fade-up:nth-child(8) { animation-delay: 0.54s; }
-.holo-fade-up:nth-child(9) { animation-delay: 0.61s; }
-
-/* Pulse glow (badges, dots) */
-@keyframes holo-pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.5); }
-  50%      { box-shadow: 0 0 0 8px rgba(212, 165, 116, 0); }
-}
-.holo-pulse-glow {
-  animation: holo-pulse-glow 2.4s infinite;
-}
-
-/* Grain/noise texture overlay (tech feel sutil) */
+/* ── 17 · GRAIN/NOISE OVERLAY ───────────────────────────────────────────── */
 .holo-grain {
   position: relative;
 }
@@ -739,7 +616,97 @@ body.holo-body {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  z-index: 0;
+  opacity: 0.06;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+}
+
+/* ── 18 · ANIMACIONES ───────────────────────────────────────────────────── */
+@keyframes holo-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes holo-fade-up {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes holo-scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes holo-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes holo-pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.6); }
+  50%      { box-shadow: 0 0 0 12px rgba(139, 92, 246, 0); }
+}
+@keyframes holo-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+.holo-anim-fade { animation: holo-fade-in var(--holo-duration-base) var(--holo-ease) both; }
+.holo-anim-up   { animation: holo-fade-up var(--holo-duration-slow) var(--holo-ease) both; }
+.holo-anim-scale { animation: holo-scale-in var(--holo-duration-base) var(--holo-ease) both; }
+.holo-floating { animation: holo-float 5s ease-in-out infinite; }
+.holo-floating-slow { animation: holo-float 7s ease-in-out infinite; }
+.holo-pulse-glow { animation: holo-pulse-glow 2.4s infinite; }
+
+.holo-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.holo-shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: holo-shimmer 3.5s infinite;
+  pointer-events: none;
+}
+
+/* Stagger fade-in para grids */
+.holo-stagger > * {
+  animation: holo-fade-up 0.9s var(--holo-ease) both;
+}
+.holo-stagger > *:nth-child(1) { animation-delay: 0.05s; }
+.holo-stagger > *:nth-child(2) { animation-delay: 0.12s; }
+.holo-stagger > *:nth-child(3) { animation-delay: 0.19s; }
+.holo-stagger > *:nth-child(4) { animation-delay: 0.26s; }
+.holo-stagger > *:nth-child(5) { animation-delay: 0.33s; }
+.holo-stagger > *:nth-child(6) { animation-delay: 0.40s; }
+.holo-stagger > *:nth-child(7) { animation-delay: 0.47s; }
+.holo-stagger > *:nth-child(8) { animation-delay: 0.54s; }
+.holo-stagger > *:nth-child(9) { animation-delay: 0.61s; }
+
+/* ── 19 · LIGHT MODE OVERRIDE (opcional, módulos específicos) ────────────── */
+.holo-light {
+  --holo-bg:           #FAFAF9;
+  --holo-bg-subtle:    #F4F4F2;
+  --holo-bg-elevated:  #FFFFFF;
+  --holo-text:         var(--holo-stone-800);
+  --holo-text-strong:  var(--holo-stone-900);
+  --holo-text-muted:   var(--holo-stone-600);
+  --holo-text-subtle:  var(--holo-stone-500);
+  --holo-border:       rgba(0, 0, 0, 0.08);
+  --holo-border-strong: rgba(0, 0, 0, 0.16);
+}
+
+/* ── 20 · PRINT ─────────────────────────────────────────────────────────── */
+@media print {
+  .holo-btn, .holo-no-print { display: none !important; }
+  body.holo-body { background: white; color: black; }
+}
+
+/* ── 21 · REDUCED MOTION ────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
