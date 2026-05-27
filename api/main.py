@@ -47,6 +47,7 @@ from api.routes.academic import router as academic_router
 from api.routes.pairs import router as pairs_router
 from api.routes.protocols import router as protocols_router
 from api.routes.therapeutic import router as therapeutic_router
+from api.routes.therapeutic_akinator import router as therapeutic_akinator_router
 from api.routes.astro import router as astro_router
 from api.routes.numerology import router as numerology_router
 from api.routes.tarot import router as tarot_router
@@ -271,6 +272,7 @@ app.include_router(academic_router)
 app.include_router(pairs_router)
 app.include_router(protocols_router)
 app.include_router(therapeutic_router)
+app.include_router(therapeutic_akinator_router)
 app.include_router(astro_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)

@@ -1,0 +1,2047 @@
+{
+  "version": "1.0",
+  "fuente": "Síntesis curada Hamer (Nueva Medicina Germánica) + Christian Flèche (Biodescodificación) + Alejandro Lavín (Biodescodificación + Biomagnetismo)",
+  "fecha": "2026-05-27",
+  "total": 24,
+  "advertencia": "Hipótesis terapéuticas educativas. NO sustituyen diagnóstico médico. Para uso de profesionales formados.",
+  "eventos": [
+    {
+      "id": "desvalorizacion_dorsal",
+      "nombre": "Desvalorización dorsal · 'No estoy a la altura'",
+      "categoria": "desvalorizacion",
+      "escuelas": {
+        "hamer": "Foco de Hamer en cerebelo cerebral → afecta tejido óseo dorsal y articulaciones torácicas. Activación tras conflicto de auto-desvalorización profunda relacionada con un rol/posición.",
+        "fleche": "El esqueleto (Yo profundo) cede simbólicamente porque la persona se siente 'incapaz de sostener el rol'. Quebranto interior de la columna vertebral.",
+        "lavin": "Conflicto entre identidad real y rol social impuesto. El cuerpo carga lo que el ego no logra integrar. Resonancia con figuras paternas exigentes."
+      },
+      "ubicaciones_organicas": [
+        "columna dorsal",
+        "vértebras torácicas T1-T12",
+        "región interescapular",
+        "trapecios"
+      ],
+      "sintomas_compatibles": [
+        "dolor dorsal sin causa aparente",
+        "rigidez interescapular matutina",
+        "tensión cervico-dorsal asociada a estrés laboral",
+        "sensación de carga en hombros",
+        "imposibilidad de respirar profundo en momentos de estrés"
+      ],
+      "sintomas_excluyentes": [
+        "dolor radicular (hormigueo, pérdida sensitiva en miembros)",
+        "trauma físico reciente",
+        "fiebre + dolor (descartar inflamatorio/infeccioso)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿El dolor apareció en relación con un cambio de rol, ascenso, despido o frustración profesional?",
+          "peso_si": 0.7,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Sientes que cargás con expectativas que no son tuyas?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hay un padre/figura paterna exigente o crítico en la historia?",
+          "peso_si": 0.5,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿El dolor empeora pensando en el trabajo y mejora los fines de semana?",
+          "peso_si": 0.8,
+          "peso_no": -0.4
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 42 años, gerente de área",
+          "contexto": "Tras ascenso a directora general (con resistencia interna), dolor dorsal severo cada lunes. No se sentía capacitada pero no podía rechazar el rol por miedo a defraudar al jefe.",
+          "resolucion": "Trabajo con metáfora de 'cargar el rol' + carta a su yo joven + autorización a 'ser suficiente sin el cargo'"
+        },
+        {
+          "perfil": "Hombre, 38 años, ingeniero",
+          "contexto": "Padre exigente militar. Lo critica por no haber estudiado medicina. Dolor crónico interescapular desde los 25.",
+          "resolucion": "Reconocimiento de la 'mochila paterna' + ritual de devolución simbólica + pares biomagnéticos riñón-suprarrenal"
+        },
+        {
+          "perfil": "Mujer, 51 años, ama de casa",
+          "contexto": "Hijo mayor (médico) le envía dinero. Ella siente que 'no merece' porque 'no produce'. Dolor dorsal + insomnio.",
+          "resolucion": "Resignificación del rol materno como aporte invisible + agradecimiento explícito hacia el hijo"
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Riñón - Riñón",
+          "razon": "Suprarrenal y miedo de fondo"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Sostén del rol/estrés crónico"
+        },
+        {
+          "par": "Dorsal - Sacro",
+          "razon": "Sostén estructural"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar el rol cargado (oficio, ser hijo de X, ser madre perfecta, etc.). Ejercicio de 'mochila': dibujar la mochila + nombrar lo que pertenece y lo que no. Carta de devolución simbólica al titular original. Visualización de 'soltar el peso de los hombros'.",
+      "herramientas": [
+        "Escritura de carta a la figura crítica (no se entrega)",
+        "Visualización guiada de 'soltar la mochila'",
+        "Práctica somática: descargar tensión con manos sobre hombros"
+      ]
+    },
+    {
+      "id": "desvalorizacion_lumbar",
+      "nombre": "Desvalorización lumbar · 'No tengo apoyo familiar/raíz'",
+      "categoria": "desvalorizacion",
+      "escuelas": {
+        "hamer": "Conflicto de desvalorización profunda relacionada con autonomía/sostén económico y de pareja. Afecta L1-L5.",
+        "fleche": "La raíz del esqueleto. Cuando no hay apoyo (familia de origen, pareja, sociedad), las lumbares ceden.",
+        "lavin": "Falta de soporte parental + tema económico/seguridad. Resonancia con la madre que no protegió o no sostuvo."
+      },
+      "ubicaciones_organicas": [
+        "columna lumbar L1-L5",
+        "región sacrolumbar"
+      ],
+      "sintomas_compatibles": [
+        "lumbalgia crónica sin causa estructural clara",
+        "ciática episódica sin hernia documentada",
+        "dolor lumbar que empeora con preocupaciones económicas",
+        "rigidez lumbar matutina que cede al moverse"
+      ],
+      "sintomas_excluyentes": [
+        "hernia discal con compresión radicular confirmada",
+        "fractura vertebral",
+        "espondilitis anquilosante"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿El dolor se intensifica cuando piensas en temas de dinero, casa o sostén familiar?",
+          "peso_si": 0.7,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Sentís que no tenés respaldo de tu familia de origen?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Apareció tras separación o cambio de hogar?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Hay historia de madre ausente emocionalmente o sobreprotectora invasiva?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 35 años, independiente",
+          "contexto": "Trabaja como freelance. Constante preocupación por facturación. Lumbalgia que empeora a fin de mes.",
+          "resolucion": "Diferenciación de 'inseguridad económica real' vs 'memoria emocional de inseguridad'. Ritual de agradecimiento al sustento que sí tiene."
+        },
+        {
+          "perfil": "Hombre, 45 años, casado",
+          "contexto": "Esposa enferma. Él es único sostén de la casa. Lumbalgia crónica.",
+          "resolucion": "Reconocer 'estoy sosteniendo el peso de dos personas'. Pedir ayuda activa a familia extensa. Pares biomagnéticos riñón-vejiga."
+        },
+        {
+          "perfil": "Mujer, 28 años, recién emancipada",
+          "contexto": "Conflicto con madre. Se mudó sola. Aparece ciática.",
+          "resolucion": "Trabajo del 'sí mi madre tiene su parte y yo la mía'. Carta no enviada de cierre."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Riñón - Riñón",
+          "razon": "Miedo de fondo, sostén económico"
+        },
+        {
+          "par": "Vejiga - Vejiga",
+          "razon": "Marcar territorio propio"
+        },
+        {
+          "par": "Lumbar - Sacro",
+          "razon": "Estructura de sostén"
+        }
+      ],
+      "protocolo_terapeutico": "Mapear el área 'sin apoyo' (económico, emocional, familiar). Si el motivo es real (precariedad), trabajar acción concreta primero. Si es memoria emocional, trabajo de re-paternalización interna.",
+      "herramientas": [
+        "Mapa de fuentes de apoyo (visual)",
+        "Ejercicio del 'árbol con raíces' (visualización)",
+        "Pares biomagnéticos riñón-vejiga"
+      ]
+    },
+    {
+      "id": "conflicto_territorio_perdido",
+      "nombre": "Territorio perdido · 'Me arrebataron mi espacio'",
+      "categoria": "territorio",
+      "escuelas": {
+        "hamer": "Conflicto biológico arquetípico macho: pérdida de territorio (físico, profesional, sexual). Afecta arterias coronarias, laringe, bronquios derechos.",
+        "fleche": "El cuerpo prepara para luchar por recuperar lo perdido. Cuando no puede, somatiza en órganos de defensa territorial.",
+        "lavin": "Pérdida real o simbólica del 'lugar propio'. En hombres clásicamente cardio/laringe; en mujeres también cuello del útero/vagina."
+      },
+      "ubicaciones_organicas": [
+        "arterias coronarias",
+        "laringe",
+        "bronquios derechos",
+        "cuello uterino (en mujeres)"
+      ],
+      "sintomas_compatibles": [
+        "palpitaciones tras pérdida significativa",
+        "afonía o disfonía tras conflicto",
+        "tos seca persistente sin infección",
+        "presión en el pecho durante estrés relacional",
+        "sensación de 'no poder gritar lo que necesito'"
+      ],
+      "sintomas_excluyentes": [
+        "infarto agudo (urgencia médica)",
+        "neumonía",
+        "tumor laríngeo confirmado"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Perdiste recientemente tu trabajo, casa, posición o relación importante?",
+          "peso_si": 0.8,
+          "peso_no": -0.4
+        },
+        {
+          "pregunta": "¿Hubo alguien que invadió tu espacio sin permiso (físico o emocional)?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Sentís rabia contenida porque 'no podés hablar'?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Apareció tras una separación o divorcio?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Hombre, 50 años, empresario",
+          "contexto": "Socio le sacó la empresa que él fundó. Palpitaciones diarias + afonía.",
+          "resolucion": "Trabajo de 'recuperar voz interna' antes que voz externa. Pares biomagnéticos timo-esternón."
+        },
+        {
+          "perfil": "Mujer, 38 años, divorciada",
+          "contexto": "Ex-marido tomó la casa familiar. Tos seca crónica.",
+          "resolucion": "Ritual de 'recuperar tu casa interior' + ejercicios de respiración torácica plena."
+        },
+        {
+          "perfil": "Hombre, 45 años, asalariado",
+          "contexto": "Jefe nuevo le quitó proyectos y autonomía. Disfonía recurrente.",
+          "resolucion": "Identificar dónde SÍ tiene voz (familia, hobbies). Reconstruir territorio progresivo."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Timo - Timo",
+          "razon": "Sistema de defensa territorial"
+        },
+        {
+          "par": "Laringe - Laringe",
+          "razon": "Voz/territorio expresivo"
+        },
+        {
+          "par": "Bronquios - Bronquios",
+          "razon": "Respiración del propio aire"
+        }
+      ],
+      "protocolo_terapeutico": "Diferenciar territorio físico (objetivo) de territorio simbólico (espacio interno, voz). Recuperar primero el interno. Lista de 'mis territorios actuales' (relaciones, espacios, voces).",
+      "herramientas": [
+        "Inventario de territorios actuales (visual)",
+        "Práctica de 'escuchar mi voz' (grabarse hablando)",
+        "Defensa simbólica con escritura"
+      ]
+    },
+    {
+      "id": "conflicto_separacion_piel",
+      "nombre": "Separación · 'Perdí el contacto'",
+      "categoria": "separacion",
+      "escuelas": {
+        "hamer": "Conflicto de separación brutal. Afecta epidermis, paratiroides, mucosas. Activación cerebro/corteza sensorial.",
+        "fleche": "La piel es el órgano del contacto. Cuando hay separación dolorosa, la piel 'busca' al otro y se irrita/desestructura.",
+        "lavin": "Pérdida del contacto físico o emocional con un ser significativo. Incluye duelo, distanciamiento, abandono no resuelto."
+      },
+      "ubicaciones_organicas": [
+        "epidermis",
+        "manos",
+        "rostro (zonas afectivas)",
+        "paratiroides"
+      ],
+      "sintomas_compatibles": [
+        "psoriasis tras ruptura/separación",
+        "eccema en manos tras pérdida de contacto",
+        "dermatitis atópica que empeora en soledad",
+        "alopecia areata tras shock emocional",
+        "vitíligo en zonas de contacto perdido"
+      ],
+      "sintomas_excluyentes": [
+        "dermatitis por alérgeno claro identificado",
+        "infección bacteriana/fúngica primaria",
+        "psoriasis genética sin trigger emocional"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿La aparición coincide con una separación, divorcio, muerte o distanciamiento?",
+          "peso_si": 0.8,
+          "peso_no": -0.4
+        },
+        {
+          "pregunta": "¿Empeora cuando pensás en esa persona/situación?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Las lesiones aparecen en zonas asociadas al contacto (manos, rostro, cabello)?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Sentís 'piel reseca' emocionalmente?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 33 años",
+          "contexto": "Tras muerte de su padre, eccema severo en manos. 'No pude despedirme'.",
+          "resolucion": "Ritual de despedida tardío. Carta de cierre. Contacto físico consciente con seres vivos (mascotas, plantas)."
+        },
+        {
+          "perfil": "Hombre, 28 años",
+          "contexto": "Novia lo dejó hace 6 meses. Psoriasis en codos y rodillas.",
+          "resolucion": "Aceptar la separación como hecho. Reconstruir contacto con amigos. Pares biomagnéticos epidermis-epidermis."
+        },
+        {
+          "perfil": "Mujer, 50 años",
+          "contexto": "Hijo emigró. Vitíligo en manos.",
+          "resolucion": "Resignificar el lazo (físicamente lejos, energéticamente cerca). Videollamadas como ritual de contacto."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Epidermis - Epidermis",
+          "razon": "Capa de contacto"
+        },
+        {
+          "par": "Paratiroides - Paratiroides",
+          "razon": "Regulación del contacto"
+        },
+        {
+          "par": "Pituitaria - Pituitaria",
+          "razon": "Eje emocional"
+        }
+      ],
+      "protocolo_terapeutico": "Validar el duelo (no patologizar). Reintroducir contacto físico consciente (masaje, baño con sales, abrazo terapéutico). Trabajar permiso a 'extrañar sin enfermarme'.",
+      "herramientas": [
+        "Carta no enviada al ser perdido",
+        "Ritual de despedida (si no hubo)",
+        "Contacto físico consciente con seres vivos"
+      ]
+    },
+    {
+      "id": "bocado_no_digerido",
+      "nombre": "Bocado no digerido · 'No lo puedo tragar'",
+      "categoria": "bocado",
+      "escuelas": {
+        "hamer": "Conflicto del bocado: no pude conseguirlo, lo perdí, o no puedo desprenderme de él. Afecta esófago, estómago, duodeno según submatiz.",
+        "fleche": "El tubo digestivo procesa lo que el alma no logra metabolizar. Cada zona = un matiz: garganta (lo que no puedo decir), estómago (lo que no puedo aceptar), intestino (lo que no puedo soltar).",
+        "lavin": "Indigestión emocional. Algo ocurrió que el psiquismo no integra. Frecuentemente noticias, traiciones, situaciones 'incomibles'."
+      },
+      "ubicaciones_organicas": [
+        "esófago",
+        "estómago",
+        "duodeno",
+        "intestino delgado"
+      ],
+      "sintomas_compatibles": [
+        "reflujo gastroesofágico crónico sin H. pylori",
+        "gastritis sin causa orgánica clara",
+        "úlcera duodenal recurrente",
+        "náuseas matutinas asociadas a ansiedad",
+        "sensación de 'tener un nudo en el estómago' constante"
+      ],
+      "sintomas_excluyentes": [
+        "H. pylori activo (tratamiento primero)",
+        "úlcera por AINEs",
+        "cáncer digestivo confirmado"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hay una situación reciente que 'no podés tragar'?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Los síntomas empeoran ante personas o situaciones específicas?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Sentís ansiedad anticipatoria que se va a la barriga?",
+          "peso_si": 0.5,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Hubo una traición, decepción o sorpresa fuerte recientemente?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Hombre, 45 años",
+          "contexto": "Socio lo engañó financieramente. Gastritis severa. 'No me lo puedo tragar'.",
+          "resolucion": "Verbalizar la rabia con el terapeuta. Cartas no enviadas al socio. Pares biomagnéticos estómago-páncreas."
+        },
+        {
+          "perfil": "Mujer, 30 años",
+          "contexto": "Madre crítica constante. Cada llamada → náuseas. Reflujo crónico.",
+          "resolucion": "Límites con la madre. Trabajar el 'qué de mi madre yo SÍ admito y qué no'."
+        },
+        {
+          "perfil": "Hombre, 55 años",
+          "contexto": "Hijo se declaró homosexual. Padre 'no lo digiere'. Úlcera duodenal.",
+          "resolucion": "Trabajo terapéutico de aceptación + escucha activa de su propio prejuicio. Ritual de bienvenida del hijo tal como es."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Estómago - Estómago",
+          "razon": "Centro de la digestión emocional"
+        },
+        {
+          "par": "Páncreas - Páncreas",
+          "razon": "Asimilación profunda"
+        },
+        {
+          "par": "Hígado - Hígado",
+          "razon": "Procesamiento de rabia/decepción"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar el 'bocado'. Verbalizarlo crudo en sesión (sin filtros sociales). Permitirse rechazar lo que no es suyo. Cartas no enviadas.",
+      "herramientas": [
+        "Lista de 'lo que no puedo tragar' (escritura libre)",
+        "Ejercicio de 'escupir' simbólico con palabras",
+        "Pares biomagnéticos digestivos"
+      ]
+    },
+    {
+      "id": "miedo_atroz_nuca",
+      "nombre": "Miedo atroz en la nuca · 'Algo me persigue por detrás'",
+      "categoria": "miedo",
+      "escuelas": {
+        "hamer": "Conflicto de miedo en la nuca: temer un ataque desde atrás (literal o simbólico). Afecta laringe posterior, conjuntivas, retina.",
+        "fleche": "El cuerpo prepara fuga o congelación. Tensa nuca y cervicales para 'ver atrás'.",
+        "lavin": "Miedo crónico no resuelto. Frecuentemente histórico (abuso, persecución familiar, miedo a un padre)."
+      },
+      "ubicaciones_organicas": [
+        "nuca",
+        "cervicales C1-C3",
+        "musculatura suboccipital",
+        "retina"
+      ],
+      "sintomas_compatibles": [
+        "cervicalgia alta crónica",
+        "cefalea tensional occipital",
+        "rigidez de nuca matinal",
+        "miopía progresiva sin explicación clara",
+        "sobresaltos exagerados a ruidos"
+      ],
+      "sintomas_excluyentes": [
+        "hernia cervical confirmada",
+        "tumor cerebral",
+        "vértigo posicional"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Sentís que algo o alguien te 'vigila' aunque sea simbólicamente?",
+          "peso_si": 0.7,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Hay historia de abuso, persecución o miedo crónico en infancia?",
+          "peso_si": 0.65,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Mejora cuando estás en lugares seguros y empeora en sitios abiertos/desconocidos?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Padre amenazante o impredecible en infancia?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 40 años",
+          "contexto": "Padre alcohólico violento en infancia. Cervicalgia crónica + insomnio.",
+          "resolucion": "EMDR + trabajo de figura paterna interna segura. Pares biomagnéticos cerebelo-occipital."
+        },
+        {
+          "perfil": "Hombre, 55 años, ex-militar",
+          "contexto": "Veterano. Sobresaltos, dolor de nuca. PTSD no diagnosticado.",
+          "resolucion": "Derivación a especialista en trauma + terapia integrativa."
+        },
+        {
+          "perfil": "Mujer, 28 años, ciudad violenta",
+          "contexto": "Asalto reciente. Mira hacia atrás constantemente. Rigidez cervical.",
+          "resolucion": "Reentrenamiento somático de seguridad. Ejercicios de mirar al horizonte sin tensar."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Cerebelo - Cerebelo",
+          "razon": "Equilibrio y respuesta de fuga"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Sistema de alarma sostenido"
+        },
+        {
+          "par": "Occipital - Frontal",
+          "razon": "Eje ver atrás / mirar adelante"
+        }
+      ],
+      "protocolo_terapeutico": "Estabilización primero (técnicas de grounding). Luego abordar trauma. Si es complejo, derivar a especialista en trauma.",
+      "herramientas": [
+        "Respiración diafragmática 4-7-8",
+        "Anclajes corporales de seguridad",
+        "Ejercicio de 'recorrer la habitación con la vista' antes de dormir"
+      ]
+    },
+    {
+      "id": "proteccion_nido_mama",
+      "nombre": "Protección del nido · 'Mi hijo/familia en peligro'",
+      "categoria": "proteccion",
+      "escuelas": {
+        "hamer": "Conflicto madre-hijo (o nido). Afecta glándula mamaria. Activación tras peligro real o percibido sobre un ser querido.",
+        "fleche": "La mama produce 'leche' (nutrición) cuando hay urgencia de proteger. Si el conflicto se sostiene, la glándula se altera.",
+        "lavin": "Madre que vivió o vive un peligro sobre su hijo. También padre/cuidador con rol maternal."
+      },
+      "ubicaciones_organicas": [
+        "glándulas mamarias",
+        "ganglios axilares"
+      ],
+      "sintomas_compatibles": [
+        "quiste mamario benigno tras conflicto con hijo",
+        "mastitis no infecciosa recurrente",
+        "dolor mamario cíclico que empeora con estrés familiar",
+        "ganglios axilares dolorosos sin infección"
+      ],
+      "sintomas_excluyentes": [
+        "cáncer de mama (urgencia oncológica)",
+        "infección bacteriana confirmada",
+        "embarazo o lactancia activa"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hubo o hay un peligro real o percibido sobre un hijo/ser querido cercano?",
+          "peso_si": 0.8,
+          "peso_no": -0.4
+        },
+        {
+          "pregunta": "¿El síntoma empeora al pensar en ese ser querido?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hay un hijo enfermo, en peligro, o que se aleja de casa?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Sentís que 'cargás sola' con el cuidado?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 40 años",
+          "contexto": "Hijo adolescente con drogas. Quiste mamario izquierdo (lado madre-hijo).",
+          "resolucion": "Acompañamiento materno + autocuidado simultáneo. Pares biomagnéticos mama-mama."
+        },
+        {
+          "perfil": "Mujer, 50 años",
+          "contexto": "Padre anciano dependiente. Cuidadora única. Mastalgia constante.",
+          "resolucion": "Repartir el cuidado con hermanos. Rituales de auto-nutrición."
+        },
+        {
+          "perfil": "Mujer, 35 años, primer embarazo",
+          "contexto": "Ansiedad anticipatoria sobre el bebé. Nódulo benigno.",
+          "resolucion": "Trabajo de confianza prenatal. Apoyo de doula. Visualización del bebé sano."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Glándula Mamaria - Glándula Mamaria",
+          "razon": "Nutrición y protección"
+        },
+        {
+          "par": "Timo - Timo",
+          "razon": "Sistema inmune emocional"
+        },
+        {
+          "par": "Pituitaria - Pituitaria",
+          "razon": "Eje materno-hormonal"
+        }
+      ],
+      "protocolo_terapeutico": "Diferenciar peligro real (actuar) de peligro proyectado (trabajo interno). Auto-nutrición consciente. Repartir el peso del cuidado.",
+      "herramientas": [
+        "Mapa de 'mi red de apoyo'",
+        "Rituales de auto-cuidado diario",
+        "Pares biomagnéticos mama-mama"
+      ]
+    },
+    {
+      "id": "marcaje_territorial_vejiga",
+      "nombre": "Marcaje territorial · 'Necesito que se sepa que es mío'",
+      "categoria": "marcaje_territorial",
+      "escuelas": {
+        "hamer": "Conflicto de no poder marcar territorio. Afecta mucosa vesical, uréteres. Frecuente en mujeres tras intrusión doméstica/familiar.",
+        "fleche": "La vejiga libera fluidos para 'marcar' (como animales). Cuando no podemos marcar (suegra invade casa, ex-pareja deja huellas), se inflama.",
+        "lavin": "Conflictos donde no se puede establecer límite claro. Cistitis post-relacional, conflictos de pareja, conflictos de espacio compartido."
+      },
+      "ubicaciones_organicas": [
+        "vejiga",
+        "uréteres",
+        "uretra"
+      ],
+      "sintomas_compatibles": [
+        "cistitis recurrente sin bacteria detectable",
+        "polaquiuria emocional (orinar mucho por estrés)",
+        "incontinencia leve tras separación",
+        "sensación de 'no vaciar bien' la vejiga"
+      ],
+      "sintomas_excluyentes": [
+        "infección urinaria bacteriana confirmada",
+        "cálculo renal/ureteral",
+        "tumor vesical"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Aparece tras conflicto territorial doméstico (suegra, ex-pareja, mudanza)?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Sentís que 'no podés marcar tu espacio' en casa o pareja?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Empeora justo después de actos sexuales 'incompletos'?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        },
+        {
+          "pregunta": "¿Vivís en espacio que no sentís como tuyo?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 32 años, recién casada",
+          "contexto": "Suegra visita constantemente sin avisar. Cistitis sin bacteria.",
+          "resolucion": "Establecer límites con la suegra (esposo media). Ritual de 're-marcar' la casa (limpieza simbólica)."
+        },
+        {
+          "perfil": "Mujer, 28 años, ex-novio volvió a pedir cosas",
+          "contexto": "Cada visita del ex → cistitis al día siguiente.",
+          "resolucion": "Cierre claro con el ex (cortar visitas). Pares biomagnéticos vejiga-riñón."
+        },
+        {
+          "perfil": "Mujer, 45 años, divorciada",
+          "contexto": "Vive en la casa que era de su matrimonio. Cistitis crónica.",
+          "resolucion": "Redecorar/repintar la casa para resignificarla. Ritual de 'esta es ahora MI casa'."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Vejiga - Vejiga",
+          "razon": "Marcaje vesical"
+        },
+        {
+          "par": "Riñón - Vejiga",
+          "razon": "Eje de territorio profundo"
+        },
+        {
+          "par": "Útero - Vejiga (en mujeres)",
+          "razon": "Territorio íntimo"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar dónde se está perdiendo territorio. Acción concreta de marcaje (cambiar cerradura, redecorar, establecer límite verbal). Rituales energéticos de limpieza del espacio.",
+      "herramientas": [
+        "Limpieza energética/simbólica del espacio",
+        "Mapa de territorios respetados vs invadidos",
+        "Pares biomagnéticos vejiga-riñón"
+      ]
+    },
+    {
+      "id": "comunicacion_bloqueada_tiroides",
+      "nombre": "Comunicación bloqueada · 'No puedo decir lo que necesito'",
+      "categoria": "comunicacion",
+      "escuelas": {
+        "hamer": "Conflicto de impotencia para expresar. Afecta tiroides, paratiroides, laringe.",
+        "fleche": "La tiroides regula el ritmo del 'flujo de la vida'. Cuando hay urgencia de hablar que no se concreta, se altera el metabolismo entero.",
+        "lavin": "Personas que callaron toda su vida lo que sentían. Mujeres con maridos autoritarios. Hijos que no podían discrepar."
+      },
+      "ubicaciones_organicas": [
+        "tiroides",
+        "paratiroides",
+        "laringe",
+        "cuerdas vocales"
+      ],
+      "sintomas_compatibles": [
+        "hipotiroidismo sin causa autoinmune",
+        "nódulos tiroideos benignos recurrentes",
+        "disfonía recurrente sin causa orgánica",
+        "sensación de nudo en la garganta crónica",
+        "tos seca asociada a situaciones de silencio impuesto"
+      ],
+      "sintomas_excluyentes": [
+        "tiroiditis de Hashimoto activa (autoinmune, tratamiento médico)",
+        "cáncer tiroideo confirmado",
+        "déficit de yodo dietético"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hay temas importantes que callás por miedo a la reacción del otro?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Sentís que tu voz no es escuchada/valorada?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Apareció tras una situación donde 'no pudiste hablar' (juicio, conflicto familiar)?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿En la infancia se reprimía la opinión propia?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 50 años, casada 25 años",
+          "contexto": "Marido controlador. Nunca pudo expresar opinión. Hipotiroidismo.",
+          "resolucion": "Espacios de palabra propia (terapia, grupo de mujeres). Carta no enviada al marido. Pares biomagnéticos tiroides-tiroides."
+        },
+        {
+          "perfil": "Hombre, 35 años",
+          "contexto": "Padre lo descalifica siempre. Nódulo tiroideo + disfonía recurrente.",
+          "resolucion": "Práctica de canto/expresión. Trabajo con el 'permiso a opinar'."
+        },
+        {
+          "perfil": "Mujer, 40 años, abogada",
+          "contexto": "Litiga todo el día pero nunca dice lo que siente en privado. Quiste tiroideo.",
+          "resolucion": "Diferenciar voz profesional vs voz íntima. Espacios de intimidad emocional."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Tiroides - Tiroides",
+          "razon": "Centro de expresión"
+        },
+        {
+          "par": "Paratiroides - Paratiroides",
+          "razon": "Regulación fina"
+        },
+        {
+          "par": "Laringe - Laringe",
+          "razon": "Voz física"
+        }
+      ],
+      "protocolo_terapeutico": "Crear espacios seguros de palabra. Canto/lectura en voz alta. Identificar a quién se le quiere decir qué. Cartas no enviadas. Logoterapia.",
+      "herramientas": [
+        "Práctica diaria de leer en voz alta",
+        "Canto libre (sin juicio)",
+        "Diario hablado (grabar voz)"
+      ]
+    },
+    {
+      "id": "suciedad_emocional_higado",
+      "nombre": "Suciedad emocional · 'Cargo con culpa que no es mía'",
+      "categoria": "purificacion",
+      "escuelas": {
+        "hamer": "Conflicto de inanición/escasez crónica + asco/ira hacia algo. Afecta parénquima hepático.",
+        "fleche": "El hígado es el centro de la rabia y la limpieza. Cuando rabia/asco no se expresan, se acumulan.",
+        "lavin": "Culpa heredada o impuesta. Vergüenza familiar. Secretos digestivos del clan."
+      },
+      "ubicaciones_organicas": [
+        "hígado",
+        "vesícula biliar",
+        "vías biliares"
+      ],
+      "sintomas_compatibles": [
+        "hígado graso sin obesidad o alcohol",
+        "cálculos biliares recurrentes",
+        "transaminasas elevadas sin causa clara",
+        "irritabilidad matutina + dolor en hipocondrio derecho",
+        "intolerancia a grasas asociada a 'rabia tragada'"
+      ],
+      "sintomas_excluyentes": [
+        "hepatitis viral activa",
+        "alcoholismo activo",
+        "intoxicación medicamentosa"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Cargás con culpa que no estás seguro/a de que sea tuya?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Sentís ira o asco hacia algo o alguien que no podés expresar?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hay secretos familiares que pesan en tu historia?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Te sentís 'sucio/a emocionalmente' por algo del pasado?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 45 años",
+          "contexto": "Heredó culpa familiar de un aborto de su madre. Hígado graso.",
+          "resolucion": "Trabajo transgeneracional. Devolver simbólicamente la culpa a quien le pertenece."
+        },
+        {
+          "perfil": "Hombre, 50 años, abstemio",
+          "contexto": "Padre alcohólico. Él 'limpio' pero hígado graso. Carga psicoemocional del padre.",
+          "resolucion": "Ritual de no-cargar lo que es del padre. Pares biomagnéticos hígado-vesícula."
+        },
+        {
+          "perfil": "Mujer, 38 años, infidelidad pasada",
+          "contexto": "Cargó culpa años. Cálculos biliares.",
+          "resolucion": "Confesión terapéutica + perdón a sí misma + acto reparatorio."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Hígado - Hígado",
+          "razon": "Limpieza profunda"
+        },
+        {
+          "par": "Vesícula - Vesícula",
+          "razon": "Soltar la bilis emocional"
+        },
+        {
+          "par": "Hígado - Vesícula",
+          "razon": "Eje de purificación"
+        }
+      ],
+      "protocolo_terapeutico": "Diferenciar culpa propia de culpa heredada. Trabajo transgeneracional si aplica. Detox emocional con escritura libre + descarga somática.",
+      "herramientas": [
+        "Carta de devolución de culpa a su titular",
+        "Genograma simple",
+        "Pares biomagnéticos hepáticos"
+      ]
+    },
+    {
+      "id": "sexualidad_no_resuelta",
+      "nombre": "Sexualidad bloqueada · 'No me permito disfrutar'",
+      "categoria": "sexualidad",
+      "escuelas": {
+        "hamer": "Conflicto sexual: frustración, abuso, prohibición. Afecta cuello uterino, ovarios, próstata.",
+        "fleche": "Los órganos sexuales somatizan lo que el psiquismo no integra: vergüenza, deseo no expresado, abuso no procesado.",
+        "lavin": "Educación represiva + cuerpo deseoso + culpa religiosa. Frecuente en mujeres con madres puritanas y hombres con padres dominantes."
+      },
+      "ubicaciones_organicas": [
+        "cuello uterino",
+        "ovarios",
+        "vagina",
+        "próstata",
+        "testículos"
+      ],
+      "sintomas_compatibles": [
+        "miomas uterinos recurrentes",
+        "quistes ováricos funcionales",
+        "endometriosis sin trigger claro",
+        "vaginismo emocional",
+        "disfunción eréctil situacional",
+        "prostatitis crónica no bacteriana"
+      ],
+      "sintomas_excluyentes": [
+        "infección de transmisión sexual activa",
+        "cáncer ginecológico/urológico",
+        "trauma físico reciente"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hubo o hay un conflicto sexual no resuelto (frustración, abuso, prohibición)?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Recibiste mensajes de culpa/vergüenza alrededor de la sexualidad en la infancia?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Sentís bloqueo entre deseo y permiso para disfrutar?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Hay una pareja sexual frustrada o ausente actual?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 35 años",
+          "contexto": "Educación católica estricta. Miomas uterinos.",
+          "resolucion": "Resignificar sexualidad. Trabajo corporal consentido. Reconciliación con el deseo."
+        },
+        {
+          "perfil": "Hombre, 50 años",
+          "contexto": "Esposa muy religiosa. Sexo mecánico hace 10 años. Prostatitis crónica.",
+          "resolucion": "Diálogo de pareja sobre sexualidad. Espacios eróticos íntimos."
+        },
+        {
+          "perfil": "Mujer, 28 años, abuso infantil",
+          "contexto": "Vaginismo emocional. Imposibilidad de penetración consentida.",
+          "resolucion": "Terapia trauma especializada + sexoterapia. Avance gradual con consentimiento absoluto."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Útero - Útero",
+          "razon": "Centro femenino"
+        },
+        {
+          "par": "Próstata - Próstata",
+          "razon": "Centro masculino"
+        },
+        {
+          "par": "Ovario - Ovario",
+          "razon": "Fertilidad emocional"
+        }
+      ],
+      "protocolo_terapeutico": "Si hay trauma, derivar a especialista en trauma sexual. Si no, trabajo de re-educación sexual respetuosa. Reconciliación cuerpo-deseo.",
+      "herramientas": [
+        "Cartografía de placer corporal (sin genitales primero)",
+        "Diario de exploración consentida",
+        "Pares biomagnéticos sexuales"
+      ]
+    },
+    {
+      "id": "identidad_no_reconocida",
+      "nombre": "Identidad no reconocida · 'No me veo a mí mismo/a'",
+      "categoria": "identidad",
+      "escuelas": {
+        "hamer": "Conflicto de auto-reconocimiento. Afecta piel facial, ojos, pelo.",
+        "fleche": "El rostro es el órgano del 'yo ante el mundo'. Cuando no nos reconocemos, la piel facial reacciona.",
+        "lavin": "Niños no vistos por sus padres, adultos que perdieron contacto consigo mismos. Crisis de identidad."
+      },
+      "ubicaciones_organicas": [
+        "piel facial",
+        "ojos",
+        "cuero cabelludo"
+      ],
+      "sintomas_compatibles": [
+        "acné adulto sin causa hormonal",
+        "rosácea sin trigger claro",
+        "alopecia en zonas visibles",
+        "trastornos visuales psicogénicos",
+        "dermatitis seborreica recurrente"
+      ],
+      "sintomas_excluyentes": [
+        "rosácea con demodex confirmado",
+        "alopecia areata extensa (revisar autoinmunidad)",
+        "patología oftalmológica orgánica"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Sentís que estás 'perdido/a' respecto a quién sos?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hubo crisis vital reciente (cambio de profesión, separación, jubilación)?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Tus padres te 'veían' realmente en la infancia o esperaban otra persona?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Te cuesta mirarte al espejo sin juicio?",
+          "peso_si": 0.5,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 50 años, ama de casa",
+          "contexto": "Hijos crecieron y se fueron. Rosácea apareció. 'No sé quién soy ahora'.",
+          "resolucion": "Exploración de identidad post-maternal. Nuevos proyectos personales."
+        },
+        {
+          "perfil": "Hombre, 35 años, profesional exitoso",
+          "contexto": "Acné adulto severo. 'Vivo el sueño de mi padre, no el mío'.",
+          "resolucion": "Crisis de mediana edad anticipada. Resignificación profesional."
+        },
+        {
+          "perfil": "Mujer, 28 años, perfeccionista",
+          "contexto": "Dermatitis facial periódica. Maquillaje compulsivo.",
+          "resolucion": "Trabajo de auto-aceptación. Tiempo diario sin maquillaje en casa."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Pineal - Pineal",
+          "razon": "Centro de identidad"
+        },
+        {
+          "par": "Pituitaria - Pituitaria",
+          "razon": "Eje maestro"
+        },
+        {
+          "par": "Pineal - Útero (mujeres)",
+          "razon": "Identidad femenina"
+        }
+      ],
+      "protocolo_terapeutico": "Trabajo de auto-conocimiento (eneagrama, valores, historia). Espejo consciente diario. Diario reflexivo.",
+      "herramientas": [
+        "Práctica de espejo consciente (5 min diarios)",
+        "Diario reflexivo: '¿quién soy hoy?'",
+        "Línea de vida con momentos identitarios"
+      ]
+    },
+    {
+      "id": "movimiento_bloqueado_rodilla",
+      "nombre": "Movimiento bloqueado · 'No quiero avanzar hacia allá'",
+      "categoria": "movimiento",
+      "escuelas": {
+        "hamer": "Conflicto de incapacidad para avanzar. Afecta articulación de rodilla.",
+        "fleche": "Las rodillas son las articulaciones de la humildad/dirección. Cuando no queremos ir hacia donde la vida nos lleva, se bloquean.",
+        "lavin": "Personas forzadas a un camino que no eligen (matrimonio, trabajo, lugar)."
+      },
+      "ubicaciones_organicas": [
+        "rodillas",
+        "meniscos",
+        "ligamentos cruzados"
+      ],
+      "sintomas_compatibles": [
+        "dolor de rodilla sin trauma claro",
+        "menisco con lesión 'misteriosa'",
+        "rigidez articular que mejora con el calor emocional",
+        "crujidos sin causa estructural"
+      ],
+      "sintomas_excluyentes": [
+        "trauma agudo confirmado",
+        "artritis reumatoide activa",
+        "osteoartritis severa visible en imagen"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Estás yendo hacia una dirección que en el fondo no querés?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Hay un cambio inminente que te genera rechazo (mudanza, casamiento, trabajo)?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Empeora ante decisiones grandes?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Sentís que 'tu vida camina sola' sin tu consentimiento?",
+          "peso_si": 0.6,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 40 años, próxima mudanza",
+          "contexto": "Esposo decidió mudar familia a otro país. Rodilla derecha dolorosa.",
+          "resolucion": "Conversación de pareja real. Acuerdo de tiempo de adaptación."
+        },
+        {
+          "perfil": "Hombre, 55 años, jubilación inminente",
+          "contexto": "No quiere jubilarse pero su empresa lo obliga. Rodillas crujen.",
+          "resolucion": "Planificación del 'después': nuevos proyectos, hobbies."
+        },
+        {
+          "perfil": "Mujer, 30 años, boda en 6 meses",
+          "contexto": "Pareja la presiona a casarse. Ella duda. Menisco roto sin trauma.",
+          "resolucion": "Pausa antes de comprometerse. Trabajo de propio deseo."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Rodilla - Rodilla",
+          "razon": "Centro de la decisión"
+        },
+        {
+          "par": "Cadera - Cadera",
+          "razon": "Eje de la dirección"
+        },
+        {
+          "par": "Sacro - Sacro",
+          "razon": "Base del movimiento"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar la dirección rechazada. Validar el 'no'. Negociar con la realidad. Si la dirección es inevitable, trabajar la aceptación activa.",
+      "herramientas": [
+        "Lista de 'hacia dónde NO quiero ir'",
+        "Visualización de caminos alternativos",
+        "Pares biomagnéticos articulares"
+      ]
+    },
+    {
+      "id": "ansiedad_anticipatoria_pulmones",
+      "nombre": "Ansiedad anticipatoria · 'Me falta el aire del futuro'",
+      "categoria": "miedo",
+      "escuelas": {
+        "hamer": "Miedo a la muerte/sofocamiento. Afecta alvéolos pulmonares.",
+        "fleche": "Los pulmones son el órgano de 'tomar la vida'. Cuando hay miedo de seguir viviendo, se restringe la respiración.",
+        "lavin": "Personas con padres ansiosos, infancia con preocupación constante por el futuro."
+      },
+      "ubicaciones_organicas": [
+        "alvéolos pulmonares",
+        "diafragma",
+        "bronquios"
+      ],
+      "sintomas_compatibles": [
+        "asma adulto sin causa alérgica clara",
+        "disnea suspirosa frecuente",
+        "sensación de 'no entrar suficiente aire'",
+        "respiración superficial habitual",
+        "ataques de pánico con hiperventilación"
+      ],
+      "sintomas_excluyentes": [
+        "EPOC confirmado",
+        "neumonía",
+        "embolia pulmonar (urgencia)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Sentís que 'no podés respirar el futuro'?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Te despertás con la respiración agitada por miedo a lo que viene?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hubo en la familia un susto grande sin elaborar (muerte súbita, enfermedad)?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿La ansiedad mejora al respirar conscientemente?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 38 años, autónoma con 2 hijos",
+          "contexto": "Preocupación crónica por dinero. Ataques de asma.",
+          "resolucion": "Trabajo de presencia. Planificación financiera realista. Respiración 4-7-8."
+        },
+        {
+          "perfil": "Hombre, 50 años, hipocondríaco",
+          "contexto": "Padre murió de infarto a los 55. Él teme tener uno. Asma psicogénico.",
+          "resolucion": "Diferenciar miedo heredado vs miedo propio. Chequeo médico completo + tranquilizar."
+        },
+        {
+          "perfil": "Mujer, 30 años, embarazada",
+          "contexto": "Pánico antes de cada eco. Disnea episódica.",
+          "resolucion": "Apoyo prenatal. Visualización de embarazo sano. Doula."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Pulmón - Pulmón",
+          "razon": "Tomar la vida"
+        },
+        {
+          "par": "Diafragma - Diafragma",
+          "razon": "Frontera tomar/soltar"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Eje de alarma"
+        }
+      ],
+      "protocolo_terapeutico": "Respiración consciente diaria. Trabajo de presente vs futuro. Si hay trauma transgeneracional, revisar genograma.",
+      "herramientas": [
+        "Respiración 4-7-8 cinco veces al día",
+        "Práctica del 'aquí y ahora' (5 sentidos)",
+        "Pares biomagnéticos respiratorios"
+      ]
+    },
+    {
+      "id": "indecision_cronica_cabeza",
+      "nombre": "Indecisión crónica · 'No puedo elegir'",
+      "categoria": "decision",
+      "escuelas": {
+        "hamer": "Conflicto de no poder elegir entre dos opciones. Afecta cerebro frontal, cefalea tensional.",
+        "fleche": "La cabeza es el lugar del 'pensamiento'. Cuando da vueltas en círculo, la cabeza duele.",
+        "lavin": "Personas con padres ambivalentes o mensajes contradictorios en infancia. Doble vínculo."
+      },
+      "ubicaciones_organicas": [
+        "cerebro frontal",
+        "musculatura craneal",
+        "cuero cabelludo"
+      ],
+      "sintomas_compatibles": [
+        "cefalea tensional crónica",
+        "migrañas asociadas a decisiones pendientes",
+        "insomnio mental (cabeza no para)",
+        "rumia mental constante"
+      ],
+      "sintomas_excluyentes": [
+        "migraña con aura severa",
+        "tumor cerebral",
+        "cefalea súbita brutal (descartar HSA)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hay una decisión grande pendiente que no podés tomar?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Tu mente da vueltas sobre el mismo tema sin avanzar?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿En la infancia recibiste mensajes contradictorios (uno dice A, otro dice B)?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        },
+        {
+          "pregunta": "¿Las cefaleas aparecen los días previos a momentos de decidir?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 35 años",
+          "contexto": "Decidir si dejar a su pareja. Cefaleas diarias.",
+          "resolucion": "Trabajo de claridad: pros/contras emocional + somático. Decisión integrada."
+        },
+        {
+          "perfil": "Hombre, 45 años",
+          "contexto": "Oferta laboral en otra ciudad. Familia dividida. Migrañas.",
+          "resolucion": "Negociación familiar. Toma decisión consensuada."
+        },
+        {
+          "perfil": "Mujer, 28 años, embarazo no planeado",
+          "contexto": "Decidir continuarlo o no. Cefalea tensional severa.",
+          "resolucion": "Espacio de claridad sin presión externa. Acompañamiento neutral."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Pineal - Pineal",
+          "razon": "Centro de decisión"
+        },
+        {
+          "par": "Frontal - Occipital",
+          "razon": "Eje pensamiento"
+        },
+        {
+          "par": "Pituitaria - Pituitaria",
+          "razon": "Maestro hormonal"
+        }
+      ],
+      "protocolo_terapeutico": "Estructurar la decisión: ¿qué tiene cada opción? ¿qué resuena con valores? ¿qué dice el cuerpo? Decisión integrada mente+cuerpo+alma.",
+      "herramientas": [
+        "Ejercicio del cuerpo decisorio (sí/no somático)",
+        "Carta a cada opción imaginada",
+        "Pares biomagnéticos craneales"
+      ]
+    },
+    {
+      "id": "carga_transgeneracional",
+      "nombre": "Carga transgeneracional · 'Síntoma que no es mío'",
+      "categoria": "transgeneracional",
+      "escuelas": {
+        "hamer": "No es central en Hamer pero reconocido en escuelas hijas.",
+        "fleche": "Síndrome de aniversario, doble familiar, lealtad invisible. El síntoma cumple una función en el clan.",
+        "lavin": "Constelaciones familiares + biodescodificación. Identificar el ancestro/situación que se está re-actuando."
+      },
+      "ubicaciones_organicas": [
+        "variable según el síntoma replicado"
+      ],
+      "sintomas_compatibles": [
+        "síntoma que apareció a la misma edad que el de un ancestro",
+        "patología que repite un patrón familiar",
+        "fechas de aparición coincidentes con fechas significativas familiares",
+        "síntoma sin explicación orgánica clara que cumple función simbólica"
+      ],
+      "sintomas_excluyentes": [
+        "patología con causa orgánica clara",
+        "síntoma de inicio reciente sin patrón familiar"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hay alguien en tu familia que tuvo lo mismo a la misma edad?",
+          "peso_si": 0.85,
+          "peso_no": -0.4
+        },
+        {
+          "pregunta": "¿El síntoma apareció en una fecha 'significativa' familiar (aniversario, edad clave)?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Hay secretos familiares no aclarados (muertes, abortos, exilios)?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Sentís que estás 'viviendo la vida de otro/a'?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 42 años, cáncer mama izquierdo",
+          "contexto": "Abuela materna murió de lo mismo a los 42. 'Lealtad mortal'.",
+          "resolucion": "Trabajo transgeneracional. Liberar lealtad. 'Tomo otra cosa de mi abuela, no la enfermedad'."
+        },
+        {
+          "perfil": "Hombre, 30 años, depresión",
+          "contexto": "Padre se suicidó a los 30. Él 'lo está repitiendo'.",
+          "resolucion": "Constelación + terapia urgente. Diferenciar destino propio."
+        },
+        {
+          "perfil": "Mujer, 28 años, infertilidad",
+          "contexto": "Bisabuela perdió 3 hijos. 'Tabú de procrear'.",
+          "resolucion": "Rituales de restauración del linaje femenino. Honrar a los no nacidos."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Variable según síntoma replicado"
+        }
+      ],
+      "protocolo_terapeutico": "Genograma de 3-4 generaciones. Identificar el patrón. Constelaciones familiares (si aplica). Carta al ancestro: 'tu vida es tuya, mi vida es mía'.",
+      "herramientas": [
+        "Genograma detallado",
+        "Constelaciones familiares (referirlo a especialista)",
+        "Rituales de cierre de lealtades invisibles"
+      ]
+    },
+    {
+      "id": "derrota_silenciosa_riñones",
+      "nombre": "Derrota silenciosa · 'Me rendí en algún momento'",
+      "categoria": "derrota",
+      "escuelas": {
+        "hamer": "Conflicto de fluidos: pérdida de algo vital. Afecta riñones (túbulos colectores) y glándulas suprarrenales.",
+        "fleche": "Los riñones son el órgano del 'archivo profundo' del miedo. Cuando hay derrota interior, los riñones se 'apagan'.",
+        "lavin": "Personas que en algún momento dejaron de luchar por algo importante. Resignación crónica."
+      },
+      "ubicaciones_organicas": [
+        "riñones",
+        "suprarrenales",
+        "vejiga (asociada)"
+      ],
+      "sintomas_compatibles": [
+        "fatiga crónica sin causa orgánica",
+        "quistes renales benignos múltiples",
+        "hipotensión sin causa cardíaca",
+        "lumbalgia + agotamiento profundo",
+        "ojeras profundas constantes"
+      ],
+      "sintomas_excluyentes": [
+        "insuficiencia renal documentada",
+        "diabetes mal controlada",
+        "anemia severa"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hubo un momento donde dejaste de luchar por algo importante?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Sentís un cansancio que no se quita con descanso?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿La frase 'ya no puedo más' resuena con vos?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Estás viviendo en 'modo automático' sin entusiasmo?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 50 años, cuidadora 20 años",
+          "contexto": "Cuidó a padres enfermos. Murieron. Ella 'apagada'. Fatiga crónica.",
+          "resolucion": "Reconocer la entrega. Permiso para volver a empezar. Pares biomagnéticos riñón-suprarrenal."
+        },
+        {
+          "perfil": "Hombre, 45 años, sueño abandonado",
+          "contexto": "Quería ser músico. Padres lo forzaron a contabilidad. Quistes renales.",
+          "resolucion": "Reconectar con la pasión perdida (aun como hobby)."
+        },
+        {
+          "perfil": "Mujer, 38 años, post-divorcio",
+          "contexto": "Renunció a su carrera por exmarido. Hipotensión + fatiga.",
+          "resolucion": "Recuperar autonomía profesional. Apoyo de coach + terapia."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Riñón - Riñón",
+          "razon": "Recargar reservas"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Re-encender vitalidad"
+        },
+        {
+          "par": "Riñón - Vejiga",
+          "razon": "Eje de vitalidad/territorio"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar la 'rendición'. Validar el dolor. Buscar un nuevo motivo para 'volver'. Si la depresión es clínica, derivar.",
+      "herramientas": [
+        "Diario de gratitud (pequeñas cosas)",
+        "Identificar 'mi pasión olvidada'",
+        "Pares biomagnéticos suprarrenales"
+      ]
+    },
+    {
+      "id": "ira_no_expresada",
+      "nombre": "Ira no expresada · 'Trago mi rabia'",
+      "categoria": "ira",
+      "escuelas": {
+        "hamer": "Conflicto de rabia con culpa: 'no debo enojarme'. Afecta hígado, vesícula, ciertos cánceres.",
+        "fleche": "El hígado es el órgano de la rabia. Cuando se reprime, se acumula.",
+        "lavin": "Educación donde la rabia femenina/masculina era castigada. Frecuente en mujeres 'buenas' y hombres 'tranquilos'."
+      },
+      "ubicaciones_organicas": [
+        "hígado",
+        "vesícula biliar",
+        "musculatura mandibular"
+      ],
+      "sintomas_compatibles": [
+        "bruxismo nocturno",
+        "tensión mandibular crónica",
+        "cólicos biliares sin cálculo",
+        "irritabilidad explosiva en momentos triviales",
+        "migrañas tipo 'cluster' tras situaciones de frustración contenida"
+      ],
+      "sintomas_excluyentes": [
+        "trastorno de personalidad violenta (derivar)",
+        "ira por causa neuroquímica (TDAH, otros)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Tragás rabia regularmente porque 'no podés/debés enojarte'?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Aprietas la mandíbula al dormir o durante el día?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Explotás por cosas pequeñas tras meses 'aguantando'?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿En la infancia te decían 'no te enojes' o 'eres demasiado'?",
+          "peso_si": 0.5,
+          "peso_no": 0
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 35 años, perfeccionista",
+          "contexto": "Jefa autoritaria. Ella sonríe pero bruxismo severo. Mandíbula bloqueada.",
+          "resolucion": "Espacios de descarga física (boxing, gritar en bosque). Asertividad gradual con la jefa."
+        },
+        {
+          "perfil": "Hombre, 45 años, 'buen marido'",
+          "contexto": "Esposa controladora. Él 'no se enoja'. Cólicos biliares.",
+          "resolucion": "Identificar rabias acumuladas. Verbalización en sesión. Cartas no enviadas."
+        },
+        {
+          "perfil": "Mujer, 28 años, profesional joven",
+          "contexto": "Sufre micromachismos en oficina pero 'no quiere problemas'. Tensión mandibular.",
+          "resolucion": "Entrenamiento asertivo. Aliados internos."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Hígado - Hígado",
+          "razon": "Centro de la rabia"
+        },
+        {
+          "par": "Vesícula - Vesícula",
+          "razon": "Bilis emocional"
+        },
+        {
+          "par": "Mandibular - Mandibular",
+          "razon": "Descarga somática"
+        }
+      ],
+      "protocolo_terapeutico": "Permiso interno a la rabia. Descarga física segura. Asertividad gradual. Si hay riesgo de explosión, contención profesional.",
+      "herramientas": [
+        "Lista de 'mis rabias acumuladas'",
+        "Descarga física semanal (boxing, correr, gritar)",
+        "Entrenamiento asertivo"
+      ]
+    },
+    {
+      "id": "perdida_sentido_existencial",
+      "nombre": "Pérdida de sentido · 'No sé para qué hago todo esto'",
+      "categoria": "existencial",
+      "escuelas": {
+        "hamer": "No es central. Lavín y Flèche lo trabajan integrando logoterapia.",
+        "fleche": "Cuando el alma no encuentra sentido, el cuerpo enferma 'sin causa'.",
+        "lavin": "Crisis de mediana edad, post-jubilación, post-divorcio, post-hijos crecidos. 'Vacío existencial'."
+      },
+      "ubicaciones_organicas": [
+        "sistema inmune (general)",
+        "patologías 'sin causa'"
+      ],
+      "sintomas_compatibles": [
+        "fatiga existencial",
+        "patologías recurrentes 'sin causa clara'",
+        "depresión leve sin causa identificable",
+        "sensación de vacío en el pecho",
+        "anhedonia (no disfruta lo que antes le gustaba)"
+      ],
+      "sintomas_excluyentes": [
+        "depresión clínica mayor (requiere psiquiatría)",
+        "duelo agudo no procesado",
+        "trastorno bipolar"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Te preguntás 'para qué' hacés lo que hacés?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Las cosas que antes te entusiasmaban ya no te conmueven?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Estás en una transición vital grande (jubilación, hijos crecidos, divorcio)?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Sentís que tu vida 'pasa' sin que vos la habites?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 55 años, post-maternidad",
+          "contexto": "Hijos se fueron. Ella 'no sabe qué hacer'. Fatiga + patologías recurrentes.",
+          "resolucion": "Logoterapia. Nuevos proyectos. Reconexión con vocación pre-maternal."
+        },
+        {
+          "perfil": "Hombre, 60 años, jubilado",
+          "contexto": "Empresa fue su vida. Jubilado a la fuerza. Vacío existencial.",
+          "resolucion": "Mentoría a jóvenes profesionales. Hobby intensivo. Voluntariado."
+        },
+        {
+          "perfil": "Mujer, 38 años, exitosa profesionalmente",
+          "contexto": "Tiene 'todo'. Pero vacío profundo. Anhedonia.",
+          "resolucion": "Logoterapia + viaje sabático. Revisión de valores propios vs adquiridos."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Timo - Timo",
+          "razon": "Conexión vida"
+        },
+        {
+          "par": "Pineal - Pineal",
+          "razon": "Sentido superior"
+        },
+        {
+          "par": "Corazón - Corazón",
+          "razon": "Pasión por la vida"
+        }
+      ],
+      "protocolo_terapeutico": "Exploración de valores. Logoterapia (Viktor Frankl). Pequeños actos de sentido diarios. Si hay riesgo suicida, derivación urgente.",
+      "herramientas": [
+        "Ejercicio de Viktor Frankl: '¿qué espera la vida de mí?'",
+        "Diario de pequeños momentos significativos",
+        "Voluntariado o servicio"
+      ]
+    },
+    {
+      "id": "hipervigilancia_control",
+      "nombre": "Hipervigilancia · 'No puedo soltar el control'",
+      "categoria": "control",
+      "escuelas": {
+        "hamer": "Estado de simpaticotonía sostenida. Múltiples sistemas afectados.",
+        "fleche": "Cuando el sistema nervioso está en 'alarma permanente', el cuerpo agota recursos en órganos diversos.",
+        "lavin": "Personas con infancia caótica/impredecible que desarrollaron control compensatorio."
+      },
+      "ubicaciones_organicas": [
+        "sistema nervioso autónomo",
+        "musculatura general",
+        "sistema digestivo (segundo cerebro)"
+      ],
+      "sintomas_compatibles": [
+        "tensión muscular generalizada",
+        "trastornos de sueño no REM",
+        "colon irritable + ansiedad",
+        "bruxismo",
+        "respiración torácica habitual"
+      ],
+      "sintomas_excluyentes": [
+        "trastorno obsesivo-compulsivo clínico (derivar)",
+        "trauma severo no abordado"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Necesitás controlar todos los detalles para sentir tranquilidad?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Te cuesta delegar incluso cosas pequeñas?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Tuviste una infancia donde no podías predecir qué iba a pasar?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Vives en alerta aunque no haya peligro real?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 40 años, madre soltera",
+          "contexto": "Padre alcohólico. Ella controladora extrema. Tensión generalizada.",
+          "resolucion": "Trabajo de seguridad interna. Delegación gradual. Yoga/meditación."
+        },
+        {
+          "perfil": "Hombre, 50 años, CEO",
+          "contexto": "Microgestor extremo. Colon irritable severo.",
+          "resolucion": "Confiar en su equipo. Coaching ejecutivo. Trabajo somático."
+        },
+        {
+          "perfil": "Mujer, 35 años, post-trauma médico",
+          "contexto": "Mala atención hospitalaria pasada. Vigila todo médicamente. Bruxismo + insomnio.",
+          "resolucion": "Procesar trauma médico. Construir nueva relación con sistema de salud."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Cerebelo - Cerebelo",
+          "razon": "Sistema nervioso autónomo"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Alarma sostenida"
+        },
+        {
+          "par": "Plexo Solar - Plexo Solar",
+          "razon": "Centro autónomo"
+        }
+      ],
+      "protocolo_terapeutico": "Construir seguridad interna progresiva. Prácticas somáticas de relajación. Delegación experimental segura.",
+      "herramientas": [
+        "Yoga restaurativo o yin yoga",
+        "Práctica de delegar una tarea diaria",
+        "Pares biomagnéticos del sistema autónomo"
+      ]
+    },
+    {
+      "id": "soledad_estructural",
+      "nombre": "Soledad estructural · 'Aunque rodeado/a, estoy solo/a'",
+      "categoria": "soledad",
+      "escuelas": {
+        "fleche": "Cuando hay desconexión emocional con los seres cercanos, los órganos del 'contacto profundo' se alteran.",
+        "lavin": "Niños que se sintieron solos en presencia de padres. Adultos hiperconectados pero íntimos con nadie."
+      },
+      "ubicaciones_organicas": [
+        "sistema inmune",
+        "piel",
+        "corazón emocional (sin patología cardíaca)"
+      ],
+      "sintomas_compatibles": [
+        "infecciones recurrentes leves",
+        "patologías 'de aburrimiento' (cosquilleos, picores)",
+        "sensación de vacío en el pecho",
+        "evitación social paradójica (deseo y miedo)"
+      ],
+      "sintomas_excluyentes": [
+        "depresión mayor (derivar)",
+        "fobia social diagnosticada",
+        "trastorno de personalidad esquizoide"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Te sentís solo/a aún rodeado de gente?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Hay personas con quienes 'podés ser vos mismo/a' o no?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿En la infancia te sentías solo/a aunque tus padres estuvieran presentes?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Tu vida social es activa pero superficial?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 45 años, casada, dos hijos",
+          "contexto": "Vida 'completa' externamente. Vacío profundo. Resfriados constantes.",
+          "resolucion": "Buscar comunidad de afinidad real. Terapia grupal. Re-conectar con amigas verdaderas."
+        },
+        {
+          "perfil": "Hombre, 38 años, popular en redes",
+          "contexto": "5000 seguidores. Cero amigos íntimos. Picores en piel sin causa.",
+          "resolucion": "Reducir redes. Buscar 1-2 amistades profundas. Vulnerabilidad consciente."
+        },
+        {
+          "perfil": "Mujer, 55 años, jubilada",
+          "contexto": "Estuvo casada 30 años. Marido emocionalmente ausente. Ahora viuda + sola.",
+          "resolucion": "Comunidad de jubiladas. Grupos de duelo. Re-aprender contacto íntimo."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Timo - Timo",
+          "razon": "Sistema inmune emocional"
+        },
+        {
+          "par": "Corazón - Corazón",
+          "razon": "Conexión profunda"
+        },
+        {
+          "par": "Pineal - Corazón",
+          "razon": "Identidad-conexión"
+        }
+      ],
+      "protocolo_terapeutico": "Diferenciar soledad-en-el-otro vs soledad-en-uno-mismo. Vulnerabilidad gradual con personas seguras. Comunidad de afinidad.",
+      "herramientas": [
+        "Grupo terapéutico o de afinidad",
+        "Práctica de vulnerabilidad gradual",
+        "Diario de momentos de conexión real"
+      ]
+    },
+    {
+      "id": "perfeccionismo_exigencia",
+      "nombre": "Perfeccionismo · 'Nunca es suficiente'",
+      "categoria": "exigencia",
+      "escuelas": {
+        "fleche": "El cuerpo se desgasta porque la persona no se permite 'fallar'. Patologías de agotamiento.",
+        "lavin": "Niños con amor condicional (te quiero si rindes). Adultos exitosos exhaustos."
+      },
+      "ubicaciones_organicas": [
+        "sistema inmune",
+        "tiroides (hipertiroidismo subclínico)",
+        "intestino"
+      ],
+      "sintomas_compatibles": [
+        "burnout recurrente",
+        "hipertiroidismo subclínico",
+        "intestino irritable + ansiedad",
+        "bruxismo + insomnio",
+        "patologías cíclicas que aparecen 'cuando bajo la guardia'"
+      ],
+      "sintomas_excluyentes": [
+        "trastorno obsesivo-compulsivo",
+        "anorexia/bulimia (derivar)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Sentís que nunca es suficiente lo que hacés?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Tu autoestima depende del rendimiento?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿De pequeño/a te valoraban más por tus logros que por quién eras?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Te cuesta descansar sin culpa?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 32 años, ejecutiva",
+          "contexto": "Padres exitosos. Ella 'tiene que' superarlos. Burnout cíclico.",
+          "resolucion": "Diferenciar éxito propio de éxito heredado. Ritmo sostenible."
+        },
+        {
+          "perfil": "Hombre, 28 años, deportista",
+          "contexto": "Lesiones recurrentes. 'Tengo que ganar siempre'. Bruxismo + ansiedad.",
+          "resolucion": "Re-significar el deporte como gozo, no solo competencia."
+        },
+        {
+          "perfil": "Mujer, 40 años, ama de casa perfecta",
+          "contexto": "Casa impecable, hijos en mejores escuelas. Agotamiento crónico.",
+          "resolucion": "Permiso a 'casa real, no Pinterest'. Delegación familiar."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Tiroides - Tiroides",
+          "razon": "Ritmo interno"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Sostén del esfuerzo"
+        },
+        {
+          "par": "Hipotálamo - Hipotálamo",
+          "razon": "Regulación general"
+        }
+      ],
+      "protocolo_terapeutico": "Diferenciar autoestima de logros. Validar el 'ser' por encima del 'hacer'. Práctica de 'hacer menos'.",
+      "herramientas": [
+        "Práctica del 'B-' (bien suficiente, no perfecto)",
+        "Diario de 'me valoro sin hacer'",
+        "Pares biomagnéticos de regulación"
+      ]
+    },
+    {
+      "id": "abandono_infantil_inmune",
+      "nombre": "Herida de abandono · 'Si me dejan, me muero'",
+      "categoria": "abandono",
+      "escuelas": {
+        "fleche": "El bebé/niño necesita conexión para sobrevivir biológicamente. El abandono real o percibido deja huella inmune.",
+        "lavin": "Bebés en incubadora, niños internados, padres ausentes emocionales. Adultos que se enferman al sentirse 'dejados'."
+      },
+      "ubicaciones_organicas": [
+        "sistema inmune",
+        "piel (eccema atópico)",
+        "sistema digestivo"
+      ],
+      "sintomas_compatibles": [
+        "eccema atópico desde infancia",
+        "infecciones recurrentes en momentos de separación",
+        "colon irritable en viajes/cambios",
+        "ansiedad por separación adulta"
+      ],
+      "sintomas_excluyentes": [
+        "inmunodeficiencia primaria documentada",
+        "trastorno límite de personalidad (derivar)"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Hubo abandono real o percibido en la primera infancia (incubadora, padres ausentes)?",
+          "peso_si": 0.75,
+          "peso_no": -0.3
+        },
+        {
+          "pregunta": "¿Reaccionás físicamente cuando alguien se va de viaje o se aleja?",
+          "peso_si": 0.7,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Te cuesta estar solo/a sin sentir pánico de fondo?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Te aferras a relaciones aunque sean dañinas por miedo a la soledad?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 30 años, prematura en incubadora 2 meses",
+          "contexto": "Eccema desde bebé. Ansiedad de separación en relaciones.",
+          "resolucion": "Re-paternalización interna. Trabajo prenatal/neonatal. Apego seguro adulto."
+        },
+        {
+          "perfil": "Hombre, 40 años, padre se fue cuando él era niño",
+          "contexto": "Cada vez que su esposa viaja: colon irritable.",
+          "resolucion": "Trabajo del padre interno + comunicación con esposa sobre necesidades."
+        },
+        {
+          "perfil": "Mujer, 28 años, internada hospitalariamente de niña",
+          "contexto": "Infecciones cada vez que cambia de trabajo/casa.",
+          "resolucion": "Procesar trauma médico infantil. Crear rituales de continuidad."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Timo - Timo",
+          "razon": "Sistema inmune del afecto"
+        },
+        {
+          "par": "Pineal - Útero (mujeres)",
+          "razon": "Reconectar con la madre simbólica"
+        },
+        {
+          "par": "Suprarrenal - Suprarrenal",
+          "razon": "Calma del sistema de alarma"
+        }
+      ],
+      "protocolo_terapeutico": "Re-paternalización interna progresiva. Trabajo con apego seguro. Comunicación de necesidades. Construir presencia interior.",
+      "herramientas": [
+        "Carta al niño/a interior abandonado/a",
+        "Práctica de 'estoy conmigo' (5 min diarios)",
+        "Pares biomagnéticos inmunológicos"
+      ]
+    },
+    {
+      "id": "repeticion_compulsiva",
+      "nombre": "Repetición compulsiva · 'Siempre me pasa lo mismo'",
+      "categoria": "patron_repetitivo",
+      "escuelas": {
+        "fleche": "El cuerpo repite porque hay un aprendizaje no integrado. La biología es un loop hasta resolver.",
+        "lavin": "Patrones de pareja, trabajo, amistad. Frecuente que repliquen vínculo con figura parental."
+      },
+      "ubicaciones_organicas": [
+        "sistema nervioso",
+        "varios según el patrón replicado"
+      ],
+      "sintomas_compatibles": [
+        "el mismo síntoma aparece tras cada conflicto similar",
+        "patologías que aparecen en ciclos vitales similares",
+        "agotamiento por 'siempre lo mismo'"
+      ],
+      "sintomas_excluyentes": [
+        "trastorno obsesivo-compulsivo (derivar)",
+        "patrón único, no repetitivo"
+      ],
+      "preguntas_discriminantes": [
+        {
+          "pregunta": "¿Reconocés que 'siempre te pasa lo mismo' aunque cambien las personas?",
+          "peso_si": 0.8,
+          "peso_no": -0.4
+        },
+        {
+          "pregunta": "¿El patrón resuena con cómo era tu padre/madre?",
+          "peso_si": 0.65,
+          "peso_no": -0.2
+        },
+        {
+          "pregunta": "¿Te frustra que 'aprendiste la lección' pero sigue ocurriendo?",
+          "peso_si": 0.6,
+          "peso_no": -0.1
+        },
+        {
+          "pregunta": "¿Sentís que sos 'imán' de cierto tipo de problemas?",
+          "peso_si": 0.55,
+          "peso_no": -0.1
+        }
+      ],
+      "ejemplos_clinicos": [
+        {
+          "perfil": "Mujer, 35 años, 3ª pareja maltratadora",
+          "contexto": "Mismo patrón en 3 relaciones. Patologías psicosomáticas cíclicas.",
+          "resolucion": "Trabajo en raíz familiar del patrón. Constelaciones."
+        },
+        {
+          "perfil": "Hombre, 45 años, 4to despido por 'jefe injusto'",
+          "contexto": "Repite patrón de víctima ante autoridad. Migrañas crónicas.",
+          "resolucion": "Trabajo de figura paterna interna. Autoridad propia."
+        },
+        {
+          "perfil": "Mujer, 28 años, repite enfermedad de su madre",
+          "contexto": "Madre tuvo lo mismo a su edad. Misma localización.",
+          "resolucion": "Trabajo transgeneracional. Diferenciación destino."
+        }
+      ],
+      "pares_biomagneticos_sugeridos": [
+        {
+          "par": "Pineal - Pineal",
+          "razon": "Identidad y aprendizaje profundo"
+        },
+        {
+          "par": "Cerebelo - Cerebelo",
+          "razon": "Patrones automáticos"
+        },
+        {
+          "par": "Hipocampo - Hipocampo",
+          "razon": "Memoria emocional"
+        }
+      ],
+      "protocolo_terapeutico": "Identificar el patrón. Buscar raíz (transgeneracional o infantil). Acción que rompa el ciclo (aunque sea pequeña). Apoyo terapéutico sostenido.",
+      "herramientas": [
+        "Línea de vida con patrón mapeado",
+        "Genograma del patrón",
+        "Acción concreta de ruptura del ciclo"
+      ]
+    }
+  ]
+}

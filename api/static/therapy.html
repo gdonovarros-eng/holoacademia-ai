@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Holoacademia · Asistentes IA</title>
     <link rel="stylesheet" href="/therapy-static/therapy.css?v=20260510d" />
+    <link rel="stylesheet" href="/therapy-static/therapy_akinator.css?v=1" />
   </head>
   <body>
     <main class="app-shell">
@@ -316,6 +317,63 @@
           <div id="analysis-output" class="stack"></div>
         </section>
 
+        <!-- ═══════════════════════════════════════════════════════════════
+             AKINATOR TERAPÉUTICO · Diálogo guiado tipo Akinator
+             Síntesis Hamer + Flèche + Lavín
+             ═══════════════════════════════════════════════════════════════ -->
+        <section class="panel" id="akinator-panel">
+          <div class="panel-head">
+            <h2>Diálogo guiado · Descubriendo el evento desencadenante</h2>
+            <p>Conversación tipo Akinator que parte del cuestionario inicial y descarta hipótesis con preguntas dirigidas. Mostramos las 3 lecturas: <strong>Hamer</strong> (Nueva Medicina Germánica) + <strong>Flèche</strong> (Biodescodificación) + <strong>Lavín</strong> (Holo-Biomagnetismo). Cuando una hipótesis supere el 72%, recibís una ficha clínica completa con protocolo y pares biomagnéticos.</p>
+          </div>
+
+          <!-- CTA inicial -->
+          <div id="akinator-cta" class="akinator-start-cta">
+            <div class="akinator-start-cta-title">🧬 ¿Listo para profundizar el caso?</div>
+            <div class="akinator-start-cta-sub">
+              Completá al menos el motivo de consulta arriba.
+              El motor analizará los datos iniciales y te hará entre 3 y 12 preguntas dirigidas para descubrir qué evento biológico está activo.
+              Verás las hipótesis ajustarse en tiempo real con cada respuesta.
+            </div>
+            <button type="button" class="btn-start-akinator" id="btn-start-akinator">
+              🧬 Iniciar diálogo guiado
+            </button>
+          </div>
+
+          <!-- Grid: hipótesis (izq) + chat (der). Oculto hasta iniciar -->
+          <div id="akinator-grid" class="akinator-grid" style="display:none;">
+            <!-- Hipótesis activas -->
+            <aside class="akinator-hipotesis">
+              <div class="akinator-hipotesis-head">
+                <span>Hipótesis activas</span>
+                <span class="h-count">0 activas</span>
+              </div>
+              <div id="hipotesis-list"></div>
+            </aside>
+
+            <!-- Chat conversacional -->
+            <div class="akinator-chat">
+              <div class="chat-header">
+                <div class="chat-header-icon">🧬</div>
+                <div class="chat-header-text">
+                  <div class="chat-header-title">Asistente diagnóstico</div>
+                  <div class="chat-header-sub">Síntesis Hamer · Flèche · Lavín</div>
+                </div>
+                <button type="button" class="secondary-btn" id="btn-reset-akinator" style="font-size:0.72rem;padding:6px 10px;">↻ Reiniciar</button>
+              </div>
+              <div id="chat-stream"></div>
+              <div id="chat-input-area">
+                <button type="button" class="ans-btn" data-resp="si">✓ Sí</button>
+                <button type="button" class="ans-btn" data-resp="no">✗ No</button>
+                <button type="button" class="ans-btn" data-resp="no_se">? No estoy seguro</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ficha clínica final -->
+          <div id="ficha-clinica" class="hidden"></div>
+        </section>
+
         <section class="panel" id="pairs-interpret-panel">
           <div class="panel-head">
             <h2>Interpretación de pares encontrados</h2>
@@ -566,5 +624,6 @@
     </template>
 
     <script src="/therapy-static/therapy.js?v=20260510d"></script>
+    <script src="/therapy-static/therapy_akinator.js?v=1"></script>
   </body>
 </html>
