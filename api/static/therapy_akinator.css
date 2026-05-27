@@ -426,32 +426,30 @@
   border-radius: 2px;
 }
 
-/* 3 escuelas en columnas */
-.ficha-escuelas {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-.ficha-escuela {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+/* Interpretación clínica sintetizada */
+.ficha-lectura {
+  background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+  border: 1px solid #a7f3d0;
+  border-left: 4px solid #10b981;
   border-radius: 10px;
-  padding: 14px;
+  padding: 16px 20px;
 }
-.ficha-escuela-nombre {
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 8px;
+.ficha-lectura-texto {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #064e3b;
+  font-weight: 400;
 }
-.ficha-escuela.hamer .ficha-escuela-nombre { color: #b91c1c; }
-.ficha-escuela.fleche .ficha-escuela-nombre { color: #1e40af; }
-.ficha-escuela.lavin .ficha-escuela-nombre { color: #7c3aed; }
-.ficha-escuela-texto {
-  font-size: 0.82rem;
-  line-height: 1.55;
-  color: #334155;
+
+/* Ubicaciones orgánicas (chips) */
+.ficha-loc {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 600;
 }
 
 /* Lista pares biomagnéticos */

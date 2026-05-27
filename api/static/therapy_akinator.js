@@ -81,16 +81,12 @@
       // Detalle expandible (contexto profundo)
       const detail = el('div', 'hip-detail');
 
-      // Escuelas: las 3 lecturas
-      if (h.escuelas) {
-        ['hamer', 'fleche', 'lavin'].forEach(esc_k => {
-          if (h.escuelas[esc_k]) {
-            const sec = el('div', 'hip-detail-section');
-            sec.appendChild(el('div', 'hip-detail-label', esc_k.toUpperCase()));
-            sec.appendChild(el('div', 'hip-detail-text', esc(h.escuelas[esc_k])));
-            detail.appendChild(sec);
-          }
-        });
+      // Lectura clínica sintetizada
+      if (h.lectura_clinica) {
+        const sec = el('div', 'hip-detail-section');
+        sec.appendChild(el('div', 'hip-detail-label', 'Interpretación clínica'));
+        sec.appendChild(el('div', 'hip-detail-text', esc(h.lectura_clinica)));
+        detail.appendChild(sec);
       }
 
       // Ubicaciones
@@ -288,21 +284,23 @@
 
     const body = el('div', 'ficha-body');
 
-    // Sección: 3 escuelas
-    if (ficha.escuelas) {
+    // Sección: Interpretación clínica sintetizada
+    if (ficha.lectura_clinica) {
       const sec = el('div', 'ficha-section');
-      sec.appendChild(el('div', 'ficha-section-title', 'Lectura desde 3 escuelas'));
-      const grid = el('div', 'ficha-escuelas');
-      ['hamer', 'fleche', 'lavin'].forEach(k => {
-        if (ficha.escuelas[k]) {
-          const card = el('div', 'ficha-escuela ' + k);
-          const names = { hamer: '🧬 Hamer · NMG', fleche: '🇫🇷 Flèche · Bio', lavin: '🌎 Lavín · Holo' };
-          card.appendChild(el('div', 'ficha-escuela-nombre', names[k]));
-          card.appendChild(el('div', 'ficha-escuela-texto', esc(ficha.escuelas[k])));
-          grid.appendChild(card);
-        }
-      });
-      sec.appendChild(grid);
+      sec.appendChild(el('div', 'ficha-section-title', 'Interpretación clínica'));
+      const card = el('div', 'ficha-lectura');
+      card.appendChild(el('div', 'ficha-lectura-texto', esc(ficha.lectura_clinica)));
+      sec.appendChild(card);
+      body.appendChild(sec);
+    }
+
+    // Sección: Ubicaciones orgánicas
+    if (ficha.ubicaciones_organicas?.length) {
+      const sec = el('div', 'ficha-section');
+      sec.appendChild(el('div', 'ficha-section-title', 'Ubicaciones orgánicas'));
+      const tags = el('div', 'ficha-sintomas');
+      ficha.ubicaciones_organicas.forEach(u => tags.appendChild(el('span', 'ficha-loc', esc(u))));
+      sec.appendChild(tags);
       body.appendChild(sec);
     }
 

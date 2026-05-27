@@ -240,10 +240,10 @@ def _build_hipotesis_view(priors: dict[str, float], top_n: int = 4) -> list[dict
             "categoria": ev["categoria"],
             "probabilidad": round(p, 4),
             "probabilidad_pct": round(p * 100, 1),
-            "escuelas": ev["escuelas"],
+            "lectura_clinica": ev.get("lectura_clinica", ""),
             "ubicaciones_organicas": ev.get("ubicaciones_organicas", []),
             "sintomas_compatibles": ev.get("sintomas_compatibles", []),
-            "ejemplos_clinicos": ev.get("ejemplos_clinicos", [])[:2],  # solo top 2 en vista intermedia
+            "ejemplos_clinicos": ev.get("ejemplos_clinicos", [])[:2],  # top 2 en vista intermedia
         })
     return out
 
@@ -289,7 +289,7 @@ def _build_ficha_clinica(evento_id: str, priors: dict[str, float], session: dict
         "nombre": ev["nombre"],
         "categoria": ev["categoria"],
         "probabilidad_final": round(priors.get(evento_id, 0) * 100, 1),
-        "escuelas": ev["escuelas"],
+        "lectura_clinica": ev.get("lectura_clinica", ""),
         "ubicaciones_organicas": ev.get("ubicaciones_organicas", []),
         "sintomas_compatibles": ev.get("sintomas_compatibles", []),
         "sintomas_excluyentes": ev.get("sintomas_excluyentes", []),

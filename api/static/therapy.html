@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Holoacademia · Asistentes IA</title>
     <link rel="stylesheet" href="/therapy-static/therapy.css?v=20260510d" />
-    <link rel="stylesheet" href="/therapy-static/therapy_akinator.css?v=1" />
+    <link rel="stylesheet" href="/therapy-static/therapy_akinator.css?v=2" />
   </head>
   <body>
     <main class="app-shell">
@@ -318,25 +318,22 @@
         </section>
 
         <!-- ═══════════════════════════════════════════════════════════════
-             AKINATOR TERAPÉUTICO · Diálogo guiado tipo Akinator
-             Síntesis Hamer + Flèche + Lavín
+             ANÁLISIS PROFUNDO · Diálogo guiado para descubrir el evento
              ═══════════════════════════════════════════════════════════════ -->
         <section class="panel" id="akinator-panel">
           <div class="panel-head">
-            <h2>Diálogo guiado · Descubriendo el evento desencadenante</h2>
-            <p>Conversación tipo Akinator que parte del cuestionario inicial y descarta hipótesis con preguntas dirigidas. Mostramos las 3 lecturas: <strong>Hamer</strong> (Nueva Medicina Germánica) + <strong>Flèche</strong> (Biodescodificación) + <strong>Lavín</strong> (Holo-Biomagnetismo). Cuando una hipótesis supere el 72%, recibís una ficha clínica completa con protocolo y pares biomagnéticos.</p>
+            <h2>Análisis profundo del caso</h2>
+            <p>Diálogo guiado para identificar el evento biológico activo. Respondé las preguntas que aparecen — el sistema ajusta hipótesis en tiempo real y, al alcanzar suficiente certeza, entrega la ficha clínica completa con interpretación, ejemplos similares, protocolo y pares biomagnéticos.</p>
           </div>
 
           <!-- CTA inicial -->
           <div id="akinator-cta" class="akinator-start-cta">
-            <div class="akinator-start-cta-title">🧬 ¿Listo para profundizar el caso?</div>
+            <div class="akinator-start-cta-title">Profundizar el caso</div>
             <div class="akinator-start-cta-sub">
-              Completá al menos el motivo de consulta arriba.
-              El motor analizará los datos iniciales y te hará entre 3 y 12 preguntas dirigidas para descubrir qué evento biológico está activo.
-              Verás las hipótesis ajustarse en tiempo real con cada respuesta.
+              Completá al menos el motivo de consulta arriba. El sistema analizará los datos iniciales y te hará entre 3 y 12 preguntas clínicas dirigidas. Verás las hipótesis ajustarse con cada respuesta y, al confirmar, recibirás la ficha clínica detallada.
             </div>
             <button type="button" class="btn-start-akinator" id="btn-start-akinator">
-              🧬 Iniciar diálogo guiado
+              Iniciar análisis guiado
             </button>
           </div>
 
@@ -354,10 +351,10 @@
             <!-- Chat conversacional -->
             <div class="akinator-chat">
               <div class="chat-header">
-                <div class="chat-header-icon">🧬</div>
+                <div class="chat-header-icon">💬</div>
                 <div class="chat-header-text">
-                  <div class="chat-header-title">Asistente diagnóstico</div>
-                  <div class="chat-header-sub">Síntesis Hamer · Flèche · Lavín</div>
+                  <div class="chat-header-title">Asistente clínico</div>
+                  <div class="chat-header-sub">Responde para refinar las hipótesis</div>
                 </div>
                 <button type="button" class="secondary-btn" id="btn-reset-akinator" style="font-size:0.72rem;padding:6px 10px;">↻ Reiniciar</button>
               </div>
@@ -624,6 +621,6 @@
     </template>
 
     <script src="/therapy-static/therapy.js?v=20260510d"></script>
-    <script src="/therapy-static/therapy_akinator.js?v=1"></script>
+    <script src="/therapy-static/therapy_akinator.js?v=2"></script>
   </body>
 </html>
