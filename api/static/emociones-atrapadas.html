@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastreo de Emociones Atrapadas · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
+<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2">
+<style>
+:root {
+  --acc: #DC2626;
+  --acc-bg: rgba(220,38,38,0.06);
+  --acc-border: rgba(220,38,38,0.20);
+  --acc-grad: linear-gradient(135deg, #FCA5A5 0%, #DC2626 100%);
+}
+body.holo-body { background: var(--holo-bg); color: var(--holo-text); }
+
+.ea-page { max-width: 1240px; margin: 0 auto; padding: 32px 24px 80px; }
+
+.ea-hero { text-align: center; margin-bottom: 28px; }
+.ea-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: var(--acc-bg);
+  border: 1px solid var(--acc-border); border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; color: #B91C1C;
+  margin-bottom: 18px;
+}
+.ea-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #DC2626; }
+.ea-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.03em; color: #0E1116; margin: 0 0 14px;
+}
+.ea-hero h1 em {
+  font-style: italic;
+  background: var(--acc-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.ea-hero p { font-size: 1rem; line-height: 1.55; color: #4A4F5C; max-width: 660px; margin: 0 auto; }
+
+/* Toolbar */
+.ea-toolbar {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 20px 24px; display: grid;
+  grid-template-columns: 1fr 1fr auto; gap: 16px; margin-bottom: 24px;
+  align-items: center;
+}
+@media (max-width: 768px) { .ea-toolbar { grid-template-columns: 1fr; } }
+.ea-toolbar label {
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 6px;
+}
+.ea-toolbar input, .ea-toolbar select {
+  width: 100%; font-family: inherit; font-size: 0.95rem; font-weight: 500;
+  color: #0E1116; background: transparent; border: 0;
+  border-bottom: 1.5px solid #EAEAEA; padding: 6px 0; outline: none;
+}
+.ea-toolbar input:focus { border-bottom-color: var(--acc); }
+
+.ea-btn {
+  font-family: inherit; font-size: 0.85rem; font-weight: 600;
+  padding: 10px 20px; border-radius: 10px; border: 0;
+  cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+}
+.ea-btn-primary { background: var(--acc-grad); color: #FFFFFF; }
+.ea-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(220,38,38,0.25); }
+.ea-btn-secondary { background: #F4F4F5; color: #0E1116; border: 1px solid #EAEAEA; }
+.ea-btn-secondary:hover { background: #E5E3DE; }
+
+/* Estructura del rastreo · workflow guiado */
+.ea-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+@media (max-width: 1024px) { .ea-grid { grid-template-columns: 1fr; } }
+
+.ea-card {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 24px;
+}
+.ea-card-title {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: #B91C1C;
+  margin: 0 0 16px; display: flex; align-items: center; gap: 8px;
+}
+.ea-card-title::before {
+  content: ''; width: 14px; height: 14px;
+  background: var(--acc-grad); border-radius: 4px;
+}
+
+/* Tabla de 60 emociones · 6 columnas */
+.ea-columns {
+  display: grid; grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+@media (max-width: 1100px) { .ea-columns { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px)  { .ea-columns { grid-template-columns: repeat(2, 1fr); } }
+
+.ea-col {
+  background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 12px;
+  padding: 10px;
+}
+.ea-col-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 6px;
+  background: var(--acc); color: #FFFFFF;
+  font-size: 0.72rem; font-weight: 800;
+  margin-bottom: 4px;
+}
+.ea-col-name {
+  font-size: 0.72rem; font-weight: 700; color: #0E1116;
+  margin-bottom: 10px; line-height: 1.3;
+}
+.ea-fila {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 6px 0;
+  border-top: 1px dashed #DCD7CB;
+}
+.ea-fila-label {
+  font-size: 0.65rem; font-weight: 700; color: #6E6B62;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ea-emocion {
+  font-size: 0.78rem; font-weight: 500; padding: 5px 8px;
+  background: #FFFFFF; border: 1px solid #EAEAEA;
+  border-radius: 6px; cursor: pointer; transition: all 0.12s;
+  line-height: 1.3;
+}
+.ea-emocion:hover {
+  border-color: var(--acc); color: var(--acc);
+  background: var(--acc-bg);
+}
+.ea-emocion.selected {
+  background: var(--acc); color: #FFFFFF;
+  border-color: var(--acc); font-weight: 700;
+}
+
+/* Sidebar: emoción seleccionada + edad + sistema */
+.ea-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.ea-selected-card {
+  background: #FFFFFF; border: 2px solid var(--acc-border); border-radius: 14px;
+  padding: 20px;
+}
+.ea-selected-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: #B91C1C; margin-bottom: 8px;
+}
+.ea-selected-name {
+  font-family: var(--holo-font-display);
+  font-size: 1.6rem; font-weight: 800; color: #0E1116;
+  line-height: 1.1; margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+.ea-selected-organo { font-size: 0.88rem; color: #4A4F5C; }
+.ea-selected-empty {
+  color: #6E6B62; font-size: 0.9rem;
+  text-align: center; padding: 18px;
+}
+
+/* Edad chips */
+.ea-form-block {
+  background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 12px;
+  padding: 16px;
+}
+.ea-form-label {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 10px;
+}
+.ea-age-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ea-age-chip {
+  font-size: 0.75rem; font-weight: 600; padding: 5px 12px;
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 999px;
+  cursor: pointer; transition: all 0.15s; color: #4A4F5C;
+}
+.ea-age-chip:hover { border-color: var(--acc-border); color: var(--acc); }
+.ea-age-chip.selected {
+  background: var(--acc); color: #FFFFFF; border-color: transparent;
+}
+
+/* Persona / Notas */
+.ea-input-row {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ea-input {
+  width: 100%; font-family: inherit; font-size: 0.9rem;
+  color: #0E1116; background: #FFFFFF; border: 1px solid #EAEAEA;
+  border-radius: 8px; padding: 9px 12px; outline: none;
+  transition: border-color 0.15s;
+}
+.ea-input:focus { border-color: var(--acc); }
+.ea-notes {
+  width: 100%; font-family: inherit; font-size: 0.88rem;
+  color: #0E1116; background: #FFFFFF; border: 1px solid #EAEAEA;
+  border-radius: 8px; padding: 10px 12px; outline: none;
+  min-height: 80px; line-height: 1.5; resize: vertical;
+}
+.ea-notes:focus { border-color: var(--acc); }
+
+/* Botón registrar */
+.ea-register-btn {
+  width: 100%; font-family: inherit; font-size: 0.95rem; font-weight: 700;
+  padding: 14px; border-radius: 12px; border: 0;
+  background: var(--acc-grad); color: #FFFFFF;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.ea-register-btn:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(220,38,38,0.3); }
+.ea-register-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Registro de emociones rastreadas */
+.ea-registered {
+  margin-top: 24px;
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 24px;
+}
+.ea-registered-empty {
+  color: #6E6B62; font-size: 0.9rem;
+  text-align: center; padding: 30px 16px;
+  background: #FAFAFA; border-radius: 10px;
+}
+.ea-registered-item {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 14px 16px; background: #FAFAFA;
+  border-left: 3px solid var(--acc);
+  border-radius: 8px; margin-bottom: 10px;
+}
+.ea-registered-item-info { flex: 1; }
+.ea-registered-name {
+  font-size: 1rem; font-weight: 700; color: #0E1116;
+}
+.ea-registered-meta {
+  font-size: 0.82rem; color: #6E6B62; margin-top: 3px;
+  line-height: 1.5;
+}
+.ea-registered-meta strong { color: #0E1116; }
+.ea-registered-del {
+  background: transparent; border: 0; color: #6E6B62;
+  font-size: 1.2rem; cursor: pointer; padding: 4px 8px;
+  border-radius: 6px;
+}
+.ea-registered-del:hover { background: rgba(220,38,38,0.08); color: var(--acc); }
+
+/* Status */
+.ea-status {
+  position: fixed; bottom: 24px; right: 24px;
+  background: #0E1116; color: #FFFFFF;
+  padding: 12px 20px; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 8px 24px rgba(14,17,22,0.3);
+  display: none; align-items: center; gap: 8px; z-index: 1000;
+}
+.ea-status.visible { display: inline-flex; }
+.ea-status::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #10b981; }
+</style>
+</head>
+<body class="holo-body mod-page-coral">
+
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-coral">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Rastreo · Código Emocional</div>
+        <div class="holo-module-title">Emociones Atrapadas</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="ea-page">
+
+  <section class="ea-hero">
+    <span class="ea-eyebrow">
+      <span class="ea-eyebrow-dot"></span>
+      Método del Dr. Bradley Nelson · Código de la Emoción
+    </span>
+    <h1>Identifica las <em>emociones atrapadas</em></h1>
+    <p>Las 60 emociones del Código Emocional organizadas en 6 columnas según el sistema orgánico afectado. Usa pulsetest, kinesiología o simple intuición clínica para identificar la emoción atrapada, la edad cuando se atrapó y la persona implicada.</p>
+  </section>
+
+  <!-- Toolbar consultante -->
+  <div class="ea-toolbar">
+    <div>
+      <label for="ea-consultante">Consultante</label>
+      <input type="text" id="ea-consultante" placeholder="Nombre del consultante…" />
+    </div>
+    <div>
+      <label for="ea-fecha">Fecha de la sesión</label>
+      <input type="date" id="ea-fecha" />
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="ea-btn ea-btn-secondary" onclick="resetSession()">Reiniciar</button>
+      <button class="ea-btn ea-btn-primary" onclick="saveSession()">Guardar sesión</button>
+    </div>
+  </div>
+
+  <!-- Grid principal: tabla 60 emociones + sidebar -->
+  <div class="ea-grid">
+
+    <!-- Tabla de 60 emociones -->
+    <div class="ea-card">
+      <div class="ea-card-title">Tabla del Código Emocional · 60 emociones</div>
+      <div class="ea-columns" id="eaColumns"></div>
+    </div>
+
+    <!-- Sidebar: emoción + edad + persona + registrar -->
+    <aside class="ea-sidebar">
+
+      <div class="ea-selected-card" id="selectedCard">
+        <div class="ea-selected-label">Emoción seleccionada</div>
+        <div class="ea-selected-empty" id="selectedEmpty">Toca una emoción en la tabla</div>
+        <div id="selectedFilled" style="display:none;">
+          <div class="ea-selected-name" id="selName"></div>
+          <div class="ea-selected-organo" id="selOrgano"></div>
+        </div>
+      </div>
+
+      <div class="ea-form-block">
+        <div class="ea-form-label">Edad cuando se atrapó</div>
+        <div class="ea-age-chips" id="ageChips"></div>
+      </div>
+
+      <div class="ea-form-block">
+        <div class="ea-form-label">Persona implicada</div>
+        <div class="ea-input-row">
+          <input type="text" class="ea-input" id="personaInput" placeholder="Madre, padre, pareja, hermano…" />
+        </div>
+      </div>
+
+      <div class="ea-form-block">
+        <div class="ea-form-label">Notas del rastreo</div>
+        <textarea class="ea-notes" id="notasInput" placeholder="Detalles, contexto, hipótesis del terapeuta…"></textarea>
+      </div>
+
+      <button class="ea-register-btn" id="registerBtn" onclick="registerEmotion()" disabled>
+        Registrar emoción atrapada
+      </button>
+
+    </aside>
+
+  </div>
+
+  <!-- Lista de emociones registradas en esta sesión -->
+  <div class="ea-registered">
+    <div class="ea-card-title">Emociones rastreadas en esta sesión <span id="regCount" style="opacity:0.6;font-weight:500;"></span></div>
+    <div id="registeredList">
+      <div class="ea-registered-empty">No hay emociones registradas. Identifica una en la tabla y registra arriba.</div>
+    </div>
+  </div>
+
+</main>
+
+<div class="ea-status" id="eaStatus">Guardado</div>
+
+<script>
+let DATA = null;
+let state = {
+  consultante: '',
+  fecha: '',
+  selected: null,    // {nombre, organo, col, fila}
+  age: null,
+  persona: '',
+  notas: '',
+  registered: [],
+};
+
+async function loadEmociones() {
+  try {
+    const resp = await fetch('/api/emociones/tabla');
+    DATA = await resp.json();
+    renderColumns();
+    renderAgeChips();
+  } catch (e) { console.error(e); }
+}
+
+function renderColumns() {
+  const c = document.getElementById('eaColumns');
+  c.innerHTML = '';
+  DATA.columnas.forEach(col => {
+    const div = document.createElement('div');
+    div.className = 'ea-col';
+    div.innerHTML = `
+      <div class="ea-col-num">${col.num}</div>
+      <div class="ea-col-name">${escapeHtml(col.nombre)}</div>
+      <div class="ea-fila">
+        <div class="ea-fila-label">Fila A</div>
+        ${col.fila_a.map((e, i) => `<div class="ea-emocion" data-col="${col.num}" data-fila="A" data-idx="${i}">${escapeHtml(e.nombre)}</div>`).join('')}
+      </div>
+      <div class="ea-fila">
+        <div class="ea-fila-label">Fila B</div>
+        ${col.fila_b.map((e, i) => `<div class="ea-emocion" data-col="${col.num}" data-fila="B" data-idx="${i}">${escapeHtml(e.nombre)}</div>`).join('')}
+      </div>
+    `;
+    c.appendChild(div);
+  });
+  // Bind click
+  document.querySelectorAll('.ea-emocion').forEach(el => {
+    el.onclick = () => selectEmotion(el);
+  });
+}
+
+function selectEmotion(el) {
+  // Limpiar selección previa
+  document.querySelectorAll('.ea-emocion.selected').forEach(e => e.classList.remove('selected'));
+  el.classList.add('selected');
+  const colNum = parseInt(el.dataset.col);
+  const fila = el.dataset.fila;
+  const idx = parseInt(el.dataset.idx);
+  const col = DATA.columnas.find(c => c.num === colNum);
+  const emo = fila === 'A' ? col.fila_a[idx] : col.fila_b[idx];
+  state.selected = { ...emo, col: colNum, colNombre: col.nombre, fila };
+  // Render sidebar
+  document.getElementById('selectedEmpty').style.display = 'none';
+  document.getElementById('selectedFilled').style.display = 'block';
+  document.getElementById('selName').textContent = emo.nombre;
+  document.getElementById('selOrgano').textContent = `${emo.organo} · Columna ${colNum} (${col.nombre}) · Fila ${fila}`;
+  updateRegisterBtn();
+}
+
+function renderAgeChips() {
+  const c = document.getElementById('ageChips');
+  c.innerHTML = '';
+  DATA.edades.forEach(age => {
+    const chip = document.createElement('div');
+    chip.className = 'ea-age-chip';
+    chip.textContent = age.rango;
+    chip.title = age.nota;
+    chip.onclick = () => {
+      document.querySelectorAll('.ea-age-chip.selected').forEach(e => e.classList.remove('selected'));
+      if (state.age === age.rango) {
+        state.age = null;
+      } else {
+        state.age = age.rango;
+        chip.classList.add('selected');
+      }
+      updateRegisterBtn();
+    };
+    c.appendChild(chip);
+  });
+}
+
+function updateRegisterBtn() {
+  document.getElementById('registerBtn').disabled = !state.selected;
+}
+
+function registerEmotion() {
+  if (!state.selected) return;
+  state.persona = document.getElementById('personaInput').value;
+  state.notas = document.getElementById('notasInput').value;
+  state.registered.unshift({
+    id: 'ea_' + Date.now(),
+    emocion: state.selected.nombre,
+    organo: state.selected.organo,
+    col: state.selected.col,
+    colNombre: state.selected.colNombre,
+    fila: state.selected.fila,
+    edad: state.age,
+    persona: state.persona,
+    notas: state.notas,
+  });
+  renderRegistered();
+  showStatus('Emoción registrada: ' + state.selected.nombre);
+  // Clear selection
+  document.querySelectorAll('.ea-emocion.selected').forEach(e => e.classList.remove('selected'));
+  document.querySelectorAll('.ea-age-chip.selected').forEach(e => e.classList.remove('selected'));
+  state.selected = null;
+  state.age = null;
+  document.getElementById('personaInput').value = '';
+  document.getElementById('notasInput').value = '';
+  document.getElementById('selectedEmpty').style.display = 'block';
+  document.getElementById('selectedFilled').style.display = 'none';
+  updateRegisterBtn();
+}
+
+function deleteRegistered(id) {
+  state.registered = state.registered.filter(r => r.id !== id);
+  renderRegistered();
+}
+
+function renderRegistered() {
+  const c = document.getElementById('registeredList');
+  document.getElementById('regCount').textContent = state.registered.length ? `· ${state.registered.length}` : '';
+  if (state.registered.length === 0) {
+    c.innerHTML = '<div class="ea-registered-empty">No hay emociones registradas. Identifica una en la tabla y registra arriba.</div>';
+    return;
+  }
+  c.innerHTML = state.registered.map(r => `
+    <div class="ea-registered-item">
+      <div class="ea-registered-item-info">
+        <div class="ea-registered-name">${escapeHtml(r.emocion)}</div>
+        <div class="ea-registered-meta">
+          <strong>${escapeHtml(r.organo)}</strong> · Col ${r.col} (${escapeHtml(r.colNombre)}) · Fila ${r.fila}
+          ${r.edad ? `<br><strong>Edad:</strong> ${escapeHtml(r.edad)}` : ''}
+          ${r.persona ? `<br><strong>Persona:</strong> ${escapeHtml(r.persona)}` : ''}
+          ${r.notas ? `<br><em>"${escapeHtml(r.notas)}"</em>` : ''}
+        </div>
+      </div>
+      <button class="ea-registered-del" onclick="deleteRegistered('${r.id}')" title="Eliminar">×</button>
+    </div>
+  `).join('');
+}
+
+function saveSession() {
+  state.consultante = document.getElementById('ea-consultante').value;
+  state.fecha = document.getElementById('ea-fecha').value;
+  if (!state.consultante.trim()) {
+    alert('Ingresa el nombre del consultante antes de guardar.');
+    return;
+  }
+  if (state.registered.length === 0) {
+    alert('Registra al menos una emoción antes de guardar.');
+    return;
+  }
+  const saved = JSON.parse(localStorage.getItem('holoacademia_emociones_atrapadas') || '[]');
+  saved.unshift({
+    id: 'sess_' + Date.now(),
+    saved_at: new Date().toISOString(),
+    consultante: state.consultante,
+    fecha: state.fecha,
+    registered: state.registered,
+  });
+  if (saved.length > 50) saved.pop();
+  localStorage.setItem('holoacademia_emociones_atrapadas', JSON.stringify(saved));
+  showStatus('Sesión guardada · ' + state.consultante);
+}
+
+function resetSession() {
+  if (!confirm('¿Reiniciar la sesión? Se borrarán todas las emociones registradas.')) return;
+  state.registered = [];
+  state.selected = null;
+  state.age = null;
+  document.querySelectorAll('.selected').forEach(e => e.classList.remove('selected'));
+  document.getElementById('selectedEmpty').style.display = 'block';
+  document.getElementById('selectedFilled').style.display = 'none';
+  document.getElementById('personaInput').value = '';
+  document.getElementById('notasInput').value = '';
+  updateRegisterBtn();
+  renderRegistered();
+}
+
+function showStatus(msg) {
+  const el = document.getElementById('eaStatus');
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 2500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('ea-fecha').value = today;
+  state.fecha = today;
+  loadEmociones();
+});
+</script>
+
+</body>
+</html>

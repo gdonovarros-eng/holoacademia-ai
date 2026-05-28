@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastreo de Creencias · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
+<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2">
+<style>
+:root {
+  --acc: #D97706;
+  --acc-bg: rgba(217,119,6,0.08);
+  --acc-border: rgba(217,119,6,0.25);
+  --acc-grad: linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
+}
+body.holo-body { background: var(--holo-bg); color: var(--holo-text); }
+
+.c-page { max-width: 980px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* Hero */
+.c-hero { text-align: center; margin-bottom: 32px; }
+.c-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: var(--acc-bg);
+  border: 1px solid var(--acc-border); border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; color: #92400E;
+  margin-bottom: 20px;
+}
+.c-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #D97706; }
+.c-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.03em; color: #0E1116;
+  margin: 0 0 14px;
+}
+.c-hero h1 em {
+  font-style: italic;
+  background: var(--acc-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.c-hero p {
+  font-size: 1rem; line-height: 1.55; color: #4A4F5C;
+  max-width: 640px; margin: 0 auto;
+}
+
+/* Toolbar */
+.c-toolbar {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 20px 24px; display: grid;
+  grid-template-columns: 1fr 1fr auto; gap: 16px; margin-bottom: 24px;
+  align-items: center;
+}
+@media (max-width: 768px) { .c-toolbar { grid-template-columns: 1fr; } }
+.c-toolbar label {
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 6px;
+}
+.c-toolbar input {
+  width: 100%; font-family: inherit; font-size: 0.95rem; font-weight: 500;
+  color: #0E1116; background: transparent; border: 0;
+  border-bottom: 1.5px solid #EAEAEA; padding: 6px 0; outline: none;
+}
+.c-toolbar input:focus { border-bottom-color: var(--acc); }
+
+.c-btn {
+  font-family: inherit; font-size: 0.85rem; font-weight: 600;
+  padding: 10px 20px; border-radius: 10px; border: 0;
+  cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+}
+.c-btn-primary { background: var(--acc-grad); color: #FFFFFF; }
+.c-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(217,119,6,0.28); }
+.c-btn-secondary { background: #F4F4F5; color: #0E1116; border: 1px solid #EAEAEA; }
+.c-btn-secondary:hover { background: #E5E3DE; }
+
+/* Progress bar */
+.c-progress {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 14px;
+  padding: 18px 22px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 20px;
+}
+.c-progress-text {
+  font-size: 0.85rem; color: #4A4F5C; flex-shrink: 0;
+}
+.c-progress-text strong { color: #0E1116; font-weight: 700; }
+.c-progress-bar {
+  flex: 1; height: 8px; background: #F4F4F5; border-radius: 999px; overflow: hidden;
+}
+.c-progress-fill {
+  height: 100%; background: var(--acc-grad); border-radius: 999px;
+  transition: width 0.3s ease;
+}
+.c-progress-percent {
+  font-size: 0.95rem; font-weight: 700; color: var(--acc);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Pregunta actual · grande */
+.c-question-card {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 20px;
+  padding: 40px 36px; margin-bottom: 24px; text-align: center;
+}
+@media (max-width: 640px) { .c-question-card { padding: 28px 20px; } }
+.c-question-meta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-bottom: 18px;
+}
+.c-question-num {
+  font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #6E6B62;
+}
+.c-question-cat {
+  font-size: 0.72rem; font-weight: 700; padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--acc-bg); color: var(--acc); border: 1px solid var(--acc-border);
+}
+.c-question-text {
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  font-weight: 600; line-height: 1.35; color: #0E1116;
+  letter-spacing: -0.01em;
+  margin: 0 auto 32px; max-width: 620px;
+}
+.c-answers {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+}
+.c-ans-btn {
+  font-family: inherit; font-size: 1rem; font-weight: 700;
+  padding: 14px 36px; border-radius: 12px; cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 2px solid;
+  min-width: 160px; justify-content: center;
+}
+.c-ans-v {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.3);
+  color: #047857;
+}
+.c-ans-v:hover, .c-ans-v.selected {
+  background: #10B981; border-color: #10B981; color: #FFFFFF;
+  transform: translateY(-1px); box-shadow: 0 8px 24px rgba(16,185,129,0.3);
+}
+.c-ans-f {
+  background: rgba(220,38,38,0.06);
+  border-color: rgba(220,38,38,0.25);
+  color: #B91C1C;
+}
+.c-ans-f:hover, .c-ans-f.selected {
+  background: #DC2626; border-color: #DC2626; color: #FFFFFF;
+  transform: translateY(-1px); box-shadow: 0 8px 24px rgba(220,38,38,0.3);
+}
+.c-ans-skip {
+  background: transparent; border-color: #EAEAEA; color: #6E6B62;
+  font-weight: 500;
+}
+.c-ans-skip:hover { border-color: #4A4F5C; color: #0E1116; }
+.c-ans-key {
+  font-size: 0.7rem; font-weight: 600; opacity: 0.7;
+  padding: 2px 6px; border-radius: 4px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* Nav */
+.c-nav { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 32px; }
+.c-nav-btn {
+  font-family: inherit; font-size: 0.88rem; font-weight: 600;
+  padding: 11px 20px; border-radius: 10px; cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #F4F4F5; color: #0E1116; border: 1px solid #EAEAEA;
+}
+.c-nav-btn:hover:not(:disabled) { background: #E5E3DE; }
+.c-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.c-nav-btn svg {
+  width: 14px; height: 14px;
+  stroke: currentColor; fill: none; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* Resultados */
+.c-results-card {
+  background: #FFFFFF; border: 2px solid var(--acc-border); border-radius: 20px;
+  padding: 32px; margin-bottom: 24px;
+  display: none;
+}
+.c-results-card.visible { display: block; }
+.c-results-title {
+  font-family: var(--holo-font-display);
+  font-size: 1.6rem; font-weight: 800; color: #0E1116;
+  margin: 0 0 8px;
+}
+.c-results-sub { font-size: 0.95rem; color: #4A4F5C; margin: 0 0 24px; }
+
+.c-cat-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.c-cat-card {
+  background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 12px;
+  padding: 16px;
+}
+.c-cat-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px;
+}
+.c-cat-name {
+  font-size: 0.95rem; font-weight: 700; color: #0E1116;
+}
+.c-cat-score {
+  font-family: var(--holo-font-display);
+  font-size: 1.5rem; font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: var(--acc);
+}
+.c-cat-score.low    { color: #DC2626; }
+.c-cat-score.mid    { color: #D97706; }
+.c-cat-score.high   { color: #10B981; }
+.c-cat-bar {
+  height: 8px; background: #EAEAEA; border-radius: 999px; overflow: hidden;
+  margin-bottom: 10px;
+}
+.c-cat-bar-fill {
+  height: 100%; border-radius: 999px;
+  transition: width 0.5s ease;
+}
+.c-cat-bar-fill.low  { background: linear-gradient(90deg, #DC2626, #F87171); }
+.c-cat-bar-fill.mid  { background: linear-gradient(90deg, #D97706, #FBBF24); }
+.c-cat-bar-fill.high { background: linear-gradient(90deg, #10B981, #34D399); }
+.c-cat-afirm {
+  font-size: 0.82rem; line-height: 1.45;
+  color: #4A4F5C; font-style: italic;
+}
+
+.c-results-summary {
+  margin-top: 24px; padding-top: 24px;
+  border-top: 1px solid #EAEAEA;
+}
+.c-summary-title {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 10px;
+}
+.c-summary-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.c-summary-list li {
+  padding: 10px 14px; background: rgba(220,38,38,0.05);
+  border-left: 3px solid #DC2626; border-radius: 6px;
+  margin-bottom: 6px;
+  font-size: 0.92rem; color: #0E1116;
+}
+.c-summary-list li strong { color: #B91C1C; }
+
+/* Status */
+.c-status {
+  position: fixed; bottom: 24px; right: 24px;
+  background: #0E1116; color: #FFFFFF;
+  padding: 12px 20px; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 8px 24px rgba(14,17,22,0.3);
+  display: none; align-items: center; gap: 8px; z-index: 1000;
+}
+.c-status.visible { display: inline-flex; }
+.c-status::before {
+  content: ''; width: 8px; height: 8px;
+  border-radius: 50%; background: #10b981;
+}
+</style>
+</head>
+<body class="holo-body mod-page-amber">
+
+<!-- Header unificado -->
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-amber">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Rastreo · EFT PROG</div>
+        <div class="holo-module-title">Rastreo de Creencias</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="c-page">
+
+  <!-- Hero -->
+  <section class="c-hero">
+    <span class="c-eyebrow">
+      <span class="c-eyebrow-dot"></span>
+      Inventario de Creencias · Método Lavín
+    </span>
+    <h1>Detecta tus <em>creencias limitantes</em></h1>
+    <p>100 preguntas que evalúan 10 áreas centrales de tu sistema de creencias: Valía, Seguridad, Comportamiento, Control, Amor, Autonomía, Justicia, Integración, Los demás y Normas. Al finalizar, recibes el perfil completo y las áreas a reforzar.</p>
+  </section>
+
+  <!-- Toolbar -->
+  <div class="c-toolbar">
+    <div>
+      <label for="c-consultante">Consultante</label>
+      <input type="text" id="c-consultante" placeholder="Nombre del consultante…" />
+    </div>
+    <div>
+      <label for="c-fecha">Fecha</label>
+      <input type="date" id="c-fecha" />
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="c-btn c-btn-secondary" onclick="resetInventario()">Reiniciar</button>
+      <button class="c-btn c-btn-primary" id="btnFinish" onclick="finishInventario()">Ver resultados</button>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="c-progress">
+    <div class="c-progress-text"><strong id="qNum">1</strong> de <strong>100</strong> · respondidas <strong id="qAnswered">0</strong></div>
+    <div class="c-progress-bar"><div class="c-progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="c-progress-percent" id="qPercent">0%</div>
+  </div>
+
+  <!-- Question card -->
+  <div class="c-question-card" id="qCard"></div>
+
+  <!-- Navigation -->
+  <div class="c-nav">
+    <button class="c-nav-btn" id="btnPrev" onclick="goQ(-1)">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Anterior
+    </button>
+    <button class="c-nav-btn" id="btnSkipNav" onclick="goQ(1)">
+      Siguiente
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Results -->
+  <section class="c-results-card" id="resultsCard"></section>
+
+</main>
+
+<div class="c-status" id="cStatus">Guardado</div>
+
+<script>
+let DATA = null;
+let state = {
+  consultante: '',
+  fecha: '',
+  answers: {},    // q.n → 'V' | 'F' | null
+  currentIdx: 0,
+};
+
+async function loadInventario() {
+  try {
+    const resp = await fetch('/api/creencias/inventario');
+    const data = await resp.json();
+    DATA = data;
+    renderQuestion();
+    updateProgress();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function renderQuestion() {
+  if (!DATA) return;
+  const q = DATA.preguntas[state.currentIdx];
+  const cat = DATA.categorias.find(c => c.id === q.cat);
+  const current = state.answers[q.n] || null;
+  document.getElementById('qCard').innerHTML = `
+    <div class="c-question-meta">
+      <span class="c-question-num">Pregunta ${q.n} de 100</span>
+      <span class="c-question-cat">${escapeHtml(cat?.nombre || q.cat)}</span>
+    </div>
+    <p class="c-question-text">${escapeHtml(q.texto)}</p>
+    <div class="c-answers">
+      <button class="c-ans-btn c-ans-v${current==='V'?' selected':''}" onclick="answer('V')">
+        Verdadero <span class="c-ans-key">V</span>
+      </button>
+      <button class="c-ans-btn c-ans-f${current==='F'?' selected':''}" onclick="answer('F')">
+        Falso <span class="c-ans-key">F</span>
+      </button>
+    </div>
+  `;
+  // Update nav buttons
+  document.getElementById('btnPrev').disabled = state.currentIdx === 0;
+  document.getElementById('btnSkipNav').disabled = state.currentIdx === DATA.preguntas.length - 1;
+  document.getElementById('qNum').textContent = state.currentIdx + 1;
+}
+
+function updateProgress() {
+  const total = DATA?.preguntas?.length || 100;
+  const answered = Object.keys(state.answers).filter(k => state.answers[k]).length;
+  const pct = Math.round(answered / total * 100);
+  document.getElementById('qAnswered').textContent = answered;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('qPercent').textContent = pct + '%';
+}
+
+function answer(val) {
+  if (!DATA) return;
+  const q = DATA.preguntas[state.currentIdx];
+  state.answers[q.n] = val;
+  updateProgress();
+  // Auto-avanzar
+  setTimeout(() => {
+    if (state.currentIdx < DATA.preguntas.length - 1) {
+      state.currentIdx++;
+      renderQuestion();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      renderQuestion();
+    }
+  }, 220);
+}
+
+function goQ(delta) {
+  if (!DATA) return;
+  const next = state.currentIdx + delta;
+  if (next < 0 || next >= DATA.preguntas.length) return;
+  state.currentIdx = next;
+  renderQuestion();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function calcularResultados() {
+  // Cada categoría: 10 preguntas. 5 con pol "+" (V suma 1) y 5 con pol "-" (F suma 1).
+  const scores = {};
+  DATA.categorias.forEach(c => scores[c.id] = 0);
+  DATA.preguntas.forEach(q => {
+    const ans = state.answers[q.n];
+    if (!ans) return;
+    if (q.pol === '+' && ans === 'V') scores[q.cat]++;
+    if (q.pol === '-' && ans === 'F') scores[q.cat]++;
+  });
+  return scores;
+}
+
+function finishInventario() {
+  if (!DATA) return;
+  const total = DATA.preguntas.length;
+  const answered = Object.values(state.answers).filter(Boolean).length;
+  if (answered < total) {
+    if (!confirm(`Has respondido ${answered} de ${total} preguntas. ¿Quieres ver resultados igual?`)) return;
+  }
+  const scores = calcularResultados();
+  renderResultados(scores);
+  // Guardar automáticamente
+  state.consultante = document.getElementById('c-consultante').value;
+  state.fecha = document.getElementById('c-fecha').value;
+  saveResult(scores);
+}
+
+function levelClass(score) {
+  if (score <= 3) return 'low';
+  if (score <= 6) return 'mid';
+  return 'high';
+}
+
+function renderResultados(scores) {
+  const cont = document.getElementById('resultsCard');
+  cont.classList.add('visible');
+  const totalAnswered = Object.values(state.answers).filter(Boolean).length;
+  const areasBajas = DATA.categorias.filter(c => scores[c.id] < 6);
+
+  let catsHtml = '';
+  DATA.categorias.forEach(c => {
+    const s = scores[c.id];
+    const lvl = levelClass(s);
+    const pct = (s / 10) * 100;
+    catsHtml += `
+      <div class="c-cat-card">
+        <div class="c-cat-header">
+          <div class="c-cat-name">${escapeHtml(c.nombre)}</div>
+          <div class="c-cat-score ${lvl}">${s}<span style="font-size:0.7em;color:#6E6B62">/10</span></div>
+        </div>
+        <div class="c-cat-bar"><div class="c-cat-bar-fill ${lvl}" style="width:${pct}%"></div></div>
+        <div class="c-cat-afirm">"${escapeHtml(c.afirmacion)}"</div>
+      </div>
+    `;
+  });
+
+  let summaryHtml = '';
+  if (areasBajas.length > 0) {
+    summaryHtml = `
+      <div class="c-results-summary">
+        <div class="c-summary-title">Áreas a empoderar (< 6 puntos)</div>
+        <ul class="c-summary-list">
+          ${areasBajas.map(c => `<li><strong>${escapeHtml(c.nombre)}</strong> · ${scores[c.id]}/10 — Reforzar la creencia: "${escapeHtml(c.afirmacion)}"</li>`).join('')}
+        </ul>
+        <p style="margin-top:14px; font-size:0.85rem; color:#6E6B62; line-height:1.55;">
+          Las creencias que estén por debajo de 6 puntos hace falta empoderarlas en algo más constructivo.
+          Se recomienda aplicar el <strong>Protocolo Psicogeográfico de Cambio de Creencias</strong> o <strong>EFT PROG</strong> sobre cada área.
+        </p>
+      </div>
+    `;
+  } else {
+    summaryHtml = `
+      <div class="c-results-summary">
+        <div class="c-summary-title">Resultados</div>
+        <p style="font-size:0.95rem; color:#0E1116;">
+          Tus 10 áreas de creencias muestran puntuaciones sólidas (≥6/10). Continúa reforzándolas.
+        </p>
+      </div>
+    `;
+  }
+
+  cont.innerHTML = `
+    <h2 class="c-results-title">Perfil de Creencias</h2>
+    <p class="c-results-sub">${totalAnswered} preguntas respondidas · ${DATA.categorias.length} áreas evaluadas</p>
+    <div class="c-cat-grid">${catsHtml}</div>
+    ${summaryHtml}
+  `;
+  cont.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function saveResult(scores) {
+  if (!state.consultante.trim()) return;
+  const saved = JSON.parse(localStorage.getItem('holoacademia_creencias') || '[]');
+  saved.unshift({
+    id: 'cr_' + Date.now(),
+    saved_at: new Date().toISOString(),
+    consultante: state.consultante,
+    fecha: state.fecha,
+    answers: state.answers,
+    scores: scores,
+  });
+  if (saved.length > 50) saved.pop();
+  localStorage.setItem('holoacademia_creencias', JSON.stringify(saved));
+  showStatus('Resultado guardado · ' + state.consultante);
+}
+
+function resetInventario() {
+  if (!confirm('¿Reiniciar el inventario? Se borrarán todas las respuestas.')) return;
+  state = { consultante: state.consultante, fecha: state.fecha, answers: {}, currentIdx: 0 };
+  document.getElementById('resultsCard').classList.remove('visible');
+  renderQuestion();
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showStatus(msg) {
+  const el = document.getElementById('cStatus');
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 2500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+// Teclas
+document.addEventListener('keydown', e => {
+  if (!DATA) return;
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'v' || e.key === 'V') answer('V');
+  else if (e.key === 'f' || e.key === 'F') answer('F');
+  else if (e.key === 'ArrowLeft') goQ(-1);
+  else if (e.key === 'ArrowRight') goQ(1);
+});
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('c-fecha').value = today;
+  state.fecha = today;
+  loadInventario();
+});
+</script>
+
+</body>
+</html>

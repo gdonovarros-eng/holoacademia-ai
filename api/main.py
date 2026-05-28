@@ -304,7 +304,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -651,6 +651,29 @@ async def holograma_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "holograma.html", headers=_no_cache_headers(allow_iframe=True))
 
 
+@app.get("/eft-pro", include_in_schema=False)
+async def eft_pro_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "eft-pro.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/creencias", include_in_schema=False)
+async def creencias_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "creencias.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/api/creencias/inventario", include_in_schema=False)
+async def api_creencias_inventario():
+    """Inventario de 100 creencias del Método Lavín."""
+    import json as _json
+    from fastapi.responses import JSONResponse
+    inv_path = THERAPY_STATIC_DIR.parent.parent / "data" / "creencias_inventario.json"
+    try:
+        with open(inv_path, encoding="utf-8") as f:
+            return JSONResponse(_json.load(f))
+    except FileNotFoundError:
+        return JSONResponse({"error": "not_found"}, status_code=404)
+
+
 @app.get("/api/holograma/tablas", include_in_schema=False)
 async def holograma_tablas():
     """Tablas de rastreo del Método Lavín (emociones, capas embrionarias, chakras, meridianos, hormonas, cromosomas, microbios)."""
@@ -662,6 +685,25 @@ async def holograma_tablas():
             return JSONResponse(_json.load(f))
     except FileNotFoundError:
         return JSONResponse({"error": "tablas_not_found"}, status_code=404)
+
+
+@app.get("/emociones-atrapadas", include_in_schema=False)
+async def emociones_atrapadas_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "emociones-atrapadas.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/api/emociones/tabla", include_in_schema=False)
+async def api_emociones_tabla():
+    """Tabla de las 60 emociones atrapadas del Código de la Emoción (Bradley Nelson)."""
+    import json as _json
+    from fastapi.responses import JSONResponse
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "emociones_atrapadas.json"
+    try:
+        with open(p, encoding="utf-8") as f:
+            return JSONResponse(_json.load(f))
+    except FileNotFoundError:
+        return JSONResponse({"error": "not_found"}, status_code=404)
+
 
 @app.get("/tarot", include_in_schema=False)
 async def tarot_app() -> FileResponse:

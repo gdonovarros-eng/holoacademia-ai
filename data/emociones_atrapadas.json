@@ -1,0 +1,130 @@
+{
+  "fuente": "Código de la Emoción · Dr. Bradley Nelson",
+  "version": "1.0",
+  "descripcion": "Las 60 emociones atrapadas organizadas en 6 columnas. Cada emoción tiene un órgano/zona asociada según la cosmología china + medicina energética.",
+  "columnas": [
+    {
+      "num": 1,
+      "nombre": "Corazón / Intestino Delgado",
+      "fila_a": [
+        { "nombre": "Abandono",       "organo": "Corazón" },
+        { "nombre": "Traición",       "organo": "Corazón" },
+        { "nombre": "Pena",           "organo": "Corazón" },
+        { "nombre": "Desamparo",      "organo": "Corazón" },
+        { "nombre": "Esfuerzo perdido","organo": "Corazón" }
+      ],
+      "fila_b": [
+        { "nombre": "Amor no recibido","organo": "Intestino delgado" },
+        { "nombre": "Vulnerabilidad",  "organo": "Intestino delgado" },
+        { "nombre": "Alegría descontrolada","organo": "Corazón" },
+        { "nombre": "Inseguridad",     "organo": "Intestino delgado" },
+        { "nombre": "Conmoción",       "organo": "Corazón" }
+      ]
+    },
+    {
+      "num": 2,
+      "nombre": "Bazo / Estómago",
+      "fila_a": [
+        { "nombre": "Ansiedad",       "organo": "Estómago" },
+        { "nombre": "Desesperación",  "organo": "Estómago" },
+        { "nombre": "Asco / Repulsión","organo": "Estómago" },
+        { "nombre": "Nerviosismo",    "organo": "Estómago" },
+        { "nombre": "Preocupación",   "organo": "Estómago" }
+      ],
+      "fila_b": [
+        { "nombre": "Fracaso",        "organo": "Bazo" },
+        { "nombre": "Impotencia",     "organo": "Bazo" },
+        { "nombre": "Desesperanza",   "organo": "Bazo" },
+        { "nombre": "Falta de control","organo": "Bazo" },
+        { "nombre": "Baja autoestima", "organo": "Bazo" }
+      ]
+    },
+    {
+      "num": 3,
+      "nombre": "Pulmón / Intestino Grueso",
+      "fila_a": [
+        { "nombre": "Llanto",         "organo": "Pulmón" },
+        { "nombre": "Desánimo",       "organo": "Pulmón" },
+        { "nombre": "Rechazo",        "organo": "Pulmón" },
+        { "nombre": "Tristeza",       "organo": "Pulmón" },
+        { "nombre": "Pena del corazón","organo": "Pulmón" }
+      ],
+      "fila_b": [
+        { "nombre": "Confusión",      "organo": "Intestino grueso" },
+        { "nombre": "Actitud defensiva","organo": "Intestino grueso" },
+        { "nombre": "Aflicción",      "organo": "Intestino grueso" },
+        { "nombre": "Autoabuso",      "organo": "Intestino grueso" },
+        { "nombre": "Atascado",       "organo": "Intestino grueso" }
+      ]
+    },
+    {
+      "num": 4,
+      "nombre": "Hígado / Vesícula biliar",
+      "fila_a": [
+        { "nombre": "Ira",             "organo": "Hígado" },
+        { "nombre": "Amargura",        "organo": "Hígado" },
+        { "nombre": "Culpa",           "organo": "Hígado" },
+        { "nombre": "Odio",            "organo": "Hígado" },
+        { "nombre": "Resentimiento",   "organo": "Hígado" }
+      ],
+      "fila_b": [
+        { "nombre": "Depresión",       "organo": "Vesícula biliar" },
+        { "nombre": "Frustración",     "organo": "Vesícula biliar" },
+        { "nombre": "Indecisión",      "organo": "Vesícula biliar" },
+        { "nombre": "Pánico",          "organo": "Vesícula biliar" },
+        { "nombre": "Recibir vacío",   "organo": "Vesícula biliar" }
+      ]
+    },
+    {
+      "num": 5,
+      "nombre": "Riñón / Vejiga",
+      "fila_a": [
+        { "nombre": "Culpabilidad",    "organo": "Riñón" },
+        { "nombre": "Miedo",           "organo": "Riñón" },
+        { "nombre": "Horror",          "organo": "Riñón" },
+        { "nombre": "Falta de apoyo",  "organo": "Riñón" },
+        { "nombre": "Indecisión profunda","organo": "Riñón" }
+      ],
+      "fila_b": [
+        { "nombre": "Conflicto",       "organo": "Vejiga" },
+        { "nombre": "Creatividad bloqueada","organo": "Vejiga" },
+        { "nombre": "Terror",          "organo": "Vejiga" },
+        { "nombre": "Inquietud",       "organo": "Vejiga" },
+        { "nombre": "Sin apoyo",       "organo": "Vejiga" }
+      ]
+    },
+    {
+      "num": 6,
+      "nombre": "Glándulas / Sexualidad",
+      "fila_a": [
+        { "nombre": "Vergüenza",        "organo": "Glándulas" },
+        { "nombre": "Mortificación",    "organo": "Glándulas" },
+        { "nombre": "Repulsión sexual", "organo": "Glándulas" },
+        { "nombre": "Bochorno",         "organo": "Glándulas" },
+        { "nombre": "Humillación",      "organo": "Glándulas" }
+      ],
+      "fila_b": [
+        { "nombre": "Celos",            "organo": "Sexualidad" },
+        { "nombre": "Anhelo",           "organo": "Sexualidad" },
+        { "nombre": "Lujuria",          "organo": "Sexualidad" },
+        { "nombre": "Sobrecarga",       "organo": "Sexualidad" },
+        { "nombre": "Orgullo",          "organo": "Sexualidad" }
+      ]
+    }
+  ],
+  "edades": [
+    { "rango": "Antes de concepción", "nota": "Memoria ancestral / transgeneracional" },
+    { "rango": "Concepción",          "nota": "Momento del óvulo y espermatozoide" },
+    { "rango": "Gestación 1er trim",  "nota": "Semanas 1-12" },
+    { "rango": "Gestación 2do trim",  "nota": "Semanas 13-26" },
+    { "rango": "Gestación 3er trim",  "nota": "Semanas 27-40" },
+    { "rango": "Parto",               "nota": "Nacimiento" },
+    { "rango": "0-2 años",            "nota": "Infancia temprana · apego primario" },
+    { "rango": "3-6 años",            "nota": "Primera infancia · identidad" },
+    { "rango": "7-12 años",           "nota": "Etapa escolar · pertenencia" },
+    { "rango": "13-18 años",          "nota": "Adolescencia · identidad social" },
+    { "rango": "19-30 años",          "nota": "Juventud adulta · independencia" },
+    { "rango": "31-50 años",          "nota": "Madurez · responsabilidad / familia" },
+    { "rango": "51+ años",            "nota": "Adultez tardía / mayor" }
+  ]
+}
