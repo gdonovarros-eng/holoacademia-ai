@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Clínica del Terapeuta · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
+<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2">
+<style>
+:root {
+  --acc: #4F7942;
+  --acc-bg: rgba(79,121,66,0.06);
+  --acc-border: rgba(79,121,66,0.22);
+  --acc-grad: linear-gradient(135deg, #86EFAC 0%, #4F7942 100%);
+}
+body.holo-body { background: var(--holo-bg); color: var(--holo-text); }
+
+.gc-page { max-width: 1180px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* Hero */
+.gc-hero { text-align: center; margin-bottom: 28px; }
+.gc-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: var(--acc-bg);
+  border: 1px solid var(--acc-border); border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; color: #2F5128;
+  margin-bottom: 18px;
+}
+.gc-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #4F7942; }
+.gc-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.03em; color: #0E1116; margin: 0 0 14px;
+}
+.gc-hero h1 em {
+  font-style: italic;
+  background: var(--acc-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gc-hero p { font-size: 1rem; line-height: 1.55; color: #4A4F5C; max-width: 700px; margin: 0 auto; }
+
+/* Toolbar de búsqueda + filtros */
+.gc-toolbar {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 18px 22px; margin-bottom: 24px;
+  display: grid; grid-template-columns: 1fr auto; gap: 18px;
+  align-items: center;
+}
+@media (max-width: 768px) { .gc-toolbar { grid-template-columns: 1fr; } }
+.gc-search {
+  display: flex; gap: 10px; align-items: center;
+  border-bottom: 1.5px solid #EAEAEA; padding: 6px 0;
+}
+.gc-search svg { width: 18px; height: 18px; color: #6E6B62; flex-shrink: 0; }
+.gc-search input {
+  flex: 1; font-family: inherit; font-size: 1rem; font-weight: 500;
+  color: #0E1116; background: transparent; border: 0; outline: none;
+}
+.gc-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.gc-filter {
+  font-family: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 7px 14px; border-radius: 999px;
+  background: #F4F4F5; color: #4A4F5C; border: 1px solid transparent;
+  cursor: pointer; transition: all 0.15s ease;
+}
+.gc-filter:hover { background: #E5E3DE; }
+.gc-filter.active {
+  background: var(--acc-bg); color: var(--acc);
+  border-color: var(--acc-border);
+}
+
+/* Index of sections */
+.gc-index {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 22px 24px; margin-bottom: 24px;
+}
+.gc-index-title {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 12px;
+}
+.gc-index-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+.gc-index-link {
+  text-decoration: none; color: #0E1116;
+  font-size: 0.88rem; padding: 8px 12px;
+  border-radius: 8px; transition: background 0.15s ease;
+  display: flex; align-items: center; gap: 8px;
+}
+.gc-index-link:hover { background: var(--acc-bg); color: var(--acc); }
+.gc-index-num {
+  font-size: 0.72rem; font-weight: 700; color: var(--acc);
+  width: 22px; flex-shrink: 0;
+}
+
+/* Sections */
+.gc-section {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  margin-bottom: 18px; overflow: hidden;
+  scroll-margin-top: 24px;
+}
+.gc-section.gc-hidden { display: none; }
+.gc-section-head {
+  padding: 20px 26px; display: flex; align-items: center; gap: 16px;
+  cursor: pointer; user-select: none;
+  background: #FFFFFF; transition: background 0.15s ease;
+}
+.gc-section-head:hover { background: #FAFAFA; }
+.gc-section-num {
+  flex-shrink: 0;
+  font-size: 1.1rem; font-weight: 800;
+  width: 36px; height: 36px;
+  display: grid; place-items: center;
+  background: var(--acc-grad); color: #FFFFFF;
+  border-radius: 10px;
+}
+.gc-section-info { flex: 1; min-width: 0; }
+.gc-section-tag {
+  display: inline-block; font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--acc); background: var(--acc-bg);
+  padding: 3px 8px; border-radius: 4px; margin-bottom: 4px;
+}
+.gc-section-title {
+  font-size: 1.15rem; font-weight: 700; color: #0E1116;
+  margin: 0 0 2px;
+}
+.gc-section-summary {
+  font-size: 0.85rem; color: #6E6B62; line-height: 1.4;
+}
+.gc-section-toggle {
+  flex-shrink: 0; width: 32px; height: 32px;
+  display: grid; place-items: center;
+  background: #F4F4F5; border-radius: 50%;
+  color: #4A4F5C;
+  transition: transform 0.25s ease, background 0.15s ease;
+}
+.gc-section.open .gc-section-toggle { transform: rotate(180deg); background: var(--acc-bg); color: var(--acc); }
+.gc-section-toggle svg { width: 16px; height: 16px; }
+
+.gc-section-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.gc-section.open .gc-section-body { max-height: 4000px; }
+.gc-section-body-inner {
+  padding: 8px 26px 26px;
+  display: grid; gap: 14px;
+}
+
+.gc-item {
+  padding: 16px 18px; background: #FAFAFA;
+  border-radius: 10px; border-left: 3px solid var(--acc);
+}
+.gc-item-term {
+  font-size: 0.95rem; font-weight: 700; color: #0E1116;
+  margin-bottom: 6px;
+}
+.gc-item-def {
+  font-size: 0.9rem; line-height: 1.6; color: #4A4F5C;
+}
+
+/* Preguntas clave (autoinspección) */
+.gc-questions {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 28px; margin-top: 32px;
+}
+.gc-questions-title {
+  font-size: 1.2rem; font-weight: 700; color: #0E1116;
+  margin: 0 0 6px;
+}
+.gc-questions-sub {
+  font-size: 0.88rem; color: #6E6B62; margin-bottom: 18px;
+}
+.gc-questions-list {
+  display: grid; gap: 10px;
+}
+.gc-question {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 14px 16px; background: #FAFAFA;
+  border-radius: 10px; cursor: pointer;
+  transition: background 0.15s ease;
+}
+.gc-question:hover { background: var(--acc-bg); }
+.gc-question-num {
+  flex-shrink: 0; font-size: 0.72rem; font-weight: 700;
+  color: var(--acc); padding-top: 2px;
+}
+.gc-question-text {
+  flex: 1; font-size: 0.93rem; color: #0E1116; line-height: 1.5;
+}
+.gc-question-check {
+  flex-shrink: 0; width: 22px; height: 22px;
+  border: 2px solid #C5C2BC; border-radius: 6px;
+  background: #FFFFFF;
+  display: grid; place-items: center;
+  transition: all 0.15s ease;
+}
+.gc-question.done .gc-question-check {
+  background: var(--acc); border-color: var(--acc);
+}
+.gc-question.done .gc-question-check::after {
+  content: '✓'; color: #FFFFFF; font-size: 0.85rem; font-weight: 700;
+}
+.gc-question.done .gc-question-text { color: #6E6B62; text-decoration: line-through; }
+
+/* Empty state */
+.gc-empty {
+  text-align: center; padding: 60px 20px;
+  color: #6E6B62; font-size: 0.95rem;
+  background: #FFFFFF; border: 1px solid #EAEAEA;
+  border-radius: 16px;
+}
+
+/* Acción acelerada · Expandir todo */
+.gc-actions {
+  display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap;
+}
+.gc-action-btn {
+  font-family: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 8px;
+  background: #FFFFFF; color: #4A4F5C;
+  border: 1px solid #EAEAEA; cursor: pointer;
+  transition: all 0.15s ease;
+}
+.gc-action-btn:hover { background: var(--acc-bg); color: var(--acc); border-color: var(--acc-border); }
+</style>
+</head>
+<body class="holo-body mod-page-sage">
+
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-sage">
+        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Manual del Terapeuta</div>
+        <div class="holo-module-title">Guía Clínica</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="gc-page">
+
+  <section class="gc-hero">
+    <span class="gc-eyebrow">
+      <span class="gc-eyebrow-dot"></span>
+      Módulo 6 · Terapéutica · Método Lavín
+    </span>
+    <h1>El arte de <em>acompañar</em></h1>
+    <p>Manual práctico para terapeutas holísticos: escucha, transferencia, contratransferencia, manejo de resistencia y autoconocimiento profesional. Compendio del Módulo 6 del Diplomado de Terapia Holística de Alejandro Lavín.</p>
+  </section>
+
+  <!-- Toolbar -->
+  <div class="gc-toolbar">
+    <div class="gc-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      <input type="text" id="gc-search-input" placeholder="Buscar concepto, dinámica, técnica…" />
+    </div>
+    <div class="gc-filters" id="gc-filters">
+      <button class="gc-filter active" data-cat="all">Todo</button>
+    </div>
+  </div>
+
+  <!-- Index quick nav -->
+  <div class="gc-index">
+    <div class="gc-index-title">Índice rápido</div>
+    <div class="gc-index-grid" id="gc-index-grid"></div>
+  </div>
+
+  <!-- Acciones -->
+  <div class="gc-actions">
+    <button class="gc-action-btn" id="gc-expand-all">Expandir todo</button>
+    <button class="gc-action-btn" id="gc-collapse-all">Colapsar todo</button>
+  </div>
+
+  <!-- Sections -->
+  <div id="gc-sections"></div>
+
+  <!-- Preguntas clave de autoinspección -->
+  <section class="gc-questions">
+    <h3 class="gc-questions-title">Autoinspección del terapeuta</h3>
+    <div class="gc-questions-sub">12 preguntas para revisar tu práctica. Marca las que ya hayas trabajado esta semana.</div>
+    <div class="gc-questions-list" id="gc-questions-list"></div>
+  </section>
+
+</main>
+
+<script>
+const STORAGE_KEY = 'holoacademia_guia_clinica_questions';
+let dataCache = null;
+
+async function loadGuia() {
+  try {
+    const res = await fetch('/api/guia-clinica/datos');
+    const data = await res.json();
+    dataCache = data;
+    renderFilters(data.secciones);
+    renderIndex(data.secciones);
+    renderSections(data.secciones);
+    renderQuestions(data.preguntas_clave);
+  } catch (e) {
+    document.getElementById('gc-sections').innerHTML = '<div class="gc-empty">No fue posible cargar la guía. Verifica tu conexión.</div>';
+    console.error(e);
+  }
+}
+
+function renderFilters(secciones) {
+  const cats = [...new Set(secciones.map(s => s.categoria))];
+  const container = document.getElementById('gc-filters');
+  cats.forEach(c => {
+    const btn = document.createElement('button');
+    btn.className = 'gc-filter';
+    btn.dataset.cat = c;
+    btn.textContent = c;
+    container.appendChild(btn);
+  });
+  container.addEventListener('click', e => {
+    if (e.target.classList.contains('gc-filter')) {
+      [...container.querySelectorAll('.gc-filter')].forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      applyFilters();
+    }
+  });
+}
+
+function renderIndex(secciones) {
+  const grid = document.getElementById('gc-index-grid');
+  grid.innerHTML = secciones.map((s, i) => `
+    <a href="#sec-${s.id}" class="gc-index-link">
+      <span class="gc-index-num">${String(i + 1).padStart(2, '0')}</span>
+      <span>${s.titulo}</span>
+    </a>
+  `).join('');
+}
+
+function renderSections(secciones) {
+  const container = document.getElementById('gc-sections');
+  container.innerHTML = secciones.map((s, i) => `
+    <section class="gc-section" id="sec-${s.id}" data-cat="${s.categoria}" data-title="${s.titulo.toLowerCase()}">
+      <div class="gc-section-head" onclick="toggleSection('${s.id}')">
+        <div class="gc-section-num">${String(i + 1).padStart(2, '0')}</div>
+        <div class="gc-section-info">
+          <span class="gc-section-tag">${s.categoria}</span>
+          <h3 class="gc-section-title">${s.titulo}</h3>
+          <div class="gc-section-summary">${s.resumen}</div>
+        </div>
+        <div class="gc-section-toggle">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+      </div>
+      <div class="gc-section-body">
+        <div class="gc-section-body-inner">
+          ${s.items.map(it => `
+            <div class="gc-item" data-search="${(it.termino + ' ' + it.definicion).toLowerCase()}">
+              <div class="gc-item-term">${it.termino}</div>
+              <div class="gc-item-def">${it.definicion}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `).join('');
+}
+
+function toggleSection(id) {
+  const sec = document.getElementById('sec-' + id);
+  if (sec) sec.classList.toggle('open');
+}
+
+function renderQuestions(preguntas) {
+  const list = document.getElementById('gc-questions-list');
+  const done = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  list.innerHTML = preguntas.map((q, i) => `
+    <div class="gc-question ${done.includes(i) ? 'done' : ''}" onclick="toggleQuestion(${i})">
+      <div class="gc-question-num">${String(i + 1).padStart(2, '0')}</div>
+      <div class="gc-question-text">${q}</div>
+      <div class="gc-question-check"></div>
+    </div>
+  `).join('');
+}
+
+function toggleQuestion(i) {
+  const done = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  const idx = done.indexOf(i);
+  if (idx >= 0) done.splice(idx, 1);
+  else done.push(i);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(done));
+  if (dataCache) renderQuestions(dataCache.preguntas_clave);
+}
+
+function applyFilters() {
+  const activeCat = document.querySelector('.gc-filter.active')?.dataset.cat || 'all';
+  const search = (document.getElementById('gc-search-input').value || '').toLowerCase().trim();
+  document.querySelectorAll('.gc-section').forEach(sec => {
+    const matchCat = activeCat === 'all' || sec.dataset.cat === activeCat;
+    let matchSearch = true;
+    if (search) {
+      const inTitle = sec.dataset.title.includes(search);
+      const items = sec.querySelectorAll('.gc-item');
+      let anyItem = false;
+      items.forEach(it => {
+        const hit = (it.dataset.search || '').includes(search);
+        it.style.display = (hit || inTitle) ? '' : 'none';
+        if (hit) anyItem = true;
+      });
+      matchSearch = inTitle || anyItem;
+    } else {
+      sec.querySelectorAll('.gc-item').forEach(it => { it.style.display = ''; });
+    }
+    sec.classList.toggle('gc-hidden', !(matchCat && matchSearch));
+    if (search && matchCat && matchSearch) sec.classList.add('open');
+  });
+}
+
+document.getElementById('gc-search-input').addEventListener('input', applyFilters);
+document.getElementById('gc-expand-all').addEventListener('click', () => {
+  document.querySelectorAll('.gc-section').forEach(s => s.classList.add('open'));
+});
+document.getElementById('gc-collapse-all').addEventListener('click', () => {
+  document.querySelectorAll('.gc-section').forEach(s => s.classList.remove('open'));
+});
+
+loadGuia();
+
+if (window.parent && window.parent !== window) {
+  const send = () => {
+    window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+  };
+  send(); setTimeout(send, 200); setTimeout(send, 800);
+  new ResizeObserver(send).observe(document.body);
+}
+</script>
+</body>
+</html>

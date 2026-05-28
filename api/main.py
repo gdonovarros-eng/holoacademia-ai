@@ -304,7 +304,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -698,6 +698,24 @@ async def api_emociones_tabla():
     import json as _json
     from fastapi.responses import JSONResponse
     p = THERAPY_STATIC_DIR.parent.parent / "data" / "emociones_atrapadas.json"
+    try:
+        with open(p, encoding="utf-8") as f:
+            return JSONResponse(_json.load(f))
+    except FileNotFoundError:
+        return JSONResponse({"error": "not_found"}, status_code=404)
+
+
+@app.get("/guia-clinica", include_in_schema=False)
+async def guia_clinica_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "guia-clinica.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/api/guia-clinica/datos", include_in_schema=False)
+async def api_guia_clinica():
+    """Guía clínica del terapeuta · Módulo 6 Terapéutica · Método Lavín."""
+    import json as _json
+    from fastapi.responses import JSONResponse
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "guia_clinica.json"
     try:
         with open(p, encoding="utf-8") as f:
             return JSONResponse(_json.load(f))

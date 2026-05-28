@@ -1,0 +1,238 @@
+{
+  "fuente": "Módulo 6 · Terapéutica · Diplomado Terapia Holística — Método Lavín",
+  "version": "1.0",
+  "descripcion": "Guía clínica para el terapeuta holístico: skills, transferencia, contratransferencia, manejo de resistencia y autoconocimiento profesional.",
+  "secciones": [
+    {
+      "id": "glosario",
+      "categoria": "Fundamentos",
+      "titulo": "Glosario clínico",
+      "resumen": "Términos imprescindibles del trabajo terapéutico.",
+      "items": [
+        { "termino": "Inconsciente", "definicion": "Conjunto de estratos mentales que procesan información más allá de la atención y voluntad consciente. No se le puede someter, sólo explorarlo y conseguir su cooperación. Es una cebolla de muchas capas interconectadas." },
+        { "termino": "Transferencia", "definicion": "Reflejo del inconsciente del paciente en la imagen de su terapeuta, proyectando en él la imagen de personas, deseos, dolores, etc." },
+        { "termino": "Contratransferencia", "definicion": "Distorsión de la relación terapéutica provocada por el inconsciente del terapeuta, que proyecta en el paciente sus propias impresiones." },
+        { "termino": "Interpretación", "definicion": "Hipótesis del terapeuta sobre el material del paciente. Debe entregarse con cuidado, dosis y momento adecuados." },
+        { "termino": "Resistencia", "definicion": "Mecanismo de protección del paciente ante material doloroso. Eco de procesos de relación traumática del pasado." },
+        { "termino": "Catarsis", "definicion": "Descarga emocional intensa durante la sesión. El terapeuta debe mantener la calma y aguardar comprensión." }
+      ]
+    },
+    {
+      "id": "labor",
+      "categoria": "Encuadre",
+      "titulo": "Labor terapéutica",
+      "resumen": "Enfoque a objetivos, herramientas y propósito.",
+      "items": [
+        { "termino": "El paciente viene porque SIENTE mal", "definicion": "Como terapeutas nos enfocamos en su sentir, no sólo en el síntoma." },
+        { "termino": "Dos búsquedas", "definicion": "Búsqueda consciente: saber preguntar, saber escuchar, tomar decisiones. Búsqueda inconsciente: saber rastrear, escuchar a la intuición." },
+        { "termino": "Toma de consciencia", "definicion": "Es el propósito, el medio y el premio del trabajo terapéutico." },
+        { "termino": "Misión", "definicion": "Acompañar al paciente a encontrar la luz de su balance dentro de sí mismo: restaurar el balance, liberar o disminuir el sufrimiento, curar o reducir el síntoma." },
+        { "termino": "Lo que no conocemos", "definicion": "Lo que no conocemos de nosotros mismos termina lastimándonos. La realidad que hace sentir mal al paciente es autorreflejante." }
+      ]
+    },
+    {
+      "id": "mi-por-que",
+      "categoria": "Identidad",
+      "titulo": "Mi porqué · Triángulo de Karpman",
+      "resumen": "Por qué eliges ser terapeuta. El salvador.",
+      "items": [
+        { "termino": "Origen de la vocación", "definicion": "La terapia es el intento de convertir nuestras estrategias de sobrevivencia en una profesión. Queremos evitar en otros el dolor que hemos llevado nosotros mismos." },
+        { "termino": "Suficiencia", "definicion": "Con lo que eres y dispones eres suficiente. No necesitas ser perfecto. No existe el terapeuta infalible." },
+        { "termino": "El Salvador (Karpman)", "definicion": "Ayuda sin que se lo pidan. Se sacrifica por los demás. Menosprecia las habilidades de otros. Se valoriza a través de su servicio. Vive para solucionar. Lo hace aún sin ganas." },
+        { "termino": "Ejercicio", "definicion": "¿Por qué eliges ser terapeuta? Escríbelo, revísalo, contrástalo con tu propia historia de heridas." }
+      ]
+    },
+    {
+      "id": "skillset",
+      "categoria": "Habilidades",
+      "titulo": "Skillset del terapeuta",
+      "resumen": "Habilidades centrales más allá del conocimiento técnico.",
+      "items": [
+        { "termino": "Saber manejar tu territorio", "definicion": "Conocer tus límites, tu técnica y tu espacio de consulta." },
+        { "termino": "Saber escuchar", "definicion": "Sin rellenar silencios, sin esperar tu turno para hablar." },
+        { "termino": "Leer lenguaje corporal", "definicion": "Captar lo no verbal: postura, microexpresiones, tensión." },
+        { "termino": "Saber aprender", "definicion": "El sabio es consciente de su propia ignorancia. No necesitas saberlo todo." },
+        { "termino": "Flexibilidad", "definicion": "Lo que funcionó para uno no tiene por qué funcionar para otro." },
+        { "termino": "Aceptar la incertidumbre", "definicion": "Tolerar la incomodidad que provoca no saber el diagnóstico de inmediato." },
+        { "termino": "Valor para enfrentarte a ti mismo", "definicion": "Aceptar errores propios. Disposición al continuo autodescubrimiento." },
+        { "termino": "Presencia", "definicion": "Tranquilidad discreta, atención alerta. Estar aquí, ahora." },
+        { "termino": "Empatía", "definicion": "Sentir con el paciente sin perder tu propio centro." },
+        { "termino": "Balance", "definicion": "Entre protección y reto, entre comodidad y estrés, entre afecto y cognición." }
+      ]
+    },
+    {
+      "id": "escuchar",
+      "categoria": "Práctica",
+      "titulo": "El arte de escuchar",
+      "resumen": "Escuchar es una muestra de afecto y respeto.",
+      "items": [
+        { "termino": "Las personas no escuchan", "definicion": "Usan a las demás para activar sus propios pensamientos. Esperan su turno para hablar. El terapeuta no." },
+        { "termino": "Presión interior", "definicion": "Cuidado con la urgencia de rellenar los silencios o de dar soluciones rápidas. El buen terapeuta primero aprende a SER PACIENTE." },
+        { "termino": "Preguntas de autocheck", "definicion": "¿Puedo liberarme de distracciones? ¿Puedo abstenerme de interrumpir? ¿Mi lenguaje corporal comunica interés? ¿Puedo leer entre líneas las emociones ocultas?" },
+        { "termino": "Forma sobre sustancia", "definicion": "Cuando te cuentan una historia, es más importante la forma que la sustancia, la manera que el contenido." }
+      ]
+    },
+    {
+      "id": "observar",
+      "categoria": "Práctica",
+      "titulo": "El arte de observar",
+      "resumen": "El contacto visual y la lectura no verbal.",
+      "items": [
+        { "termino": "Contacto visual", "definicion": "Necesario para establecer un vínculo afectivo. Cada paciente responde diferente al contacto visual." },
+        { "termino": "Autopreguntas", "definicion": "¿Me siento cómodo cuando me miran? ¿Qué imagino que piensa quien me mira? ¿Comunico mis sentimientos con la manera en que miro?" },
+        { "termino": "Ante respuesta negativa", "definicion": "No caigas en pánico. Muestra curiosidad pero no te pongas a la defensiva. Hay algo que despertó y merece ser examinado." },
+        { "termino": "Pregunta útil", "definicion": "¿Qué crees que estoy pensando? — abre la transferencia." }
+      ]
+    },
+    {
+      "id": "hablar",
+      "categoria": "Práctica",
+      "titulo": "El arte de hablar",
+      "resumen": "Lenguaje simple. Emoción más que razón.",
+      "items": [
+        { "termino": "KISS", "definicion": "Keep it simple, stupid. Mientras más complejo el lenguaje, más estimulas las defensas." },
+        { "termino": "Lenguaje de la niñez", "definicion": "En consulta, lo que casi todos necesitan está relacionado con afecto, amor, abandono y miedo. Estas emociones usan el lenguaje de la niñez." },
+        { "termino": "Las verdaderas joyas", "definicion": "Son las experiencias emocionales salpicadas de razón. Ése es el verdadero motor de cambio." },
+        { "termino": "Hacer que diga más", "definicion": "Nuestra tarea es hacer que hable menos y diga más. Expresiones breves y directas sobre emociones claras son mucho más eficaces." },
+        { "termino": "NO ayuda", "definicion": "Diálogo demasiado intelectual. Interpretación constante. Diagnóstico de cada movimiento. Convertirse en inquisidor. Precipitarse a etiquetar — una etiqueta no cura, sólo excluye posibilidades." }
+      ]
+    },
+    {
+      "id": "interpretacion",
+      "categoria": "Técnica",
+      "titulo": "La interpretación",
+      "resumen": "Espada y defensa. Dosis y momento.",
+      "items": [
+        { "termino": "La defensa se fortalece cuando es atacada", "definicion": "Absorbe la transferencia, no te pongas a la defensiva. Una interpretación es evidenciar a alguien." },
+        { "termino": "Delivery", "definicion": "La dosis y el momento son sumamente importantes. No hagas interpretación a la primera que se te ocurre. Medítala, reúne pruebas." },
+        { "termino": "Usar el material del paciente", "definicion": "Incorpora las palabras, metáforas e imágenes que el paciente usa." },
+        { "termino": "Si rechaza tu interpretación", "definicion": "No insistas. Guárdala para después. Si tu teoría es correcta, vendrá de nuevo la oportunidad." },
+        { "termino": "Preguntas clave", "definicion": "¿Sientes la certeza de que haces lo correcto? ¿Sigues llevando al paciente a la misma interpretación a pesar de que la rechaza? ¿Sientes que fracasaste si no tienes la respuesta? La paciencia y el afecto triunfan sobre la fuerza." }
+      ]
+    },
+    {
+      "id": "cobranza",
+      "categoria": "Encuadre",
+      "titulo": "Cobranza · el dinero",
+      "resumen": "El dinero suele ser complicado.",
+      "items": [
+        { "termino": "El conflicto del cobro", "definicion": "El dinero tiende a verse de mal gusto, o se siente a través de la culpa o la desvalorización." },
+        { "termino": "Deseo inconsciente del paciente", "definicion": "Muchos pacientes desean inconscientemente que no les cobres. Pagar terapia es sal en la herida. \"Mis padres que paguen, ellos me jodieron\"." },
+        { "termino": "Dinero = amor", "definicion": "El dinero y el amor van entrelazados muchas veces. No querer pagar puede ser manipulación para que ofrezcas el afecto carente." },
+        { "termino": "Tu propia historia", "definicion": "Revisa tu historia con el dinero. \"Lo hago sólo por ayudar\" suele significar no estar seguro del propio valor." },
+        { "termino": "Ejercicio", "definicion": "Anota tus creencias alrededor del dinero y del valor del trabajo." }
+      ]
+    },
+    {
+      "id": "consejos",
+      "categoria": "Encuadre",
+      "titulo": "Consejos adyacentes",
+      "resumen": "Primera impresión, atmósfera del consultorio, manejo de catarsis.",
+      "items": [
+        { "termino": "La terapia empieza antes", "definicion": "Empieza en la solicitud misma. ¿Quién y cómo atiende al teléfono? No hay segunda oportunidad de causar una primera impresión." },
+        { "termino": "Preguntas iniciales", "definicion": "¿Ha estado en terapia antes? ¿Qué le pareció? ¿Qué opina de terapeutas? ¿Conoce a otras personas cuya terapia les ayudó o perjudicó? ¿Qué espera obtener de este servicio?" },
+        { "termino": "Atmósfera del consultorio", "definicion": "Comodidad. Muebles acolchados. Iluminación tenue. Decoración discreta. Asientos en ángulo (libera del contacto visual constante). No retaques de diplomas." },
+        { "termino": "Manejo de la catarsis", "definicion": "Pase lo que pase, mantén la calma. El paciente siempre estará más emocional que tú. Si no entiendes qué sucede, guarda silencio hasta que lo entiendas. El paciente supone que sabes lo que haces — demuéstraselo." },
+        { "termino": "Técnicas de disociación emocional", "definicion": "Bloqueo isomórfico · Muro de cristal · Huevo áurico." },
+        { "termino": "Recurso fundamental", "definicion": "Encontrar la visión cuando menos suficiente por la cual dedicarse a vivir. Trazar un plan de llamados a la vida." }
+      ]
+    },
+    {
+      "id": "transferencia",
+      "categoria": "Dinámicas",
+      "titulo": "Transferencia",
+      "resumen": "Cuando el paciente te proyecta a otros.",
+      "items": [
+        { "termino": "Transferencia sexualizada", "definicion": "Muy común. La intimidad emocional acarrea naturalmente el anhelo de cercanía física. La prohibición del contacto genera tabú." },
+        { "termino": "Manipulación a través del halago o del sexo", "definicion": "Algunos pacientes manipulan así. El sexo no es lo que más le conviene al paciente, sin importar lo apremiante que sea para ti." },
+        { "termino": "Riesgo del rechazo", "definicion": "Es probable que el o la desairada se transforme en una contraparte negativa. La sensación del rechazo necesita ser compensada." }
+      ]
+    },
+    {
+      "id": "contratransferencia",
+      "categoria": "Dinámicas",
+      "titulo": "Contratransferencia",
+      "resumen": "Cuando TÚ proyectas en el paciente.",
+      "items": [
+        { "termino": "Observa qué de los pacientes", "definicion": "Qué te puede, te humilla, te confunde, te enoja, te excita, te deprime. Son aspectos a trabajar por ti." },
+        { "termino": "Señales clave", "definicion": "Esperar ansiosamente una sesión. Temer la llegada del paciente. Olvidar cosas clave del caso (o recordarlo perfectamente de memoria). Necesidad de hablar durante la consulta. Enfermarse durante, antes o después." },
+        { "termino": "Otras señales", "definicion": "Silencios pocos o muchos. Temor a confrontar o molestar. Interpretaciones nulas o excesivas. Discutir con el paciente. Pasar por alto sus emociones. Salirte por la tangente. Revelar información personal. No reparar en detalles importantes. Generar distracciones o fantasías." },
+        { "termino": "Ejercicio", "definicion": "Selecciona a un paciente difícil donde te sientas estancado. Anota tus sentimientos en un diario de contratransferencia. Graba dos sesiones (con permiso) y revísalas buscando 2 ó 3 problemas de contratransferencia." }
+      ]
+    },
+    {
+      "id": "regresion",
+      "categoria": "Técnica",
+      "titulo": "El poder de la regresión",
+      "resumen": "Diván, silencio, niñez. Trabajar redes de memoria.",
+      "items": [
+        { "termino": "Técnica freudiana del diván", "definicion": "Pasar tiempo en silencio. Estimular al paciente a hablar del pasado permite expresar sentimientos intensos." },
+        { "termino": "Paralelos", "definicion": "Trazar paralelos entre la terapia actual y la experiencia de la niñez fomenta la regresión." },
+        { "termino": "Estado prolongado", "definicion": "La concentración se pierde del presente y la mente viaja a un pasado subjetivo. El estado psicoemocional de regresión puede perdurar. Vigila las redes de memoria que se activan." }
+      ]
+    },
+    {
+      "id": "resistencia",
+      "categoria": "Dinámicas",
+      "titulo": "Manejo de la resistencia",
+      "resumen": "La resistencia como comunicación, no como obstáculo.",
+      "items": [
+        { "termino": "No esperar a que pase", "definicion": "Requiere desarrollar la habilidad. La resistencia puede presentarse como intensidad emocional alrededor de ciertos temas, lagunas en la conversación, o \"no quiero hablar de eso\"." },
+        { "termino": "Resistencia del terapeuta", "definicion": "Al establecer precio y cobrar. Al hablar de ausencias. Muchos terapeutas no tenían permitido expresar enojo de niños — pero mientras más se contiene, más explota al salir." },
+        { "termino": "Ganancia secundaria", "definicion": "\"Me enfermo para no cargar peso\". \"La madre se vuelve loca para compartir carga\". El síntoma cumple una función. La clave es ayudar al paciente a obtener lo que busca directamente." },
+        { "termino": "La resistencia es comunicación", "definicion": "Eco de procesos traumáticos del pasado. Identificar, entender y comunicar al paciente estos patrones — descubrirlo como recuerdo permite que no se sienta culpable." },
+        { "termino": "Aikido ante la resistencia", "definicion": "1) No te pongas a la defensiva (la resistencia tiene que ver con el paciente, no contigo). 2) No lo tomes personal ni tomes represalias. 3) Escucha sus inquietudes." },
+        { "termino": "Ante \"tú no me entiendes\"", "definicion": "Tres frases sencillas: \"Enséñame\". \"Me gustaría aprender\". \"No sé si pueda ayudarte, pero me gustaría intentarlo\"." },
+        { "termino": "Inception (éxito secreto)", "definicion": "Después de tiempo, el paciente te relata como propia una idea que era tuya. Reaccionar con \"ésa es mi idea\" es infantil. Alégrate por el paciente. Disfruta tu efectividad sutil." }
+      ]
+    },
+    {
+      "id": "cancelacion",
+      "categoria": "Dinámicas",
+      "titulo": "Qué hacer si te cancelan",
+      "resumen": "Antes de culpar, reflexiona.",
+      "items": [
+        { "termino": "Preguntas a hacerte", "definicion": "¿Se tocaron temas incómodos? ¿El paciente se veía cada vez menos cómodo? ¿Se está volviendo dependiente? ¿Cuál era tu disposición de ánimo? ¿Cómo se han transformado sus relaciones interpersonales? ¿Me ha terminado como a todos?" }
+      ]
+    },
+    {
+      "id": "cuidador-patologico",
+      "categoria": "Autoconocimiento",
+      "titulo": "El cuidador patológico",
+      "resumen": "Cuando ayudar a otros es regular el propio dolor.",
+      "items": [
+        { "termino": "Origen", "definicion": "La motivación de ayudar a otros surge de la necesidad de regular a otros y de sanarnos a nosotros mismos. Es común tener adictos en la familia del terapeuta o padres indispuestos emocionalmente." },
+        { "termino": "Hipersensibilidad", "definicion": "El niño madura a fuerza demasiado rápido, regulando emociones ajenas. Padres con TOC generan hijos angustiados del orden, continuamente rechazados, viviendo para ganar la aprobación." },
+        { "termino": "Definición", "definicion": "Cuida a otros en su intento de apaciguarse y ordenarse a sí mismo. El poder sobre un paciente es mucho como para dejarlo en manos de un cuidador patológico." },
+        { "termino": "Patrón aprendido", "definicion": "\"Cuando sufren no obtienen ayuda. Los otros me hacen responsable pero no me dan sustento\". Deprimido y exhausto por no poder satisfacer las necesidades ajenas." },
+        { "termino": "Señales", "definicion": "Sentir necesidad de estar ocupado todo el tiempo. Defender a otros fácil pero defenderse uno mismo imposible. Difícil negarse a las exigencias de otros. No aceptar ayuda. Creer que las necesidades ajenas son mi responsabilidad." },
+        { "termino": "Lo peor", "definicion": "Se vuelven cuidadores patológicos de sus hijos. Encuentran en ellos lo que no pudieron encontrar en sus padres: seres a su disposición fácilmente controlables." },
+        { "termino": "Banderas rojas en consulta", "definicion": "Sentirse responsable totalmente de la mejoría del paciente. Difícil sobrellevar el silencio. Necesidad de sentirse apreciado o ser su amigo. Tomar partido contra otros de su vida. Incapacidad de tolerar el afecto. Mantener la interacción en un nivel intelectual. Dar consejos." }
+      ]
+    },
+    {
+      "id": "reconexion",
+      "categoria": "Cierre",
+      "titulo": "Reconexión de luz",
+      "resumen": "Anclar luz del cielo a la tierra.",
+      "items": [
+        { "termino": "Cada paciente es una oportunidad", "definicion": "Para conocerte mejor a ti mismo. De sanar y mejorar. De anclar luz en la tierra. Ésa es nuestra verdadera misión." },
+        { "termino": "Ejercicio de cierre", "definicion": "Conexión a la fuente. Contacto con servidores. Trazar un plan de llamados a la vida." }
+      ]
+    }
+  ],
+  "preguntas_clave": [
+    "¿Por qué eliges ser terapeuta?",
+    "¿Sientes la certeza de que haces lo correcto?",
+    "¿Sigues llevando al paciente a la misma interpretación a pesar de que la rechaza?",
+    "¿Te apasionan las técnicas que utilizas?",
+    "¿Sientes que fracasaste si no tienes la respuesta inmediata?",
+    "¿Qué de tus pacientes te puede, te humilla, te confunde, te enoja, te excita, te deprime?",
+    "¿Me siento cómodo cuando me miran?",
+    "¿Puedo liberarme de distracciones durante la sesión?",
+    "¿Mi lenguaje corporal comunica interés genuino?",
+    "¿Puedo leer entre líneas las emociones ocultas detrás de las palabras?",
+    "¿Cuáles son mis creencias alrededor del dinero y del valor de mi trabajo?",
+    "Qué paciente te tocó fibras sensibles esta semana — ¿por qué?"
+  ]
+}
