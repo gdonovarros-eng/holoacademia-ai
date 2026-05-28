@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Tablas de Rastreo · Holoacadem-iA</title>
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Tablas de Rastreo · Holoacadem-iA</title><style>
 :root{
   --bg:#0e0e12;--surface:#16161e;--card:#1e1e2a;--border:#2a2a3a;
   --accent:#7c6df0;--accent2:#5b8fff;--green:#4caf7d;--red:#e05c5c;
@@ -146,186 +140,7 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 @media(max-width:640px){
   .sidebar{width:160px}
 }
-</style>
-</head>
-<body>
-
-<header class="app-header">
-  <a href="https://www.holoacademia.com/asistenteia" title="Inicio">&#8592;</a>
-  <h1>📋 Rastreo de Tablas</h1>
-  <span id="categoryLabel">Cargando…</span>
-  <div class="header-right">
-    <div class="stat-pill">Total seleccionados: <b id="totalConf">0</b></div>
-  </div>
-</header>
-
-<div class="main-layout">
-
-  <!-- SIDEBAR -->
-  <nav class="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-label">Pares Biomagnéticos</div>
-      <button class="cat-btn active" data-cat="bacteria" onclick="selectCat(this)">
-        <span class="tipo-dot dot-bacteria"></span>Bacterias<span class="cat-count" id="cnt-bacteria">0</span>
-      </button>
-      <button class="cat-btn" data-cat="virus" onclick="selectCat(this)">
-        <span class="tipo-dot dot-virus"></span>Virus<span class="cat-count" id="cnt-virus">0</span>
-      </button>
-      <button class="cat-btn" data-cat="hongo" onclick="selectCat(this)">
-        <span class="tipo-dot dot-hongo"></span>Hongos<span class="cat-count" id="cnt-hongo">0</span>
-      </button>
-      <button class="cat-btn" data-cat="parasito" onclick="selectCat(this)">
-        <span class="tipo-dot dot-parasito"></span>Parásitos<span class="cat-count" id="cnt-parasito">0</span>
-      </button>
-      <button class="cat-btn" data-cat="emocional" onclick="selectCat(this)">
-        <span class="tipo-dot dot-emocional"></span>Emocionales<span class="cat-count" id="cnt-emocional">0</span>
-      </button>
-      <button class="cat-btn" data-cat="disfuncional" onclick="selectCat(this)">
-        <span class="tipo-dot dot-disfuncional"></span>Disfuncionales<span class="cat-count" id="cnt-disfuncional">0</span>
-      </button>
-      <button class="cat-btn" data-cat="especial" onclick="selectCat(this)">
-        <span class="tipo-dot dot-especial"></span>Especiales<span class="cat-count" id="cnt-especial">0</span>
-      </button>
-      <button class="cat-btn" data-cat="reservorio" onclick="selectCat(this)">
-        <span class="tipo-dot dot-reservorio"></span>Reservorios<span class="cat-count" id="cnt-reservorio">0</span>
-      </button>
-      <button class="cat-btn" data-cat="desconocido" onclick="selectCat(this)">
-        <span class="tipo-dot dot-desconocido"></span>Desconocidos<span class="cat-count" id="cnt-desconocido">0</span>
-      </button>
-    </div>
-
-    <div class="sis-filter">
-      <label>Filtrar por sistema</label>
-      <select id="sisFilter" onchange="applyFilters()">
-        <option value="">Todos los sistemas</option>
-        <option value="cardiovascular">Cardiovascular</option>
-        <option value="digestivo">Digestivo</option>
-        <option value="endócrino">Endócrino</option>
-        <option value="genital">Genital</option>
-        <option value="linfático">Linfático</option>
-        <option value="neurológico">Neurológico</option>
-        <option value="osteomuscular">Osteomuscular</option>
-        <option value="piel">Piel</option>
-        <option value="renal_urinario">Renal / Urinario</option>
-        <option value="respiratorio">Respiratorio</option>
-      </select>
-    </div>
-
-    <div class="sidebar-section" style="border-top:1px solid var(--border)">
-      <div class="sidebar-label">Conflictología Psicosomática</div>
-      <button class="cat-btn" data-cat="conflicto_respiratorio" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Respiratorio<span class="cat-count" id="cnt-conf-respiratorio">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_digestivo" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Digestivo<span class="cat-count" id="cnt-conf-digestivo">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_cardiovascular" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Cardiovascular<span class="cat-count" id="cnt-conf-cardiovascular">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_locomotor" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Locomotor/Óseo<span class="cat-count" id="cnt-conf-locomotor">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_genital" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Reproductor<span class="cat-count" id="cnt-conf-genital">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_urinario" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Urinario/Renal<span class="cat-count" id="cnt-conf-urinario">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_endocrino" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Endócrino<span class="cat-count" id="cnt-conf-endocrino">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_inmunologico" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Inmunológico<span class="cat-count" id="cnt-conf-inmunologico">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_piel" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Piel/Lipofascial<span class="cat-count" id="cnt-conf-piel">0</span>
-      </button>
-      <button class="cat-btn" data-cat="conflicto_neurosensorial" onclick="selectCat(this)">
-        <span class="tipo-dot dot-conflicto"></span>Neurosensorial<span class="cat-count" id="cnt-conf-neurosensorial">0</span>
-      </button>
-    </div>
-
-    <div class="sidebar-section" style="border-top:1px solid var(--border)">
-      <div class="sidebar-label">Otros Rastreos</div>
-      <button class="cat-btn" data-cat="sales" onclick="selectCat(this)">
-        <span class="tipo-dot dot-sales"></span>Sales de Schüssler<span class="cat-count">12</span>
-      </button>
-      <button class="cat-btn" data-cat="bach" onclick="selectCat(this)">
-        <span class="tipo-dot dot-bach"></span>Florales de Bach<span class="cat-count">39</span>
-      </button>
-      <button class="cat-btn" data-cat="vitaminas" onclick="selectCat(this)">
-        <span class="tipo-dot dot-vitaminas"></span>Vitaminas / Minerales<span class="cat-count">26</span>
-      </button>
-      <button class="cat-btn" data-cat="creencias" onclick="selectCat(this)">
-        <span class="tipo-dot dot-creencias"></span>Creencias Limitantes<span class="cat-count">40</span>
-      </button>
-      <button class="cat-btn" data-cat="miedos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-miedos"></span>Miedos / Fobias<span class="cat-count">35</span>
-      </button>
-    </div>
-
-    <div class="sidebar-section" style="border-top:1px solid var(--border)">
-      <div class="sidebar-label">Homeopatía</div>
-      <button class="cat-btn" data-cat="policrestos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-homeopatico"></span>Policrestos<span class="cat-count">25</span>
-      </button>
-      <button class="cat-btn" data-cat="semipolicrestos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-homeopatico"></span>Semipolicrestos<span class="cat-count">36</span>
-      </button>
-    </div>
-
-    <div class="sidebar-section" style="border-top:1px solid var(--border)">
-      <div class="sidebar-label">Centros Energéticos</div>
-      <button class="cat-btn" data-cat="chakras_primarios" onclick="selectCat(this)">
-        <span class="tipo-dot dot-chakra"></span>Chakras Primarios<span class="cat-count">7</span>
-      </button>
-      <button class="cat-btn" data-cat="chakras_secundarios" onclick="selectCat(this)">
-        <span class="tipo-dot dot-chakra"></span>Chakras Secundarios<span class="cat-count">21</span>
-      </button>
-      <button class="cat-btn" data-cat="cinco_elementos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-elementos"></span>5 Elementos MTC<span class="cat-count">5</span>
-      </button>
-    </div>
-
-    <div class="sidebar-section" style="border-top:1px solid var(--border)">
-      <div class="sidebar-label">Bioquímica</div>
-      <button class="cat-btn" data-cat="aminoacidos" onclick="selectCat(this)">
-        <span class="tipo-dot dot-aminoacidos"></span>Aminoácidos<span class="cat-count">20</span>
-      </button>
-      <button class="cat-btn" data-cat="enzimas" onclick="selectCat(this)">
-        <span class="tipo-dot dot-enzimas"></span>Enzimas<span class="cat-count">18</span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- CONTENT -->
-  <div class="content-area">
-    <div class="search-bar">
-      <input type="search" id="searchBox" placeholder="🔍 Buscar por nombre, condición, emoción…" oninput="applyFilters()"/>
-    </div>
-    <div class="table-scroll" id="tableScroll">
-      <div class="loading"><div class="spinner"></div><br>Cargando base de datos…</div>
-    </div>
-  </div>
-
-  <!-- CONFIRMED PANEL -->
-  <div class="confirmed-panel">
-    <div class="panel-header">
-      <h3>✅ Rastreo confirmado</h3>
-      <span class="conf-count" id="confCount">0</span>
-    </div>
-    <div class="confirmed-scroll" id="confirmedScroll">
-      <div class="conf-empty">Marca ítems en la tabla para agregarlos aquí.</div>
-    </div>
-    <div class="panel-actions">
-      <button class="btn-copy" onclick="copiarConfirmados()">📋 Copiar lista</button>
-      <button class="btn-clear" onclick="limpiarTodo()">🗑 Limpiar todo</button>
-    </div>
-  </div>
-
-</div>
-
-<script>
+</style></head><body><header class="app-header"><a href="https://www.holoacademia.com/asistenteia" title="Inicio">&#8592;</a><h1>Rastreo de Tablas</h1><span id="categoryLabel">Cargando…</span><div class="header-right"><div class="stat-pill">Total seleccionados: <b id="totalConf">0</b></div></div></header><div class="main-layout"><!-- SIDEBAR --><nav class="sidebar"><div class="sidebar-section"><div class="sidebar-label">Pares Biomagnéticos</div><button class="cat-btn active" data-cat="bacteria" onclick="selectCat(this)"><span class="tipo-dot dot-bacteria"></span>Bacterias<span class="cat-count" id="cnt-bacteria">0</span></button><button class="cat-btn" data-cat="virus" onclick="selectCat(this)"><span class="tipo-dot dot-virus"></span>Virus<span class="cat-count" id="cnt-virus">0</span></button><button class="cat-btn" data-cat="hongo" onclick="selectCat(this)"><span class="tipo-dot dot-hongo"></span>Hongos<span class="cat-count" id="cnt-hongo">0</span></button><button class="cat-btn" data-cat="parasito" onclick="selectCat(this)"><span class="tipo-dot dot-parasito"></span>Parásitos<span class="cat-count" id="cnt-parasito">0</span></button><button class="cat-btn" data-cat="emocional" onclick="selectCat(this)"><span class="tipo-dot dot-emocional"></span>Emocionales<span class="cat-count" id="cnt-emocional">0</span></button><button class="cat-btn" data-cat="disfuncional" onclick="selectCat(this)"><span class="tipo-dot dot-disfuncional"></span>Disfuncionales<span class="cat-count" id="cnt-disfuncional">0</span></button><button class="cat-btn" data-cat="especial" onclick="selectCat(this)"><span class="tipo-dot dot-especial"></span>Especiales<span class="cat-count" id="cnt-especial">0</span></button><button class="cat-btn" data-cat="reservorio" onclick="selectCat(this)"><span class="tipo-dot dot-reservorio"></span>Reservorios<span class="cat-count" id="cnt-reservorio">0</span></button><button class="cat-btn" data-cat="desconocido" onclick="selectCat(this)"><span class="tipo-dot dot-desconocido"></span>Desconocidos<span class="cat-count" id="cnt-desconocido">0</span></button></div><div class="sis-filter"><label>Filtrar por sistema</label><select id="sisFilter" onchange="applyFilters()"><option value="">Todos los sistemas</option><option value="cardiovascular">Cardiovascular</option><option value="digestivo">Digestivo</option><option value="endócrino">Endócrino</option><option value="genital">Genital</option><option value="linfático">Linfático</option><option value="neurológico">Neurológico</option><option value="osteomuscular">Osteomuscular</option><option value="piel">Piel</option><option value="renal_urinario">Renal / Urinario</option><option value="respiratorio">Respiratorio</option></select></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Conflictología Psicosomática</div><button class="cat-btn" data-cat="conflicto_respiratorio" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Respiratorio<span class="cat-count" id="cnt-conf-respiratorio">0</span></button><button class="cat-btn" data-cat="conflicto_digestivo" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Digestivo<span class="cat-count" id="cnt-conf-digestivo">0</span></button><button class="cat-btn" data-cat="conflicto_cardiovascular" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Cardiovascular<span class="cat-count" id="cnt-conf-cardiovascular">0</span></button><button class="cat-btn" data-cat="conflicto_locomotor" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Locomotor/Óseo<span class="cat-count" id="cnt-conf-locomotor">0</span></button><button class="cat-btn" data-cat="conflicto_genital" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Reproductor<span class="cat-count" id="cnt-conf-genital">0</span></button><button class="cat-btn" data-cat="conflicto_urinario" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Urinario/Renal<span class="cat-count" id="cnt-conf-urinario">0</span></button><button class="cat-btn" data-cat="conflicto_endocrino" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Endócrino<span class="cat-count" id="cnt-conf-endocrino">0</span></button><button class="cat-btn" data-cat="conflicto_inmunologico" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Inmunológico<span class="cat-count" id="cnt-conf-inmunologico">0</span></button><button class="cat-btn" data-cat="conflicto_piel" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Piel/Lipofascial<span class="cat-count" id="cnt-conf-piel">0</span></button><button class="cat-btn" data-cat="conflicto_neurosensorial" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Neurosensorial<span class="cat-count" id="cnt-conf-neurosensorial">0</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Otros Rastreos</div><button class="cat-btn" data-cat="sales" onclick="selectCat(this)"><span class="tipo-dot dot-sales"></span>Sales de Schüssler<span class="cat-count">12</span></button><button class="cat-btn" data-cat="bach" onclick="selectCat(this)"><span class="tipo-dot dot-bach"></span>Florales de Bach<span class="cat-count">39</span></button><button class="cat-btn" data-cat="vitaminas" onclick="selectCat(this)"><span class="tipo-dot dot-vitaminas"></span>Vitaminas / Minerales<span class="cat-count">26</span></button><button class="cat-btn" data-cat="creencias" onclick="selectCat(this)"><span class="tipo-dot dot-creencias"></span>Creencias Limitantes<span class="cat-count">40</span></button><button class="cat-btn" data-cat="miedos" onclick="selectCat(this)"><span class="tipo-dot dot-miedos"></span>Miedos / Fobias<span class="cat-count">35</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Homeopatía</div><button class="cat-btn" data-cat="policrestos" onclick="selectCat(this)"><span class="tipo-dot dot-homeopatico"></span>Policrestos<span class="cat-count">25</span></button><button class="cat-btn" data-cat="semipolicrestos" onclick="selectCat(this)"><span class="tipo-dot dot-homeopatico"></span>Semipolicrestos<span class="cat-count">36</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Centros Energéticos</div><button class="cat-btn" data-cat="chakras_primarios" onclick="selectCat(this)"><span class="tipo-dot dot-chakra"></span>Chakras Primarios<span class="cat-count">7</span></button><button class="cat-btn" data-cat="chakras_secundarios" onclick="selectCat(this)"><span class="tipo-dot dot-chakra"></span>Chakras Secundarios<span class="cat-count">21</span></button><button class="cat-btn" data-cat="cinco_elementos" onclick="selectCat(this)"><span class="tipo-dot dot-elementos"></span>5 Elementos MTC<span class="cat-count">5</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Bioquímica</div><button class="cat-btn" data-cat="aminoacidos" onclick="selectCat(this)"><span class="tipo-dot dot-aminoacidos"></span>Aminoácidos<span class="cat-count">20</span></button><button class="cat-btn" data-cat="enzimas" onclick="selectCat(this)"><span class="tipo-dot dot-enzimas"></span>Enzimas<span class="cat-count">18</span></button></div></nav><!-- CONTENT --><div class="content-area"><div class="search-bar"><input type="search" id="searchBox" placeholder=" Buscar por nombre, condición, emoción…" oninput="applyFilters()"/></div><div class="table-scroll" id="tableScroll"><div class="loading"><div class="spinner"></div><br>Cargando base de datos…</div></div></div><!-- CONFIRMED PANEL --><div class="confirmed-panel"><div class="panel-header"><h3>Rastreo confirmado</h3><span class="conf-count" id="confCount">0</span></div><div class="confirmed-scroll" id="confirmedScroll"><div class="conf-empty">Marca ítems en la tabla para agregarlos aquí.</div></div><div class="panel-actions"><button class="btn-copy" onclick="copiarConfirmados()">Copiar lista</button><button class="btn-clear" onclick="limpiarTodo()">Limpiar todo</button></div></div></div><script>
 // ─── State ────────────────────────────────────────────────────────────────────
 let ALL_PAIRS = [];           // raw pairs from API
 let CONFLICTO_DB = {};        // conflictología db from API
@@ -428,15 +243,15 @@ const VITAMINAS = [
 ];
 
 const CREENCIAS = [
-  {n:1,  cat:'Autoestima', nombre:'No soy suficiente', emoc:'Insuficiencia, vergüenza'},
-  {n:2,  cat:'Autoestima', nombre:'No merezco amor / ser amado', emoc:'Abandono, rechazo'},
-  {n:3,  cat:'Autoestima', nombre:'Soy un fracaso', emoc:'Vergüenza profunda'},
-  {n:4,  cat:'Autoestima', nombre:'Soy malo / defectuoso', emoc:'Culpa crónica'},
-  {n:5,  cat:'Autoestima', nombre:'No valgo nada sin logros', emoc:'Hiperexigencia'},
-  {n:6,  cat:'Seguridad', nombre:'El mundo es peligroso', emoc:'Miedo, hipervigilancia'},
-  {n:7,  cat:'Seguridad', nombre:'No puedo confiar en nadie', emoc:'Desconfianza, traición'},
-  {n:8,  cat:'Seguridad', nombre:'Si me muestro vulnerable me harán daño', emoc:'Protección compulsiva'},
-  {n:9,  cat:'Seguridad', nombre:'Debo controlar todo para estar a salvo', emoc:'Control, ansiedad'},
+  {n:1, cat:'Autoestima', nombre:'No soy suficiente', emoc:'Insuficiencia, vergüenza'},
+  {n:2, cat:'Autoestima', nombre:'No merezco amor / ser amado', emoc:'Abandono, rechazo'},
+  {n:3, cat:'Autoestima', nombre:'Soy un fracaso', emoc:'Vergüenza profunda'},
+  {n:4, cat:'Autoestima', nombre:'Soy malo / defectuoso', emoc:'Culpa crónica'},
+  {n:5, cat:'Autoestima', nombre:'No valgo nada sin logros', emoc:'Hiperexigencia'},
+  {n:6, cat:'Seguridad', nombre:'El mundo es peligroso', emoc:'Miedo, hipervigilancia'},
+  {n:7, cat:'Seguridad', nombre:'No puedo confiar en nadie', emoc:'Desconfianza, traición'},
+  {n:8, cat:'Seguridad', nombre:'Si me muestro vulnerable me harán daño', emoc:'Protección compulsiva'},
+  {n:9, cat:'Seguridad', nombre:'Debo controlar todo para estar a salvo', emoc:'Control, ansiedad'},
   {n:10, cat:'Seguridad', nombre:'Si me relajo algo malo pasará', emoc:'Vigilancia crónica'},
   {n:11, cat:'Pertenencia', nombre:'Siempre seré excluido', emoc:'Soledad, rechazo'},
   {n:12, cat:'Pertenencia', nombre:'No encajo en ningún lugar', emoc:'Extrañeza, aislamiento'},
@@ -471,96 +286,96 @@ const CREENCIAS = [
 ];
 
 const POLICRESTOS = [
-  {n:1,  nombre:'Aconitum Napellus',           desc:'Miedos súbitos, fiebre alta de inicio brusco, ansiedad extrema, palpitaciones'},
-  {n:2,  nombre:'Árnica Montana',              desc:'Traumatismos, golpes, contusiones, fatiga muscular, shock físico y emocional'},
-  {n:3,  nombre:'Arsenicum Album',             desc:'Ansiedad perfeccionista, diarreas ardientes, agotamiento, miedo a la muerte'},
-  {n:4,  nombre:'Belladona',                   desc:'Fiebre alta súbita, inflamaciones rojas y calientes, delirios, convulsiones'},
-  {n:5,  nombre:'Bryonia Alba',                desc:'Dolores que empeoran al moverse, irritabilidad, tos seca, articulaciones'},
-  {n:6,  nombre:'Calcárea Carbónica',          desc:'Personas robustas, frías, sudorosas; huesos, dientes, metabolismo lento'},
-  {n:7,  nombre:'Carbo Vegetabilis',           desc:'Debilidad extrema, flatulencias, mala circulación, colapso vital'},
-  {n:8,  nombre:'Causticum',                   desc:'Parálisis progresivas, ronquera crónica, incontinencia, quemaduras'},
-  {n:9,  nombre:'Chamomilla Vulgaris',         desc:'Irritabilidad extrema, dolores intolerables, dentición infantil, cólicos'},
-  {n:10, nombre:'China Officinalis',           desc:'Debilidad por pérdidas de fluidos, fiebres periódicas, digestión, sangrado'},
-  {n:11, nombre:'Dulcamara',                   desc:'Afecciones por frío y humedad, reumatismo, catarros, verrugas'},
-  {n:12, nombre:'Hepar Sulphuris Calcareum',   desc:'Infecciones purulentas, hipersensibilidad al dolor y al frío, abscesos'},
-  {n:13, nombre:'Hyosciamus Niger',            desc:'Celos patológicos, conductas desinhibidas, convulsiones, insomnio'},
-  {n:14, nombre:'Ipecacuanha',                 desc:'Náuseas constantes, hemorragias, tos espasmódica, vómitos incontrolables'},
-  {n:15, nombre:'Lachesis',                    desc:'Celos, envidia, loquacidad, problemas circulatorios, menopausia'},
-  {n:16, nombre:'Lycopodium Clavatum',         desc:'Inseguridad disfrazada de arrogancia, hígado, digestión, calvicie'},
-  {n:17, nombre:'Mercurius Solubilis',         desc:'Infecciones de mucosas, encías, sudor nocturno, inestabilidad térmica'},
-  {n:18, nombre:'Nux Vomica',                  desc:'Exceso de trabajo, irritabilidad, estreñimiento, abuso de estimulantes'},
-  {n:19, nombre:'Phosphorus',                  desc:'Sensibilidad extrema, hemorragias, pulmones, ansiedad existencial'},
-  {n:20, nombre:'Pulsatilla',                  desc:'Timidez, llanto fácil, mucosidades, afecciones hormonales femeninas'},
-  {n:21, nombre:'Rhus Toxicodendron',          desc:'Dolores que mejoran con el movimiento, reumatismo, piel, herpes'},
-  {n:22, nombre:'Sepia Officinalis',           desc:'Agotamiento, indiferencia afectiva, ptosis de órganos, ginecología'},
-  {n:23, nombre:'Silicea Terra',               desc:'Timidez, debilidad de tejido conectivo, fístulas, abscesos, piel uñas'},
-  {n:24, nombre:'Sulphur',                     desc:'Egocentrismo, piel pruriginosa, calor excesivo, desintoxicación general'},
-  {n:25, nombre:'Veratrum Album',              desc:'Colapso, frialdad extrema, sudor frío, diarreas violentas, delirio'},
+  {n:1, nombre:'Aconitum Napellus', desc:'Miedos súbitos, fiebre alta de inicio brusco, ansiedad extrema, palpitaciones'},
+  {n:2, nombre:'Árnica Montana', desc:'Traumatismos, golpes, contusiones, fatiga muscular, shock físico y emocional'},
+  {n:3, nombre:'Arsenicum Album', desc:'Ansiedad perfeccionista, diarreas ardientes, agotamiento, miedo a la muerte'},
+  {n:4, nombre:'Belladona', desc:'Fiebre alta súbita, inflamaciones rojas y calientes, delirios, convulsiones'},
+  {n:5, nombre:'Bryonia Alba', desc:'Dolores que empeoran al moverse, irritabilidad, tos seca, articulaciones'},
+  {n:6, nombre:'Calcárea Carbónica', desc:'Personas robustas, frías, sudorosas; huesos, dientes, metabolismo lento'},
+  {n:7, nombre:'Carbo Vegetabilis', desc:'Debilidad extrema, flatulencias, mala circulación, colapso vital'},
+  {n:8, nombre:'Causticum', desc:'Parálisis progresivas, ronquera crónica, incontinencia, quemaduras'},
+  {n:9, nombre:'Chamomilla Vulgaris', desc:'Irritabilidad extrema, dolores intolerables, dentición infantil, cólicos'},
+  {n:10, nombre:'China Officinalis', desc:'Debilidad por pérdidas de fluidos, fiebres periódicas, digestión, sangrado'},
+  {n:11, nombre:'Dulcamara', desc:'Afecciones por frío y humedad, reumatismo, catarros, verrugas'},
+  {n:12, nombre:'Hepar Sulphuris Calcareum', desc:'Infecciones purulentas, hipersensibilidad al dolor y al frío, abscesos'},
+  {n:13, nombre:'Hyosciamus Niger', desc:'Celos patológicos, conductas desinhibidas, convulsiones, insomnio'},
+  {n:14, nombre:'Ipecacuanha', desc:'Náuseas constantes, hemorragias, tos espasmódica, vómitos incontrolables'},
+  {n:15, nombre:'Lachesis', desc:'Celos, envidia, loquacidad, problemas circulatorios, menopausia'},
+  {n:16, nombre:'Lycopodium Clavatum', desc:'Inseguridad disfrazada de arrogancia, hígado, digestión, calvicie'},
+  {n:17, nombre:'Mercurius Solubilis', desc:'Infecciones de mucosas, encías, sudor nocturno, inestabilidad térmica'},
+  {n:18, nombre:'Nux Vomica', desc:'Exceso de trabajo, irritabilidad, estreñimiento, abuso de estimulantes'},
+  {n:19, nombre:'Phosphorus', desc:'Sensibilidad extrema, hemorragias, pulmones, ansiedad existencial'},
+  {n:20, nombre:'Pulsatilla', desc:'Timidez, llanto fácil, mucosidades, afecciones hormonales femeninas'},
+  {n:21, nombre:'Rhus Toxicodendron', desc:'Dolores que mejoran con el movimiento, reumatismo, piel, herpes'},
+  {n:22, nombre:'Sepia Officinalis', desc:'Agotamiento, indiferencia afectiva, ptosis de órganos, ginecología'},
+  {n:23, nombre:'Silicea Terra', desc:'Timidez, debilidad de tejido conectivo, fístulas, abscesos, piel uñas'},
+  {n:24, nombre:'Sulphur', desc:'Egocentrismo, piel pruriginosa, calor excesivo, desintoxicación general'},
+  {n:25, nombre:'Veratrum Album', desc:'Colapso, frialdad extrema, sudor frío, diarreas violentas, delirio'},
 ];
 
 const SEMIPOLICRESTOS = [
-  {n:1,  nombre:'Antimonium Crudum',       desc:'Irritabilidad, lengua blanca, verrugas, obesidad infantil'},
-  {n:2,  nombre:'Antimonium Tartaricum',   desc:'Bronquitis con mucosidad, somnolencia, falta de reacción vital'},
-  {n:3,  nombre:'Aurum Metallicum',        desc:'Depresión profunda, ideación suicida, hipertensión, huesos'},
-  {n:4,  nombre:'Baryta Carbónica',        desc:'Retraso del desarrollo, timidez infantil, arteriosclerosis, amígdalas'},
-  {n:5,  nombre:'Cannabis Sativa',         desc:'Trastornos urinarios, prostatitis, estados mentales alterados'},
-  {n:6,  nombre:'Cantharis',               desc:'Cistitis ardiente, quemaduras, vejiga, deseo sexual exacerbado'},
-  {n:7,  nombre:'Cicuta Virosa',           desc:'Convulsiones, traumatismos craneales, rigidez del cuello'},
-  {n:8,  nombre:'Coccus Cacti',            desc:'Tos con mucosidades viscosas, urolitiasis, gota'},
-  {n:9,  nombre:'Coffea Cruda',            desc:'Insomnio por mente hiperactiva, excitabilidad nerviosa, dolor dental'},
-  {n:10, nombre:'Colocynthis',             desc:'Neuralgias violentas, cólicos que mejoran con presión, ciática'},
-  {n:11, nombre:'Conium Maculatum',        desc:'Debilidad ascendente, mareos, cáncer de glándulas, parálisis'},
-  {n:12, nombre:'Digitalis Purpurea',      desc:'Insuficiencia cardíaca, pulso lento e irregular, hidropesía'},
-  {n:13, nombre:'Drosera Rotundifolia',    desc:'Tos convulsiva, laringitis, tuberculosis, irritación laringe'},
-  {n:14, nombre:'Ferrum Metallicum',       desc:'Anemia, debilidad con rubor, hemorragias, artritis'},
-  {n:15, nombre:'Graphites',               desc:'Piel húmeda fisurada, estreñimiento, cicatrices, obesidad'},
-  {n:16, nombre:'Ignatia Amara',           desc:'Duelos, contrariedad, suspiros, histeria, labilidad emocional'},
-  {n:17, nombre:'Iodum Metallicum',        desc:'Adelgazamiento con hambre, bocio, glándulas inflamadas, calor'},
-  {n:18, nombre:'Kalmia Latifolia',        desc:'Neuralgias que descienden, cardiopatías reumáticas'},
-  {n:19, nombre:'Ledum Palustre',          desc:'Picaduras, heridas punzantes, gota, frío que alivia, ojos'},
-  {n:20, nombre:'Magnesia Carbónica',      desc:'Dolor nocturno, niños delicados, intolerancia a la leche'},
-  {n:21, nombre:'Magnesia Muriática',      desc:'Hígado, digestión difícil, espasmos, insomnio por agotamiento'},
-  {n:22, nombre:'Natrum Carbonicum',       desc:'Debilidad solar, intolerancia al calor, indigestión, timidez'},
-  {n:23, nombre:'Natrum Muriaticum',       desc:'Duelo retenido, sequedad, migraña, herpes labial recurrente'},
-  {n:24, nombre:'Nitricum Acidum',         desc:'Fisuras dolorosas, verrugas, hemorragias, mal olor corporal'},
-  {n:25, nombre:'Nux Moschata',            desc:'Somnolencia extrema, desmayos, sequedad de mucosas, histeria'},
-  {n:26, nombre:'Opium',                   desc:'Inconsciencia, estreñimiento severo, estupor, respiración ruidosa'},
-  {n:27, nombre:'Petroleum',               desc:'Grietas en piel y mucosas, cinetosis, eccema invernal'},
-  {n:28, nombre:'Phosphoricum Acidum',     desc:'Debilidad por estrés o duelo, pérdida de cabello, acidez'},
-  {n:29, nombre:'Platinum Metallicum',     desc:'Arrogancia, hipersensibilidad genital, neuralgias, orgullo patológico'},
-  {n:30, nombre:'Spigelia',                desc:'Neuralgias faciales y cardíacas, palpitaciones, dolor ocular'},
-  {n:31, nombre:'Stannum Metallicum',      desc:'Debilidad respiratoria, tos productiva, agotamiento, parálisis lenta'},
-  {n:32, nombre:'Staphysagria',            desc:'Ira reprimida, humillación, abuso, postoperatorio, prostatitis'},
-  {n:33, nombre:'Stramonium',              desc:'Terror nocturno, convulsiones, miedo a la oscuridad, violencia'},
-  {n:34, nombre:'Tartarus Emeticus',       desc:'Estertores de moco en bronquios, debilidad intensa, somnolencia'},
-  {n:35, nombre:'Thuja Occidentalis',      desc:'Verrugas, condilomas, ideas fijas, efectos de vacunación'},
-  {n:36, nombre:'Zincum Metallicum',       desc:'Inquietud motora extrema, piernas sin descanso, agotamiento nervioso'},
+  {n:1, nombre:'Antimonium Crudum', desc:'Irritabilidad, lengua blanca, verrugas, obesidad infantil'},
+  {n:2, nombre:'Antimonium Tartaricum', desc:'Bronquitis con mucosidad, somnolencia, falta de reacción vital'},
+  {n:3, nombre:'Aurum Metallicum', desc:'Depresión profunda, ideación suicida, hipertensión, huesos'},
+  {n:4, nombre:'Baryta Carbónica', desc:'Retraso del desarrollo, timidez infantil, arteriosclerosis, amígdalas'},
+  {n:5, nombre:'Cannabis Sativa', desc:'Trastornos urinarios, prostatitis, estados mentales alterados'},
+  {n:6, nombre:'Cantharis', desc:'Cistitis ardiente, quemaduras, vejiga, deseo sexual exacerbado'},
+  {n:7, nombre:'Cicuta Virosa', desc:'Convulsiones, traumatismos craneales, rigidez del cuello'},
+  {n:8, nombre:'Coccus Cacti', desc:'Tos con mucosidades viscosas, urolitiasis, gota'},
+  {n:9, nombre:'Coffea Cruda', desc:'Insomnio por mente hiperactiva, excitabilidad nerviosa, dolor dental'},
+  {n:10, nombre:'Colocynthis', desc:'Neuralgias violentas, cólicos que mejoran con presión, ciática'},
+  {n:11, nombre:'Conium Maculatum', desc:'Debilidad ascendente, mareos, cáncer de glándulas, parálisis'},
+  {n:12, nombre:'Digitalis Purpurea', desc:'Insuficiencia cardíaca, pulso lento e irregular, hidropesía'},
+  {n:13, nombre:'Drosera Rotundifolia', desc:'Tos convulsiva, laringitis, tuberculosis, irritación laringe'},
+  {n:14, nombre:'Ferrum Metallicum', desc:'Anemia, debilidad con rubor, hemorragias, artritis'},
+  {n:15, nombre:'Graphites', desc:'Piel húmeda fisurada, estreñimiento, cicatrices, obesidad'},
+  {n:16, nombre:'Ignatia Amara', desc:'Duelos, contrariedad, suspiros, histeria, labilidad emocional'},
+  {n:17, nombre:'Iodum Metallicum', desc:'Adelgazamiento con hambre, bocio, glándulas inflamadas, calor'},
+  {n:18, nombre:'Kalmia Latifolia', desc:'Neuralgias que descienden, cardiopatías reumáticas'},
+  {n:19, nombre:'Ledum Palustre', desc:'Picaduras, heridas punzantes, gota, frío que alivia, ojos'},
+  {n:20, nombre:'Magnesia Carbónica', desc:'Dolor nocturno, niños delicados, intolerancia a la leche'},
+  {n:21, nombre:'Magnesia Muriática', desc:'Hígado, digestión difícil, espasmos, insomnio por agotamiento'},
+  {n:22, nombre:'Natrum Carbonicum', desc:'Debilidad solar, intolerancia al calor, indigestión, timidez'},
+  {n:23, nombre:'Natrum Muriaticum', desc:'Duelo retenido, sequedad, migraña, herpes labial recurrente'},
+  {n:24, nombre:'Nitricum Acidum', desc:'Fisuras dolorosas, verrugas, hemorragias, mal olor corporal'},
+  {n:25, nombre:'Nux Moschata', desc:'Somnolencia extrema, desmayos, sequedad de mucosas, histeria'},
+  {n:26, nombre:'Opium', desc:'Inconsciencia, estreñimiento severo, estupor, respiración ruidosa'},
+  {n:27, nombre:'Petroleum', desc:'Grietas en piel y mucosas, cinetosis, eccema invernal'},
+  {n:28, nombre:'Phosphoricum Acidum', desc:'Debilidad por estrés o duelo, pérdida de cabello, acidez'},
+  {n:29, nombre:'Platinum Metallicum', desc:'Arrogancia, hipersensibilidad genital, neuralgias, orgullo patológico'},
+  {n:30, nombre:'Spigelia', desc:'Neuralgias faciales y cardíacas, palpitaciones, dolor ocular'},
+  {n:31, nombre:'Stannum Metallicum', desc:'Debilidad respiratoria, tos productiva, agotamiento, parálisis lenta'},
+  {n:32, nombre:'Staphysagria', desc:'Ira reprimida, humillación, abuso, postoperatorio, prostatitis'},
+  {n:33, nombre:'Stramonium', desc:'Terror nocturno, convulsiones, miedo a la oscuridad, violencia'},
+  {n:34, nombre:'Tartarus Emeticus', desc:'Estertores de moco en bronquios, debilidad intensa, somnolencia'},
+  {n:35, nombre:'Thuja Occidentalis', desc:'Verrugas, condilomas, ideas fijas, efectos de vacunación'},
+  {n:36, nombre:'Zincum Metallicum', desc:'Inquietud motora extrema, piernas sin descanso, agotamiento nervioso'},
 ];
 
 const CHAKRAS_PRIMARIOS = [
-  {n:1, nombre:'Muladhara (Raíz)',     color:'Rojo',    elemento:'Tierra', aspecto:'Seguridad, supervivencia',    glandula:'Suprarrenales', organos:'Huesos, sangre, colon, piernas, sistema inmune', emoc:'Miedo existencial, ansiedad, desconexión'},
-  {n:2, nombre:'Swadhistana (Sacro)',  color:'Naranja', elemento:'Agua',   aspecto:'Creatividad, sexualidad',     glandula:'Gónadas',       organos:'Riñones, vejiga, genitales, fluidos, sistema linfático', emoc:'Culpa, rigidez, adicciones, celos'},
-  {n:3, nombre:'Manipura (Plexo)',     color:'Amarillo',elemento:'Fuego',  aspecto:'Poder personal, voluntad',   glandula:'Páncreas',      organos:'Estómago, hígado, páncreas, intestino delgado', emoc:'Vergüenza, impotencia, ira reprimida'},
-  {n:4, nombre:'Anahata (Corazón)',    color:'Verde',   elemento:'Aire',   aspecto:'Amor incondicional',          glandula:'Timo',          organos:'Corazón, pulmones, brazos, manos, circulación', emoc:'Dolor emocional, resentimiento, soledad'},
-  {n:5, nombre:'Vishuddha (Garganta)',color:'Azul',    elemento:'Éter',   aspecto:'Comunicación, expresión',    glandula:'Tiroides',      organos:'Garganta, tiroides, cuello, mandíbula, oídos', emoc:'Mentiras, represión de la voz, falta de autenticidad'},
-  {n:6, nombre:'Ajna (Tercer ojo)',    color:'Índigo',  elemento:'Luz',    aspecto:'Intuición, claridad',        glandula:'Hipófisis',     organos:'Ojos, cerebro, glándula pineal, sistema nervioso', emoc:'Confusión, falta de visión, negación'},
-  {n:7, nombre:'Sahasrara (Corona)',   color:'Violeta', elemento:'Sonido', aspecto:'Conciencia, conexión divina', glandula:'Pineal',        organos:'Sistema nervioso central, cerebro', emoc:'Desconexión espiritual, apego al ego'},
+  {n:1, nombre:'Muladhara (Raíz)', color:'Rojo', elemento:'Tierra', aspecto:'Seguridad, supervivencia', glandula:'Suprarrenales', organos:'Huesos, sangre, colon, piernas, sistema inmune', emoc:'Miedo existencial, ansiedad, desconexión'},
+  {n:2, nombre:'Swadhistana (Sacro)', color:'Naranja', elemento:'Agua', aspecto:'Creatividad, sexualidad', glandula:'Gónadas', organos:'Riñones, vejiga, genitales, fluidos, sistema linfático', emoc:'Culpa, rigidez, adicciones, celos'},
+  {n:3, nombre:'Manipura (Plexo)', color:'Amarillo',elemento:'Fuego', aspecto:'Poder personal, voluntad', glandula:'Páncreas', organos:'Estómago, hígado, páncreas, intestino delgado', emoc:'Vergüenza, impotencia, ira reprimida'},
+  {n:4, nombre:'Anahata (Corazón)', color:'Verde', elemento:'Aire', aspecto:'Amor incondicional', glandula:'Timo', organos:'Corazón, pulmones, brazos, manos, circulación', emoc:'Dolor emocional, resentimiento, soledad'},
+  {n:5, nombre:'Vishuddha (Garganta)',color:'Azul', elemento:'Éter', aspecto:'Comunicación, expresión', glandula:'Tiroides', organos:'Garganta, tiroides, cuello, mandíbula, oídos', emoc:'Mentiras, represión de la voz, falta de autenticidad'},
+  {n:6, nombre:'Ajna (Tercer ojo)', color:'Índigo', elemento:'Luz', aspecto:'Intuición, claridad', glandula:'Hipófisis', organos:'Ojos, cerebro, glándula pineal, sistema nervioso', emoc:'Confusión, falta de visión, negación'},
+  {n:7, nombre:'Sahasrara (Corona)', color:'Violeta', elemento:'Sonido', aspecto:'Conciencia, conexión divina', glandula:'Pineal', organos:'Sistema nervioso central, cerebro', emoc:'Desconexión espiritual, apego al ego'},
 ];
 
 const CHAKRAS_SECUNDARIOS = [
-  {n:'1-2',  nombre:'Plantas de los pies (R1)',      desc:'Arraigamiento a la tierra, seguridad, postura firme, definición del camino, La Madre'},
-  {n:'3-4',  nombre:'Hueco poplíteo (V40)',          desc:'Drenaje tóxico en todos los cuerpos. El peso y la carga. Yugo de la autoridad. Intolerancia. La responsabilidad'},
-  {n:'5-6',  nombre:'Gónadas / Isquion (V36)',       desc:'Hormonas. Identidad y caracteres sexuales. La pareja. Los hijos'},
-  {n:'7',    nombre:'Hepático (H14 derecho)',        desc:'Nutrientes, digestión. Enojo. Represión emocional. Frustración. Elemento Madera'},
-  {n:'8',    nombre:'Subesternal (VC15)',            desc:'Punto de rupturas de la Red Etérica. Flujo energético. Angustia, vacío, ansiedad, falta de aire'},
-  {n:'9',    nombre:'Interhomóplato (VG12)',         desc:'Punto de la angustia, ritmo cardíaco, circulación de la energía emocional. D5'},
+  {n:'1-2', nombre:'Plantas de los pies (R1)', desc:'Arraigamiento a la tierra, seguridad, postura firme, definición del camino, La Madre'},
+  {n:'3-4', nombre:'Hueco poplíteo (V40)', desc:'Drenaje tóxico en todos los cuerpos. El peso y la carga. Yugo de la autoridad. Intolerancia. La responsabilidad'},
+  {n:'5-6', nombre:'Gónadas / Isquion (V36)', desc:'Hormonas. Identidad y caracteres sexuales. La pareja. Los hijos'},
+  {n:'7', nombre:'Hepático (H14 derecho)', desc:'Nutrientes, digestión. Enojo. Represión emocional. Frustración. Elemento Madera'},
+  {n:'8', nombre:'Subesternal (VC15)', desc:'Punto de rupturas de la Red Etérica. Flujo energético. Angustia, vacío, ansiedad, falta de aire'},
+  {n:'9', nombre:'Interhomóplato (VG12)', desc:'Punto de la angustia, ritmo cardíaco, circulación de la energía emocional. D5'},
   {n:'10-11',nombre:'Bazo anterior y posterior (B21 / H14 izq)', desc:'Recibe el Qi del ambiente y lo distribuye en los 5 primeros chakras primarios. Tierra. Identidad'},
-  {n:'12',   nombre:'Timo (VC20)',                   desc:'Nervio vago, sistema vegetativo de relajación. Amor universal. Paz. Compasión. Puerta de entrada a la cabeza'},
-  {n:'13-14',nombre:'Pezones (E17-18)',              desc:'Entrada/salida al campo etérico. Senos, pulmones. Voluntad de vivir, amor maduro. Maternidad'},
-  {n:'15-16',nombre:'Palmas de las manos (PC8)',     desc:'Antenas energéticas. Creatividad. Autoexpresión. Conexión al mundo. Transmisión de energía curativa'},
+  {n:'12', nombre:'Timo (VC20)', desc:'Nervio vago, sistema vegetativo de relajación. Amor universal. Paz. Compasión. Puerta de entrada a la cabeza'},
+  {n:'13-14',nombre:'Pezones (E17-18)', desc:'Entrada/salida al campo etérico. Senos, pulmones. Voluntad de vivir, amor maduro. Maternidad'},
+  {n:'15-16',nombre:'Palmas de las manos (PC8)', desc:'Antenas energéticas. Creatividad. Autoexpresión. Conexión al mundo. Transmisión de energía curativa'},
   {n:'17-18',nombre:'Articulación temporomandibular (E6)', desc:'Instinto. Libertad. Libre albedrío. Ira reprimida. Insatisfacción. Remordimiento. Injusticia'},
-  {n:'19-20',nombre:'Ojos',                         desc:'Acceso neurológico. Ojo derecho = amor. Ojo izquierdo = voluntad'},
-  {n:'21',   nombre:'Altar mayor (VG19)',            desc:'Centro de la consciencia'},
+  {n:'19-20',nombre:'Ojos', desc:'Acceso neurológico. Ojo derecho = amor. Ojo izquierdo = voluntad'},
+  {n:'21', nombre:'Altar mayor (VG19)', desc:'Centro de la consciencia'},
 ];
 
 const CINCO_ELEMENTOS = [
@@ -568,782 +383,644 @@ const CINCO_ELEMENTOS = [
   {n:2, nombre:'Fuego', color:'#e05c5c', organos_yin:'Corazón / Pericardio', organos_yang:'Intestino delgado / Triple calentador', emocion_neg:'Alegría excesiva / Agitación', emocion_pos:'Amor / Gozo equilibrado', sentido:'Habla', sabor:'Amargo', estacion:'Verano', tejido:'Vasos sanguíneos', manifestacion:'Cutis'},
   {n:3, nombre:'Tierra',color:'#f0c060', organos_yin:'Bazo / Páncreas', organos_yang:'Estómago', emocion_neg:'Preocupación / Obsesión / Rumiación', emocion_pos:'Reflexión equilibrada', sentido:'Gusto', sabor:'Dulce', estacion:'Inter-estaciones', tejido:'Músculos', manifestacion:'Labios'},
   {n:4, nombre:'Metal', color:'#8ad4e0', organos_yin:'Pulmón', organos_yang:'Intestino grueso', emocion_neg:'Tristeza / Melancolía / Duelo', emocion_pos:'Integridad / Rectitud', sentido:'Olfato', sabor:'Picante', estacion:'Otoño', tejido:'Piel y vello', manifestacion:'Vello'},
-  {n:5, nombre:'Agua',  color:'#5b8fff', organos_yin:'Riñón', organos_yang:'Vejiga', emocion_neg:'Miedo / Terror / Pavor', emocion_pos:'Sabiduría / Serenidad', sentido:'Oído', sabor:'Salado', estacion:'Invierno', tejido:'Huesos / Médula', manifestacion:'Cabello'},
+  {n:5, nombre:'Agua', color:'#5b8fff', organos_yin:'Riñón', organos_yang:'Vejiga', emocion_neg:'Miedo / Terror / Pavor', emocion_pos:'Sabiduría / Serenidad', sentido:'Oído', sabor:'Salado', estacion:'Invierno', tejido:'Huesos / Médula', manifestacion:'Cabello'},
 ];
 
 const AMINOACIDOS = [
   // Esenciales
-  {n:1,  cat:'Esencial', nombre:'Histidina',      desc:'Sistema inmune, producción de histamina, síntesis de hemoglobina'},
-  {n:2,  cat:'Esencial', nombre:'Isoleucina',     desc:'Síntesis de hemoglobina, regulación del azúcar en sangre, energía muscular'},
-  {n:3,  cat:'Esencial', nombre:'Leucina',        desc:'Síntesis proteica muscular, recuperación muscular, glucemia'},
-  {n:4,  cat:'Esencial', nombre:'Lisina',         desc:'Formación de colágeno, absorción de calcio, inmunidad, metabolismo grasas'},
-  {n:5,  cat:'Esencial', nombre:'Metionina',      desc:'Desintoxicación hepática, síntesis de SAM, cabello y uñas'},
-  {n:6,  cat:'Esencial', nombre:'Fenilalanina',   desc:'Síntesis de tirosina, dopamina, norepinefrina, estado de ánimo'},
-  {n:7,  cat:'Esencial', nombre:'Treonina',       desc:'Colágeno, elastina, sistema inmune, función hepática'},
-  {n:8,  cat:'Esencial', nombre:'Triptófano',     desc:'Síntesis de serotonina y melatonina, sueño, estado de ánimo'},
-  {n:9,  cat:'Esencial', nombre:'Valina',         desc:'Crecimiento muscular, reparación de tejidos, sistema nervioso'},
+  {n:1, cat:'Esencial', nombre:'Histidina', desc:'Sistema inmune, producción de histamina, síntesis de hemoglobina'},
+  {n:2, cat:'Esencial', nombre:'Isoleucina', desc:'Síntesis de hemoglobina, regulación del azúcar en sangre, energía muscular'},
+  {n:3, cat:'Esencial', nombre:'Leucina', desc:'Síntesis proteica muscular, recuperación muscular, glucemia'},
+  {n:4, cat:'Esencial', nombre:'Lisina', desc:'Formación de colágeno, absorción de calcio, inmunidad, metabolismo grasas'},
+  {n:5, cat:'Esencial', nombre:'Metionina', desc:'Desintoxicación hepática, síntesis de SAM, cabello y uñas'},
+  {n:6, cat:'Esencial', nombre:'Fenilalanina', desc:'Síntesis de tirosina, dopamina, norepinefrina, estado de ánimo'},
+  {n:7, cat:'Esencial', nombre:'Treonina', desc:'Colágeno, elastina, sistema inmune, función hepática'},
+  {n:8, cat:'Esencial', nombre:'Triptófano', desc:'Síntesis de serotonina y melatonina, sueño, estado de ánimo'},
+  {n:9, cat:'Esencial', nombre:'Valina', desc:'Crecimiento muscular, reparación de tejidos, sistema nervioso'},
   // Semi-esenciales
-  {n:10, cat:'Semi-esencial', nombre:'Arginina',     desc:'Producción de óxido nítrico, sistema inmune, cicatrización, circulación'},
-  {n:11, cat:'Semi-esencial', nombre:'Cisteína',     desc:'Síntesis de glutatión, antioxidante, cabello y uñas, desintoxicación'},
-  {n:12, cat:'Semi-esencial', nombre:'Glutamina',    desc:'Combustible intestinal, sistema inmune, recuperación muscular'},
-  {n:13, cat:'Semi-esencial', nombre:'Glicina',      desc:'Síntesis de colágeno, neurotransmisor inhibidor, desintoxicación'},
-  {n:14, cat:'Semi-esencial', nombre:'Prolina',      desc:'Formación de colágeno, curación de heridas, estructura de la piel'},
-  {n:15, cat:'Semi-esencial', nombre:'Tirosina',     desc:'Síntesis de dopamina, tiroxina, melanina, resiliencia al estrés'},
+  {n:10, cat:'Semi-esencial', nombre:'Arginina', desc:'Producción de óxido nítrico, sistema inmune, cicatrización, circulación'},
+  {n:11, cat:'Semi-esencial', nombre:'Cisteína', desc:'Síntesis de glutatión, antioxidante, cabello y uñas, desintoxicación'},
+  {n:12, cat:'Semi-esencial', nombre:'Glutamina', desc:'Combustible intestinal, sistema inmune, recuperación muscular'},
+  {n:13, cat:'Semi-esencial', nombre:'Glicina', desc:'Síntesis de colágeno, neurotransmisor inhibidor, desintoxicación'},
+  {n:14, cat:'Semi-esencial', nombre:'Prolina', desc:'Formación de colágeno, curación de heridas, estructura de la piel'},
+  {n:15, cat:'Semi-esencial', nombre:'Tirosina', desc:'Síntesis de dopamina, tiroxina, melanina, resiliencia al estrés'},
   // No esenciales importantes
-  {n:16, cat:'No esencial', nombre:'Alanina',        desc:'Regulación glucémica, energía muscular, inmunidad'},
+  {n:16, cat:'No esencial', nombre:'Alanina', desc:'Regulación glucémica, energía muscular, inmunidad'},
   {n:17, cat:'No esencial', nombre:'Ácido aspártico',desc:'Ciclo de Krebs, síntesis de nucleótidos, detoxificación amonio'},
   {n:18, cat:'No esencial', nombre:'Ácido glutámico',desc:'Neurotransmisor excitador, síntesis de GABA, energía cerebral'},
-  {n:19, cat:'No esencial', nombre:'GABA',           desc:'Neurotransmisor inhibidor, relajación, ansiedad, insomnio'},
-  {n:20, cat:'No esencial', nombre:'Taurina',        desc:'Sistema cardiovascular, hígado, bilis, sistema nervioso, vista'},
+  {n:19, cat:'No esencial', nombre:'GABA', desc:'Neurotransmisor inhibidor, relajación, ansiedad, insomnio'},
+  {n:20, cat:'No esencial', nombre:'Taurina', desc:'Sistema cardiovascular, hígado, bilis, sistema nervioso, vista'},
 ];
 
 const ENZIMAS = [
   // Digestivas
-  {n:1,  cat:'Digestiva', nombre:'Amilasa (salival y pancreática)', desc:'Digestión de carbohidratos; elevada en pancreatitis'},
-  {n:2,  cat:'Digestiva', nombre:'Lipasa pancreática',             desc:'Digestión de grasas; marcador de pancreatitis'},
-  {n:3,  cat:'Digestiva', nombre:'Pepsina (Pepsinógeno)',          desc:'Digestión de proteínas en estómago (pH ácido)'},
-  {n:4,  cat:'Digestiva', nombre:'Tripsina / Quimiotripsina',      desc:'Digestión proteica pancreática en duodeno'},
-  {n:5,  cat:'Digestiva', nombre:'Lactasa',                        desc:'Digestión de lactosa; deficiencia = intolerancia'},
-  {n:6,  cat:'Digestiva', nombre:'Sucrasa / Maltasa',             desc:'Digestión de azúcares simples en el intestino delgado'},
-  {n:7,  cat:'Digestiva', nombre:'Bromelina (piña)',               desc:'Enzima proteolítica antiinflamatoria, digestión'},
-  {n:8,  cat:'Digestiva', nombre:'Papaína (papaya)',               desc:'Proteolítica, antiinflamatoria, cicatrizante'},
+  {n:1, cat:'Digestiva', nombre:'Amilasa (salival y pancreática)', desc:'Digestión de carbohidratos; elevada en pancreatitis'},
+  {n:2, cat:'Digestiva', nombre:'Lipasa pancreática', desc:'Digestión de grasas; marcador de pancreatitis'},
+  {n:3, cat:'Digestiva', nombre:'Pepsina (Pepsinógeno)', desc:'Digestión de proteínas en estómago (pH ácido)'},
+  {n:4, cat:'Digestiva', nombre:'Tripsina / Quimiotripsina', desc:'Digestión proteica pancreática en duodeno'},
+  {n:5, cat:'Digestiva', nombre:'Lactasa', desc:'Digestión de lactosa; deficiencia = intolerancia'},
+  {n:6, cat:'Digestiva', nombre:'Sucrasa / Maltasa', desc:'Digestión de azúcares simples en el intestino delgado'},
+  {n:7, cat:'Digestiva', nombre:'Bromelina (piña)', desc:'Enzima proteolítica antiinflamatoria, digestión'},
+  {n:8, cat:'Digestiva', nombre:'Papaína (papaya)', desc:'Proteolítica, antiinflamatoria, cicatrizante'},
   // Hepáticas / Metabólicas
-  {n:9,  cat:'Hepática', nombre:'ALT / TGP (Alanina aminotransferasa)',  desc:'Marcador de daño hepático; elevada en hepatitis'},
+  {n:9, cat:'Hepática', nombre:'ALT / TGP (Alanina aminotransferasa)', desc:'Marcador de daño hepático; elevada en hepatitis'},
   {n:10, cat:'Hepática', nombre:'AST / TGO (Aspartato aminotransferasa)',desc:'Daño hepático y muscular; infarto, hepatitis'},
-  {n:11, cat:'Hepática', nombre:'Fosfatasa alcalina (FA)',              desc:'Hígado, hueso, vesícula; colestasis'},
-  {n:12, cat:'Hepática', nombre:'GGT (Gamma-glutamiltransferasa)',       desc:'Detoxificación hepática; consumo de alcohol'},
-  {n:13, cat:'Hepática', nombre:'LDH (Lactato deshidrogenasa)',          desc:'Daño tisular general; hemólisis, infarto, neoplasia'},
+  {n:11, cat:'Hepática', nombre:'Fosfatasa alcalina (FA)', desc:'Hígado, hueso, vesícula; colestasis'},
+  {n:12, cat:'Hepática', nombre:'GGT (Gamma-glutamiltransferasa)', desc:'Detoxificación hepática; consumo de alcohol'},
+  {n:13, cat:'Hepática', nombre:'LDH (Lactato deshidrogenasa)', desc:'Daño tisular general; hemólisis, infarto, neoplasia'},
   // Antioxidantes
-  {n:14, cat:'Antioxidante', nombre:'SOD (Superóxido dismutasa)',        desc:'Primera línea antioxidante; neutraliza radicales libres'},
-  {n:15, cat:'Antioxidante', nombre:'Catalasa',                          desc:'Convierte peróxido de hidrógeno en agua y O₂'},
-  {n:16, cat:'Antioxidante', nombre:'Glutatión peroxidasa (GPx)',        desc:'Protección celular, requiere selenio, hígado'},
+  {n:14, cat:'Antioxidante', nombre:'SOD (Superóxido dismutasa)', desc:'Primera línea antioxidante; neutraliza radicales libres'},
+  {n:15, cat:'Antioxidante', nombre:'Catalasa', desc:'Convierte peróxido de hidrógeno en agua y O₂'},
+  {n:16, cat:'Antioxidante', nombre:'Glutatión peroxidasa (GPx)', desc:'Protección celular, requiere selenio, hígado'},
   // Metabólicas clave
-  {n:17, cat:'Metabólica', nombre:'ATP sintasa',                         desc:'Producción de energía (ATP) en mitocondrias'},
-  {n:18, cat:'Metabólica', nombre:'Hexoquinasa / Glucokinasa',          desc:'Primera etapa del metabolismo de la glucosa'},
+  {n:17, cat:'Metabólica', nombre:'ATP sintasa', desc:'Producción de energía (ATP) en mitocondrias'},
+  {n:18, cat:'Metabólica', nombre:'Hexoquinasa / Glucokinasa', desc:'Primera etapa del metabolismo de la glucosa'},
 ];
 
 const MIEDOS_FOBIAS = [
   // Miedos comunes
-  {n:1,  cat:'Miedo común', nombre:'Miedo a la muerte',              desc:'Temor a la propia muerte o pérdida de seres queridos'},
-  {n:2,  cat:'Miedo común', nombre:'Miedo al fracaso',               desc:'Temor a no cumplir expectativas; evita tomar riesgos'},
-  {n:3,  cat:'Miedo común', nombre:'Miedo al rechazo',               desc:'Evita relacionarse para no ser rechazado'},
-  {n:4,  cat:'Miedo común', nombre:'Miedo al abandono',              desc:'Angustia ante la posibilidad de quedarse solo'},
-  {n:5,  cat:'Miedo común', nombre:'Miedo a la enfermedad',          desc:'Hipocondría, vigilancia excesiva del cuerpo'},
-  {n:6,  cat:'Miedo común', nombre:'Miedo a la pérdida de control',  desc:'Ansiedad ante situaciones impredecibles'},
-  {n:7,  cat:'Miedo común', nombre:'Miedo al futuro',                desc:'Anticipación catastrófica, incertidumbre paralizante'},
-  {n:8,  cat:'Miedo común', nombre:'Miedo a la oscuridad',           desc:'Temor a lo desconocido oculto en la oscuridad'},
+  {n:1, cat:'Miedo común', nombre:'Miedo a la muerte', desc:'Temor a la propia muerte o pérdida de seres queridos'},
+  {n:2, cat:'Miedo común', nombre:'Miedo al fracaso', desc:'Temor a no cumplir expectativas; evita tomar riesgos'},
+  {n:3, cat:'Miedo común', nombre:'Miedo al rechazo', desc:'Evita relacionarse para no ser rechazado'},
+  {n:4, cat:'Miedo común', nombre:'Miedo al abandono', desc:'Angustia ante la posibilidad de quedarse solo'},
+  {n:5, cat:'Miedo común', nombre:'Miedo a la enfermedad', desc:'Hipocondría, vigilancia excesiva del cuerpo'},
+  {n:6, cat:'Miedo común', nombre:'Miedo a la pérdida de control', desc:'Ansiedad ante situaciones impredecibles'},
+  {n:7, cat:'Miedo común', nombre:'Miedo al futuro', desc:'Anticipación catastrófica, incertidumbre paralizante'},
+  {n:8, cat:'Miedo común', nombre:'Miedo a la oscuridad', desc:'Temor a lo desconocido oculto en la oscuridad'},
   // Nudos psóricos
-  {n:9,  cat:'Nudo psórico', nombre:'Miedo arcaico a ser eliminado', desc:'Memoria ancestral de supervivencia del clan'},
+  {n:9, cat:'Nudo psórico', nombre:'Miedo arcaico a ser eliminado', desc:'Memoria ancestral de supervivencia del clan'},
   {n:10, cat:'Nudo psórico', nombre:'Miedo a no pertenecer al grupo',desc:'Terror tribal de ser expulsado del clan'},
   {n:11, cat:'Nudo psórico', nombre:'Miedo transgeneracional al hambre', desc:'Memoria de escasez en ancestros'},
-  {n:12, cat:'Nudo psórico', nombre:'Miedo a traicionar al linaje',  desc:'Culpa por prosperar más que los ancestros'},
+  {n:12, cat:'Nudo psórico', nombre:'Miedo a traicionar al linaje', desc:'Culpa por prosperar más que los ancestros'},
   // Fobias específicas
-  {n:13, cat:'Fobia específica', nombre:'Aracnofobia (arañas)',       desc:'Miedo irracional a arañas y arácnidos'},
-  {n:14, cat:'Fobia específica', nombre:'Aerofobia (aviones)',        desc:'Miedo irracional a volar'},
+  {n:13, cat:'Fobia específica', nombre:'Aracnofobia (arañas)', desc:'Miedo irracional a arañas y arácnidos'},
+  {n:14, cat:'Fobia específica', nombre:'Aerofobia (aviones)', desc:'Miedo irracional a volar'},
   {n:15, cat:'Fobia específica', nombre:'Claustrofobia (espacios cerrados)', desc:'Ansiedad en espacios pequeños o encerrados'},
-  {n:16, cat:'Fobia específica', nombre:'Acrofobia (alturas)',        desc:'Miedo extremo a estar en lugares elevados'},
-  {n:17, cat:'Fobia específica', nombre:'Hematofobia (sangre)',       desc:'Desmayo o terror ante la visión de sangre'},
+  {n:16, cat:'Fobia específica', nombre:'Acrofobia (alturas)', desc:'Miedo extremo a estar en lugares elevados'},
+  {n:17, cat:'Fobia específica', nombre:'Hematofobia (sangre)', desc:'Desmayo o terror ante la visión de sangre'},
   {n:18, cat:'Fobia específica', nombre:'Fobia a animales (zoofobia)',desc:'Miedo irracional a animales específicos'},
   // Fobias sociales
-  {n:19, cat:'Fobia social', nombre:'Miedo a hablar en público',      desc:'Ansiedad intensa ante audiencias'},
-  {n:20, cat:'Fobia social', nombre:'Miedo a ser observado/juzgado',  desc:'Vigilancia social extrema, vergüenza'},
+  {n:19, cat:'Fobia social', nombre:'Miedo a hablar en público', desc:'Ansiedad intensa ante audiencias'},
+  {n:20, cat:'Fobia social', nombre:'Miedo a ser observado/juzgado', desc:'Vigilancia social extrema, vergüenza'},
   {n:21, cat:'Fobia social', nombre:'Miedo a ser evaluado/examinado', desc:'Bloqueo cognitivo ante pruebas'},
   {n:22, cat:'Fobia social', nombre:'Miedo a las multitudes (agorafobia)', desc:'Ansiedad en espacios abiertos y concurridos'},
   {n:23, cat:'Fobia social', nombre:'Miedo a la intimidad emocional', desc:'Evita la vulnerabilidad en relaciones cercanas'},
   // Miedos infantiles
   {n:24, cat:'Miedo infantil', nombre:'Miedo a monstruos/oscuridad', desc:'0-6 años: temores nocturnos e imaginarios'},
-  {n:25, cat:'Miedo infantil', nombre:'Miedo a la separación',        desc:'0-3 años: ansiedad de separación del cuidador'},
-  {n:26, cat:'Miedo infantil', nombre:'Miedo a lo sobrenatural',      desc:'6-9 años: fantasmas, espíritus, poderes'},
-  {n:27, cat:'Miedo infantil', nombre:'Miedo al fracaso escolar',     desc:'6-12 años: rendimiento académico y evaluación'},
+  {n:25, cat:'Miedo infantil', nombre:'Miedo a la separación', desc:'0-3 años: ansiedad de separación del cuidador'},
+  {n:26, cat:'Miedo infantil', nombre:'Miedo a lo sobrenatural', desc:'6-9 años: fantasmas, espíritus, poderes'},
+  {n:27, cat:'Miedo infantil', nombre:'Miedo al fracaso escolar', desc:'6-12 años: rendimiento académico y evaluación'},
   // Defensas / emociones reactivas
   {n:28, cat:'Defensa psicológica', nombre:'Sobreprotección compulsiva', desc:'Hipervigilancia sobre los seres queridos'},
-  {n:29, cat:'Defensa psicológica', nombre:'Preocupación en demasía',    desc:'Rumiación y catastrofismo como control'},
-  {n:30, cat:'Defensa psicológica', nombre:'Interiorización excesiva',   desc:'Supresión emocional como mecanismo de defensa'},
-  {n:31, cat:'Defensa psicológica', nombre:'Sobreactuación',            desc:'Performance emocional para evitar el vacío'},
+  {n:29, cat:'Defensa psicológica', nombre:'Preocupación en demasía', desc:'Rumiación y catastrofismo como control'},
+  {n:30, cat:'Defensa psicológica', nombre:'Interiorización excesiva', desc:'Supresión emocional como mecanismo de defensa'},
+  {n:31, cat:'Defensa psicológica', nombre:'Sobreactuación', desc:'Performance emocional para evitar el vacío'},
   // Estados a aumentar
-  {n:32, cat:'Objetivo terapéutico', nombre:'Felicidad y gozo',          desc:'Estado de bienestar genuino a cultivar'},
-  {n:33, cat:'Objetivo terapéutico', nombre:'Optimismo y confianza',     desc:'Fe en los propios recursos y en el proceso'},
-  {n:34, cat:'Objetivo terapéutico', nombre:'Sensación de seguridad',    desc:'Arraigo, tierra, presencia en el cuerpo'},
-  {n:35, cat:'Objetivo terapéutico', nombre:'Sentido del humor',         desc:'Perspectiva liviana ante las circunstancias'},
+  {n:32, cat:'Objetivo terapéutico', nombre:'Felicidad y gozo', desc:'Estado de bienestar genuino a cultivar'},
+  {n:33, cat:'Objetivo terapéutico', nombre:'Optimismo y confianza', desc:'Fe en los propios recursos y en el proceso'},
+  {n:34, cat:'Objetivo terapéutico', nombre:'Sensación de seguridad', desc:'Arraigo, tierra, presencia en el cuerpo'},
+  {n:35, cat:'Objetivo terapéutico', nombre:'Sentido del humor', desc:'Perspectiva liviana ante las circunstancias'},
 ];
 
 // ─── Init ─────────────────────────────────────────────────────────────────────
 async function init() {
   // Load pairs DB
-  try {
-    const r = await fetch('/api/pares-db');
-    const d = await r.json();
-    ALL_PAIRS = d.pairs || [];
-    const tipoMap = {};
-    for (const p of ALL_PAIRS) {
-      tipoMap[p.tipo] = (tipoMap[p.tipo] || 0) + 1;
+ try {
+ const r = await fetch('/api/pares-db');
+ const d = await r.json();
+ ALL_PAIRS = d.pairs || [];
+ const tipoMap = {};
+ for (const p of ALL_PAIRS) {
+ tipoMap[p.tipo] = (tipoMap[p.tipo] || 0) + 1;
     }
-    for (const [tipo, cnt] of Object.entries(tipoMap)) {
-      const el = document.getElementById('cnt-' + tipo);
-      if (el) el.textContent = cnt;
+ for (const [tipo, cnt] of Object.entries(tipoMap)) {
+ const el = document.getElementById('cnt-' + tipo);
+ if (el) el.textContent = cnt;
     }
   } catch(e) {
-    ALL_PAIRS = [];
+ ALL_PAIRS = [];
   }
 
   // Load conflictología DB
-  try {
-    const r = await fetch('/api/conflictologia-db');
-    const d = await r.json();
-    CONFLICTO_DB = d.systems || {};
+ try {
+ const r = await fetch('/api/conflictologia-db');
+ const d = await r.json();
+ CONFLICTO_DB = d.systems || {};
     // Set counts
-    const sysMap = {
-      respiratorio: 'respiratorio', digestivo: 'digestivo',
-      cardiovascular: 'cardiovascular', locomotor: 'locomotor',
-      genital: 'genital', urinario: 'urinario', endocrino: 'endocrino',
-      inmunologico: 'inmunologico', piel: 'piel', neurosensorial: 'neurosensorial'
+ const sysMap = {
+ respiratorio: 'respiratorio', digestivo: 'digestivo',
+ cardiovascular: 'cardiovascular', locomotor: 'locomotor',
+ genital: 'genital', urinario: 'urinario', endocrino: 'endocrino',
+ inmunologico: 'inmunologico', piel: 'piel', neurosensorial: 'neurosensorial'
     };
-    for (const [key, slug] of Object.entries(sysMap)) {
-      const sys = CONFLICTO_DB[key];
-      if (!sys) continue;
-      const total = Object.values(sys.subsystems).reduce((s, sub) => s + sub.conflicts.length, 0);
-      const el = document.getElementById('cnt-conf-' + slug);
-      if (el) el.textContent = total;
+ for (const [key, slug] of Object.entries(sysMap)) {
+ const sys = CONFLICTO_DB[key];
+ if (!sys) continue;
+ const total = Object.values(sys.subsystems).reduce((s, sub) =>s + sub.conflicts.length, 0);
+ const el = document.getElementById('cnt-conf-' + slug);
+ if (el) el.textContent = total;
     }
   } catch(e) {
-    CONFLICTO_DB = {};
+ CONFLICTO_DB = {};
   }
 
-  renderCurrent();
+ renderCurrent();
 }
 
 // ─── Category selection ───────────────────────────────────────────────────────
 function selectCat(btn) {
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  currentCat = btn.dataset.cat;
-  document.getElementById('searchBox').value = '';
-  document.getElementById('sisFilter').value = '';
-  renderCurrent();
+ document.querySelectorAll('.cat-btn').forEach(b =>b.classList.remove('active'));
+ btn.classList.add('active');
+ currentCat = btn.dataset.cat;
+ document.getElementById('searchBox').value = '';
+ document.getElementById('sisFilter').value = '';
+ renderCurrent();
 }
 
 function renderCurrent() {
-  const staticCats = ['sales','bach','vitaminas','creencias','miedos',
+ const staticCats = ['sales','bach','vitaminas','creencias','miedos',
     'policrestos','semipolicrestos','chakras_primarios','chakras_secundarios',
     'cinco_elementos','aminoacidos','enzimas'];
-  if (currentCat.startsWith('conflicto_')) {
-    renderConflictologia(currentCat.replace('conflicto_', ''));
+ if (currentCat.startsWith('conflicto_')) {
+ renderConflictologia(currentCat.replace('conflicto_', ''));
   } else if (staticCats.includes(currentCat)) {
-    renderStatic(currentCat);
+ renderStatic(currentCat);
   } else {
-    renderPairs(currentCat);
+ renderPairs(currentCat);
   }
 }
 
 // ─── Conflictología rendering ─────────────────────────────────────────────────
 function renderConflictologia(sysKey) {
-  document.getElementById('sisFilter').value = '';
-  const query = (document.getElementById('searchBox').value || '').toLowerCase();
-  const sys = CONFLICTO_DB[sysKey];
+ document.getElementById('sisFilter').value = '';
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
+ const sys = CONFLICTO_DB[sysKey];
 
-  const sysLabels = {
-    respiratorio:'Sistema Respiratorio', digestivo:'Sistema Digestivo',
-    cardiovascular:'Sistema Cardiovascular', locomotor:'Sistema Locomotor / Osteomuscular',
-    genital:'Sistema Reproductor', urinario:'Sistema Urinario / Renal',
-    endocrino:'Sistema Endócrino-Metabólico', inmunologico:'Sistema Inmunológico / Linfático',
-    piel:'Sistema Lipofascial / Dermatológico', neurosensorial:'Sistema Neurosensorial'
+ const sysLabels = {
+ respiratorio:'Sistema Respiratorio', digestivo:'Sistema Digestivo',
+ cardiovascular:'Sistema Cardiovascular', locomotor:'Sistema Locomotor / Osteomuscular',
+ genital:'Sistema Reproductor', urinario:'Sistema Urinario / Renal',
+ endocrino:'Sistema Endócrino-Metabólico', inmunologico:'Sistema Inmunológico / Linfático',
+ piel:'Sistema Lipofascial / Dermatológico', neurosensorial:'Sistema Neurosensorial'
   };
 
-  const title = sysLabels[sysKey] || sysKey;
-  document.getElementById('categoryLabel').textContent = title;
-  const scroll = document.getElementById('tableScroll');
+ const title = sysLabels[sysKey] || sysKey;
+ document.getElementById('categoryLabel').textContent = title;
+ const scroll = document.getElementById('tableScroll');
 
-  if (!sys || !sys.subsystems || Object.keys(sys.subsystems).length === 0) {
-    scroll.innerHTML = `<div class="empty-state"><p>No hay datos de conflictología para este sistema.</p></div>`;
-    return;
+ if (!sys || !sys.subsystems || Object.keys(sys.subsystems).length === 0) {
+ scroll.innerHTML = `<div class="empty-state"><p>No hay datos de conflictología para este sistema.</p></div>`;
+ return;
   }
 
-  let total = Object.values(sys.subsystems).reduce((s, sub) => s + sub.conflicts.length, 0);
+ let total = Object.values(sys.subsystems).reduce((s, sub) =>s + sub.conflicts.length, 0);
 
-  let html = `<div class="category-title" style="color:#ff9f6b">${escHtml(title)}</div>
-    <div class="category-sub">Conflictología psicosomática — ${total} conflictos en ${Object.keys(sys.subsystems).length} subsistemas</div>`;
+ let html = `<div class="category-title" style="color:#ff9f6b">${escHtml(title)}</div><div class="category-sub">Conflictología psicosomática — ${total} conflictos en ${Object.keys(sys.subsystems).length} subsistemas</div>`;
 
-  for (const [slug, sub] of Object.entries(sys.subsystems)) {
+ for (const [slug, sub] of Object.entries(sys.subsystems)) {
     // Filter by query
-    let conflicts = sub.conflicts;
-    if (query) {
-      conflicts = conflicts.filter(c =>
-        c.nombre.toLowerCase().includes(query) ||
+ let conflicts = sub.conflicts;
+ if (query) {
+ conflicts = conflicts.filter(c =>c.nombre.toLowerCase().includes(query) ||
         (c.desc || '').toLowerCase().includes(query)
       );
-      if (!conflicts.length) continue;
+ if (!conflicts.length) continue;
     }
 
-    html += `<div style="margin-bottom:16px">
-      <div style="font-size:.7rem;font-weight:700;color:#ff9f6b;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
-        ${escHtml(sub.label)} <span style="color:var(--muted);font-weight:400;text-transform:none">(${conflicts.length})</span>
-      </div>
-      <div class="items-grid">`;
+ html += `<div style="margin-bottom:16px"><div style="font-size:.7rem;font-weight:700;color:#ff9f6b;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
+        ${escHtml(sub.label)} <span style="color:var(--muted);font-weight:400;text-transform:none">(${conflicts.length})</span></div><div class="items-grid">`;
 
-    for (const c of conflicts) {
-      const cid = 'conf_' + sysKey + '_' + btoa(encodeURIComponent(c.nombre)).replace(/[^a-z0-9]/gi,'').slice(0,16);
-      const isChk = confirmed.some(x => x.id === cid);
-      const hasDesc = c.desc && c.desc !== c.nombre;
-      html += `<div class="item-row ${isChk?'checked':''}" onclick="toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')">
-        <input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"/>
-        <div class="item-body">
-          <div class="item-nombre">${escHtml(c.nombre)}</div>
+ for (const c of conflicts) {
+ const cid = 'conf_' + sysKey + '_' + btoa(encodeURIComponent(c.nombre)).replace(/[^a-z0-9]/gi,'').slice(0,16);
+ const isChk = confirmed.some(x =>x.id === cid);
+ const hasDesc = c.desc && c.desc !== c.nombre;
+ html += `<div class="item-row ${isChk?'checked':''}" onclick="toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"><input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"/><div class="item-body"><div class="item-nombre">${escHtml(c.nombre)}</div>
           ${hasDesc?`<div class="item-condiciones" style="color:#c8b8e8;font-style:italic">${escHtml(c.desc)}</div>`:''}
-        </div>
-      </div>`;
+ </div></div>`;
     }
-    html += `</div></div>`;
+ html += `</div></div>`;
   }
 
-  scroll.innerHTML = html;
+ scroll.innerHTML = html;
 }
 
 function toggleConflicto(id, nombre, sysKey, subLabel) {
-  const idx = confirmed.findIndex(c => c.id === id);
-  if (idx >= 0) {
-    confirmed.splice(idx, 1);
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
   } else {
-    confirmed.push({ id, nombre, tipo: 'conflicto', cat: sysKey, sub: subLabel });
+ confirmed.push({ id, nombre, tipo: 'conflicto', cat: sysKey, sub: subLabel });
   }
-  renderCurrent();
-  renderConfirmed();
+ renderCurrent();
+ renderConfirmed();
 }
 
 // ─── Pairs rendering ──────────────────────────────────────────────────────────
 function applyFilters() {
-  renderCurrent();
+ renderCurrent();
 }
 
 function renderPairs(tipo) {
-  const query = (document.getElementById('searchBox').value || '').toLowerCase();
-  const sistema = document.getElementById('sisFilter').value;
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
+ const sistema = document.getElementById('sisFilter').value;
 
-  let pairs = ALL_PAIRS.filter(p => p.tipo === tipo);
+ let pairs = ALL_PAIRS.filter(p =>p.tipo === tipo);
 
-  if (sistema) {
-    pairs = pairs.filter(p => (p.sistemas_afectados || []).includes(sistema));
+ if (sistema) {
+ pairs = pairs.filter(p => (p.sistemas_afectados || []).includes(sistema));
   }
-  if (query) {
-    pairs = pairs.filter(p =>
-      p.nombre.toLowerCase().includes(query) ||
+ if (query) {
+ pairs = pairs.filter(p =>p.nombre.toLowerCase().includes(query) ||
       (p.condiciones||'').toLowerCase().includes(query) ||
       (p.significado_emocional||'').toLowerCase().includes(query)
     );
   }
 
-  const catNames = {
-    bacteria:'Bacterias', virus:'Virus', hongo:'Hongos', parasito:'Parásitos',
-    emocional:'Emocionales', disfuncional:'Disfuncionales', especial:'Especiales',
-    reservorio:'Reservorios', desconocido:'Desconocidos'
+ const catNames = {
+ bacteria:'Bacterias', virus:'Virus', hongo:'Hongos', parasito:'Parásitos',
+ emocional:'Emocionales', disfuncional:'Disfuncionales', especial:'Especiales',
+ reservorio:'Reservorios', desconocido:'Desconocidos'
   };
-  const catColors = {
-    bacteria:'#e05c5c',virus:'#f07c40',hongo:'#f0c060',parasito:'#4caf7d',
-    emocional:'#7c6df0',disfuncional:'#5b8fff',especial:'#ff85b3',
-    reservorio:'#7ae0c0',desconocido:'#7a7a9a'
+ const catColors = {
+ bacteria:'#e05c5c',virus:'#f07c40',hongo:'#f0c060',parasito:'#4caf7d',
+ emocional:'#7c6df0',disfuncional:'#5b8fff',especial:'#ff85b3',
+ reservorio:'#7ae0c0',desconocido:'#7a7a9a'
   };
-  document.getElementById('categoryLabel').textContent = catNames[tipo] || tipo;
+ document.getElementById('categoryLabel').textContent = catNames[tipo] || tipo;
 
-  const scroll = document.getElementById('tableScroll');
+ const scroll = document.getElementById('tableScroll');
 
-  if (!pairs.length) {
-    scroll.innerHTML = `
-      <div class="empty-state">
-        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <p>Sin resultados para esta búsqueda.</p>
-      </div>`;
-    return;
+ if (!pairs.length) {
+ scroll.innerHTML = `
+ <div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>Sin resultados para esta búsqueda.</p></div>`;
+ return;
   }
 
-  const color = catColors[tipo] || '#888';
-  let html = `
-    <div class="category-title" style="color:${color}">${catNames[tipo]||tipo}</div>
-    <div class="category-sub">${pairs.length} par${pairs.length!==1?'es':''} encontrado${pairs.length!==1?'s':''}</div>
-    <div class="items-grid">`;
+ const color = catColors[tipo] || '#888';
+ let html = `
+ <div class="category-title" style="color:${color}">${catNames[tipo]||tipo}</div><div class="category-sub">${pairs.length} par${pairs.length!==1?'es':''} encontrado${pairs.length!==1?'s':''}</div><div class="items-grid">`;
 
-  for (const p of pairs) {
-    const isChk = confirmed.some(c => c.id === p.id);
-    const siss = (p.sistemas_afectados||[]).join(', ');
-    html += `
-      <div class="item-row ${isChk?'checked':''}" onclick="togglePair('${escId(p.id)}')">
-        <input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();togglePair('${escId(p.id)}')"/>
-        <div class="item-body">
-          <div class="item-nombre">${escHtml(p.nombre)}</div>
+ for (const p of pairs) {
+ const isChk = confirmed.some(c =>c.id === p.id);
+ const siss = (p.sistemas_afectados||[]).join(', ');
+ html += `
+ <div class="item-row ${isChk?'checked':''}" onclick="togglePair('${escId(p.id)}')"><input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();togglePair('${escId(p.id)}')"/><div class="item-body"><div class="item-nombre">${escHtml(p.nombre)}</div>
           ${p.condiciones?`<div class="item-condiciones">${escHtml(p.condiciones)}</div>`:''}
-          ${p.significado_emocional&&p.significado_emocional!==p.condiciones?`<div class="item-emocional">💜 ${escHtml(p.significado_emocional)}</div>`:''}
-          <div class="item-tags">
-            <span class="tag tag-tipo" style="color:${color}">${p.tipo_raw||p.tipo}</span>
+          ${p.significado_emocional&&p.significado_emocional!==p.condiciones?`<div class="item-emocional"> ${escHtml(p.significado_emocional)}</div>`:''}
+ <div class="item-tags"><span class="tag tag-tipo" style="color:${color}">${p.tipo_raw||p.tipo}</span>
             ${siss?`<span class="tag">${siss}</span>`:''}
-          </div>
-        </div>
-      </div>`;
+ </div></div></div>`;
   }
-  html += '</div>';
-  scroll.innerHTML = html;
+ html += '</div>';
+ scroll.innerHTML = html;
 }
 
 function escId(id) { return id.replace(/'/g,"\\'"); }
 
 // ─── Toggle pair ──────────────────────────────────────────────────────────────
 function togglePair(id) {
-  const pair = ALL_PAIRS.find(p => p.id === id);
-  if (!pair) return;
-  const idx = confirmed.findIndex(c => c.id === id);
-  if (idx >= 0) {
-    confirmed.splice(idx, 1);
+ const pair = ALL_PAIRS.find(p =>p.id === id);
+ if (!pair) return;
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
   } else {
-    confirmed.push({
-      id: pair.id,
-      nombre: pair.nombre,
-      tipo: pair.tipo,
-      cat: currentCat,
-      sub: pair.sistemas_afectados ? pair.sistemas_afectados.join(', ') : ''
+ confirmed.push({
+ id: pair.id,
+ nombre: pair.nombre,
+ tipo: pair.tipo,
+ cat: currentCat,
+ sub: pair.sistemas_afectados ? pair.sistemas_afectados.join(', ') : ''
     });
   }
-  renderCurrent();
-  renderConfirmed();
+ renderCurrent();
+ renderConfirmed();
 }
 
 // ─── Static categories ────────────────────────────────────────────────────────
 function renderStatic(cat) {
-  document.getElementById('sisFilter').value = '';
-  const query = (document.getElementById('searchBox').value || '').toLowerCase();
+ document.getElementById('sisFilter').value = '';
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
 
-  const catTitles = {
-    sales: 'Sales de Schüssler',
-    bach: 'Florales de Bach',
-    vitaminas: 'Vitaminas & Minerales',
-    creencias: 'Creencias Limitantes',
-    miedos: 'Miedos y Fobias',
-    policrestos: 'Policrestos',
-    semipolicrestos: 'Semipolicrestos',
-    chakras_primarios: 'Chakras Primarios',
-    chakras_secundarios: 'Chakras Secundarios',
-    cinco_elementos: '5 Elementos MTC',
-    aminoacidos: 'Aminoácidos',
-    enzimas: 'Enzimas',
+ const catTitles = {
+ sales: 'Sales de Schüssler',
+ bach: 'Florales de Bach',
+ vitaminas: 'Vitaminas & Minerales',
+ creencias: 'Creencias Limitantes',
+ miedos: 'Miedos y Fobias',
+ policrestos: 'Policrestos',
+ semipolicrestos: 'Semipolicrestos',
+ chakras_primarios: 'Chakras Primarios',
+ chakras_secundarios: 'Chakras Secundarios',
+ cinco_elementos: '5 Elementos MTC',
+ aminoacidos: 'Aminoácidos',
+ enzimas: 'Enzimas',
   };
-  document.getElementById('categoryLabel').textContent = catTitles[cat] || cat;
+ document.getElementById('categoryLabel').textContent = catTitles[cat] || cat;
 
-  const scroll = document.getElementById('tableScroll');
+ const scroll = document.getElementById('tableScroll');
 
-  if (cat === 'sales') {
-    let data = SALES_SCHUSSLER;
-    if (query) data = data.filter(s =>
-      s.nombre.toLowerCase().includes(query) ||
-      s.desc.toLowerCase().includes(query) ||
-      s.emoc.toLowerCase().includes(query)
+ if (cat === 'sales') {
+ let data = SALES_SCHUSSLER;
+ if (query) data = data.filter(s =>s.nombre.toLowerCase().includes(query) ||
+ s.desc.toLowerCase().includes(query) ||
+ s.emoc.toLowerCase().includes(query)
     );
-    let html = `<div class="category-title" style="color:var(--yellow)">Sales de Schüssler</div>
-      <div class="category-sub">${data.length} sales de tejido — terapia bioquímica de Schüssler</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Nombre</th><th class="desc-cell">Indicaciones</th><th class="emoc-cell">Resonancia emocional</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const s of data) {
-      const id = 'sales_' + s.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(s.nombre)}','sales','Sales de Schüssler')">
-        <td class="num-cell">${s.n}</td>
-        <td class="nombre-cell">${escHtml(s.nombre)}</td>
-        <td class="desc-cell">${escHtml(s.desc)}</td>
-        <td class="emoc-cell">${escHtml(s.emoc)}</td>
-        <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(s.nombre)}','sales','Sales de Schüssler')"/></td>
-      </tr>`;
+ let html = `<div class="category-title" style="color:var(--yellow)">Sales de Schüssler</div><div class="category-sub">${data.length} sales de tejido — terapia bioquímica de Schüssler</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Nombre</th><th class="desc-cell">Indicaciones</th><th class="emoc-cell">Resonancia emocional</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const s of data) {
+ const id = 'sales_' + s.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(s.nombre)}','sales','Sales de Schüssler')"><td class="num-cell">${s.n}</td><td class="nombre-cell">${escHtml(s.nombre)}</td><td class="desc-cell">${escHtml(s.desc)}</td><td class="emoc-cell">${escHtml(s.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(s.nombre)}','sales','Sales de Schüssler')"/></td></tr>`;
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'bach') {
-    let data = BACH_FLOWERS;
-    if (query) data = data.filter(b =>
-      b.nombre.toLowerCase().includes(query) ||
-      b.desc.toLowerCase().includes(query) ||
-      b.emoc.toLowerCase().includes(query) ||
-      b.g.toLowerCase().includes(query)
+ else if (cat === 'bach') {
+ let data = BACH_FLOWERS;
+ if (query) data = data.filter(b =>b.nombre.toLowerCase().includes(query) ||
+ b.desc.toLowerCase().includes(query) ||
+ b.emoc.toLowerCase().includes(query) ||
+ b.g.toLowerCase().includes(query)
     );
-    const groups = [...new Set(data.map(b=>b.g))];
-    let html = `<div class="category-title" style="color:var(--green)">Florales de Bach</div>
-      <div class="category-sub">${BACH_FLOWERS.length} remedios florales — 7 grupos emocionales</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Floral</th><th class="desc-cell">Perfil</th><th class="emoc-cell">Estado clave</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const g of groups) {
-      const gItems = data.filter(b=>b.g===g);
-      if (!gItems.length) continue;
-      html += `<tr><td colspan="5" class="group-header">Grupo: ${g}</td></tr>`;
-      for (const b of gItems) {
-        const id = 'bach_' + b.n;
-        const chk = confirmed.some(c => c.id === id);
-        html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(b.nombre)}','bach','Florales de Bach')">
-          <td class="num-cell">${b.n}</td>
-          <td class="nombre-cell">${escHtml(b.nombre)}</td>
-          <td class="desc-cell">${escHtml(b.desc)}</td>
-          <td class="emoc-cell">${escHtml(b.emoc)}</td>
-          <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(b.nombre)}','bach','Florales de Bach')"/></td>
-        </tr>`;
+ const groups = [...new Set(data.map(b=>b.g))];
+ let html = `<div class="category-title" style="color:var(--green)">Florales de Bach</div><div class="category-sub">${BACH_FLOWERS.length} remedios florales — 7 grupos emocionales</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Floral</th><th class="desc-cell">Perfil</th><th class="emoc-cell">Estado clave</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(b=>b.g===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="5" class="group-header">Grupo: ${g}</td></tr>`;
+ for (const b of gItems) {
+ const id = 'bach_' + b.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(b.nombre)}','bach','Florales de Bach')"><td class="num-cell">${b.n}</td><td class="nombre-cell">${escHtml(b.nombre)}</td><td class="desc-cell">${escHtml(b.desc)}</td><td class="emoc-cell">${escHtml(b.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(b.nombre)}','bach','Florales de Bach')"/></td></tr>`;
       }
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'vitaminas') {
-    let data = VITAMINAS;
-    if (query) data = data.filter(v =>
-      v.nombre.toLowerCase().includes(query) ||
-      v.desc.toLowerCase().includes(query)
+ else if (cat === 'vitaminas') {
+ let data = VITAMINAS;
+ if (query) data = data.filter(v =>v.nombre.toLowerCase().includes(query) ||
+ v.desc.toLowerCase().includes(query)
     );
-    let html = `<div class="category-title" style="color:var(--accent2)">Vitaminas & Minerales</div>
-      <div class="category-sub">${data.length} nutrientes esenciales para rastreo de deficiencias</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Nutriente</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const v of data) {
-      const id = 'vit_' + v.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitaminas/Minerales')">
-        <td class="num-cell">${v.n}</td>
-        <td class="nombre-cell">${escHtml(v.nombre)}</td>
-        <td class="desc-cell">${escHtml(v.desc)}</td>
-        <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitaminas/Minerales')"/></td>
-      </tr>`;
+ let html = `<div class="category-title" style="color:var(--accent2)">Vitaminas & Minerales</div><div class="category-sub">${data.length} nutrientes esenciales para rastreo de deficiencias</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Nutriente</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const v of data) {
+ const id = 'vit_' + v.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitaminas/Minerales')"><td class="num-cell">${v.n}</td><td class="nombre-cell">${escHtml(v.nombre)}</td><td class="desc-cell">${escHtml(v.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitaminas/Minerales')"/></td></tr>`;
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'creencias') {
-    let data = CREENCIAS;
-    if (query) data = data.filter(c =>
-      c.nombre.toLowerCase().includes(query) ||
-      c.emoc.toLowerCase().includes(query) ||
-      c.cat.toLowerCase().includes(query)
+ else if (cat === 'creencias') {
+ let data = CREENCIAS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.emoc.toLowerCase().includes(query) ||
+ c.cat.toLowerCase().includes(query)
     );
-    const groups = [...new Set(data.map(c=>c.cat))];
-    let html = `<div class="category-title" style="color:#d08ae0">Creencias Limitantes</div>
-      <div class="category-sub">${CREENCIAS.length} creencias — 8 áreas temáticas (BNE / Hellinger)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Creencia</th><th class="emoc-cell">Emoción subyacente</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const g of groups) {
-      const gItems = data.filter(c=>c.cat===g);
-      if (!gItems.length) continue;
-      html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
-      for (const c of gItems) {
-        const id = 'cre_' + c.n;
-        const chk = confirmed.some(cc => cc.id === id);
-        html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Creencias')">
-          <td class="num-cell">${c.n}</td>
-          <td class="nombre-cell">${escHtml(c.nombre)}</td>
-          <td class="emoc-cell">${escHtml(c.emoc)}</td>
-          <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Creencias')"/></td>
-        </tr>`;
+ const groups = [...new Set(data.map(c=>c.cat))];
+ let html = `<div class="category-title" style="color:#d08ae0">Creencias Limitantes</div><div class="category-sub">${CREENCIAS.length} creencias — 8 áreas temáticas (BNE / Hellinger)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Creencia</th><th class="emoc-cell">Emoción subyacente</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(c=>c.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const c of gItems) {
+ const id = 'cre_' + c.n;
+ const chk = confirmed.some(cc =>cc.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Creencias')"><td class="num-cell">${c.n}</td><td class="nombre-cell">${escHtml(c.nombre)}</td><td class="emoc-cell">${escHtml(c.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Creencias')"/></td></tr>`;
       }
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'miedos') {
-    let data = MIEDOS_FOBIAS;
-    if (query) data = data.filter(m =>
-      m.nombre.toLowerCase().includes(query) ||
-      m.desc.toLowerCase().includes(query) ||
-      m.cat.toLowerCase().includes(query)
+ else if (cat === 'miedos') {
+ let data = MIEDOS_FOBIAS;
+ if (query) data = data.filter(m =>m.nombre.toLowerCase().includes(query) ||
+ m.desc.toLowerCase().includes(query) ||
+ m.cat.toLowerCase().includes(query)
     );
-    const groups = [...new Set(MIEDOS_FOBIAS.map(m=>m.cat))];
-    let html = `<div class="category-title" style="color:#e0b3ff">Miedos, Fobias y Nudos Psóricos</div>
-      <div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías (Método Lavín / SEI)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const g of groups) {
-      const gItems = data.filter(m=>m.cat===g);
-      if (!gItems.length) continue;
-      html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
-      for (const m of gItems) {
-        const id = 'miedo_' + m.n;
-        const chk = confirmed.some(c => c.id === id);
-        html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Miedos/Fobias')">
-          <td class="num-cell">${m.n}</td>
-          <td class="nombre-cell">${escHtml(m.nombre)}</td>
-          <td class="desc-cell">${escHtml(m.desc)}</td>
-          <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Miedos/Fobias')"/></td>
-        </tr>`;
+ const groups = [...new Set(MIEDOS_FOBIAS.map(m=>m.cat))];
+ let html = `<div class="category-title" style="color:#e0b3ff">Miedos, Fobias y Nudos Psóricos</div><div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías (Método Lavín / SEI)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(m=>m.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const m of gItems) {
+ const id = 'miedo_' + m.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Miedos/Fobias')"><td class="num-cell">${m.n}</td><td class="nombre-cell">${escHtml(m.nombre)}</td><td class="desc-cell">${escHtml(m.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Miedos/Fobias')"/></td></tr>`;
       }
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'policrestos') {
-    let data = POLICRESTOS;
-    if (query) data = data.filter(p => p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
-    let html = `<div class="category-title" style="color:#c0e0ff">Policrestos Homeopáticos</div>
-      <div class="category-sub">${POLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const p of data) {
-      const id = 'pc_' + p.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Policrestos')">
-        <td class="num-cell">${p.n}</td>
-        <td class="nombre-cell">${escHtml(p.nombre)}</td>
-        <td class="desc-cell">${escHtml(p.desc)}</td>
-        <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Policrestos')"/></td>
-      </tr>`;
+ else if (cat === 'policrestos') {
+ let data = POLICRESTOS;
+ if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+ let html = `<div class="category-title" style="color:#c0e0ff">Policrestos Homeopáticos</div><div class="category-sub">${POLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const p of data) {
+ const id = 'pc_' + p.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Policrestos')"><td class="num-cell">${p.n}</td><td class="nombre-cell">${escHtml(p.nombre)}</td><td class="desc-cell">${escHtml(p.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Policrestos')"/></td></tr>`;
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'semipolicrestos') {
-    let data = SEMIPOLICRESTOS;
-    if (query) data = data.filter(p => p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
-    let html = `<div class="category-title" style="color:#c0e0ff">Semipolicrestos Homeopáticos</div>
-      <div class="category-sub">${SEMIPOLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const p of data) {
-      const id = 'spc_' + p.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semipolicrestos')">
-        <td class="num-cell">${p.n}</td>
-        <td class="nombre-cell">${escHtml(p.nombre)}</td>
-        <td class="desc-cell">${escHtml(p.desc)}</td>
-        <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semipolicrestos')"/></td>
-      </tr>`;
+ else if (cat === 'semipolicrestos') {
+ let data = SEMIPOLICRESTOS;
+ if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+ let html = `<div class="category-title" style="color:#c0e0ff">Semipolicrestos Homeopáticos</div><div class="category-sub">${SEMIPOLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const p of data) {
+ const id = 'spc_' + p.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semipolicrestos')"><td class="num-cell">${p.n}</td><td class="nombre-cell">${escHtml(p.nombre)}</td><td class="desc-cell">${escHtml(p.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semipolicrestos')"/></td></tr>`;
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'chakras_primarios') {
-    let data = CHAKRAS_PRIMARIOS;
-    if (query) data = data.filter(c =>
-      c.nombre.toLowerCase().includes(query) ||
-      c.aspecto.toLowerCase().includes(query) ||
-      c.organos.toLowerCase().includes(query) ||
-      c.emoc.toLowerCase().includes(query)
+ else if (cat === 'chakras_primarios') {
+ let data = CHAKRAS_PRIMARIOS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.aspecto.toLowerCase().includes(query) ||
+ c.organos.toLowerCase().includes(query) ||
+ c.emoc.toLowerCase().includes(query)
     );
-    let html = `<div class="category-title" style="color:#ffb3e6">Chakras Primarios (7)</div>
-      <div class="category-sub">Centros energéticos mayores — sistema védico (HoloBiomagnetismo)</div>`;
-    for (const ck of data) {
-      const id = 'ckp_' + ck.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Chakras Primarios')" style="border-left:3px solid ${ck.color}">
-        <input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Chakras Primarios')"/>
-        <div class="item-body">
-          <div class="item-nombre">${ck.n}. ${escHtml(ck.nombre)}</div>
-          <div class="item-condiciones">🌍 ${escHtml(ck.elemento)} · 🎨 ${escHtml(ck.color)} · 💊 ${escHtml(ck.glandula)}</div>
-          <div class="item-condiciones">Aspecto: ${escHtml(ck.aspecto)}</div>
-          <div class="item-condiciones">Órganos: ${escHtml(ck.organos)}</div>
-          <div class="item-emocional">💜 ${escHtml(ck.emoc)}</div>
-        </div>
-      </div>`;
+ let html = `<div class="category-title" style="color:#ffb3e6">Chakras Primarios (7)</div><div class="category-sub">Centros energéticos mayores — sistema védico (HoloBiomagnetismo)</div>`;
+ for (const ck of data) {
+ const id = 'ckp_' + ck.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Chakras Primarios')" style="border-left:3px solid ${ck.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Chakras Primarios')"/><div class="item-body"><div class="item-nombre">${ck.n}. ${escHtml(ck.nombre)}</div><div class="item-condiciones"> ${escHtml(ck.elemento)} ·  ${escHtml(ck.color)} ·  ${escHtml(ck.glandula)}</div><div class="item-condiciones">Aspecto: ${escHtml(ck.aspecto)}</div><div class="item-condiciones">Órganos: ${escHtml(ck.organos)}</div><div class="item-emocional"> ${escHtml(ck.emoc)}</div></div></div>`;
     }
-    scroll.innerHTML = html;
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'chakras_secundarios') {
-    let data = CHAKRAS_SECUNDARIOS;
-    if (query) data = data.filter(c =>
-      c.nombre.toLowerCase().includes(query) ||
-      c.desc.toLowerCase().includes(query)
+ else if (cat === 'chakras_secundarios') {
+ let data = CHAKRAS_SECUNDARIOS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.desc.toLowerCase().includes(query)
     );
-    let html = `<div class="category-title" style="color:#ffb3e6">Chakras Secundarios (21)</div>
-      <div class="category-sub">Mini-chakras — sistema bioenergético HoloBiomagnetismo</div>
-      <table class="static-table">
-      <thead><tr><th style="width:48px">#</th><th class="nombre-cell">Centro energético</th><th class="desc-cell">Significado y función</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const ck of data) {
-      const id = 'cks_' + ck.n.toString().replace(/[^a-z0-9]/gi,'');
-      const chk = confirmed.some(c => c.id === id);
-      html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Chakras Secundarios')">
-        <td class="num-cell">${ck.n}</td>
-        <td class="nombre-cell">${escHtml(ck.nombre)}</td>
-        <td class="desc-cell">${escHtml(ck.desc)}</td>
-        <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Chakras Secundarios')"/></td>
-      </tr>`;
+ let html = `<div class="category-title" style="color:#ffb3e6">Chakras Secundarios (21)</div><div class="category-sub">Mini-chakras — sistema bioenergético HoloBiomagnetismo</div><table class="static-table"><thead><tr><th style="width:48px">#</th><th class="nombre-cell">Centro energético</th><th class="desc-cell">Significado y función</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const ck of data) {
+ const id = 'cks_' + ck.n.toString().replace(/[^a-z0-9]/gi,'');
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Chakras Secundarios')"><td class="num-cell">${ck.n}</td><td class="nombre-cell">${escHtml(ck.nombre)}</td><td class="desc-cell">${escHtml(ck.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Chakras Secundarios')"/></td></tr>`;
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'cinco_elementos') {
-    let data = CINCO_ELEMENTOS;
-    if (query) data = data.filter(e =>
-      e.nombre.toLowerCase().includes(query) ||
-      e.organos_yin.toLowerCase().includes(query) ||
-      e.emocion_neg.toLowerCase().includes(query) ||
-      e.emocion_pos.toLowerCase().includes(query)
+ else if (cat === 'cinco_elementos') {
+ let data = CINCO_ELEMENTOS;
+ if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) ||
+ e.organos_yin.toLowerCase().includes(query) ||
+ e.emocion_neg.toLowerCase().includes(query) ||
+ e.emocion_pos.toLowerCase().includes(query)
     );
-    let html = `<div class="category-title" style="color:#b3ffb3">5 Elementos (MTC / HoloBiomagnetismo)</div>
-      <div class="category-sub">Filosofía energética China (Neijing) — sistema de diagnóstico bioenergético</div>`;
-    for (const el of data) {
-      const id = '5el_' + el.n;
-      const chk = confirmed.some(c => c.id === id);
-      html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')" style="border-left:3px solid ${el.color}">
-        <input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')"/>
-        <div class="item-body">
-          <div class="item-nombre" style="color:${el.color};font-size:.95rem">${escHtml(el.nombre)}</div>
-          <div class="item-condiciones">🫀 Yin: <b>${escHtml(el.organos_yin)}</b> · Yang: <b>${escHtml(el.organos_yang)}</b></div>
-          <div class="item-condiciones">🌱 Estación: ${escHtml(el.estacion)} · 👅 Sabor: ${escHtml(el.sabor)} · 🔬 Tejido: ${escHtml(el.tejido)}</div>
-          <div class="item-emocional">❌ ${escHtml(el.emocion_neg)}</div>
-          <div class="item-emocional" style="color:#9de08a">✅ ${escHtml(el.emocion_pos)}</div>
-        </div>
-      </div>`;
+ let html = `<div class="category-title" style="color:#b3ffb3">5 Elementos (MTC / HoloBiomagnetismo)</div><div class="category-sub">Filosofía energética China (Neijing) — sistema de diagnóstico bioenergético</div>`;
+ for (const el of data) {
+ const id = '5el_' + el.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')" style="border-left:3px solid ${el.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')"/><div class="item-body"><div class="item-nombre" style="color:${el.color};font-size:.95rem">${escHtml(el.nombre)}</div><div class="item-condiciones">Yin: <b>${escHtml(el.organos_yin)}</b> · Yang: <b>${escHtml(el.organos_yang)}</b></div><div class="item-condiciones">Estación: ${escHtml(el.estacion)} · Sabor: ${escHtml(el.sabor)} · Tejido: ${escHtml(el.tejido)}</div><div class="item-emocional"> ${escHtml(el.emocion_neg)}</div><div class="item-emocional" style="color:#9de08a"> ${escHtml(el.emocion_pos)}</div></div></div>`;
     }
-    scroll.innerHTML = html;
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'aminoacidos') {
-    let data = AMINOACIDOS;
-    if (query) data = data.filter(a => a.nombre.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query) || a.cat.toLowerCase().includes(query));
-    const groups = [...new Set(AMINOACIDOS.map(a=>a.cat))];
-    let html = `<div class="category-title" style="color:#ffd9b3">Aminoácidos</div>
-      <div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias (Método Lavín)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const g of groups) {
-      const gItems = data.filter(a=>a.cat===g);
-      if (!gItems.length) continue;
-      html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
-      for (const a of gItems) {
-        const id = 'aa_' + a.n;
-        const chk = confirmed.some(c => c.id === id);
-        html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Aminoácidos')">
-          <td class="num-cell">${a.n}</td>
-          <td class="nombre-cell">${escHtml(a.nombre)}</td>
-          <td class="desc-cell">${escHtml(a.desc)}</td>
-          <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Aminoácidos')"/></td>
-        </tr>`;
+ else if (cat === 'aminoacidos') {
+ let data = AMINOACIDOS;
+ if (query) data = data.filter(a =>a.nombre.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query) || a.cat.toLowerCase().includes(query));
+ const groups = [...new Set(AMINOACIDOS.map(a=>a.cat))];
+ let html = `<div class="category-title" style="color:#ffd9b3">Aminoácidos</div><div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias (Método Lavín)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(a=>a.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const a of gItems) {
+ const id = 'aa_' + a.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Aminoácidos')"><td class="num-cell">${a.n}</td><td class="nombre-cell">${escHtml(a.nombre)}</td><td class="desc-cell">${escHtml(a.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Aminoácidos')"/></td></tr>`;
       }
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 
-  else if (cat === 'enzimas') {
-    let data = ENZIMAS;
-    if (query) data = data.filter(e => e.nombre.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || e.cat.toLowerCase().includes(query));
-    const groups = [...new Set(ENZIMAS.map(e=>e.cat))];
-    let html = `<div class="category-title" style="color:#b3d9ff">Enzimas</div>
-      <div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática (Método Lavín)</div>
-      <table class="static-table">
-      <thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
-    for (const g of groups) {
-      const gItems = data.filter(e=>e.cat===g);
-      if (!gItems.length) continue;
-      html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
-      for (const e of gItems) {
-        const id = 'enz_' + e.n;
-        const chk = confirmed.some(c => c.id === id);
-        html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzimas')">
-          <td class="num-cell">${e.n}</td>
-          <td class="nombre-cell">${escHtml(e.nombre)}</td>
-          <td class="desc-cell">${escHtml(e.desc)}</td>
-          <td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzimas')"/></td>
-        </tr>`;
+ else if (cat === 'enzimas') {
+ let data = ENZIMAS;
+ if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || e.cat.toLowerCase().includes(query));
+ const groups = [...new Set(ENZIMAS.map(e=>e.cat))];
+ let html = `<div class="category-title" style="color:#b3d9ff">Enzimas</div><div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática (Método Lavín)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(e=>e.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const e of gItems) {
+ const id = 'enz_' + e.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzimas')"><td class="num-cell">${e.n}</td><td class="nombre-cell">${escHtml(e.nombre)}</td><td class="desc-cell">${escHtml(e.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzimas')"/></td></tr>`;
       }
     }
-    html += '</tbody></table>';
-    scroll.innerHTML = html;
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
   }
 }
 
 function toggleStatic(id, nombre, cat, catLabel) {
-  const idx = confirmed.findIndex(c => c.id === id);
-  if (idx >= 0) {
-    confirmed.splice(idx, 1);
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
   } else {
-    confirmed.push({ id, nombre, tipo: cat, cat, sub: catLabel });
+ confirmed.push({ id, nombre, tipo: cat, cat, sub: catLabel });
   }
-  renderCurrent();
-  renderConfirmed();
+ renderCurrent();
+ renderConfirmed();
 }
 
 // ─── Confirmed panel ──────────────────────────────────────────────────────────
 function renderConfirmed() {
-  const scroll = document.getElementById('confirmedScroll');
-  const cnt = document.getElementById('confCount');
-  const total = document.getElementById('totalConf');
-  cnt.textContent = confirmed.length;
-  total.textContent = confirmed.length;
+ const scroll = document.getElementById('confirmedScroll');
+ const cnt = document.getElementById('confCount');
+ const total = document.getElementById('totalConf');
+ cnt.textContent = confirmed.length;
+ total.textContent = confirmed.length;
 
-  if (!confirmed.length) {
-    scroll.innerHTML = '<div class="conf-empty">Marca ítems en la tabla para agregarlos aquí.</div>';
-    return;
+ if (!confirmed.length) {
+ scroll.innerHTML = '<div class="conf-empty">Marca ítems en la tabla para agregarlos aquí.</div>';
+ return;
   }
 
   // Group by cat
-  const groups = {};
-  for (const c of confirmed) {
-    const g = c.sub || c.cat || 'Otros';
-    if (!groups[g]) groups[g] = [];
-    groups[g].push(c);
+ const groups = {};
+ for (const c of confirmed) {
+ const g = c.sub || c.cat || 'Otros';
+ if (!groups[g]) groups[g] = [];
+ groups[g].push(c);
   }
 
-  let html = '';
-  for (const [g, items] of Object.entries(groups)) {
-    html += `<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:6px 0 4px;font-weight:700">${escHtml(g)}</div>`;
-    for (const item of items) {
-      html += `<div class="conf-item">
-        <div class="conf-item-body">
-          <div class="conf-nombre">${escHtml(item.nombre)}</div>
-        </div>
-        <button class="conf-remove" onclick="removeConfirmed('${item.id.replace(/'/g,"\\'")}')">✕</button>
-      </div>`;
+ let html = '';
+ for (const [g, items] of Object.entries(groups)) {
+ html += `<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:6px 0 4px;font-weight:700">${escHtml(g)}</div>`;
+ for (const item of items) {
+ html += `<div class="conf-item"><div class="conf-item-body"><div class="conf-nombre">${escHtml(item.nombre)}</div></div><button class="conf-remove" onclick="removeConfirmed('${item.id.replace(/'/g,"\\'")}')"></button></div>`;
     }
   }
-  scroll.innerHTML = html;
+ scroll.innerHTML = html;
 }
 
 function removeConfirmed(id) {
-  confirmed = confirmed.filter(c => c.id !== id);
-  renderCurrent();
-  renderConfirmed();
+ confirmed = confirmed.filter(c =>c.id !== id);
+ renderCurrent();
+ renderConfirmed();
 }
 
 function limpiarTodo() {
-  if (!confirmed.length) return;
-  if (confirm(`¿Limpiar los ${confirmed.length} ítems seleccionados?`)) {
-    confirmed = [];
-    renderCurrent();
-    renderConfirmed();
+ if (!confirmed.length) return;
+ if (confirm(`¿Limpiar los ${confirmed.length} ítems seleccionados?`)) {
+ confirmed = [];
+ renderCurrent();
+ renderConfirmed();
   }
 }
 
 function copiarConfirmados() {
-  if (!confirmed.length) { alert('No hay ítems seleccionados.'); return; }
+ if (!confirmed.length) { alert('No hay ítems seleccionados.'); return; }
 
-  const groups = {};
-  for (const c of confirmed) {
-    const g = c.sub || c.cat || 'Otros';
-    if (!groups[g]) groups[g] = [];
-    groups[g].push(c);
+ const groups = {};
+ for (const c of confirmed) {
+ const g = c.sub || c.cat || 'Otros';
+ if (!groups[g]) groups[g] = [];
+ groups[g].push(c);
   }
 
-  let text = '📋 RASTREO CONFIRMADO\n';
-  text += '━'.repeat(30) + '\n\n';
-  for (const [g, items] of Object.entries(groups)) {
-    text += `▸ ${g.toUpperCase()}\n`;
-    for (const item of items) {
-      text += `  • ${item.nombre}\n`;
+ let text = ' RASTREO CONFIRMADO\n';
+ text += '━'.repeat(30) + '\n\n';
+ for (const [g, items] of Object.entries(groups)) {
+ text += `▸ ${g.toUpperCase()}\n`;
+ for (const item of items) {
+ text += `  • ${item.nombre}\n`;
     }
-    text += '\n';
+ text += '\n';
   }
-  text += `Total: ${confirmed.length} ítem${confirmed.length!==1?'s':''}`;
+ text += `Total: ${confirmed.length} ítem${confirmed.length!==1?'s':''}`;
 
-  navigator.clipboard.writeText(text).then(() => {
-    const btn = document.querySelector('.btn-copy');
-    btn.textContent = '✅ Copiado!';
-    setTimeout(() => btn.textContent = '📋 Copiar lista', 2000);
+ navigator.clipboard.writeText(text).then(() => {
+ const btn = document.querySelector('.btn-copy');
+ btn.textContent = ' Copiado!';
+ setTimeout(() =>btn.textContent = ' Copiar lista', 2000);
   });
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function escHtml(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ if (!s) return '';
+ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 init();
-</script>
-</body>
-</html>
+</script></body></html>

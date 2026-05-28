@@ -1,15 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sinodal IA · Holoacadem-iA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
-<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
-<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1">
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sinodal IA · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=1"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1"><style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
@@ -18,106 +7,106 @@
     --surface2: #f1f5f9;
     --border:   #e2e8f0;
     --acc:      #6366f1;
-    --acc-dim:  rgba(99,102,241,0.1);
+    --acc-dim: rgba(99,102,241,0.1);
     --acc-dark: #4f46e5;
     --text:     #1e293b;
     --muted:    #64748b;
     --user-bg:  #6366f1;
     --user-txt: #ffffff;
     --ai-bg:    #ffffff;
-    --radius:   16px;
+    --radius: 16px;
   }
 
-  html, body {
-    height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
+ html, body {
+ height: 100%;
+ background: var(--bg);
+ color: var(--text);
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ font-size: 15px;
+ line-height: 1.6;
   }
 
   .app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-width: 760px;
-    margin: 0 auto;
+ display: flex;
+ flex-direction: column;
+ height: 100vh;
+ max-width: 760px;
+ margin: 0 auto;
   }
 
   /* ── Header ── */
   .header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
-    flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 14px 20px;
+ border-bottom: 1px solid var(--border);
+ background: var(--surface);
+ flex-shrink: 0;
   }
 
   .header-avatar {
-    width: 38px;
-    height: 38px;
-    background: var(--acc-dim);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    flex-shrink: 0;
+ width: 38px;
+ height: 38px;
+ background: var(--acc-dim);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 20px;
+ flex-shrink: 0;
   }
 
   .header-info { flex: 1; }
 
   .header-name {
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--text);
+ font-weight: 700;
+ font-size: 0.95rem;
+ color: var(--text);
   }
 
   .header-status {
-    font-size: 0.72rem;
-    color: var(--acc);
-    font-weight: 600;
+ font-size: 0.72rem;
+ color: var(--acc);
+ font-weight: 600;
   }
 
   .home-btn {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: color .2s, background .2s;
-    line-height: 1;
-    flex-shrink: 0;
+ color: var(--muted);
+ text-decoration: none;
+ font-size: 1.1rem;
+ padding: 4px 8px;
+ border-radius: 6px;
+ transition: color .2s, background .2s;
+ line-height: 1;
+ flex-shrink: 0;
   }
   .home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
   .header-new {
-    padding: 6px 14px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
+ padding: 6px 14px;
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ font-size: 0.78rem;
+ font-weight: 600;
+ color: var(--muted);
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
   }
 
   .header-new:hover { color: var(--text); background: var(--border); }
 
   /* ── Messages ── */
   .messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 24px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    scroll-behavior: smooth;
+ flex: 1;
+ overflow-y: auto;
+ padding: 24px 16px;
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ scroll-behavior: smooth;
   }
 
   .messages::-webkit-scrollbar { width: 4px; }
@@ -126,128 +115,128 @@
 
   /* ── Welcome ── */
   .welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 70vh;
-    text-align: center;
-    gap: 20px;
-    padding: 24px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ min-height: 70vh;
+ text-align: center;
+ gap: 20px;
+ padding: 24px;
   }
 
   .welcome-avatar {
-    width: 72px;
-    height: 72px;
-    background: var(--acc-dim);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 34px;
-    border: 3px solid rgba(99,102,241,0.2);
+ width: 72px;
+ height: 72px;
+ background: var(--acc-dim);
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 34px;
+ border: 3px solid rgba(99,102,241,0.2);
   }
 
   .welcome h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--text);
+ font-size: 1.5rem;
+ font-weight: 700;
+ color: var(--text);
   }
 
   .welcome p {
-    font-size: 0.92rem;
-    color: var(--muted);
-    max-width: 420px;
-    line-height: 1.7;
+ font-size: 0.92rem;
+ color: var(--muted);
+ max-width: 420px;
+ line-height: 1.7;
   }
 
   .quick-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
-    max-width: 500px;
-    text-align: left;
+ display: flex;
+ flex-direction: column;
+ gap: 8px;
+ width: 100%;
+ max-width: 500px;
+ text-align: left;
   }
 
   .quick-item {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 12px 16px;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-size: 0.88rem;
-    color: var(--text);
-    font-family: inherit;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 12px;
+ padding: 12px 16px;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-size: 0.88rem;
+ color: var(--text);
+ font-family: inherit;
+ text-align: left;
+ display: flex;
+ align-items: center;
+ gap: 10px;
   }
 
   .quick-item:hover {
-    border-color: var(--acc);
-    background: var(--acc-dim);
-    color: var(--acc-dark);
+ border-color: var(--acc);
+ background: var(--acc-dim);
+ color: var(--acc-dark);
   }
 
   .quick-item .qi-icon { font-size: 16px; flex-shrink: 0; }
 
   /* ── Burbujas ── */
   .msg {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 10px;
+ display: flex;
+ align-items: flex-start;
+ gap: 10px;
+ margin-bottom: 10px;
   }
 
   .msg-user { flex-direction: row-reverse; }
 
   .msg-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
-    margin-top: 2px;
+ width: 30px;
+ height: 30px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 14px;
+ flex-shrink: 0;
+ margin-top: 2px;
   }
 
   .msg-ai .msg-avatar { background: var(--acc-dim); }
   .msg-user .msg-avatar { background: var(--acc); }
 
   .bubble {
-    max-width: 76%;
-    padding: 12px 16px;
-    border-radius: var(--radius);
-    line-height: 1.7;
-    font-size: 0.9rem;
-    word-break: break-word;
+ max-width: 76%;
+ padding: 12px 16px;
+ border-radius: var(--radius);
+ line-height: 1.7;
+ font-size: 0.9rem;
+ word-break: break-word;
   }
 
   .msg-user .bubble {
-    background: var(--user-bg);
-    color: var(--user-txt);
-    border-top-right-radius: 4px;
+ background: var(--user-bg);
+ color: var(--user-txt);
+ border-top-right-radius: 4px;
   }
 
   .msg-ai .bubble {
-    background: var(--ai-bg);
-    color: var(--text);
-    border-top-left-radius: 4px;
-    border: 1px solid var(--border);
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+ background: var(--ai-bg);
+ color: var(--text);
+ border-top-left-radius: 4px;
+ border: 1px solid var(--border);
+ box-shadow: 0 1px 4px rgba(0,0,0,0.04);
   }
 
   /* ── Markdown en burbujas de la IA ── */
   .bubble h1, .bubble h2, .bubble h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 14px 0 6px;
-    color: var(--text);
+ font-size: 1rem;
+ font-weight: 700;
+ margin: 14px 0 6px;
+ color: var(--text);
   }
 
   .bubble h1 { font-size: 1.1rem; }
@@ -257,8 +246,8 @@
   .bubble p:last-child { margin-bottom: 0; }
 
   .bubble ul, .bubble ol {
-    padding-left: 20px;
-    margin-bottom: 10px;
+ padding-left: 20px;
+ margin-bottom: 10px;
   }
 
   .bubble li { margin-bottom: 4px; }
@@ -267,102 +256,102 @@
   .bubble em { font-style: italic; color: var(--muted); }
 
   .bubble code {
-    background: var(--surface2);
-    padding: 1px 6px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    font-family: "SF Mono", "Fira Code", monospace;
+ background: var(--surface2);
+ padding: 1px 6px;
+ border-radius: 4px;
+ font-size: 0.85em;
+ font-family: "SF Mono", "Fira Code", monospace;
   }
 
   .bubble blockquote {
-    border-left: 3px solid var(--acc);
-    padding: 4px 12px;
-    margin: 10px 0;
-    color: var(--muted);
-    font-style: italic;
+ border-left: 3px solid var(--acc);
+ padding: 4px 12px;
+ margin: 10px 0;
+ color: var(--muted);
+ font-style: italic;
   }
 
   .bubble hr {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 12px 0;
+ border: none;
+ border-top: 1px solid var(--border);
+ margin: 12px 0;
   }
 
   /* Typing dots */
   .typing-dot {
-    display: inline-flex;
-    gap: 5px;
-    align-items: center;
-    padding: 4px 0;
+ display: inline-flex;
+ gap: 5px;
+ align-items: center;
+ padding: 4px 0;
   }
 
   .typing-dot span {
-    width: 8px;
-    height: 8px;
-    background: var(--border);
-    border-radius: 50%;
-    animation: pulse 1.2s infinite;
+ width: 8px;
+ height: 8px;
+ background: var(--border);
+ border-radius: 50%;
+ animation: pulse 1.2s infinite;
   }
 
   .typing-dot span:nth-child(2) { animation-delay: 0.2s; }
   .typing-dot span:nth-child(3) { animation-delay: 0.4s; }
 
   @keyframes pulse {
-    0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
-    40% { opacity: 1; transform: scale(1); }
+ 0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+ 40% { opacity: 1; transform: scale(1); }
   }
 
   /* ── Input ── */
   .input-area {
-    padding: 12px 16px 16px;
-    border-top: 1px solid var(--border);
-    background: var(--surface);
-    flex-shrink: 0;
+ padding: 12px 16px 16px;
+ border-top: 1px solid var(--border);
+ background: var(--surface);
+ flex-shrink: 0;
   }
 
   .input-box {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    background: var(--bg);
-    border: 1.5px solid var(--border);
-    border-radius: 14px;
-    padding: 10px 10px 10px 16px;
-    transition: border-color 0.15s;
+ display: flex;
+ align-items: flex-end;
+ gap: 10px;
+ background: var(--bg);
+ border: 1.5px solid var(--border);
+ border-radius: 14px;
+ padding: 10px 10px 10px 16px;
+ transition: border-color 0.15s;
   }
 
   .input-box:focus-within { border-color: var(--acc); }
 
   .input-field {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.92rem;
-    line-height: 1.5;
-    resize: none;
-    max-height: 140px;
-    min-height: 24px;
-    overflow-y: auto;
+ flex: 1;
+ background: transparent;
+ border: none;
+ outline: none;
+ color: var(--text);
+ font-family: inherit;
+ font-size: 0.92rem;
+ line-height: 1.5;
+ resize: none;
+ max-height: 140px;
+ min-height: 24px;
+ overflow-y: auto;
   }
 
   .input-field::placeholder { color: var(--muted); }
 
   .send-btn {
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    background: var(--acc);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-    opacity: 0.35;
+ width: 38px;
+ height: 38px;
+ flex-shrink: 0;
+ background: var(--acc);
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: all 0.15s;
+ opacity: 0.35;
   }
 
   .send-btn.ready { opacity: 1; }
@@ -371,333 +360,255 @@
   .send-btn svg { width: 18px; height: 18px; fill: #fff; }
 
   .input-hint {
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 8px;
+ font-size: 0.72rem;
+ color: var(--muted);
+ text-align: center;
+ margin-top: 8px;
   }
-</style>
-</head>
-<body class="mod-page-violet">
-
-<div class="app">
-
-  <!-- Header unificado -->
-  <header class="holo-module-header">
-    <div class="holo-module-header-inner">
-      <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
-        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        <span>Inicio</span>
-      </a>
-      <div class="holo-module-identity">
-        <div class="holo-module-icon mod-violet">
-          <svg viewBox="0 0 24 24"><path d="M2 10l10-6 10 6-10 6-10-6z"/><path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/></svg>
-        </div>
-        <div class="holo-module-title-wrap">
-          <div class="holo-module-category">Tutor IA · 24/7</div>
-          <div class="holo-module-title">Sinodal IA · Sael</div>
-        </div>
-      </div>
-      <div id="usageBadge" class="holo-module-badge" style="display:none;"></div>
-      <button class="header-new" onclick="resetChat()">Nueva conversación</button>
-    </div>
-  </header>
-
-  <!-- Modal paywall -->
-  <div id="modalPaywall" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;">
-    <div style="background:#1f2937;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-align:center;max-width:380px;margin:16px;">
-      <div style="font-size:2rem;margin-bottom:12px;">⛔</div>
-      <div style="font-size:1.1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Límite mensual alcanzado</div>
-      <div id="paywallMsg" style="font-size:0.85rem;color:#94a3b8;line-height:1.6;margin-bottom:20px;"></div>
-      <a href="https://www.holoacademia.com/miembros" target="_top"
-         style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">
-        Ver planes →
-      </a>
-    </div>
-  </div>
-
-  <!-- Mensajes -->
-  <div class="messages" id="messages">
-    <div class="welcome" id="welcome">
-      <div class="welcome-avatar">🤖</div>
-      <h2>Hola, soy Sael</h2>
-      <p>
-        Soy el asistente de conocimiento de Holoacadem-iA. Tengo acceso completo a todos los cursos, manuales y protocolos del diplomado — biomagnetismo, transgeneracional, MTC, flores de Bach, sales, SEI y más. Pregúntame lo que necesites.
-      </p>
-
-      <div class="quick-list">
-        <button class="quick-item" onclick="quickStart('¿Qué técnicas y enfoques terapéuticos se enseñan en Holoacademia y cómo se complementan entre sí?')">
-          <span class="qi-icon">💡</span> ¿Qué enseña Holoacademia?
-        </button>
-        <button class="quick-item" onclick="quickStart('Explícame cómo funciona la mente supraconsciente (MS) y cómo se usa en las sesiones')">
-          <span class="qi-icon">🧠</span> ¿Cómo funciona la MS?
-        </button>
-        <button class="quick-item" onclick="quickStart('¿Cómo se hace un rastreo biomagnético y conflictológico paso a paso?')">
-          <span class="qi-icon">🔍</span> ¿Cómo se hace un rastreo?
-        </button>
-        <button class="quick-item" onclick="quickStart('¿Cuáles son los diferentes tipos de memoria (celular, energética, kármica) y cómo se trabaja cada una?')">
-          <span class="qi-icon">📚</span> Tipos de memoria y cómo trabajarlas
-        </button>
-        <button class="quick-item" onclick="quickStart('Explícame el protocolo EFT PRO paso a paso y en qué situaciones se aplica')">
-          <span class="qi-icon">🤲</span> EFT PRO — paso a paso
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Input -->
-  <div class="input-area">
-    <div class="input-box">
-      <textarea
-        class="input-field"
-        id="inputField"
-        placeholder="Escribe tu pregunta sobre el diplomado…"
-        rows="1"
-        onkeydown="handleKey(event)"
-        oninput="handleInput(this)"
-      ></textarea>
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-    <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea</div>
-  </div>
-
-</div>
-
-<script>
+</style></head><body class="mod-page-violet"><div class="app"><!-- Header unificado --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-violet"><svg viewBox="0 0 24 24"><path d="M2 10l10-6 10 6-10 6-10-6z"/><path d="M7 13.5v4c0 1.7 2.2 3 5 3s5-1.3 5-3v-4"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Tutor IA · 24/7</div><div class="holo-module-title">Sinodal IA · Sael</div></div></div><div id="usageBadge" class="holo-module-badge" style="display:none;"></div><button class="header-new" onclick="resetChat()">Nueva conversación</button></div></header><!-- Modal paywall --><div id="modalPaywall" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:9999;display:flex;align-items:center;justify-content:center;"><div style="background:#1f2937;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:32px;text-align:center;max-width:380px;margin:16px;"><div style="font-size:2rem;margin-bottom:12px;"></div><div style="font-size:1.1rem;font-weight:700;color:#f1f5f9;margin-bottom:8px;">Límite mensual alcanzado</div><div id="paywallMsg" style="font-size:0.85rem;color:#94a3b8;line-height:1.6;margin-bottom:20px;"></div><a href="https://www.holoacademia.com/miembros" target="_top"
+ style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">Ver planes →
+ </a></div></div><!-- Mensajes --><div class="messages" id="messages"><div class="welcome" id="welcome"><div class="welcome-avatar"></div><h2>Hola, soy Sael</h2><p>Soy el asistente de conocimiento de Holoacadem-iA. Tengo acceso completo a todos los cursos, manuales y protocolos del diplomado — biomagnetismo, transgeneracional, MTC, flores de Bach, sales, SEI y más. Pregúntame lo que necesites.
+ </p><div class="quick-list"><button class="quick-item" onclick="quickStart('¿Qué técnicas y enfoques terapéuticos se enseñan en Holoacademia y cómo se complementan entre sí?')"><span class="qi-icon"></span> ¿Qué enseña Holoacademia?
+ </button><button class="quick-item" onclick="quickStart('Explícame cómo funciona la mente supraconsciente (MS) y cómo se usa en las sesiones')"><span class="qi-icon"></span> ¿Cómo funciona la MS?
+ </button><button class="quick-item" onclick="quickStart('¿Cómo se hace un rastreo biomagnético y conflictológico paso a paso?')"><span class="qi-icon"></span> ¿Cómo se hace un rastreo?
+ </button><button class="quick-item" onclick="quickStart('¿Cuáles son los diferentes tipos de memoria (celular, energética, kármica) y cómo se trabaja cada una?')"><span class="qi-icon"></span>Tipos de memoria y cómo trabajarlas
+ </button><button class="quick-item" onclick="quickStart('Explícame el protocolo EFT PRO paso a paso y en qué situaciones se aplica')"><span class="qi-icon"></span>EFT PRO — paso a paso
+ </button></div></div></div><!-- Input --><div class="input-area"><div class="input-box"><textarea
+ class="input-field"
+ id="inputField"
+ placeholder="Escribe tu pregunta sobre el diplomado…"
+ rows="1"
+ onkeydown="handleKey(event)"
+ oninput="handleInput(this)"
+      ></textarea><button class="send-btn" id="sendBtn" onclick="sendMessage()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div><div class="input-hint">Enter para enviar · Shift+Enter para nueva línea</div></div></div><script>
   // ── Estado ──────────────────────────────────────────────────────────────────
-  let history = [];
-  let isStreaming = false;
+ let history = [];
+ let isStreaming = false;
 
-  const messagesEl = document.getElementById('messages');
-  const welcomeEl  = document.getElementById('welcome');
-  const inputEl    = document.getElementById('inputField');
-  const sendBtnEl  = document.getElementById('sendBtn');
+ const messagesEl = document.getElementById('messages');
+ const welcomeEl  = document.getElementById('welcome');
+ const inputEl    = document.getElementById('inputField');
+ const sendBtnEl  = document.getElementById('sendBtn');
 
   // ── Control de uso mensual (sinodal) ─────────────────────────────────────────
   (async function checkUsage() {
-    try {
-      const res = await fetch('/api/usage');
-      if (!res.ok) return;
-      const data = await res.json();
-      const u = data.usage?.sinodal;
-      if (!u) return;
-      const badge = document.getElementById('usageBadge');
-      if (badge) {
-        const pct = u.limit > 0 ? u.used / u.limit : 1;
-        badge.textContent = `${u.used}/${u.limit} sesiones`;
-        badge.style.display = 'block';
-        badge.style.color = !u.allowed ? '#ef4444' : pct >= 0.8 ? '#f59e0b' : '#94a3b8';
-        badge.style.borderColor = !u.allowed ? 'rgba(239,68,68,0.4)' : pct >= 0.8 ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.1)';
-        if (!u.allowed) showPaywall(u.used, u.limit, data.plan_name);
+ try {
+ const res = await fetch('/api/usage');
+ if (!res.ok) return;
+ const data = await res.json();
+ const u = data.usage?.sinodal;
+ if (!u) return;
+ const badge = document.getElementById('usageBadge');
+ if (badge) {
+ const pct = u.limit >0 ? u.used / u.limit : 1;
+ badge.textContent = `${u.used}/${u.limit} sesiones`;
+ badge.style.display = 'block';
+ badge.style.color = !u.allowed ? '#ef4444' : pct >= 0.8 ? '#f59e0b' : '#94a3b8';
+ badge.style.borderColor = !u.allowed ? 'rgba(239,68,68,0.4)' : pct >= 0.8 ? 'rgba(245,158,11,0.4)' : 'rgba(255,255,255,0.1)';
+ if (!u.allowed) showPaywall(u.used, u.limit, data.plan_name);
       }
     } catch(e) {}
   })();
 
-  function showPaywall(used, limit, planName) {
-    const el = document.getElementById('paywallMsg');
-    if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de Sinodal este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
-    const m = document.getElementById('modalPaywall');
-    if (m) m.style.display = 'flex';
-    if (inputEl) { inputEl.disabled = true; inputEl.placeholder = 'Límite alcanzado — actualiza tu plan'; }
-    if (sendBtnEl) sendBtnEl.disabled = true;
+ function showPaywall(used, limit, planName) {
+ const el = document.getElementById('paywallMsg');
+ if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de Sinodal este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
+ const m = document.getElementById('modalPaywall');
+ if (m) m.style.display = 'flex';
+ if (inputEl) { inputEl.disabled = true; inputEl.placeholder = 'Límite alcanzado — actualiza tu plan'; }
+ if (sendBtnEl) sendBtnEl.disabled = true;
   }
 
   // ── Input ───────────────────────────────────────────────────────────────────
-  function handleInput(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 140) + 'px';
-    sendBtnEl.classList.toggle('ready', el.value.trim().length > 0);
+ function handleInput(el) {
+ el.style.height = 'auto';
+ el.style.height = Math.min(el.scrollHeight, 140) + 'px';
+ sendBtnEl.classList.toggle('ready', el.value.trim().length >0);
   }
 
-  function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
+ function handleKey(e) {
+ if (e.key === 'Enter' && !e.shiftKey) {
+ e.preventDefault();
+ sendMessage();
     }
   }
 
-  function quickStart(text) {
-    inputEl.value = text;
-    handleInput(inputEl);
-    sendMessage();
+ function quickStart(text) {
+ inputEl.value = text;
+ handleInput(inputEl);
+ sendMessage();
   }
 
-  function resetChat() {
-    history = [];
-    messagesEl.innerHTML = '';
-    messagesEl.appendChild(welcomeEl);
-    welcomeEl.style.display = '';
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
-    sendBtnEl.classList.remove('ready');
+ function resetChat() {
+ history = [];
+ messagesEl.innerHTML = '';
+ messagesEl.appendChild(welcomeEl);
+ welcomeEl.style.display = '';
+ inputEl.value = '';
+ inputEl.style.height = 'auto';
+ sendBtnEl.classList.remove('ready');
   }
 
   // ── Markdown parser simple ──────────────────────────────────────────────────
-  function renderMarkdown(text) {
-    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ function renderMarkdown(text) {
+ const esc = s =>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-    let html = '';
-    const lines = text.split('\n');
-    let inList = false;
-    let listType = '';
+ let html = '';
+ const lines = text.split('\n');
+ let inList = false;
+ let listType = '';
 
-    const closeList = () => {
-      if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
+ const closeList = () => {
+ if (inList) { html += listType === 'ul' ? '</ul>' : '</ol>'; inList = false; }
     };
 
-    for (let i = 0; i < lines.length; i++) {
-      let line = lines[i];
+ for (let i = 0; i < lines.length; i++) {
+ let line = lines[i];
 
       // Headings
-      if (/^### (.+)/.test(line)) { closeList(); html += `<h3>${esc(line.slice(4))}</h3>`; continue; }
-      if (/^## (.+)/.test(line))  { closeList(); html += `<h2>${esc(line.slice(3))}</h2>`; continue; }
-      if (/^# (.+)/.test(line))   { closeList(); html += `<h1>${esc(line.slice(2))}</h1>`; continue; }
+ if (/^### (.+)/.test(line)) { closeList(); html += `<h3>${esc(line.slice(4))}</h3>`; continue; }
+ if (/^## (.+)/.test(line))  { closeList(); html += `<h2>${esc(line.slice(3))}</h2>`; continue; }
+ if (/^# (.+)/.test(line))   { closeList(); html += `<h1>${esc(line.slice(2))}</h1>`; continue; }
 
       // HR
-      if (/^---+$/.test(line.trim())) { closeList(); html += '<hr>'; continue; }
+ if (/^---+$/.test(line.trim())) { closeList(); html += '<hr>'; continue; }
 
       // Blockquote
-      if (/^> (.+)/.test(line)) { closeList(); html += `<blockquote>${esc(line.slice(2))}</blockquote>`; continue; }
+ if (/^> (.+)/.test(line)) { closeList(); html += `<blockquote>${esc(line.slice(2))}</blockquote>`; continue; }
 
       // Unordered list
-      if (/^[-*•] (.+)/.test(line)) {
-        if (!inList || listType !== 'ul') { closeList(); html += '<ul>'; inList = true; listType = 'ul'; }
-        html += `<li>${inlineFormat(esc(line.replace(/^[-*•] /, '')))}</li>`;
-        continue;
+ if (/^[-*•] (.+)/.test(line)) {
+ if (!inList || listType !== 'ul') { closeList(); html += '<ul>'; inList = true; listType = 'ul'; }
+ html += `<li>${inlineFormat(esc(line.replace(/^[-*•] /, '')))}</li>`;
+ continue;
       }
 
       // Ordered list
-      if (/^\d+\. (.+)/.test(line)) {
-        if (!inList || listType !== 'ol') { closeList(); html += '<ol>'; inList = true; listType = 'ol'; }
-        html += `<li>${inlineFormat(esc(line.replace(/^\d+\. /, '')))}</li>`;
-        continue;
+ if (/^\d+\. (.+)/.test(line)) {
+ if (!inList || listType !== 'ol') { closeList(); html += '<ol>'; inList = true; listType = 'ol'; }
+ html += `<li>${inlineFormat(esc(line.replace(/^\d+\. /, '')))}</li>`;
+ continue;
       }
 
-      closeList();
+ closeList();
 
-      if (line.trim() === '') {
-        html += '<br>';
+ if (line.trim() === '') {
+ html += '<br>';
       } else {
-        html += `<p>${inlineFormat(esc(line))}</p>`;
+ html += `<p>${inlineFormat(esc(line))}</p>`;
       }
     }
 
-    closeList();
-    return html;
+ closeList();
+ return html;
   }
 
-  function inlineFormat(s) {
-    return s
+ function inlineFormat(s) {
+ return s
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.+?)\*/g,     '<em>$1</em>')
       .replace(/`(.+?)`/g,       '<code>$1</code>');
   }
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ function escHtml(s) {
+ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
   // ── Burbujas ─────────────────────────────────────────────────────────────────
-  function addUserBubble(text) {
-    welcomeEl.style.display = 'none';
-    const div = document.createElement('div');
-    div.className = 'msg msg-user';
-    div.innerHTML = `
-      <div class="msg-avatar">👤</div>
-      <div class="bubble">${escHtml(text)}</div>`;
-    messagesEl.appendChild(div);
-    scrollBottom();
+ function addUserBubble(text) {
+ welcomeEl.style.display = 'none';
+ const div = document.createElement('div');
+ div.className = 'msg msg-user';
+ div.innerHTML = `
+ <div class="msg-avatar"></div><div class="bubble">${escHtml(text)}</div>`;
+ messagesEl.appendChild(div);
+ scrollBottom();
   }
 
-  function addAIBubble() {
-    const div = document.createElement('div');
-    div.className = 'msg msg-ai';
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
-    div.innerHTML = '<div class="msg-avatar">🤖</div>';
-    div.appendChild(bubble);
-    messagesEl.appendChild(div);
-    scrollBottom();
-    return bubble;
+ function addAIBubble() {
+ const div = document.createElement('div');
+ div.className = 'msg msg-ai';
+ const bubble = document.createElement('div');
+ bubble.className = 'bubble';
+ bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
+ div.innerHTML = '<div class="msg-avatar"></div>';
+ div.appendChild(bubble);
+ messagesEl.appendChild(div);
+ scrollBottom();
+ return bubble;
   }
 
-  function scrollBottom() {
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+ function scrollBottom() {
+ messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   // ── Enviar ──────────────────────────────────────────────────────────────────
-  async function sendMessage() {
-    const text = inputEl.value.trim();
-    if (!text || isStreaming) return;
+ async function sendMessage() {
+ const text = inputEl.value.trim();
+ if (!text || isStreaming) return;
 
-    isStreaming = true;
-    sendBtnEl.classList.remove('ready');
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
+ isStreaming = true;
+ sendBtnEl.classList.remove('ready');
+ inputEl.value = '';
+ inputEl.style.height = 'auto';
 
-    addUserBubble(text);
-    const bubble = addAIBubble();
+ addUserBubble(text);
+ const bubble = addAIBubble();
 
-    history.push({ role: 'user', content: text });
+ history.push({ role: 'user', content: text });
 
-    let fullResponse = '';
-    let firstToken = true;
+ let fullResponse = '';
+ let firstToken = true;
 
-    try {
-      const res = await fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'alumno' }),
+ try {
+ const res = await fetch('/chat', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'alumno' }),
       });
 
-      if (!res.ok) throw new Error('Error del servidor');
+ if (!res.ok) throw new Error('Error del servidor');
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
+ const reader = res.body.getReader();
+ const decoder = new TextDecoder();
+ let buffer = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
+ while (true) {
+ const { done, value } = await reader.read();
+ if (done) break;
+ buffer += decoder.decode(value, { stream: true });
 
-        const lines = buffer.split('\n');
-        buffer = lines.pop();
+ const lines = buffer.split('\n');
+ buffer = lines.pop();
 
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const raw = line.slice(6).trim();
-          if (raw === '[DONE]') break;
-          try {
-            const obj = JSON.parse(raw);
-            if (obj.text) {
-              fullResponse += obj.text;
-              if (firstToken) {
-                bubble.innerHTML = '';
-                firstToken = false;
+ for (const line of lines) {
+ if (!line.startsWith('data: ')) continue;
+ const raw = line.slice(6).trim();
+ if (raw === '[DONE]') break;
+ try {
+ const obj = JSON.parse(raw);
+ if (obj.text) {
+ fullResponse += obj.text;
+ if (firstToken) {
+ bubble.innerHTML = '';
+ firstToken = false;
               }
-              bubble.innerHTML = renderMarkdown(fullResponse);
-              scrollBottom();
+ bubble.innerHTML = renderMarkdown(fullResponse);
+ scrollBottom();
             }
           } catch (_) {}
         }
       }
     } catch (err) {
-      bubble.innerHTML = '<p style="color:#ef4444">Error de conexión. Intenta de nuevo.</p>';
+ bubble.innerHTML = '<p style="color:#ef4444">Error de conexión. Intenta de nuevo.</p>';
     }
 
-    if (fullResponse) {
-      history.push({ role: 'assistant', content: fullResponse });
+ if (fullResponse) {
+ history.push({ role: 'assistant', content: fullResponse });
     }
 
-    isStreaming = false;
-    sendBtnEl.classList.toggle('ready', inputEl.value.trim().length > 0);
-    scrollBottom();
+ isStreaming = false;
+ sendBtnEl.classList.toggle('ready', inputEl.value.trim().length >0);
+ scrollBottom();
   }
-</script>
-
-</body>
-</html>
+</script></body></html>

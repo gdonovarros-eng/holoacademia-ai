@@ -1,145 +1,139 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Historial del Paciente · Holoacadem-iA</title>
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Historial del Paciente · Holoacadem-iA</title><style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --bg:       #0b1120;
     --surface:  #111827;
     --surface2: #1f2937;
-    --border:   rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.07);
     --acc:      #10b981;
-    --acc-dim:  rgba(16,185,129,0.12);
+    --acc-dim: rgba(16,185,129,0.12);
     --acc-glow: rgba(16,185,129,0.3);
     --text:     #f1f5f9;
     --muted:    #94a3b8;
-    --radius:   12px;
+    --radius: 12px;
     --gold:     #fbbf24;
   }
 
-  html, body {
-    min-height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
+ html, body {
+ min-height: 100%;
+ background: var(--bg);
+ color: var(--text);
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ font-size: 14px;
+ line-height: 1.6;
   }
 
   /* ── Header ── */
   .header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 24px;
-    height: 54px;
-    background: var(--bg);
-    border-bottom: 1px solid var(--border);
+ position: sticky;
+ top: 0;
+ z-index: 10;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 0 24px;
+ height: 54px;
+ background: var(--bg);
+ border-bottom: 1px solid var(--border);
   }
 
   .home-btn {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: color .2s, background .2s;
-    line-height: 1;
-    flex-shrink: 0;
+ color: var(--muted);
+ text-decoration: none;
+ font-size: 1.1rem;
+ padding: 4px 8px;
+ border-radius: 6px;
+ transition: color .2s, background .2s;
+ line-height: 1;
+ flex-shrink: 0;
   }
   .home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
   .header-icon {
-    width: 32px; height: 32px;
-    background: var(--acc-dim);
-    border-radius: 9px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 16px; flex-shrink: 0;
+ width: 32px; height: 32px;
+ background: var(--acc-dim);
+ border-radius: 9px;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 16px; flex-shrink: 0;
   }
 
   .header-title { font-size: 0.9rem; font-weight: 700; }
   .header-sub   { font-size: 0.68rem; color: var(--acc); font-weight: 600;
-                  text-transform: uppercase; letter-spacing: 0.07em; }
+ text-transform: uppercase; letter-spacing: 0.07em; }
 
   .header-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
 
   .btn-ghost {
-    padding: 5px 12px;
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 7px;
-    font-size: 0.75rem; font-weight: 600;
-    color: var(--muted); cursor: pointer;
-    transition: all 0.15s; font-family: inherit;
+ padding: 5px 12px;
+ background: transparent;
+ border: 1px solid var(--border);
+ border-radius: 7px;
+ font-size: 0.75rem; font-weight: 600;
+ color: var(--muted); cursor: pointer;
+ transition: all 0.15s; font-family: inherit;
   }
   .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
 
   /* ── Pasos ── */
   .steps-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    padding: 18px 24px 0;
-    max-width: 760px;
-    margin: 0 auto;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 0;
+ padding: 18px 24px 0;
+ max-width: 760px;
+ margin: 0 auto;
   }
 
   .step {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--muted);
-    white-space: nowrap;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-size: 0.75rem;
+ font-weight: 600;
+ color: var(--muted);
+ white-space: nowrap;
   }
 
   .step.active { color: var(--acc); }
   .step.done   { color: var(--text); }
 
   .step-num {
-    width: 24px; height: 24px;
-    border-radius: 50%;
-    border: 2px solid currentColor;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700;
-    flex-shrink: 0;
+ width: 24px; height: 24px;
+ border-radius: 50%;
+ border: 2px solid currentColor;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 0.7rem; font-weight: 700;
+ flex-shrink: 0;
   }
 
   .step.active .step-num { background: var(--acc); color: var(--bg); border-color: var(--acc); }
   .step.done   .step-num { background: var(--surface2); border-color: rgba(255,255,255,0.2); }
-  .step.done   .step-num::after { content: '✓'; }
+  .step.done   .step-num::after { content: ''; }
   .step.done   .step-num span { display: none; }
 
   .step-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-    min-width: 24px;
-    max-width: 60px;
+ flex: 1;
+ height: 1px;
+ background: var(--border);
+ min-width: 24px;
+ max-width: 60px;
   }
 
   .step-line.done { background: rgba(16,185,129,0.3); }
 
   /* ── Contenido ── */
   .main {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 24px 24px 80px;
+ max-width: 760px;
+ margin: 0 auto;
+ padding: 24px 24px 80px;
   }
 
   /* ── Secciones del formulario ── */
   .section {
-    display: none;
-    animation: fadeIn 0.2s ease;
+ display: none;
+ animation: fadeIn 0.2s ease;
   }
 
   .section.active { display: block; }
@@ -147,44 +141,44 @@
   @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 
   .section-title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 4px;
+ font-size: 1rem;
+ font-weight: 700;
+ color: var(--text);
+ margin-bottom: 4px;
   }
 
   .section-desc {
-    font-size: 0.8rem;
-    color: var(--muted);
-    margin-bottom: 20px;
+ font-size: 0.8rem;
+ color: var(--muted);
+ margin-bottom: 20px;
   }
 
   /* ── Card de grupo ── */
   .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    margin-bottom: 14px;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 18px;
+ margin-bottom: 14px;
   }
 
   .card-title {
-    font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--acc);
-    margin-bottom: 14px;
-    display: flex;
-    align-items: center;
-    gap: 7px;
+ font-size: 0.78rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.07em;
+ color: var(--acc);
+ margin-bottom: 14px;
+ display: flex;
+ align-items: center;
+ gap: 7px;
   }
 
   /* ── Campos ── */
   .row {
-    display: grid;
-    gap: 12px;
-    margin-bottom: 12px;
+ display: grid;
+ gap: 12px;
+ margin-bottom: 12px;
   }
 
   .row-2 { grid-template-columns: 1fr 1fr; }
@@ -194,11 +188,11 @@
   .field { display: flex; flex-direction: column; gap: 5px; }
 
   .field label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+ font-size: 0.72rem;
+ font-weight: 600;
+ color: var(--muted);
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
   }
 
   .field label .req { color: var(--acc); margin-left: 2px; }
@@ -206,16 +200,16 @@
   .field input,
   .field select,
   .field textarea {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 8px 11px;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.85rem;
-    outline: none;
-    transition: border-color 0.15s;
-    width: 100%;
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ padding: 8px 11px;
+ color: var(--text);
+ font-family: inherit;
+ font-size: 0.85rem;
+ outline: none;
+ transition: border-color 0.15s;
+ width: 100%;
   }
 
   .field input:focus,
@@ -232,24 +226,24 @@
 
   /* ── Toggle vivo/fallecido ── */
   .vivo-toggle {
-    display: flex;
-    gap: 6px;
-    margin-top: 2px;
+ display: flex;
+ gap: 6px;
+ margin-top: 2px;
   }
 
   .vivo-btn {
-    flex: 1;
-    padding: 6px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-    background: var(--surface2);
-    color: var(--muted);
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
-    text-align: center;
+ flex: 1;
+ padding: 6px 8px;
+ border-radius: 6px;
+ border: 1px solid var(--border);
+ background: var(--surface2);
+ color: var(--muted);
+ font-size: 0.75rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
+ text-align: center;
   }
 
   .vivo-btn.active-vivo { background: rgba(16,185,129,0.15); border-color: var(--acc); color: var(--acc); }
@@ -257,136 +251,136 @@
 
   /* ── Persona repeatable (hermanos / hijos / parejas) ── */
   .person-row {
-    display: grid;
-    grid-template-columns: 1fr 140px 28px;
-    gap: 8px;
-    align-items: end;
-    margin-bottom: 8px;
+ display: grid;
+ grid-template-columns: 1fr 140px 28px;
+ gap: 8px;
+ align-items: end;
+ margin-bottom: 8px;
   }
 
   .person-row.with-extra {
-    grid-template-columns: 1fr 140px 120px 28px;
+ grid-template-columns: 1fr 140px 120px 28px;
   }
 
   .del-btn {
-    width: 28px; height: 28px;
-    border-radius: 6px;
-    border: 1px solid rgba(239,68,68,0.25);
-    background: transparent;
-    color: #ef4444;
-    font-size: 14px;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-    flex-shrink: 0;
+ width: 28px; height: 28px;
+ border-radius: 6px;
+ border: 1px solid rgba(239,68,68,0.25);
+ background: transparent;
+ color: #ef4444;
+ font-size: 14px;
+ cursor: pointer;
+ display: flex; align-items: center; justify-content: center;
+ transition: all 0.15s;
+ flex-shrink: 0;
   }
 
   .del-btn:hover { background: rgba(239,68,68,0.1); }
 
   .add-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 5px 10px;
-    border-radius: 7px;
-    border: 1px dashed rgba(16,185,129,0.3);
-    background: transparent;
-    color: var(--acc);
-    font-size: 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
-    margin-top: 4px;
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ padding: 5px 10px;
+ border-radius: 7px;
+ border: 1px dashed rgba(16,185,129,0.3);
+ background: transparent;
+ color: var(--acc);
+ font-size: 0.75rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
+ margin-top: 4px;
   }
 
   .add-btn:hover { background: var(--acc-dim); border-style: solid; }
 
   /* ── Sintomas ── */
   .sintoma-card {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 10px;
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: 14px;
+ margin-bottom: 10px;
   }
 
   .sintoma-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 10px;
   }
 
   .sintoma-num {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--acc);
+ font-size: 0.7rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ color: var(--acc);
   }
 
   /* ── Barra inferior ── */
   .bottom-bar {
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
-    padding: 14px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
+ position: fixed;
+ bottom: 0; left: 0; right: 0;
+ background: var(--bg);
+ border-top: 1px solid var(--border);
+ padding: 14px 24px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ z-index: 10;
   }
 
   .btn-primary {
-    padding: 10px 24px;
-    background: var(--acc);
-    color: var(--bg);
-    border: none;
-    border-radius: 10px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
-    display: flex;
-    align-items: center;
-    gap: 7px;
+ padding: 10px 24px;
+ background: var(--acc);
+ color: var(--bg);
+ border: none;
+ border-radius: 10px;
+ font-size: 0.88rem;
+ font-weight: 700;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
+ display: flex;
+ align-items: center;
+ gap: 7px;
   }
 
   .btn-primary:hover { background: #059669; transform: translateY(-1px); }
   .btn-primary:disabled { opacity: 0.4; cursor: default; transform: none; }
 
   .btn-secondary {
-    padding: 10px 20px;
-    background: var(--surface2);
-    color: var(--text);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.15s;
-    font-family: inherit;
+ padding: 10px 20px;
+ background: var(--surface2);
+ color: var(--text);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ font-size: 0.88rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
   }
 
   .btn-secondary:hover { border-color: rgba(255,255,255,0.2); }
 
   .step-indicator {
-    font-size: 0.75rem;
-    color: var(--muted);
+ font-size: 0.75rem;
+ color: var(--muted);
   }
 
   /* ── Tip ── */
   .tip {
-    font-size: 0.75rem;
-    color: var(--gold);
-    background: rgba(251,191,36,0.07);
-    border-left: 2px solid rgba(251,191,36,0.35);
-    padding: 7px 11px;
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 14px;
+ font-size: 0.75rem;
+ color: var(--gold);
+ background: rgba(251,191,36,0.07);
+ border-left: 2px solid rgba(251,191,36,0.35);
+ padding: 7px 11px;
+ border-radius: 0 6px 6px 0;
+ margin-bottom: 14px;
   }
 
   /* ── Responsive ── */
@@ -405,823 +399,333 @@
 
   /* ── Panel pacientes recientes ── */
   .recientes-panel {
-    max-width: 760px;
-    margin: 14px auto 0;
-    padding: 0 24px;
+ max-width: 760px;
+ margin: 14px auto 0;
+ padding: 0 24px;
   }
 
   .recientes-title {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--muted);
-    margin-bottom: 8px;
+ font-size: 0.7rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.07em;
+ color: var(--muted);
+ margin-bottom: 8px;
   }
 
   .recientes-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 8px;
   }
 
   .reciente-chip {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: all 0.15s;
-    min-width: 0;
-    max-width: 260px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: 8px 12px;
+ cursor: pointer;
+ transition: all 0.15s;
+ min-width: 0;
+ max-width: 260px;
   }
 
   .reciente-chip:hover {
-    border-color: var(--acc);
-    background: var(--acc-dim);
+ border-color: var(--acc);
+ background: var(--acc-dim);
   }
 
   .reciente-info { min-width: 0; }
 
   .reciente-nombre {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+ font-size: 0.82rem;
+ font-weight: 700;
+ color: var(--text);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
   }
 
   .reciente-meta {
-    font-size: 0.7rem;
-    color: var(--muted);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+ font-size: 0.7rem;
+ color: var(--muted);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
   }
 
   .reciente-del {
-    width: 20px; height: 20px;
-    flex-shrink: 0;
-    background: transparent;
-    border: none;
-    color: var(--muted);
-    font-size: 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.15s;
-    margin-left: 2px;
+ width: 20px; height: 20px;
+ flex-shrink: 0;
+ background: transparent;
+ border: none;
+ color: var(--muted);
+ font-size: 12px;
+ cursor: pointer;
+ border-radius: 4px;
+ display: flex; align-items: center; justify-content: center;
+ transition: all 0.15s;
+ margin-left: 2px;
   }
   .reciente-del:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
-</style>
-</head>
-<body>
-
-<!-- Header -->
-<header class="header">
-  <a href="https://www.holoacademia.com/asistenteia" class="home-btn" title="Inicio">⌂</a>
-  <div class="header-icon">📋</div>
-  <div>
-    <div class="header-title">Registro Pre-Sesión</div>
-    <div class="header-sub">Asistente Terapéutico Holoacadem-iA</div>
-  </div>
-  <div class="header-right">
-    <a href="/terapeuta?skip=1"><button class="btn-ghost">Saltar →</button></a>
-  </div>
-</header>
-
-<!-- Pacientes recientes -->
-<div class="recientes-panel" id="recientes-panel" style="display:none">
-  <div class="recientes-title">Pacientes recientes</div>
-  <div class="recientes-list" id="recientes-list"></div>
-</div>
-
-<!-- Barra de pasos -->
-<div class="steps-bar">
-  <div class="step active" id="step-indicator-1">
-    <div class="step-num"><span>1</span></div>
-    <div>Paciente</div>
-  </div>
-  <div class="step-line" id="line-1"></div>
-  <div class="step" id="step-indicator-2">
-    <div class="step-num"><span>2</span></div>
-    <div>Familia</div>
-  </div>
-  <div class="step-line" id="line-2"></div>
-  <div class="step" id="step-indicator-3">
-    <div class="step-num"><span>3</span></div>
-    <div>Síntomas</div>
-  </div>
-</div>
-
-<!-- Contenido principal -->
-<main class="main">
-
-  <!-- ──────────── SECCIÓN 1: PACIENTE ──────────── -->
-  <section class="section active" id="sec-1">
-    <div class="section-title">Datos del paciente</div>
-    <div class="section-desc">Información básica para el análisis numerológico y la orientación de la sesión.</div>
-
-    <div class="card">
-      <div class="card-title">👤 Identificación</div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Nombre completo <span class="req">*</span></label>
-          <input type="text" id="pac-nombre" placeholder="Nombre y apellidos" autocomplete="off">
-        </div>
-        <div class="field">
-          <label>Fecha de nacimiento <span class="req">*</span></label>
-          <input type="date" id="pac-fnac">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Género</label>
-          <select id="pac-genero">
-            <option value="">— Seleccionar —</option>
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-            <option value="NB">No binario / Otro</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Lugar de nacimiento</label>
-          <input type="text" id="pac-lugar" placeholder="Ciudad, País">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Ocupación / profesión</label>
-          <input type="text" id="pac-ocupacion" placeholder="Ej: maestra, contador, ama de casa…">
-        </div>
-        <div class="field">
-          <label>Estado civil</label>
-          <select id="pac-estado-civil">
-            <option value="">— Seleccionar —</option>
-            <option value="soltero">Soltero/a</option>
-            <option value="union_libre">Unión libre</option>
-            <option value="casado">Casado/a</option>
-            <option value="separado">Separado/a</option>
-            <option value="divorciado">Divorciado/a</option>
-            <option value="viudo">Viudo/a</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">🎯 Motivo de consulta</div>
-      <div class="tip">💡 Este campo orienta toda la sesión. Sé concreto: síntoma, emoción o situación que trajo al paciente hoy.</div>
-      <div class="field">
-        <label>¿Por qué viene hoy? <span class="req">*</span></label>
-        <textarea id="pac-motivo" placeholder="Ej: Pérdida de cabello desde hace 3 años, coincidió con la muerte de su padre. Quiere entender la raíz emocional." rows="3"></textarea>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">🤰 Condiciones perinatales</div>
-      <div class="tip">💡 El tipo de parto y las complicaciones al nacer pueden generar programas de supervivencia, abandono o separación desde el inicio de la vida.</div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Tipo de parto</label>
-          <select id="pac-parto">
-            <option value="">— No sé / No aplica —</option>
-            <option value="natural">Parto natural (vaginal)</option>
-            <option value="cesarea">Cesárea</option>
-            <option value="forceps">Fórceps / ventosa</option>
-            <option value="inducido">Parto inducido</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>¿Nació a término?</label>
-          <select id="pac-termino">
-            <option value="">— No sé —</option>
-            <option value="si">Sí, a término</option>
-            <option value="prematuro">Prematuro (antes de tiempo)</option>
-            <option value="postermino">Postérmino (después de tiempo)</option>
-          </select>
-        </div>
-      </div>
-      <div class="field">
-        <label>Complicaciones al nacer (opcional)</label>
-        <input type="text" id="pac-parto-complicaciones" placeholder="Ej: cordón al cuello, incubadora, sufrimiento fetal, madre en riesgo…">
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">📝 Notas del terapeuta</div>
-      <div class="field">
-        <label>Observaciones previas (opcional)</label>
-        <textarea id="pac-notas" placeholder="Impresiones, contexto relevante, sesiones anteriores…" rows="2"></textarea>
-      </div>
-    </div>
-  </section>
-
-  <!-- ──────────── SECCIÓN 2: FAMILIA / GENOGRAMA ──────────── -->
-  <section class="section" id="sec-2">
-    <div class="section-title">Genograma familiar</div>
-    <div class="section-desc">Padre, madre, abuelos, hermanos, pareja e hijos. Las fechas son clave para detectar patrones transgeneracionales.</div>
-
-    <!-- PADRE -->
-    <div class="card">
-      <div class="card-title">👨 Padre</div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Nombre completo</label>
-          <input type="text" id="padre-nombre" placeholder="Nombre del padre">
-        </div>
-        <div class="field">
-          <label>Fecha de nacimiento</label>
-          <input type="date" id="padre-fnac">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Estado</label>
-          <div class="vivo-toggle">
-            <button class="vivo-btn active-vivo" onclick="toggleVivo('padre', 'vivo', this)">Vive</button>
-            <button class="vivo-btn" onclick="toggleVivo('padre', 'muerto', this)">Falleció</button>
-          </div>
-        </div>
-        <div class="field" id="padre-muerte-field" style="display:none">
-          <label>Fecha de fallecimiento</label>
-          <input type="date" id="padre-fmuerte">
-        </div>
-      </div>
-      <div class="field" style="margin-top:8px">
-        <label>Notas (enfermedad, profesión, carácter relevante)</label>
-        <input type="text" id="padre-notas" placeholder="Ej: falleció de paro cardíaco, era distante emocionalmente…">
-      </div>
-    </div>
-
-    <!-- MADRE -->
-    <div class="card">
-      <div class="card-title">👩 Madre</div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Nombre completo</label>
-          <input type="text" id="madre-nombre" placeholder="Nombre de la madre">
-        </div>
-        <div class="field">
-          <label>Fecha de nacimiento</label>
-          <input type="date" id="madre-fnac">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Estado</label>
-          <div class="vivo-toggle">
-            <button class="vivo-btn active-vivo" onclick="toggleVivo('madre', 'vivo', this)">Vive</button>
-            <button class="vivo-btn" onclick="toggleVivo('madre', 'muerto', this)">Falleció</button>
-          </div>
-        </div>
-        <div class="field" id="madre-muerte-field" style="display:none">
-          <label>Fecha de fallecimiento</label>
-          <input type="date" id="madre-fmuerte">
-        </div>
-      </div>
-      <div class="field" style="margin-top:8px">
-        <label>Notas</label>
-        <input type="text" id="madre-notas" placeholder="Ej: depresión crónica, relación conflictiva con el paciente…">
-      </div>
-    </div>
-
-    <!-- ABUELOS -->
-    <div class="card">
-      <div class="card-title">👴👵 Abuelos (opcional — para análisis transgeneracional profundo)</div>
-      <div class="row row-2" style="margin-bottom:14px">
-        <div>
-          <div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuelo Paterno</div>
-          <div class="row row-2">
-            <div class="field"><label>Nombre</label><input type="text" id="abp-nombre" placeholder="Nombre"></div>
-            <div class="field"><label>Fecha nacimiento</label><input type="date" id="abp-fnac"></div>
-          </div>
-          <div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abp-fmuerte"></div>
-        </div>
-        <div>
-          <div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuela Paterna</div>
-          <div class="row row-2">
-            <div class="field"><label>Nombre</label><input type="text" id="abpm-nombre" placeholder="Nombre"></div>
-            <div class="field"><label>Fecha nacimiento</label><input type="date" id="abpm-fnac"></div>
-          </div>
-          <div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abpm-fmuerte"></div>
-        </div>
-      </div>
-      <div class="row row-2">
-        <div>
-          <div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuelo Materno</div>
-          <div class="row row-2">
-            <div class="field"><label>Nombre</label><input type="text" id="abm-nombre" placeholder="Nombre"></div>
-            <div class="field"><label>Fecha nacimiento</label><input type="date" id="abm-fnac"></div>
-          </div>
-          <div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abm-fmuerte"></div>
-        </div>
-        <div>
-          <div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuela Materna</div>
-          <div class="row row-2">
-            <div class="field"><label>Nombre</label><input type="text" id="abmm-nombre" placeholder="Nombre"></div>
-            <div class="field"><label>Fecha nacimiento</label><input type="date" id="abmm-fnac"></div>
-          </div>
-          <div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abmm-fmuerte"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- HERMANOS -->
-    <div class="card">
-      <div class="card-title">👫 Hermanos</div>
-      <div id="hermanos-list"></div>
-      <button class="add-btn" onclick="addHermano()">+ Agregar hermano/a</button>
-    </div>
-
-    <!-- PAREJA ACTUAL + ANTERIORES -->
-    <div class="card">
-      <div class="card-title">💑 Pareja actual</div>
-      <div class="row row-3">
-        <div class="field" style="grid-column: span 2">
-          <label>Nombre completo</label>
-          <input type="text" id="pareja-nombre" placeholder="Nombre de la pareja actual">
-        </div>
-        <div class="field">
-          <label>Tiempo de relación</label>
-          <input type="text" id="pareja-tiempo" placeholder="Ej: 8 años">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>Fecha de nacimiento</label>
-          <input type="date" id="pareja-fnac">
-        </div>
-        <div class="field">
-          <label>Notas</label>
-          <input type="text" id="pareja-notas" placeholder="Relación con figura paterna/materna…">
-        </div>
-      </div>
-
-      <div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px">
-        <div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em">Parejas anteriores significativas</div>
-        <div id="exparejas-list"></div>
-        <button class="add-btn" onclick="addExpareja()">+ Agregar pareja anterior</button>
-      </div>
-    </div>
-
-    <!-- HIJOS -->
-    <div class="card">
-      <div class="card-title">👶 Hijos</div>
-      <div id="hijos-list"></div>
-      <button class="add-btn" onclick="addHijo()">+ Agregar hijo/a</button>
-    </div>
-
-    <!-- PÉRDIDAS GESTACIONALES -->
-    <div class="card">
-      <div class="card-title">🕯️ Pérdidas gestacionales y miembros excluidos</div>
-      <div class="tip">💡 En las Leyes de Hellinger, los miembros no nombrados (abortos, mortinatos, bebés fallecidos) generan lealtades inconscientes en los hijos posteriores. Preguntar siempre.</div>
-      <div class="row row-2" style="margin-bottom:10px">
-        <div class="field">
-          <label>¿La madre tuvo abortos o pérdidas antes/después del paciente?</label>
-          <select id="perdidas-madre" onchange="togglePerdidasMadre(this.value)">
-            <option value="">— No sé —</option>
-            <option value="no">No</option>
-            <option value="si">Sí</option>
-          </select>
-        </div>
-        <div class="field" id="perdidas-madre-detalle-field" style="display:none">
-          <label>¿Cuántas y qué sabe el paciente?</label>
-          <input type="text" id="perdidas-madre-detalle" placeholder="Ej: 2 abortos antes de él, uno no hablado en la familia…">
-        </div>
-      </div>
-      <div class="row row-2">
-        <div class="field">
-          <label>¿El paciente o su pareja han tenido pérdidas gestacionales?</label>
-          <select id="perdidas-propias" onchange="togglePerdidasPropias(this.value)">
-            <option value="">— No sé —</option>
-            <option value="no">No</option>
-            <option value="si">Sí</option>
-          </select>
-        </div>
-        <div class="field" id="perdidas-propias-detalle-field" style="display:none">
-          <label>Detalle</label>
-          <input type="text" id="perdidas-propias-detalle" placeholder="Ej: 1 aborto espontáneo en 2019, no fue llorado…">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ──────────── SECCIÓN 3: SÍNTOMAS ──────────── -->
-  <section class="section" id="sec-3">
-    <div class="section-title">Historial clínico</div>
-    <div class="section-desc">Síntomas actuales por orden de intensidad, y síntomas recurrentes del pasado o cirugías relevantes.</div>
-
-    <div class="tip">💡 El síntoma de mayor intensidad es el que guiará la sesión. Incluye la edad de aparición — es dato clave para encontrar el evento real.</div>
-
-    <!-- SÍNTOMAS ACTUALES -->
-    <div class="card">
-      <div class="card-title">🔴 Síntomas actuales (por orden de intensidad)</div>
-      <div id="sintomas-actuales-list"></div>
-      <button class="add-btn" onclick="addSintoma('actuales')">+ Agregar síntoma</button>
-    </div>
-
-    <!-- SÍNTOMAS PASADOS / CIRUGÍAS -->
-    <div class="card">
-      <div class="card-title">📌 Síntomas recurrentes pasados y cirugías</div>
-      <div id="sintomas-pasados-list"></div>
-      <button class="add-btn" onclick="addSintoma('pasados')">+ Agregar</button>
-    </div>
-
-    <!-- CONTEXTO EMOCIONAL -->
-    <div class="card">
-      <div class="card-title">💬 Contexto emocional actual (opcional)</div>
-      <div class="row row-2" style="margin-bottom:10px">
-        <div class="field">
-          <label>Emoción dominante al consultar</label>
-          <select id="ctx-emocion-dominante">
-            <option value="">— Seleccionar —</option>
-            <option value="miedo">😰 Miedo / angustia</option>
-            <option value="tristeza">😢 Tristeza / depresión</option>
-            <option value="rabia">😠 Rabia / frustración</option>
-            <option value="culpa">😔 Culpa</option>
-            <option value="vergüenza">😳 Vergüenza</option>
-            <option value="confusion">😕 Confusión / bloqueo</option>
-            <option value="resignacion">😶 Resignación / impotencia</option>
-            <option value="otro">Otra</option>
-          </select>
-        </div>
-        <div class="field">
-          <label>Relación con figura paterna</label>
-          <select id="ctx-relacion-padre">
-            <option value="">— Seleccionar —</option>
-            <option value="buena">Buena / cercana</option>
-            <option value="distante">Distante / fría</option>
-            <option value="conflictiva">Conflictiva</option>
-            <option value="ausente">Ausente (abandono)</option>
-            <option value="fallecio_joven">Falleció cuando era joven</option>
-          </select>
-        </div>
-      </div>
-      <div class="field" style="margin-bottom:10px">
-        <label>Relación con figura materna</label>
-        <select id="ctx-relacion-madre">
-          <option value="">— Seleccionar —</option>
-          <option value="buena">Buena / cercana</option>
-          <option value="distante">Distante / fría</option>
-          <option value="conflictiva">Conflictiva / fusional</option>
-          <option value="ausente">Ausente (abandono)</option>
-          <option value="fallecio_joven">Falleció cuando era joven</option>
-          <option value="sobreprotectora">Sobreprotectora / controladora</option>
-        </select>
-      </div>
-      <div class="field" style="margin-bottom:10px">
-        <label>¿Qué está viviendo emocionalmente hoy?</label>
-        <textarea id="ctx-emocional" placeholder="Ej: separación reciente, pérdida de trabajo, conflicto familiar, duelo no cerrado…" rows="2"></textarea>
-      </div>
-      <div class="field">
-        <label>¿Hay algún evento reciente (últimos 3 meses) que el paciente relaciona con el síntoma?</label>
-        <textarea id="ctx-evento" placeholder="Ej: el síntoma empeoró después de que su jefe lo trató injustamente en septiembre…" rows="2"></textarea>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<!-- Barra inferior de navegación -->
-<div class="bottom-bar">
-  <div>
-    <button class="btn-secondary" id="btn-back" onclick="prevStep()" style="display:none">← Atrás</button>
-  </div>
-  <div class="step-indicator" id="step-label">Paso 1 de 3</div>
-  <button class="btn-primary" id="btn-next" onclick="nextStep()">
-    Siguiente →
-  </button>
-</div>
-
-<script>
+</style></head><body><!-- Header --><header class="header"><a href="https://www.holoacademia.com/asistenteia" class="home-btn" title="Inicio"></a><div class="header-icon"></div><div><div class="header-title">Registro Pre-Sesión</div><div class="header-sub">Asistente Terapéutico Holoacadem-iA</div></div><div class="header-right"><a href="/terapeuta?skip=1"><button class="btn-ghost">Saltar →</button></a></div></header><!-- Pacientes recientes --><div class="recientes-panel" id="recientes-panel" style="display:none"><div class="recientes-title">Pacientes recientes</div><div class="recientes-list" id="recientes-list"></div></div><!-- Barra de pasos --><div class="steps-bar"><div class="step active" id="step-indicator-1"><div class="step-num"><span>1</span></div><div>Paciente</div></div><div class="step-line" id="line-1"></div><div class="step" id="step-indicator-2"><div class="step-num"><span>2</span></div><div>Familia</div></div><div class="step-line" id="line-2"></div><div class="step" id="step-indicator-3"><div class="step-num"><span>3</span></div><div>Síntomas</div></div></div><!-- Contenido principal --><main class="main"><!-- ──────────── SECCIÓN 1: PACIENTE ──────────── --><section class="section active" id="sec-1"><div class="section-title">Datos del paciente</div><div class="section-desc">Información básica para el análisis numerológico y la orientación de la sesión.</div><div class="card"><div class="card-title">Identificación</div><div class="row row-2"><div class="field"><label>Nombre completo <span class="req">*</span></label><input type="text" id="pac-nombre" placeholder="Nombre y apellidos" autocomplete="off"></div><div class="field"><label>Fecha de nacimiento <span class="req">*</span></label><input type="date" id="pac-fnac"></div></div><div class="row row-2"><div class="field"><label>Género</label><select id="pac-genero"><option value="">— Seleccionar —</option><option value="M">Masculino</option><option value="F">Femenino</option><option value="NB">No binario / Otro</option></select></div><div class="field"><label>Lugar de nacimiento</label><input type="text" id="pac-lugar" placeholder="Ciudad, País"></div></div><div class="row row-2"><div class="field"><label>Ocupación / profesión</label><input type="text" id="pac-ocupacion" placeholder="Ej: maestra, contador, ama de casa…"></div><div class="field"><label>Estado civil</label><select id="pac-estado-civil"><option value="">— Seleccionar —</option><option value="soltero">Soltero/a</option><option value="union_libre">Unión libre</option><option value="casado">Casado/a</option><option value="separado">Separado/a</option><option value="divorciado">Divorciado/a</option><option value="viudo">Viudo/a</option></select></div></div></div><div class="card"><div class="card-title">Motivo de consulta</div><div class="tip">Este campo orienta toda la sesión. Sé concreto: síntoma, emoción o situación que trajo al paciente hoy.</div><div class="field"><label>¿Por qué viene hoy? <span class="req">*</span></label><textarea id="pac-motivo" placeholder="Ej: Pérdida de cabello desde hace 3 años, coincidió con la muerte de su padre. Quiere entender la raíz emocional." rows="3"></textarea></div></div><div class="card"><div class="card-title">Condiciones perinatales</div><div class="tip">El tipo de parto y las complicaciones al nacer pueden generar programas de supervivencia, abandono o separación desde el inicio de la vida.</div><div class="row row-2"><div class="field"><label>Tipo de parto</label><select id="pac-parto"><option value="">— No sé / No aplica —</option><option value="natural">Parto natural (vaginal)</option><option value="cesarea">Cesárea</option><option value="forceps">Fórceps / ventosa</option><option value="inducido">Parto inducido</option></select></div><div class="field"><label>¿Nació a término?</label><select id="pac-termino"><option value="">— No sé —</option><option value="si">Sí, a término</option><option value="prematuro">Prematuro (antes de tiempo)</option><option value="postermino">Postérmino (después de tiempo)</option></select></div></div><div class="field"><label>Complicaciones al nacer (opcional)</label><input type="text" id="pac-parto-complicaciones" placeholder="Ej: cordón al cuello, incubadora, sufrimiento fetal, madre en riesgo…"></div></div><div class="card"><div class="card-title">Notas del terapeuta</div><div class="field"><label>Observaciones previas (opcional)</label><textarea id="pac-notas" placeholder="Impresiones, contexto relevante, sesiones anteriores…" rows="2"></textarea></div></div></section><!-- ──────────── SECCIÓN 2: FAMILIA / GENOGRAMA ──────────── --><section class="section" id="sec-2"><div class="section-title">Genograma familiar</div><div class="section-desc">Padre, madre, abuelos, hermanos, pareja e hijos. Las fechas son clave para detectar patrones transgeneracionales.</div><!-- PADRE --><div class="card"><div class="card-title">Padre</div><div class="row row-2"><div class="field"><label>Nombre completo</label><input type="text" id="padre-nombre" placeholder="Nombre del padre"></div><div class="field"><label>Fecha de nacimiento</label><input type="date" id="padre-fnac"></div></div><div class="row row-2"><div class="field"><label>Estado</label><div class="vivo-toggle"><button class="vivo-btn active-vivo" onclick="toggleVivo('padre', 'vivo', this)">Vive</button><button class="vivo-btn" onclick="toggleVivo('padre', 'muerto', this)">Falleció</button></div></div><div class="field" id="padre-muerte-field" style="display:none"><label>Fecha de fallecimiento</label><input type="date" id="padre-fmuerte"></div></div><div class="field" style="margin-top:8px"><label>Notas (enfermedad, profesión, carácter relevante)</label><input type="text" id="padre-notas" placeholder="Ej: falleció de paro cardíaco, era distante emocionalmente…"></div></div><!-- MADRE --><div class="card"><div class="card-title">Madre</div><div class="row row-2"><div class="field"><label>Nombre completo</label><input type="text" id="madre-nombre" placeholder="Nombre de la madre"></div><div class="field"><label>Fecha de nacimiento</label><input type="date" id="madre-fnac"></div></div><div class="row row-2"><div class="field"><label>Estado</label><div class="vivo-toggle"><button class="vivo-btn active-vivo" onclick="toggleVivo('madre', 'vivo', this)">Vive</button><button class="vivo-btn" onclick="toggleVivo('madre', 'muerto', this)">Falleció</button></div></div><div class="field" id="madre-muerte-field" style="display:none"><label>Fecha de fallecimiento</label><input type="date" id="madre-fmuerte"></div></div><div class="field" style="margin-top:8px"><label>Notas</label><input type="text" id="madre-notas" placeholder="Ej: depresión crónica, relación conflictiva con el paciente…"></div></div><!-- ABUELOS --><div class="card"><div class="card-title">Abuelos (opcional — para análisis transgeneracional profundo)</div><div class="row row-2" style="margin-bottom:14px"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuelo Paterno</div><div class="row row-2"><div class="field"><label>Nombre</label><input type="text" id="abp-nombre" placeholder="Nombre"></div><div class="field"><label>Fecha nacimiento</label><input type="date" id="abp-fnac"></div></div><div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abp-fmuerte"></div></div><div><div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuela Paterna</div><div class="row row-2"><div class="field"><label>Nombre</label><input type="text" id="abpm-nombre" placeholder="Nombre"></div><div class="field"><label>Fecha nacimiento</label><input type="date" id="abpm-fnac"></div></div><div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abpm-fmuerte"></div></div></div><div class="row row-2"><div><div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuelo Materno</div><div class="row row-2"><div class="field"><label>Nombre</label><input type="text" id="abm-nombre" placeholder="Nombre"></div><div class="field"><label>Fecha nacimiento</label><input type="date" id="abm-fnac"></div></div><div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abm-fmuerte"></div></div><div><div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">Abuela Materna</div><div class="row row-2"><div class="field"><label>Nombre</label><input type="text" id="abmm-nombre" placeholder="Nombre"></div><div class="field"><label>Fecha nacimiento</label><input type="date" id="abmm-fnac"></div></div><div class="field" style="margin-top:8px"><label>Fallecimiento</label><input type="date" id="abmm-fmuerte"></div></div></div></div><!-- HERMANOS --><div class="card"><div class="card-title">Hermanos</div><div id="hermanos-list"></div><button class="add-btn" onclick="addHermano()">+ Agregar hermano/a</button></div><!-- PAREJA ACTUAL + ANTERIORES --><div class="card"><div class="card-title">Pareja actual</div><div class="row row-3"><div class="field" style="grid-column: span 2"><label>Nombre completo</label><input type="text" id="pareja-nombre" placeholder="Nombre de la pareja actual"></div><div class="field"><label>Tiempo de relación</label><input type="text" id="pareja-tiempo" placeholder="Ej: 8 años"></div></div><div class="row row-2"><div class="field"><label>Fecha de nacimiento</label><input type="date" id="pareja-fnac"></div><div class="field"><label>Notas</label><input type="text" id="pareja-notas" placeholder="Relación con figura paterna/materna…"></div></div><div style="margin-top:16px;border-top:1px solid var(--border);padding-top:14px"><div style="font-size:0.72rem;color:var(--muted);font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:0.05em">Parejas anteriores significativas</div><div id="exparejas-list"></div><button class="add-btn" onclick="addExpareja()">+ Agregar pareja anterior</button></div></div><!-- HIJOS --><div class="card"><div class="card-title">Hijos</div><div id="hijos-list"></div><button class="add-btn" onclick="addHijo()">+ Agregar hijo/a</button></div><!-- PÉRDIDAS GESTACIONALES --><div class="card"><div class="card-title">Pérdidas gestacionales y miembros excluidos</div><div class="tip">En las Leyes de Hellinger, los miembros no nombrados (abortos, mortinatos, bebés fallecidos) generan lealtades inconscientes en los hijos posteriores. Preguntar siempre.</div><div class="row row-2" style="margin-bottom:10px"><div class="field"><label>¿La madre tuvo abortos o pérdidas antes/después del paciente?</label><select id="perdidas-madre" onchange="togglePerdidasMadre(this.value)"><option value="">— No sé —</option><option value="no">No</option><option value="si">Sí</option></select></div><div class="field" id="perdidas-madre-detalle-field" style="display:none"><label>¿Cuántas y qué sabe el paciente?</label><input type="text" id="perdidas-madre-detalle" placeholder="Ej: 2 abortos antes de él, uno no hablado en la familia…"></div></div><div class="row row-2"><div class="field"><label>¿El paciente o su pareja han tenido pérdidas gestacionales?</label><select id="perdidas-propias" onchange="togglePerdidasPropias(this.value)"><option value="">— No sé —</option><option value="no">No</option><option value="si">Sí</option></select></div><div class="field" id="perdidas-propias-detalle-field" style="display:none"><label>Detalle</label><input type="text" id="perdidas-propias-detalle" placeholder="Ej: 1 aborto espontáneo en 2019, no fue llorado…"></div></div></div></section><!-- ──────────── SECCIÓN 3: SÍNTOMAS ──────────── --><section class="section" id="sec-3"><div class="section-title">Historial clínico</div><div class="section-desc">Síntomas actuales por orden de intensidad, y síntomas recurrentes del pasado o cirugías relevantes.</div><div class="tip">El síntoma de mayor intensidad es el que guiará la sesión. Incluye la edad de aparición — es dato clave para encontrar el evento real.</div><!-- SÍNTOMAS ACTUALES --><div class="card"><div class="card-title">Síntomas actuales (por orden de intensidad)</div><div id="sintomas-actuales-list"></div><button class="add-btn" onclick="addSintoma('actuales')">+ Agregar síntoma</button></div><!-- SÍNTOMAS PASADOS / CIRUGÍAS --><div class="card"><div class="card-title">Síntomas recurrentes pasados y cirugías</div><div id="sintomas-pasados-list"></div><button class="add-btn" onclick="addSintoma('pasados')">+ Agregar</button></div><!-- CONTEXTO EMOCIONAL --><div class="card"><div class="card-title">Contexto emocional actual (opcional)</div><div class="row row-2" style="margin-bottom:10px"><div class="field"><label>Emoción dominante al consultar</label><select id="ctx-emocion-dominante"><option value="">— Seleccionar —</option><option value="miedo">Miedo / angustia</option><option value="tristeza">Tristeza / depresión</option><option value="rabia">Rabia / frustración</option><option value="culpa">Culpa</option><option value="vergüenza">Vergüenza</option><option value="confusion">Confusión / bloqueo</option><option value="resignacion">Resignación / impotencia</option><option value="otro">Otra</option></select></div><div class="field"><label>Relación con figura paterna</label><select id="ctx-relacion-padre"><option value="">— Seleccionar —</option><option value="buena">Buena / cercana</option><option value="distante">Distante / fría</option><option value="conflictiva">Conflictiva</option><option value="ausente">Ausente (abandono)</option><option value="fallecio_joven">Falleció cuando era joven</option></select></div></div><div class="field" style="margin-bottom:10px"><label>Relación con figura materna</label><select id="ctx-relacion-madre"><option value="">— Seleccionar —</option><option value="buena">Buena / cercana</option><option value="distante">Distante / fría</option><option value="conflictiva">Conflictiva / fusional</option><option value="ausente">Ausente (abandono)</option><option value="fallecio_joven">Falleció cuando era joven</option><option value="sobreprotectora">Sobreprotectora / controladora</option></select></div><div class="field" style="margin-bottom:10px"><label>¿Qué está viviendo emocionalmente hoy?</label><textarea id="ctx-emocional" placeholder="Ej: separación reciente, pérdida de trabajo, conflicto familiar, duelo no cerrado…" rows="2"></textarea></div><div class="field"><label>¿Hay algún evento reciente (últimos 3 meses) que el paciente relaciona con el síntoma?</label><textarea id="ctx-evento" placeholder="Ej: el síntoma empeoró después de que su jefe lo trató injustamente en septiembre…" rows="2"></textarea></div></div></section></main><!-- Barra inferior de navegación --><div class="bottom-bar"><div><button class="btn-secondary" id="btn-back" onclick="prevStep()" style="display:none">← Atrás</button></div><div class="step-indicator" id="step-label">Paso 1 de 3</div><button class="btn-primary" id="btn-next" onclick="nextStep()">Siguiente →
+ </button></div><script>
   // ── Estado ────────────────────────────────────────────────────────────────────
-  let currentStep = 1;
-  const totalSteps = 3;
+ let currentStep = 1;
+ const totalSteps = 3;
 
   // ── Navegación entre pasos ────────────────────────────────────────────────────
-  function goToStep(n) {
-    document.getElementById(`sec-${currentStep}`).classList.remove('active');
-    document.getElementById(`step-indicator-${currentStep}`).classList.remove('active');
-    document.getElementById(`step-indicator-${currentStep}`).classList.add('done');
-    if (currentStep > 1) document.getElementById(`line-${currentStep - 1}`).classList.add('done');
+ function goToStep(n) {
+ document.getElementById(`sec-${currentStep}`).classList.remove('active');
+ document.getElementById(`step-indicator-${currentStep}`).classList.remove('active');
+ document.getElementById(`step-indicator-${currentStep}`).classList.add('done');
+ if (currentStep >1) document.getElementById(`line-${currentStep - 1}`).classList.add('done');
 
-    currentStep = n;
-    document.getElementById(`sec-${currentStep}`).classList.add('active');
-    document.getElementById(`step-indicator-${currentStep}`).classList.remove('done');
-    document.getElementById(`step-indicator-${currentStep}`).classList.add('active');
+ currentStep = n;
+ document.getElementById(`sec-${currentStep}`).classList.add('active');
+ document.getElementById(`step-indicator-${currentStep}`).classList.remove('done');
+ document.getElementById(`step-indicator-${currentStep}`).classList.add('active');
 
-    document.getElementById('step-label').textContent = `Paso ${currentStep} de ${totalSteps}`;
-    document.getElementById('btn-back').style.display = currentStep > 1 ? '' : 'none';
+ document.getElementById('step-label').textContent = `Paso ${currentStep} de ${totalSteps}`;
+ document.getElementById('btn-back').style.display = currentStep >1 ? '' : 'none';
 
-    const btnNext = document.getElementById('btn-next');
-    if (currentStep === totalSteps) {
-      btnNext.innerHTML = '🔍 Analizar e iniciar sesión';
+ const btnNext = document.getElementById('btn-next');
+ if (currentStep === totalSteps) {
+ btnNext.innerHTML = 'Analizar e iniciar sesión';
     } else {
-      btnNext.innerHTML = 'Siguiente →';
+ btnNext.innerHTML = 'Siguiente →';
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+ window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function nextStep() {
-    if (currentStep === 1 && !validateStep1()) return;
-    if (currentStep < totalSteps) {
-      goToStep(currentStep + 1);
+ function nextStep() {
+ if (currentStep === 1 && !validateStep1()) return;
+ if (currentStep < totalSteps) {
+ goToStep(currentStep + 1);
     } else {
-      analyzeAndStart();
+ analyzeAndStart();
     }
   }
 
-  function prevStep() {
-    if (currentStep > 1) goToStep(currentStep - 1);
+ function prevStep() {
+ if (currentStep >1) goToStep(currentStep - 1);
   }
 
-  function validateStep1() {
-    const nombre = document.getElementById('pac-nombre').value.trim();
-    const fnac   = document.getElementById('pac-fnac').value;
-    const motivo = document.getElementById('pac-motivo').value.trim();
-    if (!nombre) { alert('Por favor ingresa el nombre del paciente.'); return false; }
-    if (!fnac)   { alert('Por favor ingresa la fecha de nacimiento.'); return false; }
-    if (!motivo) { alert('Por favor describe el motivo de consulta.'); return false; }
-    return true;
+ function validateStep1() {
+ const nombre = document.getElementById('pac-nombre').value.trim();
+ const fnac   = document.getElementById('pac-fnac').value;
+ const motivo = document.getElementById('pac-motivo').value.trim();
+ if (!nombre) { alert('Por favor ingresa el nombre del paciente.'); return false; }
+ if (!fnac)   { alert('Por favor ingresa la fecha de nacimiento.'); return false; }
+ if (!motivo) { alert('Por favor describe el motivo de consulta.'); return false; }
+ return true;
   }
 
   // ── Toggle pérdidas gestacionales ────────────────────────────────────────────
-  function togglePerdidasMadre(val) {
-    document.getElementById('perdidas-madre-detalle-field').style.display = val === 'si' ? '' : 'none';
+ function togglePerdidasMadre(val) {
+ document.getElementById('perdidas-madre-detalle-field').style.display = val === 'si' ? '' : 'none';
   }
-  function togglePerdidasPropias(val) {
-    document.getElementById('perdidas-propias-detalle-field').style.display = val === 'si' ? '' : 'none';
+ function togglePerdidasPropias(val) {
+ document.getElementById('perdidas-propias-detalle-field').style.display = val === 'si' ? '' : 'none';
   }
 
   // ── Toggle vivo / fallecido ───────────────────────────────────────────────────
-  function toggleVivo(person, state, btn) {
-    const parent = btn.closest('.vivo-toggle');
-    parent.querySelectorAll('.vivo-btn').forEach(b => {
-      b.classList.remove('active-vivo', 'active-muerto');
+ function toggleVivo(person, state, btn) {
+ const parent = btn.closest('.vivo-toggle');
+ parent.querySelectorAll('.vivo-btn').forEach(b => {
+ b.classList.remove('active-vivo', 'active-muerto');
     });
-    btn.classList.add(state === 'vivo' ? 'active-vivo' : 'active-muerto');
-    const muerteField = document.getElementById(`${person}-muerte-field`);
-    if (muerteField) muerteField.style.display = state === 'muerto' ? '' : 'none';
+ btn.classList.add(state === 'vivo' ? 'active-vivo' : 'active-muerto');
+ const muerteField = document.getElementById(`${person}-muerte-field`);
+ if (muerteField) muerteField.style.display = state === 'muerto' ? '' : 'none';
   }
 
   // ── Listas dinámicas ─────────────────────────────────────────────────────────
-  function addHermano() {
-    const list = document.getElementById('hermanos-list');
-    const idx = list.children.length;
-    const div = document.createElement('div');
-    div.style.cssText = 'display:grid;grid-template-columns:1fr 120px 120px 110px 28px;gap:8px;align-items:end;margin-bottom:8px';
-    div.innerHTML = `
-      <div class="field">
-        <label>Nombre hermano/a ${idx + 1}</label>
-        <input type="text" placeholder="Nombre completo" data-hermano-nombre="${idx}">
-      </div>
-      <div class="field">
-        <label>Fecha nac.</label>
-        <input type="date" data-hermano-fnac="${idx}">
-      </div>
-      <div class="field">
-        <label>Estado</label>
-        <select data-hermano-estado="${idx}" onchange="toggleHermanoMuerte(this, ${idx})">
-          <option value="vive">Vive</option>
-          <option value="fallecio">Falleció</option>
-        </select>
-      </div>
-      <div class="field" id="hermano-causa-${idx}" style="display:none">
-        <label>Causa/edad muerte</label>
-        <input type="text" placeholder="Ej: accidente, 22 años" data-hermano-causa="${idx}">
-      </div>
-      <button class="del-btn" onclick="this.closest('div[style]').remove()" title="Eliminar" style="margin-bottom:0">✕</button>
+ function addHermano() {
+ const list = document.getElementById('hermanos-list');
+ const idx = list.children.length;
+ const div = document.createElement('div');
+ div.style.cssText = 'display:grid;grid-template-columns:1fr 120px 120px 110px 28px;gap:8px;align-items:end;margin-bottom:8px';
+ div.innerHTML = `
+ <div class="field"><label>Nombre hermano/a ${idx + 1}</label><input type="text" placeholder="Nombre completo" data-hermano-nombre="${idx}"></div><div class="field"><label>Fecha nac.</label><input type="date" data-hermano-fnac="${idx}"></div><div class="field"><label>Estado</label><select data-hermano-estado="${idx}" onchange="toggleHermanoMuerte(this, ${idx})"><option value="vive">Vive</option><option value="fallecio">Falleció</option></select></div><div class="field" id="hermano-causa-${idx}" style="display:none"><label>Causa/edad muerte</label><input type="text" placeholder="Ej: accidente, 22 años" data-hermano-causa="${idx}"></div><button class="del-btn" onclick="this.closest('div[style]').remove()" title="Eliminar" style="margin-bottom:0"></button>
     `;
-    list.appendChild(div);
+ list.appendChild(div);
   }
 
-  function toggleHermanoMuerte(sel, idx) {
-    const campo = document.getElementById(`hermano-causa-${idx}`);
-    if (campo) campo.style.display = sel.value === 'fallecio' ? '' : 'none';
+ function toggleHermanoMuerte(sel, idx) {
+ const campo = document.getElementById(`hermano-causa-${idx}`);
+ if (campo) campo.style.display = sel.value === 'fallecio' ? '' : 'none';
   }
 
-  function addExpareja() {
-    const list = document.getElementById('exparejas-list');
-    const idx = list.children.length;
-    const div = document.createElement('div');
-    div.className = 'person-row with-extra';
-    div.innerHTML = `
-      <div class="field">
-        <label>Nombre pareja ${idx + 1}</label>
-        <input type="text" placeholder="Nombre" data-expareja-nombre="${idx}">
-      </div>
-      <div class="field date-col">
-        <label>Fecha nac.</label>
-        <input type="date" data-expareja-fnac="${idx}">
-      </div>
-      <div class="field extra-col">
-        <label>Duración rel.</label>
-        <input type="text" placeholder="Ej: 4 años" data-expareja-tiempo="${idx}">
-      </div>
-      <button class="del-btn" onclick="this.closest('.person-row').remove()" title="Eliminar">✕</button>
+ function addExpareja() {
+ const list = document.getElementById('exparejas-list');
+ const idx = list.children.length;
+ const div = document.createElement('div');
+ div.className = 'person-row with-extra';
+ div.innerHTML = `
+ <div class="field"><label>Nombre pareja ${idx + 1}</label><input type="text" placeholder="Nombre" data-expareja-nombre="${idx}"></div><div class="field date-col"><label>Fecha nac.</label><input type="date" data-expareja-fnac="${idx}"></div><div class="field extra-col"><label>Duración rel.</label><input type="text" placeholder="Ej: 4 años" data-expareja-tiempo="${idx}"></div><button class="del-btn" onclick="this.closest('.person-row').remove()" title="Eliminar"></button>
     `;
-    list.appendChild(div);
+ list.appendChild(div);
   }
 
-  function addHijo() {
-    const list = document.getElementById('hijos-list');
-    const idx = list.children.length;
-    const div = document.createElement('div');
-    div.className = 'person-row with-extra';
-    div.innerHTML = `
-      <div class="field">
-        <label>Nombre hijo/a ${idx + 1}</label>
-        <input type="text" placeholder="Nombre completo" data-hijo-nombre="${idx}">
-      </div>
-      <div class="field date-col">
-        <label>Fecha nac.</label>
-        <input type="date" data-hijo-fnac="${idx}">
-      </div>
-      <div class="field extra-col">
-        <label>Otro progenitor/a</label>
-        <input type="text" placeholder="Nombre" data-hijo-progenitor="${idx}">
-      </div>
-      <button class="del-btn" onclick="this.closest('.person-row').remove()" title="Eliminar">✕</button>
+ function addHijo() {
+ const list = document.getElementById('hijos-list');
+ const idx = list.children.length;
+ const div = document.createElement('div');
+ div.className = 'person-row with-extra';
+ div.innerHTML = `
+ <div class="field"><label>Nombre hijo/a ${idx + 1}</label><input type="text" placeholder="Nombre completo" data-hijo-nombre="${idx}"></div><div class="field date-col"><label>Fecha nac.</label><input type="date" data-hijo-fnac="${idx}"></div><div class="field extra-col"><label>Otro progenitor/a</label><input type="text" placeholder="Nombre" data-hijo-progenitor="${idx}"></div><button class="del-btn" onclick="this.closest('.person-row').remove()" title="Eliminar"></button>
     `;
-    list.appendChild(div);
+ list.appendChild(div);
   }
 
-  function addSintoma(type) {
-    const list = document.getElementById(`sintomas-${type}-list`);
-    const idx = list.children.length + 1;
-    const div = document.createElement('div');
-    div.className = 'sintoma-card';
-    div.innerHTML = `
-      <div class="sintoma-header">
-        <div class="sintoma-num">${type === 'actuales' ? `Síntoma actual #${idx}` : `Pasado / Cirugía #${idx}`}</div>
-        <button class="del-btn" onclick="this.closest('.sintoma-card').remove()" title="Eliminar">✕</button>
-      </div>
-      <div class="row row-2">
-        <div class="field" style="grid-column:span 2">
-          <label>Nombre del síntoma o diagnóstico <span class="req">*</span></label>
-          <input type="text" placeholder="Ej: pérdida de cabello, gastritis, dolor lumbar, cirugía de vesícula…" data-sint-${type}-nombre="${idx}">
-        </div>
-      </div>
-      <div class="row row-3">
-        <div class="field">
-          <label>Edad de aparición</label>
-          <input type="text" placeholder="Ej: 37 años" data-sint-${type}-edad="${idx}">
-        </div>
-        <div class="field">
-          <label>Frecuencia</label>
-          <input type="text" placeholder="Ej: diario, episódico, crónico" data-sint-${type}-frecuencia="${idx}">
-        </div>
-        <div class="field">
-          <label>Intensidad (1-10)</label>
-          <input type="number" min="1" max="10" placeholder="7" data-sint-${type}-intensidad="${idx}">
-        </div>
-      </div>
-      <div class="field">
-        <label>Características / descripción</label>
-        <textarea rows="2" placeholder="Cómo se manifiesta, qué lo agrava, qué lo alivia…" data-sint-${type}-desc="${idx}"></textarea>
-      </div>
+ function addSintoma(type) {
+ const list = document.getElementById(`sintomas-${type}-list`);
+ const idx = list.children.length + 1;
+ const div = document.createElement('div');
+ div.className = 'sintoma-card';
+ div.innerHTML = `
+ <div class="sintoma-header"><div class="sintoma-num">${type === 'actuales' ? `Síntoma actual #${idx}` : `Pasado / Cirugía #${idx}`}</div><button class="del-btn" onclick="this.closest('.sintoma-card').remove()" title="Eliminar"></button></div><div class="row row-2"><div class="field" style="grid-column:span 2"><label>Nombre del síntoma o diagnóstico <span class="req">*</span></label><input type="text" placeholder="Ej: pérdida de cabello, gastritis, dolor lumbar, cirugía de vesícula…" data-sint-${type}-nombre="${idx}"></div></div><div class="row row-3"><div class="field"><label>Edad de aparición</label><input type="text" placeholder="Ej: 37 años" data-sint-${type}-edad="${idx}"></div><div class="field"><label>Frecuencia</label><input type="text" placeholder="Ej: diario, episódico, crónico" data-sint-${type}-frecuencia="${idx}"></div><div class="field"><label>Intensidad (1-10)</label><input type="number" min="1" max="10" placeholder="7" data-sint-${type}-intensidad="${idx}"></div></div><div class="field"><label>Características / descripción</label><textarea rows="2" placeholder="Cómo se manifiesta, qué lo agrava, qué lo alivia…" data-sint-${type}-desc="${idx}"></textarea></div>
     `;
-    list.appendChild(div);
+ list.appendChild(div);
   }
 
   // ── Recolectar datos ──────────────────────────────────────────────────────────
-  function collectData() {
-    const get = id => (document.getElementById(id)?.value || '').trim();
+ function collectData() {
+ const get = id => (document.getElementById(id)?.value || '').trim();
 
     // Fechas formateadas
-    const fmt = (dateStr) => {
-      if (!dateStr) return '';
-      const [y, m, d] = dateStr.split('-');
-      return `${d}/${m}/${y}`;
+ const fmt = (dateStr) => {
+ if (!dateStr) return '';
+ const [y, m, d] = dateStr.split('-');
+ return `${d}/${m}/${y}`;
     };
 
     // Verificar si padre/madre fallecieron
-    const padreVive = document.querySelector('#sec-2 .vivo-btn.active-vivo')?.closest('.card')?.querySelector('[id^="padre-fnac"]') !== null;
-    const padreEstado = document.querySelector('.card:nth-child(1) .vivo-btn.active-muerto') ? 'Falleció' : 'Vive';
-    const madreEstado = document.querySelector('.card:nth-child(2) .vivo-btn.active-muerto') ? 'Falleció' : 'Vive';
+ const padreVive = document.querySelector('#sec-2 .vivo-btn.active-vivo')?.closest('.card')?.querySelector('[id^="padre-fnac"]') !== null;
+ const padreEstado = document.querySelector('.card:nth-child(1) .vivo-btn.active-muerto') ? 'Falleció' : 'Vive';
+ const madreEstado = document.querySelector('.card:nth-child(2) .vivo-btn.active-muerto') ? 'Falleció' : 'Vive';
 
     // Hermanos
-    const hermanos = [...document.querySelectorAll('[data-hermano-nombre]')].map((el, i) => {
-      const fnacRaw = (document.querySelector(`[data-hermano-fnac="${i}"]`)?.value || '');
-      const estado  = (document.querySelector(`[data-hermano-estado="${i}"]`)?.value || 'vive');
-      const causa   = (document.querySelector(`[data-hermano-causa="${i}"]`)?.value || '').trim();
-      return { nombre: el.value.trim(), fnac: fmt(fnacRaw), fnacRaw, estado, causa };
-    }).filter(h => h.nombre);
+ const hermanos = [...document.querySelectorAll('[data-hermano-nombre]')].map((el, i) => {
+ const fnacRaw = (document.querySelector(`[data-hermano-fnac="${i}"]`)?.value || '');
+ const estado  = (document.querySelector(`[data-hermano-estado="${i}"]`)?.value || 'vive');
+ const causa   = (document.querySelector(`[data-hermano-causa="${i}"]`)?.value || '').trim();
+ return { nombre: el.value.trim(), fnac: fmt(fnacRaw), fnacRaw, estado, causa };
+    }).filter(h =>h.nombre);
 
     // Exparejas
-    const exparejas = [...document.querySelectorAll('[data-expareja-nombre]')].map((el, i) => {
-      const fnacRaw = (document.querySelector(`[data-expareja-fnac="${i}"]`)?.value || '');
-      return {
-        nombre: el.value.trim(),
-        fnac: fmt(fnacRaw), fnacRaw,
-        tiempo: (document.querySelector(`[data-expareja-tiempo="${i}"]`)?.value || '').trim(),
+ const exparejas = [...document.querySelectorAll('[data-expareja-nombre]')].map((el, i) => {
+ const fnacRaw = (document.querySelector(`[data-expareja-fnac="${i}"]`)?.value || '');
+ return {
+ nombre: el.value.trim(),
+ fnac: fmt(fnacRaw), fnacRaw,
+ tiempo: (document.querySelector(`[data-expareja-tiempo="${i}"]`)?.value || '').trim(),
       };
-    }).filter(p => p.nombre);
+    }).filter(p =>p.nombre);
 
     // Hijos
-    const hijos = [...document.querySelectorAll('[data-hijo-nombre]')].map((el, i) => {
-      const fnacRaw = (document.querySelector(`[data-hijo-fnac="${i}"]`)?.value || '');
-      return {
-        nombre: el.value.trim(),
-        fnac: fmt(fnacRaw), fnacRaw,
-        progenitor: (document.querySelector(`[data-hijo-progenitor="${i}"]`)?.value || '').trim(),
+ const hijos = [...document.querySelectorAll('[data-hijo-nombre]')].map((el, i) => {
+ const fnacRaw = (document.querySelector(`[data-hijo-fnac="${i}"]`)?.value || '');
+ return {
+ nombre: el.value.trim(),
+ fnac: fmt(fnacRaw), fnacRaw,
+ progenitor: (document.querySelector(`[data-hijo-progenitor="${i}"]`)?.value || '').trim(),
       };
-    }).filter(h => h.nombre);
+    }).filter(h =>h.nombre);
 
     // Síntomas actuales
-    const sintomasActuales = [];
-    document.querySelectorAll('[data-sint-actuales-nombre]').forEach((el, i) => {
-      const idx = i + 1;
-      sintomasActuales.push({
-        nombre: el.value.trim(),
-        edad: (document.querySelector(`[data-sint-actuales-edad="${idx}"]`)?.value || '').trim(),
-        frecuencia: (document.querySelector(`[data-sint-actuales-frecuencia="${idx}"]`)?.value || '').trim(),
-        intensidad: (document.querySelector(`[data-sint-actuales-intensidad="${idx}"]`)?.value || '').trim(),
-        desc: (document.querySelector(`[data-sint-actuales-desc="${idx}"]`)?.value || '').trim(),
+ const sintomasActuales = [];
+ document.querySelectorAll('[data-sint-actuales-nombre]').forEach((el, i) => {
+ const idx = i + 1;
+ sintomasActuales.push({
+ nombre: el.value.trim(),
+ edad: (document.querySelector(`[data-sint-actuales-edad="${idx}"]`)?.value || '').trim(),
+ frecuencia: (document.querySelector(`[data-sint-actuales-frecuencia="${idx}"]`)?.value || '').trim(),
+ intensidad: (document.querySelector(`[data-sint-actuales-intensidad="${idx}"]`)?.value || '').trim(),
+ desc: (document.querySelector(`[data-sint-actuales-desc="${idx}"]`)?.value || '').trim(),
       });
     });
 
     // Síntomas pasados
-    const sintomasPasados = [];
-    document.querySelectorAll('[data-sint-pasados-nombre]').forEach((el, i) => {
-      const idx = i + 1;
-      sintomasPasados.push({
-        nombre: el.value.trim(),
-        edad: (document.querySelector(`[data-sint-pasados-edad="${idx}"]`)?.value || '').trim(),
-        frecuencia: (document.querySelector(`[data-sint-pasados-frecuencia="${idx}"]`)?.value || '').trim(),
-        desc: (document.querySelector(`[data-sint-pasados-desc="${idx}"]`)?.value || '').trim(),
+ const sintomasPasados = [];
+ document.querySelectorAll('[data-sint-pasados-nombre]').forEach((el, i) => {
+ const idx = i + 1;
+ sintomasPasados.push({
+ nombre: el.value.trim(),
+ edad: (document.querySelector(`[data-sint-pasados-edad="${idx}"]`)?.value || '').trim(),
+ frecuencia: (document.querySelector(`[data-sint-pasados-frecuencia="${idx}"]`)?.value || '').trim(),
+ desc: (document.querySelector(`[data-sint-pasados-desc="${idx}"]`)?.value || '').trim(),
       });
     });
 
-    return {
-      paciente: {
-        nombre:          get('pac-nombre'),
-        fnac:            fmt(get('pac-fnac')),
-        fnacRaw:         get('pac-fnac'),
-        genero:          get('pac-genero'),
-        lugar:           get('pac-lugar'),
-        ocupacion:       get('pac-ocupacion'),
-        estadoCivil:     get('pac-estado-civil'),
-        parto:           get('pac-parto'),
-        termino:         get('pac-termino'),
-        partoComplics:   get('pac-parto-complicaciones'),
-        motivo:          get('pac-motivo'),
-        notas:           get('pac-notas'),
+ return {
+ paciente: {
+ nombre: get('pac-nombre'),
+ fnac: fmt(get('pac-fnac')),
+ fnacRaw: get('pac-fnac'),
+ genero: get('pac-genero'),
+ lugar: get('pac-lugar'),
+ ocupacion: get('pac-ocupacion'),
+ estadoCivil: get('pac-estado-civil'),
+ parto: get('pac-parto'),
+ termino: get('pac-termino'),
+ partoComplics: get('pac-parto-complicaciones'),
+ motivo: get('pac-motivo'),
+ notas: get('pac-notas'),
       },
-      padre: {
-        nombre:    get('padre-nombre'),
-        fnac:      fmt(get('padre-fnac')),
-        fnacRaw:   get('padre-fnac'),
-        estado:    padreEstado,
-        fmuerte:   fmt(get('padre-fmuerte')),
-        fmuerteRaw: get('padre-fmuerte'),
-        notas:     get('padre-notas'),
+ padre: {
+ nombre: get('padre-nombre'),
+ fnac: fmt(get('padre-fnac')),
+ fnacRaw: get('padre-fnac'),
+ estado: padreEstado,
+ fmuerte: fmt(get('padre-fmuerte')),
+ fmuerteRaw: get('padre-fmuerte'),
+ notas: get('padre-notas'),
       },
-      madre: {
-        nombre:    get('madre-nombre'),
-        fnac:      fmt(get('madre-fnac')),
-        fnacRaw:   get('madre-fnac'),
-        estado:    madreEstado,
-        fmuerte:   fmt(get('madre-fmuerte')),
-        fmuerteRaw: get('madre-fmuerte'),
-        notas:     get('madre-notas'),
+ madre: {
+ nombre: get('madre-nombre'),
+ fnac: fmt(get('madre-fnac')),
+ fnacRaw: get('madre-fnac'),
+ estado: madreEstado,
+ fmuerte: fmt(get('madre-fmuerte')),
+ fmuerteRaw: get('madre-fmuerte'),
+ notas: get('madre-notas'),
       },
-      abuelos: {
-        abp:  { nombre: get('abp-nombre'),  fnac: fmt(get('abp-fnac')),  fnacRaw: get('abp-fnac'),  fmuerte: fmt(get('abp-fmuerte')),  fmuerteRaw: get('abp-fmuerte')  },
-        abpm: { nombre: get('abpm-nombre'), fnac: fmt(get('abpm-fnac')), fnacRaw: get('abpm-fnac'), fmuerte: fmt(get('abpm-fmuerte')), fmuerteRaw: get('abpm-fmuerte') },
-        abm:  { nombre: get('abm-nombre'),  fnac: fmt(get('abm-fnac')),  fnacRaw: get('abm-fnac'),  fmuerte: fmt(get('abm-fmuerte')),  fmuerteRaw: get('abm-fmuerte')  },
-        abmm: { nombre: get('abmm-nombre'), fnac: fmt(get('abmm-fnac')), fnacRaw: get('abmm-fnac'), fmuerte: fmt(get('abmm-fmuerte')), fmuerteRaw: get('abmm-fmuerte') },
+ abuelos: {
+ abp:  { nombre: get('abp-nombre'), fnac: fmt(get('abp-fnac')), fnacRaw: get('abp-fnac'), fmuerte: fmt(get('abp-fmuerte')), fmuerteRaw: get('abp-fmuerte')  },
+ abpm: { nombre: get('abpm-nombre'), fnac: fmt(get('abpm-fnac')), fnacRaw: get('abpm-fnac'), fmuerte: fmt(get('abpm-fmuerte')), fmuerteRaw: get('abpm-fmuerte') },
+ abm:  { nombre: get('abm-nombre'), fnac: fmt(get('abm-fnac')), fnacRaw: get('abm-fnac'), fmuerte: fmt(get('abm-fmuerte')), fmuerteRaw: get('abm-fmuerte')  },
+ abmm: { nombre: get('abmm-nombre'), fnac: fmt(get('abmm-fnac')), fnacRaw: get('abmm-fnac'), fmuerte: fmt(get('abmm-fmuerte')), fmuerteRaw: get('abmm-fmuerte') },
       },
-      hermanos,
-      pareja: {
-        nombre:  get('pareja-nombre'),
-        fnac:    fmt(get('pareja-fnac')),
-        fnacRaw: get('pareja-fnac'),
-        tiempo:  get('pareja-tiempo'),
-        notas:   get('pareja-notas'),
+ hermanos,
+ pareja: {
+ nombre: get('pareja-nombre'),
+ fnac: fmt(get('pareja-fnac')),
+ fnacRaw: get('pareja-fnac'),
+ tiempo: get('pareja-tiempo'),
+ notas: get('pareja-notas'),
       },
-      exparejas,
-      hijos,
-      sintomasActuales,
-      sintomasPasados,
-      perdidas: {
-        madre:         get('perdidas-madre'),
-        madreDetalle:  get('perdidas-madre-detalle'),
-        propias:       get('perdidas-propias'),
-        propiasDetalle: get('perdidas-propias-detalle'),
+ exparejas,
+ hijos,
+ sintomasActuales,
+ sintomasPasados,
+ perdidas: {
+ madre: get('perdidas-madre'),
+ madreDetalle: get('perdidas-madre-detalle'),
+ propias: get('perdidas-propias'),
+ propiasDetalle: get('perdidas-propias-detalle'),
       },
-      contexto: {
-        emocionDominante: get('ctx-emocion-dominante'),
-        relacionPadre:    get('ctx-relacion-padre'),
-        relacionMadre:    get('ctx-relacion-madre'),
-        emocional:        get('ctx-emocional'),
-        evento:           get('ctx-evento'),
+ contexto: {
+ emocionDominante: get('ctx-emocion-dominante'),
+ relacionPadre: get('ctx-relacion-padre'),
+ relacionMadre: get('ctx-relacion-madre'),
+ emocional: get('ctx-emocional'),
+ evento: get('ctx-evento'),
       },
     };
   }
@@ -1232,232 +736,232 @@
   // ══════════════════════════════════════════════════════════════════
 
   // Edad en años dado un raw date "YYYY-MM-DD" y una fecha de referencia (Date)
-  function calcEdad(fnacRaw, refDate) {
-    if (!fnacRaw) return null;
-    const born = new Date(fnacRaw);
-    const ref  = refDate || new Date();
-    let age = ref.getFullYear() - born.getFullYear();
-    const m = ref.getMonth() - born.getMonth();
-    if (m < 0 || (m === 0 && ref.getDate() < born.getDate())) age--;
-    return age >= 0 ? age : null;
+ function calcEdad(fnacRaw, refDate) {
+ if (!fnacRaw) return null;
+ const born = new Date(fnacRaw);
+ const ref  = refDate || new Date();
+ let age = ref.getFullYear() - born.getFullYear();
+ const m = ref.getMonth() - born.getMonth();
+ if (m < 0 || (m === 0 && ref.getDate() < born.getDate())) age--;
+ return age >= 0 ? age : null;
   }
 
   // Reduce una suma a un solo dígito (permite 11, 22, 33 como maestros)
-  function reducir(n) {
-    while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
-      n = String(n).split('').reduce((a, c) => a + parseInt(c), 0);
+ function reducir(n) {
+ while (n >9 && n !== 11 && n !== 22 && n !== 33) {
+ n = String(n).split('').reduce((a, c) =>a + parseInt(c), 0);
     }
-    return n;
+ return n;
   }
 
   // Camino de Vida: suma todos los dígitos de la fecha de nacimiento
-  function calcCaminoVida(fnacRaw) {
-    if (!fnacRaw) return null;
-    const total = fnacRaw.replace(/-/g, '').split('').reduce((a, c) => a + parseInt(c), 0);
-    return reducir(total);
+ function calcCaminoVida(fnacRaw) {
+ if (!fnacRaw) return null;
+ const total = fnacRaw.replace(/-/g, '').split('').reduce((a, c) =>a + parseInt(c), 0);
+ return reducir(total);
   }
 
   // Año personal: día + mes de nacimiento + año actual, reducido
-  function calcAnioPersonal(fnacRaw) {
-    if (!fnacRaw) return null;
-    const [, mm, dd] = fnacRaw.split('-');
-    const anioActual = new Date().getFullYear();
-    const total = String(anioActual).split('').reduce((a, c) => a + parseInt(c), 0)
+ function calcAnioPersonal(fnacRaw) {
+ if (!fnacRaw) return null;
+ const [, mm, dd] = fnacRaw.split('-');
+ const anioActual = new Date().getFullYear();
+ const total = String(anioActual).split('').reduce((a, c) =>a + parseInt(c), 0)
                 + parseInt(dd) + parseInt(mm);
-    return reducir(total);
+ return reducir(total);
   }
 
   // Diferencia en días entre dos fechas, solo comparando mes y día (ignora año)
-  function diasEntreMesDia(raw1, raw2) {
-    if (!raw1 || !raw2) return null;
-    const [, m1, d1] = raw1.split('-').map(Number);
-    const [, m2, d2] = raw2.split('-').map(Number);
-    const base = new Date(2000, m1 - 1, d1);
-    const comp = new Date(2000, m2 - 1, d2);
-    let diff = Math.abs(base - comp) / 86400000;
+ function diasEntreMesDia(raw1, raw2) {
+ if (!raw1 || !raw2) return null;
+ const [, m1, d1] = raw1.split('-').map(Number);
+ const [, m2, d2] = raw2.split('-').map(Number);
+ const base = new Date(2000, m1 - 1, d1);
+ const comp = new Date(2000, m2 - 1, d2);
+ let diff = Math.abs(base - comp) / 86400000;
     // Considerar también el "otro lado" del año (365 - diff)
-    return Math.min(diff, 365 - diff);
+ return Math.min(diff, 365 - diff);
   }
 
   // Edad del paciente cuando ocurrió un evento (raw date del evento)
-  function edadEnEvento(pacFnacRaw, eventoDateRaw) {
-    if (!pacFnacRaw || !eventoDateRaw) return null;
-    return calcEdad(pacFnacRaw, new Date(eventoDateRaw));
+ function edadEnEvento(pacFnacRaw, eventoDateRaw) {
+ if (!pacFnacRaw || !eventoDateRaw) return null;
+ return calcEdad(pacFnacRaw, new Date(eventoDateRaw));
   }
 
   // Formatear fecha YYYY-MM-DD → DD/MM/YYYY
-  function fmt(raw) {
-    if (!raw) return '';
-    const [y, m, d] = raw.split('-');
-    return `${d}/${m}/${y}`;
+ function fmt(raw) {
+ if (!raw) return '';
+ const [y, m, d] = raw.split('-');
+ return `${d}/${m}/${y}`;
   }
 
   // ── Construir el prompt de análisis completo para el AI ─────────────────────
-  function buildAnalysisPrompt(d) {
-    const p = d.paciente;
-    const hoy = new Date();
+ function buildAnalysisPrompt(d) {
+ const p = d.paciente;
+ const hoy = new Date();
 
     // ── Numerología ──────────────────────────────────────────────────────────
-    const mesNac     = p.fnacRaw ? parseInt(p.fnacRaw.split('-')[1]) : null;
-    const anoNac     = p.fnacRaw ? parseInt(p.fnacRaw.split('-')[0]) : null;
-    const edadActual = calcEdad(p.fnacRaw);
-    const caminoVida = calcCaminoVida(p.fnacRaw);
-    const anioPerso  = calcAnioPersonal(p.fnacRaw);
+ const mesNac     = p.fnacRaw ? parseInt(p.fnacRaw.split('-')[1]) : null;
+ const anoNac     = p.fnacRaw ? parseInt(p.fnacRaw.split('-')[0]) : null;
+ const edadActual = calcEdad(p.fnacRaw);
+ const caminoVida = calcCaminoVida(p.fnacRaw);
+ const anioPerso  = calcAnioPersonal(p.fnacRaw);
 
-    const karmaDesc = {
-      1:'Vanidad / orgullo excesivo',
-      2:'Celos y dependencia emocional',
-      3:'Pesimismo / queja crónica',
-      4:'Rigidez / resistencia al cambio',
-      5:'Infidelidad / agotamiento por dispersión',
-      6:'Resentimiento / perfeccionismo destructivo',
-      7:'Ego / arrogancia espiritual',
-      8:'Adicción / avaricia / control',
-      9:'Superficialidad / falta de profundidad',
-      10:'Hambre de poder / dominancia',
-      11:'Vanidad reforzada (número maestro)',
-      12:'Celos y dependencia intensificados',
+ const karmaDesc = {
+ 1:'Vanidad / orgullo excesivo',
+ 2:'Celos y dependencia emocional',
+ 3:'Pesimismo / queja crónica',
+ 4:'Rigidez / resistencia al cambio',
+ 5:'Infidelidad / agotamiento por dispersión',
+ 6:'Resentimiento / perfeccionismo destructivo',
+ 7:'Ego / arrogancia espiritual',
+ 8:'Adicción / avaricia / control',
+ 9:'Superficialidad / falta de profundidad',
+ 10:'Hambre de poder / dominancia',
+ 11:'Vanidad reforzada (número maestro)',
+ 12:'Celos y dependencia intensificados',
     }[mesNac] || '—';
 
-    const caminoDesc = {
-      1:'Independencia, liderazgo, iniciativa',
-      2:'Cooperación, sensibilidad, diplomacia',
-      3:'Creatividad, expresión, alegría',
-      4:'Orden, trabajo, disciplina, estabilidad',
-      5:'Libertad, cambio, aventura, versatilidad',
-      6:'Responsabilidad, familia, servicio, armonía',
-      7:'Espiritualidad, análisis, introspección',
-      8:'Poder, abundancia, ambición, materialidad',
-      9:'Compasión, humanismo, finalización de ciclos',
-      11:'Intuición elevada, inspiración, misión espiritual (maestro)',
-      22:'Constructor maestro, impacto colectivo (maestro)',
-      33:'Maestro sanador, amor incondicional (maestro)',
+ const caminoDesc = {
+ 1:'Independencia, liderazgo, iniciativa',
+ 2:'Cooperación, sensibilidad, diplomacia',
+ 3:'Creatividad, expresión, alegría',
+ 4:'Orden, trabajo, disciplina, estabilidad',
+ 5:'Libertad, cambio, aventura, versatilidad',
+ 6:'Responsabilidad, familia, servicio, armonía',
+ 7:'Espiritualidad, análisis, introspección',
+ 8:'Poder, abundancia, ambición, materialidad',
+ 9:'Compasión, humanismo, finalización de ciclos',
+ 11:'Intuición elevada, inspiración, misión espiritual (maestro)',
+ 22:'Constructor maestro, impacto colectivo (maestro)',
+ 33:'Maestro sanador, amor incondicional (maestro)',
     }[caminoVida] || '—';
 
-    const anioDesc = {
-      1:'Año 1 — inicio de ciclo, nuevos comienzos, siembra',
-      2:'Año 2 — relaciones, paciencia, espera',
-      3:'Año 3 — expresión, creatividad, expansión social',
-      4:'Año 4 — trabajo, consolidación, estructuración',
-      5:'Año 5 — cambios, movimiento, libertad',
-      6:'Año 6 — familia, responsabilidad, amor',
-      7:'Año 7 — introspección, salud, espiritualidad',
-      8:'Año 8 — poder, dinero, resultados, karma',
-      9:'Año 9 — cierre de ciclo, soltar, pérdidas necesarias',
-      11:'Año 11 (maestro) — despertar espiritual, intuición elevada, misión que se hace consciente',
-      22:'Año 22 (maestro) — construcción de legado, proyectos de gran impacto, consolidación de propósito',
-      33:'Año 33 (maestro) — servicio desde el amor, sanación, responsabilidad colectiva máxima',
+ const anioDesc = {
+ 1:'Año 1 — inicio de ciclo, nuevos comienzos, siembra',
+ 2:'Año 2 — relaciones, paciencia, espera',
+ 3:'Año 3 — expresión, creatividad, expansión social',
+ 4:'Año 4 — trabajo, consolidación, estructuración',
+ 5:'Año 5 — cambios, movimiento, libertad',
+ 6:'Año 6 — familia, responsabilidad, amor',
+ 7:'Año 7 — introspección, salud, espiritualidad',
+ 8:'Año 8 — poder, dinero, resultados, karma',
+ 9:'Año 9 — cierre de ciclo, soltar, pérdidas necesarias',
+ 11:'Año 11 (maestro) — despertar espiritual, intuición elevada, misión que se hace consciente',
+ 22:'Año 22 (maestro) — construcción de legado, proyectos de gran impacto, consolidación de propósito',
+ 33:'Año 33 (maestro) — servicio desde el amor, sanación, responsabilidad colectiva máxima',
     }[anioPerso] || '—';
 
     // ── Cálculos de fechas ───────────────────────────────────────────────────
     // Edad del paciente cuando murió su padre (si aplica)
-    const edadMuertePadre = (d.padre.estado === 'Falleció' && d.padre.fmuerteRaw)
+ const edadMuertePadre = (d.padre.estado === 'Falleció' && d.padre.fmuerteRaw)
       ? edadEnEvento(p.fnacRaw, d.padre.fmuerteRaw) : null;
-    const edadMuerteMadre = (d.madre.estado === 'Falleció' && d.madre.fmuerteRaw)
+ const edadMuerteMadre = (d.madre.estado === 'Falleció' && d.madre.fmuerteRaw)
       ? edadEnEvento(p.fnacRaw, d.madre.fmuerteRaw) : null;
 
     // Edad del padre/madre cuando nació el paciente
-    const edadPadreAlNacer = (d.padre.fnacRaw && p.fnacRaw)
+ const edadPadreAlNacer = (d.padre.fnacRaw && p.fnacRaw)
       ? edadEnEvento(d.padre.fnacRaw, new Date(p.fnacRaw)) : null;
-    const edadMadreAlNacer = (d.madre.fnacRaw && p.fnacRaw)
+ const edadMadreAlNacer = (d.madre.fnacRaw && p.fnacRaw)
       ? edadEnEvento(d.madre.fnacRaw, new Date(p.fnacRaw)) : null;
 
     // ── Síndrome de aniversario ──────────────────────────────────────────────
     // Síntoma principal con edad de aparición numérica
-    const sintPrincipal = d.sintomasActuales.find(s => s.nombre);
-    const edadSintoma = sintPrincipal?.edad ? parseInt(sintPrincipal.edad) : null;
+ const sintPrincipal = d.sintomasActuales.find(s =>s.nombre);
+ const edadSintoma = sintPrincipal?.edad ? parseInt(sintPrincipal.edad) : null;
 
-    const aniversarios = [];
+ const aniversarios = [];
 
     // ¿Paciente tenía la misma edad que tenía el padre cuando murió al desarrollar el síntoma?
-    if (edadMuertePadre !== null && edadSintoma !== null) {
-      if (Math.abs(edadSintoma - edadMuertePadre) <= 2) {
-        aniversarios.push(`⚠️ SÍNDROME DE ANIVERSARIO PROBABLE: el síntoma apareció a los ${edadSintoma} años, la misma edad que tenía el paciente cuando murió su padre (${edadMuertePadre} años del paciente).`);
+ if (edadMuertePadre !== null && edadSintoma !== null) {
+ if (Math.abs(edadSintoma - edadMuertePadre) <= 2) {
+ aniversarios.push(` SÍNDROME DE ANIVERSARIO PROBABLE: el síntoma apareció a los ${edadSintoma} años, la misma edad que tenía el paciente cuando murió su padre (${edadMuertePadre} años del paciente).`);
       }
     }
-    if (edadMuerteMadre !== null && edadSintoma !== null) {
-      if (Math.abs(edadSintoma - edadMuerteMadre) <= 2) {
-        aniversarios.push(`⚠️ SÍNDROME DE ANIVERSARIO PROBABLE: el síntoma apareció a los ${edadSintoma} años, la misma edad que tenía el paciente cuando murió su madre (${edadMuerteMadre} años del paciente).`);
+ if (edadMuerteMadre !== null && edadSintoma !== null) {
+ if (Math.abs(edadSintoma - edadMuerteMadre) <= 2) {
+ aniversarios.push(` SÍNDROME DE ANIVERSARIO PROBABLE: el síntoma apareció a los ${edadSintoma} años, la misma edad que tenía el paciente cuando murió su madre (${edadMuerteMadre} años del paciente).`);
       }
     }
 
     // ¿La edad actual del paciente coincide con alguna edad clave del padre/madre?
-    if (edadActual !== null) {
+ if (edadActual !== null) {
       // Edad del padre cuando el paciente tiene X años = edad padre al nacer + edad actual del paciente
-      const edadPadreAhora = edadPadreAlNacer !== null ? edadPadreAlNacer + edadActual : null;
-      const edadMadreAhora = edadMadreAlNacer !== null ? edadMadreAlNacer + edadActual : null;
+ const edadPadreAhora = edadPadreAlNacer !== null ? edadPadreAlNacer + edadActual : null;
+ const edadMadreAhora = edadMadreAlNacer !== null ? edadMadreAlNacer + edadActual : null;
 
       // ¿Paciente está llegando a la edad en que murió el padre/madre?
-      if (d.padre.estado === 'Falleció' && d.padre.fnacRaw && d.padre.fmuerteRaw) {
-        const edadMuertePadrePropia = calcEdad(d.padre.fnacRaw, new Date(d.padre.fmuerteRaw));
-        if (edadMuertePadrePropia !== null && Math.abs(edadActual - edadMuertePadrePropia) <= 3) {
-          aniversarios.push(`⚠️ LÍMITE DE LEALTAD: el paciente tiene ${edadActual} años y su padre murió a los ${edadMuertePadrePropia}. El paciente está en la edad de lealtad — riesgo de reproducir el patrón.`);
+ if (d.padre.estado === 'Falleció' && d.padre.fnacRaw && d.padre.fmuerteRaw) {
+ const edadMuertePadrePropia = calcEdad(d.padre.fnacRaw, new Date(d.padre.fmuerteRaw));
+ if (edadMuertePadrePropia !== null && Math.abs(edadActual - edadMuertePadrePropia) <= 3) {
+ aniversarios.push(` LÍMITE DE LEALTAD: el paciente tiene ${edadActual} años y su padre murió a los ${edadMuertePadrePropia}. El paciente está en la edad de lealtad — riesgo de reproducir el patrón.`);
         }
       }
-      if (d.madre.estado === 'Falleció' && d.madre.fnacRaw && d.madre.fmuerteRaw) {
-        const edadMuerteMadrePropia = calcEdad(d.madre.fnacRaw, new Date(d.madre.fmuerteRaw));
-        if (edadMuerteMadrePropia !== null && Math.abs(edadActual - edadMuerteMadrePropia) <= 3) {
-          aniversarios.push(`⚠️ LÍMITE DE LEALTAD: el paciente tiene ${edadActual} años y su madre murió a los ${edadMuerteMadrePropia}. El paciente está en la edad de lealtad.`);
+ if (d.madre.estado === 'Falleció' && d.madre.fnacRaw && d.madre.fmuerteRaw) {
+ const edadMuerteMadrePropia = calcEdad(d.madre.fnacRaw, new Date(d.madre.fmuerteRaw));
+ if (edadMuerteMadrePropia !== null && Math.abs(edadActual - edadMuerteMadrePropia) <= 3) {
+ aniversarios.push(` LÍMITE DE LEALTAD: el paciente tiene ${edadActual} años y su madre murió a los ${edadMuerteMadrePropia}. El paciente está en la edad de lealtad.`);
         }
       }
     }
 
     // ── FFI: comparación de fechas de parejas vs. padres ────────────────────
-    const ffiHallazgos = [];
+ const ffiHallazgos = [];
 
-    const pares = [
+ const pares = [
       { quien: 'Pareja actual', raw: d.pareja.fnacRaw },
       ...d.exparejas.map((ep, i) => ({ quien: `Pareja anterior ${i+1} (${ep.nombre || '?'})`, raw: ep.fnacRaw })),
-    ].filter(x => x.raw);
+    ].filter(x =>x.raw);
 
-    pares.forEach(({ quien, raw }) => {
-      const diffPadre = diasEntreMesDia(raw, d.padre.fnacRaw);
-      const diffMadre = diasEntreMesDia(raw, d.madre.fnacRaw);
-      if (diffPadre !== null && diffPadre <= 30) {
-        ffiHallazgos.push(`🔗 FFI DETECTADO: ${quien} nació ${Math.round(diffPadre)} días del cumpleaños del PADRE → posible reparación de la figura paterna.`);
+ pares.forEach(({ quien, raw }) => {
+ const diffPadre = diasEntreMesDia(raw, d.padre.fnacRaw);
+ const diffMadre = diasEntreMesDia(raw, d.madre.fnacRaw);
+ if (diffPadre !== null && diffPadre <= 30) {
+ ffiHallazgos.push(` FFI DETECTADO: ${quien} nació ${Math.round(diffPadre)} días del cumpleaños del PADRE → posible reparación de la figura paterna.`);
       }
-      if (diffMadre !== null && diffMadre <= 30) {
-        ffiHallazgos.push(`🔗 FFI DETECTADO: ${quien} nació ${Math.round(diffMadre)} días del cumpleaños de la MADRE → posible reparación de la figura materna.`);
+ if (diffMadre !== null && diffMadre <= 30) {
+ ffiHallazgos.push(` FFI DETECTADO: ${quien} nació ${Math.round(diffMadre)} días del cumpleaños de la MADRE → posible reparación de la figura materna.`);
       }
     });
 
     // Comparar fechas de nacimiento de hijos con fechas de fallecimiento de abuelos (reposición simbólica)
-    const reposiciones = [];
-    const fallecidos = [
+ const reposiciones = [];
+ const fallecidos = [
       { quien: 'Abuelo paterno', raw: d.abuelos.abp.fmuerteRaw },
       { quien: 'Abuela paterna', raw: d.abuelos.abpm.fmuerteRaw },
       { quien: 'Abuelo materno', raw: d.abuelos.abm.fmuerteRaw },
       { quien: 'Abuela materna', raw: d.abuelos.abmm.fmuerteRaw },
-    ].filter(x => x.raw);
+    ].filter(x =>x.raw);
 
-    d.hijos.forEach(h => {
-      if (!h.fnacRaw) return;
-      fallecidos.forEach(({ quien, raw }) => {
-        const diff = diasEntreMesDia(h.fnacRaw, raw);
-        if (diff !== null && diff <= 15) {
-          reposiciones.push(`👶 REPOSICIÓN SIMBÓLICA: ${h.nombre || 'Hijo/a'} nació ${Math.round(diff)} días de la fecha de muerte de ${quien} → puede estar "reponiéndolo" simbólicamente.`);
+ d.hijos.forEach(h => {
+ if (!h.fnacRaw) return;
+ fallecidos.forEach(({ quien, raw }) => {
+ const diff = diasEntreMesDia(h.fnacRaw, raw);
+ if (diff !== null && diff <= 15) {
+ reposiciones.push(` REPOSICIÓN SIMBÓLICA: ${h.nombre || 'Hijo/a'} nació ${Math.round(diff)} días de la fecha de muerte de ${quien} → puede estar "reponiéndolo" simbólicamente.`);
         }
       });
     });
 
     // ── Construir el texto del prompt ────────────────────────────────────────
-    let prompt = `═══ DATOS PRE-SESIÓN — ANÁLISIS DIAGNÓSTICO INICIAL ═══\n\n`;
+ let prompt = `═══ DATOS PRE-SESIÓN — ANÁLISIS DIAGNÓSTICO INICIAL ═══\n\n`;
 
     // ── Descripciones de campos nuevos ──────────────────────────────────────────
-    const partoDesc = {
+ const partoDesc = {
       'natural': 'Parto natural (vaginal)',
       'cesarea': 'Cesárea',
       'forceps': 'Fórceps / ventosa',
       'inducido': 'Parto inducido',
     }[p.parto] || '';
 
-    const terminoDesc = {
+ const terminoDesc = {
       'si': 'A término',
       'prematuro': 'Prematuro',
       'postermino': 'Postérmino',
     }[p.termino] || '';
 
-    const emocionDesc = {
+ const emocionDesc = {
       'miedo': 'Miedo / angustia',
       'tristeza': 'Tristeza / depresión',
       'rabia': 'Rabia / frustración',
@@ -1468,7 +972,7 @@
       'otro': 'Otra',
     }[d.contexto.emocionDominante] || '';
 
-    const relPadreDesc = {
+ const relPadreDesc = {
       'buena': 'Buena / cercana',
       'distante': 'Distante / fría',
       'conflictiva': 'Conflictiva',
@@ -1476,7 +980,7 @@
       'fallecio_joven': 'Falleció cuando era joven',
     }[d.contexto.relacionPadre] || '';
 
-    const relMadreDesc = {
+ const relMadreDesc = {
       'buena': 'Buena / cercana',
       'distante': 'Distante / fría',
       'conflictiva': 'Conflictiva / fusional',
@@ -1485,7 +989,7 @@
       'sobreprotectora': 'Sobreprotectora / controladora',
     }[d.contexto.relacionMadre] || '';
 
-    const estadoCivilDesc = {
+ const estadoCivilDesc = {
       'soltero': 'Soltero/a',
       'union_libre': 'Unión libre',
       'casado': 'Casado/a',
@@ -1495,379 +999,372 @@
     }[p.estadoCivil] || '';
 
     // PACIENTE
-    prompt += `👤 PACIENTE: ${p.nombre}`;
-    if (p.fnac)     prompt += `, ${p.fnac}`;
-    if (edadActual) prompt += ` (${edadActual} años)`;
-    if (p.genero)   prompt += ` · ${p.genero === 'M' ? 'Masculino' : p.genero === 'F' ? 'Femenino' : 'NB'}`;
-    if (p.lugar)    prompt += ` · ${p.lugar}`;
-    if (p.ocupacion) prompt += ` · ${p.ocupacion}`;
-    if (estadoCivilDesc) prompt += ` · ${estadoCivilDesc}`;
-    prompt += '\n';
+ prompt += ` PACIENTE: ${p.nombre}`;
+ if (p.fnac) prompt += `, ${p.fnac}`;
+ if (edadActual) prompt += ` (${edadActual} años)`;
+ if (p.genero) prompt += ` · ${p.genero === 'M' ? 'Masculino' : p.genero === 'F' ? 'Femenino' : 'NB'}`;
+ if (p.lugar) prompt += ` · ${p.lugar}`;
+ if (p.ocupacion) prompt += ` · ${p.ocupacion}`;
+ if (estadoCivilDesc) prompt += ` · ${estadoCivilDesc}`;
+ prompt += '\n';
 
     // CONDICIONES PERINATALES
-    if (partoDesc || terminoDesc || p.partoComplics) {
-      prompt += `  Nacimiento: `;
-      const periItems = [partoDesc, terminoDesc, p.partoComplics].filter(Boolean);
-      prompt += periItems.join(', ') + '\n';
+ if (partoDesc || terminoDesc || p.partoComplics) {
+ prompt += ` Nacimiento: `;
+ const periItems = [partoDesc, terminoDesc, p.partoComplics].filter(Boolean);
+ prompt += periItems.join(', ') + '\n';
     }
 
     // NUMEROLOGÍA PRE-CALCULADA
-    prompt += `\n📐 NUMEROLOGÍA (pre-calculada):\n`;
-    if (mesNac)     prompt += `  Dígito Karma (mes ${mesNac}): ${karmaDesc}\n`;
-    if (caminoVida) prompt += `  Camino de Vida (${caminoVida}): ${caminoDesc}\n`;
-    if (anioPerso)  prompt += `  Año Personal ${hoy.getFullYear()} (${anioPerso}): ${anioDesc}\n`;
+ prompt += `\n NUMEROLOGÍA (pre-calculada):\n`;
+ if (mesNac) prompt += ` Dígito Karma (mes ${mesNac}): ${karmaDesc}\n`;
+ if (caminoVida) prompt += ` Camino de Vida (${caminoVida}): ${caminoDesc}\n`;
+ if (anioPerso) prompt += ` Año Personal ${hoy.getFullYear()} (${anioPerso}): ${anioDesc}\n`;
 
     // MOTIVO
-    prompt += `\n🎯 MOTIVO DE CONSULTA:\n${p.motivo}\n`;
-    if (p.notas) prompt += `\n📝 NOTAS DEL TERAPEUTA: ${p.notas}\n`;
+ prompt += `\n MOTIVO DE CONSULTA:\n${p.motivo}\n`;
+ if (p.notas) prompt += `\n NOTAS DEL TERAPEUTA: ${p.notas}\n`;
 
     // GENOGRAMA
-    prompt += `\n👨‍👩‍👧 GENOGRAMA:\n`;
+ prompt += `\n‍‍ GENOGRAMA:\n`;
 
-    if (d.padre.nombre || d.padre.fnac) {
-      prompt += `  Padre: ${d.padre.nombre || 'N/D'}`;
-      if (d.padre.fnac) prompt += `, nac. ${d.padre.fnac}`;
-      if (edadPadreAlNacer) prompt += ` (tenía ${edadPadreAlNacer} años cuando nació el paciente)`;
-      prompt += ` — ${d.padre.estado}`;
-      if (d.padre.estado === 'Falleció') {
-        if (d.padre.fmuerte) prompt += ` el ${d.padre.fmuerte}`;
-        if (edadMuertePadre !== null) prompt += ` (paciente tenía ${edadMuertePadre} años)`;
+ if (d.padre.nombre || d.padre.fnac) {
+ prompt += ` Padre: ${d.padre.nombre || 'N/D'}`;
+ if (d.padre.fnac) prompt += `, nac. ${d.padre.fnac}`;
+ if (edadPadreAlNacer) prompt += ` (tenía ${edadPadreAlNacer} años cuando nació el paciente)`;
+ prompt += ` — ${d.padre.estado}`;
+ if (d.padre.estado === 'Falleció') {
+ if (d.padre.fmuerte) prompt += ` el ${d.padre.fmuerte}`;
+ if (edadMuertePadre !== null) prompt += ` (paciente tenía ${edadMuertePadre} años)`;
       }
-      if (d.padre.notas) prompt += `\n    Notas: ${d.padre.notas}`;
-      prompt += '\n';
+ if (d.padre.notas) prompt += `\n Notas: ${d.padre.notas}`;
+ prompt += '\n';
     }
 
-    if (d.madre.nombre || d.madre.fnac) {
-      prompt += `  Madre: ${d.madre.nombre || 'N/D'}`;
-      if (d.madre.fnac) prompt += `, nac. ${d.madre.fnac}`;
-      if (edadMadreAlNacer) prompt += ` (tenía ${edadMadreAlNacer} años cuando nació el paciente)`;
-      prompt += ` — ${d.madre.estado}`;
-      if (d.madre.estado === 'Falleció') {
-        if (d.madre.fmuerte) prompt += ` el ${d.madre.fmuerte}`;
-        if (edadMuerteMadre !== null) prompt += ` (paciente tenía ${edadMuerteMadre} años)`;
+ if (d.madre.nombre || d.madre.fnac) {
+ prompt += ` Madre: ${d.madre.nombre || 'N/D'}`;
+ if (d.madre.fnac) prompt += `, nac. ${d.madre.fnac}`;
+ if (edadMadreAlNacer) prompt += ` (tenía ${edadMadreAlNacer} años cuando nació el paciente)`;
+ prompt += ` — ${d.madre.estado}`;
+ if (d.madre.estado === 'Falleció') {
+ if (d.madre.fmuerte) prompt += ` el ${d.madre.fmuerte}`;
+ if (edadMuerteMadre !== null) prompt += ` (paciente tenía ${edadMuerteMadre} años)`;
       }
-      if (d.madre.notas) prompt += `\n    Notas: ${d.madre.notas}`;
-      prompt += '\n';
+ if (d.madre.notas) prompt += `\n Notas: ${d.madre.notas}`;
+ prompt += '\n';
     }
 
-    const abs = d.abuelos;
+ const abs = d.abuelos;
     [
       { label: 'Abuelo paterno', ab: abs.abp },
       { label: 'Abuela paterna', ab: abs.abpm },
       { label: 'Abuelo materno', ab: abs.abm },
       { label: 'Abuela materna', ab: abs.abmm },
     ].forEach(({ label, ab }) => {
-      if (ab.nombre || ab.fnac) {
-        prompt += `  ${label}: ${ab.nombre || 'N/D'}`;
-        if (ab.fnac)    prompt += `, nac. ${ab.fnac}`;
-        if (ab.fmuerte) prompt += `, fall. ${ab.fmuerte}`;
-        prompt += '\n';
+ if (ab.nombre || ab.fnac) {
+ prompt += `  ${label}: ${ab.nombre || 'N/D'}`;
+ if (ab.fnac) prompt += `, nac. ${ab.fnac}`;
+ if (ab.fmuerte) prompt += `, fall. ${ab.fmuerte}`;
+ prompt += '\n';
       }
     });
 
-    if (d.hermanos.length) {
-      prompt += `  Hermanos (${d.hermanos.length}): `;
-      prompt += d.hermanos.map(h => {
-        let s = h.nombre;
-        if (h.fnac) s += ` (nac. ${h.fnac})`;
-        if (h.estado === 'fallecio') {
-          s += ` ⚠️ FALLECIDO`;
-          if (h.causa) s += ` — ${h.causa}`;
+ if (d.hermanos.length) {
+ prompt += ` Hermanos (${d.hermanos.length}): `;
+ prompt += d.hermanos.map(h => {
+ let s = h.nombre;
+ if (h.fnac) s += ` (nac. ${h.fnac})`;
+ if (h.estado === 'fallecio') {
+ s += ` FALLECIDO`;
+ if (h.causa) s += ` — ${h.causa}`;
         }
-        return s;
+ return s;
       }).join(', ');
-      prompt += '\n';
+ prompt += '\n';
     }
 
-    if (d.pareja.nombre || d.pareja.fnac) {
-      prompt += `  Pareja actual: ${d.pareja.nombre || 'N/D'}`;
-      if (d.pareja.fnac) prompt += `, nac. ${d.pareja.fnac}`;
-      if (d.pareja.tiempo) prompt += ` — ${d.pareja.tiempo} de relación`;
-      if (d.pareja.notas) prompt += ` — ${d.pareja.notas}`;
-      prompt += '\n';
+ if (d.pareja.nombre || d.pareja.fnac) {
+ prompt += ` Pareja actual: ${d.pareja.nombre || 'N/D'}`;
+ if (d.pareja.fnac) prompt += `, nac. ${d.pareja.fnac}`;
+ if (d.pareja.tiempo) prompt += ` — ${d.pareja.tiempo} de relación`;
+ if (d.pareja.notas) prompt += ` — ${d.pareja.notas}`;
+ prompt += '\n';
     }
 
-    if (d.exparejas.length) {
-      prompt += `  Parejas anteriores: `;
-      prompt += d.exparejas.map(ep => `${ep.nombre}${ep.fnac ? ' (nac. '+ep.fnac+')' : ''}${ep.tiempo ? ', '+ep.tiempo : ''}`).join(' | ');
-      prompt += '\n';
+ if (d.exparejas.length) {
+ prompt += ` Parejas anteriores: `;
+ prompt += d.exparejas.map(ep => `${ep.nombre}${ep.fnac ? ' (nac. '+ep.fnac+')' : ''}${ep.tiempo ? ', '+ep.tiempo : ''}`).join(' | ');
+ prompt += '\n';
     }
 
-    if (d.hijos.length) {
-      prompt += `  Hijos (${d.hijos.length}): `;
-      prompt += d.hijos.map(h => `${h.nombre}${h.fnac ? ' (nac. '+h.fnac+')' : ''}`).join(', ');
-      prompt += '\n';
+ if (d.hijos.length) {
+ prompt += ` Hijos (${d.hijos.length}): `;
+ prompt += d.hijos.map(h => `${h.nombre}${h.fnac ? ' (nac. '+h.fnac+')' : ''}`).join(', ');
+ prompt += '\n';
     }
 
     // Pérdidas gestacionales
-    if (d.perdidas.madre === 'si') {
-      prompt += `  ⚠️ PÉRDIDAS EN FAMILIA DE ORIGEN: La madre tuvo abortos/pérdidas gestacionales.`;
-      if (d.perdidas.madreDetalle) prompt += ` ${d.perdidas.madreDetalle}`;
-      prompt += '\n';
+ if (d.perdidas.madre === 'si') {
+ prompt += ` PÉRDIDAS EN FAMILIA DE ORIGEN: La madre tuvo abortos/pérdidas gestacionales.`;
+ if (d.perdidas.madreDetalle) prompt += ` ${d.perdidas.madreDetalle}`;
+ prompt += '\n';
     }
-    if (d.perdidas.propias === 'si') {
-      prompt += `  ⚠️ PÉRDIDAS PROPIAS: El paciente o su pareja han tenido pérdidas gestacionales.`;
-      if (d.perdidas.propiasDetalle) prompt += ` ${d.perdidas.propiasDetalle}`;
-      prompt += '\n';
+ if (d.perdidas.propias === 'si') {
+ prompt += ` PÉRDIDAS PROPIAS: El paciente o su pareja han tenido pérdidas gestacionales.`;
+ if (d.perdidas.propiasDetalle) prompt += ` ${d.perdidas.propiasDetalle}`;
+ prompt += '\n';
     }
 
     // Relación con figuras parentales
-    if (relPadreDesc || relMadreDesc) {
-      prompt += `  Relación con figuras parentales: `;
-      const relItems = [];
-      if (relPadreDesc) relItems.push(`Padre → ${relPadreDesc}`);
-      if (relMadreDesc) relItems.push(`Madre → ${relMadreDesc}`);
-      prompt += relItems.join(' | ') + '\n';
+ if (relPadreDesc || relMadreDesc) {
+ prompt += ` Relación con figuras parentales: `;
+ const relItems = [];
+ if (relPadreDesc) relItems.push(`Padre → ${relPadreDesc}`);
+ if (relMadreDesc) relItems.push(`Madre → ${relMadreDesc}`);
+ prompt += relItems.join(' | ') + '\n';
     }
 
     // SÍNTOMAS
-    const sintsActualesValidos = d.sintomasActuales.filter(s => s.nombre);
-    const sintsPasadosValidos  = d.sintomasPasados.filter(s => s.nombre);
+ const sintsActualesValidos = d.sintomasActuales.filter(s =>s.nombre);
+ const sintsPasadosValidos  = d.sintomasPasados.filter(s =>s.nombre);
 
-    if (sintsActualesValidos.length) {
-      prompt += `\n🔴 SÍNTOMAS ACTUALES (por intensidad):\n`;
-      sintsActualesValidos.forEach((s, i) => {
-        prompt += `  ${i+1}. ${s.nombre}`;
-        if (s.edad)       prompt += ` — aparición a los ${s.edad}`;
-        if (s.intensidad) prompt += ` — intensidad ${s.intensidad}/10`;
-        if (s.frecuencia) prompt += ` — ${s.frecuencia}`;
-        if (s.desc)       prompt += `\n     "${s.desc}"`;
-        prompt += '\n';
+ if (sintsActualesValidos.length) {
+ prompt += `\n SÍNTOMAS ACTUALES (por intensidad):\n`;
+ sintsActualesValidos.forEach((s, i) => {
+ prompt += `  ${i+1}. ${s.nombre}`;
+ if (s.edad) prompt += ` — aparición a los ${s.edad}`;
+ if (s.intensidad) prompt += ` — intensidad ${s.intensidad}/10`;
+ if (s.frecuencia) prompt += ` — ${s.frecuencia}`;
+ if (s.desc) prompt += `\n     "${s.desc}"`;
+ prompt += '\n';
       });
     }
 
-    if (sintsPasadosValidos.length) {
-      prompt += `\n📌 SÍNTOMAS PASADOS / CIRUGÍAS:\n`;
-      sintsPasadosValidos.forEach((s, i) => {
-        prompt += `  ${i+1}. ${s.nombre}`;
-        if (s.edad) prompt += ` (a los ${s.edad})`;
-        if (s.desc) prompt += ` — ${s.desc}`;
-        prompt += '\n';
+ if (sintsPasadosValidos.length) {
+ prompt += `\n SÍNTOMAS PASADOS / CIRUGÍAS:\n`;
+ sintsPasadosValidos.forEach((s, i) => {
+ prompt += `  ${i+1}. ${s.nombre}`;
+ if (s.edad) prompt += ` (a los ${s.edad})`;
+ if (s.desc) prompt += ` — ${s.desc}`;
+ prompt += '\n';
       });
     }
 
-    if (emocionDesc || d.contexto.emocional || d.contexto.evento) {
-      prompt += `\n💬 CONTEXTO EMOCIONAL:\n`;
-      if (emocionDesc)              prompt += `  Emoción dominante al consultar: ${emocionDesc}\n`;
-      if (d.contexto.emocional)     prompt += `  Situación actual: ${d.contexto.emocional}\n`;
-      if (d.contexto.evento)        prompt += `  Evento reciente (últimos 3 meses): ${d.contexto.evento}\n`;
+ if (emocionDesc || d.contexto.emocional || d.contexto.evento) {
+ prompt += `\n CONTEXTO EMOCIONAL:\n`;
+ if (emocionDesc) prompt += ` Emoción dominante al consultar: ${emocionDesc}\n`;
+ if (d.contexto.emocional) prompt += ` Situación actual: ${d.contexto.emocional}\n`;
+ if (d.contexto.evento) prompt += ` Evento reciente (últimos 3 meses): ${d.contexto.evento}\n`;
     }
 
     // HALLAZGOS PRE-CALCULADOS
-    if (aniversarios.length || ffiHallazgos.length || reposiciones.length) {
-      prompt += `\n📊 HALLAZGOS CALCULADOS (datos objetivos para tu interpretación):\n`;
-      [...aniversarios, ...ffiHallazgos, ...reposiciones].forEach(h => prompt += `  ${h}\n`);
+ if (aniversarios.length || ffiHallazgos.length || reposiciones.length) {
+ prompt += `\n HALLAZGOS CALCULADOS (datos objetivos para tu interpretación):\n`;
+      [...aniversarios, ...ffiHallazgos, ...reposiciones].forEach(h =>prompt += `  ${h}\n`);
     }
 
     // INSTRUCCIÓN AL AI
-    prompt += `\n═══ FIN DATOS ═══\n\n`;
-    prompt += `Con todos estos datos, genera el DIAGNÓSTICO INICIAL COMPLETO con estas secciones:\n\n`;
-    prompt += `1. 🔢 NUMEROLOGÍA DEL PACIENTE\n`;
-    prompt += `   Karma, Camino de Vida y Año Personal — cómo se expresan en este caso concreto (no genérico).\n\n`;
-    prompt += `2. 🔴 DIAGNÓSTICO DEL SÍNTOMA PRINCIPAL\n`;
-    prompt += `   Sentido biológico del síntoma, tejido/función implicada, fase probable (simpaticotonia/vagotonía),\n`;
-    prompt += `   lateralidad si aplica, sistema y subsistema más probable a rastrear con la MS.\n\n`;
-    prompt += `3. 📅 ANÁLISIS DE FECHAS Y SÍNDROME DE ANIVERSARIO\n`;
-    prompt += `   Usa los hallazgos calculados más arriba. Interpreta su significado clínico.\n\n`;
-    prompt += `4. 🧬 PATRONES TRANSGENERACIONALES Y LEYES DE HELLINGER\n`;
-    prompt += `   ¿Qué ley está posiblemente violada? ¿Quién fue excluido? ¿Qué drama se repite?\n\n`;
-    prompt += `5. 💑 FFI — FIDELIDAD FAMILIAR INVISIBLE (Sellam)\n`;
-    prompt += `   Usa los hallazgos FFI calculados. ¿A quién está reparando en su pareja? ¿Cómo se manifiesta?\n\n`;
-    prompt += `6. 🏠 CAMPO DE DISTORSIÓN DOMINANTE\n`;
-    prompt += `   ¿Paterno o materno? ¿Qué función está ausente o distorsionada? ¿Cómo se relaciona con el síntoma?\n\n`;
-    prompt += `7. 🔑 HIPÓTESIS DE CONFLICTO CENTRAL\n`;
-    prompt += `   Programa biológico probable (1-2 frases). Evento detonante probable.\n`;
-    prompt += `   Evento programante probable (infancia/gestación/transgeneracional).\n`;
-    prompt += `   4 INs: cuáles ya se pueden inferir con estos datos.\n\n`;
-    prompt += `8. 🧭 NORTE DE LA ENTREVISTA\n`;
-    prompt += `   Primera pregunta sugerida. Zona a excavar primero. Señales de confirmación a buscar.\n`;
-    prompt += `   Sistema/subsistema sugerido para el rastreo MS al final de la sesión.\n\n`;
-    prompt += `Sé específico con los datos del paciente. No hables en genérico. Si un dato no está disponible, omite esa subsección sin comentar que falta.`;
+ prompt += `\n═══ FIN DATOS ═══\n\n`;
+ prompt += `Con todos estos datos, genera el DIAGNÓSTICO INICIAL COMPLETO con estas secciones:\n\n`;
+ prompt += `1. NUMEROLOGÍA DEL PACIENTE\n`;
+ prompt += ` Karma, Camino de Vida y Año Personal — cómo se expresan en este caso concreto (no genérico).\n\n`;
+ prompt += `2. DIAGNÓSTICO DEL SÍNTOMA PRINCIPAL\n`;
+ prompt += ` Sentido biológico del síntoma, tejido/función implicada, fase probable (simpaticotonia/vagotonía),\n`;
+ prompt += ` lateralidad si aplica, sistema y subsistema más probable a rastrear con la MS.\n\n`;
+ prompt += `3. ANÁLISIS DE FECHAS Y SÍNDROME DE ANIVERSARIO\n`;
+ prompt += ` Usa los hallazgos calculados más arriba. Interpreta su significado clínico.\n\n`;
+ prompt += `4. PATRONES TRANSGENERACIONALES Y LEYES DE HELLINGER\n`;
+ prompt += `   ¿Qué ley está posiblemente violada? ¿Quién fue excluido? ¿Qué drama se repite?\n\n`;
+ prompt += `5. FFI — FIDELIDAD FAMILIAR INVISIBLE (Sellam)\n`;
+ prompt += ` Usa los hallazgos FFI calculados. ¿A quién está reparando en su pareja? ¿Cómo se manifiesta?\n\n`;
+ prompt += `6. CAMPO DE DISTORSIÓN DOMINANTE\n`;
+ prompt += `   ¿Paterno o materno? ¿Qué función está ausente o distorsionada? ¿Cómo se relaciona con el síntoma?\n\n`;
+ prompt += `7. HIPÓTESIS DE CONFLICTO CENTRAL\n`;
+ prompt += ` Programa biológico probable (1-2 frases). Evento detonante probable.\n`;
+ prompt += ` Evento programante probable (infancia/gestación/transgeneracional).\n`;
+ prompt += ` 4 INs: cuáles ya se pueden inferir con estos datos.\n\n`;
+ prompt += `8. NORTE DE LA ENTREVISTA\n`;
+ prompt += ` Primera pregunta sugerida. Zona a excavar primero. Señales de confirmación a buscar.\n`;
+ prompt += ` Sistema/subsistema sugerido para el rastreo MS al final de la sesión.\n\n`;
+ prompt += `Sé específico con los datos del paciente. No hables en genérico. Si un dato no está disponible, omite esa subsección sin comentar que falta.`;
 
-    return prompt;
+ return prompt;
   }
 
   // ── Analizar e iniciar sesión ──────────────────────────────────────────────────
-  function analyzeAndStart() {
-    const data = collectData();
-    if (!data.paciente.nombre) {
-      alert('Falta el nombre del paciente. Vuelve al paso 1.');
-      goToStep(1);
-      return;
+ function analyzeAndStart() {
+ const data = collectData();
+ if (!data.paciente.nombre) {
+ alert('Falta el nombre del paciente. Vuelve al paso 1.');
+ goToStep(1);
+ return;
     }
 
     // Guardar en el historial de pacientes
-    guardarPacienteEnHistorial(data);
+ guardarPacienteEnHistorial(data);
 
     // Guardar en localStorage para que terapeuta.html lo use
-    localStorage.setItem('intake_data', JSON.stringify(data));
-    localStorage.setItem('intake_prompt', buildAnalysisPrompt(data));
-    localStorage.setItem('intake_timestamp', Date.now().toString());
+ localStorage.setItem('intake_data', JSON.stringify(data));
+ localStorage.setItem('intake_prompt', buildAnalysisPrompt(data));
+ localStorage.setItem('intake_timestamp', Date.now().toString());
 
     // Redirigir a la sesión
-    window.location.href = '/terapeuta?intake=1';
+ window.location.href = '/terapeuta?intake=1';
   }
 
   // ══════════════════════════════════════════════════════════════════
   // HISTORIAL DE PACIENTES — localStorage
   // ══════════════════════════════════════════════════════════════════
 
-  const HISTORIAL_KEY = 'holoacademia_pacientes';
-  const MAX_PACIENTES = 10;
+ const HISTORIAL_KEY = 'holoacademia_pacientes';
+ const MAX_PACIENTES = 10;
 
-  function getHistorial() {
-    try { return JSON.parse(localStorage.getItem(HISTORIAL_KEY) || '[]'); }
-    catch { return []; }
+ function getHistorial() {
+ try { return JSON.parse(localStorage.getItem(HISTORIAL_KEY) || '[]'); }
+ catch { return []; }
   }
 
-  function saveHistorial(lista) {
-    localStorage.setItem(HISTORIAL_KEY, JSON.stringify(lista));
+ function saveHistorial(lista) {
+ localStorage.setItem(HISTORIAL_KEY, JSON.stringify(lista));
   }
 
-  function guardarPacienteEnHistorial(data) {
-    const lista = getHistorial();
-    const id = data.paciente.nombre.toLowerCase().replace(/\s+/g, '_') + '_' + (data.paciente.fnacRaw || '');
+ function guardarPacienteEnHistorial(data) {
+ const lista = getHistorial();
+ const id = data.paciente.nombre.toLowerCase().replace(/\s+/g, '_') + '_' + (data.paciente.fnacRaw || '');
     // Quitar si ya existe (para moverlo al frente)
-    const idx = lista.findIndex(p => p.id === id);
-    if (idx !== -1) lista.splice(idx, 1);
-    lista.unshift({
-      id,
-      nombre:   data.paciente.nombre,
-      fnac:     data.paciente.fnac,
-      motivo:   (data.paciente.motivo || '').substring(0, 80),
-      ocupacion: data.paciente.ocupacion || '',
-      ts:       Date.now(),
-      data,     // guardamos el formulario completo
+ const idx = lista.findIndex(p =>p.id === id);
+ if (idx !== -1) lista.splice(idx, 1);
+ lista.unshift({
+ id,
+ nombre: data.paciente.nombre,
+ fnac: data.paciente.fnac,
+ motivo:   (data.paciente.motivo || '').substring(0, 80),
+ ocupacion: data.paciente.ocupacion || '',
+ ts: Date.now(),
+ data,     // guardamos el formulario completo
     });
-    saveHistorial(lista.slice(0, MAX_PACIENTES));
+ saveHistorial(lista.slice(0, MAX_PACIENTES));
   }
 
-  function renderRecientes() {
-    const lista = getHistorial();
-    const panel = document.getElementById('recientes-panel');
-    const cont  = document.getElementById('recientes-list');
-    if (!lista.length) { panel.style.display = 'none'; return; }
+ function renderRecientes() {
+ const lista = getHistorial();
+ const panel = document.getElementById('recientes-panel');
+ const cont  = document.getElementById('recientes-list');
+ if (!lista.length) { panel.style.display = 'none'; return; }
 
-    panel.style.display = '';
-    cont.innerHTML = '';
+ panel.style.display = '';
+ cont.innerHTML = '';
 
-    lista.forEach(p => {
-      const chip = document.createElement('div');
-      chip.className = 'reciente-chip';
-      chip.innerHTML = `
-        <div class="reciente-info">
-          <div class="reciente-nombre">${escHtmlIntake(p.nombre)}</div>
-          <div class="reciente-meta">${p.fnac || ''}${p.ocupacion ? ' · ' + p.ocupacion : ''}</div>
-        </div>
-        <button class="reciente-del" onclick="borrarPaciente('${p.id}', event)" title="Eliminar">✕</button>
+ lista.forEach(p => {
+ const chip = document.createElement('div');
+ chip.className = 'reciente-chip';
+ chip.innerHTML = `
+ <div class="reciente-info"><div class="reciente-nombre">${escHtmlIntake(p.nombre)}</div><div class="reciente-meta">${p.fnac || ''}${p.ocupacion ? ' · ' + p.ocupacion : ''}</div></div><button class="reciente-del" onclick="borrarPaciente('${p.id}', event)" title="Eliminar"></button>
       `;
-      chip.addEventListener('click', (e) => {
-        if (e.target.classList.contains('reciente-del')) return;
-        cargarPaciente(p);
+ chip.addEventListener('click', (e) => {
+ if (e.target.classList.contains('reciente-del')) return;
+ cargarPaciente(p);
       });
-      cont.appendChild(chip);
+ cont.appendChild(chip);
     });
   }
 
-  function borrarPaciente(id, e) {
-    e.stopPropagation();
-    const lista = getHistorial().filter(p => p.id !== id);
-    saveHistorial(lista);
-    renderRecientes();
+ function borrarPaciente(id, e) {
+ e.stopPropagation();
+ const lista = getHistorial().filter(p =>p.id !== id);
+ saveHistorial(lista);
+ renderRecientes();
   }
 
-  function cargarPaciente(p) {
+ function cargarPaciente(p) {
     // Confirmar antes de sobrescribir si hay datos en el formulario
-    const nombreActual = document.getElementById('pac-nombre')?.value.trim();
-    if (nombreActual && !confirm(`¿Cargar a ${p.nombre}? Se reemplazarán los datos actuales.`)) return;
-    rellenarFormulario(p.data);
+ const nombreActual = document.getElementById('pac-nombre')?.value.trim();
+ if (nombreActual && !confirm(`¿Cargar a ${p.nombre}? Se reemplazarán los datos actuales.`)) return;
+ rellenarFormulario(p.data);
     // Hacer scroll al inicio del formulario
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+ window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function rellenarFormulario(d) {
+ function rellenarFormulario(d) {
     // Paso 1 — Paciente
-    const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
-    set('pac-nombre', d.paciente.nombre);
-    set('pac-fnac', d.paciente.fnacRaw);
-    set('pac-genero', d.paciente.genero);
-    set('pac-lugar', d.paciente.lugar);
-    set('pac-ocupacion', d.paciente.ocupacion);
-    set('pac-estado-civil', d.paciente.estadoCivil);
-    set('pac-parto', d.paciente.parto);
-    set('pac-termino', d.paciente.termino);
-    set('pac-parto-complicaciones', d.paciente.partoComplics);
-    set('pac-motivo', d.paciente.motivo);
-    set('pac-notas', d.paciente.notas);
+ const set = (id, val) => { const el = document.getElementById(id); if (el) el.value = val || ''; };
+ set('pac-nombre', d.paciente.nombre);
+ set('pac-fnac', d.paciente.fnacRaw);
+ set('pac-genero', d.paciente.genero);
+ set('pac-lugar', d.paciente.lugar);
+ set('pac-ocupacion', d.paciente.ocupacion);
+ set('pac-estado-civil', d.paciente.estadoCivil);
+ set('pac-parto', d.paciente.parto);
+ set('pac-termino', d.paciente.termino);
+ set('pac-parto-complicaciones', d.paciente.partoComplics);
+ set('pac-motivo', d.paciente.motivo);
+ set('pac-notas', d.paciente.notas);
 
     // Paso 2 — Familia
-    set('padre-nombre', d.padre?.nombre); set('padre-fnac', d.padre?.fnacRaw);
-    if (d.padre?.estado === 'Falleció') {
-      document.querySelector('.card:nth-of-type(2) .vivo-btn:last-child')?.click();
-      set('padre-fmuerte', d.padre?.fmuerteRaw);
+ set('padre-nombre', d.padre?.nombre); set('padre-fnac', d.padre?.fnacRaw);
+ if (d.padre?.estado === 'Falleció') {
+ document.querySelector('.card:nth-of-type(2) .vivo-btn:last-child')?.click();
+ set('padre-fmuerte', d.padre?.fmuerteRaw);
     }
-    set('padre-notas', d.padre?.notas);
-    set('madre-nombre', d.madre?.nombre); set('madre-fnac', d.madre?.fnacRaw);
-    if (d.madre?.estado === 'Falleció') {
-      document.querySelector('.card:nth-of-type(3) .vivo-btn:last-child')?.click();
-      set('madre-fmuerte', d.madre?.fmuerteRaw);
+ set('padre-notas', d.padre?.notas);
+ set('madre-nombre', d.madre?.nombre); set('madre-fnac', d.madre?.fnacRaw);
+ if (d.madre?.estado === 'Falleció') {
+ document.querySelector('.card:nth-of-type(3) .vivo-btn:last-child')?.click();
+ set('madre-fmuerte', d.madre?.fmuerteRaw);
     }
-    set('madre-notas', d.madre?.notas);
+ set('madre-notas', d.madre?.notas);
 
     // Abuelos
-    const ab = d.abuelos || {};
+ const ab = d.abuelos || {};
     ['abp','abpm','abm','abmm'].forEach(k => {
-      set(`${k}-nombre`, ab[k]?.nombre);
-      set(`${k}-fnac`, ab[k]?.fnacRaw);
-      set(`${k}-fmuerte`, ab[k]?.fmuerteRaw);
+ set(`${k}-nombre`, ab[k]?.nombre);
+ set(`${k}-fnac`, ab[k]?.fnacRaw);
+ set(`${k}-fmuerte`, ab[k]?.fmuerteRaw);
     });
 
     // Hermanos
-    document.getElementById('hermanos-list').innerHTML = '';
-    (d.hermanos || []).forEach(() => addHermano());
-    document.querySelectorAll('[data-hermano-nombre]').forEach((el, i) => {
-      el.value = d.hermanos[i]?.nombre || '';
-      const fnacEl = document.querySelector(`[data-hermano-fnac="${i}"]`);
-      if (fnacEl) fnacEl.value = d.hermanos[i]?.fnacRaw || '';
+ document.getElementById('hermanos-list').innerHTML = '';
+    (d.hermanos || []).forEach(() =>addHermano());
+ document.querySelectorAll('[data-hermano-nombre]').forEach((el, i) => {
+ el.value = d.hermanos[i]?.nombre || '';
+ const fnacEl = document.querySelector(`[data-hermano-fnac="${i}"]`);
+ if (fnacEl) fnacEl.value = d.hermanos[i]?.fnacRaw || '';
     });
 
     // Pareja
-    set('pareja-nombre', d.pareja?.nombre); set('pareja-fnac', d.pareja?.fnacRaw);
-    set('pareja-tiempo', d.pareja?.tiempo); set('pareja-notas', d.pareja?.notas);
+ set('pareja-nombre', d.pareja?.nombre); set('pareja-fnac', d.pareja?.fnacRaw);
+ set('pareja-tiempo', d.pareja?.tiempo); set('pareja-notas', d.pareja?.notas);
 
     // Paso 3 — Síntomas
-    document.getElementById('sintomas-actuales-list').innerHTML = '';
+ document.getElementById('sintomas-actuales-list').innerHTML = '';
     (d.sintomasActuales || []).forEach(s => {
-      addSintoma('actuales');
-      const idx = document.querySelectorAll('[data-sint-actuales-nombre]').length;
-      const el  = document.querySelector(`[data-sint-actuales-nombre="${idx}"]`);
-      if (el) {
-        el.value = s.nombre || '';
-        const set2 = (attr, val) => { const x = document.querySelector(`[data-sint-actuales-${attr}="${idx}"]`); if (x) x.value = val || ''; };
-        set2('edad', s.edad); set2('frecuencia', s.frecuencia); set2('intensidad', s.intensidad); set2('desc', s.desc);
+ addSintoma('actuales');
+ const idx = document.querySelectorAll('[data-sint-actuales-nombre]').length;
+ const el  = document.querySelector(`[data-sint-actuales-nombre="${idx}"]`);
+ if (el) {
+ el.value = s.nombre || '';
+ const set2 = (attr, val) => { const x = document.querySelector(`[data-sint-actuales-${attr}="${idx}"]`); if (x) x.value = val || ''; };
+ set2('edad', s.edad); set2('frecuencia', s.frecuencia); set2('intensidad', s.intensidad); set2('desc', s.desc);
       }
     });
-    if (!d.sintomasActuales?.length) addSintoma('actuales');
+ if (!d.sintomasActuales?.length) addSintoma('actuales');
 
     // Contexto
-    set('ctx-emocion-dominante', d.contexto?.emocionDominante);
-    set('ctx-relacion-padre', d.contexto?.relacionPadre);
-    set('ctx-relacion-madre', d.contexto?.relacionMadre);
-    set('ctx-emocional', d.contexto?.emocional);
-    set('ctx-evento', d.contexto?.evento);
+ set('ctx-emocion-dominante', d.contexto?.emocionDominante);
+ set('ctx-relacion-padre', d.contexto?.relacionPadre);
+ set('ctx-relacion-madre', d.contexto?.relacionMadre);
+ set('ctx-emocional', d.contexto?.emocional);
+ set('ctx-evento', d.contexto?.evento);
   }
 
-  function escHtmlIntake(s) {
-    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ function escHtmlIntake(s) {
+ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   // Mostrar recientes al cargar
-  renderRecientes();
+ renderRecientes();
 
 
   // ── Inicializar con un síntoma vacío ──────────────────────────────────────────
-  addSintoma('actuales');
-</script>
-
-</body>
-</html>
+ addSintoma('actuales');
+</script></body></html>

@@ -1,227 +1,216 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Astrología · Holoacadem-iA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
-<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
-<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1">
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Astrología · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=1"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1"><style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
   --bg:        #080b14;
   --surface:   #0d1120;
   --surface2:  #111827;
-  --border:    rgba(255,255,255,0.08);
+  --border: rgba(255,255,255,0.08);
   --text:      #f1f5f9;
-  --muted:     rgba(255,255,255,0.45);
+  --muted: rgba(255,255,255,0.45);
   --gold:      #f59e0b;
   --gold-soft: rgba(245,158,11,0.15);
-  --radius:    18px;
+  --radius: 18px;
 }
 
 html, body {
-  min-height: 100vh;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  overflow-x: hidden;
+ min-height: 100vh;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ background: var(--bg);
+ color: var(--text);
+ overflow-x: hidden;
 }
 
 /* ── Starfield ── */
 body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(245,158,11,0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 0%,  rgba(99,102,241,0.06) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+ content: '';
+ position: fixed;
+ inset: 0;
+ background:
+ radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
+ radial-gradient(ellipse at 80% 80%, rgba(245,158,11,0.06) 0%, transparent 50%),
+ radial-gradient(ellipse at 50% 0%, rgba(99,102,241,0.06) 0%, transparent 60%);
+ pointer-events: none;
+ z-index: 0;
 }
 
 /* ── NAV ── */
 .nav {
-  position: relative;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 32px;
-  border-bottom: 1px solid var(--border);
-  background: rgba(8,11,20,0.8);
-  backdrop-filter: blur(12px);
+ position: relative;
+ z-index: 10;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 20px 32px;
+ border-bottom: 1px solid var(--border);
+ background: rgba(8,11,20,0.8);
+ backdrop-filter: blur(12px);
 }
 .nav-back {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.15s;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-size: 0.82rem;
+ color: var(--muted);
+ text-decoration: none;
+ transition: color 0.15s;
 }
 .nav-back:hover { color: var(--text); }
 .nav-back svg { width: 16px; height: 16px; }
 .nav-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--gold);
-  letter-spacing: -0.01em;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-size: 0.9rem;
+ font-weight: 700;
+ color: var(--gold);
+ letter-spacing: -0.01em;
 }
 .nav-brand-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 10px rgba(245,158,11,0.6);
-  animation: pulse-dot 2s ease-in-out infinite;
+ width: 8px; height: 8px;
+ border-radius: 50%;
+ background: var(--gold);
+ box-shadow: 0 0 10px rgba(245,158,11,0.6);
+ animation: pulse-dot 2s ease-in-out infinite;
 }
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%       { opacity: 0.6; transform: scale(0.85); }
+ 0%, 100% { opacity: 1; transform: scale(1); }
+ 50%       { opacity: 0.6; transform: scale(0.85); }
 }
 .nav-badge {
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(245,158,11,0.7);
-  background: rgba(245,158,11,0.1);
-  border: 1px solid rgba(245,158,11,0.2);
-  border-radius: 20px;
-  padding: 3px 10px;
+ font-size: 0.65rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: rgba(245,158,11,0.7);
+ background: rgba(245,158,11,0.1);
+ border: 1px solid rgba(245,158,11,0.2);
+ border-radius: 20px;
+ padding: 3px 10px;
 }
 
 /* ── HERO ── */
 .hero {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding: 72px 24px 56px;
-  max-width: 680px;
-  margin: 0 auto;
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ padding: 72px 24px 56px;
+ max-width: 680px;
+ margin: 0 auto;
 }
 .hero-icon {
-  font-size: 4rem;
-  line-height: 1;
-  margin-bottom: 24px;
-  filter: drop-shadow(0 0 28px rgba(245,158,11,0.4));
-  animation: float 4s ease-in-out infinite;
+ font-size: 4rem;
+ line-height: 1;
+ margin-bottom: 24px;
+ filter: drop-shadow(0 0 28px rgba(245,158,11,0.4));
+ animation: float 4s ease-in-out infinite;
 }
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-8px); }
+ 0%, 100% { transform: translateY(0); }
+ 50%       { transform: translateY(-8px); }
 }
 .hero-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 16px;
-  opacity: 0.8;
+ font-size: 0.72rem;
+ font-weight: 700;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--gold);
+ margin-bottom: 16px;
+ opacity: 0.8;
 }
 .hero h1 {
-  font-size: clamp(2rem, 5vw, 3rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 18px;
+ font-size: clamp(2rem, 5vw, 3rem);
+ font-weight: 900;
+ line-height: 1.1;
+ letter-spacing: -0.03em;
+ margin-bottom: 18px;
 }
 .hero h1 span {
-  background: linear-gradient(90deg, #f59e0b, #fbbf24, #c084fc);
+ background: linear-gradient(90deg, #f59e0b, #fbbf24, #c084fc);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+ background-clip: text;
 }
 .hero p {
-  font-size: 0.95rem;
-  color: var(--muted);
-  line-height: 1.7;
-  max-width: 500px;
-  margin: 0 auto;
+ font-size: 0.95rem;
+ color: var(--muted);
+ line-height: 1.7;
+ max-width: 500px;
+ margin: 0 auto;
 }
 
 /* ── DIVIDER ── */
 .section-divider {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 28px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 960px;
-  margin: 0 auto 28px;
-  padding: 0 24px;
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ font-size: 0.68rem;
+ font-weight: 700;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 28px;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ max-width: 960px;
+ margin: 0 auto 28px;
+ padding: 0 24px;
 }
 .section-divider::before,
 .section-divider::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
+ content: '';
+ flex: 1;
+ height: 1px;
+ background: var(--border);
 }
 
 /* ── TOOLS GRID ── */
 .tools-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
+ position: relative;
+ z-index: 1;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ max-width: 960px;
+ margin: 0 auto;
+ padding: 0 24px 64px;
 }
 
 .tool-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 28px 24px 24px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 28px 24px 24px;
+ text-decoration: none;
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+ transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
 }
 .tool-card::after {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 2px;
 }
 .tool-card:not(.tool-soon):hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+ transform: translateY(-4px);
+ box-shadow: 0 12px 40px rgba(0,0,0,0.4);
 }
 .tool-card.tool-soon {
-  cursor: default;
-  opacity: 0.55;
-  pointer-events: none;
+ cursor: default;
+ opacity: 0.55;
+ pointer-events: none;
 }
 
 /* Natal */
 .tool-natal {
-  border-color: rgba(245,158,11,0.25);
-  background: linear-gradient(135deg, #0d1120 0%, #111827 100%);
+ border-color: rgba(245,158,11,0.25);
+ background: linear-gradient(135deg, #0d1120 0%, #111827 100%);
 }
 .tool-natal:hover { border-color: rgba(245,158,11,0.5); box-shadow: 0 12px 40px rgba(245,158,11,0.12), 0 4px 20px rgba(0,0,0,0.4); }
 .tool-natal::after { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
@@ -229,8 +218,8 @@ body::before {
 
 /* Sinastría */
 .tool-sinastria {
-  border-color: rgba(192,132,252,0.25);
-  background: linear-gradient(135deg, #0d1120 0%, #130d1e 100%);
+ border-color: rgba(192,132,252,0.25);
+ background: linear-gradient(135deg, #0d1120 0%, #130d1e 100%);
 }
 .tool-sinastria:hover { border-color: rgba(192,132,252,0.5); box-shadow: 0 12px 40px rgba(192,132,252,0.12), 0 4px 20px rgba(0,0,0,0.4); }
 .tool-sinastria::after { background: linear-gradient(90deg, #ec4899, #c084fc); }
@@ -238,8 +227,8 @@ body::before {
 
 /* Tránsitos */
 .tool-transitos {
-  border-color: rgba(99,102,241,0.2);
-  background: linear-gradient(135deg, #0d1120 0%, #0e1127 100%);
+ border-color: rgba(99,102,241,0.2);
+ background: linear-gradient(135deg, #0d1120 0%, #0e1127 100%);
 }
 .tool-transitos:hover { border-color: rgba(99,102,241,0.5); box-shadow: 0 12px 40px rgba(99,102,241,0.12), 0 4px 20px rgba(0,0,0,0.4); }
 .tool-transitos::after { background: linear-gradient(90deg, #6366f1, #818cf8); }
@@ -247,76 +236,76 @@ body::before {
 
 /* Progresiones */
 .tool-progresiones {
-  border-color: rgba(16,185,129,0.2);
-  background: linear-gradient(135deg, #0d1120 0%, #0d1a15 100%);
+ border-color: rgba(16,185,129,0.2);
+ background: linear-gradient(135deg, #0d1120 0%, #0d1a15 100%);
 }
 .tool-progresiones:hover { border-color: rgba(16,185,129,0.5); box-shadow: 0 12px 40px rgba(16,185,129,0.12), 0 4px 20px rgba(0,0,0,0.4); }
 .tool-progresiones::after { background: linear-gradient(90deg, #10b981, #34d399); }
 .tool-progresiones::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(16,185,129,0.05), transparent 60%); pointer-events: none; }
 
 .tool-icon {
-  font-size: 2.2rem;
-  line-height: 1;
+ font-size: 2.2rem;
+ line-height: 1;
 }
 .tool-badge-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
 }
 .tool-label {
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
+ font-size: 0.64rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--muted);
 }
 .soon-badge {
-  font-size: 0.6rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 2px 8px;
+ font-size: 0.6rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: rgba(255,255,255,0.4);
+ background: rgba(255,255,255,0.06);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: 20px;
+ padding: 2px 8px;
 }
 .tool-title {
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
-  color: var(--text);
+ font-size: 1.4rem;
+ font-weight: 800;
+ letter-spacing: -0.02em;
+ line-height: 1.15;
+ color: var(--text);
 }
 .tool-desc {
-  font-size: 0.83rem;
-  color: var(--muted);
-  line-height: 1.6;
-  flex: 1;
+ font-size: 0.83rem;
+ color: var(--muted);
+ line-height: 1.6;
+ flex: 1;
 }
 .tool-features {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  border-top: 1px solid var(--border);
-  padding-top: 14px;
+ display: flex;
+ flex-wrap: wrap;
+ gap: 6px;
+ border-top: 1px solid var(--border);
+ padding-top: 14px;
 }
 .tool-feat {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.45);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
-  padding: 3px 10px;
+ font-size: 0.72rem;
+ color: rgba(255,255,255,0.45);
+ background: rgba(255,255,255,0.05);
+ border: 1px solid rgba(255,255,255,0.08);
+ border-radius: 20px;
+ padding: 3px 10px;
 }
 .tool-cta {
-  font-size: 0.82rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  margin-top: 4px;
-  transition: gap 0.15s;
+ font-size: 0.82rem;
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+ margin-top: 4px;
+ transition: gap 0.15s;
 }
 .tool-card:hover .tool-cta { gap: 8px; }
 .tool-natal .tool-cta    { color: #fbbf24; }
@@ -324,160 +313,41 @@ body::before {
 
 /* ── FOOTER BACK ── */
 .footer-back {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-  padding-bottom: 48px;
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ padding-bottom: 48px;
 }
 .footer-back a {
-  font-size: 0.8rem;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.15s;
+ font-size: 0.8rem;
+ color: var(--muted);
+ text-decoration: none;
+ transition: color 0.15s;
 }
 .footer-back a:hover { color: var(--text); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   .tools-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0 16px 48px;
+ grid-template-columns: 1fr;
+ gap: 16px;
+ padding: 0 16px 48px;
   }
   .nav { padding: 16px 20px; }
   .hero { padding: 48px 16px 40px; }
 }
-</style>
-</head>
-<body class="mod-page-aurora">
-
-<!-- HEADER UNIFICADO -->
-<header class="holo-module-header">
-  <div class="holo-module-header-inner">
-    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back nav-back">
-      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-      <span>Inicio</span>
-    </a>
-    <div class="holo-module-identity">
-      <div class="holo-module-icon mod-aurora">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg>
-      </div>
-      <div class="holo-module-title-wrap">
-        <div class="holo-module-category">5 módulos integrados</div>
-        <div class="holo-module-title">Astrología</div>
-      </div>
-    </div>
-    <span class="holo-module-badge">Premium</span>
-  </div>
-</header>
-
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-icon">🔯</div>
-  <div class="hero-eyebrow">Motor Astrológico Premium</div>
-  <h1>Astrolog<br><span>iA</span></h1>
-  <p>Interpretación profunda basada en Volguine y la Astrología Tradicional. Carta natal, compatibilidad de parejas, tránsitos y más — todo con análisis IA en tiempo real.</p>
-</div>
-
-<!-- TOOLS SECTION -->
-<div class="section-divider">Selecciona un módulo</div>
-
-<div class="tools-grid">
-
-  <!-- 1 · CARTA NATAL -->
-  <a class="tool-card tool-natal" href="/astro">
-    <div class="tool-icon">✨</div>
-    <div class="tool-badge-row">
-      <div class="tool-label">Análisis Personal</div>
-    </div>
-    <div class="tool-title">Carta Natal<br>& Revolución Solar</div>
-    <div class="tool-desc">
-      Ingresa tu fecha, hora y lugar de nacimiento. Obtén análisis natal completo, Revolución Solar, RSP y Mensales con interpretación IA profunda.
-    </div>
-    <div class="tool-features">
-      <span class="tool-feat">Carta natal SVG</span>
-      <span class="tool-feat">Revolución Solar</span>
-      <span class="tool-feat">RSP · Mensales</span>
-      <span class="tool-feat">Posiciones planetarias</span>
-      <span class="tool-feat">Interpretación IA</span>
-    </div>
-    <div class="tool-cta">Ver mi carta →</div>
-  </a>
-
-  <!-- 2 · SINASTRÍA -->
-  <a class="tool-card tool-sinastria" href="/sinastria">
-    <div class="tool-icon">💞</div>
-    <div class="tool-badge-row">
-      <div class="tool-label">Compatibilidad de Parejas</div>
-    </div>
-    <div class="tool-title">Sinastría<br>& Compatibilidad</div>
-    <div class="tool-desc">
-      Analiza la dinámica entre dos personas: aspectos cruzados entre cartas, carta doble de sinastría y análisis IA de vínculos, tensiones y propósito relacional.
-    </div>
-    <div class="tool-features">
-      <span class="tool-feat">Carta doble SVG</span>
-      <span class="tool-feat">Aspectos cruzados</span>
-      <span class="tool-feat">Análisis relacional IA</span>
-      <span class="tool-feat">49+ aspectos</span>
-    </div>
-    <div class="tool-cta">Analizar compatibilidad →</div>
-  </a>
-
-  <!-- 3 · TRÁNSITOS -->
-  <a class="tool-card tool-transitos" href="/transitos">
-    <div class="tool-icon">🌙</div>
-    <div class="tool-badge-row">
-      <div class="tool-label">Ciclos Actuales</div>
-    </div>
-    <div class="tool-title">Tránsitos<br>Planetarios</div>
-    <div class="tool-desc">
-      Analiza los tránsitos del cielo actual sobre tu carta natal. Identifica períodos clave, activaciones y ciclos de transformación en curso.
-    </div>
-    <div class="tool-features">
-      <span class="tool-feat">Carta de tránsitos SVG</span>
-      <span class="tool-feat">Aspectos exactos</span>
-      <span class="tool-feat">Interpretación IA</span>
-      <span class="tool-feat">Cualquier fecha</span>
-    </div>
-    <div class="tool-cta" style="color:#818cf8;">Ver tránsitos →</div>
-  </a>
-
-  <!-- 4 · PROGRESIONES -->
-  <a class="tool-card tool-progresiones" href="/progresiones">
-    <div class="tool-icon">📈</div>
-    <div class="tool-badge-row">
-      <div class="tool-label">Evolución Vital</div>
-    </div>
-    <div class="tool-title">Progresiones<br>Secundarias</div>
-    <div class="tool-desc">
-      Carta progresada día-por-año. Visualiza la evolución interna, fase lunar progresada, cambios de ciclo vital y aspectos exactos con interpretación IA profunda.
-    </div>
-    <div class="tool-features">
-      <span class="tool-feat">Carta progresada SVG</span>
-      <span class="tool-feat">Fase lunar progresada</span>
-      <span class="tool-feat">Aspectos exactos</span>
-      <span class="tool-feat">Interpretación IA</span>
-    </div>
-    <div class="tool-cta" style="color:#34d399;">Ver progresiones →</div>
-  </a>
-
-</div>
-
-<!-- FOOTER -->
-<div class="footer-back">
-  <a href="https://www.holoacademia.com/asistenteia">← Volver a Holoacadem-iA</a>
-</div>
-
-<script>
+</style></head><body class="mod-page-aurora"><!-- HEADER UNIFICADO --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back nav-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-aurora"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">5 módulos integrados</div><div class="holo-module-title">Astrología</div></div></div><span class="holo-module-badge">Premium</span></div></header><!-- HERO --><div class="hero"><div class="hero-icon"></div><div class="hero-eyebrow">Motor Astrológico Premium</div><h1>Astrolog<br><span>iA</span></h1><p>Interpretación profunda basada en Volguine y la Astrología Tradicional. Carta natal, compatibilidad de parejas, tránsitos y más — todo con análisis IA en tiempo real.</p></div><!-- TOOLS SECTION --><div class="section-divider">Selecciona un módulo</div><div class="tools-grid"><!-- 1 · CARTA NATAL --><a class="tool-card tool-natal" href="/astro"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Análisis Personal</div></div><div class="tool-title">Carta Natal<br>& Revolución Solar</div><div class="tool-desc">Ingresa tu fecha, hora y lugar de nacimiento. Obtén análisis natal completo, Revolución Solar, RSP y Mensales con interpretación IA profunda.
+ </div><div class="tool-features"><span class="tool-feat">Carta natal SVG</span><span class="tool-feat">Revolución Solar</span><span class="tool-feat">RSP · Mensales</span><span class="tool-feat">Posiciones planetarias</span><span class="tool-feat">Interpretación IA</span></div><div class="tool-cta">Ver mi carta →</div></a><!-- 2 · SINASTRÍA --><a class="tool-card tool-sinastria" href="/sinastria"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Compatibilidad de Parejas</div></div><div class="tool-title">Sinastría<br>& Compatibilidad</div><div class="tool-desc">Analiza la dinámica entre dos personas: aspectos cruzados entre cartas, carta doble de sinastría y análisis IA de vínculos, tensiones y propósito relacional.
+ </div><div class="tool-features"><span class="tool-feat">Carta doble SVG</span><span class="tool-feat">Aspectos cruzados</span><span class="tool-feat">Análisis relacional IA</span><span class="tool-feat">49+ aspectos</span></div><div class="tool-cta">Analizar compatibilidad →</div></a><!-- 3 · TRÁNSITOS --><a class="tool-card tool-transitos" href="/transitos"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Ciclos Actuales</div></div><div class="tool-title">Tránsitos<br>Planetarios</div><div class="tool-desc">Analiza los tránsitos del cielo actual sobre tu carta natal. Identifica períodos clave, activaciones y ciclos de transformación en curso.
+ </div><div class="tool-features"><span class="tool-feat">Carta de tránsitos SVG</span><span class="tool-feat">Aspectos exactos</span><span class="tool-feat">Interpretación IA</span><span class="tool-feat">Cualquier fecha</span></div><div class="tool-cta" style="color:#818cf8;">Ver tránsitos →</div></a><!-- 4 · PROGRESIONES --><a class="tool-card tool-progresiones" href="/progresiones"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Evolución Vital</div></div><div class="tool-title">Progresiones<br>Secundarias</div><div class="tool-desc">Carta progresada día-por-año. Visualiza la evolución interna, fase lunar progresada, cambios de ciclo vital y aspectos exactos con interpretación IA profunda.
+ </div><div class="tool-features"><span class="tool-feat">Carta progresada SVG</span><span class="tool-feat">Fase lunar progresada</span><span class="tool-feat">Aspectos exactos</span><span class="tool-feat">Interpretación IA</span></div><div class="tool-cta" style="color:#34d399;">Ver progresiones →</div></a></div><!-- FOOTER --><div class="footer-back"><a href="https://www.holoacademia.com/asistenteia">← Volver a Holoacadem-iA</a></div><script>
 (function() {
-  const p = new URLSearchParams(window.location.search);
-  if (!p.has('embed')) return;
-  document.querySelectorAll('a.tool-card').forEach(function(a) {
-    a.target = '_top';
+ const p = new URLSearchParams(window.location.search);
+ if (!p.has('embed')) return;
+ document.querySelectorAll('a.tool-card').forEach(function(a) {
+ a.target = '_top';
   });
-  document.querySelector('.nav-back').target = '_top';
-  document.querySelector('.footer-back a').target = '_top';
+ document.querySelector('.nav-back').target = '_top';
+ document.querySelector('.footer-back a').target = '_top';
 })();
-</script>
-</body>
-</html>
+</script></body></html>

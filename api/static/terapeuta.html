@@ -1,47 +1,36 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Asistente Terapéutico · Holoacadem-iA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
-<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
-<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1">
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Asistente Terapéutico · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=1"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1"><style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
     --bg:       #0b1120;
     --surface:  #111827;
     --surface2: #1f2937;
-    --border:   rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.07);
     --acc:      #3b82f6;
-    --acc-dim:  rgba(59,130,246,0.15);
+    --acc-dim: rgba(59,130,246,0.15);
     --text:     #f1f5f9;
     --muted:    #94a3b8;
     --user-bg:  #1e3a5f;
     --ai-bg:    #1f2937;
-    --radius:   14px;
+    --radius: 14px;
   }
 
-  html, body {
-    height: 100%;
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
+ html, body {
+ height: 100%;
+ background: var(--bg);
+ color: var(--text);
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ font-size: 15px;
+ line-height: 1.6;
   }
 
   /* ── Layout ── */
   .app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-width: 720px;
-    margin: 0 auto;
+ display: flex;
+ flex-direction: column;
+ height: 100vh;
+ max-width: 720px;
+ margin: 0 auto;
   }
 
   /* ── Badge de uso ── */
@@ -50,96 +39,96 @@
   #usageBadge.limit { color: #ef4444; border-color: rgba(239,68,68,0.4); }
 
   /* ── Modo embed (iframe en Wix) ── */
-  body.embed-mode {
-    background: transparent;
+ body.embed-mode {
+ background: transparent;
   }
-  body.embed-mode .app {
-    height: 100%;
-    max-width: 100%;
-    border-radius: 0;
+ body.embed-mode .app {
+ height: 100%;
+ max-width: 100%;
+ border-radius: 0;
   }
-  body.embed-mode .header {
-    display: none;
+ body.embed-mode .header {
+ display: none;
   }
 
   /* ── Header ── */
   .header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 20px;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-    background: var(--bg);
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 14px 20px;
+ border-bottom: 1px solid var(--border);
+ flex-shrink: 0;
+ background: var(--bg);
   }
 
   .header-icon {
-    width: 36px;
-    height: 36px;
-    background: var(--acc-dim);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
+ width: 36px;
+ height: 36px;
+ background: var(--acc-dim);
+ border-radius: 10px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 18px;
+ flex-shrink: 0;
   }
 
   .header-info { flex: 1; min-width: 0; }
 
   .header-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+ font-size: 0.95rem;
+ font-weight: 700;
+ color: var(--text);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
   }
 
   .header-sub {
-    font-size: 0.72rem;
-    color: var(--acc);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+ font-size: 0.72rem;
+ color: var(--acc);
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
   }
 
   .home-btn {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 1.1rem;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: color .2s, background .2s;
-    line-height: 1;
-    flex-shrink: 0;
+ color: var(--muted);
+ text-decoration: none;
+ font-size: 1.1rem;
+ padding: 4px 8px;
+ border-radius: 6px;
+ transition: color .2s, background .2s;
+ line-height: 1;
+ flex-shrink: 0;
   }
   .home-btn:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
   .header-new {
-    padding: 6px 12px;
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--muted);
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
+ padding: 6px 12px;
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ font-size: 0.78rem;
+ font-weight: 600;
+ color: var(--muted);
+ cursor: pointer;
+ transition: all 0.15s;
+ white-space: nowrap;
   }
 
   .header-new:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
 
   /* ── Messages ── */
   .messages {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    scroll-behavior: smooth;
+ flex: 1;
+ overflow-y: auto;
+ padding: 20px 16px;
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ scroll-behavior: smooth;
   }
 
   .messages::-webkit-scrollbar { width: 4px; }
@@ -148,214 +137,214 @@
 
   /* ── Pantalla de inicio ── */
   .welcome {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    text-align: center;
-    gap: 24px;
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ padding: 24px;
+ text-align: center;
+ gap: 24px;
   }
 
   .welcome-icon {
-    width: 64px;
-    height: 64px;
-    background: var(--acc-dim);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
+ width: 64px;
+ height: 64px;
+ background: var(--acc-dim);
+ border-radius: 20px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 30px;
   }
 
   .welcome h2 {
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text);
+ font-size: 1.4rem;
+ font-weight: 700;
+ color: var(--text);
   }
 
   .welcome p {
-    font-size: 0.9rem;
-    color: var(--muted);
-    max-width: 360px;
-    line-height: 1.7;
+ font-size: 0.9rem;
+ color: var(--muted);
+ max-width: 360px;
+ line-height: 1.7;
   }
 
   .quick-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 100%;
-    max-width: 480px;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 10px;
+ width: 100%;
+ max-width: 480px;
   }
 
   .quick-btn {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.15s;
-    color: var(--text);
-    font-size: 0.85rem;
-    font-family: inherit;
-    line-height: 1.4;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 12px;
+ padding: 14px 16px;
+ text-align: left;
+ cursor: pointer;
+ transition: all 0.15s;
+ color: var(--text);
+ font-size: 0.85rem;
+ font-family: inherit;
+ line-height: 1.4;
   }
 
   .quick-btn:hover {
-    background: var(--surface2);
-    border-color: var(--acc);
-    color: var(--acc);
+ background: var(--surface2);
+ border-color: var(--acc);
+ color: var(--acc);
   }
 
   .quick-btn .qb-icon {
-    font-size: 18px;
-    margin-bottom: 6px;
-    display: block;
+ font-size: 18px;
+ margin-bottom: 6px;
+ display: block;
   }
 
   .quick-btn .qb-text {
-    font-weight: 600;
-    display: block;
-    margin-bottom: 2px;
+ font-weight: 600;
+ display: block;
+ margin-bottom: 2px;
   }
 
   .quick-btn .qb-sub {
-    font-size: 0.75rem;
-    color: var(--muted);
+ font-size: 0.75rem;
+ color: var(--muted);
   }
 
   .quick-btn:hover .qb-sub { color: rgba(59,130,246,0.7); }
 
   /* ── Burbujas ── */
   .msg-group {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-bottom: 8px;
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
+ margin-bottom: 8px;
   }
 
   .msg {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
+ display: flex;
+ align-items: flex-end;
+ gap: 8px;
   }
 
   .msg-user { flex-direction: row-reverse; }
 
   .bubble {
-    max-width: 78%;
-    padding: 11px 15px;
-    border-radius: var(--radius);
-    line-height: 1.65;
-    font-size: 0.9rem;
-    white-space: pre-wrap;
-    word-break: break-word;
+ max-width: 78%;
+ padding: 11px 15px;
+ border-radius: var(--radius);
+ line-height: 1.65;
+ font-size: 0.9rem;
+ white-space: pre-wrap;
+ word-break: break-word;
   }
 
   .msg-user .bubble {
-    background: var(--user-bg);
-    color: #e0f2fe;
-    border-bottom-right-radius: 4px;
+ background: var(--user-bg);
+ color: #e0f2fe;
+ border-bottom-right-radius: 4px;
   }
 
   .msg-ai .bubble {
-    background: var(--ai-bg);
-    color: var(--text);
-    border-bottom-left-radius: 4px;
-    border: 1px solid var(--border);
+ background: var(--ai-bg);
+ color: var(--text);
+ border-bottom-left-radius: 4px;
+ border: 1px solid var(--border);
   }
 
   /* Resaltado de instrucciones MS */
   .bubble .ms-line {
-    color: var(--acc);
-    font-weight: 700;
+ color: var(--acc);
+ font-weight: 700;
   }
 
   .bubble .branch {
-    color: #94a3b8;
-    font-size: 0.85rem;
+ color: #94a3b8;
+ font-size: 0.85rem;
   }
 
   /* Dot indicador de escritura */
   .typing-dot {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-    padding: 12px 16px;
+ display: inline-flex;
+ gap: 4px;
+ align-items: center;
+ padding: 12px 16px;
   }
 
   .typing-dot span {
-    width: 7px;
-    height: 7px;
-    background: var(--muted);
-    border-radius: 50%;
-    animation: pulse 1.2s infinite;
+ width: 7px;
+ height: 7px;
+ background: var(--muted);
+ border-radius: 50%;
+ animation: pulse 1.2s infinite;
   }
 
   .typing-dot span:nth-child(2) { animation-delay: 0.2s; }
   .typing-dot span:nth-child(3) { animation-delay: 0.4s; }
 
   @keyframes pulse {
-    0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
-    40% { opacity: 1; transform: scale(1); }
+ 0%, 80%, 100% { opacity: 0.3; transform: scale(0.85); }
+ 40% { opacity: 1; transform: scale(1); }
   }
 
   /* ── Input ── */
   .input-area {
-    padding: 12px 16px 16px;
-    border-top: 1px solid var(--border);
-    background: var(--bg);
-    flex-shrink: 0;
+ padding: 12px 16px 16px;
+ border-top: 1px solid var(--border);
+ background: var(--bg);
+ flex-shrink: 0;
   }
 
   .input-box {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 10px 10px 10px 16px;
-    transition: border-color 0.15s;
+ display: flex;
+ align-items: flex-end;
+ gap: 10px;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 14px;
+ padding: 10px 10px 10px 16px;
+ transition: border-color 0.15s;
   }
 
   .input-box:focus-within {
-    border-color: rgba(59,130,246,0.4);
+ border-color: rgba(59,130,246,0.4);
   }
 
   .input-field {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text);
-    font-family: inherit;
-    font-size: 0.92rem;
-    line-height: 1.5;
-    resize: none;
-    max-height: 120px;
-    min-height: 24px;
-    overflow-y: auto;
+ flex: 1;
+ background: transparent;
+ border: none;
+ outline: none;
+ color: var(--text);
+ font-family: inherit;
+ font-size: 0.92rem;
+ line-height: 1.5;
+ resize: none;
+ max-height: 120px;
+ min-height: 24px;
+ overflow-y: auto;
   }
 
   .input-field::placeholder { color: var(--muted); }
 
   .send-btn {
-    width: 38px;
-    height: 38px;
-    flex-shrink: 0;
-    background: var(--acc);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.15s;
-    opacity: 0.4;
+ width: 38px;
+ height: 38px;
+ flex-shrink: 0;
+ background: var(--acc);
+ border: none;
+ border-radius: 10px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: all 0.15s;
+ opacity: 0.4;
   }
 
   .send-btn.ready { opacity: 1; }
@@ -364,798 +353,704 @@
   .send-btn svg { width: 18px; height: 18px; fill: #fff; }
 
   .input-hint {
-    font-size: 0.72rem;
-    color: var(--muted);
-    text-align: center;
-    margin-top: 8px;
+ font-size: 0.72rem;
+ color: var(--muted);
+ text-align: center;
+ margin-top: 8px;
   }
 
   /* ── Tablas de conflictos ── */
   .conflict-table-header {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--acc);
-    background: rgba(59,130,246,0.08);
-    border: 1px solid rgba(59,130,246,0.25);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin: 12px 0 8px;
-    letter-spacing: 0.02em;
+ font-size: 0.82rem;
+ font-weight: 700;
+ color: var(--acc);
+ background: rgba(59,130,246,0.08);
+ border: 1px solid rgba(59,130,246,0.25);
+ border-radius: 8px;
+ padding: 8px 12px;
+ margin: 12px 0 8px;
+ letter-spacing: 0.02em;
   }
 
   .conflict-subsystem {
-    font-size: 0.73rem;
-    font-weight: 700;
-    color: var(--acc);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 10px 0 4px;
-    border-bottom: 1px solid rgba(59,130,246,0.15);
-    margin-bottom: 4px;
+ font-size: 0.73rem;
+ font-weight: 700;
+ color: var(--acc);
+ text-transform: uppercase;
+ letter-spacing: 0.08em;
+ padding: 10px 0 4px;
+ border-bottom: 1px solid rgba(59,130,246,0.15);
+ margin-bottom: 4px;
   }
 
   .conflict-item {
-    display: flex;
-    gap: 6px;
-    padding: 3px 0;
-    font-size: 0.85rem;
-    align-items: baseline;
-    line-height: 1.4;
+ display: flex;
+ gap: 6px;
+ padding: 3px 0;
+ font-size: 0.85rem;
+ align-items: baseline;
+ line-height: 1.4;
   }
 
   .cnum {
-    flex-shrink: 0;
-    width: 18px;
-    font-size: 0.72rem;
-    font-weight: 700;
-    color: var(--acc);
-    text-align: right;
+ flex-shrink: 0;
+ width: 18px;
+ font-size: 0.72rem;
+ font-weight: 700;
+ color: var(--acc);
+ text-align: right;
   }
 
   .cname {
-    font-weight: 600;
-    color: var(--text);
-    flex-shrink: 0;
+ font-weight: 600;
+ color: var(--text);
+ flex-shrink: 0;
   }
 
   .cfrase {
-    color: var(--muted);
-    font-size: 0.82rem;
-    font-style: italic;
+ color: var(--muted);
+ font-size: 0.82rem;
+ font-style: italic;
   }
 
   .cname::after {
-    content: ' ';
+ content: ' ';
   }
 
   .conflict-divider {
-    height: 1px;
-    background: rgba(255,255,255,0.06);
-    margin: 10px 0 6px;
+ height: 1px;
+ background: rgba(255,255,255,0.06);
+ margin: 10px 0 6px;
   }
 
   /* ── Bloques de color ── */
   .conflict-bloque {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    padding: 3px 10px 3px 6px;
-    border-radius: 20px;
-    margin: 8px 0 4px;
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ font-size: 0.7rem;
+ font-weight: 800;
+ letter-spacing: 0.1em;
+ padding: 3px 10px 3px 6px;
+ border-radius: 20px;
+ margin: 8px 0 4px;
   }
-  .conflict-bloque.rojo    { background: rgba(239,68,68,0.18);  color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
+  .conflict-bloque.rojo    { background: rgba(239,68,68,0.18); color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
   .conflict-bloque.naranja { background: rgba(249,115,22,0.18); color: #fdba74; border: 1px solid rgba(249,115,22,0.35); }
-  .conflict-bloque.amarillo{ background: rgba(234,179,8,0.18);  color: #fde047; border: 1px solid rgba(234,179,8,0.35); }
-  .conflict-bloque.verde   { background: rgba(34,197,94,0.15);  color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
+  .conflict-bloque.amarillo{ background: rgba(234,179,8,0.18); color: #fde047; border: 1px solid rgba(234,179,8,0.35); }
+  .conflict-bloque.verde   { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
   .conflict-bloque.azul    { background: rgba(59,130,246,0.18); color: #93c5fd; border: 1px solid rgba(59,130,246,0.35); }
   .conflict-bloque.violeta { background: rgba(168,85,247,0.18); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.35); }
-  .conflict-bloque.cafe    { background: rgba(180,120,60,0.2);  color: #d4a574; border: 1px solid rgba(180,120,60,0.4); }
+  .conflict-bloque.cafe    { background: rgba(180,120,60,0.2); color: #d4a574; border: 1px solid rgba(180,120,60,0.4); }
   .conflict-bloque.blanco  { background: rgba(255,255,255,0.1); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.25); }
 
   .conflict-note {
-    font-size: 0.78rem;
-    color: #fbbf24;
-    background: rgba(251,191,36,0.08);
-    border-left: 2px solid rgba(251,191,36,0.4);
-    padding: 6px 10px;
-    border-radius: 0 6px 6px 0;
-    margin: 8px 0;
+ font-size: 0.78rem;
+ color: #fbbf24;
+ background: rgba(251,191,36,0.08);
+ border-left: 2px solid rgba(251,191,36,0.4);
+ padding: 6px 10px;
+ border-radius: 0 6px 6px 0;
+ margin: 8px 0;
   }
 
   /* ── Botón cerrar sesión ── */
   .header-close {
-    padding: 6px 12px;
-    background: transparent;
-    border: 1px solid rgba(239,68,68,0.3);
-    border-radius: 8px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: #ef4444;
-    cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
-    font-family: inherit;
+ padding: 6px 12px;
+ background: transparent;
+ border: 1px solid rgba(239,68,68,0.3);
+ border-radius: 8px;
+ font-size: 0.78rem;
+ font-weight: 600;
+ color: #ef4444;
+ cursor: pointer;
+ transition: all 0.15s;
+ white-space: nowrap;
+ font-family: inherit;
   }
   .header-close:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.6); }
 
   /* ── Modal de cierre ── */
   .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.7);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    backdrop-filter: blur(4px);
-    animation: fadeIn 0.2s ease;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.7);
+ z-index: 100;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+ backdrop-filter: blur(4px);
+ animation: fadeIn 0.2s ease;
   }
 
   .modal-overlay.hidden { display: none; }
 
   .modal-box {
-    background: var(--surface);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 18px;
-    width: 100%;
-    max-width: 600px;
-    max-height: 85vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+ background: var(--surface);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: 18px;
+ width: 100%;
+ max-width: 600px;
+ max-height: 85vh;
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+ box-shadow: 0 24px 64px rgba(0,0,0,0.6);
   }
 
   .modal-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 16px 20px;
+ border-bottom: 1px solid var(--border);
+ flex-shrink: 0;
   }
 
   .modal-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--text);
+ font-size: 0.95rem;
+ font-weight: 700;
+ color: var(--text);
   }
 
   .modal-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 20px;
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: var(--text);
-    white-space: pre-wrap;
+ flex: 1;
+ overflow-y: auto;
+ padding: 20px;
+ font-size: 0.88rem;
+ line-height: 1.7;
+ color: var(--text);
+ white-space: pre-wrap;
   }
 
   .modal-body::-webkit-scrollbar { width: 4px; }
   .modal-body::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 2px; }
 
   .modal-footer {
-    display: flex;
-    gap: 10px;
-    padding: 14px 20px;
-    border-top: 1px solid var(--border);
-    flex-shrink: 0;
+ display: flex;
+ gap: 10px;
+ padding: 14px 20px;
+ border-top: 1px solid var(--border);
+ flex-shrink: 0;
   }
 
   .btn-copy {
-    flex: 1;
-    padding: 10px;
-    background: var(--acc);
-    color: var(--bg);
-    border: none;
-    border-radius: 9px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
+ flex: 1;
+ padding: 10px;
+ background: var(--acc);
+ color: var(--bg);
+ border: none;
+ border-radius: 9px;
+ font-size: 0.85rem;
+ font-weight: 700;
+ cursor: pointer;
+ font-family: inherit;
+ transition: all 0.15s;
   }
   .btn-copy:hover { background: #2563eb; }
 
   .btn-modal-close {
-    padding: 10px 18px;
-    background: var(--surface2);
-    color: var(--muted);
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.15s;
+ padding: 10px 18px;
+ background: var(--surface2);
+ color: var(--muted);
+ border: 1px solid var(--border);
+ border-radius: 9px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ cursor: pointer;
+ font-family: inherit;
+ transition: all 0.15s;
   }
   .btn-modal-close:hover { color: var(--text); }
 
   .generating-dots {
-    display: inline-flex;
-    gap: 4px;
-    align-items: center;
-    color: var(--muted);
-    font-size: 0.85rem;
+ display: inline-flex;
+ gap: 4px;
+ align-items: center;
+ color: var(--muted);
+ font-size: 0.85rem;
   }
   .generating-dots span {
-    width: 6px; height: 6px;
-    background: var(--acc);
-    border-radius: 50%;
-    animation: pulse 1.2s infinite;
+ width: 6px; height: 6px;
+ background: var(--acc);
+ border-radius: 50%;
+ animation: pulse 1.2s infinite;
   }
   .generating-dots span:nth-child(2) { animation-delay: 0.2s; }
   .generating-dots span:nth-child(3) { animation-delay: 0.4s; }
-</style>
-</head>
-<body class="mod-page-amber">
-
-<div class="app">
-
-  <!-- Header unificado -->
-  <header class="holo-module-header">
-    <div class="holo-module-header-inner">
-      <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
-        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        <span>Inicio</span>
-      </a>
-      <div class="holo-module-identity">
-        <div class="holo-module-icon mod-amber">
-          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-        <div class="holo-module-title-wrap">
-          <div class="holo-module-category">Análisis en vivo</div>
-          <div class="holo-module-title" id="headerTitle">Asistente Terapéutico</div>
-        </div>
-      </div>
-      <div id="usageBadge" class="holo-module-badge" style="display:none;"></div>
-      <button class="header-close" onclick="abrirCierre()">Cerrar sesión</button>
-      <button class="header-new" onclick="nuevaSesion()">Nueva sesión</button>
-    </div>
-  </header>
-
-  <!-- Modal paywall (límite alcanzado) -->
-  <div class="modal-overlay hidden" id="modalPaywall" style="z-index:9999;">
-    <div class="modal-box" style="text-align:center;max-width:400px;">
-      <div style="font-size:2rem;margin-bottom:12px;">⛔</div>
-      <div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Límite mensual alcanzado</div>
-      <div id="paywallMsg" style="font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:20px;"></div>
-      <a href="https://www.holoacademia.com/miembros" target="_top"
-         style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">
-        Ver planes →
-      </a>
-    </div>
-  </div>
-
-  <!-- Modal de cierre de sesión -->
-  <div class="modal-overlay hidden" id="modalCierre">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title">📋 Resumen de sesión</div>
-        <button class="btn-modal-close" onclick="cerrarModal()">✕</button>
-      </div>
-      <div class="modal-body" id="modalBody">
-        <div class="generating-dots">
-          Generando resumen<span></span><span></span><span></span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-copy" id="btnCopy" onclick="copiarResumen()" style="display:none">📋 Copiar resumen</button>
-        <button class="btn-modal-close" onclick="cerrarModal()">Cerrar</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mensajes -->
-  <div class="messages" id="messages">
-
-    <!-- Pantalla de redirección al cuestionario -->
-    <div class="welcome" id="welcome">
-      <div class="welcome-icon">📋</div>
-      <h2>Registrando paciente…</h2>
-      <p>Cargando el cuestionario inicial para comenzar la sesión.</p>
-    </div>
-
-  </div>
-
-  <!-- Input -->
-  <div class="input-area">
-    <div class="input-box">
-      <textarea
-        class="input-field"
-        id="inputField"
-        placeholder="Describe el síntoma, comparte lo que dijo el paciente, o reporta la respuesta de la MS…"
-        rows="1"
-        onkeydown="handleKey(event)"
-        oninput="handleInput(this)"
-      ></textarea>
-      <button class="send-btn" id="sendBtn" onclick="sendMessage()">
-        <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-      </button>
-    </div>
-    <div class="input-hint">Enter para enviar · Shift+Enter para nueva línea · Escribe lo que dijo el paciente para guía de entrevista</div>
-  </div>
-
-</div>
-
-<script>
+</style></head><body class="mod-page-amber"><div class="app"><!-- Header unificado --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-amber"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Análisis en vivo</div><div class="holo-module-title" id="headerTitle">Asistente Terapéutico</div></div></div><div id="usageBadge" class="holo-module-badge" style="display:none;"></div><button class="header-close" onclick="abrirCierre()">Cerrar sesión</button><button class="header-new" onclick="nuevaSesion()">Nueva sesión</button></div></header><!-- Modal paywall (límite alcanzado) --><div class="modal-overlay hidden" id="modalPaywall" style="z-index:9999;"><div class="modal-box" style="text-align:center;max-width:400px;"><div style="font-size:2rem;margin-bottom:12px;"></div><div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Límite mensual alcanzado</div><div id="paywallMsg" style="font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:20px;"></div><a href="https://www.holoacademia.com/miembros" target="_top"
+ style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">Ver planes →
+ </a></div></div><!-- Modal de cierre de sesión --><div class="modal-overlay hidden" id="modalCierre"><div class="modal-box"><div class="modal-header"><div class="modal-title">Resumen de sesión</div><button class="btn-modal-close" onclick="cerrarModal()"></button></div><div class="modal-body" id="modalBody"><div class="generating-dots">Generando resumen<span></span><span></span><span></span></div></div><div class="modal-footer"><button class="btn-copy" id="btnCopy" onclick="copiarResumen()" style="display:none">Copiar resumen</button><button class="btn-modal-close" onclick="cerrarModal()">Cerrar</button></div></div></div><!-- Mensajes --><div class="messages" id="messages"><!-- Pantalla de redirección al cuestionario --><div class="welcome" id="welcome"><div class="welcome-icon"></div><h2>Registrando paciente…</h2><p>Cargando el cuestionario inicial para comenzar la sesión.</p></div></div><!-- Input --><div class="input-area"><div class="input-box"><textarea
+ class="input-field"
+ id="inputField"
+ placeholder="Describe el síntoma, comparte lo que dijo el paciente, o reporta la respuesta de la MS…"
+ rows="1"
+ onkeydown="handleKey(event)"
+ oninput="handleInput(this)"
+      ></textarea><button class="send-btn" id="sendBtn" onclick="sendMessage()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div><div class="input-hint">Enter para enviar · Shift+Enter para nueva línea · Escribe lo que dijo el paciente para guía de entrevista</div></div></div><script>
   // ── Estado ──────────────────────────────────────────────────────────────────
-  let history = [];
-  let isStreaming = false;
+ let history = [];
+ let isStreaming = false;
 
-  const messagesEl = document.getElementById('messages');
-  const welcomeEl  = document.getElementById('welcome');
-  const inputEl    = document.getElementById('inputField');
-  const sendBtnEl  = document.getElementById('sendBtn');
+ const messagesEl = document.getElementById('messages');
+ const welcomeEl  = document.getElementById('welcome');
+ const inputEl    = document.getElementById('inputField');
+ const sendBtnEl  = document.getElementById('sendBtn');
 
   // ── Control de uso mensual ───────────────────────────────────────────────────
   (async function checkUsage() {
-    try {
-      const res = await fetch('/api/usage');
-      if (!res.ok) return;
-      const data = await res.json();
-      const u = data.usage?.terapeuta;
-      if (!u) return;
-      const badge = document.getElementById('usageBadge');
-      if (badge) {
-        const pct = u.limit > 0 ? u.used / u.limit : 1;
-        badge.textContent = `${u.used}/${u.limit} sesiones`;
-        badge.style.display = 'block';
-        if (!u.allowed) {
-          badge.classList.add('limit');
-          showPaywall(u.used, u.limit, data.plan_name);
+ try {
+ const res = await fetch('/api/usage');
+ if (!res.ok) return;
+ const data = await res.json();
+ const u = data.usage?.terapeuta;
+ if (!u) return;
+ const badge = document.getElementById('usageBadge');
+ if (badge) {
+ const pct = u.limit >0 ? u.used / u.limit : 1;
+ badge.textContent = `${u.used}/${u.limit} sesiones`;
+ badge.style.display = 'block';
+ if (!u.allowed) {
+ badge.classList.add('limit');
+ showPaywall(u.used, u.limit, data.plan_name);
         } else if (pct >= 0.8) {
-          badge.classList.add('warn');
+ badge.classList.add('warn');
         }
       }
     } catch(e) { /* sin sesión — no mostrar badge */ }
   })();
 
-  function showPaywall(used, limit, planName) {
-    const el = document.getElementById('paywallMsg');
-    if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
-    const m = document.getElementById('modalPaywall');
-    if (m) m.classList.remove('hidden');
+ function showPaywall(used, limit, planName) {
+ const el = document.getElementById('paywallMsg');
+ if (el) el.textContent = `Has usado ${used} de ${limit} sesiones de este mes en tu plan ${planName}. Actualiza tu plan para continuar.`;
+ const m = document.getElementById('modalPaywall');
+ if (m) m.classList.remove('hidden');
     // Deshabilitar input
-    const inp = document.getElementById('inputField');
-    const btn = document.getElementById('sendBtn');
-    if (inp) { inp.disabled = true; inp.placeholder = 'Límite alcanzado — actualiza tu plan'; }
-    if (btn) btn.disabled = true;
+ const inp = document.getElementById('inputField');
+ const btn = document.getElementById('sendBtn');
+ if (inp) { inp.disabled = true; inp.placeholder = 'Límite alcanzado — actualiza tu plan'; }
+ if (btn) btn.disabled = true;
   }
 
   // ── Modo embed (iframe en Wix) ───────────────────────────────────────────────
   (function applyEmbedMode() {
-    const p = new URLSearchParams(window.location.search);
-    if (p.has('embed')) {
-      document.body.classList.add('embed-mode');
+ const p = new URLSearchParams(window.location.search);
+ if (p.has('embed')) {
+ document.body.classList.add('embed-mode');
       // html y body necesitan height:100% para que el chat llene el iframe
-      document.documentElement.style.height = '100%';
-      document.body.style.height = '100%';
+ document.documentElement.style.height = '100%';
+ document.body.style.height = '100%';
     }
   })();
 
   // ── Routing de entrada ───────────────────────────────────────────────────────
   (function routeEntry() {
-    const params = new URLSearchParams(window.location.search);
+ const params = new URLSearchParams(window.location.search);
 
     // ── Caso A: viene del intake con datos ──────────────────────────────────
-    if (params.has('intake')) {
-      const prompt    = localStorage.getItem('intake_prompt');
-      const dataRaw   = localStorage.getItem('intake_data');
-      const timestamp = parseInt(localStorage.getItem('intake_timestamp') || '0');
+ if (params.has('intake')) {
+ const prompt    = localStorage.getItem('intake_prompt');
+ const dataRaw   = localStorage.getItem('intake_data');
+ const timestamp = parseInt(localStorage.getItem('intake_timestamp') || '0');
 
-      if (prompt && dataRaw && Date.now() - timestamp <= 7_200_000) {
-        const data   = JSON.parse(dataRaw);
-        const nombre = data?.paciente?.nombre || 'Paciente';
-        const ocupacion = data?.paciente?.ocupacion ? ` · ${data.paciente.ocupacion}` : '';
+ if (prompt && dataRaw && Date.now() - timestamp <= 7_200_000) {
+ const data   = JSON.parse(dataRaw);
+ const nombre = data?.paciente?.nombre || 'Paciente';
+ const ocupacion = data?.paciente?.ocupacion ? ` · ${data.paciente.ocupacion}` : '';
 
         // Actualizar header
-        const hTitle = document.getElementById('headerTitle');
-        const hSub   = document.getElementById('headerSub');
-        if (hTitle) hTitle.textContent = `Sesión: ${nombre}`;
-        if (hSub)   hSub.textContent   = `● En sesión${ocupacion}`;
+ const hTitle = document.getElementById('headerTitle');
+ const hSub   = document.getElementById('headerSub');
+ if (hTitle) hTitle.textContent = `Sesión: ${nombre}`;
+ if (hSub) hSub.textContent   = `● En sesión${ocupacion}`;
 
         // Badge de paciente
-        const welcome = document.getElementById('welcome');
-        if (welcome) {
-          welcome.innerHTML = `
-            <div class="welcome-icon">🩺</div>
-            <div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px 18px;max-width:420px;text-align:left;">
-              <div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#3b82f6;margin-bottom:6px;">✓ Paciente registrado</div>
-              <div style="font-size:1rem;font-weight:700;color:#f1f5f9;">${escHtml(nombre)}</div>
-              <div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">${escHtml((data?.paciente?.motivo || '').substring(0, 100))}${(data?.paciente?.motivo?.length || 0) > 100 ? '…' : ''}</div>
-            </div>
-            <p style="color:#94a3b8;font-size:0.85rem;">Generando análisis diagnóstico inicial…</p>`;
+ const welcome = document.getElementById('welcome');
+ if (welcome) {
+ welcome.innerHTML = `
+ <div class="welcome-icon"></div><div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px 18px;max-width:420px;text-align:left;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#3b82f6;margin-bottom:6px;">Paciente registrado</div><div style="font-size:1rem;font-weight:700;color:#f1f5f9;">${escHtml(nombre)}</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">${escHtml((data?.paciente?.motivo || '').substring(0, 100))}${(data?.paciente?.motivo?.length || 0) >100 ? '…' : ''}</div></div><p style="color:#94a3b8;font-size:0.85rem;">Generando análisis diagnóstico inicial…</p>`;
         }
 
         // Limpiar localStorage
-        localStorage.removeItem('intake_prompt');
-        localStorage.removeItem('intake_data');
-        localStorage.removeItem('intake_timestamp');
+ localStorage.removeItem('intake_prompt');
+ localStorage.removeItem('intake_data');
+ localStorage.removeItem('intake_timestamp');
 
         // Limpiar URL (conservar ?embed si aplica)
-        const cleanUrl = params.has('embed') ? '/terapeuta?embed=1' : '/terapeuta';
-        window.history.replaceState({}, '', cleanUrl);
+ const cleanUrl = params.has('embed') ? '/terapeuta?embed=1' : '/terapeuta';
+ window.history.replaceState({}, '', cleanUrl);
 
         // Auto-enviar análisis
-        setTimeout(() => {
-          inputEl.value = prompt;
-          handleInput(inputEl);
-          sendMessage();
+ setTimeout(() => {
+ inputEl.value = prompt;
+ handleInput(inputEl);
+ sendMessage();
         }, 800);
-        return;
+ return;
       }
       // Si los datos expiraron, caer al redirect normal
     }
 
     // ── Caso B: viene con ?skip=1 (pulsó "Saltar" en el intake) ────────────
-    if (params.has('skip')) {
+ if (params.has('skip')) {
       // Limpiar URL y mostrar chat directamente
-      window.history.replaceState({}, '', '/terapeuta');
-      const welcome = document.getElementById('welcome');
-      if (welcome) {
-        welcome.innerHTML = `
-          <div class="welcome-icon">🩺</div>
-          <h2>¿Con qué trabajamos hoy?</h2>
-          <p>Escribe el síntoma, comparte lo que dijo el paciente, o describe la situación clínica.</p>`;
+ window.history.replaceState({}, '', '/terapeuta');
+ const welcome = document.getElementById('welcome');
+ if (welcome) {
+ welcome.innerHTML = `
+ <div class="welcome-icon"></div><h2>¿Con qué trabajamos hoy?</h2><p>Escribe el síntoma, comparte lo que dijo el paciente, o describe la situación clínica.</p>`;
       }
-      return;
+ return;
     }
 
     // ── Caso C: acceso directo sin datos → redirect al cuestionario ─────────
-    window.location.replace('/intake');
+ window.location.replace('/intake');
   })();
 
   // ── Input handlers ──────────────────────────────────────────────────────────
-  function handleInput(el) {
-    el.style.height = 'auto';
-    el.style.height = Math.min(el.scrollHeight, 120) + 'px';
-    sendBtnEl.classList.toggle('ready', el.value.trim().length > 0);
+ function handleInput(el) {
+ el.style.height = 'auto';
+ el.style.height = Math.min(el.scrollHeight, 120) + 'px';
+ sendBtnEl.classList.toggle('ready', el.value.trim().length >0);
   }
 
-  function handleKey(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
+ function handleKey(e) {
+ if (e.key === 'Enter' && !e.shiftKey) {
+ e.preventDefault();
+ sendMessage();
     }
   }
 
   // ── Quick start ─────────────────────────────────────────────────────────────
-  function quickStart(text) {
-    inputEl.value = text;
-    handleInput(inputEl);
-    sendMessage();
+ function quickStart(text) {
+ inputEl.value = text;
+ handleInput(inputEl);
+ sendMessage();
   }
 
   // ── Cierre de sesión ─────────────────────────────────────────────────────────
-  let _resumenTexto = '';
+ let _resumenTexto = '';
 
-  function abrirCierre() {
-    if (history.length < 2) {
-      alert('Aún no hay suficiente conversación para generar un resumen.');
-      return;
+ function abrirCierre() {
+ if (history.length < 2) {
+ alert('Aún no hay suficiente conversación para generar un resumen.');
+ return;
     }
-    const modal   = document.getElementById('modalCierre');
-    const body    = document.getElementById('modalBody');
-    const btnCopy = document.getElementById('btnCopy');
-    _resumenTexto = '';
-    body.innerHTML = '<div class="generating-dots">Generando resumen<span></span><span></span><span></span></div>';
-    btnCopy.style.display = 'none';
-    modal.classList.remove('hidden');
+ const modal   = document.getElementById('modalCierre');
+ const body    = document.getElementById('modalBody');
+ const btnCopy = document.getElementById('btnCopy');
+ _resumenTexto = '';
+ body.innerHTML = '<div class="generating-dots">Generando resumen<span></span><span></span><span></span></div>';
+ btnCopy.style.display = 'none';
+ modal.classList.remove('hidden');
 
     // Construir fecha de hoy
-    const hoy = new Date();
-    const fechaStr = hoy.toLocaleDateString('es-MX', { day:'2-digit', month:'long', year:'numeric' });
+ const hoy = new Date();
+ const fechaStr = hoy.toLocaleDateString('es-MX', { day:'2-digit', month:'long', year:'numeric' });
 
     // Nombre del paciente desde el header si está disponible
-    const headerTitle = document.getElementById('headerTitle')?.textContent || '';
-    const nombrePac   = headerTitle.startsWith('Sesión:') ? headerTitle.replace('Sesión:', '').trim() : '';
+ const headerTitle = document.getElementById('headerTitle')?.textContent || '';
+ const nombrePac   = headerTitle.startsWith('Sesión:') ? headerTitle.replace('Sesión:', '').trim() : '';
 
-    const cierre = `⬛ CIERRE DE SESIÓN\nFecha: ${fechaStr}${nombrePac ? '\nPaciente: ' + nombrePac : ''}\n\nGenera el resumen estructurado completo de esta sesión basándote en todo el historial de la conversación.`;
+ const cierre = `⬛ CIERRE DE SESIÓN\nFecha: ${fechaStr}${nombrePac ? '\nPaciente: ' + nombrePac : ''}\n\nGenera el resumen estructurado completo de esta sesión basándote en todo el historial de la conversación.`;
 
     // Usar el mismo historial de conversación pero enviar el cierre
-    const historialParaCierre = [...history];
+ const historialParaCierre = [...history];
 
-    streamCierre(cierre, historialParaCierre, body, btnCopy);
+ streamCierre(cierre, historialParaCierre, body, btnCopy);
   }
 
-  function streamCierre(mensaje, hist, bodyEl, btnEl) {
-    const ctrl = new AbortController();
-    const messages = [...hist];
+ function streamCierre(mensaje, hist, bodyEl, btnEl) {
+ const ctrl = new AbortController();
+ const messages = [...hist];
 
-    fetch('/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: mensaje, history: messages, mode: 'terapeuta' }),
-      signal: ctrl.signal,
+ fetch('/chat', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ message: mensaje, history: messages, mode: 'terapeuta' }),
+ signal: ctrl.signal,
     })
     .then(res => {
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
-      let textoCompleto = '';
-      bodyEl.textContent = '';
+ const reader = res.body.getReader();
+ const decoder = new TextDecoder();
+ let buffer = '';
+ let textoCompleto = '';
+ bodyEl.textContent = '';
 
-      function read() {
-        reader.read().then(({ done, value }) => {
-          if (done) {
-            _resumenTexto = textoCompleto;
-            btnEl.style.display = '';
-            return;
+ function read() {
+ reader.read().then(({ done, value }) => {
+ if (done) {
+ _resumenTexto = textoCompleto;
+ btnEl.style.display = '';
+ return;
           }
-          buffer += decoder.decode(value, { stream: true });
-          const lines = buffer.split('\n');
-          buffer = lines.pop();
-          for (const line of lines) {
-            if (!line.startsWith('data:')) continue;
-            const data = line.slice(5).trim();
-            if (data === '[DONE]') {
-              _resumenTexto = textoCompleto;
-              btnEl.style.display = '';
-              return;
+ buffer += decoder.decode(value, { stream: true });
+ const lines = buffer.split('\n');
+ buffer = lines.pop();
+ for (const line of lines) {
+ if (!line.startsWith('data:')) continue;
+ const data = line.slice(5).trim();
+ if (data === '[DONE]') {
+ _resumenTexto = textoCompleto;
+ btnEl.style.display = '';
+ return;
             }
-            try {
-              const { text } = JSON.parse(data);
-              if (text) {
-                textoCompleto += text;
-                bodyEl.textContent = textoCompleto;
+ try {
+ const { text } = JSON.parse(data);
+ if (text) {
+ textoCompleto += text;
+ bodyEl.textContent = textoCompleto;
               }
             } catch {}
           }
-          read();
+ read();
         });
       }
-      read();
+ read();
     })
     .catch(err => {
-      if (err.name !== 'AbortError') {
-        bodyEl.textContent = '⚠️ Error al generar el resumen. Intenta de nuevo.';
+ if (err.name !== 'AbortError') {
+ bodyEl.textContent = ' Error al generar el resumen. Intenta de nuevo.';
       }
     });
   }
 
-  function cerrarModal() {
-    document.getElementById('modalCierre').classList.add('hidden');
+ function cerrarModal() {
+ document.getElementById('modalCierre').classList.add('hidden');
   }
 
-  function copiarResumen() {
-    if (!_resumenTexto) return;
-    navigator.clipboard.writeText(_resumenTexto).then(() => {
-      const btn = document.getElementById('btnCopy');
-      btn.textContent = '✓ Copiado';
-      setTimeout(() => { btn.textContent = '📋 Copiar resumen'; }, 2000);
+ function copiarResumen() {
+ if (!_resumenTexto) return;
+ navigator.clipboard.writeText(_resumenTexto).then(() => {
+ const btn = document.getElementById('btnCopy');
+ btn.textContent = ' Copiado';
+ setTimeout(() => { btn.textContent = ' Copiar resumen'; }, 2000);
     });
   }
 
   // ── Nueva sesión → volver al cuestionario ───────────────────────────────────
-  function nuevaSesion() {
+ function nuevaSesion() {
     // Limpiar cualquier dato pendiente
-    localStorage.removeItem('intake_prompt');
-    localStorage.removeItem('intake_data');
-    localStorage.removeItem('intake_timestamp');
-    window.location.href = '/intake';
+ localStorage.removeItem('intake_prompt');
+ localStorage.removeItem('intake_data');
+ localStorage.removeItem('intake_timestamp');
+ window.location.href = '/intake';
   }
 
   // ── Renderizado de burbujas ─────────────────────────────────────────────────
-  function formatAIText(text) {
-    const lines = text.split('\n');
-    const out = [];
-    let inTable = false;
-    let currentSubsystem = '';
+ function formatAIText(text) {
+ const lines = text.split('\n');
+ const out = [];
+ let inTable = false;
+ let currentSubsystem = '';
 
-    for (let i = 0; i < lines.length; i++) {
-      const line = lines[i];
-      const trimmed = line.trim();
+ for (let i = 0; i < lines.length; i++) {
+ const line = lines[i];
+ const trimmed = line.trim();
 
       // ── Detección de tabla de conflictos ──────────────────────────────
-      // Encabezado de tabla: "📋 CONFLICTOLOGÍA…"
-      if (trimmed.startsWith('📋')) {
-        inTable = true;
-        out.push(`<div class="conflict-table-header">${escHtml(trimmed)}</div>`);
-        continue;
+      // Encabezado de tabla: " CONFLICTOLOGÍA…"
+ if (trimmed.startsWith('')) {
+ inTable = true;
+ out.push(`<div class="conflict-table-header">${escHtml(trimmed)}</div>`);
+ continue;
       }
 
       // Separador de tabla: "────────"
-      if (inTable && /^─{4,}/.test(trimmed)) {
-        out.push('<div class="conflict-divider"></div>');
-        continue;
+ if (inTable && /^─{4,}/.test(trimmed)) {
+ out.push('<div class="conflict-divider"></div>');
+ continue;
       }
 
-      // Bloque de color:  "  [BLOQUE:🔴ROJO]"
-      if (inTable && /\[BLOQUE:[^\]]+\]/.test(trimmed)) {
-        const bm = trimmed.match(/\[BLOQUE:(.+?)\]/);
-        if (bm) {
-          const bloqueText = bm[1]; // e.g. "🔴ROJO"
-          const colorKey = bloqueText.replace(/[^a-záéíóúñü]/gi,'').toLowerCase(); // "rojo"
-          out.push(`<div class="conflict-bloque ${colorKey}">${bloqueText}</div>`);
+      // Bloque de color:  "  [BLOQUE:ROJO]"
+ if (inTable && /\[BLOQUE:[^\]]+\]/.test(trimmed)) {
+ const bm = trimmed.match(/\[BLOQUE:(.+?)\]/);
+ if (bm) {
+ const bloqueText = bm[1]; // e.g. "ROJO"
+ const colorKey = bloqueText.replace(/[^a-záéíóúñü]/gi,'').toLowerCase(); // "rojo"
+ out.push(`<div class="conflict-bloque ${colorKey}">${bloqueText}</div>`);
         }
-        continue;
+ continue;
       }
 
-      // Subsistema en MAYÚSCULAS seguido de ":"  (ej: "  HIPOFISIARIA:")
-      if (inTable && /^\s{2,}[A-ZÁÉÍÓÚÑÜ\s\/]+:\s*$/.test(line) && trimmed.length < 40) {
-        currentSubsystem = trimmed.replace(':', '').trim();
-        out.push(`<div class="conflict-subsystem">${escHtml(currentSubsystem)}</div>`);
-        continue;
+      // Subsistema en MAYÚSCULAS seguido de ":"  (ej: " HIPOFISIARIA:")
+ if (inTable && /^\s{2,}[A-ZÁÉÍÓÚÑÜ\s\/]+:\s*$/.test(line) && trimmed.length < 40) {
+ currentSubsystem = trimmed.replace(':', '').trim();
+ out.push(`<div class="conflict-subsystem">${escHtml(currentSubsystem)}</div>`);
+ continue;
       }
 
-      // Línea de conflicto:  "  N. Nombre — "Frase""
-      if (inTable && /^\s{2,}\d+\./.test(line)) {
-        const match = trimmed.match(/^(\w+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
-        if (match) {
-          const num   = match[1];
-          const name  = match[2];
-          const frase = match[3] || '';
-          out.push(
+      // Línea de conflicto:  " N. Nombre — "Frase""
+ if (inTable && /^\s{2,}\d+\./.test(line)) {
+ const match = trimmed.match(/^(\w+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
+ if (match) {
+ const num   = match[1];
+ const name  = match[2];
+ const frase = match[3] || '';
+ out.push(
             `<div class="conflict-item">` +
               `<span class="cnum">${num}</span>` +
               `<span class="cname">${escHtml(name)}</span>` +
               (frase ? `<span class="cfrase">${escHtml(frase)}</span>` : '') +
             `</div>`
           );
-          continue;
+ continue;
         }
       }
 
-      // Línea de conflicto con letra  "  A1. Nombre"
-      if (inTable && /^\s{2,}[A-Z]\d+\./.test(line)) {
-        const match = trimmed.match(/^([A-Z]\d+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
-        if (match) {
-          const num   = match[1];
-          const name  = match[2];
-          const frase = match[3] || '';
-          out.push(
+      // Línea de conflicto con letra  " A1. Nombre"
+ if (inTable && /^\s{2,}[A-Z]\d+\./.test(line)) {
+ const match = trimmed.match(/^([A-Z]\d+)\.\s+(.+?)(?:\s+—\s+(.+))?$/);
+ if (match) {
+ const num   = match[1];
+ const name  = match[2];
+ const frase = match[3] || '';
+ out.push(
             `<div class="conflict-item">` +
               `<span class="cnum">${num}</span>` +
               `<span class="cname">${escHtml(name)}</span>` +
               (frase ? `<span class="cfrase">${escHtml(frase)}</span>` : '') +
             `</div>`
           );
-          continue;
+ continue;
         }
       }
 
       // Texto de instrucción dentro de la tabla
-      if (inTable && trimmed && !/^═{2,}/.test(trimmed)) {
-        if (trimmed.startsWith('Pregunta') || trimmed.startsWith('Muéstrale') || trimmed.startsWith('Muestra')) {
-          out.push(`<div class="conflict-note">${escHtml(trimmed)}</div>`);
-          continue;
+ if (inTable && trimmed && !/^═{2,}/.test(trimmed)) {
+ if (trimmed.startsWith('Pregunta') || trimmed.startsWith('Muéstrale') || trimmed.startsWith('Muestra')) {
+ out.push(`<div class="conflict-note">${escHtml(trimmed)}</div>`);
+ continue;
         }
       }
 
       // Fin de tabla
-      if (inTable && /^══/.test(trimmed)) {
-        inTable = false;
+ if (inTable && /^══/.test(trimmed)) {
+ inTable = false;
       }
 
       // ── Líneas normales del protocolo ─────────────────────────────────
-      if (/^MS\s*:/i.test(trimmed)) {
-        out.push(`<span class="ms-line">${escHtml(line)}</span>`);
+ if (/^MS\s*:/i.test(trimmed)) {
+ out.push(`<span class="ms-line">${escHtml(line)}</span>`);
       } else if (/^→/.test(trimmed)) {
-        out.push(`<span class="branch">${escHtml(line)}</span>`);
+ out.push(`<span class="branch">${escHtml(line)}</span>`);
       } else {
-        out.push(escHtml(line));
+ out.push(escHtml(line));
       }
     }
 
     // Smart join: block HTML elements don't need \n between them
-    const result = [];
-    for (let i = 0; i < out.length; i++) {
-      const chunk = out[i];
-      result.push(chunk);
+ const result = [];
+ for (let i = 0; i < out.length; i++) {
+ const chunk = out[i];
+ result.push(chunk);
       // Add newline only between non-block text pieces
-      const isBlockEl = chunk.startsWith('<div') || chunk.endsWith('</div>');
-      const nextIsBlockEl = out[i+1] && (out[i+1].startsWith('<div') || out[i+1].endsWith('</div>'));
-      if (!isBlockEl && !nextIsBlockEl && i < out.length - 1) {
-        result.push('\n');
+ const isBlockEl = chunk.startsWith('<div') || chunk.endsWith('</div>');
+ const nextIsBlockEl = out[i+1] && (out[i+1].startsWith('<div') || out[i+1].endsWith('</div>'));
+ if (!isBlockEl && !nextIsBlockEl && i < out.length - 1) {
+ result.push('\n');
       }
     }
-    return result.join('');
+ return result.join('');
   }
 
-  function escHtml(s) {
-    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ function escHtml(s) {
+ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   }
 
-  function addUserBubble(text) {
-    welcomeEl.style.display = 'none';
-    const div = document.createElement('div');
-    div.className = 'msg msg-user';
-    div.innerHTML = `<div class="bubble">${escHtml(text)}</div>`;
-    messagesEl.appendChild(div);
-    scrollBottom();
+ function addUserBubble(text) {
+ welcomeEl.style.display = 'none';
+ const div = document.createElement('div');
+ div.className = 'msg msg-user';
+ div.innerHTML = `<div class="bubble">${escHtml(text)}</div>`;
+ messagesEl.appendChild(div);
+ scrollBottom();
   }
 
-  function addAIBubble() {
-    const div = document.createElement('div');
-    div.className = 'msg msg-ai';
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
-    div.appendChild(bubble);
-    messagesEl.appendChild(div);
-    scrollBottom();
-    return bubble;
+ function addAIBubble() {
+ const div = document.createElement('div');
+ div.className = 'msg msg-ai';
+ const bubble = document.createElement('div');
+ bubble.className = 'bubble';
+ bubble.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
+ div.appendChild(bubble);
+ messagesEl.appendChild(div);
+ scrollBottom();
+ return bubble;
   }
 
-  function scrollBottom() {
-    messagesEl.scrollTop = messagesEl.scrollHeight;
+ function scrollBottom() {
+ messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   // ── Enviar mensaje ──────────────────────────────────────────────────────────
-  async function sendMessage() {
-    const text = inputEl.value.trim();
-    if (!text || isStreaming) return;
+ async function sendMessage() {
+ const text = inputEl.value.trim();
+ if (!text || isStreaming) return;
 
-    isStreaming = true;
-    sendBtnEl.classList.remove('ready');
-    inputEl.value = '';
-    inputEl.style.height = 'auto';
+ isStreaming = true;
+ sendBtnEl.classList.remove('ready');
+ inputEl.value = '';
+ inputEl.style.height = 'auto';
 
-    addUserBubble(text);
-    const bubble = addAIBubble();
+ addUserBubble(text);
+ const bubble = addAIBubble();
 
-    history.push({ role: 'user', content: text });
+ history.push({ role: 'user', content: text });
 
-    let fullResponse = '';
-    let firstToken = true;
+ let fullResponse = '';
+ let firstToken = true;
 
-    try {
-      const res = await fetch('/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'terapeuta' }),
+ try {
+ const res = await fetch('/chat', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ message: text, history: history.slice(0, -1), mode: 'terapeuta' }),
       });
 
-      if (!res.ok) throw new Error('Error del servidor');
+ if (!res.ok) throw new Error('Error del servidor');
 
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buffer = '';
+ const reader = res.body.getReader();
+ const decoder = new TextDecoder();
+ let buffer = '';
 
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-        buffer += decoder.decode(value, { stream: true });
+ while (true) {
+ const { done, value } = await reader.read();
+ if (done) break;
+ buffer += decoder.decode(value, { stream: true });
 
-        const lines = buffer.split('\n');
-        buffer = lines.pop();
+ const lines = buffer.split('\n');
+ buffer = lines.pop();
 
-        for (const line of lines) {
-          if (!line.startsWith('data: ')) continue;
-          const raw = line.slice(6).trim();
-          if (raw === '[DONE]') break;
-          try {
-            const obj = JSON.parse(raw);
-            if (obj.text) {
-              fullResponse += obj.text;
-              if (firstToken) {
-                bubble.innerHTML = '';
-                firstToken = false;
+ for (const line of lines) {
+ if (!line.startsWith('data: ')) continue;
+ const raw = line.slice(6).trim();
+ if (raw === '[DONE]') break;
+ try {
+ const obj = JSON.parse(raw);
+ if (obj.text) {
+ fullResponse += obj.text;
+ if (firstToken) {
+ bubble.innerHTML = '';
+ firstToken = false;
               }
-              bubble.innerHTML = formatAIText(fullResponse);
-              scrollBottom();
+ bubble.innerHTML = formatAIText(fullResponse);
+ scrollBottom();
             }
           } catch (_) {}
         }
       }
     } catch (err) {
-      bubble.innerHTML = '<span style="color:#f87171">Error de conexión. Intenta de nuevo.</span>';
+ bubble.innerHTML = '<span style="color:#f87171">Error de conexión. Intenta de nuevo.</span>';
     }
 
-    if (fullResponse) {
-      history.push({ role: 'assistant', content: fullResponse });
+ if (fullResponse) {
+ history.push({ role: 'assistant', content: fullResponse });
     }
 
-    isStreaming = false;
-    sendBtnEl.classList.toggle('ready', inputEl.value.trim().length > 0);
-    scrollBottom();
+ isStreaming = false;
+ sendBtnEl.classList.toggle('ready', inputEl.value.trim().length >0);
+ scrollBottom();
   }
-</script>
-
-</body>
-</html>
+</script></body></html>

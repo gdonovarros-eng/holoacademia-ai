@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sinastría · Astrolog iA</title>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
-<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
-<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1">
-<style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Sinastría · Astrolog iA</title><script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=1"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=1"><style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
   --bg: #0b1120; --surface: #111827; --surface2: #1a2236;
@@ -50,9 +38,9 @@ html, body { min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, 
 .form-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 label { font-size:0.72rem; font-weight:600; color:var(--muted); letter-spacing:0.05em; text-transform:uppercase; }
 input[type="text"], input[type="date"], input[type="time"] {
-  background:var(--surface2); border:1px solid var(--border); border-radius:10px;
-  padding:10px 12px; font-size:0.86rem; color:var(--text); outline:none; width:100%;
-  font-family:inherit; -webkit-appearance:none; transition:border-color 0.15s, box-shadow 0.15s;
+ background:var(--surface2); border:1px solid var(--border); border-radius:10px;
+ padding:10px 12px; font-size:0.86rem; color:var(--text); outline:none; width:100%;
+ font-family:inherit; -webkit-appearance:none; transition:border-color 0.15s, box-shadow 0.15s;
 }
 input::placeholder { color:rgba(148,163,184,0.35); }
 .persona-a input:focus { border-color:rgba(236,72,153,0.5); box-shadow:0 0 0 3px rgba(236,72,153,0.08); }
@@ -131,345 +119,197 @@ input::placeholder { color:rgba(148,163,184,0.35); }
   .form-row { grid-template-columns:1fr; }
   .analysis-body { padding:18px; }
 }
-</style>
-</head>
-<body class="mod-page-aurora">
-
-<header class="header">
-  <a class="header-back" href="/astro-home" id="backBtn">← Astrolog iA</a>
-  <div class="header-title">
-    <span style="font-size:1.2rem;">💞</span>
-    <span style="font-size:0.95rem;font-weight:700;">Sinastría & Compatibilidad</span>
-    <span class="header-badge">Astrolog iA</span>
-  </div>
-</header>
-
-<div class="main">
-
-  <!-- FORMULARIO -->
-  <div class="personas-grid">
-
-    <!-- Persona A -->
-    <div class="form-card persona-a">
-      <div class="persona-label">
-        <div class="persona-icon">♀</div>
-        <span class="persona-name-label">Persona A</span>
-      </div>
-      <div class="form-group">
-        <label>Nombre</label>
-        <input type="text" id="nombreA" placeholder="Nombre completo" autocomplete="off">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Fecha de nacimiento</label>
-          <input type="date" id="fechaA">
-        </div>
-        <div class="form-group">
-          <label>Hora</label>
-          <input type="time" id="horaA">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Lugar de nacimiento</label>
-        <input type="text" id="lugarA" placeholder="Ciudad, País" autocomplete="off">
-      </div>
-    </div>
-
-    <!-- Persona B -->
-    <div class="form-card persona-b">
-      <div class="persona-label">
-        <div class="persona-icon">♂</div>
-        <span class="persona-name-label">Persona B</span>
-      </div>
-      <div class="form-group">
-        <label>Nombre</label>
-        <input type="text" id="nombreB" placeholder="Nombre completo" autocomplete="off">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Fecha de nacimiento</label>
-          <input type="date" id="fechaB">
-        </div>
-        <div class="form-group">
-          <label>Hora</label>
-          <input type="time" id="horaB">
-        </div>
-      </div>
-      <div class="form-group">
-        <label>Lugar de nacimiento</label>
-        <input type="text" id="lugarB" placeholder="Ciudad, País" autocomplete="off">
-      </div>
-    </div>
-
-  </div>
-
-  <button class="btn-submit" id="btnSubmit">
-    <span>💞</span>
-    <span id="btnLabel">Analizar compatibilidad</span>
-  </button>
-
-  <!-- RESULTADO -->
-  <div class="result-card" id="resultCard">
-
-    <div class="result-header">
-      <div style="display:flex;align-items:center;gap:8px;">
-        <span style="font-size:1rem;">💞</span>
-        <span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis de Compatibilidad</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span class="result-status" id="resultStatus"></span>
-        <button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button>
-      </div>
-    </div>
-
-    <div class="status-bar" id="statusBar">
-      <div class="spinner"></div>
-      <span id="statusMsg">Iniciando...</span>
-    </div>
-
-    <!-- TABS -->
-    <div class="tab-bar">
-      <button class="tab-btn active" id="tabAnalisis"  onclick="showTab('analisis')">Análisis IA</button>
-      <button class="tab-btn"        id="tabCarta"     onclick="showTab('carta')">Carta Doble</button>
-      <button class="tab-btn"        id="tabAspectos"  onclick="showTab('aspectos')">Aspectos Cruzados</button>
-    </div>
-
-    <!-- Análisis -->
-    <div class="tab-content active" id="panelAnalisis">
-      <div class="analysis-body">
-        <div class="md-content" id="mdContent"></div>
-      </div>
-    </div>
-
-    <!-- Carta doble -->
-    <div class="tab-content" id="panelCarta">
-      <div class="carta-body" id="cartaBody">
-        <div class="carta-loading" id="cartaLoading">
-          <div class="spinner"></div>
-          <span>Generando carta de sinastría...</span>
-        </div>
-        <div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div>
-      </div>
-    </div>
-
-    <!-- Aspectos cruzados -->
-    <div class="tab-content" id="panelAspectos">
-      <div class="asp-body">
-        <table class="asp-table">
-          <thead><tr>
-            <th id="colA">Planeta A</th>
-            <th>Aspecto</th>
-            <th id="colB">Planeta B</th>
-            <th>Orbe</th>
-            <th>Energía</th>
-          </tr></thead>
-          <tbody id="aspTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<script>
+</style></head><body class="mod-page-aurora"><header class="header"><a class="header-back" href="/astro-home" id="backBtn">← Astrolog iA</a><div class="header-title"><span style="font-size:1.2rem;"></span><span style="font-size:0.95rem;font-weight:700;">Sinastría & Compatibilidad</span><span class="header-badge">Astrolog iA</span></div></header><div class="main"><!-- FORMULARIO --><div class="personas-grid"><!-- Persona A --><div class="form-card persona-a"><div class="persona-label"><div class="persona-icon"></div><span class="persona-name-label">Persona A</span></div><div class="form-group"><label>Nombre</label><input type="text" id="nombreA" placeholder="Nombre completo" autocomplete="off"></div><div class="form-row"><div class="form-group"><label>Fecha de nacimiento</label><input type="date" id="fechaA"></div><div class="form-group"><label>Hora</label><input type="time" id="horaA"></div></div><div class="form-group"><label>Lugar de nacimiento</label><input type="text" id="lugarA" placeholder="Ciudad, País" autocomplete="off"></div></div><!-- Persona B --><div class="form-card persona-b"><div class="persona-label"><div class="persona-icon"></div><span class="persona-name-label">Persona B</span></div><div class="form-group"><label>Nombre</label><input type="text" id="nombreB" placeholder="Nombre completo" autocomplete="off"></div><div class="form-row"><div class="form-group"><label>Fecha de nacimiento</label><input type="date" id="fechaB"></div><div class="form-group"><label>Hora</label><input type="time" id="horaB"></div></div><div class="form-group"><label>Lugar de nacimiento</label><input type="text" id="lugarB" placeholder="Ciudad, País" autocomplete="off"></div></div></div><button class="btn-submit" id="btnSubmit"><span></span><span id="btnLabel">Analizar compatibilidad</span></button><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis de Compatibilidad</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner"></div><span id="statusMsg">Iniciando...</span></div><!-- TABS --><div class="tab-bar"><button class="tab-btn active" id="tabAnalisis" onclick="showTab('analisis')">Análisis IA</button><button class="tab-btn" id="tabCarta" onclick="showTab('carta')">Carta Doble</button><button class="tab-btn" id="tabAspectos" onclick="showTab('aspectos')">Aspectos Cruzados</button></div><!-- Análisis --><div class="tab-content active" id="panelAnalisis"><div class="analysis-body"><div class="md-content" id="mdContent"></div></div></div><!-- Carta doble --><div class="tab-content" id="panelCarta"><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span>Generando carta de sinastría...</span></div><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div></div></div><!-- Aspectos cruzados --><div class="tab-content" id="panelAspectos"><div class="asp-body"><table class="asp-table"><thead><tr><th id="colA">Planeta A</th><th>Aspecto</th><th id="colB">Planeta B</th><th>Orbe</th><th>Energía</th></tr></thead><tbody id="aspTableBody"></tbody></table></div></div></div></div><script>
 (function() {
   /* EMBED */
-  const isEmbed = new URLSearchParams(window.location.search).has('embed');
-  if (isEmbed) {
-    document.body.classList.add('embed-mode');
-    document.getElementById('backBtn').target = '_top';
-    function sendH() { window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*'); }
-    sendH(); new ResizeObserver(sendH).observe(document.body);
+ const isEmbed = new URLSearchParams(window.location.search).has('embed');
+ if (isEmbed) {
+ document.body.classList.add('embed-mode');
+ document.getElementById('backBtn').target = '_top';
+ function sendH() { window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*'); }
+ sendH(); new ResizeObserver(sendH).observe(document.body);
   }
 
-  const NOMBRE_P = {
-    sun:'Sol',moon:'Luna',mercury:'Mercurio',venus:'Venus',mars:'Marte',
-    jupiter:'Júpiter',saturn:'Saturno',uranus:'Urano',neptune:'Neptuno',
-    pluto:'Plutón',true_node:'Nodo Norte',chiron:'Quirón'
+ const NOMBRE_P = {
+ sun:'Sol',moon:'Luna',mercury:'Mercurio',venus:'Venus',mars:'Marte',
+ jupiter:'Júpiter',saturn:'Saturno',uranus:'Urano',neptune:'Neptuno',
+ pluto:'Plutón',true_node:'Nodo Norte',chiron:'Quirón'
   };
-  const ASP_CLASS = {
+ const ASP_CLASS = {
     'conjunción':'asp-conj','trígono':'asp-trig','sextil':'asp-sext',
     'oposición':'asp-oposi','cuadrado':'asp-cuad','quincuncio':'asp-quin'
   };
-  const ASP_ENERGIA = {
+ const ASP_ENERGIA = {
     'conjunción':'Fusión / énfasis','trígono':'Fluidez / talento',
     'sextil':'Oportunidad / apoyo','oposición':'Tensión / aprendizaje',
     'cuadrado':'Desafío / crecimiento','quincuncio':'Ajuste / adaptación'
   };
 
-  let rawText='', hadError=false, cursor=null, svgLoaded=false;
-  let _payload=null, _crossData=null;
+ let rawText='', hadError=false, cursor=null, svgLoaded=false;
+ let _payload=null, _crossData=null;
 
-  const btnSubmit = document.getElementById('btnSubmit');
-  const btnLabel  = document.getElementById('btnLabel');
-  const resultCard= document.getElementById('resultCard');
-  const resultTitle=document.getElementById('resultTitle');
-  const resultStatus=document.getElementById('resultStatus');
-  const statusBar = document.getElementById('statusBar');
-  const statusMsg = document.getElementById('statusMsg');
-  const mdContent = document.getElementById('mdContent');
-  const btnCopy   = document.getElementById('btnCopy');
+ const btnSubmit = document.getElementById('btnSubmit');
+ const btnLabel  = document.getElementById('btnLabel');
+ const resultCard= document.getElementById('resultCard');
+ const resultTitle=document.getElementById('resultTitle');
+ const resultStatus=document.getElementById('resultStatus');
+ const statusBar = document.getElementById('statusBar');
+ const statusMsg = document.getElementById('statusMsg');
+ const mdContent = document.getElementById('mdContent');
+ const btnCopy   = document.getElementById('btnCopy');
 
   /* TABS */
-  window.showTab = function(tab) {
+ window.showTab = function(tab) {
     ['analisis','carta','aspectos'].forEach(t => {
-      document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===tab);
-      document.getElementById('panel'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===tab);
+ document.getElementById('tab'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===tab);
+ document.getElementById('panel'+t.charAt(0).toUpperCase()+t.slice(1)).classList.toggle('active', t===tab);
     });
-    if (tab==='carta' && !svgLoaded && _payload) loadSvg();
+ if (tab==='carta' && !svgLoaded && _payload) loadSvg();
   };
 
   /* SVG */
-  function loadSvg() {
-    if (!_payload) return;
-    document.getElementById('cartaLoading').style.display='flex';
-    document.getElementById('cartaSvgWrap').style.display='none';
-    fetch('/astro/carta-sinastria', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(_payload)
+ function loadSvg() {
+ if (!_payload) return;
+ document.getElementById('cartaLoading').style.display='flex';
+ document.getElementById('cartaSvgWrap').style.display='none';
+ fetch('/astro/carta-sinastria', {
+ method:'POST', headers:{'Content-Type':'application/json'},
+ body: JSON.stringify(_payload)
     }).then(r => { if(!r.ok) return r.text().then(t=>{throw new Error(t)}); return r.text(); })
     .then(svg => {
-      document.getElementById('cartaLoading').style.display='none';
-      const w = document.getElementById('cartaSvgWrap');
-      w.innerHTML = svg;
-      w.style.display = 'block';
-      svgLoaded = true;
+ document.getElementById('cartaLoading').style.display='none';
+ const w = document.getElementById('cartaSvgWrap');
+ w.innerHTML = svg;
+ w.style.display = 'block';
+ svgLoaded = true;
     }).catch(e => {
-      document.getElementById('cartaLoading').innerHTML = '<p style="color:#f87171">Error: '+e.message+'</p>';
+ document.getElementById('cartaLoading').innerHTML = '<p style="color:#f87171">Error: '+e.message+'</p>';
     });
   }
 
   /* ASPECTOS TABLE */
-  function fillAspTable(nombre_a, nombre_b, cross) {
-    document.getElementById('colA').textContent = nombre_a;
-    document.getElementById('colB').textContent = nombre_b;
-    const tbody = document.getElementById('aspTableBody');
-    tbody.innerHTML = cross.map(a => {
-      const pA = NOMBRE_P[a.planeta_a]||a.planeta_a;
-      const pB = NOMBRE_P[a.planeta_b]||a.planeta_b;
-      const cls = ASP_CLASS[a.aspecto]||'';
-      const en  = ASP_ENERGIA[a.aspecto]||a.aspecto;
-      return `<tr>
-        <td><strong>${pA}</strong> <small style="color:var(--muted)">${a.signo_a||''}</small></td>
-        <td><span class="asp-badge ${cls}">${a.aspecto}</span></td>
-        <td><strong>${pB}</strong> <small style="color:var(--muted)">${a.signo_b||''}</small></td>
-        <td style="color:var(--muted)">${a.orbe}°</td>
-        <td style="color:var(--muted);font-size:0.78rem">${en}</td>
-      </tr>`;
+ function fillAspTable(nombre_a, nombre_b, cross) {
+ document.getElementById('colA').textContent = nombre_a;
+ document.getElementById('colB').textContent = nombre_b;
+ const tbody = document.getElementById('aspTableBody');
+ tbody.innerHTML = cross.map(a => {
+ const pA = NOMBRE_P[a.planeta_a]||a.planeta_a;
+ const pB = NOMBRE_P[a.planeta_b]||a.planeta_b;
+ const cls = ASP_CLASS[a.aspecto]||'';
+ const en  = ASP_ENERGIA[a.aspecto]||a.aspecto;
+ return `<tr><td><strong>${pA}</strong><small style="color:var(--muted)">${a.signo_a||''}</small></td><td><span class="asp-badge ${cls}">${a.aspecto}</span></td><td><strong>${pB}</strong><small style="color:var(--muted)">${a.signo_b||''}</small></td><td style="color:var(--muted)">${a.orbe}°</td><td style="color:var(--muted);font-size:0.78rem">${en}</td></tr>`;
     }).join('');
   }
 
   /* CURSOR */
-  function addCursor() {
-    removeCursor();
-    cursor = document.createElement('span');
-    cursor.className='cursor';
-    mdContent.appendChild(cursor);
+ function addCursor() {
+ removeCursor();
+ cursor = document.createElement('span');
+ cursor.className='cursor';
+ mdContent.appendChild(cursor);
   }
-  function removeCursor() {
-    if(cursor && cursor.parentNode) cursor.parentNode.removeChild(cursor);
-    cursor=null;
+ function removeCursor() {
+ if(cursor && cursor.parentNode) cursor.parentNode.removeChild(cursor);
+ cursor=null;
   }
 
   /* RENDER */
-  let renderTimer=null;
-  function schedRender() {
-    if(renderTimer) clearTimeout(renderTimer);
-    renderTimer = setTimeout(()=>{
-      removeCursor();
-      mdContent.innerHTML = marked.parse(rawText);
-      if(resultStatus.classList.contains('streaming')) addCursor();
+ let renderTimer=null;
+ function schedRender() {
+ if(renderTimer) clearTimeout(renderTimer);
+ renderTimer = setTimeout(()=>{
+ removeCursor();
+ mdContent.innerHTML = marked.parse(rawText);
+ if(resultStatus.classList.contains('streaming')) addCursor();
     }, 60);
   }
 
   /* SUBMIT */
-  btnSubmit.addEventListener('click', function() {
-    const nombreA=document.getElementById('nombreA').value.trim();
-    const fechaA =document.getElementById('fechaA').value;
-    const horaA  =document.getElementById('horaA').value;
-    const lugarA =document.getElementById('lugarA').value.trim();
-    const nombreB=document.getElementById('nombreB').value.trim();
-    const fechaB =document.getElementById('fechaB').value;
-    const horaB  =document.getElementById('horaB').value;
-    const lugarB =document.getElementById('lugarB').value.trim();
+ btnSubmit.addEventListener('click', function() {
+ const nombreA=document.getElementById('nombreA').value.trim();
+ const fechaA =document.getElementById('fechaA').value;
+ const horaA  =document.getElementById('horaA').value;
+ const lugarA =document.getElementById('lugarA').value.trim();
+ const nombreB=document.getElementById('nombreB').value.trim();
+ const fechaB =document.getElementById('fechaB').value;
+ const horaB  =document.getElementById('horaB').value;
+ const lugarB =document.getElementById('lugarB').value.trim();
 
-    if (!nombreA||!fechaA||!horaA||!lugarA||!nombreB||!fechaB||!horaB||!lugarB) {
-      alert('Por favor completa todos los campos de ambas personas.'); return;
+ if (!nombreA||!fechaA||!horaA||!lugarA||!nombreB||!fechaB||!horaB||!lugarB) {
+ alert('Por favor completa todos los campos de ambas personas.'); return;
     }
 
-    _payload = { nombre_a:nombreA, fecha_a:fechaA, hora_a:horaA, lugar_a:lugarA,
-                 nombre_b:nombreB, fecha_b:fechaB, hora_b:horaB, lugar_b:lugarB };
+ _payload = { nombre_a:nombreA, fecha_a:fechaA, hora_a:horaA, lugar_a:lugarA,
+ nombre_b:nombreB, fecha_b:fechaB, hora_b:horaB, lugar_b:lugarB };
 
-    rawText=''; hadError=false; svgLoaded=false;
-    mdContent.innerHTML='';
-    btnCopy.style.display='none';
-    document.getElementById('aspTableBody').innerHTML='';
-    resultCard.classList.add('visible');
-    resultTitle.textContent = nombreA + ' & ' + nombreB;
-    resultStatus.textContent='Calculando...';
-    resultStatus.className='result-status streaming';
-    statusBar.classList.remove('hidden');
-    statusMsg.textContent='Preparando...';
-    btnSubmit.disabled=true;
-    btnLabel.textContent='Analizando...';
-    showTab('analisis');
+ rawText=''; hadError=false; svgLoaded=false;
+ mdContent.innerHTML='';
+ btnCopy.style.display='none';
+ document.getElementById('aspTableBody').innerHTML='';
+ resultCard.classList.add('visible');
+ resultTitle.textContent = nombreA + ' & ' + nombreB;
+ resultStatus.textContent='Calculando...';
+ resultStatus.className='result-status streaming';
+ statusBar.classList.remove('hidden');
+ statusMsg.textContent='Preparando...';
+ btnSubmit.disabled=true;
+ btnLabel.textContent='Analizando...';
+ showTab('analisis');
 
-    setTimeout(()=>{ resultCard.scrollIntoView({behavior:'smooth',block:'start'}); },200);
+ setTimeout(()=>{ resultCard.scrollIntoView({behavior:'smooth',block:'start'}); },200);
 
-    fetch('/astro/sinastria-stream', {
-      method:'POST', headers:{'Content-Type':'application/json','Accept':'text/event-stream'},
-      body: JSON.stringify(_payload)
+ fetch('/astro/sinastria-stream', {
+ method:'POST', headers:{'Content-Type':'application/json','Accept':'text/event-stream'},
+ body: JSON.stringify(_payload)
     }).then(res => {
-      if(!res.ok) throw new Error('Error '+res.status);
-      const reader=res.body.getReader(), dec=new TextDecoder();
-      let buf='';
+ if(!res.ok) throw new Error('Error '+res.status);
+ const reader=res.body.getReader(), dec=new TextDecoder();
+ let buf='';
 
-      function processLine(line) {
-        if(!line.startsWith('data: ')) return;
-        const d=line.slice(6).trim();
-        if(d==='[DONE]') {
-          removeCursor();
-          if(!hadError) {
-            mdContent.innerHTML=marked.parse(rawText);
-            resultStatus.textContent='Completado';
-            resultStatus.className='result-status done';
-            btnCopy.style.display='inline-flex';
+ function processLine(line) {
+ if(!line.startsWith('data: ')) return;
+ const d=line.slice(6).trim();
+ if(d==='[DONE]') {
+ removeCursor();
+ if(!hadError) {
+ mdContent.innerHTML=marked.parse(rawText);
+ resultStatus.textContent='Completado';
+ resultStatus.className='result-status done';
+ btnCopy.style.display='inline-flex';
             // Precargar tabla de aspectos en background
-            if(_crossData) fillAspTable(nombreA, nombreB, _crossData);
+ if(_crossData) fillAspTable(nombreA, nombreB, _crossData);
           }
-          statusBar.classList.add('hidden');
-          btnSubmit.disabled=false;
-          btnLabel.textContent='Analizar compatibilidad';
-          if(isEmbed) setTimeout(()=>window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*'),400);
-          return;
+ statusBar.classList.add('hidden');
+ btnSubmit.disabled=false;
+ btnLabel.textContent='Analizar compatibilidad';
+ if(isEmbed) setTimeout(()=>window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*'),400);
+ return;
         }
-        try {
-          const obj=JSON.parse(d);
-          if(obj.status)       statusMsg.textContent=obj.status;
-          else if(obj.cross)   { _crossData=obj.cross; fillAspTable(nombreA,nombreB,obj.cross); }
-          else if(obj.token!==undefined) { rawText+=obj.token; schedRender(); }
-          else if(obj.error)   { hadError=true; resultStatus.textContent='Error'; resultStatus.className='result-status error'; mdContent.innerHTML='<p style="color:#f87171;padding:8px 0">⚠ '+obj.error+'</p>'; btnSubmit.disabled=false; btnLabel.textContent='Reintentar'; }
+ try {
+ const obj=JSON.parse(d);
+ if(obj.status) statusMsg.textContent=obj.status;
+ else if(obj.cross)   { _crossData=obj.cross; fillAspTable(nombreA,nombreB,obj.cross); }
+ else if(obj.token!==undefined) { rawText+=obj.token; schedRender(); }
+ else if(obj.error)   { hadError=true; resultStatus.textContent='Error'; resultStatus.className='result-status error'; mdContent.innerHTML='<p style="color:#f87171;padding:8px 0"> '+obj.error+'</p>'; btnSubmit.disabled=false; btnLabel.textContent='Reintentar'; }
         } catch(ex){}
       }
 
-      function read() {
-        reader.read().then(chunk=>{
-          if(chunk.done) return;
-          buf+=dec.decode(chunk.value,{stream:true});
-          const lines=buf.split('\n'); buf=lines.pop();
-          lines.forEach(processLine);
-          read();
+ function read() {
+ reader.read().then(chunk=>{
+ if(chunk.done) return;
+ buf+=dec.decode(chunk.value,{stream:true});
+ const lines=buf.split('\n'); buf=lines.pop();
+ lines.forEach(processLine);
+ read();
         }).catch(e=>{ resultStatus.textContent='Error de conexión'; resultStatus.className='result-status error'; statusBar.classList.add('hidden'); btnSubmit.disabled=false; btnLabel.textContent='Reintentar'; });
       }
-      read();
+ read();
     }).catch(e=>{ statusMsg.textContent='Error al conectar.'; statusBar.classList.add('hidden'); btnSubmit.disabled=false; btnLabel.textContent='Reintentar'; });
   });
 
   /* COPY */
-  btnCopy.addEventListener('click',()=>{
-    navigator.clipboard.writeText(rawText).then(()=>{ btnCopy.textContent='¡Copiado!'; setTimeout(()=>btnCopy.textContent='Copiar',2000); });
+ btnCopy.addEventListener('click',()=>{
+ navigator.clipboard.writeText(rawText).then(()=>{ btnCopy.textContent='¡Copiado!'; setTimeout(()=>btnCopy.textContent='Copiar',2000); });
   });
 })();
-</script>
-</body>
-</html>
+</script></body></html>
