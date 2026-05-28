@@ -1,0 +1,196 @@
+/* ═════════════════════════════════════════════════════════════════════════
+   HOLO MODULE OVERRIDE · Fuerza body claro + Inter + accent del módulo
+   Sobreescribe las variables CSS legacy de cada módulo dark.
+   Importar DESPUÉS de holo_design_system.css y holo_module.css.
+   ═════════════════════════════════════════════════════════════════════════ */
+
+/* ─── Reset de variables legacy a paleta clara ─── */
+body {
+  --bg:        #FFFFFF !important;
+  --bg-alt:    #FAFAFA !important;
+  --bg-soft:   #F8F6F1 !important;
+  --surface:   #FFFFFF !important;
+  --surface2:  #FAFAFA !important;
+  --surface-alt: #F4F4F5 !important;
+  --border:    #EAEAEA !important;
+  --border-strong: #D4D4D4 !important;
+  --text:      #0E1116 !important;
+  --text-strong: #000000 !important;
+  --muted:     #4A4F5C !important;
+  --muted2:    #8B8F9A !important;
+
+  /* Forzar tipografía Inter */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background: #FFFFFF !important;
+  color: #0E1116 !important;
+}
+
+/* Force Inter en todos los elementos comunes */
+body input,
+body textarea,
+body button,
+body select,
+body p, body h1, body h2, body h3, body h4, body h5, body h6,
+body label, body span, body div, body a, body li {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+}
+
+/* ═════════ ACCENT COLOR POR MÓDULO ═════════ */
+/* Cada módulo declara su clase en <body> para heredar el accent del card */
+
+/* Violet — Sinodal IA */
+body.mod-page-violet {
+  --acc: #6D5896 !important;
+  --acc-soft: #B19FD0 !important;
+  --acc-bg: rgba(109, 88, 150, 0.08) !important;
+  --acc-border: rgba(109, 88, 150, 0.25) !important;
+}
+
+/* Teal — Rastreo */
+body.mod-page-teal {
+  --acc: #0EA5A4 !important;
+  --acc-soft: #5EEAD4 !important;
+  --acc-bg: rgba(14, 165, 164, 0.08) !important;
+  --acc-border: rgba(14, 165, 164, 0.25) !important;
+}
+
+/* Sky — Pares */
+body.mod-page-sky {
+  --acc: #2563EB !important;
+  --acc-soft: #93C5FD !important;
+  --acc-bg: rgba(37, 99, 235, 0.08) !important;
+  --acc-border: rgba(37, 99, 235, 0.25) !important;
+}
+
+/* Amber — Terapeuta (asistente en vivo) */
+body.mod-page-amber {
+  --acc: #D97706 !important;
+  --acc-soft: #FCD34D !important;
+  --acc-bg: rgba(217, 119, 6, 0.08) !important;
+  --acc-border: rgba(217, 119, 6, 0.25) !important;
+}
+
+/* Coral — Salud */
+body.mod-page-coral {
+  --acc: #DC2626 !important;
+  --acc-soft: #FCA5A5 !important;
+  --acc-bg: rgba(220, 38, 38, 0.08) !important;
+  --acc-border: rgba(220, 38, 38, 0.25) !important;
+}
+
+/* Aurora — Astrología */
+body.mod-page-aurora {
+  --acc: #6D5896 !important;
+  --acc-soft: #C4B5FD !important;
+  --acc-bg: rgba(109, 88, 150, 0.08) !important;
+  --acc-border: rgba(109, 88, 150, 0.25) !important;
+}
+
+/* Sage — Numerología */
+body.mod-page-sage {
+  --acc: #4F7942 !important;
+  --acc-soft: #86EFAC !important;
+  --acc-bg: rgba(79, 121, 66, 0.08) !important;
+  --acc-border: rgba(79, 121, 66, 0.25) !important;
+}
+
+/* Pink — Tarot */
+body.mod-page-pink {
+  --acc: #C2185B !important;
+  --acc-soft: #F472B6 !important;
+  --acc-bg: rgba(194, 24, 91, 0.08) !important;
+  --acc-border: rgba(194, 24, 91, 0.25) !important;
+}
+
+/* Terra — Horóscopo */
+body.mod-page-terra {
+  --acc: #B45309 !important;
+  --acc-soft: #FCA5A5 !important;
+  --acc-bg: rgba(180, 83, 9, 0.08) !important;
+  --acc-border: rgba(180, 83, 9, 0.25) !important;
+}
+
+/* ═════════ COMPONENTES COMUNES ENCIMA DEL OVERRIDE ═════════ */
+
+/* Botones primarios con accent del módulo */
+body[class*="mod-page-"] button.primary,
+body[class*="mod-page-"] .btn-primary,
+body[class*="mod-page-"] button[type="submit"]:not(.btn-icon):not(.btn-ghost) {
+  background: var(--acc) !important;
+  color: #FFFFFF !important;
+  border-color: var(--acc) !important;
+}
+body[class*="mod-page-"] button.primary:hover,
+body[class*="mod-page-"] .btn-primary:hover {
+  filter: brightness(0.92) !important;
+}
+
+/* Links con accent */
+body[class*="mod-page-"] a:not(.holo-module-back):not(.idx-card):not(.idx-util) {
+  color: var(--acc);
+}
+
+/* Inputs claros */
+body[class*="mod-page-"] input[type="text"],
+body[class*="mod-page-"] input[type="search"],
+body[class*="mod-page-"] input[type="email"],
+body[class*="mod-page-"] input[type="number"],
+body[class*="mod-page-"] input[type="date"],
+body[class*="mod-page-"] textarea,
+body[class*="mod-page-"] select {
+  background: #FFFFFF !important;
+  color: #0E1116 !important;
+  border: 1px solid #D4D4D4 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+body[class*="mod-page-"] input::placeholder,
+body[class*="mod-page-"] textarea::placeholder {
+  color: #8B8F9A !important;
+}
+body[class*="mod-page-"] input:focus,
+body[class*="mod-page-"] textarea:focus,
+body[class*="mod-page-"] select:focus {
+  border-color: var(--acc) !important;
+  box-shadow: 0 0 0 3px var(--acc-bg) !important;
+  outline: none !important;
+}
+
+/* Cards / panels secundarios con fondo blanco */
+body[class*="mod-page-"] .panel,
+body[class*="mod-page-"] .card,
+body[class*="mod-page-"] .form-card,
+body[class*="mod-page-"] .result-card {
+  background: #FFFFFF !important;
+  border: 1px solid #EAEAEA !important;
+  color: #0E1116 !important;
+}
+
+/* Sidebar/columnas con fondo soft */
+body[class*="mod-page-"] aside,
+body[class*="mod-page-"] .sidebar,
+body[class*="mod-page-"] .col-der,
+body[class*="mod-page-"] .col-izq {
+  background: #FAFAFA !important;
+  color: #0E1116 !important;
+}
+
+/* Texto en general */
+body[class*="mod-page-"] p,
+body[class*="mod-page-"] li,
+body[class*="mod-page-"] label,
+body[class*="mod-page-"] .label {
+  color: #0E1116 !important;
+}
+body[class*="mod-page-"] .muted,
+body[class*="mod-page-"] .hint,
+body[class*="mod-page-"] small {
+  color: #4A4F5C !important;
+}
+
+/* Headers de sección dentro del módulo */
+body[class*="mod-page-"] h1,
+body[class*="mod-page-"] h2,
+body[class*="mod-page-"] h3,
+body[class*="mod-page-"] h4 {
+  color: #0E1116 !important;
+}
