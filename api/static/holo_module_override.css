@@ -194,3 +194,112 @@ body[class*="mod-page-"] h3,
 body[class*="mod-page-"] h4 {
   color: #0E1116 !important;
 }
+
+/* ═════════ FORZAR FONDOS BLANCOS EN CARDS LEGACY ═════════ */
+/* Algunos módulos (astro-home, terapias, etc.) usan gradients oscuros en cards */
+body[class*="mod-page-"] .tool-card,
+body[class*="mod-page-"] .module-card,
+body[class*="mod-page-"] .mod-card,
+body[class*="mod-page-"] .feature-card,
+body[class*="mod-page-"] .signo-card,
+body[class*="mod-page-"] .card,
+body[class*="mod-page-"] .panel,
+body[class*="mod-page-"] .form-card,
+body[class*="mod-page-"] .result-card,
+body[class*="mod-page-"] .grid-card,
+body[class*="mod-page-"] .info-card {
+  background-image: none !important;
+  background-color: #FFFFFF !important;
+  border: 1px solid #EAEAEA !important;
+  color: #0E1116 !important;
+  box-shadow: 0 2px 8px rgba(14, 17, 22, 0.04) !important;
+}
+
+/* Hover de cards: subtle lift + accent border */
+body[class*="mod-page-"] .tool-card:hover,
+body[class*="mod-page-"] .module-card:hover,
+body[class*="mod-page-"] .mod-card:hover,
+body[class*="mod-page-"] .feature-card:hover,
+body[class*="mod-page-"] .signo-card:hover {
+  border-color: var(--acc) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 12px 28px rgba(14, 17, 22, 0.10) !important;
+}
+
+/* Títulos dentro de cards */
+body[class*="mod-page-"] .tool-card h1,
+body[class*="mod-page-"] .tool-card h2,
+body[class*="mod-page-"] .tool-card h3,
+body[class*="mod-page-"] .tool-card h4,
+body[class*="mod-page-"] .tool-card .tool-title,
+body[class*="mod-page-"] .module-card h3,
+body[class*="mod-page-"] .module-card .title,
+body[class*="mod-page-"] .signo-card h3,
+body[class*="mod-page-"] .card h3 {
+  color: #0E1116 !important;
+}
+
+/* Descripciones dentro de cards */
+body[class*="mod-page-"] .tool-card .tool-desc,
+body[class*="mod-page-"] .tool-card p,
+body[class*="mod-page-"] .module-card p,
+body[class*="mod-page-"] .signo-card p,
+body[class*="mod-page-"] .card p {
+  color: #4A4F5C !important;
+}
+
+/* Labels / categories */
+body[class*="mod-page-"] .tool-label,
+body[class*="mod-page-"] .tool-badge-row .tool-label,
+body[class*="mod-page-"] .card-label,
+body[class*="mod-page-"] .module-label {
+  color: var(--acc) !important;
+  background: var(--acc-bg) !important;
+  border-color: var(--acc-border) !important;
+}
+
+/* Features / tags dentro de cards */
+body[class*="mod-page-"] .tool-feat,
+body[class*="mod-page-"] .feature-tag,
+body[class*="mod-page-"] .tag,
+body[class*="mod-page-"] .chip {
+  background: #F4F4F5 !important;
+  color: #4A4F5C !important;
+  border: 1px solid #EAEAEA !important;
+}
+
+/* Icon containers dentro de cards (preservar coloreado pero asegurar contraste) */
+body[class*="mod-page-"] .tool-card .tool-icon {
+  background: var(--acc-bg) !important;
+  color: var(--acc) !important;
+}
+
+/* Hero sections internas del módulo (background gradient oscuro → blanco) */
+body[class*="mod-page-"] .hero,
+body[class*="mod-page-"] .module-hero,
+body[class*="mod-page-"] .page-hero {
+  background-image: none !important;
+  background-color: transparent !important;
+  color: #0E1116 !important;
+}
+
+/* CTA links dentro de cards */
+body[class*="mod-page-"] .tool-card .tool-cta,
+body[class*="mod-page-"] .card-cta,
+body[class*="mod-page-"] .module-card .cta {
+  color: var(--acc) !important;
+}
+
+/* Banners / featured */
+body[class*="mod-page-"] .banner,
+body[class*="mod-page-"] .featured-banner {
+  background-image: none !important;
+  background-color: var(--acc-bg) !important;
+  color: #0E1116 !important;
+  border: 1px solid var(--acc-border) !important;
+}
+body[class*="mod-page-"] .banner h1,
+body[class*="mod-page-"] .banner h2,
+body[class*="mod-page-"] .banner h3 {
+  color: #0E1116 !important;
+}
