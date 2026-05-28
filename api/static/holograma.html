@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="es" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastreo del Holograma · Holoacadem-iA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=4">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=1">
+<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2">
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   RASTREO DEL HOLOGRAMA · Plantilla visual fiel al Manual Lavín pág. 45
+   Aurora theme (violet→pink→amber gradient)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+body.holo-body { background: var(--holo-bg); color: var(--holo-text); }
+
+.holo-module-icon.mod-aurora {
+  background: linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #F472B6 100%);
+}
+
+:root {
+  --acc: #8B5CF6;
+  --acc-bg: rgba(139,92,246,0.08);
+  --acc-border: rgba(139,92,246,0.25);
+  --acc-grad: linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #F472B6 100%);
+}
+
+/* Page container */
+.h-page {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* Hero del módulo */
+.h-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.h-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--acc-bg);
+  border: 1px solid var(--acc-border);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6D28D9;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+.h-hero-eyebrow-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #8B5CF6;
+}
+.h-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #0E1116;
+  margin: 0 0 16px;
+}
+.h-hero h1 em {
+  font-style: italic;
+  background: var(--acc-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.h-hero p {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #4A4F5C;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ─── Toolbar (consultante + acciones) ─── */
+.h-toolbar {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 16px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  margin-bottom: 32px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .h-toolbar { grid-template-columns: 1fr; }
+}
+.h-tool-field label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6E6B62;
+  margin-bottom: 6px;
+}
+.h-tool-field input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #0E1116;
+  background: transparent;
+  border: 0;
+  border-bottom: 1.5px solid #EAEAEA;
+  padding: 6px 0;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.h-tool-field input:focus {
+  border-bottom-color: var(--acc);
+}
+.h-tool-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.h-btn {
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+.h-btn-primary {
+  background: var(--acc-grad);
+  color: #FFFFFF;
+}
+.h-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.25);
+}
+.h-btn-secondary {
+  background: #F4F4F5;
+  color: #0E1116;
+  border: 1px solid #EAEAEA;
+}
+.h-btn-secondary:hover { background: #E5E3DE; }
+.h-btn-ghost {
+  background: transparent;
+  color: #4A4F5C;
+}
+.h-btn-ghost:hover { background: #F4F4F5; }
+
+/* ─── Grid del Holograma ─── */
+.h-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 1024px) {
+  .h-grid { grid-template-columns: 1fr; }
+}
+
+/* Card base */
+.h-card {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 16px;
+  padding: 24px;
+}
+.h-card-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #6D28D9;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.h-card-title::before {
+  content: '';
+  width: 14px; height: 14px;
+  background: var(--acc-grad);
+  border-radius: 4px;
+}
+
+/* ─── Campos del Holograma (11 etiquetas) ─── */
+.h-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.h-field {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  transition: all 0.15s;
+}
+.h-field:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+}
+.h-field-code {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #6D28D9;
+  letter-spacing: 0.02em;
+  text-align: center;
+  padding: 4px 0;
+  background: rgba(139,92,246,0.08);
+  border-radius: 6px;
+}
+.h-field-label-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.h-field-name {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6E6B62;
+}
+.h-field-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #0E1116;
+  background: transparent;
+  border: 0;
+  padding: 2px 0;
+  outline: none;
+}
+.h-field-input::placeholder {
+  color: #B8B1A0;
+  font-weight: 400;
+}
+
+/* ─── Recesión de Edad (timing) ─── */
+.h-re-block {
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 12px;
+  padding: 16px;
+}
+.h-re-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: #6D28D9;
+  margin-bottom: 12px;
+}
+.h-re-life {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.h-re-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  color: #4A4F5C;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-re-chip:hover {
+  border-color: var(--acc-border);
+  color: #6D28D9;
+}
+.h-re-chip.active {
+  background: var(--acc-grad);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+/* Trimestres + meses */
+.h-trim-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+@media (max-width: 768px) {
+  .h-trim-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.h-trim {
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-trim:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+}
+.h-trim.active {
+  border-color: var(--acc);
+  background: var(--acc-bg);
+}
+.h-trim-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6E6B62;
+  margin-bottom: 6px;
+}
+.h-trim-months {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.h-trim-month {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #4A4F5C;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.h-trim-month:hover { background: #F4F4F5; }
+.h-trim-month.active {
+  background: var(--acc);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Quincena / semana */
+.h-week-block {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.h-week-chip {
+  font-size: 0.72rem;
+  padding: 6px 10px;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-week-chip:hover { border-color: var(--acc-border); }
+.h-week-chip.active {
+  background: var(--acc);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+.h-week-label { font-weight: 600; color: #6E6B62; }
+.h-week-days { color: #4A4F5C; font-weight: 500; }
+.h-week-chip.active .h-week-label,
+.h-week-chip.active .h-week-days { color: #FFFFFF; }
+
+/* ─── Sistema Constelacional ─── */
+.h-const-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+@media (max-width: 640px) {
+  .h-const-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.h-const-item {
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-const-item:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+}
+.h-const-item.active {
+  background: var(--acc-grad);
+  border-color: transparent;
+  color: #FFFFFF;
+}
+.h-const-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #6D28D9;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.h-const-item.active .h-const-num { color: #FFFFFF; }
+.h-const-name {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #0E1116;
+}
+.h-const-item.active .h-const-name { color: #FFFFFF; }
+
+/* ─── Árbol Transgeneracional ─── */
+.h-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.h-tree-gen {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.h-tree-gen-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6E6B62;
+}
+.h-tree-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+}
+.h-tree-cell {
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #4A4F5C;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-tree-cell:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+  color: #6D28D9;
+}
+.h-tree-cell.active {
+  background: var(--acc-grad);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+.h-tree-cell.parents {
+  min-width: 80px;
+  background: rgba(139,92,246,0.05);
+}
+
+/* ─── Notas ─── */
+.h-notes {
+  width: 100%;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: #0E1116;
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  padding: 12px 14px;
+  outline: none;
+  resize: vertical;
+  line-height: 1.5;
+}
+.h-notes:focus {
+  border-color: var(--acc);
+  background: #FFFFFF;
+}
+
+/* ─── Status bar / saved indicator ─── */
+.h-status {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #0E1116;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(14, 17, 22, 0.3);
+  display: none;
+  align-items: center;
+  gap: 8px;
+  z-index: 1000;
+  animation: h-slide-in 0.3s ease;
+}
+.h-status.visible { display: inline-flex; }
+.h-status::before {
+  content: '';
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+}
+@keyframes h-slide-in {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ─── DRAWER · Tablas de rastreo ─── */
+.h-tables-toggle {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 100;
+  background: var(--acc-grad);
+  color: #FFFFFF;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(139,92,246,0.35);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+.h-tables-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(139,92,246,0.45);
+}
+.h-tables-toggle svg {
+  width: 18px; height: 18px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+}
+.h-tables-drawer {
+  position: fixed;
+  top: 0; right: -560px;
+  width: 540px;
+  max-width: 92vw;
+  height: 100vh;
+  background: #FFFFFF;
+  box-shadow: -16px 0 40px rgba(14,17,22,0.16);
+  z-index: 999;
+  transition: right 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  display: flex;
+  flex-direction: column;
+}
+.h-tables-drawer.open { right: 0; }
+.h-tables-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(14,17,22,0.4);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+.h-tables-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.h-drawer-header {
+  padding: 22px 28px 16px;
+  border-bottom: 1px solid #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-shrink: 0;
+}
+.h-drawer-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0E1116;
+  margin: 0;
+}
+.h-drawer-sub {
+  font-size: 0.78rem;
+  color: #6E6B62;
+  margin-top: 2px;
+}
+.h-drawer-close {
+  width: 36px; height: 36px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4A4F5C;
+  font-size: 1.4rem;
+  display: flex; align-items: center; justify-content: center;
+}
+.h-drawer-close:hover { background: #F4F4F5; }
+
+/* Tabs de las tablas */
+.h-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 12px 20px;
+  border-bottom: 1px solid #EAEAEA;
+  flex-shrink: 0;
+}
+.h-tab {
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid #EAEAEA;
+  color: #4A4F5C;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.h-tab:hover {
+  border-color: var(--acc-border);
+  color: #6D28D9;
+}
+.h-tab.active {
+  background: var(--acc-grad);
+  color: #FFFFFF;
+  border-color: transparent;
+}
+
+/* Search box */
+.h-drawer-search {
+  padding: 12px 20px 8px;
+  flex-shrink: 0;
+}
+.h-search-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.88rem;
+  padding: 10px 14px;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.15s;
+  background: #FAFAFA;
+}
+.h-search-input:focus {
+  border-color: var(--acc);
+  background: #FFFFFF;
+}
+
+/* Lista de items */
+.h-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 4px 20px 20px;
+}
+.h-tabla-desc {
+  font-size: 0.82rem;
+  color: #6E6B62;
+  line-height: 1.5;
+  padding: 8px 12px;
+  background: var(--acc-bg);
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.h-tabla-item {
+  padding: 12px 14px;
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-tabla-item:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+  transform: translateX(2px);
+}
+.h-tabla-item-name {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: #0E1116;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.h-tabla-item-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 6px;
+  background: var(--acc);
+  color: #FFFFFF;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.h-tabla-item-detail {
+  font-size: 0.78rem;
+  color: #4A4F5C;
+  line-height: 1.5;
+}
+.h-tabla-item-detail strong {
+  color: #0E1116;
+  font-weight: 600;
+}
+.h-tabla-item-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+.h-tabla-pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  color: #4A4F5C;
+}
+.h-tabla-pill.amber  { background: rgba(217,119,6,0.10);  color: #B45309; border-color: rgba(217,119,6,0.25); }
+.h-tabla-pill.rose   { background: rgba(220,38,38,0.08);  color: #B91C1C; border-color: rgba(220,38,38,0.2); }
+.h-tabla-pill.sage   { background: rgba(79,121,66,0.10);  color: #3F5734; border-color: rgba(79,121,66,0.25); }
+.h-tabla-pill.violet { background: rgba(139,92,246,0.10); color: #6D28D9; border-color: rgba(139,92,246,0.25); }
+
+/* ─── Hologramas guardados (modal) ─── */
+.h-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 17, 22, 0.75);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.h-modal-overlay.visible { display: flex; }
+.h-modal {
+  background: #FFFFFF;
+  border-radius: 18px;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.h-modal-header {
+  padding: 22px 28px;
+  border-bottom: 1px solid #EAEAEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.h-modal-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0E1116;
+}
+.h-modal-close {
+  width: 32px; height: 32px;
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #4A4F5C;
+  font-size: 1.3rem;
+}
+.h-modal-close:hover { background: #F4F4F5; }
+.h-modal-body {
+  padding: 20px 28px;
+  overflow-y: auto;
+}
+.h-saved-item {
+  padding: 14px 16px;
+  background: #FAFAFA;
+  border: 1px solid #EAEAEA;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.h-saved-item:hover {
+  border-color: var(--acc-border);
+  background: var(--acc-bg);
+}
+.h-saved-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0E1116;
+  margin-bottom: 4px;
+}
+.h-saved-date {
+  font-size: 0.8rem;
+  color: #6E6B62;
+}
+.h-saved-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.h-saved-action {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  cursor: pointer;
+  color: #4A4F5C;
+}
+.h-saved-action:hover {
+  border-color: var(--acc);
+  color: var(--acc);
+}
+.h-saved-action.delete:hover {
+  border-color: #DC2626;
+  color: #DC2626;
+}
+.h-saved-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6E6B62;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+<body class="holo-body mod-page-aurora">
+
+<!-- Header unificado -->
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Inicio</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-aurora">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/><path d="M2 12h2M20 12h2M12 2v2M12 20v2"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Método Lavín · Avanzado</div>
+        <div class="holo-module-title">Rastreo del Holograma</div>
+      </div>
+    </div>
+    <button class="h-btn h-btn-ghost" onclick="openSavedModal()">
+      Hologramas guardados
+    </button>
+  </div>
+</header>
+
+<main class="h-page">
+
+  <!-- Hero -->
+  <section class="h-hero">
+    <span class="h-hero-eyebrow">
+      <span class="h-hero-eyebrow-dot"></span>
+      Plantilla diagnóstica del Método Lavín
+    </span>
+    <h1>Identifica el <em>evento exacto</em> del conflicto</h1>
+    <p>Hoja de trabajo para capturar todos los componentes del holograma de un caso: recesión de edad, emoción, persona implicada, capa embrionaria, par biomagnético, chakra, meridiano, sistema constelacional y árbol transgeneracional.</p>
+  </section>
+
+  <!-- Toolbar -->
+  <div class="h-toolbar">
+    <div class="h-tool-field">
+      <label for="consultante-nombre">Consultante</label>
+      <input type="text" id="consultante-nombre" placeholder="Nombre del consultante…" />
+    </div>
+    <div class="h-tool-field">
+      <label for="consultante-fecha">Fecha de la sesión</label>
+      <input type="date" id="consultante-fecha" />
+    </div>
+    <div class="h-tool-actions">
+      <button class="h-btn h-btn-secondary" onclick="clearAll()">Limpiar</button>
+      <button class="h-btn h-btn-primary" onclick="saveHolograma()">Guardar holograma</button>
+    </div>
+  </div>
+
+  <!-- ═════ Grid principal ═════ -->
+  <div class="h-grid">
+
+    <!-- ─── Columna izquierda: Campos H + RE + Constelacional ─── -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+
+      <!-- Campos del Holograma -->
+      <div class="h-card">
+        <div class="h-card-title">Componentes del holograma</div>
+        <div class="h-fields" id="hFields"></div>
+      </div>
+
+      <!-- Sistema Constelacional -->
+      <div class="h-card">
+        <div class="h-card-title">Sistema constelacional</div>
+        <div class="h-const-grid" id="hConstGrid"></div>
+      </div>
+
+    </div>
+
+    <!-- ─── Columna derecha: Recesión + Árbol + Notas ─── -->
+    <div style="display:flex; flex-direction:column; gap:20px;">
+
+      <!-- Recesión de Edad -->
+      <div class="h-card">
+        <div class="h-card-title">Recesión de edad · etapa de vida</div>
+        <div class="h-re-life" id="hLifeChips"></div>
+        <div class="h-re-block">
+          <div class="h-re-title">Trimestre del año</div>
+          <div class="h-trim-grid" id="hTrimGrid"></div>
+          <div class="h-week-block" id="hWeekBlock"></div>
+        </div>
+      </div>
+
+      <!-- Árbol Transgeneracional -->
+      <div class="h-card">
+        <div class="h-card-title">Árbol transgeneracional</div>
+        <div class="h-tree" id="hTree"></div>
+      </div>
+
+      <!-- Notas -->
+      <div class="h-card">
+        <div class="h-card-title">Notas clínicas</div>
+        <textarea class="h-notes" id="hNotes" placeholder="Observaciones del rastreo, resonancias detectadas, hipótesis del terapeuta…"></textarea>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<!-- Botón flotante: abrir tablas de rastreo -->
+<button class="h-tables-toggle" onclick="openTablesDrawer()">
+  <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+  Tablas de rastreo
+</button>
+
+<!-- Backdrop -->
+<div class="h-tables-backdrop" id="tablesBackdrop" onclick="closeTablesDrawer()"></div>
+
+<!-- Drawer lateral con las tablas -->
+<aside class="h-tables-drawer" id="tablesDrawer">
+  <div class="h-drawer-header">
+    <div>
+      <div class="h-drawer-title">Tablas de rastreo</div>
+      <div class="h-drawer-sub">Catálogos del Método Lavín · click para consultar</div>
+    </div>
+    <button class="h-drawer-close" onclick="closeTablesDrawer()">×</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="h-tabs" id="tablesTabs"></div>
+
+  <!-- Buscador -->
+  <div class="h-drawer-search">
+    <input type="text" class="h-search-input" id="tableSearch" placeholder="Buscar en esta tabla…" oninput="renderTablaActiva()" />
+  </div>
+
+  <!-- Contenido -->
+  <div class="h-drawer-body" id="tableBody"></div>
+</aside>
+
+<!-- Status indicator -->
+<div class="h-status" id="hStatus">Holograma guardado</div>
+
+<!-- Modal de hologramas guardados -->
+<div class="h-modal-overlay" id="hModalSaved" onclick="if(event.target===this) closeSavedModal()">
+  <div class="h-modal">
+    <div class="h-modal-header">
+      <div class="h-modal-title">Hologramas guardados</div>
+      <button class="h-modal-close" onclick="closeSavedModal()">×</button>
+    </div>
+    <div class="h-modal-body" id="hSavedList"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   RASTREO DEL HOLOGRAMA · LÓGICA
+   Storage: localStorage. Múltiples hologramas guardados por consultante.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+// ─── Configuración de campos (fiel al manual pág. 45) ───────────────────
+const FIELDS = [
+  { code: 'H',   name: 'Holograma',                placeholder: 'Nombre del holograma o tema central…' },
+  { code: 'RE',  name: 'Recesión de Edad',         placeholder: 'Edad / momento (revisa abajo →)' },
+  { code: 'E',   name: 'Emoción · Reacción',       placeholder: 'Emoción detectada…' },
+  { code: 'P',   name: 'Persona implicada',        placeholder: 'Familia / Ancestro / nombre…' },
+  { code: 'Bio', name: 'Capa embrionaria',         placeholder: 'Endodermo / Mesodermo / Ectodermo' },
+  { code: 'CHR', name: 'Cromosoma',                placeholder: 'Cromosoma 1-23' },
+  { code: 'Nt',  name: 'Hormona / Neurotrans.',    placeholder: 'Hormona, neurotransmisor o molécula…' },
+  { code: 'Mic', name: 'Microbio · Patógeno',      placeholder: 'Código patógeno o microbio…' },
+  { code: 'Par', name: 'Par biomagnético',         placeholder: 'Ej: Pineal — Útero' },
+  { code: 'CK',  name: 'Chakra',                   placeholder: 'Chakra (Under/Over 0-100)' },
+  { code: 'Mer', name: 'Meridiano',                placeholder: 'Meridiano afectado…' },
+];
+
+// Etapas de vida (Recesión de Edad)
+const LIFE_STAGES = [
+  'Vida pasada',
+  'Pre-concepción',
+  'Gestación',
+  'Nacido',
+];
+
+// Trimestres con sus meses
+const TRIMESTRES = [
+  { name: '1er trimestre', label: '1ª mitad del año · 1', months: ['Enero', 'Febrero', 'Marzo'] },
+  { name: '2do trimestre', label: '1ª mitad del año · 2', months: ['Abril', 'Mayo', 'Junio'] },
+  { name: '3er trimestre', label: '2ª mitad del año · 1', months: ['Julio', 'Agosto', 'Septiembre'] },
+  { name: '4to trimestre', label: '2ª mitad del año · 2', months: ['Octubre', 'Noviembre', 'Diciembre'] },
+];
+
+// Quincenas y semanas
+const QUINCENAS = [
+  { label: '1ª quincena · 1ª semana', days: '1 al 7' },
+  { label: '1ª quincena · 2ª semana', days: '8 al 14' },
+  { label: '2ª quincena · 3ª semana', days: '15 al 21' },
+  { label: '2ª quincena · 4ª semana', days: '22 al 31' },
+];
+
+// Sistema Constelacional (8 grupos)
+const CONSTELACIONAL = [
+  { num: 1, name: 'Pareja / Expareja' },
+  { num: 2, name: 'Hijos' },
+  { num: 3, name: 'Nietos' },
+  { num: 4, name: 'Hermanos' },
+  { num: 5, name: 'Parientes' },
+  { num: 6, name: 'Parientes políticos' },
+  { num: 7, name: 'Amigos' },
+  { num: 8, name: '"Enemigos"' },
+];
+
+// Árbol Transgeneracional (4 generaciones)
+const TREE = [
+  { gen: '4ª generación', label: 'Tatarabuelos', cells: 16, range: [15, 30] },
+  { gen: '3ª generación', label: 'Bisabuelos',   cells: 8,  range: [7, 14]  },
+  { gen: '2ª generación', label: 'Abuelos',      cells: 4,  range: [3, 6]   },
+  { gen: '1ª generación', label: 'Padres',       cells: 2,  range: [1, 2]   },
+];
+
+// ─── Estado actual ───
+let state = {
+  consultante: '',
+  fecha: '',
+  fields: {},
+  lifeStage: null,
+  trimestre: null,
+  month: null,
+  quincena: null,
+  constelacional: [],
+  tree: [],
+  notes: '',
+};
+
+// ─── Render: campos del holograma ───
+function renderFields() {
+  const c = document.getElementById('hFields');
+  c.innerHTML = '';
+  FIELDS.forEach(f => {
+    const row = document.createElement('div');
+    row.className = 'h-field';
+    row.innerHTML = `
+      <div class="h-field-code">${f.code}</div>
+      <div class="h-field-label-wrap">
+        <div class="h-field-name">${f.name}</div>
+        <input class="h-field-input" type="text" placeholder="${f.placeholder}" data-field="${f.code}" />
+      </div>
+    `;
+    c.appendChild(row);
+  });
+  document.querySelectorAll('.h-field-input').forEach(inp => {
+    inp.addEventListener('input', e => {
+      state.fields[e.target.dataset.field] = e.target.value;
+    });
+  });
+}
+
+// ─── Render: etapas de vida ───
+function renderLifeStages() {
+  const c = document.getElementById('hLifeChips');
+  c.innerHTML = '';
+  LIFE_STAGES.forEach(stage => {
+    const b = document.createElement('button');
+    b.className = 'h-re-chip';
+    b.textContent = stage;
+    b.dataset.stage = stage;
+    b.onclick = () => {
+      state.lifeStage = state.lifeStage === stage ? null : stage;
+      renderLifeStages();
+    };
+    if (state.lifeStage === stage) b.classList.add('active');
+    c.appendChild(b);
+  });
+}
+
+// ─── Render: trimestres + meses ───
+function renderTrimestres() {
+  const c = document.getElementById('hTrimGrid');
+  c.innerHTML = '';
+  TRIMESTRES.forEach((t, i) => {
+    const card = document.createElement('div');
+    card.className = 'h-trim';
+    if (state.trimestre === i) card.classList.add('active');
+    card.innerHTML = `<div class="h-trim-label">${t.name}</div>
+      <div class="h-trim-months">${t.months.map(m =>
+        `<div class="h-trim-month${state.month === m ? ' active' : ''}" data-m="${m}">${m}</div>`
+      ).join('')}</div>`;
+    card.querySelectorAll('.h-trim-month').forEach(el => {
+      el.onclick = (e) => {
+        e.stopPropagation();
+        const m = el.dataset.m;
+        state.month = state.month === m ? null : m;
+        state.trimestre = i;
+        renderTrimestres();
+      };
+    });
+    card.onclick = () => {
+      state.trimestre = state.trimestre === i ? null : i;
+      renderTrimestres();
+    };
+    c.appendChild(card);
+  });
+}
+
+// ─── Render: quincenas ───
+function renderQuincenas() {
+  const c = document.getElementById('hWeekBlock');
+  c.innerHTML = '';
+  QUINCENAS.forEach((q, i) => {
+    const chip = document.createElement('div');
+    chip.className = 'h-week-chip';
+    if (state.quincena === i) chip.classList.add('active');
+    chip.innerHTML = `<div class="h-week-label">${q.label}</div><div class="h-week-days">${q.days}</div>`;
+    chip.onclick = () => {
+      state.quincena = state.quincena === i ? null : i;
+      renderQuincenas();
+    };
+    c.appendChild(chip);
+  });
+}
+
+// ─── Render: sistema constelacional ───
+function renderConstelacional() {
+  const c = document.getElementById('hConstGrid');
+  c.innerHTML = '';
+  CONSTELACIONAL.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'h-const-item';
+    if (state.constelacional.includes(item.num)) el.classList.add('active');
+    el.innerHTML = `<div class="h-const-num">${item.num}</div><div class="h-const-name">${item.name}</div>`;
+    el.onclick = () => {
+      const idx = state.constelacional.indexOf(item.num);
+      if (idx >= 0) state.constelacional.splice(idx, 1);
+      else state.constelacional.push(item.num);
+      renderConstelacional();
+    };
+    c.appendChild(el);
+  });
+}
+
+// ─── Render: árbol transgeneracional ───
+function renderTree() {
+  const c = document.getElementById('hTree');
+  c.innerHTML = '';
+  TREE.forEach(gen => {
+    const wrap = document.createElement('div');
+    wrap.className = 'h-tree-gen';
+    const cells = [];
+    for (let n = gen.range[0]; n <= gen.range[1]; n++) {
+      cells.push(`<div class="h-tree-cell${state.tree.includes(n) ? ' active' : ''}${gen.cells === 2 ? ' parents' : ''}" data-n="${n}">${n}</div>`);
+    }
+    wrap.innerHTML = `<div class="h-tree-gen-label">${gen.gen} · ${gen.label}</div>
+      <div class="h-tree-row">${cells.join('')}</div>`;
+    wrap.querySelectorAll('.h-tree-cell').forEach(el => {
+      el.onclick = () => {
+        const n = parseInt(el.dataset.n);
+        const idx = state.tree.indexOf(n);
+        if (idx >= 0) state.tree.splice(idx, 1);
+        else state.tree.push(n);
+        renderTree();
+      };
+    });
+    c.appendChild(wrap);
+  });
+}
+
+// ─── Sync de inputs de consultante + notas ───
+function bindTopInputs() {
+  document.getElementById('consultante-nombre').addEventListener('input', e => state.consultante = e.target.value);
+  document.getElementById('consultante-fecha').addEventListener('input', e => state.fecha = e.target.value);
+  document.getElementById('hNotes').addEventListener('input', e => state.notes = e.target.value);
+}
+
+// ─── Acciones ───
+function clearAll() {
+  if (!confirm('¿Limpiar todos los campos del holograma actual?')) return;
+  state = {
+    consultante: '',
+    fecha: '',
+    fields: {},
+    lifeStage: null,
+    trimestre: null,
+    month: null,
+    quincena: null,
+    constelacional: [],
+    tree: [],
+    notes: '',
+  };
+  document.getElementById('consultante-nombre').value = '';
+  document.getElementById('consultante-fecha').value = '';
+  document.getElementById('hNotes').value = '';
+  renderAll();
+}
+
+function saveHolograma() {
+  // Capturar todos los inputs de campos
+  document.querySelectorAll('.h-field-input').forEach(inp => {
+    state.fields[inp.dataset.field] = inp.value;
+  });
+  state.notes = document.getElementById('hNotes').value;
+  state.consultante = document.getElementById('consultante-nombre').value;
+  state.fecha = document.getElementById('consultante-fecha').value;
+
+  if (!state.consultante.trim()) {
+    alert('Ingresa el nombre del consultante antes de guardar.');
+    return;
+  }
+
+  const saved = JSON.parse(localStorage.getItem('holoacademia_hologramas') || '[]');
+  const record = {
+    id: 'h_' + Date.now(),
+    saved_at: new Date().toISOString(),
+    ...state,
+  };
+  saved.unshift(record);
+  // Mantener máximo 100 últimos
+  if (saved.length > 100) saved.pop();
+  localStorage.setItem('holoacademia_hologramas', JSON.stringify(saved));
+
+  showStatus('Holograma guardado · ' + state.consultante);
+}
+
+function showStatus(msg) {
+  const el = document.getElementById('hStatus');
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 2500);
+}
+
+function openSavedModal() {
+  renderSavedList();
+  document.getElementById('hModalSaved').classList.add('visible');
+}
+function closeSavedModal() {
+  document.getElementById('hModalSaved').classList.remove('visible');
+}
+
+function renderSavedList() {
+  const c = document.getElementById('hSavedList');
+  const saved = JSON.parse(localStorage.getItem('holoacademia_hologramas') || '[]');
+  if (saved.length === 0) {
+    c.innerHTML = '<div class="h-saved-empty">No hay hologramas guardados todavía.<br>Llena la plantilla y haz clic en "Guardar holograma".</div>';
+    return;
+  }
+  c.innerHTML = saved.map(h => `
+    <div class="h-saved-item">
+      <div class="h-saved-name">${escapeHtml(h.consultante || 'Sin nombre')}${h.fields?.H ? ' · ' + escapeHtml(h.fields.H) : ''}</div>
+      <div class="h-saved-date">${formatDate(h.saved_at)}${h.fecha ? ' · sesión ' + h.fecha : ''}</div>
+      <div class="h-saved-actions">
+        <button class="h-saved-action" onclick="loadHolograma('${h.id}')">Cargar</button>
+        <button class="h-saved-action delete" onclick="deleteHolograma('${h.id}')">Eliminar</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadHolograma(id) {
+  const saved = JSON.parse(localStorage.getItem('holoacademia_hologramas') || '[]');
+  const h = saved.find(x => x.id === id);
+  if (!h) return;
+  state = { ...h };
+  delete state.id;
+  delete state.saved_at;
+  document.getElementById('consultante-nombre').value = state.consultante || '';
+  document.getElementById('consultante-fecha').value = state.fecha || '';
+  document.getElementById('hNotes').value = state.notes || '';
+  renderAll();
+  // Restaurar valores de campos
+  setTimeout(() => {
+    document.querySelectorAll('.h-field-input').forEach(inp => {
+      inp.value = state.fields[inp.dataset.field] || '';
+    });
+  }, 50);
+  closeSavedModal();
+  showStatus('Holograma cargado');
+}
+
+function deleteHolograma(id) {
+  if (!confirm('¿Eliminar este holograma guardado? Esta acción no se puede deshacer.')) return;
+  const saved = JSON.parse(localStorage.getItem('holoacademia_hologramas') || '[]');
+  const filtered = saved.filter(x => x.id !== id);
+  localStorage.setItem('holoacademia_hologramas', JSON.stringify(filtered));
+  renderSavedList();
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+function formatDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return d.toLocaleDateString('es-MX', { day: 'numeric', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+
+// ─── Render all ───
+function renderAll() {
+  renderFields();
+  renderLifeStages();
+  renderTrimestres();
+  renderQuincenas();
+  renderConstelacional();
+  renderTree();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TABLAS DE RASTREO · drawer lateral consultable
+// ═══════════════════════════════════════════════════════════════════════
+let TABLAS = null;
+let tablaActiva = 'emociones';
+
+async function loadTablas() {
+  try {
+    const resp = await fetch('/api/holograma/tablas');
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const data = await resp.json();
+    TABLAS = data.tablas || {};
+    renderTabs();
+    renderTablaActiva();
+  } catch (e) {
+    console.warn('No se pudieron cargar las tablas:', e);
+  }
+}
+
+function renderTabs() {
+  if (!TABLAS) return;
+  const c = document.getElementById('tablesTabs');
+  c.innerHTML = '';
+  const labels = {
+    emociones: 'Emociones',
+    capas_embrionarias: 'Capas Bio',
+    chakras: 'Chakras',
+    meridianos: 'Meridianos',
+    hormonas: 'Hormonas',
+    cromosomas: 'Cromosomas',
+    microbios: 'Microbios',
+  };
+  Object.keys(TABLAS).forEach(key => {
+    const btn = document.createElement('button');
+    btn.className = 'h-tab' + (tablaActiva === key ? ' active' : '');
+    btn.textContent = labels[key] || key;
+    btn.onclick = () => {
+      tablaActiva = key;
+      document.getElementById('tableSearch').value = '';
+      renderTabs();
+      renderTablaActiva();
+    };
+    c.appendChild(btn);
+  });
+}
+
+function renderTablaActiva() {
+  if (!TABLAS) return;
+  const tabla = TABLAS[tablaActiva];
+  if (!tabla) return;
+  const body = document.getElementById('tableBody');
+  const q = (document.getElementById('tableSearch')?.value || '').toLowerCase().trim();
+  body.innerHTML = '';
+
+  // Descripción
+  if (tabla.descripcion) {
+    const desc = document.createElement('div');
+    desc.className = 'h-tabla-desc';
+    desc.textContent = tabla.descripcion;
+    body.appendChild(desc);
+  }
+
+  // Items filtrados
+  const items = (tabla.items || []).filter(it => {
+    if (!q) return true;
+    const blob = JSON.stringify(it).toLowerCase();
+    return blob.includes(q);
+  });
+
+  if (!items.length) {
+    body.innerHTML += '<div style="text-align:center;color:#6E6B62;padding:30px 10px;font-size:0.88rem;">Sin resultados para "' + escapeHtml(q) + '"</div>';
+    return;
+  }
+
+  items.forEach(item => {
+    const el = document.createElement('div');
+    el.className = 'h-tabla-item';
+    el.innerHTML = renderItemContent(tablaActiva, item);
+    el.onclick = () => insertToField(tablaActiva, item);
+    body.appendChild(el);
+  });
+}
+
+function renderItemContent(tabla, it) {
+  // Layouts específicos por tipo de tabla
+  if (tabla === 'emociones') {
+    return `<div class="h-tabla-item-name">${escapeHtml(it.nombre)}</div>
+      <div class="h-tabla-item-detail">
+        <strong>Órgano:</strong> ${escapeHtml(it.organo)} · <strong>Elemento:</strong> ${escapeHtml(it.elemento)}<br>
+        <em>${escapeHtml(it.qi)}</em>
+      </div>`;
+  }
+  if (tabla === 'capas_embrionarias') {
+    const pill = it.color ? `<span class="h-tabla-pill ${it.color}">${escapeHtml(it.estructura)}</span>` : '';
+    return `<div class="h-tabla-item-name">${escapeHtml(it.nombre)}</div>
+      <div class="h-tabla-item-detail">
+        <strong>Deriva:</strong> ${escapeHtml(it.deriva)}<br>
+        <strong>Conflicto:</strong> ${escapeHtml(it.conflicto_arquetipico)}
+      </div>
+      <div class="h-tabla-item-pills">${pill}</div>`;
+  }
+  if (tabla === 'chakras') {
+    return `<div class="h-tabla-item-name">
+        <span class="h-tabla-item-num">${it.num}</span>
+        ${escapeHtml(it.nombre)}
+      </div>
+      <div class="h-tabla-item-detail">
+        <strong>Tema:</strong> ${escapeHtml(it.tema)}<br>
+        <strong>Glándula:</strong> ${escapeHtml(it.glandula)} · <strong>Elemento:</strong> ${escapeHtml(it.elemento)}
+      </div>
+      <div class="h-tabla-item-pills">
+        <span class="h-tabla-pill">${escapeHtml(it.color)}</span>
+        <span class="h-tabla-pill">${escapeHtml(it.ubicacion)}</span>
+        <span class="h-tabla-pill">Mantra: ${escapeHtml(it.mantra)}</span>
+      </div>`;
+  }
+  if (tabla === 'meridianos') {
+    return `<div class="h-tabla-item-name">${escapeHtml(it.nombre)} · ${escapeHtml(it.tipo)}</div>
+      <div class="h-tabla-item-detail">
+        <strong>Par:</strong> ${escapeHtml(it.par)} · <strong>Elemento:</strong> ${escapeHtml(it.elemento)}<br>
+        <strong>Hora:</strong> ${escapeHtml(it.hora)} · <em>Emoción: ${escapeHtml(it.emocion)}</em>
+      </div>`;
+  }
+  if (tabla === 'hormonas') {
+    return `<div class="h-tabla-item-name">${escapeHtml(it.nombre)}</div>
+      <div class="h-tabla-item-detail">
+        <strong>Origen:</strong> ${escapeHtml(it.origen)}<br>
+        ${escapeHtml(it.tema)}
+      </div>`;
+  }
+  if (tabla === 'cromosomas') {
+    return `<div class="h-tabla-item-name">
+        <span class="h-tabla-item-num">${it.num}</span>
+        Cromosoma ${it.num}
+      </div>
+      <div class="h-tabla-item-detail">${escapeHtml(it.sistema)}</div>`;
+  }
+  if (tabla === 'microbios') {
+    return `<div class="h-tabla-item-name">${escapeHtml(it.nombre)}</div>
+      <div class="h-tabla-item-detail">${escapeHtml(it.ejemplos)}</div>`;
+  }
+  return `<div class="h-tabla-item-name">${escapeHtml(it.nombre || 'item')}</div>`;
+}
+
+// Mapeo tabla → campo del holograma a llenar
+const TABLA_TO_FIELD = {
+  emociones:           'E',
+  capas_embrionarias:  'Bio',
+  chakras:             'CK',
+  meridianos:          'Mer',
+  hormonas:            'Nt',
+  cromosomas:          'CHR',
+  microbios:           'Mic',
+};
+
+function insertToField(tabla, item) {
+  const fieldCode = TABLA_TO_FIELD[tabla];
+  if (!fieldCode) return;
+  const input = document.querySelector(`.h-field-input[data-field="${fieldCode}"]`);
+  if (!input) return;
+  // Valor a insertar según el tipo de tabla
+  let val = '';
+  if (tabla === 'emociones')           val = item.nombre;
+  else if (tabla === 'capas_embrionarias') val = item.nombre;
+  else if (tabla === 'chakras')         val = `${item.num} · ${item.nombre}`;
+  else if (tabla === 'meridianos')      val = item.nombre;
+  else if (tabla === 'hormonas')        val = item.nombre;
+  else if (tabla === 'cromosomas')      val = `Cromosoma ${item.num}: ${item.sistema}`;
+  else if (tabla === 'microbios')       val = item.nombre;
+  input.value = val;
+  state.fields[fieldCode] = val;
+  showStatus('Campo ' + fieldCode + ' actualizado');
+}
+
+function openTablesDrawer() {
+  if (!TABLAS) loadTablas();
+  document.getElementById('tablesDrawer').classList.add('open');
+  document.getElementById('tablesBackdrop').classList.add('open');
+}
+function closeTablesDrawer() {
+  document.getElementById('tablesDrawer').classList.remove('open');
+  document.getElementById('tablesBackdrop').classList.remove('open');
+}
+
+// ─── Init ───
+document.addEventListener('DOMContentLoaded', () => {
+  // Set today's date by default
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('consultante-fecha').value = today;
+  state.fecha = today;
+  bindTopInputs();
+  renderAll();
+  // Cargar tablas en segundo plano para que estén listas
+  loadTablas();
+  // ESC cierra el drawer
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+      if (document.getElementById('tablesDrawer').classList.contains('open')) closeTablesDrawer();
+      else if (document.getElementById('hModalSaved').classList.contains('visible')) closeSavedModal();
+    }
+  });
+});
+</script>
+
+</body>
+</html>

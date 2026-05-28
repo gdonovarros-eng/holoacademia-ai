@@ -304,7 +304,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -644,6 +644,24 @@ async def salud_app() -> FileResponse:
 @app.get("/numerologia", include_in_schema=False)
 async def numerologia_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "numerologia.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/holograma", include_in_schema=False)
+async def holograma_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "holograma.html", headers=_no_cache_headers(allow_iframe=True))
+
+
+@app.get("/api/holograma/tablas", include_in_schema=False)
+async def holograma_tablas():
+    """Tablas de rastreo del Método Lavín (emociones, capas embrionarias, chakras, meridianos, hormonas, cromosomas, microbios)."""
+    import json as _json
+    from fastapi.responses import JSONResponse
+    tablas_path = THERAPY_STATIC_DIR.parent.parent / "data" / "holograma_tablas.json"
+    try:
+        with open(tablas_path, encoding="utf-8") as f:
+            return JSONResponse(_json.load(f))
+    except FileNotFoundError:
+        return JSONResponse({"error": "tablas_not_found"}, status_code=404)
 
 @app.get("/tarot", include_in_schema=False)
 async def tarot_app() -> FileResponse:
