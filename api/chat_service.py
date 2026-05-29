@@ -604,12 +604,16 @@ Una instrucción clara por vez. Sin rodeos. Sin información innecesaria."""
 def _get_client() -> "OpenAI | None":
     if OpenAI is None:
         return None
-    # Usar OpenAI directamente (más confiable y económico con gpt-4o-mini)
-    api_key = os.getenv("OPENAI_API_KEY")
-    if api_key and api_key.startswith("sk-"):
+    # Prioridad 1: OpenRouter
+    or_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if or_key:
+        return OpenAI(api_key=or_key, base_url="https://openrouter.ai/api/v1")
+    # Prioridad 2: OpenAI directo
+    api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    if api_key:
         return OpenAI(api_key=api_key)
-    # Fallback: intentar con Groq
-    groq_key = os.getenv("GROQ_API_KEY")
+    # Prioridad 3: Groq (legacy)
+    groq_key = os.getenv("GROQ_API_KEY", "").strip()
     base_url = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
     if groq_key:
         return OpenAI(api_key=groq_key, base_url=base_url)
@@ -618,11 +622,10 @@ def _get_client() -> "OpenAI | None":
 
 
 def _model() -> str:
-    # gpt-4o-mini: excelente calidad, muy bajo costo (~$0.15/1M tokens)
-    api_key = os.getenv("OPENAI_API_KEY", "")
-    if api_key.startswith("sk-"):
-        return "gpt-4o-mini"
-    # Groq fallback
+    if os.getenv("OPENROUTER_API_KEY", "").strip():
+        return os.getenv("OPENAI_MODEL", "google/gemini-2.5-flash")
+    if os.getenv("OPENAI_API_KEY", "").strip():
+        return os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     return os.getenv("OPENAI_MODEL", "llama-3.3-70b-versatile")
 
 

@@ -30,6 +30,8 @@ DEFAULT_REASONING_EFFORT = "high"
 DEFAULT_FALLBACK_MODELS = ("gpt-5-mini", "gpt-4.1")
 DEFAULT_GROQ_BASE_URL = "https://api.groq.com/openai/v1"
 DEFAULT_GROQ_MODEL = "openai/gpt-oss-20b"
+DEFAULT_OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
+DEFAULT_OPENROUTER_MODEL = "google/gemini-2.5-flash"
 DEFAULT_EMBEDDING_PROVIDER = "disabled"
 
 SAEL_SYSTEM_PROMPT = """
@@ -252,13 +254,19 @@ class CourseMeta:
 
 class NaturalAssistant:
     def __init__(self) -> None:
-        self.provider = (os.getenv("LLM_PROVIDER", "groq").strip() or "groq").lower()
-        if self.provider == "groq":
+        self.provider = (os.getenv("LLM_PROVIDER", "openrouter").strip() or "openrouter").lower()
+        if self.provider == "openrouter":
+            api_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+            self.base_url = os.getenv("LLM_BASE_URL", DEFAULT_OPENROUTER_BASE_URL).strip() or DEFAULT_OPENROUTER_BASE_URL
+            self.model = os.getenv("OPENAI_MODEL", DEFAULT_OPENROUTER_MODEL).strip() or DEFAULT_OPENROUTER_MODEL
+            fallback_raw = os.getenv("OPENAI_FALLBACK_MODELS", "")
+        elif self.provider == "groq":
             api_key = os.getenv("GROQ_API_KEY", "").strip()
             self.base_url = os.getenv("LLM_BASE_URL", DEFAULT_GROQ_BASE_URL).strip() or DEFAULT_GROQ_BASE_URL
             self.model = os.getenv("OPENAI_MODEL", DEFAULT_GROQ_MODEL).strip() or DEFAULT_GROQ_MODEL
             fallback_raw = os.getenv("OPENAI_FALLBACK_MODELS", "")
         else:
+            # native OpenAI
             api_key = os.getenv("OPENAI_API_KEY", "").strip()
             self.base_url = os.getenv("LLM_BASE_URL", "").strip() or None
             self.model = os.getenv("OPENAI_MODEL", DEFAULT_MODEL).strip() or DEFAULT_MODEL
@@ -3050,6 +3058,11 @@ class NaturalAssistant:
             return ""
         return candidate
 
+    @property
+    def _uses_chat_completions(self) -> bool:
+        """True when provider uses chat.completions API (OpenRouter, Groq, etc.)."""
+        return self.provider in {"openrouter", "groq"}
+
     def _create_response(self, **kwargs):
         if self.client is None:
             raise RuntimeError("OpenAI client is not configured")
@@ -3064,24 +3077,56 @@ class NaturalAssistant:
         for model_name in candidates:
             call_kwargs = dict(kwargs)
             call_kwargs["model"] = model_name
-            if model_name.startswith("gpt-5"):
-                call_kwargs.setdefault("reasoning", {"effort": self.reasoning_effort})
-            else:
+
+            if self._uses_chat_completions:
+                # Convert from OpenAI Responses API format → chat.completions format
+                instructions = str(call_kwargs.pop("instructions", "") or "")
+                input_text = str(call_kwargs.pop("input", "") or "")
+                max_output_tokens = call_kwargs.pop("max_output_tokens", 2000)
                 call_kwargs.pop("reasoning", None)
-            try:
-                response = self.client.responses.create(**call_kwargs)
-                self.last_model_error = ""
-                self.model = model_name
-                return response
-            except Exception as exc:
-                last_error = exc
-                self.last_model_error = f"{type(exc).__name__}: {exc}"
+                call_kwargs.pop("timeout", None)
+                messages = []
+                if instructions:
+                    messages.append({"role": "system", "content": instructions})
+                if input_text:
+                    messages.append({"role": "user", "content": input_text})
+                call_kwargs["messages"] = messages
+                call_kwargs["max_tokens"] = int(max_output_tokens)
+                call_kwargs.setdefault("temperature", 0.7)
+                try:
+                    response = self.client.chat.completions.create(**call_kwargs)
+                    self.last_model_error = ""
+                    self.model = model_name
+                    return response
+                except Exception as exc:
+                    last_error = exc
+                    self.last_model_error = f"{type(exc).__name__}: {exc}"
+            else:
+                # Native OpenAI Responses API
+                if model_name.startswith("gpt-5"):
+                    call_kwargs.setdefault("reasoning", {"effort": self.reasoning_effort})
+                else:
+                    call_kwargs.pop("reasoning", None)
+                try:
+                    response = self.client.responses.create(**call_kwargs)
+                    self.last_model_error = ""
+                    self.model = model_name
+                    return response
+                except Exception as exc:
+                    last_error = exc
+                    self.last_model_error = f"{type(exc).__name__}: {exc}"
 
         if last_error is not None:
             raise last_error
         raise RuntimeError("No se pudo completar la llamada al modelo")
 
     def _response_text(self, response) -> str:
+        # Chat completions format (OpenRouter, Groq, etc.)
+        if hasattr(response, "choices") and response.choices:
+            content = response.choices[0].message.content
+            return content.strip() if content else ""
+
+        # OpenAI Responses API format
         text = getattr(response, "output_text", "") or ""
         if text.strip():
             return text.strip()
@@ -3100,6 +3145,11 @@ class NaturalAssistant:
         return "\n".join(part.strip() for part in parts if part and part.strip()).strip()
 
     def _response_incomplete_max_tokens(self, response) -> bool:
+        # Chat completions format
+        if hasattr(response, "choices") and response.choices:
+            return response.choices[0].finish_reason == "length"
+
+        # OpenAI Responses API format
         incomplete_details = getattr(response, "incomplete_details", None)
         if incomplete_details is None and hasattr(response, "model_dump"):
             try:

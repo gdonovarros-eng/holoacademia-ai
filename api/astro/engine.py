@@ -34,24 +34,30 @@ def _get_llm_client():
     except ImportError:
         raise RuntimeError("openai package not installed")
 
-    openai_key  = os.getenv("OPENAI_API_KEY", "").strip()
-    groq_key    = os.getenv("GROQ_API_KEY", "").strip()
-    astro_model = os.getenv("ASTRO_LLM_MODEL", "").strip()
+    astro_model   = os.getenv("ASTRO_LLM_MODEL", "").strip()
+    default_model = os.getenv("OPENAI_MODEL", "google/gemini-2.5-flash")
 
-    # 1. OpenAI directo (preferido para análisis largos)
-    if openai_key and not openai_key.startswith("gsk_"):
+    # 1. OpenRouter (prioridad principal)
+    or_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if or_key:
+        model = astro_model or default_model
+        return OpenAI(api_key=or_key, base_url="https://openrouter.ai/api/v1"), model
+
+    # 2. OpenAI directo
+    openai_key = os.getenv("OPENAI_API_KEY", "").strip()
+    if openai_key:
         model = astro_model or "gpt-4o-mini"
         return OpenAI(api_key=openai_key), model
 
-    # 2. Groq como fallback
-    groq_or_openai = groq_key or openai_key
-    if groq_or_openai:
+    # 3. Groq (legacy)
+    groq_key = os.getenv("GROQ_API_KEY", "").strip()
+    if groq_key:
         base_url = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1")
-        model = astro_model or os.getenv("OPENAI_MODEL", "llama-3.3-70b-versatile")
-        return OpenAI(api_key=groq_or_openai, base_url=base_url), model
+        model = astro_model or "llama-3.3-70b-versatile"
+        return OpenAI(api_key=groq_key, base_url=base_url), model
 
     raise RuntimeError(
-        "No se encontró API key válida. Define OPENAI_API_KEY o GROQ_API_KEY."
+        "No se encontró API key válida. Define OPENROUTER_API_KEY u OPENAI_API_KEY."
     )
 
 
