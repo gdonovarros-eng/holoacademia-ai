@@ -2206,3 +2206,256 @@ textarea {
   .nudo-grid { grid-template-columns: 1fr; }
   .creencia-cat-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ─── Rastreos Avanzados — two-panel layout ─────────────────────────────────── */
+
+.ra-wrap {
+  display: flex;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ra-sidebar {
+  width: 192px;
+  flex-shrink: 0;
+  background: #1e1033;
+  border-right: 1px solid rgba(124, 58, 237, 0.25);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.ra-sidebar-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  padding: 0 16px 12px;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+  margin-bottom: 8px;
+}
+
+.ra-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 8px;
+}
+
+.ra-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  color: #c4b5fd;
+  font-size: 13.5px;
+  font-weight: 500;
+  user-select: none;
+}
+
+.ra-nav-item:hover {
+  background: rgba(124, 58, 237, 0.18);
+  color: #e9d5ff;
+}
+
+.ra-nav-active {
+  background: rgba(124, 58, 237, 0.3);
+  color: #fff;
+  font-weight: 600;
+}
+
+.ra-nav-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.ra-nav-label {
+  line-height: 1.3;
+}
+
+.ra-panel {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: 20px 24px;
+  background: #100922;
+}
+
+.ra-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0;
+  color: #c4b5fd;
+  font-size: 14px;
+}
+
+/* ─── Emociones Atrapadas table ─────────────────────────────────────────────── */
+
+.emoc-table-scroll {
+  overflow-x: auto;
+  margin: 16px 0;
+  border-radius: 8px;
+}
+
+.emoc-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  min-width: 560px;
+}
+
+.emoc-th {
+  background: rgba(124, 58, 237, 0.35);
+  color: #e9d5ff;
+  font-weight: 600;
+  font-size: 11px;
+  text-align: center;
+  padding: 7px 6px;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.3;
+  min-width: 90px;
+}
+
+.emoc-th-num {
+  min-width: 32px;
+  width: 32px;
+  background: rgba(30, 16, 51, 0.8);
+}
+
+.emoc-row-num {
+  text-align: center;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+  padding: 0 4px;
+  vertical-align: middle;
+  border: 1px solid rgba(124, 58, 237, 0.15);
+}
+
+.emoc-row-a .emoc-cell {
+  background: rgba(16, 9, 34, 0.6);
+}
+.emoc-row-b .emoc-cell {
+  background: rgba(30, 16, 51, 0.5);
+}
+
+.emoc-cell {
+  padding: 6px 8px;
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  cursor: pointer;
+  text-align: center;
+  color: #d1d5db;
+  transition: background 0.12s, color 0.12s;
+  vertical-align: middle;
+  line-height: 1.3;
+}
+
+.emoc-cell:hover {
+  background: rgba(124, 58, 237, 0.25) !important;
+  color: #fff;
+}
+
+.emoc-cell-selected {
+  background: rgba(124, 58, 237, 0.45) !important;
+  color: #fff !important;
+  font-weight: 600;
+  box-shadow: inset 0 0 0 2px #7c3aed;
+}
+
+.emoc-organo-label {
+  font-size: 13px;
+  color: #c4b5fd;
+  margin: 6px 0 10px;
+}
+
+.emoc-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.emoc-eft-btn {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: rgba(124, 58, 237, 0.4);
+}
+
+.eft-pasos-wrap {
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 16px;
+}
+
+.eft-pasos-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #c4b5fd;
+  margin: 0 0 12px;
+}
+
+.eft-pasos-list {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.eft-paso-item {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #d1d5db;
+}
+
+.eft-paso-punto {
+  font-weight: 600;
+  color: #a78bfa;
+  margin-right: 6px;
+}
+
+.eft-paso-afirmacion {
+  font-style: italic;
+  color: #e9d5ff;
+}
+
+/* Responsive: stack sidebar above panel on small screens */
+@media (max-width: 640px) {
+  .ra-wrap {
+    flex-direction: column;
+    overflow: visible;
+  }
+  .ra-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.25);
+    padding: 12px 8px 8px;
+  }
+  .ra-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .ra-nav-item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px;
+    font-size: 11px;
+    text-align: center;
+  }
+  .ra-panel {
+    padding: 16px 12px;
+  }
+  .emoc-table {
+    font-size: 11px;
+  }
+}

@@ -1611,6 +1611,453 @@ function renderTablaCreencias(p, content) {
   render();
 }
 
+// ─── Rastreos Avanzados — módulo unificado con sidebar ─────────────────────────
+function renderRastreosAvanzados(p, content) {
+  const modulos = p.modulos || [];
+  const outerState = { activeId: modulos[0]?.id || "hologramas" };
+
+  // Emociones cache so we don't re-fetch on every re-render
+  const emocionesCache = { data: null };
+
+  function renderShell() {
+    const navHtml = modulos.map((m) => `
+      <div class="ra-nav-item${outerState.activeId === m.id ? " ra-nav-active" : ""}" data-mod="${m.id}">
+        <span class="ra-nav-icon">${m.icono}</span>
+        <span class="ra-nav-label">${escapeHtml(m.nombre)}</span>
+      </div>
+    `).join("");
+
+    content.innerHTML = `
+      <div class="ra-wrap">
+        <div class="ra-sidebar">
+          <div class="ra-sidebar-title">Rastreos Avanzados</div>
+          <nav class="ra-nav">${navHtml}</nav>
+        </div>
+        <div class="ra-panel" id="ra-panel-content"></div>
+      </div>`;
+
+    content.querySelectorAll(".ra-nav-item").forEach((el) => {
+      el.addEventListener("click", () => {
+        outerState.activeId = el.dataset.mod;
+        renderShell();
+      });
+    });
+
+    const panelEl = content.querySelector("#ra-panel-content");
+    const activeM = modulos.find((m) => m.id === outerState.activeId);
+    if (panelEl && activeM) renderModuloPanel(activeM, panelEl);
+  }
+
+  function renderModuloPanel(modulo, panelEl) {
+    if (modulo.id === "hologramas") renderRAHologramas(modulo, panelEl);
+    else if (modulo.id === "nudos_psoricos") renderRANudos(modulo, panelEl);
+    else if (modulo.id === "creencias") renderRACreencias(modulo, panelEl);
+    else if (modulo.id === "emociones_eft") renderRAEmociones(modulo, panelEl);
+  }
+
+  // ── Hologramas ──────────────────────────────────────────────────────────────
+  function renderRAHologramas(m, panelEl) {
+    const state = { selected: null };
+    function render() {
+      const bloqueHtml = (m.bloques || []).map((bloque) => {
+        const items = bloque.items.map((item) => {
+          const isSel = state.selected?.numero === item.numero;
+          return `<div class="holo-item${isSel ? " holo-item-selected" : ""}" data-num="${item.numero}">
+            <span class="holo-num">${item.numero}</span>
+            <span class="holo-nombre">${escapeHtml(item.nombre)}</span>
+          </div>`;
+        }).join("");
+        return `<div class="holo-bloque">
+          <div class="holo-bloque-label">${escapeHtml(bloque.label)} <span class="holo-bloque-rango">(${escapeHtml(bloque.rango)})</span></div>
+          <div class="holo-grid">${items}</div>
+        </div>`;
+      }).join("");
+
+      const guiaHtml = (m.pasos_guia || []).map((g) => `<li>${escapeHtml(g)}</li>`).join("");
+      const selInfo = state.selected
+        ? `<div class="rastreo-sel-box">
+            <p class="rastreo-sel-label">Holograma identificado:</p>
+            <p class="rastreo-sel-value">🔮 #${state.selected.numero} — ${escapeHtml(state.selected.nombre)}</p>
+            ${state.selected.descripcion ? `<p class="rastreo-sel-desc">${escapeHtml(state.selected.descripcion)}</p>` : ""}
+            <button class="rastreo-interpret-btn" id="holo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+          </div>` : "";
+
+      panelEl.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="rastreo-instruccion-ms">
+            <span class="rastreo-ms-badge">MS</span>
+            <span>${escapeHtml(m.instruccion_ms || "")}</span>
+          </div>
+          <details class="rastreo-guia-details">
+            <summary>📋 Guía de rastreo paso a paso</summary>
+            <ol class="rastreo-guia-list">${guiaHtml}</ol>
+          </details>
+          <div class="holo-table">${bloqueHtml}</div>
+          ${selInfo}
+          <div id="holo-interpret-out"></div>
+          <div class="wizard-nav"><button class="wizard-nav-btn wizard-reiniciar" id="holo-reset-btn">Reiniciar</button></div>
+        </div>`;
+
+      panelEl.querySelectorAll(".holo-item").forEach((el) => {
+        el.addEventListener("click", () => {
+          const num = parseInt(el.dataset.num);
+          let found = null;
+          for (const bl of (m.bloques || [])) { found = bl.items.find((i) => i.numero === num); if (found) break; }
+          state.selected = state.selected?.numero === num ? null : (found || { numero: num, nombre: el.querySelector(".holo-nombre")?.textContent || "" });
+          render();
+        });
+      });
+      panelEl.querySelector("#holo-reset-btn")?.addEventListener("click", () => { state.selected = null; render(); });
+      panelEl.querySelector("#holo-interpretar-btn")?.addEventListener("click", async () => {
+        const outEl = panelEl.querySelector("#holo-interpret-out");
+        if (!outEl || !state.selected) return;
+        const query = `El rastreo de hologramas identificó: Holograma #${state.selected.numero} — "${state.selected.nombre}". ${state.selected.descripcion ? "Descripción: " + state.selected.descripcion : ""}\n\nDesde la perspectiva terapéutica holística: ¿Qué significa este holograma? ¿Cómo se manifiesta en el cuerpo y las emociones? ¿Qué datos adicionales es útil rastrear (recesión de edad, emoción-reacción, capa embrionaria, cromosoma, microbio, par biomagnético)? ¿Cómo se desartícula? Sé concreto y orientado a la sesión.`;
+        await rastreoInterpretarIA(outEl, query);
+      });
+    }
+    render();
+  }
+
+  // ── Nudos Psóricos ──────────────────────────────────────────────────────────
+  function renderRANudos(m, panelEl) {
+    const state = { selected: null };
+    function render() {
+      const raiz = m.raiz || {};
+      const isRaizSel = state.selected?.numero === "0";
+      const raizHtml = `<div class="nudo-raiz${isRaizSel ? " nudo-raiz-selected" : ""}" data-num="0">
+        <span class="nudo-raiz-num">0</span>
+        <span class="nudo-raiz-nombre">${escapeHtml(raiz.nombre || "Miedo a la vida, a vivir")}</span>
+        <span class="nudo-raiz-badge">Raíz de todos los nudos</span>
+      </div>`;
+
+      const bloqueHtml = (m.bloques || []).map((bloque) => {
+        const nudosHtml = bloque.nudos.map((nudo) => {
+          const isSel = state.selected?.numero === String(nudo.numero);
+          const submiedosHtml = (nudo.submiedos || []).map((s) => `<span class="nudo-sub">${escapeHtml(s)}</span>`).join("");
+          return `<div class="nudo-item${isSel ? " nudo-item-selected" : ""}" data-num="${nudo.numero}">
+            <div class="nudo-header">
+              <span class="nudo-romano">${escapeHtml(nudo.romano)}</span>
+              <span class="nudo-nombre">${escapeHtml(nudo.nombre)}</span>
+            </div>
+            ${submiedosHtml ? `<div class="nudo-submiedos">${submiedosHtml}</div>` : ""}
+          </div>`;
+        }).join("");
+        return `<div class="nudo-bloque"><div class="nudo-bloque-label">${escapeHtml(bloque.label)}</div><div class="nudo-grid">${nudosHtml}</div></div>`;
+      }).join("");
+
+      const guiaHtml = (m.pasos_guia || []).map((g) => `<li>${escapeHtml(g)}</li>`).join("");
+      const selInfo = state.selected
+        ? `<div class="rastreo-sel-box">
+            <p class="rastreo-sel-label">Nudo psórico identificado:</p>
+            <p class="rastreo-sel-value">⚡ ${state.selected.numero !== "0" ? `Nudo ${state.selected.romano || state.selected.numero} — ` : ""}${escapeHtml(state.selected.nombre)}</p>
+            <p class="rastreo-liberar-cmd">🧲 Liberar: <em>"Me libero consciente y subconscientemente del nudo psórico de ${escapeHtml(state.selected.nombre)}"</em> — pasar imán 10 veces.</p>
+            <button class="rastreo-interpret-btn" id="nudo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+          </div>` : "";
+
+      panelEl.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="rastreo-instruccion-ms">
+            <span class="rastreo-ms-badge">MS</span>
+            <span>${escapeHtml(m.instruccion_ms || "")}</span>
+          </div>
+          <details class="rastreo-guia-details">
+            <summary>📋 Guía de rastreo paso a paso</summary>
+            <ol class="rastreo-guia-list">${guiaHtml}</ol>
+          </details>
+          <div class="nudo-table">${raizHtml}${bloqueHtml}</div>
+          ${selInfo}
+          <div id="nudo-interpret-out"></div>
+          <div class="wizard-nav"><button class="wizard-nav-btn wizard-reiniciar" id="nudo-reset-btn">Reiniciar</button></div>
+        </div>`;
+
+      panelEl.querySelectorAll(".nudo-item, .nudo-raiz").forEach((el) => {
+        el.addEventListener("click", () => {
+          const num = el.dataset.num;
+          if (state.selected?.numero === String(num)) { state.selected = null; }
+          else if (num === "0") { state.selected = { numero: "0", nombre: raiz.nombre || "Miedo a la vida, a vivir" }; }
+          else {
+            const numInt = parseInt(num);
+            let found = null;
+            for (const bl of (m.bloques || [])) { found = bl.nudos.find((n) => n.numero === numInt); if (found) break; }
+            state.selected = found ? { numero: String(found.numero), romano: found.romano, nombre: found.nombre } : { numero: num, nombre: num };
+          }
+          render();
+        });
+      });
+      panelEl.querySelector("#nudo-reset-btn")?.addEventListener("click", () => { state.selected = null; render(); });
+      panelEl.querySelector("#nudo-interpretar-btn")?.addEventListener("click", async () => {
+        const outEl = panelEl.querySelector("#nudo-interpret-out");
+        if (!outEl || !state.selected) return;
+        const query = `El rastreo identificó el nudo psórico: "${state.selected.nombre}" (${state.selected.romano ? "Nudo " + state.selected.romano : "Nudo raíz 0"}).\n\nDesde la perspectiva terapéutica holística: ¿Qué es este nudo psórico? ¿Cómo se manifiesta emocionalmente y en el cuerpo? ¿Cuál es su origen (miasma, memoria ancestral, etapa de vida)? ¿Qué síntomas físicos o conductas puede generar cuando está activo? ¿Cómo se trabaja y libera de forma efectiva? Orienta para la sesión.`;
+        await rastreoInterpretarIA(outEl, query);
+      });
+    }
+    render();
+  }
+
+  // ── Creencias Limitantes ────────────────────────────────────────────────────
+  function renderRACreencias(m, panelEl) {
+    const CAT_COLORS = {
+      violet: "#7c3aed", sky: "#0ea5e9", teal: "#14b8a6", amber: "#f59e0b",
+      rose: "#f43f5e", emerald: "#10b981", indigo: "#6366f1", cyan: "#06b6d4",
+      orange: "#f97316", purple: "#a855f7",
+    };
+    const tabla = m.tabla || {};
+    const categorias = tabla.categorias || [];
+    const state = { phase: "categoria", selectedCat: null, selectedCreencia: null };
+
+    function render() {
+      if (state.phase === "categoria") renderCatGrid();
+      else renderCreenciasLista();
+    }
+
+    function renderCatGrid() {
+      const guiaHtml = (m.pasos_guia || [
+        "1. Abrir circuito bioenergético.",
+        "2. MS: '¿Hay alguna creencia limitante activa?' → SÍ/NO",
+        "3. Preguntar categoría por categoría.",
+        "4. Dentro de la categoría, rastrear la creencia específica.",
+        "5. Liberar con comando EFT PRO + instalar creencia positiva."
+      ]).map((g) => `<li>${escapeHtml(g)}</li>`).join("");
+
+      const catCards = categorias.map((cat) => {
+        const color = CAT_COLORS[cat.color] || "#7c3aed";
+        return `<div class="creencia-cat-card" data-cat="${cat.id}" style="border-color:${color}">
+          <div class="creencia-cat-name" style="color:${color}">${escapeHtml(cat.nombre)}</div>
+          <div class="creencia-cat-afirm">"${escapeHtml(cat.afirmacion_positiva)}"</div>
+          <div class="creencia-cat-count">${cat.creencias?.length || 0} creencias</div>
+        </div>`;
+      }).join("");
+
+      panelEl.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="rastreo-instruccion-ms">
+            <span class="rastreo-ms-badge">MS</span>
+            <span>${escapeHtml(m.instruccion_ms || "¿Hay alguna creencia limitante activa relacionada con este conflicto?")}</span>
+          </div>
+          <details class="rastreo-guia-details">
+            <summary>📋 Guía de rastreo</summary>
+            <ol class="rastreo-guia-list">${guiaHtml}</ol>
+          </details>
+          <p class="creencia-instruccion-paso">Selecciona la categoría que responde SÍ con test muscular:</p>
+          <div class="creencia-cat-grid">${catCards}</div>
+          <div class="wizard-nav" style="margin-top:16px">
+            <button class="wizard-nav-btn wizard-reiniciar" id="creencia-reset-btn">Reiniciar</button>
+          </div>
+        </div>`;
+
+      panelEl.querySelectorAll(".creencia-cat-card").forEach((el) => {
+        el.addEventListener("click", () => {
+          state.selectedCat = categorias.find((c) => c.id === el.dataset.cat) || null;
+          state.phase = "creencias";
+          render();
+        });
+      });
+      panelEl.querySelector("#creencia-reset-btn")?.addEventListener("click", () => {
+        state.phase = "categoria"; state.selectedCat = null; state.selectedCreencia = null; render();
+      });
+    }
+
+    function renderCreenciasLista() {
+      if (!state.selectedCat) { state.phase = "categoria"; render(); return; }
+      const cat = state.selectedCat;
+      const color = CAT_COLORS[cat.color] || "#7c3aed";
+      const creencias = cat.creencias || [];
+      const creenciasHtml = creencias.map((texto, idx) => {
+        const isSel = state.selectedCreencia?.texto === texto;
+        return `<div class="creencia-item${isSel ? " creencia-item-selected" : ""}" data-idx="${idx}"
+          style="${isSel ? `border-color:${color};background:${color}15` : "border-color:#e2e8f0"}">
+          <span class="creencia-num" style="${isSel ? `color:${color}` : ""}">${idx + 1}</span>
+          <span class="creencia-texto">${escapeHtml(texto)}</span>
+          ${isSel ? `<span class="creencia-check" style="color:${color}">✓</span>` : ""}
+        </div>`;
+      }).join("");
+
+      const liberarHtml = state.selectedCreencia
+        ? `<div class="rastreo-sel-box" style="border-color:${color}">
+            <p class="rastreo-sel-label">Creencia identificada:</p>
+            <p class="rastreo-sel-value" style="color:${color}">"${escapeHtml(state.selectedCreencia.texto)}"</p>
+            <div class="creencia-liberar-cmd">
+              <p class="creencia-liberar-title">🔓 Comando EFT PRO:</p>
+              <p class="creencia-liberar-text">"Aunque he creído consciente o subconscientemente que ${escapeHtml(state.selectedCreencia.texto).toLowerCase().replace(/\.$/, "")} — me amo y me acepto. Decreto a partir de ahora y para siempre que ${escapeHtml(cat.afirmacion_positiva)}."</p>
+            </div>
+            <button class="rastreo-interpret-btn" id="creencia-interpretar-btn" style="background:${color}">✨ Interpretar con el Motor Terapéutico</button>
+          </div>` : "";
+
+      panelEl.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="creencia-cat-header" style="border-color:${color}">
+            <span class="creencia-cat-badge" style="background:${color}">Categoría: ${escapeHtml(cat.nombre)}</span>
+            <span class="creencia-cat-afirm-small">Meta: "${escapeHtml(cat.afirmacion_positiva)}"</span>
+          </div>
+          <p class="creencia-instruccion-paso">Selecciona la creencia que responde SÍ con test muscular:</p>
+          <div class="creencia-lista">${creenciasHtml}</div>
+          ${liberarHtml}
+          <div id="creencia-interpret-out"></div>
+          <div class="wizard-nav" style="margin-top:16px">
+            <button class="wizard-nav-btn" id="creencia-back-btn">← Cambiar categoría</button>
+            <button class="wizard-nav-btn wizard-reiniciar" id="creencia-reset-btn2">Reiniciar</button>
+          </div>
+        </div>`;
+
+      panelEl.querySelectorAll(".creencia-item").forEach((el) => {
+        el.addEventListener("click", () => {
+          const texto = creencias[parseInt(el.dataset.idx)];
+          state.selectedCreencia = state.selectedCreencia?.texto === texto ? null : { texto, cat: cat.id };
+          render();
+        });
+      });
+      panelEl.querySelector("#creencia-back-btn")?.addEventListener("click", () => {
+        state.phase = "categoria"; state.selectedCreencia = null; render();
+      });
+      panelEl.querySelector("#creencia-reset-btn2")?.addEventListener("click", () => {
+        state.phase = "categoria"; state.selectedCat = null; state.selectedCreencia = null; render();
+      });
+      panelEl.querySelector("#creencia-interpretar-btn")?.addEventListener("click", async () => {
+        const outEl = panelEl.querySelector("#creencia-interpret-out");
+        if (!outEl || !state.selectedCreencia) return;
+        const query = `El rastreo de creencias limitantes identificó:\nCategoría: ${cat.nombre}\nCreencia: "${state.selectedCreencia.texto}"\n\nDesde la perspectiva terapéutica holística: ¿Qué impacto tiene esta creencia? ¿Cuál es su probable origen? ¿Cómo se manifiesta en el cuerpo y conducta? ¿Cuál es la creencia positiva opuesta a instalar? ¿Qué técnicas complementarias ayudan? Orienta para la sesión.`;
+        await rastreoInterpretarIA(outEl, query);
+      });
+    }
+
+    render();
+  }
+
+  // ── Emociones Atrapadas & EFT ───────────────────────────────────────────────
+  function renderRAEmociones(m, panelEl) {
+    const state = { selected: null, eftVisible: false };
+    const eftPasos = m.eft_pasos || [];
+
+    async function render() {
+      if (emocionesCache.data === null) {
+        panelEl.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Cargando tabla de emociones...</span></div>`;
+        try {
+          const res = await fetch("/api/emociones/tabla");
+          emocionesCache.data = res.ok ? await res.json() : { columnas: [] };
+        } catch {
+          emocionesCache.data = { columnas: [] };
+        }
+      }
+      renderEmocionesInner();
+    }
+
+    function renderEmocionesInner() {
+      const columnas = emocionesCache.data?.columnas || [];
+      const instruccionMs = m.instruccion_ms || "¿Hay alguna emoción atrapada activa que esté contribuyendo a este conflicto?";
+
+      // Build 6-column table: col header, then rows 1-5 (fila_a) and 6-10 (fila_b)
+      const tableHeaderCols = columnas.map((c) =>
+        `<th class="emoc-th">${escapeHtml(c.nombre)}</th>`
+      ).join("");
+
+      const rows = [];
+      for (let rowIdx = 0; rowIdx < 5; rowIdx++) {
+        const filaA = columnas.map((c) => {
+          const item = c.fila_a?.[rowIdx];
+          if (!item) return `<td class="emoc-td"></td>`;
+          const isSel = state.selected?.nombre === item.nombre && state.selected?.col === c.num && state.selected?.fila === "a" && state.selected?.rowIdx === rowIdx;
+          return `<td class="emoc-td emoc-cell${isSel ? " emoc-cell-selected" : ""}"
+            data-col="${c.num}" data-fila="a" data-rowidx="${rowIdx}"
+            data-nombre="${escapeHtml(item.nombre)}" data-organo="${escapeHtml(item.organo || c.nombre)}">
+            ${escapeHtml(item.nombre)}
+          </td>`;
+        }).join("");
+        rows.push(`<tr class="emoc-row-a"><td class="emoc-row-num">${rowIdx + 1}</td>${filaA}</tr>`);
+      }
+      for (let rowIdx = 0; rowIdx < 5; rowIdx++) {
+        const filaB = columnas.map((c) => {
+          const item = c.fila_b?.[rowIdx];
+          if (!item) return `<td class="emoc-td"></td>`;
+          const isSel = state.selected?.nombre === item.nombre && state.selected?.col === c.num && state.selected?.fila === "b" && state.selected?.rowIdx === rowIdx;
+          return `<td class="emoc-td emoc-cell${isSel ? " emoc-cell-selected" : ""}"
+            data-col="${c.num}" data-fila="b" data-rowidx="${rowIdx}"
+            data-nombre="${escapeHtml(item.nombre)}" data-organo="${escapeHtml(item.organo || c.nombre)}">
+            ${escapeHtml(item.nombre)}
+          </td>`;
+        }).join("");
+        rows.push(`<tr class="emoc-row-b"><td class="emoc-row-num">${rowIdx + 6}</td>${filaB}</tr>`);
+      }
+
+      const selInfo = state.selected
+        ? `<div class="rastreo-sel-box">
+            <p class="rastreo-sel-label">Emoción atrapada identificada:</p>
+            <p class="rastreo-sel-value">💜 ${escapeHtml(state.selected.nombre)}</p>
+            <p class="emoc-organo-label">Órgano asociado: <strong>${escapeHtml(state.selected.organo)}</strong></p>
+            <div class="emoc-actions">
+              <button class="rastreo-interpret-btn" id="emoc-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+              <button class="wizard-nav-btn emoc-eft-btn" id="emoc-eft-toggle">${state.eftVisible ? "▲ Ocultar protocolo EFT" : "💜 Ver protocolo EFT de liberación"}</button>
+            </div>
+          </div>` : "";
+
+      const eftHtml = state.eftVisible && state.selected
+        ? `<div class="eft-pasos-wrap">
+            <h4 class="eft-pasos-title">Protocolo EFT — Liberación de "${escapeHtml(state.selected.nombre)}"</h4>
+            <ol class="eft-pasos-list">
+              ${eftPasos.map((paso) => `<li class="eft-paso-item">
+                <span class="eft-paso-punto">${escapeHtml(paso.zona || paso.punto || "")}</span>
+                <span class="eft-paso-afirmacion">"${escapeHtml((paso.frase || paso.afirmacion || "").replace(/\[emoción\]|\[emocion\]/gi, state.selected.nombre))}"</span>
+              </li>`).join("")}
+            </ol>
+          </div>` : "";
+
+      panelEl.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="rastreo-instruccion-ms">
+            <span class="rastreo-ms-badge">MS</span>
+            <span>${escapeHtml(instruccionMs)}</span>
+          </div>
+          <p class="creencia-instruccion-paso">Selecciona la emoción que responde SÍ con test muscular:</p>
+          <div class="emoc-table-scroll">
+            <table class="emoc-table">
+              <thead><tr><th class="emoc-th emoc-th-num">#</th>${tableHeaderCols}</tr></thead>
+              <tbody>${rows.join("")}</tbody>
+            </table>
+          </div>
+          ${selInfo}
+          <div id="emoc-interpret-out"></div>
+          ${eftHtml}
+          <div class="wizard-nav">
+            <button class="wizard-nav-btn wizard-reiniciar" id="emoc-reset-btn">Reiniciar</button>
+          </div>
+        </div>`;
+
+      panelEl.querySelectorAll(".emoc-cell").forEach((el) => {
+        el.addEventListener("click", () => {
+          const nombre = el.dataset.nombre;
+          const col = parseInt(el.dataset.col);
+          const fila = el.dataset.fila;
+          const rowIdx = parseInt(el.dataset.rowidx);
+          const organo = el.dataset.organo;
+          if (state.selected?.nombre === nombre && state.selected?.col === col) {
+            state.selected = null;
+          } else {
+            state.selected = { nombre, col, fila, rowIdx, organo };
+          }
+          state.eftVisible = false;
+          renderEmocionesInner();
+        });
+      });
+      panelEl.querySelector("#emoc-reset-btn")?.addEventListener("click", () => {
+        state.selected = null; state.eftVisible = false; renderEmocionesInner();
+      });
+      panelEl.querySelector("#emoc-eft-toggle")?.addEventListener("click", () => {
+        state.eftVisible = !state.eftVisible; renderEmocionesInner();
+      });
+      panelEl.querySelector("#emoc-interpretar-btn")?.addEventListener("click", async () => {
+        const outEl = panelEl.querySelector("#emoc-interpret-out");
+        if (!outEl || !state.selected) return;
+        const query = `El rastreo identificó la emoción atrapada: "${state.selected.nombre}" (órgano asociado: ${state.selected.organo}).\n\nDesde la perspectiva terapéutica holística: ¿Cómo se formó esta emoción atrapada? ¿Cómo impacta en el cuerpo, el órgano asociado y en los patrones de conducta? ¿Cuál es la probable experiencia de vida que la originó? ¿Cómo se libera de forma efectiva con EFT y magnetismo? ¿Qué cambios puede notar el paciente tras la liberación? Orienta para la sesión.`;
+        await rastreoInterpretarIA(outEl, query);
+      });
+    }
+
+    render();
+  }
+
+  renderShell();
+}
+
 function openProtocolDetail(protocolId) {
   const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
   const p = all.find((x) => x.id === protocolId);
@@ -1624,6 +2071,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "rastreos_avanzados") {
+      renderRastreosAvanzados(p, content);
     } else if (p.render_tipo === "tabla_hologramas") {
       renderTablaHologramas(p, content);
     } else if (p.render_tipo === "tabla_nudos_psoricos") {
