@@ -803,7 +803,7 @@ function renderStatic(cat) {
  m.cat.toLowerCase().includes(query)
     );
  const groups = [...new Set(MIEDOS_FOBIAS.map(m=>m.cat))];
- let html = `<div class="category-title" style="color:#e0b3ff">Miedos, Fobias y Nudos Psóricos</div><div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías (Método Lavín / SEI)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#e0b3ff">Miedos, Fobias y Nudos Psóricos</div><div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(m=>m.cat===g);
  if (!gItems.length) continue;
@@ -895,7 +895,7 @@ function renderStatic(cat) {
  let data = AMINOACIDOS;
  if (query) data = data.filter(a =>a.nombre.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query) || a.cat.toLowerCase().includes(query));
  const groups = [...new Set(AMINOACIDOS.map(a=>a.cat))];
- let html = `<div class="category-title" style="color:#ffd9b3">Aminoácidos</div><div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias (Método Lavín)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#ffd9b3">Aminoácidos</div><div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(a=>a.cat===g);
  if (!gItems.length) continue;
@@ -914,7 +914,7 @@ function renderStatic(cat) {
  let data = ENZIMAS;
  if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || e.cat.toLowerCase().includes(query));
  const groups = [...new Set(ENZIMAS.map(e=>e.cat))];
- let html = `<div class="category-title" style="color:#b3d9ff">Enzimas</div><div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática (Método Lavín)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#b3d9ff">Enzimas</div><div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(e=>e.cat===g);
  if (!gItems.length) continue;
