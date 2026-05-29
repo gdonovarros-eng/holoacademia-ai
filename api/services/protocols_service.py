@@ -944,9 +944,9 @@ _CATEGORY_META: Dict[str, Dict[str, str]] = {
         "icono": "💛",
     },
     "rastreo": {
-        "label": "Rastreo y Diagnóstico",
-        "descripcion": "Herramientas diagnósticas para identificar conflictos activos por sistema orgánico, evaluar el porcentaje de armonía corporal y preparar la sesión de rastreo.",
-        "icono": "🔍",
+        "label": "Módulo de Rastreo",
+        "descripcion": "Tablas visuales para rastreo con test muscular: hologramas, nudos psóricos, creencias limitantes, diagnóstico orgánico y protocolos especializados por sistema. El Motor muestra las tablas para que el terapeuta navegue sin soltar al consultante.",
+        "icono": "🧭",
     },
     "sesion": {
         "label": "Estructura de Sesión",

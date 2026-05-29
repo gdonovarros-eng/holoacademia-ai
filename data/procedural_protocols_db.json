@@ -5991,7 +5991,7 @@
         "inventario de creencias",
         "liberación de creencias"
       ],
-      "categoria": "bioenergético",
+      "categoria": "rastreo",
       "objetivo": "Identificar y liberar creencias limitantes activas que mantienen un conflicto, bloqueo emocional o síntoma psicosomático, e instalar la creencia opuesta positiva como nuevo programa subconsciente.",
       "cuando_usarlo": [
         "Cuando el trabajo emocional o energético no avanza y persiste el bloqueo",
@@ -6103,6 +6103,501 @@
         "Una sesión puede trabajar 2-4 creencias como máximo sin sobrecargar el campo — respetar ese límite y agendar seguimiento para el resto.",
         "La categoría Valía es la más frecuente y suele ser la raíz de creencias en otras categorías — trabajar primero la más profunda cuando hay múltiples activas.",
         "Las creencias transgeneracionales suelen ser más resistentes y pueden requerir trabajo adicional con EFT Transgeneracional o Liberación de Impronta para consolidar el borrado."
+      ],
+      "render_tipo": "tabla_creencias",
+      "tabla": {
+        "categorias": [
+          {
+            "id": "valia",
+            "nombre": "Valía",
+            "afirmacion_positiva": "Soy valioso/a",
+            "color": "violet",
+            "creencias": [
+              "Frecuentemente creo que tengo más defectos y debilidades que los otros.",
+              "Si alguien a quien yo quiero me conociera de verdad, no me aceptaría.",
+              "Soy lo que llaman 'un pesado' y difícilmente me soportan.",
+              "Creo que no valgo gran cosa.",
+              "No merezco que me quieran ni me atiendan."
+            ]
+          },
+          {
+            "id": "seguridad",
+            "nombre": "Seguridad",
+            "afirmacion_positiva": "Me siento seguro/a",
+            "color": "sky",
+            "creencias": [
+              "La vida es una ruleta en la que nos acecha el peligro. En cualquier momento puedes perderlo todo.",
+              "Casi siempre estoy preocupado por caer enfermo o tener un accidente.",
+              "Tengo conflictos con el dinero y puedo terminar arruinado.",
+              "Muchas situaciones me dan miedo sin que haya motivo real para ello.",
+              "No tengo la certeza de que las cosas me vayan a ir bien."
+            ]
+          },
+          {
+            "id": "comportamiento",
+            "nombre": "Comportamiento",
+            "afirmacion_positiva": "Soy competente y eficaz",
+            "color": "teal",
+            "creencias": [
+              "Soy torpe por naturaleza.",
+              "Si actúo por mi cuenta, suelo equivocarme.",
+              "Soy muy conservador y procuro evitar los cambios.",
+              "Soy muy lento/a y me cuesta aprender cosas nuevas.",
+              "Tengo mala memoria para los hechos."
+            ]
+          },
+          {
+            "id": "control",
+            "nombre": "Control",
+            "afirmacion_positiva": "Soy capaz de controlar las situaciones",
+            "color": "amber",
+            "creencias": [
+              "Mi vida se me escapa del control frecuentemente.",
+              "Con frecuencia me superan los acontecimientos.",
+              "Mi impulsividad me domina.",
+              "Me domina la ansiedad y no soy capaz de controlarla.",
+              "Me resulta difícil tomar decisiones.",
+              "Soy muy susceptible a las críticas y me afectan mucho.",
+              "Me resulta difícil organizarme."
+            ]
+          },
+          {
+            "id": "amor",
+            "nombre": "Amor",
+            "afirmacion_positiva": "Me siento querido/a",
+            "color": "rose",
+            "creencias": [
+              "Mi familia nunca me ha aceptado y querido plenamente.",
+              "Tengo muy pocas relaciones profundas. Si desapareciera, nadie me echaría en falta.",
+              "Me siento dependiente, y temo que me abandonen, no me quieran o me rechacen.",
+              "Soy incapaz de intimar emocionalmente con otra persona.",
+              "Me siento solo/a y nadie se preocupa por mí.",
+              "Mis relaciones no son satisfactorias."
+            ]
+          },
+          {
+            "id": "autonomia",
+            "nombre": "Autonomía",
+            "afirmacion_positiva": "Soy autónomo/a e independiente",
+            "color": "emerald",
+            "creencias": [
+              "Me siento un inútil en mi atención personal. Dependo de los cuidados de los demás.",
+              "Me someto a los criterios de los otros.",
+              "No me las arreglo bien por mi cuenta.",
+              "Necesito que alguien me guíe para tomar decisiones.",
+              "Sin apoyo de los demás no puedo salir adelante."
+            ]
+          },
+          {
+            "id": "justicia",
+            "nombre": "Justicia",
+            "afirmacion_positiva": "Recibo un trato justo",
+            "color": "indigo",
+            "creencias": [
+              "Me fastidian las negativas a mis demandas. No sé aceptar un no.",
+              "Sin ciertas cosas no soy feliz.",
+              "Creo que no debería aceptar algunas limitaciones a que están sometidas las personas corrientes.",
+              "Tiendo a reaccionar con rabia cuando no obtengo lo que creo merecer.",
+              "Me resulta muy difícil perdonar las ofensas."
+            ]
+          },
+          {
+            "id": "integracion",
+            "nombre": "Integración",
+            "afirmacion_positiva": "Estoy integrado/a",
+            "color": "cyan",
+            "creencias": [
+              "Me siento marginado en los grupos.",
+              "Me siento como aislado o al margen de todos.",
+              "Las personas me marginan, no suelen incluirme en lo que hacen.",
+              "Me cuesta mucho adaptarme a grupos nuevos.",
+              "Me siento diferente y no encajo con los demás."
+            ]
+          },
+          {
+            "id": "los_demas",
+            "nombre": "Los demás",
+            "afirmacion_positiva": "La gente es buena en general",
+            "color": "orange",
+            "creencias": [
+              "Tengo muchos enemigos o creo tenerlos, a los que les gustaría verme dañado.",
+              "La gente es básicamente egoísta, sólo piensan en ellos mismos.",
+              "No se puede confiar en casi nadie.",
+              "En cuanto te descuidas, los demás te explotan.",
+              "Las personas cercanas siempre terminan defraudándome."
+            ]
+          },
+          {
+            "id": "normas",
+            "nombre": "Normas",
+            "afirmacion_positiva": "Mis normas son razonables",
+            "color": "purple",
+            "creencias": [
+              "Pocas veces estoy contento con lo que tengo o consigo.",
+              "Tengo que ser el mejor en lo que emprendo. Las cosas no pueden hacerse a medias.",
+              "No acepto el fracaso fácilmente.",
+              "Me exijo a mí mismo/a de forma excesiva.",
+              "Siento que nunca es suficiente lo que hago."
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "rastreo_hologramas",
+      "nombre": "Rastreo de Hologramas",
+      "aliases": [
+        "hologramas",
+        "impactos emocionales",
+        "bioshocks",
+        "holograma",
+        "rastreo hologramas"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "tabla_hologramas",
+      "objetivo": "Identificar el holograma (impacto emocional / bioshock) activo que sostiene el conflicto, y obtener orientación terapéutica para desarticularlo.",
+      "instruccion_ms": "MS: 'Voy a hacer un rastreo de impactos emocionales. Manifiéstame qué necesitamos desarticular para restaurar la armonía biodinámica de todos tus cuerpos.'",
+      "pasos_guia": [
+        "1. Abrir circuito bioenergético.",
+        "2. MS: '¿Sabes qué estamos buscando?' → SÍ/NO",
+        "3. MS: '¿Hay algún holograma que desarticular?' → SÍ/NO",
+        "4. MS: '¿De qué bloque es?' → Bloque 1 (1-3) / Bloque 2 (4-6) / Bloque 3 (7-9) / Bloque 4 (10-12)",
+        "5. Localizar el holograma exacto con TM.",
+        "6. Rastrear datos adicionales: recesión de edad, emoción-reacción, persona implicada, capa embrionaria, cromosoma, microbio, par biomagnético, chakra, meridiano."
+      ],
+      "bloques": [
+        {
+          "id": "bloque_1",
+          "label": "Bloque 1",
+          "rango": "1 – 3",
+          "items": [
+            {
+              "numero": 1,
+              "nombre": "Impacto frontal",
+              "descripcion": "El evento impactó de frente; el sistema no tuvo tiempo de prepararse. Shock directo, inesperado, que congela la respuesta adaptativa."
+            },
+            {
+              "numero": 2,
+              "nombre": "Impacto posterior",
+              "descripcion": "El evento llegó por la espalda; traición, sorpresa dolorosa, algo que no se vio venir desde el entorno de confianza."
+            },
+            {
+              "numero": 3,
+              "nombre": "Desvalorización",
+              "descripcion": "La persona sintió que no valía, que era insuficiente, inferior o no merecedora de algo esencial (amor, lugar, reconocimiento)."
+            }
+          ]
+        },
+        {
+          "id": "bloque_2",
+          "label": "Bloque 2",
+          "rango": "4 – 6",
+          "items": [
+            {
+              "numero": 4,
+              "nombre": "Alguien tiene la culpa",
+              "descripcion": "El sistema quedó atrapado en buscar al responsable externo del daño. Resentimiento sostenido, incapacidad de soltar la culpa asignada a otro."
+            },
+            {
+              "numero": 5,
+              "nombre": "Yo tengo razón y no me hacen caso",
+              "descripcion": "Conflicto de ser ignorado teniendo la verdad. Frustración profunda por no ser escuchado cuando se sabía algo importante."
+            },
+            {
+              "numero": 6,
+              "nombre": "Ultraje",
+              "descripcion": "Humillación, ofensa grave a la dignidad. El sistema registró una herida al honor o integridad personal que no fue reparada."
+            }
+          ]
+        },
+        {
+          "id": "bloque_3",
+          "label": "Bloque 3",
+          "rango": "7 – 9",
+          "items": [
+            {
+              "numero": 7,
+              "nombre": "Tiro la toalla / Me rindo",
+              "descripcion": "El sistema llegó al límite y se rindió ante una situación que parecía imposible. Agotamiento profundo, resignación, pérdida de voluntad de luchar."
+            },
+            {
+              "numero": 8,
+              "nombre": "Abandono",
+              "descripcion": "Holograma de ser dejado, olvidado o desatendido por alguien esencial. El sistema quedó en estado de soledad radical e indefensión."
+            },
+            {
+              "numero": 9,
+              "nombre": "Vivo/Muerto",
+              "descripcion": "Conflicto existencial entre existir o no existir. El sistema quedó en suspensión entre vivir y morir, a menudo ligado a crisis vitales, accidentes o enfermedades graves."
+            }
+          ]
+        },
+        {
+          "id": "bloque_4",
+          "label": "Bloque 4",
+          "rango": "10 – 12",
+          "items": [
+            {
+              "numero": 10,
+              "nombre": "Bloqueo energético",
+              "descripcion": "El flujo vital quedó detenido en un punto del sistema. Energía estancada que no puede moverse ni expresarse, generando bloqueos físicos o emocionales crónicos."
+            },
+            {
+              "numero": 11,
+              "nombre": "Incorporación energética",
+              "descripcion": "El sistema absorbió energía ajena (de una persona, lugar o evento) que no le pertenece y que altera su campo propio."
+            },
+            {
+              "numero": 12,
+              "nombre": "Pérdida de la voluntad",
+              "descripcion": "El sistema perdió la capacidad de dirigir su propia energía. Falta de motivación, dificultad para tomar decisiones, sensación de que 'algo más' controla la dirección de vida."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rastreo_nudos_psoricos",
+      "nombre": "Rastreo de Nudos Psóricos",
+      "aliases": [
+        "nudos psoricos",
+        "miedos arcaicos",
+        "miedos primarios",
+        "psora",
+        "nudo psorico",
+        "miedos profundos"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "tabla_nudos_psoricos",
+      "objetivo": "Identificar el nudo psórico (miedo ancestral / arcaico) que sostiene un conflicto y liberarlo con TM e imán.",
+      "instruccion_ms": "MS: '¿Hay algún nudo psórico o miedo arcaico implicado en este conflicto?'",
+      "pasos_guia": [
+        "1. Confirmar presencia: MS: '¿Hay algún nudo psórico?' → SÍ/NO",
+        "2. Confirmar si es propio o transgeneracional.",
+        "3. Localizar el bloque: I-VII / VIII-XIV / XV-XXI",
+        "4. Localizar el nudo específico.",
+        "5. Liberar: 'Me libero consciente y subconscientemente del nudo psórico de [nombre], pasando el imán 10 veces.'",
+        "6. Verificar liberación con TM."
+      ],
+      "raiz": {
+        "numero": "0",
+        "nombre": "Miedo a la vida, a vivir",
+        "descripcion": "El miedo raíz de todos los nudos. Falta de voluntad de vivir plenamente; resistencia fundamental a encarnar la existencia."
+      },
+      "bloques": [
+        {
+          "id": "bloque_1",
+          "label": "Bloque I – VII",
+          "nudos": [
+            {
+              "romano": "I",
+              "numero": 1,
+              "nombre": "Miedo a lo nuevo",
+              "submiedos": [
+                "Miedo a crear",
+                "Miedo a imaginar",
+                "Miedo a sentir"
+              ]
+            },
+            {
+              "romano": "II",
+              "numero": 2,
+              "nombre": "Miedo a recordar",
+              "submiedos": [
+                "Miedo al pasado",
+                "Miedo a saber conflictos de familia"
+              ]
+            },
+            {
+              "romano": "III",
+              "numero": 3,
+              "nombre": "Miedo al parto / al origen",
+              "submiedos": [
+                "Miedo a tener hijos",
+                "Miedo a embarazarse",
+                "Miedo a la otra familia",
+                "Miedo a creer"
+              ]
+            },
+            {
+              "romano": "IV",
+              "numero": 4,
+              "nombre": "Miedo a la autoridad",
+              "submiedos": [
+                "Miedo a los padres",
+                "Miedo a los mayores"
+              ]
+            },
+            {
+              "romano": "V",
+              "numero": 5,
+              "nombre": "Miedo a los castigos",
+              "submiedos": [
+                "Miedo a ser regañado",
+                "Miedo a ser descubierto"
+              ]
+            },
+            {
+              "romano": "VI",
+              "numero": 6,
+              "nombre": "Miedo a no ser querido",
+              "submiedos": [
+                "Miedo al amor",
+                "Miedo a enamorarse",
+                "Miedo a vivir en pareja",
+                "Miedo a conocer a otros"
+              ]
+            },
+            {
+              "romano": "VII",
+              "numero": 7,
+              "nombre": "Miedo a ser atacado",
+              "submiedos": [
+                "Miedo a los espacios abiertos",
+                "Miedo a viajar",
+                "Miedo a escapar",
+                "Miedo a ir"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bloque_2",
+          "label": "Bloque VIII – XIV",
+          "nudos": [
+            {
+              "romano": "VIII",
+              "numero": 8,
+              "nombre": "Miedo a ser engañado",
+              "submiedos": [
+                "Miedo a ser traicionado"
+              ]
+            },
+            {
+              "romano": "IX",
+              "numero": 9,
+              "nombre": "Miedo a la soledad",
+              "submiedos": [
+                "Miedo a buscar la emoción visceral",
+                "Miedo a descubrir algo",
+                "Miedo a urgar en lo propio"
+              ]
+            },
+            {
+              "romano": "X",
+              "numero": 10,
+              "nombre": "Miedo a la pobreza / escasez",
+              "submiedos": [
+                "Miedo a las crisis",
+                "Miedo a los cambios económicos",
+                "Miedo al dinero"
+              ]
+            },
+            {
+              "romano": "XI",
+              "numero": 11,
+              "nombre": "Miedo a no controlar lo económico",
+              "submiedos": [
+                "Miedo a las crisis sin control",
+                "Miedo a los cambios económicos imprevistos"
+              ]
+            },
+            {
+              "romano": "XII",
+              "numero": 12,
+              "nombre": "Miedo a la enfermedad",
+              "submiedos": [
+                "Miedo a los microbios",
+                "Miedo a los tumores",
+                "Miedo a la vejez",
+                "Miedo al dolor"
+              ]
+            },
+            {
+              "romano": "XIII",
+              "numero": 13,
+              "nombre": "Miedo a la muerte",
+              "submiedos": [
+                "Miedo a los cambios radicales"
+              ]
+            },
+            {
+              "romano": "XIV",
+              "numero": 14,
+              "nombre": "Miedo a ser agredido / perseguido",
+              "submiedos": [
+                "Miedo a ser agresivo uno mismo"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bloque_3",
+          "label": "Bloque XV – XXI",
+          "nudos": [
+            {
+              "romano": "XV",
+              "numero": 15,
+              "nombre": "Miedos sexuales",
+              "submiedos": [
+                "Claustrofobia",
+                "Miedo a la intimidad física"
+              ]
+            },
+            {
+              "romano": "XVI",
+              "numero": 16,
+              "nombre": "Miedo al agua / a los fenómenos naturales",
+              "submiedos": [
+                "Miedo a tormentas",
+                "Miedo a fenómenos naturales"
+              ]
+            },
+            {
+              "romano": "XVII",
+              "numero": 17,
+              "nombre": "Miedo a la pérdida",
+              "submiedos": [
+                "Miedo a la separación"
+              ]
+            },
+            {
+              "romano": "XVIII",
+              "numero": 18,
+              "nombre": "Miedo al mar / a la noche",
+              "submiedos": [
+                "Miedo a los animales",
+                "Miedo al ridículo"
+              ]
+            },
+            {
+              "romano": "XIX",
+              "numero": 19,
+              "nombre": "Miedo a la traición",
+              "submiedos": [
+                "Miedo a la deslealtad profunda"
+              ]
+            },
+            {
+              "romano": "XX",
+              "numero": 20,
+              "nombre": "Miedo a lo sutil / a lo energético",
+              "submiedos": [
+                "Miedo a lo oculto",
+                "Miedo a ir más allá"
+              ]
+            },
+            {
+              "romano": "XXI",
+              "numero": 21,
+              "nombre": "Miedo al mundo / al entorno",
+              "submiedos": [
+                "Miedo a los peligros externos",
+                "Miedo generalizado al entorno"
+              ]
+            }
+          ]
+        }
       ]
     }
   ]

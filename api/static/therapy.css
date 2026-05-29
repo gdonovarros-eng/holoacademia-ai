@@ -1810,3 +1810,399 @@ textarea {
     padding: 9px 12px;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════════
+   MÓDULO DE RASTREO — TABLAS VISUALES
+   (Hologramas · Nudos Psóricos · Creencias Limitantes)
+═══════════════════════════════════════════════════════════════════ */
+
+.rastreo-tabla-wrap {
+  padding: 0 4px 24px;
+}
+
+/* MS instruction banner */
+.rastreo-instruccion-ms {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--surface-elevated, #f8f6ff);
+  border: 1px solid #c4b5fd;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin: 10px 0 14px;
+  font-size: 0.9rem;
+  color: var(--ink, #1e1b4b);
+  line-height: 1.45;
+}
+.rastreo-ms-badge {
+  background: #7c3aed;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: 5px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Collapsible guide */
+.rastreo-guia-details {
+  margin-bottom: 16px;
+}
+.rastreo-guia-details summary {
+  cursor: pointer;
+  font-size: 0.83rem;
+  color: var(--accent, #7c3aed);
+  font-weight: 600;
+  padding: 4px 2px;
+  user-select: none;
+}
+.rastreo-guia-list {
+  margin: 8px 0 0 20px;
+  padding: 0;
+  font-size: 0.84rem;
+  color: var(--ink-soft, #4b5563);
+  line-height: 1.55;
+}
+.rastreo-guia-list li { margin-bottom: 4px; }
+
+/* Selection box shown after item selected */
+.rastreo-sel-box {
+  background: #faf5ff;
+  border: 2px solid #7c3aed;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 18px 0 12px;
+}
+.rastreo-sel-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #7c3aed;
+  margin: 0 0 6px;
+}
+.rastreo-sel-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink, #1e1b4b);
+  margin: 0 0 8px;
+}
+.rastreo-sel-desc {
+  font-size: 0.86rem;
+  color: var(--ink-soft, #4b5563);
+  line-height: 1.5;
+  margin: 0 0 12px;
+}
+
+/* AI Interpret button */
+.rastreo-interpret-btn {
+  display: inline-block;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.18s;
+}
+.rastreo-interpret-btn:hover { background: #6d28d9; }
+
+/* AI interpretation output */
+.rastreo-interpret-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  color: var(--muted, #9ca3af);
+  font-size: 0.86rem;
+}
+.rastreo-interpret-spinner {
+  width: 18px; height: 18px;
+  border: 2px solid #e2d9f3;
+  border-top-color: #7c3aed;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.rastreo-interpret-result {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 10px;
+}
+.rastreo-interpret-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #16a34a;
+  margin: 0 0 8px;
+}
+.rastreo-interpret-body {
+  font-size: 0.9rem;
+  color: var(--ink, #1e1b4b);
+  line-height: 1.6;
+}
+
+/* ──────────────── HOLOGRAMAS ──────────────── */
+.holo-table {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.holo-bloque {}
+.holo-bloque-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted, #9ca3af);
+  margin-bottom: 8px;
+}
+.holo-bloque-rango {
+  font-weight: 400;
+  color: #c4b5fd;
+}
+.holo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.holo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 13px;
+  border: 1.5px solid #e2d9f3;
+  border-radius: 10px;
+  background: var(--surface, #fff);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.holo-item:hover {
+  border-color: #a78bfa;
+  background: #faf5ff;
+}
+.holo-item-selected {
+  border-color: #7c3aed;
+  background: #f5f0ff;
+  box-shadow: 0 0 0 3px #c4b5fd55;
+}
+.holo-num {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #a78bfa;
+  letter-spacing: 0.05em;
+}
+.holo-nombre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink, #1e1b4b);
+  line-height: 1.3;
+}
+@media (max-width: 600px) {
+  .holo-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ──────────────── NUDOS PSÓRICOS ──────────────── */
+.nudo-raiz {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 16px;
+  background: #fefce8;
+  border: 1.5px solid #fbbf24;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.15s;
+}
+.nudo-raiz:hover { background: #fef3c7; border-color: #f59e0b; }
+.nudo-raiz-selected { background: #fef3c7; border-color: #f59e0b; box-shadow: 0 0 0 3px #fde68a66; }
+.nudo-raiz-num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #f59e0b;
+  width: 24px;
+  flex-shrink: 0;
+}
+.nudo-raiz-nombre {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink, #1e1b4b);
+}
+.nudo-raiz-badge {
+  font-size: 0.72rem;
+  color: #92400e;
+  background: #fde68a;
+  border-radius: 12px;
+  padding: 2px 8px;
+  margin-left: auto;
+}
+
+.nudo-table { display: flex; flex-direction: column; gap: 18px; margin-bottom: 8px; }
+.nudo-bloque {}
+.nudo-bloque-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted, #9ca3af);
+  margin-bottom: 8px;
+}
+.nudo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 8px;
+}
+.nudo-item {
+  padding: 10px 12px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 9px;
+  background: var(--surface, #fff);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.nudo-item:hover { border-color: #a78bfa; background: #faf5ff; }
+.nudo-item-selected { border-color: #7c3aed; background: #f5f0ff; box-shadow: 0 0 0 3px #c4b5fd44; }
+.nudo-header { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+.nudo-romano {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #7c3aed;
+  background: #ede9fe;
+  border-radius: 4px;
+  padding: 1px 5px;
+  min-width: 26px;
+  text-align: center;
+}
+.nudo-nombre { font-size: 0.86rem; font-weight: 700; color: var(--ink, #1e1b4b); line-height: 1.3; }
+.nudo-submiedos { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.nudo-sub {
+  font-size: 0.72rem;
+  color: var(--ink-soft, #4b5563);
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 2px 7px;
+  line-height: 1.4;
+}
+.rastreo-liberar-cmd {
+  font-size: 0.85rem;
+  color: var(--ink-soft, #4b5563);
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+.rastreo-liberar-cmd em { color: #166534; font-style: normal; font-weight: 600; }
+
+/* ──────────────── CREENCIAS LIMITANTES ──────────────── */
+.creencia-instruccion-paso {
+  font-size: 0.87rem;
+  color: var(--ink-soft, #4b5563);
+  margin: 0 0 12px;
+}
+.creencia-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.creencia-cat-card {
+  padding: 13px 14px;
+  border: 2px solid #e2e8f0;
+  border-radius: 11px;
+  background: var(--surface, #fff);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.creencia-cat-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.creencia-cat-name { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+.creencia-cat-afirm { font-size: 0.76rem; color: var(--ink-soft, #4b5563); font-style: italic; line-height: 1.3; margin-bottom: 6px; }
+.creencia-cat-count { font-size: 0.72rem; color: var(--muted, #9ca3af); }
+
+.creencia-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 14px;
+  border-left: 4px solid;
+  background: #fafafa;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 14px;
+}
+.creencia-cat-badge {
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+.creencia-cat-afirm-small {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--ink-soft, #4b5563);
+}
+
+.creencia-lista { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
+.creencia-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 13px;
+  border: 1.5px solid;
+  border-radius: 9px;
+  cursor: pointer;
+  background: var(--surface, #fff);
+  transition: all 0.15s;
+}
+.creencia-item:hover { transform: translateX(3px); }
+.creencia-num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--muted, #9ca3af);
+  min-width: 18px;
+  padding-top: 1px;
+}
+.creencia-texto { font-size: 0.87rem; color: var(--ink, #1e1b4b); line-height: 1.45; flex: 1; }
+.creencia-check { font-size: 1rem; font-weight: 900; margin-left: auto; flex-shrink: 0; }
+.creencia-item-selected .creencia-texto { font-weight: 600; }
+
+.creencia-liberar-cmd {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 9px;
+  padding: 12px 14px;
+  margin: 10px 0;
+}
+.creencia-liberar-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #16a34a;
+  margin: 0 0 6px;
+}
+.creencia-liberar-text {
+  font-size: 0.88rem;
+  color: #166534;
+  font-style: italic;
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .nudo-grid { grid-template-columns: 1fr; }
+  .creencia-cat-grid { grid-template-columns: repeat(2, 1fr); }
+}
