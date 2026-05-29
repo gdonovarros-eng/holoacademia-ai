@@ -1,5 +1,4 @@
 {
-  "fuente": "Inventario de Creencias · Método Lavín · Módulo 1 pp.47-51",
   "version": "1.0",
   "instrucciones": [
     "Califica con V (Verdadero) las frases que consideres verdad, F (Falso) las que no.",
@@ -8,117 +7,667 @@
     "No hay respuestas correctas o incorrectas."
   ],
   "categorias": [
-    { "id": "valia",         "nombre": "Valía",         "afirmacion": "Soy valioso/a",                              "color": "violet" },
-    { "id": "seguridad",     "nombre": "Seguridad",     "afirmacion": "Me siento seguro/a",                         "color": "sky" },
-    { "id": "comportamiento","nombre": "Comportamiento","afirmacion": "Soy competente y eficaz",                    "color": "teal" },
-    { "id": "control",       "nombre": "Control",       "afirmacion": "Soy capaz de controlar las situaciones",     "color": "amber" },
-    { "id": "amor",          "nombre": "Amor",          "afirmacion": "Me siento querido/a",                        "color": "rose" },
-    { "id": "autonomia",     "nombre": "Autonomía",     "afirmacion": "Soy autónomo/a e independiente",             "color": "sage" },
-    { "id": "justicia",      "nombre": "Justicia",      "afirmacion": "Recibo un trato justo de los demás",         "color": "violet" },
-    { "id": "integracion",   "nombre": "Integración",   "afirmacion": "Estoy integrado/a",                          "color": "teal" },
-    { "id": "los_demas",     "nombre": "Los demás",     "afirmacion": "La gente es buena en general",               "color": "amber" },
-    { "id": "normas",        "nombre": "Normas",        "afirmacion": "Mis normas son razonables y flexibles",      "color": "rose" }
+    {
+      "id": "valia",
+      "nombre": "Valía",
+      "afirmacion": "Soy valioso/a",
+      "color": "violet"
+    },
+    {
+      "id": "seguridad",
+      "nombre": "Seguridad",
+      "afirmacion": "Me siento seguro/a",
+      "color": "sky"
+    },
+    {
+      "id": "comportamiento",
+      "nombre": "Comportamiento",
+      "afirmacion": "Soy competente y eficaz",
+      "color": "teal"
+    },
+    {
+      "id": "control",
+      "nombre": "Control",
+      "afirmacion": "Soy capaz de controlar las situaciones",
+      "color": "amber"
+    },
+    {
+      "id": "amor",
+      "nombre": "Amor",
+      "afirmacion": "Me siento querido/a",
+      "color": "rose"
+    },
+    {
+      "id": "autonomia",
+      "nombre": "Autonomía",
+      "afirmacion": "Soy autónomo/a e independiente",
+      "color": "sage"
+    },
+    {
+      "id": "justicia",
+      "nombre": "Justicia",
+      "afirmacion": "Recibo un trato justo de los demás",
+      "color": "violet"
+    },
+    {
+      "id": "integracion",
+      "nombre": "Integración",
+      "afirmacion": "Estoy integrado/a",
+      "color": "teal"
+    },
+    {
+      "id": "los_demas",
+      "nombre": "Los demás",
+      "afirmacion": "La gente es buena en general",
+      "color": "amber"
+    },
+    {
+      "id": "normas",
+      "nombre": "Normas",
+      "afirmacion": "Mis normas son razonables y flexibles",
+      "color": "rose"
+    }
   ],
   "preguntas": [
-    { "n": 1, "texto": "Soy merecedor de consideración, amor y respeto.", "cat": "valia", "pol": "+" },
-    { "n": 2, "texto": "El mundo en el que me desenvuelvo es muy seguro.", "cat": "seguridad", "pol": "+" },
-    { "n": 3, "texto": "Realizo bien la mayoría de las cosas.", "cat": "comportamiento", "pol": "+" },
-    { "n": 4, "texto": "Tengo el control de mi vida.", "cat": "control", "pol": "+" },
-    { "n": 5, "texto": "Considero que me atienden y me aman.", "cat": "amor", "pol": "+" },
-    { "n": 6, "texto": "Lo que hago me merece confianza.", "cat": "autonomia", "pol": "+" },
-    { "n": 7, "texto": "La vida no es ni buena ni mala, la gente no es ni justa ni injusta.", "cat": "justicia", "pol": "+" },
-    { "n": 8, "texto": "Me considero plenamente conectado con mi familia y con la sociedad.", "cat": "integracion", "pol": "+" },
-    { "n": 9, "texto": "La mayoría de la gente es digna de confianza.", "cat": "los_demas", "pol": "+" },
-    { "n": 10, "texto": "Mis reglas son lógicas y normales.", "cat": "normas", "pol": "+" },
-    { "n": 11, "texto": "Frecuentemente creo que tengo más defectos y debilidades que los otros.", "cat": "valia", "pol": "-" },
-    { "n": 12, "texto": "La vida es una ruleta en la que nos acecha el peligro. En cualquier momento puedes perderlo todo.", "cat": "seguridad", "pol": "-" },
-    { "n": 13, "texto": "Soy torpe por naturaleza.", "cat": "comportamiento", "pol": "-" },
-    { "n": 14, "texto": "Mi vida se me escapa del control frecuentemente.", "cat": "control", "pol": "-" },
-    { "n": 15, "texto": "Mi familia nunca me ha aceptado y querido plenamente.", "cat": "amor", "pol": "-" },
-    { "n": 16, "texto": "Me siento un inútil en mi atención personal. Dependo de los cuidados de los demás.", "cat": "autonomia", "pol": "-" },
-    { "n": 17, "texto": "Me fastidian las negativas a mis demandas. No sé aceptar un no.", "cat": "justicia", "pol": "-" },
-    { "n": 18, "texto": "Me siento marginado en los grupos.", "cat": "integracion", "pol": "-" },
-    { "n": 19, "texto": "Tengo muchos enemigos o creo tenerlos, a los que les gustaría verme dañado.", "cat": "los_demas", "pol": "-" },
-    { "n": 20, "texto": "Pocas veces estoy contento con lo que tengo o consigo.", "cat": "normas", "pol": "-" },
-    { "n": 21, "texto": "Estoy a gusto conmigo mismo.", "cat": "valia", "pol": "+" },
-    { "n": 22, "texto": "Sé salir airoso de casi todas las situaciones de peligro o crisis.", "cat": "seguridad", "pol": "+" },
-    { "n": 23, "texto": "La mayoría de las cosas que hago, las realizo con facilidad.", "cat": "comportamiento", "pol": "+" },
-    { "n": 24, "texto": "Mi capacidad resolutiva afronta fácilmente todo tipo de situaciones.", "cat": "control", "pol": "+" },
-    { "n": 25, "texto": "Mantengo una relación íntima que funciona.", "cat": "amor", "pol": "+" },
-    { "n": 26, "texto": "Está muy bien discutir o no aceptar las ideas de otros.", "cat": "autonomia", "pol": "+" },
-    { "n": 27, "texto": "No me cuesta conformarme cuando no alcanzo mis objetivos o metas.", "cat": "justicia", "pol": "+" },
-    { "n": 28, "texto": "Soy bien aceptado entre la gente con la que me relaciono.", "cat": "integracion", "pol": "+" },
-    { "n": 29, "texto": "Difícilmente necesito mostrarme precavido o protegerme de los demás.", "cat": "los_demas", "pol": "+" },
-    { "n": 30, "texto": "Soy condescendiente conmigo y mis fallos.", "cat": "normas", "pol": "+" },
-    { "n": 31, "texto": "Si alguien a quien yo quiero me conociera de verdad, no me aceptaría.", "cat": "valia", "pol": "-" },
-    { "n": 32, "texto": "Casi siempre estoy preocupado por caer enfermo o tener un accidente.", "cat": "seguridad", "pol": "-" },
-    { "n": 33, "texto": "Si actúo por mi cuenta, suelo equivocarme.", "cat": "comportamiento", "pol": "-" },
-    { "n": 34, "texto": "Con frecuencia me superan los acontecimientos.", "cat": "control", "pol": "-" },
-    { "n": 35, "texto": "Tengo muy pocas relaciones profundas. Si desapareciera, nadie me echaría en falta.", "cat": "amor", "pol": "-" },
-    { "n": 36, "texto": "Me someto a los criterios de los otros.", "cat": "autonomia", "pol": "-" },
-    { "n": 37, "texto": "Sin ciertas cosas no soy feliz.", "cat": "justicia", "pol": "-" },
-    { "n": 38, "texto": "Me siento como aislado o al margen de todos.", "cat": "integracion", "pol": "-" },
-    { "n": 39, "texto": "La gente es básicamente egoísta, sólo piensan en ellos mismos.", "cat": "los_demas", "pol": "-" },
-    { "n": 40, "texto": "Tengo que ser el mejor en lo que emprendo. Las cosas no pueden hacerse a medias.", "cat": "normas", "pol": "-" },
-    { "n": 41, "texto": "Tengo necesidades legítimas que debo satisfacer.", "cat": "valia", "pol": "+" },
-    { "n": 42, "texto": "Acepto los riesgos.", "cat": "seguridad", "pol": "+" },
-    { "n": 43, "texto": "Tengo tanta capacidad y soy tan competente como los demás.", "cat": "comportamiento", "pol": "+" },
-    { "n": 44, "texto": "Mi impulsividad me domina.", "cat": "control", "pol": "-" },
-    { "n": 45, "texto": "Para mí la familia es como mi protector.", "cat": "amor", "pol": "+" },
-    { "n": 46, "texto": "Para sentirme bien, no necesito la aprobación de los demás.", "cat": "autonomia", "pol": "+" },
-    { "n": 47, "texto": "Las cosas suelen salir bien aunque sea al final.", "cat": "justicia", "pol": "+" },
-    { "n": 48, "texto": "La gente suele aceptarme como soy.", "cat": "integracion", "pol": "+" },
-    { "n": 49, "texto": "Rara vez pienso que alguien se aprovecha de mí.", "cat": "los_demas", "pol": "+" },
-    { "n": 50, "texto": "Creo que las metas que me fijo son realistas y conseguibles por mí mismo.", "cat": "normas", "pol": "+" },
-    { "n": 51, "texto": "Soy lo que llaman 'un pesado' y difícilmente me soportan.", "cat": "valia", "pol": "-" },
-    { "n": 52, "texto": "Tengo conflictos con el dinero y puedo terminar arruinado.", "cat": "seguridad", "pol": "-" },
-    { "n": 53, "texto": "Soy muy conservador y procuro evitar los cambios.", "cat": "comportamiento", "pol": "-" },
-    { "n": 54, "texto": "Temo no poder dominar las emociones más bajas: ira, miedo, tristeza, impulsos sexuales.", "cat": "control", "pol": "-" },
-    { "n": 55, "texto": "Me siento dependiente, y temo que me abandonen, no me quieran o me rechacen.", "cat": "amor", "pol": "-" },
-    { "n": 56, "texto": "No me las arreglo bien por mi cuenta.", "cat": "autonomia", "pol": "-" },
-    { "n": 57, "texto": "Creo que no debería aceptar algunas limitaciones a que están sometidas las personas corrientes.", "cat": "justicia", "pol": "-" },
-    { "n": 58, "texto": "Las personas me marginan, no suelen incluirme en lo que hacen.", "cat": "integracion", "pol": "-" },
-    { "n": 59, "texto": "No se puede confiar en casi nadie.", "cat": "los_demas", "pol": "-" },
-    { "n": 60, "texto": "No acepto el fracaso fácilmente.", "cat": "normas", "pol": "-" },
-    { "n": 61, "texto": "Desarrollo una función y una misión en el mundo.", "cat": "valia", "pol": "+" },
-    { "n": 62, "texto": "Sé cuidar de mí y de mis seres queridos.", "cat": "seguridad", "pol": "+" },
-    { "n": 63, "texto": "Constantemente puedo aprender nuevas cosas.", "cat": "comportamiento", "pol": "+" },
-    { "n": 64, "texto": "Me siento controlado por mis sentimientos o emociones.", "cat": "control", "pol": "-" },
-    { "n": 65, "texto": "Sé obtener el cariño y la atención que necesito.", "cat": "amor", "pol": "+" },
-    { "n": 66, "texto": "Me gusta organizarme el tiempo por mi cuenta.", "cat": "autonomia", "pol": "+" },
-    { "n": 67, "texto": "La gente me trata correctamente, no tengo queja por lo general.", "cat": "justicia", "pol": "+" },
-    { "n": 68, "texto": "Me integro fácilmente a nuevos grupos y contextos.", "cat": "integracion", "pol": "+" },
-    { "n": 69, "texto": "Creo que las intenciones de la mayoría son honestas.", "cat": "los_demas", "pol": "+" },
-    { "n": 70, "texto": "Mis exigencias hacia mí mismo son razonables.", "cat": "normas", "pol": "+" },
-    { "n": 71, "texto": "Me siento mal cuando no consigo lo que me propongo.", "cat": "valia", "pol": "-" },
-    { "n": 72, "texto": "Me angustia pensar en el futuro.", "cat": "seguridad", "pol": "-" },
-    { "n": 73, "texto": "Por más que me esfuerzo, las cosas me salen mal.", "cat": "comportamiento", "pol": "-" },
-    { "n": 74, "texto": "Mi vida está dirigida por otros más que por mí mismo.", "cat": "control", "pol": "-" },
-    { "n": 75, "texto": "Siempre estoy solo, cuando necesito apoyo no puedo contar con nadie.", "cat": "amor", "pol": "-" },
-    { "n": 76, "texto": "Me esfuerzo por agradar a los demás y antepongo sus necesidades a las mías.", "cat": "autonomia", "pol": "-" },
-    { "n": 77, "texto": "Me siento fatalista, siempre espero lo peor.", "cat": "justicia", "pol": "-" },
-    { "n": 78, "texto": "A veces me siento como un bicho raro sin nada en común con los demás.", "cat": "integracion", "pol": "-" },
-    { "n": 79, "texto": "La gente no es muy respetuosa, debo estar en guardia ante mentiras y hostilidad.", "cat": "los_demas", "pol": "-" },
-    { "n": 80, "texto": "Me exijo mucho y soy muy preciso, ello afecta relaciones, salud y felicidad.", "cat": "normas", "pol": "-" },
-    { "n": 81, "texto": "Aquellos a quienes quiero y respeto suelen quererme y respetarme.", "cat": "valia", "pol": "+" },
-    { "n": 82, "texto": "La salud y el dinero no me preocupan demasiado.", "cat": "seguridad", "pol": "+" },
-    { "n": 83, "texto": "Casi todas mis decisiones son acertadas, o por lo menos así lo creo.", "cat": "comportamiento", "pol": "+" },
-    { "n": 84, "texto": "Puedo encargarme de resolver las cosas cuando es necesario que lo haga.", "cat": "control", "pol": "+" },
-    { "n": 85, "texto": "Me importa mucho la opinión de los demás y dependo del consejo y apoyo emocional.", "cat": "amor", "pol": "-" },
-    { "n": 86, "texto": "Tengo un criterio propio y soy capaz de defender mis ideas.", "cat": "autonomia", "pol": "+" },
-    { "n": 87, "texto": "En general, se me trata con justicia.", "cat": "justicia", "pol": "+" },
-    { "n": 88, "texto": "No me importa cambiar de trabajo o adaptarme a un grupo desconocido.", "cat": "integracion", "pol": "+" },
-    { "n": 89, "texto": "Soy más crédulo que suspicaz.", "cat": "los_demas", "pol": "+" },
-    { "n": 90, "texto": "Equivocarse es de humanos, no tiene nada de malo.", "cat": "normas", "pol": "+" },
-    { "n": 91, "texto": "No merezco mucha atención, ni admiración, ni respeto.", "cat": "valia", "pol": "-" },
-    { "n": 92, "texto": "Me siento incómodo cuando me alejo mucho de casa solo.", "cat": "seguridad", "pol": "-" },
-    { "n": 93, "texto": "Soy un desastre y estropeo todo lo que intento.", "cat": "comportamiento", "pol": "-" },
-    { "n": 94, "texto": "Suelo ser víctima de las circunstancias.", "cat": "control", "pol": "-" },
-    { "n": 95, "texto": "Soy un lobo solitario. No tengo a nadie que me abrace o comparta mis secretos.", "cat": "amor", "pol": "-" },
-    { "n": 96, "texto": "Me cuesta dar a conocer mis deseos y necesidades.", "cat": "autonomia", "pol": "-" },
-    { "n": 97, "texto": "Aunque mi vida es objetivamente estupenda, me cuesta aceptar cosas que no son como me gustaría.", "cat": "justicia", "pol": "-" },
-    { "n": 98, "texto": "No me siento integrado en el medio en que me muevo.", "cat": "integracion", "pol": "-" },
-    { "n": 99, "texto": "La gente es falsa por naturaleza, casi todo el mundo incumple promesas y miente.", "cat": "los_demas", "pol": "-" },
-    { "n": 100, "texto": "Las reglas existen para cumplirse al pie de la letra.", "cat": "normas", "pol": "-" }
+    {
+      "n": 1,
+      "texto": "Soy merecedor de consideración, amor y respeto.",
+      "cat": "valia",
+      "pol": "+"
+    },
+    {
+      "n": 2,
+      "texto": "El mundo en el que me desenvuelvo es muy seguro.",
+      "cat": "seguridad",
+      "pol": "+"
+    },
+    {
+      "n": 3,
+      "texto": "Realizo bien la mayoría de las cosas.",
+      "cat": "comportamiento",
+      "pol": "+"
+    },
+    {
+      "n": 4,
+      "texto": "Tengo el control de mi vida.",
+      "cat": "control",
+      "pol": "+"
+    },
+    {
+      "n": 5,
+      "texto": "Considero que me atienden y me aman.",
+      "cat": "amor",
+      "pol": "+"
+    },
+    {
+      "n": 6,
+      "texto": "Lo que hago me merece confianza.",
+      "cat": "autonomia",
+      "pol": "+"
+    },
+    {
+      "n": 7,
+      "texto": "La vida no es ni buena ni mala, la gente no es ni justa ni injusta.",
+      "cat": "justicia",
+      "pol": "+"
+    },
+    {
+      "n": 8,
+      "texto": "Me considero plenamente conectado con mi familia y con la sociedad.",
+      "cat": "integracion",
+      "pol": "+"
+    },
+    {
+      "n": 9,
+      "texto": "La mayoría de la gente es digna de confianza.",
+      "cat": "los_demas",
+      "pol": "+"
+    },
+    {
+      "n": 10,
+      "texto": "Mis reglas son lógicas y normales.",
+      "cat": "normas",
+      "pol": "+"
+    },
+    {
+      "n": 11,
+      "texto": "Frecuentemente creo que tengo más defectos y debilidades que los otros.",
+      "cat": "valia",
+      "pol": "-"
+    },
+    {
+      "n": 12,
+      "texto": "La vida es una ruleta en la que nos acecha el peligro. En cualquier momento puedes perderlo todo.",
+      "cat": "seguridad",
+      "pol": "-"
+    },
+    {
+      "n": 13,
+      "texto": "Soy torpe por naturaleza.",
+      "cat": "comportamiento",
+      "pol": "-"
+    },
+    {
+      "n": 14,
+      "texto": "Mi vida se me escapa del control frecuentemente.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 15,
+      "texto": "Mi familia nunca me ha aceptado y querido plenamente.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 16,
+      "texto": "Me siento un inútil en mi atención personal. Dependo de los cuidados de los demás.",
+      "cat": "autonomia",
+      "pol": "-"
+    },
+    {
+      "n": 17,
+      "texto": "Me fastidian las negativas a mis demandas. No sé aceptar un no.",
+      "cat": "justicia",
+      "pol": "-"
+    },
+    {
+      "n": 18,
+      "texto": "Me siento marginado en los grupos.",
+      "cat": "integracion",
+      "pol": "-"
+    },
+    {
+      "n": 19,
+      "texto": "Tengo muchos enemigos o creo tenerlos, a los que les gustaría verme dañado.",
+      "cat": "los_demas",
+      "pol": "-"
+    },
+    {
+      "n": 20,
+      "texto": "Pocas veces estoy contento con lo que tengo o consigo.",
+      "cat": "normas",
+      "pol": "-"
+    },
+    {
+      "n": 21,
+      "texto": "Estoy a gusto conmigo mismo.",
+      "cat": "valia",
+      "pol": "+"
+    },
+    {
+      "n": 22,
+      "texto": "Sé salir airoso de casi todas las situaciones de peligro o crisis.",
+      "cat": "seguridad",
+      "pol": "+"
+    },
+    {
+      "n": 23,
+      "texto": "La mayoría de las cosas que hago, las realizo con facilidad.",
+      "cat": "comportamiento",
+      "pol": "+"
+    },
+    {
+      "n": 24,
+      "texto": "Mi capacidad resolutiva afronta fácilmente todo tipo de situaciones.",
+      "cat": "control",
+      "pol": "+"
+    },
+    {
+      "n": 25,
+      "texto": "Mantengo una relación íntima que funciona.",
+      "cat": "amor",
+      "pol": "+"
+    },
+    {
+      "n": 26,
+      "texto": "Está muy bien discutir o no aceptar las ideas de otros.",
+      "cat": "autonomia",
+      "pol": "+"
+    },
+    {
+      "n": 27,
+      "texto": "No me cuesta conformarme cuando no alcanzo mis objetivos o metas.",
+      "cat": "justicia",
+      "pol": "+"
+    },
+    {
+      "n": 28,
+      "texto": "Soy bien aceptado entre la gente con la que me relaciono.",
+      "cat": "integracion",
+      "pol": "+"
+    },
+    {
+      "n": 29,
+      "texto": "Difícilmente necesito mostrarme precavido o protegerme de los demás.",
+      "cat": "los_demas",
+      "pol": "+"
+    },
+    {
+      "n": 30,
+      "texto": "Soy condescendiente conmigo y mis fallos.",
+      "cat": "normas",
+      "pol": "+"
+    },
+    {
+      "n": 31,
+      "texto": "Si alguien a quien yo quiero me conociera de verdad, no me aceptaría.",
+      "cat": "valia",
+      "pol": "-"
+    },
+    {
+      "n": 32,
+      "texto": "Casi siempre estoy preocupado por caer enfermo o tener un accidente.",
+      "cat": "seguridad",
+      "pol": "-"
+    },
+    {
+      "n": 33,
+      "texto": "Si actúo por mi cuenta, suelo equivocarme.",
+      "cat": "comportamiento",
+      "pol": "-"
+    },
+    {
+      "n": 34,
+      "texto": "Con frecuencia me superan los acontecimientos.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 35,
+      "texto": "Tengo muy pocas relaciones profundas. Si desapareciera, nadie me echaría en falta.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 36,
+      "texto": "Me someto a los criterios de los otros.",
+      "cat": "autonomia",
+      "pol": "-"
+    },
+    {
+      "n": 37,
+      "texto": "Sin ciertas cosas no soy feliz.",
+      "cat": "justicia",
+      "pol": "-"
+    },
+    {
+      "n": 38,
+      "texto": "Me siento como aislado o al margen de todos.",
+      "cat": "integracion",
+      "pol": "-"
+    },
+    {
+      "n": 39,
+      "texto": "La gente es básicamente egoísta, sólo piensan en ellos mismos.",
+      "cat": "los_demas",
+      "pol": "-"
+    },
+    {
+      "n": 40,
+      "texto": "Tengo que ser el mejor en lo que emprendo. Las cosas no pueden hacerse a medias.",
+      "cat": "normas",
+      "pol": "-"
+    },
+    {
+      "n": 41,
+      "texto": "Tengo necesidades legítimas que debo satisfacer.",
+      "cat": "valia",
+      "pol": "+"
+    },
+    {
+      "n": 42,
+      "texto": "Acepto los riesgos.",
+      "cat": "seguridad",
+      "pol": "+"
+    },
+    {
+      "n": 43,
+      "texto": "Tengo tanta capacidad y soy tan competente como los demás.",
+      "cat": "comportamiento",
+      "pol": "+"
+    },
+    {
+      "n": 44,
+      "texto": "Mi impulsividad me domina.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 45,
+      "texto": "Para mí la familia es como mi protector.",
+      "cat": "amor",
+      "pol": "+"
+    },
+    {
+      "n": 46,
+      "texto": "Para sentirme bien, no necesito la aprobación de los demás.",
+      "cat": "autonomia",
+      "pol": "+"
+    },
+    {
+      "n": 47,
+      "texto": "Las cosas suelen salir bien aunque sea al final.",
+      "cat": "justicia",
+      "pol": "+"
+    },
+    {
+      "n": 48,
+      "texto": "La gente suele aceptarme como soy.",
+      "cat": "integracion",
+      "pol": "+"
+    },
+    {
+      "n": 49,
+      "texto": "Rara vez pienso que alguien se aprovecha de mí.",
+      "cat": "los_demas",
+      "pol": "+"
+    },
+    {
+      "n": 50,
+      "texto": "Creo que las metas que me fijo son realistas y conseguibles por mí mismo.",
+      "cat": "normas",
+      "pol": "+"
+    },
+    {
+      "n": 51,
+      "texto": "Soy lo que llaman 'un pesado' y difícilmente me soportan.",
+      "cat": "valia",
+      "pol": "-"
+    },
+    {
+      "n": 52,
+      "texto": "Tengo conflictos con el dinero y puedo terminar arruinado.",
+      "cat": "seguridad",
+      "pol": "-"
+    },
+    {
+      "n": 53,
+      "texto": "Soy muy conservador y procuro evitar los cambios.",
+      "cat": "comportamiento",
+      "pol": "-"
+    },
+    {
+      "n": 54,
+      "texto": "Temo no poder dominar las emociones más bajas: ira, miedo, tristeza, impulsos sexuales.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 55,
+      "texto": "Me siento dependiente, y temo que me abandonen, no me quieran o me rechacen.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 56,
+      "texto": "No me las arreglo bien por mi cuenta.",
+      "cat": "autonomia",
+      "pol": "-"
+    },
+    {
+      "n": 57,
+      "texto": "Creo que no debería aceptar algunas limitaciones a que están sometidas las personas corrientes.",
+      "cat": "justicia",
+      "pol": "-"
+    },
+    {
+      "n": 58,
+      "texto": "Las personas me marginan, no suelen incluirme en lo que hacen.",
+      "cat": "integracion",
+      "pol": "-"
+    },
+    {
+      "n": 59,
+      "texto": "No se puede confiar en casi nadie.",
+      "cat": "los_demas",
+      "pol": "-"
+    },
+    {
+      "n": 60,
+      "texto": "No acepto el fracaso fácilmente.",
+      "cat": "normas",
+      "pol": "-"
+    },
+    {
+      "n": 61,
+      "texto": "Desarrollo una función y una misión en el mundo.",
+      "cat": "valia",
+      "pol": "+"
+    },
+    {
+      "n": 62,
+      "texto": "Sé cuidar de mí y de mis seres queridos.",
+      "cat": "seguridad",
+      "pol": "+"
+    },
+    {
+      "n": 63,
+      "texto": "Constantemente puedo aprender nuevas cosas.",
+      "cat": "comportamiento",
+      "pol": "+"
+    },
+    {
+      "n": 64,
+      "texto": "Me siento controlado por mis sentimientos o emociones.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 65,
+      "texto": "Sé obtener el cariño y la atención que necesito.",
+      "cat": "amor",
+      "pol": "+"
+    },
+    {
+      "n": 66,
+      "texto": "Me gusta organizarme el tiempo por mi cuenta.",
+      "cat": "autonomia",
+      "pol": "+"
+    },
+    {
+      "n": 67,
+      "texto": "La gente me trata correctamente, no tengo queja por lo general.",
+      "cat": "justicia",
+      "pol": "+"
+    },
+    {
+      "n": 68,
+      "texto": "Me integro fácilmente a nuevos grupos y contextos.",
+      "cat": "integracion",
+      "pol": "+"
+    },
+    {
+      "n": 69,
+      "texto": "Creo que las intenciones de la mayoría son honestas.",
+      "cat": "los_demas",
+      "pol": "+"
+    },
+    {
+      "n": 70,
+      "texto": "Mis exigencias hacia mí mismo son razonables.",
+      "cat": "normas",
+      "pol": "+"
+    },
+    {
+      "n": 71,
+      "texto": "Me siento mal cuando no consigo lo que me propongo.",
+      "cat": "valia",
+      "pol": "-"
+    },
+    {
+      "n": 72,
+      "texto": "Me angustia pensar en el futuro.",
+      "cat": "seguridad",
+      "pol": "-"
+    },
+    {
+      "n": 73,
+      "texto": "Por más que me esfuerzo, las cosas me salen mal.",
+      "cat": "comportamiento",
+      "pol": "-"
+    },
+    {
+      "n": 74,
+      "texto": "Mi vida está dirigida por otros más que por mí mismo.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 75,
+      "texto": "Siempre estoy solo, cuando necesito apoyo no puedo contar con nadie.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 76,
+      "texto": "Me esfuerzo por agradar a los demás y antepongo sus necesidades a las mías.",
+      "cat": "autonomia",
+      "pol": "-"
+    },
+    {
+      "n": 77,
+      "texto": "Me siento fatalista, siempre espero lo peor.",
+      "cat": "justicia",
+      "pol": "-"
+    },
+    {
+      "n": 78,
+      "texto": "A veces me siento como un bicho raro sin nada en común con los demás.",
+      "cat": "integracion",
+      "pol": "-"
+    },
+    {
+      "n": 79,
+      "texto": "La gente no es muy respetuosa, debo estar en guardia ante mentiras y hostilidad.",
+      "cat": "los_demas",
+      "pol": "-"
+    },
+    {
+      "n": 80,
+      "texto": "Me exijo mucho y soy muy preciso, ello afecta relaciones, salud y felicidad.",
+      "cat": "normas",
+      "pol": "-"
+    },
+    {
+      "n": 81,
+      "texto": "Aquellos a quienes quiero y respeto suelen quererme y respetarme.",
+      "cat": "valia",
+      "pol": "+"
+    },
+    {
+      "n": 82,
+      "texto": "La salud y el dinero no me preocupan demasiado.",
+      "cat": "seguridad",
+      "pol": "+"
+    },
+    {
+      "n": 83,
+      "texto": "Casi todas mis decisiones son acertadas, o por lo menos así lo creo.",
+      "cat": "comportamiento",
+      "pol": "+"
+    },
+    {
+      "n": 84,
+      "texto": "Puedo encargarme de resolver las cosas cuando es necesario que lo haga.",
+      "cat": "control",
+      "pol": "+"
+    },
+    {
+      "n": 85,
+      "texto": "Me importa mucho la opinión de los demás y dependo del consejo y apoyo emocional.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 86,
+      "texto": "Tengo un criterio propio y soy capaz de defender mis ideas.",
+      "cat": "autonomia",
+      "pol": "+"
+    },
+    {
+      "n": 87,
+      "texto": "En general, se me trata con justicia.",
+      "cat": "justicia",
+      "pol": "+"
+    },
+    {
+      "n": 88,
+      "texto": "No me importa cambiar de trabajo o adaptarme a un grupo desconocido.",
+      "cat": "integracion",
+      "pol": "+"
+    },
+    {
+      "n": 89,
+      "texto": "Soy más crédulo que suspicaz.",
+      "cat": "los_demas",
+      "pol": "+"
+    },
+    {
+      "n": 90,
+      "texto": "Equivocarse es de humanos, no tiene nada de malo.",
+      "cat": "normas",
+      "pol": "+"
+    },
+    {
+      "n": 91,
+      "texto": "No merezco mucha atención, ni admiración, ni respeto.",
+      "cat": "valia",
+      "pol": "-"
+    },
+    {
+      "n": 92,
+      "texto": "Me siento incómodo cuando me alejo mucho de casa solo.",
+      "cat": "seguridad",
+      "pol": "-"
+    },
+    {
+      "n": 93,
+      "texto": "Soy un desastre y estropeo todo lo que intento.",
+      "cat": "comportamiento",
+      "pol": "-"
+    },
+    {
+      "n": 94,
+      "texto": "Suelo ser víctima de las circunstancias.",
+      "cat": "control",
+      "pol": "-"
+    },
+    {
+      "n": 95,
+      "texto": "Soy un lobo solitario. No tengo a nadie que me abrace o comparta mis secretos.",
+      "cat": "amor",
+      "pol": "-"
+    },
+    {
+      "n": 96,
+      "texto": "Me cuesta dar a conocer mis deseos y necesidades.",
+      "cat": "autonomia",
+      "pol": "-"
+    },
+    {
+      "n": 97,
+      "texto": "Aunque mi vida es objetivamente estupenda, me cuesta aceptar cosas que no son como me gustaría.",
+      "cat": "justicia",
+      "pol": "-"
+    },
+    {
+      "n": 98,
+      "texto": "No me siento integrado en el medio en que me muevo.",
+      "cat": "integracion",
+      "pol": "-"
+    },
+    {
+      "n": 99,
+      "texto": "La gente es falsa por naturaleza, casi todo el mundo incumple promesas y miente.",
+      "cat": "los_demas",
+      "pol": "-"
+    },
+    {
+      "n": 100,
+      "texto": "Las reglas existen para cumplirse al pie de la letra.",
+      "cat": "normas",
+      "pol": "-"
+    }
   ]
 }

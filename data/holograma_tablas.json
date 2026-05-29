@@ -1,26 +1,100 @@
 {
-  "fuente": "Tablas de rastreo del Método Lavín · Holobiomagnetismo",
   "version": "1.0",
   "tablas": {
     "emociones": {
       "nombre": "Emociones · Las 7 pasiones",
       "descripcion": "Catálogo emocional del manual Lavín basado en los 7 Dragones de la Medicina Tradicional China. Cada emoción afecta un órgano específico.",
       "items": [
-        { "nombre": "Enojo / Resentimiento", "organo": "Hígado", "elemento": "Madera", "qi": "Asciende a la cabeza" },
-        { "nombre": "Alegría / Compasión", "organo": "Corazón", "elemento": "Fuego", "qi": "Armoniza el Qi" },
-        { "nombre": "Reflexión / Deliberación", "organo": "Bazo", "elemento": "Tierra", "qi": "Concentra el Qi" },
-        { "nombre": "Aprensión / Preocupación", "organo": "Bazo / Páncreas", "elemento": "Tierra", "qi": "Perturba el Qi" },
-        { "nombre": "Tristeza / Melancolía", "organo": "Pulmón", "elemento": "Metal", "qi": "Dispersa el Qi" },
-        { "nombre": "Ansiedad / Angustia / Pena", "organo": "Pulmón / Corazón", "elemento": "Metal / Fuego", "qi": "Dispersa el Qi" },
-        { "nombre": "Miedo / Pánico", "organo": "Riñón", "elemento": "Agua", "qi": "Desciende a la parte baja" },
-        { "nombre": "Culpa", "organo": "Hígado / Riñón", "elemento": "Madera / Agua", "qi": "Bloquea el Qi" },
-        { "nombre": "Vergüenza", "organo": "Pulmón / Hígado", "elemento": "Metal", "qi": "Encierra el Qi" },
-        { "nombre": "Rencor", "organo": "Hígado / Vesícula biliar", "elemento": "Madera", "qi": "Estanca el Qi" },
-        { "nombre": "Frustración", "organo": "Hígado", "elemento": "Madera", "qi": "Estanca el Qi" },
-        { "nombre": "Soledad / Abandono", "organo": "Pulmón / Corazón", "elemento": "Metal / Fuego", "qi": "Dispersa el Qi" },
-        { "nombre": "Desprecio / Odio", "organo": "Hígado", "elemento": "Madera", "qi": "Eleva el Qi violentamente" },
-        { "nombre": "Apatía / Desinterés", "organo": "Corazón / Riñón", "elemento": "Fuego / Agua", "qi": "Inhibe el Qi" },
-        { "nombre": "Decepción", "organo": "Hígado / Corazón", "elemento": "Madera / Fuego", "qi": "Detiene el Qi" }
+        {
+          "nombre": "Enojo / Resentimiento",
+          "organo": "Hígado",
+          "elemento": "Madera",
+          "qi": "Asciende a la cabeza"
+        },
+        {
+          "nombre": "Alegría / Compasión",
+          "organo": "Corazón",
+          "elemento": "Fuego",
+          "qi": "Armoniza el Qi"
+        },
+        {
+          "nombre": "Reflexión / Deliberación",
+          "organo": "Bazo",
+          "elemento": "Tierra",
+          "qi": "Concentra el Qi"
+        },
+        {
+          "nombre": "Aprensión / Preocupación",
+          "organo": "Bazo / Páncreas",
+          "elemento": "Tierra",
+          "qi": "Perturba el Qi"
+        },
+        {
+          "nombre": "Tristeza / Melancolía",
+          "organo": "Pulmón",
+          "elemento": "Metal",
+          "qi": "Dispersa el Qi"
+        },
+        {
+          "nombre": "Ansiedad / Angustia / Pena",
+          "organo": "Pulmón / Corazón",
+          "elemento": "Metal / Fuego",
+          "qi": "Dispersa el Qi"
+        },
+        {
+          "nombre": "Miedo / Pánico",
+          "organo": "Riñón",
+          "elemento": "Agua",
+          "qi": "Desciende a la parte baja"
+        },
+        {
+          "nombre": "Culpa",
+          "organo": "Hígado / Riñón",
+          "elemento": "Madera / Agua",
+          "qi": "Bloquea el Qi"
+        },
+        {
+          "nombre": "Vergüenza",
+          "organo": "Pulmón / Hígado",
+          "elemento": "Metal",
+          "qi": "Encierra el Qi"
+        },
+        {
+          "nombre": "Rencor",
+          "organo": "Hígado / Vesícula biliar",
+          "elemento": "Madera",
+          "qi": "Estanca el Qi"
+        },
+        {
+          "nombre": "Frustración",
+          "organo": "Hígado",
+          "elemento": "Madera",
+          "qi": "Estanca el Qi"
+        },
+        {
+          "nombre": "Soledad / Abandono",
+          "organo": "Pulmón / Corazón",
+          "elemento": "Metal / Fuego",
+          "qi": "Dispersa el Qi"
+        },
+        {
+          "nombre": "Desprecio / Odio",
+          "organo": "Hígado",
+          "elemento": "Madera",
+          "qi": "Eleva el Qi violentamente"
+        },
+        {
+          "nombre": "Apatía / Desinterés",
+          "organo": "Corazón / Riñón",
+          "elemento": "Fuego / Agua",
+          "qi": "Inhibe el Qi"
+        },
+        {
+          "nombre": "Decepción",
+          "organo": "Hígado / Corazón",
+          "elemento": "Madera / Fuego",
+          "qi": "Detiene el Qi"
+        }
       ]
     },
     "capas_embrionarias": {
@@ -61,102 +135,429 @@
       "nombre": "Chakras · 7 centros energéticos",
       "descripcion": "Los siete chakras principales con su ubicación, elemento, glándula y temas que rigen. Se evalúan Under/Over 0-100.",
       "items": [
-        { "nombre": "Muladhara · Raíz", "num": 1, "color": "Rojo", "ubicacion": "Perineo, base de columna", "elemento": "Tierra", "glandula": "Suprarrenales", "tema": "Supervivencia, raíces, seguridad material", "mantra": "LAM" },
-        { "nombre": "Svadhisthana · Sacro", "num": 2, "color": "Naranja", "ubicacion": "Bajo el ombligo, sacro", "elemento": "Agua", "glandula": "Gónadas", "tema": "Placer, sexualidad, creatividad, emociones", "mantra": "VAM" },
-        { "nombre": "Manipura · Plexo Solar", "num": 3, "color": "Amarillo", "ubicacion": "Plexo solar, boca del estómago", "elemento": "Fuego", "glandula": "Páncreas", "tema": "Poder personal, voluntad, autoestima, digestión", "mantra": "RAM" },
-        { "nombre": "Anahata · Corazón", "num": 4, "color": "Verde", "ubicacion": "Centro del pecho", "elemento": "Aire", "glandula": "Timo", "tema": "Amor, compasión, vínculos, perdón", "mantra": "YAM" },
-        { "nombre": "Vishuddha · Garganta", "num": 5, "color": "Azul", "ubicacion": "Garganta", "elemento": "Éter / Sonido", "glandula": "Tiroides", "tema": "Comunicación, verdad, expresión", "mantra": "HAM" },
-        { "nombre": "Ajna · Tercer Ojo", "num": 6, "color": "Índigo / Violeta", "ubicacion": "Entrecejo", "elemento": "Luz", "glandula": "Pituitaria", "tema": "Intuición, visión interior, sabiduría", "mantra": "OM / AUM" },
-        { "nombre": "Sahasrara · Corona", "num": 7, "color": "Violeta / Blanco", "ubicacion": "Coronilla, parte alta de la cabeza", "elemento": "Conciencia / Espíritu", "glandula": "Pineal", "tema": "Conexión espiritual, trascendencia, unidad", "mantra": "Silencio" }
+        {
+          "nombre": "Muladhara · Raíz",
+          "num": 1,
+          "color": "Rojo",
+          "ubicacion": "Perineo, base de columna",
+          "elemento": "Tierra",
+          "glandula": "Suprarrenales",
+          "tema": "Supervivencia, raíces, seguridad material",
+          "mantra": "LAM"
+        },
+        {
+          "nombre": "Svadhisthana · Sacro",
+          "num": 2,
+          "color": "Naranja",
+          "ubicacion": "Bajo el ombligo, sacro",
+          "elemento": "Agua",
+          "glandula": "Gónadas",
+          "tema": "Placer, sexualidad, creatividad, emociones",
+          "mantra": "VAM"
+        },
+        {
+          "nombre": "Manipura · Plexo Solar",
+          "num": 3,
+          "color": "Amarillo",
+          "ubicacion": "Plexo solar, boca del estómago",
+          "elemento": "Fuego",
+          "glandula": "Páncreas",
+          "tema": "Poder personal, voluntad, autoestima, digestión",
+          "mantra": "RAM"
+        },
+        {
+          "nombre": "Anahata · Corazón",
+          "num": 4,
+          "color": "Verde",
+          "ubicacion": "Centro del pecho",
+          "elemento": "Aire",
+          "glandula": "Timo",
+          "tema": "Amor, compasión, vínculos, perdón",
+          "mantra": "YAM"
+        },
+        {
+          "nombre": "Vishuddha · Garganta",
+          "num": 5,
+          "color": "Azul",
+          "ubicacion": "Garganta",
+          "elemento": "Éter / Sonido",
+          "glandula": "Tiroides",
+          "tema": "Comunicación, verdad, expresión",
+          "mantra": "HAM"
+        },
+        {
+          "nombre": "Ajna · Tercer Ojo",
+          "num": 6,
+          "color": "Índigo / Violeta",
+          "ubicacion": "Entrecejo",
+          "elemento": "Luz",
+          "glandula": "Pituitaria",
+          "tema": "Intuición, visión interior, sabiduría",
+          "mantra": "OM / AUM"
+        },
+        {
+          "nombre": "Sahasrara · Corona",
+          "num": 7,
+          "color": "Violeta / Blanco",
+          "ubicacion": "Coronilla, parte alta de la cabeza",
+          "elemento": "Conciencia / Espíritu",
+          "glandula": "Pineal",
+          "tema": "Conexión espiritual, trascendencia, unidad",
+          "mantra": "Silencio"
+        }
       ]
     },
     "meridianos": {
       "nombre": "Meridianos · 12 canales principales",
       "descripcion": "Los doce meridianos energéticos de la MTC con su par órgano/víscera, hora de máxima energía y emoción asociada.",
       "items": [
-        { "nombre": "Pulmón (P)", "tipo": "Yin", "par": "Intestino grueso", "hora": "3:00 - 5:00", "elemento": "Metal", "emocion": "Tristeza" },
-        { "nombre": "Intestino grueso (IG)", "tipo": "Yang", "par": "Pulmón", "hora": "5:00 - 7:00", "elemento": "Metal", "emocion": "Tristeza · Apego" },
-        { "nombre": "Estómago (E)", "tipo": "Yang", "par": "Bazo", "hora": "7:00 - 9:00", "elemento": "Tierra", "emocion": "Preocupación" },
-        { "nombre": "Bazo / Páncreas (B)", "tipo": "Yin", "par": "Estómago", "hora": "9:00 - 11:00", "elemento": "Tierra", "emocion": "Reflexión obsesiva" },
-        { "nombre": "Corazón (C)", "tipo": "Yin", "par": "Intestino delgado", "hora": "11:00 - 13:00", "elemento": "Fuego", "emocion": "Alegría · Júbilo descontrolado" },
-        { "nombre": "Intestino delgado (ID)", "tipo": "Yang", "par": "Corazón", "hora": "13:00 - 15:00", "elemento": "Fuego", "emocion": "Discernimiento" },
-        { "nombre": "Vejiga (V)", "tipo": "Yang", "par": "Riñón", "hora": "15:00 - 17:00", "elemento": "Agua", "emocion": "Miedo · Inseguridad" },
-        { "nombre": "Riñón (R)", "tipo": "Yin", "par": "Vejiga", "hora": "17:00 - 19:00", "elemento": "Agua", "emocion": "Miedo profundo · Pánico" },
-        { "nombre": "Pericardio (Pe)", "tipo": "Yin", "par": "Triple calentador", "hora": "19:00 - 21:00", "elemento": "Fuego ministro", "emocion": "Vulnerabilidad emocional" },
-        { "nombre": "Triple calentador (TC)", "tipo": "Yang", "par": "Pericardio", "hora": "21:00 - 23:00", "elemento": "Fuego ministro", "emocion": "Defensa térmica · social" },
-        { "nombre": "Vesícula biliar (VB)", "tipo": "Yang", "par": "Hígado", "hora": "23:00 - 1:00", "elemento": "Madera", "emocion": "Decisión · Coraje" },
-        { "nombre": "Hígado (H)", "tipo": "Yin", "par": "Vesícula biliar", "hora": "1:00 - 3:00", "elemento": "Madera", "emocion": "Ira · Frustración" }
+        {
+          "nombre": "Pulmón (P)",
+          "tipo": "Yin",
+          "par": "Intestino grueso",
+          "hora": "3:00 - 5:00",
+          "elemento": "Metal",
+          "emocion": "Tristeza"
+        },
+        {
+          "nombre": "Intestino grueso (IG)",
+          "tipo": "Yang",
+          "par": "Pulmón",
+          "hora": "5:00 - 7:00",
+          "elemento": "Metal",
+          "emocion": "Tristeza · Apego"
+        },
+        {
+          "nombre": "Estómago (E)",
+          "tipo": "Yang",
+          "par": "Bazo",
+          "hora": "7:00 - 9:00",
+          "elemento": "Tierra",
+          "emocion": "Preocupación"
+        },
+        {
+          "nombre": "Bazo / Páncreas (B)",
+          "tipo": "Yin",
+          "par": "Estómago",
+          "hora": "9:00 - 11:00",
+          "elemento": "Tierra",
+          "emocion": "Reflexión obsesiva"
+        },
+        {
+          "nombre": "Corazón (C)",
+          "tipo": "Yin",
+          "par": "Intestino delgado",
+          "hora": "11:00 - 13:00",
+          "elemento": "Fuego",
+          "emocion": "Alegría · Júbilo descontrolado"
+        },
+        {
+          "nombre": "Intestino delgado (ID)",
+          "tipo": "Yang",
+          "par": "Corazón",
+          "hora": "13:00 - 15:00",
+          "elemento": "Fuego",
+          "emocion": "Discernimiento"
+        },
+        {
+          "nombre": "Vejiga (V)",
+          "tipo": "Yang",
+          "par": "Riñón",
+          "hora": "15:00 - 17:00",
+          "elemento": "Agua",
+          "emocion": "Miedo · Inseguridad"
+        },
+        {
+          "nombre": "Riñón (R)",
+          "tipo": "Yin",
+          "par": "Vejiga",
+          "hora": "17:00 - 19:00",
+          "elemento": "Agua",
+          "emocion": "Miedo profundo · Pánico"
+        },
+        {
+          "nombre": "Pericardio (Pe)",
+          "tipo": "Yin",
+          "par": "Triple calentador",
+          "hora": "19:00 - 21:00",
+          "elemento": "Fuego ministro",
+          "emocion": "Vulnerabilidad emocional"
+        },
+        {
+          "nombre": "Triple calentador (TC)",
+          "tipo": "Yang",
+          "par": "Pericardio",
+          "hora": "21:00 - 23:00",
+          "elemento": "Fuego ministro",
+          "emocion": "Defensa térmica · social"
+        },
+        {
+          "nombre": "Vesícula biliar (VB)",
+          "tipo": "Yang",
+          "par": "Hígado",
+          "hora": "23:00 - 1:00",
+          "elemento": "Madera",
+          "emocion": "Decisión · Coraje"
+        },
+        {
+          "nombre": "Hígado (H)",
+          "tipo": "Yin",
+          "par": "Vesícula biliar",
+          "hora": "1:00 - 3:00",
+          "elemento": "Madera",
+          "emocion": "Ira · Frustración"
+        }
       ]
     },
     "hormonas": {
       "nombre": "Hormonas · Neurotransmisores · Moléculas",
       "descripcion": "Mensajeros químicos clave. Identifican el plano endocrino/neuroquímico del holograma.",
       "items": [
-        { "nombre": "Serotonina", "origen": "Pineal · intestino", "tema": "Estado de ánimo, bienestar, sueño" },
-        { "nombre": "Dopamina", "origen": "Mesencéfalo", "tema": "Motivación, placer, recompensa" },
-        { "nombre": "Cortisol", "origen": "Suprarrenales", "tema": "Estrés, alerta, glucemia" },
-        { "nombre": "Adrenalina · Noradrenalina", "origen": "Médula suprarrenal", "tema": "Lucha o huida, despertar" },
-        { "nombre": "Oxitocina", "origen": "Pituitaria posterior", "tema": "Vínculo, parto, lactancia, confianza" },
-        { "nombre": "Melatonina", "origen": "Pineal", "tema": "Ritmo circadiano, sueño" },
-        { "nombre": "Endorfinas", "origen": "Pituitaria · hipotálamo", "tema": "Analgesia natural, bienestar, ejercicio" },
-        { "nombre": "GABA", "origen": "Sistema nervioso central", "tema": "Inhibición, calma, sueño" },
-        { "nombre": "Insulina", "origen": "Páncreas", "tema": "Metabolismo glucosa" },
-        { "nombre": "Glucagón", "origen": "Páncreas", "tema": "Liberación de glucosa" },
-        { "nombre": "Tiroxina (T3/T4)", "origen": "Tiroides", "tema": "Metabolismo basal, energía" },
-        { "nombre": "TSH", "origen": "Pituitaria anterior", "tema": "Control de tiroides" },
-        { "nombre": "ACTH", "origen": "Pituitaria anterior", "tema": "Control de suprarrenales" },
-        { "nombre": "Hormona del crecimiento (GH)", "origen": "Pituitaria anterior", "tema": "Crecimiento, reparación tisular" },
-        { "nombre": "Prolactina", "origen": "Pituitaria anterior", "tema": "Lactancia, vínculo materno" },
-        { "nombre": "Estrógeno", "origen": "Ovarios · suprarrenales", "tema": "Ciclo femenino, segundo cerebro" },
-        { "nombre": "Progesterona", "origen": "Ovarios · placenta", "tema": "Embarazo, ciclo, calma" },
-        { "nombre": "Testosterona", "origen": "Testículos · suprarrenales", "tema": "Vitalidad masculina, líbido, fuerza" },
-        { "nombre": "DHEA", "origen": "Suprarrenales", "tema": "Vitalidad juvenil, longevidad" },
-        { "nombre": "Acetilcolina", "origen": "Sistema nervioso", "tema": "Memoria, aprendizaje, contracción muscular" },
-        { "nombre": "Histamina", "origen": "Mastocitos", "tema": "Respuesta inmune, inflamación" }
+        {
+          "nombre": "Serotonina",
+          "origen": "Pineal · intestino",
+          "tema": "Estado de ánimo, bienestar, sueño"
+        },
+        {
+          "nombre": "Dopamina",
+          "origen": "Mesencéfalo",
+          "tema": "Motivación, placer, recompensa"
+        },
+        {
+          "nombre": "Cortisol",
+          "origen": "Suprarrenales",
+          "tema": "Estrés, alerta, glucemia"
+        },
+        {
+          "nombre": "Adrenalina · Noradrenalina",
+          "origen": "Médula suprarrenal",
+          "tema": "Lucha o huida, despertar"
+        },
+        {
+          "nombre": "Oxitocina",
+          "origen": "Pituitaria posterior",
+          "tema": "Vínculo, parto, lactancia, confianza"
+        },
+        {
+          "nombre": "Melatonina",
+          "origen": "Pineal",
+          "tema": "Ritmo circadiano, sueño"
+        },
+        {
+          "nombre": "Endorfinas",
+          "origen": "Pituitaria · hipotálamo",
+          "tema": "Analgesia natural, bienestar, ejercicio"
+        },
+        {
+          "nombre": "GABA",
+          "origen": "Sistema nervioso central",
+          "tema": "Inhibición, calma, sueño"
+        },
+        {
+          "nombre": "Insulina",
+          "origen": "Páncreas",
+          "tema": "Metabolismo glucosa"
+        },
+        {
+          "nombre": "Glucagón",
+          "origen": "Páncreas",
+          "tema": "Liberación de glucosa"
+        },
+        {
+          "nombre": "Tiroxina (T3/T4)",
+          "origen": "Tiroides",
+          "tema": "Metabolismo basal, energía"
+        },
+        {
+          "nombre": "TSH",
+          "origen": "Pituitaria anterior",
+          "tema": "Control de tiroides"
+        },
+        {
+          "nombre": "ACTH",
+          "origen": "Pituitaria anterior",
+          "tema": "Control de suprarrenales"
+        },
+        {
+          "nombre": "Hormona del crecimiento (GH)",
+          "origen": "Pituitaria anterior",
+          "tema": "Crecimiento, reparación tisular"
+        },
+        {
+          "nombre": "Prolactina",
+          "origen": "Pituitaria anterior",
+          "tema": "Lactancia, vínculo materno"
+        },
+        {
+          "nombre": "Estrógeno",
+          "origen": "Ovarios · suprarrenales",
+          "tema": "Ciclo femenino, segundo cerebro"
+        },
+        {
+          "nombre": "Progesterona",
+          "origen": "Ovarios · placenta",
+          "tema": "Embarazo, ciclo, calma"
+        },
+        {
+          "nombre": "Testosterona",
+          "origen": "Testículos · suprarrenales",
+          "tema": "Vitalidad masculina, líbido, fuerza"
+        },
+        {
+          "nombre": "DHEA",
+          "origen": "Suprarrenales",
+          "tema": "Vitalidad juvenil, longevidad"
+        },
+        {
+          "nombre": "Acetilcolina",
+          "origen": "Sistema nervioso",
+          "tema": "Memoria, aprendizaje, contracción muscular"
+        },
+        {
+          "nombre": "Histamina",
+          "origen": "Mastocitos",
+          "tema": "Respuesta inmune, inflamación"
+        }
       ]
     },
     "cromosomas": {
       "nombre": "Cromosomas · 23 pares",
       "descripcion": "Los 23 pares cromosómicos con su sistema asociado. Identifica el plano genético del holograma.",
       "items": [
-        { "num": 1, "sistema": "Inmunidad · células sanguíneas · Alzheimer · sordera" },
-        { "num": 2, "sistema": "Crecimiento · desarrollo · digestión · ojos" },
-        { "num": 3, "sistema": "Cáncer pulmón · riñón · sistema inmune" },
-        { "num": 4, "sistema": "Sangre · Huntington · enfermedades neurodegenerativas" },
-        { "num": 5, "sistema": "Inmunidad · piel · cromosoma 5q (leucemia)" },
-        { "num": 6, "sistema": "Sistema HLA · inmunidad · diabetes tipo 1" },
-        { "num": 7, "sistema": "Fibrosis quística · obesidad · William syndrome" },
-        { "num": 8, "sistema": "Sistema linfático · linfomas · músculo" },
-        { "num": 9, "sistema": "Grupos sanguíneos · leucemia mieloide" },
-        { "num": 10, "sistema": "Sistema endocrino · hipertensión · hueso" },
-        { "num": 11, "sistema": "Sentidos (olfato) · hemoglobina · anemia falciforme · WAGR" },
-        { "num": 12, "sistema": "Fenilcetonuria · esmalte dental" },
-        { "num": 13, "sistema": "Wilson · cáncer mama (BRCA2) · retinoblastoma" },
-        { "num": 14, "sistema": "Sistema inmune (cadena pesada Ig) · Alzheimer familiar" },
-        { "num": 15, "sistema": "Prader-Willi · Angelman · Marfan" },
-        { "num": 16, "sistema": "Riñón · poliquistosis · alfa-talasemia" },
-        { "num": 17, "sistema": "Sistema nervioso · BRCA1 · neurofibromatosis" },
-        { "num": 18, "sistema": "Edwards syndrome · ácidos grasos" },
-        { "num": 19, "sistema": "Sistema lipídico · Alzheimer (APOE) · DNA reparación" },
-        { "num": 20, "sistema": "Adrenoleucodistrofia · sordera congénita · sistema inmune" },
-        { "num": 21, "sistema": "Down syndrome · Alzheimer · leucemia aguda" },
-        { "num": 22, "sistema": "Esquizofrenia · leucemia · DiGeorge" },
-        { "num": 23, "sistema": "Cromosomas sexuales · X/Y · daltonismo · hemofilia · características sexuales" }
+        {
+          "num": 1,
+          "sistema": "Inmunidad · células sanguíneas · Alzheimer · sordera"
+        },
+        {
+          "num": 2,
+          "sistema": "Crecimiento · desarrollo · digestión · ojos"
+        },
+        {
+          "num": 3,
+          "sistema": "Cáncer pulmón · riñón · sistema inmune"
+        },
+        {
+          "num": 4,
+          "sistema": "Sangre · Huntington · enfermedades neurodegenerativas"
+        },
+        {
+          "num": 5,
+          "sistema": "Inmunidad · piel · cromosoma 5q (leucemia)"
+        },
+        {
+          "num": 6,
+          "sistema": "Sistema HLA · inmunidad · diabetes tipo 1"
+        },
+        {
+          "num": 7,
+          "sistema": "Fibrosis quística · obesidad · William syndrome"
+        },
+        {
+          "num": 8,
+          "sistema": "Sistema linfático · linfomas · músculo"
+        },
+        {
+          "num": 9,
+          "sistema": "Grupos sanguíneos · leucemia mieloide"
+        },
+        {
+          "num": 10,
+          "sistema": "Sistema endocrino · hipertensión · hueso"
+        },
+        {
+          "num": 11,
+          "sistema": "Sentidos (olfato) · hemoglobina · anemia falciforme · WAGR"
+        },
+        {
+          "num": 12,
+          "sistema": "Fenilcetonuria · esmalte dental"
+        },
+        {
+          "num": 13,
+          "sistema": "Wilson · cáncer mama (BRCA2) · retinoblastoma"
+        },
+        {
+          "num": 14,
+          "sistema": "Sistema inmune (cadena pesada Ig) · Alzheimer familiar"
+        },
+        {
+          "num": 15,
+          "sistema": "Prader-Willi · Angelman · Marfan"
+        },
+        {
+          "num": 16,
+          "sistema": "Riñón · poliquistosis · alfa-talasemia"
+        },
+        {
+          "num": 17,
+          "sistema": "Sistema nervioso · BRCA1 · neurofibromatosis"
+        },
+        {
+          "num": 18,
+          "sistema": "Edwards syndrome · ácidos grasos"
+        },
+        {
+          "num": 19,
+          "sistema": "Sistema lipídico · Alzheimer (APOE) · DNA reparación"
+        },
+        {
+          "num": 20,
+          "sistema": "Adrenoleucodistrofia · sordera congénita · sistema inmune"
+        },
+        {
+          "num": 21,
+          "sistema": "Down syndrome · Alzheimer · leucemia aguda"
+        },
+        {
+          "num": 22,
+          "sistema": "Esquizofrenia · leucemia · DiGeorge"
+        },
+        {
+          "num": 23,
+          "sistema": "Cromosomas sexuales · X/Y · daltonismo · hemofilia · características sexuales"
+        }
       ]
     },
     "microbios": {
       "nombre": "Microbios · Patógenos · Códigos",
       "descripcion": "Microorganismos asociados a patologías biomagnéticas. Categorías principales por tipo.",
       "items": [
-        { "nombre": "Bacterias", "ejemplos": "Staphylococcus, Streptococcus, Helicobacter pylori, Mycobacterium, Salmonella, E. coli, Klebsiella" },
-        { "nombre": "Virus", "ejemplos": "Herpes (HSV-1, HSV-2), Epstein-Barr, Citomegalovirus, VIH, Hepatitis (A, B, C), HPV, Influenza" },
-        { "nombre": "Hongos", "ejemplos": "Candida albicans, Aspergillus, Trichophyton, Histoplasma, Cryptococcus" },
-        { "nombre": "Parásitos", "ejemplos": "Toxoplasma, Giardia, Entamoeba, Plasmodium (malaria), Áscaris, Tenia" },
-        { "nombre": "Espiroquetas", "ejemplos": "Treponema pallidum (sífilis), Borrelia burgdorferi (Lyme), Leptospira" },
-        { "nombre": "Micoplasmas", "ejemplos": "Mycoplasma pneumoniae, M. hominis, M. genitalium" },
-        { "nombre": "Rickettsias / Clamidias", "ejemplos": "Chlamydia trachomatis, Rickettsia (tifus), Coxiella" },
-        { "nombre": "Priones", "ejemplos": "Vaca loca · Creutzfeldt-Jakob (proteínas mal plegadas)" },
-        { "nombre": "Disfunciones (no microbio)", "ejemplos": "Pares disfuncionales, especiales, energéticos sin agente infeccioso" }
+        {
+          "nombre": "Bacterias",
+          "ejemplos": "Staphylococcus, Streptococcus, Helicobacter pylori, Mycobacterium, Salmonella, E. coli, Klebsiella"
+        },
+        {
+          "nombre": "Virus",
+          "ejemplos": "Herpes (HSV-1, HSV-2), Epstein-Barr, Citomegalovirus, VIH, Hepatitis (A, B, C), HPV, Influenza"
+        },
+        {
+          "nombre": "Hongos",
+          "ejemplos": "Candida albicans, Aspergillus, Trichophyton, Histoplasma, Cryptococcus"
+        },
+        {
+          "nombre": "Parásitos",
+          "ejemplos": "Toxoplasma, Giardia, Entamoeba, Plasmodium (malaria), Áscaris, Tenia"
+        },
+        {
+          "nombre": "Espiroquetas",
+          "ejemplos": "Treponema pallidum (sífilis), Borrelia burgdorferi (Lyme), Leptospira"
+        },
+        {
+          "nombre": "Micoplasmas",
+          "ejemplos": "Mycoplasma pneumoniae, M. hominis, M. genitalium"
+        },
+        {
+          "nombre": "Rickettsias / Clamidias",
+          "ejemplos": "Chlamydia trachomatis, Rickettsia (tifus), Coxiella"
+        },
+        {
+          "nombre": "Priones",
+          "ejemplos": "Vaca loca · Creutzfeldt-Jakob (proteínas mal plegadas)"
+        },
+        {
+          "nombre": "Disfunciones (no microbio)",
+          "ejemplos": "Pares disfuncionales, especiales, energéticos sin agente infeccioso"
+        }
       ]
     }
   }

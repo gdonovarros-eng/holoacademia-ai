@@ -5979,6 +5979,131 @@
         "Este es el protocolo de rastreo más detallado del sistema; provee todos los datos necesarios para EFT Transgeneracional",
         "La información que recaba: ancestro, personalidad, problemática, contexto, fecha, emoción, holograma, cromosoma"
       ]
+    },
+    {
+      "id": "rastreo_creencias_limitantes",
+      "nombre": "Rastreo de Creencias Limitantes",
+      "aliases": [
+        "creencias limitantes",
+        "rastreo de creencias",
+        "programas subconscientes",
+        "creencias negativas",
+        "inventario de creencias",
+        "liberación de creencias"
+      ],
+      "categoria": "bioenergético",
+      "objetivo": "Identificar y liberar creencias limitantes activas que mantienen un conflicto, bloqueo emocional o síntoma psicosomático, e instalar la creencia opuesta positiva como nuevo programa subconsciente.",
+      "cuando_usarlo": [
+        "Cuando el trabajo emocional o energético no avanza y persiste el bloqueo",
+        "Cuando el consultante repite patrones de pensamiento negativos sobre sí mismo, la vida o los demás",
+        "Cuando hay síntomas psicoemocionales recurrentes sin causa traumática identificable",
+        "Cuando el rastreo señala 'programa mental' o 'creencia' como origen del conflicto",
+        "Después de trabajar miedos o traumas y verificar que persiste algún programa activo",
+        "Como herramienta diagnóstica al inicio de sesión para mapear el campo mental del consultante"
+      ],
+      "prerequisitos": [
+        "Preparación subconsciente completada (TM calibrado y funcionando con claridad)",
+        "Conflicto o síntoma principal identificado para anclarlo como eje del rastreo",
+        "Imán disponible para la fase de liberación"
+      ],
+      "pasos": [
+        {
+          "orden": 1,
+          "titulo": "Verificar presencia de creencia limitante",
+          "instruccion": "Con TM preguntar: '¿Hay alguna creencia limitante activa que esté manteniendo este conflicto / este síntoma / este bloqueo?' SI / NO.",
+          "notas": [
+            "Una creencia limitante es un programa subconsciente que hace que la percepción sea un mecanismo empequeñecedor — la persona se ve a sí misma, a los demás o al mundo de forma reducida, negativa o imposibilitante. A diferencia de una emoción atrapada (energía) o un holograma (huella de un drama), la creencia es una *conclusión generalizada* que el subconsciente tomó como verdad absoluta.",
+            "Si la respuesta es NO, verificar con TM si hay holograma activo, miedo o emoción atrapada en su lugar — pueden coexistir o ser confundidos. No asumir que no hay trabajo mental solo porque no hay trauma evidente.",
+            "Si la respuesta es SÍ, continuar con el Paso 2 directamente."
+          ],
+          "tipo": "verificacion",
+          "pregunta_ms": "¿Hay alguna creencia limitante activa relacionada con este conflicto?"
+        },
+        {
+          "orden": 2,
+          "titulo": "Rastrear la categoría de creencia afectada",
+          "instruccion": "Con TM rastrear cuál de las 10 categorías del inventario está activa:\n1. Valía — '¿Soy valioso/a?'\n2. Seguridad — '¿Me siento seguro/a?'\n3. Comportamiento — '¿Soy competente y eficaz?'\n4. Control — '¿Soy capaz de controlar las situaciones?'\n5. Amor — '¿Me siento querido/a?'\n6. Autonomía — '¿Soy autónomo/a e independiente?'\n7. Justicia — '¿Recibo un trato justo de los demás?'\n8. Integración — '¿Estoy integrado/a?'\n9. Los demás — '¿La gente es buena en general?'\n10. Normas — '¿Mis normas son razonables y flexibles?'\n\nRastrear de una en una hasta que TM confirme afirmativamente la categoría activa.",
+          "notas": [
+            "Las 10 categorías cubren los grandes núcleos de creencias que organizan la identidad subconsciente. Cada categoría tiene un polo positivo (la afirmación sana) y un polo negativo (la creencia limitante). El TM responde fuerte en la categoría que tiene el programa activo — puede haber más de una categoría comprometida.",
+            "Valía: creencias sobre si merece amor, respeto y consideración. Es la categoría más común y suele ser raíz de muchas otras limitantes.",
+            "Seguridad: creencias sobre el mundo como lugar seguro vs. amenazante. Muy asociada a síntomas físicos de estrés crónico y enfermedades de defensa.",
+            "Amor: creencias sobre si puede ser amado, aceptado o necesitado. Conectada con conflictos relacionales y síntomas cardiopulmonares.",
+            "Control: creencias sobre la propia capacidad para manejar la vida. Asociada a ansiedad, hipertensión, digestión.",
+            "Autonomía: creencias sobre la capacidad de valerse por sí mismo. Conectada con dependencias, procrastinación, bloqueos de acción."
+          ],
+          "tipo": "rastreo",
+          "pregunta_ms": "¿Cuál categoría tiene la creencia limitante activa? (Valía / Seguridad / Comportamiento / Control / Amor / Autonomía / Justicia / Integración / Los demás / Normas)"
+        },
+        {
+          "orden": 3,
+          "titulo": "Identificar la creencia específica",
+          "instruccion": "Una vez identificada la categoría, rastrear la creencia exacta con TM leyendo las afirmaciones negativas del inventario para esa categoría. Alternativamente, formular la creencia limitante en palabras del consultante y verificar con TM.\n\nEjemplos por categoría:\n- Valía: 'Si alguien me conociera de verdad, no me aceptaría' / 'Tengo más defectos que los demás'\n- Seguridad: 'El mundo es peligroso y en cualquier momento puedo perderlo todo' / 'Siempre estoy al borde de enfermarme'\n- Amor: 'Me siento dependiente y temo que me abandonen' / 'Mi familia nunca me ha aceptado plenamente'\n- Control: 'Mi vida se me escapa del control' / 'Mi impulsividad me domina'\n- Autonomía: 'Dependo de los cuidados y criterios de los demás' / 'No me las arreglo bien por mi cuenta'",
+          "notas": [
+            "La creencia específica es el texto exacto del programa que el subconsciente registró como verdad. No es necesario encontrar la frase perfecta — el TM responde a la *esencia* del programa, no a las palabras exactas. Usar el lenguaje del consultante cuando sea posible.",
+            "Si el consultante no puede articular la creencia, usar el inventario de creencias completo: leer las afirmaciones negativas de la categoría identificada y detectar cuál activa el TM.",
+            "Puede haber más de una creencia activa en la misma categoría. Rastrear: '¿Hay más creencias limitantes en esta categoría?' hasta obtener NO.",
+            "Registrar la creencia identificada con exactitud para usarla en el comando de liberación del Paso 4."
+          ],
+          "tipo": "rastreo",
+          "pregunta_ms": "¿Esta es la creencia limitante activa? [afirmación específica]"
+        },
+        {
+          "orden": 4,
+          "titulo": "Determinar origen de la creencia",
+          "instruccion": "Con TM: '¿Esta creencia es de origen personal (vivida)?' SI / NO. Si NO: '¿Es de origen transgeneracional (heredada del árbol)?' SI / NO.",
+          "notas": [
+            "El origen importa para entender la profundidad y para personalizar el comando de liberación. Las creencias personales surgieron de experiencias directas que el subconsciente generalizó: una infancia con rechazo sostenido crea 'no soy valioso'. Las creencias transgeneracionales fueron heredadas sin experiencia propia — el árbol familiar repite el programa.",
+            "Una creencia puede tener ambos orígenes simultáneamente: el patrón familiar se reforzó con una experiencia personal. En ese caso, trabajar primero el componente transgeneracional (más profundo) y luego el personal.",
+            "Si el origen es transgeneracional, el comando de liberación del Paso 5 debe incluir 'y de mi árbol genealógico': 'Me libero consciente y subconscientemente de esta creencia y libero a mi árbol genealógico de este programa'."
+          ],
+          "tipo": "rastreo",
+          "pregunta_ms": "¿La creencia es de origen personal o transgeneracional?"
+        },
+        {
+          "orden": 5,
+          "titulo": "Liberar la creencia limitante",
+          "instruccion": "Formular el comando exacto según el origen:\n\nOrigin personal: 'Me libero consciente y subconscientemente de la creencia de que [X].'\nOrigen transgeneracional: 'Me libero consciente y subconscientemente de la creencia de que [X], y libero a mi árbol genealógico de este programa.'\n\nPasar el imán 10 veces sobre la zona frontal o el chakra corona mientras se repite el comando.",
+          "notas": [
+            "La fórmula 'consciente y subconscientemente' es esencial: una creencia limitante opera en ambos niveles. Liberar solo la parte consciente deja el programa subconsciente intacto — el consultante puede entender intelectualmente que la creencia es falsa pero seguir actuando desde ella.",
+            "Pasar el imán 10 veces es el número mínimo para cerrar el circuito energético del borrado. Si después de 10 pasadas el TM aún indica presencia de la creencia, repetir 10 pasadas adicionales.",
+            "El imán actúa como 'borrador' del registro energético de la creencia. Aplicar con polo negativo hacia el cuerpo para el borrado.",
+            "Mientras se pasa el imán: mantener el pensamiento en la creencia que se libera, no en la nueva. La instalación es el siguiente paso."
+          ],
+          "tipo": "intervencion",
+          "pregunta_ms": "Ejecutar comando de liberación — pasar imán 10 veces"
+        },
+        {
+          "orden": 6,
+          "titulo": "Instalar la creencia opuesta positiva",
+          "instruccion": "Inmediatamente después de liberar, instalar la creencia positiva de esa misma categoría:\n\n'Instalo en mi subconsciente la creencia de que [creencia positiva de la categoría].'\n\nPasar el imán 10 veces mientras se repite el comando de instalación.\n\nEjemplos de creencias positivas por categoría:\n- Valía: 'Soy merecedor de consideración, amor y respeto'\n- Seguridad: 'El mundo es seguro y tengo los recursos para enfrentarlo'\n- Amor: 'Me siento querido y soy capaz de dar y recibir amor plenamente'\n- Control: 'Tengo el control de mi vida y confío en mi capacidad de respuesta'\n- Autonomía: 'Soy autónomo e independiente, me las arreglo bien por mi cuenta'",
+          "notas": [
+            "El subconsciente no tolera el vacío: si se borra un programa sin instalar uno nuevo, tiende a restaurar el anterior. La instalación inmediata es parte inseparable del protocolo, no un paso opcional.",
+            "La creencia positiva no debe ser una negación de la limitante ('No soy inútil') sino una afirmación directa en positivo ('Soy competente y eficaz'). Las afirmaciones negativas no se registran bien en el subconsciente — usa siempre el lenguaje afirmativo.",
+            "Personalizar la afirmación positiva con el lenguaje del consultante si eso la hace más real para él. El contenido emocional importa más que la formulación perfecta."
+          ],
+          "tipo": "intervencion",
+          "pregunta_ms": "Instalar creencia positiva — pasar imán 10 veces"
+        },
+        {
+          "orden": 7,
+          "titulo": "Verificar liberación e instalación",
+          "instruccion": "Con TM verificar:\n1. '¿La creencia [X limitante] fue liberada completamente?' SI / NO.\n2. '¿La creencia [Y positiva] quedó instalada?' SI / NO.\n3. '¿Hay más creencias limitantes activas relacionadas con este conflicto?' SI / NO.",
+          "notas": [
+            "Si la creencia limitante NO fue liberada completamente: repetir el Paso 5 (10 pasadas adicionales con imán). Algunas creencias muy arraigadas requieren 2-3 rondas.",
+            "Si la creencia positiva NO quedó instalada: repetir el Paso 6. Verificar también si hay resistencia subconsciente a recibir la afirmación positiva — en ese caso puede haber una creencia de segundo nivel bloqueando la instalación.",
+            "Si hay más creencias activas: regresar al Paso 2 y repetir el ciclo para cada una. Es normal encontrar 2-4 creencias limitantes activas en una misma sesión.",
+            "Una vez confirmadas todas como liberadas e instaladas, verificar el estado general: '¿El campo mental relacionado con este conflicto está en mayor coherencia?' como cierre."
+          ],
+          "tipo": "verificacion",
+          "pregunta_ms": "¿La creencia limitante fue liberada? ¿La creencia positiva fue instalada? ¿Hay más creencias activas?"
+        }
+      ],
+      "observaciones": [
+        "Las creencias limitantes son la capa más densa del trabajo mental — operan debajo de las emociones y encima de los síntomas físicos. Cuando el trabajo emocional avanza pero algo sigue bloqueando, buscar creencias.",
+        "Una sesión puede trabajar 2-4 creencias como máximo sin sobrecargar el campo — respetar ese límite y agendar seguimiento para el resto.",
+        "La categoría Valía es la más frecuente y suele ser la raíz de creencias en otras categorías — trabajar primero la más profunda cuando hay múltiples activas.",
+        "Las creencias transgeneracionales suelen ser más resistentes y pueden requerir trabajo adicional con EFT Transgeneracional o Liberación de Impronta para consolidar el borrado."
+      ]
     }
   ]
 }
