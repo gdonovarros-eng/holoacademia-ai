@@ -346,19 +346,25 @@ def _build_llm_client():
     try:
         import openai
 
-        api_key = os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY")
+        model = os.getenv("OPENAI_MODEL", "").strip()
         base_url = None
-        model = os.getenv("THERAPEUTIC_ASSISTANT_USE_MODEL", "")
 
-        if os.getenv("GROQ_API_KEY"):
+        # Priority: OpenRouter → OpenAI → Groq (legacy)
+        if os.getenv("OPENROUTER_API_KEY"):
+            api_key = os.getenv("OPENROUTER_API_KEY")
+            base_url = os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1")
+            if not model:
+                model = "google/gemini-2.5-flash"
+        elif os.getenv("OPENAI_API_KEY"):
+            api_key = os.getenv("OPENAI_API_KEY")
+            if not model:
+                model = "gpt-4o-mini"
+        elif os.getenv("GROQ_API_KEY"):
+            api_key = os.getenv("GROQ_API_KEY")
             base_url = "https://api.groq.com/openai/v1"
             if not model:
                 model = "llama-3.1-70b-versatile"
-        elif os.getenv("OPENAI_API_KEY"):
-            if not model:
-                model = "gpt-4o-mini"
-
-        if not api_key:
+        else:
             return None, None
 
         client = openai.OpenAI(api_key=api_key, base_url=base_url)

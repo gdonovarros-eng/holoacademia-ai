@@ -116,11 +116,15 @@ def get_db() -> PairsDB:
 class PairsLLMClient:
     def __init__(self) -> None:
         use_model = os.getenv("THERAPEUTIC_ASSISTANT_USE_MODEL", "false").strip().lower() in {"1", "true", "yes", "on"}
-        provider = os.getenv("LLM_PROVIDER", "groq").strip().lower()
-        if provider == "groq":
+        provider = os.getenv("LLM_PROVIDER", "openrouter").strip().lower()
+        if provider == "openrouter":
+            api_key = os.getenv("OPENROUTER_API_KEY", "").strip()
+            base_url = os.getenv("LLM_BASE_URL", "https://openrouter.ai/api/v1").strip()
+            model = os.getenv("OPENAI_MODEL", "google/gemini-2.5-flash").strip()
+        elif provider == "groq":
             api_key = os.getenv("GROQ_API_KEY", "").strip()
             base_url = os.getenv("LLM_BASE_URL", "https://api.groq.com/openai/v1").strip()
-            model = os.getenv("OPENAI_MODEL", "openai/gpt-oss-20b").strip()
+            model = os.getenv("OPENAI_MODEL", "llama-3.1-70b-versatile").strip()
         else:
             api_key = os.getenv("OPENAI_API_KEY", "").strip()
             base_url = os.getenv("LLM_BASE_URL", "").strip() or None
@@ -145,21 +149,19 @@ class PairsLLMClient:
             "3) qué conviene explorar con el paciente."
         )
         try:
-            resp = self.client.responses.create(
+            resp = self.client.chat.completions.create(
                 model=self.model,
-                instructions=PAIRS_SYSTEM_PROMPT,
-                input=prompt,
-                max_output_tokens=int(os.getenv("THERAPEUTIC_ASSISTANT_MAX_TOKENS", "900")),
-                timeout=float(os.getenv("THERAPEUTIC_ASSISTANT_TIMEOUT_SECONDS", "25")),
+                messages=[
+                    {"role": "system", "content": PAIRS_SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt},
+                ],
+                max_tokens=int(os.getenv("THERAPEUTIC_ASSISTANT_MAX_TOKENS", "900")),
+                temperature=0.7,
             )
-            text = getattr(resp, "output_text", "") or ""
-            if not text.strip():
-                for item in getattr(resp, "output", []) or []:
-                    for content in getattr(item, "content", []) or []:
-                        value = getattr(content, "text", None)
-                        if value:
-                            text += value
-            return text.strip()
+            if resp.choices:
+                content = resp.choices[0].message.content
+                return content.strip() if content else ""
+            return ""
         except Exception:
             return ""
 
