@@ -1,6 +1,5 @@
 {
   "version": "3.0",
-  "source": "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
   "total": 34,
   "protocols": [
     {
@@ -261,7 +260,7 @@
           "titulo": "Identificar emoción o reacción",
           "instruccion": "¿Hay emoción/reacción implicada? (Buscar en las 9 columnas emocionales).",
           "notas": [
-            "Las 9 columnas emocionales del sistema Lavín incluyen: 1) Miedo/Terror/Pánico. 2) Tristeza/Duelo/Melancolía. 3) Rabia/Resentimiento/Indignación. 4) Vergüenza/Culpa/Humillación. 5) Soledad/Abandono/Rechazo. 6) Injusticia/Frustración. 7) Impotencia/Resignación. 8) Confusión/Traición. 9) Angustia existencial.",
+            "Las 9 columnas emocionales del sistema holístico incluyen: 1) Miedo/Terror/Pánico. 2) Tristeza/Duelo/Melancolía. 3) Rabia/Resentimiento/Indignación. 4) Vergüenza/Culpa/Humillación. 5) Soledad/Abandono/Rechazo. 6) Injusticia/Frustración. 7) Impotencia/Resignación. 8) Confusión/Traición. 9) Angustia existencial.",
             "La emoción del ancestro excluido es lo que el descendiente inconscientemente 'carga' — identificarla permite saber qué emoción debe ser liberada en el proceso de inclusión."
           ],
           "tipo": "instruccion",
@@ -274,7 +273,7 @@
           "notas": [
             "Las palabras clave de la inclusión son: 'Aquí y Ahora te veo. Tienes un lugar. Eres parte fundamental. Eres reconocido. Tu verdad ahora es conocida.' Estas palabras deshacen la exclusión: hacen visible lo invisible, nombran lo innombrable, devuelven el lugar negado.",
             "Después de la declaración de inclusión, intuir o rastrear un 'ritual de honor' específico para ese ancestro: encender una vela, poner su nombre en el árbol, dedicarle una oración, o hacer un acto simbólico que lo reconozca dentro del sistema familiar.",
-            "Frase complementaria del sistema Lavín: 'Es tu historia y la honro, la respeto y le doy el lugar que corresponde en el árbol. Sin embargo elijo mi propia historia porque es mi derecho.'"
+            "Frase complementaria del sistema holístico: 'Es tu historia y la honro, la respeto y le doy el lugar que corresponde en el árbol. Sin embargo elijo mi propia historia porque es mi derecho.'"
           ],
           "tipo": "instruccion",
           "pregunta_ms": "Decretar frases de inclusión al ancestro excluido"
@@ -517,7 +516,6 @@
         "ganchos de cook"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 1",
       "objetivo": "Preparar al terapeuta o consultante para que el test muscular funcione con precisión, eliminando interferencias antes de cualquier rastreo.",
       "cuando_usarlo": [
         "Al inicio de cualquier sesión que incluya test muscular",
@@ -613,7 +611,6 @@
         "miedo primario"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 2",
       "objetivo": "Identificar y eliminar miedos conscientes e inconscientes asociados a un conflicto o síntoma usando test muscular e imán.",
       "cuando_usarlo": [
         "Cuando el consultante reporta miedo, angustia o evitación",
@@ -642,7 +639,7 @@
           "instruccion": "Si la respuesta es afirmativa, preguntar con TM en secuencia: ¿Es un miedo común (fobia a algo específico — altura, oscuridad, animales, etc.)? ¿Es un nudo psórico (miedo arcaico preconsciente o ancestral — ver tabla de 21 nudos)? ¿Es un miedo primario (innato, instintivo — caídas, ruidos fuertes, oscuridad)? ¿Es un miedo infantil (de etapa de 0–12 años)? — Ir preguntando hasta localizar el tipo exacto.",
           "notas": [
             "Miedo común: fobia específica a algo concreto (persona, situación, objeto, animal). Trabajar directamente con el protocolo de fobias si es intensa.",
-            "Nudo psórico: miedo arcaico preconsciente o heredado de ancestros — 'psora' = mente/miedo/psicosis. Son miasmas (memorias) preconscientes que se sienten como 'un nudo en el estómago'. Hay 21 tipos organizados en arquetipos del I al XXI (tabla de Alejandro Lavín) y un nudo 0 = miedo a la vida/vivir.",
+            "Nudo psórico: miedo arcaico preconsciente o heredado de ancestros — 'psora' = mente/miedo/psicosis. Son miasmas (memorias) preconscientes que se sienten como 'un nudo en el estómago'. Hay 21 tipos organizados en arquetipos del I al XXI (tabla de nudos psóricos) y un nudo 0 = miedo a la vida/vivir.",
             "Miedo primario: miedos innatos con los que nacemos (programados evolutivamente) — a caídas, ruidos fuertes, oscuridad, animales peligrosos. Presentes desde el nacimiento y atenuados normalmente con la experiencia.",
             "Miedo infantil: varía por edad — 0–1 año: ruidos fuertes, desconocido, separación. 2–3 años: criaturas imaginarias, oscuridad. 4–6 años: monstruos, animales, situaciones nuevas. 6–9 años: sobrenatural, fracaso escolar, rechazo social. 9–12 años: rendimiento académico, presión de grupo."
           ],
@@ -708,7 +705,6 @@
         "fobia social"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 2",
       "objetivo": "Eliminar una fobia detectada con test muscular, incluyendo emociones, traumas o miedos asociados, y anclar la creencia contraria.",
       "cuando_usarlo": [
         "Cuando el consultante tiene un miedo intenso, irracional y desproporcionado ante algo específico",
@@ -795,7 +791,6 @@
         "liberacion trauma"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 2",
       "objetivo": "Liberar traumas emocionales identificados usando movimiento ocular en zigzag con comando de liberación, verificando con test muscular.",
       "cuando_usarlo": [
         "Cuando el rastreo identifica un trauma emocional específico",
@@ -858,7 +853,6 @@
         "trauma severo"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 2",
       "objetivo": "Liberar el estrés postraumático identificando y eliminando las emociones, miedos y traumas subyacentes, y anclar una nueva creencia liberadora.",
       "cuando_usarlo": [
         "Cuando el consultante no puede recuperarse de un evento traumático pasado",
@@ -959,7 +953,6 @@
         "coraza energética"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 4",
       "objetivo": "Identificar y disolver corazas o escudos energéticos inconscientes que bloquean el correcto funcionamiento del consultante.",
       "cuando_usarlo": [
         "Cuando hay bloqueos persistentes que no ceden con otros protocolos",
@@ -1021,7 +1014,6 @@
         "existencia anterior"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 4",
       "objetivo": "Identificar y liberar conflictos almacenados en el subconsciente que tienen origen en existencias anteriores y que se activan en la vida presente.",
       "cuando_usarlo": [
         "Cuando el conflicto no tiene explicación en la historia de vida presente ni en el árbol genealógico",
@@ -1085,7 +1077,6 @@
         "apego energetico"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 4",
       "objetivo": "Identificar y eliminar conexiones energéticas no saludables con otras personas que drenan energía o generan dependencia.",
       "cuando_usarlo": [
         "Cuando el consultante siente un apego o influencia excesiva de alguien",
@@ -1147,7 +1138,6 @@
         "memorias energeticas"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 5",
       "objetivo": "Identificar y liberar memorias energéticas asociadas a un objetivo o conflicto que impiden su resolución.",
       "cuando_usarlo": [
         "Cuando hay un patrón repetitivo que no cede a otros tratamientos",
@@ -1209,7 +1199,6 @@
         "memorias celulares"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 5",
       "objetivo": "Liberar memorias almacenadas a nivel celular asociadas a una enfermedad específica.",
       "cuando_usarlo": [
         "Principalmente en casos de enfermedades físicas o crónicas",
@@ -1270,7 +1259,6 @@
         "deuda karmica"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 5",
       "objetivo": "Identificar y liberar memorias kármicas asociadas a un objetivo que mantienen patrones de desequilibrio.",
       "cuando_usarlo": [
         "Cuando el conflicto persiste después de trabajar memorias energéticas y celulares",
@@ -1333,7 +1321,6 @@
         "protocolo de sesion"
       ],
       "categoria": "sesion",
-      "fuente": "Diplomado Terapia Holística – Módulo 1",
       "objetivo": "Guiar una sesión terapéutica holística completa desde la identificación del conflicto consciente hasta el ajuste bioenergético, integrando conflictología, test muscular y terapias complementarias.",
       "cuando_usarlo": [
         "Como protocolo marco para estructurar cualquier sesión terapéutica completa",
@@ -1394,7 +1381,6 @@
         "energía negativa enviada"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y eliminar intencionalidades negativas (energías enviadas conscientemente o inconscientemente por otras personas) que afectan al consultante.",
       "cuando_usarlo": [
         "Cuando el consultante siente que alguien le desea mal",
@@ -1458,7 +1444,6 @@
         "hechizo"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y liberar maldiciones — energías negativas intensas dirigidas al consultante — que bloquean su bienestar, salud o progreso.",
       "cuando_usarlo": [
         "Cuando el rastreo indica una maldición como causa del bloqueo",
@@ -1520,7 +1505,6 @@
         "mirada negativa"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y eliminar la influencia energética negativa del mal de ojo — energía enviada por envidia o mala intención a través de la mirada.",
       "cuando_usarlo": [
         "Cuando el rastreo indica mal de ojo como factor",
@@ -1580,7 +1564,6 @@
         "larvas energéticas"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y eliminar larvas o parásitos energéticos que se adhieren al campo áurico y drenan la energía vital del consultante.",
       "cuando_usarlo": [
         "Cuando hay fatiga extrema inexplicable, hormigueos, pesadillas o sensación de presión en el pecho",
@@ -1641,7 +1624,6 @@
         "interferencia energética"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y expulsar saboteadores energéticos — entidades o energías que interfieren con el bienestar, la salud y el equilibrio del consultante.",
       "cuando_usarlo": [
         "Cuando hay autosabotaje inexplicable, ira interna, duda persistente o síntomas que no responden a otros tratamientos",
@@ -1703,7 +1685,6 @@
         "carga energética ajena"
       ],
       "categoria": "bioenergético",
-      "fuente": "Diplomado SEI – Módulo 6",
       "objetivo": "Identificar y liberar remanentes energéticos negativos — residuos de energía discordante absorbidos en el contacto cotidiano con otras personas.",
       "cuando_usarlo": [
         "Cuando el consultante se siente cargado, de mal humor o ansioso después de convivir con ciertas personas",
@@ -1765,7 +1746,6 @@
         "EFT hipno PNL"
       ],
       "categoria": "psicoemocional",
-      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
       "objetivo": "Liberar conflictos emocionales profundos combinando hipnosis, PNL, biodescodificación y tapping en meridianos. Integra la experiencia traumática, la libera emocionalmente y la reencuadra.",
       "cuando_usarlo": [
         "Para conflictos emocionales con carga alta (7-10/10)",
@@ -1883,8 +1863,7 @@
         }
       ],
       "observaciones": [
-        "EFT PRO integra EFT + hipnosis + PNL + biodescodificación — es el protocolo más completo para conflictos emocionales",
-        "Fuentes: Huang Di (MTC), Roger Callahan (TFT), Gary Craig (EFT), Milton Erickson (hipnosis), Bandler y Grinder (PNL), Hamer et al. (biodescodificación)"
+        "EFT PRO integra EFT + hipnosis + PNL + biodescodificación — es el protocolo más completo para conflictos emocionales"
       ]
     },
     {
@@ -1897,7 +1876,6 @@
         "niño interior 0-7"
       ],
       "categoria": "psicoemocional",
-      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
       "objetivo": "Sanar heridas de la etapa de tierra (0-7 años) mediante un viaje hipnótico que conecta al consultante con su infancia y resignifica las carencias o traumas de ese período.",
       "cuando_usarlo": [
         "Cuando el conflicto tiene raíz en la primera infancia (0-7 años)",
@@ -2017,7 +1995,6 @@
         "niño interior 8-14"
       ],
       "categoria": "psicoemocional",
-      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
       "objetivo": "Sanar heridas de la etapa de metal (8-14 años) mediante un viaje hipnótico que conecta al consultante con su adolescencia temprana y resignifica las carencias o traumas de ese período.",
       "cuando_usarlo": [
         "Cuando el conflicto tiene raíz en la pubertad o adolescencia temprana (8-14 años)",
@@ -2131,7 +2108,6 @@
         "carta parental"
       ],
       "categoria": "psicoemocional",
-      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
       "objetivo": "Sanar la relación con una figura parental mediante la escritura y lectura de una carta que recorre las etapas de desahogo, empatía, perdón, gratitud y amor. El proceso se refuerza con un ritual de 21 noches.",
       "cuando_usarlo": [
         "Cuando hay conflictos no resueltos con padre, madre u otra figura parental significativa",
@@ -2240,7 +2216,6 @@
         "duelo perinatal"
       ],
       "categoria": "psicoemocional",
-      "fuente": "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
       "objetivo": "Dar lugar, reconocimiento y despedida a un hijo no nacido (aborto, pérdida gestacional) mediante un ritual simbólico de entierro que sana el duelo y libera la culpa.",
       "cuando_usarlo": [
         "Cuando hay un aborto, pérdida gestacional o hijo que no nació sin haber sido procesado",
@@ -2333,7 +2308,6 @@
         "constelacion campo morfico"
       ],
       "categoria": "transgeneracional",
-      "fuente": "Psicosomática y Biodescodificación 1 / Holopsicosomática 2020 – Alejandro Lavín",
       "objetivo": "Liberar una impronta transgeneracional trabajando con el campo mórfico familiar, un voluntario que sintoniza al ancestro y frases rituales de reconocimiento e inclusión.",
       "cuando_usarlo": [
         "Cuando el conflicto tiene raíz ancestral claramente identificada",
@@ -2467,7 +2441,6 @@
         "hipoxia rastreo"
       ],
       "categoria": "rastreo",
-      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
       "objetivo": "Rastrear en profundidad el conflicto psicosomático específico del tejido alveolar, identificando nudo psórico, sensaciones, holograma, creencia, microbio y par biomagnético implicados.",
       "cuando_usarlo": [
         "Cuando el síntoma principal afecta el tejido alveolar (hipoxia, sofocación, dificultad respiratoria profunda)",
@@ -3566,7 +3539,6 @@
         "hepático profundo"
       ],
       "categoria": "rastreo",
-      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
       "objetivo": "Rastrear el conflicto psicosomático específico del parénquima hepático, identificando conflicto, sensaciones, holograma, microbios y par biomagnético.",
       "cuando_usarlo": [
         "Cuando el síntoma principal afecta el hígado (ictericia, hepatitis, problemas de vesícula)",
@@ -4348,7 +4320,6 @@
         "campo morfico sublimacion"
       ],
       "categoria": "transgeneracional",
-      "fuente": "Holopsicosomática 2020 – Alejandro Lavín",
       "objetivo": "Rastrear y sublimar un conflicto transgeneracional mediante preguntas específicas de test muscular, abriendo el campo mórfico y cancelando la información implicada.",
       "cuando_usarlo": [
         "Cuando el conflicto tiene raíz transgeneracional confirmada",
@@ -5252,7 +5223,6 @@
         "preparacion rastreo holobio"
       ],
       "categoria": "rastreo",
-      "fuente": "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
       "objetivo": "Verificar que el terapeuta está en condiciones óptimas para rastrear: hemisferios alineados, aptitud psíquica confirmada e interferencias ambientales descartadas.",
       "cuando_usarlo": [
         "Al inicio de toda sesión de holobiomagnetismo antes de rastrear",
@@ -5311,7 +5281,6 @@
         "diagnostico sistemas"
       ],
       "categoria": "rastreo",
-      "fuente": "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
       "objetivo": "Obtener un panorama completo del estado energético de los 10 sistemas orgánicos del consultante mediante rastreo de porcentaje de armonía.",
       "cuando_usarlo": [
         "Al inicio de sesión para identificar qué sistemas necesitan atención prioritaria",
@@ -5478,7 +5447,6 @@
         "rastreo genealogico tarot"
       ],
       "categoria": "transgeneracional",
-      "fuente": "Diplomado Terapia Holística – Módulo 12",
       "objetivo": "Rastrear en profundidad el ancestro, su problemática, el contexto, la fecha y la emoción de un conflicto transgeneracional usando el tarot como herramienta de rastreo psíquico con test muscular.",
       "cuando_usarlo": [
         "Cuando se quiere identificar con precisión el ancestro y contexto de un conflicto transgeneracional",
@@ -5496,7 +5464,7 @@
           "instruccion": "Definir el tema a tratar. 'Abro campo mórfico transgeneracional.' (Guardar en circuito).",
           "notas": [
             "El tarot transgeneracional funciona como interfaz pictográfica: las imágenes de los arcanos guían la respuesta del subconsciente con mayor precisión que las preguntas verbales puras. Al abrir el campo mórfico, se establece resonancia con el árbol genealógico que permite que el TM detecte las memorias ancestrales activas.",
-            "Material requerido: Tarot Thoth de Aleister Crowley (el sistema Lavín usa este mazo específicamente por su simbología arquetípica). Papel y pluma para registrar todos los datos del rastreo. Preparación subconsciente previa del rastreador."
+            "Material requerido: Tarot Thoth de Aleister Crowley (el sistema holístico usa este mazo específicamente por su simbología arquetípica). Papel y pluma para registrar todos los datos del rastreo. Preparación subconsciente previa del rastreador."
           ],
           "tipo": "instruccion",
           "pregunta_ms": "Definir tema y abrir campo mórfico transgeneracional"
@@ -5586,7 +5554,7 @@
           "titulo": "Identificar problemática",
           "instruccion": "Buscar en los arcanos mayores la problemática acorde. Rastrear: '¿Tengo fidelidad familiar invisible con esta problemática?' Sí/No.",
           "notas": [
-            "Los 22 Arcanos Mayores representan las 22 problemáticas arquetípicas transgeneracionales según el sistema Lavín: 0-El Loco=problemas personales/desarraigo/ideología, I-El Mago=problemas profesionales/carrera frustrada, II-La Sacerdotisa=secretos/rivalidades/traiciones familiares, III-La Emperatriz=maternidad problemática, IV-El Emperador=paternidad/autoridad, V-El Hierofante=religión/dogma, VI-Los Enamorados=elección de pareja/separación, VII-El Carro=conflicto de dirección/identidad...",
+            "Los 22 Arcanos Mayores representan las 22 problemáticas arquetípicas transgeneracionales según el sistema holístico: 0-El Loco=problemas personales/desarraigo/ideología, I-El Mago=problemas profesionales/carrera frustrada, II-La Sacerdotisa=secretos/rivalidades/traiciones familiares, III-La Emperatriz=maternidad problemática, IV-El Emperador=paternidad/autoridad, V-El Hierofante=religión/dogma, VI-Los Enamorados=elección de pareja/separación, VII-El Carro=conflicto de dirección/identidad...",
             "'Fidelidad familiar invisible' (FII) es el fenómeno más frecuente en este rastreo: el consultante inconscientemente repite la problemática del ancestro como acto de lealtad a la historia genealógica. El TM confirma la FII cuando pregunta '¿Tengo fidelidad familiar invisible con esta problemática?' — si responde 'Sí', hay identificación inconsciente con el drama ancestral."
           ],
           "tipo": "instruccion",
@@ -5649,7 +5617,7 @@
           "titulo": "Identificar emoción",
           "instruccion": "'¿Qué emoción soporta este conflicto?' Bloque A/B/C → categoría específica → sector 1, 2, 3… Anotar emoción asociada.",
           "notas": [
-            "Las 9 columnas emocionales del sistema Lavín organizan el espectro emocional en bloques: Bloque A (emociones de supervivencia): miedo, terror, pánico, angustia existencial. Bloque B (emociones de pérdida): tristeza, duelo, melancolía, desesperanza. Bloque C (emociones de injusticia): rabia, resentimiento, indignación, vergüenza, culpa.",
+            "Las 9 columnas emocionales del sistema holístico organizan el espectro emocional en bloques: Bloque A (emociones de supervivencia): miedo, terror, pánico, angustia existencial. Bloque B (emociones de pérdida): tristeza, duelo, melancolía, desesperanza. Bloque C (emociones de injusticia): rabia, resentimiento, indignación, vergüenza, culpa.",
             "Rastrear: Bloque A, B o C → categoría específica → número de sector. La emoción identificada es lo que el ancestro sintió en el instante del conflicto y lo que el consultante inconscientemente lleva en su campo como 'eco generacional'. Es también la emoción que debe ser liberada con EFT Transgeneracional."
           ],
           "tipo": "seleccion",
@@ -5907,7 +5875,7 @@
           "titulo": "Identificar holograma",
           "instruccion": "'¿Hay algún holograma implicado?' Sí/No. Si Sí: rastrear bloque (rojo/naranja/amarillo/verde) y número.",
           "notas": [
-            "Los 12 hologramas son los 12 tipos de bioshock emocional según el sistema Lavín. En memorias transgeneracionales, los más frecuentes son: 'Alguien tiene la culpa' (cuando el ancestro vivió injusticia), 'Tiro la toalla' (cuando el ancestro se rindió ante una situación imposible), 'Bloqueo energético' (cuando el trauma fue tan intenso que generó parálisis energética).",
+            "Los 12 hologramas son los 12 tipos de bioshock emocional según el sistema holístico. En memorias transgeneracionales, los más frecuentes son: 'Alguien tiene la culpa' (cuando el ancestro vivió injusticia), 'Tiro la toalla' (cuando el ancestro se rindió ante una situación imposible), 'Bloqueo energético' (cuando el trauma fue tan intenso que generó parálisis energética).",
             "Los 4 bloques de 3 hologramas: Bloque 1 (rojo): impacto frontal, posterior, desvalorización. Bloque 2 (naranja): alguien tiene la culpa, yo tengo razón, ultraje. Bloque 3 (amarillo): tiro la toalla, abandono, vivo/muerto. Bloque 4 (verde): bloqueo energético, incorporación energética, pérdida de la voluntad."
           ],
           "tipo": "verificacion",
@@ -6012,15 +5980,5 @@
         "La información que recaba: ancestro, personalidad, problemática, contexto, fecha, emoción, holograma, cromosoma"
       ]
     }
-  ],
-  "sources": [
-    "Protocolos_de_solución_transgen_-_Alejandro_Lavín",
-    "Diplomado SEI (Sanación Energética Integral) – Módulos 1, 2, 4, 5",
-    "Diplomado Terapia Holística – Módulo 1",
-    "Psicosomática y Biodescodificación 1 – Alejandro Lavín",
-    "Holopsicosomática 2020 – Alejandro Lavín",
-    "HoloBiomagnetismo Parte 1 – Alejandro Lavín",
-    "Diplomado SEI – Módulo 6",
-    "Diplomado Terapia Holística – Módulo 12"
   ]
 }

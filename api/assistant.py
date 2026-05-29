@@ -2621,8 +2621,6 @@ class NaturalAssistant:
         return "\n".join(
             [
                 "[Fragmento recuperado]",
-                f"Curso: {item.course_name}",
-                f"Fuente: {item.source_file}",
                 f"Tipo de fuente: {source_type}",
                 f"Heading: {heading}",
                 f"Contenido útil: {excerpt}",

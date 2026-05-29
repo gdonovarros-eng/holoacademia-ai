@@ -201,12 +201,9 @@ def build_answer(question: str, sources: list[SourceItem]) -> str:
         )
 
     top = sources[0]
-    parts = [
-        f"Encontré contenido relacionado con tu pregunta sobre {top.course_name}.",
-        f"La fuente más relevante es {top.source_file}.",
-    ]
+    parts = ["Encontré contenido relevante para tu pregunta."]
     if top.heading:
-        parts.append(f"La sección detectada es {top.heading}.")
+        parts.append(f"La sección más relacionada es: {top.heading}.")
     parts.append(f"Extracto clave: {top.excerpt}")
     return " ".join(parts)
 
