@@ -299,7 +299,7 @@ app.add_middleware(
 _EMBED_SECRET  = os.getenv("EMBED_SECRET", "")
 _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
-_LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/miembros")
+_LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/asistenteia")
 
 _PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
 
