@@ -1,6 +1,6 @@
 {
   "version": "3.0",
-  "total": 36,
+  "total": 46,
   "protocols": [
     {
       "id": "eft_transgeneracional",
@@ -3065,6 +3065,77 @@
       "instruccion_ms": ""
     },
     {
+      "id": "sinastria_terapeutica",
+      "nombre": "Sinastría & Compatibilidad",
+      "aliases": [
+        "sinastria",
+        "sinastría",
+        "compatibilidad",
+        "pareja",
+        "relacion",
+        "relación",
+        "astrologia pareja"
+      ],
+      "categoria": "sesion",
+      "render_tipo": "tool_link",
+      "tool_url": "/sinastria",
+      "tool_icon": "💑",
+      "objetivo": "Analizar la compatibilidad astrológica entre dos personas mediante sinastría. Útil en sesiones de terapia de pareja o para entender dinámicas relacionales del consultante.",
+      "cuando_usarlo": [
+        "En terapia de pareja",
+        "Para entender conflictos relacionales desde la perspectiva astrológica",
+        "Cuando el consultante reporta patrones repetitivos en sus relaciones"
+      ],
+      "instruccion_ms": ""
+    },
+    {
+      "id": "transitos_planetarios",
+      "nombre": "Tránsitos Planetarios",
+      "aliases": [
+        "transitos",
+        "tránsitos",
+        "planetarios",
+        "astro actual",
+        "momento astrologico",
+        "momento astrológico"
+      ],
+      "categoria": "sesion",
+      "render_tipo": "tool_link",
+      "tool_url": "/transitos",
+      "tool_icon": "🪐",
+      "objetivo": "Analizar los tránsitos planetarios actuales sobre la carta natal del consultante. Identifica qué influencias astrológicas están activas en el momento presente.",
+      "cuando_usarlo": [
+        "Cuando el consultante atraviesa una crisis o cambio importante",
+        "Para contextualizar síntomas con el ciclo astrológico actual",
+        "En astrología médica para identificar períodos de mayor vulnerabilidad"
+      ],
+      "instruccion_ms": ""
+    },
+    {
+      "id": "horoscopo_terapeutico",
+      "nombre": "Horóscopo Terapéutico",
+      "aliases": [
+        "horoscopo",
+        "horóscopo",
+        "signo",
+        "signo solar",
+        "lectura",
+        "prediccion",
+        "predicción"
+      ],
+      "categoria": "sesion",
+      "render_tipo": "tool_link",
+      "tool_url": "/horoscopo",
+      "tool_icon": "⭐",
+      "objetivo": "Lectura del horóscopo del signo solar del consultante con enfoque terapéutico holístico. Orienta el trabajo de la sesión según la energía actual del signo.",
+      "cuando_usarlo": [
+        "Al inicio de la sesión para contextualizar el estado energético del consultante",
+        "Cuando el consultante pide orientación sobre su momento vital",
+        "Para personalizar el protocolo terapéutico según el perfil del signo"
+      ],
+      "instruccion_ms": ""
+    },
+    {
       "id": "rastreo_sintoma",
       "nombre": "Rastreo por Síntoma",
       "aliases": [
@@ -3165,6 +3236,31 @@
         "Cuando el consultante desconoce su ascendente o posiciones lunares"
       ],
       "instruccion_ms": "La carta natal revela los patrones bioenergéticos y emocionales estructurales del consultante. Cada planeta en su signo y casa describe un programa de vida activo."
+    },
+    {
+      "id": "numerologia_terapeutica",
+      "nombre": "Numerología Terapéutica",
+      "aliases": [
+        "numerologia",
+        "numerología",
+        "numero",
+        "número",
+        "karmico",
+        "kármica",
+        "camino de vida",
+        "expresion",
+        "alma"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "numerologia_terapeutica",
+      "objetivo": "Calcular y analizar el perfil numerológico del consultante (número de camino de vida, expresión, alma e impulso) con interpretación terapéutica holística orientada a la sesión.",
+      "cuando_usarlo": [
+        "Al inicio del proceso terapéutico para contextualizar el perfil del consultante",
+        "Cuando hay patrones de conducta repetitivos que buscan explicación",
+        "En trabajo transgeneracional para identificar números heredados",
+        "Para orientar el tipo de trabajo terapéutico más afín al consultante"
+      ],
+      "instruccion_ms": "Los números del consultante revelan el programa de vida activo y las áreas de mayor desafío y crecimiento."
     },
     {
       "id": "rastreo_alveolar",
@@ -6172,6 +6268,30 @@
       "observaciones": [
         "Herramienta valiosa para priorizar el trabajo terapéutico cuando hay múltiples sistemas comprometidos"
       ]
+    },
+    {
+      "id": "salud_sistemas",
+      "nombre": "Diagnóstico por Sistema Corporal",
+      "aliases": [
+        "salud",
+        "sistemas",
+        "sistema corporal",
+        "diagnostico",
+        "diagnóstico",
+        "conflicto organico",
+        "órgano"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "tool_link",
+      "tool_url": "/salud",
+      "tool_icon": "🏥",
+      "objetivo": "Explorar conflictos psicosomáticos por sistema corporal (respiratorio, digestivo, cardiovascular, etc.) y sus correspondencias biológicas y emocionales.",
+      "cuando_usarlo": [
+        "Cuando el síntoma principal es físico y se quiere identificar el conflicto subyacente",
+        "Para mapear el órgano afectado con su programa biológico",
+        "En rastreo de conflictología por sistema"
+      ],
+      "instruccion_ms": ""
     },
     {
       "id": "rastreo_transgeneracional_tarot",

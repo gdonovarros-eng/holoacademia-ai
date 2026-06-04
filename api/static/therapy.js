@@ -2058,6 +2058,152 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Tool Link Card ─────────────────────────────────────────────────────────
+// Generic renderer for standalone tools that open in a new tab
+function renderToolLink(p, content) {
+  const url = p.tool_url || "/astro-home";
+  const icon = p.tool_icon || "🔗";
+  content.innerHTML = `
+    <div class="rastreo-tabla-wrap">
+      <div class="tl-card">
+        <div class="tl-icon">${icon}</div>
+        <h3 class="tl-nombre">${escapeHtml(p.nombre)}</h3>
+        <p class="tl-objetivo">${escapeHtml(p.objetivo || "")}</p>
+        ${(p.cuando_usarlo||[]).length > 0 ? `
+          <div class="tl-cuando">
+            <div class="tl-sec-label">Cuándo usarlo</div>
+            <ul class="luna-lista">${(p.cuando_usarlo||[]).map(c=>`<li>${escapeHtml(c)}</li>`).join("")}</ul>
+          </div>` : ""}
+        <a href="${escapeHtml(url)}" target="_blank" class="tl-btn">
+          Abrir ${escapeHtml(p.nombre)} →
+        </a>
+      </div>
+    </div>`;
+}
+
+// ─── Numerología Terapéutica ────────────────────────────────────────────────
+function renderNumerologiaTerapeutica(p, content) {
+  const state = { nombre: "", fecha: "", resultado: null };
+
+  function render() {
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">🔢</span>
+          <span>${escapeHtml(p.instruccion_ms || "Ingresa el nombre completo y fecha de nacimiento del consultante.")}</span>
+        </div>
+        <div class="cn-form">
+          <div class="casos-form-group">
+            <label class="casos-label">Nombre completo del consultante</label>
+            <input class="casos-input" id="num-nombre" placeholder="Nombre y apellidos completos" value="${escapeHtml(state.nombre)}">
+          </div>
+          <div class="casos-form-group">
+            <label class="casos-label">Fecha de nacimiento</label>
+            <input class="casos-input" id="num-fecha" type="date" value="${escapeHtml(state.fecha)}">
+          </div>
+          <div id="num-error" class="casos-form-error" style="display:none"></div>
+          <div class="wizard-nav" style="margin-top:14px">
+            <button class="wizard-nav-btn vort-ia-btn" id="num-calcular" style="width:100%">
+              🔢 Calcular Perfil Numerológico
+            </button>
+          </div>
+        </div>
+        <div class="cn-link-full">
+          <a href="/numerologia" target="_blank" class="cn-ext-link">Herramienta numerológica completa →</a>
+        </div>
+        ${state.resultado ? renderResultado() : ""}
+        <div id="num-interp-out"></div>
+      </div>`;
+
+    content.querySelector("#num-calcular")?.addEventListener("click", () => {
+      const nombre = content.querySelector("#num-nombre")?.value.trim();
+      const fecha  = content.querySelector("#num-fecha")?.value;
+      const errEl  = content.querySelector("#num-error");
+      if (!nombre || !fecha) { errEl.textContent = "Ingresa nombre y fecha."; errEl.style.display = "block"; return; }
+      errEl.style.display = "none";
+      state.nombre = nombre;
+      state.fecha = fecha;
+      state.resultado = calcularNumerologia(nombre, fecha);
+      render();
+      // Auto-interpret
+      setTimeout(() => interpretarNumerologia(), 200);
+    });
+    content.querySelector("#num-interp-btn")?.addEventListener("click", interpretarNumerologia);
+  }
+
+  function calcularNumerologia(nombre, fecha) {
+    // Reduce a single digit (or master number 11, 22, 33)
+    function reduce(n) {
+      while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+        n = String(n).split("").reduce((a, d) => a + parseInt(d), 0);
+      }
+      return n;
+    }
+    // Letter to number (Pythagorean)
+    const letterVal = {a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:1,k:2,l:3,m:4,n:5,o:6,p:7,q:8,r:9,s:1,t:2,u:3,v:4,w:5,x:6,y:7,z:8};
+    const vowels = new Set("aeiou");
+    const clean = nombre.toLowerCase().replace(/[^a-záéíóúüñ]/g, "")
+      .replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ü/g,"u").replace(/ñ/g,"n");
+
+    // Número de Expresión (todos las letras)
+    const expresion = reduce(clean.split("").reduce((a,c) => a + (letterVal[c]||0), 0));
+
+    // Número del Alma / Impulso del Alma (vocales)
+    const alma = reduce(clean.split("").filter(c => vowels.has(c)).reduce((a,c) => a + (letterVal[c]||0), 0));
+
+    // Número de Personalidad (consonantes)
+    const personalidad = reduce(clean.split("").filter(c => !vowels.has(c)).reduce((a,c) => a + (letterVal[c]||0), 0));
+
+    // Número de Camino de Vida (fecha)
+    const [y, m, d] = fecha.split("-").map(Number);
+    const camino = reduce(reduce(d) + reduce(m) + reduce(y));
+
+    // Número del Destino / Misión (similar a camino con fórmula alternativa)
+    const mision = reduce(d + m + reduce(y));
+
+    return { expresion, alma, personalidad, camino, mision };
+  }
+
+  function renderResultado() {
+    const r = state.resultado;
+    if (!r) return "";
+    const nums = [
+      { label: "Camino de Vida",  value: r.camino,      desc: "El propósito principal de esta vida" },
+      { label: "Expresión",       value: r.expresion,    desc: "Talentos naturales y forma de expresarse" },
+      { label: "Impulso del Alma",value: r.alma,         desc: "Motivación más profunda del ser" },
+      { label: "Personalidad",    value: r.personalidad, desc: "Cómo los demás perciben al consultante" },
+      { label: "Misión",          value: r.mision,       desc: "Lección o deuda kármica del ciclo" },
+    ];
+    return `
+      <div class="num-resultado">
+        <div class="num-nombre-display">🔢 ${escapeHtml(state.nombre)}</div>
+        <div class="num-grid">
+          ${nums.map(n => `
+            <div class="num-card">
+              <div class="num-card-num">${n.value}</div>
+              <div class="num-card-label">${n.label}</div>
+              <div class="num-card-desc">${n.desc}</div>
+            </div>`).join("")}
+        </div>
+        <div class="wizard-nav" style="margin-top:14px">
+          <button class="wizard-nav-btn vort-ia-btn" id="num-interp-btn" style="width:100%">
+            🧠 Interpretación terapéutica completa
+          </button>
+        </div>
+      </div>`;
+  }
+
+  async function interpretarNumerologia() {
+    const outEl = content.querySelector("#num-interp-out");
+    if (!outEl || !state.resultado) return;
+    const r = state.resultado;
+    const query = `Consultante: ${state.nombre}. Fecha de nacimiento: ${state.fecha}.\n\nPerfil numerológico:\n- Camino de Vida: ${r.camino}\n- Expresión: ${r.expresion}\n- Impulso del Alma: ${r.alma}\n- Personalidad: ${r.personalidad}\n- Misión: ${r.mision}\n\nDesde la perspectiva terapéutica holística:\n1. ¿Qué propósito y misión de vida expresa este perfil numerológico?\n2. ¿Qué desafíos kármicos o patrones repetitivos son más probables?\n3. ¿Cómo se relacionan estos números con posibles síntomas físicos o emocionales?\n4. ¿Qué tipo de trabajo terapéutico resuena más con este perfil?\n5. ¿Qué fortalezas y recursos innatos tiene este consultante para su sanación?\n6. ¿Qué mensaje o aprendizaje principal trae este ciclo de vida?\n\nSé concreto, profundo y orientado a la sesión terapéutica.`;
+    await rastreoInterpretarIA(outEl, query);
+  }
+
+  render();
+}
+
 // ─── Carta Natal ────────────────────────────────────────────────────────────
 const CN_PLANETA_ES = {
   Sun:'Sol', Moon:'Luna', Mercury:'Mercurio', Venus:'Venus', Mars:'Marte',
@@ -3564,6 +3710,10 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "tool_link") {
+      renderToolLink(p, content);
+    } else if (p.render_tipo === "numerologia_terapeutica") {
+      renderNumerologiaTerapeutica(p, content);
     } else if (p.render_tipo === "carta_natal") {
       renderCartaNatal(p, content);
     } else if (p.render_tipo === "diario_lunar") {
