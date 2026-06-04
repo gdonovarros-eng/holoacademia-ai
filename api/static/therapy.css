@@ -3621,3 +3621,33 @@ textarea {
 @media (max-width: 500px) {
   .num-grid { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ─── Cuadro Médico Holístico ─────────────────────────────────────────────────── */
+
+.ch-content {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: #d1d5db;
+}
+
+.ch-section-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #c4b5fd;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 22px 0 8px;
+  padding: 8px 14px;
+  background: rgba(124,58,237,0.12);
+  border-left: 3px solid #7c3aed;
+  border-radius: 0 6px 6px 0;
+}
+
+.ch-content li {
+  margin: 4px 0 4px 16px;
+  list-style: disc;
+  color: #e5e7eb;
+}
+
+.ch-content p { margin: 6px 0; }
+.ch-content strong { color: #f3f4f6; }

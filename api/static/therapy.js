@@ -553,6 +553,167 @@ async function submitPairsInterpret() {
   }
 }
 
+// ─── Numerología client-side ────────────────────────────────────────────────
+function _numReduce(n) {
+  while (n > 9 && n !== 11 && n !== 22 && n !== 33) {
+    n = String(n).split("").reduce((a, d) => a + (parseInt(d) || 0), 0);
+  }
+  return n;
+}
+
+function _numCamino(fechaISO) {
+  if (!fechaISO) return null;
+  const [y, m, d] = fechaISO.split("-").map(Number);
+  if (!y || !m || !d) return null;
+  return _numReduce(_numReduce(d) + _numReduce(m) + _numReduce(y));
+}
+
+const _LETTER_VAL = {a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:1,k:2,l:3,m:4,n:5,o:6,p:7,q:8,r:9,s:1,t:2,u:3,v:4,w:5,x:6,y:7,z:8};
+const _VOWELS = new Set("aeiou");
+
+function _normalizar(str) {
+  return (str||"").toLowerCase()
+    .replace(/á/g,"a").replace(/é/g,"e").replace(/í/g,"i").replace(/ó/g,"o").replace(/ú/g,"u").replace(/ü/g,"u").replace(/ñ/g,"n")
+    .replace(/[^a-z]/g,"");
+}
+
+function _numExpresion(nombre) {
+  if (!nombre) return null;
+  return _numReduce(_normalizar(nombre).split("").reduce((a,c) => a + (_LETTER_VAL[c]||0), 0));
+}
+
+function _numAlma(nombre) {
+  if (!nombre) return null;
+  return _numReduce(_normalizar(nombre).split("").filter(c => _VOWELS.has(c)).reduce((a,c) => a + (_LETTER_VAL[c]||0), 0));
+}
+
+function construirPerfilNumerologico() {
+  const personas = [];
+  function add(rol, nombre, fecha) {
+    const camino = _numCamino(fecha);
+    const expr   = _numExpresion(nombre);
+    const alma   = _numAlma(nombre);
+    if (nombre || camino) {
+      personas.push({ rol, nombre: nombre || rol, camino, expr, alma, fecha });
+    }
+  }
+
+  add("Consultante",   getText("consultant_full_name"),         getText("consultant_birth_date"));
+  add("Padre",         getText("father_full_name"),             getText("father_birth_date"));
+  add("Madre",         getText("mother_full_name"),             getText("mother_birth_date"));
+  add("Abuelo paterno",getText("paternal_grandfather_full_name"),getText("paternal_grandfather_birth_date"));
+  add("Abuela paterna",getText("paternal_grandmother_full_name"),getText("paternal_grandmother_birth_date"));
+  add("Abuelo materno",getText("maternal_grandfather_full_name"),getText("maternal_grandfather_birth_date"));
+  add("Abuela materna",getText("maternal_grandmother_full_name"),getText("maternal_grandmother_birth_date"));
+  add("Pareja",        getText("current_partner_full_name"),    getText("current_partner_birth_date"));
+
+  readCollection(childrenList).forEach((c, i) => {
+    add(`Hijo/a ${i+1}`, c.full_name, c.birth_date);
+  });
+  readCollection(siblingsList).forEach((s, i) => {
+    add(`Hermano/a ${i+1}`, s.full_name, s.birth_date);
+  });
+
+  return personas;
+}
+
+function formatearPerfilNumerologico(personas) {
+  return personas.map(p => {
+    const parts = [p.rol + (p.nombre !== p.rol ? ` (${p.nombre})` : "")];
+    if (p.fecha) parts.push(`nació ${p.fecha}`);
+    if (p.camino) parts.push(`Camino de Vida: ${p.camino}`);
+    if (p.expr)   parts.push(`Expresión: ${p.expr}`);
+    if (p.alma)   parts.push(`Alma: ${p.alma}`);
+    return "• " + parts.join(" | ");
+  }).join("\n");
+}
+
+async function generarCuadroHolistico(payload) {
+  const cuadroPanel  = document.getElementById("cuadro-holistico-panel");
+  const cuadroOutput = document.getElementById("cuadro-holistico-output");
+  const btnRegen     = document.getElementById("btn-regenerar-cuadro");
+  if (!cuadroPanel || !cuadroOutput) return;
+
+  cuadroPanel.classList.remove("hidden");
+  cuadroOutput.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Generando Cuadro Médico Holístico integral…</span></div>`;
+  if (btnRegen) btnRegen.style.display = "none";
+  cuadroPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const personas   = construirPerfilNumerologico();
+  const numStr     = formatearPerfilNumerologico(personas);
+  const consultante = personas.find(p => p.rol === "Consultante");
+  const sintomas   = (payload.sintomas||[]).join(", ") || payload.motivo_consulta || "No especificados";
+  const pares      = readCollection(foundPairsList).map(p => p.pair_name).filter(Boolean);
+  const paresStr   = pares.length ? pares.join(", ") : "No registrados aún";
+
+  const prompt = `Eres el Motor Terapéutico de HoloacademIA. Actúas como terapeuta holístico integral.
+
+Con los siguientes datos genera un CUADRO MÉDICO HOLÍSTICO COMPLETO:
+
+DATOS DEL CASO:
+• Motivo de consulta: ${payload.motivo_consulta || "No especificado"}
+• Síntomas: ${sintomas}
+• Contexto emocional: ${payload.contexto_emocional || "No especificado"}
+• Notas del genograma: ${payload.family_notes || "No especificadas"}
+• Pares biomagnéticos encontrados: ${paresStr}
+
+PERFIL NUMEROLÓGICO (calculado automáticamente):
+${numStr || "Sin datos de fechas suficientes"}
+
+Genera el cuadro con ESTAS SECCIONES en español, estructuradas claramente:
+
+## 1. PERFIL NUMEROLÓGICO
+Interpreta los números de vida del consultante y la dinámica energética familiar. Detecta patrones kármicos, años personales, relaciones entre números. Conecta con los síntomas.
+
+## 2. BIODESCODIFICACIÓN Y PSICOSOMÁTICA
+Relaciona cada síntoma con su conflicto emocional biológico. Identifica el conflicto de choque (DHS), el tipo de conflicto y su manifestación en el órgano.
+
+## 3. PATRONES TRANSGENERACIONALES
+Analiza patrones que se repiten en el árbol genealógico basándote en los datos familiares. Identifica lealtades invisibles, mandatos y misiones reparadoras.
+
+## 4. PARES BIOMAGNÉTICOS SUGERIDOS
+Con base en los síntomas, sugiere los pares biomagnéticos más relevantes a rastrear (menciona polo positivo y negativo para cada par).
+
+## 5. MEDICINA TRADICIONAL CHINA
+Identifica los meridianos y órganos afectados según los síntomas. Sugiere puntos de acupuntura o digitopuntura específicos.
+
+## 6. FLORES DE BACH RECOMENDADAS
+Sugiere 3-5 esencias florales específicas según el estado emocional y los patrones detectados. Explica brevemente para qué sirve cada una.
+
+## 7. HERBOLARIA
+Sugiere 3-4 plantas medicinales relevantes para los síntomas, con modo de uso.
+
+## 8. PLAN TERAPÉUTICO PROPUESTO
+Un plan integrado semanal o por sesiones que combine las disciplinas anteriores de manera coherente.
+
+Sé concreto, clínico y orientado a la acción del terapeuta. No agregues disclaimers médicos.`;
+
+  try {
+    const res = await postJson("/academic/ask", { query: prompt, history: [] });
+    if (res && res.answer) {
+      // Render with markdown-like formatting
+      const html = res.answer
+        .replace(/^## (.+)$/gm, '<h3 class="ch-section-title">$1</h3>')
+        .replace(/^\*\*(.+?)\*\*$/gm, '<strong>$1</strong>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/^• (.+)$/gm, '<li>$1</li>')
+        .replace(/^- (.+)$/gm, '<li>$1</li>')
+        .replace(/^(\d+)\. (.+)$/gm, '<li><strong>$1.</strong> $2</li>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+      cuadroOutput.innerHTML = `<div class="ch-content"><p>${html}</p></div>`;
+    } else {
+      cuadroOutput.innerHTML = `<p class="status error">No se pudo generar el cuadro. Intenta de nuevo.</p>`;
+    }
+  } catch {
+    cuadroOutput.innerHTML = `<p class="status error">Error al generar el cuadro holístico.</p>`;
+  }
+  if (btnRegen) {
+    btnRegen.style.display = "block";
+    btnRegen.onclick = () => generarCuadroHolistico(payload);
+  }
+}
+
 async function submitTherapeutic() {
   const payload = getTherapeuticPayload();
   analysisPanel.classList.remove("hidden");
@@ -565,6 +726,8 @@ async function submitTherapeutic() {
 
   if (response) {
     renderTherapeuticResponse(response);
+    // Auto-generate the holistic medical chart
+    generarCuadroHolistico(payload);
   }
 }
 
