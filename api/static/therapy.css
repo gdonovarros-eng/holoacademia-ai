@@ -3447,3 +3447,132 @@ textarea {
   0%, 100% { opacity: 0.25; r: 36; }
   50%       { opacity: 0.55; r: 38; }
 }
+
+/* ─── Carta Natal ────────────────────────────────────────────────────────────── */
+
+@keyframes chartSpin {
+  from { opacity: 0; transform: rotate(-12deg) scale(0.86); }
+  to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+
+.cn-chart-wrap {}
+
+.cn-form { display: flex; flex-direction: column; gap: 12px; margin: 16px 0; }
+
+.cn-link-full { text-align: center; margin-top: 14px; }
+.cn-ext-link {
+  font-size: 12px;
+  color: #7c3aed;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(124,58,237,0.3);
+  transition: color 0.15s;
+}
+.cn-ext-link:hover { color: #c4b5fd; }
+
+.cn-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(124,58,237,0.2);
+  flex-wrap: wrap;
+}
+.cn-chart-nombre { font-size: 15px; font-weight: 700; color: #f3f4f6; }
+.cn-chart-fecha  { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+/* ── Planet chips bar ── */
+.cn-planet-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  background: rgba(124,58,237,0.06);
+  border-radius: 10px;
+  border: 1px solid rgba(124,58,237,0.15);
+}
+
+.cn-planet-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.03);
+  transition: all 0.15s;
+  min-width: 52px;
+}
+.cn-planet-chip:hover {
+  border-color: rgba(167,139,250,0.5);
+  background: rgba(167,139,250,0.1);
+}
+.cn-planet-glyph { font-size: 18px; }
+.cn-planet-signo { font-size: 10px; color: #c4b5fd; font-weight: 600; }
+.cn-planet-name  { font-size: 9.5px; color: #6b7280; }
+
+/* ── SVG Container ── */
+.cn-svg-wrap {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto 16px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(124,58,237,0.2);
+}
+.cn-svg-wrap svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transform-origin: center center;
+}
+
+/* ── Planet panel ── */
+.cn-planet-panel {
+  background: rgba(15,7,32,0.95);
+  border: 1px solid rgba(167,139,250,0.35);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  animation: fadeInDown 0.25s ease;
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cn-pp-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.cn-pp-glyph { font-size: 28px; flex-shrink: 0; }
+.cn-pp-name  { font-size: 15px; font-weight: 800; color: #f3f4f6; }
+.cn-pp-detail { font-size: 12.5px; color: #9ca3af; margin-top: 2px; }
+.cn-pp-retro {
+  background: rgba(248,113,180,0.2);
+  color: #f472b6;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.cn-pp-interp {
+  font-size: 13px;
+  color: #d1d5db;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  min-height: 20px;
+}
+
+@media (max-width: 480px) {
+  .cn-planet-bar { gap: 4px; }
+  .cn-planet-chip { min-width: 44px; padding: 5px 7px; }
+  .cn-planet-glyph { font-size: 16px; }
+}

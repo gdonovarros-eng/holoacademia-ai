@@ -2058,6 +2058,220 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Carta Natal ────────────────────────────────────────────────────────────
+const CN_PLANETA_ES = {
+  Sun:'Sol', Moon:'Luna', Mercury:'Mercurio', Venus:'Venus', Mars:'Marte',
+  Jupiter:'Júpiter', Saturn:'Saturno', Uranus:'Urano', Neptune:'Neptuno',
+  Pluto:'Plutón', Chiron:'Quirón', Ascendant:'Ascendente', Medium_Coeli:'Medio Cielo',
+  True_South_Lunar_Node:'Nodo Sur', True_Node:'Nodo Norte', Mean_Lilith:'Lilith'
+};
+const CN_GLIFO = {
+  Sun:'☉', Moon:'☽', Mercury:'☿', Venus:'♀', Mars:'♂', Jupiter:'♃',
+  Saturn:'♄', Uranus:'♅', Neptune:'♆', Pluto:'♇', Chiron:'⚷',
+  Ascendant:'AC', Medium_Coeli:'MC', True_Node:'☊', True_South_Lunar_Node:'☋', Mean_Lilith:'⚸'
+};
+const CN_SIGNO_ES = {
+  Ari:'Aries',Tau:'Tauro',Gem:'Géminis',Can:'Cáncer',Leo:'Leo',Vir:'Virgo',
+  Lib:'Libra',Sco:'Escorpio',Sag:'Sagitario',Cap:'Capricornio',Aqu:'Acuario',Pis:'Piscis'
+};
+const CN_CASA_ES = {
+  First:'I', Second:'II', Third:'III', Fourth:'IV', Fifth:'V', Sixth:'VI',
+  Seventh:'VII', Eighth:'VIII', Ninth:'IX', Tenth:'X', Eleventh:'XI', Twelfth:'XII'
+};
+
+function renderCartaNatal(p, content) {
+  const state = { phase:"form", svgHtml:null, posData:null, params:null, activePlanet:null };
+
+  function render() {
+    if (state.phase === "form") renderCnForm();
+    else renderCnChart();
+  }
+
+  function renderCnForm() {
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">♈</span>
+          <span>${escapeHtml(p.instruccion_ms || "Ingresa los datos de nacimiento del consultante.")}</span>
+        </div>
+        <div class="cn-form">
+          <div class="casos-form-group">
+            <label class="casos-label">Nombre del consultante</label>
+            <input class="casos-input" id="cn-nombre" placeholder="Nombre completo">
+          </div>
+          <div class="casos-form-row">
+            <div class="casos-form-group">
+              <label class="casos-label">Fecha de nacimiento</label>
+              <input class="casos-input" id="cn-fecha" type="date">
+            </div>
+            <div class="casos-form-group">
+              <label class="casos-label">Hora</label>
+              <input class="casos-input" id="cn-hora" type="time" value="12:00">
+            </div>
+          </div>
+          <div class="casos-form-group">
+            <label class="casos-label">Lugar de nacimiento</label>
+            <input class="casos-input" id="cn-lugar" placeholder="Ciudad, País">
+          </div>
+          <div id="cn-error" class="casos-form-error" style="display:none"></div>
+          <div class="wizard-nav" style="margin-top:14px">
+            <button class="wizard-nav-btn vort-ia-btn" id="cn-generar" style="width:100%">
+              🌌 Generar Carta Natal
+            </button>
+          </div>
+        </div>
+        <div class="cn-link-full">
+          <a href="/astro" target="_blank" class="cn-ext-link">Análisis astrológico completo →</a>
+        </div>
+      </div>`;
+
+    content.querySelector("#cn-generar")?.addEventListener("click", async () => {
+      const nombre = content.querySelector("#cn-nombre")?.value.trim() || "Consultante";
+      const fecha  = content.querySelector("#cn-fecha")?.value;
+      const hora   = content.querySelector("#cn-hora")?.value || "12:00";
+      const lugar  = content.querySelector("#cn-lugar")?.value.trim();
+      const errEl  = content.querySelector("#cn-error");
+      if (!fecha || !lugar) { errEl.textContent = "Ingresa fecha y lugar."; errEl.style.display = "block"; return; }
+      errEl.style.display = "none";
+      state.params = { nombre, fecha, hora, lugar };
+      state.phase = "chart";
+      content.innerHTML = `<div class="rastreo-tabla-wrap"><div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Calculando posiciones planetarias para ${escapeHtml(nombre)}...</span></div></div>`;
+      await loadCnChart();
+    });
+  }
+
+  async function loadCnChart() {
+    const { nombre, fecha, hora, lugar } = state.params;
+    const params = new URLSearchParams({ nombre, fecha, hora, lugar, tipo: "natal" });
+    try {
+      const [svgRes, posRes] = await Promise.all([
+        fetch(`/astro/carta?${params}`),
+        fetch(`/astro/datos-carta?${params}`),
+      ]);
+      state.svgHtml = svgRes.ok ? await svgRes.text() : null;
+      state.posData = posRes.ok ? await posRes.json() : null;
+    } catch { state.svgHtml = null; }
+    renderCnChart();
+  }
+
+  function renderCnChart() {
+    const { nombre, fecha } = state.params || {};
+    const planetas = state.posData?.planetas || {};
+    const mainKeys = ["sun","moon","mercury","venus","mars","jupiter","saturn","ascendant"];
+
+    const planetBarHtml = mainKeys.map((key) => {
+      const info = planetas[key]; if (!info) return "";
+      const slug = key === "ascendant" ? "Ascendant" : key.charAt(0).toUpperCase() + key.slice(1);
+      const signo = CN_SIGNO_ES[info.sign_abbr] || info.sign || "";
+      return `<div class="cn-planet-chip" data-slug="${slug}">
+        <span class="cn-planet-glyph">${CN_GLIFO[slug] || "★"}</span>
+        <span class="cn-planet-signo">${signo}${info.retrograde ? " ℞" : ""}</span>
+        <span class="cn-planet-name">${CN_PLANETA_ES[slug] || slug}</span>
+      </div>`;
+    }).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap cn-chart-wrap">
+        <div class="cn-chart-header">
+          <div>
+            <div class="cn-chart-nombre">🌌 ${escapeHtml(nombre || "Carta Natal")}</div>
+            <div class="cn-chart-fecha">${escapeHtml(fecha || "")}</div>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center">
+            <a href="/astro" target="_blank" class="cn-ext-link">Análisis completo →</a>
+            <button class="wizard-nav-btn" id="cn-nueva">← Nueva</button>
+          </div>
+        </div>
+        ${planetBarHtml ? `<div class="cn-planet-bar">${planetBarHtml}</div>` : ""}
+        ${state.svgHtml
+          ? `<div class="cn-svg-wrap" id="cn-svg-container">${state.svgHtml}</div>`
+          : `<div class="casos-empty">No se pudo generar la carta. Verifica el lugar.</div>`}
+        <div id="cn-planet-panel" class="cn-planet-panel" style="display:none">
+          <div class="cn-pp-header">
+            <span class="cn-pp-glyph" id="cn-pp-glyph"></span>
+            <div><div class="cn-pp-name" id="cn-pp-name"></div><div class="cn-pp-detail" id="cn-pp-detail"></div></div>
+            <span class="cn-pp-retro" id="cn-pp-retro" style="display:none">℞ Retrógrado</span>
+          </div>
+          <div id="cn-pp-interp" class="cn-pp-interp"></div>
+          <button class="wizard-nav-btn vort-ia-btn" id="cn-pp-btn">✨ Interpretación terapéutica</button>
+        </div>
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn vort-ia-btn" id="cn-interp-full" style="width:100%">🧠 Análisis terapéutico completo</button>
+        </div>
+        <div id="cn-general-out"></div>
+      </div>`;
+
+    if (state.svgHtml) initCnSvgInteractivity();
+
+    content.querySelectorAll(".cn-planet-chip").forEach((chip) => {
+      chip.addEventListener("click", () => showCnPlanetPanel(chip.dataset.slug));
+    });
+    content.querySelector("#cn-nueva")?.addEventListener("click", () => { state.phase = "form"; render(); });
+    content.querySelector("#cn-interp-full")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#cn-general-out");
+      if (!outEl) return;
+      const planStr = mainKeys.map((k) => {
+        const info = planetas[k]; if (!info) return null;
+        const slug = k === "ascendant" ? "Ascendant" : k.charAt(0).toUpperCase() + k.slice(1);
+        return `${CN_PLANETA_ES[slug]||k} en ${CN_SIGNO_ES[info.sign_abbr]||info.sign||"?"} (Casa ${info.house||"?"})`;
+      }).filter(Boolean).join(", ");
+      const query = `Consultante: ${nombre}. Nacido/a el ${fecha}.\nPosiciones clave: ${planStr || "(sin datos)"}\n\nDesde la perspectiva terapéutica holística:\n1. ¿Qué patrón bioenergético y emocional define a este consultante?\n2. ¿Qué áreas de vida son más vulnerables o desafiantes?\n3. ¿Qué recursos y fortalezas innatos tiene para su sanación?\n4. ¿Qué tipo de trabajo terapéutico resuena más con este perfil?\n5. ¿Qué aspecto de su proceso requiere más paciencia y contención?\n\nSé concreto, profundo y orientado a la sesión.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+  }
+
+  function showCnPlanetPanel(slug) {
+    state.activePlanet = slug;
+    const planetas = state.posData?.planetas || {};
+    const key = slug.toLowerCase();
+    const info = planetas[key] || planetas[slug] || {};
+    const signo = CN_SIGNO_ES[info.sign_abbr] || info.sign || "?";
+    const houseStr = (info.house||"").replace(/_House$/,"");
+    const casa = CN_CASA_ES[houseStr] || houseStr || "?";
+    const grado = info.position ? parseFloat(info.position).toFixed(1) : "?";
+    const retro = info.retrograde;
+    const panel = content.querySelector("#cn-planet-panel");
+    if (!panel) return;
+    content.querySelector("#cn-pp-glyph").textContent = CN_GLIFO[slug] || "★";
+    content.querySelector("#cn-pp-name").textContent = CN_PLANETA_ES[slug] || slug;
+    content.querySelector("#cn-pp-detail").textContent = `${signo} ${grado}° · Casa ${casa}`;
+    const retroEl = content.querySelector("#cn-pp-retro");
+    if (retroEl) retroEl.style.display = retro ? "inline" : "none";
+    content.querySelector("#cn-pp-interp").innerHTML = "";
+    panel.style.display = "block";
+    panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    content.querySelector("#cn-pp-btn").onclick = async () => {
+      const outEl = content.querySelector("#cn-pp-interp");
+      if (!outEl) return;
+      const { nombre: nomPac, fecha } = state.params;
+      const nombrePl = CN_PLANETA_ES[slug] || slug;
+      const query = `Consultante: ${nomPac}. Nacido/a el ${fecha}.\n${nombrePl} en ${signo} (${grado}°), Casa ${casa}${retro ? ", Retrógrado" : ""}.\n\nDesde la perspectiva terapéutica holística:\n1. ¿Qué programa de vida expresa ${nombrePl} en ${signo} en la Casa ${casa}?\n2. ¿Cómo se manifiesta en el cuerpo físico y en los síntomas?\n3. ¿Qué patrón emocional o familiar está ligado a esta posición?\n4. ¿Cómo trabaja el terapeuta con este patrón?\n5. ¿Qué recurso o fortaleza ofrece esta posición al proceso de sanación?\n\nSé concreto y orientado a la sesión.`;
+      await rastreoInterpretarIA(outEl, query);
+    };
+  }
+
+  function initCnSvgInteractivity() {
+    const container = content.querySelector("#cn-svg-container");
+    if (!container) return;
+    const svgEl = container.querySelector("svg");
+    if (!svgEl) return;
+    svgEl.style.animation = "chartSpin 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards";
+    svgEl.style.transformOrigin = "center center";
+    const points = svgEl.querySelectorAll("g[kr\\:node='ChartPoint']");
+    points.forEach((g) => {
+      const slug = g.getAttribute("kr:slug") || "";
+      if (!CN_PLANETA_ES[slug]) return;
+      g.style.cursor = "pointer";
+      g.style.transition = "filter 0.2s";
+      g.addEventListener("mouseenter", () => { g.style.filter = "drop-shadow(0 0 8px rgba(167,139,250,0.9))"; });
+      g.addEventListener("mouseleave", () => { g.style.filter = ""; });
+      g.addEventListener("click", () => showCnPlanetPanel(slug));
+    });
+  }
+
+  render();
+}
+
 // ─── Diario Lunar ───────────────────────────────────────────────────────────
 
 function buildMoonSvg(phaseId, illumination, color) {
@@ -3350,6 +3564,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "carta_natal") {
+      renderCartaNatal(p, content);
     } else if (p.render_tipo === "diario_lunar") {
       renderDiarioLunar(p, content);
     } else if (p.render_tipo === "catalogo_biomagnetico") {

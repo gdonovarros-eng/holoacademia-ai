@@ -3144,6 +3144,29 @@
       "instruccion_ms": "La fase lunar orienta el tipo de trabajo: Luna Nueva → intención y siembra; Creciente → activación y crecimiento; Llena → manifestación y revelación; Menguante → liberación y soltar."
     },
     {
+      "id": "carta_natal",
+      "nombre": "Carta Natal",
+      "aliases": [
+        "carta natal",
+        "mapa astral",
+        "tema natal",
+        "carta",
+        "natal",
+        "ascendente",
+        "signo lunar"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "carta_natal",
+      "objetivo": "Generar la carta natal del consultante con posiciones planetarias reales. Permite al terapeuta conocer el perfil astrológico completo e interpretar cada planeta con el Motor Terapéutico.",
+      "cuando_usarlo": [
+        "Al inicio del proceso terapéutico para obtener el perfil astrológico completo",
+        "Para contextualizar síntomas físicos o emocionales con el mapa natal",
+        "En trabajo transgeneracional para identificar patrones planetarios heredados",
+        "Cuando el consultante desconoce su ascendente o posiciones lunares"
+      ],
+      "instruccion_ms": "La carta natal revela los patrones bioenergéticos y emocionales estructurales del consultante. Cada planeta en su signo y casa describe un programa de vida activo."
+    },
+    {
       "id": "rastreo_alveolar",
       "nombre": "Protocolo Especializado de Alvéolos Pulmonares",
       "aliases": [
