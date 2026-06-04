@@ -3238,6 +3238,29 @@
       "instruccion_ms": "La carta natal revela los patrones bioenergéticos y emocionales estructurales del consultante. Cada planeta en su signo y casa describe un programa de vida activo."
     },
     {
+      "id": "sueno_terapeutico",
+      "nombre": "Guía de Sueños",
+      "aliases": [
+        "sueño",
+        "sueños",
+        "dream",
+        "guia de sueños",
+        "interpretacion sueños",
+        "onirologia",
+        "sueño recurrente"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "sueno_terapeutico",
+      "objetivo": "Interpretar el contenido simbólico de los sueños del consultante integrando psicosomática, transgeneracional, MTC, numerología y biodescodificación.",
+      "cuando_usarlo": [
+        "Cuando el consultante reporta sueños recurrentes o perturbadores",
+        "Para explorar el inconsciente sin hipnosis",
+        "Como complemento al análisis transgeneracional",
+        "Cuando hay síntomas físicos vinculados a patrones oníricos"
+      ],
+      "instruccion_ms": "MS: '¿Hay un mensaje del inconsciente en los sueños de este consultante que necesite procesarse en esta sesión?' → SÍ/NO"
+    },
+    {
       "id": "numerologia_terapeutica",
       "nombre": "Numerología Terapéutica",
       "aliases": [

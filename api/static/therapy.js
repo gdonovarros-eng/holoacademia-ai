@@ -2367,6 +2367,166 @@ function renderNumerologiaTerapeutica(p, content) {
   render();
 }
 
+// ─── Guía de Sueños ─────────────────────────────────────────────────────────
+const SUENO_DIMENSIONES = [
+  { id: "todas",         label: "Análisis completo",     icono: "🌌", desc: "Todas las dimensiones integradas" },
+  { id: "psicosomatica", label: "Psicosomática",         icono: "🧬", desc: "Síntomas y órganos del sueño" },
+  { id: "transgeneracional", label: "Transgeneracional", icono: "🌳", desc: "Patrones familiares y ancestrales" },
+  { id: "mtc",           label: "MTC & Energía",         icono: "☯️", desc: "Meridianos, elementos y Qi" },
+  { id: "numerologia",   label: "Numerología",           icono: "🔢", desc: "Números y ciclos en el sueño" },
+  { id: "biodecodificacion", label: "Biodescodificación", icono: "💜", desc: "Conflicto biológico expresado" },
+];
+
+function renderSuenoTerapeutico(p, content) {
+  const state = {
+    sueno: "",
+    contexto: "",
+    dimension: "todas",
+    fase: "input",  // "input" | "resultado"
+  };
+
+  function renderInput() {
+    const dimHtml = SUENO_DIMENSIONES.map(d => `
+      <div class="sueno-dim-chip${state.dimension === d.id ? " sueno-dim-active" : ""}" data-dim="${d.id}" title="${d.desc}">
+        <span>${d.icono}</span><span>${d.label}</span>
+      </div>`).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">💤</span>
+          <span>${escapeHtml(p.instruccion_ms || "Describe el sueño del consultante con el mayor detalle posible.")}</span>
+        </div>
+
+        <div class="cn-form">
+          <div class="casos-form-group">
+            <label class="casos-label">Describe el sueño</label>
+            <textarea class="vort-ia-textarea" id="sueno-texto" rows="5"
+              placeholder="Describe el sueño con todos los detalles: personajes, lugares, emociones, colores, objetos, acciones, sensaciones al despertar...">${escapeHtml(state.sueno)}</textarea>
+          </div>
+          <div class="casos-form-group">
+            <label class="casos-label">Contexto del consultante (opcional)</label>
+            <textarea class="vort-ia-textarea" id="sueno-contexto" rows="2"
+              placeholder="Ej: está pasando por un duelo, tiene síntomas de ansiedad, sueño recurrente desde hace 3 meses...">${escapeHtml(state.contexto)}</textarea>
+          </div>
+        </div>
+
+        <div class="sueno-dims-wrap">
+          <label class="sint-label">Enfoque del análisis:</label>
+          <div class="sueno-dims-grid">${dimHtml}</div>
+        </div>
+
+        <div id="sueno-error" class="casos-form-error" style="display:none">Describe el sueño antes de continuar.</div>
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn vort-ia-btn" id="sueno-interpretar" style="width:100%">
+            🌌 Interpretar sueño
+          </button>
+        </div>
+      </div>`;
+
+    content.querySelectorAll(".sueno-dim-chip").forEach(el => {
+      el.addEventListener("click", () => { state.dimension = el.dataset.dim; renderInput(); });
+    });
+    content.querySelector("#sueno-texto")?.addEventListener("input", e => { state.sueno = e.target.value; });
+    content.querySelector("#sueno-contexto")?.addEventListener("input", e => { state.contexto = e.target.value; });
+    content.querySelector("#sueno-interpretar")?.addEventListener("click", async () => {
+      const txt = content.querySelector("#sueno-texto")?.value.trim();
+      const ctx = content.querySelector("#sueno-contexto")?.value.trim();
+      if (!txt) { content.querySelector("#sueno-error").style.display = "block"; return; }
+      state.sueno = txt; state.contexto = ctx || "";
+      state.fase = "resultado";
+      await renderResultado();
+    });
+  }
+
+  async function renderResultado() {
+    const dim = SUENO_DIMENSIONES.find(d => d.id === state.dimension) || SUENO_DIMENSIONES[0];
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="ra-loading">
+          <div class="rastreo-interpret-spinner"></div>
+          <span>El Motor está interpretando el sueño desde ${dim.icono} ${dim.label}…</span>
+        </div>
+      </div>`;
+
+    const seccionesPorDim = {
+      todas: `
+## 🧬 PSICOSOMÁTICA Y SIMBOLISMO CORPORAL
+¿Qué órganos, partes del cuerpo o síntomas aparecen en el sueño? ¿Qué conflicto emocional expresan según la psicosomática? ¿Qué función biológica están comunicando?
+
+## 🌳 PATRONES TRANSGENERACIONALES
+¿Qué figuras familiares aparecen (directa o simbólicamente)? ¿Qué lealtades invisibles, mandatos o misiones reparadoras podría estar expresando el sueño? ¿Hay fechas, lugares o situaciones que remitan al árbol genealógico?
+
+## ☯️ MEDICINA TRADICIONAL CHINA
+¿Qué elemento (Madera, Fuego, Tierra, Metal, Agua) domina el sueño? ¿Qué meridianos u órganos energéticos están implicados? ¿El sueño ocurre en algún horario especial que corresponda a un meridiano?
+
+## 🔢 NUMEROLOGÍA Y CICLOS
+¿Aparecen números, cantidades, fechas o repeticiones? ¿Cómo se relacionan con el número de vida del consultante o con el año personal?
+
+## 💜 BIODESCODIFICACIÓN
+¿Qué conflicto biológico de choque (DHS) podría estar procesando el inconsciente? ¿Qué emoción primaria domina el sueño? ¿Es un sueño de fase de reparación o de conflicto activo?
+
+## 🌌 SÍNTESIS Y ORIENTACIÓN TERAPÉUTICA
+Integra todos los análisis anteriores en un mensaje coherente. ¿Qué está procesando el inconsciente? ¿Qué acción terapéutica sugiere el sueño para la próxima sesión?`,
+      psicosomatica: `## 🧬 PSICOSOMÁTICA Y SIMBOLISMO CORPORAL\nAnaliza en profundidad: órganos implicados, síntomas simbólicos, conflicto biológico expresado, qué función orgánica está comunicando el sueño, qué parte del cuerpo está hablando y por qué.`,
+      transgeneracional: `## 🌳 PATRONES TRANSGENERACIONALES\nAnaliza en profundidad: figuras del árbol genealógico, mandatos y lealtades familiares, misiones reparadoras, fechas y lugares simbólicos, qué generación está procesando este sueño, qué secreto familiar podría estar emergiendo.`,
+      mtc: `## ☯️ MEDICINA TRADICIONAL CHINA\nAnaliza en profundidad: elemento dominante del sueño, meridianos y órganos energéticos implicados, correspondencias con las 5 emociones de la MTC (Ira/Madera, Alegría/Fuego, Preocupación/Tierra, Tristeza/Metal, Miedo/Agua), posibles puntos de acupuntura a trabajar.`,
+      numerologia: `## 🔢 NUMEROLOGÍA Y CICLOS ONÍRICOS\nAnaliza en profundidad: todos los números que aparecen, fechas y su reducción numerológica, patrones de repetición, conexión con el ciclo de vida del consultante, qué energía numerológica está procesando.`,
+      biodecodificacion: `## 💜 BIODESCODIFICACIÓN DEL SUEÑO\nAnaliza en profundidad: el conflicto biológico de choque detrás del sueño, si es sueño de reparación (fase de solución) o de conflicto activo, la emoción primaria dominante, el órgano o tejido implicado según el tipo de conflicto, el programa biológico de supervivencia que se está procesando.`,
+    };
+
+    const seccion = seccionesPorDim[state.dimension] || seccionesPorDim.todas;
+    const ctxStr = state.contexto ? `\n\nContexto del consultante: ${state.contexto}` : "";
+
+    const prompt = `Eres el Motor de Sueños de HoloacademIA — un terapeuta holístico experto en interpretación onírica integrativa.
+
+SUEÑO DEL CONSULTANTE:
+"${state.sueno}"${ctxStr}
+
+Interpreta este sueño con profundidad clínica y orientación terapéutica. Sé concreto, simbólico y práctico. No añadas disclaimers. Responde directamente con las siguientes secciones:
+
+${seccion}`;
+
+    try {
+      const res = await postJson("/academic/ask", { query: prompt, history: [] });
+      const answer = res?.answer || "";
+      const html = answer
+        .replace(/^## (.+)$/gm, '<h3 class="ch-section-title">$1</h3>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/^[•\-] (.+)$/gm, '<li>$1</li>')
+        .replace(/\n\n/g, '</p><p>')
+        .replace(/\n/g, '<br>');
+
+      content.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="sueno-result-header">
+            <div class="sueno-dim-badge">${dim.icono} ${dim.label}</div>
+            <div class="sueno-sueño-preview">"${escapeHtml(state.sueno.slice(0, 80))}${state.sueno.length > 80 ? "…" : ""}"</div>
+          </div>
+          <div class="ch-content"><p>${html}</p></div>
+          <div class="wizard-nav" style="margin-top:20px">
+            <button class="wizard-nav-btn" id="sueno-nuevo">← Nuevo sueño</button>
+            <button class="wizard-nav-btn vort-ia-btn" id="sueno-otra-dim">🔄 Otra dimensión</button>
+          </div>
+        </div>`;
+
+      content.querySelector("#sueno-nuevo")?.addEventListener("click", () => {
+        state.sueno = ""; state.contexto = ""; state.fase = "input"; renderInput();
+      });
+      content.querySelector("#sueno-otra-dim")?.addEventListener("click", () => {
+        state.fase = "input"; renderInput();
+      });
+    } catch {
+      content.innerHTML = `<div class="rastreo-tabla-wrap"><p class="status error">Error al interpretar el sueño. Intenta de nuevo.</p><div class="wizard-nav"><button class="wizard-nav-btn" id="sueno-retry">← Volver</button></div></div>`;
+      content.querySelector("#sueno-retry")?.addEventListener("click", () => { state.fase = "input"; renderInput(); });
+    }
+  }
+
+  renderInput();
+}
+
 // ─── Carta Natal ────────────────────────────────────────────────────────────
 const CN_PLANETA_ES = {
   Sun:'Sol', Moon:'Luna', Mercury:'Mercurio', Venus:'Venus', Mars:'Marte',
@@ -3877,6 +4037,8 @@ function openProtocolDetail(protocolId) {
       renderToolLink(p, content);
     } else if (p.render_tipo === "numerologia_terapeutica") {
       renderNumerologiaTerapeutica(p, content);
+    } else if (p.render_tipo === "sueno_terapeutico") {
+      renderSuenoTerapeutico(p, content);
     } else if (p.render_tipo === "carta_natal") {
       renderCartaNatal(p, content);
     } else if (p.render_tipo === "diario_lunar") {
