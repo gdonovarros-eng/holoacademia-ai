@@ -2058,6 +2058,220 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Rastreo por Síntoma ────────────────────────────────────────────────────
+const SINTOMA_CATEGORIAS = [
+  { id: "virus",      label: "Virus",           icono: "🦠", color: "#dc2626" },
+  { id: "bacterias",  label: "Bacterias",        icono: "🧫", color: "#d97706" },
+  { id: "hongos",     label: "Hongos",           icono: "🍄", color: "#7c3aed" },
+  { id: "parasitos",  label: "Parásitos",        icono: "🪱", color: "#059669" },
+  { id: "emocionales",label: "Emocionales",      icono: "💜", color: "#db2777" },
+  { id: "reservorios",label: "Reservorios",      icono: "🔬", color: "#0284c7" },
+  { id: "especiales", label: "Especiales",       icono: "⭐", color: "#ca8a04" },
+  { id: "disfunciones",label: "Disfunciones",    icono: "⚡", color: "#9333ea" },
+];
+
+function renderRastreoSintoma(p, content) {
+  const state = {
+    phase: "busqueda",   // "busqueda" | "resultados"
+    sintoma: "",
+    categoria: null,     // null = texto libre, o id de categoría
+    pares: [],           // [{ nombre, descripcion, checked }]
+    loading: false,
+  };
+
+  function render() {
+    if (state.phase === "busqueda") renderBusqueda();
+    else renderResultados();
+  }
+
+  // ── Fase 1: Búsqueda ──────────────────────────────────────────────────────
+  function renderBusqueda() {
+    const catHtml = SINTOMA_CATEGORIAS.map((cat) => `
+      <div class="sint-cat-chip${state.categoria === cat.id ? " sint-cat-active" : ""}"
+        data-cat="${cat.id}" style="--cat-color:${cat.color}">
+        <span>${cat.icono}</span>
+        <span>${cat.label}</span>
+      </div>`).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">MS</span>
+          <span>${escapeHtml(p.instruccion_ms || "¿Hay algún par biomagnético activo relacionado con el síntoma principal?")}</span>
+        </div>
+
+        <div class="sint-search-block">
+          <label class="sint-label">Describe el síntoma, enfermedad o cuadro clínico:</label>
+          <div class="sint-input-row">
+            <input class="casos-input sint-input" id="sint-texto"
+              placeholder="Ej: migraña occipital crónica, fatiga persistente, dolor lumbar con ardor..."
+              value="${escapeHtml(state.sintoma)}">
+            <button class="wizard-nav-btn vort-ia-btn sint-buscar-btn" id="sint-buscar">
+              🔍 Analizar
+            </button>
+          </div>
+        </div>
+
+        <div class="sint-cats-wrap">
+          <label class="sint-label">Enfocar por tipo de agente (opcional):</label>
+          <div class="sint-cats-grid">${catHtml}</div>
+          ${state.categoria ? `<button class="sint-clear-cat" id="sint-clear-cat">✕ Quitar filtro de ${SINTOMA_CATEGORIAS.find(c=>c.id===state.categoria)?.label}</button>` : ""}
+        </div>
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn vort-ia-btn" id="sint-analizar-full" style="width:100%">
+            🧠 Analizar con Motor Biomagnético
+          </button>
+        </div>
+      </div>`;
+
+    const txt = content.querySelector("#sint-texto");
+    txt?.addEventListener("input", (e) => { state.sintoma = e.target.value; });
+    txt?.addEventListener("keydown", (e) => { if (e.key === "Enter") lanzarAnalisis(); });
+    content.querySelector("#sint-buscar")?.addEventListener("click", lanzarAnalisis);
+    content.querySelector("#sint-analizar-full")?.addEventListener("click", lanzarAnalisis);
+    content.querySelector("#sint-clear-cat")?.addEventListener("click", () => { state.categoria = null; render(); });
+    content.querySelectorAll(".sint-cat-chip").forEach((el) => {
+      el.addEventListener("click", () => {
+        state.categoria = state.categoria === el.dataset.cat ? null : el.dataset.cat;
+        render();
+      });
+    });
+  }
+
+  // ── Fetch IA ──────────────────────────────────────────────────────────────
+  async function lanzarAnalisis() {
+    const txt = content.querySelector("#sint-texto");
+    if (txt) state.sintoma = txt.value.trim();
+    if (!state.sintoma && !state.categoria) {
+      content.querySelector("#sint-texto")?.focus();
+      return;
+    }
+
+    const cat = SINTOMA_CATEGORIAS.find((c) => c.id === state.categoria);
+    const catCtx = cat ? `\nEnfoque: ${cat.label} — busca específicamente pares relacionados con ${cat.label.toLowerCase()}.` : "";
+    const query = `Eres el Motor Biomagnético de HoloacademIA, experto en terapia de pares biomagnéticos.\n\nEl terapeuta necesita identificar qué pares rastrear para el siguiente cuadro:\n"${state.sintoma || "Rastreo general por categoría: " + (cat?.label || "")}"${catCtx}\n\nResponde con una lista estructurada de:\n1. LOS PARES BIOMAGNÉTICOS más relevantes para rastrear (mínimo 8, máximo 15)\n   - Formato exacto: "PAR: [órgano/punto 1] — [órgano/punto 2]"\n   - Incluye el tipo de agente si aplica (virus, bacteria, hongo, parásito, emocional)\n2. ORDEN DE RASTREO sugerido\n3. NOTA CLÍNICA: qué observar durante el rastreo\n\nSé específico con los nombres anatómicos de los pares. No incluyas disclaimers ni menciones fuentes externas.`;
+
+    state.phase = "resultados";
+    state.pares = [];
+    state.loading = true;
+    renderResultados();
+
+    try {
+      const res = await postJson("/academic/ask", { query, history: [] });
+      const answer = res?.answer || "";
+      // Parse PAR: lines from response
+      const parLines = answer.split("\n").filter((l) => l.match(/PAR:/i));
+      if (parLines.length > 0) {
+        state.pares = parLines.map((l) => {
+          const nombre = l.replace(/^.*PAR:\s*/i, "").replace(/\*+/g, "").trim();
+          return { nombre, checked: false };
+        });
+      }
+      state.rawAnswer = answer;
+    } catch {
+      state.rawAnswer = "No se pudo obtener respuesta del Motor. Intenta de nuevo.";
+    }
+    state.loading = false;
+    renderResultados();
+  }
+
+  // ── Fase 2: Resultados ───────────────────────────────────────────────────
+  function renderResultados() {
+    const cat = SINTOMA_CATEGORIAS.find((c) => c.id === state.categoria);
+
+    if (state.loading) {
+      content.innerHTML = `
+        <div class="rastreo-tabla-wrap">
+          <div class="ra-loading">
+            <div class="rastreo-interpret-spinner"></div>
+            <span>El Motor Biomagnético está analizando el cuadro clínico...</span>
+          </div>
+        </div>`;
+      return;
+    }
+
+    const paresChecked = state.pares.filter((p) => p.checked).length;
+    const paresHtml = state.pares.length > 0
+      ? state.pares.map((par, idx) => `
+          <div class="sint-par-row${par.checked ? " sint-par-checked" : ""}" data-idx="${idx}">
+            <div class="vort-punto-check${par.checked ? " vort-punto-check-done" : ""}" data-pcheck="${idx}">
+              ${par.checked ? "✓" : ""}
+            </div>
+            <div class="sint-par-nombre">${escapeHtml(par.nombre)}</div>
+          </div>`).join("")
+      : "";
+
+    const rawHtml = state.rawAnswer
+      ? `<div class="sint-raw-answer">
+          <details>
+            <summary class="sint-raw-toggle">📋 Ver análisis completo del Motor</summary>
+            <div class="sint-raw-body">${escapeHtml(state.rawAnswer).replace(/\n/g, "<br>")}</div>
+          </details>
+        </div>` : "";
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="sint-result-header">
+          <div class="sint-result-titulo">
+            ${cat ? `<span class="sint-cat-badge" style="background:${cat.color}20;border-color:${cat.color}50;color:${cat.color}">${cat.icono} ${cat.label}</span>` : ""}
+            <span class="sint-result-sintoma">${escapeHtml(state.sintoma || "Rastreo general")}</span>
+          </div>
+          ${state.pares.length > 0 ? `<div class="sint-progreso">${paresChecked}/${state.pares.length} pares verificados</div>` : ""}
+        </div>
+
+        ${state.pares.length > 0 ? `
+          <div class="sint-instruccion">
+            <span class="rastreo-ms-badge">TM</span>
+            <span>Verifica cada par con test muscular. Marca los que respondan SÍ.</span>
+          </div>
+          <div class="sint-pares-list">${paresHtml}</div>
+          ${paresChecked > 0 ? `
+            <div id="sint-guardar-block" style="margin-top:12px">
+              <button class="wizard-nav-btn vort-ia-btn" id="sint-interpretar-sel">
+                ✨ Interpretar los ${paresChecked} pares seleccionados con el Motor Terapéutico
+              </button>
+            </div>
+            <div id="sint-interp-out"></div>` : ""}
+        ` : ""}
+
+        ${rawHtml}
+        <div id="sint-main-out"></div>
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn" id="sint-back">← Nueva búsqueda</button>
+          <button class="wizard-nav-btn vort-ia-btn" id="sint-reanalizar">🔄 Reanalizar</button>
+        </div>
+      </div>`;
+
+    content.querySelectorAll(".vort-punto-check[data-pcheck]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const idx = parseInt(el.dataset.pcheck);
+        state.pares[idx].checked = !state.pares[idx].checked;
+        renderResultados();
+      });
+    });
+    content.querySelectorAll(".sint-par-row").forEach((el) => {
+      el.addEventListener("click", () => {
+        const idx = parseInt(el.dataset.idx);
+        state.pares[idx].checked = !state.pares[idx].checked;
+        renderResultados();
+      });
+    });
+    content.querySelector("#sint-back")?.addEventListener("click", () => { state.phase = "busqueda"; render(); });
+    content.querySelector("#sint-reanalizar")?.addEventListener("click", lanzarAnalisis);
+    content.querySelector("#sint-interpretar-sel")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#sint-interp-out");
+      if (!outEl) return;
+      const seleccionados = state.pares.filter((p) => p.checked).map((p) => p.nombre);
+      const query = `El rastreo biomagnético confirmó los siguientes pares activos para el cuadro "${escapeHtml(state.sintoma)}":\n${seleccionados.map((n) => "- " + n).join("\n")}\n\nDesde la perspectiva de la terapia holística:\n1. ¿Qué patrón biológico/emocional explica estos pares activos juntos?\n2. ¿Cuál es el programa biológico de supervivencia detrás de este cuadro?\n3. ¿Cómo se aplican los imanes y en qué orden?\n4. ¿Qué cambios puede esperar el paciente tras el tratamiento?\n5. ¿Qué trabajo complementario (emocional, nutricional, energético) potencia la sesión?\n\nSé concreto y orientado a la sesión del terapeuta.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+  }
+
+  render();
+}
+
 // ─── Gestión de Casos ──────────────────────────────────────────────────────
 const CASOS_DB_KEY = "holo_casos_db";
 
@@ -2723,6 +2937,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "rastreo_sintoma") {
+      renderRastreoSintoma(p, content);
     } else if (p.render_tipo === "gestion_casos") {
       renderGestionCasos(p, content);
     } else if (p.render_tipo === "terapia_vortices") {

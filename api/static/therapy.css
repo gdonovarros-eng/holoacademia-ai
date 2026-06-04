@@ -2845,3 +2845,189 @@ textarea {
   .casos-card { flex-direction: column; }
   .casos-card-actions { width: 100%; }
 }
+
+/* ─── Rastreo por Síntoma ────────────────────────────────────────────────────── */
+
+.sint-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.sint-search-block { margin-bottom: 20px; }
+
+.sint-input-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sint-input { flex: 1; }
+
+.sint-buscar-btn { flex-shrink: 0; white-space: nowrap; }
+
+.sint-cats-wrap { margin-bottom: 8px; }
+
+.sint-cats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.sint-cat-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.04);
+  color: #d1d5db;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: all 0.15s;
+  user-select: none;
+}
+.sint-cat-chip:hover {
+  border-color: var(--cat-color, #7c3aed);
+  color: #fff;
+  background: color-mix(in srgb, var(--cat-color, #7c3aed) 15%, transparent);
+}
+.sint-cat-active {
+  border-color: var(--cat-color, #7c3aed) !important;
+  background: color-mix(in srgb, var(--cat-color, #7c3aed) 20%, transparent) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+.sint-clear-cat {
+  background: none;
+  border: none;
+  color: #6b7280;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 6px;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* ── Resultados ── */
+.sint-result-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(124,58,237,0.2);
+}
+
+.sint-result-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sint-cat-badge {
+  display: inline-block;
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sint-result-sintoma {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f3f4f6;
+  font-style: italic;
+}
+
+.sint-progreso {
+  font-size: 12px;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.sint-instruccion {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(124,58,237,0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #c4b5fd;
+}
+
+.sint-pares-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 8px;
+}
+
+.sint-par-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.12s, border-color 0.12s;
+}
+.sint-par-row:hover {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.25);
+}
+.sint-par-checked {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.25);
+}
+.sint-par-nombre {
+  font-size: 13.5px;
+  color: #e5e7eb;
+  line-height: 1.4;
+  flex: 1;
+}
+.sint-par-checked .sint-par-nombre { color: #6ee7b7; }
+
+.sint-raw-answer {
+  margin-top: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.sint-raw-toggle {
+  cursor: pointer;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #9ca3af;
+  background: rgba(255,255,255,0.03);
+  list-style: none;
+}
+.sint-raw-toggle:hover { color: #c4b5fd; }
+.sint-raw-body {
+  padding: 12px 14px;
+  font-size: 12.5px;
+  color: #d1d5db;
+  line-height: 1.65;
+  background: rgba(0,0,0,0.1);
+}
+
+@media (max-width: 640px) {
+  .sint-input-row { flex-direction: column; align-items: stretch; }
+  .sint-buscar-btn { width: 100%; }
+  .sint-cats-grid { gap: 6px; }
+}

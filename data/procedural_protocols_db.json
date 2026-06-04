@@ -3065,6 +3065,25 @@
       "instruccion_ms": ""
     },
     {
+      "id": "rastreo_sintoma",
+      "nombre": "Rastreo por Síntoma",
+      "aliases": ["sintoma", "síntoma", "buscar par", "buscar pares", "pares por sintoma", "rastreo biomagnético", "patologias", "virus", "bacterias", "hongos", "parasitos", "emocionales"],
+      "categoria": "rastreo",
+      "render_tipo": "rastreo_sintoma",
+      "objetivo": "Identificar los pares biomagnéticos a rastrear a partir de un síntoma, enfermedad o cuadro clínico. El Motor Biomagnético analiza el caso y sugiere pares organizados por categoría: virus, bacterias, hongos, parásitos, emocionales y especiales.",
+      "cuando_usarlo": [
+        "Al inicio del rastreo cuando el terapeuta tiene un síntoma o diagnóstico de referencia",
+        "Para explorar qué categoría de agente (viral, bacteriano, emocional, etc.) está implicada",
+        "Como guía para estructurar el orden del rastreo biomagnético",
+        "Cuando el paciente describe síntomas difusos o multisistémicos"
+      ],
+      "prerequisitos": [
+        "Circuito bioenergético abierto y verificado con TM",
+        "Descripción del síntoma principal o motivo de consulta"
+      ],
+      "instruccion_ms": "MS: '¿Hay algún par biomagnético activo relacionado con [síntoma]?' → SÍ/NO. Luego explorar categoría por categoría."
+    },
+    {
       "id": "rastreo_alveolar",
       "nombre": "Protocolo Especializado de Alvéolos Pulmonares",
       "aliases": [
