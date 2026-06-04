@@ -1,0 +1,456 @@
+{
+  "version": "1.0",
+  "descripcion": "Catálogo de puntos vórtice para terapia biomagnética avanzada",
+  "categorias": [
+    {
+      "id": "positivos",
+      "nombre": "Vórtices Positivos",
+      "icono": "🔴",
+      "polaridad": "norte",
+      "descripcion": "Puntos de carga positiva. Se trabajan con polo Norte del imán. Regulan excesos de alcalinidad y bloqueos yang.",
+      "puntos": [
+        {
+          "id": "VP-01",
+          "nombre": "Vórtice Coronilla",
+          "punto_anatomico": "Vértex craneal — línea media, punto más alto del cráneo",
+          "lado": "bilateral",
+          "descripcion": "Centro de integración espiritual y neuroendocrino. Regula la conexión entre el sistema nervioso central y los campos bioenergéticos superiores. Corresponde al punto de convergencia de los meridianos yang y al eje hipotálamo-hipófisis-suprarrenal, modulando la respuesta adaptativa global del organismo.",
+          "sintomas_asociados": [
+            "Confusión mental y niebla cognitiva",
+            "Desconexión espiritual o sensación de vacío existencial",
+            "Alteraciones del ciclo sueño-vigilia",
+            "Migraña occipital y cefalea tensional crónica",
+            "Disfunción hipofisaria y desregulación hormonal sistémica"
+          ],
+          "indicaciones": "Aplicar imán polo Norte en vértex con ligera presión digital. El paciente puede referir pulsación, calor local o sensación de expansión craneal. Verificar con test muscular antes y después de la aplicación. Contraindicado en pacientes con derivación ventriculoperitoneal activa.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-02",
+          "nombre": "Vórtice Frontal / Entrecejo",
+          "punto_anatomico": "Glabela — punto medio entre las cejas, sobre el nasión",
+          "lado": "central",
+          "descripcion": "Vórtice de regulación neuroendocrina del eje pineal-hipofisario. Influye sobre los ritmos circadianos, la función del lóbulo frontal y los procesos cognitivos superiores. Punto clave en terapia de desequilibrios emocionales con componente de rumiación y pensamiento obsesivo.",
+          "sintomas_asociados": [
+            "Insomnio y alteraciones del ritmo circadiano",
+            "Ansiedad generalizada con pensamiento rumiativo",
+            "Sinusitis frontal recurrente y congestión nasal crónica",
+            "Cefalea frontal y tensión supraorbitaria",
+            "Dificultad de concentración y baja claridad mental"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre glabela, asegurando contacto plano con la piel. Puede producirse sensación de presión o pulsación entre los ojos. Aplicar en posición supina. Verificar respuesta autonómica mediante test muscular y observar variación pupilar ante estímulo luminoso leve.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-03",
+          "nombre": "Vórtice Occipital",
+          "punto_anatomico": "Protuberancia occipital externa — base del cráneo, línea media posterior",
+          "lado": "bilateral",
+          "descripcion": "Centro de procesamiento visual, propioceptivo y de integración vestibular. Actúa sobre el cerebelo y el tronco encefálico, regulando el tono muscular posterior del cuello y la coordinación motora. Punto de convergencia energética de los meridianos Vejiga y Gobernador.",
+          "sintomas_asociados": [
+            "Vértigo y mareo postural crónico",
+            "Contractura cervical alta y rigidez nucal",
+            "Visión borrosa intermitente sin causa refractiva",
+            "Acúfenos y sensación de presión en oídos",
+            "Cefalea tensional posterior y occipitalgia"
+          ],
+          "indicaciones": "Aplicar imán polo Norte sobre la protuberancia occipital externa con el paciente en decúbito supino y cabeza ligeramente elevada. La presión debe ser mínima para evitar compresión de arterias vertebrales. Verificar con test muscular y evaluar test de Romberg antes y después.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-04",
+          "nombre": "Vórtice Laríngeo",
+          "punto_anatomico": "Cara anterior del cuello — sobre la membrana tirohioidea, línea media",
+          "lado": "central",
+          "descripcion": "Regula el campo bioenergético de la comunicación, la función tiroidea y paratiroidea, y el metabolismo del calcio. Modula los patrones de expresión vocal y la resonancia vibracional del sistema respiratorio superior. Relacionado con el chakra laríngeo en sistemas complementarios.",
+          "sintomas_asociados": [
+            "Disfonía funcional y alteraciones de la voz",
+            "Hipotiroidismo o hipertiroidismo subclínico",
+            "Dificultad para expresar emociones verbalmente",
+            "Laringitis recurrente y carraspera crónica",
+            "Tensión en musculatura cervical anterior"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre membrana tirohioidea con presión mínima y contacto suave. Solicitar al paciente que respire con normalidad y evite deglutir durante la aplicación. Precaución en pacientes con bocio nodular o antecedentes de cirugía tiroidea. Confirmar con test muscular.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VP-05",
+          "nombre": "Vórtice Tímico",
+          "punto_anatomico": "Manubrio esternal — tercio superior del esternón, entre primer y segundo espacio intercostal",
+          "lado": "central",
+          "descripcion": "Centro inmunológico primario y regulador del timo. Modula la respuesta inmune adaptativa y la producción de linfocitos T. Punto de anclaje energético del sistema defensivo del organismo, relacionado con la autotolerancia inmunológica y los procesos autoinmunes.",
+          "sintomas_asociados": [
+            "Inmunodeficiencia funcional con infecciones recurrentes",
+            "Alergias crónicas y reacciones de hipersensibilidad",
+            "Enfermedades autoinmunes en fase activa o latente",
+            "Fatiga inmunológica post-viral",
+            "Tristeza profunda y duelo prolongado"
+          ],
+          "indicaciones": "Aplicar imán polo Norte sobre manubrio esternal con contacto plano. El paciente puede sentir leve calor o vibración torácica. Técnica especialmente indicada en pacientes oncológicos en fase de rehabilitación o con historial de inmunosupresión. Verificar con test muscular bilateral.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VP-06",
+          "nombre": "Vórtice Cardíaco",
+          "punto_anatomico": "4° espacio intercostal izquierdo — línea medioclavicular, proyección del ápex cardíaco",
+          "lado": "izquierdo",
+          "descripcion": "Punto de mayor densidad energética del sistema cardiovascular y emocional. Regula la coherencia cardíaca, la variabilidad de la frecuencia cardíaca y los patrones de apego emocional. Influye sobre la función del plexo cardíaco autónomo y la oxigenación tisular periférica.",
+          "sintomas_asociados": [
+            "Arritmia funcional y palpitaciones sin causa orgánica demostrada",
+            "Dolor precordial de origen psicosomático",
+            "Hipertensión arterial primaria con componente emocional",
+            "Duelo, trauma emocional y dificultad para recibir afecto",
+            "Opresión torácica y sensación de peso en el pecho"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre 4° espacio intercostal izquierdo, con presión suave sobre tejido intercostal. Contraindicado en portadores de marcapasos o desfibriladores implantables. Verificar con test muscular y pulso radial antes y después. El paciente puede reportar sensación de calor irradiado al brazo izquierdo.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-07",
+          "nombre": "Vórtice Diafragmático",
+          "punto_anatomico": "Apófisis xifoides — punto de inserción del diafragma, ángulo infrasternal",
+          "lado": "central",
+          "descripcion": "Regula el patrón respiratorio diafragmático y la movilidad visceral del piso torácico. Punto de equilibrio entre los campos energéticos cardíaco y digestivo. Influye sobre el nervio vago y la función parasimpática, modulando la respuesta de relajación y el tránsito gastroesofágico.",
+          "sintomas_asociados": [
+            "Respiración superficial y patrón costal superior crónico",
+            "Reflujo gastroesofágico y hernia de hiato",
+            "Ansiedad con expresión somática en el plexo solar",
+            "Hipo persistente y espasmo diafragmático funcional",
+            "Disfagia funcional sin causa estructural"
+          ],
+          "indicaciones": "Aplicar imán polo Norte sobre apófisis xifoides con presión moderada. Solicitar al paciente respiraciones abdominales profundas durante la sesión. La relajación diafragmática puede inducir eructos o movimientos peristálticos perceptibles. Verificar con test muscular. Precaución post-cirugía abdominal reciente.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VP-08",
+          "nombre": "Vórtice Solar",
+          "punto_anatomico": "Epigastrio — plexo solar, tercio superior del abdomen, línea media",
+          "lado": "central",
+          "descripcion": "Centro de integración neurovegetativa del abdomen superior. El plexo solar constituye el mayor ganglio del sistema nervioso autónomo abdominal, modulando hígado, páncreas, estómago y suprarrenales. Punto de anclaje del estrés crónico y la somatización emocional gastrointestinal.",
+          "sintomas_asociados": [
+            "Gastritis crónica y úlcera gástrica de origen funcional",
+            "Síndrome metabólico con resistencia a la insulina",
+            "Estrés crónico con hipercortisolemia",
+            "Náuseas y dispepsia funcional",
+            "Sensación de nudo epigástrico ante situaciones de estrés"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre epigastrio con presión moderada, dos traveses de dedo por encima del ombligo. La aplicación puede inducir peristaltismo audible o sensación de calor abdominal profundo. Verificar con test muscular. Aplicar preferentemente 2 horas después de la última ingesta.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-09",
+          "nombre": "Vórtice Hepático",
+          "punto_anatomico": "Hipocondrio derecho — proyección hepática, entre 9° y 10° costillas derechas",
+          "lado": "derecho",
+          "descripcion": "Regula la función detoxificante hepática, el metabolismo lipídico y biliar, y los procesos de filtración sanguínea. Punto de acumulación de toxinas bioenergéticas relacionadas con emociones como la ira y el resentimiento crónico. Corresponde al área de resonancia del meridiano Hígado en la tradición biomagnética.",
+          "sintomas_asociados": [
+            "Hepatitis crónica y esteatosis hepática",
+            "Colelitiasis y disfunción biliar",
+            "Irritabilidad crónica, ira reprimida y frustración",
+            "Cefalea hemicraneal derecha y migraña hepática",
+            "Piel amarillenta, prurito cutáneo sin causa dermatológica"
+          ],
+          "indicaciones": "Aplicar imán polo Norte sobre hipocondrio derecho con presión moderada, siguiendo el reborde costal inferior. El paciente puede referir calor localizado o sensación de liberación emocional. Verificar con test muscular. Indicar aumento de ingesta hídrica posterior para favorecer la eliminación de toxinas.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VP-10",
+          "nombre": "Vórtice Esplénico",
+          "punto_anatomico": "Hipocondrio izquierdo — proyección esplénica, entre 9° y 10° costillas izquierdas",
+          "lado": "izquierdo",
+          "descripcion": "Regula la función inmune esplénica, la hematopoyesis extramedular y el reciclaje de eritrocitos. Punto relacionado con el campo energético del sistema linfático y la capacidad de discernimiento bioenergético. En biometría emocional, asociado a procesos de preocupación excesiva y pensamiento circular.",
+          "sintomas_asociados": [
+            "Anemia crónica y deficiencias hematológicas funcionales",
+            "Esplenomegalia leve de origen funcional",
+            "Preocupación obsesiva y pensamiento circular sin resolución",
+            "Digestión lenta con sensación de pesadez postprandial",
+            "Hematomas de aparición espontánea y fragilidad capilar"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre hipocondrio izquierdo siguiendo el reborde costal. Precaución en esplenomegalia moderada-severa diagnosticada por imagen. El paciente puede sentir pulsación profunda sincronizada con el ritmo cardíaco. Verificar con test muscular bilateral comparando ambos flancos.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VP-11",
+          "nombre": "Vórtice Umbilical",
+          "punto_anatomico": "Ombligo — punto umbilical, centro geométrico del abdomen",
+          "lado": "central",
+          "descripcion": "Centro de identidad bioenergética primaria y memoria somática prenatal. El ombligo conserva la memoria vibracional del vínculo materno-filial y actúa como punto de anclaje del campo áurico abdominal. Regula la función intestinal y el sistema nervioso entérico. Punto de gran sensibilidad diagnóstica en biomagnetismo avanzado.",
+          "sintomas_asociados": [
+            "Síndrome de intestino irritable y disbiosis intestinal",
+            "Crisis de identidad y pérdida de sentido vital",
+            "Dolor umbilical o periumbilical crónico sin causa orgánica",
+            "Dificultades en el vínculo materno-filial o patrones de apego inseguro",
+            "Parasitosis intestinal recurrente"
+          ],
+          "indicaciones": "Aplicar imán polo Norte directamente sobre el ombligo. La técnica puede producir sensaciones de calor irradiado hacia las extremidades inferiores o hacia el bajo vientre. Punto especialmente útil en sesiones de trabajo con trauma perinatal o patrones relacionales. Verificar con test muscular antes y después.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VP-12",
+          "nombre": "Vórtice Sacro",
+          "punto_anatomico": "Cara posterior del sacro — unión lumbosacra, nivel L5-S1, línea media",
+          "lado": "central",
+          "descripcion": "Centro de regulación del plexo sacro, la función gonadal y la energía vital de base. Modula la función parasimpática pélvica, la micción, la sexualidad y el soporte estructural de la columna lumbar. Punto de mayor acumulación de energía yang ancestral en la tradición biomagnética latinoamericana.",
+          "sintomas_asociados": [
+            "Lumbalgia crónica y hernia discal L4-L5 o L5-S1",
+            "Disfunción eréctil o anorgasmia de origen funcional",
+            "Ciática con irradiación al miembro inferior",
+            "Desequilibrio hormonal gonadal en hombres y mujeres",
+            "Miedo existencial y dificultad para arraigarse o sentirse seguro"
+          ],
+          "indicaciones": "Colocar imán polo Norte sobre cara posterior del sacro con el paciente en decúbito prono. Aplicar presión firme y sostenida. El paciente puede referir calor profundo, sensación de descarga eléctrica suave o relajación de la musculatura glútea. Verificar con test muscular. Indicar hidratación abundante post-sesión.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "alto"
+        }
+      ]
+    },
+    {
+      "id": "negativos",
+      "nombre": "Vórtices Negativos",
+      "icono": "🔵",
+      "polaridad": "sur",
+      "descripcion": "Puntos de carga negativa. Se trabajan con polo Sur del imán. Regulan excesos de acidez y bloqueos yin.",
+      "puntos": [
+        {
+          "id": "VN-01",
+          "nombre": "Vórtice Occipito-Cervical Posterior",
+          "punto_anatomico": "Unión occipitoatlantoaxoidea — línea media posterior, entre occipucio y C1-C2",
+          "lado": "bilateral",
+          "descripcion": "Centro de regulación neuroaxial superior y puerta de entrada del sistema nervioso central. Modula la circulación del líquido cefalorraquídeo, la tensión dural y la función del tronco encefálico. Punto complementario al VP-03, trabajando la polaridad yin de la base craneal y la regulación vagal alta.",
+          "sintomas_asociados": [
+            "Cefalea cervicogénica y neuralgia de Arnold",
+            "Síndrome de tensión dural y restricción de la charnela occipitoatlantoaxoidea",
+            "Hipertensión intracraneal funcional",
+            "Somnolencia excesiva y disfunción del sistema reticular activador ascendente",
+            "Tortícolis espasmódica y contractura suboccipital bilateral"
+          ],
+          "indicaciones": "Aplicar imán polo Sur en la unión occipitoatlantoaxoidea con el paciente en decúbito supino y cabeza ligeramente flexionada. Presión mínima y sostenida. El paciente puede referir hormigueo en cuero cabelludo o relajación inmediata de la musculatura nucal. Verificar con test muscular y evaluar movilidad cervical activa.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VN-02",
+          "nombre": "Vórtice Temporal Bilateral",
+          "punto_anatomico": "Escamas del temporal — región pterional bilateral, entre la línea temporal superior y el arco cigomático",
+          "lado": "bilateral",
+          "descripcion": "Regula la función del lóbulo temporal, la memoria declarativa y episódica, y la integración auditiva. Punto de regulación del campo bioenergético relacionado con la memoria emocional y los patrones de trauma almacenados en el sistema límbico. Complemento yin al VP-02 frontal.",
+          "sintomas_asociados": [
+            "Pérdida de memoria reciente y dificultades de consolidación mnésica",
+            "Tinitus crónico unilateral o bilateral",
+            "Trauma emocional con flashbacks o memorias intrusivas",
+            "Epilepsia temporal en seguimiento médico especializado",
+            "Hipersensibilidad auditiva y dificultad para tolerar ruidos intensos"
+          ],
+          "indicaciones": "Aplicar imán polo Sur simultáneamente en ambas regiones temporales o de forma secuencial según resultado de test muscular. El paciente puede experimentar sensación de amplitud craneal o alivio de la presión temporal. Verificar lateralidad dominante antes de iniciar. Contraindicado en traumatismo craneoencefálico reciente.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-03",
+          "nombre": "Vórtice Parietal Superior",
+          "punto_anatomico": "Bregma — unión de las suturas coronal y sagital, área parietal superior bilateral",
+          "lado": "bilateral",
+          "descripcion": "Centro de integración somatosensorial y espacial. El área parietal superior regula la percepción del esquema corporal, la orientación espacial y la integración multisensorial. Punto yin que equilibra la carga yang del VP-01 coronilla, favoreciendo el anclaje corporal y la encarnación plena.",
+          "sintomas_asociados": [
+            "Despersonalización y sensación de estar fuera del cuerpo",
+            "Dificultades de orientación espacial y lateralidad",
+            "Cefalea parietal en casco o en banda",
+            "Disociación psicosomática y desconexión mente-cuerpo",
+            "Torpeza motora fina y dificultades de coordinación visuoespacial"
+          ],
+          "indicaciones": "Colocar imán polo Sur sobre bregma con presión suave y uniforme. La técnica puede inducir sensación de peso agradable o calor en vértex que favorece el arraigo. Especialmente indicada en pacientes con antecedentes de trauma disociativo. Verificar con test muscular y observar cambios en el patrón respiratorio.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-04",
+          "nombre": "Vórtice Nuca / Cervical Posterior C7",
+          "punto_anatomico": "Apófisis espinosa de C7 — vértebra prominente, unión cervicotorácica posterior",
+          "lado": "central",
+          "descripcion": "Punto de transición energética entre el campo craneal y el campo torácico. C7 es la vértebra de mayor relevancia en la regulación del tono simpático cervicotorácico y la inervación de los miembros superiores. Punto de acumulación de carga negativa relacionada con responsabilidad excesiva y carga emocional no expresada.",
+          "sintomas_asociados": [
+            "Cervicoartrosis y rigidez cervical inferior crónica",
+            "Dolor irradiado a hombros, brazos y manos (cervicobraquialgia)",
+            "Sobrecarga de responsabilidades con somatización cervical",
+            "Contractura de trapecio superior bilateral",
+            "Neuropatía del plexo braquial de origen compresivo cervical"
+          ],
+          "indicaciones": "Aplicar imán polo Sur sobre apófisis espinosa de C7 con el paciente en decúbito prono y frente apoyada en la camilla. Presión moderada y sostenida. El paciente puede referir calor irradiado hacia los hombros o sensación de descontracturación espontánea. Verificar con test muscular y evaluar rango de movilidad cervical.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VN-05",
+          "nombre": "Vórtice Dorsal Superior",
+          "punto_anatomico": "Columna torácica T1-T4 — cara posterior, línea media, segmento dorsal superior",
+          "lado": "central",
+          "descripcion": "Regula la función del sistema nervioso simpático torácico superior y la inervación cardíaca y pulmonar de origen medular. Punto yin complementario al VP-05 tímico, actuando sobre el sistema nervioso autónomo desde la cara posterior. Modula la expansión torácica y la capacidad respiratoria profunda.",
+          "sintomas_asociados": [
+            "Asma bronquial y broncoespasmo recurrente",
+            "Arritmia supraventricular de componente autonómico",
+            "Dorsal alta con dolor interescapular persistente",
+            "Pericarditis o pleuritis en seguimiento médico",
+            "Bloqueo emocional con incapacidad para inspirar profundamente"
+          ],
+          "indicaciones": "Colocar imán polo Sur sobre apófisis espinosas T1 a T4 con el paciente en decúbito prono. Aplicar presión firme y pareja sobre la línea media torácica. El paciente puede sentir calor dorsal irradiado hacia el pecho. Verificar con test muscular. Indicar respiración torácica profunda durante la sesión para potenciar el efecto.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-06",
+          "nombre": "Vórtice Dorsal Medio",
+          "punto_anatomico": "Columna torácica T5-T8 — cara posterior, línea media, segmento dorsal medio",
+          "lado": "central",
+          "descripcion": "Centro de regulación bioenergética de los órganos digestivos superiores y la función hepática y gástrica desde la inervación medular posterior. Punto de gran relevancia en el tratamiento de desórdenes digestivos con componente neurovegetativo. Complemento yin al VP-08 solar por su acción sobre el mismo nivel vertebral.",
+          "sintomas_asociados": [
+            "Gastritis crónica con predominio de hipersecreción ácida",
+            "Pancreatitis crónica o insuficiencia pancreática exocrina",
+            "Diabetes mellitus tipo 2 con componente autonómico",
+            "Contractura dorsal media persistente con dolor a la palpación",
+            "Hepatopatía con congestión portal"
+          ],
+          "indicaciones": "Aplicar imán polo Sur sobre apófisis espinosas T5 a T8 en decúbito prono. Presión firme y estable. La sesión puede inducir peristaltismo audible o sensación de calor abdominal profundo irradiado desde la espalda. Verificar con test muscular. Combinar con VP-08 solar en sesiones de protocolo digestivo completo.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VN-07",
+          "nombre": "Vórtice Escápulo-Dorsal Bilateral",
+          "punto_anatomico": "Ángulo inferior de las escápulas — bilateral, nivel T7-T8 paravertebral",
+          "lado": "bilateral",
+          "descripcion": "Regula la tensión de la musculatura profunda posterior del tórax, la función del manguito rotador y la movilidad escapulotorácica. Punto de descarga de la carga emocional acumulada en la zona de los hombros y la espalda media. Asociado en biomagnetismo con patrones de carga excesiva y auto-exigencia.",
+          "sintomas_asociados": [
+            "Contractura escapular y periescapular bilateral crónica",
+            "Síndrome subacromial y bursitis subdeltoidea",
+            "Sensación de peso o losa en la espalda",
+            "Escoliosis funcional con rotación torácica compensatoria",
+            "Tensión crónica relacionada con sobrecarga laboral o emocional"
+          ],
+          "indicaciones": "Colocar imán polo Sur sobre el ángulo inferior de cada escápula de forma bilateral o secuencial. El paciente en decúbito prono con brazos a lo largo del cuerpo. Puede producirse chasquido o sensación de liberación articular escapular. Verificar con test muscular comparativo bilateral. Integrar con trabajo de hombros si hay restricción de movilidad.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-08",
+          "nombre": "Vórtice Lumbar Superior",
+          "punto_anatomico": "Columna lumbar L1-L2 — cara posterior, línea media, segmento lumbar superior",
+          "lado": "central",
+          "descripcion": "Regula la inervación del riñón, las cápsulas suprarrenales y el uréter proximal desde el nivel medular lumbar. Punto yin de regulación del eje hipotálamo-hipófisis-suprarrenal en su polo inferior. Influye sobre la respuesta al estrés crónico, el metabolismo hidro-salino y la función renal depurativa.",
+          "sintomas_asociados": [
+            "Insuficiencia renal crónica leve-moderada",
+            "Cálculos renales recurrentes y cólico nefrítico",
+            "Fatiga suprarrenal y agotamiento crónico post-estrés",
+            "Retención de líquidos y edema funcional",
+            "Lumbalgia alta con irradiación costal o abdominal"
+          ],
+          "indicaciones": "Aplicar imán polo Sur sobre apófisis espinosas L1-L2 con el paciente en decúbito prono. Presión moderada y sostenida. El paciente puede sentir calor profundo en zona renal o ligero aumento de la necesidad de orinar posterior a la sesión, indicativo de efecto diurético. Verificar con test muscular. Indicar ingesta hídrica abundante post-sesión.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-09",
+          "nombre": "Vórtice Lumbar Inferior",
+          "punto_anatomico": "Columna lumbar L4-L5 — cara posterior, línea media, segmento lumbar inferior",
+          "lado": "central",
+          "descripcion": "Centro de máxima carga mecánica de la columna vertebral y punto de regulación del plexo lumbar inferior y el nervio ciático. Vórtice de gran relevancia clínica en patología musculoesquelética degenerativa y en procesos de instabilidad lumbar. Regula el campo bioenergético del soporte, la estabilidad y la confianza en las propias bases vitales.",
+          "sintomas_asociados": [
+            "Hernia discal L4-L5 o L5-S1 con o sin compromiso radicular",
+            "Lumbalgia mecánica crónica y espondiloartrosis",
+            "Ciática con irradiación al miembro inferior ipsilateral",
+            "Espondilolistesis y estenosis del canal lumbar",
+            "Sensación de falta de apoyo vital y desconfianza estructural"
+          ],
+          "indicaciones": "Colocar imán polo Sur sobre apófisis espinosas L4-L5 con el paciente en decúbito prono y almohada bajo el abdomen para reducir la lordosis. Presión firme y estable. El paciente puede referir calor profundo, relajación de la musculatura paravertebral o ligera reducción del dolor radicular. Verificar con test muscular. Combinar con VP-12 sacro en protocolos lumbopélvicos.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        },
+        {
+          "id": "VN-10",
+          "nombre": "Vórtice Ilíaco Posterior Bilateral",
+          "punto_anatomico": "Espinas ilíacas posterosuperiores (EIPS) — bilateral, ángulos posteriores de la pelvis",
+          "lado": "bilateral",
+          "descripcion": "Regula la articulación sacroilíaca, la distribución de cargas pélvicas y la función del plexo sacro lumbosacral. Punto yin de equilibrio de la cintura pélvica, actuando sobre la musculatura del glúteo mayor, el piriforme y los obturadores. En biomagnetismo, asociado a la integración del campo energético de la identidad sexual y reproductiva.",
+          "sintomas_asociados": [
+            "Disfunción sacroilíaca y dolor pélvico posterior crónico",
+            "Dismenorrea y síndrome premenstrual con componente lumbopélvico",
+            "Patología prostática crónica de origen congestivo",
+            "Desequilibrio pélvico con pierna corta funcional",
+            "Dificultades en la identidad sexual o reproductiva"
+          ],
+          "indicaciones": "Aplicar imán polo Sur sobre ambas EIPS de forma simultánea o secuencial según resultado de test muscular. El paciente en decúbito prono. La sesión puede producir chasquidos sacroilíacos o sensación de apertura pélvica. Verificar con test muscular bilateral. Especialmente indicado en protocolos ginecológicos y urológicos de biomagnetismo avanzado.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-11",
+          "nombre": "Vórtice Cóccix",
+          "punto_anatomico": "Cóccix — extremo distal de la columna vertebral, cara posterior",
+          "lado": "central",
+          "descripcion": "Punto de anclaje energético de la columna y regulador del plexo coccígeo. Modula la tensión del ligamento anococcígeo, la función del esfínter anal y la circulación en el plexo venoso hemorroidal. En sistemas complementarios, corresponde al punto de mayor densidad energética ancestral y de raíz, relacionado con la seguridad primaria y la supervivencia.",
+          "sintomas_asociados": [
+            "Coccigodinia crónica post-traumática o idiopática",
+            "Hemorroides internas o externas con inflamación recurrente",
+            "Constipación crónica con disfunción del esfínter anal",
+            "Sensación de miedo primitivo, inseguridad y falta de arraigo",
+            "Dolor perineal crónico de origen funcional"
+          ],
+          "indicaciones": "Colocar imán polo Sur sobre el cóccix con el paciente en decúbito prono. Presión muy suave en caso de coccigodinia activa. El paciente puede referir calor localizado o sensación de liberación de tensión en la pelvis profunda. Verificar con test muscular. En pacientes con trauma perineal previo, proceder con especial sensibilidad y consentimiento informado.",
+          "tiempoSegundos": 480,
+          "tiempoTexto": "00:08:00",
+          "nivel": "medio"
+        },
+        {
+          "id": "VN-12",
+          "nombre": "Vórtice Perineal Posterior",
+          "punto_anatomico": "Periné posterior — punto medio entre el cóccix y el ano, sobre el rafe anococcígeo",
+          "lado": "central",
+          "descripcion": "Centro de regulación del piso pélvico, la función de los esfínteres y la energía vital de base. Punto de máxima concentración de energía yin en el eje vertebral. Regula la musculatura del diafragma pélvico, los músculos elevadores del ano y la función vesicoesfintérica. En biomagnetismo avanzado, considerado el punto de raíz del eje energético corporal.",
+          "sintomas_asociados": [
+            "Disfunción del suelo pélvico e incontinencia urinaria de esfuerzo",
+            "Prostatitis crónica y síndrome de dolor pélvico crónico masculino",
+            "Vaginismo y dispareunia de origen funcional",
+            "Cistitis intersticial y vejiga hiperactiva",
+            "Bloqueo energético profundo con sensación de desconexión de las raíces vitales"
+          ],
+          "indicaciones": "Aplicar imán polo Sur sobre rafe anococcígeo con presión mínima y suave. Técnica que requiere consentimiento informado explícito y posicionamiento cuidadoso del paciente en decúbito prono con almohada pélvica. El paciente puede referir calor profundo pélvico o sensación de relajación del piso pélvico. Verificar con test muscular. Punto de cierre del protocolo de vórtices negativos en sesiones de eje completo.",
+          "tiempoSegundos": 600,
+          "tiempoTexto": "00:10:00",
+          "nivel": "alto"
+        }
+      ]
+    }
+  ]
+}

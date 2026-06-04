@@ -2058,6 +2058,290 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Terapia de Vórtices ────────────────────────────────────────────────────
+function renderTerapiaVortices(p, content) {
+  const cache = { data: null };
+  const state = {
+    phase: "categoria",      // "categoria" | "puntos" | "consulta_ia"
+    categoria: null,         // { id, nombre, icono, puntos[] }
+    timers: {},              // { puntoId: intervalId }
+    tiempos: {},             // { puntoId: segundosRestantes }
+    checked: new Set(),      // puntoIds completados
+    activeTimer: null,       // puntoId con timer activo
+  };
+
+  async function init() {
+    content.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Cargando catálogo de vórtices...</span></div>`;
+    try {
+      const res = await fetch("/api/vortices/catalogo");
+      cache.data = res.ok ? await res.json() : null;
+    } catch { cache.data = null; }
+    renderFase();
+  }
+
+  function renderFase() {
+    if (state.phase === "categoria") renderCategoriasView();
+    else if (state.phase === "puntos") renderPuntosView();
+    else if (state.phase === "consulta_ia") renderConsultaIA();
+  }
+
+  // ── Fase 1: Selección de categoría ─────────────────────────────────────────
+  function renderCategoriasView() {
+    const cats = cache.data?.categorias || [];
+    const instrMs = p.instruccion_ms || "MS: '¿Hay algún vórtice activo que necesite equilibrarse en esta sesión?'";
+
+    const catCards = cats.map((cat) => {
+      const isPos = cat.id === "positivos";
+      return `<div class="vort-cat-card ${isPos ? "vort-cat-pos" : "vort-cat-neg"}" data-cat="${cat.id}">
+        <div class="vort-cat-icon">${cat.icono}</div>
+        <div class="vort-cat-nombre">${escapeHtml(cat.nombre)}</div>
+        <div class="vort-cat-polaridad">Polo ${escapeHtml(cat.polaridad || (isPos ? "Norte" : "Sur"))}</div>
+        <div class="vort-cat-desc">${escapeHtml(cat.descripcion || "")}</div>
+        <div class="vort-cat-count">${cat.puntos?.length || 0} puntos</div>
+      </div>`;
+    }).join("");
+
+    const todosCard = cats.length > 0 ? `
+      <div class="vort-cat-card vort-cat-todos" data-cat="todos">
+        <div class="vort-cat-icon">⚡</div>
+        <div class="vort-cat-nombre">Todos los Vórtices</div>
+        <div class="vort-cat-polaridad">Positivos + Negativos</div>
+        <div class="vort-cat-desc">Protocolo completo de equilibrio bioenergético.</div>
+        <div class="vort-cat-count">${cats.reduce((a, c) => a + (c.puntos?.length || 0), 0)} puntos totales</div>
+      </div>` : "";
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">MS</span>
+          <span>${escapeHtml(instrMs)}</span>
+        </div>
+        <p class="creencia-instruccion-paso">Selecciona la polaridad que responde SÍ con test muscular:</p>
+        <div class="vort-cat-grid">${catCards}${todosCard}</div>
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn vort-ia-btn" id="vort-consultar-ia">🧠 Consultar al Motor — ¿qué vórtices activar?</button>
+        </div>
+      </div>`;
+
+    content.querySelectorAll(".vort-cat-card").forEach((el) => {
+      el.addEventListener("click", () => {
+        const catId = el.dataset.cat;
+        if (catId === "todos") {
+          const todosLosLotes = cats.flatMap((c) => c.puntos.map((pt) => ({ ...pt, _cat: c.id, _catNombre: c.nombre, _icono: c.icono })));
+          state.categoria = { id: "todos", nombre: "Todos los Vórtices", icono: "⚡", puntos: todosLosLotes };
+        } else {
+          const found = cats.find((c) => c.id === catId);
+          if (found) state.categoria = { ...found, puntos: found.puntos.map((pt) => ({ ...pt, _cat: found.id, _catNombre: found.nombre, _icono: found.icono })) };
+        }
+        state.phase = "puntos";
+        state.timers = {}; state.tiempos = {}; state.checked = new Set(); state.activeTimer = null;
+        renderFase();
+      });
+    });
+    content.querySelector("#vort-consultar-ia")?.addEventListener("click", () => {
+      state.phase = "consulta_ia"; renderFase();
+    });
+  }
+
+  // ── Fase 2: Lista de puntos con timer ──────────────────────────────────────
+  function renderPuntosView() {
+    const cat = state.categoria;
+    if (!cat) { state.phase = "categoria"; renderFase(); return; }
+    const puntos = cat.puntos || [];
+    const completados = state.checked.size;
+    const total = puntos.length;
+    const progPct = total > 0 ? Math.round((completados / total) * 100) : 0;
+
+    const puntosHtml = puntos.map((pt) => {
+      const ptId = pt.id;
+      const isDone = state.checked.has(ptId);
+      const isActive = state.activeTimer === ptId;
+      const segsLeft = state.tiempos[ptId] ?? pt.tiempoSegundos;
+      const timerDisplay = segsToHMS(segsLeft);
+      const isPos = pt._cat === "positivos" || cat.id === "positivos";
+      const polColor = isPos ? "#dc2626" : "#2563eb";
+
+      return `<div class="vort-punto-row${isDone ? " vort-punto-done" : ""}" data-ptid="${ptId}">
+        <div class="vort-punto-check${isDone ? " vort-punto-check-done" : ""}" data-check="${ptId}">
+          ${isDone ? "✓" : ""}
+        </div>
+        <div class="vort-punto-info" data-expand="${ptId}">
+          <div class="vort-punto-nombre">${isPos ? "🔴" : "🔵"} ${escapeHtml(pt.nombre)}</div>
+          <div class="vort-punto-anat">${escapeHtml(pt.punto_anatomico || "")}</div>
+        </div>
+        <div class="vort-punto-timer-wrap">
+          <button class="vort-timer-btn${isActive ? " vort-timer-active" : ""}${isDone ? " vort-timer-done" : ""}"
+            data-timer="${ptId}" data-secs="${pt.tiempoSegundos}"
+            ${state.activeTimer && state.activeTimer !== ptId ? "disabled" : ""}
+            style="border-color:${polColor}${isActive ? ";background:" + polColor : ""}">
+            ${timerDisplay}
+          </button>
+        </div>
+        <button class="vort-detail-btn" data-detail="${ptId}" title="Ver detalle">ℹ</button>
+      </div>
+      <div class="vort-detalle-panel" id="vort-det-${ptId}" style="display:none">
+        <div class="vort-det-body">
+          <p class="vort-det-desc">${escapeHtml(pt.descripcion || "")}</p>
+          ${pt.sintomas_asociados?.length ? `<div class="vort-det-sintomas"><strong>Síntomas asociados:</strong> ${pt.sintomas_asociados.map(s => `<span class="vort-det-tag">${escapeHtml(s)}</span>`).join("")}</div>` : ""}
+          ${pt.indicaciones ? `<p class="vort-det-indicaciones"><strong>Indicaciones:</strong> ${escapeHtml(pt.indicaciones)}</p>` : ""}
+          <button class="rastreo-interpret-btn vort-interp-btn" data-interp="${ptId}" style="background:${polColor}">✨ Interpretar con Motor Terapéutico</button>
+          <div id="vort-interp-out-${ptId}"></div>
+        </div>
+      </div>`;
+    }).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="vort-header">
+          <div class="vort-header-cat">
+            <span class="vort-header-icono">${cat.icono}</span>
+            <span class="vort-header-nombre">${escapeHtml(cat.nombre)}</span>
+          </div>
+          <div class="vort-progreso-wrap">
+            <div class="vort-progreso-bar"><div class="vort-progreso-fill" style="width:${progPct}%"></div></div>
+            <span class="vort-progreso-label">${completados}/${total} completados</span>
+          </div>
+        </div>
+        ${state.activeTimer ? `<div class="vort-timer-banner">⏱ Timer activo — los demás puntos están bloqueados hasta que este termine o se detenga</div>` : ""}
+        <div class="vort-puntos-list">${puntosHtml}</div>
+        <div id="vort-global-interp-out"></div>
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn" id="vort-back-btn">← Cambiar polaridad</button>
+          ${completados > 0 ? `<button class="wizard-nav-btn vort-ia-btn" id="vort-finalizar-btn">✨ Interpretar sesión completa</button>` : ""}
+          <button class="wizard-nav-btn wizard-reiniciar" id="vort-reset-btn">Reiniciar</button>
+        </div>
+      </div>`;
+
+    // Timer buttons
+    content.querySelectorAll(".vort-timer-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const ptId = btn.dataset.timer;
+        if (state.activeTimer === ptId) {
+          // Pause/stop active timer
+          clearInterval(state.timers[ptId]);
+          delete state.timers[ptId];
+          state.activeTimer = null;
+          renderPuntosView();
+        } else if (!state.activeTimer) {
+          // Start timer
+          if (state.tiempos[ptId] === undefined) state.tiempos[ptId] = parseInt(btn.dataset.secs);
+          state.activeTimer = ptId;
+          state.timers[ptId] = setInterval(() => {
+            state.tiempos[ptId] = (state.tiempos[ptId] ?? parseInt(btn.dataset.secs)) - 1;
+            if (state.tiempos[ptId] <= 0) {
+              state.tiempos[ptId] = 0;
+              clearInterval(state.timers[ptId]);
+              delete state.timers[ptId];
+              state.activeTimer = null;
+              state.checked.add(ptId);
+              renderPuntosView();
+            } else {
+              // Update only the timer display without full re-render
+              const timerEl = content.querySelector(`[data-timer="${ptId}"]`);
+              if (timerEl) timerEl.textContent = segsToHMS(state.tiempos[ptId]);
+            }
+          }, 1000);
+          renderPuntosView();
+        }
+      });
+    });
+
+    // Manual check/uncheck
+    content.querySelectorAll(".vort-punto-check").forEach((el) => {
+      el.addEventListener("click", () => {
+        const ptId = el.dataset.check;
+        if (state.checked.has(ptId)) { state.checked.delete(ptId); }
+        else { state.checked.add(ptId); }
+        renderPuntosView();
+      });
+    });
+
+    // Expand/collapse detail
+    content.querySelectorAll(".vort-detail-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const ptId = btn.dataset.detail;
+        const panel = content.querySelector(`#vort-det-${ptId}`);
+        if (panel) panel.style.display = panel.style.display === "none" ? "block" : "none";
+      });
+    });
+
+    // Interpret button per punto
+    content.querySelectorAll(".vort-interp-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const ptId = btn.dataset.interp;
+        const outEl = content.querySelector(`#vort-interp-out-${ptId}`);
+        if (!outEl) return;
+        const pt = puntos.find((x) => x.id === ptId);
+        if (!pt) return;
+        const query = `Durante la terapia biomagnética, el vórtice "${pt.nombre}" (${pt.punto_anatomico}) resultó activo. Polaridad: ${pt._cat === "positivos" ? "positiva (polo norte)" : "negativa (polo sur)"}.\n\nDesde la perspectiva holística: ¿Qué significa la activación de este vórtice? ¿Qué patrón energético, emocional o físico está relacionado? ¿Cómo se manifiesta este desequilibrio en el cuerpo y la conducta del paciente? ¿Qué se logra al equilibrarlo? Orienta para la sesión de forma concreta.`;
+        await rastreoInterpretarIA(outEl, query);
+      });
+    });
+
+    // Finalizar sesión completa
+    content.querySelector("#vort-finalizar-btn")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#vort-global-interp-out");
+      if (!outEl) return;
+      const completadosList = puntos.filter((pt) => state.checked.has(pt.id));
+      const nombresCompletados = completadosList.map((pt) => `- ${pt.nombre} (${pt.punto_anatomico})`).join("\n");
+      const query = `Se completó una sesión de Terapia de Vórtices. Los vórtices equilibrados fueron:\n${nombresCompletados}\n\nDesde la perspectiva terapéutica holística: ¿Qué patrón global de desequilibrio bioenergético estaba presente? ¿Cómo se relacionan estos vórtices entre sí? ¿Qué proceso de sanación se activa al equilibrarlos en conjunto? ¿Qué puede esperar el paciente en los días siguientes? Da una síntesis orientada para el cierre de sesión.`;
+      outEl.scrollIntoView({ behavior: "smooth" });
+      await rastreoInterpretarIA(outEl, query);
+    });
+
+    content.querySelector("#vort-back-btn")?.addEventListener("click", () => {
+      // Stop any active timer
+      if (state.activeTimer) { clearInterval(state.timers[state.activeTimer]); state.activeTimer = null; }
+      state.phase = "categoria"; renderFase();
+    });
+    content.querySelector("#vort-reset-btn")?.addEventListener("click", () => {
+      if (state.activeTimer) { clearInterval(state.timers[state.activeTimer]); state.activeTimer = null; }
+      state.timers = {}; state.tiempos = {}; state.checked = new Set();
+      renderPuntosView();
+    });
+  }
+
+  // ── Fase 3: Consulta IA — qué vórtices activar ─────────────────────────────
+  function renderConsultaIA() {
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <h3 class="wizard-protocol-name" style="margin-bottom:16px">🧠 Consulta al Motor Terapéutico</h3>
+        <p class="creencia-instruccion-paso">Describe brevemente el caso o motivo de consulta y el Motor sugerirá qué vórtices activar:</p>
+        <textarea class="vort-ia-textarea" id="vort-ia-input" placeholder="Ej: Paciente con fatiga crónica, dolores lumbares, ansiedad generalizada y bloqueo emocional en relaciones..."></textarea>
+        <div class="wizard-nav" style="margin-top:12px">
+          <button class="wizard-nav-btn" id="vort-ia-back">← Volver</button>
+          <button class="wizard-nav-btn vort-ia-btn" id="vort-ia-send">Consultar al Motor →</button>
+        </div>
+        <div id="vort-ia-output"></div>
+      </div>`;
+
+    content.querySelector("#vort-ia-back")?.addEventListener("click", () => {
+      state.phase = "categoria"; renderFase();
+    });
+    content.querySelector("#vort-ia-send")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#vort-ia-output");
+      const input = content.querySelector("#vort-ia-input");
+      if (!outEl || !input?.value.trim()) return;
+      const vortsList = (cache.data?.categorias || []).flatMap((c) =>
+        (c.puntos || []).map((pt) => `${c.icono} ${pt.nombre} — ${pt.punto_anatomico} (${c.nombre})`)
+      ).join("\n");
+      const query = `Eres el Motor Terapéutico de HoloacademIA especializado en terapia biomagnética.\n\nEl terapeuta describe el caso:\n"${input.value.trim()}"\n\nCatálogo de vórtices disponibles:\n${vortsList}\n\nAnaliza el caso e indica:\n1. Qué vórtices recomiendas activar (positivos y/o negativos) y por qué\n2. En qué orden trabajarlos\n3. Qué patrón energético global hay que equilibrar\n4. Qué resultado esperar tras la terapia de vórtices\n\nSé específico y orientado a la sesión.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+  }
+
+  // ── Helper ──────────────────────────────────────────────────────────────────
+  function segsToHMS(secs) {
+    const s = Math.max(0, secs);
+    const h = Math.floor(s / 3600).toString().padStart(2, "0");
+    const m = Math.floor((s % 3600) / 60).toString().padStart(2, "0");
+    const sec = (s % 60).toString().padStart(2, "0");
+    return `${h}:${m}:${sec}`;
+  }
+
+  init();
+}
+
 function openProtocolDetail(protocolId) {
   const all = catalogData?.categories?.flatMap((c) => c.protocolos) ?? [];
   const p = all.find((x) => x.id === protocolId);
@@ -2071,6 +2355,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "terapia_vortices") {
+      renderTerapiaVortices(p, content);
     } else if (p.render_tipo === "rastreos_avanzados") {
       renderRastreosAvanzados(p, content);
     } else if (p.render_tipo === "tabla_hologramas") {

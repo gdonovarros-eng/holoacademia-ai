@@ -702,6 +702,17 @@ async def api_emociones_tabla():
         return JSONResponse({"error": "not_found"}, status_code=404)
 
 
+@app.get("/api/vortices/catalogo", include_in_schema=False)
+async def api_vortices_catalogo():
+    """Catálogo de puntos vórtice para terapia biomagnética avanzada."""
+    import json
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "vortices_db.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Catálogo de vórtices no encontrado")
+    return JSONResponse(content=json.loads(p.read_text(encoding="utf-8")))
+
+
 @app.get("/guia-clinica", include_in_schema=False)
 async def guia_clinica_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "guia-clinica.html", headers=_no_cache_headers(allow_iframe=True))

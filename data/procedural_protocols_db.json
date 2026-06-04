@@ -1,6 +1,6 @@
 {
   "version": "3.0",
-  "total": 34,
+  "total": 36,
   "protocols": [
     {
       "id": "eft_transgeneracional",
@@ -3015,6 +3015,32 @@
           ]
         }
       ]
+    },
+    {
+      "id": "terapia_vortices",
+      "nombre": "Terapia de Vórtices",
+      "aliases": [
+        "vortices",
+        "vórtices",
+        "terapia vortices",
+        "puntos vortice",
+        "vórtice positivo",
+        "vórtice negativo"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "terapia_vortices",
+      "objetivo": "Activar y equilibrar los puntos vórtice del campo bioenergético mediante aplicación magnética cronometrada. Trabaja con la polaridad de cada vórtice para desbloquear patrones energéticos profundos vinculados al eje cuerpo-mente.",
+      "cuando_usarlo": [
+        "Cuando el test muscular confirma vórtices activos en la sesión",
+        "En patrones de bloqueo energético recurrente que no responden solo a pares biomagnéticos",
+        "Para trabajo energético profundo tras completar el rastreo de pares",
+        "Cuando se detectan desequilibrios en el eje neuroendocrino o el campo áurico"
+      ],
+      "prerequisitos": [
+        "Rastreo biomagnético principal completado",
+        "Circuito bioenergético abierto y verificado con TM"
+      ],
+      "instruccion_ms": "MS: '¿Hay algún vórtice activo que necesite equilibrarse en esta sesión?' → SÍ/NO. Si SÍ: '¿Es positivo o negativo?' Luego localizar el punto específico con TM."
     },
     {
       "id": "rastreo_alveolar",
