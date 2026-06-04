@@ -459,6 +459,12 @@ async def root_landing() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "index.html", headers=_no_cache_headers(allow_iframe=True))
 
 
+@app.get("/landing", include_in_schema=False)
+async def landing_page() -> FileResponse:
+    """Landing page optimizada para embed en Wix (sin nav/footer duplicados)."""
+    return FileResponse(THERAPY_STATIC_DIR / "landing.html", headers=_no_cache_headers(allow_iframe=True))
+
+
 @app.get("/intake", include_in_schema=False)
 async def intake_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "intake.html", headers=_no_cache_headers())

@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HoloacademIA — Estudias sola. Pero ya no tienes que ejercer sola.</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F8FAFC;
+    --bg-alt: #F1F5F9;
+    --indigo: #4F46E5;
+    --indigo-light: #818CF8;
+    --indigo-dark: #3730A3;
+    --sky: #0EA5E9;
+    --amber: #F59E0B;
+    --amber-dark: #D97706;
+    --text: #0F172A;
+    --text-70: rgba(15,23,42,0.70);
+    --text-50: rgba(15,23,42,0.50);
+    --text-30: rgba(15,23,42,0.35);
+    --text-15: rgba(15,23,42,0.15);
+    --glass-bg: #ffffff;
+    --glass-border: rgba(15,23,42,0.08);
+    /* legacy aliases */
+    --violet: #4F46E5;
+    --violet-light: #818CF8;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden; line-height: 1.6; position: relative;
+  }
+
+  /* ── ORBs ─────────────────────────────────────────── */
+  .orb { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; filter: blur(120px); }
+  .orb-1 { width: 700px; height: 700px; top: -200px; left: -160px; background: radial-gradient(circle, #C7D2FE 0%, #A5B4FC 100%); opacity: 0.55; animation: drift1 22s ease-in-out infinite alternate; }
+  .orb-2 { width: 560px; height: 560px; top: 30%; right: -180px; background: radial-gradient(circle, #BAE6FD 0%, #7DD3FC 100%); opacity: 0.40; animation: drift2 28s ease-in-out infinite alternate; }
+  .orb-3 { width: 480px; height: 480px; bottom: 5%; left: 20%; background: radial-gradient(circle, #DDD6FE 0%, #C4B5FD 100%); opacity: 0.30; animation: drift3 32s ease-in-out infinite alternate; }
+  @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(80px,120px) scale(1.12); } 100% { transform: translate(-40px,60px) scale(0.96); } }
+  @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-100px,-80px) scale(1.18); } 100% { transform: translate(60px,100px) scale(0.88); } }
+  @keyframes drift3 { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(120px,-60px) scale(1.06); } 100% { transform: translate(-80px,40px) scale(1.1); } }
+
+  /* ── GLASS / CARD ────────────────────────────────── */
+  .glass { background: #ffffff; border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 2px 16px rgba(15,23,42,0.06); }
+
+  /* ── FADE-UP ─────────────────────────────────────── */
+  .fade-up { opacity: 0; transform: translateY(36px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-up.visible { opacity: 1; transform: none; }
+
+  /* ── LAYOUT ──────────────────────────────────────── */
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+  .section { padding: 96px 0; }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav { position: relative; top: 0; z-index: 1000; background: rgba(248,250,252,0.92); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--glass-border); }
+  .nav-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-size: 1.2rem; font-weight: 800; color: var(--text); text-decoration: none; letter-spacing: -0.5px; }
+  .nav-logo em { font-style: normal; color: var(--indigo); }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a { font-size: 0.875rem; color: var(--text-50); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-actions { display: flex; gap: 10px; align-items: center; }
+  .btn-ghost { background: transparent; border: 1px solid var(--glass-border); color: var(--text-50); padding: 8px 18px; border-radius: 10px; font-size: 0.875rem; text-decoration: none; transition: border-color 0.2s, color 0.2s; }
+  .btn-ghost:hover { border-color: rgba(15,23,42,0.25); color: var(--text); }
+  .btn-amber { background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); color: #fff; font-weight: 800; padding: 9px 20px; border-radius: 10px; font-size: 0.875rem; text-decoration: none; border: none; box-shadow: 0 2px 12px rgba(79,70,229,0.35); transition: box-shadow 0.2s, transform 0.2s; display: inline-block; }
+  .btn-amber:hover { box-shadow: 0 4px 20px rgba(79,70,229,0.5); transform: translateY(-1px); }
+  @media (max-width: 700px) { .nav-links { display: none; } }
+
+  /* ── HERO ────────────────────────────────────────── */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 80px 0; background: linear-gradient(160deg, #EEF2FF 0%, #F8FAFC 55%, #E0F2FE 100%); }
+  .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; margin-bottom: 24px; background: rgba(79,70,229,0.08); border: 1px solid rgba(79,70,229,0.22); color: var(--indigo); letter-spacing: 0.02em; }
+  .hero h1 { font-size: clamp(38px, 5vw, 66px); font-weight: 900; letter-spacing: -3px; line-height: 1.04; margin-bottom: 22px; color: var(--text); }
+  .hero h1 .gradient-text { background: linear-gradient(135deg, var(--indigo) 0%, var(--sky) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.05rem; color: var(--text-50); margin-bottom: 18px; line-height: 1.72; max-width: 480px; }
+  .hero-sub strong { color: var(--text-70); font-weight: 600; }
+
+  /* Specialist proof strip */
+  .specialist-strip { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; padding: 12px 18px; background: rgba(79,70,229,0.05); border: 1px solid rgba(79,70,229,0.14); border-radius: 14px; max-width: 480px; }
+  .specialist-avatars { display: flex; }
+  .specialist-avatars span { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; color: #fff; margin-left: -8px; }
+  .specialist-avatars span:first-child { margin-left: 0; }
+  .specialist-text { font-size: 0.8rem; line-height: 1.45; color: var(--text-50); }
+  .specialist-text strong { color: var(--indigo); }
+
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 24px; }
+  .btn-primary { background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); color: #fff; font-weight: 800; padding: 14px 28px; border-radius: 12px; font-size: 0.98rem; text-decoration: none; border: none; box-shadow: 0 4px 20px rgba(79,70,229,0.4), 0 8px 40px rgba(79,70,229,0.15); transition: box-shadow 0.2s, transform 0.2s; display: inline-block; letter-spacing: -0.2px; }
+  .btn-primary:hover { box-shadow: 0 6px 28px rgba(79,70,229,0.55), 0 12px 50px rgba(79,70,229,0.22); transform: translateY(-2px); }
+  .btn-outline { background: #ffffff; border: 1px solid var(--glass-border); color: var(--text-70); font-weight: 600; padding: 14px 28px; border-radius: 12px; font-size: 0.98rem; text-decoration: none; transition: border-color 0.2s, box-shadow 0.2s; display: inline-block; box-shadow: 0 1px 4px rgba(15,23,42,0.06); }
+  .btn-outline:hover { border-color: rgba(79,70,229,0.3); box-shadow: 0 2px 10px rgba(79,70,229,0.12); }
+  .hero-trust { font-size: 0.78rem; color: var(--text-30); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .trust-dot { width: 3px; height: 3px; background: var(--text-30); border-radius: 50%; }
+
+  /* Chat card */
+  .hero-chat { padding: 24px; display: flex; flex-direction: column; gap: 12px; animation: float 6s ease-in-out infinite; box-shadow: 0 8px 40px rgba(79,70,229,0.14); }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  .chat-header { display: flex; align-items: center; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--glass-border); margin-bottom: 4px; }
+  .chat-avatar { width: 36px; height: 36px; background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+  .chat-title { font-weight: 700; font-size: 0.88rem; color: var(--text); }
+  .chat-status { font-size: 0.7rem; color: #16A34A; margin-top: 1px; }
+  .msgs { display: flex; flex-direction: column; gap: 10px; }
+  .msg { padding: 10px 14px; border-radius: 14px; font-size: 0.8rem; line-height: 1.5; max-width: 88%; }
+  .msg-ai { background: rgba(79,70,229,0.07); border: 1px solid rgba(79,70,229,0.14); border-bottom-left-radius: 4px; align-self: flex-start; color: #1E1B4B; }
+  .msg-user { background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.18); border-bottom-right-radius: 4px; align-self: flex-end; color: #0C4A6E; }
+  .typing { display: inline-flex; gap: 4px; align-items: center; padding: 10px 14px; align-self: flex-start; }
+  .typing-dot { width: 6px; height: 6px; background: var(--indigo-light); border-radius: 50%; animation: bounce 1.2s ease-in-out infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100% { transform: translateY(0); opacity:0.4; } 30% { transform: translateY(-6px); opacity:1; } }
+
+  /* ── STATS ───────────────────────────────────────── */
+  .stats-strip { background: #EEF2FF; border-top: 1px solid rgba(79,70,229,0.1); border-bottom: 1px solid rgba(79,70,229,0.1); padding: 32px 0; }
+  .stats-grid { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .stat-item { text-align: center; padding: 14px 36px; position: relative; }
+  .stat-item:not(:last-child)::after { content:''; position:absolute; right:0; top:10%; bottom:10%; width:1px; background: rgba(79,70,229,0.15); }
+  .stat-num { font-size: 2.2rem; font-weight: 900; color: var(--indigo-dark); letter-spacing: -1.5px; display: block; }
+  .stat-label { font-size: 0.75rem; color: var(--text-30); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── SECTION TAGS ─────────────────────────────────── */
+  .section-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--indigo); padding: 4px 12px; background: rgba(79,70,229,0.08); border: 1px solid rgba(79,70,229,0.2); border-radius: 50px; margin-bottom: 18px; }
+  .section-h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; line-height: 1.08; color: var(--text); }
+  .section-sub { font-size: 1rem; color: var(--text-50); max-width: 580px; line-height: 1.7; }
+
+  /* ── PROBLEM ─────────────────────────────────────── */
+  .problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .problem-card { padding: 32px 26px; display: flex; flex-direction: column; gap: 14px; transition: border-color 0.3s, transform 0.3s; }
+  .problem-card:hover { border-color: rgba(79,70,229,0.22); transform: translateY(-4px); box-shadow: 0 6px 24px rgba(79,70,229,0.08); }
+  .problem-card.featured-card { border-color: rgba(79,70,229,0.18); background: #EEF2FF; }
+  .problem-icon { font-size: 2.2rem; }
+  .problem-card h3 { font-size: 1rem; font-weight: 800; line-height: 1.35; color: var(--text); }
+  .problem-card p { font-size: 0.86rem; color: var(--text-50); line-height: 1.65; }
+
+  /* ── CHATGPT DIFF ────────────────────────────────── */
+  .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+  .diff-card { padding: 28px 24px; border-radius: 20px; }
+  .diff-no { background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08); }
+  .diff-yes { background: linear-gradient(160deg, #EEF2FF, #E0F2FE); border: 1px solid rgba(79,70,229,0.22); }
+  .diff-label { font-size: 0.68rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .diff-label.no-label { color: var(--text-30); }
+  .diff-label.yes-label { color: var(--indigo); }
+  .diff-items { display: flex; flex-direction: column; gap: 11px; }
+  .diff-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.875rem; line-height: 1.5; }
+  .diff-item.bad { color: var(--text-30); }
+  .diff-item.good { color: var(--text-70); }
+  .diff-item.good strong { color: var(--indigo-dark); }
+
+  /* real fail example */
+  .chatgpt-fail { margin-top: 20px; padding: 14px 16px; border-radius: 12px; background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.15); font-size: 0.8rem; color: rgba(185,28,28,0.8); line-height: 1.55; }
+  .chatgpt-fail strong { color: #B91C1C; }
+
+  /* ── PILLARS ─────────────────────────────────────── */
+  .pillars-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .pillar-card { padding: 32px 26px; transition: border-color 0.3s, transform 0.3s; }
+  .pillar-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(79,70,229,0.1); }
+  .pillar-num { font-size: 0.65rem; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--indigo-light); margin-bottom: 12px; display: block; }
+  .pillar-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .pillar-card h3 { font-size: 1.08rem; font-weight: 800; margin-bottom: 10px; line-height: 1.3; color: var(--text); }
+  .pillar-card p { font-size: 0.855rem; color: var(--text-50); line-height: 1.68; }
+  .pillar-card .pill-detail { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--glass-border); font-size: 0.78rem; color: var(--indigo); font-weight: 700; }
+
+  /* ── ASESOR TERAPÉUTICO ──────────────────────────── */
+  .advisor-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; margin-top: 52px; }
+  .advisor-steps { display: flex; flex-direction: column; gap: 22px; }
+  .advisor-step { display: flex; gap: 18px; align-items: flex-start; }
+  .advisor-step-num { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: linear-gradient(135deg, rgba(79,70,229,0.12), rgba(55,48,163,0.12)); border: 1px solid rgba(79,70,229,0.25); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 900; color: var(--indigo); letter-spacing: 0.5px; }
+  .advisor-step-body h4 { font-size: 0.94rem; font-weight: 800; margin-bottom: 5px; color: var(--text); }
+  .advisor-step-body p { font-size: 0.84rem; color: var(--text-50); line-height: 1.6; }
+  .advisor-note { margin-top: 24px; padding: 16px 20px; border-radius: 14px; background: rgba(14,165,233,0.06); border: 1px solid rgba(14,165,233,0.2); font-size: 0.84rem; color: #0369A1; line-height: 1.6; }
+  .advisor-note strong { color: #0284C7; }
+  .advisor-chat { padding: 22px; }
+  .case-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--indigo); margin-bottom: 14px; display: block; }
+
+  /* ── BIOMAGNETIC ─────────────────────────────────── */
+  .bio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 52px; }
+  .bio-areas { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 22px; }
+  .bio-area { padding: 12px 14px; border-radius: 12px; background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.15); font-size: 0.78rem; font-weight: 700; color: var(--indigo); text-align: center; }
+  .bio-stat-row { display: flex; gap: 22px; margin-top: 24px; }
+  .bio-stat { text-align: center; flex: 1; padding: 16px; border-radius: 14px; background: #ffffff; border: 1px solid var(--glass-border); box-shadow: 0 1px 8px rgba(15,23,42,0.05); }
+  .bio-stat-num { font-size: 1.8rem; font-weight: 900; color: var(--indigo-dark); letter-spacing: -1px; }
+  .bio-stat-label { font-size: 0.72rem; color: var(--text-30); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  /* ── TABLE ───────────────────────────────────────── */
+  .table-wrap { overflow-x: auto; border-radius: 16px; border: 1px solid var(--glass-border); background: #fff; box-shadow: 0 2px 12px rgba(15,23,42,0.05); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+  thead th { padding: 16px 22px; text-align: center; font-weight: 700; font-size: 0.88rem; border-bottom: 1px solid var(--glass-border); color: var(--text-50); background: #F8FAFC; }
+  thead th:first-child { text-align: left; }
+  thead th.col-holo { background: #EEF2FF; border-top: 2px solid var(--indigo); color: var(--indigo-dark); }
+  tbody tr:nth-child(odd) td { background: #FAFAFA; }
+  tbody tr:hover td { background: #F1F5F9; }
+  tbody td { padding: 14px 22px; text-align: center; border-bottom: 1px solid rgba(15,23,42,0.05); color: var(--text-50); }
+  tbody td:first-child { text-align: left; color: var(--text-70); font-weight: 500; }
+  tbody td.col-holo { background: rgba(79,70,229,0.04); font-weight: 700; }
+  .t-check { color: var(--indigo); font-size: 1.1rem; font-weight: 700; }
+  .t-cross { color: var(--text-15); font-size: 1.1rem; }
+  .t-partial { font-size: 0.75rem; color: #D97706; font-weight: 700; }
+
+  /* ── LIBRARY ─────────────────────────────────────── */
+  .library-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .library-card { padding: 28px 24px; transition: border-color 0.3s, transform 0.3s; }
+  .library-card:hover { transform: translateY(-4px); border-color: rgba(79,70,229,0.2); box-shadow: 0 6px 24px rgba(79,70,229,0.08); }
+  .library-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .library-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+  .library-card p { font-size: 0.855rem; color: var(--text-50); line-height: 1.65; }
+  .library-detail { margin-top: 12px; font-size: 0.78rem; color: var(--indigo); font-weight: 700; }
+
+  /* ── HOW IT WORKS ────────────────────────────────── */
+  .steps-wrap { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 56px; }
+  .steps-line { position: absolute; top: 52px; left: calc(33.33%/2 + 24px); right: calc(33.33%/2 + 24px); height: 0; border-top: 2px dashed rgba(79,70,229,0.25); z-index: 0; }
+  .step-card { padding: 30px 24px; text-align: center; position: relative; z-index: 1; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s; }
+  .step-card:hover { border-color: rgba(79,70,229,0.25); transform: translateY(-4px); box-shadow: 0 8px 28px rgba(79,70,229,0.1); }
+  .step-num { font-size: 0.68rem; font-weight: 800; letter-spacing: 2px; color: var(--indigo-light); margin-bottom: 10px; display: block; }
+  .step-icon { font-size: 2.2rem; margin-bottom: 12px; display: block; }
+  .step-card h3 { font-size: 1rem; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+  .step-card p { font-size: 0.83rem; color: var(--text-50); line-height: 1.6; }
+
+  /* ── TESTIMONIALS ────────────────────────────────── */
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .testi-card { padding: 28px 24px; transition: border-color 0.3s; }
+  .testi-card:hover { border-color: rgba(79,70,229,0.18); box-shadow: 0 6px 24px rgba(79,70,229,0.08); }
+  .stars { color: #D97706; font-size: 0.95rem; margin-bottom: 14px; letter-spacing: 2px; }
+  .testi-quote { font-style: italic; color: var(--text-70); font-size: 0.875rem; line-height: 1.78; margin-bottom: 20px; }
+  .testi-result { display: inline-block; font-size: 0.75rem; font-weight: 800; color: #15803D; background: rgba(21,128,61,0.07); border: 1px solid rgba(21,128,61,0.18); border-radius: 8px; padding: 5px 12px; margin-bottom: 16px; }
+  .testi-footer { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.82rem; flex-shrink: 0; color: #fff; }
+  .testi-name { font-weight: 700; font-size: 0.86rem; color: var(--text); }
+  .testi-role { font-size: 0.73rem; color: var(--text-30); margin-top: 2px; }
+
+  /* ── PRICE ANCHOR ────────────────────────────────── */
+  .price-anchor { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 44px; margin-bottom: 44px; }
+  .anchor-item { padding: 18px 22px; border-radius: 16px; text-align: center; }
+  .anchor-item.expensive { background: #F8FAFC; border: 1px solid rgba(15,23,42,0.08); }
+  .anchor-item.highlight { background: linear-gradient(160deg, #EEF2FF, #E0E7FF); border: 2px solid rgba(79,70,229,0.35); }
+  .anchor-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-30); margin-bottom: 8px; display: block; }
+  .anchor-label.yes { color: var(--indigo); }
+  .anchor-price { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; color: var(--text-30); }
+  .anchor-price.yes { color: var(--indigo-dark); }
+  .anchor-desc { font-size: 0.75rem; color: var(--text-30); margin-top: 5px; line-height: 1.4; }
+  .anchor-desc.yes { color: var(--text-50); }
+
+  /* ── PRICING ─────────────────────────────────────── */
+  .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; align-items: start; }
+  .price-card { padding: 32px 26px; transition: border-color 0.3s, transform 0.3s; }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(15,23,42,0.1); }
+  .price-card.featured { background: linear-gradient(160deg, #EEF2FF, #E0E7FF); border: 2px solid rgba(79,70,229,0.4); box-shadow: 0 8px 40px rgba(79,70,229,0.2); transform: scale(1.03); }
+  .price-card.featured:hover { transform: scale(1.03) translateY(-4px); box-shadow: 0 12px 50px rgba(79,70,229,0.28); }
+  .popular-badge { display: inline-block; background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); color: #fff; font-size: 0.62rem; font-weight: 900; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 12px; border-radius: 50px; margin-bottom: 16px; }
+  .price-name { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--indigo); }
+  .price-amount { font-size: 2.8rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 4px; color: var(--text); }
+  .price-amount .currency { font-size: 1.1rem; font-weight: 600; vertical-align: super; color: var(--text-50); }
+  .price-amount .period { font-size: 0.88rem; font-weight: 400; color: var(--text-30); letter-spacing: 0; }
+  .price-per-day { font-size: 0.78rem; color: #D97706; font-weight: 700; margin-bottom: 10px; }
+  .price-desc { font-size: 0.8rem; color: var(--text-30); margin-bottom: 22px; line-height: 1.5; }
+  .price-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .price-feature { display: flex; align-items: flex-start; gap: 10px; font-size: 0.84rem; color: var(--text-50); }
+  .price-feature .check { color: var(--indigo); font-size: 0.88rem; flex-shrink: 0; margin-top: 2px; }
+  .btn-price { width: 100%; display: block; text-align: center; padding: 13px; border-radius: 12px; font-weight: 800; font-size: 0.88rem; text-decoration: none; transition: all 0.2s; letter-spacing: -0.2px; }
+  .btn-price-primary { background: linear-gradient(135deg, var(--indigo), var(--indigo-dark)); color: #fff; box-shadow: 0 4px 16px rgba(79,70,229,0.4); }
+  .btn-price-primary:hover { box-shadow: 0 6px 24px rgba(79,70,229,0.55); transform: translateY(-1px); }
+  .btn-price-ghost { background: #ffffff; border: 1px solid var(--glass-border); color: var(--text-50); }
+  .btn-price-ghost:hover { border-color: rgba(79,70,229,0.25); color: var(--indigo); }
+  .price-guarantee { text-align: center; margin-top: 28px; font-size: 0.8rem; color: var(--text-30); }
+  .price-guarantee strong { color: var(--text-50); }
+
+  /* ── CTA ─────────────────────────────────────────── */
+  .cta-section { position: relative; overflow: hidden; padding: 100px 0; text-align: center; }
+  .cta-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1E1B4B 0%, #3730A3 45%, #1D4ED8 100%); z-index: 0; }
+  .cta-noise { position: absolute; inset: 0; z-index: 1; opacity: 0.055; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 200px 200px; animation: noiseDrift 8s linear infinite; }
+  @keyframes noiseDrift { 0% { background-position: 0 0; } 100% { background-position: 200px 200px; } }
+  .cta-content { position: relative; z-index: 2; }
+  .cta-section h2 { font-size: clamp(30px, 4vw, 52px); font-weight: 900; letter-spacing: -2px; margin-bottom: 16px; color: #ffffff; }
+  .cta-sub { font-size: 1.05rem; color: rgba(255,255,255,0.7); margin-bottom: 14px; line-height: 1.65; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .cta-math { display: inline-flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-bottom: 34px; }
+  .cta-math-item { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .cta-math-item strong { display: block; font-size: 1.1rem; color: #fff; font-weight: 900; letter-spacing: -0.5px; }
+  .cta-note { margin-top: 18px; font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+
+  /* ── FAQ ─────────────────────────────────────────── */
+  .faq-list { display: flex; flex-direction: column; gap: 10px; margin-top: 52px; max-width: 800px; margin-left: auto; margin-right: auto; }
+  .faq-item { border: 1px solid var(--glass-border); border-radius: 16px; background: #ffffff; overflow: hidden; transition: border-color 0.3s, box-shadow 0.3s; box-shadow: 0 1px 6px rgba(15,23,42,0.04); }
+  .faq-item.open { border-color: rgba(79,70,229,0.3); border-left: 3px solid var(--indigo); box-shadow: 0 4px 16px rgba(79,70,229,0.1); }
+  .faq-question { width: 100%; background: none; border: none; color: var(--text); font-size: 0.94rem; font-weight: 700; text-align: left; padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: inherit; }
+  .faq-arrow { font-size: 0.78rem; color: var(--indigo); transition: transform 0.3s; flex-shrink: 0; }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--text-50); font-size: 0.88rem; line-height: 1.72; }
+  .faq-answer-inner { padding: 0 24px 20px; }
+  .faq-item.open .faq-answer { max-height: 320px; }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer { border-top: 1px solid var(--glass-border); padding: 40px 0; background: #F1F5F9; position: relative; z-index: 1; }
+  .footer-inner { max-width: 1180px; margin: 0 auto; padding: 0 28px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  .footer-copy { font-size: 0.78rem; color: var(--text-30); margin-top: 4px; }
+  .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+  .footer-links a { font-size: 0.84rem; color: var(--text-50); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ── MODULES ─────────────────────────────────────────── */
+  .modules-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 52px; }
+  .module-card { padding: 26px 24px; display: flex; gap: 20px; align-items: flex-start; transition: border-color 0.3s, transform 0.3s; }
+  .module-card:hover { border-color: rgba(79,70,229,0.2); transform: translateY(-3px); box-shadow: 0 6px 22px rgba(79,70,229,0.09); }
+  .module-card-academic { grid-column: 1 / -1; background: linear-gradient(160deg, #EEF2FF, #F0F9FF); border-color: rgba(79,70,229,0.18); }
+  .module-icon { font-size: 2rem; flex-shrink: 0; width: 44px; text-align: center; margin-top: 2px; }
+  .module-content { flex: 1; }
+  .module-name { font-size: 1rem; font-weight: 800; margin-bottom: 7px; color: var(--text); }
+  .module-desc { font-size: 0.845rem; color: var(--text-50); line-height: 1.65; margin-bottom: 12px; }
+  .module-tags { display: flex; gap: 7px; flex-wrap: wrap; }
+  .module-tags span { font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 50px; background: rgba(79,70,229,0.07); border: 1px solid rgba(79,70,229,0.16); color: var(--indigo); letter-spacing: 0.03em; }
+
+  /* ── RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 960px) {
+    .hero-inner, .advisor-grid, .bio-grid, .diff-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-trust { justify-content: center; }
+    .hero-sub, .specialist-strip { margin: 0 auto 18px; }
+    .hero-chat { max-width: 480px; margin: 0 auto; }
+    .problem-grid, .pillars-grid, .steps-wrap, .testi-grid, .library-grid { grid-template-columns: 1fr; }
+    .modules-grid { grid-template-columns: 1fr; }
+    .module-card-academic { grid-column: auto; }
+    .steps-line { display: none; }
+    .price-anchor { grid-template-columns: 1fr; max-width: 380px; margin-left: auto; margin-right: auto; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .price-card.featured { transform: none; }
+    .price-card.featured:hover { transform: translateY(-4px); }
+    .stat-item { padding: 12px 24px; }
+    .bio-areas { grid-template-columns: repeat(2,1fr); }
+    .advisor-steps { text-align: left; }
+    .cta-math { flex-direction: column; gap: 10px; }
+  }
+  @media (max-width: 600px) {
+    .hero h1 { letter-spacing: -1.5px; }
+    .section { padding: 64px 0; }
+    .stats-grid { flex-wrap: wrap; }
+    .stat-item { width: 50%; }
+    .stat-item:not(:last-child)::after { display: none; }
+    .stat-item:nth-child(odd) { border-right: 1px solid rgba(79,70,229,0.12); }
+    .stat-item { padding: 16px 20px; border-bottom: 1px solid rgba(79,70,229,0.1); }
+    .diff-grid { grid-template-columns: 1fr; }
+    .bio-stat-row { flex-direction: column; }
+  }
+
+  /* ── MOBILE 480px ───────────────────────────────────── */
+  @media (max-width: 480px) {
+    /* Hero */
+    .hero { padding: 60px 0 40px; min-height: auto; }
+    .hero h1 { font-size: clamp(28px, 8vw, 38px); letter-spacing: -1px; line-height: 1.1; }
+    .hero-sub { font-size: 0.92rem; }
+    .hero-badge { font-size: 0.7rem; padding: 5px 12px; }
+    .btn-primary, .btn-outline { padding: 12px 20px; font-size: 0.9rem; width: 100%; text-align: center; }
+    .hero-ctas { flex-direction: column; }
+
+    /* Specialist strip */
+    .specialist-strip { flex-direction: column; text-align: center; gap: 10px; }
+    .specialist-avatars { justify-content: center; }
+
+    /* Sections */
+    .section { padding: 48px 0; }
+    .container { padding: 0 16px; }
+    .section-h2 { font-size: clamp(22px, 6vw, 32px); letter-spacing: -0.5px; }
+
+    /* Stats */
+    .stat-num { font-size: 1.8rem; }
+    .stat-item { width: 50%; padding: 14px 10px; }
+
+    /* Tabla comparativa — scroll horizontal */
+    .table-wrap { -webkit-overflow-scrolling: touch; }
+    table { min-width: 560px; font-size: 0.78rem; }
+    thead th, tbody td { padding: 10px 14px; }
+
+    /* Cards */
+    .problem-card, .pillar-card, .step-card, .testi-card, .library-card { padding: 22px 18px; }
+    .module-card { flex-direction: column; gap: 12px; padding: 20px 16px; }
+    .module-icon { font-size: 1.6rem; width: auto; }
+
+    /* Pricing */
+    .price-card { padding: 24px 18px; }
+    .price-amount { font-size: 2.2rem; }
+    .price-anchor { gap: 10px; }
+    .anchor-item { padding: 14px 16px; }
+
+    /* CTA */
+    .cta-section { padding: 64px 0; }
+    .cta-section h2 { font-size: clamp(22px, 6vw, 36px); letter-spacing: -0.5px; }
+    .btn-amber { padding: 13px 24px !important; font-size: 0.95rem !important; }
+
+    /* FAQ */
+    .faq-list { max-width: 100%; }
+    .faq-question { font-size: 0.86rem; padding: 16px 18px; }
+
+    /* Footer */
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-links { gap: 16px; flex-wrap: wrap; }
+
+    /* Chat card */
+    .hero-chat { padding: 16px; }
+    .msg { font-size: 0.75rem; }
+
+    /* Bio areas */
+    .bio-areas { grid-template-columns: repeat(2,1fr); gap: 8px; }
+    .bio-stat-row { flex-direction: column; }
+    .bio-stat { width: 100%; }
+  }
+
+  /* ── VERY SMALL (375px iPhone SE) ───────────────────── */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: 26px; }
+    .section-h2 { font-size: 22px; }
+    .stat-item { width: 100%; }
+    .stat-item:nth-child(odd) { border-right: none; }
+    .price-anchor { grid-template-columns: 1fr; }
+    .hero-trust { font-size: 0.7rem; gap: 5px; }
+  }
+
+</style>
+<!-- Meta Pixel removed for iframe embed -->
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<!-- ══ NAV ════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="https://www.holoacademia.com" target="_blank" class="nav-logo">Holo<em>academ</em>IA</a>
+    <div class="nav-links">
+      <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
+      <a href="#asesor">Asesor IA</a>
+      <a href="#biomagnetismo">Biomagnetismo</a>
+      <a href="#precios">Planes</a>
+    </div>
+    <div class="nav-actions">
+      <a href="https://www.holoacademia.com/asistenteia" target="_blank" class="btn-ghost">Iniciar sesión</a>
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-amber">Prueba Gratis</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-left fade-up">
+        <div class="hero-badge">💜 IA especializada · No ChatGPT · Entrenada por especialistas reales</div>
+        <h1>Estudias sola.<br>Pero ya no tienes<br>que <span class="gradient-text">ejercer sola.</span></h1>
+        <p class="hero-sub">
+          HoloacademIA es la única IA entrenada específicamente en biomagnetismo, biodescodificación y medicina energética. <strong>Te acompaña en tiempo real durante tus consultas</strong> — para que nunca más te quedes sin respuesta frente a un paciente.
+        </p>
+
+        <!-- Specialist social proof -->
+        <div class="specialist-strip">
+          <div class="specialist-avatars">
+            <span>E1</span><span>E2</span><span>E3</span><span>E4</span><span>E5</span>
+          </div>
+          <div class="specialist-text">
+            Construida con <strong>15+ especialistas reales</strong> · +140 años de experiencia clínica sumada · Miles de horas de aprendizaje en terapias holísticas
+          </div>
+        </div>
+
+        <div class="hero-ctas">
+          <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-primary">Probar HoloacademIA — Es Gratis</a>
+          <a href="https://www.holoacademia.com/programas" target="_blank" class="btn-outline">Ver los +75 cursos →</a>
+        </div>
+        <div class="hero-trust">
+          <span>Sin tarjeta de crédito</span>
+          <span class="trust-dot"></span>
+          <span>Acceso inmediato</span>
+          <span class="trust-dot"></span>
+          <span>Cancela cuando quieras</span>
+          <span class="trust-dot"></span>
+          <span>Desde $299 MXN/mes</span>
+        </div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:0.2s;">
+        <div class="glass hero-chat">
+          <div class="chat-header">
+            <div class="chat-avatar">💜</div>
+            <div>
+              <div class="chat-title">Asesor Terapéutico IA</div>
+              <div class="chat-status">● Sesión activa</div>
+            </div>
+          </div>
+          <div class="msgs">
+            <div class="msg msg-user">Paciente 42 años, dolor lumbar crónico sin causa orgánica. Empezó cuando murió su mamá hace un año.</div>
+            <div class="msg msg-ai">Origen emocional: "carga que no puede soltar" — correlaciona con L4-L5 en biodescodificación. Pares prioritarios en biomagnetismo: Riñón-Riñón y Psoas-Psoas.</div>
+            <div class="msg msg-ai">✅ Protocolo de liberación generado · 📋 Sesión documentada automáticamente</div>
+            <div class="glass typing" style="border-radius:14px;">
+              <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fade-up"><span class="stat-num">15+</span><span class="stat-label">Especialistas reales</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.1s"><span class="stat-num">75+</span><span class="stat-label">Cursos certificados</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.2s"><span class="stat-num">1,400+</span><span class="stat-label">Pares biomagnéticos</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.25s"><span class="stat-num">1,500+</span><span class="stat-label">Libros especializados</span></div>
+      <div class="stat-item fade-up" style="transition-delay:.3s"><span class="stat-num">9</span><span class="stat-label">Disciplinas integradas</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ EL PROBLEMA ══════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">El problema que nadie dice en voz alta</div>
+      <h2 class="section-h2">Tienes el conocimiento.<br>El paciente está frente a ti.<br>Y te quedas en blanco.</h2>
+      <p class="section-sub" style="margin:0 auto;">No es falta de preparación. Es que estudiaste sola y nadie te enseñó a tomar decisiones en tiempo real con una persona real esperando.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="glass problem-card fade-up" style="transition-delay:.1s">
+        <div class="problem-icon">🧠</div>
+        <h3>"Sé la teoría. Pero en la consulta real me paralizo."</h3>
+        <p>Los cursos te dieron el mapa. Nadie te acompañó en el camino. Ese vacío entre el conocimiento y la práctica cuesta una fortuna en pacientes que nunca llegan.</p>
+      </div>
+      <div class="glass problem-card featured-card fade-up" style="transition-delay:.2s">
+        <div class="problem-icon">😰</div>
+        <h3>"¿Y si me equivoco? No puedo arriesgarme con una persona real."</h3>
+        <p>El síndrome del impostor no se cura con más estudios. Se cura con un segundo criterio experto que te respalde mientras ganas confianza. Eso exactamente es lo que no tenías.</p>
+      </div>
+      <div class="glass problem-card fade-up" style="transition-delay:.3s">
+        <div class="problem-icon">💸</div>
+        <h3>Mientras "esperas estar lista", otra terapeuta cobra por lo mismo que tú ya sabes.</h3>
+        <p>Tu paciente existe hoy. Está buscando ayuda hoy. Cada semana que pasa son consultas —y dinero— que alguien más recibe, con el mismo conocimiento que tú ya tienes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ NO ES CHATGPT ════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">La diferencia que importa</div>
+      <h2 class="section-h2">ChatGPT no sabe qué es<br>un par biomagnético.<br><span style="color:var(--violet-light)">Esta IA sí.</span></h2>
+      <p class="section-sub" style="margin:0 auto;">No es una cuestión de tecnología. Es de especialización. HoloacademIA fue construida desde cero con expertos reales para que nunca te falle en una consulta.</p>
+    </div>
+    <div class="diff-grid fade-up" style="transition-delay:.15s">
+      <div class="diff-card diff-no">
+        <div class="diff-label no-label">✗ &nbsp;ChatGPT y cualquier IA genérica</div>
+        <div class="diff-items">
+          <div class="diff-item bad">✗ &nbsp;Inventa pares biomagnéticos que no existen</div>
+          <div class="diff-item bad">✗ &nbsp;No conoce biodescodificación ni psicosomática real</div>
+          <div class="diff-item bad">✗ &nbsp;Mezcla información de internet sin criterio clínico</div>
+          <div class="diff-item bad">✗ &nbsp;Sin contexto de tus pacientes ni historial de sesiones</div>
+          <div class="diff-item bad">✗ &nbsp;No genera protocolos terapéuticos reales</div>
+          <div class="diff-item bad">✗ &nbsp;Puede confundirte justo cuando más la necesitas</div>
+        </div>
+        <div class="chatgpt-fail">
+          <strong>Ejemplo real:</strong> Le preguntamos a ChatGPT por el par biomagnético para "dolor lumbar con origen emocional de duelo". Inventó 3 pares que no existen en ningún sistema de biomagnetismo. Con un paciente real, eso no es un error menor.
+        </div>
+      </div>
+      <div class="diff-card diff-yes">
+        <div class="diff-label yes-label">✓ &nbsp;HoloacademIA — construida por especialistas reales</div>
+        <div class="diff-items">
+          <div class="diff-item good">✓ &nbsp;<strong>+1,400 pares biomagnéticos reales</strong> validados por especialistas</div>
+          <div class="diff-item good">✓ &nbsp;Entrenada en biodescodificación, psicosomática y medicina energética</div>
+          <div class="diff-item good">✓ &nbsp;<strong>+140 años de experiencia clínica sumada</strong> de 15+ especialistas activos</div>
+          <div class="diff-item good">✓ &nbsp;Guarda el historial de cada paciente y documenta sesiones</div>
+          <div class="diff-item good">✓ &nbsp;<strong>Protocolos terapéuticos reales</strong> basados en el caso específico</div>
+          <div class="diff-item good">✓ &nbsp;Responde desde múltiples técnicas al mismo tiempo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3 PILARES ════════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Todo en un solo lugar</div>
+      <h2 class="section-h2">Tres pilares. Un ecosistema<br>diseñado para tu práctica.</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="glass pillar-card fade-up" style="transition-delay:.1s">
+        <span class="pillar-num">Pilar 01</span>
+        <span class="pillar-icon">📚</span>
+        <h3>Aprende con IA que entiende tu disciplina</h3>
+        <p>+75 cursos certificados en 9 disciplinas holísticas. La IA resuelve dudas del curso con información real — no respuestas genéricas de internet.</p>
+        <div class="pill-detail">Cursos nuevos cada semana · 9 disciplinas</div>
+      </div>
+      <div class="glass pillar-card fade-up" style="transition-delay:.2s">
+        <span class="pillar-num">Pilar 02</span>
+        <span class="pillar-icon">💜</span>
+        <h3>Asesor IA contigo en cada consulta real</h3>
+        <p>El Asesor analiza el caso de tu paciente, encuentra el origen emocional, cruza múltiples técnicas y genera el protocolo — en tiempo real mientras tú atiendes.</p>
+        <div class="pill-detail">Multi-técnica · Historial de pacientes · Protocolos automáticos</div>
+      </div>
+      <div class="glass pillar-card fade-up" style="transition-delay:.3s">
+        <span class="pillar-num">Pilar 03</span>
+        <span class="pillar-icon">⚡</span>
+        <h3>Módulos que te ahorran horas por semana</h3>
+        <p>+1,400 pares biomagnéticos, numerología, astrología médica, carta natal — herramientas específicas para cada técnica que usas, sin consultar manuales.</p>
+        <div class="pill-detail">+1,400 pares biomagnéticos · 9 áreas de rastreo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÓDULOS DE CONSULTA ═══════════════════════════════ -->
+<section class="section" id="modulos" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Herramientas del Asesor IA</div>
+      <h2 class="section-h2">7 módulos especializados.<br>Todo en una sola consulta.</h2>
+      <p class="section-sub" style="margin:0 auto;">Cada módulo es una herramienta entrenada por especialistas. Trabajan juntos al mismo tiempo — para que veas cada caso desde todos los ángulos que dominas.</p>
+    </div>
+    <div class="modules-grid">
+      <div class="glass module-card fade-up" style="transition-delay:.08s">
+        <div class="module-icon">💜</div>
+        <div class="module-content">
+          <div class="module-name">Asesor Terapéutico</div>
+          <p class="module-desc">El núcleo del sistema. Analiza el caso del paciente, encuentra el origen emocional y genera el protocolo cruzando todas las técnicas que dominas — en tiempo real, mientras atiendes.</p>
+          <div class="module-tags"><span>Multi-técnica</span><span>Tiempo real</span><span>Protocolos</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up" style="transition-delay:.12s">
+        <div class="module-icon">🧲</div>
+        <div class="module-content">
+          <div class="module-name">Rastreo de Imanes</div>
+          <p class="module-desc">+1,400 pares biomagnéticos organizados en 9 áreas corporales. Con correlación emocional incluida. Consultas instantáneas sin abrir manuales — para biomagnetistas que quieren ir rápido y seguro.</p>
+          <div class="module-tags"><span>+1,400 pares</span><span>9 áreas</span><span>Correlación emocional</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up" style="transition-delay:.16s">
+        <div class="module-icon">🔢</div>
+        <div class="module-content">
+          <div class="module-name">Numerología</div>
+          <p class="module-desc">Calcula el número de vida, número del destino y misión del alma de tu paciente. Complementa el análisis terapéutico con patrones de personalidad y ciclos de vida que el paciente reconoce en sí mismo.</p>
+          <div class="module-tags"><span>Número de vida</span><span>Misión del alma</span><span>Ciclos</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up" style="transition-delay:.2s">
+        <div class="module-icon">⭐</div>
+        <div class="module-content">
+          <div class="module-name">Astrología Médica</div>
+          <p class="module-desc">Identifica las áreas corporales y emocionales más vulnerables de tu paciente según su mapa astral. Conecta síntomas físicos con disposiciones astrológicas para enriquecer el diagnóstico holístico.</p>
+          <div class="module-tags"><span>Vulnerabilidades</span><span>Mapa astral</span><span>Síntomas</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up" style="transition-delay:.24s">
+        <div class="module-icon">🌟</div>
+        <div class="module-content">
+          <div class="module-name">Carta Natal</div>
+          <p class="module-desc">Genera e interpreta la carta natal completa del paciente desde una perspectiva holístico-terapéutica. Casas, planetas y aspectos leídos en clave de salud y bienestar — no solo de personalidad.</p>
+          <div class="module-tags"><span>Carta completa</span><span>Perspectiva holística</span><span>Salud y bienestar</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up" style="transition-delay:.28s">
+        <div class="module-icon">♈</div>
+        <div class="module-content">
+          <div class="module-name">Horóscopo Terapéutico</div>
+          <p class="module-desc">Analiza los tránsitos planetarios actuales del paciente: qué ciclos está viviendo ahora, qué áreas de vida están siendo activadas y cómo puede acompañar ese proceso con tu trabajo terapéutico.</p>
+          <div class="module-tags"><span>Tránsitos actuales</span><span>Ciclos activos</span><span>Guía terapéutica</span></div>
+        </div>
+      </div>
+      <div class="glass module-card fade-up module-card-academic" style="transition-delay:.32s">
+        <div class="module-icon">📚</div>
+        <div class="module-content">
+          <div class="module-name">Motor Académico</div>
+          <p class="module-desc">La IA que responde las dudas de tus cursos con conocimiento real — no con información genérica de internet. Explica conceptos, aclara técnicas y profundiza en cada lección de los +75 cursos disponibles.</p>
+          <div class="module-tags"><span>+75 cursos</span><span>Respuestas especializadas</span><span>Sin internet</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ ASESOR TERAPÉUTICO ════════════════════════════════ -->
+<section class="section" id="asesor" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">El corazón de HoloacademIA</div>
+      <h2 class="section-h2">Tu segundo criterio experto.<br>Siempre disponible.</h2>
+      <p class="section-sub" style="margin:0 auto;">No te da respuestas genéricas. Analiza el caso real de tu paciente desde múltiples técnicas al mismo tiempo — para que veas el problema desde todos los ángulos.</p>
+    </div>
+    <div class="advisor-grid">
+      <div class="fade-up" style="transition-delay:.1s">
+        <div class="advisor-steps">
+          <div class="advisor-step">
+            <div class="advisor-step-num">01</div>
+            <div class="advisor-step-body">
+              <h4>Describes el caso en lenguaje natural</h4>
+              <p>Síntomas, historial emocional, lo que el paciente te dijo. Sin tecnicismos ni formularios. Como hablarle a una colega de confianza.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">02</div>
+            <div class="advisor-step-body">
+              <h4>Encuentra el origen emocional desde varias técnicas</h4>
+              <p>Cruza biodescodificación, psicosomática, numerología y otras técnicas simultáneamente — para que veas el conflicto emocional desde todos los ángulos posibles.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">03</div>
+            <div class="advisor-step-body">
+              <h4>Te acompaña durante toda la sesión</h4>
+              <p>Responde tus dudas en tiempo real. Orienta el rastreo, sugiere preguntas y te ayuda a ver lo que quizás estás pasando por alto.</p>
+            </div>
+          </div>
+          <div class="advisor-step">
+            <div class="advisor-step-num">04</div>
+            <div class="advisor-step-body">
+              <h4>Genera el protocolo y documenta automáticamente</h4>
+              <p>El protocolo completo para tu paciente y la sesión documentada sin escribir nada extra. Listo para archivar o compartir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="advisor-note">
+          <strong>No sustituye al terapeuta — lo potencializa.</strong><br>
+          Tú tomas las decisiones clínicas. La IA es tu segundo criterio más experimentado, siempre disponible, que nunca se cansa ni se equivoca por cansancio.
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.25s">
+        <div class="glass advisor-chat">
+          <span class="case-label">💜 Asesor Terapéutico — análisis en tiempo real</span>
+          <div class="msgs">
+            <div class="msg msg-user">Paciente mujer 38 años. Fibromialgia desde hace 3 años, fatiga crónica. Cuida a su mamá enferma desde hace 4 años. Dice que "todo la cansa".</div>
+            <div class="msg msg-ai">🧠 Origen emocional: "responsabilidad no elegida que somatiza como peso físico". Desde psicosomática: músculo = obligación de sostener. Desde biodescodificación: agotamiento del cuidador.</div>
+            <div class="msg msg-ai">Pares prioritarios: Hígado-Hígado (resentimiento contenido), Riñón-Riñón (miedo al futuro), Timo-Bazo (inmunidad deprimida por estrés crónico).</div>
+            <div class="msg msg-user">¿Qué más me puede dar información sobre ella?</div>
+            <div class="msg msg-ai">✨ Con su fecha de nacimiento calculo número de vida y carta natal. Número 6 (cuidadora nata) confirma el patrón. Tránsito de Saturno activo — ciclo de límites. Protocolo completo listo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÓDULO BIOMAGNÉTICO ══════════════════════════════ -->
+<section class="section" id="biomagnetismo" style="padding-top:0;">
+  <div class="container">
+    <div class="bio-grid">
+      <div class="fade-up">
+        <div class="section-tag">Para biomagnetistas</div>
+        <h2 class="section-h2">+1,400 pares.<br>9 áreas. Rastreo rápido<br>sin consultar manuales.</h2>
+        <p style="color:var(--text-50);font-size:.94rem;line-height:1.72;margin-bottom:22px;">El módulo de Rastreo de Imanes está diseñado específicamente para biomagnetistas. Tienes toda la información al momento, organizada por área corporal, con la correlación emocional incluida.</p>
+        <div class="bio-stat-row">
+          <div class="bio-stat"><div class="bio-stat-num">1,400+</div><div class="bio-stat-label">Pares biomagnéticos</div></div>
+          <div class="bio-stat"><div class="bio-stat-num">9</div><div class="bio-stat-label">Áreas de rastreo</div></div>
+          <div class="bio-stat"><div class="bio-stat-num">0</div><div class="bio-stat-label">Manuales que consultar</div></div>
+        </div>
+        <div class="bio-areas">
+          <div class="bio-area">Cabeza y SNC</div>
+          <div class="bio-area">Órganos torácicos</div>
+          <div class="bio-area">Digestivo</div>
+          <div class="bio-area">Urogenital</div>
+          <div class="bio-area">Músculo-esq.</div>
+          <div class="bio-area">Glándulas</div>
+          <div class="bio-area">Sistema linfático</div>
+          <div class="bio-area">Emocional</div>
+          <div class="bio-area">Especiales</div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:.2s">
+        <div class="glass advisor-chat">
+          <span class="case-label">🧲 Módulo Biomagnético — rastreo en tiempo real</span>
+          <div class="msgs">
+            <div class="msg msg-user">Dolor de cabeza crónico con náuseas, peor en la mañana, mejora al moverse.</div>
+            <div class="msg msg-ai">🧲 Área Cabeza/SNC — Pares prioritarios:<br>• Cerebro-Cerebro (hipertensión intracraneal)<br>• Hígado-Hígado (toxicidad que sube en ayunas)<br>• Estómago-Páncreas (digestión matutina comprometida)</div>
+            <div class="msg msg-ai">Polaridad: Norte en occipital 8 min · Sur en hepático 5 min. Confirma con test kinesiológico antes de aplicar.</div>
+            <div class="msg msg-user">¿Hay correlación emocional?</div>
+            <div class="msg msg-ai">✅ Biodescodificación: cefalea = "no quiero ver lo que está frente a mí". Explora situación familiar/laboral reciente. Protocolo registrado.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ BIBLIOTECA ════════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Mucho más que cursos</div>
+      <h2 class="section-h2">Tu formación completa.<br>Sin límites.</h2>
+    </div>
+    <div class="library-grid">
+      <div class="glass library-card fade-up" style="transition-delay:.1s">
+        <span class="library-icon">📚</span>
+        <h3>Biblioteca de +1,500 libros especializados</h3>
+        <p>Biomagnetismo, medicina energética, psicosomática, nutrición holística, bienestar mental y espiritualidad. Todo curado por especialistas — sin perder tiempo buscando.</p>
+        <div class="library-detail">+1,500 libros · Actualización continua</div>
+      </div>
+      <div class="glass library-card fade-up" style="transition-delay:.2s">
+        <span class="library-icon">🎬</span>
+        <h3>Documentales, series y películas</h3>
+        <p>Miles de horas de contenido audiovisual seleccionado: documentales de salud, series de bienestar y películas que amplían tu comprensión del ser humano y la sanación.</p>
+        <div class="library-detail">Miles de horas · Nuevo contenido semanal</div>
+      </div>
+      <div class="glass library-card fade-up" style="transition-delay:.3s">
+        <span class="library-icon">🎓</span>
+        <h3>Cursos nuevos cada semana</h3>
+        <p>La plataforma crece contigo. Cada semana se agregan cursos en las 9 disciplinas — siempre hay algo nuevo que aprender, sin costo adicional.</p>
+        <div class="library-detail">+75 cursos · Nuevos cada semana · 9 disciplinas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CÓMO FUNCIONA ════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">¿Cómo funciona?</div>
+      <h2 class="section-h2">Tres pasos. Una consulta diferente.</h2>
+    </div>
+    <div class="steps-wrap">
+      <div class="steps-line"></div>
+      <div class="glass step-card fade-up" style="transition-delay:.1s">
+        <span class="step-num">01</span><span class="step-icon">💬</span>
+        <h3>Describes el caso en tus propias palabras</h3>
+        <p>Como le hablarías a una colega. Sin tecnicismos, sin formularios. La IA entiende lenguaje natural.</p>
+      </div>
+      <div class="glass step-card fade-up" style="transition-delay:.2s">
+        <span class="step-num">02</span><span class="step-icon">🔍</span>
+        <h3>La IA analiza desde todas las técnicas que dominas</h3>
+        <p>Biodescodificación, psicosomática, numerología, biomagnetismo — respuestas reales de múltiples técnicas al mismo tiempo.</p>
+      </div>
+      <div class="glass step-card fade-up" style="transition-delay:.3s">
+        <span class="step-num">03</span><span class="step-icon">📋</span>
+        <h3>Tienes el protocolo y la sesión documentada</h3>
+        <p>Listo para compartir con el paciente o archivar en su historial. Sin escribir nada extra después.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIOS ══════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Terapeutas reales. Resultados reales.</div>
+      <h2 class="section-h2">De "no me siento lista"<br>a agenda llena.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="glass testi-card fade-up" style="transition-delay:.1s">
+        <div class="stars">★★★★★</div>
+        <div class="testi-result">↑ Cobró 60% más en 3 meses</div>
+        <p class="testi-quote">"Llevaba 8 meses con mi título guardado sin atender. Tenía miedo de equivocarme. La primera semana con HoloacademIA atendí 3 pacientes. El Asesor no me da las respuestas — me confirma que yo ya sé. Solo necesitaba esa seguridad para cobrar lo que valgo."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#9D174D,#6B21A8)">MJ</div>
+          <div><div class="testi-name">Marcela J.</div><div class="testi-role">Biomagnetismo · Guadalajara, México</div></div>
+        </div>
+      </div>
+      <div class="glass testi-card fade-up" style="transition-delay:.2s">
+        <div class="stars">★★★★★</div>
+        <div class="testi-result">↑ De 45 min por sesión a 20 min de búsqueda</div>
+        <p class="testi-quote">"Lo que más me sorprendió es que me responde desde varias técnicas al mismo tiempo. Antes tardaba casi una hora buscando en mis notas y manuales. Ahora en minutos tengo el análisis completo y puedo enfocarme en el paciente, no en los libros."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#065F46,#059669)">CR</div>
+          <div><div class="testi-name">Sofía R.</div><div class="testi-role">Biodescodificación · Bogotá, Colombia</div></div>
+        </div>
+      </div>
+      <div class="glass testi-card fade-up" style="transition-delay:.3s">
+        <div class="stars">★★★★★</div>
+        <div class="testi-result">↑ Lista de espera en 90 días · cobro el doble</div>
+        <p class="testi-quote">"El módulo de biomagnetismo vale el precio completo de la suscripción. Tengo +1,400 pares al instante sin buscar en manuales. En 90 días pasé de no saber por dónde empezar a tener lista de espera. Y cobro el doble de lo que cobraba antes."</p>
+        <div class="testi-footer">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#92400E,#D97706)">AV</div>
+          <div><div class="testi-name">Diana V.</div><div class="testi-role">Biomagnetismo · Buenos Aires, Argentina</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COMPARATIVA ══════════════════════════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Comparativa</div>
+      <h2 class="section-h2">Lo que ninguna otra plataforma<br>puede ofrecerte</h2>
+      <p class="section-sub" style="margin:0 auto 48px;">Los cursos terminan cuando los terminas. HoloacademIA empieza a ser útil cuando llega el paciente real.</p>
+    </div>
+    <div class="table-wrap fade-up">
+      <table>
+        <thead>
+          <tr>
+            <th style="text-align:left;">Qué obtienes</th>
+            <th class="col-holo">HoloacademIA</th>
+            <th>Curso Online</th>
+            <th>Academia Holística</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Aprendes el método</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td></tr>
+          <tr><td>IA especializada durante tus consultas (no ChatGPT)</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Respuestas desde múltiples técnicas al mismo tiempo</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>+1,400 pares biomagnéticos listos al instante</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Protocolos personalizados por cada caso</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Historial y documentación automática de sesiones</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Biblioteca de +1,500 libros especializados</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-partial">Raro</span></td></tr>
+          <tr><td>Documentales, series y películas de bienestar</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-cross">✗</span></td></tr>
+          <tr><td>Cursos nuevos cada semana</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td><td><span class="t-partial">A veces</span></td></tr>
+          <tr><td>Cancela cuando quieras</td><td class="col-holo"><span class="t-check">✓</span></td><td><span class="t-check">✓</span></td><td><span class="t-cross">✗</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRECIOS ══════════════════════════════════════════ -->
+<section class="section" id="precios" style="padding-top:0;">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Planes</div>
+      <h2 class="section-h2">Empieza gratis hoy.<br>Escala cuando quieras.</h2>
+      <p class="section-sub" style="margin:0 auto;">Antes de ver los precios, haz la cuenta.</p>
+    </div>
+
+    <!-- Price anchor — mostrar contexto ANTES de los planes -->
+    <div class="price-anchor fade-up" style="transition-delay:.1s">
+      <div class="anchor-item expensive">
+        <span class="anchor-label">Un curso presencial de biomagnetismo</span>
+        <div class="anchor-price">$3,000–$15,000</div>
+        <div class="anchor-desc">MXN · pago único · sin actualización · sin IA · sin acompañamiento</div>
+      </div>
+      <div class="anchor-item expensive">
+        <span class="anchor-label">Una supervisión con especialista senior</span>
+        <div class="anchor-price">$500–$1,500</div>
+        <div class="anchor-desc">MXN · por sesión · sin historial · no disponible en tu horario</div>
+      </div>
+      <div class="anchor-item highlight">
+        <span class="anchor-label yes">HoloacademIA completo</span>
+        <div class="anchor-price yes">$299</div>
+        <div class="anchor-desc yes">MXN/mes · IA ilimitada · 75+ cursos · 1,400+ pares · 1,500 libros · Cancela cuando quieras</div>
+      </div>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="glass price-card fade-up" style="transition-delay:.1s">
+        <div class="price-name">HOLOCONEXIÓN</div>
+        <div class="price-amount"><span class="currency">$</span>0<span class="period"> MXN/mes</span></div>
+        <div class="price-desc">Para dar el primer paso sin riesgo. Sin tarjeta de crédito.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> 9 programas de estudio gratuitos</div>
+          <div class="price-feature"><span class="check">✓</span> Acceso básico al Asesor Terapéutico IA</div>
+          <div class="price-feature"><span class="check">✓</span> Comunidad de terapeutas holísticas</div>
+          <div class="price-feature"><span class="check">✓</span> Soporte por email</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-ghost">Empezar gratis</a>
+      </div>
+      <div class="price-card featured fade-up" style="transition-delay:.2s">
+        <div class="popular-badge">⭐ MÁS POPULAR</div>
+        <div class="price-name">INICIACIÓN ELITE</div>
+        <div class="price-amount"><span class="currency">$</span>299<span class="period"> MXN/mes</span></div>
+        <div class="price-per-day">≈ $10 MXN por día · menos de una sola consulta</div>
+        <div class="price-desc">Para la terapeuta que ya decidió atender con confianza total.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> +75 cursos certificados completos</div>
+          <div class="price-feature"><span class="check">✓</span> Asesor Terapéutico IA sin límites</div>
+          <div class="price-feature"><span class="check">✓</span> Módulo Biomagnético (+1,400 pares)</div>
+          <div class="price-feature"><span class="check">✓</span> Protocolos personalizados por caso</div>
+          <div class="price-feature"><span class="check">✓</span> Historial de sesiones ilimitado</div>
+          <div class="price-feature"><span class="check">✓</span> Biblioteca +1,500 libros especializados</div>
+          <div class="price-feature"><span class="check">✓</span> Documentales, series y películas</div>
+          <div class="price-feature"><span class="check">✓</span> Holovisión+ — clases en vivo</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-primary">Comenzar prueba gratis →</a>
+      </div>
+      <div class="glass price-card fade-up" style="transition-delay:.3s">
+        <div class="price-name">ACCESO PREMIUM</div>
+        <div class="price-amount"><span class="currency">$</span>799<span class="period"> MXN/mes</span></div>
+        <div class="price-desc">Para diferenciarte con certificaciones y diplomados oficiales.</div>
+        <div class="price-features">
+          <div class="price-feature"><span class="check">✓</span> Todo lo de Iniciación Elite</div>
+          <div class="price-feature"><span class="check">✓</span> Certificaciones oficiales incluidas</div>
+          <div class="price-feature"><span class="check">✓</span> Diplomados SEP (próximamente)</div>
+          <div class="price-feature"><span class="check">✓</span> Acceso prioritario a módulos nuevos</div>
+          <div class="price-feature"><span class="check">✓</span> Soporte premium con respuesta rápida</div>
+        </div>
+        <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-price btn-price-ghost">Comenzar prueba gratis</a>
+      </div>
+    </div>
+
+    <p class="price-guarantee fade-up">
+      <strong>Sin contratos · Sin letras pequeñas · Cancelas con un clic · Tu historial de pacientes guardado 90 días después de cancelar</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-noise"></div>
+  <div class="container cta-content">
+    <div class="fade-up">
+      <h2>Cada semana que esperas<br>es dinero que alguien más cobra.</h2>
+      <p class="cta-sub">Si atiendes 4 pacientes por semana y HoloacademIA te ahorra 45 minutos de búsqueda por consulta, en un mes recuperas <strong style="color:#fff;">12 horas</strong> que hoy estás regalando.</p>
+      <div class="cta-math">
+        <div class="cta-math-item"><strong>12 horas</strong>ahorradas por mes</div>
+        <div class="cta-math-item" style="color:rgba(255,255,255,0.25);font-size:1.2rem;align-self:center;">vs</div>
+        <div class="cta-math-item"><strong>$10 MXN</strong>por día</div>
+        <div class="cta-math-item" style="color:rgba(255,255,255,0.25);font-size:1.2rem;align-self:center;">=</div>
+        <div class="cta-math-item"><strong>ROI obvio</strong>desde la primera semana</div>
+      </div>
+      <a href="https://www.holoacademia.com/planes" target="_blank" class="btn-amber" style="font-size:1.05rem;padding:15px 36px;display:inline-block;">
+        Activar mi HoloacademIA — Es Gratis →
+      </a>
+      <p class="cta-note">Sin tarjeta · Sin compromiso · Desde $299 MXN/mes · Cancela cuando quieras</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══════════════════════════════════════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-up" style="text-align:center;">
+      <div class="section-tag">Lo que todas preguntan antes de dar el paso</div>
+      <h2 class="section-h2">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item fade-up" style="transition-delay:.05s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Es lo mismo que usar ChatGPT? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. ChatGPT es una IA genérica que puede inventar pares biomagnéticos, dar protocolos incorrectos o simplemente no conocer tus técnicas. HoloacademIA fue construida desde cero con 15+ especialistas reales en terapias holísticas, con más de 140 años de experiencia clínica sumada. No es lo mismo que buscar en internet con un chat bonito encima.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.08s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿El Asesor me dice exactamente qué pares biomagnéticos aplicar? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">El Asesor te orienta — te da los pares relacionados con el caso, el origen emocional probable, los protocolos posibles. Pero la decisión terapéutica y el rastreo siempre son tuyos. No sustituye tu criterio clínico: lo potencializa. Tú eres la terapeuta — la IA es tu segundo criterio más experimentado.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.11s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Necesito saber de tecnología? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutamente no. Si puedes escribirle un WhatsApp a una amiga, puedes usar HoloacademIA. Describes el caso en tus propias palabras y la IA hace el resto. Sin manuales, sin configuraciones. En menos de 10 minutos puedes hacer tu primera consulta asistida.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.14s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Qué pasa si cancelo? ¿Pierdo mis datos? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Cancelas cuando quieras desde tu panel con un clic, sin llamadas ni preguntas. Tu acceso continúa hasta el fin del período pagado. Tu historial de pacientes queda guardado en tu cuenta por 90 días después de cancelar. Sin letras pequeñas, sin penalizaciones.</div></div>
+      </div>
+      <div class="faq-item fade-up" style="transition-delay:.17s">
+        <button class="faq-question" onclick="toggleFaq(this)">¿Esto reemplaza mi formación como terapeuta? <span class="faq-arrow">▼</span></button>
+        <div class="faq-answer"><div class="faq-answer-inner">No. HoloacademIA potencia tu formación, no la sustituye. Cuanto más sabes tú, más poderosa es la combinación con la IA. Las terapeutas con más experiencia le sacan más partido porque saben qué preguntar y cómo interpretar las respuestas. La IA es tu herramienta — tú eres quien la dirige.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="https://www.holoacademia.com" target="_blank" class="nav-logo" style="font-size:1.1rem;">Holo<em>academ</em>IA</a>
+      <div class="footer-copy">© 2025 HoloacademIA. Todos los derechos reservados.</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://www.holoacademia.com/planes" target="_blank">Planes</a>
+      <a href="https://www.holoacademia.com/programas" target="_blank">Cursos</a>
+      <a href="https://www.holoacademia.com/asistenteia" target="_blank">Acceder</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── INTERSECTION OBSERVER ── */
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  }),
+  { threshold: 0.10, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+/* ── FAQ ── */
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── HEIGHT REPORTING ── */
+function rh() { window.parent.postMessage({ action:'setHeight', height: document.documentElement.scrollHeight }, '*'); }
+window.addEventListener('load', rh);
+new ResizeObserver(rh).observe(document.body);
+
+/* ── IFRAME DETECTION: oculta nav/footer y abre links en _top ── */
+(function() {
+  var inIframe = false;
+  try { inIframe = window.self !== window.top; } catch(e) { inIframe = true; }
+
+  var urlEmbed = new URLSearchParams(window.location.search).get('embed') === '1';
+
+  if (inIframe || urlEmbed) {
+    // Ocultar nav y footer propios (Wix ya tiene los suyos)
+    document.querySelectorAll('nav, footer').forEach(function(el) {
+      el.style.display = 'none';
+    });
+    // Todos los links externos abren en la ventana principal (_top), no en el iframe
+    document.querySelectorAll('a[href]').forEach(function(a) {
+      var href = a.getAttribute('href');
+      // Solo links externos o a páginas (no anclas #)
+      if (href && !href.startsWith('#')) {
+        a.target = '_top';
+      }
+    });
+    // Añadir padding-top al primer section para compensar el nav oculto
+    var firstSection = document.querySelector('section, .hero-section, main > *');
+    if (firstSection) firstSection.style.paddingTop = '0';
+  }
+})();
+</script>
+</body>
+</html>
