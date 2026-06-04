@@ -705,23 +705,31 @@ async def api_emociones_tabla():
 @app.get("/api/vortices/catalogo", include_in_schema=False)
 async def api_vortices_catalogo():
     """Catálogo de puntos vórtice para terapia biomagnética avanzada."""
-    import json
+    from fastapi.responses import Response
     p = THERAPY_STATIC_DIR.parent.parent / "data" / "vortices_db.json"
     if not p.exists():
         from fastapi import HTTPException
         raise HTTPException(status_code=404, detail="Catálogo de vórtices no encontrado")
-    return JSONResponse(content=json.loads(p.read_text(encoding="utf-8")))
+    return Response(
+        content=p.read_bytes(),
+        media_type="application/json",
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
 
 
 @app.get("/api/pares/catalogo", include_in_schema=False)
 async def api_pares_catalogo():
     """Catálogo de pares biomagnéticos del Motor HoloacademIA."""
-    import json
+    from fastapi.responses import Response
     p = THERAPY_STATIC_DIR.parent.parent / "data" / "pares_biomagneticos.json"
     if not p.exists():
         from fastapi import HTTPException
         raise HTTPException(status_code=404, detail="Catálogo de pares no encontrado")
-    return JSONResponse(content=json.loads(p.read_text(encoding="utf-8")))
+    return Response(
+        content=p.read_bytes(),
+        media_type="application/json",
+        headers={"Cache-Control": "public, max-age=3600"},
+    )
 
 
 @app.get("/guia-clinica", include_in_schema=False)
