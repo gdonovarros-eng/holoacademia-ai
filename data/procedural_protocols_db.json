@@ -3043,6 +3043,28 @@
       "instruccion_ms": "MS: '¿Hay algún vórtice activo que necesite equilibrarse en esta sesión?' → SÍ/NO. Si SÍ: '¿Es positivo o negativo?' Luego localizar el punto específico con TM."
     },
     {
+      "id": "gestion_casos",
+      "nombre": "Gestión de Casos",
+      "aliases": [
+        "casos",
+        "pacientes",
+        "caso",
+        "gestión de pacientes",
+        "historial de casos"
+      ],
+      "categoria": "sesion",
+      "render_tipo": "gestion_casos",
+      "objetivo": "Administrar el historial clínico de pacientes: crear casos, registrar notas por sesión, consultar historial y finalizar casos. Almacenamiento local en el navegador.",
+      "cuando_usarlo": [
+        "Al iniciar una nueva sesión con un paciente",
+        "Para registrar notas y pares aplicados durante la sesión",
+        "Para consultar el historial terapéutico de un paciente",
+        "Para llevar seguimiento de la evolución del caso"
+      ],
+      "prerequisitos": [],
+      "instruccion_ms": ""
+    },
+    {
       "id": "rastreo_alveolar",
       "nombre": "Protocolo Especializado de Alvéolos Pulmonares",
       "aliases": [

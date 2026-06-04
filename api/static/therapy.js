@@ -2058,6 +2058,374 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Gestión de Casos ──────────────────────────────────────────────────────
+const CASOS_DB_KEY = "holo_casos_db";
+
+function casosDb() {
+  try {
+    const raw = localStorage.getItem(CASOS_DB_KEY);
+    return raw ? JSON.parse(raw) : { pacientes: [], casos: [] };
+  } catch { return { pacientes: [], casos: [] }; }
+}
+
+function casosDbSave(db) {
+  localStorage.setItem(CASOS_DB_KEY, JSON.stringify(db));
+}
+
+function casosUUID() {
+  return "c" + Math.random().toString(36).slice(2, 10) + Date.now().toString(36);
+}
+
+function casosFechaCorta(iso) {
+  if (!iso) return "";
+  const d = new Date(iso);
+  return isNaN(d) ? iso : d.toLocaleDateString("es-MX", { day: "2-digit", month: "short", year: "numeric" });
+}
+
+function renderGestionCasos(p, content) {
+  const st = {
+    phase: "dashboard",   // "dashboard" | "form" | "historial" | "detalle"
+    editPacId: null,      // editing existing patient
+    detalleCasoId: null,  // viewing case detail
+    busqueda: "",
+  };
+
+  function render() {
+    if (st.phase === "dashboard") renderDashboard();
+    else if (st.phase === "form") renderForm();
+    else if (st.phase === "historial") renderHistorial();
+    else if (st.phase === "detalle") renderDetalle();
+  }
+
+  // ── Dashboard ─────────────────────────────────────────────────────────────
+  function renderDashboard() {
+    const db = casosDb();
+    const activos = db.casos.filter((c) => c.estatus === "activo");
+    const totalPac = db.pacientes.length;
+
+    const activosHtml = activos.length === 0
+      ? `<p class="casos-empty">No hay casos activos. Crea el primer caso con el botón de arriba.</p>`
+      : activos.map((caso) => {
+          const pac = db.pacientes.find((p) => p.id === caso.paciente_id) || {};
+          const sesiones = (caso.sesiones || []).length;
+          return `<div class="casos-card" data-cid="${caso.id}">
+            <div class="casos-card-info">
+              <div class="casos-card-nombre">${escapeHtml(pac.nombre || "")} ${escapeHtml(pac.apellidos || "")}</div>
+              <div class="casos-card-meta">
+                <span>📅 Abierto: ${casosFechaCorta(caso.fecha_inicio)}</span>
+                <span>📋 ${sesiones} sesión${sesiones !== 1 ? "es" : ""}</span>
+              </div>
+              ${pac.email ? `<div class="casos-card-email">${escapeHtml(pac.email)}</div>` : ""}
+            </div>
+            <div class="casos-card-actions">
+              <button class="wizard-nav-btn casos-btn-continuar" data-cid="${caso.id}">▶ Continuar</button>
+              <button class="wizard-nav-btn casos-btn-notas" data-cid="${caso.id}">📝 Notas</button>
+              <button class="wizard-nav-btn casos-btn-editar" data-pid="${pac.id}">✏ Editar</button>
+              <button class="wizard-nav-btn wizard-reiniciar casos-btn-finalizar" data-cid="${caso.id}">✓ Finalizar</button>
+            </div>
+          </div>`;
+        }).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap casos-wrap">
+        <div class="casos-header">
+          <div class="casos-stats">
+            <span class="casos-stat"><strong>${totalPac}</strong> pacientes</span>
+            <span class="casos-stat"><strong>${activos.length}</strong> activos</span>
+            <span class="casos-stat"><strong>${db.casos.filter(c => c.estatus === "finalizado").length}</strong> finalizados</span>
+          </div>
+          <div class="casos-header-btns">
+            <button class="wizard-nav-btn casos-btn-hist" id="casos-go-hist">📖 Historial</button>
+            <button class="wizard-nav-btn vort-ia-btn" id="casos-nuevo">+ Nuevo caso</button>
+          </div>
+        </div>
+        <h3 class="casos-section-title">Casos activos</h3>
+        <div class="casos-activos-list">${activosHtml}</div>
+      </div>`;
+
+    content.querySelector("#casos-nuevo")?.addEventListener("click", () => {
+      st.phase = "form"; st.editPacId = null; render();
+    });
+    content.querySelector("#casos-go-hist")?.addEventListener("click", () => {
+      st.phase = "historial"; render();
+    });
+    content.querySelectorAll(".casos-btn-continuar").forEach((btn) => {
+      btn.addEventListener("click", () => { st.detalleCasoId = btn.dataset.cid; st.phase = "detalle"; render(); });
+    });
+    content.querySelectorAll(".casos-btn-notas").forEach((btn) => {
+      btn.addEventListener("click", () => { st.detalleCasoId = btn.dataset.cid; st.phase = "detalle"; render(); });
+    });
+    content.querySelectorAll(".casos-btn-editar").forEach((btn) => {
+      btn.addEventListener("click", () => { st.editPacId = btn.dataset.pid; st.phase = "form"; render(); });
+    });
+    content.querySelectorAll(".casos-btn-finalizar").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const db = casosDb();
+        const caso = db.casos.find((c) => c.id === btn.dataset.cid);
+        if (caso) { caso.estatus = "finalizado"; caso.fecha_fin = new Date().toISOString(); casosDbSave(db); render(); }
+      });
+    });
+  }
+
+  // ── Formulario nuevo/editar paciente ──────────────────────────────────────
+  function renderForm() {
+    const db = casosDb();
+    const pac = st.editPacId ? db.pacientes.find((p) => p.id === st.editPacId) : null;
+    const titulo = pac ? "Editar paciente" : "Nuevo caso";
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap casos-wrap">
+        <h3 class="casos-section-title">${titulo}</h3>
+        <div class="casos-form">
+          <div class="casos-form-row">
+            <div class="casos-form-group">
+              <label class="casos-label">Nombre(s) *</label>
+              <input class="casos-input" id="cf-nombre" value="${escapeHtml(pac?.nombre || "")}" placeholder="Nombre(s)">
+            </div>
+            <div class="casos-form-group">
+              <label class="casos-label">Apellidos *</label>
+              <input class="casos-input" id="cf-apellidos" value="${escapeHtml(pac?.apellidos || "")}" placeholder="Apellidos">
+            </div>
+          </div>
+          <div class="casos-form-row">
+            <div class="casos-form-group">
+              <label class="casos-label">Fecha de nacimiento</label>
+              <input class="casos-input" id="cf-fecha-nac" type="date" value="${pac?.fecha_nacimiento || ""}">
+            </div>
+            <div class="casos-form-group">
+              <label class="casos-label">Sexo</label>
+              <select class="casos-input" id="cf-sexo">
+                <option value="F" ${pac?.sexo === "F" ? "selected" : ""}>Femenino</option>
+                <option value="M" ${pac?.sexo === "M" ? "selected" : ""}>Masculino</option>
+                <option value="O" ${pac?.sexo === "O" ? "selected" : ""}>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="casos-form-row">
+            <div class="casos-form-group">
+              <label class="casos-label">Celular</label>
+              <input class="casos-input" id="cf-celular" value="${escapeHtml(pac?.celular || "")}" placeholder="10 dígitos">
+            </div>
+            <div class="casos-form-group">
+              <label class="casos-label">Email</label>
+              <input class="casos-input" id="cf-email" type="email" value="${escapeHtml(pac?.email || "")}" placeholder="correo@ejemplo.com">
+            </div>
+          </div>
+          <div class="casos-form-row">
+            <div class="casos-form-group">
+              <label class="casos-label">¿Tiene amalgamas?</label>
+              <select class="casos-input" id="cf-amalgama">
+                <option value="N" ${pac?.amalgama !== "S" ? "selected" : ""}>Sin amalgamas</option>
+                <option value="S" ${pac?.amalgama === "S" ? "selected" : ""}>Con amalgamas</option>
+              </select>
+            </div>
+            <div class="casos-form-group">
+              <label class="casos-label">Referenciado por</label>
+              <input class="casos-input" id="cf-referenciado" value="${escapeHtml(pac?.referenciado || "")}" placeholder="Nombre de quien lo refirió">
+            </div>
+          </div>
+          <div class="casos-form-group" style="margin-top:8px">
+            <label class="casos-label">Motivo de consulta / Observaciones</label>
+            <textarea class="vort-ia-textarea" id="cf-observaciones" placeholder="Motivo principal, síntomas, antecedentes relevantes...">${escapeHtml(pac?.observaciones || "")}</textarea>
+          </div>
+          <div id="casos-form-error" class="casos-form-error" style="display:none"></div>
+          <div class="wizard-nav" style="margin-top:16px">
+            <button class="wizard-nav-btn" id="cf-cancelar">← Cancelar</button>
+            <button class="wizard-nav-btn vort-ia-btn" id="cf-guardar">💾 ${pac ? "Guardar cambios" : "Crear caso"}</button>
+          </div>
+        </div>
+      </div>`;
+
+    content.querySelector("#cf-cancelar")?.addEventListener("click", () => { st.phase = "dashboard"; render(); });
+    content.querySelector("#cf-guardar")?.addEventListener("click", () => {
+      const nombre = content.querySelector("#cf-nombre")?.value.trim();
+      const apellidos = content.querySelector("#cf-apellidos")?.value.trim();
+      const errEl = content.querySelector("#casos-form-error");
+      if (!nombre || !apellidos) {
+        errEl.textContent = "Nombre y apellidos son obligatorios."; errEl.style.display = "block"; return;
+      }
+      const db = casosDb();
+      const now = new Date().toISOString();
+      if (pac) {
+        const existing = db.pacientes.find((p) => p.id === pac.id);
+        if (existing) {
+          Object.assign(existing, {
+            nombre, apellidos,
+            fecha_nacimiento: content.querySelector("#cf-fecha-nac")?.value || "",
+            sexo: content.querySelector("#cf-sexo")?.value || "F",
+            celular: content.querySelector("#cf-celular")?.value.trim() || "",
+            email: content.querySelector("#cf-email")?.value.trim() || "",
+            amalgama: content.querySelector("#cf-amalgama")?.value || "N",
+            referenciado: content.querySelector("#cf-referenciado")?.value.trim() || "",
+            observaciones: content.querySelector("#cf-observaciones")?.value.trim() || "",
+            fecha_modificacion: now,
+          });
+        }
+      } else {
+        const pacId = casosUUID();
+        db.pacientes.push({
+          id: pacId, nombre, apellidos,
+          fecha_nacimiento: content.querySelector("#cf-fecha-nac")?.value || "",
+          sexo: content.querySelector("#cf-sexo")?.value || "F",
+          celular: content.querySelector("#cf-celular")?.value.trim() || "",
+          email: content.querySelector("#cf-email")?.value.trim() || "",
+          amalgama: content.querySelector("#cf-amalgama")?.value || "N",
+          referenciado: content.querySelector("#cf-referenciado")?.value.trim() || "",
+          observaciones: content.querySelector("#cf-observaciones")?.value.trim() || "",
+          fecha_alta: now,
+        });
+        db.casos.push({ id: casosUUID(), paciente_id: pacId, estatus: "activo", fecha_inicio: now, fecha_fin: null, sesiones: [] });
+      }
+      casosDbSave(db);
+      st.phase = "dashboard"; st.editPacId = null; render();
+    });
+  }
+
+  // ── Detalle de caso + notas de sesión ─────────────────────────────────────
+  function renderDetalle() {
+    const db = casosDb();
+    const caso = db.casos.find((c) => c.id === st.detalleCasoId);
+    if (!caso) { st.phase = "dashboard"; render(); return; }
+    const pac = db.pacientes.find((p) => p.id === caso.paciente_id) || {};
+    const sesiones = caso.sesiones || [];
+
+    const sesionesHtml = sesiones.length === 0
+      ? `<p class="casos-empty">Sin notas de sesión aún.</p>`
+      : sesiones.slice().reverse().map((s) => `
+          <div class="casos-sesion-row">
+            <div class="casos-sesion-fecha">${casosFechaCorta(s.fecha)}</div>
+            <div class="casos-sesion-tipo">${escapeHtml(s.tipo || "General")}</div>
+            <div class="casos-sesion-nota">${escapeHtml(s.nota || "")}</div>
+          </div>`).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap casos-wrap">
+        <div class="casos-detalle-header">
+          <div>
+            <div class="casos-card-nombre">${escapeHtml(pac.nombre || "")} ${escapeHtml(pac.apellidos || "")}</div>
+            <div class="casos-card-meta">
+              <span>📅 Inicio: ${casosFechaCorta(caso.fecha_inicio)}</span>
+              ${pac.fecha_nacimiento ? `<span>🎂 ${casosFechaCorta(pac.fecha_nacimiento)}</span>` : ""}
+              ${pac.celular ? `<span>📱 ${escapeHtml(pac.celular)}</span>` : ""}
+              ${pac.amalgama === "S" ? `<span class="casos-amalgama-tag">⚠ Amalgamas</span>` : ""}
+            </div>
+            ${pac.observaciones ? `<div class="casos-det-obs">${escapeHtml(pac.observaciones)}</div>` : ""}
+          </div>
+        </div>
+
+        <h4 class="casos-section-title" style="margin-top:16px">Agregar nota de sesión</h4>
+        <div class="casos-form-row">
+          <div class="casos-form-group" style="flex:1">
+            <select class="casos-input" id="det-tipo">
+              <option value="Biomagnético">Biomagnético</option>
+              <option value="Emocional">Emocional</option>
+              <option value="Vórtices">Vórtices</option>
+              <option value="EFT">EFT</option>
+              <option value="Numerología">Numerología</option>
+              <option value="Astrología">Astrología</option>
+              <option value="General">General</option>
+            </select>
+          </div>
+        </div>
+        <textarea class="vort-ia-textarea" id="det-nota" placeholder="Pares aplicados, vórtices trabajados, emociones liberadas, observaciones del paciente..." style="min-height:80px"></textarea>
+        <div class="wizard-nav" style="margin-top:8px">
+          <button class="wizard-nav-btn vort-ia-btn" id="det-guardar-nota">💾 Guardar nota</button>
+          <button class="wizard-nav-btn vort-ia-btn" id="det-ia-resumen">🧠 Resumen con Motor IA</button>
+        </div>
+        <div id="det-ia-out"></div>
+
+        <h4 class="casos-section-title" style="margin-top:20px">Historial de sesiones (${sesiones.length})</h4>
+        <div class="casos-sesiones-list">${sesionesHtml}</div>
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn" id="det-back">← Volver</button>
+          <button class="wizard-nav-btn wizard-reiniciar" id="det-finalizar">✓ Finalizar caso</button>
+        </div>
+      </div>`;
+
+    content.querySelector("#det-guardar-nota")?.addEventListener("click", () => {
+      const nota = content.querySelector("#det-nota")?.value.trim();
+      if (!nota) return;
+      const tipo = content.querySelector("#det-tipo")?.value || "General";
+      const db = casosDb();
+      const c = db.casos.find((x) => x.id === st.detalleCasoId);
+      if (c) {
+        if (!c.sesiones) c.sesiones = [];
+        c.sesiones.push({ id: casosUUID(), fecha: new Date().toISOString(), tipo, nota });
+        casosDbSave(db);
+        render();
+      }
+    });
+    content.querySelector("#det-ia-resumen")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#det-ia-out");
+      if (!outEl) return;
+      const db = casosDb();
+      const c = db.casos.find((x) => x.id === st.detalleCasoId);
+      const p2 = db.pacientes.find((x) => x.id === c?.paciente_id) || {};
+      const sesStr = (c?.sesiones || []).map((s) => `- [${s.tipo}] ${casosFechaCorta(s.fecha)}: ${s.nota}`).join("\n") || "Sin sesiones registradas.";
+      const query = `Analiza el historial de un paciente de terapia holística:\n\nPaciente: ${p2.nombre} ${p2.apellidos}\nMotivo de consulta: ${p2.observaciones || "No especificado"}\n${p2.amalgama === "S" ? "⚠ Tiene amalgamas dentales.\n" : ""}\nSesiones registradas:\n${sesStr}\n\nDesde la perspectiva holística: ¿Qué patrones emergen en el historial? ¿Qué avances se observan? ¿Qué áreas requieren más trabajo? ¿Qué recomiendas para la próxima sesión? Da un análisis clínico orientado al terapeuta.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+    content.querySelector("#det-back")?.addEventListener("click", () => { st.phase = "dashboard"; render(); });
+    content.querySelector("#det-finalizar")?.addEventListener("click", () => {
+      const db = casosDb();
+      const c = db.casos.find((x) => x.id === st.detalleCasoId);
+      if (c) { c.estatus = "finalizado"; c.fecha_fin = new Date().toISOString(); casosDbSave(db); }
+      st.phase = "dashboard"; render();
+    });
+  }
+
+  // ── Historial ─────────────────────────────────────────────────────────────
+  function renderHistorial() {
+    const db = casosDb();
+    const finalizados = db.casos.filter((c) => c.estatus === "finalizado");
+
+    const filtrados = finalizados.filter((c) => {
+      if (!st.busqueda) return true;
+      const pac = db.pacientes.find((p) => p.id === c.paciente_id) || {};
+      const nombre = `${pac.nombre} ${pac.apellidos}`.toLowerCase();
+      return nombre.includes(st.busqueda.toLowerCase());
+    });
+
+    const histHtml = filtrados.length === 0
+      ? `<p class="casos-empty">No se encontraron casos finalizados.</p>`
+      : filtrados.slice().sort((a, b) => new Date(b.fecha_fin) - new Date(a.fecha_fin)).map((caso) => {
+          const pac = db.pacientes.find((p) => p.id === caso.paciente_id) || {};
+          const sesiones = (caso.sesiones || []).length;
+          return `<div class="casos-hist-row" data-cid="${caso.id}">
+            <div class="casos-hist-nombre">${escapeHtml(pac.nombre || "")} ${escapeHtml(pac.apellidos || "")}</div>
+            <div class="casos-card-meta">
+              <span>📅 ${casosFechaCorta(caso.fecha_inicio)} → ${casosFechaCorta(caso.fecha_fin)}</span>
+              <span>📋 ${sesiones} sesión${sesiones !== 1 ? "es" : ""}</span>
+            </div>
+            <button class="wizard-nav-btn casos-hist-ver" data-cid="${caso.id}">Ver detalle</button>
+          </div>`;
+        }).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap casos-wrap">
+        <div class="casos-header">
+          <h3 class="casos-section-title" style="margin:0">Historial de casos</h3>
+          <button class="wizard-nav-btn" id="hist-back">← Volver</button>
+        </div>
+        <input class="casos-input" id="hist-buscar" placeholder="Buscar por nombre..." value="${escapeHtml(st.busqueda)}" style="margin:12px 0">
+        <div class="casos-hist-list">${histHtml}</div>
+      </div>`;
+
+    content.querySelector("#hist-back")?.addEventListener("click", () => { st.phase = "dashboard"; render(); });
+    content.querySelector("#hist-buscar")?.addEventListener("input", (e) => { st.busqueda = e.target.value; renderHistorial(); });
+    content.querySelectorAll(".casos-hist-ver").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        // Reactivate temporarily for viewing
+        const db = casosDb(); const c = db.casos.find((x) => x.id === btn.dataset.cid);
+        if (c) { const prev = c.estatus; c.estatus = "activo"; casosDbSave(db); st.detalleCasoId = btn.dataset.cid; st.phase = "detalle"; render(); }
+      });
+    });
+  }
+
+  render();
+}
+
 // ─── Terapia de Vórtices ────────────────────────────────────────────────────
 function renderTerapiaVortices(p, content) {
   const cache = { data: null };
@@ -2355,6 +2723,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "gestion_casos") {
+      renderGestionCasos(p, content);
     } else if (p.render_tipo === "terapia_vortices") {
       renderTerapiaVortices(p, content);
     } else if (p.render_tipo === "rastreos_avanzados") {
