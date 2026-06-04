@@ -2058,6 +2058,166 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Diario Lunar ───────────────────────────────────────────────────────────
+const LUNA_TERAPEUTICA = {
+  nueva: {
+    titulo: "Luna Nueva — Siembra e Intención",
+    descripcion: "La Luna Nueva marca el inicio de un ciclo. Es el momento ideal para establecer intenciones, iniciar procesos terapéuticos, y sembrar los programas nuevos que el paciente quiere activar. La energía apoya la apertura y la receptividad.",
+    trabajo: ["Instalar nuevas creencias positivas", "Establecer metas terapéuticas del ciclo", "Iniciar protocolos de liberación profunda", "Trabajar programas transgeneracionales de inicio"],
+    evitar: ["Trabajo de cierre o finalización", "Protocolos de separación o corte"],
+    color: "#1a0a2e",
+    colorAccent: "#7c3aed",
+  },
+  creciente: {
+    titulo: "Luna Creciente — Activación y Crecimiento",
+    descripcion: "La energía lunar está en expansión. El sistema energético del paciente está en modo receptivo y de crecimiento. Los tratamientos tienen mayor potencia de activación. Ideal para reforzar recursos y capacidades positivas.",
+    trabajo: ["Activar recursos internos del paciente", "Reforzar pares positivos y de protección", "Trabajar el fortalecimiento del sistema inmune", "Técnicas de expansión de conciencia"],
+    evitar: ["Protocolos de eliminación o depuración intensa"],
+    color: "#0f1a2e",
+    colorAccent: "#2563eb",
+  },
+  gibosa_crec: {
+    titulo: "Gibosa Creciente — Refinamiento",
+    descripcion: "Fase de ajuste y perfeccionamiento. La energía está casi en su plenitud. El trabajo terapéutico puede ser más detallado y preciso. Momento de evaluar avances del ciclo.",
+    trabajo: ["Rastreo fino de pares residuales", "Evaluación de avance terapéutico del ciclo", "Trabajo de ajuste energético y bioenergético"],
+    evitar: [],
+    color: "#0f1a35",
+    colorAccent: "#1d4ed8",
+  },
+  llena: {
+    titulo: "Luna Llena — Manifestación y Revelación",
+    descripcion: "La Luna Llena es el momento de mayor intensidad energética. El campo bioenergético del paciente está en su punto más expandido. Los conflictos emocionales pueden emerger espontáneamente. Excelente momento para trabajo de revelación y manifestación.",
+    trabajo: ["Sesiones de biodecodificación profunda", "Trabajo con emociones atrapadas intensas", "Protocolos de resolución de conflictos", "Revelación de patrones ocultos transgeneracionales"],
+    evitar: ["Sesiones con pacientes altamente sensibles sin preparación previa"],
+    color: "#1a1500",
+    colorAccent: "#ca8a04",
+  },
+  menguante: {
+    titulo: "Luna Llena Menguante — Gratitud y Entrega",
+    descripcion: "La energía comienza a retroceder después de la plenitud. Momento de integrar lo recibido y entregar lo que ya no se necesita. Ideal para cierres terapéuticos parciales.",
+    trabajo: ["Integración de sesiones anteriores", "Rituales de cierre y gratitud", "Protocolos de depuración energética", "Trabajo con patrones de apego y entrega"],
+    evitar: [],
+    color: "#1a1000",
+    colorAccent: "#b45309",
+  },
+  cuarto_men: {
+    titulo: "Cuarto Menguante — Liberación",
+    descripcion: "La Luna decrece hacia su mínimo. Es el momento más poderoso para soltar, limpiar y liberar. Los protocolos de eliminación de patrones, miasmas y programas negativos tienen su mayor eficacia.",
+    trabajo: ["Liberación de miasmas y nudos psóricos", "Protocolos de eliminación de cuerdas energéticas", "Trabajo con intencionalidades negativas", "Liberación de maldiciones y mal de ojo", "EFT de liberación profunda"],
+    evitar: ["Instalación de nuevos programas (esperar Luna Nueva)"],
+    color: "#1a0f00",
+    colorAccent: "#92400e",
+  },
+  balsamica: {
+    titulo: "Luna Balsámica — Descanso y Preparación",
+    descripcion: "Los últimos días del ciclo lunar. La energía es introspectiva y de rendición. Momento de descanso, reflexión y preparación para el nuevo ciclo. Sesiones suaves y de contención.",
+    trabajo: ["Sesiones de apoyo emocional suave", "Trabajo de rendición y aceptación", "Preparación para el próximo ciclo terapéutico", "Meditación y centrado"],
+    evitar: ["Protocolos intensos de activación o liberación"],
+    color: "#120a1e",
+    colorAccent: "#6d28d9",
+  },
+};
+
+const ELEMENTO_INFO = {
+  fuego: { desc: "La Luna en signo de Fuego potencia la energía vital, la voluntad y la motivación. El paciente puede mostrar mayor determinación y apertura.", icono: "🔥" },
+  tierra: { desc: "Luna en signo de Tierra ancla el trabajo terapéutico al plano físico. Excelente para protocolos relacionados con el cuerpo, la nutrición y la seguridad material.", icono: "🌍" },
+  aire: { desc: "Luna en signo de Aire favorece la comprensión mental y la comunicación. El paciente puede integrar mejor las revelaciones y verbalizar sus procesos.", icono: "💨" },
+  agua: { desc: "Luna en signo de Agua intensifica la sensibilidad emocional. Sesiones de alta resonancia emocional. Ideal para trabajo transgeneracional y emociones atrapadas.", icono: "💧" },
+};
+
+function renderDiarioLunar(p, content) {
+  content.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Consultando posición lunar actual...</span></div>`;
+
+  async function init() {
+    let luna = null;
+    try {
+      const res = await fetch("/astro/luna/hoy");
+      if (res.ok) luna = await res.json();
+    } catch { /* fallback below */ }
+
+    if (!luna) {
+      content.innerHTML = `<div class="rastreo-tabla-wrap"><p class="status error">No se pudo obtener datos lunares. El servidor de efemérides no está disponible.</p></div>`;
+      return;
+    }
+
+    renderLuna(luna);
+  }
+
+  function renderLuna(luna) {
+    const fase = luna.fase;
+    const lunaData = luna.luna;
+    const tera = LUNA_TERAPEUTICA[fase.id] || LUNA_TERAPEUTICA.nueva;
+    const elem = ELEMENTO_INFO[lunaData.elemento] || ELEMENTO_INFO.agua;
+
+    const ilumPct = fase.iluminacion;
+    const ilumColor = ilumPct > 80 ? "#ca8a04" : ilumPct > 40 ? "#2563eb" : "#7c3aed";
+
+    const trabajoHtml = tera.trabajo.map((t) => `<li>${escapeHtml(t)}</li>`).join("");
+    const evitarHtml = tera.evitar.length > 0
+      ? `<div class="luna-evitar-section">
+          <div class="luna-sec-label">⚠ Energía menos afín hoy</div>
+          <ul class="luna-lista">${tera.evitar.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>
+        </div>` : "";
+
+    const proximosHtml = [];
+    if (luna.proximos.dias_luna_llena) proximosHtml.push(`🌕 Luna Llena en ~${luna.proximos.dias_luna_llena} días`);
+    if (luna.proximos.dias_luna_nueva) proximosHtml.push(`🌑 Luna Nueva en ~${luna.proximos.dias_luna_nueva} días`);
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap luna-wrap">
+        <div class="luna-header" style="background:linear-gradient(135deg,${tera.color},#100922)">
+          <div class="luna-emoji">${fase.emoji}</div>
+          <div class="luna-fase-info">
+            <div class="luna-fecha">${escapeHtml(luna.fecha)}</div>
+            <div class="luna-fase-nombre" style="color:${tera.colorAccent}">${escapeHtml(fase.nombre)}</div>
+            <div class="luna-signo">🌙 Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${elem.icono} ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
+            <div class="luna-sol">☀ Sol en <strong>${escapeHtml(luna.sol.signo)}</strong></div>
+          </div>
+          <div class="luna-ilum-wrap">
+            <div class="luna-ilum-ring" style="--pct:${ilumPct};--color:${ilumColor}">
+              <span class="luna-ilum-value">${ilumPct}%</span>
+            </div>
+            <div class="luna-ilum-label">Iluminación</div>
+          </div>
+        </div>
+
+        <div class="luna-keyword-bar" style="background:${tera.colorAccent}20;border-color:${tera.colorAccent}40;color:${tera.colorAccent}">
+          ${escapeHtml(fase.keyword)}
+        </div>
+
+        <div class="luna-desc">${escapeHtml(tera.descripcion)}</div>
+
+        <div class="luna-elem-box">
+          <span class="luna-elem-icono">${elem.icono}</span>
+          <span>${escapeHtml(elem.desc)}</span>
+        </div>
+
+        <div class="luna-trabajo-section">
+          <div class="luna-sec-label">✅ Trabajo terapéutico afín hoy</div>
+          <ul class="luna-lista">${trabajoHtml}</ul>
+        </div>
+
+        ${evitarHtml}
+
+        ${proximosHtml.length > 0 ? `<div class="luna-proximos">${proximosHtml.map(t=>`<span>${t}</span>`).join("")}</div>` : ""}
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn vort-ia-btn" id="luna-ia-btn">🧠 Orientación terapéutica completa del Motor</button>
+        </div>
+        <div id="luna-ia-out"></div>
+      </div>`;
+
+    content.querySelector("#luna-ia-btn")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#luna-ia-out");
+      if (!outEl) return;
+      const query = `Hoy es ${luna.fecha}. La fase lunar es: ${fase.nombre} (${fase.emoji}), con Luna en ${lunaData.signo} (elemento ${lunaData.elemento}, modalidad ${lunaData.modalidad}), Sol en ${luna.sol.signo}. La iluminación lunar es del ${ilumPct}%.\n\nComo Motor Terapéutico de HoloacademIA, proporciona:\n1. Cómo esta configuración lunar específica (signo, elemento, fase) afecta el campo bioenergético del consultante\n2. Qué tipos de conflictos o síntomas pueden activarse o intensificarse hoy\n3. Qué protocolos terapéuticos (biomagnetismo, EFT, transgeneracional, emocional) son más potentes en esta fase\n4. Una recomendación concreta para el terapeuta sobre cómo estructurar las sesiones de hoy\n5. Qué le puedes recomendar al paciente para potenciar su proceso en casa\n\nSé específico y orientado a la práctica clínica.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+  }
+
+  init();
+}
+
 // ─── Catálogo Biomagnético ──────────────────────────────────────────────────
 function renderCatalogoBiomagnetico(p, content) {
   const cache = { data: null };
@@ -3151,6 +3311,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "diario_lunar") {
+      renderDiarioLunar(p, content);
     } else if (p.render_tipo === "catalogo_biomagnetico") {
       renderCatalogoBiomagnetico(p, content);
     } else if (p.render_tipo === "rastreo_sintoma") {

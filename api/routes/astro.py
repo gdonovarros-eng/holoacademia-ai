@@ -1502,3 +1502,93 @@ async def salud_stream(payload: SaludRequest):
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+# ─── Diario Lunar — fase actual en tiempo real ────────────────────────────────
+
+@router.get("/luna/hoy", include_in_schema=False)
+async def luna_hoy():
+    """Devuelve la fase lunar actual con datos astronómicos reales."""
+    from datetime import datetime, timezone
+    try:
+        import swisseph as swe
+    except ImportError:
+        raise HTTPException(status_code=503, detail="Swiss Ephemeris no disponible")
+
+    now = datetime.now(timezone.utc)
+    jd = swe.julday(now.year, now.month, now.day, now.hour + now.minute / 60.0)
+
+    sun_pos, _ = swe.calc_ut(jd, swe.SUN)
+    moon_pos, _ = swe.calc_ut(jd, swe.MOON)
+
+    sun_lon = sun_pos[0]
+    moon_lon = moon_pos[0]
+    phase_angle = (moon_lon - sun_lon) % 360
+    illumination = round((1 - abs(180 - phase_angle) / 180) * 100, 1)
+
+    SIGNS = ["Aries","Tauro","Géminis","Cáncer","Leo","Virgo",
+             "Libra","Escorpio","Sagitario","Capricornio","Acuario","Piscis"]
+    SIGNS_EN = ["aries","tauro","geminis","cancer","leo","virgo",
+                "libra","escorpio","sagitario","capricornio","acuario","piscis"]
+    ELEMENTS = ["fuego","tierra","aire","agua","fuego","tierra",
+                "aire","agua","fuego","tierra","aire","agua"]
+    MODALITIES = ["cardinal","fijo","mutable","cardinal","fijo","mutable",
+                  "cardinal","fijo","mutable","cardinal","fijo","mutable"]
+
+    moon_sign_idx = int(moon_lon / 30)
+    sun_sign_idx  = int(sun_lon / 30)
+
+    # Phase determination
+    phases = [
+        (0,   45,  "Luna Nueva",             "nueva",       "🌑", "Siembra, intención, inicio"),
+        (45,  90,  "Cuarto Creciente",        "creciente",   "🌒", "Acción, crecimiento, impulso"),
+        (90,  135, "Gibosa Creciente",        "gibosa_crec", "🌓", "Refinamiento, ajuste, desarrollo"),
+        (135, 180, "Gibosa Creciente Plena",  "gibosa_crec", "🌔", "Acumulación, expansión, abundancia"),
+        (180, 225, "Luna Llena",              "llena",       "🌕", "Manifestación, revelación, cosecha"),
+        (225, 270, "Gibosa Menguante",        "menguante",   "🌖", "Gratitud, compartir, entrega"),
+        (270, 315, "Cuarto Menguante",        "cuarto_men",  "🌗", "Liberación, integración, soltar"),
+        (315, 360, "Luna Balsámica",          "balsamica",   "🌘", "Descanso, rendición, preparación"),
+    ]
+
+    phase_data = phases[-1]
+    for p_min, p_max, nombre, id_, emoji, keyword in phases:
+        if p_min <= phase_angle < p_max:
+            phase_data = (p_min, p_max, nombre, id_, emoji, keyword)
+            break
+
+    _, _, phase_nombre, phase_id, phase_emoji, phase_keyword = phase_data
+
+    # Next new and full moon (approximate)
+    remaining_to_full  = (180 - phase_angle) % 360
+    remaining_to_new   = (360 - phase_angle) % 360
+    days_to_full = round(remaining_to_full / (360 / 29.5), 1)
+    days_to_new  = round(remaining_to_new  / (360 / 29.5), 1)
+
+    return JSONResponse(content={
+        "fecha": now.strftime("%Y-%m-%d"),
+        "hora_utc": now.strftime("%H:%M"),
+        "luna": {
+            "longitud": round(moon_lon, 2),
+            "signo": SIGNS[moon_sign_idx],
+            "signo_id": SIGNS_EN[moon_sign_idx],
+            "elemento": ELEMENTS[moon_sign_idx],
+            "modalidad": MODALITIES[moon_sign_idx],
+            "grado": round(moon_lon % 30, 1),
+        },
+        "sol": {
+            "longitud": round(sun_lon, 2),
+            "signo": SIGNS[sun_sign_idx],
+            "elemento": ELEMENTS[sun_sign_idx],
+        },
+        "fase": {
+            "angulo": round(phase_angle, 1),
+            "iluminacion": illumination,
+            "nombre": phase_nombre,
+            "id": phase_id,
+            "emoji": phase_emoji,
+            "keyword": phase_keyword,
+        },
+        "proximos": {
+            "dias_luna_llena": days_to_full if days_to_full > 0.5 else None,
+            "dias_luna_nueva": days_to_new if days_to_new > 0.5 else None,
+        }
+    })

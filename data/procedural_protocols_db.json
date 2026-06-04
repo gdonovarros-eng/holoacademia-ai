@@ -3120,6 +3120,30 @@
       "instruccion_ms": "MS: '¿Hay algún par de esta categoría activo?' → SÍ/NO. Luego afinar dentro de la categoría."
     },
     {
+      "id": "diario_lunar",
+      "nombre": "Diario Lunar",
+      "aliases": [
+        "luna",
+        "lunar",
+        "fase lunar",
+        "luna nueva",
+        "luna llena",
+        "luna menguante",
+        "luna creciente",
+        "calendario lunar"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "diario_lunar",
+      "objetivo": "Consultar la fase lunar actual en tiempo real con datos astronómicos reales. Orienta al terapeuta sobre el tipo de trabajo energético más afín al momento lunar: siembra, crecimiento, manifestación o liberación.",
+      "cuando_usarlo": [
+        "Al inicio de la sesión para contextualizar el trabajo terapéutico",
+        "Para decidir el tipo de intervención según la energía lunar del día",
+        "En protocolos que incluyan trabajo energético, EFT o liberación emocional",
+        "Para recomendar al paciente momentos óptimos para su proceso de sanación"
+      ],
+      "instruccion_ms": "La fase lunar orienta el tipo de trabajo: Luna Nueva → intención y siembra; Creciente → activación y crecimiento; Llena → manifestación y revelación; Menguante → liberación y soltar."
+    },
+    {
       "id": "rastreo_alveolar",
       "nombre": "Protocolo Especializado de Alvéolos Pulmonares",
       "aliases": [

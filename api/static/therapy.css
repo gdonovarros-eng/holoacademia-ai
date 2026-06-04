@@ -3276,3 +3276,161 @@ textarea {
   .catbio-punto { min-width: 100%; }
   .catbio-punto-arrow { transform: rotate(90deg); }
 }
+
+/* ─── Diario Lunar ───────────────────────────────────────────────────────────── */
+
+.luna-wrap { padding: 0; }
+
+.luna-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 22px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.luna-emoji { font-size: 48px; flex-shrink: 0; }
+
+.luna-fase-info { flex: 1; min-width: 0; }
+
+.luna-fecha {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.luna-fase-nombre {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.luna-signo, .luna-sol {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 2px;
+}
+.luna-signo strong, .luna-sol strong { color: #e5e7eb; }
+
+.luna-ilum-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.luna-ilum-ring {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: conic-gradient(var(--color, #7c3aed) calc(var(--pct, 50) * 1%), rgba(255,255,255,0.1) 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.luna-ilum-ring::before {
+  content: "";
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #100922;
+}
+.luna-ilum-value {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 800;
+  color: #f3f4f6;
+}
+.luna-ilum-label {
+  font-size: 10px;
+  color: #6b7280;
+  text-align: center;
+}
+
+.luna-keyword-bar {
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+}
+
+.luna-desc {
+  font-size: 13.5px;
+  color: #d1d5db;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.luna-elem-box {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
+  margin-bottom: 14px;
+}
+.luna-elem-icono { font-size: 18px; flex-shrink: 0; }
+
+.luna-sec-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.luna-lista {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.luna-lista li { font-size: 13px; color: #d1d5db; line-height: 1.5; }
+
+.luna-trabajo-section { margin-bottom: 12px; }
+
+.luna-evitar-section {
+  background: rgba(220,38,38,0.07);
+  border: 1px solid rgba(220,38,38,0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 12px;
+}
+.luna-evitar-section .luna-sec-label { color: #f87171; }
+.luna-evitar-section .luna-lista li { color: #fca5a5; }
+
+.luna-proximos {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+@media (max-width: 480px) {
+  .luna-header { flex-direction: column; align-items: flex-start; }
+  .luna-ilum-wrap { flex-direction: row; align-items: center; gap: 8px; }
+}
