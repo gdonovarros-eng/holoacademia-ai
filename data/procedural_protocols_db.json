@@ -3067,7 +3067,20 @@
     {
       "id": "rastreo_sintoma",
       "nombre": "Rastreo por Síntoma",
-      "aliases": ["sintoma", "síntoma", "buscar par", "buscar pares", "pares por sintoma", "rastreo biomagnético", "patologias", "virus", "bacterias", "hongos", "parasitos", "emocionales"],
+      "aliases": [
+        "sintoma",
+        "síntoma",
+        "buscar par",
+        "buscar pares",
+        "pares por sintoma",
+        "rastreo biomagnético",
+        "patologias",
+        "virus",
+        "bacterias",
+        "hongos",
+        "parasitos",
+        "emocionales"
+      ],
       "categoria": "rastreo",
       "render_tipo": "rastreo_sintoma",
       "objetivo": "Identificar los pares biomagnéticos a rastrear a partir de un síntoma, enfermedad o cuadro clínico. El Motor Biomagnético analiza el caso y sugiere pares organizados por categoría: virus, bacterias, hongos, parásitos, emocionales y especiales.",
@@ -3082,6 +3095,29 @@
         "Descripción del síntoma principal o motivo de consulta"
       ],
       "instruccion_ms": "MS: '¿Hay algún par biomagnético activo relacionado con [síntoma]?' → SÍ/NO. Luego explorar categoría por categoría."
+    },
+    {
+      "id": "catalogo_biomagnetico",
+      "nombre": "Catálogo Biomagnético",
+      "aliases": [
+        "catálogo",
+        "pares",
+        "catalogo pares",
+        "buscar par",
+        "par biomagnético",
+        "viral",
+        "bacteriano"
+      ],
+      "categoria": "rastreo",
+      "render_tipo": "catalogo_biomagnetico",
+      "objetivo": "Explorar el catálogo completo de pares biomagnéticos organizados por categoría: vírico, bacteriano, fúngico, parasitario, emocional, especial, reservorio y disfunción. Incluye búsqueda por síntoma y selección de pares para la sesión.",
+      "cuando_usarlo": [
+        "Para explorar qué par corresponde a una condición conocida",
+        "Al inicio del rastreo para identificar la categoría del agente",
+        "Para educación clínica del terapeuta sobre los pares del sistema",
+        "Como referencia rápida durante la sesión"
+      ],
+      "instruccion_ms": "MS: '¿Hay algún par de esta categoría activo?' → SÍ/NO. Luego afinar dentro de la categoría."
     },
     {
       "id": "rastreo_alveolar",

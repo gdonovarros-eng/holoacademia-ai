@@ -3031,3 +3031,248 @@ textarea {
   .sint-buscar-btn { width: 100%; }
   .sint-cats-grid { gap: 6px; }
 }
+
+/* ─── Catálogo Biomagnético ───────────────────────────────────────────────────── */
+
+.catbio-sesion-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background: rgba(124,58,237,0.12);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 13px;
+  color: #c4b5fd;
+  font-weight: 600;
+}
+
+.catbio-search-row { margin-bottom: 12px; }
+
+.catbio-cats { margin-bottom: 10px; }
+
+.cat-chip-count {
+  background: rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.catbio-result-info {
+  font-size: 11.5px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.catbio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+}
+
+.catbio-par-card {
+  background: rgba(255,255,255,0.03);
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.catbio-par-card:hover {
+  border-color: var(--cat-color, #7c3aed);
+  background: rgba(255,255,255,0.05);
+}
+.catbio-par-selected {
+  border-color: var(--cat-color, #7c3aed) !important;
+  background: color-mix(in srgb, var(--cat-color, #7c3aed) 10%, transparent) !important;
+}
+
+.catbio-par-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.catbio-par-nombre {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #f3f4f6;
+  line-height: 1.3;
+  flex: 1;
+}
+
+.catbio-cat-badge {
+  border: 1px solid;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 10.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.catbio-par-agente {
+  font-size: 11.5px;
+  color: #9ca3af;
+  font-style: italic;
+  margin-bottom: 6px;
+}
+
+.catbio-par-conds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 8px;
+}
+
+.catbio-par-actions {
+  display: flex;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.catbio-ver-btn {
+  background: none;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 6px;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 11.5px;
+  padding: 4px 10px;
+  transition: all 0.12s;
+}
+.catbio-ver-btn:hover { border-color: #c4b5fd; color: #c4b5fd; }
+
+.catbio-add-btn {
+  background: rgba(124,58,237,0.15);
+  border: 1px solid rgba(124,58,237,0.35);
+  border-radius: 6px;
+  color: #c4b5fd;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  transition: all 0.12s;
+}
+.catbio-add-btn:hover { background: rgba(124,58,237,0.3); }
+.catbio-add-active {
+  background: rgba(16,185,129,0.2) !important;
+  border-color: rgba(16,185,129,0.4) !important;
+  color: #6ee7b7 !important;
+}
+
+/* ── Detalle de par ── */
+.catbio-det-header {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+}
+
+.catbio-det-cat {
+  display: inline-block;
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.catbio-det-nombre {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.catbio-det-agente {
+  font-size: 13px;
+  color: #9ca3af;
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.catbio-det-puntos {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.catbio-punto {
+  flex: 1;
+  min-width: 120px;
+  border: 2px solid;
+  border-radius: 8px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.catbio-punto-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 4px;
+}
+
+.catbio-punto-nombre {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f3f4f6;
+}
+
+.catbio-punto-arrow {
+  font-size: 20px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.catbio-det-section { margin-bottom: 14px; }
+
+.catbio-det-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+
+.catbio-det-conds { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.catbio-det-sintomas {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.catbio-det-sintomas li { font-size: 13px; color: #d1d5db; line-height: 1.5; }
+
+.catbio-det-notas {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(124,58,237,0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: #c4b5fd;
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+@media (max-width: 640px) {
+  .catbio-grid { grid-template-columns: 1fr; }
+  .catbio-det-puntos { flex-direction: column; }
+  .catbio-punto { min-width: 100%; }
+  .catbio-punto-arrow { transform: rotate(90deg); }
+}

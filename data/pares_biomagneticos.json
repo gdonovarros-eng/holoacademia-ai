@@ -1,0 +1,2119 @@
+{
+  "version": "1.0",
+  "descripcion": "Catálogo de pares biomagnéticos del Motor HoloacademIA",
+  "total": 67,
+  "categorias": [
+    {
+      "id": "viral",
+      "nombre": "Vírico",
+      "icono": "🦠",
+      "color": "#dc2626"
+    },
+    {
+      "id": "bacteriano",
+      "nombre": "Bacteriano",
+      "icono": "🧫",
+      "color": "#d97706"
+    },
+    {
+      "id": "fungico",
+      "nombre": "Fúngico",
+      "icono": "🍄",
+      "color": "#7c3aed"
+    },
+    {
+      "id": "parasitario",
+      "nombre": "Parasitario",
+      "icono": "🪱",
+      "color": "#059669"
+    },
+    {
+      "id": "emocional",
+      "nombre": "Emocional",
+      "icono": "💜",
+      "color": "#db2777"
+    },
+    {
+      "id": "especial",
+      "nombre": "Especial",
+      "icono": "⭐",
+      "color": "#ca8a04"
+    },
+    {
+      "id": "reservorio",
+      "nombre": "Reservorio",
+      "icono": "🔬",
+      "color": "#0284c7"
+    },
+    {
+      "id": "disfuncion",
+      "nombre": "Disfunción",
+      "icono": "⚡",
+      "color": "#9333ea"
+    }
+  ],
+  "pares": [
+    {
+      "id": "V001",
+      "nombre": "Hígado — Pulmón derecho",
+      "categoria": "viral",
+      "agente": "Virus Epstein-Barr (VEB)",
+      "positivo": "Hígado",
+      "negativo": "Pulmón derecho",
+      "condiciones": [
+        "Mononucleosis infecciosa",
+        "Síndrome de fatiga crónica",
+        "Linfadenopatía generalizada",
+        "Hepatitis viral leve"
+      ],
+      "sintomas": [
+        "Fatiga extrema persistente",
+        "Fiebre vespertina",
+        "Inflamación ganglionar cervical",
+        "Odinofagia",
+        "Esplenomegalia leve"
+      ],
+      "notas": "Par central en cuadros de fatiga crónica de origen infeccioso. Verificar complementariedad con Bazo–Riñón derecho.",
+      "keywords": [
+        "epstein barr",
+        "mononucleosis",
+        "fatiga",
+        "ganglios",
+        "veb",
+        "cansancio",
+        "agotamiento"
+      ]
+    },
+    {
+      "id": "V002",
+      "nombre": "Bazo — Riñón derecho",
+      "categoria": "viral",
+      "agente": "Herpes simplex tipo 1 (VHS-1)",
+      "positivo": "Bazo",
+      "negativo": "Riñón derecho",
+      "condiciones": [
+        "Herpes labial recurrente",
+        "Gingivoestomatitis herpética",
+        "Herpes ocular"
+      ],
+      "sintomas": [
+        "Lesiones vesiculares perilabiales",
+        "Ardor y prurito local",
+        "Fiebre de bajo grado",
+        "Adenopatías submandibulares"
+      ],
+      "notas": "Par muy frecuente. Buscar par complementario VHS-2 si hay afectación genital.",
+      "keywords": [
+        "herpes",
+        "labial",
+        "vesículas",
+        "fuego",
+        "boca",
+        "labios",
+        "herpes simplex"
+      ]
+    },
+    {
+      "id": "V003",
+      "nombre": "Tálamo — Corazón",
+      "categoria": "viral",
+      "agente": "Virus de la Hepatitis B (VHB)",
+      "positivo": "Tálamo",
+      "negativo": "Corazón",
+      "condiciones": [
+        "Hepatitis B aguda",
+        "Hepatitis B crónica",
+        "Cirrosis hepática"
+      ],
+      "sintomas": [
+        "Ictericia",
+        "Astenia marcada",
+        "Náuseas y vómitos",
+        "Dolor en hipocondrio derecho",
+        "Orina colúrica"
+      ],
+      "notas": "Par de alta prioridad en cuadros con ictericia o elevación de transaminasas.",
+      "keywords": [
+        "hepatitis b",
+        "hígado",
+        "ictericia",
+        "vhb",
+        "hepatitis",
+        "cirrosis"
+      ]
+    },
+    {
+      "id": "V004",
+      "nombre": "Hipotálamo — Riñón izquierdo",
+      "categoria": "viral",
+      "agente": "Virus de la Hepatitis C (VHC)",
+      "positivo": "Hipotálamo",
+      "negativo": "Riñón izquierdo",
+      "condiciones": [
+        "Hepatitis C crónica",
+        "Fibrosis hepática",
+        "Crioglobulinemia"
+      ],
+      "sintomas": [
+        "Fatiga crónica",
+        "Artralgias difusas",
+        "Trastornos del sueño",
+        "Prurito cutáneo sin causa aparente"
+      ],
+      "notas": "Frecuentemente subclínico. Considerar en fatiga crónica inexplicada con historial de transfusiones o cirugías.",
+      "keywords": [
+        "hepatitis c",
+        "vhc",
+        "fatiga",
+        "hígado",
+        "artralgias",
+        "prurito"
+      ]
+    },
+    {
+      "id": "V005",
+      "nombre": "Páncreas — Duodeno",
+      "categoria": "viral",
+      "agente": "Virus de la Influenza / Parainfluenza",
+      "positivo": "Páncreas",
+      "negativo": "Duodeno",
+      "condiciones": [
+        "Influenza estacional",
+        "Gripe A/B",
+        "Pancreatitis viral",
+        "Bronquitis aguda"
+      ],
+      "sintomas": [
+        "Fiebre alta de inicio brusco",
+        "Mialgias generalizadas",
+        "Cefalea intensa",
+        "Tos seca",
+        "Postración"
+      ],
+      "notas": "Par agudo frecuente. Confirmar con temperatura elevada y mialgias características de influenza.",
+      "keywords": [
+        "influenza",
+        "gripe",
+        "fiebre",
+        "mialgias",
+        "tos",
+        "gripa",
+        "catarro",
+        "resfriado"
+      ]
+    },
+    {
+      "id": "V006",
+      "nombre": "Boca — Laringe",
+      "categoria": "viral",
+      "agente": "Virus del Papiloma Humano (VPH)",
+      "positivo": "Boca",
+      "negativo": "Laringe",
+      "condiciones": [
+        "Papilomatosis laríngea",
+        "Condilomas orales",
+        "VPH orofaríngeo"
+      ],
+      "sintomas": [
+        "Ronquera persistente",
+        "Disfagia leve",
+        "Papilomas en mucosa oral",
+        "Tos crónica sin otra causa"
+      ],
+      "notas": "Buscar par genital complementario si hay VPH en zona anogenital.",
+      "keywords": [
+        "papiloma",
+        "vph",
+        "hpv",
+        "verrugas",
+        "condilomas",
+        "laringe",
+        "ronquera"
+      ]
+    },
+    {
+      "id": "V007",
+      "nombre": "Vejiga — Recto",
+      "categoria": "viral",
+      "agente": "Citomegalovirus (CMV)",
+      "positivo": "Vejiga",
+      "negativo": "Recto",
+      "condiciones": [
+        "Infección por CMV en inmunosuprimidos",
+        "Retinitis por CMV",
+        "Colitis por CMV"
+      ],
+      "sintomas": [
+        "Fiebre prolongada",
+        "Diarrea crónica",
+        "Fatiga severa",
+        "Pérdida de peso",
+        "Visión borrosa"
+      ],
+      "notas": "Especialmente relevante en pacientes con inmunosupresión. Investigar siempre par Timo–Hígado complementario.",
+      "keywords": [
+        "citomegalovirus",
+        "cmv",
+        "inmunosupresión",
+        "retinitis",
+        "diarrea crónica"
+      ]
+    },
+    {
+      "id": "V008",
+      "nombre": "Pulmón izquierdo — Cerebro",
+      "categoria": "viral",
+      "agente": "Virus del Sarampión (Morbillivirus)",
+      "positivo": "Pulmón izquierdo",
+      "negativo": "Cerebro",
+      "condiciones": [
+        "Sarampión",
+        "Panencefalitis esclerosante subaguda",
+        "Complicaciones neurológicas post-sarampión"
+      ],
+      "sintomas": [
+        "Exantema maculopapular",
+        "Tos perruna",
+        "Manchas de Koplik",
+        "Fotofobia",
+        "Fiebre alta"
+      ],
+      "notas": "En adultos puede presentarse de forma atípica. Considerar en encefalitis de causa no determinada.",
+      "keywords": [
+        "sarampión",
+        "morbilli",
+        "exantema",
+        "manchas koplik",
+        "vacuna",
+        "encefalitis"
+      ]
+    },
+    {
+      "id": "V009",
+      "nombre": "Mama — Ovario",
+      "categoria": "viral",
+      "agente": "Virus del tumor mamario humano (HMTV)",
+      "positivo": "Mama",
+      "negativo": "Ovario",
+      "condiciones": [
+        "Mastopatía fibroquística",
+        "Predisposición a cáncer de mama",
+        "Quistes ováricos asociados"
+      ],
+      "sintomas": [
+        "Mastalgia cíclica",
+        "Nodularidad mamaria",
+        "Quistes mamarios",
+        "Irregularidad menstrual"
+      ],
+      "notas": "Par de alta frecuencia en mujeres con mastopatía. Complementar con rastreo hormonal.",
+      "keywords": [
+        "mama",
+        "seno",
+        "ovario",
+        "mastopatía",
+        "quistes",
+        "cáncer mama",
+        "mastalgia"
+      ]
+    },
+    {
+      "id": "V010",
+      "nombre": "Ingle izquierda — Ingle derecha",
+      "categoria": "viral",
+      "agente": "Herpes genital (VHS-2)",
+      "positivo": "Ingle izquierda",
+      "negativo": "Ingle derecha",
+      "condiciones": [
+        "Herpes genital",
+        "Herpes recurrente genital",
+        "Neuralgia postherpética"
+      ],
+      "sintomas": [
+        "Vesículas en zona genital",
+        "Disuria",
+        "Ardor intenso perineal",
+        "Adenopatías inguinales",
+        "Parestesias en piernas"
+      ],
+      "notas": "Par bilateral. Frecuentemente asociado a estrés emocional como factor desencadenante.",
+      "keywords": [
+        "herpes genital",
+        "vhs-2",
+        "ingle",
+        "vesículas genitales",
+        "ardor genital"
+      ]
+    },
+    {
+      "id": "V011",
+      "nombre": "Timo — Hígado",
+      "categoria": "viral",
+      "agente": "Retrovirus / VIH",
+      "positivo": "Timo",
+      "negativo": "Hígado",
+      "condiciones": [
+        "Inmunodeficiencia adquirida",
+        "Infecciones oportunistas",
+        "Síndrome de desgaste"
+      ],
+      "sintomas": [
+        "Infecciones recurrentes",
+        "Pérdida de peso involuntaria",
+        "Adenopatías generalizadas",
+        "Fatiga profunda",
+        "Sudoración nocturna"
+      ],
+      "notas": "Par de inmunosupresión sistémica. Evaluar junto con historial de infecciones oportunistas.",
+      "keywords": [
+        "vih",
+        "sida",
+        "inmunodeficiencia",
+        "inmunidad",
+        "infecciones recurrentes",
+        "timo"
+      ]
+    },
+    {
+      "id": "V012",
+      "nombre": "Amígdalas — Paladar blando",
+      "categoria": "viral",
+      "agente": "Adenovirus / VEB faríngeo",
+      "positivo": "Amígdalas",
+      "negativo": "Paladar blando",
+      "condiciones": [
+        "Amigdalitis viral aguda",
+        "Faringitis viral",
+        "Fiebre faringoconjuntival"
+      ],
+      "sintomas": [
+        "Odinofagia severa",
+        "Fiebre",
+        "Exudado amigdalino",
+        "Ojos rojos",
+        "Adenopatías cervicales"
+      ],
+      "notas": "Diferencial importante con amigdalitis bacteriana. El par bacteriano es Amígdalas–Garganta (B008).",
+      "keywords": [
+        "amígdalas",
+        "angina",
+        "garganta",
+        "faringitis",
+        "adenovirus",
+        "dolor garganta"
+      ]
+    },
+    {
+      "id": "V013",
+      "nombre": "Riñón izquierdo — Suprarrenal izquierda",
+      "categoria": "viral",
+      "agente": "Virus varicela-zóster (VVZ)",
+      "positivo": "Riñón izquierdo",
+      "negativo": "Suprarrenal izquierda",
+      "condiciones": [
+        "Varicela",
+        "Herpes zóster",
+        "Neuralgia postherpética"
+      ],
+      "sintomas": [
+        "Vesículas en dermatoma",
+        "Dolor urente unilateral",
+        "Prurito intenso",
+        "Fiebre moderada",
+        "Hiperestesia cutánea"
+      ],
+      "notas": "Localización renal-suprarrenal frecuente en herpes zóster lumbar. Investigar dermatoma T10-L1.",
+      "keywords": [
+        "varicela",
+        "zóster",
+        "culebrilla",
+        "herpes",
+        "vesículas",
+        "dolor nervio",
+        "neuralgia"
+      ]
+    },
+    {
+      "id": "V014",
+      "nombre": "Glándula pineal — Hipófisis",
+      "categoria": "viral",
+      "agente": "Citomegalovirus neurológico",
+      "positivo": "Glándula pineal",
+      "negativo": "Hipófisis",
+      "condiciones": [
+        "Encefalitis viral",
+        "Alteraciones del ritmo circadiano",
+        "Insomnio de causa viral"
+      ],
+      "sintomas": [
+        "Insomnio severo",
+        "Cefalea matutina",
+        "Alteraciones del estado de ánimo",
+        "Fatiga sin relación con actividad"
+      ],
+      "notas": "Considerar en pacientes con alteraciones del sueño de inicio abrupto sin causa aparente.",
+      "keywords": [
+        "pineal",
+        "hipófisis",
+        "insomnio",
+        "melatonina",
+        "ritmo circadiano",
+        "sueño",
+        "hormonal"
+      ]
+    },
+    {
+      "id": "V015",
+      "nombre": "Próstata — Testículo derecho",
+      "categoria": "viral",
+      "agente": "Virus del papiloma en genitales masculinos",
+      "positivo": "Próstata",
+      "negativo": "Testículo derecho",
+      "condiciones": [
+        "Prostatitis crónica viral",
+        "Condilomas genitales masculinos",
+        "VPH masculino"
+      ],
+      "sintomas": [
+        "Disuria intermitente",
+        "Dolor perineal",
+        "Lesiones verrugas genitales",
+        "Molestia escrotal"
+      ],
+      "notas": "Par masculino equivalente al par ginecológico Útero–Ovario (VPH). Frecuente en jóvenes sexualmente activos.",
+      "keywords": [
+        "próstata",
+        "testículo",
+        "vph",
+        "papiloma",
+        "genitales masculinos",
+        "disuria"
+      ]
+    },
+    {
+      "id": "V016",
+      "nombre": "Pulmón derecho — Pleura derecha",
+      "categoria": "viral",
+      "agente": "Coronavirus / SARS-CoV-2",
+      "positivo": "Pulmón derecho",
+      "negativo": "Pleura derecha",
+      "condiciones": [
+        "COVID-19",
+        "Pleuritis viral",
+        "Síndrome post-COVID",
+        "Neumonía viral atípica"
+      ],
+      "sintomas": [
+        "Disnea",
+        "Tos seca persistente",
+        "Fiebre",
+        "Anosmia/ageusia",
+        "Fatiga post-infección"
+      ],
+      "notas": "Par de alta relevancia actual. En síndrome post-COVID explorar también par Timo–Hígado.",
+      "keywords": [
+        "covid",
+        "coronavirus",
+        "pulmón",
+        "pleura",
+        "disnea",
+        "tos",
+        "anosmia",
+        "post-covid"
+      ]
+    },
+    {
+      "id": "V017",
+      "nombre": "Intestino delgado — Apéndice",
+      "categoria": "viral",
+      "agente": "Rotavirus / Norovirus",
+      "positivo": "Intestino delgado",
+      "negativo": "Apéndice",
+      "condiciones": [
+        "Gastroenteritis viral aguda",
+        "Diarrea viral del viajero",
+        "Vómito estacional"
+      ],
+      "sintomas": [
+        "Diarrea acuosa profusa",
+        "Vómito",
+        "Fiebre baja",
+        "Calambres abdominales",
+        "Deshidratación"
+      ],
+      "notas": "Par más frecuente en brotes de gastroenteritis, especialmente en temporada invernal.",
+      "keywords": [
+        "rotavirus",
+        "norovirus",
+        "diarrea",
+        "vómito",
+        "gastroenteritis",
+        "intestino",
+        "viral"
+      ]
+    },
+    {
+      "id": "V018",
+      "nombre": "Tiroides — Paratiroides",
+      "categoria": "viral",
+      "agente": "Virus de la tiroiditis subaguda (De Quervain)",
+      "positivo": "Tiroides",
+      "negativo": "Paratiroides",
+      "condiciones": [
+        "Tiroiditis subaguda viral",
+        "Hipotiroidismo post-viral",
+        "Hipertiroidismo transitorio viral"
+      ],
+      "sintomas": [
+        "Dolor cervical anterior",
+        "Fiebre",
+        "Bocio doloroso a la palpación",
+        "Astenia marcada",
+        "Palpitaciones"
+      ],
+      "notas": "Frecuente tras infección respiratoria alta. Evaluar función tiroidea 6 semanas post-infección.",
+      "keywords": [
+        "tiroides",
+        "tiroiditis",
+        "quervain",
+        "bocio",
+        "hipotiroidismo",
+        "cuello",
+        "dolor cuello"
+      ]
+    },
+    {
+      "id": "V019",
+      "nombre": "Corazón — Pericardio",
+      "categoria": "viral",
+      "agente": "Coxsackievirus B (miocarditis/pericarditis)",
+      "positivo": "Corazón",
+      "negativo": "Pericardio",
+      "condiciones": [
+        "Miocarditis viral",
+        "Pericarditis aguda",
+        "Síndrome de Dressler"
+      ],
+      "sintomas": [
+        "Dolor precordial que mejora con inclinación hacia adelante",
+        "Fiebre",
+        "Disnea de esfuerzo",
+        "Palpitaciones",
+        "Roce pericárdico"
+      ],
+      "notas": "Frecuente en jóvenes post-infección viral. Siempre evaluar con par pulmonar complementario.",
+      "keywords": [
+        "corazón",
+        "pericardio",
+        "miocarditis",
+        "pericarditis",
+        "coxsackie",
+        "dolor pecho",
+        "precordial"
+      ]
+    },
+    {
+      "id": "V020",
+      "nombre": "Senos paranasales — Mucosa nasal",
+      "categoria": "viral",
+      "agente": "Rhinovirus (resfriado común)",
+      "positivo": "Senos paranasales",
+      "negativo": "Mucosa nasal",
+      "condiciones": [
+        "Rinosinusitis viral aguda",
+        "Resfriado común",
+        "Rinitis viral alérgica"
+      ],
+      "sintomas": [
+        "Congestión nasal",
+        "Rinorrea hialina",
+        "Estornudos frecuentes",
+        "Pérdida leve de olfato",
+        "Cefalea frontal leve"
+      ],
+      "notas": "Par más frecuente en infecciones de vías aéreas superiores. Complementar con Amígdalas–Paladar si hay faringitis.",
+      "keywords": [
+        "resfriado",
+        "gripa",
+        "nariz",
+        "senos",
+        "sinusitis",
+        "rinitis",
+        "congestión nasal",
+        "rhinovirus"
+      ]
+    },
+    {
+      "id": "V021",
+      "nombre": "Glándula parótida — Glándula submandibular",
+      "categoria": "viral",
+      "agente": "Virus de la parotiditis (Paramyxovirus)",
+      "positivo": "Glándula parótida",
+      "negativo": "Glándula submandibular",
+      "condiciones": [
+        "Parotiditis infecciosa (paperas)",
+        "Orquitis urliana",
+        "Pancreatitis urliana"
+      ],
+      "sintomas": [
+        "Inflamación parotídea unilateral o bilateral",
+        "Dolor al masticar",
+        "Fiebre moderada",
+        "Xerostomía",
+        "Trismo leve"
+      ],
+      "notas": "En hombres postpúberes, verificar par Páncreas–Testículo por orquitis urliana.",
+      "keywords": [
+        "paperas",
+        "parotiditis",
+        "parótida",
+        "urliana",
+        "mumps",
+        "saliva",
+        "inflamación cara"
+      ]
+    },
+    {
+      "id": "B001",
+      "nombre": "Colon — Recto",
+      "categoria": "bacteriano",
+      "agente": "Salmonella typhi / enteritidis",
+      "positivo": "Colon",
+      "negativo": "Recto",
+      "condiciones": [
+        "Fiebre tifoidea",
+        "Salmonelosis enterocolítica",
+        "Intoxicación alimentaria"
+      ],
+      "sintomas": [
+        "Fiebre en escalera",
+        "Diarrea o estreñimiento alternante",
+        "Dolor abdominal difuso",
+        "Cefalea intensa",
+        "Roseólas tíficas"
+      ],
+      "notas": "Par fundamental en cuadros de fiebre intestinal. Buscar exposición a alimentos mal conservados.",
+      "keywords": [
+        "salmonella",
+        "fiebre tifoidea",
+        "diarrea",
+        "colitis",
+        "intoxicación",
+        "colon",
+        "recto"
+      ]
+    },
+    {
+      "id": "B002",
+      "nombre": "Riñón derecho — Uréter derecho",
+      "categoria": "bacteriano",
+      "agente": "Escherichia coli (ITU)",
+      "positivo": "Riñón derecho",
+      "negativo": "Uréter derecho",
+      "condiciones": [
+        "Infección urinaria",
+        "Cistitis",
+        "Pielonefritis",
+        "Uretritis bacteriana"
+      ],
+      "sintomas": [
+        "Disuria",
+        "Polaquiuria",
+        "Hematuria",
+        "Dolor lumbar derecho",
+        "Fiebre con escalofríos"
+      ],
+      "notas": "Par más frecuente en infecciones urinarias en mujeres. Par izquierdo (B003 espejo) en afectación bilateral.",
+      "keywords": [
+        "infección urinaria",
+        "cistitis",
+        "pielonefritis",
+        "escherichia coli",
+        "riñón",
+        "disuria",
+        "orina"
+      ]
+    },
+    {
+      "id": "B003",
+      "nombre": "Estómago — Páncreas",
+      "categoria": "bacteriano",
+      "agente": "Helicobacter pylori",
+      "positivo": "Estómago",
+      "negativo": "Páncreas",
+      "condiciones": [
+        "Gastritis crónica",
+        "Úlcera péptica",
+        "Dispepsia funcional",
+        "Úlcera duodenal"
+      ],
+      "sintomas": [
+        "Dolor epigástrico urente",
+        "Náuseas matutinas",
+        "Eructos frecuentes",
+        "Sensación de plenitud",
+        "Pirosis postprandial"
+      ],
+      "notas": "Par de altísima frecuencia. Presente en más del 70% de úlceras. Evaluar siempre en dispepsia crónica.",
+      "keywords": [
+        "helicobacter pylori",
+        "gastritis",
+        "úlcera",
+        "estómago",
+        "pirosis",
+        "acidez",
+        "dispepsia",
+        "reflujo"
+      ]
+    },
+    {
+      "id": "B004",
+      "nombre": "Pulmón derecho — Bronquio derecho",
+      "categoria": "bacteriano",
+      "agente": "Mycobacterium tuberculosis",
+      "positivo": "Pulmón derecho",
+      "negativo": "Bronquio derecho",
+      "condiciones": [
+        "Tuberculosis pulmonar",
+        "TB latente",
+        "Bronquitis bacteriana"
+      ],
+      "sintomas": [
+        "Tos crónica con expectoración",
+        "Hemoptisis",
+        "Sudoración nocturna",
+        "Pérdida de peso",
+        "Fiebre vespertina"
+      ],
+      "notas": "Par de alta relevancia en zonas endémicas. Siempre investigar contacto con caso confirmado.",
+      "keywords": [
+        "tuberculosis",
+        "tb",
+        "mycobacterium",
+        "tos crónica",
+        "hemoptisis",
+        "pulmón",
+        "bacilo de koch"
+      ]
+    },
+    {
+      "id": "B005",
+      "nombre": "Pleura — Pericardio",
+      "categoria": "bacteriano",
+      "agente": "Streptococcus pneumoniae",
+      "positivo": "Pleura",
+      "negativo": "Pericardio",
+      "condiciones": [
+        "Neumonía bacteriana",
+        "Pleuritis bacteriana",
+        "Pericarditis bacteriana"
+      ],
+      "sintomas": [
+        "Fiebre alta con escalofríos",
+        "Dolor pleurítico",
+        "Disnea",
+        "Expectoración herrumbrosa",
+        "Crepitantes basales"
+      ],
+      "notas": "Neumonía lobar clásica. En mayores de 65 años buscar también par de inmunosupresión.",
+      "keywords": [
+        "neumonia",
+        "streptococcus",
+        "pneumoniae",
+        "pleura",
+        "pulmón",
+        "infección respiratoria",
+        "fiebre alta"
+      ]
+    },
+    {
+      "id": "B006",
+      "nombre": "Próstata — Testículo izquierdo",
+      "categoria": "bacteriano",
+      "agente": "Chlamydia trachomatis",
+      "positivo": "Próstata",
+      "negativo": "Testículo izquierdo",
+      "condiciones": [
+        "Uretritis no gonocócica",
+        "Prostatitis crónica bacteriana",
+        "Epididimitis"
+      ],
+      "sintomas": [
+        "Secreción uretral mucoide",
+        "Disuria leve",
+        "Molestia escrotal",
+        "Frecuencia urinaria",
+        "Infertilidad masculina"
+      ],
+      "notas": "ETS muy frecuente. Buscar par ginecológico complementario en la pareja.",
+      "keywords": [
+        "clamidia",
+        "chlamydia",
+        "uretritis",
+        "epididimitis",
+        "ETS",
+        "infección sexual",
+        "próstata",
+        "testículo"
+      ]
+    },
+    {
+      "id": "B007",
+      "nombre": "Útero — Ovario izquierdo",
+      "categoria": "bacteriano",
+      "agente": "Neisseria gonorrhoeae / Chlamydia",
+      "positivo": "Útero",
+      "negativo": "Ovario izquierdo",
+      "condiciones": [
+        "Enfermedad pélvica inflamatoria",
+        "Salpingitis",
+        "Cervicitis bacteriana"
+      ],
+      "sintomas": [
+        "Dolor pélvico crónico",
+        "Flujo vaginal purulento",
+        "Dispareunia",
+        "Sangrado intermenstrual",
+        "Fiebre baja"
+      ],
+      "notas": "EPI de alta frecuencia. Evaluar siempre ambos ovarios y trompas de Falopio.",
+      "keywords": [
+        "gonorrea",
+        "ETS",
+        "pélvica",
+        "inflamatoria",
+        "útero",
+        "ovario",
+        "salpingitis",
+        "flujo"
+      ]
+    },
+    {
+      "id": "B008",
+      "nombre": "Amígdalas — Garganta",
+      "categoria": "bacteriano",
+      "agente": "Streptococcus pyogenes",
+      "positivo": "Amígdalas",
+      "negativo": "Garganta",
+      "condiciones": [
+        "Amigdalitis estreptocócica",
+        "Escarlatina",
+        "Fiebre reumática",
+        "Glomerulonefritis post-estreptocócica"
+      ],
+      "sintomas": [
+        "Odinofagia severa",
+        "Fiebre > 38.5°C",
+        "Exudado amigdalino blanquecino",
+        "Ausencia de tos",
+        "Adenopatías cervicales anteriores"
+      ],
+      "notas": "Diferenciación clave: ausencia de tos sugiere etiología bacteriana vs viral. Par de alta urgencia terapéutica.",
+      "keywords": [
+        "amigdalitis",
+        "streptococcus",
+        "garganta",
+        "angina",
+        "exudado",
+        "faringitis bacteriana",
+        "escarlatina"
+      ]
+    },
+    {
+      "id": "B009",
+      "nombre": "Encías — Alvéolo dental",
+      "categoria": "bacteriano",
+      "agente": "Porphyromonas gingivalis / Treponema denticola",
+      "positivo": "Encías",
+      "negativo": "Alvéolo dental",
+      "condiciones": [
+        "Periodontitis crónica",
+        "Enfermedad periodontal",
+        "Absceso dental",
+        "Gingivitis severa"
+      ],
+      "sintomas": [
+        "Sangrado gingival espontáneo",
+        "Dolor dental",
+        "Halitosis crónica",
+        "Movilidad dental",
+        "Pus periapical"
+      ],
+      "notas": "La enfermedad periodontal se asocia a patología cardiovascular y metabólica sistémica.",
+      "keywords": [
+        "encías",
+        "periodontitis",
+        "gingivitis",
+        "dental",
+        "halitosis",
+        "dientes",
+        "absceso dental",
+        "boca"
+      ]
+    },
+    {
+      "id": "B010",
+      "nombre": "Vejiga — Uretra",
+      "categoria": "bacteriano",
+      "agente": "Proteus mirabilis / Klebsiella",
+      "positivo": "Vejiga",
+      "negativo": "Uretra",
+      "condiciones": [
+        "Cistitis recurrente",
+        "Infección urinaria complicada",
+        "Cálculos renales de estruvita"
+      ],
+      "sintomas": [
+        "Disuria severa",
+        "Polaquiuria",
+        "Hematuria macroscópica",
+        "Orina turbia y maloliente",
+        "Tenesmo vesical"
+      ],
+      "notas": "Proteus produce ureasa → alcalinización urinaria → cálculos. Evaluar pH urinario.",
+      "keywords": [
+        "cistitis",
+        "vejiga",
+        "uretra",
+        "proteus",
+        "infección urinaria",
+        "cálculos",
+        "orina turbia"
+      ]
+    },
+    {
+      "id": "B011",
+      "nombre": "Articulaciones — Sinovial",
+      "categoria": "bacteriano",
+      "agente": "Borrelia burgdorferi (enfermedad de Lyme)",
+      "positivo": "Articulaciones",
+      "negativo": "Sinovial",
+      "condiciones": [
+        "Enfermedad de Lyme",
+        "Artritis de Lyme",
+        "Neuroborreliosis"
+      ],
+      "sintomas": [
+        "Eritema migrans (mancha en diana)",
+        "Artritis migratoria",
+        "Fatiga severa",
+        "Cefalea",
+        "Parálisis facial (Bell)"
+      ],
+      "notas": "Exposición a garrapatas en campo. El eritema migrans es patognomónico si está presente.",
+      "keywords": [
+        "lyme",
+        "borrelia",
+        "garrapata",
+        "artritis",
+        "articulaciones",
+        "eritema migrans",
+        "tick"
+      ]
+    },
+    {
+      "id": "B012",
+      "nombre": "Corazón — Válvula mitral",
+      "categoria": "bacteriano",
+      "agente": "Streptococcus viridans / Enterococcus",
+      "positivo": "Corazón",
+      "negativo": "Válvula mitral",
+      "condiciones": [
+        "Endocarditis infecciosa",
+        "Fiebre reumática cardíaca",
+        "Valvulopatía infecciosa"
+      ],
+      "sintomas": [
+        "Fiebre persistente",
+        "Soplo cardíaco nuevo",
+        "Embolias periféricas",
+        "Manchas de Osler",
+        "Petequias"
+      ],
+      "notas": "Par de urgencia clínica. Evaluar siempre en fiebre de origen desconocido con soplo cardíaco.",
+      "keywords": [
+        "endocarditis",
+        "corazón",
+        "mitral",
+        "válvula",
+        "fiebre reumática",
+        "soplo",
+        "streptococcus viridans"
+      ]
+    },
+    {
+      "id": "B013",
+      "nombre": "Médula espinal — Meninges",
+      "categoria": "bacteriano",
+      "agente": "Neisseria meningitidis / Streptococcus pneumoniae",
+      "positivo": "Médula espinal",
+      "negativo": "Meninges",
+      "condiciones": [
+        "Meningitis bacteriana aguda",
+        "Meningococemia",
+        "Sepsis meningocócica"
+      ],
+      "sintomas": [
+        "Cefalea explosiva",
+        "Rigidez de nuca",
+        "Fiebre alta",
+        "Petequias o púrpura",
+        "Fotofobia y fonofobia"
+      ],
+      "notas": "EMERGENCIA CLÍNICA. Identificación urgente. Derivación inmediata si hay sospecha.",
+      "keywords": [
+        "meningitis",
+        "meninges",
+        "meningococo",
+        "cefalea explosiva",
+        "rigidez nuca",
+        "púrpura",
+        "fotofobia"
+      ]
+    },
+    {
+      "id": "B014",
+      "nombre": "Intestino delgado — Yeyuno",
+      "categoria": "bacteriano",
+      "agente": "Staphylococcus aureus / Clostridium",
+      "positivo": "Intestino delgado",
+      "negativo": "Yeyuno",
+      "condiciones": [
+        "Intoxicación alimentaria estafilocócica",
+        "Colitis pseudomembranosa",
+        "Enterotoxemia"
+      ],
+      "sintomas": [
+        "Náuseas y vómito de inicio súbito",
+        "Diarrea acuosa",
+        "Calambres abdominales intensos",
+        "Fiebre baja o ausente",
+        "Deshidratación rápida"
+      ],
+      "notas": "Inicio súbito post-ingesta (1-6h) sugiere toxina estafilocócica. Sin fiebre es clave diferencial.",
+      "keywords": [
+        "staphylococcus",
+        "intoxicación alimentaria",
+        "diarrea",
+        "vómito",
+        "colitis",
+        "alimentos",
+        "contaminación"
+      ]
+    },
+    {
+      "id": "F001",
+      "nombre": "Hígado — Intestino grueso",
+      "categoria": "fungico",
+      "agente": "Candida albicans sistémica",
+      "positivo": "Hígado",
+      "negativo": "Intestino grueso",
+      "condiciones": [
+        "Candidiasis intestinal",
+        "Sobrecrecimiento de Candida",
+        "Candidiasis diseminada",
+        "Síndrome de intestino poroso"
+      ],
+      "sintomas": [
+        "Distensión abdominal crónica",
+        "Flatulencia excesiva",
+        "Diarrea o estreñimiento alternante",
+        "Fatiga post-ingesta de azúcares",
+        "Antojos intensos de dulce"
+      ],
+      "notas": "Par más frecuente de candidiasis. Muy común en pacientes con uso prolongado de antibióticos o dieta alta en azúcares.",
+      "keywords": [
+        "candida",
+        "candidiasis",
+        "intestinal",
+        "hongo",
+        "flora intestinal",
+        "distensión",
+        "azúcar",
+        "antibióticos"
+      ]
+    },
+    {
+      "id": "F002",
+      "nombre": "Piel — Uñas",
+      "categoria": "fungico",
+      "agente": "Trichophyton rubrum / Microsporum",
+      "positivo": "Piel",
+      "negativo": "Uñas",
+      "condiciones": [
+        "Dermatofitosis (tiña)",
+        "Onicomicosis",
+        "Tinea pedis",
+        "Tinea corporis"
+      ],
+      "sintomas": [
+        "Lesiones circulares eritematosas con borde activo",
+        "Prurito cutáneo",
+        "Descamación periungueal",
+        "Engrosamiento y decoloración ungueal",
+        "Fisuración interdigital"
+      ],
+      "notas": "Par de alta recurrencia. Evaluar inmunidad y glucemia en onicomicosis resistente al tratamiento.",
+      "keywords": [
+        "tiña",
+        "onicomicosis",
+        "hongos uñas",
+        "hongo piel",
+        "trichophyton",
+        "dermatomicosis",
+        "uñas",
+        "prurito"
+      ]
+    },
+    {
+      "id": "F003",
+      "nombre": "Pulmón — Senos paranasales",
+      "categoria": "fungico",
+      "agente": "Aspergillus fumigatus",
+      "positivo": "Pulmón",
+      "negativo": "Senos paranasales",
+      "condiciones": [
+        "Aspergilosis pulmonar",
+        "Sinusitis fúngica",
+        "Aspergiloma",
+        "Asma alérgica por Aspergillus"
+      ],
+      "sintomas": [
+        "Tos con expectoración espesa",
+        "Hemoptisis",
+        "Sinusitis recurrente resistente a antibióticos",
+        "Fiebre en inmunosuprimidos",
+        "Disnea"
+      ],
+      "notas": "Alta prevalencia en inmunosuprimidos. En sinusitis crónica resistente, buscar causa fúngica.",
+      "keywords": [
+        "aspergillus",
+        "aspergilosis",
+        "hongo pulmón",
+        "sinusitis fúngica",
+        "hemoptisis",
+        "inmunosupresión"
+      ]
+    },
+    {
+      "id": "F004",
+      "nombre": "Vagina — Vulva",
+      "categoria": "fungico",
+      "agente": "Candida vaginalis / glabrata",
+      "positivo": "Vagina",
+      "negativo": "Vulva",
+      "condiciones": [
+        "Candidiasis vulvovaginal",
+        "Vaginitis fúngica recurrente",
+        "Vulvodinia por Candida"
+      ],
+      "sintomas": [
+        "Prurito vulvar intenso",
+        "Flujo blanco grumoso (leche cortada)",
+        "Ardor vaginal",
+        "Dispareunia",
+        "Eritema vulvar"
+      ],
+      "notas": "Candidiasis recurrente (≥4/año) requiere investigación de diabetes, inmunosupresión o uso de antibióticos.",
+      "keywords": [
+        "candida vaginal",
+        "flujo blanco",
+        "hongos vagina",
+        "vaginitis",
+        "vulva",
+        "prurito genital",
+        "candidiasis"
+      ]
+    },
+    {
+      "id": "F005",
+      "nombre": "Mucosa oral — Esófago",
+      "categoria": "fungico",
+      "agente": "Candida orofaríngea",
+      "positivo": "Mucosa oral",
+      "negativo": "Esófago",
+      "condiciones": [
+        "Candidiasis oral (muguet)",
+        "Esofagitis candidiásica",
+        "Queilitis angular fúngica"
+      ],
+      "sintomas": [
+        "Placas blancas en mucosa oral",
+        "Dolor al tragar",
+        "Ardor en boca",
+        "Pérdida del gusto",
+        "Fisuras comisurales"
+      ],
+      "notas": "Frecuente en lactantes, uso de corticoides inhalados, prótesis dentales o inmunosupresión.",
+      "keywords": [
+        "muguet",
+        "candidiasis oral",
+        "boca",
+        "esófago",
+        "placas blancas",
+        "tragar",
+        "hongos boca"
+      ]
+    },
+    {
+      "id": "P001",
+      "nombre": "Hígado — Vesícula biliar",
+      "categoria": "parasitario",
+      "agente": "Fasciola hepática / Giardia lamblia",
+      "positivo": "Hígado",
+      "negativo": "Vesícula biliar",
+      "condiciones": [
+        "Fasciolosis hepática",
+        "Giardiasis",
+        "Colecistitis parasitaria"
+      ],
+      "sintomas": [
+        "Dolor en hipocondrio derecho",
+        "Náuseas post-ingesta de grasa",
+        "Diarrea crónica",
+        "Ictericia leve",
+        "Meteorismo"
+      ],
+      "notas": "Giardia frecuente en agua contaminada. Fasciolosis en zonas ganaderas. Evaluar agua de consumo.",
+      "keywords": [
+        "giardia",
+        "fasciola",
+        "hígado",
+        "vesícula",
+        "parásito",
+        "heces",
+        "agua contaminada",
+        "diarrea"
+      ]
+    },
+    {
+      "id": "P002",
+      "nombre": "Intestino delgado — Colon",
+      "categoria": "parasitario",
+      "agente": "Giardia lamblia / Ascaris",
+      "positivo": "Intestino delgado",
+      "negativo": "Colon",
+      "condiciones": [
+        "Giardiasis intestinal",
+        "Ascariasis",
+        "Malabsorción parasitaria"
+      ],
+      "sintomas": [
+        "Diarrea crónica con heces grasosas",
+        "Distensión abdominal severa",
+        "Pérdida de peso",
+        "Dolor cólico",
+        "Anemia ferropénica"
+      ],
+      "notas": "La giardiasis es la parasitosis intestinal más frecuente mundialmente. Evaluar agua y manipulación de alimentos.",
+      "keywords": [
+        "giardia",
+        "ascaris",
+        "parásitos intestinales",
+        "diarrea crónica",
+        "malabsorción",
+        "distensión",
+        "lombrices"
+      ]
+    },
+    {
+      "id": "P003",
+      "nombre": "Cerebro — Médula espinal",
+      "categoria": "parasitario",
+      "agente": "Toxoplasma gondii / Neurocisticercosis",
+      "positivo": "Cerebro",
+      "negativo": "Médula espinal",
+      "condiciones": [
+        "Toxoplasmosis cerebral",
+        "Neurocisticercosis",
+        "Toxoplasmosis en embarazo"
+      ],
+      "sintomas": [
+        "Cefalea crónica",
+        "Convulsiones sin causa aparente",
+        "Déficit neurológico focal",
+        "Alteraciones de personalidad",
+        "Hidrocefalia"
+      ],
+      "notas": "Toxoplasma: contacto con gatos o carne cruda. Cisticercosis: huevos de Taenia solium en alimentos.",
+      "keywords": [
+        "toxoplasma",
+        "toxoplasmosis",
+        "cisticercosis",
+        "taenia",
+        "cerebro",
+        "convulsiones",
+        "embarazo",
+        "cefalea"
+      ]
+    },
+    {
+      "id": "P004",
+      "nombre": "Colon — Ciego",
+      "categoria": "parasitario",
+      "agente": "Entamoeba histolytica",
+      "positivo": "Colon",
+      "negativo": "Ciego",
+      "condiciones": [
+        "Amebiasis intestinal",
+        "Colitis amebiana",
+        "Absceso hepático amebiano"
+      ],
+      "sintomas": [
+        "Diarrea con sangre y moco",
+        "Tenesmo rectal",
+        "Dolor abdominal tipo cólico",
+        "Fiebre",
+        "Heces con aspecto de frambuesa"
+      ],
+      "notas": "Amebiasis: transmisión fecal-oral. El absceso hepático puede complicar cualquier amebiasis.",
+      "keywords": [
+        "ameba",
+        "amebiasis",
+        "disentería",
+        "entamoeba",
+        "colon",
+        "diarrea sangre",
+        "absceso hepático"
+      ]
+    },
+    {
+      "id": "P005",
+      "nombre": "Sangre — Bazo",
+      "categoria": "parasitario",
+      "agente": "Plasmodium falciparum / vivax",
+      "positivo": "Sangre",
+      "negativo": "Bazo",
+      "condiciones": [
+        "Malaria / Paludismo",
+        "Anemia hemolítica palúdica",
+        "Esplenomegalia tropical"
+      ],
+      "sintomas": [
+        "Fiebre terciana o cuartana",
+        "Escalofríos intensos",
+        "Sudoración profusa cíclica",
+        "Anemia",
+        "Esplenomegalia"
+      ],
+      "notas": "Evaluar antecedente de viaje a zona endémica. La malaria falciparum puede ser mortal sin tratamiento.",
+      "keywords": [
+        "malaria",
+        "paludismo",
+        "plasmodium",
+        "fiebre cíclica",
+        "mosquito",
+        "anemia",
+        "bazo",
+        "escalofríos"
+      ]
+    },
+    {
+      "id": "E001",
+      "nombre": "Amígdala cerebral — Hipocampo",
+      "categoria": "emocional",
+      "agente": "Miedo crónico / Pánico",
+      "positivo": "Amígdala cerebral",
+      "negativo": "Hipocampo",
+      "condiciones": [
+        "Trastorno de pánico",
+        "Fobia específica",
+        "Ansiedad generalizada",
+        "TEPT"
+      ],
+      "sintomas": [
+        "Ataques de pánico",
+        "Ansiedad anticipatoria",
+        "Evitación fóbica",
+        "Memorias intrusivas",
+        "Hipervigilancia"
+      ],
+      "notas": "Par central del miedo. Frecuentemente asociado a trauma temprano. Complementar con trabajo emocional EFT.",
+      "keywords": [
+        "miedo",
+        "pánico",
+        "ansiedad",
+        "amígdala",
+        "fobia",
+        "trauma",
+        "TEPT",
+        "terror",
+        "pánico"
+      ]
+    },
+    {
+      "id": "E002",
+      "nombre": "Hipotálamo — Glándula pineal",
+      "categoria": "emocional",
+      "agente": "Depresión / Tristeza profunda",
+      "positivo": "Hipotálamo",
+      "negativo": "Glándula pineal",
+      "condiciones": [
+        "Depresión mayor",
+        "Trastorno afectivo estacional",
+        "Duelo complicado",
+        "Anhedonia"
+      ],
+      "sintomas": [
+        "Tristeza persistente",
+        "Pérdida de motivación e interés",
+        "Insomnio o hipersomnia",
+        "Cambios de apetito",
+        "Pensamientos de desesperanza"
+      ],
+      "notas": "La glándula pineal regula melatonina y ritmos circadianos, estrechamente ligados a la depresión.",
+      "keywords": [
+        "depresión",
+        "tristeza",
+        "melancolía",
+        "anhedonia",
+        "pineal",
+        "melatonina",
+        "dormir",
+        "ánimo",
+        "llanto"
+      ]
+    },
+    {
+      "id": "E003",
+      "nombre": "Lóbulo frontal — Lóbulo temporal",
+      "categoria": "emocional",
+      "agente": "Ansiedad / Estrés crónico",
+      "positivo": "Lóbulo frontal",
+      "negativo": "Lóbulo temporal",
+      "condiciones": [
+        "Trastorno de ansiedad generalizada",
+        "Estrés crónico",
+        "Burnout",
+        "Trastorno mixto ansioso-depresivo"
+      ],
+      "sintomas": [
+        "Preocupación excesiva y rumiación",
+        "Tensión muscular",
+        "Irritabilidad",
+        "Dificultad de concentración",
+        "Fatiga mental"
+      ],
+      "notas": "Par muy frecuente en la sociedad contemporánea. Evaluar factores estresores actuales y carga alostática.",
+      "keywords": [
+        "ansiedad",
+        "estrés",
+        "preocupación",
+        "nerviosismo",
+        "tensión",
+        "irritabilidad",
+        "burnout",
+        "rumiación"
+      ]
+    },
+    {
+      "id": "E004",
+      "nombre": "Ínsula — Corteza prefrontal",
+      "categoria": "emocional",
+      "agente": "Culpa / Vergüenza",
+      "positivo": "Ínsula",
+      "negativo": "Corteza prefrontal",
+      "condiciones": [
+        "Trastorno de culpa crónica",
+        "Autosabotaje emocional",
+        "Baja autoestima profunda",
+        "Trastornos de personalidad borderline"
+      ],
+      "sintomas": [
+        "Crítica interna intensa",
+        "Autocensura excesiva",
+        "Dificultad para recibir logros",
+        "Conductas autopunitivas",
+        "Hipersensibilidad a la crítica"
+      ],
+      "notas": "La ínsula procesa el dolor social y la vergüenza corporal. Par vinculado a heridas de valor personal.",
+      "keywords": [
+        "culpa",
+        "vergüenza",
+        "autoestima",
+        "crítica",
+        "autopunición",
+        "rechazo",
+        "humillación",
+        "vergüenza"
+      ]
+    },
+    {
+      "id": "E005",
+      "nombre": "Cíngulo anterior — Tálamo",
+      "categoria": "emocional",
+      "agente": "Ira / Rabia contenida",
+      "positivo": "Cíngulo anterior",
+      "negativo": "Tálamo",
+      "condiciones": [
+        "Trastorno explosivo intermitente",
+        "Ira crónica",
+        "Resentimiento",
+        "Conflictos de poder no resueltos"
+      ],
+      "sintomas": [
+        "Irritabilidad de base",
+        "Reactividad emocional intensa",
+        "Tensión mandibular y cuello",
+        "Hipertensión reactiva",
+        "Insomnio por pensamientos agresivos"
+      ],
+      "notas": "La ira retenida se asocia a patología cardiovascular y musculoesquelética. Evaluar patrón de injusticia percibida.",
+      "keywords": [
+        "ira",
+        "rabia",
+        "enojo",
+        "agresividad",
+        "explosivo",
+        "resentimiento",
+        "rencor",
+        "cólera",
+        "irritabilidad"
+      ]
+    },
+    {
+      "id": "E006",
+      "nombre": "Hipocampo — Corteza prefrontal",
+      "categoria": "emocional",
+      "agente": "Trauma emocional / TEPT",
+      "positivo": "Hipocampo",
+      "negativo": "Corteza prefrontal",
+      "condiciones": [
+        "Trastorno de estrés post-traumático",
+        "Trauma complejo",
+        "Disociación",
+        "Flashbacks"
+      ],
+      "sintomas": [
+        "Reviviscencias intrusivas",
+        "Pesadillas recurrentes",
+        "Evitación de recordatorios",
+        "Entumecimiento emocional",
+        "Hiperactivación autonómica"
+      ],
+      "notas": "Par central del trauma. El hipocampo consolida memorias traumáticas. Complementar con EFT y trabajo transgeneracional.",
+      "keywords": [
+        "trauma",
+        "TEPT",
+        "flashbacks",
+        "disociación",
+        "memorias",
+        "abuso",
+        "pesadillas",
+        "reviviscencias"
+      ]
+    },
+    {
+      "id": "E007",
+      "nombre": "Hipotálamo — Hipófisis",
+      "categoria": "emocional",
+      "agente": "Duelo / Pérdida no procesada",
+      "positivo": "Hipotálamo",
+      "negativo": "Hipófisis",
+      "condiciones": [
+        "Duelo complicado",
+        "Pérdida ambigua",
+        "Duelo anticipatorio",
+        "Síndrome de corazón roto (Takotsubo)"
+      ],
+      "sintomas": [
+        "Llanto espontáneo",
+        "Vacío emocional",
+        "Fatiga inexplicada post-pérdida",
+        "Pérdida del apetito",
+        "Sensación de irrealidad"
+      ],
+      "notas": "El duelo activa el eje hipotálamo-hipofisario. La pérdida no integrada puede mantenerse décadas activa.",
+      "keywords": [
+        "duelo",
+        "pérdida",
+        "luto",
+        "muerte",
+        "separación",
+        "vacío",
+        "llorar",
+        "melancolía",
+        "aflicción"
+      ]
+    },
+    {
+      "id": "E008",
+      "nombre": "Núcleo caudado — Putamen",
+      "categoria": "emocional",
+      "agente": "Obsesiones / Compulsiones",
+      "positivo": "Núcleo caudado",
+      "negativo": "Putamen",
+      "condiciones": [
+        "TOC",
+        "Conductas compulsivas",
+        "Hábitos autodestructivos",
+        "Adicciones comportamentales"
+      ],
+      "sintomas": [
+        "Pensamientos intrusivos repetitivos",
+        "Rituales compulsivos",
+        "Ansiedad si no se ejecuta el ritual",
+        "Interferencia en vida cotidiana"
+      ],
+      "notas": "Los ganglios basales (caudado+putamen) regulan los circuitos de hábito. Par clave en TOC y adicciones.",
+      "keywords": [
+        "obsesión",
+        "compulsión",
+        "TOC",
+        "rituales",
+        "repetición",
+        "pensamientos intrusivos",
+        "hábitos",
+        "adicción"
+      ]
+    },
+    {
+      "id": "S001",
+      "nombre": "Timo — Tórax",
+      "categoria": "especial",
+      "agente": "Inmunosupresión sistémica",
+      "positivo": "Timo",
+      "negativo": "Tórax",
+      "condiciones": [
+        "Inmunodeficiencia adquirida",
+        "Inmunosupresión por fármacos",
+        "Enfermedades autoinmunes sistémicas"
+      ],
+      "sintomas": [
+        "Infecciones recurrentes inusuales",
+        "Heridas de cicatrización lenta",
+        "Tumores benignos frecuentes",
+        "Fatiga profunda",
+        "Infecciones oportunistas"
+      ],
+      "notas": "Par de regulación inmune. Explorar siempre en pacientes con cuadros infecciosos a repetición.",
+      "keywords": [
+        "timo",
+        "inmunidad",
+        "inmunosupresión",
+        "defensas",
+        "autoinmune",
+        "infecciones recurrentes",
+        "sistema inmune"
+      ]
+    },
+    {
+      "id": "S002",
+      "nombre": "Médula ósea — Esternón",
+      "categoria": "especial",
+      "agente": "Alteraciones hematológicas",
+      "positivo": "Médula ósea",
+      "negativo": "Esternón",
+      "condiciones": [
+        "Anemia",
+        "Leucemia",
+        "Aplasia medular",
+        "Trombocitopenia"
+      ],
+      "sintomas": [
+        "Palidez marcada",
+        "Fatiga y disnea de esfuerzo",
+        "Sangrado fácil",
+        "Infecciones frecuentes",
+        "Equimosis espontáneas"
+      ],
+      "notas": "Par de producción hematológica. Prioritario en cuadros de anemia inexplicada o pancitopenia.",
+      "keywords": [
+        "anemia",
+        "médula ósea",
+        "leucemia",
+        "hematológico",
+        "hemoglobina",
+        "sangre",
+        "plaquetas",
+        "sangrado"
+      ]
+    },
+    {
+      "id": "S003",
+      "nombre": "Suprarrenal derecha — Suprarrenal izquierda",
+      "categoria": "especial",
+      "agente": "Insuficiencia adrenal / Fatiga adrenal",
+      "positivo": "Suprarrenal derecha",
+      "negativo": "Suprarrenal izquierda",
+      "condiciones": [
+        "Fatiga adrenal",
+        "Hipocortisolismo",
+        "Síndrome de Addison",
+        "Estrés crónico con agotamiento"
+      ],
+      "sintomas": [
+        "Fatiga extrema matutina",
+        "Hipotensión ortostática",
+        "Antojos de sal",
+        "Hipoglucemia reactiva",
+        "Oscurecimiento de piel"
+      ],
+      "notas": "Par bilateral simétrico. La fatiga adrenal es frecuente en estrés crónico prolongado.",
+      "keywords": [
+        "suprarrenal",
+        "adrenal",
+        "cortisol",
+        "fatiga adrenal",
+        "Addison",
+        "estrés crónico",
+        "sal",
+        "hipotensión"
+      ]
+    },
+    {
+      "id": "S004",
+      "nombre": "Hipófisis — Tiroides",
+      "categoria": "especial",
+      "agente": "Disfunción tiroideo-hipofisaria",
+      "positivo": "Hipófisis",
+      "negativo": "Tiroides",
+      "condiciones": [
+        "Hipotiroidismo primario",
+        "Hipertiroidismo",
+        "Tiroiditis de Hashimoto",
+        "Bocio multinodular"
+      ],
+      "sintomas": [
+        "Cansancio",
+        "Frío/calor excesivo",
+        "Cambios de peso sin causa",
+        "Lentitud mental",
+        "Alteraciones menstruales",
+        "Caída de cabello"
+      ],
+      "notas": "Par eje HPT (hipófisis-tiroides). Prioritario en cualquier alteración metabólica o de peso.",
+      "keywords": [
+        "tiroides",
+        "hipotiroidismo",
+        "hipertiroidismo",
+        "Hashimoto",
+        "bocio",
+        "metabolismo",
+        "cansancio",
+        "peso",
+        "TSH"
+      ]
+    },
+    {
+      "id": "S005",
+      "nombre": "Páncreas — Islotes de Langerhans",
+      "categoria": "especial",
+      "agente": "Disfunción pancreática endocrina",
+      "positivo": "Páncreas",
+      "negativo": "Islotes de Langerhans",
+      "condiciones": [
+        "Diabetes mellitus tipo 1",
+        "Diabetes mellitus tipo 2",
+        "Resistencia a la insulina",
+        "Síndrome metabólico"
+      ],
+      "sintomas": [
+        "Polidipsia",
+        "Poliuria",
+        "Polifagia",
+        "Fatiga post-ingesta",
+        "Visión borrosa",
+        "Cicatrización lenta"
+      ],
+      "notas": "Par endocrino central. En diabetes tipo 1 considerar factor autoinmune. En tipo 2: estilo de vida.",
+      "keywords": [
+        "diabetes",
+        "páncreas",
+        "insulina",
+        "glucosa",
+        "azúcar en sangre",
+        "glucemia",
+        "síndrome metabólico",
+        "insulinoresistencia"
+      ]
+    },
+    {
+      "id": "S006",
+      "nombre": "Corazón — Aorta",
+      "categoria": "especial",
+      "agente": "Hipertensión arterial esencial",
+      "positivo": "Corazón",
+      "negativo": "Aorta",
+      "condiciones": [
+        "Hipertensión arterial",
+        "Cardiopatía hipertensiva",
+        "Aterosclerosis",
+        "Riesgo cardiovascular elevado"
+      ],
+      "sintomas": [
+        "Cefalea occipital matutina",
+        "Visión borrosa episódica",
+        "Palpitaciones",
+        "Epistaxis",
+        "Acúfenos"
+      ],
+      "notas": "Par cardiovascular esencial. Explorar factores emocionales (ira, miedo) como desencadenantes.",
+      "keywords": [
+        "hipertensión",
+        "presión arterial",
+        "corazón",
+        "aorta",
+        "cardiovascular",
+        "tensión",
+        "aterosclerosis"
+      ]
+    },
+    {
+      "id": "R001",
+      "nombre": "Recto — Sigma",
+      "categoria": "reservorio",
+      "agente": "Reservorio intestinal crónico",
+      "positivo": "Recto",
+      "negativo": "Sigma",
+      "condiciones": [
+        "Reservorio de patógenos intestinales",
+        "Estreñimiento crónico",
+        "Diverticulosis",
+        "Inflamación intestinal crónica"
+      ],
+      "sintomas": [
+        "Estreñimiento crónico",
+        "Sensación de evacuación incompleta",
+        "Distensión abdominal baja",
+        "Disconfort pélvico",
+        "Flatulencia crónica"
+      ],
+      "notas": "Par de reservorio más frecuente. Siempre evaluar en rastreo inicial de cualquier cuadro intestinal.",
+      "keywords": [
+        "recto",
+        "sigma",
+        "reservorio",
+        "colon",
+        "estreñimiento",
+        "diverticulosis",
+        "intestino",
+        "evacuación"
+      ]
+    },
+    {
+      "id": "R002",
+      "nombre": "Senos paranasales — Nasofaringe",
+      "categoria": "reservorio",
+      "agente": "Reservorio respiratorio superior",
+      "positivo": "Senos paranasales",
+      "negativo": "Nasofaringe",
+      "condiciones": [
+        "Rinosinusitis crónica",
+        "Adenoides inflamadas",
+        "Reservorio de patógenos ORL"
+      ],
+      "sintomas": [
+        "Obstrucción nasal crónica",
+        "Rinorrea posterior",
+        "Ronquido nocturno",
+        "Tos crónica seca (goteo postnasal)",
+        "Hiposmia"
+      ],
+      "notas": "Reservorio frecuente en cuadros recurrentes de vías respiratorias. Evaluar flora nasal crónica.",
+      "keywords": [
+        "senos",
+        "nariz",
+        "rinosinusitis",
+        "adenoides",
+        "moco",
+        "goteo postnasal",
+        "obstrucción nasal",
+        "ronquidos"
+      ]
+    },
+    {
+      "id": "R003",
+      "nombre": "Amígdalas — Adenoides",
+      "categoria": "reservorio",
+      "agente": "Reservorio faríngeo crónico",
+      "positivo": "Amígdalas",
+      "negativo": "Adenoides",
+      "condiciones": [
+        "Amigdalitis crónica",
+        "Hipertrofia adenoidea",
+        "Reservorio de estreptococo",
+        "Otitis media recurrente"
+      ],
+      "sintomas": [
+        "Infecciones faríngeas recurrentes",
+        "Ronquido",
+        "Apnea del sueño en niños",
+        "Respiración bucal",
+        "Hipoacusia leve"
+      ],
+      "notas": "Reservorio clásico de Streptococcus. La amigdalectomía reduce pero no elimina el reservorio.",
+      "keywords": [
+        "amígdalas",
+        "adenoides",
+        "faringitis recurrente",
+        "ronquido",
+        "apnea",
+        "respiración boca",
+        "otitis"
+      ]
+    },
+    {
+      "id": "D001",
+      "nombre": "Columna lumbar — Sacro",
+      "categoria": "disfuncion",
+      "agente": "Disfunción lumbar / Hernia discal",
+      "positivo": "Columna lumbar",
+      "negativo": "Sacro",
+      "condiciones": [
+        "Lumbalgia crónica",
+        "Hernia discal L4-L5 / L5-S1",
+        "Ciática",
+        "Espóndiloartrosis lumbar"
+      ],
+      "sintomas": [
+        "Dolor lumbar irradiado a glúteo y pierna",
+        "Parestesias en miembro inferior",
+        "Contractura paravertebral",
+        "Limitación de flexión",
+        "Entumecimiento matutino"
+      ],
+      "notas": "Par de alta frecuencia. Evaluar componente emocional (miedo, carga excesiva) junto con factor mecánico.",
+      "keywords": [
+        "lumbar",
+        "espalda",
+        "ciática",
+        "hernia disco",
+        "dolor lumbar",
+        "sacro",
+        "columna",
+        "L4 L5",
+        "nervio"
+      ]
+    },
+    {
+      "id": "D002",
+      "nombre": "Rodilla — Menisco",
+      "categoria": "disfuncion",
+      "agente": "Artropatía de rodilla",
+      "positivo": "Rodilla",
+      "negativo": "Menisco",
+      "condiciones": [
+        "Gonartritis",
+        "Lesión meniscal",
+        "Condropatía rotuliana",
+        "Artritis reumatoide de rodilla"
+      ],
+      "sintomas": [
+        "Dolor mecánico en rodilla",
+        "Inflamación articular",
+        "Crujidos al flexionar",
+        "Inestabilidad",
+        "Limitación para subir escaleras"
+      ],
+      "notas": "Evaluar componente emocional (rigidez vs flexibilidad ante lo nuevo). Rodilla = adaptación al cambio.",
+      "keywords": [
+        "rodilla",
+        "menisco",
+        "artritis",
+        "rodilla",
+        "condropatía",
+        "dolor rodilla",
+        "inflamación rodilla",
+        "gonartritis"
+      ]
+    },
+    {
+      "id": "D003",
+      "nombre": "Hombro — Manguito rotador",
+      "categoria": "disfuncion",
+      "agente": "Tendinopatía de hombro",
+      "positivo": "Hombro",
+      "negativo": "Manguito rotador",
+      "condiciones": [
+        "Tendinitis de manguito rotador",
+        "Bursitis subacromial",
+        "Síndrome de pinzamiento",
+        "Periartritis de hombro"
+      ],
+      "sintomas": [
+        "Dolor al elevar el brazo",
+        "Dolor nocturno que interrumpe el sueño",
+        "Limitación de rotación interna",
+        "Debilidad para cargar objetos",
+        "Crepitaciones"
+      ],
+      "notas": "Hombro derecho: carga laboral/responsabilidad. Izquierdo: carga emocional/afectiva.",
+      "keywords": [
+        "hombro",
+        "manguito rotador",
+        "tendinitis",
+        "bursitis",
+        "pinzamiento",
+        "dolor hombro",
+        "brazo",
+        "periartritis"
+      ]
+    },
+    {
+      "id": "D004",
+      "nombre": "Colon — Sigma descendente",
+      "categoria": "disfuncion",
+      "agente": "Síndrome de intestino irritable",
+      "positivo": "Colon",
+      "negativo": "Sigma descendente",
+      "condiciones": [
+        "Síndrome de intestino irritable",
+        "Colon espástico",
+        "Diarrea funcional",
+        "Estreñimiento funcional"
+      ],
+      "sintomas": [
+        "Alternancia diarrea-estreñimiento",
+        "Dolor abdominal que mejora con la defecación",
+        "Meteorismo",
+        "Moco en heces",
+        "Urgencia defecatoria"
+      ],
+      "notas": "SII con fuerte componente psicosomático. Evaluar siempre estrés crónico y patrón de control emocional.",
+      "keywords": [
+        "intestino irritable",
+        "SII",
+        "colon",
+        "estreñimiento",
+        "diarrea",
+        "colon irritable",
+        "abdomen",
+        "heces",
+        "psicosomático"
+      ]
+    },
+    {
+      "id": "D005",
+      "nombre": "Cervical C3-C4 — Occipucio",
+      "categoria": "disfuncion",
+      "agente": "Cervicalgia / Contractura cervical",
+      "positivo": "Cervical C3-C4",
+      "negativo": "Occipucio",
+      "condiciones": [
+        "Cervicalgia crónica",
+        "Cefalea tensional cervicogénica",
+        "Protrusión discal cervical",
+        "Contractura crónica de trapecios"
+      ],
+      "sintomas": [
+        "Dolor cervical irradiado a occipucio",
+        "Cefalea tensional posterior",
+        "Rigidez de cuello matutina",
+        "Mareos posturales",
+        "Hormigueo en brazo ipsilateral"
+      ],
+      "notas": "Muy frecuente en trabajadores de escritorio y usuarios de dispositivos digitales. Evaluar postura.",
+      "keywords": [
+        "cervical",
+        "cuello",
+        "cefalea tensional",
+        "contractura",
+        "trapecio",
+        "dolor cuello",
+        "cervicalgia",
+        "postura"
+      ]
+    }
+  ]
+}

@@ -2058,6 +2058,220 @@ function renderRastreosAvanzados(p, content) {
   renderShell();
 }
 
+// ─── Catálogo Biomagnético ──────────────────────────────────────────────────
+function renderCatalogoBiomagnetico(p, content) {
+  const cache = { data: null };
+  const state = {
+    phase: "browse",       // "browse" | "detalle"
+    catFilter: null,
+    busqueda: "",
+    selectedPar: null,
+    sessionPares: [],      // pares marcados para la sesión
+  };
+
+  async function init() {
+    content.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Cargando catálogo biomagnético...</span></div>`;
+    try {
+      const res = await fetch("/api/pares/catalogo");
+      cache.data = res.ok ? await res.json() : null;
+    } catch { cache.data = null; }
+    renderBrowse();
+  }
+
+  function filteredPares() {
+    const all = cache.data?.pares || [];
+    return all.filter((par) => {
+      const catOk = !state.catFilter || par.categoria === state.catFilter;
+      if (!catOk) return false;
+      if (!state.busqueda) return true;
+      const q = state.busqueda.toLowerCase();
+      return (
+        par.nombre.toLowerCase().includes(q) ||
+        par.agente.toLowerCase().includes(q) ||
+        (par.condiciones || []).some((c) => c.toLowerCase().includes(q)) ||
+        (par.sintomas || []).some((s) => s.toLowerCase().includes(q)) ||
+        (par.keywords || []).some((k) => k.toLowerCase().includes(q))
+      );
+    });
+  }
+
+  function renderBrowse() {
+    state.phase = "browse";
+    const cats = cache.data?.categorias || [];
+    const pares = filteredPares();
+
+    const catChips = cats.map((cat) => `
+      <div class="sint-cat-chip${state.catFilter === cat.id ? " sint-cat-active" : ""}"
+        data-cat="${cat.id}" style="--cat-color:${cat.color}">
+        <span>${cat.icono}</span>
+        <span>${cat.nombre}</span>
+        <span class="cat-chip-count">${(cache.data?.pares||[]).filter(x=>x.categoria===cat.id).length}</span>
+      </div>`).join("");
+
+    const sesionHtml = state.sessionPares.length > 0
+      ? `<div class="catbio-sesion-bar">
+          <span>🧲 ${state.sessionPares.length} par${state.sessionPares.length>1?"es":""} seleccionado${state.sessionPares.length>1?"s":""} para la sesión</span>
+          <button class="wizard-nav-btn vort-ia-btn" id="catbio-interpretar-sesion">✨ Interpretar sesión</button>
+          <button class="wizard-nav-btn wizard-reiniciar" id="catbio-limpiar-sesion">✕ Limpiar</button>
+        </div>` : "";
+
+    const paresHtml = pares.length === 0
+      ? `<p class="casos-empty">No se encontraron pares con ese criterio.</p>`
+      : pares.map((par) => {
+          const cat = cats.find((c) => c.id === par.categoria);
+          const enSesion = state.sessionPares.some((s) => s.id === par.id);
+          return `<div class="catbio-par-card${enSesion ? " catbio-par-selected" : ""}" data-pid="${par.id}"
+            style="--cat-color:${cat?.color||"#7c3aed"}">
+            <div class="catbio-par-header">
+              <span class="catbio-par-nombre">${escapeHtml(par.nombre)}</span>
+              <span class="catbio-cat-badge" style="background:${cat?.color||"#7c3aed"}20;color:${cat?.color||"#7c3aed"};border-color:${cat?.color||"#7c3aed"}40">
+                ${cat?.icono||""} ${cat?.nombre||""}
+              </span>
+            </div>
+            <div class="catbio-par-agente">${escapeHtml(par.agente)}</div>
+            <div class="catbio-par-conds">${(par.condiciones||[]).slice(0,2).map(c=>`<span class="vort-det-tag">${escapeHtml(c)}</span>`).join("")}</div>
+            <div class="catbio-par-actions">
+              <button class="catbio-ver-btn" data-pid="${par.id}">Ver detalle →</button>
+              <button class="catbio-add-btn${enSesion?" catbio-add-active":""}" data-pid="${par.id}">
+                ${enSesion ? "✓ En sesión" : "+ Agregar"}
+              </button>
+            </div>
+          </div>`;
+        }).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="rastreo-instruccion-ms">
+          <span class="rastreo-ms-badge">MS</span>
+          <span>${escapeHtml(p.instruccion_ms || "¿Hay algún par de esta categoría activo?")}</span>
+        </div>
+        ${sesionHtml}
+        <div class="catbio-search-row">
+          <input class="casos-input" id="catbio-search" placeholder="Buscar por nombre, agente, síntoma..." value="${escapeHtml(state.busqueda)}">
+        </div>
+        <div class="sint-cats-grid catbio-cats">${catChips}
+          ${state.catFilter ? `<div class="sint-cat-chip" id="catbio-clear-cat" style="--cat-color:#6b7280">✕ Todos</div>` : ""}
+        </div>
+        <div class="catbio-result-info">${pares.length} pares encontrados</div>
+        <div class="catbio-grid">${paresHtml}</div>
+        <div id="catbio-sesion-out"></div>
+      </div>`;
+
+    content.querySelector("#catbio-search")?.addEventListener("input", (e) => {
+      state.busqueda = e.target.value; renderBrowse();
+    });
+    content.querySelectorAll(".sint-cat-chip[data-cat]").forEach((el) => {
+      el.addEventListener("click", () => { state.catFilter = state.catFilter === el.dataset.cat ? null : el.dataset.cat; renderBrowse(); });
+    });
+    content.querySelector("#catbio-clear-cat")?.addEventListener("click", () => { state.catFilter = null; renderBrowse(); });
+    content.querySelectorAll(".catbio-ver-btn").forEach((btn) => {
+      btn.addEventListener("click", () => { state.selectedPar = btn.dataset.pid; renderDetalle(); });
+    });
+    content.querySelectorAll(".catbio-add-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const pid = btn.dataset.pid;
+        const par = (cache.data?.pares||[]).find((x) => x.id === pid);
+        if (!par) return;
+        const idx = state.sessionPares.findIndex((x) => x.id === pid);
+        if (idx >= 0) state.sessionPares.splice(idx, 1);
+        else state.sessionPares.push(par);
+        renderBrowse();
+      });
+    });
+    content.querySelectorAll(".catbio-par-card").forEach((card) => {
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".catbio-ver-btn,.catbio-add-btn")) return;
+        state.selectedPar = card.dataset.pid; renderDetalle();
+      });
+    });
+    content.querySelector("#catbio-interpretar-sesion")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#catbio-sesion-out");
+      if (!outEl) return;
+      const lista = state.sessionPares.map((par) => `- ${par.nombre} (${par.agente}): ${(par.condiciones||[]).slice(0,2).join(", ")}`).join("\n");
+      const query = `El terapeuta seleccionó los siguientes pares biomagnéticos para rastrear en la sesión:\n${lista}\n\nDesde la perspectiva terapéutica holística:\n1. ¿Qué patrón biológico y emocional une estos pares?\n2. ¿En qué orden recomiendas trabajarlos?\n3. ¿Qué información adicional del paciente ayudaría a confirmar el rastreo?\n4. ¿Qué esperar tras el tratamiento?\n\nSé concreto y orientado a la sesión.`;
+      outEl.scrollIntoView({ behavior: "smooth" });
+      await rastreoInterpretarIA(outEl, query);
+    });
+    content.querySelector("#catbio-limpiar-sesion")?.addEventListener("click", () => { state.sessionPares = []; renderBrowse(); });
+  }
+
+  function renderDetalle() {
+    state.phase = "detalle";
+    const par = (cache.data?.pares||[]).find((x) => x.id === state.selectedPar);
+    if (!par) { renderBrowse(); return; }
+    const cats = cache.data?.categorias || [];
+    const cat = cats.find((c) => c.id === par.categoria);
+    const color = cat?.color || "#7c3aed";
+    const enSesion = state.sessionPares.some((s) => s.id === par.id);
+
+    const condsHtml = (par.condiciones||[]).map((c) => `<span class="vort-det-tag">${escapeHtml(c)}</span>`).join("");
+    const sintomasHtml = (par.sintomas||[]).map((s) => `<li>${escapeHtml(s)}</li>`).join("");
+
+    content.innerHTML = `
+      <div class="rastreo-tabla-wrap">
+        <div class="catbio-det-header" style="border-color:${color}40">
+          <div class="catbio-det-cat" style="background:${color}20;color:${color}">
+            ${cat?.icono||""} ${cat?.nombre||""}
+          </div>
+          <h3 class="catbio-det-nombre" style="color:${color}">${escapeHtml(par.nombre)}</h3>
+          <div class="catbio-det-agente">🦠 ${escapeHtml(par.agente)}</div>
+          <div class="catbio-det-puntos">
+            <div class="catbio-punto pos" style="border-color:${color}">
+              <span class="catbio-punto-label">Polo (+)</span>
+              <span class="catbio-punto-nombre">${escapeHtml(par.positivo)}</span>
+            </div>
+            <div class="catbio-punto-arrow">⟷</div>
+            <div class="catbio-punto neg" style="border-color:${color}">
+              <span class="catbio-punto-label">Polo (−)</span>
+              <span class="catbio-punto-nombre">${escapeHtml(par.negativo)}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="catbio-det-section">
+          <div class="catbio-det-label">Condiciones asociadas</div>
+          <div class="catbio-det-conds">${condsHtml}</div>
+        </div>
+
+        <div class="catbio-det-section">
+          <div class="catbio-det-label">Síntomas frecuentes</div>
+          <ul class="catbio-det-sintomas">${sintomasHtml}</ul>
+        </div>
+
+        ${par.notas ? `<div class="catbio-det-notas">
+          <span class="rastreo-ms-badge" style="background:${color}20;color:${color}">Nota clínica</span>
+          <span>${escapeHtml(par.notas)}</span>
+        </div>` : ""}
+
+        <div class="wizard-nav" style="margin-top:16px">
+          <button class="wizard-nav-btn" id="det-back-cat">← Catálogo</button>
+          <button class="wizard-nav-btn${enSesion?" wizard-reiniciar":""}" id="det-toggle-sesion">
+            ${enSesion ? "✓ Quitar de sesión" : "+ Agregar a sesión"}
+          </button>
+          <button class="wizard-nav-btn vort-ia-btn" id="det-interpretar">✨ Interpretar</button>
+        </div>
+        <div id="det-interp-out"></div>
+      </div>`;
+
+    content.querySelector("#det-back-cat")?.addEventListener("click", () => renderBrowse());
+    content.querySelector("#det-toggle-sesion")?.addEventListener("click", () => {
+      const idx = state.sessionPares.findIndex((x) => x.id === par.id);
+      if (idx >= 0) state.sessionPares.splice(idx, 1);
+      else state.sessionPares.push(par);
+      renderDetalle();
+    });
+    content.querySelector("#det-interpretar")?.addEventListener("click", async () => {
+      const outEl = content.querySelector("#det-interp-out");
+      if (!outEl) return;
+      const query = `El par biomagnético "${par.nombre}" (${par.agente}) fue identificado durante el rastreo.\n\nCondiciones asociadas: ${(par.condiciones||[]).join(", ")}\nSíntomas: ${(par.sintomas||[]).join(", ")}\n\nDesde la perspectiva terapéutica holística:\n1. ¿Por qué este par se activa? ¿Qué programa biológico expresa?\n2. ¿Cómo se aplican los imanes (localización exacta, polo, tiempo)?\n3. ¿Qué pares complementarios suele tener?\n4. ¿Qué cambios observar en el paciente post-tratamiento?\n5. ¿Qué trabajo emocional o nutricional potencia la resolución?\n\nSé específico y orientado a la sesión.`;
+      await rastreoInterpretarIA(outEl, query);
+    });
+  }
+
+  init();
+}
+
 // ─── Rastreo por Síntoma ────────────────────────────────────────────────────
 const SINTOMA_CATEGORIAS = [
   { id: "virus",      label: "Virus",           icono: "🦠", color: "#dc2626" },
@@ -2937,6 +3151,8 @@ function openProtocolDetail(protocolId) {
   if (content) {
     if (protocolId === "diagnostico_organico") {
       renderDiagnosticoOrganico(p, content);
+    } else if (p.render_tipo === "catalogo_biomagnetico") {
+      renderCatalogoBiomagnetico(p, content);
     } else if (p.render_tipo === "rastreo_sintoma") {
       renderRastreoSintoma(p, content);
     } else if (p.render_tipo === "gestion_casos") {
