@@ -3938,7 +3938,26 @@ tabs.forEach((tab) => {
 });
 
 // Pre-cargar el catálogo siempre para evitar depender del clic
-loadCatalog();
+// Soporte de deep links: /rastreo?p=catalogo_biomagnetico o hash #catalogo_biomagnetico
+(async function initWithDeepLink() {
+  await loadCatalog();
+  const urlParams = new URLSearchParams(window.location.search);
+  const pFromQuery = urlParams.get("p") || urlParams.get("protocol");
+  const pFromHash  = window.location.hash.replace("#", "");
+  const targetId   = pFromQuery || pFromHash;
+  if (targetId && catalogData) {
+    // Switch to protocols tab first
+    const protocolTab = document.querySelector('[data-tab="protocols"]');
+    if (protocolTab) {
+      document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+      protocolTab.classList.add("active");
+      document.getElementById("tab-protocols")?.classList.add("active");
+    }
+    // Open the protocol detail
+    setTimeout(() => openProtocolDetail(targetId), 200);
+  }
+})();
 if (protocolOutput) setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
 
 // ── Modo Por Sistema Corporal ──────────────────────────────────────────────
