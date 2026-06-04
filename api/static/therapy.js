@@ -2059,6 +2059,45 @@ function renderRastreosAvanzados(p, content) {
 }
 
 // ─── Diario Lunar ───────────────────────────────────────────────────────────
+
+function buildMoonSvg(phaseId, illumination, color) {
+  // Build SVG moon showing correct phase using two overlapping circles
+  const size = 80;
+  const cx = size / 2;
+  const r = 32;
+  // For phase visualization: left circle always = moon, right circle = shadow or light
+  // illumination 0-100: 0=new(all dark), 100=full(all lit)
+  // We use a clip approach: lit portion on right (waxing) or left (waning)
+  const isWaning = ['llena', 'menguante', 'cuarto_men', 'balsamica'].includes(phaseId);
+  const pct = illumination / 100;
+  // Offset of inner circle to create crescent: from r (fully dark) to -r (fully lit)
+  const offset = r - pct * 2 * r;
+  const glowColor = color || '#7c3aed';
+  const moonColor = phaseId === 'nueva' ? '#1a1a2e' : (illumination > 80 ? '#f8d877' : '#c4b5fd');
+  const shadowColor = '#0a0a1a';
+
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" class="luna-moon-svg">
+    <defs>
+      <clipPath id="moon-clip-${phaseId}">
+        <circle cx="${cx}" cy="${cx}" r="${r}" />
+      </clipPath>
+      <filter id="moon-glow">
+        <feGaussianBlur stdDeviation="3" result="blur"/>
+        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+      </filter>
+    </defs>
+    <g filter="url(#moon-glow)">
+      <!-- Base moon circle -->
+      <circle cx="${cx}" cy="${cx}" r="${r}" fill="${moonColor}" opacity="0.95"/>
+      <!-- Shadow overlay using offset inner circle -->
+      <g clip-path="url(#moon-clip-${phaseId})">
+        <circle cx="${cx + (isWaning ? -offset : offset)}" cy="${cx}" r="${r}" fill="${shadowColor}" opacity="${phaseId === 'llena' ? 0 : 0.92}"/>
+      </g>
+    </g>
+    <!-- Glow ring for full/near-full phases -->
+    ${illumination > 60 ? `<circle cx="${cx}" cy="${cx}" r="${r + 4}" fill="none" stroke="${glowColor}" stroke-width="1.5" opacity="0.3" class="luna-glow-ring"/>` : ''}
+  </svg>`;
+}
 const LUNA_TERAPEUTICA = {
   nueva: {
     titulo: "Luna Nueva — Siembra e Intención",
@@ -2166,7 +2205,7 @@ function renderDiarioLunar(p, content) {
     content.innerHTML = `
       <div class="rastreo-tabla-wrap luna-wrap">
         <div class="luna-header" style="background:linear-gradient(135deg,${tera.color},#100922)">
-          <div class="luna-emoji">${fase.emoji}</div>
+          <div class="luna-svg-wrap">${buildMoonSvg(fase.id, fase.iluminacion, tera.colorAccent)}</div>
           <div class="luna-fase-info">
             <div class="luna-fecha">${escapeHtml(luna.fecha)}</div>
             <div class="luna-fase-nombre" style="color:${tera.colorAccent}">${escapeHtml(fase.nombre)}</div>

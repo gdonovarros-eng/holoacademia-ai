@@ -3434,3 +3434,16 @@ textarea {
   .luna-header { flex-direction: column; align-items: flex-start; }
   .luna-ilum-wrap { flex-direction: row; align-items: center; gap: 8px; }
 }
+
+/* ─── Animated Moon ─────────────────────────────────────────────────────────── */
+.luna-svg-wrap { flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+.luna-moon-svg { animation: lunaPulse 4s ease-in-out infinite; filter: drop-shadow(0 0 12px var(--luna-glow, #7c3aed)); }
+@keyframes lunaPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--luna-glow, #7c3aed)); }
+  50%       { transform: scale(1.04); filter: drop-shadow(0 0 20px var(--luna-glow, #7c3aed)); }
+}
+.luna-glow-ring { animation: glowRing 3s ease-in-out infinite; }
+@keyframes glowRing {
+  0%, 100% { opacity: 0.25; r: 36; }
+  50%       { opacity: 0.55; r: 38; }
+}

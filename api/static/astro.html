@@ -566,7 +566,22 @@ select { padding-right: 32px; cursor: pointer; }
   .header { padding: 14px 16px; }
   .result-body { padding: 18px 18px; }
 }
-</style></head><body class="mod-page-aurora"><!-- HEADER --><header class="header" id="appHeader"><a class="header-back" href="/astro-home" id="backBtn">← Astrolog iA</a><div class="header-title"><span class="header-icon"></span><span class="header-name">Carta Natal & Revolución Solar</span><span class="header-badge">Astrolog iA</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Datos de Nacimiento</div><div class="form-sub">Ingresa los datos del consultante para generar el análisis astrológico completo. Cuanto más precisa sea la hora, más exacto será el resultado.</div><form id="astroForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nombre del consultante</label><input type="text" id="nombre" name="nombre" placeholder="Ej. María García" required autocomplete="off"></div><div class="form-group"><label for="fecha">Fecha de nacimiento</label><input type="date" id="fecha" name="fecha" required></div><div class="form-group"><label for="hora">Hora de nacimiento</label><input type="time" id="hora" name="hora" required></div><div class="form-group full"><label for="lugar">Lugar de nacimiento</label><input type="text" id="lugar" name="lugar" placeholder="Ej. Ciudad de México, México" required autocomplete="off"></div><div class="form-group full"><label for="lugarActual">Lugar de residencia actual <span class="opt">(opcional)</span></label><input type="text" id="lugarActual" name="lugarActual" placeholder="Ej. Guadalajara, México" autocomplete="off"></div><div class="form-group full"><label for="profundidad">Profundidad del análisis</label><div class="select-wrap"><select id="profundidad" name="profundidad"><option value="basico">Básico — Carta natal + RS (más rápido)</option><option value="completo" selected>Completo — Natal + RS + RSP + Mensales</option></select></div></div></div><div class="opciones-title">Incluir en el análisis</div><div class="opciones-grid"><label class="check-card active" id="card-rsp"><input type="checkbox" id="incluirRsp" name="incluirRsp" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Revolución Solar Profecional</div><div class="check-desc">RSP: análisis del año a partir del cumpleaños solar de este año</div></div></label><label class="check-card active" id="card-mensal"><input type="checkbox" id="incluirMensal" name="incluirMensal" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Mensales</div><div class="check-desc">Análisis mensual del momento actual (RS Lunar)</div></div></label></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span>Generar análisis astrológico</span></button></form></div><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div class="result-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis Astrológico</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><div class="result-body"><div class="md-content" id="mdContent"></div></div></div><!-- CARTA NATAL SVG --><div class="carta-card" id="cartaCard"><div class="carta-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span style="font-size:0.9rem;font-weight:700;" id="cartaTitle">Carta Natal</span></div><div class="carta-tabs"><button class="carta-tab active" id="tabNatal" onclick="switchTab('natal')">Carta Natal</button><button class="carta-tab" id="tabRS" onclick="switchTab('rs')">Rev. Solar</button><button class="carta-tab" id="tabPos" onclick="switchTab('posiciones')">Posiciones</button><button class="carta-tab" id="tabInterp" onclick="switchTab('interpretacion')">Interpretación</button></div></div><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span id="cartaLoadingMsg">Generando carta natal...</span></div><!-- Carta SVG --><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div><!-- Tabla de posiciones --><div id="cartaPosiciones" style="display:none;width:100%;"></div><!-- Interpretación streaming --><div id="cartaInterpWrap" style="display:none;width:100%;"><div class="md-content" id="cartaInterpContent"></div></div><div class="carta-error" id="cartaError" style="display:none;"></div></div></div></div><script>
+@keyframes chartSpin {
+  from { opacity: 0; transform: rotate(-15deg) scale(0.85); }
+  to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+.carta-svg-wrap svg { transform-origin: center center; }
+.planet-panel { margin-top: 16px; background: rgba(15,23,42,0.95); border: 1px solid rgba(248,113,180,0.3); border-radius: 12px; padding: 16px 20px; display: none; }
+.planet-panel.visible { display: block; animation: fadeIn 0.25s ease; }
+.planet-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.planet-glyph { font-size: 28px; }
+.planet-name { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
+.planet-sign { font-size: 0.85rem; color: #94a3b8; }
+.planet-retro { background: rgba(248,113,180,0.2); color: #f472b6; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; }
+.planet-interp-btn { margin-top: 10px; padding: 8px 16px; background: linear-gradient(135deg,#ec4899,#8b5cf6); border: none; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+.planet-interp-out { margin-top: 10px; font-size: 0.83rem; line-height: 1.6; color: #cbd5e1; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+</style></head><body class="mod-page-aurora"><!-- HEADER --><header class="header" id="appHeader"><a class="header-back" href="/astro-home" id="backBtn">← Astrolog iA</a><div class="header-title"><span class="header-icon"></span><span class="header-name">Carta Natal & Revolución Solar</span><span class="header-badge">Astrolog iA</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Datos de Nacimiento</div><div class="form-sub">Ingresa los datos del consultante para generar el análisis astrológico completo. Cuanto más precisa sea la hora, más exacto será el resultado.</div><form id="astroForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nombre del consultante</label><input type="text" id="nombre" name="nombre" placeholder="Ej. María García" required autocomplete="off"></div><div class="form-group"><label for="fecha">Fecha de nacimiento</label><input type="date" id="fecha" name="fecha" required></div><div class="form-group"><label for="hora">Hora de nacimiento</label><input type="time" id="hora" name="hora" required></div><div class="form-group full"><label for="lugar">Lugar de nacimiento</label><input type="text" id="lugar" name="lugar" placeholder="Ej. Ciudad de México, México" required autocomplete="off"></div><div class="form-group full"><label for="lugarActual">Lugar de residencia actual <span class="opt">(opcional)</span></label><input type="text" id="lugarActual" name="lugarActual" placeholder="Ej. Guadalajara, México" autocomplete="off"></div><div class="form-group full"><label for="profundidad">Profundidad del análisis</label><div class="select-wrap"><select id="profundidad" name="profundidad"><option value="basico">Básico — Carta natal + RS (más rápido)</option><option value="completo" selected>Completo — Natal + RS + RSP + Mensales</option></select></div></div></div><div class="opciones-title">Incluir en el análisis</div><div class="opciones-grid"><label class="check-card active" id="card-rsp"><input type="checkbox" id="incluirRsp" name="incluirRsp" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Revolución Solar Profecional</div><div class="check-desc">RSP: análisis del año a partir del cumpleaños solar de este año</div></div></label><label class="check-card active" id="card-mensal"><input type="checkbox" id="incluirMensal" name="incluirMensal" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Mensales</div><div class="check-desc">Análisis mensual del momento actual (RS Lunar)</div></div></label></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span>Generar análisis astrológico</span></button></form></div><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div class="result-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis Astrológico</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><div class="result-body"><div class="md-content" id="mdContent"></div></div></div><!-- CARTA NATAL SVG --><div class="carta-card" id="cartaCard"><div class="carta-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span style="font-size:0.9rem;font-weight:700;" id="cartaTitle">Carta Natal</span></div><div class="carta-tabs"><button class="carta-tab active" id="tabNatal" onclick="switchTab('natal')">Carta Natal</button><button class="carta-tab" id="tabRS" onclick="switchTab('rs')">Rev. Solar</button><button class="carta-tab" id="tabPos" onclick="switchTab('posiciones')">Posiciones</button><button class="carta-tab" id="tabInterp" onclick="switchTab('interpretacion')">Interpretación</button></div></div><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span id="cartaLoadingMsg">Generando carta natal...</span></div><!-- Carta SVG --><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div><!-- Tabla de posiciones --><div id="cartaPosiciones" style="display:none;width:100%;"></div><!-- Interpretación streaming --><div id="cartaInterpWrap" style="display:none;width:100%;"><div class="md-content" id="cartaInterpContent"></div></div><div id="planet-panel" class="planet-panel"><div class="planet-panel-header"><span class="planet-glyph" id="pp-glyph"></span><div><div class="planet-name" id="pp-name"></div><div class="planet-sign" id="pp-sign"></div></div><span class="planet-retro" id="pp-retro" style="display:none">&#x211E; Retrógrado</span></div><div id="pp-interp-out" class="planet-interp-out"></div><button class="planet-interp-btn" id="pp-btn">✨ Interpretar con IA</button></div><div class="carta-error" id="cartaError" style="display:none;"></div></div></div></div><script>
 (function() {
 
   /* ── EMBED MODE ── */
@@ -644,7 +659,57 @@ select { padding-right: 32px; cursor: pointer; }
  cartaSvgWrap.innerHTML     = svg;
  cartaSvgWrap.style.display = 'flex';
  cartaSvgWrap.style.justifyContent = 'center';
+ var svgEl = cartaSvgWrap.querySelector('svg');
+ if (svgEl) { svgEl.style.animation = 'chartSpin 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards'; }
+ initChartInteractivity();
   }
+ var PLANET_ES = {Sun:'Sol',Moon:'Luna',Mercury:'Mercurio',Venus:'Venus',Mars:'Marte',Jupiter:'Júpiter',Saturn:'Saturno',Uranus:'Urano',Neptune:'Neptuno',Pluto:'Plutón',Chiron:'Quirón',Ascendant:'Ascendente',Medium_Coeli:'Medio Cielo'};
+ var PLANET_GLYPH = {Sun:'☉',Moon:'☽',Mercury:'☿',Venus:'♀',Mars:'♂',Jupiter:'♃',Saturn:'♄',Uranus:'♅',Neptune:'♆',Pluto:'♇',Chiron:'⚷',Ascendant:'AC',Medium_Coeli:'MC'};
+ var SIGNS_ES = {Ari:'Aries',Tau:'Tauro',Gem:'Géminis',Can:'Cáncer',Leo:'Leo',Vir:'Virgo',Lib:'Libra',Sco:'Escorpio',Sag:'Sagitario',Cap:'Capricornio',Aqu:'Acuario',Pis:'Piscis'};
+ var HOUSES_ES = {First:'I',Second:'II',Third:'III',Fourth:'IV',Fifth:'V',Sixth:'VI',Seventh:'VII',Eighth:'VIII',Ninth:'IX',Tenth:'X',Eleventh:'XI',Twelfth:'XII'};
+ function houseRoman(houseStr) { var m = (houseStr||'').match(/^(\w+)_House/); return m ? (HOUSES_ES[m[1]]||m[1]) : ''; }
+ function initChartInteractivity() {
+  var svgEl = cartaSvgWrap.querySelector('svg');
+  if (!svgEl) return;
+  var points = svgEl.querySelectorAll('g[kr\\:node="ChartPoint"]');
+  var panel = document.getElementById('planet-panel');
+  var ppGlyph = document.getElementById('pp-glyph');
+  var ppName = document.getElementById('pp-name');
+  var ppSign = document.getElementById('pp-sign');
+  var ppRetro = document.getElementById('pp-retro');
+  var ppOut = document.getElementById('pp-interp-out');
+  var ppBtn = document.getElementById('pp-btn');
+  points.forEach(function(g) {
+   var slug = g.getAttribute('kr:slug') || '';
+   if (!PLANET_ES[slug]) return;
+   g.style.cursor = 'pointer';
+   g.style.transition = 'filter 0.2s';
+   g.addEventListener('mouseenter', function() { g.style.filter = 'drop-shadow(0 0 8px rgba(248,113,180,0.8))'; });
+   g.addEventListener('mouseleave', function() { g.style.filter = ''; });
+   g.addEventListener('click', function() {
+    var sign = SIGNS_ES[g.getAttribute('kr:sign')] || g.getAttribute('kr:sign') || '';
+    var house = houseRoman(g.getAttribute('kr:house'));
+    var deg = parseFloat(g.getAttribute('kr:signposition') || '0').toFixed(1);
+    var isRetro = g.getAttribute('kr:retrograde') === 'true';
+    ppGlyph.textContent = PLANET_GLYPH[slug] || '★';
+    ppName.textContent = PLANET_ES[slug];
+    ppSign.textContent = sign + ' ' + deg + '° · Casa ' + house;
+    ppRetro.style.display = isRetro ? 'inline' : 'none';
+    ppOut.innerHTML = '';
+    panel.classList.add('visible');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    ppBtn.onclick = function() {
+     if (!_cartaParams) return;
+     ppOut.innerHTML = '<span style="color:#94a3b8">Consultando Motor Astrológico...</span>';
+     var params = new URLSearchParams({ nombre: _cartaParams.nombre, fecha_nacimiento: _cartaParams.fecha, hora_nacimiento: _cartaParams.hora, lugar_nacimiento: _cartaParams.lugar, planetas: slug });
+     var src = new EventSource('/astro/interpretacion-stream?' + params.toString());
+     var buf = '';
+     src.onmessage = function(ev) { try { var d = JSON.parse(ev.data); if (d.text) { buf += d.text; ppOut.innerHTML = buf.replace(/\n/g,'<br>'); } if (d.done) src.close(); } catch(e) {} };
+     src.onerror = function() { src.close(); };
+    };
+   });
+  });
+ }
  function cartaShowPos(html) {
  cartaLoading.style.display = 'none';
  var el = document.getElementById('cartaPosiciones');
@@ -828,6 +893,10 @@ select { padding-right: 32px; cursor: pointer; }
  if (!_cartaParams) return;
  setActiveTab(tab);
  cartaTitle.textContent = {natal:'Carta Natal', rs:'Revolución Solar', posiciones:'Posiciones Planetarias', interpretacion:'Interpretación'}[tab] || tab;
+ var cartaBody = document.getElementById('cartaBody');
+ cartaBody.style.opacity = '0';
+ cartaBody.style.transition = 'opacity 0.2s';
+ setTimeout(function() { cartaBody.style.opacity = '1'; }, 200);
  if (tab === 'natal' || tab === 'rs') loadSvgTab(tab);
  else if (tab === 'posiciones') loadPosTab();
  else if (tab === 'interpretacion') loadInterpTab();
