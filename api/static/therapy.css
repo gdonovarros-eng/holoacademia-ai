@@ -3714,3 +3714,61 @@ textarea {
   font-style: italic;
   line-height: 1.5;
 }
+
+/* ═══ PACIENTE ACTIVO — banner + integración ═══════════════════════════════ */
+.pa-banner {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+  padding: 10px 18px;
+  background: linear-gradient(135deg, #7c3aed, #4f46e5);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+  color: #fff;
+}
+.pa-banner-info { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 14px; }
+.pa-banner-dot { width: 9px; height: 9px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 8px #4ade80; animation: paPulse 2s ease-in-out infinite; }
+@keyframes paPulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+.pa-banner-label { opacity: 0.85; font-size: 12.5px; }
+.pa-banner-nombre { font-weight: 800; font-size: 15px; }
+.pa-banner-edad, .pa-banner-ses { opacity: 0.85; font-size: 12.5px; }
+.pa-banner-actions { display: flex; gap: 8px; }
+.pa-banner-btn {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.pa-banner-btn:hover { background: rgba(255,255,255,0.3); }
+.pa-banner-close { background: rgba(0,0,0,0.15); }
+
+/* Nota de precarga dentro de las herramientas */
+.pa-prefill-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(124,58,237,0.1);
+  border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 12.5px;
+  color: #c4b5fd;
+  margin-bottom: 14px;
+}
+.pa-prefill-note strong { color: #e9d5ff; }
+
+/* Badge "en sesión" en las cards de casos */
+.casos-card-activo { border-color: #7c3aed !important; box-shadow: 0 0 0 1px #7c3aed, 0 4px 16px rgba(124,58,237,0.15); }
+.casos-badge-sesion { font-size: 11px; font-weight: 700; color: #4ade80; margin-left: 6px; }
+.casos-btn-ensesion { opacity: 0.7; cursor: default !important; color: #4ade80 !important; }

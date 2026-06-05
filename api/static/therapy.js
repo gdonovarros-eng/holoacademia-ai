@@ -2246,11 +2246,19 @@ function renderToolLink(p, content) {
 
 // ─── Numerología Terapéutica ────────────────────────────────────────────────
 function renderNumerologiaTerapeutica(p, content) {
-  const state = { nombre: "", fecha: "", resultado: null };
+  const _act = paGetActivo();
+  const _pac = _act?.paciente;
+  const state = {
+    nombre: _pac ? `${_pac.nombre || ""} ${_pac.apellidos || ""}`.trim() : "",
+    fecha: _pac?.fecha_nacimiento || "",
+    resultado: null,
+  };
 
   function render() {
+    const act = paGetActivo();
     content.innerHTML = `
       <div class="rastreo-tabla-wrap">
+        ${act && state.nombre ? `<div class="pa-prefill-note">📋 Datos de <strong>${escapeHtml(state.nombre)}</strong> precargados desde su expediente</div>` : ""}
         <div class="rastreo-instruccion-ms">
           <span class="rastreo-ms-badge">🔢</span>
           <span>${escapeHtml(p.instruccion_ms || "Ingresa el nombre completo y fecha de nacimiento del consultante.")}</span>
@@ -2287,6 +2295,9 @@ function renderNumerologiaTerapeutica(p, content) {
       state.nombre = nombre;
       state.fecha = fecha;
       state.resultado = calcularNumerologia(nombre, fecha);
+      const r = state.resultado;
+      paRegistrar("Numerología", `Perfil numerológico de ${nombre}`,
+        `Camino de Vida ${r.camino} · Expresión ${r.expresion} · Alma ${r.alma}`);
       render();
       // Auto-interpret
       setTimeout(() => interpretarNumerologia(), 200);
@@ -2557,8 +2568,14 @@ function renderCartaNatal(p, content) {
   }
 
   function renderCnForm() {
+    const act = paGetActivo();
+    const pac = act?.paciente;
+    const preNombre = pac ? `${pac.nombre || ""} ${pac.apellidos || ""}`.trim() : "";
+    const preFecha  = pac?.fecha_nacimiento || "";
+    const preLugar  = pac?.lugar_nacimiento || "";
     content.innerHTML = `
       <div class="rastreo-tabla-wrap">
+        ${act ? `<div class="pa-prefill-note">📋 Datos de <strong>${escapeHtml(preNombre)}</strong> precargados desde su expediente</div>` : ""}
         <div class="rastreo-instruccion-ms">
           <span class="rastreo-ms-badge">♈</span>
           <span>${escapeHtml(p.instruccion_ms || "Ingresa los datos de nacimiento del consultante.")}</span>
@@ -2566,12 +2583,12 @@ function renderCartaNatal(p, content) {
         <div class="cn-form">
           <div class="casos-form-group">
             <label class="casos-label">Nombre del consultante</label>
-            <input class="casos-input" id="cn-nombre" placeholder="Nombre completo">
+            <input class="casos-input" id="cn-nombre" placeholder="Nombre completo" value="${escapeHtml(preNombre)}">
           </div>
           <div class="casos-form-row">
             <div class="casos-form-group">
               <label class="casos-label">Fecha de nacimiento</label>
-              <input class="casos-input" id="cn-fecha" type="date">
+              <input class="casos-input" id="cn-fecha" type="date" value="${escapeHtml(preFecha)}">
             </div>
             <div class="casos-form-group">
               <label class="casos-label">Hora</label>
@@ -2580,7 +2597,7 @@ function renderCartaNatal(p, content) {
           </div>
           <div class="casos-form-group">
             <label class="casos-label">Lugar de nacimiento</label>
-            <input class="casos-input" id="cn-lugar" placeholder="Ciudad, País">
+            <input class="casos-input" id="cn-lugar" placeholder="Ciudad, País" value="${escapeHtml(preLugar)}">
           </div>
           <div id="cn-error" class="casos-form-error" style="display:none"></div>
           <div class="wizard-nav" style="margin-top:14px">
@@ -2604,6 +2621,13 @@ function renderCartaNatal(p, content) {
       errEl.style.display = "none";
       state.params = { nombre, fecha, hora, lugar };
       state.phase = "chart";
+      // Guarda el lugar de nacimiento en el expediente si el paciente activo no lo tenía
+      const act = paGetActivo();
+      if (act && lugar && !act.paciente.lugar_nacimiento) {
+        act.paciente.lugar_nacimiento = lugar;
+        casosDbSave(act.db);
+      }
+      paRegistrar("Astrología", `Carta natal generada (${fecha})`, lugar ? `Lugar: ${lugar}` : "");
       content.innerHTML = `<div class="rastreo-tabla-wrap"><div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Calculando posiciones planetarias para ${escapeHtml(nombre)}...</span></div></div>`;
       await loadCnChart();
     });
@@ -3167,9 +3191,10 @@ const SINTOMA_CATEGORIAS = [
 ];
 
 function renderRastreoSintoma(p, content) {
+  const _act = paGetActivo();
   const state = {
     phase: "busqueda",   // "busqueda" | "resultados"
-    sintoma: "",
+    sintoma: _act?.paciente?.observaciones || "",  // precarga motivo de consulta del expediente
     categoria: null,     // null = texto libre, o id de categoría
     pares: [],           // [{ nombre, descripcion, checked }]
     loading: false,
@@ -3189,8 +3214,10 @@ function renderRastreoSintoma(p, content) {
         <span>${cat.label}</span>
       </div>`).join("");
 
+    const act = paGetActivo();
     content.innerHTML = `
       <div class="rastreo-tabla-wrap">
+        ${act && state.sintoma ? `<div class="pa-prefill-note">📋 Motivo de consulta de <strong>${escapeHtml((act.paciente.nombre||"") + " " + (act.paciente.apellidos||""))}</strong> precargado desde su expediente</div>` : ""}
         <div class="rastreo-instruccion-ms">
           <span class="rastreo-ms-badge">MS</span>
           <span>${escapeHtml(p.instruccion_ms || "¿Hay algún par biomagnético activo relacionado con el síntoma principal?")}</span>
@@ -3360,6 +3387,11 @@ function renderRastreoSintoma(p, content) {
       const outEl = content.querySelector("#sint-interp-out");
       if (!outEl) return;
       const seleccionados = state.pares.filter((p) => p.checked).map((p) => p.nombre);
+      // Registrar los pares confirmados en el expediente del paciente activo
+      if (seleccionados.length) {
+        paRegistrar("Biomagnético", `Pares confirmados — ${state.sintoma || "rastreo"}`,
+          seleccionados.map((n) => "• " + n).join("\n"));
+      }
       const query = `El rastreo biomagnético confirmó los siguientes pares activos para el cuadro "${escapeHtml(state.sintoma)}":\n${seleccionados.map((n) => "- " + n).join("\n")}\n\nDesde la perspectiva de la terapia holística:\n1. ¿Qué patrón biológico/emocional explica estos pares activos juntos?\n2. ¿Cuál es el programa biológico de supervivencia detrás de este cuadro?\n3. ¿Cómo se aplican los imanes y en qué orden?\n4. ¿Qué cambios puede esperar el paciente tras el tratamiento?\n5. ¿Qué trabajo complementario (emocional, nutricional, energético) potencia la sesión?\n\nSé concreto y orientado a la sesión del terapeuta.`;
       await rastreoInterpretarIA(outEl, query);
     });
@@ -3392,6 +3424,110 @@ function casosFechaCorta(iso) {
   return isNaN(d) ? iso : d.toLocaleDateString("es-MX", { day: "2-digit", month: "short", year: "numeric" });
 }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// PACIENTE ACTIVO — el hilo que integra todas las herramientas
+// ═══════════════════════════════════════════════════════════════════════════
+const PACIENTE_ACTIVO_KEY = "holo_paciente_activo";
+
+function paGetActivoId() {
+  try { return localStorage.getItem(PACIENTE_ACTIVO_KEY) || null; } catch { return null; }
+}
+
+/** Devuelve { caso, paciente } del paciente en sesión, o null. */
+function paGetActivo() {
+  const casoId = paGetActivoId();
+  if (!casoId) return null;
+  const db = casosDb();
+  const caso = db.casos.find((c) => c.id === casoId);
+  if (!caso) return null;
+  const paciente = db.pacientes.find((p) => p.id === caso.paciente_id);
+  if (!paciente) return null;
+  return { caso, paciente, db };
+}
+
+function paSetActivo(casoId) {
+  try { localStorage.setItem(PACIENTE_ACTIVO_KEY, casoId); } catch {}
+  paRenderBanner();
+}
+
+function paClearActivo() {
+  try { localStorage.removeItem(PACIENTE_ACTIVO_KEY); } catch {}
+  paRenderBanner();
+}
+
+function paEdad(fechaISO) {
+  if (!fechaISO) return null;
+  const b = new Date(fechaISO);
+  if (isNaN(b)) return null;
+  const t = new Date();
+  let e = t.getFullYear() - b.getFullYear();
+  const m = t.getMonth() - b.getMonth();
+  if (m < 0 || (m === 0 && t.getDate() < b.getDate())) e--;
+  return e >= 0 ? e : null;
+}
+
+/** Registra una acción en el expediente del paciente activo (su historial de sesiones). */
+function paRegistrar(tipo, titulo, detalle) {
+  const act = paGetActivo();
+  if (!act) return false;
+  const { db, caso } = act;
+  if (!caso.sesiones) caso.sesiones = [];
+  caso.sesiones.push({
+    id: casosUUID(),
+    fecha: new Date().toISOString(),
+    tipo: tipo || "General",
+    nota: titulo + (detalle ? "\n" + detalle : ""),
+    auto: true,
+  });
+  casosDbSave(db);
+  return true;
+}
+
+/** Banner persistente arriba: muestra quién está en sesión. */
+function paRenderBanner() {
+  const banner = document.getElementById("paciente-activo-banner");
+  if (!banner) return;
+  const act = paGetActivo();
+  if (!act) {
+    banner.style.display = "none";
+    banner.innerHTML = "";
+    return;
+  }
+  const { paciente, caso } = act;
+  const nombre = `${paciente.nombre || ""} ${paciente.apellidos || ""}`.trim() || "Paciente";
+  const edad = paEdad(paciente.fecha_nacimiento);
+  const nSes = (caso.sesiones || []).length;
+  banner.style.display = "flex";
+  banner.innerHTML = `
+    <div class="pa-banner-info">
+      <span class="pa-banner-dot"></span>
+      <span class="pa-banner-label">En sesión:</span>
+      <strong class="pa-banner-nombre">${escapeHtml(nombre)}</strong>
+      ${edad != null ? `<span class="pa-banner-edad">· ${edad} años</span>` : ""}
+      ${nSes ? `<span class="pa-banner-ses">· ${nSes} registro${nSes !== 1 ? "s" : ""}</span>` : ""}
+    </div>
+    <div class="pa-banner-actions">
+      <button class="pa-banner-btn" id="pa-ver-expediente">📋 Expediente</button>
+      <button class="pa-banner-btn pa-banner-close" id="pa-cerrar-sesion">✕ Cerrar sesión</button>
+    </div>`;
+
+  banner.querySelector("#pa-cerrar-sesion")?.addEventListener("click", () => {
+    paClearActivo();
+  });
+  banner.querySelector("#pa-ver-expediente")?.addEventListener("click", () => {
+    // Ir al tab de protocolos y abrir Gestión de Casos en el detalle del caso activo
+    const protocolTab = document.querySelector('[data-tab="protocols"]');
+    if (protocolTab) {
+      document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+      protocolTab.classList.add("active");
+      document.getElementById("tab-protocols")?.classList.add("active");
+    }
+    window.__paAbrirExpediente = act.caso.id;
+    setTimeout(() => openProtocolDetail("gestion_casos"), 200);
+  });
+}
+
 function renderGestionCasos(p, content) {
   const st = {
     phase: "dashboard",   // "dashboard" | "form" | "historial" | "detalle"
@@ -3399,6 +3535,13 @@ function renderGestionCasos(p, content) {
     detalleCasoId: null,  // viewing case detail
     busqueda: "",
   };
+
+  // Si el banner pidió abrir el expediente de un caso, ir directo al detalle
+  if (window.__paAbrirExpediente) {
+    st.detalleCasoId = window.__paAbrirExpediente;
+    st.phase = "detalle";
+    window.__paAbrirExpediente = null;
+  }
 
   function render() {
     if (st.phase === "dashboard") renderDashboard();
@@ -3418,18 +3561,21 @@ function renderGestionCasos(p, content) {
       : activos.map((caso) => {
           const pac = db.pacientes.find((p) => p.id === caso.paciente_id) || {};
           const sesiones = (caso.sesiones || []).length;
-          return `<div class="casos-card" data-cid="${caso.id}">
+          const enSesion = paGetActivoId() === caso.id;
+          return `<div class="casos-card${enSesion ? " casos-card-activo" : ""}" data-cid="${caso.id}">
             <div class="casos-card-info">
-              <div class="casos-card-nombre">${escapeHtml(pac.nombre || "")} ${escapeHtml(pac.apellidos || "")}</div>
+              <div class="casos-card-nombre">${escapeHtml(pac.nombre || "")} ${escapeHtml(pac.apellidos || "")}${enSesion ? ` <span class="casos-badge-sesion">● En sesión</span>` : ""}</div>
               <div class="casos-card-meta">
                 <span>📅 Abierto: ${casosFechaCorta(caso.fecha_inicio)}</span>
-                <span>📋 ${sesiones} sesión${sesiones !== 1 ? "es" : ""}</span>
+                <span>📋 ${sesiones} registro${sesiones !== 1 ? "s" : ""}</span>
               </div>
               ${pac.email ? `<div class="casos-card-email">${escapeHtml(pac.email)}</div>` : ""}
             </div>
             <div class="casos-card-actions">
-              <button class="wizard-nav-btn casos-btn-continuar" data-cid="${caso.id}">▶ Continuar</button>
-              <button class="wizard-nav-btn casos-btn-notas" data-cid="${caso.id}">📝 Notas</button>
+              ${enSesion
+                ? `<button class="wizard-nav-btn casos-btn-ensesion" disabled>● En sesión</button>`
+                : `<button class="wizard-nav-btn vort-ia-btn casos-btn-sesion" data-cid="${caso.id}">▶ Poner en sesión</button>`}
+              <button class="wizard-nav-btn casos-btn-notas" data-cid="${caso.id}">📋 Expediente</button>
               <button class="wizard-nav-btn casos-btn-editar" data-pid="${pac.id}">✏ Editar</button>
               <button class="wizard-nav-btn wizard-reiniciar casos-btn-finalizar" data-cid="${caso.id}">✓ Finalizar</button>
             </div>
@@ -3459,8 +3605,11 @@ function renderGestionCasos(p, content) {
     content.querySelector("#casos-go-hist")?.addEventListener("click", () => {
       st.phase = "historial"; render();
     });
-    content.querySelectorAll(".casos-btn-continuar").forEach((btn) => {
-      btn.addEventListener("click", () => { st.detalleCasoId = btn.dataset.cid; st.phase = "detalle"; render(); });
+    content.querySelectorAll(".casos-btn-sesion").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        paSetActivo(btn.dataset.cid);   // pone al paciente en sesión (banner + integración)
+        render();                        // refresca el dashboard para mostrar el badge
+      });
     });
     content.querySelectorAll(".casos-btn-notas").forEach((btn) => {
       btn.addEventListener("click", () => { st.detalleCasoId = btn.dataset.cid; st.phase = "detalle"; render(); });
@@ -3472,7 +3621,11 @@ function renderGestionCasos(p, content) {
       btn.addEventListener("click", () => {
         const db = casosDb();
         const caso = db.casos.find((c) => c.id === btn.dataset.cid);
-        if (caso) { caso.estatus = "finalizado"; caso.fecha_fin = new Date().toISOString(); casosDbSave(db); render(); }
+        if (caso) {
+          caso.estatus = "finalizado"; caso.fecha_fin = new Date().toISOString(); casosDbSave(db);
+          if (paGetActivoId() === caso.id) paClearActivo();  // si estaba en sesión, cerrarla
+          render();
+        }
       });
     });
   }
@@ -3573,6 +3726,7 @@ function renderGestionCasos(p, content) {
         }
       } else {
         const pacId = casosUUID();
+        const casoId = casosUUID();
         db.pacientes.push({
           id: pacId, nombre, apellidos,
           fecha_nacimiento: content.querySelector("#cf-fecha-nac")?.value || "",
@@ -3584,7 +3738,11 @@ function renderGestionCasos(p, content) {
           observaciones: content.querySelector("#cf-observaciones")?.value.trim() || "",
           fecha_alta: now,
         });
-        db.casos.push({ id: casosUUID(), paciente_id: pacId, estatus: "activo", fecha_inicio: now, fecha_fin: null, sesiones: [] });
+        db.casos.push({ id: casoId, paciente_id: pacId, estatus: "activo", fecha_inicio: now, fecha_fin: null, sesiones: [] });
+        casosDbSave(db);
+        paSetActivo(casoId);  // el nuevo caso queda automáticamente en sesión
+        st.phase = "dashboard"; st.editPacId = null; render();
+        return;
       }
       casosDbSave(db);
       st.phase = "dashboard"; st.editPacId = null; render();
@@ -4121,6 +4279,9 @@ tabs.forEach((tab) => {
   }
 })();
 if (protocolOutput) setStatus(protocolOutput, "Aquí aparecerá la guía del protocolo consultado.");
+
+// Inicializar banner de paciente activo al cargar
+try { paRenderBanner(); } catch (e) { /* noop */ }
 
 // ── Modo Por Sistema Corporal ──────────────────────────────────────────────
 
