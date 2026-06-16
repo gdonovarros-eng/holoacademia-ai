@@ -923,8 +923,11 @@ def generar_respuesta_holos(prompt: str) -> dict:
         {"role": "user", "content": prompt or ""},
     ]
     try:
+        # Modelo dedicado al Cuadro Holos (OpenRouter). No comparte con el
+        # Sinodal académico, que corre en Groq con otro modelo.
+        holos_model = os.getenv("HOLOS_MODEL", "").strip() or "google/gemini-2.5-flash"
         resp = client.chat.completions.create(
-            model=_model(),
+            model=holos_model,
             messages=messages,
             max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
             temperature=0.5,

@@ -34,6 +34,12 @@ services:
       - key: OPENAI_REASONING_EFFORT
         value: high
 
+      # ── Cuadro Holos (Motor terapéutico vía OpenRouter) ─────────────────────────
+      - key: HOLOS_MODEL
+        value: google/gemini-2.5-flash
+      - key: HOLOS_MAX_TOKENS
+        value: "3500"
+
       # ── Motores IA ─────────────────────────────────────────────────────────────
       - key: COURSE_ASSISTANT_USE_MODEL
         value: "true"
