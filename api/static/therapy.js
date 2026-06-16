@@ -1581,9 +1581,8 @@ async function rastreoInterpretarIA(containerEl, textoRastreo) {
     <span>Consultando al Motor Terapéutico...</span>
   </div>`;
   try {
-    const response = await postJson("/academic/ask", {
-      query: textoRastreo,
-      history: [],
+    const response = await postJson("/therapeutic/holos", {
+      prompt: textoRastreo,
     });
     if (response && response.answer) {
       containerEl.innerHTML = `<div class="rastreo-interpret-result">
@@ -2540,12 +2539,12 @@ function renderNumerologiaTerapeutica(p, content) {
 
 // ─── Guía de Sueños ─────────────────────────────────────────────────────────
 const SUENO_DIMENSIONES = [
-  { id: "todas",         label: "Análisis completo",     icono: "🌌", desc: "Todas las dimensiones integradas" },
-  { id: "psicosomatica", label: "Psicosomática",         icono: "🧬", desc: "Síntomas y órganos del sueño" },
-  { id: "transgeneracional", label: "Transgeneracional", icono: "🌳", desc: "Patrones familiares y ancestrales" },
-  { id: "mtc",           label: "MTC & Energía",         icono: "☯️", desc: "Meridianos, elementos y Qi" },
-  { id: "numerologia",   label: "Numerología",           icono: "🔢", desc: "Números y ciclos en el sueño" },
-  { id: "biodecodificacion", label: "Biodescodificación", icono: "💜", desc: "Conflicto biológico expresado" },
+  { id: "todas",         label: "Análisis completo",     icono: "", desc: "Todas las dimensiones integradas" },
+  { id: "psicosomatica", label: "Psicosomática",         icono: "", desc: "Síntomas y órganos del sueño" },
+  { id: "transgeneracional", label: "Transgeneracional", icono: "", desc: "Patrones familiares y ancestrales" },
+  { id: "mtc",           label: "MTC & Energía",         icono: "", desc: "Meridianos, elementos y Qi" },
+  { id: "numerologia",   label: "Numerología",           icono: "", desc: "Números y ciclos en el sueño" },
+  { id: "biodecodificacion", label: "Biodescodificación", icono: "", desc: "Conflicto biológico expresado" },
 ];
 
 function renderSuenoTerapeutico(p, content) {
@@ -2565,7 +2564,7 @@ function renderSuenoTerapeutico(p, content) {
     content.innerHTML = `
       <div class="rastreo-tabla-wrap">
         <div class="rastreo-instruccion-ms">
-          <span class="rastreo-ms-badge">💤</span>
+          <span class="rastreo-ms-badge"></span>
           <span>${escapeHtml(p.instruccion_ms || "Describe el sueño del consultante con el mayor detalle posible.")}</span>
         </div>
 
@@ -2624,28 +2623,28 @@ function renderSuenoTerapeutico(p, content) {
 
     const seccionesPorDim = {
       todas: `
-## 🧬 PSICOSOMÁTICA Y SIMBOLISMO CORPORAL
+## PSICOSOMÁTICA Y SIMBOLISMO CORPORAL
 ¿Qué órganos, partes del cuerpo o síntomas aparecen en el sueño? ¿Qué conflicto emocional expresan según la psicosomática? ¿Qué función biológica están comunicando?
 
-## 🌳 PATRONES TRANSGENERACIONALES
+## PATRONES TRANSGENERACIONALES
 ¿Qué figuras familiares aparecen (directa o simbólicamente)? ¿Qué lealtades invisibles, mandatos o misiones reparadoras podría estar expresando el sueño? ¿Hay fechas, lugares o situaciones que remitan al árbol genealógico?
 
-## ☯️ MEDICINA TRADICIONAL CHINA
+## MEDICINA TRADICIONAL CHINA
 ¿Qué elemento (Madera, Fuego, Tierra, Metal, Agua) domina el sueño? ¿Qué meridianos u órganos energéticos están implicados? ¿El sueño ocurre en algún horario especial que corresponda a un meridiano?
 
-## 🔢 NUMEROLOGÍA Y CICLOS
+## NUMEROLOGÍA Y CICLOS
 ¿Aparecen números, cantidades, fechas o repeticiones? ¿Cómo se relacionan con el número de vida del consultante o con el año personal?
 
-## 💜 BIODESCODIFICACIÓN
+## BIODESCODIFICACIÓN
 ¿Qué conflicto biológico de choque (DHS) podría estar procesando el inconsciente? ¿Qué emoción primaria domina el sueño? ¿Es un sueño de fase de reparación o de conflicto activo?
 
 ## SÍNTESIS Y ORIENTACIÓN TERAPÉUTICA
 Integra todos los análisis anteriores en un mensaje coherente. ¿Qué está procesando el inconsciente? ¿Qué acción terapéutica sugiere el sueño para la próxima sesión?`,
-      psicosomatica: `## 🧬 PSICOSOMÁTICA Y SIMBOLISMO CORPORAL\nAnaliza en profundidad: órganos implicados, síntomas simbólicos, conflicto biológico expresado, qué función orgánica está comunicando el sueño, qué parte del cuerpo está hablando y por qué.`,
-      transgeneracional: `## 🌳 PATRONES TRANSGENERACIONALES\nAnaliza en profundidad: figuras del árbol genealógico, mandatos y lealtades familiares, misiones reparadoras, fechas y lugares simbólicos, qué generación está procesando este sueño, qué secreto familiar podría estar emergiendo.`,
-      mtc: `## ☯️ MEDICINA TRADICIONAL CHINA\nAnaliza en profundidad: elemento dominante del sueño, meridianos y órganos energéticos implicados, correspondencias con las 5 emociones de la MTC (Ira/Madera, Alegría/Fuego, Preocupación/Tierra, Tristeza/Metal, Miedo/Agua), posibles puntos de acupuntura a trabajar.`,
-      numerologia: `## 🔢 NUMEROLOGÍA Y CICLOS ONÍRICOS\nAnaliza en profundidad: todos los números que aparecen, fechas y su reducción numerológica, patrones de repetición, conexión con el ciclo de vida del consultante, qué energía numerológica está procesando.`,
-      biodecodificacion: `## 💜 BIODESCODIFICACIÓN DEL SUEÑO\nAnaliza en profundidad: el conflicto biológico de choque detrás del sueño, si es sueño de reparación (fase de solución) o de conflicto activo, la emoción primaria dominante, el órgano o tejido implicado según el tipo de conflicto, el programa biológico de supervivencia que se está procesando.`,
+      psicosomatica: `## PSICOSOMÁTICA Y SIMBOLISMO CORPORAL\nAnaliza en profundidad: órganos implicados, síntomas simbólicos, conflicto biológico expresado, qué función orgánica está comunicando el sueño, qué parte del cuerpo está hablando y por qué.`,
+      transgeneracional: `## PATRONES TRANSGENERACIONALES\nAnaliza en profundidad: figuras del árbol genealógico, mandatos y lealtades familiares, misiones reparadoras, fechas y lugares simbólicos, qué generación está procesando este sueño, qué secreto familiar podría estar emergiendo.`,
+      mtc: `## MEDICINA TRADICIONAL CHINA\nAnaliza en profundidad: elemento dominante del sueño, meridianos y órganos energéticos implicados, correspondencias con las 5 emociones de la MTC (Ira/Madera, Alegría/Fuego, Preocupación/Tierra, Tristeza/Metal, Miedo/Agua), posibles puntos de acupuntura a trabajar.`,
+      numerologia: `## NUMEROLOGÍA Y CICLOS ONÍRICOS\nAnaliza en profundidad: todos los números que aparecen, fechas y su reducción numerológica, patrones de repetición, conexión con el ciclo de vida del consultante, qué energía numerológica está procesando.`,
+      biodecodificacion: `## BIODESCODIFICACIÓN DEL SUEÑO\nAnaliza en profundidad: el conflicto biológico de choque detrás del sueño, si es sueño de reparación (fase de solución) o de conflicto activo, la emoción primaria dominante, el órgano o tejido implicado según el tipo de conflicto, el programa biológico de supervivencia que se está procesando.`,
     };
 
     const seccion = seccionesPorDim[state.dimension] || seccionesPorDim.todas;
@@ -2661,7 +2660,7 @@ Interpreta este sueño con profundidad clínica y orientación terapéutica. Sé
 ${seccion}`;
 
     try {
-      const res = await postJson("/academic/ask", { query: prompt, history: [] });
+      const res = await postJson("/therapeutic/holos", { prompt });
       const answer = res?.answer || "";
       const html = answer
         .replace(/^## (.+)$/gm, '<h3 class="ch-section-title">$1</h3>')
@@ -3344,7 +3343,7 @@ const SINTOMA_CATEGORIAS = [
   { id: "bacterias",  label: "Bacterias",        icono: "🧫", color: "#d97706" },
   { id: "hongos",     label: "Hongos",           icono: "🍄", color: "#7c3aed" },
   { id: "parasitos",  label: "Parásitos",        icono: "🪱", color: "#059669" },
-  { id: "emocionales",label: "Emocionales",      icono: "💜", color: "#db2777" },
+  { id: "emocionales",label: "Emocionales",      icono: "", color: "#db2777" },
   { id: "reservorios",label: "Reservorios",      icono: "🔬", color: "#0284c7" },
   { id: "especiales", label: "Especiales",       icono: "⭐", color: "#ca8a04" },
   { id: "disfunciones",label: "Disfunciones",    icono: "⚡", color: "#9333ea" },
@@ -3441,7 +3440,7 @@ function renderRastreoSintoma(p, content) {
     renderResultados();
 
     try {
-      const res = await postJson("/academic/ask", { query, history: [] });
+      const res = await postJson("/therapeutic/holos", { prompt: query });
       const answer = res?.answer || "";
       // Parse PAR: lines from response
       const parLines = answer.split("\n").filter((l) => l.match(/PAR:/i));
