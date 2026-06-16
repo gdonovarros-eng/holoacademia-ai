@@ -210,6 +210,35 @@ function getTherapeuticPayload() {
   const freeNote = getText("therapeutic_family_notes");
   const family_notes = compactStrings([familyParts.join("; "), freeNote]).join(". ") || "";
 
+  const ecosistema = {
+    identidad: { lugar_nacimiento: getText("holos_lugar_nacimiento"), sexo: getText("holos_sexo") },
+    cuerpo: { diagnosticos: getText("holos_diagnosticos"), medicamentos: getText("holos_medicamentos") },
+    eventos_recientes: {
+      al_inicio_sintoma: getText("holos_evento_inicio_sintoma"),
+      ultimos_2_anios: getText("holos_eventos_2anios"),
+      duelos: getText("holos_duelos_recientes"),
+      dhs_frase: getText("holos_dhs_frase"),
+      dhs_impacto: getText("holos_dhs_impacto"),
+      dhs_perdida: getText("holos_dhs_perdida"),
+      dhs_soledad: getText("holos_dhs_soledad"),
+      dhs_inesperado: getText("holos_dhs_inesperado"),
+    },
+    hogar: { vivienda: getText("holos_vivienda"), mudanzas: getText("holos_mudanzas"), conflictos_casa: getText("holos_conflictos_casa"), sensacion: getText("holos_hogar_sensacion") },
+    economia: { situacion: getText("holos_economia_situacion"), deudas: getText("holos_deudas"), trabajo: getText("holos_trabajo"), creencias_dinero: getText("holos_dinero_creencias"), miedos: getText("holos_miedos_economicos") },
+    vinculos: { pareja: getText("holos_pareja_estado"), rupturas: getText("holos_rupturas"), soledad: getText("holos_soledad"), red_apoyo: getText("holos_red_apoyo") },
+    clan: {
+      relacion_padre: getText("holos_relacion_padre"), relacion_madre: getText("holos_relacion_madre"),
+      rol_familia: getText("holos_rol_familia"), orden_nacimiento: getText("holos_orden_nacimiento"),
+      eventos_clan: getText("holos_eventos_clan"), nombres_repetidos: getText("holos_nombres_repetidos"),
+      enfermedades_repetidas: getText("holos_enfermedades_repetidas"), muertes_clan: getText("holos_muertes_clan"),
+      perdidas_clan: getText("holos_perdidas_clan"), secretos_clan: getText("holos_secretos_clan"),
+    },
+    emocional: { estres: getText("holos_estres_nivel"), emociones: getText("holos_emociones_frecuentes"), cargas_ajenas: getText("holos_cargas_ajenas"), no_perdona: getText("holos_no_perdona") },
+    energetico_mtc: { temperatura: getText("holos_temperatura"), digestion: getText("holos_digestion"), molestias: getText("holos_molestias_organos"), energia_dia: getText("holos_energia_dia") },
+    habitos: { alimentacion: getText("holos_alimentacion"), ejercicio: getText("holos_ejercicio"), sueno: getText("holos_sueno"), sustancias: getText("holos_sustancias") },
+    proposito: { espiritualidad: getText("holos_espiritualidad"), ancestros: getText("holos_ancestros"), proposito: getText("holos_proposito"), quiere_cambiar: getText("holos_quiere_cambiar") },
+  };
+
   return {
     motivo_consulta: getText("therapeutic_reason") || symptomNames[0] || "",
     sintomas: symptomNames,
@@ -218,9 +247,10 @@ function getTherapeuticPayload() {
     frecuencia: getText("therapeutic_frequency") || firstSymptom.frequency || "",
     antecedentes: compactStrings([...antecedentNames, ...historyDetails]),
     contexto_emocional: getText("therapeutic_emotional_context"),
-    observaciones,
+    observaciones: observations,
     pregunta_del_terapeuta: getText("therapeutic_question"),
     family_notes,
+    ecosistema,
   };
 }
 
@@ -628,6 +658,104 @@ function formatearPerfilNumerologico(personas) {
   }).join("\n");
 }
 
+// ── Helpers del Cuadro Holos (multi-motor) ─────────────────────────────────
+function mdHolos(answer) {
+  return (answer || "")
+    .replace(/^### (.+)$/gm, '<h4 class="ch-subsection-title">$1</h4>')
+    .replace(/^## (.+)$/gm, '<h3 class="ch-section-title">$1</h3>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^[•\-] (.+)$/gm, '<li>$1</li>')
+    .replace(/^(\d+)\. (.+)$/gm, '<li><strong>$1.</strong> $2</li>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/\n/g, '<br>');
+}
+async function motorHolos(prompt) {
+  const res = await postJson("/therapeutic/holos", { prompt });
+  if (!res || !res.answer) throw new Error("sin respuesta");
+  return mdHolos(res.answer);
+}
+async function getJsonSafe(url) {
+  const r = await fetch(url);
+  if (!r.ok) throw new Error("http " + r.status);
+  return r.json();
+}
+function jtrunc(obj, n) { try { return JSON.stringify(obj).slice(0, n || 1800); } catch { return ""; } }
+const HOLOS_CARD_RULES = "Es un motor propio: no cites maestros, autores ni cursos. Sin emojis. Sin descargos médicos. Tono clínico, claro y concreto. No uses encabezados con ##; usa párrafos y, si hace falta, subtítulos con ###.";
+
+function promptCuestionario(ctx, resumen) {
+  return `${HOLOS_CARD_RULES}\nEres el Motor Terapéutico. A partir del ECOSISTEMA del paciente, entrega una lectura BREVE por área de vida. Una o dos líneas por área diciendo qué revela y cómo se conecta con el conflicto. Omite las áreas sin datos. Usa subtítulos ### por área.\n\nCaso: ${resumen}\n\nECOSISTEMA\n${ctx}`;
+}
+function promptBiomag(pares, resumen) {
+  return `${HOLOS_CARD_RULES}\nEres el Motor Biomagnético. El terapeuta confirmó estos pares en el rastreo:\n${pares.map(x => "- " + x).join("\n")}\n\nCaso: ${resumen}\n\nEntrega el MAPA de colocación e interpretación. Por cada par: ubicación (polo norte / polo sur), patógeno o conflicto asociado, e interpretación breve atada al cuadro. Luego el orden de aplicación sugerido y el tiempo de imán. Cierra con una síntesis del patrón.`;
+}
+function promptNumerologia(datos, resumen) {
+  return `${HOLOS_CARD_RULES}\nEres el Motor de Numerología. Estos son los números REALES ya calculados del consultante (no recalcules):\n${jtrunc(datos, 1800)}\n\nCaso: ${resumen}\n\nEntrega una lectura numerológica TERAPÉUTICA: su misión y expresión, los desafíos o deudas kármicas, el año personal, y sobre todo cómo estos números se relacionan con el conflicto y el síntoma actual.`;
+}
+function promptAstro(natal, resumen) {
+  return `${HOLOS_CARD_RULES}\nEres el Motor de Astrología Médica. Estas son las posiciones REALES de la carta natal (no recalcules):\n${jtrunc(natal, 1800)}\n\nCaso: ${resumen}\n\nEntrega una lectura de astrología médica: qué zonas u órganos y qué patrones emocionales sugiere la carta (Sol, Luna, ascendente, planetas en tensión), y cómo se vinculan con el síntoma y el conflicto decodificado.`;
+}
+function promptTarot(perfil, resumen) {
+  return `${HOLOS_CARD_RULES}\nEres el Motor de Tarot Terapéutico. Este es el perfil tarológico REAL del consultante (cartas natales, ya calculadas):\n${jtrunc(perfil, 1800)}\n\nCaso: ${resumen}\n\nEntrega una lectura de tarot terapéutico: qué reflejan estas cartas sobre su momento y su conflicto, qué recurso interno señalan y qué sombra trabajar. Conéctalo con el cuadro.`;
+}
+function naMsgHolos(id) {
+  if (id === "biomag") return "No hay pares confirmados en el rastreo (bloque 11). Realiza el rastreo para ver el mapa.";
+  if (id === "astro") return "Faltan hora y lugar de nacimiento (bloque 1) para calcular la carta natal.";
+  return "Falta la fecha de nacimiento (bloque 1).";
+}
+
+// ── Mapas de colocación · imágenes por par confirmado ─────────────────────
+let __pointMaps = null;
+async function cargarPointMaps() {
+  if (__pointMaps) return __pointMaps;
+  try { const r = await fetch("/api/point-to-maps"); const d = r.ok ? await r.json() : null; __pointMaps = (d && d.puntos) || {}; }
+  catch { __pointMaps = {}; }
+  return __pointMaps;
+}
+function normalizePoint(s) {
+  if (!s) return "";
+  return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+}
+function splitPairPoints(pairName) {
+  if (!pairName) return [];
+  return String(pairName).split(/\s*[-–—]\s*/).map(p => p.replace(/\s*\([^)]*\)\s*/g, "").trim()).filter(Boolean);
+}
+async function galeriaMapasHtml(pares) {
+  const idx = await cargarPointMaps();
+  if (!idx || !Object.keys(idx).length) return "";
+  const byImg = new Map();
+  const sinMapa = new Set();
+  pares.forEach((par) => {
+    splitPairPoints(par).forEach((pt) => {
+      const e = idx[normalizePoint(pt)];
+      const img = e && (e.map_bloque || e.map_zona);
+      if (!img) { sinMapa.add(pt); return; }
+      if (!byImg.has(img)) byImg.set(img, { loc: e ? [e.zona, e.bloque].filter(Boolean).join(" · ") : "", puntos: new Set() });
+      byImg.get(img).puntos.add(e ? e.canonical : pt);
+    });
+  });
+  if (!byImg.size) return "";
+  const esc = (s) => (window.escapeHtml ? window.escapeHtml(s) : s);
+  const cards = [...byImg.entries()].map(([img, info]) => `
+    <figure class="holos-mapa-fig">
+      <img src="${img}" alt="Mapa de colocación" loading="lazy" onclick="window.holosZoom && window.holosZoom(this.src)">
+      <figcaption><strong>${esc([...info.puntos].join(", "))}</strong>${info.loc ? " — " + esc(info.loc) : ""}</figcaption>
+    </figure>`).join("");
+  const nota = sinMapa.size ? `<p class="holos-mapas-nota">Sin mapa de referencia: ${esc([...sinMapa].join(", "))}</p>` : "";
+  return `<div class="holos-mapas-galeria"><div class="holos-mapas-cap">Mapas de colocación (${byImg.size})</div><div class="holos-mapas-grid">${cards}</div>${nota}</div>`;
+}
+window.holosZoom = function (src) {
+  let ov = document.getElementById("holos-zoom-ov");
+  if (!ov) {
+    ov = document.createElement("div");
+    ov.id = "holos-zoom-ov";
+    ov.innerHTML = '<img id="holos-zoom-img" alt="Mapa ampliado">';
+    ov.addEventListener("click", () => ov.classList.remove("open"));
+    document.body.appendChild(ov);
+  }
+  ov.querySelector("#holos-zoom-img").src = src;
+  ov.classList.add("open");
+};
+
 async function generarCuadroHolistico(payload) {
   const cuadroPanel  = document.getElementById("cuadro-holistico-panel");
   const cuadroOutput = document.getElementById("cuadro-holistico-output");
@@ -635,78 +763,111 @@ async function generarCuadroHolistico(payload) {
   if (!cuadroPanel || !cuadroOutput) return;
 
   cuadroPanel.classList.remove("hidden");
-  cuadroOutput.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Generando Cuadro Médico Holístico integral…</span></div>`;
+  cuadroOutput.innerHTML = `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Generando el Cuadro Holos…</span></div>`;
   if (btnRegen) btnRegen.style.display = "none";
   cuadroPanel.scrollIntoView({ behavior: "smooth", block: "start" });
 
-  const personas   = construirPerfilNumerologico();
-  const numStr     = formatearPerfilNumerologico(personas);
-  const consultante = personas.find(p => p.rol === "Consultante");
-  const sintomas   = (payload.sintomas||[]).join(", ") || payload.motivo_consulta || "No especificados";
-  const pares      = readCollection(foundPairsList).map(p => p.pair_name).filter(Boolean);
-  const paresStr   = pares.length ? pares.join(", ") : "No registrados aún";
+  const eco      = payload.ecosistema || {};
+  const personas = construirPerfilNumerologico();
+  const numStr   = formatearPerfilNumerologico(personas);
+  const pares    = readCollection(foundPairsList).map(p => p.pair_name).filter(Boolean);
 
-  const prompt = `Eres el Motor Terapéutico de HoloacademIA. Actúas como terapeuta holístico integral.
+  const bloque = (titulo, filas) => {
+    const ls = filas.map(([l, v]) => { const t = (v == null ? "" : String(v)).trim(); return t ? (l ? `  - ${l}: ${t}` : `  - ${t}`) : ""; }).filter(Boolean);
+    return ls.length ? `${titulo}:\n${ls.join("\n")}` : "";
+  };
+  const ctx = [
+    bloque("IDENTIDAD Y ORIGEN", [["Lugar de nacimiento", eco.identidad?.lugar_nacimiento], ["Fecha de nacimiento", getText("consultant_birth_date")], ["Hora de nacimiento", getText("consultant_birth_time")], ["Sexo", eco.identidad?.sexo]]),
+    bloque("MOTIVO Y CUERPO", [["Motivo de consulta", payload.motivo_consulta], ["Síntomas", (payload.sintomas || []).join(", ")], ["Inicio del síntoma", payload.inicio], ["Duración", payload.duracion], ["Frecuencia", payload.frecuencia], ["Diagnósticos previos", eco.cuerpo?.diagnosticos], ["Medicamentos", eco.cuerpo?.medicamentos], ["Antecedentes", (payload.antecedentes || []).join("; ")]]),
+    bloque("LÍNEA DE TIEMPO · EVENTOS RECIENTES", [["Qué pasaba al iniciar el síntoma", eco.eventos_recientes?.al_inicio_sintoma], ["Eventos de los últimos 2 años", eco.eventos_recientes?.ultimos_2_anios], ["Duelos o pérdidas", eco.eventos_recientes?.duelos]]),
+    bloque("INSTANTE DEL CONFLICTO (DHS)", [["Cómo lo vivió (en su frase)", eco.eventos_recientes?.dhs_frase], ["Lo más impactante o injusto", eco.eventos_recientes?.dhs_impacto], ["Qué sintió que ya no podía hacer/tener", eco.eventos_recientes?.dhs_perdida], ["¿Soledad?", eco.eventos_recientes?.dhs_soledad], ["¿Inesperado?", eco.eventos_recientes?.dhs_inesperado]]),
+    bloque("HOGAR Y TERRITORIO", [["Vivienda", eco.hogar?.vivienda], ["Mudanzas", eco.hogar?.mudanzas], ["Conflictos en casa", eco.hogar?.conflictos_casa], ["Sensación del hogar", eco.hogar?.sensacion]]),
+    bloque("ECONOMÍA Y SUSTENTO", [["Situación", eco.economia?.situacion], ["Deudas", eco.economia?.deudas], ["Trabajo", eco.economia?.trabajo], ["Creencias sobre el dinero", eco.economia?.creencias_dinero], ["Miedos económicos", eco.economia?.miedos]]),
+    bloque("VÍNCULOS", [["Pareja", eco.vinculos?.pareja], ["Rupturas", eco.vinculos?.rupturas], ["Soledad", eco.vinculos?.soledad], ["Red de apoyo", eco.vinculos?.red_apoyo]]),
+    bloque("CLAN · GENOGRAMA TRANSGENERACIONAL", [["Relación con el padre", eco.clan?.relacion_padre], ["Relación con la madre", eco.clan?.relacion_madre], ["Rol en la familia", eco.clan?.rol_familia], ["Lugar entre hermanos", eco.clan?.orden_nacimiento], ["Eventos del clan", eco.clan?.eventos_clan], ["Nombres repetidos", eco.clan?.nombres_repetidos], ["Enfermedades repetidas", eco.clan?.enfermedades_repetidas], ["Muertes marcantes (edad/fecha)", eco.clan?.muertes_clan], ["Pérdidas de patrimonio/territorio/migraciones", eco.clan?.perdidas_clan], ["Secretos / no-dichos", eco.clan?.secretos_clan], ["Genograma (notas y miembros)", payload.family_notes]]),
+    bloque("ESTADO EMOCIONAL", [["Nivel de estrés", eco.emocional?.estres], ["Emociones frecuentes", eco.emocional?.emociones], ["Cargas ajenas", eco.emocional?.cargas_ajenas], ["A quién no perdona", eco.emocional?.no_perdona], ["Contexto emocional", payload.contexto_emocional]]),
+    bloque("ENERGÉTICO · MEDICINA CHINA", [["Temperatura corporal", eco.energetico_mtc?.temperatura], ["Digestión", eco.energetico_mtc?.digestion], ["Molestias de órganos", eco.energetico_mtc?.molestias], ["Energía durante el día", eco.energetico_mtc?.energia_dia]]),
+    bloque("HÁBITOS", [["Alimentación", eco.habitos?.alimentacion], ["Ejercicio", eco.habitos?.ejercicio], ["Sueño", eco.habitos?.sueno], ["Sustancias", eco.habitos?.sustancias]]),
+    bloque("PROPÓSITO Y ESPIRITUALIDAD", [["Espiritualidad", eco.proposito?.espiritualidad], ["Relación con ancestros", eco.proposito?.ancestros], ["Propósito de vida", eco.proposito?.proposito], ["Qué quiere cambiar", eco.proposito?.quiere_cambiar]]),
+    bloque("PERFIL NUMEROLÓGICO (calculado)", numStr ? [[null, numStr]] : []),
+    bloque("RASTREO BIOMAGNÉTICO", pares.length ? [["Pares confirmados", pares.join(", ")]] : []),
+    bloque("PREGUNTA DEL TERAPEUTA", [[null, payload.pregunta_del_terapeuta]]),
+  ].filter(Boolean).join("\n\n");
 
-Con los siguientes datos genera un CUADRO MÉDICO HOLÍSTICO COMPLETO:
+  const prompt = `Eres el Motor de Biodescodificación de HoloacademIA, terapeuta experto. Es un motor propio: NUNCA cites maestros, autores, cursos ni fuentes. No incluyas advertencias ni descargos médicos. No uses emojis. No digas que eres una IA.
 
-DATOS DEL CASO:
-• Motivo de consulta: ${payload.motivo_consulta || "No especificado"}
-• Síntomas: ${sintomas}
-• Contexto emocional: ${payload.contexto_emocional || "No especificado"}
-• Notas del genograma: ${payload.family_notes || "No especificadas"}
-• Pares biomagnéticos encontrados: ${paresStr}
+Tu tarea NO es listar disciplinas. Tu tarea es DESCUBRIR EL CONFLICTO: de dónde viene, leído desde la biodescodificación, y anclarlo en el genograma. Razona del cuerpo al conflicto y del conflicto a su raíz transgeneracional.
 
-PERFIL NUMEROLÓGICO (calculado automáticamente):
-${numStr || "Sin datos de fechas suficientes"}
+MÉTODO (síguelo internamente):
+1. El órgano/tejido afectado define el TIPO de conflicto según su capa embrionaria: endodermo = supervivencia arcaica ("el bocado"); mesodermo antiguo = protección; mesodermo nuevo = desvalorización; ectodermo = relación social (separación, territorio/cólera, miedo, identidad).
+2. El DHS es el instante desencadenante vivido como dramático, inesperado y en soledad. Lo que decodifica es el SENTIR EXACTO (usa la frase textual del paciente).
+3. La tonalidad precisa indica cuál conflicto del órgano se activó.
+4. PROGRAMACIÓN: proyecto-sentido y transgeneracional (repeticiones del clan: nombres, edades/fechas de muerte, enfermedades, secretos, pérdidas de territorio, lugar entre hermanos, dobles/yacentes).
 
-Genera el cuadro con ESTAS SECCIONES en español, estructuradas claramente:
+ECOSISTEMA DEL PACIENTE
+${ctx || "  - Datos insuficientes; trabaja con lo disponible y di qué falta confirmar."}
 
-## 1. PERFIL NUMEROLÓGICO
-Interpreta los números de vida del consultante y la dinámica energética familiar. Detecta patrones kármicos, años personales, relaciones entre números. Conecta con los síntomas.
+Entrega EXACTAMENTE estas secciones (usa ## y ###). Si falta un dato clave, dilo y formula hipótesis; no rellenes con vaguedades.
 
-## 2. BIODESCODIFICACIÓN Y PSICOSOMÁTICA
-Relaciona cada síntoma con su conflicto emocional biológico. Identifica el conflicto de choque (DHS), el tipo de conflicto y su manifestación en el órgano.
+## El conflicto decodificado
+Nombra el órgano/tejido y su capa embrionaria, y de ahí el sentido biológico. Cruza con la frase del DHS y la tonalidad exacta. Cierra con UNA frase precisa del conflicto.
 
-## 3. PATRONES TRANSGENERACIONALES
-Analiza patrones que se repiten en el árbol genealógico basándote en los datos familiares. Identifica lealtades invisibles, mandatos y misiones reparadoras.
+## El instante desencadenante (DHS)
+El momento exacto, cómo lo vivió, y por qué activó esta tonalidad.
 
-## 4. PARES BIOMAGNÉTICOS SUGERIDOS
-Con base en los síntomas, sugiere los pares biomagnéticos más relevantes a rastrear (menciona polo positivo y negativo para cada par).
+## De dónde viene: análisis transgeneracional del genograma
+Lee el árbol CONCRETO entregado (nombres repetidos, edades/fechas de muerte, enfermedades, secretos, pérdidas de territorio, lugar entre hermanos). Patrón que se repite, posibles dobles/yacentes, lealtad invisible. Conecta con el conflicto. Si falta info, di qué preguntar.
 
-## 5. MEDICINA TRADICIONAL CHINA
-Identifica los meridianos y órganos afectados según los síntomas. Sugiere puntos de acupuntura o digitopuntura específicos.
+## Proyecto-sentido
+Qué pudo programar la sensibilidad a este conflicto, con lo disponible o como hipótesis.
 
-## 6. FLORES DE BACH RECOMENDADAS
-Sugiere 3-5 esencias florales específicas según el estado emocional y los patrones detectados. Explica brevemente para qué sirve cada una.
+## Síntesis del núcleo
+Una frase que une conflicto decodificado + raíz transgeneracional + evento actual.
 
-## 7. HERBOLARIA
-Sugiere 3-4 plantas medicinales relevantes para los síntomas, con modo de uso.
+## Qué confirmar la próxima sesión
+Preguntas concretas para confirmar el sentir exacto, fechas y repeticiones.`;
 
-## 8. PLAN TERAPÉUTICO PROPUESTO
-Un plan integrado semanal o por sesiones que combine las disciplinas anteriores de manera coherente.
+  const sintomasTxt = (payload.sintomas || []).join(", ") || payload.motivo_consulta || "";
+  const resumenCaso = `Motivo: ${payload.motivo_consulta || "-"}. Síntomas: ${sintomasTxt || "-"}. Inicio: ${payload.inicio || "-"}. Cómo vivió el conflicto (DHS): ${eco.eventos_recientes?.dhs_frase || "-"}. Evento al inicio: ${eco.eventos_recientes?.al_inicio_sintoma || "-"}.`;
+  window.__holosCaso = { ctx, resumen: resumenCaso };
+  const nombre = getText("consultant_full_name") || "Consultante";
+  const fechaNac = getText("consultant_birth_date");
+  const horaNac = getText("consultant_birth_time");
+  const lugarNac = eco.identidad?.lugar_nacimiento || "";
+  const q = encodeURIComponent;
 
-Sé concreto, clínico y orientado a la acción del terapeuta. No agregues disclaimers médicos.`;
+  const secciones = [
+    { id: "nucleo", titulo: "Núcleo · Biodescodificación del conflicto", run: () => motorHolos(prompt) },
+    { id: "cuestionario", titulo: "Lectura del cuestionario por áreas", run: () => motorHolos(promptCuestionario(ctx, resumenCaso)) },
+    { id: "biomag", titulo: "Mapa biomagnético del rastreo", activo: pares.length > 0,
+      run: async () => { const galeria = await galeriaMapasHtml(pares); const interp = await motorHolos(promptBiomag(pares, resumenCaso)); return galeria + interp; } },
+    { id: "numerologia", titulo: "Numerología", activo: !!fechaNac,
+      run: async () => { const d = await getJsonSafe(`/numerology/calcular?nombre=${q(nombre)}&fecha=${q(fechaNac)}`); return motorHolos(promptNumerologia(d.datos, resumenCaso)); } },
+    { id: "astro", titulo: "Carta natal · Astrología médica", activo: !!(fechaNac && horaNac && lugarNac),
+      run: async () => { const d = await getJsonSafe(`/astro/datos-carta?nombre=${q(nombre)}&fecha=${q(fechaNac)}&hora=${q(horaNac)}&lugar=${q(lugarNac)}`); return motorHolos(promptAstro(d.natal, resumenCaso)); } },
+    { id: "tarot", titulo: "Tarot terapéutico", activo: !!fechaNac,
+      run: async () => { const d = await getJsonSafe(`/tarot/perfil?fecha=${q(fechaNac)}&sistema=rws`); return motorHolos(promptTarot(d.perfil, resumenCaso)); } },
+  ];
 
-  try {
-    const res = await postJson("/academic/ask", { query: prompt, history: [] });
-    if (res && res.answer) {
-      // Render with markdown-like formatting
-      const html = res.answer
-        .replace(/^## (.+)$/gm, '<h3 class="ch-section-title">$1</h3>')
-        .replace(/^\*\*(.+?)\*\*$/gm, '<strong>$1</strong>')
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/^• (.+)$/gm, '<li>$1</li>')
-        .replace(/^- (.+)$/gm, '<li>$1</li>')
-        .replace(/^(\d+)\. (.+)$/gm, '<li><strong>$1.</strong> $2</li>')
-        .replace(/\n\n/g, '</p><p>')
-        .replace(/\n/g, '<br>');
-      cuadroOutput.innerHTML = `<div class="ch-content"><p>${html}</p></div>`;
-    } else {
-      cuadroOutput.innerHTML = `<p class="status error">No se pudo generar el cuadro. Intenta de nuevo.</p>`;
+  cuadroOutput.innerHTML = secciones.map(s => `
+    <section class="ch-card" data-sec="${s.id}">
+      <div class="ch-card-title">${s.titulo}</div>
+      <div class="ch-card-body" id="ch-body-${s.id}">${s.activo === false ? `<p class="ch-card-na">${naMsgHolos(s.id)}</p>` : `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Generando…</span></div>`}</div>
+    </section>`).join("");
+
+  await Promise.allSettled(secciones.filter(s => s.activo !== false).map(async (s) => {
+    const body = document.getElementById(`ch-body-${s.id}`);
+    try { const html = await s.run(); if (body) body.innerHTML = `<div class="ch-content"><p>${html}</p></div>`; }
+    catch (e) { if (body) body.innerHTML = `<p class="status error">No se pudo generar esta sección. Intenta regenerar.</p>`; }
+  }));
+
+  const chatPanel = document.getElementById("caso-chat-panel");
+  const chatMsgs = document.getElementById("caso-chat-msgs");
+  if (chatPanel) {
+    chatPanel.classList.remove("hidden");
+    if (chatMsgs && !chatMsgs.children.length) {
+      chatMsgs.innerHTML = `<div class="caso-chat-msg bot"><div class="ch-content"><p>Listo. Pregúntame lo que necesites sobre este caso.</p></div></div>`;
     }
-  } catch {
-    cuadroOutput.innerHTML = `<p class="status error">Error al generar el cuadro holístico.</p>`;
   }
   if (btnRegen) {
     btnRegen.style.display = "block";
@@ -716,19 +877,18 @@ Sé concreto, clínico y orientado a la acción del terapeuta. No agregues discl
 
 async function submitTherapeutic() {
   const payload = getTherapeuticPayload();
-  analysisPanel.classList.remove("hidden");
-
-  const response = await runViewRequest({
-    container: analysisOutput,
-    loadingMessage: "Analizando caso con el Asistente Terapéutico...",
-    request: () => postJson("/therapeutic/analyze", payload),
-  });
-
-  if (response) {
-    renderTherapeuticResponse(response);
-    // Auto-generate the holistic medical chart
-    generarCuadroHolistico(payload);
+  const hayBase = (payload.motivo_consulta || "").trim() || (payload.sintomas || []).length;
+  if (!hayBase) {
+    const cuadroPanel = document.getElementById("cuadro-holistico-panel");
+    const cuadroOutput = document.getElementById("cuadro-holistico-output");
+    if (cuadroPanel && cuadroOutput) {
+      cuadroPanel.classList.remove("hidden");
+      cuadroOutput.innerHTML = `<p class="status error">Completa al menos el motivo de consulta o un síntoma (bloque 2) para generar el Cuadro Holos.</p>`;
+      cuadroPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    return;
   }
+  generarCuadroHolistico(payload);
 }
 
 async function submitAcademic() {
@@ -4477,3 +4637,88 @@ function setCatalogMode(mode) {
 
 document.getElementById("mode-btn-tecnicas")?.addEventListener("click", () => setCatalogMode("tecnicas"));
 document.getElementById("mode-btn-sistemas")?.addEventListener("click", () => setCatalogMode("sistemas"));
+
+/* ── Chat del caso · resolver dudas sobre el cuadro generado ───────────────── */
+(function () {
+  let history = [];
+  function addMsg(role, innerHtml) {
+    const box = document.getElementById("caso-chat-msgs");
+    if (!box) return null;
+    const d = document.createElement("div");
+    d.className = "caso-chat-msg " + (role === "user" ? "user" : "bot");
+    d.innerHTML = role === "user" ? innerHtml : `<div class="ch-content"><p>${innerHtml}</p></div>`;
+    box.appendChild(d); box.scrollTop = box.scrollHeight; return d;
+  }
+  async function enviar() {
+    const ta = document.getElementById("caso-chat-q"); if (!ta) return;
+    const q = (ta.value || "").trim(); if (!q) return;
+    ta.value = "";
+    addMsg("user", (typeof escapeHtml === "function" ? escapeHtml(q) : q));
+    history.push({ rol: "terapeuta", texto: q });
+    const pensando = addMsg("bot", `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Pensando…</span></div>`);
+    const caso = window.__holosCaso || { ctx: "", resumen: "" };
+    const histTxt = history.slice(-6).map(h => `${h.rol}: ${h.texto}`).join("\n");
+    const prompt = `${HOLOS_CARD_RULES}\nEres el Motor Terapéutico respondiendo dudas del terapeuta sobre un caso ya analizado. Responde concreto y clínico, apoyándote en el contexto del caso.\n\nCONTEXTO DEL CASO\n${caso.resumen}\n\n${caso.ctx}\n\nCONVERSACIÓN PREVIA\n${histTxt || "(sin mensajes previos)"}\n\nPREGUNTA DEL TERAPEUTA\n${q}`;
+    try {
+      const res = await postJson("/therapeutic/holos", { prompt });
+      const answer = (res && res.answer) ? res.answer : "No pude responder, intenta de nuevo.";
+      if (pensando) pensando.innerHTML = `<div class="ch-content"><p>${mdHolos(answer)}</p></div>`;
+      history.push({ rol: "asistente", texto: answer.slice(0, 1200) });
+    } catch (e) { if (pensando) pensando.innerHTML = `<div class="ch-content"><p>Error al responder. Intenta de nuevo.</p></div>`; }
+  }
+  function init() {
+    const btn = document.getElementById("caso-chat-send");
+    const ta = document.getElementById("caso-chat-q");
+    if (btn) btn.addEventListener("click", enviar);
+    if (ta) ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) { e.preventDefault(); enviar(); } });
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+})();
+
+/* ── Precarga de caso hipotético para revisión (solo con ?demo=1) ──────────── */
+(function () {
+  try { if (!/[?&]demo=1\b/.test(location.search)) return; } catch (e) { return; }
+  const CASO = {
+    consultant_full_name: "Laura Mendoza", consultant_birth_date: "1985-11-03", consultant_birth_time: "14:30",
+    holos_lugar_nacimiento: "Puebla, México", holos_sexo: "F",
+    therapeutic_reason: "Migrañas intensas e insomnio", therapeutic_onset: "hace 7 meses", therapeutic_duration: "7 meses, casi diario",
+    holos_diagnosticos: "Resonancia normal, sin causa orgánica",
+    holos_evento_inicio_sintoma: "Murió su madre y, poco después, descubrió una infidelidad de su esposo",
+    holos_eventos_2anios: "Muerte de la madre, crisis de pareja, asumió el sostén económico",
+    holos_duelos_recientes: "Su madre, hace 7 meses",
+    holos_dhs_frase: "Sentí que me rompían la cabeza de tanto pensar y nadie me dejó llorar",
+    holos_dhs_impacto: "Tener que sostener todo sola justo cuando perdí a mi madre",
+    holos_dhs_perdida: "El apoyo de mi madre y la confianza en mi pareja",
+    holos_dhs_soledad: "Lo viví completamente solo/a", holos_dhs_inesperado: "Totalmente inesperado",
+    holos_relacion_padre: "Distante", holos_relacion_madre: "Cercana", holos_rol_familia: "La que sostiene a todos",
+    holos_orden_nacimiento: "Primogénita de 3", holos_eventos_clan: "Mujeres que cargan con la familia y reprimen el dolor",
+    holos_nombres_repetidos: "Lleva el nombre de su abuela materna, Laura",
+    holos_enfermedades_repetidas: "Migrañas en la madre y la abuela materna",
+    holos_muertes_clan: "Abuela Laura murió de derrame cerebral a los 60",
+    holos_secretos_clan: "Un hijo fuera del matrimonio del abuelo que nunca se menciona",
+    therapeutic_family_notes: "Línea materna de mujeres fuertes que no se permiten mostrar debilidad",
+    holos_vivienda: "Casa propia, vive con esposo e hijos", holos_conflictos_casa: "Tensión desde la infidelidad", holos_hogar_sensacion: "Más carga que refugio",
+    holos_economia_situacion: "Estable, pero ella sostiene gran parte", holos_trabajo: "Contadora con mucha responsabilidad", holos_miedos_economicos: "A que todo dependa de ella",
+    holos_pareja_estado: "En crisis", holos_soledad: "Se siente sola aunque acompañada", holos_red_apoyo: "Pocas personas de confianza",
+    therapeutic_emotional_context: "Tristeza y enojo contenidos tras la pérdida y la traición",
+    holos_estres_nivel: "Alto", holos_emociones_frecuentes: "Tristeza y enojo contenidos", holos_cargas_ajenas: "Carga los problemas de toda la familia", holos_no_perdona: "A su esposo por la traición",
+    holos_temperatura: "Manos y pies fríos", holos_digestion: "Lenta, con acidez", holos_energia_dia: "Peor por la noche, no concilia el sueño",
+    holos_alimentacion: "Irregular, salta comidas", holos_sueno: "Insomnio de conciliación",
+    holos_proposito: "Sentir que su vida es suya y no solo servir a otros", holos_quiere_cambiar: "Dejar de cargar con todos y poder descansar",
+  };
+  const fill = () => {
+    Object.entries(CASO).forEach(([name, val]) => {
+      if (!val) return;
+      const el = document.querySelector(`[name="${name}"]`);
+      if (!el) return;
+      if (el.tagName === "SELECT") {
+        const opt = [...el.options].find(o => o.value.toLowerCase() === String(val).toLowerCase() || o.textContent.trim().toLowerCase() === String(val).toLowerCase());
+        if (opt) el.value = opt.value;
+      } else { el.value = val; }
+      el.dispatchEvent(new Event("input", { bubbles: true }));
+      el.dispatchEvent(new Event("change", { bubbles: true }));
+    });
+    document.querySelectorAll("details.holos-bloque").forEach(d => { d.open = true; });
+  };
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fill); else fill();
+})();

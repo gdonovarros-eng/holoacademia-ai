@@ -50,3 +50,4 @@ api/static/tarot-cards-thoth/*.jpeg
 api/static/tarot-cards-thoth/*.webp
 !api/static/tarot-cards-thoth/card_images.json
 !api/static/tarot-cards-thoth/README.md
+.gstack/

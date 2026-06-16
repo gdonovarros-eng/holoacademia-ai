@@ -1,62 +1,190 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Holoacademia · Asistentes IA</title><link rel="stylesheet" href="/therapy-static/therapy.css?v=20260605pa" /><link rel="stylesheet" href="/therapy-static/therapy_akinator.css?v=3" /></head><body><main class="app-shell"><header class="hero"><div class="hero-brand"><div class="brand-lockup"><img class="brand-logo" src="/therapy/logo" alt="Logo del asistente IA de Holoacademia" /><div><p class="eyebrow">Holoacademia</p><p class="brand-subtitle">Asistente Académico, Asistente Terapéutico y Guía de Protocolos</p></div></div><h1>Asistente Personal Holoacadem-iA</h1><p class="hero-copy">Una misma interfaz para aprender, analizar casos con prudencia y consultar protocolos sin mezclar funciones.
- </p></div><div class="hero-badge">Versión Beta</div></header><nav class="tabbar" aria-label="Módulos"><button class="tab active" data-tab="therapy">Asistente Terapéutico</button><button class="tab" data-tab="academic">Asistente Académico</button><button class="tab" data-tab="protocols">Guía de Protocolos</button></nav><div id="paciente-activo-banner" class="pa-banner" style="display:none;"></div><section class="tab-panel active" id="tab-therapy"><section class="panel"><div class="panel-head"><h2>Asistente Terapéutico</h2><p>Organiza el caso, detecta vacíos y devuelve una lectura prudente basada en el endpoint terapéutico actual.</p></div><form id="therapy-form" class="therapy-form"><section class="collection-block"><div class="panel-head"><h3>Consulta breve para el análisis terapéutico</h3><p>Estos campos alimentan directamente el endpoint <code>POST /therapeutic/analyze</code>.</p></div><div class="grid two"><label>Motivo de consulta
- <input type="text" name="therapeutic_reason" placeholder="Ej. dolor lumbar, ansiedad, digestión" /></label><label>Inicio del síntoma
- <input type="text" name="therapeutic_onset" placeholder="Ej. hace 3 meses, desde 2024, después de..." /></label></div><div class="grid two"><label>Duración del cuadro
- <input type="text" name="therapeutic_duration" placeholder="Ej. 3 meses, intermitente desde hace 1 año" /></label><label>Frecuencia o recurrencia
- <input type="text" name="therapeutic_frequency" placeholder="Ej. diario, 2 veces por semana, vuelve cada mes" /></label></div><div class="grid two"><label>Contexto emocional
- <textarea rows="3" name="therapeutic_emotional_context" placeholder="Ej. estrés laboral, duelo, conflicto familiar"></textarea></label><label>Pregunta del terapeuta
- <textarea rows="3" name="therapeutic_question" placeholder="Ej. ¿qué me falta explorar?"></textarea></label></div><div class="grid two"><label>Notas de genograma / familia
- <textarea rows="3" name="therapeutic_family_notes" placeholder="Ej. madre ausente, padre fallecido joven, conflicto con hermano, secreto familiar..."></textarea></label><label>Observaciones
- <textarea rows="3" name="therapeutic_observations" placeholder="Notas libres del caso para ayudar al análisis"></textarea></label></div></section><section class="collection-block"><div class="panel-head"><h3>Información del consultante</h3><p>Datos básicos de referencia para contextualizar la consulta sin volver pesada la captura.</p></div><div class="grid four"><label>Nombre completo
- <input type="text" name="consultant_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="consultant_birth_date" id="consultant-birth-date" /></label><label>Hora de nacimiento
- <input type="time" name="consultant_birth_time" /></label><label>Edad
- <input type="text" name="consultant_age" id="consultant-age" readonly /></label></div></section><section class="collection-block"><div class="panel-head"><h3>Genograma básico</h3></div><div class="subsection"><h4>Padre</h4><div class="grid three"><label>Nombre del padre
- <input type="text" name="father_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="father_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="father_death_date" /></label></div></div><div class="grid two"><div class="subsection"><h4>Abuelo paterno</h4><div class="grid three"><label>Nombre del abuelo paterno
- <input type="text" name="paternal_grandfather_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="paternal_grandfather_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="paternal_grandfather_death_date" /></label></div></div><div class="subsection"><h4>Abuela paterna</h4><div class="grid three"><label>Nombre de la abuela paterna
- <input type="text" name="paternal_grandmother_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="paternal_grandmother_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="paternal_grandmother_death_date" /></label></div></div></div><div class="subsection"><h4>Madre</h4><div class="grid three"><label>Nombre de la madre
- <input type="text" name="mother_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="mother_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="mother_death_date" /></label></div></div><div class="grid two"><div class="subsection"><h4>Abuelo materno</h4><div class="grid three"><label>Nombre del abuelo materno
- <input type="text" name="maternal_grandfather_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="maternal_grandfather_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="maternal_grandfather_death_date" /></label></div></div><div class="subsection"><h4>Abuela materna</h4><div class="grid three"><label>Nombre de la abuela materna
- <input type="text" name="maternal_grandmother_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="maternal_grandmother_birth_date" /></label><label>Fecha de muerte
- <input type="date" name="maternal_grandmother_death_date" /></label></div></div></div><div class="subsection"><h4>Pareja actual</h4><div class="grid three"><label>Nombre completo
- <input type="text" name="current_partner_full_name" /></label><label>Fecha de nacimiento
- <input type="date" name="current_partner_birth_date" /></label><label>Años de relación
- <input type="number" min="0" step="1" name="current_partner_relationship_years" /></label></div></div><section class="collection-block nested"><div class="collection-head"><div><h4>Más parejas significativas</h4><p>Usa el botón solo si existen más parejas relevantes.</p></div><button type="button" class="secondary-btn" id="add-significant-partner">Agregar</button></div><div id="significant-partners-list" class="collection-list"></div></section><section class="collection-block nested"><div class="collection-head"><div><h4>Hijos</h4><p>Empieza por el hijo mayor y agrega más si hace falta.</p></div><button type="button" class="secondary-btn" id="add-child">Agregar hijo</button></div><div id="children-list" class="collection-list"></div></section><section class="collection-block nested"><div class="collection-head"><div><h4>Hermanos</h4></div><button type="button" class="secondary-btn" id="add-sibling">Agregar hermano</button></div><div id="siblings-list" class="collection-list"></div></section></section><section class="collection-block"><div class="panel-head"><h3>Historial clínico básico</h3><p>Captura los síntomas actuales y los antecedentes relevantes que conviene considerar en la lectura inicial.</p></div><div class="collection-head"><div><h4>Síntomas a trabajar por orden de intensidad</h4></div><button type="button" class="secondary-btn" id="add-symptom">Agregar síntoma</button></div><div id="symptoms-list" class="collection-list"></div><div class="collection-head"><div><h4>Síntomas recurrentes del pasado como cirugías</h4></div><button type="button" class="secondary-btn" id="add-history">Agregar síntoma</button></div><div id="history-list" class="collection-list"></div></section><div class="actions"><button type="button" class="primary-btn" id="analyze-case">Analizar caso</button></div></form></section><section class="panel hidden" id="analysis-panel"><div class="panel-head"><h2>Respuesta del Asistente Terapéutico</h2><p>Ruta sugerida del caso, evidencias principales, protocolo a seguir y puntos de validación.</p></div><div id="analysis-output" class="stack"></div></section><section class="panel hidden" id="cuadro-holistico-panel"><div class="panel-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px"><div><h2>Cuadro Médico Holístico</h2><p>Análisis integral automático: Numerología · Biodescodificación · Transgeneracional · Biomagnetismo · MTC · Flores de Bach · Herbolaria · Plan Terapéutico.</p></div><button type="button" class="secondary-btn" id="btn-regenerar-cuadro" style="display:none;font-size:0.78rem;padding:8px 14px">↻ Regenerar cuadro</button></div><div id="cuadro-holistico-output" class="md-content stack"></div></section><!-- ═══════════════════════════════════════════════════════════════
- ANÁLISIS PROFUNDO · Se inicia automáticamente al "Analizar caso"
-             ═══════════════════════════════════════════════════════════════ --><section class="panel hidden" id="akinator-panel"><div class="panel-head"><h2>Análisis profundo del caso</h2><p>Respondé las preguntas clínicas dirigidas — el sistema ajusta las hipótesis en tiempo real y, al alcanzar suficiente certeza, entrega la ficha completa con interpretación, ejemplos similares, protocolo y pares biomagnéticos.</p></div><!-- Grid: hipótesis (izq) + chat (der). Oculto hasta iniciar --><div id="akinator-grid" class="akinator-grid" style="display:none;"><!-- Hipótesis activas --><aside class="akinator-hipotesis"><div class="akinator-hipotesis-head"><span>Hipótesis activas</span><span class="h-count">0 activas</span></div><div id="hipotesis-list"></div></aside><!-- Chat conversacional --><div class="akinator-chat"><div class="chat-header"><div class="chat-header-icon"></div><div class="chat-header-text"><div class="chat-header-title">Asistente clínico</div><div class="chat-header-sub">Responde para refinar las hipótesis</div></div><button type="button" class="secondary-btn" id="btn-reset-akinator" style="font-size:0.72rem;padding:6px 10px;">↻ Reiniciar</button></div><div id="chat-stream"></div><div id="chat-input-area"><button type="button" class="ans-btn" data-resp="si">Sí</button><button type="button" class="ans-btn" data-resp="no">No</button><button type="button" class="ans-btn" data-resp="no_se">? No estoy seguro</button></div></div></div><!-- Ficha clínica final --><div id="ficha-clinica" class="hidden"></div></section><section class="panel" id="pairs-interpret-panel"><div class="panel-head"><h2>Interpretación de pares encontrados</h2><p>Después del rastreo, registra aquí los pares biomagnéticos activos. La IA explica qué le está comunicando el cuerpo del paciente.</p></div><div class="collection-block"><div class="collection-head"><div><h4>Pares encontrados en el rastreo</h4><p>Agrega un par por línea o uno por uno con el botón.</p></div><button type="button" class="secondary-btn" id="add-found-pair">Agregar par</button></div><div id="found-pairs-list" class="collection-list"></div><div class="grid one" style="margin-top:8px"><label>Notas del caso (opcional)
- <textarea id="pairs-case-notes" rows="2" placeholder="Contexto breve del caso si ayuda a la lectura..."></textarea></label></div><div class="actions"><button type="button" class="primary-btn" id="interpret-pairs-btn">Interpretar pares</button></div></div><div id="pairs-interpret-status" class="stack"></div><div id="pairs-interpret-output" class="stack"></div></section></section><section class="tab-panel" id="tab-academic"><section class="panel"><div class="panel-head course-chat-head"><div><h2>Asistente Académico</h2><p>Haz preguntas sobre conceptos, glosario, módulos y contenido del curso.</p></div><button type="button" class="ghost-btn" id="clear-academic-chat">Nueva conversación</button></div><div class="course-chat-shell"><div id="academic-output" class="course-chat-log"></div><div class="course-composer"><label class="course-composer-label">Escribe tu pregunta
- <textarea id="academic-question" rows="3" placeholder="Ej. ¿Qué es un par biomagnético?"></textarea></label><div class="actions"><button type="button" class="primary-btn" id="ask-academic">Enviar</button></div></div></div></section></section><section class="tab-panel" id="tab-protocols"><!-- ── Header + modo de navegación ── --><section class="panel catalog-header-panel"><div class="panel-head"><h2>Catálogo de Protocolos Terapéuticos</h2><p>Explora los protocolos del diplomado por tipo de técnica o por sistema corporal. Haz clic en cualquier protocolo o sistema para ver el contenido completo.</p></div><div class="catalog-mode-toggle"><button class="catalog-mode-btn active" id="mode-btn-tecnicas" data-mode="tecnicas">Técnicas Terapéuticas</button><button class="catalog-mode-btn" id="mode-btn-sistemas" data-mode="sistemas">Por Sistema Corporal</button></div><div id="catalog-status" class="stack"></div></section><!-- ── Modo: Técnicas Terapéuticas ── --><div class="catalog-layout" id="catalog-layout-tecnicas"><nav class="catalog-sidebar"><p class="catalog-sidebar-title">Categorías</p><div id="catalog-category-nav" class="catalog-category-nav"></div></nav><div class="catalog-main"><div id="catalog-category-header" class="catalog-category-header hidden"></div><div id="catalog-cards" class="catalog-cards"></div></div></div><!-- ── Modo: Por Sistema Corporal ── --><div class="catalog-layout hidden" id="catalog-layout-sistemas"><nav class="catalog-sidebar"><p class="catalog-sidebar-title">Sistemas</p><div id="catalog-systems-nav" class="catalog-category-nav"></div></nav><div class="catalog-main" id="catalog-systems-main"><div id="catalog-system-header" class="catalog-category-header hidden"></div><div id="catalog-system-sections" class="catalog-system-sections"></div></div></div><!-- ── Overlay detalle (protocolos procedimentales) ── --><div class="catalog-detail-overlay hidden" id="catalog-detail-overlay"><div class="catalog-detail-panel"><button class="catalog-detail-close" id="catalog-detail-close" aria-label="Cerrar"></button><div id="catalog-detail-content"></div></div></div></section><!-- /tab-protocols --></main><template id="found-pair-template"><article class="collection-item"><div class="grid two"><label>Nombre del par
- <input type="text" data-field="pair_name" placeholder="Ej. HÍGADO - PÁNCREAS" /></label><label>Nota del terapeuta
- <input type="text" data-field="therapist_note" placeholder="Opcional" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="significant-partner-template"><article class="collection-item"><div class="grid three"><label>Nombre completo
- <input type="text" data-field="full_name" /></label><label>Fecha de nacimiento
- <input type="date" data-field="birth_date" /></label><label>Años de relación
- <input type="number" min="0" step="1" data-field="relationship_years" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="child-template"><article class="collection-item"><div class="grid four"><label>Nombre completo
- <input type="text" data-field="full_name" /></label><label>Fecha de nacimiento
- <input type="date" data-field="birth_date" /></label><label>Fecha de muerte
- <input type="date" data-field="death_date" /></label><label>Nombre del padre o madre
- <input type="text" data-field="other_parent_name" /></label></div><div class="grid three"><label>Fecha de nacimiento del padre o madre
- <input type="date" data-field="other_parent_birth_date" /></label><label>Fecha de muerte del padre o madre
- <input type="date" data-field="other_parent_death_date" /></label><label>Tiempo de relación en años
- <input type="number" min="0" step="1" data-field="relationship_years" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="sibling-template"><article class="collection-item"><div class="grid three"><label>Nombre completo
- <input type="text" data-field="full_name" /></label><label>Fecha de nacimiento
- <input type="date" data-field="birth_date" /></label><label>Fecha de muerte
- <input type="date" data-field="death_date" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="symptom-template"><article class="collection-item"><div class="grid two"><label>Síntoma
- <input type="text" data-field="symptom_name" /></label><label>Edad aproximada de aparición o diagnóstico
- <input type="text" data-field="onset_age_or_date" /></label></div><div class="grid two"><label>Características del síntoma
- <textarea rows="3" data-field="symptom_characteristics"></textarea></label><label>Frecuencia de síntoma
- <input type="text" data-field="frequency" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="history-template"><article class="collection-item"><div class="grid two"><label>Síntoma
- <input type="text" data-field="event_name" /></label><label>Edad aproximada de aparición o diagnóstico
- <input type="text" data-field="onset_age_or_date" /></label></div><div class="grid two"><label>Características del síntoma
- <textarea rows="3" data-field="event_characteristics"></textarea></label><label>Frecuencia de síntoma
- <input type="text" data-field="frequency" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><script src="/therapy-static/therapy.js?v=20260605pa"></script><script src="/therapy-static/therapy_akinator.js?v=4"></script></body></html>
+<!doctype html><html lang="es"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Holoacademia · Método Holos</title><link rel="stylesheet" href="/therapy-static/therapy.css?v=20260605pa" /><link rel="stylesheet" href="/therapy-static/therapy_akinator.css?v=3" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="/therapy-static/holos_shell.css?v=7"><link rel="stylesheet" href="/therapy-static/holos_form.css?v=3"></head><body><main class="app-shell"><header class="hero"><div class="hero-brand"><div class="brand-lockup"><img class="brand-logo" src="/therapy/logo?v=2" alt="Logo del asistente IA de Holoacademia" /><div><p class="eyebrow">Holoacademia</p><p class="brand-subtitle">Análisis terapéutico integral del paciente</p></div></div><h1>Método Holos</h1><p class="hero-copy">Cuestionario integral que cruza todas las disciplinas y entrega un cuadro holístico del paciente: numerología, biodescodificación, biomagnetismo, medicina china y más.</p></div><div class="hero-badge">Versión Beta</div></header><nav class="tabbar" aria-label="Módulos"><button class="tab active" data-tab="therapy">Asistente Terapéutico</button><button class="tab" data-tab="academic">Asistente Académico</button><button class="tab" data-tab="protocols">Guía de Protocolos</button></nav><div id="paciente-activo-banner" class="pa-banner" style="display:none;"></div><section class="tab-panel active" id="tab-therapy"><section class="panel"><form id="therapy-form" class="therapy-form holos-form">
+
+<div class="holos-intro">
+  <h3 class="holos-intro-title">Cuestionario Holos</h3>
+  <p class="holos-intro-sub">Entrevista integral del paciente. Abre las secciones que el caso necesite — solo Identidad y Motivo son indispensables para generar el Cuadro Holos. Mientras más completes, más profundo será el análisis.</p>
+</div>
+
+<!-- BLOQUE 1 · IDENTIDAD -->
+<details class="holos-bloque" open><summary class="holos-bloque-head"><span class="holos-bloque-num">1</span> Identidad y origen</summary><div class="holos-bloque-body">
+  <div class="grid four">
+    <label>Nombre completo<input type="text" name="consultant_full_name" /></label>
+    <label>Fecha de nacimiento<input type="date" name="consultant_birth_date" id="consultant-birth-date" /></label>
+    <label>Hora de nacimiento<input type="time" name="consultant_birth_time" /></label>
+    <label>Edad<input type="text" name="consultant_age" id="consultant-age" readonly /></label>
+  </div>
+  <div class="grid two">
+    <label>Lugar de nacimiento <span class="holos-hint">(para carta natal)</span><input type="text" name="holos_lugar_nacimiento" placeholder="Ciudad, País" /></label>
+    <label>Sexo<select name="holos_sexo"><option value="">—</option><option value="F">Femenino</option><option value="M">Masculino</option><option value="O">Otro</option></select></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 2 · MOTIVO Y CUERPO -->
+<details class="holos-bloque" open><summary class="holos-bloque-head"><span class="holos-bloque-num">2</span> Motivo de consulta y cuerpo</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Motivo de consulta<input type="text" name="therapeutic_reason" placeholder="Ej. dolor lumbar, ansiedad, digestión" /></label>
+    <label>Inicio del síntoma<input type="text" name="therapeutic_onset" placeholder="Ej. hace 3 meses, desde 2024, después de..." /></label>
+  </div>
+  <div class="grid two">
+    <label>Duración del cuadro<input type="text" name="therapeutic_duration" placeholder="Ej. 3 meses, intermitente desde hace 1 año" /></label>
+    <label>Frecuencia o recurrencia<input type="text" name="therapeutic_frequency" placeholder="Ej. diario, 2 veces por semana, vuelve cada mes" /></label>
+  </div>
+  <div class="collection-head"><div><h4>Síntomas a trabajar (por intensidad)</h4></div><button type="button" class="secondary-btn" id="add-symptom">Agregar síntoma</button></div>
+  <div id="symptoms-list" class="collection-list"></div>
+  <div class="grid two">
+    <label>Diagnósticos médicos previos<textarea rows="2" name="holos_diagnosticos" placeholder="Diagnósticos formales si los hay"></textarea></label>
+    <label>Medicamentos actuales<textarea rows="2" name="holos_medicamentos" placeholder="Qué toma actualmente"></textarea></label>
+  </div>
+  <div class="collection-head"><div><h4>Antecedentes / cirugías / síntomas del pasado</h4></div><button type="button" class="secondary-btn" id="add-history">Agregar antecedente</button></div>
+  <div id="history-list" class="collection-list"></div>
+</div></details>
+
+<!-- BLOQUE 3 · LÍNEA DE TIEMPO + DHS -->
+<details class="holos-bloque holos-bloque-clave" open><summary class="holos-bloque-head"><span class="holos-bloque-num">3</span> Línea de tiempo · eventos recientes <span class="holos-bloque-tag">clave</span></summary><div class="holos-bloque-body">
+  <p class="holos-bloque-nota">Aquí suele estar la raíz del conflicto. Lo más importante: ¿qué pasaba en su vida cuando empezó el síntoma?</p>
+  <label>¿Qué pasaba en tu vida cuando empezó el síntoma principal?<textarea rows="2" name="holos_evento_inicio_sintoma" placeholder="Eventos, cambios o tensiones alrededor del inicio del síntoma"></textarea></label>
+  <label>Eventos importantes de los últimos 2 años<textarea rows="3" name="holos_eventos_2anios" placeholder="Muertes, rupturas, mudanzas, despidos, accidentes, nacimientos, cambios bruscos..."></textarea></label>
+  <label>Pérdidas o duelos recientes<textarea rows="2" name="holos_duelos_recientes" placeholder="Personas, relaciones, etapas o cosas que perdió"></textarea></label>
+  <p class="holos-bloque-nota">El instante del conflicto (DHS): no importa solo qué pasó, sino cómo se vivió.</p>
+  <label>En una frase y con tus palabras, ¿cómo lo viviste?<input type="text" name="holos_dhs_frase" placeholder="Ej. 'me quitaron el piso', 'no pude tragarme la injusticia', 'perdí mi lugar'" /></label>
+  <div class="grid two">
+    <label>¿Qué fue lo más impactante o injusto de ese momento?<textarea rows="2" name="holos_dhs_impacto" placeholder="Lo que más dolió o indignó"></textarea></label>
+    <label>¿Qué sentiste que ya no podías hacer o tener?<textarea rows="2" name="holos_dhs_perdida" placeholder="Lo que se perdió: control, seguridad, lugar, vínculo..."></textarea></label>
+  </div>
+  <div class="grid two">
+    <label>¿Lo viviste en soledad?<select name="holos_dhs_soledad"><option value="">—</option><option>Lo viví completamente solo/a</option><option>Lo compartí en parte</option><option>Pude apoyarme en alguien</option></select></label>
+    <label>¿Fue inesperado?<select name="holos_dhs_inesperado"><option value="">—</option><option>Totalmente inesperado</option><option>Lo veía venir</option><option>Mezcla de ambos</option></select></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 4 · CLAN / GENOGRAMA -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">4</span> Clan · genograma transgeneracional</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Relación con tu padre<select name="holos_relacion_padre"><option value="">—</option><option>Cercana</option><option>Conflictiva</option><option>Distante</option><option>Ausente</option></select></label>
+    <label>Relación con tu madre<select name="holos_relacion_madre"><option value="">—</option><option>Cercana</option><option>Conflictiva</option><option>Distante</option><option>Ausente</option></select></label>
+  </div>
+  <div class="grid two">
+    <label>Tu rol en la familia<input type="text" name="holos_rol_familia" placeholder="Cuidador, mediador, líder, el que sostiene..." /></label>
+    <label>Tu lugar entre hermanos<input type="text" name="holos_orden_nacimiento" placeholder="Ej. 2º de 4 · primogénito · hijo único · gemelo" /></label>
+  </div>
+  <label>Eventos significativos del clan<input type="text" name="holos_eventos_clan" placeholder="Muertes tempranas, secretos, patrones que se repiten" /></label>
+  <p class="holos-bloque-nota">Lo transgeneracional se descubre en las repeticiones del árbol.</p>
+  <div class="grid two">
+    <label>Nombres que se repiten en la familia<textarea rows="2" name="holos_nombres_repetidos" placeholder="Quién lleva el nombre de quién (tú, padres, abuelos, tíos)"></textarea></label>
+    <label>Enfermedades que se repiten en el clan<textarea rows="2" name="holos_enfermedades_repetidas" placeholder="Mismo padecimiento en varias generaciones"></textarea></label>
+  </div>
+  <div class="grid two">
+    <label>Muertes marcantes: quién, a qué edad y cuándo<textarea rows="2" name="holos_muertes_clan" placeholder="Edades y fechas (para detectar ciclos y 'yacentes')"></textarea></label>
+    <label>Pérdidas de patrimonio, territorio o migraciones<textarea rows="2" name="holos_perdidas_clan" placeholder="Despojos, quiebras, exilios, mudanzas forzadas en el clan"></textarea></label>
+  </div>
+  <label>Secretos, no-dichos o temas tabú en la familia<textarea rows="2" name="holos_secretos_clan" placeholder="Hijos ocultos, suicidios, abusos, deudas, lo que no se habla"></textarea></label>
+  <label>Notas de genograma / familia<textarea rows="2" name="therapeutic_family_notes" placeholder="Madre ausente, padre fallecido joven, conflicto con hermano, secreto familiar..."></textarea></label>
+
+  <div class="subsection"><h4>Padre</h4><div class="grid three"><label>Nombre del padre<input type="text" name="father_full_name" /></label><label>Fecha de nacimiento<input type="date" name="father_birth_date" /></label><label>Fecha de muerte<input type="date" name="father_death_date" /></label></div></div>
+  <div class="grid two"><div class="subsection"><h4>Abuelo paterno</h4><div class="grid three"><label>Nombre<input type="text" name="paternal_grandfather_full_name" /></label><label>Nacimiento<input type="date" name="paternal_grandfather_birth_date" /></label><label>Muerte<input type="date" name="paternal_grandfather_death_date" /></label></div></div><div class="subsection"><h4>Abuela paterna</h4><div class="grid three"><label>Nombre<input type="text" name="paternal_grandmother_full_name" /></label><label>Nacimiento<input type="date" name="paternal_grandmother_birth_date" /></label><label>Muerte<input type="date" name="paternal_grandmother_death_date" /></label></div></div></div>
+  <div class="subsection"><h4>Madre</h4><div class="grid three"><label>Nombre de la madre<input type="text" name="mother_full_name" /></label><label>Fecha de nacimiento<input type="date" name="mother_birth_date" /></label><label>Fecha de muerte<input type="date" name="mother_death_date" /></label></div></div>
+  <div class="grid two"><div class="subsection"><h4>Abuelo materno</h4><div class="grid three"><label>Nombre<input type="text" name="maternal_grandfather_full_name" /></label><label>Nacimiento<input type="date" name="maternal_grandfather_birth_date" /></label><label>Muerte<input type="date" name="maternal_grandfather_death_date" /></label></div></div><div class="subsection"><h4>Abuela materna</h4><div class="grid three"><label>Nombre<input type="text" name="maternal_grandmother_full_name" /></label><label>Nacimiento<input type="date" name="maternal_grandmother_birth_date" /></label><label>Muerte<input type="date" name="maternal_grandmother_death_date" /></label></div></div></div>
+  <div class="subsection"><h4>Pareja actual</h4><div class="grid three"><label>Nombre completo<input type="text" name="current_partner_full_name" /></label><label>Fecha de nacimiento<input type="date" name="current_partner_birth_date" /></label><label>Años de relación<input type="number" min="0" step="1" name="current_partner_relationship_years" /></label></div></div>
+  <div class="collection-block nested"><div class="collection-head"><div><h4>Más parejas significativas</h4></div><button type="button" class="secondary-btn" id="add-significant-partner">Agregar</button></div><div id="significant-partners-list" class="collection-list"></div></div>
+  <div class="collection-block nested"><div class="collection-head"><div><h4>Hijos</h4></div><button type="button" class="secondary-btn" id="add-child">Agregar hijo</button></div><div id="children-list" class="collection-list"></div></div>
+  <div class="collection-block nested"><div class="collection-head"><div><h4>Hermanos</h4></div><button type="button" class="secondary-btn" id="add-sibling">Agregar hermano</button></div><div id="siblings-list" class="collection-list"></div></div>
+</div></details>
+
+<!-- BLOQUE 5 · HOGAR -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">5</span> Hogar y territorio</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Situación de vivienda<input type="text" name="holos_vivienda" placeholder="Propia / rentada · con quién vive" /></label>
+    <label>¿Mudanzas recientes?<input type="text" name="holos_mudanzas" placeholder="Cuándo y por qué" /></label>
+  </div>
+  <div class="grid two">
+    <label>Conflictos o tensión en casa<textarea rows="2" name="holos_conflictos_casa" placeholder="Convivencia, espacio, territorio"></textarea></label>
+    <label>¿Sientes tu casa como refugio o como carga?<textarea rows="2" name="holos_hogar_sensacion" placeholder="Cómo se vive el hogar"></textarea></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 6 · ECONOMÍA -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">6</span> Economía y sustento</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Situación económica actual<input type="text" name="holos_economia_situacion" placeholder="Estable, ajustada, en crisis..." /></label>
+    <label>Deudas / presión económica<input type="text" name="holos_deudas" placeholder="Si hay y cómo la vive" /></label>
+  </div>
+  <div class="grid two">
+    <label>Ocupación / trabajo — ¿satisfecho?<input type="text" name="holos_trabajo" placeholder="A qué se dedica y cómo se siente con ello" /></label>
+    <label>Miedos económicos<input type="text" name="holos_miedos_economicos" placeholder="A perder, a no tener, a la escasez..." /></label>
+  </div>
+  <label>Creencias sobre el dinero (qué te enseñaron)<textarea rows="2" name="holos_dinero_creencias" placeholder="Mensajes familiares sobre el dinero"></textarea></label>
+</div></details>
+
+<!-- BLOQUE 7 · VÍNCULOS -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">7</span> Vínculos y relaciones</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Estado de la pareja<select name="holos_pareja_estado"><option value="">—</option><option>Sin pareja</option><option>Estable</option><option>En crisis</option><option>Reciente ruptura</option></select></label>
+    <label>Rupturas significativas<input type="text" name="holos_rupturas" placeholder="Cuándo y con quién" /></label>
+  </div>
+  <div class="grid two">
+    <label>¿Se siente solo/a?<input type="text" name="holos_soledad" placeholder="Cómo vive la soledad" /></label>
+    <label>Red de apoyo<input type="text" name="holos_red_apoyo" placeholder="Con quién cuenta" /></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 8 · EMOCIONAL -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">8</span> Estado emocional</summary><div class="holos-bloque-body">
+  <label>Contexto emocional<textarea rows="2" name="therapeutic_emotional_context" placeholder="Estrés laboral, duelo, conflicto familiar..."></textarea></label>
+  <div class="grid two">
+    <label>Nivel de estrés<select name="holos_estres_nivel"><option value="">—</option><option>Bajo</option><option>Medio</option><option>Alto</option><option>Muy alto</option></select></label>
+    <label>Emociones más frecuentes<input type="text" name="holos_emociones_frecuentes" placeholder="Tristeza, enojo, miedo, ansiedad..." /></label>
+  </div>
+  <div class="grid two">
+    <label>¿Carga emociones o problemas ajenos?<input type="text" name="holos_cargas_ajenas" placeholder="De quién y cómo" /></label>
+    <label>¿A quién no logra perdonar?<input type="text" name="holos_no_perdona" placeholder="Persona y motivo" /></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 9 · HÁBITOS -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">9</span> Hábitos y cuidado</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Alimentación<input type="text" name="holos_alimentacion" placeholder="Cómo come, horarios, antojos" /></label>
+    <label>Ejercicio / movimiento<input type="text" name="holos_ejercicio" placeholder="Tipo y frecuencia" /></label>
+  </div>
+  <div class="grid two">
+    <label>Sueño / descanso<input type="text" name="holos_sueno" placeholder="Cómo duerme" /></label>
+    <label>Sustancias (café, alcohol, tabaco...)<input type="text" name="holos_sustancias" placeholder="Cuáles y cuánto" /></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 10 · ENERGÉTICO MTC -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">10</span> Energético · Medicina china</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Temperatura corporal<select name="holos_temperatura"><option value="">—</option><option>Suele tener frío</option><option>Suele tener calor</option><option>Manos y pies fríos</option><option>Variable</option></select></label>
+    <label>Digestión<input type="text" name="holos_digestion" placeholder="Lenta, rápida, acidez, hinchazón..." /></label>
+  </div>
+  <div class="grid two">
+    <label>Molestias de órganos<input type="text" name="holos_molestias_organos" placeholder="Dónde siente molestias" /></label>
+    <label>Energía durante el día<input type="text" name="holos_energia_dia" placeholder="Cuándo está mejor / peor" /></label>
+  </div>
+</div></details>
+
+<!-- BLOQUE 11 · RASTREO BIOMAGNÉTICO -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">11</span> Rastreo biomagnético</summary><div class="holos-bloque-body">
+  <p class="holos-bloque-nota">Elige cómo trabajar el rastreo de esta sesión:</p>
+  <div class="holos-rastreo-opciones">
+    <button type="button" class="holos-rastreo-opt" id="holos-rastreo-sugerir"><span class="holos-rastreo-opt-icon"></span><span class="holos-rastreo-opt-t">Sugiéreme los pares</span><span class="holos-rastreo-opt-d">El Motor sugiere qué pares rastrear según los síntomas del paciente</span></button>
+    <button type="button" class="holos-rastreo-opt" id="holos-rastreo-guiar"><span class="holos-rastreo-opt-icon"></span><span class="holos-rastreo-opt-t">Guíame en el rastreo</span><span class="holos-rastreo-opt-d">Asistente paso a paso: por zonas del cuerpo y luego por patógeno</span></button>
+  </div>
+  <div id="holos-rastreo-panel"></div>
+  <div hidden aria-hidden="true"><button type="button" class="secondary-btn" id="add-found-pair">+ Agregar manual</button><div id="found-pairs-list" class="collection-list"></div></div>
+  <label>Pregunta puntual para el Motor (opcional)<input type="text" name="therapeutic_question" placeholder="¿Qué te gustaría que profundice el análisis?" /></label>
+</div></details>
+
+<!-- BLOQUE 12 · PROPÓSITO -->
+<details class="holos-bloque"><summary class="holos-bloque-head"><span class="holos-bloque-num">12</span> Propósito y espiritualidad</summary><div class="holos-bloque-body">
+  <div class="grid two">
+    <label>Espiritualidad / creencias<input type="text" name="holos_espiritualidad" placeholder="Prácticas, fe, conexión" /></label>
+    <label>Relación con los ancestros<input type="text" name="holos_ancestros" placeholder="Cómo los vive" /></label>
+  </div>
+  <label>Propósito de vida / sentido<textarea rows="2" name="holos_proposito" placeholder="Qué da sentido a su vida"></textarea></label>
+  <label>¿Qué quiere cambiar?<textarea rows="2" name="holos_quiere_cambiar" placeholder="Lo que busca transformar"></textarea></label>
+</div></details>
+
+<div class="holos-actions"><button type="button" class="primary-btn holos-generar-btn" id="analyze-case">Generar Cuadro Holos</button></div>
+</form></section><section class="panel hidden" id="analysis-panel"><div class="panel-head"><h2>Respuesta del Asistente Terapéutico</h2><p>Ruta sugerida del caso.</p></div><div id="analysis-output" class="stack"></div></section><section class="panel hidden" id="cuadro-holistico-panel"><div class="panel-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px"><div><h2>Cuadro Holos</h2><p>Análisis terapéutico integral: hipótesis central, las capas que la confirman y un plan secuenciado por sesiones.</p></div><button type="button" class="secondary-btn" id="btn-regenerar-cuadro" style="display:none;font-size:0.78rem;padding:8px 14px">Regenerar</button></div><div id="cuadro-holistico-output" class="md-content stack"></div></section><section class="panel hidden" id="caso-chat-panel"><div class="panel-head"><h2>Consultas sobre el caso</h2><p>Pregunta lo que necesites sobre este caso. El Motor responde con el contexto del cuadro generado.</p></div><div id="caso-chat-msgs" class="caso-chat-msgs"></div><div class="caso-chat-input"><textarea id="caso-chat-q" rows="2" placeholder="Ej. ¿Qué pares priorizo en la primera sesión? ¿Cómo abordo el duelo no resuelto?"></textarea><button type="button" class="primary-btn" id="caso-chat-send">Enviar</button></div></section><section class="panel hidden" id="akinator-panel"><div class="panel-head"><h2>Análisis profundo del caso</h2></div><div id="akinator-grid" class="akinator-grid" style="display:none;"><aside class="akinator-hipotesis"><div class="akinator-hipotesis-head"><span>Hipótesis activas</span><span class="h-count">0 activas</span></div><div id="hipotesis-list"></div></aside><div class="akinator-chat"><div class="chat-header"><div class="chat-header-icon"></div><div class="chat-header-text"><div class="chat-header-title">Asistente clínico</div><div class="chat-header-sub">Responde para refinar las hipótesis</div></div><button type="button" class="secondary-btn" id="btn-reset-akinator" style="font-size:0.72rem;padding:6px 10px;">Reiniciar</button></div><div id="chat-stream"></div><div id="chat-input-area"><button type="button" class="ans-btn" data-resp="si">Sí</button><button type="button" class="ans-btn" data-resp="no">No</button><button type="button" class="ans-btn" data-resp="no_se">No estoy seguro</button></div></div></div><div id="ficha-clinica" class="hidden"></div></section></section><section class="tab-panel" id="tab-academic"><section class="panel"><div class="panel-head course-chat-head"><div><h2>Asistente Académico</h2><p>Haz preguntas sobre conceptos, glosario, módulos y contenido del curso.</p></div><button type="button" class="ghost-btn" id="clear-academic-chat">Nueva conversación</button></div><div class="course-chat-shell"><div id="academic-output" class="course-chat-log"></div><div class="course-composer"><label class="course-composer-label">Escribe tu pregunta<textarea id="academic-question" rows="3" placeholder="Ej. ¿Qué es un par biomagnético?"></textarea></label><div class="actions"><button type="button" class="primary-btn" id="ask-academic">Enviar</button></div></div></div></section></section><section class="tab-panel" id="tab-protocols"><section class="panel catalog-header-panel"><div class="panel-head"><h2>Catálogo de Protocolos Terapéuticos</h2><p>Explora los protocolos del diplomado por tipo de técnica o por sistema corporal.</p></div><div class="catalog-mode-toggle"><button class="catalog-mode-btn active" id="mode-btn-tecnicas" data-mode="tecnicas">Técnicas Terapéuticas</button><button class="catalog-mode-btn" id="mode-btn-sistemas" data-mode="sistemas">Por Sistema Corporal</button></div><div id="catalog-status" class="stack"></div></section><div class="catalog-layout" id="catalog-layout-tecnicas"><nav class="catalog-sidebar"><p class="catalog-sidebar-title">Categorías</p><div id="catalog-category-nav" class="catalog-category-nav"></div></nav><div class="catalog-main"><div id="catalog-category-header" class="catalog-category-header hidden"></div><div id="catalog-cards" class="catalog-cards"></div></div></div><div class="catalog-layout hidden" id="catalog-layout-sistemas"><nav class="catalog-sidebar"><p class="catalog-sidebar-title">Sistemas</p><div id="catalog-systems-nav" class="catalog-category-nav"></div></nav><div class="catalog-main" id="catalog-systems-main"><div id="catalog-system-header" class="catalog-category-header hidden"></div><div id="catalog-system-sections" class="catalog-system-sections"></div></div></div><div class="catalog-detail-overlay hidden" id="catalog-detail-overlay"><div class="catalog-detail-panel"><button class="catalog-detail-close" id="catalog-detail-close" aria-label="Cerrar"></button><div id="catalog-detail-content"></div></div></div></section></main><template id="found-pair-template"><article class="collection-item"><div class="grid two"><label>Nombre del par<input type="text" data-field="pair_name" placeholder="Ej. HÍGADO - PÁNCREAS" /></label><label>Nota del terapeuta<input type="text" data-field="therapist_note" placeholder="Opcional" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="significant-partner-template"><article class="collection-item"><div class="grid three"><label>Nombre completo<input type="text" data-field="full_name" /></label><label>Fecha de nacimiento<input type="date" data-field="birth_date" /></label><label>Años de relación<input type="number" min="0" step="1" data-field="relationship_years" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="child-template"><article class="collection-item"><div class="grid four"><label>Nombre completo<input type="text" data-field="full_name" /></label><label>Fecha de nacimiento<input type="date" data-field="birth_date" /></label><label>Fecha de muerte<input type="date" data-field="death_date" /></label><label>Nombre del padre o madre<input type="text" data-field="other_parent_name" /></label></div><div class="grid three"><label>Nacimiento del otro padre/madre<input type="date" data-field="other_parent_birth_date" /></label><label>Muerte del otro padre/madre<input type="date" data-field="other_parent_death_date" /></label><label>Años de relación<input type="number" min="0" step="1" data-field="relationship_years" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="sibling-template"><article class="collection-item"><div class="grid three"><label>Nombre completo<input type="text" data-field="full_name" /></label><label>Fecha de nacimiento<input type="date" data-field="birth_date" /></label><label>Fecha de muerte<input type="date" data-field="death_date" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="symptom-template"><article class="collection-item"><div class="grid two"><label>Síntoma<input type="text" data-field="symptom_name" /></label><label>Edad o fecha de aparición<input type="text" data-field="onset_age_or_date" /></label></div><div class="grid two"><label>Características<textarea rows="2" data-field="symptom_characteristics"></textarea></label><label>Frecuencia<input type="text" data-field="frequency" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><template id="history-template"><article class="collection-item"><div class="grid two"><label>Antecedente<input type="text" data-field="event_name" /></label><label>Edad o fecha<input type="text" data-field="onset_age_or_date" /></label></div><div class="grid two"><label>Características<textarea rows="2" data-field="event_characteristics"></textarea></label><label>Frecuencia<input type="text" data-field="frequency" /></label></div><button type="button" class="ghost-btn remove-item">Eliminar</button></article></template><script src="/therapy-static/therapy.js?v=20260615h1"></script><script src="/therapy-static/holos_rastreo.js?v=6"></script><script src="/therapy-static/therapy_akinator.js?v=4"></script></body></html>
