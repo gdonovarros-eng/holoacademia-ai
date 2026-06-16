@@ -1624,9 +1624,9 @@ function renderTablaHologramas(p, content) {
     const selInfo = state.selected
       ? `<div class="rastreo-sel-box">
           <p class="rastreo-sel-label">Holograma identificado:</p>
-          <p class="rastreo-sel-value">🔮 #${state.selected.numero} — ${escapeHtml(state.selected.nombre)}</p>
+          <p class="rastreo-sel-value">#${state.selected.numero} — ${escapeHtml(state.selected.nombre)}</p>
           ${state.selected.descripcion ? `<p class="rastreo-sel-desc">${escapeHtml(state.selected.descripcion)}</p>` : ""}
-          <button class="rastreo-interpret-btn" id="holo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+          <button class="rastreo-interpret-btn" id="holo-interpretar-btn">Interpretar con el Motor Terapéutico</button>
         </div>` : "";
 
     content.innerHTML = `
@@ -1724,7 +1724,7 @@ function renderTablaNudosPsoricos(p, content) {
           <p class="rastreo-sel-label">Nudo psórico identificado:</p>
           <p class="rastreo-sel-value">⚡ ${state.selected.numero !== "0" ? `Nudo ${state.selected.romano || state.selected.numero} — ` : ""}${escapeHtml(state.selected.nombre)}</p>
           <p class="rastreo-liberar-cmd">🧲 Liberar: <em>"Me libero consciente y subconscientemente del nudo psórico de ${escapeHtml(state.selected.nombre)}"</em> — pasar imán 10 veces.</p>
-          <button class="rastreo-interpret-btn" id="nudo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+          <button class="rastreo-interpret-btn" id="nudo-interpretar-btn">Interpretar con el Motor Terapéutico</button>
         </div>` : "";
 
     content.innerHTML = `
@@ -1883,7 +1883,7 @@ function renderTablaCreencias(p, content) {
             <p class="creencia-liberar-title">🔓 Comando de liberación EFT PRO:</p>
             <p class="creencia-liberar-text">"Aunque he creído consciente o subconscientemente que ${escapeHtml(state.selectedCreencia.texto).toLowerCase().replace(/\.$/, "")} — me amo y me acepto. Decreto a partir de ahora y para siempre que ${escapeHtml(cat.afirmacion_positiva)}."</p>
           </div>
-          <button class="rastreo-interpret-btn" id="creencia-interpretar-btn" style="background:${color}">✨ Interpretar con el Motor Terapéutico</button>
+          <button class="rastreo-interpret-btn" id="creencia-interpretar-btn" style="background:${color}">Interpretar con el Motor Terapéutico</button>
         </div>` : "";
 
     content.innerHTML = `
@@ -2000,9 +2000,9 @@ function renderRastreosAvanzados(p, content) {
       const selInfo = state.selected
         ? `<div class="rastreo-sel-box">
             <p class="rastreo-sel-label">Holograma identificado:</p>
-            <p class="rastreo-sel-value">🔮 #${state.selected.numero} — ${escapeHtml(state.selected.nombre)}</p>
+            <p class="rastreo-sel-value">#${state.selected.numero} — ${escapeHtml(state.selected.nombre)}</p>
             ${state.selected.descripcion ? `<p class="rastreo-sel-desc">${escapeHtml(state.selected.descripcion)}</p>` : ""}
-            <button class="rastreo-interpret-btn" id="holo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+            <button class="rastreo-interpret-btn" id="holo-interpretar-btn">Interpretar con el Motor Terapéutico</button>
           </div>` : "";
 
       panelEl.innerHTML = `
@@ -2074,7 +2074,7 @@ function renderRastreosAvanzados(p, content) {
             <p class="rastreo-sel-label">Nudo psórico identificado:</p>
             <p class="rastreo-sel-value">⚡ ${state.selected.numero !== "0" ? `Nudo ${state.selected.romano || state.selected.numero} — ` : ""}${escapeHtml(state.selected.nombre)}</p>
             <p class="rastreo-liberar-cmd">🧲 Liberar: <em>"Me libero consciente y subconscientemente del nudo psórico de ${escapeHtml(state.selected.nombre)}"</em> — pasar imán 10 veces.</p>
-            <button class="rastreo-interpret-btn" id="nudo-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+            <button class="rastreo-interpret-btn" id="nudo-interpretar-btn">Interpretar con el Motor Terapéutico</button>
           </div>` : "";
 
       panelEl.innerHTML = `
@@ -2204,7 +2204,7 @@ function renderRastreosAvanzados(p, content) {
               <p class="creencia-liberar-title">🔓 Comando EFT PRO:</p>
               <p class="creencia-liberar-text">"Aunque he creído consciente o subconscientemente que ${escapeHtml(state.selectedCreencia.texto).toLowerCase().replace(/\.$/, "")} — me amo y me acepto. Decreto a partir de ahora y para siempre que ${escapeHtml(cat.afirmacion_positiva)}."</p>
             </div>
-            <button class="rastreo-interpret-btn" id="creencia-interpretar-btn" style="background:${color}">✨ Interpretar con el Motor Terapéutico</button>
+            <button class="rastreo-interpret-btn" id="creencia-interpretar-btn" style="background:${color}">Interpretar con el Motor Terapéutico</button>
           </div>` : "";
 
       panelEl.innerHTML = `
@@ -2308,7 +2308,7 @@ function renderRastreosAvanzados(p, content) {
             <p class="rastreo-sel-value">💜 ${escapeHtml(state.selected.nombre)}</p>
             <p class="emoc-organo-label">Órgano asociado: <strong>${escapeHtml(state.selected.organo)}</strong></p>
             <div class="emoc-actions">
-              <button class="rastreo-interpret-btn" id="emoc-interpretar-btn">✨ Interpretar con el Motor Terapéutico</button>
+              <button class="rastreo-interpret-btn" id="emoc-interpretar-btn">Interpretar con el Motor Terapéutico</button>
               <button class="wizard-nav-btn emoc-eft-btn" id="emoc-eft-toggle">${state.eftVisible ? "▲ Ocultar protocolo EFT" : "💜 Ver protocolo EFT de liberación"}</button>
             </div>
           </div>` : "";
@@ -2591,7 +2591,7 @@ function renderSuenoTerapeutico(p, content) {
 
         <div class="wizard-nav" style="margin-top:16px">
           <button class="wizard-nav-btn vort-ia-btn" id="sueno-interpretar" style="width:100%">
-            🌌 Interpretar sueño
+            Interpretar sueño
           </button>
         </div>
       </div>`;
@@ -2639,7 +2639,7 @@ function renderSuenoTerapeutico(p, content) {
 ## 💜 BIODESCODIFICACIÓN
 ¿Qué conflicto biológico de choque (DHS) podría estar procesando el inconsciente? ¿Qué emoción primaria domina el sueño? ¿Es un sueño de fase de reparación o de conflicto activo?
 
-## 🌌 SÍNTESIS Y ORIENTACIÓN TERAPÉUTICA
+## SÍNTESIS Y ORIENTACIÓN TERAPÉUTICA
 Integra todos los análisis anteriores en un mensaje coherente. ¿Qué está procesando el inconsciente? ¿Qué acción terapéutica sugiere el sueño para la próxima sesión?`,
       psicosomatica: `## 🧬 PSICOSOMÁTICA Y SIMBOLISMO CORPORAL\nAnaliza en profundidad: órganos implicados, síntomas simbólicos, conflicto biológico expresado, qué función orgánica está comunicando el sueño, qué parte del cuerpo está hablando y por qué.`,
       transgeneracional: `## 🌳 PATRONES TRANSGENERACIONALES\nAnaliza en profundidad: figuras del árbol genealógico, mandatos y lealtades familiares, misiones reparadoras, fechas y lugares simbólicos, qué generación está procesando este sueño, qué secreto familiar podría estar emergiendo.`,
@@ -2762,7 +2762,7 @@ function renderCartaNatal(p, content) {
           <div id="cn-error" class="casos-form-error" style="display:none"></div>
           <div class="wizard-nav" style="margin-top:14px">
             <button class="wizard-nav-btn vort-ia-btn" id="cn-generar" style="width:100%">
-              🌌 Generar Carta Natal
+              Generar Carta Natal
             </button>
           </div>
         </div>
@@ -2827,7 +2827,7 @@ function renderCartaNatal(p, content) {
       <div class="rastreo-tabla-wrap cn-chart-wrap">
         <div class="cn-chart-header">
           <div>
-            <div class="cn-chart-nombre">🌌 ${escapeHtml(nombre || "Carta Natal")}</div>
+            <div class="cn-chart-nombre">${escapeHtml(nombre || "Carta Natal")}</div>
             <div class="cn-chart-fecha">${escapeHtml(fecha || "")}</div>
           </div>
           <div style="display:flex;gap:8px;align-items:center">
@@ -2846,7 +2846,7 @@ function renderCartaNatal(p, content) {
             <span class="cn-pp-retro" id="cn-pp-retro" style="display:none">℞ Retrógrado</span>
           </div>
           <div id="cn-pp-interp" class="cn-pp-interp"></div>
-          <button class="wizard-nav-btn vort-ia-btn" id="cn-pp-btn">✨ Interpretación terapéutica</button>
+          <button class="wizard-nav-btn vort-ia-btn" id="cn-pp-btn">Interpretación terapéutica</button>
         </div>
         <div class="wizard-nav" style="margin-top:16px">
           <button class="wizard-nav-btn vort-ia-btn" id="cn-interp-full" style="width:100%">🧠 Análisis terapéutico completo</button>
@@ -3076,8 +3076,8 @@ function renderDiarioLunar(p, content) {
           <div class="luna-fase-info">
             <div class="luna-fecha">${escapeHtml(luna.fecha)}</div>
             <div class="luna-fase-nombre" style="color:${tera.colorAccent}">${escapeHtml(fase.nombre)}</div>
-            <div class="luna-signo">🌙 Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${elem.icono} ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
-            <div class="luna-sol">☀ Sol en <strong>${escapeHtml(luna.sol.signo)}</strong></div>
+            <div class="luna-signo">Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${elem.icono} ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
+            <div class="luna-sol">Sol en <strong>${escapeHtml(luna.sol.signo)}</strong></div>
           </div>
           <div class="luna-ilum-wrap">
             <div class="luna-ilum-ring" style="--pct:${ilumPct};--color:${ilumColor}">

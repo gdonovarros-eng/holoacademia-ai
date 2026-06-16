@@ -156,3 +156,8 @@ body::before { display: none !important; }
 #holos-zoom-ov { position: fixed; inset: 0; background: rgba(14,17,22,0.86); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 24px; cursor: zoom-out; }
 #holos-zoom-ov.open { display: flex; }
 #holos-zoom-ov img { max-width: 96vw; max-height: 92vh; border-radius: 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+
+/* Tools de deep-link (Carta Natal, Diario Lunar, Guía de Sueños) dentro de /therapy:
+   el botón legacy era lavanda pálido sobre violeta translúcido. Sólido teal legible. */
+.vort-ia-btn { background: #0EA5A4 !important; border-color: #0EA5A4 !important; color: #FFFFFF !important; }
+.vort-ia-btn:hover { background: #0F8281 !important; color: #FFFFFF !important; }
