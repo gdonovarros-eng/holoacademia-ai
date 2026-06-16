@@ -4425,6 +4425,13 @@ tabs.forEach((tab) => {
   const pFromQuery = urlParams.get("p") || urlParams.get("protocol");
   const pFromHash  = window.location.hash.replace("#", "");
   const targetId   = pFromQuery || pFromHash;
+  if (targetId) {
+    // El hero del Método Holos solo va en el Asistente Terapéutico (/therapy sin deep-link).
+    // Al abrir una herramienta vía ?p=..., ocultamos ese hero y el cuestionario.
+    document.querySelector(".hero")?.style.setProperty("display", "none", "important");
+    document.querySelector(".holos-intro")?.style.setProperty("display", "none", "important");
+    document.getElementById("therapy-form")?.style.setProperty("display", "none", "important");
+  }
   if (targetId && catalogData) {
     // Switch to protocols tab first
     const protocolTab = document.querySelector('[data-tab="protocols"]');
