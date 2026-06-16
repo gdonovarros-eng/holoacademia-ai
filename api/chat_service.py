@@ -901,3 +901,36 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
         yield f"data: {payload}\n\n"
 
     yield "data: [DONE]\n\n"
+
+
+# ── Cuadro Holos · razonamiento terapéutico libre (no restringido al curso) ──
+
+HOLOS_SYSTEM_PROMPT = """Eres el Motor Terapéutico de HoloacademIA. Razonas como un terapeuta holístico integral con dominio simultáneo de biodescodificación, psicosomática, medicina tradicional china, biomagnetismo, numerología, astrología médica y transgeneracional, y los integras en una sola lectura clínica.
+
+Es un motor propio: NUNCA cites maestros, autores, cursos ni fuentes externas. No incluyas advertencias ni descargos médicos. No uses emojis. No digas que eres una IA ni que esto no sustituye a un profesional.
+
+Entrega exactamente el análisis que el terapeuta te pide, con la estructura y los encabezados que indique, en español claro y clínico. Cruza los datos del ecosistema entre sí; todo debe converger en una sola narrativa, no en disciplinas sueltas."""
+
+
+def generar_respuesta_holos(prompt: str) -> dict:
+    """Llama al LLM con razonamiento terapéutico libre para el Cuadro Holos.
+    No pasa por el motor académico (que está restringido al contenido del curso)."""
+    client = _get_client()
+    if client is None:
+        return {"answer": "", "ok": False, "error": "llm_no_configurado"}
+    messages = [
+        {"role": "system", "content": HOLOS_SYSTEM_PROMPT},
+        {"role": "user", "content": prompt or ""},
+    ]
+    try:
+        resp = client.chat.completions.create(
+            model=_model(),
+            messages=messages,
+            max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
+            temperature=0.5,
+        )
+        text = (resp.choices[0].message.content or "").strip()
+        return {"answer": text, "ok": bool(text)}
+    except Exception as exc:
+        logger.error("Error generando Cuadro Holos: %s", exc)
+        return {"answer": "", "ok": False, "error": str(exc)}
