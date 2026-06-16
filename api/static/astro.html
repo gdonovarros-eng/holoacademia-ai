@@ -2,14 +2,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #0b1120;
-  --surface:  #111827;
-  --surface2: #1a2236;
-  --border: rgba(255,255,255,0.08);
-  --text:     #f1f5f9;
-  --muted:    #94a3b8;
-  --acc:      #f59e0b;
-  --acc-dark: #d97706;
+  --bg:       #FFFFFF;
+  --surface:  #FFFFFF;
+  --surface2: #FAFAFA;
+  --border: #EAEAEA;
+  --text:     #0E1116;
+  --muted:    #4A4F5C;
+  --acc:      #6d28d9;
+  --acc-dark: #5b21b6;
   --radius: 16px;
 }
 
@@ -581,6 +581,23 @@ select { padding-right: 32px; cursor: pointer; }
 .planet-interp-btn { margin-top: 10px; padding: 8px 16px; background: linear-gradient(135deg,#ec4899,#8b5cf6); border: none; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
 .planet-interp-out { margin-top: 10px; font-size: 0.83rem; line-height: 1.6; color: #cbd5e1; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── LIGHT-THEME OVERRIDES (textos sobre superficie clara/blanca) ── */
+.md-content h1 { color: #6d28d9 !important; }
+.md-content h2 { color: #6d28d9 !important; }
+.md-content strong { color: #0E1116 !important; }
+.md-content em { color: #6d28d9 !important; }
+.md-content th { color: #6d28d9 !important; }
+.pos-table th { color: #6d28d9 !important; }
+.result-status.streaming { color: #6d28d9 !important; }
+.result-status.done { color: #3f6212 !important; }
+.result-status.error { color: #dc2626 !important; }
+.carta-error { color: #dc2626 !important; }
+.pos-badge.dom  { color: #3f6212 !important; }
+.pos-badge.exal { color: #b45309 !important; }
+.pos-badge.exil { color: #dc2626 !important; }
+.pos-badge.caid { color: #6d28d9 !important; }
+.pos-badge.retro { color: #4A4F5C !important; }
 </style></head><body class="mod-page-aurora"><!-- HEADER --><header class="header" id="appHeader"><a class="header-back" href="/astro-home" id="backBtn">← Astrolog iA</a><div class="header-title"><span class="header-icon"></span><span class="header-name">Carta Natal & Revolución Solar</span><span class="header-badge">Astrolog iA</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Datos de Nacimiento</div><div class="form-sub">Ingresa los datos del consultante para generar el análisis astrológico completo. Cuanto más precisa sea la hora, más exacto será el resultado.</div><form id="astroForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nombre del consultante</label><input type="text" id="nombre" name="nombre" placeholder="Ej. María García" required autocomplete="off"></div><div class="form-group"><label for="fecha">Fecha de nacimiento</label><input type="date" id="fecha" name="fecha" required></div><div class="form-group"><label for="hora">Hora de nacimiento</label><input type="time" id="hora" name="hora" required></div><div class="form-group full"><label for="lugar">Lugar de nacimiento</label><input type="text" id="lugar" name="lugar" placeholder="Ej. Ciudad de México, México" required autocomplete="off"></div><div class="form-group full"><label for="lugarActual">Lugar de residencia actual <span class="opt">(opcional)</span></label><input type="text" id="lugarActual" name="lugarActual" placeholder="Ej. Guadalajara, México" autocomplete="off"></div><div class="form-group full"><label for="profundidad">Profundidad del análisis</label><div class="select-wrap"><select id="profundidad" name="profundidad"><option value="basico">Básico — Carta natal + RS (más rápido)</option><option value="completo" selected>Completo — Natal + RS + RSP + Mensales</option></select></div></div></div><div class="opciones-title">Incluir en el análisis</div><div class="opciones-grid"><label class="check-card active" id="card-rsp"><input type="checkbox" id="incluirRsp" name="incluirRsp" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Revolución Solar Profecional</div><div class="check-desc">RSP: análisis del año a partir del cumpleaños solar de este año</div></div></label><label class="check-card active" id="card-mensal"><input type="checkbox" id="incluirMensal" name="incluirMensal" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Mensales</div><div class="check-desc">Análisis mensual del momento actual (RS Lunar)</div></div></label></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span>Generar análisis astrológico</span></button></form></div><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div class="result-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis Astrológico</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><div class="result-body"><div class="md-content" id="mdContent"></div></div></div><!-- CARTA NATAL SVG --><div class="carta-card" id="cartaCard"><div class="carta-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span style="font-size:0.9rem;font-weight:700;" id="cartaTitle">Carta Natal</span></div><div class="carta-tabs"><button class="carta-tab active" id="tabNatal" onclick="switchTab('natal')">Carta Natal</button><button class="carta-tab" id="tabRS" onclick="switchTab('rs')">Rev. Solar</button><button class="carta-tab" id="tabPos" onclick="switchTab('posiciones')">Posiciones</button><button class="carta-tab" id="tabInterp" onclick="switchTab('interpretacion')">Interpretación</button></div></div><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span id="cartaLoadingMsg">Generando carta natal...</span></div><!-- Carta SVG --><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div><!-- Tabla de posiciones --><div id="cartaPosiciones" style="display:none;width:100%;"></div><!-- Interpretación streaming --><div id="cartaInterpWrap" style="display:none;width:100%;"><div class="md-content" id="cartaInterpContent"></div></div><div id="planet-panel" class="planet-panel"><div class="planet-panel-header"><span class="planet-glyph" id="pp-glyph"></span><div><div class="planet-name" id="pp-name"></div><div class="planet-sign" id="pp-sign"></div></div><span class="planet-retro" id="pp-retro" style="display:none">&#x211E; Retrógrado</span></div><div id="pp-interp-out" class="planet-interp-out"></div><button class="planet-interp-btn" id="pp-btn">✨ Interpretar con IA</button></div><div class="carta-error" id="cartaError" style="display:none;"></div></div></div></div><script>
 (function() {
 

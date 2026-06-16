@@ -2,13 +2,14 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #0b1120;
-  --surface:  #111827;
-  --surface2: #1a2236;
-  --border: rgba(255,255,255,0.08);
-  --text:     #f1f5f9;
-  --muted:    #94a3b8;
-  --acc:      #14b8a6;
+  --bg:       #FFFFFF;
+  --surface:  #FFFFFF;
+  --surface2: #FAFAFA;
+  --border: #EAEAEA;
+  --text:     #0E1116;
+  --muted:    #4A4F5C;
+  --muted2:   #8B8F9A;
+  --acc:      #0f766e;
   --acc-dark: #0d9488;
   --radius: 16px;
   --gold:     #f59e0b;
@@ -649,6 +650,19 @@ select { padding-right: 32px; cursor: pointer; }
   .form-grid { grid-template-columns: 1fr; }
   .penta-row { grid-template-columns: repeat(3, 1fr); gap: 6px; }
 }
+/* ── LIGHT-THEME OVERRIDES (textos sobre superficie clara/blanca) ── */
+.page-tab-btn.active { color: #0f766e !important; }
+.btn-secondary { color: #0f766e !important; }
+.person-label.persona-b { color: #6d28d9 !important; }
+.result-status.streaming { color: #0f766e !important; }
+.result-status.done { color: #15803d !important; }
+.result-status.error { color: #dc2626 !important; }
+.md-content h1 { color: #0f766e !important; }
+.md-content h2 { color: #0f766e !important; }
+.md-content strong { color: #0f766e !important; }
+.md-content em { color: #4A4F5C !important; }
+.md-content th { color: #0f766e !important; }
+.error-card { color: #dc2626 !important; }
 </style></head><body class="mod-page-sage"><!-- HEADER UNIFICADO --><header class="holo-module-header" id="appHeader"><div class="holo-module-header-inner"><a href="/astro-home" class="holo-module-back" id="backBtn"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Astrología</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-sage"><svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Numerología pitagórica</div><div class="holo-module-title">Numerología</div></div></div><span class="holo-module-badge">IA</span></div></header><!-- MAIN --><div class="main"><!-- PAGE TABS --><div class="page-tabs" role="tablist"><button class="page-tab-btn active" id="pageTabIndividual" role="tab" aria-selected="true"
  onclick="switchPageTab('individual')"><span></span>Análisis Individual
  </button><button class="page-tab-btn" id="pageTabCompat" role="tab" aria-selected="false"

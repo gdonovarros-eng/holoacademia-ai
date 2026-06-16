@@ -2,12 +2,13 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #0b1120;
-  --surface:  #111827;
-  --surface2: #1a2236;
-  --border: rgba(255,255,255,0.08);
-  --text:     #f1f5f9;
-  --muted:    #94a3b8;
+  --bg:       #FFFFFF;
+  --surface:  #FFFFFF;
+  --surface2: #FAFAFA;
+  --border: #EAEAEA;
+  --text:     #0E1116;
+  --muted:    #4A4F5C;
+  --muted2:   #8B8F9A;
   --acc:      #14b8a6;
   --acc-dark: #0d9488;
   --radius: 16px;
@@ -550,6 +551,34 @@ input:focus {
   .casas-grid { grid-template-columns: 1fr; }
   .mapa-body { padding: 16px; }
 }
+
+/* ── OVERRIDE TEMA CLARO ──
+   La página fue diseñada en oscuro pero se renderiza sobre fondo blanco.
+   Estos selectores tienen texto claro/pálido sobre superficies CLARAS
+   (blanco / #FAFAFA / tints translúcidos). Se oscurecen para legibilidad.
+   Se respetan los textos sobre fondos OSCUROS/gradiente (ej. .btn-submit). */
+
+/* Teal pálido → teal legible sobre blanco */
+.tab-btn.active            { color: #0d9488 !important; }
+.tabs-status.streaming     { color: #0d9488 !important; }
+.md-content h1             { color: #0d9488 !important; }
+.md-content h2             { color: #0f766e !important; }
+.md-content strong         { color: #0d9488 !important; }
+.md-content th             { color: #0f766e !important; }
+.casa-1 .casa-titulo       { color: #0d9488 !important; }
+.zona-badge                { color: #0f766e !important; }
+
+/* em (cian pálido #a5f3fc) → texto gris medio legible */
+.md-content em             { color: #4A4F5C !important; }
+
+/* Estados: verde/rojo pálidos sobre superficie clara */
+.tabs-status.done          { color: #3f6212 !important; }
+.tabs-status.error         { color: #dc2626 !important; }
+
+/* Títulos de casa con acento pálido sobre tarjeta clara (#FAFAFA) */
+.casa-6 .casa-titulo       { color: #b45309 !important; } /* ámbar */
+.casa-8 .casa-titulo       { color: #dc2626 !important; } /* rojo */
+.casa-12 .casa-titulo      { color: #6d28d9 !important; } /* púrpura */
 </style></head><body class="mod-page-coral"><!-- HEADER UNIFICADO --><header class="holo-module-header" id="appHeader"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back" id="backBtn"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-coral"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Astrología médica</div><div class="holo-module-title">Perfil de Salud</div></div></div><span class="holo-module-badge">IA</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Datos del consultante</div><div class="form-sub">Ingresa los datos natales para obtener un análisis astrológico del perfil de salud y las casas clave de vitalidad.</div><form id="saludForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nombre del consultante</label><input type="text" id="nombre" name="nombre" placeholder="Ej. María García" required autocomplete="off"></div><div class="form-group"><label for="fechaNac">Fecha de nacimiento</label><input type="date" id="fechaNac" name="fechaNac" required></div><div class="form-group"><label for="horaNac">Hora de nacimiento</label><input type="time" id="horaNac" name="horaNac" value="12:00" required></div><div class="form-group full"><label for="lugarNac">Lugar de nacimiento</label><input type="text" id="lugarNac" name="lugarNac" placeholder="Ciudad, País" required autocomplete="off"></div><div class="checkbox-group"><input type="checkbox" id="incluirTransitos" name="incluirTransitos" checked><label for="incluirTransitos">Incluir análisis de tránsitos de salud actuales</label></div></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span id="btnLabel">Analizar perfil de salud</span></button></form></div><!-- RESULTADO --><div class="result-section" id="resultSection"><div class="tabs-card"><!-- Result header con status --><div class="tabs-header"><div class="tabs-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Astrología Médica</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="tabs-status" id="tabsStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><!-- Status bar / progreso --><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><!-- Tab nav --><div class="tab-nav"><button class="tab-btn active" id="tabBtnAnalisis" onclick="switchTab('analisis')">Análisis IA</button><button class="tab-btn" id="tabBtnMapa" onclick="switchTab('mapa')">Mapa de Salud</button></div><!-- Tab 1: Análisis IA --><div class="tab-panel active" id="panelAnalisis"><div class="analisis-body"><div class="md-content" id="analisisOutput"></div></div><div class="disclaimer" id="disclaimerAnalisis">Este análisis es orientativo para el terapeuta holístico y no sustituye el diagnóstico médico profesional.
  </div></div><!-- Tab 2: Mapa de Salud --><div class="tab-panel" id="panelMapa"><div class="mapa-body"><div class="mapa-empty" id="mapaEmpty">El mapa de salud aparecerá al completar el análisis.</div><div id="mapaContenido" style="display:none;"><!-- Casas --><div class="casas-grid" id="casasGrid"></div><!-- Zonas a cuidar --><div class="zonas-section" id="zonasSection"><div class="zonas-titulo">Zonas a cuidar</div><div class="zonas-list" id="zonasList"></div></div></div></div><div class="disclaimer">Este análisis es orientativo para el terapeuta holístico y no sustituye el diagnóstico médico profesional.
  </div></div></div></div></div><script>
@@ -807,7 +836,7 @@ input:focus {
  tabsStatus.textContent = 'Error';
  tabsStatus.className   = 'tabs-status error';
  statusBar.classList.add('hidden');
- analisisOutput.innerHTML = '<p style="color:#f87171;padding:8px 0;"> ' + escapeHtml(obj.error) + '</p>';
+ analisisOutput.innerHTML = '<p style="color:#dc2626;padding:8px 0;"> ' + escapeHtml(obj.error) + '</p>';
  btnSubmit.disabled   = false;
  btnLabel.textContent = 'Reintentar';
           }

@@ -1575,6 +1575,20 @@ select { padding-right: 32px; cursor: pointer; }
 }
 .detail-credits strong { color: var(--text); font-weight: 600; }
 .detail-credits em { color: var(--muted); font-style: italic; }
+
+/* ── Migración a tema claro: acentos legibles sobre blanco (sin tocar texto sobre cartas oscuras) ── */
+.page-tab-btn.active { color:#6d28d9 !important; }
+.carta-row-num, .status-bar, .btn-copy, .spread-btn { color:#6d28d9 !important; }
+.spread-btn.gold { color:#b45309 !important; }
+.spread-btn.danger { color:#dc2626 !important; }
+.perfil-card-carta { color:#6d28d9 !important; }
+.md-output h1, .md-output h2 { color:#0E1116 !important; }
+.md-output h3, .chat-body .md-output h3 { color:#6d28d9 !important; }
+.md-output strong { color:#0E1116 !important; }
+.td-nombre { color:#6d28d9 !important; }
+.td-nombre.menor { color:#b45309 !important; }
+.tipo-mayor { color:#6d28d9 !important; }
+.chat-avatar.ai { color:#6d28d9 !important; }
 </style></head><body class="mod-page-pink"><!-- HEADER UNIFICADO --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-pink"><svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5"/><line x1="6" y1="9" x2="18" y2="9"/><circle cx="12" cy="14.5" r="2"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">3 decks · 78 cartas</div><div class="holo-module-title">Tarot Terapéutico</div></div></div><span class="holo-module-badge">IA</span></div></header><!-- MAIN --><main class="main"><!-- TABS --><div class="page-tabs"><button class="page-tab-btn active" onclick="switchTab('lectura')">🃏 Lectura</button><button class="page-tab-btn" onclick="switchTab('perfil')">Perfil</button><button class="page-tab-btn" onclick="switchTab('referencia')">Referencia</button></div><!-- ══════════════════════ TAB: LECTURA ══════════════════════ --><div id="tab-lectura" class="page-tab-panel active"><div class="form-card"><div class="form-title">🃏 Nueva Lectura de Tarot</div><div class="form-sub">Formula una pregunta o intención, elige la tirada y selecciona las cartas para recibir una lectura terapéutica.</div><div class="form-grid"><!-- Pregunta --><div class="form-group full"><label>Pregunta / Intención</label><textarea id="pregunta" placeholder="¿Qué quiero explorar en esta lectura? (ej: ¿Cómo puedo avanzar en mi relación de pareja?)" rows="3"></textarea></div><!-- Tirada --><div class="form-group full"><label>Tirada</label><div class="select-wrap"><select id="tiradaSel" onchange="renderCartasInputs()"><option value="carta_del_dia">Carta del Día (1 carta)</option><option value="tres_cartas">Tres Cartas: Pasado / Presente / Futuro (3)</option><option value="cruz_simple">Cruz Simple (5 cartas)</option><option value="herradura">Herradura (7 cartas)</option><option value="chakras">Tirada de los Chakras (7 cartas)</option><option value="cruz_celtica" selected>Cruz Céltica (10 cartas)</option><option value="cinco_centros">Los Cinco Centros — Jodorowsky (15 cartas)</option></select></div></div></div><!-- Cartas dinámicas (versión visual premium) --><div style="margin-top:16px;"><label style="display:block;margin-bottom:6px;">Cartas en la Tirada</label><div class="spread-toolbar"><button type="button" class="spread-btn gold" onclick="shuffleAndDeal()" title="Baraja + reparte cartas aleatorias en todas las posiciones">Barajar y repartir
  </button><button type="button" class="spread-btn" onclick="revealAll()" title="Voltea todas las cartas">Revelar todas
  </button><button type="button" class="spread-btn" onclick="hideAll()" title="Deja todas las cartas boca abajo">
