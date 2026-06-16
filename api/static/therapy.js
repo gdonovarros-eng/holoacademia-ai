@@ -824,8 +824,8 @@ Qué pudo programar la sensibilidad a este conflicto, con lo disponible o como h
 ## Síntesis del núcleo
 Una frase que une conflicto decodificado + raíz transgeneracional + evento actual.
 
-## Qué confirmar la próxima sesión
-Preguntas concretas para confirmar el sentir exacto, fechas y repeticiones.`;
+## Preguntas clave para afinar el resultado
+Lista las preguntas concretas que el terapeuta debería hacerle al paciente para precisar el sentir exacto del DHS, las fechas y las repeticiones del clan. Deja claro que NO son para otra sesión: son para obtener esa información ahora y, con ella, afinar el origen emocional del conflicto en este mismo análisis.`;
 
   const sintomasTxt = (payload.sintomas || []).join(", ") || payload.motivo_consulta || "";
   const resumenCaso = `Motivo: ${payload.motivo_consulta || "-"}. Síntomas: ${sintomasTxt || "-"}. Inicio: ${payload.inicio || "-"}. Cómo vivió el conflicto (DHS): ${eco.eventos_recientes?.dhs_frase || "-"}. Evento al inicio: ${eco.eventos_recientes?.al_inicio_sintoma || "-"}.`;
