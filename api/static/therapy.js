@@ -2967,67 +2967,67 @@ function buildMoonSvg(phaseId, illumination, color) {
 const LUNA_TERAPEUTICA = {
   nueva: {
     titulo: "Luna Nueva — Siembra e Intención",
-    descripcion: "La Luna Nueva marca el inicio de un ciclo. Es el momento ideal para establecer intenciones, iniciar procesos terapéuticos, y sembrar los programas nuevos que el paciente quiere activar. La energía apoya la apertura y la receptividad.",
-    trabajo: ["Instalar nuevas creencias positivas", "Establecer metas terapéuticas del ciclo", "Iniciar protocolos de liberación profunda", "Trabajar programas transgeneracionales de inicio"],
-    evitar: ["Trabajo de cierre o finalización", "Protocolos de separación o corte"],
+    descripcion: "La Luna Nueva abre un nuevo ciclo. Es el momento de sembrar intenciones, plantear propósitos y comenzar proyectos. La energía favorece la apertura, la receptividad y los nuevos comienzos.",
+    trabajo: ["Plantear intenciones y propósitos para el ciclo", "Iniciar proyectos y nuevos hábitos", "Visualizar lo que quieres atraer", "Empezar de cero con claridad"],
+    evitar: ["Cerrar o terminar etapas", "Forzar resultados inmediatos"],
     color: "#1a0a2e",
     colorAccent: "#7c3aed",
   },
   creciente: {
-    titulo: "Luna Creciente — Activación y Crecimiento",
-    descripcion: "La energía lunar está en expansión. El sistema energético del paciente está en modo receptivo y de crecimiento. Los tratamientos tienen mayor potencia de activación. Ideal para reforzar recursos y capacidades positivas.",
-    trabajo: ["Activar recursos internos del paciente", "Reforzar pares positivos y de protección", "Trabajar el fortalecimiento del sistema inmune", "Técnicas de expansión de conciencia"],
-    evitar: ["Protocolos de eliminación o depuración intensa"],
+    titulo: "Luna Creciente — Acción y Crecimiento",
+    descripcion: "La luz lunar va en aumento. La energía se expande y favorece la acción, el impulso y construir sobre lo que ya sembraste.",
+    trabajo: ["Pasar a la acción sobre tus intenciones", "Construir y dar seguimiento", "Reforzar hábitos y constancia", "Buscar apoyos y recursos"],
+    evitar: ["Abandonar lo ya iniciado", "Dispersarte en demasiados frentes"],
     color: "#0f1a2e",
     colorAccent: "#2563eb",
   },
   gibosa_crec: {
     titulo: "Gibosa Creciente — Refinamiento",
-    descripcion: "Fase de ajuste y perfeccionamiento. La energía está casi en su plenitud. El trabajo terapéutico puede ser más detallado y preciso. Momento de evaluar avances del ciclo.",
-    trabajo: ["Rastreo fino de pares residuales", "Evaluación de avance terapéutico del ciclo", "Trabajo de ajuste energético y bioenergético"],
+    descripcion: "La luna está casi llena. Momento de ajustar, pulir detalles y perseverar antes de la culminación del ciclo.",
+    trabajo: ["Afinar los detalles de lo que trabajas", "Evaluar avances y corregir el rumbo", "Perseverar con paciencia"],
     evitar: [],
     color: "#0f1a35",
     colorAccent: "#1d4ed8",
   },
   llena: {
-    titulo: "Luna Llena — Manifestación y Revelación",
-    descripcion: "La Luna Llena es el momento de mayor intensidad energética. El campo bioenergético del paciente está en su punto más expandido. Los conflictos emocionales pueden emerger espontáneamente. Excelente momento para trabajo de revelación y manifestación.",
-    trabajo: ["Sesiones de biodecodificación profunda", "Trabajo con emociones atrapadas intensas", "Protocolos de resolución de conflictos", "Revelación de patrones ocultos transgeneracionales"],
-    evitar: ["Sesiones con pacientes altamente sensibles sin preparación previa"],
+    titulo: "Luna Llena — Plenitud y Manifestación",
+    descripcion: "La Luna Llena es el punto de máxima luz y energía. Las emociones se intensifican y lo que estaba oculto sale a la luz. Momento de culminación, celebración y claridad.",
+    trabajo: ["Celebrar y agradecer lo logrado", "Observar lo que la emoción intensa te revela", "Tomar decisiones con la información ya clara", "Cargar agua, cristales o amuletos a la luz de la luna"],
+    evitar: ["Iniciar cosas nuevas (mejor espera la Luna Nueva)", "Reaccionar en caliente"],
     color: "#1a1500",
     colorAccent: "#ca8a04",
   },
   menguante: {
-    titulo: "Luna Llena Menguante — Gratitud y Entrega",
-    descripcion: "La energía comienza a retroceder después de la plenitud. Momento de integrar lo recibido y entregar lo que ya no se necesita. Ideal para cierres terapéuticos parciales.",
-    trabajo: ["Integración de sesiones anteriores", "Rituales de cierre y gratitud", "Protocolos de depuración energética", "Trabajo con patrones de apego y entrega"],
+    titulo: "Menguante — Gratitud y Entrega",
+    descripcion: "Tras la plenitud, la luz decrece. Momento de integrar lo vivido, agradecer y soltar lo que ya cumplió su función.",
+    trabajo: ["Integrar lo aprendido del ciclo", "Agradecer y compartir con otros", "Soltar lo que ya no suma", "Ordenar y simplificar"],
     evitar: [],
     color: "#1a1000",
     colorAccent: "#b45309",
   },
   cuarto_men: {
     titulo: "Cuarto Menguante — Liberación",
-    descripcion: "La Luna decrece hacia su mínimo. Es el momento más poderoso para soltar, limpiar y liberar. Los protocolos de eliminación de patrones, miasmas y programas negativos tienen su mayor eficacia.",
-    trabajo: ["Liberación de miasmas y nudos psóricos", "Protocolos de eliminación de cuerdas energéticas", "Trabajo con intencionalidades negativas", "Liberación de maldiciones y mal de ojo", "EFT de liberación profunda"],
-    evitar: ["Instalación de nuevos programas (esperar Luna Nueva)"],
+    descripcion: "La luna decrece hacia su mínimo. Es el mejor momento para soltar, limpiar y liberar lo que pesa o estanca.",
+    trabajo: ["Soltar hábitos y vínculos que estancan", "Limpiar y depurar espacios", "Cerrar asuntos pendientes", "Perdonar y liberar cargas"],
+    evitar: ["Iniciar proyectos nuevos (espera la Luna Nueva)"],
     color: "#1a0f00",
     colorAccent: "#92400e",
   },
   balsamica: {
     titulo: "Luna Balsámica — Descanso y Preparación",
-    descripcion: "Los últimos días del ciclo lunar. La energía es introspectiva y de rendición. Momento de descanso, reflexión y preparación para el nuevo ciclo. Sesiones suaves y de contención.",
-    trabajo: ["Sesiones de apoyo emocional suave", "Trabajo de rendición y aceptación", "Preparación para el próximo ciclo terapéutico", "Meditación y centrado"],
-    evitar: ["Protocolos intensos de activación o liberación"],
+    descripcion: "Los últimos días del ciclo lunar. La energía es introspectiva. Momento de descanso, silencio y preparación para el nuevo comienzo.",
+    trabajo: ["Descansar y recogerte", "Reflexionar y meditar", "Preparar las intenciones del próximo ciclo", "Cuidar el cuerpo y el sueño"],
+    evitar: ["Esfuerzos intensos o grandes decisiones"],
     color: "#120a1e",
     colorAccent: "#6d28d9",
   },
 };
 
 const ELEMENTO_INFO = {
-  fuego: { desc: "La Luna en signo de Fuego potencia la energía vital, la voluntad y la motivación. El paciente puede mostrar mayor determinación y apertura.", icono: "🔥" },
-  tierra: { desc: "Luna en signo de Tierra ancla el trabajo terapéutico al plano físico. Excelente para protocolos relacionados con el cuerpo, la nutrición y la seguridad material.", icono: "🌍" },
-  aire: { desc: "Luna en signo de Aire favorece la comprensión mental y la comunicación. El paciente puede integrar mejor las revelaciones y verbalizar sus procesos.", icono: "💨" },
-  agua: { desc: "Luna en signo de Agua intensifica la sensibilidad emocional. Sesiones de alta resonancia emocional. Ideal para trabajo transgeneracional y emociones atrapadas.", icono: "💧" },
+  fuego: { desc: "La Luna en signo de Fuego aviva la energía vital, la voluntad y el entusiasmo. Buen momento para la acción y la iniciativa.", icono: "" },
+  tierra: { desc: "La Luna en signo de Tierra ancla al plano físico. Favorece lo práctico, el cuerpo, la organización y lo material.", icono: "" },
+  aire: { desc: "La Luna en signo de Aire favorece la mente, las ideas y la comunicación. Buen momento para aprender, escribir y conversar.", icono: "" },
+  agua: { desc: "La Luna en signo de Agua intensifica la sensibilidad y las emociones. Favorece la intuición, el descanso y lo afectivo.", icono: "" },
 };
 
 function renderDiarioLunar(p, content) {
@@ -3060,13 +3060,13 @@ function renderDiarioLunar(p, content) {
     const trabajoHtml = tera.trabajo.map((t) => `<li>${escapeHtml(t)}</li>`).join("");
     const evitarHtml = tera.evitar.length > 0
       ? `<div class="luna-evitar-section">
-          <div class="luna-sec-label">⚠ Energía menos afín hoy</div>
+          <div class="luna-sec-label">Energía menos afín hoy</div>
           <ul class="luna-lista">${tera.evitar.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>
         </div>` : "";
 
     const proximosHtml = [];
-    if (luna.proximos.dias_luna_llena) proximosHtml.push(`🌕 Luna Llena en ~${luna.proximos.dias_luna_llena} días`);
-    if (luna.proximos.dias_luna_nueva) proximosHtml.push(`🌑 Luna Nueva en ~${luna.proximos.dias_luna_nueva} días`);
+    if (luna.proximos.dias_luna_llena) proximosHtml.push(`Luna Llena en ~${luna.proximos.dias_luna_llena} días`);
+    if (luna.proximos.dias_luna_nueva) proximosHtml.push(`Luna Nueva en ~${luna.proximos.dias_luna_nueva} días`);
 
     content.innerHTML = `
       <div class="rastreo-tabla-wrap luna-wrap">
@@ -3075,7 +3075,7 @@ function renderDiarioLunar(p, content) {
           <div class="luna-fase-info">
             <div class="luna-fecha">${escapeHtml(luna.fecha)}</div>
             <div class="luna-fase-nombre" style="color:${tera.colorAccent}">${escapeHtml(fase.nombre)}</div>
-            <div class="luna-signo">Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${elem.icono} ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
+            <div class="luna-signo">Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
             <div class="luna-sol">Sol en <strong>${escapeHtml(luna.sol.signo)}</strong></div>
           </div>
           <div class="luna-ilum-wrap">
@@ -3093,12 +3093,12 @@ function renderDiarioLunar(p, content) {
         <div class="luna-desc">${escapeHtml(tera.descripcion)}</div>
 
         <div class="luna-elem-box">
-          <span class="luna-elem-icono">${elem.icono}</span>
+          
           <span>${escapeHtml(elem.desc)}</span>
         </div>
 
         <div class="luna-trabajo-section">
-          <div class="luna-sec-label">✅ Trabajo terapéutico afín hoy</div>
+          <div class="luna-sec-label">Energía favorable de esta fase</div>
           <ul class="luna-lista">${trabajoHtml}</ul>
         </div>
 
@@ -3106,18 +3106,7 @@ function renderDiarioLunar(p, content) {
 
         ${proximosHtml.length > 0 ? `<div class="luna-proximos">${proximosHtml.map(t=>`<span>${t}</span>`).join("")}</div>` : ""}
 
-        <div class="wizard-nav" style="margin-top:16px">
-          <button class="wizard-nav-btn vort-ia-btn" id="luna-ia-btn">🧠 Orientación terapéutica completa del Motor</button>
-        </div>
-        <div id="luna-ia-out"></div>
       </div>`;
-
-    content.querySelector("#luna-ia-btn")?.addEventListener("click", async () => {
-      const outEl = content.querySelector("#luna-ia-out");
-      if (!outEl) return;
-      const query = `Hoy es ${luna.fecha}. La fase lunar es: ${fase.nombre} (${fase.emoji}), con Luna en ${lunaData.signo} (elemento ${lunaData.elemento}, modalidad ${lunaData.modalidad}), Sol en ${luna.sol.signo}. La iluminación lunar es del ${ilumPct}%.\n\nComo Motor Terapéutico de HoloacademIA, proporciona:\n1. Cómo esta configuración lunar específica (signo, elemento, fase) afecta el campo bioenergético del consultante\n2. Qué tipos de conflictos o síntomas pueden activarse o intensificarse hoy\n3. Qué protocolos terapéuticos (biomagnetismo, EFT, transgeneracional, emocional) son más potentes en esta fase\n4. Una recomendación concreta para el terapeuta sobre cómo estructurar las sesiones de hoy\n5. Qué le puedes recomendar al paciente para potenciar su proceso en casa\n\nSé específico y orientado a la práctica clínica.`;
-      await rastreoInterpretarIA(outEl, query);
-    });
   }
 
   init();
