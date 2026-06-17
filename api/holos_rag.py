@@ -106,7 +106,7 @@ def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> lis
 # Fuentes limpias para grounding. Las transcripciones de clase son ruidosas
 # (lenguaje hablado, muletillas) y degradan la respuesta; se usan solo si no
 # hay material limpio para la consulta.
-CLEAN_SOURCES = {"manual", "protocolo"}
+CLEAN_SOURCES = {"manual", "protocolo", "curado"}
 SEM_FLOOR = 0.30  # similitud coseno mínima para considerar un match semántico
 
 
