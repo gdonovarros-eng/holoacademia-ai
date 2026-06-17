@@ -88,6 +88,7 @@ class SearchResult:
     heading: str
     text: str
     score: float
+    source_type: str = ""
 
 
 class KnowledgeBase:
@@ -291,6 +292,7 @@ class KnowledgeBase:
                     heading=record.get("heading", ""),
                     text=record["text"],
                     score=score,
+                    source_type=record.get("source_type", ""),
                 )
             )
 
@@ -335,6 +337,7 @@ class KnowledgeBase:
                     heading=record.get("heading", ""),
                     text=record["text"],
                     score=score,
+                    source_type=record.get("source_type", ""),
                 )
             )
 

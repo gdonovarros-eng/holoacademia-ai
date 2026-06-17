@@ -44,8 +44,10 @@ def _inyectar_material(prompt: str, query: str | None) -> tuple[str, int]:
     if not ctx:
         return prompt, 0
     prefijo = (
-        "MATERIAL PROPIO DE REFERENCIA. Tiene PRIORIDAD sobre tu conocimiento general: "
-        "apóyate en estos fragmentos para responder y respeta sus definiciones y enfoque. "
+        "MATERIAL PROPIO DE REFERENCIA. Cuando sea pertinente a la pregunta, da PRIORIDAD a estos "
+        "fragmentos sobre tu conocimiento general y respeta sus definiciones y enfoque. "
+        "Si un fragmento NO es relevante a lo que se pregunta, ignóralo: responde SIEMPRE a la "
+        "pregunta concreta, no resumas el material. "
         "NUNCA menciones cursos, autores, maestros ni nombres propios que aparezcan en el material; "
         "intégralo como conocimiento propio.\n\n" + ctx + "\n\n====\n\n"
     )

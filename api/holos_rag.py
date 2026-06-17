@@ -103,12 +103,27 @@ def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> lis
             pool.putconn(conn)
 
 
+# Fuentes limpias para grounding. Las transcripciones de clase son ruidosas
+# (lenguaje hablado, muletillas) y degradan la respuesta; se usan solo si no
+# hay material limpio para la consulta.
+CLEAN_SOURCES = {"manual", "protocolo"}
+SEM_FLOOR = 0.30  # similitud coseno mínima para considerar un match semántico
+
+
 def _sr_to_dict(r, score: float) -> dict:
     return {
         "chunk_id": r.chunk_id, "course_name": r.course_name,
         "source_file": r.source_file, "heading": r.heading,
         "text": r.text, "score": float(score),
+        "source_type": getattr(r, "source_type", ""),
     }
+
+
+def _prefer_clean_dicts(items: list[dict], k: int) -> list[dict]:
+    """De los resultados ya rankeados, deja primero las fuentes limpias
+    (manual/protocolo). Si no hay ninguna, usa los que haya."""
+    clean = [m for m in items if m.get("source_type", "") in CLEAN_SOURCES]
+    return (clean or items)[:k]
 
 
 def _merge_rrf(lex: list, sem: list, k: int, rrf_k: int = 50) -> list[dict]:
@@ -137,7 +152,7 @@ def _retrieve_local(query: str, k: int, course_ids: list[str] | None) -> list[di
     cid = course_ids[0] if course_ids else None
 
     try:
-        lex = kb.search(query, course_id=cid, limit=k * 3)
+        lex = kb.search(query, course_id=cid, limit=k * 4)
     except Exception as exc:
         logger.error("Búsqueda léxica falló: %s", exc)
         lex = []
@@ -147,13 +162,18 @@ def _retrieve_local(query: str, k: int, course_ids: list[str] | None) -> list[di
         if getattr(kb, "semantic_ready", False):
             vec = _embed_vector(query)
             if vec is not None:
-                sem = kb.semantic_search_by_vector(vec, course_id=cid, limit=k * 3)
+                sem = kb.semantic_search_by_vector(vec, course_id=cid, limit=k * 4)
+                sem = [r for r in sem if r.score >= SEM_FLOOR]
     except Exception as exc:
         logger.warning("Búsqueda semántica falló (sigo con léxica): %s", exc)
 
-    if not sem:
-        return [_sr_to_dict(r, r.score) for r in lex[:k]]
-    return _merge_rrf(lex, sem, k)
+    # Fusionar candidatos y, sobre el ranking final, priorizar material limpio
+    # (manuales) por encima de las transcripciones de clase, que son ruidosas.
+    if sem:
+        ranked = _merge_rrf(lex, sem, k * 4)
+    else:
+        ranked = [_sr_to_dict(r, r.score) for r in lex[: k * 4]]
+    return _prefer_clean_dicts(ranked, k)
 
 
 def format_context(chunks: list[dict], max_chars: int = 6000) -> str:
