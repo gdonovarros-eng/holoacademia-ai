@@ -2926,42 +2926,62 @@ function renderCartaNatal(p, content) {
 
 // ─── Diario Lunar ───────────────────────────────────────────────────────────
 
-function buildMoonSvg(phaseId, illumination, color) {
-  // Build SVG moon showing correct phase using two overlapping circles
-  const size = 80;
-  const cx = size / 2;
-  const r = 32;
-  // For phase visualization: left circle always = moon, right circle = shadow or light
-  // illumination 0-100: 0=new(all dark), 100=full(all lit)
-  // We use a clip approach: lit portion on right (waxing) or left (waning)
-  const isWaning = ['llena', 'menguante', 'cuarto_men', 'balsamica'].includes(phaseId);
-  const pct = illumination / 100;
-  // Offset of inner circle to create crescent: from r (fully dark) to -r (fully lit)
-  const offset = r - pct * 2 * r;
-  const glowColor = color || '#7c3aed';
-  const moonColor = phaseId === 'nueva' ? '#1a1a2e' : (illumination > 80 ? '#f8d877' : '#c4b5fd');
-  const shadowColor = '#0a0a1a';
+// Terminador real de la luna: la frontera luz/sombra es una semielipse.
+// k = fracción iluminada (0..1); waxing = luz creciente (lit a la derecha).
+function _moonLitPath(cx, cy, r, k, waxing) {
+  const rx = r * Math.abs(1 - 2 * k);
+  const sweepOuter = waxing ? 1 : 0;
+  const sweepInner = (k < 0.5) ? (waxing ? 0 : 1) : (waxing ? 1 : 0);
+  return `M ${cx} ${cy - r} A ${r} ${r} 0 0 ${sweepOuter} ${cx} ${cy + r} A ${rx} ${r} 0 0 ${sweepInner} ${cx} ${cy - r} Z`;
+}
+function _moonLitShape(cx, cy, r, k, waxing, fill) {
+  if (k <= 0.01) return "";                                                  // luna nueva: sin parte iluminada
+  if (k >= 0.99) return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}"/>`; // luna llena: disco completo
+  return `<path d="${_moonLitPath(cx, cy, r, k, waxing)}" fill="${fill}"/>`;
+}
 
+function buildMoonSvg(phaseId, illumination, color, size) {
+  // Luna realista: disco oscuro + parte iluminada con terminador elíptico,
+  // superficie con gradiente cálido, cráteres y halo de fase.
+  size = size || 156;
+  const cx = size / 2;
+  const r = size * 0.40;
+  const isWaning = ['llena', 'menguante', 'cuarto_men', 'balsamica'].includes(phaseId);
+  const waxing = !isWaning;
+  const k = Math.max(0, Math.min(100, illumination)) / 100;
+  const glow = color || '#7c3aed';
+  const uid = `${phaseId}-${size}`;
   return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" class="luna-moon-svg">
     <defs>
-      <clipPath id="moon-clip-${phaseId}">
-        <circle cx="${cx}" cy="${cx}" r="${r}" />
-      </clipPath>
-      <filter id="moon-glow">
-        <feGaussianBlur stdDeviation="3" result="blur"/>
-        <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-      </filter>
+      <radialGradient id="lit-${uid}" cx="40%" cy="36%" r="78%">
+        <stop offset="0%" stop-color="#fdf6e3"/><stop offset="55%" stop-color="#e8dcc0"/><stop offset="100%" stop-color="#b6a784"/>
+      </radialGradient>
+      <radialGradient id="halo-${uid}" cx="50%" cy="50%" r="50%">
+        <stop offset="52%" stop-color="${glow}" stop-opacity="0.42"/><stop offset="100%" stop-color="${glow}" stop-opacity="0"/>
+      </radialGradient>
+      <clipPath id="clip-${uid}"><circle cx="${cx}" cy="${cx}" r="${r}"/></clipPath>
     </defs>
-    <g filter="url(#moon-glow)">
-      <!-- Base moon circle -->
-      <circle cx="${cx}" cy="${cx}" r="${r}" fill="${moonColor}" opacity="0.95"/>
-      <!-- Shadow overlay using offset inner circle -->
-      <g clip-path="url(#moon-clip-${phaseId})">
-        <circle cx="${cx + (isWaning ? -offset : offset)}" cy="${cx}" r="${r}" fill="${shadowColor}" opacity="${phaseId === 'llena' ? 0 : 0.92}"/>
-      </g>
+    <circle class="luna-halo" cx="${cx}" cy="${cx}" r="${r * 1.42}" fill="url(#halo-${uid})"/>
+    <circle cx="${cx}" cy="${cx}" r="${r}" fill="#0b0a1e"/>
+    ${_moonLitShape(cx, cx, r, k, waxing, `url(#lit-${uid})`)}
+    <g clip-path="url(#clip-${uid})">
+      <circle cx="${cx - r * 0.32}" cy="${cx - r * 0.28}" r="${r * 0.13}" fill="#0000000f"/>
+      <circle cx="${cx + r * 0.26}" cy="${cx + r * 0.08}" r="${r * 0.17}" fill="#0000000f"/>
+      <circle cx="${cx - r * 0.02}" cy="${cx + r * 0.36}" r="${r * 0.10}" fill="#0000000f"/>
+      <circle cx="${cx + r * 0.42}" cy="${cx - r * 0.34}" r="${r * 0.07}" fill="#0000000f"/>
     </g>
-    <!-- Glow ring for full/near-full phases -->
-    ${illumination > 60 ? `<circle cx="${cx}" cy="${cx}" r="${r + 4}" fill="none" stroke="${glowColor}" stroke-width="1.5" opacity="0.3" class="luna-glow-ring"/>` : ''}
+    <circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="#ffffff22" stroke-width="1"/>
+  </svg>`;
+}
+function buildMiniMoon(illum, waning, size) {
+  // Mini luna para el calendario del ciclo (mismo terminador elíptico).
+  size = size || 34;
+  const cx = size / 2, r = size * 0.42;
+  const k = Math.max(0, Math.min(100, illum)) / 100;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" class="luna-mini-svg">
+    <circle cx="${cx}" cy="${cx}" r="${r}" fill="#0b0a1e"/>
+    ${_moonLitShape(cx, cx, r, k, !waning, "#e8dcc0")}
+    <circle cx="${cx}" cy="${cx}" r="${r}" fill="none" stroke="#ffffff20" stroke-width="0.8"/>
   </svg>`;
 }
 const LUNA_TERAPEUTICA = {
@@ -3064,18 +3084,48 @@ function renderDiarioLunar(p, content) {
           <ul class="luna-lista">${tera.evitar.map((e) => `<li>${escapeHtml(e)}</li>`).join("")}</ul>
         </div>` : "";
 
+    // ── Día lunar y calendario del ciclo (sinódico ≈ 29.53 días) ───────────
+    const SYN = 29.530588;
+    const dNew = Number(luna.proximos && luna.proximos.dias_luna_nueva) || 0;
+    let age = SYN - dNew;
+    if (age < 0) age += SYN;
+    if (age >= SYN) age -= SYN;
+    const lunarDay = Math.floor(age) + 1;
+    const lastNewMs = Date.now() - age * 86400000;
+    const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+    const fmtFecha = (ms) => { const d = new Date(ms); return d.getDate() + ' ' + MES[d.getMonth()]; };
+    const ciclo = [
+      { off: 0,          illum: 0,   waning: false, lab: 'Nueva' },
+      { off: SYN * 0.25, illum: 50,  waning: false, lab: 'C. creciente' },
+      { off: SYN * 0.5,  illum: 100, waning: false, lab: 'Llena' },
+      { off: SYN * 0.75, illum: 50,  waning: true,  lab: 'C. menguante' },
+      { off: SYN,        illum: 0,   waning: false, lab: 'Nueva' },
+    ];
+    const hoyPct = Math.max(2, Math.min(98, (age / SYN) * 100));
+    const calItems = ciclo.map((m, i) => `
+      <div class="luna-cal-item" style="--i:${i}">
+        <div class="luna-cal-moon">${buildMiniMoon(m.illum, m.waning, 36)}</div>
+        <div class="luna-cal-lab">${m.lab}</div>
+        <div class="luna-cal-date">${fmtFecha(lastNewMs + m.off * 86400000)}</div>
+      </div>`).join("");
+
+    const modalidad = lunaData.modalidad
+      ? lunaData.modalidad.charAt(0).toUpperCase() + lunaData.modalidad.slice(1)
+      : "";
+
     const proximosHtml = [];
     if (luna.proximos.dias_luna_llena) proximosHtml.push(`Luna Llena en ~${luna.proximos.dias_luna_llena} días`);
     if (luna.proximos.dias_luna_nueva) proximosHtml.push(`Luna Nueva en ~${luna.proximos.dias_luna_nueva} días`);
 
     content.innerHTML = `
       <div class="rastreo-tabla-wrap luna-wrap">
-        <div class="luna-header" style="background:linear-gradient(135deg,${tera.color},#100922)">
+        <div class="luna-header" style="background:linear-gradient(150deg,${tera.color},#0b0618)">
+          <div class="luna-stars"></div>
           <div class="luna-svg-wrap">${buildMoonSvg(fase.id, fase.iluminacion, tera.colorAccent)}</div>
           <div class="luna-fase-info">
-            <div class="luna-fecha">${escapeHtml(luna.fecha)}</div>
+            <div class="luna-fecha">${escapeHtml(luna.fecha)} · Día lunar ${lunarDay}</div>
             <div class="luna-fase-nombre" style="color:${tera.colorAccent}">${escapeHtml(fase.nombre)}</div>
-            <div class="luna-signo">Luna en <strong>${escapeHtml(lunaData.signo)}</strong> (${lunaData.grado}°) · ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}</div>
+            <div class="luna-signo">Luna en <strong>${escapeHtml(lunaData.signo)}</strong> ${lunaData.grado}° · ${lunaData.elemento.charAt(0).toUpperCase()+lunaData.elemento.slice(1)}${modalidad ? ` · ${modalidad}` : ""}</div>
             <div class="luna-sol">Sol en <strong>${escapeHtml(luna.sol.signo)}</strong></div>
           </div>
           <div class="luna-ilum-wrap">
@@ -3086,16 +3136,22 @@ function renderDiarioLunar(p, content) {
           </div>
         </div>
 
-        <div class="luna-keyword-bar" style="background:${tera.colorAccent}20;border-color:${tera.colorAccent}40;color:${tera.colorAccent}">
+        <div class="luna-keyword-bar" style="background:${tera.colorAccent}1f;border-color:${tera.colorAccent}40;color:${tera.colorAccent}">
           ${escapeHtml(fase.keyword)}
+        </div>
+
+        <div class="luna-cal">
+          <div class="luna-sec-label">Calendario del ciclo lunar</div>
+          <div class="luna-cal-track">
+            <div class="luna-cal-progress" style="width:${hoyPct}%"></div>
+            <div class="luna-cal-hoy" style="left:${hoyPct}%"><span>hoy</span></div>
+          </div>
+          <div class="luna-cal-row">${calItems}</div>
         </div>
 
         <div class="luna-desc">${escapeHtml(tera.descripcion)}</div>
 
-        <div class="luna-elem-box">
-          
-          <span>${escapeHtml(elem.desc)}</span>
-        </div>
+        ${elem.desc ? `<div class="luna-elem-box"><span>${escapeHtml(elem.desc)}</span></div>` : ""}
 
         <div class="luna-trabajo-section">
           <div class="luna-sec-label">Energía favorable de esta fase</div>

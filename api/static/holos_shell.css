@@ -164,3 +164,138 @@ body::before { display: none !important; }
 
 /* Tools de deep-link: fondo del modal opaco para no mostrar la guía de protocolos detrás */
 #catalog-detail-overlay { background: #F8F6F1 !important; }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DIARIO LUNAR · premium animado (luna realista + calendario del ciclo)
+   ═══════════════════════════════════════════════════════════════════════ */
+.luna-wrap { padding: 0 !important; }
+
+/* Cabecera: cielo nocturno con luna grande, fase, signo, anillo de iluminación */
+.luna-header {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  padding: 30px 28px;
+  border-radius: 18px;
+  color: #F4F0FF;
+}
+.luna-header > * { position: relative; z-index: 1; }
+/* Campo de estrellas sutil generado con radial-gradients */
+.luna-stars {
+  position: absolute; inset: 0; z-index: 0; opacity: 0.55;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 22%, #ffffffcc, transparent),
+    radial-gradient(1.2px 1.2px at 28% 68%, #ffffffaa, transparent),
+    radial-gradient(1.6px 1.6px at 52% 14%, #ffffffcc, transparent),
+    radial-gradient(1.1px 1.1px at 67% 78%, #ffffff99, transparent),
+    radial-gradient(1.5px 1.5px at 82% 34%, #ffffffbb, transparent),
+    radial-gradient(1.2px 1.2px at 91% 62%, #ffffffaa, transparent),
+    radial-gradient(1.1px 1.1px at 40% 88%, #ffffff88, transparent);
+  animation: lunaTwinkle 6s ease-in-out infinite;
+}
+@keyframes lunaTwinkle { 0%,100% { opacity: 0.35; } 50% { opacity: 0.7; } }
+
+.luna-svg-wrap { flex: 0 0 auto; line-height: 0; }
+.luna-moon-svg { animation: lunaEntrada 0.9s cubic-bezier(0.22,1,0.36,1) both; }
+@keyframes lunaEntrada {
+  0% { opacity: 0; transform: scale(0.7) translateY(8px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.luna-halo { transform-origin: center; animation: lunaPulso 4.5s ease-in-out infinite; }
+@keyframes lunaPulso { 0%,100% { opacity: 0.85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+
+.luna-fase-info { flex: 1 1 auto; min-width: 0; }
+.luna-fecha { font-size: 0.8rem; color: #C9BEE8; letter-spacing: 0.02em; margin-bottom: 6px; }
+.luna-fase-nombre { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.1; }
+.luna-signo { font-size: 0.95rem; color: #EAE3FB; margin-bottom: 3px; }
+.luna-signo strong, .luna-sol strong { color: #fff; }
+.luna-sol { font-size: 0.9rem; color: #C9BEE8; }
+
+/* Anillo de iluminación (conic-gradient) */
+.luna-ilum-wrap { flex: 0 0 auto; text-align: center; }
+.luna-ilum-ring {
+  width: 84px; height: 84px; border-radius: 50%;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(closest-side, #1b1230 79%, transparent 80% 100%),
+    conic-gradient(var(--color) calc(var(--pct) * 1%), rgba(255,255,255,0.14) 0);
+  animation: lunaAnillo 1.1s ease-out both;
+}
+@keyframes lunaAnillo { from { filter: grayscale(1); opacity: 0; transform: rotate(-90deg); } to { filter: none; opacity: 1; transform: rotate(0); } }
+.luna-ilum-value { font-size: 1.15rem; font-weight: 800; color: #fff; }
+.luna-ilum-label { font-size: 0.72rem; color: #C9BEE8; margin-top: 6px; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Palabra clave de la fase */
+.luna-keyword-bar {
+  margin: 16px 0 4px; padding: 9px 16px; border-radius: 999px;
+  border: 1px solid; display: inline-block;
+  font-weight: 700; font-size: 0.92rem; letter-spacing: -0.01em;
+}
+
+/* Calendario del ciclo lunar */
+.luna-cal { margin: 22px 0 8px; }
+.luna-sec-label {
+  font-size: 0.78rem; font-weight: 700; color: #0F8281;
+  text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;
+}
+.luna-cal-track {
+  position: relative; height: 4px; border-radius: 999px;
+  background: #E7E2D6; margin: 20px 18px 16px;
+}
+.luna-cal-progress {
+  position: absolute; left: 0; top: 0; height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, #b6a784, #0EA5A4);
+  animation: lunaProgreso 1.2s ease-out both;
+}
+@keyframes lunaProgreso { from { width: 0 !important; } }
+.luna-cal-hoy {
+  position: absolute; top: 50%; transform: translate(-50%, -50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: #0EA5A4; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(14,17,22,0.25);
+}
+.luna-cal-hoy span {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  font-size: 0.66rem; font-weight: 700; color: #0F8281; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.luna-cal-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 12px; }
+.luna-cal-item {
+  text-align: center; padding: 10px 4px; border-radius: 12px;
+  background: #FAF8F2; border: 1px solid #EEE9DC;
+  animation: lunaCalIn 0.5s ease-out both; animation-delay: calc(var(--i) * 0.08s);
+}
+@keyframes lunaCalIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.luna-cal-moon { line-height: 0; display: flex; justify-content: center; margin-bottom: 6px; }
+.luna-cal-lab { font-size: 0.72rem; font-weight: 700; color: #2A2E37; line-height: 1.2; }
+.luna-cal-date { font-size: 0.7rem; color: #8B8F9A; margin-top: 2px; }
+
+/* Texto descriptivo y listas */
+.luna-desc { margin: 18px 0 12px; color: #2A2E37; font-size: 0.96rem; line-height: 1.7; }
+.luna-elem-box {
+  margin: 0 0 16px; padding: 12px 16px; border-radius: 12px;
+  background: rgba(14,165,164,0.07); border-left: 3px solid #0EA5A4;
+  color: #2A2E37; font-size: 0.92rem; line-height: 1.6;
+}
+.luna-trabajo-section, .luna-evitar-section { margin: 14px 0; }
+.luna-lista { margin: 0; padding-left: 20px; }
+.luna-lista li { color: #2A2E37; font-size: 0.93rem; line-height: 1.7; margin: 3px 0; }
+.luna-evitar-section .luna-sec-label { color: #B45309; }
+.luna-proximos {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px;
+  padding-top: 16px; border-top: 1px solid #EAEAEA;
+}
+.luna-proximos span {
+  font-size: 0.82rem; color: #4A4F5C; background: #F4F4F5;
+  border: 1px solid #EAEAEA; border-radius: 999px; padding: 6px 14px;
+}
+
+@media (max-width: 640px) {
+  .luna-header { flex-direction: column; text-align: center; gap: 16px; }
+  .luna-fase-info { text-align: center; }
+  .luna-cal-lab { font-size: 0.64rem; }
+  .luna-cal-date { font-size: 0.62rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .luna-moon-svg, .luna-halo, .luna-ilum-ring, .luna-cal-progress, .luna-cal-item, .luna-stars { animation: none !important; }
+}
