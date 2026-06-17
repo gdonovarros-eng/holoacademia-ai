@@ -48,17 +48,25 @@ def _embed_client():
         return None
 
 
-def _embed(query: str):
+def _embed_vector(query: str):
+    """Embebe la consulta y devuelve la lista de floats (o None si no se puede)."""
     client = _embed_client()
     if client is None:
         return None
     try:
         resp = client.embeddings.create(model=EMBED_MODEL, input=query[:8000])
-        vec = resp.data[0].embedding
-        return "[" + ",".join(f"{float(x):.7f}" for x in vec) + "]"
+        return resp.data[0].embedding
     except Exception as exc:
         logger.warning("Embedding de consulta falló (sigo con palabra clave): %s", exc)
         return None
+
+
+def _embed(query: str):
+    """Versión literal para pgvector (Supabase)."""
+    vec = _embed_vector(query)
+    if vec is None:
+        return None
+    return "[" + ",".join(f"{float(x):.7f}" for x in vec) + "]"
 
 
 def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> list[dict]:
@@ -95,27 +103,57 @@ def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> lis
             pool.putconn(conn)
 
 
+def _sr_to_dict(r, score: float) -> dict:
+    return {
+        "chunk_id": r.chunk_id, "course_name": r.course_name,
+        "source_file": r.source_file, "heading": r.heading,
+        "text": r.text, "score": float(score),
+    }
+
+
+def _merge_rrf(lex: list, sem: list, k: int, rrf_k: int = 50) -> list[dict]:
+    """Reciprocal Rank Fusion: combina los dos rankings sin que una escala
+    aplaste a la otra. Cada lista aporta 1/(rrf_k + posición)."""
+    acc: dict[str, dict] = {}
+    for rank, r in enumerate(lex, 1):
+        acc.setdefault(r.chunk_id, {"r": r, "s": 0.0})["s"] += 1.0 / (rrf_k + rank)
+    for rank, r in enumerate(sem, 1):
+        acc.setdefault(r.chunk_id, {"r": r, "s": 0.0})["s"] += 1.0 / (rrf_k + rank)
+    ordered = sorted(acc.values(), key=lambda x: x["s"], reverse=True)[:k]
+    return [_sr_to_dict(x["r"], x["s"]) for x in ordered]
+
+
 def _retrieve_local(query: str, k: int, course_ids: list[str] | None) -> list[dict]:
-    """Fallback: usa el Library KB ya desplegado (búsqueda por palabra clave),
-    mientras Supabase no esté configurado. Así los motores quedan conectados a
-    tu material desde hoy, sin credenciales."""
+    """Búsqueda HÍBRIDA en el proceso, sobre el Library KB ya desplegado:
+    léxica (palabra clave) + semántica (embeddings de la consulta vs. los
+    vectores cargados), fusionadas con RRF. Si no hay embeddings o numpy,
+    cae a solo léxica. Sin servicio externo, sin costo de hosting."""
     try:
         from api.main import get_knowledge_base
         kb = get_knowledge_base()
     except Exception as exc:
-        logger.warning("Library KB no disponible para fallback: %s", exc)
+        logger.warning("Library KB no disponible: %s", exc)
         return []
+    cid = course_ids[0] if course_ids else None
+
     try:
-        cid = course_ids[0] if course_ids else None
-        results = kb.search(query, course_id=cid, limit=k)
-        return [{
-            "chunk_id": r.chunk_id, "course_name": r.course_name,
-            "source_file": r.source_file, "heading": r.heading,
-            "text": r.text, "score": float(r.score),
-        } for r in results]
+        lex = kb.search(query, course_id=cid, limit=k * 3)
     except Exception as exc:
-        logger.error("Búsqueda local falló: %s", exc)
-        return []
+        logger.error("Búsqueda léxica falló: %s", exc)
+        lex = []
+
+    sem = []
+    try:
+        if getattr(kb, "semantic_ready", False):
+            vec = _embed_vector(query)
+            if vec is not None:
+                sem = kb.semantic_search_by_vector(vec, course_id=cid, limit=k * 3)
+    except Exception as exc:
+        logger.warning("Búsqueda semántica falló (sigo con léxica): %s", exc)
+
+    if not sem:
+        return [_sr_to_dict(r, r.score) for r in lex[:k]]
+    return _merge_rrf(lex, sem, k)
 
 
 def format_context(chunks: list[dict], max_chars: int = 6000) -> str:
