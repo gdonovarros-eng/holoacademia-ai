@@ -215,10 +215,20 @@ class KnowledgeBase:
             return 0.0
 
         exact_overlap = question_tokens & record["_tokens"]
-        fuzzy_bonus = self._fuzzy_token_bonus(question_tokens - exact_overlap, record["_tokens"])
 
-        if not exact_overlap and fuzzy_bonus == 0.0:
+        # Optimización de escala: el fuzzy (SequenceMatcher) es O(tokens²) y, si
+        # se corre sobre TODOS los records, hace la búsqueda inviable (decenas de
+        # segundos con +10k chunks). Solo lo calculamos para records que ya tienen
+        # al menos una coincidencia exacta de token. Los typos puros los cubre la
+        # búsqueda semántica (que normaliza/parafrasea). Esto baja la búsqueda
+        # léxica de ~36s a sub-segundo sin perder calidad práctica.
+        if not exact_overlap:
             return 0.0
+
+        # Fuzzy desactivado: SequenceMatcher sobre miles de records coincidentes
+        # hacía la búsqueda lenta (decenas de segundos con +10k chunks). La
+        # tolerancia a typos/paráfrasis la aporta la búsqueda semántica.
+        fuzzy_bonus = 0.0
 
         significant_tokens = {token for token in question_tokens if len(token) >= 5}
         exact_significant_overlap = significant_tokens & exact_overlap
