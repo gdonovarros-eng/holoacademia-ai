@@ -4,6 +4,7 @@ numpy>=1.26,<3
 python-dotenv>=1.0.1,<2
 uvicorn[standard]==0.30.6
 pytz>=2024.1
+psycopg2-binary>=2.9.9,<3  # conexión a Supabase (RAG: índice de conocimiento)
 
 # Astrología — requieren plan Render con ≥2 GB RAM (Standard)
 # Comentar si se despliega en Free/Starter para evitar OOM

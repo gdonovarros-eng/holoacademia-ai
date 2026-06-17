@@ -669,8 +669,9 @@ function mdHolos(answer) {
     .replace(/\n\n/g, '</p><p>')
     .replace(/\n/g, '<br>');
 }
-async function motorHolos(prompt) {
-  const res = await postJson("/therapeutic/holos", { prompt });
+async function motorHolos(prompt, query) {
+  // query opcional → ancla la respuesta en el material propio (RAG)
+  const res = await postJson("/therapeutic/holos", query ? { prompt, query } : { prompt });
   if (!res || !res.answer) throw new Error("sin respuesta");
   return mdHolos(res.answer);
 }
@@ -837,8 +838,8 @@ Lista las preguntas concretas que el terapeuta debería hacerle al paciente para
   const q = encodeURIComponent;
 
   const secciones = [
-    { id: "nucleo", titulo: "Núcleo · Biodescodificación del conflicto", run: () => motorHolos(prompt) },
-    { id: "cuestionario", titulo: "Lectura del cuestionario por áreas", run: () => motorHolos(promptCuestionario(ctx, resumenCaso)) },
+    { id: "nucleo", titulo: "Núcleo · Biodescodificación del conflicto", run: () => motorHolos(prompt, resumenCaso) },
+    { id: "cuestionario", titulo: "Lectura del cuestionario por áreas", run: () => motorHolos(promptCuestionario(ctx, resumenCaso), resumenCaso) },
     { id: "biomag", titulo: "Mapa biomagnético del rastreo", activo: pares.length > 0,
       run: async () => { const galeria = await galeriaMapasHtml(pares); const interp = await motorHolos(promptBiomag(pares, resumenCaso)); return galeria + interp; } },
     { id: "numerologia", titulo: "Numerología", activo: !!fechaNac,
@@ -4730,7 +4731,8 @@ ${caso.resumen}
 
 ${caso.ctx}`;
     try {
-      const res = await postJson("/therapeutic/holos", { prompt });
+      // query = mensaje del terapeuta → ancla la respuesta en el material propio (RAG)
+      const res = await postJson("/therapeutic/holos", { prompt, query: q });
       const answer = (res && res.answer) ? res.answer : "No pude responder, intenta de nuevo.";
       if (pensando) pensando.innerHTML = `<div class="ch-content"><p>${mdHolos(answer)}</p></div>`;
       history.push({ rol: "asistente", texto: answer.slice(0, 1200) });
