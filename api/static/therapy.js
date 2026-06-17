@@ -4708,8 +4708,27 @@ document.getElementById("mode-btn-sistemas")?.addEventListener("click", () => se
     history.push({ rol: "terapeuta", texto: q });
     const pensando = addMsg("bot", `<div class="ra-loading"><div class="rastreo-interpret-spinner"></div><span>Pensando…</span></div>`);
     const caso = window.__holosCaso || { ctx: "", resumen: "" };
-    const histTxt = history.slice(-6).map(h => `${h.rol}: ${h.texto}`).join("\n");
-    const prompt = `${HOLOS_CARD_RULES}\nEres el Motor Terapéutico respondiendo dudas del terapeuta sobre un caso ya analizado. Responde concreto y clínico, apoyándote en el contexto del caso.\n\nCONTEXTO DEL CASO\n${caso.resumen}\n\n${caso.ctx}\n\nCONVERSACIÓN PREVIA\n${histTxt || "(sin mensajes previos)"}\n\nPREGUNTA DEL TERAPEUTA\n${q}`;
+    const histTxt = history.slice(0, -1).slice(-6).map(h => `${h.rol}: ${h.texto}`).join("\n");
+    const prompt = `${HOLOS_CARD_RULES}
+Eres el Motor Terapéutico en un chat con el terapeuta sobre un caso YA analizado. Tu única tarea es responder al ÚLTIMO MENSAJE del terapeuta.
+
+REGLAS DE LA RESPUESTA (obligatorias):
+- Responde SOLO a lo que dice el último mensaje. No repitas el cuadro completo ni hagas una lectura genérica del caso ni de los pares.
+- Si el mensaje aporta un dato nuevo (una edad, una fecha, un evento, un detalle), intégralo: di explícitamente qué cambia, confirma o precisa en el análisis y por qué.
+- Si es una pregunta, respóndela de forma directa y concreta.
+- Usa el contexto del caso solo como apoyo; no lo recites.
+- Breve: 1 a 3 párrafos. Empieza directamente por la respuesta, sin preámbulos.
+
+ÚLTIMO MENSAJE DEL TERAPEUTA
+${q}
+
+CONVERSACIÓN PREVIA
+${histTxt || "(sin mensajes previos)"}
+
+CONTEXTO DEL CASO (referencia, no lo repitas)
+${caso.resumen}
+
+${caso.ctx}`;
     try {
       const res = await postJson("/therapeutic/holos", { prompt });
       const answer = (res && res.answer) ? res.answer : "No pude responder, intenta de nuevo.";
