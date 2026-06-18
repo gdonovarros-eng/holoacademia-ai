@@ -81,14 +81,26 @@ def _traducir(texto: str, bid: str) -> str:
     return "\n\n".join(cache.get(hashlib.md5(v.encode()).hexdigest(), "") for v in vent)
 
 
-def _upsert(cur, rows):
+def _upsert_fresh(rows):
+    """Conexión nueva por upsert (Neon cierra conexiones inactivas durante el
+    OCR/traducción largos). Reintenta una vez si la conexión se cayó."""
     from psycopg2.extras import execute_values
-    execute_values(cur, """insert into holos_chunks
+    sql = """insert into holos_chunks
       (chunk_id, course_id, course_name, linea, tipo, audiencia, idioma,
        source_id, source_type, source_file, heading, text, char_count, embedding)
       values %s on conflict (chunk_id) do update set
-      text=excluded.text, embedding=excluded.embedding""",
-      rows, template="(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::vector)", page_size=200)
+      text=excluded.text, embedding=excluded.embedding"""
+    tpl = "(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s::vector)"
+    for intento in range(2):
+        try:
+            c = _conn(); cur = c.cursor()
+            execute_values(cur, sql, rows, template=tpl, page_size=200)
+            c.commit(); cur.close(); c.close()
+            return
+        except Exception as e:
+            if intento == 0:
+                print(f"  reintento DB: {e}", flush=True); continue
+            raise
 
 
 def main():
@@ -104,9 +116,10 @@ def main():
 
     files = sorted([p for p in glob.glob(os.path.join(a.dir, "**", "*"), recursive=True)
                     if p.lower().rsplit(".", 1)[-1] in ("pdf", "txt", "md")])
-    conn = _conn(); conn.autocommit = False; cur = conn.cursor()
-    cur.execute("select chunk_id from holos_chunks where course_id=%s", (f"libros-{col}",))
-    existentes = {r[0] for r in cur.fetchall()}
+    c0 = _conn(); cur0 = c0.cursor()
+    cur0.execute("select chunk_id from holos_chunks where course_id=%s", (f"libros-{col}",))
+    existentes = {r[0] for r in cur0.fetchall()}
+    cur0.close(); c0.close()
     print(f"ya en Neon ({col}): {len(existentes)} chunks", flush=True)
 
     total, hechos, saltados = 0, 0, []
@@ -141,12 +154,11 @@ def main():
                 rows.append((f"libro-{col}::{bid}::{i:04d}", f"libros-{col}", a.col_name,
                     "Libros de referencia", "Libro", "Terapeutas", "es", f"libro-{bid}",
                     "libro", os.path.basename(fpath), titulo, ch, len(ch), _vec(e.embedding)))
-        _upsert(cur, rows); conn.commit()
+        _upsert_fresh(rows)
         total += len(rows); hechos += 1
         print(f"  + {titulo}: {len(rows)} chunks", flush=True)
 
-    cur.execute("select count(*) from holos_chunks"); n = cur.fetchone()[0]
-    cur.close(); conn.close()
+    cf = _conn(); curf = cf.cursor(); curf.execute("select count(*) from holos_chunks"); n = curf.fetchone()[0]; curf.close(); cf.close()
     print(f"\nLISTO: {hechos} libros, +{total} chunks. Total Neon: {n}", flush=True)
     if saltados:
         print("Saltados: " + "; ".join(saltados), flush=True)
