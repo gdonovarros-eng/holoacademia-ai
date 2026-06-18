@@ -74,16 +74,22 @@ def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
     prompt, fuentes = request.prompt, 0
     try:
         from api.holos_rag import retrieve, format_context
-        chunks = retrieve(q, k=14, course_ids=_BIODESCO_COURSE_IDS)
-        ctx = format_context(chunks, max_chars=11000)
-        if ctx:
+        # Recuperación separada: material de biodescodificación y material de NMG,
+        # para alimentar cada una de las dos lecturas.
+        bio = retrieve(q, k=10, course_ids=["libros-biodescodificacion"])
+        nmg = retrieve(q, k=10, course_ids=["libros-nmg"])
+        ctx_bio = format_context(bio, max_chars=7000)
+        ctx_nmg = format_context(nmg, max_chars=7000)
+        fuentes = len(bio) + len(nmg)
+        if ctx_bio or ctx_nmg:
             prompt = (
-                "MATERIAL DE BIODESCODIFICACIÓN (base prioritaria; de aquí extraes las tonalidades, "
-                "ejemplos y frases; respeta sus definiciones; nunca menciones autores, libros ni "
-                "cursos que aparezcan en él):\n\n"
-                + ctx + "\n\n====\n\n" + request.prompt
+                "MATERIAL DE BIODESCODIFICACIÓN (para la Lectura de Biodescodificación):\n\n"
+                + (ctx_bio or "(sin material específico; usa tu marco)") +
+                "\n\n========\n\nMATERIAL DE NUEVA MEDICINA GERMÁNICA / 5 LEYES (para la segunda lectura):\n\n"
+                + (ctx_nmg or "(sin material específico; usa tu marco)") +
+                "\n\n========\n\nNunca menciones autores, libros ni cursos que aparezcan en el material.\n\n"
+                + request.prompt
             )
-            fuentes = len(chunks)
     except Exception:
         pass
     result = generar_respuesta_biodescodificacion(prompt)
