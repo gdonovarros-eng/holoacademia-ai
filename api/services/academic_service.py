@@ -22,7 +22,10 @@ logger = logging.getLogger(__name__)
 _REFUERZO = (
     "\n\nResponde ÚNICAMENTE con base en el MATERIAL DEL CURSO que se te entrega abajo. "
     "Si el material no cubre la pregunta, dilo con honestidad y no inventes. "
-    "Nunca menciones cursos, autores, maestros ni nombres propios que aparezcan en el material."
+    "Nunca menciones cursos, autores, maestros ni nombres propios que aparezcan en el material. "
+    "Desarrolla la respuesta con PROFUNDIDAD: explica el concepto, su porqué, da ejemplos "
+    "concretos y, cuando ayude, distingue matices o casos. Estructura con subtítulos o viñetas "
+    "si el tema es amplio. No te quedes en una respuesta mínima cuando el material da para más."
 )
 
 _SIN_BASE = (
@@ -60,8 +63,8 @@ def run_academic_query(query: str, history: List[Dict[str, Any]] | None = None) 
     # 1) Recuperar del índice curado (mismo material que el Motor Terapéutico)
     try:
         from api.holos_rag import retrieve, format_context
-        chunks = retrieve(query, k=8)
-        ctx = format_context(chunks, max_chars=7000)
+        chunks = retrieve(query, k=12)
+        ctx = format_context(chunks, max_chars=9000)
     except Exception as exc:
         logger.error("RAG académico falló: %s", exc)
         return _empty("Hubo un problema al consultar el material. Intenta de nuevo.", used_fallback=True)
@@ -82,8 +85,8 @@ def run_academic_query(query: str, history: List[Dict[str, Any]] | None = None) 
                 {"role": "system", "content": ACADEMIC_SYSTEM_PROMPT + _REFUERZO},
                 {"role": "user", "content": user},
             ],
-            temperature=0.3,
-            max_tokens=1200,
+            temperature=0.35,
+            max_tokens=2500,
         )
         answer = (resp.choices[0].message.content or "").strip()
     except Exception as exc:

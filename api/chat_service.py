@@ -653,9 +653,9 @@ def _get_context(message: str) -> str:
         # 1) Base de conocimiento en Neon (híbrida, todo el corpus)
         try:
             from api.holos_rag import retrieve, format_context
-            chunks = retrieve(message, k=5)
+            chunks = retrieve(message, k=8)
             if chunks:
-                result["ctx"] = format_context(chunks, max_chars=4500)
+                result["ctx"] = format_context(chunks, max_chars=6500)
                 return
         except Exception as exc:
             logger.debug("RAG Neon no disponible en _get_context: %s", exc)
@@ -884,8 +884,8 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
         max_tokens = 800
         temperature = 0.3
     else:
-        max_tokens = 1200
-        temperature = 0.6
+        max_tokens = 2400   # alumno (Sinodal): respuestas más extensas y profundas
+        temperature = 0.55
 
     try:
         stream = client.chat.completions.create(
