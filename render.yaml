@@ -40,6 +40,12 @@ services:
       - key: HOLOS_MAX_TOKENS
         value: "3500"
 
+      # ── Base de conocimiento (Neon · Postgres + pgvector) ───────────────────────
+      # El valor (cadena de conexión con contraseña) se define en el panel de Render,
+      # nunca en git. Si falta, la app cae al índice local de respaldo.
+      - key: KNOWLEDGE_DB_URL
+        sync: false
+
       # ── Motores IA ─────────────────────────────────────────────────────────────
       - key: COURSE_ASSISTANT_USE_MODEL
         value: "true"
