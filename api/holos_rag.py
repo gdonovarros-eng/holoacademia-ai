@@ -110,23 +110,33 @@ def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> lis
     if pool is None:
         return _retrieve_local(query, k, course_ids)
     emb = _embed(query)  # puede ser None → la función SQL usa solo full-text
-    conn = None
-    try:
-        conn = pool.getconn()
-        with conn.cursor() as cur:
-            cur.execute(
-                "select chunk_id, course_name, source_file, heading, text, source_type, score "
-                "from match_holos(%s::vector, %s, %s, %s, %s, %s, %s)",
-                (emb, query, k, 1.0, 1.0, 50, course_ids),
-            )
-            cols = [d[0] for d in cur.description]
-            return [dict(zip(cols, row)) for row in cur.fetchall()]
-    except Exception as exc:
-        logger.error("Búsqueda en la base de conocimiento falló: %s", exc)
-        return []
-    finally:
-        if conn is not None:
+    # Reintento: Neon (free) duerme al estar inactivo; la primera consulta tras
+    # el reposo puede traer una conexión muerta. Reintentamos con conexión nueva.
+    for attempt in range(2):
+        conn = None
+        try:
+            conn = pool.getconn()
+            with conn.cursor() as cur:
+                cur.execute(
+                    "select chunk_id, course_name, source_file, heading, text, source_type, score "
+                    "from match_holos(%s::vector, %s, %s, %s, %s, %s, %s)",
+                    (emb, query, k, 1.0, 1.0, 50, course_ids),
+                )
+                cols = [d[0] for d in cur.description]
+                rows = cur.fetchall()
             pool.putconn(conn)
+            return [dict(zip(cols, row)) for row in rows]
+        except Exception as exc:
+            if conn is not None:
+                try:
+                    pool.putconn(conn, close=True)  # descartar conexión rota
+                except Exception:
+                    pass
+            if attempt == 0:
+                logger.warning("Neon reintento tras error: %s", exc)
+                continue
+            logger.error("Búsqueda en la base de conocimiento falló: %s", exc)
+            return []
 
 
 # Fuentes limpias para grounding. Las transcripciones de clase son ruidosas
