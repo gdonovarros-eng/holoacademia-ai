@@ -69,6 +69,32 @@ def _embed(query: str):
     return "[" + ",".join(f"{float(x):.7f}" for x in vec) + "]"
 
 
+def status() -> dict:
+    """Diagnóstico: qué backend usa el RAG y cuántos chunks ve."""
+    if rag_enabled():
+        pool = _pool()
+        if pool is not None:
+            conn = None
+            try:
+                conn = pool.getconn()
+                with conn.cursor() as cur:
+                    cur.execute("select count(*) from holos_chunks")
+                    n = cur.fetchone()[0]
+                return {"backend": "neon", "chunks": int(n)}
+            except Exception as exc:
+                return {"backend": "neon", "error": str(exc)[:120]}
+            finally:
+                if conn is not None:
+                    pool.putconn(conn)
+    # local
+    try:
+        from api.main import get_knowledge_base
+        kb = get_knowledge_base()
+        return {"backend": "local", "chunks": len(kb.records)}
+    except Exception as exc:
+        return {"backend": "ninguno", "error": str(exc)[:120]}
+
+
 def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> list[dict]:
     """Devuelve los fragmentos más relevantes del material propio.
 

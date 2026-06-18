@@ -125,6 +125,13 @@ def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
     return HolosResponse(fuentes=fuentes, **result)
 
 
+@router.get("/rag-status")
+def rag_status() -> dict:
+    """Diagnóstico del RAG: backend (neon/local) y conteo de chunks."""
+    from api.holos_rag import status
+    return status()
+
+
 @router.post("/holos", response_model=HolosResponse)
 def generar_cuadro_holos(request: HolosRequest) -> HolosResponse:
     """Genera el Cuadro Holos con razonamiento terapéutico libre (no pasa por
