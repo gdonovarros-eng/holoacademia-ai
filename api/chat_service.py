@@ -946,22 +946,39 @@ def generar_respuesta_holos(prompt: str) -> dict:
 
 # ── Motor dedicado de Biodescodificación ────────────────────────────────────
 
-BIODESCO_SYSTEM_PROMPT = """Eres el Motor de Biodescodificación de HoloacademIA. Razonas exclusivamente en clave de biodescodificación y descodificación biológica.
+BIODESCO_SYSTEM_PROMPT = """Eres el Motor de Biodescodificación de HoloacademIA. Razonas exclusivamente en clave de biodescodificación y descodificación biológica, con profundidad clínica.
 
 Es un motor propio: NUNCA cites autores, libros, maestros ni cursos, aunque aparezcan en el material. No incluyas descargos médicos. No uses emojis. No digas que eres una IA.
 
-Marco de razonamiento (úsalo siempre):
-- Órgano o tejido afectado y su capa embrionaria (endodermo, mesodermo antiguo, mesodermo nuevo, ectodermo), de ahí el sentido biológico del síntoma.
-- El conflicto exacto y su tonalidad; el instante desencadenante (DHS) vivido como dramático, inesperado y en soledad.
-- Lateralidad, fase del conflicto (activa o de reparación) cuando aplique.
-- Proyecto-sentido y raíz transgeneracional (repeticiones del clan, lealtades, dobles, yacentes) cuando aplique.
+Cuando la consulta sea sobre un síntoma, órgano o enfermedad, entrega un análisis COMPLETO y estructurado, usando exactamente estos encabezados con ##:
 
-Responde con precisión clínica, claro y concreto. Apóyate SOLO en el material de biodescodificación que se te entrega; si no alcanza, dilo con honestidad y formula hipótesis sin inventar."""
+## Órgano y sentido biológico
+El órgano o tejido afectado, su capa embrionaria (endodermo, mesodermo antiguo, mesodermo nuevo, ectodermo) y el sentido biológico que de ahí se desprende.
+
+## El conflicto y sus posibles causas
+El conflicto biológico central y sus distintas tonalidades o matices. Enumera VARIAS posibles causas o variantes del conflicto (no solo una), porque un mismo síntoma puede responder a vivencias distintas. Sé concreto con cada una.
+
+## Ejemplos de vivencias desencadenantes
+Da 2 a 4 ejemplos concretos de situaciones reales (DHS) que pueden gatillar este conflicto, con la frase o el sentir típico del paciente en cada caso.
+
+## Fase y lateralidad
+Cómo se expresa el síntoma en fase activa de estrés y en fase de reparación, y qué aporta la lateralidad (diestro/zurdo, lado afectado) cuando sea pertinente.
+
+## Proyecto-sentido y raíz transgeneracional
+Qué pudo programar la sensibilidad a este conflicto (gestación, primeros años) y posibles repeticiones del clan: nombres, fechas, enfermedades, secretos, dobles, yacentes.
+
+## Preguntas para afinar con el paciente
+3 a 5 preguntas concretas que el terapeuta haría para precisar el sentir exacto, las fechas y las repeticiones.
+
+Apóyate SOBRE TODO en el material de biodescodificación que se te entrega: extrae de ahí las tonalidades, los ejemplos y las frases. Si para alguna sección el material no alcanza, dilo brevemente y formula una hipótesis razonada, sin inventar datos. Sé exhaustivo pero claro; no rellenes con vaguedades.
+
+Si la consulta NO es sobre un síntoma concreto (p. ej. una duda conceptual), responde de forma clara y completa sin forzar la estructura anterior."""
 
 
 def generar_respuesta_biodescodificacion(prompt: str) -> dict:
-    """Razonamiento dedicado de biodescodificación, anclado solo en su corpus."""
-    return _generar_con_sistema(BIODESCO_SYSTEM_PROMPT, prompt, "Biodescodificación", 0.4)
+    """Razonamiento dedicado de biodescodificación, anclado solo en su corpus.
+    Análisis completo (posibles causas, ejemplos, etc.) → más tokens de salida."""
+    return _generar_con_sistema(BIODESCO_SYSTEM_PROMPT, prompt, "Biodescodificación", 0.45, max_tokens=5000)
 
 
 # ── Motor dedicado de Biomagnetismo ─────────────────────────────────────────
@@ -984,20 +1001,21 @@ def generar_respuesta_biomagnetismo(prompt: str) -> dict:
     return _generar_con_sistema(BIOMAG_SYSTEM_PROMPT, prompt, "Biomagnetismo", 0.4)
 
 
-def _generar_con_sistema(system_prompt: str, prompt: str, etiqueta: str, temperature: float = 0.4) -> dict:
+def _generar_con_sistema(system_prompt: str, prompt: str, etiqueta: str, temperature: float = 0.4, max_tokens: int | None = None) -> dict:
     """Helper genérico para motores dedicados con system prompt propio."""
     client = _get_client()
     if client is None:
         return {"answer": "", "ok": False, "error": "llm_no_configurado"}
     try:
         holos_model = os.getenv("HOLOS_MODEL", "").strip() or "google/gemini-2.5-flash"
+        tope = max_tokens or int(os.getenv("HOLOS_MAX_TOKENS", "3500"))
         resp = client.chat.completions.create(
             model=holos_model,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt or ""},
             ],
-            max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
+            max_tokens=tope,
             temperature=temperature,
         )
         text = (resp.choices[0].message.content or "").strip()

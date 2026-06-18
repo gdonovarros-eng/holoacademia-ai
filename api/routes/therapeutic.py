@@ -74,12 +74,13 @@ def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
     prompt, fuentes = request.prompt, 0
     try:
         from api.holos_rag import retrieve, format_context
-        chunks = retrieve(q, k=8, course_ids=_BIODESCO_COURSE_IDS)
-        ctx = format_context(chunks, max_chars=7000)
+        chunks = retrieve(q, k=14, course_ids=_BIODESCO_COURSE_IDS)
+        ctx = format_context(chunks, max_chars=11000)
         if ctx:
             prompt = (
-                "MATERIAL DE BIODESCODIFICACIÓN (base prioritaria; respeta sus definiciones "
-                "y enfoque; nunca menciones autores, libros ni cursos que aparezcan en él):\n\n"
+                "MATERIAL DE BIODESCODIFICACIÓN (base prioritaria; de aquí extraes las tonalidades, "
+                "ejemplos y frases; respeta sus definiciones; nunca menciones autores, libros ni "
+                "cursos que aparezcan en él):\n\n"
                 + ctx + "\n\n====\n\n" + request.prompt
             )
             fuentes = len(chunks)
