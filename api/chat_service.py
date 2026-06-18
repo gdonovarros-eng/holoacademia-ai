@@ -643,31 +643,36 @@ def set_shared_kb(kb) -> None:
 # ── Búsqueda de contexto en la base de conocimiento ──────────────────────────
 
 def _get_context(message: str) -> str:
-    """Busca fragmentos relevantes. Usa el KB compartido; si no está listo, devuelve ''."""
+    """Busca fragmentos relevantes para el chat (Sinodal/terapeuta).
+    Prioriza Neon (todo el conocimiento, incl. libros); si no está, cae al KB local."""
     import threading
-
-    kb = _shared_kb
-    if kb is None:
-        return ""
 
     result: dict = {"ctx": ""}
 
     def _search():
+        # 1) Base de conocimiento en Neon (híbrida, todo el corpus)
+        try:
+            from api.holos_rag import retrieve, format_context
+            chunks = retrieve(message, k=5)
+            if chunks:
+                result["ctx"] = format_context(chunks, max_chars=4500)
+                return
+        except Exception as exc:
+            logger.debug("RAG Neon no disponible en _get_context: %s", exc)
+        # 2) Fallback: KB local
+        kb = _shared_kb
+        if kb is None:
+            return
         try:
             results = kb.search(message, limit=3)
-            parts = []
-            for r in results[:3]:
-                src = getattr(r, "source_file", "")
-                text = getattr(r, "text", "")
-                if text.strip():
-                    parts.append(f"[{src}]\n{text.strip()}")
+            parts = [r.text.strip() for r in results[:3] if getattr(r, "text", "").strip()]
             result["ctx"] = "\n\n---\n\n".join(parts)
         except Exception as exc:
-            logger.debug("Error en búsqueda de contexto: %s", exc)
+            logger.debug("Error en búsqueda local: %s", exc)
 
     t = threading.Thread(target=_search, daemon=True)
     t.start()
-    t.join(timeout=2.5)  # máximo 2.5 s; si no, se sigue sin contexto
+    t.join(timeout=5.0)  # margen para el embedding de la consulta en Neon
     return result["ctx"]
 
 
@@ -956,6 +961,31 @@ Responde con precisión clínica, claro y concreto. Apóyate SOLO en el material
 
 def generar_respuesta_biodescodificacion(prompt: str) -> dict:
     """Razonamiento dedicado de biodescodificación, anclado solo en su corpus."""
+    return _generar_con_sistema(BIODESCO_SYSTEM_PROMPT, prompt, "Biodescodificación", 0.4)
+
+
+# ── Motor dedicado de Biomagnetismo ─────────────────────────────────────────
+
+BIOMAG_SYSTEM_PROMPT = """Eres el Motor de Biomagnetismo de HoloacademIA. Razonas en clave de par biomagnético y rastreo.
+
+Es un motor propio: NUNCA cites autores, libros, maestros ni cursos, aunque aparezcan en el material. No incluyas descargos médicos. No uses emojis. No digas que eres una IA.
+
+Marco de razonamiento (úsalo siempre):
+- El par biomagnético: punto de rastreo (polo norte / positivo) y punto de impactación (polo sur / negativo), y qué desequilibrio corrige.
+- Patógeno o disfunción asociada (virus, bacteria, hongo, parásito; o disfunción/reservorio), y su lógica de pH (acidez/alcalinidad).
+- Ubicación anatómica precisa de cada punto y orden de colocación de los imanes.
+- Cómo el par se integra con el cuadro del paciente cuando se da contexto.
+
+Responde con precisión clínica, claro y concreto. Apóyate SOLO en el material de biomagnetismo que se te entrega; si no alcanza, dilo con honestidad sin inventar pares ni ubicaciones."""
+
+
+def generar_respuesta_biomagnetismo(prompt: str) -> dict:
+    """Razonamiento dedicado de biomagnetismo, anclado solo en su corpus."""
+    return _generar_con_sistema(BIOMAG_SYSTEM_PROMPT, prompt, "Biomagnetismo", 0.4)
+
+
+def _generar_con_sistema(system_prompt: str, prompt: str, etiqueta: str, temperature: float = 0.4) -> dict:
+    """Helper genérico para motores dedicados con system prompt propio."""
     client = _get_client()
     if client is None:
         return {"answer": "", "ok": False, "error": "llm_no_configurado"}
@@ -964,14 +994,14 @@ def generar_respuesta_biodescodificacion(prompt: str) -> dict:
         resp = client.chat.completions.create(
             model=holos_model,
             messages=[
-                {"role": "system", "content": BIODESCO_SYSTEM_PROMPT},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt or ""},
             ],
             max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
-            temperature=0.4,
+            temperature=temperature,
         )
         text = (resp.choices[0].message.content or "").strip()
         return {"answer": text, "ok": bool(text)}
     except Exception as exc:
-        logger.error("Error en Motor de Biodescodificación: %s", exc)
+        logger.error("Error en Motor de %s: %s", etiqueta, exc)
         return {"answer": "", "ok": False, "error": str(exc)}

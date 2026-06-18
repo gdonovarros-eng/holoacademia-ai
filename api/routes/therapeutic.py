@@ -91,6 +91,40 @@ def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
     return HolosResponse(fuentes=fuentes, **result)
 
 
+_BIOMAG_COURSE_IDS = [
+    "curso-holobiomagnetismo-parte-1", "curso-holobiomagnetismo-parte-2",
+    "curso-holobiomagnetismo-2021", "curso-holobiomagnetismo-2021-transcripcion",
+]
+
+
+@router.post("/biomagnetismo", response_model=HolosResponse)
+def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
+    """Motor dedicado de Biomagnetismo: razona en clave de par biomagnético y
+    rastreo, anclado únicamente en el corpus de biomagnetismo."""
+    from api.chat_service import generar_respuesta_biomagnetismo
+
+    started = time.monotonic()
+    q = (request.query or request.prompt or "").strip()
+    prompt, fuentes = request.prompt, 0
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=8, course_ids=_BIOMAG_COURSE_IDS)
+        ctx = format_context(chunks, max_chars=7000)
+        if ctx:
+            prompt = (
+                "MATERIAL DE BIOMAGNETISMO (base prioritaria; respeta sus pares, polos y "
+                "ubicaciones; nunca menciones autores, libros ni cursos que aparezcan en él):\n\n"
+                + ctx + "\n\n====\n\n" + request.prompt
+            )
+            fuentes = len(chunks)
+    except Exception:
+        pass
+    result = generar_respuesta_biomagnetismo(prompt)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("biomagnetismo elapsed_ms=%.2f ok=%s fuentes=%d", elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
+
 @router.post("/holos", response_model=HolosResponse)
 def generar_cuadro_holos(request: HolosRequest) -> HolosResponse:
     """Genera el Cuadro Holos con razonamiento terapéutico libre (no pasa por
