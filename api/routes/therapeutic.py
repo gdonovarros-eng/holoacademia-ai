@@ -115,8 +115,8 @@ def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
     prompt, fuentes = request.prompt, 0
     try:
         from api.holos_rag import retrieve, format_context
-        chunks = retrieve(q, k=8, course_ids=_BIOMAG_COURSE_IDS)
-        ctx = format_context(chunks, max_chars=7000)
+        chunks = retrieve(q, k=14, course_ids=_BIOMAG_COURSE_IDS)
+        ctx = format_context(chunks, max_chars=11000)
         if ctx:
             prompt = (
                 "MATERIAL DE BIOMAGNETISMO (base prioritaria; respeta sus pares, polos y "
