@@ -3,7 +3,7 @@
 Fuente única para el Sinodal y el Motor Terapéutico. Combina búsqueda semántica
 (pgvector) y por palabra clave (full-text), vía la función SQL match_holos.
 
-Diseño seguro: si faltan SUPABASE_DB_URL u OPENAI_API_KEY, retrieve() devuelve []
+Diseño seguro: si faltan KNOWLEDGE_DB_URL u OPENAI_API_KEY, retrieve() devuelve []
 sin romper nada. Así el deploy sigue vivo aunque el RAG no esté configurado todavía.
 """
 from __future__ import annotations
@@ -18,13 +18,13 @@ EMBED_MODEL = os.getenv("HOLOS_EMBED_MODEL", "text-embedding-3-small").strip() o
 
 
 def rag_enabled() -> bool:
-    return bool(os.getenv("SUPABASE_DB_URL", "").strip())
+    return bool(os.getenv("KNOWLEDGE_DB_URL", "").strip())
 
 
 @lru_cache(maxsize=1)
 def _pool():
     """Pool de conexiones a Supabase (perezoso). None si no está configurado."""
-    url = os.getenv("SUPABASE_DB_URL", "").strip()
+    url = os.getenv("KNOWLEDGE_DB_URL", "").strip()
     if not url:
         return None
     try:
@@ -89,14 +89,14 @@ def retrieve(query: str, k: int = 6, course_ids: list[str] | None = None) -> lis
         conn = pool.getconn()
         with conn.cursor() as cur:
             cur.execute(
-                "select chunk_id, course_name, source_file, heading, text, score "
+                "select chunk_id, course_name, source_file, heading, text, source_type, score "
                 "from match_holos(%s::vector, %s, %s, %s, %s, %s, %s)",
                 (emb, query, k, 1.0, 1.0, 50, course_ids),
             )
             cols = [d[0] for d in cur.description]
             return [dict(zip(cols, row)) for row in cur.fetchall()]
     except Exception as exc:
-        logger.error("Búsqueda en Supabase falló: %s", exc)
+        logger.error("Búsqueda en la base de conocimiento falló: %s", exc)
         return []
     finally:
         if conn is not None:

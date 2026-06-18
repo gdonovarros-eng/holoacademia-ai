@@ -18,7 +18,7 @@ Uso:
       --source-type transcripcion
 
 Variables de entorno necesarias:
-  SUPABASE_DB_URL   Connection string (URI) de Supabase  (Settings → Database)
+  KNOWLEDGE_DB_URL   Connection string (URI) de Supabase  (Settings → Database)
   OPENAI_API_KEY    Para embeddings de contenido nuevo (text-embedding-3-small)
 """
 from __future__ import annotations
@@ -36,9 +36,9 @@ BATCH = 256
 
 def _db():
     import psycopg2
-    url = os.getenv("SUPABASE_DB_URL", "").strip()
+    url = os.getenv("KNOWLEDGE_DB_URL", "").strip()
     if not url:
-        sys.exit("Falta SUPABASE_DB_URL (Settings → Database → Connection string).")
+        sys.exit("Falta KNOWLEDGE_DB_URL (Settings → Database → Connection string).")
     return psycopg2.connect(url)
 
 

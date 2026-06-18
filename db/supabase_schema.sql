@@ -62,6 +62,7 @@ returns table (
   source_file text,
   heading     text,
   text        text,
+  source_type text,
   score       float
 )
 language sql
@@ -93,9 +94,14 @@ fused as (
   from fts
   full outer join sem on fts.chunk_id = sem.chunk_id
 )
-select c.chunk_id, c.course_name, c.source_file, c.heading, c.text, f.score
+-- Peso por tipo de fuente: el material limpio (manual/curado/libro/protocolo)
+-- pesa más que las transcripciones de clase (ruidosas) y los índices.
+select c.chunk_id, c.course_name, c.source_file, c.heading, c.text, c.source_type,
+       f.score * (case c.source_type
+         when 'manual' then 1.0 when 'curado' then 1.0 when 'libro' then 1.0 when 'protocolo' then 1.0
+         when 'transcripcion' then 0.45 when 'indice' then 0.25 else 0.8 end) as score
 from fused f
 join holos_chunks c on c.chunk_id = f.chunk_id
-order by f.score desc
+order by score desc
 limit match_count;
 $$;
