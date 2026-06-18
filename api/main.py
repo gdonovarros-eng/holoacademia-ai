@@ -301,7 +301,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/asistenteia")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/biodescodificacion", "/biomagnetismo", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/biodescodificacion", "/biomagnetismo", "/constelaciones", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -488,6 +488,11 @@ async def biodescodificacion_app() -> FileResponse:
 @app.get("/biomagnetismo", include_in_schema=False)
 async def biomagnetismo_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "biomagnetismo.html", headers=_no_cache_headers())
+
+
+@app.get("/constelaciones", include_in_schema=False)
+async def constelaciones_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "constelaciones.html", headers=_no_cache_headers())
 
 
 @app.get("/pares", include_in_schema=False)

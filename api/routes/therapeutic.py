@@ -132,6 +132,35 @@ def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
     return HolosResponse(fuentes=fuentes, **result)
 
 
+@router.post("/constelaciones", response_model=HolosResponse)
+def motor_constelaciones(request: BiodescoRequest) -> HolosResponse:
+    """Motor dedicado de Constelaciones Familiares y Transgeneracional, anclado
+    en su corpus (Órdenes del Amor, dinámicas sistémicas, psicogenealogía)."""
+    from api.chat_service import generar_respuesta_constelaciones
+
+    started = time.monotonic()
+    q = (request.query or request.prompt or "").strip()
+    prompt, fuentes = request.prompt, 0
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=14, course_ids=["libros-constelaciones"])
+        ctx = format_context(chunks, max_chars=11000)
+        if ctx:
+            prompt = (
+                "MATERIAL DE CONSTELACIONES FAMILIARES Y TRANSGENERACIONAL (base prioritaria; "
+                "de aquí extraes las dinámicas, frases sanadoras y ejercicios; nunca menciones "
+                "autores, libros ni cursos que aparezcan en él):\n\n"
+                + ctx + "\n\n====\n\n" + request.prompt
+            )
+            fuentes = len(chunks)
+    except Exception:
+        pass
+    result = generar_respuesta_constelaciones(prompt)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("constelaciones elapsed_ms=%.2f ok=%s fuentes=%d", elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
+
 @router.get("/rag-status")
 def rag_status() -> dict:
     """Diagnóstico del RAG: backend (neon/local) y conteo de chunks."""
