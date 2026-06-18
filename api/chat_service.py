@@ -937,3 +937,41 @@ def generar_respuesta_holos(prompt: str) -> dict:
     except Exception as exc:
         logger.error("Error generando Cuadro Holos: %s", exc)
         return {"answer": "", "ok": False, "error": str(exc)}
+
+
+# ── Motor dedicado de Biodescodificación ────────────────────────────────────
+
+BIODESCO_SYSTEM_PROMPT = """Eres el Motor de Biodescodificación de HoloacademIA. Razonas exclusivamente en clave de biodescodificación y descodificación biológica.
+
+Es un motor propio: NUNCA cites autores, libros, maestros ni cursos, aunque aparezcan en el material. No incluyas descargos médicos. No uses emojis. No digas que eres una IA.
+
+Marco de razonamiento (úsalo siempre):
+- Órgano o tejido afectado y su capa embrionaria (endodermo, mesodermo antiguo, mesodermo nuevo, ectodermo), de ahí el sentido biológico del síntoma.
+- El conflicto exacto y su tonalidad; el instante desencadenante (DHS) vivido como dramático, inesperado y en soledad.
+- Lateralidad, fase del conflicto (activa o de reparación) cuando aplique.
+- Proyecto-sentido y raíz transgeneracional (repeticiones del clan, lealtades, dobles, yacentes) cuando aplique.
+
+Responde con precisión clínica, claro y concreto. Apóyate SOLO en el material de biodescodificación que se te entrega; si no alcanza, dilo con honestidad y formula hipótesis sin inventar."""
+
+
+def generar_respuesta_biodescodificacion(prompt: str) -> dict:
+    """Razonamiento dedicado de biodescodificación, anclado solo en su corpus."""
+    client = _get_client()
+    if client is None:
+        return {"answer": "", "ok": False, "error": "llm_no_configurado"}
+    try:
+        holos_model = os.getenv("HOLOS_MODEL", "").strip() or "google/gemini-2.5-flash"
+        resp = client.chat.completions.create(
+            model=holos_model,
+            messages=[
+                {"role": "system", "content": BIODESCO_SYSTEM_PROMPT},
+                {"role": "user", "content": prompt or ""},
+            ],
+            max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
+            temperature=0.4,
+        )
+        text = (resp.choices[0].message.content or "").strip()
+        return {"answer": text, "ok": bool(text)}
+    except Exception as exc:
+        logger.error("Error en Motor de Biodescodificación: %s", exc)
+        return {"answer": "", "ok": False, "error": str(exc)}

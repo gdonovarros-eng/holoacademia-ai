@@ -54,6 +54,43 @@ def _inyectar_material(prompt: str, query: str | None) -> tuple[str, int]:
     return prefijo + prompt, len(chunks)
 
 
+class BiodescoRequest(BaseModel):
+    prompt: str
+    query: str | None = None
+
+
+# El motor dedicado se ancla SOLO en el corpus de libros de biodescodificación.
+_BIODESCO_COURSE_IDS = ["libros-biodescodificacion"]
+
+
+@router.post("/biodescodificacion", response_model=HolosResponse)
+def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
+    """Motor dedicado de Biodescodificación: razona en clave de descodificación
+    biológica, anclado únicamente en el corpus de libros de biodescodificación."""
+    from api.chat_service import generar_respuesta_biodescodificacion
+
+    started = time.monotonic()
+    q = (request.query or request.prompt or "").strip()
+    prompt, fuentes = request.prompt, 0
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=8, course_ids=_BIODESCO_COURSE_IDS)
+        ctx = format_context(chunks, max_chars=7000)
+        if ctx:
+            prompt = (
+                "MATERIAL DE BIODESCODIFICACIÓN (base prioritaria; respeta sus definiciones "
+                "y enfoque; nunca menciones autores, libros ni cursos que aparezcan en él):\n\n"
+                + ctx + "\n\n====\n\n" + request.prompt
+            )
+            fuentes = len(chunks)
+    except Exception:
+        pass
+    result = generar_respuesta_biodescodificacion(prompt)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("biodescodificacion elapsed_ms=%.2f ok=%s fuentes=%d", elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
+
 @router.post("/holos", response_model=HolosResponse)
 def generar_cuadro_holos(request: HolosRequest) -> HolosResponse:
     """Genera el Cuadro Holos con razonamiento terapéutico libre (no pasa por
