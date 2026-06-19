@@ -817,7 +817,11 @@ Nombra el órgano/tejido y su capa embrionaria, y de ahí el sentido biológico.
 El momento exacto, cómo lo vivió, y por qué activó esta tonalidad.
 
 ## De dónde viene: análisis transgeneracional del genograma
-Lee el árbol CONCRETO entregado (nombres repetidos, edades/fechas de muerte, enfermedades, secretos, pérdidas de territorio, lugar entre hermanos). Patrón que se repite, posibles dobles/yacentes, lealtad invisible. Conecta con el conflicto. Si falta info, di qué preguntar.
+Lee el árbol CONCRETO entregado en clave sistémica y transgeneracional. Identifica:
+- Repeticiones del clan: nombres, edades y fechas de muerte (síndrome de aniversario), enfermedades, pérdidas de territorio, lugar entre hermanos.
+- Órdenes del amor alterados: pertenencia (¿hay excluidos?), jerarquía/orden (¿alguien tomó un lugar que no le toca?), equilibrio entre dar y recibir.
+- Dinámicas sistémicas: lealtades invisibles, identificaciones con un excluido o un muerto, asuntos pendientes, dobles y yacentes, secretos familiares.
+Nombra el patrón que se repite y la lealtad que sostiene el síntoma, y conéctalo con el conflicto. Si falta info, di qué preguntar para completar el genograma.
 
 ## Proyecto-sentido
 Qué pudo programar la sensibilidad a este conflicto, con lo disponible o como hipótesis.

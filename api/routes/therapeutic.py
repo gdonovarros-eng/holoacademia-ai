@@ -37,8 +37,8 @@ def _inyectar_material(prompt: str, query: str | None) -> tuple[str, int]:
         return prompt, 0
     try:
         from api.holos_rag import retrieve, format_context
-        chunks = retrieve(query, k=6)
-        ctx = format_context(chunks)
+        chunks = retrieve(query, k=10)
+        ctx = format_context(chunks, max_chars=8000)
     except Exception:  # nunca romper la respuesta por el RAG
         return prompt, 0
     if not ctx:
