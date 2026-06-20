@@ -753,6 +753,30 @@ async def api_pares_catalogo():
     )
 
 
+@app.get("/api/patogenos-biomag", include_in_schema=False)
+async def api_patogenos_biomag():
+    """Glosario de patógenos/microbios para el atlas de biomagnetismo."""
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "glosario_patogenos.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Glosario de patógenos no encontrado")
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/api/protocolos-biomag", include_in_schema=False)
+async def api_protocolos_biomag():
+    """Base de protocolos para el atlas de biomagnetismo."""
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "procedural_protocols_db.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Protocolos no encontrados")
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
 @app.get("/guia-clinica", include_in_schema=False)
 async def guia_clinica_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "guia-clinica.html", headers=_no_cache_headers(allow_iframe=True))
