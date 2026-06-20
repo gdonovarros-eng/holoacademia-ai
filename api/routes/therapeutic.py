@@ -101,6 +101,7 @@ def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
 _BIOMAG_COURSE_IDS = [
     "curso-holobiomagnetismo-parte-1", "curso-holobiomagnetismo-parte-2",
     "curso-holobiomagnetismo-2021", "curso-holobiomagnetismo-2021-transcripcion",
+    "libros-biomagnetismo",
 ]
 
 
