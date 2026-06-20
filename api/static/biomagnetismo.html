@@ -61,6 +61,28 @@
   .typing{display:inline-flex;gap:5px;padding:6px 0}.typing span{width:8px;height:8px;background:var(--border);border-radius:50%;animation:p 1.2s infinite}.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
   @keyframes p{0%,80%,100%{opacity:.3;transform:scale(.85)}40%{opacity:1;transform:scale(1)}}
   .loading{text-align:center;color:var(--muted);padding:30px}
+  .card.click{cursor:pointer;transition:box-shadow .14s,transform .14s}.card.click:hover{box-shadow:0 6px 18px rgba(37,99,235,.12);transform:translateY(-1px)}
+  /* condición */
+  .cond-group{margin-bottom:8px}.cond-group h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 2px 8px}
+  .cond-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+  .cond-card .ct{font-weight:800;font-size:.95rem;margin-bottom:8px;text-transform:capitalize}
+  .pt{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font-size:.8rem;margin:0 6px 6px 0;cursor:pointer;color:#334155}
+  .pt:hover{border-color:var(--acc);background:var(--acc-dim);color:var(--acc-dark)}
+  /* modal ficha */
+  .modal{position:fixed;inset:0;background:rgba(15,30,53,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:16px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;padding:0}
+  .modal-head{position:sticky;top:0;background:var(--surface);padding:18px 22px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;border-radius:16px 16px 0 0}
+  .modal-head .x{margin-left:auto;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted);flex-shrink:0}
+  .modal-body{padding:18px 22px 26px}
+  .mb-sec{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:18px 0 6px}
+  .mb-sec:first-child{margin-top:0}
+  .loc{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.loc{grid-template-columns:1fr}}
+  .loc-pt{border:1px solid var(--border);border-radius:10px;padding:10px;background:var(--bg)}
+  .loc-pt .nm{font-weight:700;font-size:.86rem}.loc-pt .rz{font-size:.78rem;color:var(--muted);margin:2px 0 6px}
+  .loc-pt img{width:100%;border-radius:8px;display:block;background:#fff;border:1px solid var(--border)}
+  .ref{border-left:3px solid var(--acc);background:var(--acc-dim);border-radius:0 8px 8px 0;padding:8px 12px;margin:7px 0;font-size:.82rem}
+  .ref b{color:var(--text)}
   @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}.nav-item .ct{display:none}}
 </style></head><body>
 <div class="workspace">
@@ -69,6 +91,7 @@
     <div class="sb-sec">Atlas</div>
     <button class="nav-item active" data-p="pares" onclick="nav('pares')"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6a3 3 0 0 1 3 3v6"/></svg>Pares biomagnéticos<span class="ct" id="ctPares"></span></button>
     <button class="nav-item" data-p="micro" onclick="nav('micro')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Microbios y patógenos<span class="ct" id="ctMicro"></span></button>
+    <button class="nav-item" data-p="cond" onclick="nav('cond')"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Por condición<span class="ct" id="ctCond"></span></button>
     <button class="nav-item" data-p="proto" onclick="nav('proto')"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Protocolos<span class="ct" id="ctProto"></span></button>
     <div class="sb-sec">Asistente</div>
     <button class="nav-item" data-p="chat" onclick="nav('chat')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consulta IA</button>
@@ -95,6 +118,13 @@
       <div class="grid" id="gridMicro"></div>
     </div></section>
 
+    <!-- POR CONDICIÓN -->
+    <section class="panel" id="panel-cond"><div class="scroller">
+      <div class="searchrow"><input class="search" id="qCond" placeholder="Buscar condición… (ej. respiratorios, digestivos, piel)" oninput="renderCond()"></div>
+      <div class="count" id="cntCond"></div>
+      <div id="listCond"></div>
+    </div></section>
+
     <!-- PROTOCOLOS -->
     <section class="panel" id="panel-proto"><div class="scroller">
       <div class="searchrow"><input class="search" id="qProto" placeholder="Buscar protocolo… (ej. rastreo, tumoral, transgeneracional)" oninput="renderProto()"></div>
@@ -112,15 +142,18 @@
     </section>
   </main>
 </div>
+<div class="modal" id="modal" onclick="if(event.target===this)cerrarDetalle()"><div class="modal-box" id="modalBox"></div></div>
 <script>
-  let PARES=[], CATS={}, MICRO=[], PROTO=[];
+  let PARES=[], CATS={}, MICRO=[], PROTO=[], PBYID={}, CLUSTERS=[], PUNTOS={}, REFS={};
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const keyPar=(a,b)=>norm(a).replace(/[^a-z0-9]/g,'')+'|'+norm(b).replace(/[^a-z0-9]/g,'');
   let filtCat='';
 
   async function cargar(){
     try{
       const d=await (await fetch('/api/pares/catalogo')).json();
       PARES=d.pares||[]; (d.categorias||[]).forEach(c=>CATS[c.id]=c);
+      PARES.forEach(p=>PBYID[p.id]=p);
       document.getElementById('ctPares').textContent=PARES.length;
       // filtros de categoría
       const fc=document.getElementById('filtPares');
@@ -130,12 +163,25 @@
     }catch(e){ document.getElementById('gridPares').innerHTML='<div class="empty">No se pudo cargar el atlas.</div>'; }
     try{ const m=await (await fetch('/api/patogenos-biomag')).json(); MICRO=m.entries||[]; document.getElementById('ctMicro').textContent=MICRO.length; }catch(e){}
     try{ const p=await (await fetch('/api/protocolos-biomag')).json(); PROTO=p.protocols||[]; document.getElementById('ctProto').textContent=PROTO.length; }catch(e){}
+    try{ const pm=await (await fetch('/api/point-to-maps')).json(); PUNTOS=pm.puntos||{}; }catch(e){}
+    try{ const rf=await (await fetch('/api/pares-referencias')).json(); (rf.matches||[]).forEach(m=>{const par=(m.par||'').split(/\s*[-—]\s*/);if(par.length>=2)REFS[keyPar(par[0],par.slice(1).join('-'))]=m.referencias||[]}); }catch(e){}
+    try{ const cl=await (await fetch('/api/clusters-biomag')).json();
+      Object.entries(cl).forEach(([bk,bv])=>{ if(bk.startsWith('bloque')&&bv&&typeof bv==='object') Object.entries(bv).forEach(([cond,pts])=>{ if(Array.isArray(pts)) CLUSTERS.push({cond,pts}); }); });
+      document.getElementById('ctCond').textContent=CLUSTERS.length; renderCond();
+    }catch(e){}
+  }
+  function lookupPunto(nombre){
+    const n=norm(nombre).replace(/\(.*?\)/g,'').replace(/[^a-z0-9 ]/g,'').trim();
+    for(const [k,v] of Object.entries(PUNTOS)){ if(norm(v.canonical||k)===n||norm(k)===n) return v; }
+    for(const [k,v] of Object.entries(PUNTOS)){ if(n&&(norm(v.canonical||'').includes(n)||n.includes(norm(v.canonical||'')))) return v; }
+    return null;
   }
 
   function nav(p){
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
-    const T={pares:['Pares biomagnéticos','Busca cualquier par por nombre, agente, síntoma u órgano. Punto de rastreo (+) e impactación (−).'],
+    const T={pares:['Pares biomagnéticos','Busca cualquier par por nombre, agente, síntoma u órgano. Toca un par para ver su ficha.'],
       micro:['Microbios y patógenos','Fichas clínicas: enfermedades, transmisión, tratamiento. Encuentra los pares de cada agente.'],
+      cond:['Por condición','Sets de pares recomendados por cuadro clínico. Toca un punto para verlo en el atlas.'],
       proto:['Protocolos','Protocolos de trabajo estructurados, listos para consultar.'],
       chat:['Consulta IA','Razonamiento en clave de par y rastreo, anclado en el corpus.']};
     document.getElementById('tbTitle').textContent=T[p][0]; document.getElementById('tbDesc').textContent=T[p][1];
@@ -162,7 +208,7 @@
   function cardPar(p){
     const c=CATS[p.categoria]||{nombre:p.categoria,color:'#64748b',icono:''};
     const sints=(p.condiciones&&p.condiciones.length?p.condiciones:p.sintomas||[]).slice(0,6);
-    return `<div class="card" style="--cc:${c.color}">
+    return `<div class="card click" style="--cc:${c.color}" onclick="openDetail('${p.id}')">
       <div class="pair"><span class="pole"><span class="dot pos"></span>${esc(p.positivo)}</span><span class="arrow">⟷</span><span class="pole"><span class="dot neg"></span>${esc(p.negativo)}</span></div>
       <span class="cat-badge" style="background:${c.color}">${c.icono||''} ${c.nombre}</span>
       ${p.agente?`<div class="agente">Agente: <b>${esc(p.agente)}</b></div>`:''}
@@ -171,6 +217,51 @@
     </div>`;
   }
   function verParesDeAgente(a){ nav('pares'); setCat(''); document.getElementById('qPares').value=a; renderPares(); window.scrollTo(0,0); }
+
+  // ── Ficha de detalle del par ────────────────────────────────
+  function locHtml(nombre,polo){
+    const v=lookupPunto(nombre);
+    let img='';
+    if(v){ if(v.map_bloque) img+=`<img src="${v.map_bloque}" onerror="this.style.display='none'" alt="">`;
+           else if(v.map_zona) img+=`<img src="${v.map_zona}" onerror="this.style.display='none'" alt="">`; }
+    const rz=v?`${esc(v.region||'')}${v.zona?' · '+esc(v.zona):''}`:'Ubicación no catalogada';
+    return `<div class="loc-pt"><div class="nm"><span class="dot ${polo}"></span> ${esc(nombre)}</div><div class="rz">${rz}</div>${img}</div>`;
+  }
+  function openDetail(id){
+    const p=PBYID[id]; if(!p)return;
+    const c=CATS[p.categoria]||{nombre:p.categoria,color:'#64748b',icono:''};
+    const sints=(p.condiciones&&p.condiciones.length?p.condiciones:p.sintomas||[]);
+    const refs=REFS[keyPar(p.positivo,p.negativo)]||[];
+    const refHtml=refs.length?refs.slice(0,8).map(r=>`<div class="ref">${r.tipo?`<b>${esc(r.tipo)}</b> · `:''}${esc(r.patogeno||'')}${r.descripcion?'<br>'+esc(r.descripcion):''}${r.source?`<br><span style="color:var(--muted);font-size:.75rem">${esc(r.source)}</span>`:''}</div>`).join(''):'<p style="color:var(--muted);font-size:.85rem">Sin referencias catalogadas para este par.</p>';
+    document.getElementById('modalBox').innerHTML=`
+      <div class="modal-head">
+        <div><div class="pair">${esc(p.positivo)} <span class="arrow">⟷</span> ${esc(p.negativo)}</div>
+        <span class="cat-badge" style="background:${c.color}">${c.icono||''} ${c.nombre}</span></div>
+        <button class="x" onclick="cerrarDetalle()">✕</button>
+      </div>
+      <div class="modal-body">
+        ${p.agente?`<div class="mb-sec">Agente</div><div>${esc(p.agente)}</div>`:''}
+        <div class="mb-sec">Ubicación y colocación de los imanes</div>
+        <div class="loc">${locHtml(p.positivo,'pos')}${locHtml(p.negativo,'neg')}</div>
+        ${sints.length?`<div class="mb-sec">Síntomas y condiciones</div><div class="chips">${sints.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>`:''}
+        ${p.notas?`<div class="mb-sec">Notas</div><div class="notas">${esc(p.notas)}</div>`:''}
+        <div class="mb-sec">Referencias</div>${refHtml}
+      </div>`;
+    document.getElementById('modal').classList.add('open');
+  }
+  function cerrarDetalle(){ document.getElementById('modal').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarDetalle()});
+
+  // ── Por condición ───────────────────────────────────────────
+  function renderCond(){
+    const q=norm((document.getElementById('qCond')||{}).value||'');
+    let res=CLUSTERS; if(q) res=res.filter(c=>norm(c.cond).includes(q));
+    const el=document.getElementById('listCond'); if(!el)return;
+    document.getElementById('cntCond').textContent=`${res.length} condiciones`;
+    if(!res.length){ el.innerHTML='<div class="empty">Sin resultados.</div>'; return; }
+    el.innerHTML=res.map(c=>`<div class="cond-card"><div class="ct">${esc(c.cond.replace(/_/g,' ').toLowerCase())}</div>
+      <div>${c.pts.map(pt=>`<span class="pt" onclick="verParesDeAgente('${esc(String(pt).replace(/\(.*?\)/g,'').replace(/'/g,'').trim())}')">${esc(pt)}</span>`).join('')}</div></div>`).join('');
+  }
 
   // ── Microbios ───────────────────────────────────────────────
   function renderMicro(){
