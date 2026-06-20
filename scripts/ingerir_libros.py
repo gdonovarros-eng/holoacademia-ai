@@ -63,6 +63,9 @@ def extraer(path):
 
 
 def limpiar(t):
+    # quitar NUL y caracteres de control (basura de OCR que Postgres rechaza)
+    t = t.replace("\x00", "")
+    t = re.sub(r"[\x00-\x08\x0b\x0c\x0e-\x1f]", "", t)
     t = re.sub(r"(\w)-\n(\w)", r"\1\2", t)
     t = re.sub(r"\n\s*\d+\s*\n", "\n", t)
     t = re.sub(r"[ \t]+", " ", t)
