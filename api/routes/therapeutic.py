@@ -162,6 +162,46 @@ def motor_constelaciones(request: BiodescoRequest) -> HolosResponse:
     return HolosResponse(fuentes=fuentes, **result)
 
 
+class GenogramaRequest(BaseModel):
+    datos: dict[str, str] = {}
+    motivo: str | None = None
+
+
+@router.post("/genograma", response_model=HolosResponse)
+def motor_genograma(request: GenogramaRequest) -> HolosResponse:
+    """Lee un genograma capturado en el formulario y devuelve análisis sistémico,
+    raíz transgeneracional, protocolo de trabajo y ejercicios."""
+    from api.chat_service import generar_genograma
+
+    started = time.monotonic()
+    datos = {k: v for k, v in (request.datos or {}).items() if v and str(v).strip()}
+    motivo = (request.motivo or "").strip()
+    sistema = "\n".join(f"- {k}: {v}" for k, v in datos.items()) or "(sin datos capturados)"
+    q = (motivo + " " + " ".join(list(datos.values())[:6]))[:400].strip() \
+        or "genograma transgeneracional lealtad invisible exclusión síndrome de aniversario"
+
+    fuentes = 0
+    ctx = ""
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=12, course_ids=["libros-constelaciones"])
+        ctx = format_context(chunks, max_chars=9000)
+        fuentes = len(chunks)
+    except Exception:
+        pass
+
+    prompt = (
+        (f"MATERIAL DE CONSTELACIONES Y TRANSGENERACIONAL (base para dinámicas, protocolos, "
+         f"ejercicios y frases; no menciones autores ni libros):\n\n{ctx}\n\n========\n\n" if ctx else "")
+        + f"MOTIVO / SÍNTOMA DEL CONSULTANTE: {motivo or '(no especificado)'}\n\n"
+        + f"SISTEMA FAMILIAR (GENOGRAMA) DEL CONSULTANTE:\n{sistema}"
+    )
+    result = generar_genograma(prompt)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("genograma elapsed_ms=%.2f ok=%s fuentes=%d", elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
+
 @router.get("/rag-status")
 def rag_status() -> dict:
     """Diagnóstico del RAG: backend (neon/local) y conteo de chunks."""

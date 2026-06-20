@@ -51,6 +51,28 @@
   .send-btn.ready { opacity: 1; } .send-btn:hover.ready { background: var(--acc-dark); transform: scale(1.05); }
   .send-btn svg { width: 18px; height: 18px; fill: #fff; }
   .input-hint { font-size: 0.72rem; color: var(--muted); text-align: center; margin-top: 8px; }
+  /* Selector de modo */
+  .mode-bar { display: flex; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--border); background: var(--surface); flex-shrink: 0; }
+  .mode-btn { flex: 1; padding: 9px 12px; border: 1px solid var(--border); background: var(--bg); border-radius: 10px; font-family: inherit; font-size: 0.82rem; font-weight: 600; color: var(--muted); cursor: pointer; transition: all .15s; }
+  .mode-btn.active { background: var(--acc); color: #fff; border-color: var(--acc); }
+  /* Panel genograma */
+  .geno-panel { flex: 1; overflow-y: auto; padding: 20px 16px; }
+  .geno-intro { font-size: 0.88rem; color: var(--muted); max-width: 640px; margin: 0 auto 18px; text-align: center; line-height: 1.6; }
+  .geno-form { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .geno-field label { display: block; font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .geno-field .hint { font-weight: 400; color: var(--muted); font-size: 0.75rem; }
+  .geno-field input, .geno-field textarea { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 9px 12px; font-family: inherit; font-size: 0.88rem; color: var(--text); resize: vertical; }
+  .geno-field input:focus, .geno-field textarea:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px var(--acc-dim); }
+  .geno-actions { display: flex; gap: 10px; margin-top: 6px; }
+  .geno-submit { flex: 1; background: var(--acc); color: #fff; border: none; border-radius: 12px; padding: 13px; font-family: inherit; font-size: 0.95rem; font-weight: 700; cursor: pointer; }
+  .geno-submit:hover { background: var(--acc-dark); }
+  .geno-submit:disabled { opacity: .5; cursor: default; }
+  .geno-result { max-width: 700px; margin: 22px auto 0; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 4px 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+  .geno-result:empty { display: none; }
+  .geno-result h2 { font-size: 1.05rem; font-weight: 800; color: var(--acc-dark); margin: 18px 0 6px; }
+  .geno-result h3 { font-size: 0.95rem; font-weight: 700; margin: 12px 0 4px; }
+  .geno-result p { margin: 6px 0; font-size: 0.9rem; line-height: 1.7; } .geno-result li { font-size: 0.9rem; line-height: 1.6; margin: 3px 0; }
+  .geno-result ul, .geno-result ol { padding-left: 20px; }
 </style></head><body class="mod-page-aurora"><div class="app">
 <header class="holo-module-header"><div class="holo-module-header-inner">
   <a href="/" class="holo-module-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a>
@@ -58,6 +80,27 @@
   <div class="holo-module-title-wrap"><div class="holo-module-category">Motor especializado</div><div class="holo-module-title">Constelaciones y Transgeneracional</div></div></div>
   <button class="header-new" onclick="resetChat()">Nueva consulta</button>
 </div></header>
+<div class="mode-bar">
+  <button class="mode-btn active" id="mb-chat" onclick="setMode('chat')">Consulta libre</button>
+  <button class="mode-btn" id="mb-geno" onclick="setMode('geno')">Mapa familiar · Genograma</button>
+</div>
+<div class="geno-panel" id="genoPanel" style="display:none;">
+  <p class="geno-intro">Captura el sistema familiar del consultante. El motor leerá el genograma en clave sistémica y transgeneracional, y te entregará el análisis, un <strong>protocolo de trabajo</strong> y <strong>ejercicios</strong>. No necesitas llenar todo: trabaja con lo que tengas.</p>
+  <div class="geno-form" id="genoForm">
+    <div class="geno-field"><label>Motivo o síntoma del consultante</label><textarea data-k="Motivo/síntoma" rows="2" placeholder="Qué lo trae, qué se repite, qué quiere resolver"></textarea></div>
+    <div class="geno-field"><label>Consultante <span class="hint">(nombre, fecha de nacimiento, lugar entre hermanos)</span></label><textarea data-k="Consultante" rows="2"></textarea></div>
+    <div class="geno-field"><label>Padres <span class="hint">(relación, vivos o fallecidos, fechas/edades, causas)</span></label><textarea data-k="Padres" rows="2"></textarea></div>
+    <div class="geno-field"><label>Abuelos maternos y paternos <span class="hint">(datos clave, muertes)</span></label><textarea data-k="Abuelos" rows="2"></textarea></div>
+    <div class="geno-field"><label>Pareja(s) e hijos <span class="hint">(incluye abortos, hijos no nacidos o fallecidos)</span></label><textarea data-k="Pareja e hijos" rows="2"></textarea></div>
+    <div class="geno-field"><label>Muertes, duelos y eventos trágicos</label><textarea data-k="Muertes y duelos" rows="2"></textarea></div>
+    <div class="geno-field"><label>Excluidos o apartados del sistema <span class="hint">(de quién no se habla, repudiados, dados en adopción)</span></label><textarea data-k="Excluidos" rows="2"></textarea></div>
+    <div class="geno-field"><label>Secretos familiares</label><textarea data-k="Secretos" rows="2"></textarea></div>
+    <div class="geno-field"><label>Repeticiones <span class="hint">(nombres, enfermedades, edades o fechas que se repiten)</span></label><textarea data-k="Repeticiones" rows="2"></textarea></div>
+    <div class="geno-field"><label>Pérdidas de territorio, migraciones, rupturas económicas</label><textarea data-k="Territorio y pérdidas" rows="2"></textarea></div>
+    <div class="geno-actions"><button class="geno-submit" id="genoSubmit" onclick="enviarGenograma()">Generar lectura sistémica</button></div>
+  </div>
+  <div class="geno-result" id="genoResult"></div>
+</div>
 <div class="messages" id="messages"><div class="welcome" id="welcome">
   <div class="welcome-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.6 6.8 6.4 16M13.4 6.8 17.6 16M7.4 18h9.2"/></svg></div>
   <h2>Constelaciones Familiares y Transgeneracional</h2>
@@ -119,5 +162,36 @@
       history.push({role:'user',content:text}); history.push({role:'assistant',content:answer});
     }catch(err){ bubble.innerHTML='<p style="color:#dc2626">Error de conexión. Intenta de nuevo.</p>'; }
     isBusy=false; sendBtnEl.classList.toggle('ready', inputEl.value.trim().length>0); scrollBottom();
+  }
+
+  // ── Modo Genograma ──────────────────────────────────────────────────────
+  function setMode(m){
+    const chat = m==='chat';
+    document.getElementById('messages').style.display = chat ? '' : 'none';
+    document.querySelector('.input-area').style.display = chat ? '' : 'none';
+    document.getElementById('genoPanel').style.display = chat ? 'none' : '';
+    document.getElementById('mb-chat').classList.toggle('active', chat);
+    document.getElementById('mb-geno').classList.toggle('active', !chat);
+  }
+  async function enviarGenograma(){
+    const campos = document.querySelectorAll('#genoForm textarea[data-k]');
+    const datos = {}; let motivo = '';
+    campos.forEach(t => {
+      const v = t.value.trim(); if(!v) return;
+      const k = t.getAttribute('data-k');
+      if (k === 'Motivo/síntoma') motivo = v; else datos[k] = v;
+    });
+    if (!motivo && Object.keys(datos).length === 0){ alert('Captura al menos el motivo o algún dato del sistema familiar.'); return; }
+    const btn = document.getElementById('genoSubmit');
+    const res = document.getElementById('genoResult');
+    btn.disabled = true; const txt0 = btn.textContent; btn.textContent = 'Leyendo el sistema…';
+    res.innerHTML = '<div class="typing-dot"><span></span><span></span><span></span></div>';
+    try{
+      const r = await fetch('/therapeutic/genograma', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ datos, motivo }) });
+      const data = await r.json();
+      res.innerHTML = renderMarkdown((data && data.answer) ? data.answer : 'No pude generar la lectura. Intenta de nuevo.');
+      res.scrollIntoView({ behavior:'smooth', block:'start' });
+    }catch(e){ res.innerHTML = '<p style="color:#dc2626">Error de conexión. Intenta de nuevo.</p>'; }
+    btn.disabled = false; btn.textContent = txt0;
   }
 </script></body></html>
