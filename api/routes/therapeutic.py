@@ -162,6 +162,70 @@ def motor_constelaciones(request: BiodescoRequest) -> HolosResponse:
     return HolosResponse(fuentes=fuentes, **result)
 
 
+class HerramientaRequest(BaseModel):
+    funcion: str          # protocolo | ejercicios | diccionario | frases
+    query: str
+
+
+_FUNC_INSTR = {
+    "protocolo": (
+        "Genera un PROTOCOLO de trabajo sistémico/transgeneracional paso a paso para el "
+        "tema o caso indicado. Estructura con ##: ## Objetivo terapéutico ## Fases o sesiones "
+        "(cada una con sus pasos, qué representar/constelar y en qué orden) ## Frases clave por "
+        "fase ## Señales de avance y cierre. Concreto y accionable."
+    ),
+    "ejercicios": (
+        "Propón de 4 a 6 EJERCICIOS concretos para el tema (psicogenealogía, movimientos "
+        "sistémicos, rituales de reconexión, trabajo con representantes o muñecos). Para cada uno, "
+        "con ###: nombre del ejercicio, para qué sirve, y cómo se hace paso a paso."
+    ),
+    "diccionario": (
+        "Define el término o concepto en clave de constelaciones familiares y transgeneracional. "
+        "Estructura con ##: ## Definición ## De dónde viene y para qué sirve ## Cómo se reconoce "
+        "en un caso ## Ejemplo claro. Preciso y didáctico."
+    ),
+    "frases": (
+        "Entrega FRASES SANADORAS para la situación indicada, agrupadas por intención con ### "
+        "(reconocimiento, honra a los que vinieron antes, tomar el lugar, pertenencia, despedida y "
+        "orden). De 3 a 5 frases por grupo, listas para decir en sesión."
+    ),
+}
+
+
+@router.post("/herramienta", response_model=HolosResponse)
+def herramienta_constelaciones(request: HerramientaRequest) -> HolosResponse:
+    """Herramientas del workspace de Constelaciones: protocolo, ejercicios,
+    diccionario y frases sanadoras, ancladas en el corpus."""
+    from api.chat_service import _generar_con_sistema, CONSTELACIONES_SYSTEM_PROMPT
+
+    started = time.monotonic()
+    funcion = (request.funcion or "").strip().lower()
+    q = (request.query or "").strip()
+    instr = _FUNC_INSTR.get(funcion)
+    if not instr or not q:
+        return HolosResponse(answer="", ok=False, error="parametros_invalidos")
+
+    fuentes = 0
+    ctx = ""
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=12, course_ids=["libros-constelaciones"])
+        ctx = format_context(chunks, max_chars=9000)
+        fuentes = len(chunks)
+    except Exception:
+        pass
+
+    prompt = (
+        instr + "\n\n"
+        + (f"MATERIAL DE REFERENCIA (no menciones autores ni libros):\n\n{ctx}\n\n========\n\n" if ctx else "")
+        + f"TEMA / CONSULTA: {q}"
+    )
+    result = _generar_con_sistema(CONSTELACIONES_SYSTEM_PROMPT, prompt, f"Constel-{funcion}", 0.45, max_tokens=4500)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("constel_herramienta=%s elapsed_ms=%.2f ok=%s fuentes=%d", funcion, elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
+
 class GenogramaRequest(BaseModel):
     datos: dict[str, str] = {}
     motivo: str | None = None
