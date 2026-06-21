@@ -261,6 +261,35 @@ async def catalogo_tiradas():
     return {"ok": True, "tiradas": TIRADAS}
 
 
+@router.get("/mazo")
+async def mazo_completo():
+    """Mazo completo (78 cartas) con palabras clave, sombra y pregunta terapéutica,
+    para el atlas de cartas. Los nombres coinciden con el mapeo de imágenes."""
+    from api.tarot.knowledge import ARCANOS_MAYORES, ARCANOS_MENORES
+    RANKS = {1: "As", 2: "Dos", 3: "Tres", 4: "Cuatro", 5: "Cinco", 6: "Seis", 7: "Siete",
+             8: "Ocho", 9: "Nueve", 10: "Diez", 11: "Paje", 12: "Caballero", 13: "Reina", 14: "Rey"}
+    SUITS = {"bastos": "Bastos", "copas": "Copas", "espadas": "Espadas", "pentaculos": "Pentáculos"}
+    cartas = []
+    for num, m in sorted(ARCANOS_MAYORES.items(), key=lambda kv: kv[0]):
+        cartas.append({
+            "nombre": m.get("nombre_rws"), "grupo": "Arcanos Mayores", "numero": m.get("numero"),
+            "elemento": m.get("elemento", ""), "arquetipo": m.get("arquetipo", ""),
+            "palabras_clave": m.get("palabras_clave", []), "sombra": m.get("sombra", []),
+            "pregunta_terapeutica": m.get("pregunta_terapeutica", ""), "afirmacion": m.get("afirmacion", ""),
+        })
+    for key, c in ARCANOS_MENORES.items():
+        rank = RANKS.get(c.get("numero"), str(c.get("numero")))
+        suit = SUITS.get(c.get("palo"), c.get("palo", ""))
+        nombre = f"As de {suit}" if rank == "As" else f"{rank} de {suit}"
+        cartas.append({
+            "nombre": nombre, "grupo": f"Arcanos Menores · {suit}", "numero": c.get("numero"),
+            "elemento": c.get("elemento", ""), "arquetipo": "",
+            "palabras_clave": c.get("palabras_clave", []), "sombra": c.get("sombra", []),
+            "pregunta_terapeutica": c.get("pregunta_terapeutica", ""), "afirmacion": "",
+        })
+    return {"ok": True, "total": len(cartas), "cartas": cartas}
+
+
 @router.get("/carta/{nombre}")
 async def datos_carta(nombre: str):
     """

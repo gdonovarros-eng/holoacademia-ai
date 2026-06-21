@@ -914,6 +914,142 @@ TIRADAS: dict[str, dict] = {
     },
 }
 
+# ─── Layout (coordenadas %) de cada posición, para acomodar las cartas ───────
+_LAYOUTS: dict[str, list] = {
+    "carta_del_dia": [(50, 42)],
+    "tres_cartas":   [(22, 50), (50, 50), (78, 50)],
+    "cruz_simple":   [(50, 50), (50, 16), (50, 84), (20, 50), (80, 50)],
+    "herradura":     [(12, 74), (22, 44), (37, 24), (50, 18), (63, 24), (78, 44), (88, 74)],
+    "chakras":       [(50, 93), (50, 80), (50, 67), (50, 54), (50, 41), (50, 28), (50, 11)],
+    "cruz_celtica":  [(34, 50), (34, 50), (34, 20), (34, 80), (15, 50), (53, 50), (82, 85), (82, 62), (82, 39), (82, 16)],
+    "cinco_centros": [(11, 28), (11, 50), (11, 72), (30, 28), (30, 50), (30, 72), (50, 28), (50, 50), (50, 72),
+                      (70, 28), (70, 50), (70, 72), (89, 28), (89, 50), (89, 72)],
+}
+for _tid, _coords in _LAYOUTS.items():
+    for _pos, _xy in zip(TIRADAS[_tid]["posiciones"], _coords):
+        _pos["x"], _pos["y"] = _xy[0], _xy[1]
+TIRADAS["cruz_celtica"]["posiciones"][1]["rot"] = True  # carta 2 cruzada
+
+# ─── Tiradas adicionales (con geometría y propósito) ─────────────────────────
+TIRADAS.update({
+    "espejo_relacion": {
+        "nombre": "Espejo de la Relación (7 cartas)",
+        "num_cartas": 7,
+        "descripcion": "Para explorar un vínculo de pareja o relación: cómo está cada parte, qué aporta, el obstáculo y hacia dónde va.",
+        "posiciones": [
+            {"id": 1, "nombre": "Tú", "descripcion": "Cómo estás tú en la relación", "x": 24, "y": 30},
+            {"id": 2, "nombre": "La otra persona", "descripcion": "Cómo está la otra persona", "x": 76, "y": 30},
+            {"id": 3, "nombre": "El vínculo", "descripcion": "La energía de la relación en sí", "x": 50, "y": 50},
+            {"id": 4, "nombre": "Lo que tú aportas", "descripcion": "Lo que tú llevas al vínculo", "x": 24, "y": 70},
+            {"id": 5, "nombre": "Lo que aporta el otro", "descripcion": "Lo que la otra persona lleva", "x": 76, "y": 70},
+            {"id": 6, "nombre": "El obstáculo / la lección", "descripcion": "El reto a trabajar juntos", "x": 50, "y": 20},
+            {"id": 7, "nombre": "Hacia dónde va", "descripcion": "El potencial o dirección del vínculo", "x": 50, "y": 82},
+        ],
+        "fuente": "Tradición del tarot relacional", "enfoque": "relacional",
+    },
+    "decision": {
+        "nombre": "La Decisión — Dos Caminos (5 cartas)",
+        "num_cartas": 5,
+        "descripcion": "Cuando hay que elegir entre dos opciones: muestra cada camino y su resultado probable.",
+        "posiciones": [
+            {"id": 1, "nombre": "La encrucijada", "descripcion": "La situación que exige decidir", "x": 50, "y": 50},
+            {"id": 2, "nombre": "Camino A", "descripcion": "La naturaleza de la primera opción", "x": 25, "y": 26},
+            {"id": 3, "nombre": "Resultado de A", "descripcion": "Adónde lleva la primera opción", "x": 25, "y": 74},
+            {"id": 4, "nombre": "Camino B", "descripcion": "La naturaleza de la segunda opción", "x": 75, "y": 26},
+            {"id": 5, "nombre": "Resultado de B", "descripcion": "Adónde lleva la segunda opción", "x": 75, "y": 74},
+        ],
+        "fuente": "Tradición del tarot práctico", "enfoque": "decision",
+    },
+    "rueda_del_anio": {
+        "nombre": "Rueda del Año (13 cartas)",
+        "num_cartas": 13,
+        "descripcion": "Una carta para el tema del año y una por cada uno de los doce meses. Ideal para inicios de ciclo.",
+        "posiciones": [
+            {"id": 1, "nombre": "Tema del año", "descripcion": "La energía rectora del ciclo", "x": 50, "y": 50},
+            {"id": 2, "nombre": "Mes 1", "descripcion": "Primer mes del ciclo", "x": 50, "y": 9},
+            {"id": 3, "nombre": "Mes 2", "descripcion": "Segundo mes", "x": 70, "y": 15},
+            {"id": 4, "nombre": "Mes 3", "descripcion": "Tercer mes", "x": 85, "y": 30},
+            {"id": 5, "nombre": "Mes 4", "descripcion": "Cuarto mes", "x": 91, "y": 50},
+            {"id": 6, "nombre": "Mes 5", "descripcion": "Quinto mes", "x": 85, "y": 70},
+            {"id": 7, "nombre": "Mes 6", "descripcion": "Sexto mes", "x": 70, "y": 85},
+            {"id": 8, "nombre": "Mes 7", "descripcion": "Séptimo mes", "x": 50, "y": 91},
+            {"id": 9, "nombre": "Mes 8", "descripcion": "Octavo mes", "x": 30, "y": 85},
+            {"id": 10, "nombre": "Mes 9", "descripcion": "Noveno mes", "x": 15, "y": 70},
+            {"id": 11, "nombre": "Mes 10", "descripcion": "Décimo mes", "x": 9, "y": 50},
+            {"id": 12, "nombre": "Mes 11", "descripcion": "Undécimo mes", "x": 15, "y": 30},
+            {"id": 13, "nombre": "Mes 12", "descripcion": "Duodécimo mes", "x": 30, "y": 15},
+        ],
+        "fuente": "Tradición del tarot predictivo", "enfoque": "ciclico",
+    },
+    "sombra": {
+        "nombre": "Trabajo de Sombra (5 cartas)",
+        "num_cartas": 5,
+        "descripcion": "Para integrar aspectos negados de uno mismo: la máscara, la sombra, su origen, el don oculto y la integración.",
+        "posiciones": [
+            {"id": 1, "nombre": "La máscara", "descripcion": "Lo que muestras al mundo", "x": 50, "y": 16},
+            {"id": 2, "nombre": "La sombra", "descripcion": "Lo que ocultas o niegas", "x": 50, "y": 48},
+            {"id": 3, "nombre": "El origen", "descripcion": "De dónde viene esa sombra", "x": 25, "y": 72},
+            {"id": 4, "nombre": "El don oculto", "descripcion": "El recurso que la sombra esconde", "x": 75, "y": 72},
+            {"id": 5, "nombre": "La integración", "descripcion": "Cómo integrarla para sanar", "x": 50, "y": 90},
+        ],
+        "fuente": "Tarot terapéutico junguiano", "enfoque": "terapeutico",
+    },
+    "arbol_vida": {
+        "nombre": "Árbol de la Vida (10 cartas)",
+        "num_cartas": 10,
+        "descripcion": "Las diez sefirot del Árbol de la Vida cabalístico: una lectura espiritual integral del consultante.",
+        "posiciones": [
+            {"id": 1, "nombre": "Kether — Propósito", "descripcion": "La chispa, el propósito superior", "x": 50, "y": 8},
+            {"id": 2, "nombre": "Chokmah — Sabiduría", "descripcion": "La fuerza creadora, la visión", "x": 72, "y": 21},
+            {"id": 3, "nombre": "Binah — Entendimiento", "descripcion": "La forma, la comprensión profunda", "x": 28, "y": 21},
+            {"id": 4, "nombre": "Chesed — Misericordia", "descripcion": "La expansión, la generosidad", "x": 72, "y": 41},
+            {"id": 5, "nombre": "Geburah — Rigor", "descripcion": "La disciplina, los límites", "x": 28, "y": 41},
+            {"id": 6, "nombre": "Tiphareth — Belleza", "descripcion": "El corazón, el equilibrio, el yo", "x": 50, "y": 51},
+            {"id": 7, "nombre": "Netzach — Victoria", "descripcion": "Las emociones, los deseos", "x": 72, "y": 68},
+            {"id": 8, "nombre": "Hod — Gloria", "descripcion": "La mente, la comunicación", "x": 28, "y": 68},
+            {"id": 9, "nombre": "Yesod — Fundamento", "descripcion": "El inconsciente, los sueños", "x": 50, "y": 78},
+            {"id": 10, "nombre": "Malkuth — Reino", "descripcion": "La materia, el cuerpo, lo cotidiano", "x": 50, "y": 92},
+        ],
+        "fuente": "Tarot cabalístico (Golden Dawn)", "enfoque": "espiritual",
+    },
+    "si_o_no": {
+        "nombre": "Sí o No (3 cartas)",
+        "num_cartas": 3,
+        "descripcion": "Para una pregunta concreta de sí o no: la respuesta central y las fuerzas a favor y en contra.",
+        "posiciones": [
+            {"id": 1, "nombre": "La respuesta", "descripcion": "La tendencia central de la respuesta", "x": 50, "y": 38},
+            {"id": 2, "nombre": "Lo que apoya", "descripcion": "Fuerzas a favor", "x": 27, "y": 66},
+            {"id": 3, "nombre": "Lo que limita", "descripcion": "Fuerzas en contra", "x": 73, "y": 66},
+        ],
+        "fuente": "Tradición del tarot práctico", "enfoque": "orientativo",
+    },
+    "cuerpo_mente_espiritu": {
+        "nombre": "Cuerpo · Mente · Espíritu (3 cartas)",
+        "num_cartas": 3,
+        "descripcion": "Una lectura de bienestar integral: el estado del cuerpo, de la mente y del espíritu.",
+        "posiciones": [
+            {"id": 1, "nombre": "Cuerpo", "descripcion": "El estado físico y material", "x": 25, "y": 50},
+            {"id": 2, "nombre": "Mente", "descripcion": "El estado mental y emocional", "x": 50, "y": 50},
+            {"id": 3, "nombre": "Espíritu", "descripcion": "El estado espiritual y de propósito", "x": 75, "y": 50},
+        ],
+        "fuente": "Tarot holístico", "enfoque": "bienestar",
+    },
+    "proposito_alma": {
+        "nombre": "Propósito del Alma (6 cartas)",
+        "num_cartas": 6,
+        "descripcion": "Para reconectar con el sentido de vida: quién eres, tu don, tu herida, tu propósito, el obstáculo y el siguiente paso.",
+        "posiciones": [
+            {"id": 1, "nombre": "Quién eres ahora", "descripcion": "Tu punto de partida", "x": 50, "y": 82},
+            {"id": 2, "nombre": "Tu don", "descripcion": "El talento que traes", "x": 24, "y": 56},
+            {"id": 3, "nombre": "Tu herida", "descripcion": "Lo que duele y enseña", "x": 76, "y": 56},
+            {"id": 4, "nombre": "Tu propósito", "descripcion": "Hacia dónde apunta tu alma", "x": 50, "y": 38},
+            {"id": 5, "nombre": "El obstáculo", "descripcion": "Lo que debes trascender", "x": 24, "y": 20},
+            {"id": 6, "nombre": "El siguiente paso", "descripcion": "La acción concreta ahora", "x": 76, "y": 20},
+        ],
+        "fuente": "Tarot terapéutico", "enfoque": "terapeutico",
+    },
+})
+
 # ─── Correspondencias zodiacales ─────────────────────────────────────────────
 
 # Sistema RWS: correspondencias estándar de la Golden Dawn
