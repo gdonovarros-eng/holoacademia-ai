@@ -1,0 +1,624 @@
+{
+ "dientes": {
+  "13": {
+   "organo": "Dentina",
+   "conflicto": "Conflicto de desvalorización por no tener derecho a ser agresivo o a morder, sintiéndose demasiado bien educado para hacerlo.",
+   "significado": "Poder y agresividad.",
+   "tema_relacional": "Relacionado con el padre o la madre, o con un individuo que sintetiza estas figuras parentales.",
+   "sintomas": [
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Recalcificación con callo que vuelve la dentina más compacta",
+    "Dolor en el proceso de curación"
+   ],
+   "numero": 13,
+   "nombre": "Canino",
+   "tipo": "Canino",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "11": {
+   "organo": "Dentina",
+   "conflicto": "Autodesvalorización por no ser capaz de morder, por no tener derecho a ser agresivo o por no poder defenderse.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "Conflicto relacionado con el padre o figura paterna, o con la propia identidad masculina.",
+   "sintomas": [
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Caries"
+   ],
+   "numero": 11,
+   "nombre": "Incisivo central",
+   "tipo": "Incisivo",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "16": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de autodevaluación por no ser capaz de morder o de ser agresivo, asociado a la interacción con el otro y la capacidad de influir en su estado emocional.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relación con el otro, la capacidad de interactuar y compartir estados emocionales, asociando valores específicos (penas o placeres) a los códigos del otro. Puede estar relacionado con la figura paterna o materna, o un individuo sintetizado de ambos.",
+   "sintomas": [
+    "Osteólisis indolora en la dentina",
+    "Agujeros en la dentina",
+    "Caries oclusales"
+   ],
+   "numero": 16,
+   "nombre": "Primer molar",
+   "tipo": "Primer",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "14": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización relacionado con la capacidad de morder o ser agresivo, o conflictos de separación/desapego.",
+   "significado": "Deseos y proyectos, la capacidad de reconocer códigos y valores en otros para interactuar.",
+   "tema_relacional": "Relacionado con el padre o figura paterna, o con un individuo sintetizado de padre/papá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora",
+    "Agujeros en la dentina"
+   ],
+   "numero": 14,
+   "nombre": "Primer premolar",
+   "tipo": "Primer",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "12": {
+   "organo": "Dientes (esmalte y dentina)",
+   "conflicto": "Conflicto de separación o desvalorización, relacionado con la incapacidad de morder o ser agresivo. Puede haber una desvalorización por no ser escuchado o no poder presentar un proyecto.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "El sector donde se encuentra el diente puede indicar si el conflicto se vivencia en relación a papá o a mamá, o a un individuo sintetizado compuesto de padre/papá o de madre/mamá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros por descalcificación)",
+    "Dolor dental (en fase de curación)"
+   ],
+   "numero": 12,
+   "nombre": "Incisivo lateral",
+   "tipo": "Incisivo",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "15": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación o desvalorización relacionados con los deseos y proyectos. Puede haber una prohibición de ser agresivo o de morder, por educación o moral.",
+   "significado": "Deseos y proyectos. Este diente se relaciona con la capacidad de reconocer los códigos del otro, asociar valores y actuar sobre el estado del otro para establecer una relación.",
+   "tema_relacional": "El sector del diente puede indicar si el conflicto se vivencia en relación a la figura paterna o materna, o una combinación de ambas.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Deterioro de la corteza sensorial y/o post-sensorial",
+    "Pérdida de capacidades intelectuales"
+   ],
+   "numero": 15,
+   "nombre": "Segundo premolar",
+   "tipo": "Segundo",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "17": {
+   "organo": "Aparato masticatorio, aparato digestivo",
+   "conflicto": "Conflicto de autodesvalorización por no ser capaz de morder o ser agresivo, o por no tener derecho a serlo.",
+   "significado": "Decisiones y realización material, memoria completa de experiencias.",
+   "tema_relacional": "Relacionado con la figura paterna o masculina (lado derecho), o con un individuo sintetizado padre/papá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina",
+    "Agujeros en la dentina",
+    "Dolor dental"
+   ],
+   "numero": 17,
+   "nombre": "Segundo molar",
+   "tipo": "Segundo",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "18": {
+   "organo": "Aparato masticatorio, aparato digestivo",
+   "conflicto": "Conflicto de desvalorización relacionado con la capacidad de morder o ser agresivo, o con la incapacidad de actuar sobre el otro.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "El sector superior derecho puede estar relacionado con el padre o figuras de autoridad masculinas, o con el individuo sintetizado compuesto de padre/papá o madre/mamá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Pérdida de capacidades intelectuales (en caso de recidiva de conflictos de separación/desapego)"
+   ],
+   "numero": 18,
+   "nombre": "Tercer molar (muela del juicio)",
+   "tipo": "Tercer",
+   "arcada": "Superior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "21": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de separación o desapego (esmalte) o desvalorización (dentina). No tener derecho a ser agresivo o morder, prohibición moral de morder.",
+   "significado": "Identidad y lugar en el clan, ya que es un incisivo.",
+   "tema_relacional": "El sector del diente puede indicar si el conflicto se relaciona con el padre o la madre, o con un individuo que sintetiza estas figuras.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Recalcificación con callo (dolor durante la curación)",
+    "Pérdida de capacidades intelectuales (por recidiva de conflictos de separación/desapego)"
+   ],
+   "numero": 21,
+   "nombre": "Incisivo central",
+   "tipo": "Incisivo",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "22": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización por no ser capaz de morder o de ser agresivo, o conflicto de separación/desapego.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "Relacionado con la madre o figura materna, y con el lado izquierdo del cuerpo.",
+   "sintomas": [
+    "Osteólisis de la dentina",
+    "Agujeros en la dentina",
+    "Caries"
+   ],
+   "numero": 22,
+   "nombre": "Incisivo lateral",
+   "tipo": "Incisivo",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "24": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización o separación relacionado con los deseos y proyectos, o con la capacidad de interactuar con otros.",
+   "significado": "Deseos y proyectos. Permite reconocer los códigos del otro y actuar sobre su estado para establecer una relación.",
+   "tema_relacional": "Relacionado con el padre o la madre, o con un individuo sintetizado de ambos, en el ámbito de los deseos y proyectos.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Malposición dental"
+   ],
+   "numero": 24,
+   "nombre": "Primer premolar",
+   "tipo": "Primer",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "23": {
+   "organo": "Dentina, marfil, médula frontal del cerebro",
+   "conflicto": "Autodesvalorización por no ser capaz de morder, de ser agresivo o de defenderse, a pesar de tener la capacidad para ello.",
+   "significado": "Poder y agresividad, la capacidad de defenderse y de 'morder' en la vida.",
+   "tema_relacional": "El canino superior izquierdo se relaciona con la figura materna o con aspectos femeninos del individuo, así como con la capacidad de expresar la agresividad de forma adecuada en el entorno social.",
+   "sintomas": [
+    "Osteólisis indolora",
+    "Agujeros en la dentina (visibles en radiografía)",
+    "Recalcificación con callo que vuelve la dentina más compacta",
+    "Dolor durante la fase de curación"
+   ],
+   "numero": 23,
+   "nombre": "Canino",
+   "tipo": "Canino",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "25": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación/desapego que pueden llevar al deterioro de la corteza sensorial y/o post-sensorial y a la pérdida de las capacidades intelectuales. También puede haber conflictos de desvalorización.",
+   "significado": "Deseos y proyectos.",
+   "tema_relacional": "La posición del diente en el arco superior izquierdo puede indicar un conflicto relacionado con la madre o con una figura materna, o con un individuo sintetizado compuesto de madre/mamá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Pérdida de esmalte"
+   ],
+   "numero": 25,
+   "nombre": "Segundo premolar",
+   "tipo": "Segundo",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "26": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de autodevaluación por no ser capaz de morder, o por no tener derecho a ser agresivo. También puede estar relacionado con conflictos de separación/desapego.",
+   "significado": "Decisiones y realización material, libro de memoria completa de las experiencias.",
+   "tema_relacional": "Relacionado con la figura materna o femenina, o con un individuo sintetizado de padre/madre.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros por descalcificación en el interior del diente)",
+    "Dolor dental (especialmente en fase de curación)"
+   ],
+   "numero": 26,
+   "nombre": "Primer molar",
+   "tipo": "Primer",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "28": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de desvalorización relacionados con la capacidad de tomar decisiones y la realización material.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relacionado con la figura materna o con un individuo sintetizado de padre/madre, en el lado izquierdo.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora",
+    "Agujeros en la dentina"
+   ],
+   "numero": 28,
+   "nombre": "Tercer molar (muela del juicio)",
+   "tipo": "Tercer",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "32": {
+   "organo": "Dientes (dentina)",
+   "conflicto": "Autodesvalorización por no ser capaz de morder o ser agresivo, o por no poder retener algo que ya se tenía en la boca.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "El sector inferior izquierdo se relaciona con la madre o con el individuo sintetizado compuesto de madre/mamá.",
+   "sintomas": [
+    "Osteólisis de la dentina",
+    "Agujeros por descalcificación en el interior del diente",
+    "Recalcificación con callo que vuelve la dentina más compacta",
+    "Dolor dental durante la fase de curación"
+   ],
+   "numero": 32,
+   "nombre": "Incisivo lateral",
+   "tipo": "Incisivo",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "27": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización por no ser capaz de morder o de ser agresivo, o conflicto de separación/desapego.",
+   "significado": "Decisiones y realización material. Se asemeja a un libro de memoria completa de experiencias.",
+   "tema_relacional": "El sector donde se encuentra el diente ayuda a averiguar si el conflicto se vivencia en relación a papá o a mamá, o a un individuo sintetizado de padre/mamá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Recalcificación con callo"
+   ],
+   "numero": 27,
+   "nombre": "Segundo molar",
+   "tipo": "Segundo",
+   "arcada": "Superior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "31": {
+   "organo": "Dentina",
+   "conflicto": "Autodevaluación por no ser capaz de morder, por no tener derecho a ser agresivo o por una palabra aprisionada.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "Relacionado con la figura materna o con el individuo sintetizado compuesto de madre/mamá, y con el lado izquierdo del cuerpo.",
+   "sintomas": [
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Caries"
+   ],
+   "numero": 31,
+   "nombre": "Incisivo central",
+   "tipo": "Incisivo",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "33": {
+   "organo": "Dentina",
+   "conflicto": "Autodevaluación por no ser capaz de morder, de ser agresivo o de defenderse. Conflicto de separación/desapego.",
+   "significado": "Poder y agresividad.",
+   "tema_relacional": "El sector inferior izquierdo puede relacionarse con la madre o con un individuo sintetizado compuesto de madre/mamá.",
+   "sintomas": [
+    "Osteólisis de la dentina",
+    "Agujeros por descalcificación en la dentina",
+    "Recalcificación con callo que vuelve la dentina más compacta (fase de curación)",
+    "Dolor en el diente (durante la fase de curación)",
+    "Caries"
+   ],
+   "numero": 33,
+   "nombre": "Canino",
+   "tipo": "Canino",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "34": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación/desapego (esmalte) y/o desvalorización (dentina). Puede haber una desvalorización ósea de la dentina, relacionada con la prohibición de ser agresivo.",
+   "significado": "Deseos y proyectos.",
+   "tema_relacional": "El sector inferior izquierdo se relaciona con el individuo sintetizado compuesto de padre/papá o madre/mamá, y el conflicto se vivencia en relación a ellos.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Deterioro de la corteza sensorial y/o post-sensorial",
+    "Pérdida de capacidades intelectuales"
+   ],
+   "numero": 34,
+   "nombre": "Primer premolar",
+   "tipo": "Primer",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "35": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización por no ser capaz de 'morder' o ser agresivo, o conflicto de separación/desapego.",
+   "significado": "Deseos y proyectos.",
+   "tema_relacional": "Conflicto vivenciado en relación a la madre o a un individuo sintetizado de madre/mamá, o en relación a un 'macho' o 'hembra' en un momento dado.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros en la dentina)",
+    "Recalcificación con callo que vuelve la dentina más compacta",
+    "Dolor dental"
+   ],
+   "numero": 35,
+   "nombre": "Segundo premolar",
+   "tipo": "Segundo",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "37": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de autodevaluación por no ser capaz de 'morder' o defenderse, o por no tener derecho a ser agresivo.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relacionado con la madre o figura materna, en el ámbito de las experiencias completas y la conciencia evolutiva.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros por descalcificación)",
+    "Dolor en fase de curación"
+   ],
+   "numero": 37,
+   "nombre": "Segundo molar",
+   "tipo": "Segundo",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "38": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización por no ser capaz de 'morder' o ser agresivo, o por no tener derecho a serlo. También puede estar relacionado con conflictos de separación/desapego.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "El sector inferior izquierdo se relaciona con la madre o figura materna, o con un individuo sintetizado de padre/madre.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros en la dentina)",
+    "Dolor dental (especialmente durante la fase de curación)"
+   ],
+   "numero": 38,
+   "nombre": "Tercer molar (muela del juicio)",
+   "tipo": "Tercer",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "41": {
+   "organo": "Dentina",
+   "conflicto": "Autodevaluación por no ser capaz de morder, por no tener derecho a ser agresivo o por una palabra aprisionada.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "Conflicto vivenciado en relación a la madre o a la figura materna.",
+   "sintomas": [
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Caries"
+   ],
+   "numero": 41,
+   "nombre": "Incisivo central",
+   "tipo": "Incisivo",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "36": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación o desvalorización, especialmente relacionados con la capacidad de morder o ser agresivo.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relacionado con la madre o la figura materna, y la capacidad de interactuar y actuar sobre el otro.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora",
+    "Agujeros en la dentina",
+    "Dolor dental durante el proceso de curación"
+   ],
+   "numero": 36,
+   "nombre": "Primer molar",
+   "tipo": "Primer",
+   "arcada": "Inferior",
+   "lado": "Izquierdo",
+   "fuentes": 8
+  },
+  "44": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación/desapego (esmalte) o desvalorización (dentina). Puede estar relacionado con la prohibición de ser agresivo o de morder, como un 'San Bernardo'.",
+   "significado": "Deseos y proyectos. Este diente, al ser un premolar, se asocia con la capacidad de reconocer códigos en el otro y entrar en relación, interactuando con él para compartir estados emocionales.",
+   "tema_relacional": "El sector inferior derecho se relaciona con el individuo sintetizado compuesto de padre/papá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina, visibles en radiografías)",
+    "Deterioro de la corteza sensorial y/o post-sensorial",
+    "Pérdida de capacidades intelectuales"
+   ],
+   "numero": 44,
+   "nombre": "Primer premolar",
+   "tipo": "Primer",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "43": {
+   "organo": "Dentina del diente",
+   "conflicto": "Autodesvalorización por no ser capaz de 'morder' o defenderse en una situación, sintiéndose incapaz o humillado.",
+   "significado": "Poder y agresividad, la capacidad de defenderse y establecer límites.",
+   "tema_relacional": "Conflicto relacionado con la figura paterna o con una situación que se vive como una agresión o humillación por parte de alguien más fuerte, que impide expresar la agresividad o defenderse.",
+   "sintomas": [
+    "Osteólisis de la dentina",
+    "Agujeros por descalcificación en el interior del diente",
+    "Dolor dental durante la fase de curación (recalcificación)",
+    "Recalcificación con callo que vuelve la dentina más compacta"
+   ],
+   "numero": 43,
+   "nombre": "Canino",
+   "tipo": "Canino",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "42": {
+   "organo": "Dentina",
+   "conflicto": "Autodesvalorización por no ser capaz de morder, de ser agresivo o de defenderse, o por no tener derecho a serlo.",
+   "significado": "Identidad y lugar en el clan.",
+   "tema_relacional": "Relacionado con el individuo sintetizado compuesto de padre/papá o madre/mamá, o con el sector donde se encuentra el diente.",
+   "sintomas": [
+    "Osteólisis de la dentina",
+    "Agujeros en la dentina",
+    "Recalcificación con callo que vuelve la dentina más compacta",
+    "Dolor dental durante el proceso de curación"
+   ],
+   "numero": 42,
+   "nombre": "Incisivo lateral",
+   "tipo": "Incisivo",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "45": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización o separación/desapego. Puede estar relacionado con la incapacidad de ser agresivo o de morder, por buena educación o moral.",
+   "significado": "Deseos y proyectos. Este diente, al ser un premolar, se asocia con la expresión de los deseos y la concreción de proyectos.",
+   "tema_relacional": "El sector inferior derecho se relaciona con el padre o la figura paterna, o con una figura sintetizada de padre/papá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Deterioro de la corteza sensorial y/o post-sensorial",
+    "Pérdida de capacidades intelectuales"
+   ],
+   "numero": 45,
+   "nombre": "Segundo premolar",
+   "tipo": "Segundo",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "46": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de desvalorización por no ser capaz de 'morder' o ser agresivo, o conflicto de separación/desapego.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relación con el padre o figura paterna, o con un individuo sintetizado compuesto de padre/papá.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina (agujeros en la dentina)",
+    "Dolor dental (especialmente durante la fase de curación)"
+   ],
+   "numero": 46,
+   "nombre": "Primer molar",
+   "tipo": "Primer",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "47": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflicto de autodesvalorización por no ser capaz de morder, o por no tener derecho a ser agresivo. También puede estar relacionado con conflictos de separación/desapego.",
+   "significado": "Decisiones y realización material",
+   "tema_relacional": "Relacionado con el padre o figura paterna, o con un individuo sintetizado de padre/papá. Al ser inferior derecho, se asocia con el padre o el masculino en el ámbito de la acción y el futuro.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis de la dentina",
+    "Agujeros por descalcificación en la dentina",
+    "Dolor dental durante la fase de curación",
+    "Pérdida de capacidades intelectuales (en caso de recidiva de conflictos de separación/desapego)"
+   ],
+   "numero": 47,
+   "nombre": "Segundo molar",
+   "tipo": "Segundo",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  },
+  "48": {
+   "organo": "Aparato masticatorio y digestivo",
+   "conflicto": "Conflictos de separación y/o desvalorización, especialmente relacionados con la capacidad de morder o ser agresivo, pero sintiendo que no se tiene derecho a ello.",
+   "significado": "Decisiones y realización material.",
+   "tema_relacional": "Relacionado con la figura paterna o masculina, o con un individuo sintetizado de padre/madre, en el ámbito de las decisiones y la realización material.",
+   "sintomas": [
+    "Caries",
+    "Osteólisis indolora (agujeros en la dentina)",
+    "Desvalorización ósea de la dentina"
+   ],
+   "numero": 48,
+   "nombre": "Tercer molar (muela del juicio)",
+   "tipo": "Tercer",
+   "arcada": "Inferior",
+   "lado": "Derecho",
+   "fuentes": 8
+  }
+ },
+ "lateralidad": {
+  "intro": "La lateralidad biológica es un factor determinante en la interpretación de los conflictos biológicos y su manifestación orgánica. Es fundamental para el diagnóstico y la terapia, ya que el cerebro transfiere el conflicto al lado opuesto del cerebro según la lateralidad del individuo, lo que a su vez define qué lado del cuerpo se verá afectado y qué tipo de conflicto se asocia a cada lado.",
+  "como_determinar": "La lateralidad biológica se puede determinar observando la forma en que una mujer sostiene a su hijo. Una madre diestra habitualmente sostiene a su hijo con la mano izquierda presionando la cabeza hacia su pecho y la mano derecha sosteniendo las nalgas, mirando al niño con su ojo derecho. Una madre zurda lo hace exactamente al contrario, sosteniendo al niño con la mano derecha y mirándolo con el ojo izquierdo. También se puede observar cómo un hombre diestro mide su territorio con el ojo izquierdo y cómo un diestro reconoce la cara de sus seres queridos con el ojo derecho. Es importante considerar que algunas personas fueron obligadas a cambiar de mano en la infancia, por lo que su lateralidad aparente podría no ser la biológica.",
+  "diestro": {
+   "derecha": "Para una persona diestra, el lado derecho del cuerpo se relaciona con conflictos con la pareja o con cualquier otra persona que no sea la madre o los hijos (suegra, vecinos, jefe, amigos, etc.). También se asocia con conflictos relacionales con el padre, hermanos, hermanas o compañeros de trabajo, es decir, con quienes son sus iguales en el grupo.",
+   "izquierda": "Para una persona diestra, el lado izquierdo del cuerpo se relaciona con conflictos con el niño, la madre de la mujer, el nido, o con cualquier persona o animal percibido como niño. También se asocia con conflictos relacionales con la madre o con los propios hijos, o con quienes son colocados por el individuo en esta tipología biológica."
+  },
+  "zurdo": {
+   "derecha": "Para una persona zurda, el lado derecho del cuerpo se relaciona con conflictos con la madre, sus propios hijos, o con quienes son colocados por el individuo en esta tipología biológica. Por ejemplo, si una mujer zurda sufre dolores en el hombro izquierdo, significa que ha superado un conflicto de descenso de autoestima en relación con una pareja, mientras que si es en el hombro derecho, se relaciona con la madre o los hijos.",
+   "izquierda": "Para una persona zurda, el lado izquierdo del cuerpo se relaciona con conflictos con la pareja o con cualquier otra persona que no sea la madre o los hijos (suegra, vecinos, jefe, amigos, etc.). También se asocia con conflictos relacionales con el padre, hermanos, hermanas o compañeros de trabajo, es decir, con quienes son sus iguales en el grupo."
+  },
+  "claves": [
+   "La lateralidad biológica no es una cosa extraña de la naturaleza, sino un factor fisiológico con efectos poderosos en el diagnóstico y la terapia.",
+   "El zurdo transfiere el conflicto al lado opuesto del cerebro respecto al diestro, lo que invierte la relación entre el lado del cuerpo afectado y el tipo de conflicto.",
+   "La lateralidad es especialmente relevante en el córtex cerebral y puede producir inversiones en órganos pares de la primera y segunda etapa embrionaria, como las gónadas o los senos.",
+   "Los conflictos biológicos están determinados biológicamente y no tienen que ver primariamente con la psicología convencional, como lo demuestra la inversión de los conflictos en personas zurdas.",
+   "Es crucial determinar la lateralidad biológica real del individuo, más allá de la mano dominante aparente, para una correcta interpretación de los síntomas."
+  ]
+ },
+ "ciclos": {
+  "intro": "Los Ciclos Biológicos Celulares Memorizados (CBCM) describen un fenómeno de repetición de eventos o sensaciones en la vida de una persona, que se originan en memorias inconscientes relacionadas con experiencias pasadas. Estos ciclos pueden manifestarse a través de comportamientos, enfermedades, accidentes, o cambios importantes en la vida, buscando una descarga de la carga emocional no resuelta de un episodio original.",
+  "principio": "El principio fundamental de los CBCM es la repetición de patrones temporales. Un ciclo se define por un elemento básico repetitivo con un inicio, un período y un final. La memoria cíclica implica que mensajes conscientes e inconscientes, ligados a sensaciones y fechas específicas de un episodio vivido, se reactivan en momentos posteriores, generando una repetición de la temática original. Estos ciclos no son aproximados, sino que pueden ser muy precisos en su duración, como 21 años, 7 meses, 2 semanas y 3 días, y requieren un cálculo exacto para su identificación.",
+  "como_calcular": "Para calcular un ciclo, se debe identificar un evento significativo en la vida del paciente (el evento original o 'episodio') y determinar la edad o fecha exacta en que ocurrió. Luego, se buscan repeticiones de este patrón temporal en la vida posterior del paciente, que pueden manifestarse en diferentes formas. El cálculo debe ser preciso, no aproximado, ya que los ciclos pueden tener duraciones muy específicas (por ejemplo, 21 años, 7 meses, 2 semanas y 3 días). La observación de la vida del paciente y la identificación de eventos que se alinean con estos patrones temporales son cruciales. Se pueden utilizar tablas para registrar edades, fechas y eventos, buscando coincidencias cíclicas.",
+  "ejemplo": "Una paciente que a los cinco años sufrió un Reumatismo Articular Agudo (RAA) y fue dejada sola en un hospital durante seis meses, sintiéndose abandonada. Años después, su oficio de osteópata, especializado en patologías osteo-articulatorias, se convirtió en una 'reparación' de ese doloroso episodio de su infancia. Este ejemplo ilustra cómo un evento traumático en la niñez puede programar una temática que se manifiesta y busca resolución en ciclos posteriores de la vida, a veces a través de la profesión o la enfermedad.",
+  "claves": [
+   "Los CBCM no son aproximados; requieren un cálculo preciso de fechas y edades.",
+   "La descarga emocional de un conflicto no resuelto puede manifestarse de diversas formas (enfermedad, comportamiento, accidente).",
+   "La exploración de la historia de vida del paciente, incluyendo la infancia y el transgeneracional, es fundamental para identificar los CBCM.",
+   "Los ciclos pueden ser de diferentes duraciones, desde ciclos fisiológicos (como el menstrual) hasta ciclos de vida más largos.",
+   "La identificación de los CBCM es una herramienta poderosa para descubrir memorias cíclicas activantes y comprender el origen de los síntomas."
+  ]
+ },
+ "proyecto_sentido": {
+  "intro": "El Proyecto/Sentido Gestacional es el periodo que abarca desde el deseo de tener un hijo hasta aproximadamente el primer cumpleaños del niño, pudiendo extenderse hasta el tercer año en algunos casos. Durante este tiempo, el ser en desarrollo sufre la influencia de su entorno, y se forman complejos conflictivos que quedan en la reserva pulsional del niño. Se refiere a lo que estaba en la mente de los padres al momento de concebir y durante el embarazo, y cómo estas intenciones y eventos influyen en la construcción de la personalidad del niño.",
+  "etapas": [
+   {
+    "etapa": "Deseo de concebir",
+    "periodo": "Antes de la concepción",
+    "que_se_programa": "Intenciones parentales explícitas o implícitas, como el deseo de tener un hijo atento, a la escucha, o incluso la intención de no llevar el embarazo adelante. También se incluyen las dinámicas familiares, como la sexualidad, el adulterio, hijos no reconocidos o enlaces arreglados."
+   },
+   {
+    "etapa": "Gestación",
+    "periodo": "Desde la concepción hasta el nacimiento",
+    "que_se_programa": "Eventos y sensaciones vividas por la madre (anodinas, notorias, desestabilizantes, positivas o negativas), que forman complejos conflictivos. El feto está en estrecha conexión con el líquido amniótico y los sentimientos de la madre, impregnándose de todo lo vivido. Se incluyen también las improntas del embarazo, como el 'niño accidente', la tentativa de interrupción voluntaria del embarazo, o el sexo no deseado."
+   },
+   {
+    "etapa": "Primeros años de vida",
+    "periodo": "Desde el nacimiento hasta el primer o tercer cumpleaños",
+    "que_se_programa": "El mensaje inconsciente del Proyecto/Sentido se agrega y mezcla con las bases clásicas de construcción de la personalidad del niño durante sus siete primeros años, influyendo en su comportamiento arquetípico masculino o femenino."
+   }
+  ],
+  "claves": [
+   "Identificar las intenciones parentales, tanto conscientes como inconscientes, al momento de la concepción y durante el embarazo, ya que estas pueden influir en la personalidad y comportamiento del niño.",
+   "Explorar los eventos y emociones vividas por la madre durante la gestación, ya que el feto se impregna de estas experiencias, formando complejos conflictivos que pueden manifestarse posteriormente.",
+   "Considerar el contexto familiar y las dinámicas de pareja (sexualidad, adulterio, hijos no reconocidos) en el periodo del Proyecto/Sentido, ya que estos factores pueden programar al niño con ciertas características o roles."
+  ]
+ }
+}

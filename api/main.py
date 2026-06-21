@@ -813,6 +813,18 @@ async def api_referencia_biodesco():
                     headers={"Cache-Control": "public, max-age=3600"})
 
 
+@app.get("/api/mapas-biodesco", include_in_schema=False)
+async def api_mapas_biodesco():
+    """Mapas especiales: mapa dental, lateralidad, ciclos biológicos, proyecto sentido."""
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "biodesco_mapas.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Mapas no encontrados")
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
 @app.get("/api/pares-referencias", include_in_schema=False)
 async def api_pares_referencias():
     """Referencias bibliográficas y ubicación por par (para la ficha de detalle)."""
