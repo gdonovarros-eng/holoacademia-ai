@@ -91,6 +91,11 @@
     <button class="nav-item" data-p="lateralidad" onclick="nav('lateralidad')"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l-2 4 2 4M19 8l2 4-2 4"/></svg>Lateralidad biológica</button>
     <button class="nav-item" data-p="ciclos" onclick="nav('ciclos')"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>Ciclos biológicos</button>
     <button class="nav-item" data-p="proyecto" onclick="nav('proyecto')"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Proyecto Sentido</button>
+    <button class="nav-item" data-p="dedos" onclick="nav('dedos')"><svg viewBox="0 0 24 24"><path d="M6 11V5a1.5 1.5 0 0 1 3 0v5m0 0V3.5a1.5 1.5 0 0 1 3 0V10m0 0V4.5a1.5 1.5 0 0 1 3 0V11m0 0V7a1.5 1.5 0 0 1 3 0v7a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3L4 16"/></svg>Dedos · mano y pie<span class="ct">10</span></button>
+    <button class="nav-item" data-p="piel" onclick="nav('piel')"><svg viewBox="0 0 24 24"><path d="M4 7c4-3 12-3 16 0M4 12c4-3 12-3 16 0M4 17c4-3 12-3 16 0"/></svg>Piel y lunares</button>
+    <button class="nav-item" data-p="peso" onclick="nav('peso')"><svg viewBox="0 0 24 24"><path d="M12 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7 7h10l3 13H4L7 7z"/></svg>Peso y grasa</button>
+    <button class="nav-item" data-p="duelos" onclick="nav('duelos')"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/></svg>Embarazos y duelos</button>
+    <button class="nav-item" data-p="homonimos" onclick="nav('homonimos')"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>Yacente y homónimos</button>
     <div class="sb-sec">Clínica</div>
     <button class="nav-item" data-p="ficha" onclick="nav('ficha')"><svg viewBox="0 0 24 24"><path d="M9 2h6a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2zM7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 12h6M9 16h4"/></svg>Ficha de caso<span class="ct" id="ctCaso"></span></button>
     <div class="sb-sec">Asistente</div>
@@ -122,6 +127,11 @@
     <section class="panel" id="panel-lateralidad"><div class="scroller"><div id="latBox"></div></div></section>
     <section class="panel" id="panel-ciclos"><div class="scroller"><div id="cicBox"></div></div></section>
     <section class="panel" id="panel-proyecto"><div class="scroller"><div id="proyBox"></div></div></section>
+    <section class="panel" id="panel-dedos"><div class="scroller"><div id="dedosBox"></div></div></section>
+    <section class="panel" id="panel-piel"><div class="scroller"><div id="pielBox"></div></div></section>
+    <section class="panel" id="panel-peso"><div class="scroller"><div id="pesoBox"></div></div></section>
+    <section class="panel" id="panel-duelos"><div class="scroller"><div id="duelosBox"></div></div></section>
+    <section class="panel" id="panel-homonimos"><div class="scroller"><div id="homBox"></div></div></section>
 
     <section class="panel" id="panel-ficha"><div class="scroller">
       <div id="printHide" style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
@@ -160,6 +170,7 @@
     try{ MAPAS=await(await fetch('/api/mapas-biodesco')).json(); }catch(e){ MAPAS={}; }
     cargarCaso(); renderChips(); renderDicc(); renderLeyes(); renderCapas(); renderFases();
     renderDientes(); renderLat(); renderCic(); renderProy();
+    renderDedos(); renderPiel(); renderPeso(); renderDuelos(); renderHom();
   }
   function nav(p){
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
@@ -172,6 +183,11 @@
       lateralidad:['Lateralidad biológica','Diestro o zurdo: a quién o a qué apunta cada lado del cuerpo.'],
       ciclos:['Ciclos biológicos memorizados','Por qué las fechas y edades se repiten en el clan.'],
       proyecto:['Proyecto Sentido','Lo que se inscribe en el niño desde el deseo hasta la primera infancia.'],
+      dedos:['Dedos de la mano y del pie','Cada dedo codifica un conflicto y un meridiano.'],
+      piel:['Piel y lunares','La frontera del contacto: capas, zonas y el significado de los lunares.'],
+      peso:['Peso y grasa','El sentido biológico de retener kilos, zona por zona.'],
+      duelos:['Embarazos y duelos','Abortos, pérdidas y duelos no resueltos, y su huella en el sistema.'],
+      homonimos:['Yacente y homónimos','Las figuras transgeneracionales que cargan un programa ajeno.'],
       ficha:['Ficha de caso','Arma y guarda el caso. Imprime o exporta a PDF.'],
       ia:['Consulta IA','Dos lecturas: Biodescodificación y NMG / 5 Leyes.']};
     document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
@@ -262,6 +278,35 @@
     el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
       <div class="timeline">${(p.etapas||[]).map(e=>`<div class="tstep"><div class="card"><h3>${esc(e.etapa||'')}</h3><div class="pos">${esc(e.periodo||'')}</div><div class="det">${esc(e.que_se_programa||'')}</div></div></div>`).join('')}</div>
       ${(p.claves||[]).length?`<div class="card" style="margin-top:12px"><h3>Claves para el terapeuta</h3><ul class="claves">${p.claves.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>`:''}`;
+  }
+  function clavesCard(arr){return (arr||[]).length?`<div class="card" style="margin-top:12px"><h3>Claves para el terapeuta</h3><ul class="claves">${arr.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>`:'';}
+  function renderDedos(){const D=MAPAS.dedos||[];const el=document.getElementById('dedosBox');if(!D.length){el.innerHTML='<div class="empty">En preparación.</div>';return;}
+    const grupo=parte=>{const items=D.filter(d=>d.parte===parte);if(!items.length)return '';
+      return `<div class="mb-sec">${parte==='mano'?'Mano':'Pie'}</div><div class="grid">${items.map(d=>`<div class="card"><h3 style="font-size:.98rem">${esc(d.dedo)}</h3>${d.organo?`<div class="pos">${esc(d.organo)}</div>`:''}<p style="font-size:.88rem;margin-top:5px">${esc(d.conflicto||'')}</p>${d.significado?`<p style="font-size:.84rem;color:var(--muted);margin-top:5px">${esc(d.significado)}</p>`:''}${(d.sintomas||[]).length?`<div style="font-size:.78rem;color:var(--muted);margin-top:6px">${d.sintomas.map(esc).join(' · ')}</div>`:''}</div>`).join('')}</div>`;};
+    el.innerHTML=grupo('mano')+grupo('pie');
+  }
+  function renderPiel(){const p=MAPAS.piel;const el=document.getElementById('pielBox');if(!p){el.innerHTML='<div class="empty">En preparación.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.capas||[]).length?`<div class="mb-sec">Las capas de la piel</div><div class="grid2">${p.capas.map(c=>`<div class="card"><h3 style="font-size:.98rem">${esc(c.capa)}</h3><p style="font-size:.88rem">${esc(c.conflicto||'')}</p>${c.ejemplos?`<p style="font-size:.82rem;color:var(--muted);margin-top:5px">${esc(c.ejemplos)}</p>`:''}</div>`).join('')}</div>`:''}
+      ${p.lunares?`<div class="card" style="margin-top:12px"><h3>Lunares y manchas</h3><div class="det">${esc(p.lunares)}</div></div>`:''}
+      ${(p.zonas||[]).length?`<div class="card" style="margin-top:12px"><h3>Por zona del cuerpo</h3><div class="kv">${p.zonas.map(z=>`<b>${esc(z.zona)}</b><span>${esc(z.significado)}</span>`).join('')}</div></div>`:''}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderPeso(){const p=MAPAS.peso;const el=document.getElementById('pesoBox');if(!p){el.innerHTML='<div class="empty">En preparación.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${p.principio?`<div class="card" style="margin-bottom:12px"><h3>El principio</h3><div class="det">${esc(p.principio)}</div></div>`:''}
+      ${(p.por_zona||[]).length?`<div class="card"><h3>Según la zona</h3><div class="kv">${p.por_zona.map(z=>`<b>${esc(z.zona)}</b><span>${esc(z.significado)}</span>`).join('')}</div></div>`:''}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderDuelos(){const p=MAPAS.duelos;const el=document.getElementById('duelosBox');if(!p){el.innerHTML='<div class="empty">En preparación.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.tipos||[]).map(t=>`<div class="card" style="margin-bottom:10px"><h3 style="font-size:.98rem">${esc(t.tipo)}</h3>${t.descripcion?`<p style="font-size:.88rem">${esc(t.descripcion)}</p>`:''}${t.efecto?`<div class="mb-sec">Huella en el sistema</div><p style="font-size:.88rem">${esc(t.efecto)}</p>`:''}</div>`).join('')}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderHom(){const p=MAPAS.homonimos;const el=document.getElementById('homBox');if(!p){el.innerHTML='<div class="empty">En preparación.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.figuras||[]).map(f=>`<div class="card" style="margin-bottom:10px"><h3 style="font-size:.98rem">${esc(f.figura)}</h3>${f.descripcion?`<p style="font-size:.88rem">${esc(f.descripcion)}</p>`:''}${f.senal?`<div class="mb-sec">Señales de que se carga</div><p style="font-size:.88rem">${esc(f.senal)}</p>`:''}</div>`).join('')}
+      ${clavesCard(p.claves)}`;
   }
   function cargarCaso(){ try{ CASO=JSON.parse(localStorage.getItem('biodesco_caso'))||{conflictos:[]}; }catch(e){ CASO={conflictos:[]}; } if(!CASO.conflictos)CASO.conflictos=[];
     document.getElementById('fConsult').value=CASO.consultante||''; document.getElementById('fFecha').value=CASO.fecha||'';
