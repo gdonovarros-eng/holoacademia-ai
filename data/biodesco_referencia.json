@@ -1,0 +1,102 @@
+{
+  "leyes": [
+    {
+      "numero": 1,
+      "nombre": "Ley del conflicto biológico (DHS)",
+      "resumen": "Todo programa biológico con sentido se inicia con un impacto emocional inesperado, vivido en soledad y sin solución en el momento.",
+      "detalle": "El instante del shock determina simultáneamente tres cosas: el contenido del conflicto (cómo se vive el evento), el órgano que reacciona y la zona cerebral que lo controla. La forma exacta en que la persona vive el impacto define qué tejido se activa. Mientras el conflicto siga activo, el órgano y el cerebro evolucionan en paralelo."
+    },
+    {
+      "numero": 2,
+      "nombre": "Ley de las dos fases",
+      "resumen": "Cuando el conflicto se resuelve, todo programa transcurre en dos fases: una activa (estrés) y una de reparación (recuperación).",
+      "detalle": "En la fase activa (simpaticotonía) hay tensión, manos y pies fríos, insomnio, pensamiento obsesivo y pérdida de apetito. Tras resolver el conflicto entra la fase de reparación (vagotonía): cansancio, calor, apetito, inflamación y reparación del tejido. En el punto medio de la reparación ocurre la crisis épica, un breve repunte de síntomas que marca el giro hacia la curación."
+    },
+    {
+      "numero": 3,
+      "nombre": "Sistema ontogenético de los programas",
+      "resumen": "El comportamiento de cada tejido en cada fase depende de su capa embrionaria de origen.",
+      "detalle": "Los tejidos derivados del endodermo y del mesodermo antiguo hacen más tejido (tumores) en fase activa y lo reducen o lo encapsulan en reparación. Los tejidos del mesodermo nuevo y del ectodermo pierden sustancia o función en fase activa (úlcera, necrosis, bloqueo) y la reconstruyen en reparación. Conocer la capa permite anticipar qué hace el órgano en cada momento."
+    },
+    {
+      "numero": 4,
+      "nombre": "Ley del papel de los microbios",
+      "resumen": "Los microbios no causan la enfermedad: actúan como obreros que intervienen en la fase de reparación, dirigidos por el cerebro.",
+      "detalle": "Hongos y micobacterias degradan el exceso de tejido del endodermo y mesodermo antiguo; bacterias reparan y rellenan en mesodermo nuevo; virus participan en la reconstrucción de tejidos del ectodermo. Cada germen actúa solo en su capa correspondiente y solo cuando el conflicto ya está resuelto."
+    },
+    {
+      "numero": 5,
+      "nombre": "Ley del sentido biológico (la quintaesencia)",
+      "resumen": "Todo programa biológico tiene un sentido: es una respuesta de la naturaleza con una función de supervivencia, no un error.",
+      "detalle": "Cada síntoma cumple un propósito adaptativo en su contexto evolutivo: aumentar una capacidad, proteger, eliminar, o forzar el descanso. Entender el sentido biológico transforma la lectura del síntoma de un problema a resolver en una información a descodificar."
+    }
+  ],
+  "capas": [
+    {
+      "nombre": "Endodermo",
+      "hoja": "Hoja embrionaria más antigua",
+      "control_cerebral": "Tronco cerebral",
+      "tema": "Supervivencia básica: respirar, comer, digerir, eliminar, reproducirse",
+      "tipo_conflicto": "Conflictos arcaicos del bocado: no poder atrapar, tragar, digerir o eliminar el bocado (de aire, de alimento, de información)",
+      "fase_activa": "Crecimiento de tejido (adenocarcinomas, pólipos) para cumplir mejor la función vital",
+      "fase_reparacion": "Reducción o encapsulamiento del tejido con ayuda de hongos y micobacterias",
+      "ejemplos": "Alvéolos pulmonares, mucosa digestiva, hígado, páncreas, riñón colector, tiroides"
+    },
+    {
+      "nombre": "Mesodermo antiguo",
+      "hoja": "Hoja media antigua",
+      "control_cerebral": "Cerebelo",
+      "tema": "Protección e integridad: cubrir, contener, proteger",
+      "tipo_conflicto": "Conflictos de ataque contra la integridad, de mancha o suciedad, de no sentirse protegido",
+      "fase_activa": "Crecimiento de tejido protector (tumores de dermis, mesotelio, glándula mamaria)",
+      "fase_reparacion": "Degradación del tejido sobrante por micobacterias, con caseificación",
+      "ejemplos": "Dermis, pleura, peritoneo, pericardio, glándula mamaria"
+    },
+    {
+      "nombre": "Mesodermo nuevo",
+      "hoja": "Hoja media nueva",
+      "control_cerebral": "Sustancia blanca cerebral",
+      "tema": "Valor, rendimiento y movimiento",
+      "tipo_conflicto": "Conflictos de desvalorización: no servir, no estar a la altura, no poder sostener o moverse",
+      "fase_activa": "Pérdida de sustancia (necrosis, úlcera, osteólisis) en la zona que representa la desvalorización",
+      "fase_reparacion": "Reconstrucción con relleno (callo óseo, edema), a veces dolorosa, con ayuda de bacterias",
+      "ejemplos": "Huesos, cartílagos, músculos, tendones, tejido conjuntivo, ovarios y testículos"
+    },
+    {
+      "nombre": "Ectodermo",
+      "hoja": "Hoja embrionaria más reciente",
+      "control_cerebral": "Corteza cerebral",
+      "tema": "Relación, contacto y territorio",
+      "tipo_conflicto": "Conflictos de separación, de contacto impuesto o roto, de territorio, de identidad y de miedo",
+      "fase_activa": "Pérdida de función o de sustancia superficial (úlcera, bloqueo sensorial o motor), a menudo sin dolor",
+      "fase_reparacion": "Reconstrucción de la piel/mucosa o recuperación de la función, con inflamación y a veces virus",
+      "ejemplos": "Epidermis, mucosas de revestimiento, vías biliares y urinarias, bronquios, cuello uterino, retina"
+    }
+  ],
+  "fases": [
+    {
+      "nombre": "Normotonía",
+      "fase": "equilibrio",
+      "descripcion": "Estado de equilibrio antes del conflicto: alternancia normal entre día y noche, actividad y descanso.",
+      "sintomas": ["ritmo de sueño normal", "apetito normal", "temperatura estable"]
+    },
+    {
+      "nombre": "Fase activa (simpaticotonía)",
+      "fase": "conflicto activo",
+      "descripcion": "Desde el impacto hasta resolver el conflicto. El cuerpo se prepara para resolver: toda la energía se moviliza.",
+      "sintomas": ["manos y pies fríos", "insomnio o despertar de madrugada", "pensamiento obsesivo en el tema", "pérdida de apetito y de peso", "tensión constante"]
+    },
+    {
+      "nombre": "Fase de reparación (vagotonía)",
+      "fase": "reparacion",
+      "descripcion": "Comienza al resolver el conflicto. El cuerpo repara el tejido afectado y recupera el equilibrio.",
+      "sintomas": ["cansancio y necesidad de descanso", "calor, sudor, a veces fiebre", "vuelve el apetito", "inflamación y dolor de reparación", "buena disposición al sueño"]
+    },
+    {
+      "nombre": "Crisis épica",
+      "fase": "crisis",
+      "descripcion": "Punto medio de la reparación: un breve y a veces intenso repunte de síntomas que marca el giro definitivo hacia la curación.",
+      "sintomas": ["repunte breve de síntomas", "puede haber mareo, calambre o ausencia", "tras ella, mejoría progresiva"]
+    }
+  ]
+}

@@ -789,6 +789,30 @@ async def api_clusters_biomag():
                     headers={"Cache-Control": "public, max-age=3600"})
 
 
+@app.get("/api/diccionario-biodesco", include_in_schema=False)
+async def api_diccionario_biodesco():
+    """Diccionario biológico: conflicto, sentido biológico, capa y fases por síntoma."""
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "biodesco_diccionario.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Diccionario no encontrado")
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/api/referencia-biodesco", include_in_schema=False)
+async def api_referencia_biodesco():
+    """Las 5 Leyes Biológicas, capas embrionarias y fases de la enfermedad."""
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / "biodesco_referencia.json"
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail="Referencia no encontrada")
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
 @app.get("/api/pares-referencias", include_in_schema=False)
 async def api_pares_referencias():
     """Referencias bibliográficas y ubicación por par (para la ficha de detalle)."""
