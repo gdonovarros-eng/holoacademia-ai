@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Herbolaria · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f6faf4;--surface:#fff;--surface2:#eef5e9;--border:#dde9d4;--acc:#16a34a;--acc-dim:rgba(22,163,74,.10);--acc-dark:#15803d;--text:#16261a;--muted:#5e6f5e;--sidebar:#16261a;--sidebar2:#22372a}
+  html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
+  .workspace{display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:252px;flex-shrink:0;background:var(--sidebar);color:#e6f0e6;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
+  .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#9bb59b;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#86a386;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c2d6c2;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
+  .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#86a386;font-weight:700}.nav-item.active .ct{color:#d6f0d6}
+  .nav-item.soon{opacity:.5;cursor:default}
+  .sb-foot{margin-top:auto;padding-top:12px}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#9bb59b;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+  .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
+  .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:block}
+  .scroller{padding:22px;max-width:1100px}
+  .search{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:11px 15px;font-family:inherit;font-size:.92rem;color:var(--text)}
+  .search:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-dim)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--muted)}
+  .chip.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .count{font-size:.78rem;color:var(--muted);margin:6px 2px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .gcard{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .14s;border-left:4px solid var(--acc)}
+  .gcard:hover{box-shadow:0 8px 20px rgba(22,163,74,.13);transform:translateY(-2px)}
+  .gcard .nm{font-weight:800;font-size:.96rem;line-height:1.25}
+  .gcard .sub{font-size:.72rem;color:var(--muted);margin-top:2px}
+  .gcard .cf{font-size:.83rem;color:var(--text);margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .badge{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:8px;background:var(--surface2);color:var(--acc-dark)}
+  .modal{position:fixed;inset:0;background:rgba(22,38,26,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:16px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px}
+  .modal-box h2{font-size:1.25rem;font-weight:800}.modal-box .sub{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+  .mb-sec{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:15px 0 4px}
+  .mb-sec.neg{color:#b45309}.mb-sec.pos{color:#15803d}
+  .modal-box p{font-size:.9rem}.modal-box ul{padding-left:18px;font-size:.9rem}.modal-box li{margin:3px 0}
+  .modal-box .x{float:right;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
+  .kw{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}.kw span{background:var(--surface2);border-radius:6px;padding:3px 9px;font-size:.76rem}
+  .frase{background:var(--acc-dim);border-radius:9px;padding:5px 11px;margin:4px 0;font-size:.88rem}
+  textarea.search{min-height:90px;resize:vertical}
+  .btn{background:var(--acc);color:#fff;border:none;border-radius:11px;padding:11px 18px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+  .btn:hover{background:var(--acc-dark)}.btn:disabled{opacity:.5}
+  .reading{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 22px;margin-top:16px}.reading:empty{display:none}
+  .reading h2{font-size:1.05rem;color:var(--acc-dark);font-weight:800;margin:16px 0 6px}.reading h3{font-size:.95rem;font-weight:700;margin:12px 0 4px}.reading p{margin:7px 0;font-size:.9rem;line-height:1.7}.reading strong{font-weight:700}.reading ul,.reading ol{padding-left:20px}
+  .loading{text-align:center;color:var(--muted);padding:30px}.empty{color:var(--muted);padding:40px;text-align:center}
+  @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}}
+</style></head><body>
+<div class="workspace">
+  <aside class="sidebar">
+    <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22c0-6 0-9 4-13M12 22C12 11 7 7 3 6c0 7 3 12 9 13zm0-4c5-1 8-5 9-12-4 1-9 5-9 12z"/></svg></div><div><div class="t">Herbolaria</div><div class="s">Fitoterapia · Bach · México</div></div></div>
+    <div class="sb-sec">Esencias y flores</div>
+    <button class="nav-item active" data-p="bach" onclick="nav('bach')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V3M12 15v6M15 12h6M3 12h6M14.5 9.5l4-4M5.5 18.5l4-4M14.5 14.5l4 4M5.5 5.5l4 4"/></svg>Flores de Bach<span class="ct" id="ctBach"></span></button>
+    <button class="nav-item" data-p="aztecas" onclick="nav('aztecas')"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.5-.5z"/></svg>Elixires Aztecas<span class="ct" id="ctAz"></span></button>
+    <div class="sb-sec">Atlas de plantas</div>
+    <button class="nav-item" data-p="mexicana" onclick="nav('mexicana')"><svg viewBox="0 0 24 24"><path d="M12 22V8M12 8C12 4 9 2 5 2c0 4 3 6 7 6zM12 8c0-3 3-5 7-5 0 4-3 5-7 5z"/></svg>Herbolaria mexicana<span class="ct" id="ctMex"></span></button>
+    <button class="nav-item soon" title="Próximamente"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Materia médica<span class="ct">pronto</span></button>
+    <div class="sb-sec">Asistente</div>
+    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consulta IA</button>
+    <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><h1 id="tbT">Flores de Bach</h1><p id="tbD">Las 38 flores + Rescate, por estado emocional.</p></div>
+
+    <section class="panel active" id="panel-bach"><div class="scroller">
+      <input class="search" id="qBach" placeholder="Buscar flor o estado… (ej. miedo, culpa, agotamiento)" oninput="renderBach()">
+      <div class="chips" id="chipsBach"></div>
+      <div class="count" id="cntBach"></div>
+      <div class="grid" id="gridBach"></div>
+    </div></section>
+
+    <section class="panel" id="panel-aztecas"><div class="scroller">
+      <input class="search" id="qAz" placeholder="Buscar esencia azteca…" oninput="renderAz()">
+      <div class="chips" id="chipsAz"></div>
+      <div class="count" id="cntAz"></div>
+      <div class="grid" id="gridAz"></div>
+    </div></section>
+
+    <section class="panel" id="panel-mexicana"><div class="scroller">
+      <input class="search" id="qMex" placeholder="Buscar planta… (nombre común, náhuatl o uso)" oninput="renderMex()">
+      <div class="count" id="cntMex"></div>
+      <div class="grid" id="gridMex"></div>
+    </div></section>
+
+    <section class="panel" id="panel-ia"><div class="scroller">
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">Describe la dolencia o necesidad. La respuesta integra fitoterapia, herbolaria mexicana y flores, con preparación, dosis y seguridad, anclada en la biblioteca.</p>
+      <textarea class="search" id="iaQ" placeholder="Ej. Insomnio por ansiedad en una mujer de 50 años; ¿qué plantas y flores?"></textarea>
+      <div style="margin-top:10px"><button class="btn" id="iaBtn" onclick="consultarIA()">Consultar al motor</button></div>
+      <div class="reading" id="iaR"></div>
+    </div></section>
+  </main>
+</div>
+<div class="modal" id="modal" onclick="if(event.target===this)cerrar()"><div class="modal-box" id="modalBox"></div></div>
+<script>
+  let BACH=[], AZ=[], MEX=[], fGrupoBach='todos', fTipoAz='todos';
+  const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const J=o=>JSON.stringify(o).replace(/"/g,'&quot;');
+
+  async function cargar(){
+    try{ BACH=Object.values(await(await fetch('/api/herb-bach')).json()); }catch(e){}
+    try{ AZ=Object.values(await(await fetch('/api/herb-aztecas')).json()); }catch(e){}
+    try{ MEX=Object.values(await(await fetch('/api/herb-mexicana')).json()).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')); }catch(e){}
+    document.getElementById('ctBach').textContent=BACH.length; document.getElementById('ctAz').textContent=AZ.length; document.getElementById('ctMex').textContent=MEX.length;
+    renderChipsBach(); renderBach(); renderChipsAz(); renderAz(); renderMex();
+  }
+  function nav(p){
+    document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
+    document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
+    const T={bach:['Flores de Bach','Las 38 flores + Rescate, por estado emocional.'],
+      aztecas:['Elixires Aztecas','Esencias individuales y remedios combinados del set azteca.'],
+      mexicana:['Herbolaria mexicana','Plantas medicinales tradicionales de México.'],
+      ia:['Consulta IA','Fitoterapia + herbolaria mexicana + flores, con seguridad.']};
+    document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
+  }
+  // ── Bach ──
+  function renderChipsBach(){
+    const gs=[...new Set(BACH.map(b=>b.grupo).filter(Boolean))];
+    document.getElementById('chipsBach').innerHTML=`<span class="chip ${fGrupoBach==='todos'?'active':''}" onclick="setGB('todos')">Todos</span>`+
+      gs.map(g=>`<span class="chip ${fGrupoBach===g?'active':''}" onclick="setGB(${J(g)})">${esc(g)}</span>`).join('');
+  }
+  function setGB(g){ fGrupoBach=g; renderChipsBach(); renderBach(); }
+  function renderBach(){
+    const q=norm((document.getElementById('qBach')||{}).value||'');
+    let r=BACH; if(fGrupoBach!=='todos') r=r.filter(b=>b.grupo===fGrupoBach);
+    if(q) r=r.filter(b=>norm([b.nombre,b.nombre_en,b.estado_negativo,(b.palabras_clave||[]).join(' '),(b.senales||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntBach').textContent=r.length+' de '+BACH.length;
+    document.getElementById('gridBach').innerHTML=r.map(b=>{const i=BACH.indexOf(b);
+      return `<div class="gcard" onclick="abrirBach(${i})"><div class="nm">${esc(b.nombre)}</div><div class="sub">${esc(b.nombre_en||'')} · ${esc(b.grupo||'')}</div><div class="cf">${esc(b.estado_negativo||'')}</div></div>`;}).join('');
+  }
+  function abrirBach(i){const b=BACH[i];if(!b)return;
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(b.nombre)}</h2><div class="sub">${esc(b.nombre_en||'')} · ${esc(b.grupo||'')}</div>
+      <div class="mb-sec neg">Estado a transformar</div><p>${esc(b.estado_negativo||'')}</p>
+      <div class="mb-sec pos">Hacia</div><p>${esc(b.estado_positivo||'')}</p>
+      ${b.indicacion?`<div class="mb-sec">Indicación</div><p>${esc(b.indicacion)}</p>`:''}
+      ${(b.palabras_clave||[]).length?`<div class="mb-sec">Palabras clave</div><div class="kw">${b.palabras_clave.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:''}
+      ${(b.senales||[]).length?`<div class="mb-sec">Señales típicas</div>${b.senales.map(s=>`<div class="frase">${esc(s)}</div>`).join('')}`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  // ── Aztecas ──
+  function renderChipsAz(){
+    document.getElementById('chipsAz').innerHTML=['todos','individual','combinado'].map(t=>`<span class="chip ${fTipoAz===t?'active':''}" onclick="setTA('${t}')">${t==='todos'?'Todas':t==='individual'?'Individuales':'Combinados'}</span>`).join('');
+  }
+  function setTA(t){ fTipoAz=t; renderChipsAz(); renderAz(); }
+  function renderAz(){
+    const q=norm((document.getElementById('qAz')||{}).value||'');
+    let r=AZ; if(fTipoAz!=='todos') r=r.filter(a=>a.tipo===fTipoAz);
+    if(q) r=r.filter(a=>norm([a.nombre,a.cualidad,a.armoniza,(a.palabras_clave||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntAz').textContent=r.length+' de '+AZ.length;
+    document.getElementById('gridAz').innerHTML=r.map(a=>{const i=AZ.indexOf(a);
+      return `<div class="gcard" onclick="abrirAz(${i})"><div class="nm">${esc(a.nombre)}</div><div class="sub">${a.tipo==='combinado'?'Combinado':'Individual'}${a.origen&&a.origen!=='Sin datos'?' · '+esc(a.origen):''}</div><div class="cf">${esc(a.cualidad||a.armoniza||'')}</div></div>`;}).join('');
+  }
+  function abrirAz(i){const a=AZ[i];if(!a)return;
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(a.nombre)}</h2><div class="sub">${a.tipo==='combinado'?'Remedio combinado':'Esencia individual'}${a.origen&&a.origen!=='Sin datos'?' · '+esc(a.origen):''}</div>
+      ${a.cualidad?`<div class="mb-sec pos">Cualidad que ayuda a aflorar</div><p>${esc(a.cualidad)}</p>`:''}
+      ${a.armoniza?`<div class="mb-sec">Armoniza</div><p>${esc(a.armoniza)}</p>`:''}
+      ${a.indicacion?`<div class="mb-sec">Indicación</div><p>${esc(a.indicacion)}</p>`:''}
+      ${(a.palabras_clave||[]).length?`<div class="mb-sec">Palabras clave</div><div class="kw">${a.palabras_clave.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  // ── Mexicana ──
+  function renderMex(){
+    const q=norm((document.getElementById('qMex')||{}).value||'');
+    let r=MEX; if(q) r=r.filter(m=>norm([m.nombre,m.nahuatl,m.cientifico,(m.usos||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntMex').textContent=r.length+' de '+MEX.length+' plantas';
+    document.getElementById('gridMex').innerHTML=r.map(m=>{const i=MEX.indexOf(m);
+      return `<div class="gcard" onclick="abrirMex(${i})"><div class="nm">${esc(m.nombre)}</div><div class="sub">${[m.nahuatl,m.cientifico].filter(x=>x&&x!=='Sin datos').map(esc).join(' · ')}</div><div class="cf">${esc((m.usos||[]).slice(0,3).join(', '))}</div></div>`;}).join('');
+  }
+  function abrirMex(i){const m=MEX[i];if(!m)return;const dv=v=>v&&v!=='Sin datos';
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(m.nombre)}</h2><div class="sub">${[m.nahuatl,m.cientifico].filter(dv).map(esc).join(' · ')}</div>
+      ${dv(m.parte_usada)?`<div class="mb-sec">Parte usada</div><p>${esc(m.parte_usada)}</p>`:''}
+      ${(m.usos||[]).length?`<div class="mb-sec">Usos tradicionales</div><ul>${m.usos.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:''}
+      ${dv(m.preparacion)?`<div class="mb-sec">Preparación</div><p>${esc(m.preparacion)}</p>`:''}
+      ${dv(m.precaucion)?`<div class="mb-sec neg">Precaución</div><p>${esc(m.precaucion)}</p>`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  function cerrar(){ document.getElementById('modal').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar()});
+  // ── IA ──
+  async function consultarIA(){
+    const q=document.getElementById('iaQ').value.trim(); if(!q){alert('Describe la dolencia o necesidad.');return;}
+    const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Consultando…';
+    const r=document.getElementById('iaR'); r.innerHTML='<div class="loading">Analizando con la biblioteca herbal…</div>';
+    try{ const res=await fetch('/therapeutic/herbolaria',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q,query:q})});
+      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#dc2626">No se pudo generar la respuesta.</p>'; }
+    catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
+    btn.disabled=false; btn.textContent=t0;
+  }
+  function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}
+  cargar();
+</script></body></html>

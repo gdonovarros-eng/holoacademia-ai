@@ -301,7 +301,7 @@ _SESSION_COOKIE = "holo_sess"
 _SESSION_MAX_AGE = 60 * 60 * 24 * 7   # 7 días
 _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/asistenteia")
 
-_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/biodescodificacion", "/biomagnetismo", "/constelaciones", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
+_PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/biodescodificacion", "/biomagnetismo", "/constelaciones", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/herbolaria", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -825,6 +825,34 @@ async def api_mapas_biodesco():
                     headers={"Cache-Control": "public, max-age=3600"})
 
 
+def _serve_data_json(nombre: str, detalle: str):
+    from fastapi.responses import Response
+    p = THERAPY_STATIC_DIR.parent.parent / "data" / nombre
+    if not p.exists():
+        from fastapi import HTTPException
+        raise HTTPException(status_code=404, detail=detalle)
+    return Response(content=p.read_bytes(), media_type="application/json",
+                    headers={"Cache-Control": "public, max-age=3600"})
+
+
+@app.get("/api/herb-bach", include_in_schema=False)
+async def api_herb_bach():
+    """Atlas de Flores de Bach (38 + Rescate)."""
+    return _serve_data_json("herb_bach.json", "Atlas de Bach no encontrado")
+
+
+@app.get("/api/herb-aztecas", include_in_schema=False)
+async def api_herb_aztecas():
+    """Atlas de Elixires Aztecas (esencias individuales + combinados)."""
+    return _serve_data_json("herb_aztecas.json", "Atlas de Aztecas no encontrado")
+
+
+@app.get("/api/herb-mexicana", include_in_schema=False)
+async def api_herb_mexicana():
+    """Atlas de Herbolaria Mexicana (plantas medicinales tradicionales)."""
+    return _serve_data_json("herb_mexicana.json", "Atlas mexicano no encontrado")
+
+
 @app.get("/api/pares-referencias", include_in_schema=False)
 async def api_pares_referencias():
     """Referencias bibliográficas y ubicación por par (para la ficha de detalle)."""
@@ -858,6 +886,10 @@ async def api_guia_clinica():
 @app.get("/tarot", include_in_schema=False)
 async def tarot_app() -> FileResponse:
     return FileResponse(THERAPY_STATIC_DIR / "tarot.html", headers=_no_cache_headers(allow_iframe=True))
+
+@app.get("/herbolaria", include_in_schema=False)
+async def herbolaria_app() -> FileResponse:
+    return FileResponse(THERAPY_STATIC_DIR / "herbolaria.html", headers=_no_cache_headers(allow_iframe=True))
 
 @app.get("/horoscopo", include_in_schema=False)
 async def horoscopo_app() -> FileResponse:

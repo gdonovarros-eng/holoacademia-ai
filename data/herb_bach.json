@@ -1,0 +1,955 @@
+{
+ "cerato": {
+  "estado_negativo": "Falta de confianza en el propio juicio, dependencia del consejo ajeno.",
+  "estado_positivo": "Seguridad tranquila, intuición, confianza en la capacidad de juzgar y actuar.",
+  "indicacion": "Para aquellos que carecen de confianza en sus propias decisiones y buscan constantemente la opinión y aprobación de otros antes de actuar.",
+  "palabras_clave": [
+   "incertidumbre",
+   "dependencia",
+   "inseguridad",
+   "duda",
+   "influenciable",
+   "juicio"
+  ],
+  "senales": [
+   "Necesito tomar una decisión, pero no tengo suficiente confianza en mí mismo. Será mejor que consulte con mis 'amigos' y averigüe qué creen que debo hacer.",
+   "Después de todo, debería haber seguido mis propios sentimientos.",
+   "Siempre voy de un lado a otro pidiendo consejo."
+  ],
+  "slug": "cerato",
+  "nombre": "Cerato",
+  "nombre_en": "Cerato",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "alamo_temblon": {
+  "estado_negativo": "Miedo a lo desconocido, ansiedad inexplicable, presentimientos ominosos sin causa aparente.",
+  "estado_positivo": "Confianza, seguridad interior, capacidad de enfrentar lo desconocido con serenidad.",
+  "indicacion": "Se utiliza para miedos vagos, inexplicables y presentimientos de que algo terrible va a ocurrir, sin una causa concreta que los justifique.",
+  "palabras_clave": [
+   "miedo desconocido",
+   "ansiedad inexplicable",
+   "presentimientos",
+   "terror oculto",
+   "aprensión"
+  ],
+  "senales": [
+   "Una sensación espeluznante y fría nos invade, se nos eriza el pelo y se nos pone la piel de gallina.",
+   "Miedos desconocidos.",
+   "El remedio eliminará el shock en el sistema, de miedo, que ha abrumado las emociones y ha causado que el Chakra se congele.",
+   "El niño tiene miedo a los insectos y a los perros."
+  ],
+  "slug": "alamo_temblon",
+  "nombre": "Álamo temblón",
+  "nombre_en": "Aspen",
+  "grupo": "Miedo",
+  "fuentes": 8
+ },
+ "cerasifera": {
+  "estado_negativo": "Miedo a perder el control mental o físico, impulsos incontrolables, tensión emocional extrema.",
+  "estado_positivo": "Valor tranquilo, resistencia, control mental, capacidad de mantener la cordura en situaciones extremas.",
+  "indicacion": "Para personas que temen perder el control de sus pensamientos o acciones, con riesgo de arrebatos, comportamientos destructivos o suicidas.",
+  "palabras_clave": [
+   "pérdida de control",
+   "impulsividad",
+   "miedo a la locura",
+   "crisis emocional",
+   "comportamientos compulsivos",
+   "tendencias suicidas"
+  ],
+  "senales": [
+   "He experimentado momentos de locura temporal, o impulsos suicidas o destructivos.",
+   "Mi mente a veces parece una cárcel.",
+   "Tiendo a afrontar situaciones estresantes o desafiantes aferrándome a ellas con más fuerza, como si soltarlo significara que había perdido el control.",
+   "A menudo recurro al alcohol u otras drogas para reprimir cualquier emoción desagradable o preocupante.",
+   "La Sra. CHERRY PLUM tiene miedo de lo que podría hacer al perder el control."
+  ],
+  "slug": "cerasifera",
+  "nombre": "Cerasífera",
+  "nombre_en": "Cherry Plum",
+  "grupo": "Miedo",
+  "fuentes": 8
+ },
+ "castano_rojo": {
+  "estado_negativo": "Preocupación excesiva y miedo por el bienestar de los demás, anticipando desgracias.",
+  "estado_positivo": "Paz mental, compasión sin ansiedad, capacidad de enviar pensamientos positivos y mantener la calma en emergencias.",
+  "indicacion": "Para personas que sufren ansiedad y temor desproporcionado por sus seres queridos, llegando a descuidar su propio bienestar.",
+  "palabras_clave": [
+   "miedo por otros",
+   "ansiedad ajena",
+   "preocupación excesiva",
+   "anticipación desgracia",
+   "paz mental",
+   "compasión serena"
+  ],
+  "senales": [
+   "A menudo han dejado de preocuparse por sí mismos, pero por aquellos a quienes aprecian pueden sufrir mucho, anticipando con frecuencia que algo desafortunado puede sucederles.",
+   "Me temo que algo malo les pasará a mis seres queridos.",
+   "Mi ansiedad por ellos, aunque había hecho todo lo posible por ocultarla, no les había ayudado en absoluto."
+  ],
+  "slug": "castano_rojo",
+  "nombre": "Castaño rojo",
+  "nombre_en": "Red Chestnut",
+  "grupo": "Miedo",
+  "fuentes": 8
+ },
+ "heliantemo": {
+  "estado_negativo": "Terror, pánico, miedo extremo y paralizante, shock repentino.",
+  "estado_positivo": "Coraje, calma, capacidad de mantener la serenidad en emergencias.",
+  "indicacion": "Para situaciones de emergencia, accidentes, enfermedades repentinas o cualquier evento que cause pánico extremo y desesperación, incluso cuando no hay esperanza aparente.",
+  "palabras_clave": [
+   "Pánico",
+   "Terror",
+   "Shock",
+   "Emergencia",
+   "Desesperación",
+   "Paralizante"
+  ],
+  "senales": [
+   "El remedio de emergencia para los casos en los que ni siquiera parece haber esperanza alguna.",
+   "En un accidente o enfermedad repentina, o cuando el paciente está muy asustado o aterrorizado.",
+   "El paciente está totalmente desesperado, el miedo extremo puede producir el estado de pánico, donde todo pensamiento consciente es imposible.",
+   "El miedo repentino, potente y paralizante afecta el corazón, generando síntomas como palpitaciones, insomnio, sensación de desmayo, pérdida de claridad mental."
+  ],
+  "slug": "heliantemo",
+  "nombre": "Heliantemo",
+  "nombre_en": "Rock Rose",
+  "grupo": "Miedo",
+  "fuentes": 8
+ },
+ "mimulo": {
+  "estado_negativo": "Miedo a cosas conocidas, timidez, retraimiento",
+  "estado_positivo": "Coraje, confianza, capacidad de afrontar los miedos",
+  "indicacion": "Para miedos específicos y conocidos, timidez, y fobias, permitiendo a la persona enfrentar sus temores y expresarse.",
+  "palabras_clave": [
+   "Miedo conocido",
+   "Timidez",
+   "Fobias",
+   "Retraimiento",
+   "Inseguridad",
+   "Miedo cotidiano"
+  ],
+  "senales": [
+   "Tengo miedo a la enfermedad",
+   "Me asusta la soledad",
+   "Soy muy tímido para hablar en público",
+   "No me gusta la gente nueva",
+   "Soporto mi temor en silencio"
+  ],
+  "slug": "mimulo",
+  "nombre": "Mímulo",
+  "nombre_en": "Mimulus",
+  "grupo": "Miedo",
+  "fuentes": 8
+ },
+ "scleranthus": {
+  "estado_negativo": "Indecisión, incapacidad para elegir o decidir entre dos opciones.",
+  "estado_positivo": "Firmeza, decisión, capacidad para formar opiniones correctas y seguirlas.",
+  "indicacion": "Indicada para personas que experimentan dificultad para tomar decisiones, fluctuando entre dos opciones sin poder establecer un curso de acción definitivo.",
+  "palabras_clave": [
+   "Indecisión",
+   "Fluctuación",
+   "Duda",
+   "Incapacidad de elegir",
+   "Falta de firmeza",
+   "Oscilación"
+  ],
+  "senales": [
+   "Mi mente me obliga a volver a comprobar incluso lo que creo que es correcto, porque la duda de haber pasado algo por alto me está atenazando.",
+   "También tendré que ir a comprar mis zapatos, pero si voy... ¿será mejor allí o allí? ¿Podré hacer eso, entonces?",
+   "¿Es usted de los que encuentran difícil tomar decisiones; formar opiniones cuando pensamientos conflictivos entran en su mente de modo que es difícil decidir el curso correcto: cuando la indecisión persigue tu camino y retrasa tu progreso: ¿primero una cosa parece correcta y luego otra?"
+  ],
+  "slug": "scleranthus",
+  "nombre": "Scleranthus",
+  "nombre_en": "Scleranthus",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "hojarazo": {
+  "estado_negativo": "Cansancio mental, desinterés, apatía, tedio, falta de entusiasmo por la rutina.",
+  "estado_positivo": "Vitalidad, interés renovado, entusiasmo, capacidad para afrontar las tareas diarias.",
+  "indicacion": "Para el cansancio mental que lleva al desinterés y la apatía, especialmente cuando la rutina genera tedio y falta de entusiasmo.",
+  "palabras_clave": [
+   "cansancio mental",
+   "tedio",
+   "apatía",
+   "desinterés",
+   "rutina",
+   "vitalidad"
+  ],
+  "senales": [
+   "Me siento agotado mentalmente, sin ganas de hacer nada.",
+   "La rutina me aburre y me quita el entusiasmo por la vida.",
+   "Siento una falta de interés general, como si todo fuera tedioso.",
+   "Necesito un empujón para empezar el día o para afrontar mis tareas."
+  ],
+  "slug": "hojarazo",
+  "nombre": "Hojarazo",
+  "nombre_en": "Hornbeam",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "avena_silvestre": {
+  "estado_negativo": "Incertidumbre sobre el propósito de vida, insatisfacción por no encontrar un camino claro.",
+  "estado_positivo": "Claridad de propósito, dirección y satisfacción al seguir el propio camino.",
+  "indicacion": "Se usa cuando hay indecisión sobre la vocación o el camino en la vida, lo que genera descontento y frustración.",
+  "palabras_clave": [
+   "indecisión",
+   "propósito",
+   "frustración",
+   "vocación",
+   "apatía",
+   "descontento"
+  ],
+  "senales": [
+   "No sé lo que quiero hacer con mi vida.",
+   "Pruebo muchas cosas, pero me canso rápido.",
+   "Me siento despistado sobre mi futuro.",
+   "La rutina me genera apatía y desinterés.",
+   "No estoy seguro de qué camino seguir en la vida."
+  ],
+  "slug": "avena_silvestre",
+  "nombre": "Avena silvestre",
+  "nombre_en": "Wild Oat",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "aulaga": {
+  "estado_negativo": "Desesperanza profunda y resignación, con la creencia de que no hay solución posible para la situación actual.",
+  "estado_positivo": "Fe, esperanza y la capacidad de ver nuevas posibilidades incluso en circunstancias difíciles.",
+  "indicacion": "Para aquellos que han renunciado a la lucha, sintiendo que no hay nada más que se pueda hacer y que su situación es inmutable.",
+  "palabras_clave": [
+   "desesperanza",
+   "resignación",
+   "derrotismo",
+   "sin salida",
+   "fatalismo",
+   "pesimismo"
+  ],
+  "senales": [
+   "Ya he probado de todo y nada funciona.",
+   "No hay esperanza para mí.",
+   "Es inútil seguir intentándolo.",
+   "Me he rendido.",
+   "No veo la luz al final del túnel."
+  ],
+  "slug": "aulaga",
+  "nombre": "Aulaga",
+  "nombre_en": "Gorse",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "genciana": {
+  "estado_negativo": "Desánimo, duda, pesimismo y vacilación ante los contratiempos.",
+  "estado_positivo": "Perseverancia, fe y comprensión para superar las dificultades.",
+  "indicacion": "Para personas que se desaniman fácilmente ante pequeños obstáculos o retrasos, perdiendo la fe en la superación de las dificultades.",
+  "palabras_clave": [
+   "Desánimo",
+   "Duda",
+   "Pesimismo",
+   "Vacilación",
+   "Contratiempos",
+   "Falta de fe"
+  ],
+  "senales": [
+   "Mi vaso está medio vacío.",
+   "Cualquier pequeño retraso u obstáculo en el progreso les causa duda.",
+   "Se niegan a creer que es su propia falta de fe y comprensión lo que les impide superar dificultades que creen insuperables.",
+   "La depresión que experimenta una persona GENTIAN siempre proviene de una causa conocida.",
+   "Si sucumbe a alguna infección, las cosas podrían empeorar simplemente porque él espera que lo hagan y no se esfuerza por mejorar.",
+   "Cualquier pequeña nube en su horizonte emocional es vista como un impedimento enorme."
+  ],
+  "slug": "genciana",
+  "nombre": "Genciana",
+  "nombre_en": "Gentian",
+  "grupo": "Incertidumbre",
+  "fuentes": 8
+ },
+ "clematide": {
+  "estado_negativo": "Falta de interés en el presente, ensoñación, evasión de la realidad.",
+  "estado_positivo": "Enfoque, concentración, arraigo en el presente, apreciación de la belleza circundante.",
+  "indicacion": "Para personas que se evaden de la realidad a través de la ensoñación o fantasías, perdiendo el interés en el presente y la capacidad de concentración.",
+  "palabras_clave": [
+   "ensoñación",
+   "evasión",
+   "desinterés",
+   "desconcentración",
+   "irrealidad",
+   "apatía"
+  ],
+  "senales": [
+   "Una mirada vacía y lejana.",
+   "Indiferencia y falta de atención.",
+   "Preocupación y ensueño constante.",
+   "Somnolencia y tendencia a dormir mucho.",
+   "Marcada palidez.",
+   "Se retiran a su propio mundo, un mundo de su propia creación, cada vez que hay algo desagradable que afrontar."
+  ],
+  "slug": "clematide",
+  "nombre": "Clemátide",
+  "nombre_en": "Clematis",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "madreselva": {
+  "estado_negativo": "Vivir en el pasado, nostalgia excesiva, dificultad para aceptar el presente.",
+  "estado_positivo": "Aceptación del presente, capacidad de disfrutar el aquí y ahora, integración de experiencias pasadas de forma constructiva.",
+  "indicacion": "Para personas que se aferran a recuerdos pasados, ya sean buenos o malos, impidiéndoles vivir plenamente el presente y desarrollar nuevos intereses.",
+  "palabras_clave": [
+   "nostalgia",
+   "pasado",
+   "apego",
+   "recuerdos",
+   "presente",
+   "estancamiento"
+  ],
+  "senales": [
+   "Admiro una ciudad, solo recordando una visita realizada a otra en el pasado, tal vez contando lo bien que se veía.",
+   "Podría ser que esta ira esté quizás arraigada en tus experiencias pasadas y estés viviendo algo del pasado en tu vida que causa esta ira."
+  ],
+  "slug": "madreselva",
+  "nombre": "Madreselva",
+  "nombre_en": "Honeysuckle",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "rosa_silvestre": {
+  "estado_negativo": "Apatía, desinterés, resignación y falta de iniciativa para mejorar la propia situación.",
+  "estado_positivo": "Comprensión de que existen opciones y motivación para buscar una vida más significativa.",
+  "indicacion": "Para personas que se han resignado a una vida monótona y sin alegría, sin buscar soluciones a sus problemas o mejorar su situación, incluso cuando se les insta a hacerlo.",
+  "palabras_clave": [
+   "apatía",
+   "resignación",
+   "desinterés",
+   "desánimo",
+   "pasividad",
+   "indiferencia"
+  ],
+  "senales": [
+   "¿Qué me importa?",
+   "Así es, ¿qué se puede hacer al respecto?",
+   "Me da igual.",
+   "No sirve de nada, nunca seré diferente; la gente simplemente tiene que aceptarme como soy.",
+   "Está en la familia, así que debo esperar sufrir también."
+  ],
+  "slug": "rosa_silvestre",
+  "nombre": "Rosa silvestre",
+  "nombre_en": "Wild Rose",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "castano_blanco": {
+  "estado_negativo": "Mente rumiante y pensamientos repetitivos no deseados",
+  "estado_positivo": "Calma mental y tranquilidad",
+  "indicacion": "Para personas con pensamientos persistentes e intrusivos que causan tortura mental y dificultan la concentración en el presente.",
+  "palabras_clave": [
+   "rumiación",
+   "pensamientos obsesivos",
+   "tortura mental",
+   "mente agitada",
+   "preocupación constante",
+   "insomnio"
+  ],
+  "senales": [
+   "Generalmente en esos momentos en que el interés del momento no es lo suficientemente fuerte como para mantener la mente ocupada.",
+   "Pensamientos que preocupan y permanecerán, o si por un tiempo son expulsados, regresarán.",
+   "Parecen dar vueltas y vueltas y causar tortura mental."
+  ],
+  "slug": "castano_blanco",
+  "nombre": "Castaño blanco",
+  "nombre_en": "White Chestnut",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "olivo": {
+  "estado_negativo": "Postración, cansancio, agotamiento extremo, fatiga, esfuerzo. Falta de interés en el presente debido a un agotamiento físico o mental prolongado.",
+  "estado_positivo": "Restauración de la energía, vitalidad, entusiasmo y fuerza para afrontar la vida diaria.",
+  "indicacion": "Para aquellos que han sufrido mucho mental o físicamente y están tan agotados que sienten que no tienen más fuerzas para hacer ningún esfuerzo, experimentando la vida diaria como un trabajo duro sin placer.",
+  "palabras_clave": [
+   "Agotamiento",
+   "Cansancio extremo",
+   "Fatiga",
+   "Postración",
+   "Falta de energía",
+   "Desinterés"
+  ],
+  "senales": [
+   "Siento que no tengo más fuerzas para hacer ningún esfuerzo.",
+   "La vida diaria es un trabajo duro para mí, sin placer.",
+   "Me siento agotado después de una enfermedad o un esfuerzo prolongado.",
+   "Carezco de energía y me siento incapaz de afrontar las cosas.",
+   "El tedio ha matado mi entusiasmo por la vida y la rutina ha desarrollado apatía."
+  ],
+  "slug": "olivo",
+  "nombre": "Olivo",
+  "nombre_en": "Olive",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "brote_de_castano": {
+  "estado_negativo": "Falta de interés en el presente, incapacidad para aprender de la experiencia pasada.",
+  "estado_positivo": "Capacidad de observación y aprendizaje, progreso y desarrollo personal.",
+  "indicacion": "Para aquellos que repiten los mismos errores una y otra vez, incapaces de aprender de sus experiencias pasadas, lo que les impide avanzar.",
+  "palabras_clave": [
+   "repetición de errores",
+   "falta de aprendizaje",
+   "desatención",
+   "ciclos negativos",
+   "inmadurez"
+  ],
+  "senales": [
+   "Siempre me pasa lo mismo.",
+   "No sé por qué, pero vuelvo a caer en el mismo error.",
+   "Parece que no aprendo de mis equivocaciones.",
+   "Me cuesta ver la relación entre mis acciones y sus consecuencias.",
+   "Siento que estoy estancado en un patrón."
+  ],
+  "slug": "brote_de_castano",
+  "nombre": "Brote de castaño",
+  "nombre_en": "Chestnut Bud",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "mostaza": {
+  "estado_negativo": "Melancolía y tristeza profunda sin causa aparente, que aparece y desaparece súbitamente.",
+  "estado_positivo": "Alegría, serenidad y estabilidad emocional.",
+  "indicacion": "Se utiliza cuando una persona experimenta periodos de tristeza o melancolía que surgen y se disipan sin una razón identificable, sintiéndose abrumada por una nube oscura que la envuelve.",
+  "palabras_clave": [
+   "melancolía",
+   "tristeza súbita",
+   "depresión sin causa",
+   "nube oscura",
+   "desaparición repentina"
+  ],
+  "senales": [
+   "Me siento triste sin saber por qué, y luego se me pasa tan rápido como llegó.",
+   "Una nube oscura me envuelve de repente, y no puedo explicar de dónde viene.",
+   "A veces me siento muy melancólico, pero no hay una razón clara para ello.",
+   "Mi estado de ánimo cambia drásticamente sin previo aviso, de la alegría a la tristeza profunda."
+  ],
+  "slug": "mostaza",
+  "nombre": "Mostaza",
+  "nombre_en": "Mustard",
+  "grupo": "Falta de interés en el presente",
+  "fuentes": 8
+ },
+ "violeta_de_agua": {
+  "estado_negativo": "Sentimientos de superioridad, aislamiento y dificultad para expresar afecto, a menudo sufriendo por falta de conexión emocional.",
+  "estado_positivo": "Capacidad para establecer relaciones más cálidas y cercanas, manteniendo la serenidad y la paz interior.",
+  "indicacion": "Para personas que, a pesar de su amabilidad y autosuficiencia, se aíslan debido a una sensación de superioridad o a la dificultad de compartir sus emociones, buscando una conexión más profunda sin perder su individualidad.",
+  "palabras_clave": [
+   "aislamiento",
+   "superioridad",
+   "autosuficiencia",
+   "dificultad afectiva",
+   "serenidad",
+   "paz interior"
+  ],
+  "senales": [
+   "Prefiero estar solo, me siento feliz así.",
+   "Me cuesta expresar el amor que siento, aunque sea muy profundo.",
+   "No me gusta que interfieran en mis asuntos, ni yo en los de los demás.",
+   "Sufro por la falta de afecto, pero me resulta difícil acercarme.",
+   "Tengo una gran paz interior, pero a veces me siento incomprendido."
+  ],
+  "slug": "violeta_de_agua",
+  "nombre": "Violeta de agua",
+  "nombre_en": "Water Violet",
+  "grupo": "Soledad",
+  "fuentes": 8
+ },
+ "impaciencia": {
+  "estado_negativo": "Impaciencia, irritabilidad, tensión por la lentitud ajena.",
+  "estado_positivo": "Comprensión, tolerancia, dulzura y simpatía hacia los demás, capacidad de disfrutar el presente.",
+  "indicacion": "Para personas rápidas de pensamiento y acción que se irritan y tensan ante la lentitud de otros o de las circunstancias, buscando acelerar todo y a todos.",
+  "palabras_clave": [
+   "Impaciencia",
+   "Irritabilidad",
+   "Tensión",
+   "Prisa",
+   "Intolerancia",
+   "Aceleración"
+  ],
+  "senales": [
+   "Me encuentro tenso, irritable o fácilmente impaciente y discutidor.",
+   "Me encuentro perdiendo la paciencia, poniéndome tenso e irritable con las personas y las cosas que se mueven demasiado lento para mí.",
+   "Tiendo a tomar el control de los demás, terminando sus oraciones o completando sus tareas porque sé que puedo hacerlo más rápido.",
+   "Parece que siempre me estoy adelantando a mi experiencia, sin poder disfrutar realmente o prestar atención a lo que se desarrolla a mi alrededor.",
+   "Hago las cosas deprisa."
+  ],
+  "slug": "impaciencia",
+  "nombre": "Impaciencia",
+  "nombre_en": "Impatiens",
+  "grupo": "Soledad",
+  "fuentes": 8
+ },
+ "brezo": {
+  "estado_negativo": "Egocentrismo excesivo y temor a la soledad.",
+  "estado_positivo": "Capacidad de escuchar, empatía y conexión genuina con los demás.",
+  "indicacion": "Para personas que monopolizan las conversaciones, buscan constantemente atención y agotan a los demás con su necesidad de compañía.",
+  "palabras_clave": [
+   "egocentrismo",
+   "soledad",
+   "agotamiento",
+   "atención",
+   "monopolio",
+   "rechazo"
+  ],
+  "senales": [
+   "Siempre intenta llevar la conversación de vuelta a sí misma.",
+   "Le gusta acercarse mucho y hablar a la cara.",
+   "Agota la fuerza y vitalidad de sus oyentes.",
+   "No le gusta estar solo y se siente infeliz cuando lo está.",
+   "Temen la soledad."
+  ],
+  "slug": "brezo",
+  "nombre": "Brezo",
+  "nombre_en": "Heather",
+  "grupo": "Soledad",
+  "fuentes": 8
+ },
+ "agrimonia": {
+  "estado_negativo": "Inquietud, ansiedad y ocultamiento de preocupaciones detrás de una fachada de alegría.",
+  "estado_positivo": "Paz interior, autenticidad y capacidad de afrontar las emociones sin disimulo.",
+  "indicacion": "Para personas que ocultan su tormento interior con una actitud jovial, evitando confrontar sus verdaderos sentimientos y buscando la armonía a toda costa.",
+  "palabras_clave": [
+   "inquietud",
+   "ocultamiento",
+   "ansiedad",
+   "fachada",
+   "paz",
+   "autenticidad"
+  ],
+  "senales": [
+   "¿Es usted de los que tienen miedo; miedo a las personas o a las circunstancias: que siguen adelante valientemente y, sin embargo, su vida se ve privada de alegría por el miedo?",
+   "Su sensibilidad era tan grande que no podía evitar sentir y reaccionar a nuestros sentimientos del momento; cualquier pensamiento de depresión, preocupación o miedo en otra persona le causaría un dolor físico agudo."
+  ],
+  "slug": "agrimonia",
+  "nombre": "Agrimonia",
+  "nombre_en": "Agrimony",
+  "grupo": "Hipersensibilidad",
+  "fuentes": 8
+ },
+ "nogal": {
+  "estado_negativo": "Hipersensibilidad a influencias externas, dificultad para adaptarse a los cambios, ataduras al pasado.",
+  "estado_positivo": "Adaptación, protección frente a influencias externas, capacidad para avanzar y romper lazos limitantes.",
+  "indicacion": "Indicado para personas que necesitan protección frente a influencias externas y para facilitar la adaptación a cualquier tipo de cambio o transición en la vida.",
+  "palabras_clave": [
+   "Cambio",
+   "Adaptación",
+   "Protección",
+   "Transición",
+   "Liberación",
+   "Influenciabilidad"
+  ],
+  "senales": [
+   "Me cuesta mucho adaptarme a las nuevas situaciones.",
+   "Siento que las opiniones de los demás me afectan demasiado.",
+   "Me cuesta soltar el pasado, aunque sé que debo avanzar.",
+   "Estoy en una etapa de grandes cambios y me siento vulnerable.",
+   "Aunque sé lo que quiero, me dejo influenciar fácilmente por otros."
+  ],
+  "slug": "nogal",
+  "nombre": "Nogal",
+  "nombre_en": "Walnut",
+  "grupo": "Hipersensibilidad",
+  "fuentes": 8
+ },
+ "centaura": {
+  "estado_negativo": "Servilismo, sumisión, debilidad de voluntad, dificultad para decir 'no'.",
+  "estado_positivo": "Asertividad, capacidad de servicio con límites, fuerza interior y autodeterminación.",
+  "indicacion": "Para personas amables y tranquilas que se dejan dominar o explotar por otros, sacrificando sus propias necesidades y deseos.",
+  "palabras_clave": [
+   "Servilismo",
+   "Sumisión",
+   "Debilidad",
+   "Explotación",
+   "Asertividad",
+   "Límites"
+  ],
+  "senales": [
+   "Siempre hago lo que los demás quieren, aunque no me apetezca.",
+   "Me cuesta mucho decir 'no' y acabo haciendo cosas que no quiero.",
+   "Siento que los demás se aprovechan de mi buena voluntad.",
+   "Me agoto intentando complacer a todo el mundo.",
+   "No sé cómo expresar mis propias necesidades."
+  ],
+  "slug": "centaura",
+  "nombre": "Centaura",
+  "nombre_en": "Centaury",
+  "grupo": "Hipersensibilidad",
+  "fuentes": 8
+ },
+ "acebo": {
+  "estado_negativo": "Hostilidad, agresión, celos, envidia, venganza, ira, desconfianza.",
+  "estado_positivo": "Amor, compasión, equilibrio en las relaciones, protección, buena fortuna.",
+  "indicacion": "Útil para personas que experimentan sentimientos hostiles, celos, envidia o ira intensa, manifestando agresión o venganza, incluso de forma latente.",
+  "palabras_clave": [
+   "Hostilidad",
+   "Agresión",
+   "Celos",
+   "Envidia",
+   "Venganza",
+   "Ira"
+  ],
+  "senales": [
+   "Siento hostilidad hacia los demás.",
+   "Pierdo los estribos por pequeñas cosas.",
+   "Cada reacción a los eventos externos está teñida de hostilidad y agresión.",
+   "Soy celoso, envidioso, vengativo o siento ira hacia alguien.",
+   "Soy desconfiado y sigo a mi pareja.",
+   "Guardo mi venganza dentro de mí durante muchos años."
+  ],
+  "slug": "acebo",
+  "nombre": "Acebo",
+  "nombre_en": "Holly",
+  "grupo": "Hipersensibilidad",
+  "fuentes": 8
+ },
+ "alerce": {
+  "estado_negativo": "Falta de confianza en las propias capacidades, anticipación de fracaso, desaliento antes de intentar algo.",
+  "estado_positivo": "Confianza, determinación, iniciativa, capacidad de asumir riesgos y aprender de la experiencia.",
+  "indicacion": "Se utiliza cuando la persona se siente inferior, duda de sus habilidades y se abstiene de actuar por miedo al fracaso.",
+  "palabras_clave": [
+   "inseguridad",
+   "duda",
+   "inferioridad",
+   "desaliento",
+   "miedo al fracaso",
+   "falta de iniciativa"
+  ],
+  "senales": [
+   "Sé que no podré hacerlo.",
+   "Ni lo intento, seguro que me sale mal.",
+   "Otros son mejores que yo.",
+   "Me siento incapaz de lograrlo."
+  ],
+  "slug": "alerce",
+  "nombre": "Alerce",
+  "nombre_en": "Larch",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "pino": {
+  "estado_negativo": "Sentimiento de culpa, auto-reproche, insatisfacción con uno mismo.",
+  "estado_positivo": "Autoaceptación, perdón, responsabilidad sin culpa.",
+  "indicacion": "Para personas que se culpan excesivamente por sus errores o los de otros, sintiendo que no son lo suficientemente buenos o que merecen castigo.",
+  "palabras_clave": [
+   "culpa",
+   "auto-reproche",
+   "insatisfacción",
+   "perdón",
+   "responsabilidad",
+   "autocrítica"
+  ],
+  "senales": [
+   "Siempre siento que podría haberlo hecho mejor.",
+   "Me culpo por todo lo que sale mal.",
+   "Siento que no merezco las cosas buenas que me pasan.",
+   "Pido disculpas constantemente, incluso cuando no es mi culpa.",
+   "Me siento indigno y con remordimientos."
+  ],
+  "slug": "pino",
+  "nombre": "Pino",
+  "nombre_en": "Pine",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "olmo": {
+  "estado_negativo": "Sentimiento de insuficiencia y agotamiento momentáneo en personas fuertes y responsables.",
+  "estado_positivo": "Recuperación de la confianza y la fuerza para afrontar las responsabilidades.",
+  "indicacion": "Para individuos competentes y dedicados que experimentan una sensación temporal de estar abrumados o incapaces de cumplir con sus tareas habituales.",
+  "palabras_clave": [
+   "abrumado",
+   "agotamiento",
+   "insuficiencia",
+   "responsabilidad",
+   "desesperación",
+   "debilidad"
+  ],
+  "senales": [
+   "Me esfuerzo más allá de mis verdaderos límites o capacidades.",
+   "Siempre se contará conmigo para completar lo que me propongo hacer, sin importar el desafío.",
+   "Tengo demasiada carga.",
+   "No me despierto lo suficientemente descansado."
+  ],
+  "slug": "olmo",
+  "nombre": "Olmo",
+  "nombre_en": "Elm",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "castano_dulce": {
+  "estado_negativo": "Dolor profundo e intenso que destruye, angustia que quita el aliento y la fuerza, sensación de haber llegado al límite de la resistencia, sin salida, agotamiento total, desesperación.",
+  "estado_positivo": "Recuperación de la capacidad de sentir, amar y compartir, esperanza, consuelo, alegría, optimismo.",
+  "indicacion": "Se utiliza cuando la persona ha alcanzado el límite de su resistencia, sintiendo una desesperación profunda y sin esperanza, como si no hubiera salida a su sufrimiento.",
+  "palabras_clave": [
+   "desesperación",
+   "angustia",
+   "sin salida",
+   "agotamiento",
+   "límite",
+   "corazón roto"
+  ],
+  "senales": [
+   "Siento un dolor tan fuerte que ni siquiera puedo llorar.",
+   "He llegado al límite de mi resistencia, no hay salida.",
+   "Me siento completamente agotado, como si cada camino fuera un callejón sin salida.",
+   "Mis piernas no me llevarán más lejos, he agotado la última gota de mi energía."
+  ],
+  "slug": "castano_dulce",
+  "nombre": "Castaño dulce",
+  "nombre_en": "Sweet Chestnut",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "estrella_de_belen": {
+  "estado_negativo": "Shock, trauma, duelo intenso, emociones congeladas, entumecimiento emocional, desesperación, angustia profunda.",
+  "estado_positivo": "Consuelo, liberación del trauma, afrontamiento emocional, esperanza, capacidad de sentir y procesar el dolor.",
+  "indicacion": "Indicada para liberar los efectos de cualquier tipo de shock o trauma, ya sea físico o psicológico, reciente o antiguo, que se manifieste como entumecimiento, emociones congeladas o gran angustia.",
+  "palabras_clave": [
+   "Shock",
+   "Trauma",
+   "Duelo",
+   "Consuelo",
+   "Liberación emocional",
+   "Desesperación"
+  ],
+  "senales": [
+   "Me siento entumecido, como si no pudiera sentir ni pensar después de lo que pasó.",
+   "He vivido una experiencia muy difícil y siento que nunca he recuperado mi vitalidad.",
+   "Tengo una gran angustia por algo que me ha sucedido y me niego a ser consolado.",
+   "Siento que el dolor está atrapado dentro de mí y no puedo superarlo.",
+   "Los efectos de un trauma de hace mucho tiempo aún me afectan, incluso físicamente.",
+   "Estoy triste e inconsolable, especialmente si soy un niño."
+  ],
+  "slug": "estrella_de_belen",
+  "nombre": "Estrella de Belén",
+  "nombre_en": "Star of Bethlehem",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "roble": {
+  "estado_negativo": "Agotamiento por esfuerzo excesivo y persistencia más allá de los límites, con negación de las propias necesidades.",
+  "estado_positivo": "Fuerza para continuar, reconociendo y respetando los propios límites y necesidades.",
+  "indicacion": "Para individuos que se esfuerzan incansablemente, superando sus verdaderos límites y capacidades, hasta el punto del agotamiento, sin permitirse descanso o placer.",
+  "palabras_clave": [
+   "agotamiento",
+   "sobreesfuerzo",
+   "persistencia",
+   "negación",
+   "límites",
+   "resistencia"
+  ],
+  "senales": [
+   "Me esfuerzo más allá de mis verdaderos límites o capacidades, generalmente negándome pequeños placeres o momentos espontáneos de alegría.",
+   "Tiendo a sumergirme en mis proyectos descuidando mis propias necesidades, así como las necesidades de mis seres queridos.",
+   "Siempre se contará conmigo para completar lo que me propongo hacer, sin importar el desafío.",
+   "He seguido adelante a pesar de sentirme agotado. Me romperé."
+  ],
+  "slug": "roble",
+  "nombre": "Roble",
+  "nombre_en": "Oak",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "manzano_silvestre": {
+  "estado_negativo": "Sentimiento de impureza, aversión a uno mismo, obsesión por la limpieza o el detalle, culpa por imperfecciones físicas o mentales.",
+  "estado_positivo": "Aceptación de uno mismo, perspectiva equilibrada sobre las imperfecciones, capacidad de autolimpieza interna y externa sin obsesión.",
+  "indicacion": "Indicado para personas que se sienten impuras o sucias, ya sea física o mentalmente, y que pueden desarrollar obsesiones por la limpieza o el orden, o sentir vergüenza por alguna característica personal.",
+  "palabras_clave": [
+   "impureza",
+   "aversión",
+   "obsesión",
+   "culpa",
+   "perfeccionismo",
+   "vergüenza"
+  ],
+  "senales": [
+   "Siento que hay algo sucio o impuro en mí.",
+   "Me obsesiona la limpieza o algún pequeño detalle.",
+   "No me gusta mi aspecto o alguna parte de mi cuerpo.",
+   "Me siento mal por esta imperfección, quiero limpiarla.",
+   "Me avergüenzo de mis pensamientos o acciones."
+  ],
+  "slug": "manzano_silvestre",
+  "nombre": "Manzano silvestre",
+  "nombre_en": "Crab Apple",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ },
+ "verbena": {
+  "estado_negativo": "Excesiva preocupación por los demás, rigidez de principios, entusiasmo desmedido que lleva a la imposición.",
+  "estado_positivo": "Moderación, relajación, calma, adaptabilidad, tolerancia y la capacidad de 'vivir y dejar vivir'.",
+  "indicacion": "Para personas con principios e ideas fijas, que intentan convertir a otros a sus puntos de vista, y que pueden ser intensas y perfeccionistas.",
+  "palabras_clave": [
+   "Entusiasmo excesivo",
+   "Principios rígidos",
+   "Imposición de ideas",
+   "Perfeccionismo",
+   "Fuerza de voluntad",
+   "Intensidad"
+  ],
+  "senales": [
+   "Siempre estoy avanzando, no puedo parar.",
+   "Tengo principios muy claros y sé que son correctos.",
+   "Me cuesta relajarme y calmarme.",
+   "Me preocupo mucho por el bienestar de los demás y quiero ayudarlos a ver la verdad.",
+   "Soy muy resistente y luchador por mis ideales."
+  ],
+  "slug": "verbena",
+  "nombre": "Verbena",
+  "nombre_en": "Vervain",
+  "grupo": "Preocupación excesiva por los demás",
+  "fuentes": 8
+ },
+ "achicoria": {
+  "estado_negativo": "Preocupación egoísta y posesiva por los demás, con tendencia a la manipulación emocional.",
+  "estado_positivo": "Amor incondicional y desinteresado, capacidad de cuidar sin apego ni exigencia.",
+  "indicacion": "Para personas que cuidan a los demás de forma controladora, esperando algo a cambio, y que se sienten heridas o resentidas si no reciben la atención deseada.",
+  "palabras_clave": [
+   "Posesividad",
+   "Manipulación",
+   "Egoísmo",
+   "Control",
+   "Victimismo",
+   "Demanda"
+  ],
+  "senales": [
+   "Me preocupo mucho por mis seres queridos, pero a veces siento que no me valoran lo suficiente.",
+   "Me gusta que la gente dependa de mí y me necesite.",
+   "Si no me prestan atención, me siento mal y puedo hacer que se sientan culpables.",
+   "Soy muy diplomático para conseguir lo que quiero de los demás.",
+   "Me cuesta soltar a las personas que quiero, incluso cuando no es sano para ellas."
+  ],
+  "slug": "achicoria",
+  "nombre": "Achicoria",
+  "nombre_en": "Chicory",
+  "grupo": "Preocupación excesiva por los demás",
+  "fuentes": 8
+ },
+ "haya": {
+  "estado_negativo": "Intolerancia, crítica, juicio, hipersensibilidad a las imperfecciones ajenas.",
+  "estado_positivo": "Tolerancia, comprensión, empatía, capacidad de ver lo bueno en los demás.",
+  "indicacion": "Para personas que son excesivamente críticas con los demás, incapaces de ver más allá de sus defectos y que se irritan fácilmente por las imperfecciones ajenas.",
+  "palabras_clave": [
+   "intolerancia",
+   "crítica",
+   "juicio",
+   "perfeccionismo",
+   "irritabilidad",
+   "rigidez"
+  ],
+  "senales": [
+   "Todo el mundo hace las cosas mal.",
+   "Me irrita la forma de ser de los demás.",
+   "No soporto los errores ajenos.",
+   "Soy muy crítico con los demás."
+  ],
+  "slug": "haya",
+  "nombre": "Haya",
+  "nombre_en": "Beech",
+  "grupo": "Preocupación excesiva por los demás",
+  "fuentes": 8
+ },
+ "vid": {
+  "estado_negativo": "Dominante, inflexible, tiránico, con deseo de controlar a otros.",
+  "estado_positivo": "Liderazgo positivo, respeto por la individualidad ajena, capacidad de influir sin imponer.",
+  "indicacion": "Para personas con una voluntad fuerte que se vuelven autoritarias y dominantes, imponiendo sus ideas a los demás, y que pueden generar conflictos por su necesidad de control.",
+  "palabras_clave": [
+   "Dominante",
+   "Tiránico",
+   "Inflexible",
+   "Controlador",
+   "Autoritario",
+   "Intolerante"
+  ],
+  "senales": [
+   "Siempre sé lo que es mejor para los demás.",
+   "No soporto que las cosas no se hagan a mi manera.",
+   "Me frustra la incompetencia de los demás.",
+   "Los demás deberían seguir mis consejos, son los correctos.",
+   "A veces me siento solo porque la gente no me entiende o no me sigue."
+  ],
+  "slug": "vid",
+  "nombre": "Vid",
+  "nombre_en": "Vine",
+  "grupo": "Preocupación excesiva por los demás",
+  "fuentes": 8
+ },
+ "agua_de_roca": {
+  "estado_negativo": "Rigidez física y mental, autoexigencia estricta, privación y dificultad para expresar emociones.",
+  "estado_positivo": "Flexibilidad, equilibrio, relajación del comportamiento restrictivo e inhibidor.",
+  "indicacion": "Para personas que se imponen un estilo de vida rígido y de privación, con principios e ideas fijas, y que encuentran difícil expresar sus emociones.",
+  "palabras_clave": [
+   "Rigidez",
+   "Autoexigencia",
+   "Privación",
+   "Inhibición",
+   "Perfeccionismo",
+   "Principios fijos"
+  ],
+  "senales": [
+   "Soy muy estricto conmigo mismo.",
+   "Me cuesta relajarme y disfrutar.",
+   "Tengo principios muy arraigados y no los cambio fácilmente.",
+   "Me privo de muchas cosas por mis ideales.",
+   "No me permito expresar mis emociones libremente."
+  ],
+  "slug": "agua_de_roca",
+  "nombre": "Agua de roca",
+  "nombre_en": "Rock Water",
+  "grupo": "Preocupación excesiva por los demás",
+  "fuentes": 8
+ },
+ "rescate": {
+  "estado_negativo": "Pánico, terror, shock, desesperación extrema, desorientación, inconsciencia, miedo a lo desconocido o a nuevas responsabilidades.",
+  "estado_positivo": "Coraje, calma, capacidad de respuesta, arraigo, enfoque, confianza, paz mental.",
+  "indicacion": "Para situaciones de emergencia, crisis, accidentes, shock emocional o físico, y momentos de gran estrés o miedo repentino.",
+  "palabras_clave": [
+   "Emergencia",
+   "Shock",
+   "Pánico",
+   "Terror",
+   "Desesperación",
+   "Accidente"
+  ],
+  "senales": [
+   "Corazón acelerado, palpitaciones, mareos repentinos, dificultad para respirar.",
+   "Incapacidad de responder, estado de shock, pánico severo.",
+   "Quemado, al borde de un derrame cerebral, amenaza de suicidio (desesperación total).",
+   "Miedo a los lugares nuevos, a dejar el trabajo anterior, falta de confianza para afrontar nuevas responsabilidades.",
+   "Inconsciencia, desorientación, no ser plenamente consciente de lo que sucede."
+  ],
+  "slug": "rescate",
+  "nombre": "Rescate",
+  "nombre_en": "Rescue Remedy",
+  "grupo": "Fórmula de emergencia",
+  "fuentes": 8
+ },
+ "sauce": {
+  "estado_negativo": "Resentimiento, amargura, autocompasión, victimismo, reproche, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, queja, que",
+  "estado_positivo": "Optimismo, aceptación de la responsabilidad personal, capacidad de perdonar y avanzar.",
+  "indicacion": "Indicado para personas que se sienten víctimas de las circunstancias, resentidas y amargadas por la vida, culpando a otros de su infelicidad.",
+  "palabras_clave": [
+   "resentimiento",
+   "amargura",
+   "autocompasión",
+   "victimización",
+   "injusticia",
+   "reproche"
+  ],
+  "senales": [
+   "Sienten que la vida ha sido injusta con ellos.",
+   "Se quejan constantemente de su mala suerte.",
+   "Les cuesta perdonar y olvidar agravios pasados.",
+   "Pueden ser difíciles de complacer y a menudo están de mal humor.",
+   "No asumen la responsabilidad de sus propias acciones o circunstancias."
+  ],
+  "slug": "sauce",
+  "nombre": "Sauce",
+  "nombre_en": "Willow",
+  "grupo": "Desaliento y desesperación",
+  "fuentes": 8
+ }
+}

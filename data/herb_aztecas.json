@@ -1,0 +1,779 @@
+{
+ "damiana": {
+  "origen": "flor",
+  "cualidad": "empoderamiento y autoaceptación",
+  "armoniza": "inseguridad, inhibición, pasividad, victimización y baja estima",
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y adicciones. Coadyuva en disfunciones sexuales.",
+  "palabras_clave": [
+   "empoderamiento",
+   "autoaceptación",
+   "deseo sexual",
+   "estancamiento",
+   "adicciones"
+  ],
+  "slug": "damiana",
+  "nombre": "Damiana",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "onix": {
+  "origen": "mineral",
+  "cualidad": "intuición, facultades parapsicológicas",
+  "armoniza": "trastornos del habla",
+  "indicacion": "Coadyuva en trastornos del habla como tartamudez y dislexia, e incrementa la intuición y facultades parapsicológicas.",
+  "palabras_clave": [
+   "intuición",
+   "parapsicología",
+   "habla",
+   "tartamudez",
+   "dislexia"
+  ],
+  "slug": "onix",
+  "nombre": "Ónix",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "orquidea_alegria": {
+  "origen": "Orquídea",
+  "cualidad": "Empoderamiento y autoaceptación",
+  "armoniza": "Estancamientos terapéuticos, bajo deseo sexual, conductas adictivas",
+  "indicacion": "Promueve el cambio en situaciones de estancamiento, apoya en rehabilitaciones físicas y en el tratamiento de adicciones.",
+  "palabras_clave": [
+   "estancamiento",
+   "deseo sexual",
+   "adicciones",
+   "rehabilitación",
+   "cambio"
+  ],
+  "slug": "orquidea_alegria",
+  "nombre": "Orquídea Alegría",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "diente_de_leon": {
+  "origen": "flor",
+  "cualidad": "Relajación, paciencia, tolerancia",
+  "armoniza": "Ansiedad, hiperactividad, impaciencia, intolerancia",
+  "indicacion": "Coadyuva como miorelajante en contracturas y es útil para personas que generan tensión mental, emocional y física.",
+  "palabras_clave": [
+   "ansiedad",
+   "hiperactividad",
+   "tensión",
+   "relajante",
+   "contracturas"
+  ],
+  "slug": "diente_de_leon",
+  "nombre": "Diente de León",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "derrumbe": {
+  "origen": "Hongo Psilocybe caerulescens var. mazatecorum",
+  "cualidad": "Amplifica la conciencia",
+  "armoniza": "Personalidades aprensivas y ciclotímicas",
+  "indicacion": "Coadyuva en cuadros psicopatológicos, adicciones y apoya a enfermos terminales, derrumbando estructuras rígidas.",
+  "palabras_clave": [
+   "conciencia",
+   "psicopatología",
+   "adicciones",
+   "enfermedad terminal",
+   "cambio"
+  ],
+  "slug": "derrumbe",
+  "nombre": "Derrumbe",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "floripondio": {
+  "origen": "Flor",
+  "cualidad": "Intuición, facultades parapsicológicas",
+  "armoniza": "No especificado directamente, pero se infiere que ayuda a armonizar el desarrollo de estas facultades.",
+  "indicacion": "Para incrementar la intuición y las facultades parapsicológicas, y en el rompimiento de patrones patológicos de unión como simbiosis afectivas y apegos.",
+  "palabras_clave": [
+   "Intuición",
+   "Parapsicología",
+   "Apegos",
+   "Simbiosis",
+   "Crecimiento personal"
+  ],
+  "slug": "floripondio",
+  "nombre": "Floripondio",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "orquidea_proteccion": {
+  "origen": "flor",
+  "cualidad": "empoderamiento y autoaceptación",
+  "armoniza": "inseguridad, inhibición, pasividad y baja autoestima",
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y en adicciones, coadyuvando en disfunciones sexuales.",
+  "palabras_clave": [
+   "estancamiento terapéutico",
+   "bajo deseo sexual",
+   "rehabilitación",
+   "adicciones",
+   "disfunciones sexuales"
+  ],
+  "slug": "orquidea_proteccion",
+  "nombre": "Orquídea Protección",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "tabaquillo": {
+  "origen": "Nicotiana glauca",
+  "cualidad": "Flexibilidad y conexión místico-intuitiva",
+  "armoniza": "Sofocamiento emocional, angustia, ansiedad y conductas autodestructivas",
+  "indicacion": "Útil en casos de abstinencia en fumadores y para promover la adaptabilidad emocional.",
+  "palabras_clave": [
+   "flexibilidad",
+   "intuición",
+   "abstinencia",
+   "angustia",
+   "autodestructivo"
+  ],
+  "slug": "tabaquillo",
+  "nombre": "Tabaquillo",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "yucca": {
+  "origen": "planta",
+  "cualidad": null,
+  "armoniza": null,
+  "indicacion": "No se encontró información específica sobre la Yucca en el material proporcionado.",
+  "palabras_clave": [],
+  "slug": "yucca",
+  "nombre": "Yucca",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "valeriana": {
+  "origen": "Valeriana edulis",
+  "cualidad": "No especificada en el texto proporcionado.",
+  "armoniza": "No especificada en el texto proporcionado.",
+  "indicacion": "Para individuos hipersensibles. No se especifica más información sobre su uso.",
+  "palabras_clave": [
+   "hipersensibilidad",
+   "valeriana",
+   "equilibrio emocional",
+   "bienestar"
+  ],
+  "slug": "valeriana",
+  "nombre": "Valeriana",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "vainilla": {
+  "origen": "Vanilla planifolia",
+  "cualidad": "Intuición, olfato y gusto",
+  "armoniza": "Insatisfacción, ansiedad, impulsividad y gula",
+  "indicacion": "Para personas insatisfechas, ansiosas, con tendencia a la acumulación, impulsividad y gula. Coadyuvante en diabetes, trastornos alimenticios y síndromes de abstinencia en dietas.",
+  "palabras_clave": [
+   "insatisfacción",
+   "ansiedad",
+   "gula",
+   "diabetes",
+   "adicciones"
+  ],
+  "slug": "vainilla",
+  "nombre": "Vainilla",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "tejocote": {
+  "origen": "Crataegus pubescens",
+  "cualidad": "Adaptación a las separaciones y pérdidas",
+  "armoniza": "Apego, resistencia a separaciones, depresión por abandono",
+  "indicacion": "Indicada para personas que experimentan apego excesivo, dificultad para afrontar separaciones, duelos, pérdidas significativas o de posesiones materiales. También coadyuva en el sistema circulatorio.",
+  "palabras_clave": [
+   "apego",
+   "separación",
+   "duelo",
+   "pérdida",
+   "circulación"
+  ],
+  "slug": "tejocote",
+  "nombre": "Tejocote",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "nopal": {
+  "origen": "flor",
+  "cualidad": "empatía y comunicación",
+  "armoniza": "desconfianza en sí mismo, negación y uso de máscaras",
+  "indicacion": "Coadyuva en trastornos del habla como la tartamudez y la dislexia, así como en estados de angustia, ansiedad y patologías pulmonares.",
+  "palabras_clave": [
+   "empatía",
+   "comunicación",
+   "confianza",
+   "ansiedad",
+   "tartamudez"
+  ],
+  "slug": "nopal",
+  "nombre": "Nopal",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "achicoria": {
+  "origen": "flor",
+  "cualidad": "empatía y comunicación",
+  "armoniza": "personalidad sobreprotectora, dependiente afectiva, controladora, dominante y posesiva con miedo al abandono",
+  "indicacion": "Coadyuva en hipocondría, depresión, patologías circulatorias, ginecológicas y respiratorias.",
+  "palabras_clave": [
+   "sobreprotección",
+   "dependencia",
+   "control",
+   "miedo al abandono",
+   "comunicación"
+  ],
+  "slug": "achicoria",
+  "nombre": "Achicoria",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "aguacate": {
+  "origen": "Persea americana",
+  "cualidad": "Estabiliza los cuadros de ansiedad, excitabilidad, ciclotimia y depresión.",
+  "armoniza": "Emociones y comportamientos relacionados con la ansiedad, la excitabilidad, la ciclotimia y la depresión.",
+  "indicacion": "Se utiliza para estabilizar estados emocionales fluctuantes y para fomentar la capacidad de dar y recibir afecto, mejorando las terapias de contacto y restaurando el apetito.",
+  "palabras_clave": [
+   "ansiedad",
+   "depresión",
+   "ciclotimia",
+   "contacto",
+   "apetito"
+  ],
+  "slug": "aguacate",
+  "nombre": "Aguacate",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "aretillo": {
+  "origen": "flor",
+  "cualidad": "No especificada en el texto proporcionado para Aretillo.",
+  "armoniza": "No especificada en el texto proporcionado para Aretillo.",
+  "indicacion": "No especificada en el texto proporcionado para Aretillo.",
+  "palabras_clave": [
+   "Aretillo",
+   "Elíxires Aztecas",
+   "Esencia individual",
+   "Terapia floral"
+  ],
+  "slug": "aretillo",
+  "nombre": "Aretillo",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "ortiga": {
+  "origen": "planta",
+  "cualidad": null,
+  "armoniza": null,
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y en adicciones.",
+  "palabras_clave": [
+   "cambio",
+   "estancamiento",
+   "deseo sexual",
+   "rehabilitación",
+   "adicciones"
+  ],
+  "slug": "ortiga",
+  "nombre": "Ortiga",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "arnica_mexicana": {
+  "origen": "No especificado",
+  "cualidad": "No especificado",
+  "armoniza": "No especificado",
+  "indicacion": "No se encontró información específica sobre la Esencia Azteca individual Árnica Mexicana en el material proporcionado.",
+  "palabras_clave": [
+   "Árnica Mexicana",
+   "Esencia Azteca",
+   "Individual"
+  ],
+  "slug": "arnica_mexicana",
+  "nombre": "Árnica Mexicana",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "alcatraz": {
+  "origen": null,
+  "cualidad": null,
+  "armoniza": null,
+  "indicacion": "La información proporcionada no especifica las indicaciones, cualidades o armonizaciones específicas para la esencia individual de Alcatraz.",
+  "palabras_clave": [
+   "Alcatraz",
+   "esencia individual",
+   "Elíxires Aztecas"
+  ],
+  "slug": "alcatraz",
+  "nombre": "Alcatraz",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "amaranto": {
+  "origen": "no aplica",
+  "cualidad": "no aplica",
+  "armoniza": "no aplica",
+  "indicacion": "La información proporcionada no incluye detalles específicos sobre la esencia individual de Amaranto. Se describe el sistema general de Elíxires Aztecas y algunas otras esencias individuales, pero Amaranto no está detallado en el texto.",
+  "palabras_clave": [
+   "esencia individual",
+   "Elíxires Aztecas",
+   "información no disponible",
+   "Amaranto"
+  ],
+  "slug": "amaranto",
+  "nombre": "Amaranto",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "pericon": {
+  "origen": "flor",
+  "cualidad": null,
+  "armoniza": "trastornos del habla como tartamudez y dislexia",
+  "indicacion": "Coadyuva en trastornos del habla, promueve la empatía y la comunicación. También es útil en casos de angustia, ansiedad y patologías pulmonares.",
+  "palabras_clave": [
+   "trastornos del habla",
+   "tartamudez",
+   "dislexia",
+   "empatía",
+   "comunicación"
+  ],
+  "slug": "pericon",
+  "nombre": "Pericón",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "plata": {
+  "origen": "mineral",
+  "cualidad": "no especificado",
+  "armoniza": "no especificado",
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y en adicciones.",
+  "palabras_clave": [
+   "estancamiento",
+   "deseo sexual",
+   "rehabilitación",
+   "adicciones",
+   "cambio"
+  ],
+  "slug": "plata",
+  "nombre": "Plata",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "peyote_hikuri": {
+  "origen": "hongo",
+  "cualidad": "no especificada",
+  "armoniza": "no especificado",
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y en adicciones. Coadyuva en trastornos del habla como tartamudez y dislexia.",
+  "palabras_clave": [
+   "estancamiento",
+   "deseo sexual",
+   "rehabilitación",
+   "adicciones",
+   "trastornos del habla"
+  ],
+  "slug": "peyote_hikuri",
+  "nombre": "Peyote (Hikuri)",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "platano": {
+  "origen": "Plátano",
+  "cualidad": "No especificada en el texto proporcionado",
+  "armoniza": "No especificada en el texto proporcionado",
+  "indicacion": "Trabaja en niños hiperactivos, para sus padres y en la vejez.",
+  "palabras_clave": [
+   "hiperactividad",
+   "niños",
+   "padres",
+   "vejez"
+  ],
+  "slug": "platano",
+  "nombre": "Plátano",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "borraja": {
+  "origen": "flor",
+  "cualidad": "Confianza",
+  "armoniza": "Baja tolerancia a la frustración, desilusión, desesperanza y abatimiento",
+  "indicacion": "Para desequilibrios crónicos, depresión y estados de desilusión o desesperanza.",
+  "palabras_clave": [
+   "confianza",
+   "frustración",
+   "depresión",
+   "desesperanza",
+   "abatimiento"
+  ],
+  "slug": "borraja",
+  "nombre": "Borraja",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "biznaga": {
+  "origen": "flor",
+  "cualidad": "Congruencia entre pensar, sentir y hacer; conexión con la misión y dones latentes; individuación.",
+  "armoniza": "Estancamientos terapéuticos, bajo deseo sexual, adicciones.",
+  "indicacion": "Indicada para promover la coherencia interna y externa, facilitando el desarrollo personal y la superación de bloqueos.",
+  "palabras_clave": [
+   "congruencia",
+   "individuación",
+   "misión",
+   "dones",
+   "estancamiento"
+  ],
+  "slug": "biznaga",
+  "nombre": "Biznaga",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "sabila": {
+  "origen": "planta",
+  "cualidad": "No especificada en el texto para Sábila, pero las esencias aztecas en general fortalecen aptitudes latentes o cualidades positivas del ser.",
+  "armoniza": "No especificada en el texto para Sábila, pero las esencias aztecas en general armonizan emociones y comportamientos.",
+  "indicacion": "No especificada en el texto para Sábila. El texto proporcionado no incluye información específica sobre la esencia individual de Sábila.",
+  "palabras_clave": [
+   "No especificado",
+   "No especificado",
+   "No especificado"
+  ],
+  "slug": "sabila",
+  "nombre": "Sábila",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "calabaza": {
+  "origen": "flor",
+  "cualidad": "valores femeninos",
+  "armoniza": "emociones y comportamientos relacionados con la feminidad",
+  "indicacion": "Promueve el desarrollo y fortalecimiento de los valores femeninos.",
+  "palabras_clave": [
+   "feminidad",
+   "valores",
+   "equilibrio",
+   "emociones",
+   "comportamiento"
+  ],
+  "slug": "calabaza",
+  "nombre": "Calabaza",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "bouganvillea": {
+  "origen": "flor",
+  "cualidad": "aprendizaje de la experiencia",
+  "armoniza": "falta de atención, distracción, repetición de errores",
+  "indicacion": "Ayuda a cortar con malos hábitos y a tomar conciencia de los problemas o desequilibrios. Indicada para la falta de atención y la distracción.",
+  "palabras_clave": [
+   "atención",
+   "hábitos",
+   "aprendizaje",
+   "conciencia",
+   "errores"
+  ],
+  "slug": "bouganvillea",
+  "nombre": "Bouganvillea",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "cardo_santo": {
+  "origen": "no especificado",
+  "cualidad": "no especificado",
+  "armoniza": "no especificado",
+  "indicacion": "La información proporcionada no contiene detalles específicos sobre la esencia individual Cardo Santo. Se describe el sistema general de Elíxires Aztecas, pero no las propiedades de esta esencia en particular.",
+  "palabras_clave": [
+   "Cardo Santo",
+   "esencia individual",
+   "información no disponible"
+  ],
+  "slug": "cardo_santo",
+  "nombre": "Cardo Santo",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "chile": {
+  "origen": "planta",
+  "cualidad": "No especificada en el texto proporcionado para Chile.",
+  "armoniza": "No especificada en el texto proporcionado para Chile.",
+  "indicacion": "No especificada en el texto proporcionado para Chile. El material no contiene información específica sobre la esencia individual de Chile.",
+  "palabras_clave": [
+   "no aplica",
+   "sin información",
+   "esencia individual"
+  ],
+  "slug": "chile",
+  "nombre": "Chile",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "cempazuchil": {
+  "origen": "flor",
+  "cualidad": null,
+  "armoniza": "emociones y comportamientos",
+  "indicacion": "Asiste al individuo para hacer aflorar y fortalecer las aptitudes latentes o cualidades positivas del ser.",
+  "palabras_clave": [
+   "aptitudes latentes",
+   "cualidades positivas",
+   "armonía emocional",
+   "equilibrio conductual"
+  ],
+  "slug": "cempazuchil",
+  "nombre": "Cempazúchil",
+  "tipo": "individual",
+  "fuentes": 8
+ },
+ "abundancia": {
+  "origen": "No aplica (combinado)",
+  "cualidad": "No aplica (combinado)",
+  "armoniza": "Activa el sistema inmune, levantando las defensas naturales físicas, emocionales, psicológicas y espirituales.",
+  "indicacion": "Sinergia para acompañar padecimientos crónicos y críticos, promoviendo la activación de las defensas naturales del individuo.",
+  "palabras_clave": [
+   "sistema inmune",
+   "defensas naturales",
+   "padecimientos crónicos",
+   "padecimientos críticos",
+   "activación"
+  ],
+  "slug": "abundancia",
+  "nombre": "Abundancia",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "autocurador": {
+  "origen": "No aplica",
+  "cualidad": "Activa el sistema inmune, levanta las defensas naturales físicas, emocionales, psicológicas y espirituales.",
+  "armoniza": "Ayuda a acompañar padecimientos crónicos y críticos, y a adaptarse sin sufrimiento a diversas circunstancias de cambio vital.",
+  "indicacion": "Indicado para fortalecer el sistema inmune y las defensas naturales, así como para procesos de adaptación en crisis vitales, duelos, cambios significativos y rehabilitaciones.",
+  "palabras_clave": [
+   "Sistema inmune",
+   "Defensas naturales",
+   "Padecimientos crónicos",
+   "Adaptación",
+   "Crisis vitales"
+  ],
+  "slug": "autocurador",
+  "nombre": "Autocurador",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "memoria_y_aprendizaje": {
+  "origen": null,
+  "cualidad": "Mejora la memoria, confianza, atención y síntesis de información",
+  "armoniza": "Problemas de aprendizaje, retardos intelectuales, abrumación informativa, síndromes de desatención y dificultades en la lectoescritura",
+  "indicacion": "Ideal para problemas de aprendizaje, retardos intelectuales, abrumación informativa, síndromes de desatención y dificultades en la lectoescritura.",
+  "palabras_clave": [
+   "memoria",
+   "aprendizaje",
+   "atención",
+   "intelecto",
+   "lectoescritura"
+  ],
+  "slug": "memoria_y_aprendizaje",
+  "nombre": "Memoria y Aprendizaje",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "lazos_que_atan": {
+  "origen": null,
+  "cualidad": "Activa el sistema inmune, levantando las defensas naturales físicas, emocionales, psicológicas y espirituales.",
+  "armoniza": null,
+  "indicacion": "Coadyuva en padecimientos crónicos y críticos, fortaleciendo la capacidad de autodefensa del organismo.",
+  "palabras_clave": [
+   "sistema inmune",
+   "defensas naturales",
+   "padecimientos crónicos",
+   "equilibrio integral",
+   "fortaleza"
+  ],
+  "slug": "lazos_que_atan",
+  "nombre": "Lazos que atan",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "miedos": {
+  "origen": "No especificado para el combinado",
+  "cualidad": "No especificado para el combinado",
+  "armoniza": "Miedos",
+  "indicacion": "Asiste al individuo para hacer aflorar y fortalecer las aptitudes latentes o cualidades positivas del ser, armonizando emociones y comportamientos relacionados con los miedos.",
+  "palabras_clave": [
+   "miedos",
+   "armonización emocional",
+   "fortaleza interior",
+   "equilibrio"
+  ],
+  "slug": "miedos",
+  "nombre": "Miedos",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "poder_personal": {
+  "origen": "No aplica",
+  "cualidad": "Valoración, confianza, seguridad, empoderamiento, autoaceptación, intuición, facultades parapsicológicas",
+  "armoniza": "Inseguridad, inhibición, pasividad, baja autoestima, desconfianza, negación, aprensión, ciclotimia, ansiedad, hiperactividad, impaciencia, intolerancia, estancamientos terapéuticos, bajo deseo sexual, adicciones",
+  "indicacion": "Para conectar con la valoración, confianza y seguridad en uno mismo, promoviendo el empoderamiento y la autoaceptación, y coadyuvando en estancamientos terapéuticos, bajo deseo sexual y adicciones.",
+  "palabras_clave": [
+   "Empoderamiento",
+   "Autoaceptación",
+   "Confianza",
+   "Seguridad",
+   "Valoración"
+  ],
+  "slug": "poder_personal",
+  "nombre": "Poder Personal",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "purificacion": {
+  "origen": "No aplica (combinado)",
+  "cualidad": "Fortalece las defensas naturales físicas, emocionales, psicológicas y espirituales.",
+  "armoniza": "Activa el sistema inmune.",
+  "indicacion": "Se utiliza para acompañar padecimientos crónicos y críticos, levantando las defensas naturales del individuo.",
+  "palabras_clave": [
+   "sistema inmune",
+   "defensas naturales",
+   "padecimientos crónicos",
+   "padecimientos críticos",
+   "bienestar integral"
+  ],
+  "slug": "purificacion",
+  "nombre": "Purificación",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "rescate_y_estres": {
+  "origen": null,
+  "cualidad": "Fortalece las aptitudes latentes y cualidades positivas del ser.",
+  "armoniza": "Emociones y comportamientos.",
+  "indicacion": "Para situaciones de crisis, estrés, ansiedad, miedo, pánico, fobias y para apoyar en procesos de duelo y pérdidas.",
+  "palabras_clave": [
+   "Estrés",
+   "Ansiedad",
+   "Miedo",
+   "Duelo",
+   "Crisis"
+  ],
+  "slug": "rescate_y_estres",
+  "nombre": "Rescate y Estrés",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "tension_e_insomnio": {
+  "origen": "Combinado de esencias florales",
+  "cualidad": "Estabilidad, relajación y calma",
+  "armoniza": "Emociones y comportamientos relacionados con la ansiedad, la hiperactividad y la tensión",
+  "indicacion": "Coadyuva en estados de tensión mental, emocional y física, así como en trastornos del sueño y el insomnio.",
+  "palabras_clave": [
+   "Tensión",
+   "Insomnio",
+   "Ansiedad",
+   "Relajación",
+   "Calma"
+  ],
+  "slug": "tension_e_insomnio",
+  "nombre": "Tensión e Insomnio",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "cambios_y_adaptacion": {
+  "origen": "Combinado",
+  "cualidad": "Adaptación sin sufrimiento",
+  "armoniza": "Emociones y comportamientos en situaciones de cambio",
+  "indicacion": "Para adaptarse a crisis vitales, mudanzas, divorcios, duelos, inicios de escolaridad o cualquier cambio significativo en la vida.",
+  "palabras_clave": [
+   "Crisis vitales",
+   "Adaptación",
+   "Cambio",
+   "Duelo",
+   "Transición"
+  ],
+  "slug": "cambios_y_adaptacion",
+  "nombre": "Cambios y Adaptación",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "comunicacion_verbal": {
+  "origen": "No aplica (combinado)",
+  "cualidad": "Comunicación verbal articulada, intencionada y asertiva",
+  "armoniza": "La expresión verbal patológica y la dificultad para comunicar pensamientos o sentimientos",
+  "indicacion": "Para quienes no comunican lo que piensan o sienten, o padecen de una expresión verbal patológica. Coadyuva en trastornos del habla como la tartamudez y la dislexia.",
+  "palabras_clave": [
+   "Comunicación",
+   "Expresión verbal",
+   "Asertividad",
+   "Trastornos del habla",
+   "Tartamudez"
+  ],
+  "slug": "comunicacion_verbal",
+  "nombre": "Comunicación Verbal",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "dependencia_y_adicciones": {
+  "origen": "Combinado de esencias florales, hongos y plantas silvestres y cultivadas orgánicamente, y minerales",
+  "cualidad": "Fortalece las aptitudes latentes y cualidades positivas del ser",
+  "armoniza": "Emociones y comportamientos relacionados con la dependencia y las adicciones",
+  "indicacion": "Coadyuva en el manejo de la dependencia y adicciones, promoviendo el cambio en estancamientos terapéuticos y rehabilitaciones.",
+  "palabras_clave": [
+   "adicciones",
+   "dependencia",
+   "rehabilitación",
+   "cambio",
+   "apego"
+  ],
+  "slug": "dependencia_y_adicciones",
+  "nombre": "Dependencia y Adicciones",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "depresion": {
+  "origen": "Combinado de esencias florales, fúngicas y minerales",
+  "cualidad": "Fortalece las defensas naturales físicas, emocionales, psicológicas y espirituales",
+  "armoniza": "Emociones y comportamientos asociados a padecimientos crónicos y críticos",
+  "indicacion": "Coadyuva en estados depresivos, activando el sistema inmune y las defensas naturales del individuo.",
+  "palabras_clave": [
+   "depresión",
+   "sistema inmune",
+   "defensas naturales",
+   "padecimientos crónicos",
+   "bienestar emocional"
+  ],
+  "slug": "depresion",
+  "nombre": "Depresión",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "expresion_sexual": {
+  "origen": "Damiana (Turnera diffusa), Derrumbe (Psilocybe caerulescens var. mazatecorum), Diente de León (Taraxacum officinale)",
+  "cualidad": "Empoderamiento, autoaceptación, amplificación de la conciencia",
+  "armoniza": "Inseguridad, inhibición, pasividad, baja autoestima, aprensión, ciclotimia, ansiedad, hiperactividad, impaciencia, intolerancia",
+  "indicacion": "Promueve el cambio en estancamientos terapéuticos, bajo deseo sexual, rehabilitaciones físicas y en adicciones, coadyuvando en disfunciones sexuales y cuadros psicopatológicos.",
+  "palabras_clave": [
+   "Deseo sexual",
+   "Empoderamiento",
+   "Adicciones",
+   "Conciencia",
+   "Estancamiento"
+  ],
+  "slug": "expresion_sexual",
+  "nombre": "Expresión Sexual",
+  "tipo": "combinado",
+  "fuentes": 8
+ },
+ "intuicion_y_proyecto": {
+  "origen": null,
+  "cualidad": "Intuición y Proyecto",
+  "armoniza": "Incrementa la intuición y las facultades parapsicológicas.",
+  "indicacion": "Para potenciar la percepción intuitiva y la capacidad de iniciar y desarrollar proyectos.",
+  "palabras_clave": [
+   "intuición",
+   "proyecto",
+   "percepción",
+   "desarrollo",
+   "facultades parapsicológicas"
+  ],
+  "slug": "intuicion_y_proyecto",
+  "nombre": "Intuición y Proyecto",
+  "tipo": "combinado",
+  "fuentes": 8
+ }
+}

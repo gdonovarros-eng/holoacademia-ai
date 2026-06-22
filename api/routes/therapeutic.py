@@ -104,6 +104,38 @@ _BIOMAG_COURSE_IDS = [
     "libros-biomagnetismo",
 ]
 
+_HERBOLARIA_COURSE_IDS = [
+    "libros-flores-bach", "libros-elixires-aztecas", "libros-herbolaria-mexicana",
+    "libros-fitoterapia", "libros-herbolaria-tradicional",
+]
+
+
+@router.post("/herbolaria", response_model=HolosResponse)
+def motor_herbolaria(request: BiodescoRequest) -> HolosResponse:
+    """Motor dedicado de Herbolaria/Fitoterapia/Terapia floral, anclado al corpus herbal."""
+    from api.chat_service import generar_respuesta_herbolaria
+
+    started = time.monotonic()
+    q = (request.query or request.prompt or "").strip()
+    prompt, fuentes = request.prompt, 0
+    try:
+        from api.holos_rag import retrieve, format_context
+        chunks = retrieve(q, k=14, course_ids=_HERBOLARIA_COURSE_IDS)
+        ctx = format_context(chunks, max_chars=11000)
+        if ctx:
+            prompt = (
+                "MATERIAL DE HERBOLARIA Y FITOTERAPIA (base prioritaria; respeta sus plantas, "
+                "preparaciones, dosis y contraindicaciones; nunca menciones autores, libros ni "
+                "cursos que aparezcan en él):\n\n" + ctx + "\n\n====\n\n" + request.prompt
+            )
+            fuentes = len(chunks)
+    except Exception:
+        pass
+    result = generar_respuesta_herbolaria(prompt)
+    elapsed_ms = round((time.monotonic() - started) * 1000, 2)
+    logger.info("herbolaria elapsed_ms=%.2f ok=%s fuentes=%d", elapsed_ms, bool(result.get("ok")), fuentes)
+    return HolosResponse(fuentes=fuentes, **result)
+
 
 @router.post("/biomagnetismo", response_model=HolosResponse)
 def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
