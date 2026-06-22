@@ -53,8 +53,10 @@
 <div class="workspace">
   <aside class="sidebar">
     <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22c0-6 0-9 4-13M12 22C12 11 7 7 3 6c0 7 3 12 9 13zm0-4c5-1 8-5 9-12-4 1-9 5-9 12z"/></svg></div><div><div class="t">Herbolaria</div><div class="s">Fitoterapia · Bach · México</div></div></div>
+    <div class="sb-sec">Clínica</div>
+    <button class="nav-item active" data-p="recetario" onclick="nav('recetario')"><svg viewBox="0 0 24 24"><path d="M9 2h6a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2zM7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 11h6M9 15h6"/></svg>Recetario<span class="ct" id="ctRec"></span></button>
     <div class="sb-sec">Esencias y flores</div>
-    <button class="nav-item active" data-p="bach" onclick="nav('bach')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V3M12 15v6M15 12h6M3 12h6M14.5 9.5l4-4M5.5 18.5l4-4M14.5 14.5l4 4M5.5 5.5l4 4"/></svg>Flores de Bach<span class="ct" id="ctBach"></span></button>
+    <button class="nav-item" data-p="bach" onclick="nav('bach')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V3M12 15v6M15 12h6M3 12h6M14.5 9.5l4-4M5.5 18.5l4-4M14.5 14.5l4 4M5.5 5.5l4 4"/></svg>Flores de Bach<span class="ct" id="ctBach"></span></button>
     <button class="nav-item" data-p="aztecas" onclick="nav('aztecas')"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.5-.5z"/></svg>Elixires Aztecas<span class="ct" id="ctAz"></span></button>
     <div class="sb-sec">Atlas de plantas</div>
     <button class="nav-item" data-p="mexicana" onclick="nav('mexicana')"><svg viewBox="0 0 24 24"><path d="M12 22V8M12 8C12 4 9 2 5 2c0 4 3 6 7 6zM12 8c0-3 3-5 7-5 0 4-3 5-7 5z"/></svg>Herbolaria mexicana<span class="ct" id="ctMex"></span></button>
@@ -64,9 +66,16 @@
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
   <main class="main">
-    <div class="topbar"><h1 id="tbT">Flores de Bach</h1><p id="tbD">Las 38 flores + Rescate, por estado emocional.</p></div>
+    <div class="topbar"><h1 id="tbT">Recetario por padecimiento</h1><p id="tbD">Busca un padecimiento y obtén la fórmula concreta para tratarlo.</p></div>
 
-    <section class="panel active" id="panel-bach"><div class="scroller">
+    <section class="panel active" id="panel-recetario"><div class="scroller">
+      <input class="search" id="qRec" placeholder="Busca un padecimiento… (ej. gastritis, ansiedad, migraña, hipertensión)" oninput="renderRec()">
+      <div class="chips" id="chipsRec"></div>
+      <div class="count" id="cntRec"></div>
+      <div class="grid" id="gridRec"></div>
+    </div></section>
+
+    <section class="panel" id="panel-bach"><div class="scroller">
       <input class="search" id="qBach" placeholder="Buscar flor o estado… (ej. miedo, culpa, agotamiento)" oninput="renderBach()">
       <div class="chips" id="chipsBach"></div>
       <div class="count" id="cntBach"></div>
@@ -96,12 +105,14 @@
 </div>
 <div class="modal" id="modal" onclick="if(event.target===this)cerrar()"><div class="modal-box" id="modalBox"></div></div>
 <script>
-  let BACH=[], AZ=[], MEX=[], fGrupoBach='todos', fTipoAz='todos';
+  let BACH=[], AZ=[], MEX=[], REC=[], fGrupoBach='todos', fTipoAz='todos', fSisRec='todos';
   const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   const J=o=>JSON.stringify(o).replace(/"/g,'&quot;');
 
   async function cargar(){
+    try{ REC=Object.values(await(await fetch('/api/herb-recetario')).json()); }catch(e){}
+    document.getElementById('ctRec').textContent=REC.length; renderChipsRec(); renderRec();
     try{ BACH=Object.values(await(await fetch('/api/herb-bach')).json()); }catch(e){}
     try{ AZ=Object.values(await(await fetch('/api/herb-aztecas')).json()); }catch(e){}
     try{ MEX=Object.values(await(await fetch('/api/herb-mexicana')).json()).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')); }catch(e){}
@@ -111,11 +122,41 @@
   function nav(p){
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
-    const T={bach:['Flores de Bach','Las 38 flores + Rescate, por estado emocional.'],
+    const T={recetario:['Recetario por padecimiento','Busca un padecimiento y obtén la fórmula concreta para tratarlo.'],
+      bach:['Flores de Bach','Las 38 flores + Rescate, por estado emocional.'],
       aztecas:['Elixires Aztecas','Esencias individuales y remedios combinados del set azteca.'],
       mexicana:['Herbolaria mexicana','Plantas medicinales tradicionales de México.'],
       ia:['Consulta IA','Fitoterapia + herbolaria mexicana + flores, con seguridad.']};
     document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
+  }
+  // ── Recetario ──
+  function renderChipsRec(){
+    const ss=[...new Set(REC.map(r=>r.sistema).filter(Boolean))];
+    document.getElementById('chipsRec').innerHTML=`<span class="chip ${fSisRec==='todos'?'active':''}" onclick="setSR('todos')">Todos</span>`+
+      ss.map(s=>`<span class="chip ${fSisRec===s?'active':''}" onclick="setSR(${J(s)})">${esc(s)}</span>`).join('');
+  }
+  function setSR(s){ fSisRec=s; renderChipsRec(); renderRec(); }
+  function renderRec(){
+    const q=norm((document.getElementById('qRec')||{}).value||'');
+    let r=REC; if(fSisRec!=='todos') r=r.filter(x=>x.sistema===fSisRec);
+    if(q) r=r.filter(x=>norm([x.padecimiento,x.descripcion,(x.plantas||[]).map(p=>p.nombre).join(' '),x.sistema].join(' ')).includes(q));
+    document.getElementById('cntRec').textContent=r.length+' de '+REC.length+' padecimientos';
+    document.getElementById('gridRec').innerHTML = r.length? r.map(x=>{const i=REC.indexOf(x);
+      return `<div class="gcard" onclick="abrirRec(${i})"><div class="nm">${esc(x.padecimiento)}</div><div class="sub">${esc(x.sistema||'')}</div><div class="cf">${esc((x.plantas||[]).slice(0,3).map(p=>(p.nombre||'').split(' (')[0]).join(', '))}</div><span class="badge">Ver fórmula</span></div>`;}).join('')
+      : '<div class="empty">El recetario se está generando. Vuelve en un momento.</div>';
+  }
+  function abrirRec(i){const x=REC[i];if(!x)return;
+    const plantas=(x.plantas||[]).map(p=>`<li><strong>${esc(p.nombre||'')}</strong>${p.accion?' — '+esc(p.accion):''}${p.para_que?`<br><span style="color:var(--muted);font-size:.85rem">${esc(p.para_que)}</span>`:''}</li>`).join('');
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(x.padecimiento)}</h2><div class="sub">${esc(x.sistema||'')}</div>
+      ${x.descripcion?`<p style="margin-top:6px">${esc(x.descripcion)}</p>`:''}
+      ${plantas?`<div class="mb-sec">Plantas indicadas</div><ul>${plantas}</ul>`:''}
+      ${x.formula?`<div class="mb-sec pos">Fórmula</div><div class="frase">${esc(x.formula)}</div>`:''}
+      ${x.preparacion?`<div class="mb-sec">Preparación, dosis y duración</div><p>${esc(x.preparacion)}</p>`:''}
+      ${x.flores?`<div class="mb-sec">Flores y esencias de apoyo</div><p>${esc(x.flores)}</p>`:''}
+      ${x.mexicana?`<div class="mb-sec">Opción mexicana</div><p>${esc(x.mexicana)}</p>`:''}
+      ${x.estilo_vida?`<div class="mb-sec">Estilo de vida y dieta</div><p>${esc(x.estilo_vida)}</p>`:''}
+      ${x.precauciones?`<div class="mb-sec neg">Precauciones</div><p>${esc(x.precauciones)}</p>`:''}`;
+    document.getElementById('modal').classList.add('open');
   }
   // ── Bach ──
   function renderChipsBach(){

@@ -853,6 +853,12 @@ async def api_herb_mexicana():
     return _serve_data_json("herb_mexicana.json", "Atlas mexicano no encontrado")
 
 
+@app.get("/api/herb-recetario", include_in_schema=False)
+async def api_herb_recetario():
+    """Recetario por padecimiento: fórmulas concretas para sanar."""
+    return _serve_data_json("herb_recetario.json", "Recetario no encontrado")
+
+
 @app.get("/api/pares-referencias", include_in_schema=False)
 async def api_pares_referencias():
     """Referencias bibliográficas y ubicación por par (para la ficha de detalle)."""
