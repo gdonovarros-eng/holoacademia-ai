@@ -15,7 +15,7 @@
   .sb-foot{margin-top:auto;padding-top:12px}
   .sb-home{display:flex;align-items:center;gap:8px;color:#8fb3aa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
-  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
   .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
   .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:block}
   .scroller{padding:22px;max-width:1100px}
@@ -75,10 +75,21 @@
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
   .intro{background:var(--acc-dim);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:.92rem}
   .claves li{margin:5px 0;font-size:.9rem}
-  @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
   @media print{.sidebar,.topbar,#printHide{display:none!important}.panel{display:none!important}#panel-ficha{display:block!important}.scroller{max-width:100%}}
 </style></head><body>
 <div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
   <aside class="sidebar">
     <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8a5 5 0 0 0 10 0c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><path d="M9 9h6M12 9v9"/></svg></div><div><div class="t">Biodescodificación</div><div class="s">+ NMG / 5 Leyes</div></div></div>
     <div class="sb-sec">Atlas</div>
@@ -103,7 +114,7 @@
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
   <main class="main">
-    <div class="topbar"><h1 id="tbT">Diccionario biológico</h1><p id="tbD">Síntoma a síntoma: conflicto, sentido biológico, capa embrionaria y las dos fases.</p></div>
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menú"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbT">Diccionario biológico</h1><p id="tbD">Síntoma a síntoma: conflicto, sentido biológico, capa embrionaria y las dos fases.</p></div></div>
 
     <section class="panel active" id="panel-dicc"><div class="scroller">
       <input class="search" id="qD" placeholder="Buscar síntoma, órgano o conflicto… (ej. rinitis, tiroides, separación)" oninput="renderDicc()">
@@ -172,7 +183,9 @@
     renderDientes(); renderLat(); renderCic(); renderProy();
     renderDedos(); renderPiel(); renderPeso(); renderDuelos(); renderHom();
   }
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
   function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
     const T={dicc:['Diccionario biológico','Síntoma a síntoma: conflicto, sentido biológico, capa embrionaria y las dos fases.'],

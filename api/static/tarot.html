@@ -106,9 +106,21 @@
   .monton .cback{position:absolute;width:62px;height:100px}
   .monton .mc{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:.6rem;font-weight:800;padding:1px 7px;border-radius:999px}
   .flyer{position:fixed;z-index:70;border-radius:7px;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .6s cubic-bezier(.2,.7,.25,1);will-change:transform;backface-visibility:hidden}
-  @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}.board{max-width:100%}.slot{width:15%}}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:248px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+    .board{max-width:100%}.slot{width:15%}
+  }
 </style></head><body>
 <div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
   <aside class="sidebar">
     <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.5L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.6-.5z"/></svg></div><div><div class="t">Tarot</div><div class="s">Mesa de lectura</div></div></div>
     <div class="sb-sec">Lectura</div>
@@ -118,7 +130,7 @@
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
   <main class="main">
-    <div class="topbar"><button class="back" id="backBtn" style="display:none" onclick="verCatalogo()">← Tiradas</button><div><h1 id="tbTitle">Tiradas</h1><p id="tbDesc">Elige una tirada: cada una dice para qué sirve y acomoda las cartas en su forma.</p></div></div>
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menú"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><button class="back" id="backBtn" style="display:none" onclick="verCatalogo()">← Tiradas</button><div><h1 id="tbTitle">Tiradas</h1><p id="tbDesc">Elige una tirada: cada una dice para qué sirve y acomoda las cartas en su forma.</p></div></div>
 
     <section class="panel active" id="panel-tiradas">
       <div class="scroller" id="spreadCatalog"><div class="count" id="cntTir"></div><div class="grid" id="gridTir"></div></div>
@@ -210,7 +222,9 @@
   }
   function setDeck(id){ if(!deckCount(id))return; DECK=id; localStorage.setItem('tarot_deck',id); aplicarDeck(); if(cur)renderBoard(); if(document.getElementById('gridCar').childElementCount)renderCartas(); }
   function setModo(m){ modo=m; localStorage.setItem('tarot_modo',m); document.querySelectorAll('#modes button').forEach(b=>b.classList.toggle('on',b.dataset.m===m)); }
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
   function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
     const T={tiradas:['Tiradas','Elige una tirada: cada una dice para qué sirve y acomoda las cartas en su forma.'],cartas:['Cartas','Las 78 cartas con sus significados, sombra y pregunta terapéutica.'],consulta:['Consulta rápida','Una pregunta, una lectura de tres cartas interpretada.']};

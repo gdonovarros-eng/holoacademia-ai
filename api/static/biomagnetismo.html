@@ -16,7 +16,7 @@
   .sb-foot{margin-top:auto;padding-top:12px}
   .sb-home{display:flex;align-items:center;gap:8px;color:#8fa6c4;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
-  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
   .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
   .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:flex;flex-direction:column}
   .scroller{flex:1;overflow-y:auto;padding:18px 22px}
@@ -102,9 +102,20 @@
     #printArea table{width:100%;border-collapse:collapse}#printArea th,#printArea td{border:1px solid #999;padding:7px 9px;text-align:left;font-size:12px}
     #printArea th{background:#eee}
   }
-  @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}.nav-item .ct{display:none}}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
 </style></head><body>
 <div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
   <aside class="sidebar">
     <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="12" y1="15" x2="12" y2="21"/></svg></div><div><div class="t">Biomagnetismo</div><div class="s">Atlas clínico</div></div></div>
     <div class="sb-sec">Atlas</div>
@@ -120,7 +131,7 @@
   </aside>
 
   <main class="main">
-    <div class="topbar"><h1 id="tbTitle">Pares biomagnéticos</h1><p id="tbDesc">Busca cualquier par por nombre, agente, síntoma u órgano. Punto de rastreo (+) e impactación (−).</p></div>
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menú"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbTitle">Pares biomagnéticos</h1><p id="tbDesc">Busca cualquier par por nombre, agente, síntoma u órgano. Punto de rastreo (+) e impactación (−).</p></div></div>
 
     <!-- PARES -->
     <section class="panel active" id="panel-pares"><div class="scroller">
@@ -214,7 +225,9 @@
     return null;
   }
 
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
   function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     const T={pares:['Pares biomagnéticos','Busca cualquier par por nombre, agente, síntoma u órgano. Toca un par para ver su ficha.'],
       micro:['Microbios y patógenos','Fichas clínicas: enfermedades, transmisión, tratamiento. Encuentra los pares de cada agente.'],

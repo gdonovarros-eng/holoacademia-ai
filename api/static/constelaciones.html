@@ -24,7 +24,7 @@
   .sb-home:hover{background:var(--sidebar2);color:#fff}
   /* Main */
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
-  .topbar{padding:16px 24px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0}
+  .topbar{padding:16px 24px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
   .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}
   .topbar p{font-size:.8rem;color:var(--muted)}
   .panel{flex:1;overflow-y:auto;display:none}
@@ -73,9 +73,20 @@
   .typing{display:inline-flex;gap:5px;padding:6px 0}.typing span{width:8px;height:8px;background:var(--border);border-radius:50%;animation:p 1.2s infinite}
   .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
   @keyframes p{0%,80%,100%{opacity:.3;transform:scale(.85)}40%{opacity:1;transform:scale(1)}}
-  @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
 </style></head><body>
 <div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
   <aside class="sidebar">
     <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.6 6.8 6.4 16M13.4 6.8 17.6 16M7.4 18h9.2"/></svg></div><div><div class="t">Constelaciones</div><div class="s">y Transgeneracional</div></div></div>
     <div class="sb-sec">Trabajar el caso</div>
@@ -90,7 +101,7 @@
   </aside>
 
   <main class="main">
-    <div class="topbar"><h1 id="tbTitle">Consulta libre</h1><p id="tbDesc">Pregunta lo que necesites sobre el caso, el vínculo o la repetición.</p></div>
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menú"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbTitle">Consulta libre</h1><p id="tbDesc">Pregunta lo que necesites sobre el caso, el vínculo o la repetición.</p></div></div>
 
     <!-- CHAT -->
     <section class="panel active" id="panel-chat">
@@ -146,7 +157,9 @@
     diccionario:{t:"Diccionario",d:"Define conceptos de constelaciones y transgeneracional.",lead:"Escribe el término o concepto y obtén su definición clara con ejemplo.",ph:"Ej. síndrome del yacente",chips:["Órdenes del amor","Lealtad invisible","Síndrome de aniversario","Doble / yacente","Conciencia familiar"]},
   };
   let curTool="chat";
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
   function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     document.getElementById('tbTitle').textContent=TOOLS[p].t;
     document.getElementById('tbDesc').textContent=TOOLS[p].d;
