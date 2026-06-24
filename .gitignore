@@ -41,13 +41,8 @@ Motor terapeutico/
 data/audio_raw/
 data/processed_library/audio/
 
-# ── Thoth Tarot: copyright Crowley/Harris vigente hasta ~2042 ──────
-# Las imágenes existen en local para uso personal del founder solamente.
-# NO se distribuyen públicamente. Solo se versionan el mapping vacío y el README.
-api/static/tarot-cards-thoth/*.jpg
-api/static/tarot-cards-thoth/*.png
-api/static/tarot-cards-thoth/*.jpeg
-api/static/tarot-cards-thoth/*.webp
-!api/static/tarot-cards-thoth/card_images.json
-!api/static/tarot-cards-thoth/README.md
+# ── Thoth Tarot: copyright Crowley/Harris vigente ──────
+# Imágenes reproducidas con fines de estudio y formación terapéutica, sin ánimo
+# de lucro; todos los derechos pertenecen a sus autores. Se versionan para el
+# módulo educativo de tarot.
 .gstack/
