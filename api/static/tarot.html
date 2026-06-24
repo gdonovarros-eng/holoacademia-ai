@@ -153,7 +153,7 @@
   let cur=null, drawn=[], selIdx=-1, picked=0, barajeando=false;
   let DECK=localStorage.getItem('tarot_deck')||'rws';
   let modo=localStorage.getItem('tarot_modo')||'manual';
-  const DECK_META={rws:{label:'Rider-Waite-Smith',nota:'78 cartas · completo'},marsella:{label:'Tarot de Marsella',nota:'Arcanos Mayores'},thoth:{label:'Tarot Thoth',nota:'Crowley'}};
+  const DECK_META={rws:{label:'Rider-Waite-Smith',nota:''},marsella:{label:'Tarot de Marsella',nota:''},thoth:{label:'Tarot Thoth',nota:'Crowley/Harris'}};
   const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
   const imgFor=name=>(IMG&&IMG[name])||'';
@@ -178,7 +178,7 @@
       const dis=n===0; const sample=Object.values(((DECKS[id]||{}).mapping)||{})[0]||'';
       return `<div class="deck-opt ${DECK===id?'sel':''} ${dis?'dis':''}" onclick="${dis?'':`setDeck('${id}')`}">
         ${sample?`<img class="thumb" src="${sample}" alt="">`:'<div class="thumb cback"></div>'}
-        <div><div class="dn">${esc(meta.label)}</div><div class="dd">${dis?'sin imágenes':esc(meta.nota)+' · '+n}</div></div></div>`;
+        <div><div class="dn">${esc(meta.label)}</div><div class="dd">${dis?'sin imágenes':n+' cartas'+(meta.nota?' · '+esc(meta.nota):'')}</div></div></div>`;
     }).join('');
   }
   function setDeck(id){ if(!deckCount(id))return; DECK=id; localStorage.setItem('tarot_deck',id); aplicarDeck(); if(cur)renderBoard(); if(document.getElementById('gridCar').childElementCount)renderCartas(); }
