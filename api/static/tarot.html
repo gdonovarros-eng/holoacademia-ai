@@ -66,6 +66,37 @@
   .modal-c h2{font-size:1.15rem;font-weight:800}.modal-c .g{font-size:.78rem;color:var(--muted);margin-bottom:8px}
   .mb-sec{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:14px 0 5px}
   .loading{text-align:center;color:var(--muted);padding:30px}
+  /* selector de mazo */
+  .deck-sel{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+  .deck-opt{flex:1;min-width:160px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;gap:10px;align-items:center;transition:all .12s}
+  .deck-opt.sel{border-color:var(--acc);background:var(--acc-dim)}
+  .deck-opt.dis{opacity:.55;cursor:not-allowed}
+  .deck-opt .thumb{width:30px;height:48px;border-radius:5px;object-fit:cover;background:#2c2247;flex-shrink:0}
+  .deck-opt .dn{font-weight:800;font-size:.85rem}.deck-opt .dd{font-size:.7rem;color:var(--muted)}
+  .deck-lbl{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800;margin-bottom:6px}
+  /* modos */
+  .modes{display:inline-flex;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+  .modes button{background:var(--surface);border:none;padding:10px 15px;font-family:inherit;font-weight:700;font-size:.82rem;cursor:pointer;color:var(--muted)}
+  .modes button.on{background:var(--acc);color:#fff}
+  /* dorso de carta dibujado */
+  .cback{background:repeating-linear-gradient(45deg,#2e2150,#2e2150 6px,#39296a 6px,#39296a 12px);border:1px solid #6d5aa3;border-radius:7px;position:relative;box-shadow:0 3px 10px rgba(0,0,0,.4)}
+  .cback::after{content:"✦";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#c4b5fd;font-size:1.1rem}
+  .slot .nameph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;font-size:.58rem;font-weight:700;color:#ede9fe;padding:3px;line-height:1.15}
+  .slot .full{position:absolute;inset:0;border-radius:6px}
+  /* mesa de barajeo y selección */
+  #mesa{margin:16px auto 0;max-width:680px}#mesa:empty{display:none}
+  .mesa-hint{text-align:center;font-size:.9rem;color:var(--acc-dark);font-weight:700;margin-bottom:12px}
+  #shuffle{position:relative;width:110px;height:140px;margin:8px auto 4px}
+  #shuffle .cback{position:absolute;inset:0}
+  @keyframes riffleL{0%,100%{transform:translateX(0) rotate(0)}30%{transform:translateX(-46px) rotate(-7deg)}60%{transform:translateX(8px) rotate(2deg)}}
+  @keyframes riffleR{0%,100%{transform:translateX(0) rotate(0)}30%{transform:translateX(46px) rotate(7deg)}60%{transform:translateX(-8px) rotate(-2deg)}}
+  .montones{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+  .monton{position:relative;width:66px;height:104px;cursor:pointer;transition:transform .15s}
+  .monton:hover{transform:translateY(-5px)}
+  .monton.vacio{opacity:.25;pointer-events:none}
+  .monton .cback{position:absolute;width:62px;height:100px}
+  .monton .mc{position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);background:var(--acc);color:#fff;font-size:.6rem;font-weight:800;padding:1px 7px;border-radius:999px}
+  .flyer{position:fixed;z-index:70;border-radius:7px;box-shadow:0 8px 24px rgba(0,0,0,.5);transition:transform .6s cubic-bezier(.2,.7,.25,1);will-change:transform;backface-visibility:hidden}
   @media(max-width:760px){.workspace{flex-direction:column}.sidebar{width:100%;flex-direction:row;overflow-x:auto;padding:8px;height:auto}.sb-brand,.sb-sec,.sb-foot{display:none}.nav-item{white-space:nowrap;width:auto}.board{max-width:100%}.slot{width:15%}}
 </style></head><body>
 <div class="workspace">
@@ -84,8 +115,16 @@
       <div class="scroller" id="spreadCatalog"><div class="count" id="cntTir"></div><div class="grid" id="gridTir"></div></div>
       <div class="scroller" id="spreadBoard" style="display:none"><div class="board-wrap">
         <div class="purpose" id="purpose"></div>
-        <div class="qrow"><input class="search" id="preg" placeholder="Tu pregunta o intención (opcional)"><button class="btn" id="drawBtn" onclick="tirar()">Barajar y tirar</button><button class="btn sec" onclick="leerTirada()" id="readBtn" disabled>Leer la tirada</button></div>
+        <div class="deck-lbl">Mazo</div>
+        <div class="deck-sel" id="deckSel"></div>
+        <div class="qrow" style="align-items:center">
+          <input class="search" id="preg" placeholder="Tu pregunta o intención (opcional)">
+          <div class="modes" id="modes"><button data-m="manual" onclick="setModo('manual')">Manual</button><button data-m="auto" onclick="setModo('auto')">Automático</button></div>
+          <button class="btn" id="drawBtn" onclick="tirar()">Barajar y tirar</button>
+          <button class="btn sec" onclick="leerTirada()" id="readBtn" disabled>Leer la tirada</button>
+        </div>
         <div class="board" id="board"></div>
+        <div id="mesa"></div>
         <div class="detail" id="detail"></div>
         <div class="legend" id="legend"></div>
         <div class="reading" id="reading"></div>
@@ -108,16 +147,36 @@
 </div>
 <div class="modal" id="modal" onclick="if(event.target===this)cerrarCarta()"><div class="modal-box" id="modalBox"></div></div>
 <script>
-  let TIRADAS={}, MAZO=[], IMG={}, MBYNAME={};
-  let cur=null, drawn=[], selIdx=-1;
+  let TIRADAS={}, MAZO=[], IMG={}, MBYNAME={}, DECKS={};
+  let cur=null, drawn=[], selIdx=-1, picked=0, barajeando=false;
+  let DECK=localStorage.getItem('tarot_deck')||'rws';
+  let modo=localStorage.getItem('tarot_modo')||'manual';
+  const DECK_META={rws:{label:'Rider-Waite-Smith',nota:'78 cartas · completo'},marsella:{label:'Tarot de Marsella',nota:'Arcanos Mayores'},thoth:{label:'Tarot Thoth',nota:'Crowley'}};
   const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
   const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const imgFor=name=>(IMG&&IMG[name])||'';
 
   async function cargar(){
     try{ const d=await(await fetch('/tarot/tiradas')).json(); TIRADAS=d.tiradas||{}; document.getElementById('ctTir').textContent=Object.keys(TIRADAS).length; renderCatalogo(); }catch(e){}
     try{ const m=await(await fetch('/tarot/mazo')).json(); MAZO=m.cartas||[]; MAZO.forEach(c=>MBYNAME[c.nombre]=c); document.getElementById('ctCar').textContent=MAZO.length; }catch(e){}
-    try{ const dk=await(await fetch('/tarot/decks/scan')).json(); IMG=(dk.decks&&dk.decks.rws&&dk.decks.rws.mapping)||{}; }catch(e){}
+    try{ const dk=await(await fetch('/tarot/decks/scan')).json(); DECKS=dk.decks||{}; }catch(e){}
+    if(!DECKS[DECK]||!Object.keys((DECKS[DECK]||{}).mapping||{}).length) DECK='rws';
+    aplicarDeck(); setModo(modo);
   }
+  function deckCount(id){ return Object.keys(((DECKS[id]||{}).mapping)||{}).length; }
+  function aplicarDeck(){ IMG=((DECKS[DECK]||{}).mapping)||{}; renderDeckSel(); }
+  function renderDeckSel(){
+    const el=document.getElementById('deckSel'); if(!el)return;
+    el.innerHTML=['rws','marsella','thoth'].map(id=>{
+      const meta=DECK_META[id]||{label:id,nota:''}; const n=deckCount(id);
+      const dis=n===0; const sample=Object.values(((DECKS[id]||{}).mapping)||{})[0]||'';
+      return `<div class="deck-opt ${DECK===id?'sel':''} ${dis?'dis':''}" onclick="${dis?'':`setDeck('${id}')`}">
+        ${sample?`<img class="thumb" src="${sample}" alt="">`:'<div class="thumb cback"></div>'}
+        <div><div class="dn">${esc(meta.label)}</div><div class="dd">${dis?'sin imágenes':esc(meta.nota)+' · '+n}</div></div></div>`;
+    }).join('');
+  }
+  function setDeck(id){ if(!deckCount(id))return; DECK=id; localStorage.setItem('tarot_deck',id); aplicarDeck(); if(cur)renderBoard(); if(document.getElementById('gridCar').childElementCount)renderCartas(); }
+  function setModo(m){ modo=m; localStorage.setItem('tarot_modo',m); document.querySelectorAll('#modes button').forEach(b=>b.classList.toggle('on',b.dataset.m===m)); }
   function nav(p){
     document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
     document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
@@ -143,29 +202,93 @@
     document.getElementById('readBtn').disabled=true;
     renderBoard();
   }
+  function slotFace(d){
+    if(!d||!d.shown) return '';
+    const u=imgFor(d.carta);
+    if(u) return `<img class="${d.invertida?'inv':''}" src="${u}" onerror="this.style.opacity=.15" alt="">`;
+    return `<div class="full cback"></div><div class="nameph">${esc(d.carta)}${d.invertida?'<br>(inv)':''}</div>`;
+  }
   function renderBoard(){
     const b=document.getElementById('board');
     b.innerHTML=cur.posiciones.map((p,i)=>{
-      const d=drawn[i];
-      const inner=d?`<img class="${d.invertida?'inv':''}" src="${IMG[d.carta]||''}" onerror="this.style.opacity=.15" alt="">`:`<span class="ph">${p.id}</span>`;
-      return `<div class="slot ${p.rot?'rot':''} ${selIdx===i?'sel':''}" style="left:${p.x}%;top:${p.y}%" onclick="selCarta(${i})"><span class="num">${p.id}</span>${inner}</div>`;
+      const face=(drawn[i]&&drawn[i].shown)?slotFace(drawn[i]):`<span class="ph">${p.id}</span>`;
+      return `<div class="slot ${p.rot?'rot':''} ${selIdx===i?'sel':''}" id="slot${i}" style="left:${p.x}%;top:${p.y}%" onclick="selCarta(${i})"><span class="num">${p.id}</span>${face}</div>`;
     }).join('');
+    renderLegend();
+  }
+  function updateSlot(i){
+    const s=document.getElementById('slot'+i); if(!s)return; const p=cur.posiciones[i];
+    s.innerHTML=`<span class="num">${p.id}</span>${slotFace(drawn[i])}`;
     renderLegend();
   }
   function renderLegend(){
     document.getElementById('legend').innerHTML=cur.posiciones.map((p,i)=>{
-      const d=drawn[i];
-      return `<div class="leg ${selIdx===i?'sel':''}" onclick="selCarta(${i})"><div class="n">${p.id}</div><div><div class="pn">${esc(p.nombre)}</div><div class="cn">${d?esc(d.carta)+(d.invertida?' (invertida)':''):esc(p.descripcion||'')}</div></div></div>`;
+      const d=drawn[i]; const rev=d&&d.shown;
+      return `<div class="leg ${selIdx===i?'sel':''}" onclick="selCarta(${i})"><div class="n">${p.id}</div><div><div class="pn">${esc(p.nombre)}</div><div class="cn">${rev?esc(d.carta)+(d.invertida?' (invertida)':''):esc(p.descripcion||'')}</div></div></div>`;
     }).join('');
   }
   function tirar(){
+    if(barajeando)return;
     const names=MAZO.map(c=>c.nombre); const pool=[...names]; drawn=[];
-    for(let i=0;i<cur.posiciones.length;i++){ const j=Math.floor(Math.random()*pool.length); const carta=pool.splice(j,1)[0]; drawn.push({posicion:cur.posiciones[i].nombre, carta, invertida:Math.random()<0.28}); }
-    selIdx=-1; document.getElementById('detail').innerHTML=''; document.getElementById('reading').innerHTML='';
-    document.getElementById('readBtn').disabled=false; renderBoard();
+    for(let i=0;i<cur.posiciones.length;i++){ const j=Math.floor(Math.random()*pool.length); const carta=pool.splice(j,1)[0]; drawn.push({posicion:cur.posiciones[i].nombre, carta, invertida:Math.random()<0.28, shown:false}); }
+    selIdx=-1; picked=0;
+    document.getElementById('detail').innerHTML=''; document.getElementById('reading').innerHTML='';
+    document.getElementById('readBtn').disabled=true; renderBoard();
+    barajear(()=>{ if(modo==='auto') repartirAuto(); else montonesManual(); });
   }
-  function selCarta(i){ selIdx=i; renderBoard(); const p=cur.posiciones[i]; const d=drawn[i]; const det=document.getElementById('detail');
-    if(!d){ det.innerHTML=`<h3>${esc(p.nombre)}</h3><div class="pos">${esc(p.descripcion||'')}</div><p style="color:var(--muted);font-size:.85rem">Baraja y tira para revelar esta carta.</p>`; return; }
+  function barajear(cb){
+    barajeando=true; document.getElementById('drawBtn').disabled=true;
+    const mesa=document.getElementById('mesa');
+    mesa.innerHTML='<div class="mesa-hint">Barajando las cartas…</div><div id="shuffle">'+
+      Array.from({length:7}).map((_,k)=>`<div class="cback" style="animation:${k%2?'riffleR':'riffleL'} .7s ease ${(k*0.05).toFixed(2)}s 2 both"></div>`).join('')+'</div>';
+    setTimeout(cb,1550);
+  }
+  function repartirAuto(){
+    document.getElementById('mesa').innerHTML='';
+    drawn.forEach((d,i)=>setTimeout(()=>{ d.shown=true; updateSlot(i); if(i===drawn.length-1) finTirada(); }, 120+i*240));
+  }
+  function montonesManual(){
+    const mesa=document.getElementById('mesa'); const nm=6;
+    mesa.innerHTML=`<div class="mesa-hint" id="mhint">Elige tus cartas — faltan ${drawn.length}</div>`+
+      `<div class="montones" id="montones">`+
+      Array.from({length:nm}).map((_,k)=>`<div class="monton" data-k="${k}" onclick="elegir(${k})">`+
+        Array.from({length:5}).map((_,j)=>`<div class="cback" style="top:${j*1.6}px;left:${j*1.6}px"></div>`).join('')+
+        `</div>`).join('')+`</div>`;
+  }
+  function elegir(k){
+    if(picked>=drawn.length)return;
+    const i=picked; const d=drawn[i];
+    const monton=document.querySelector('.monton[data-k="'+k+'"]'); const toEl=document.getElementById('slot'+i);
+    if(!monton||!toEl)return;
+    const backs=monton.querySelectorAll('.cback'); if(backs.length) backs[backs.length-1].remove();
+    if(!monton.querySelectorAll('.cback').length) monton.classList.add('vacio');
+    volar(monton,toEl,()=>{
+      d.shown=true; updateSlot(i); picked++;
+      if(picked>=drawn.length){ document.getElementById('mesa').innerHTML=''; finTirada(); selCarta(0); }
+      else { const h=document.getElementById('mhint'); if(h)h.textContent='Elige tus cartas — faltan '+(drawn.length-picked); }
+    });
+  }
+  function volar(fromEl,toEl,cb){
+    const fr=fromEl.getBoundingClientRect(), tr=toEl.getBoundingClientRect();
+    const w=62,h=100;
+    const fly=document.createElement('div'); fly.className='flyer cback';
+    fly.style.width=w+'px'; fly.style.height=h+'px';
+    fly.style.left=(fr.left+fr.width/2-w/2)+'px'; fly.style.top=(fr.top)+'px';
+    document.body.appendChild(fly);
+    const dx=(tr.left+tr.width/2)-(fr.left+fr.width/2);
+    const dy=(tr.top+tr.height/2)-(fr.top+h/2);
+    requestAnimationFrame(()=>{ fly.style.transform=`translate(${dx}px,${dy}px) scale(${Math.max(.4,tr.width/w)})`; });
+    setTimeout(()=>{ fly.remove(); cb&&cb(); },640);
+  }
+  function finTirada(){
+    barajeando=false; document.getElementById('drawBtn').disabled=false;
+    document.getElementById('readBtn').disabled=false; renderLegend();
+  }
+  function selCarta(i){ selIdx=i;
+    document.querySelectorAll('#board .slot').forEach((s,k)=>s.classList.toggle('sel',k===i));
+    const p=cur.posiciones[i]; const d=drawn[i]; const det=document.getElementById('detail');
+    document.querySelectorAll('#legend .leg').forEach((s,k)=>s.classList.toggle('sel',k===i));
+    if(!d||!d.shown){ det.innerHTML=`<h3>${esc(p.nombre)}</h3><div class="pos">${esc(p.descripcion||'')}</div><p style="color:var(--muted);font-size:.85rem">Baraja y elige para revelar esta carta.</p>`; return; }
     const c=MBYNAME[d.carta]||{};
     det.innerHTML=`<h3>${esc(d.carta)}${d.invertida?' <span style="font-size:.8rem;color:var(--muted)">(invertida)</span>':''}</h3><div class="pos">Posición ${p.id}: ${esc(p.nombre)} — ${esc(p.descripcion||'')}</div>
       ${c.palabras_clave&&c.palabras_clave.length?`<div class="mb-sec">Palabras clave</div><div class="kw">${c.palabras_clave.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:''}
@@ -176,7 +299,7 @@
     if(!drawn.length)return; const btn=document.getElementById('readBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Leyendo…';
     const r=document.getElementById('reading'); r.innerHTML='<div class="loading">Interpretando la tirada…</div>';
     try{
-      const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:(document.getElementById('preg').value.trim()||'Lectura general'),tirada:cur._id,cartas:drawn.map(d=>({posicion:d.posicion,carta:d.carta,invertida:d.invertida})),profundidad:'estandar',enfoque:cur.enfoque||'terapeutico',sistema:'rws'})});
+      const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:(document.getElementById('preg').value.trim()||'Lectura general'),tirada:cur._id,cartas:drawn.map(d=>({posicion:d.posicion,carta:d.carta,invertida:d.invertida})),profundidad:'estandar',enfoque:cur.enfoque||'terapeutico',sistema:DECK})});
       const d=await res.json(); r.innerHTML=md(d&&d.lectura?d.lectura:'No se pudo generar la lectura.');
     }catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
@@ -204,7 +327,7 @@
     for(let i=0;i<3;i++){ const j=Math.floor(Math.random()*pool.length); cs.push({posicion:pos[i],carta:pool.splice(j,1)[0],invertida:Math.random()<0.28}); }
     document.getElementById('cBoard').innerHTML='<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px">'+cs.map(c=>`<div style="text-align:center"><img src="${IMG[c.carta]||''}" style="width:96px;aspect-ratio:130/214;object-fit:cover;border-radius:8px;${c.invertida?'transform:rotate(180deg)':''}" onerror="this.style.opacity=.15"><div style="font-size:.72rem;color:var(--muted);margin-top:5px">${esc(c.posicion)}</div><div style="font-size:.76rem;font-weight:700">${esc(c.carta)}</div></div>`).join('')+'</div>';
     const r=document.getElementById('cReading'); r.innerHTML='<div class="loading">Interpretando…</div>';
-    try{ const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:q,tirada:'tres_cartas',cartas:cs,profundidad:'estandar',enfoque:'terapeutico',sistema:'rws'})});
+    try{ const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:q,tirada:'tres_cartas',cartas:cs,profundidad:'estandar',enfoque:'terapeutico',sistema:DECK})});
       const d=await res.json(); r.innerHTML=md(d&&d.lectura?d.lectura:'No se pudo generar la lectura.'); }catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
   }
