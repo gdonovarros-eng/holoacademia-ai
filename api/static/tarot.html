@@ -66,6 +66,14 @@
   .modal-c h2{font-size:1.15rem;font-weight:800}.modal-c .g{font-size:.78rem;color:var(--muted);margin-bottom:8px}
   .mb-sec{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:14px 0 5px}
   .loading{text-align:center;color:var(--muted);padding:30px}
+  .chat-wrap{margin-top:18px;border-top:1px solid var(--border);padding-top:14px}.chat-wrap:not(.on){display:none}
+  .chat-lbl{font-size:.7rem;font-weight:800;color:var(--acc-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+  .chat-msgs{display:flex;flex-direction:column;gap:9px;margin-bottom:11px}.chat-msgs:empty{display:none}
+  .cmsg{max-width:86%;padding:9px 13px;border-radius:13px;font-size:.9rem;line-height:1.6}
+  .cmsg.u{align-self:flex-end;background:var(--acc);color:#fff;border-bottom-right-radius:4px}
+  .cmsg.a{align-self:flex-start;background:var(--surface2);border-bottom-left-radius:4px}
+  .cmsg.a p{margin:5px 0}.cmsg.a strong{font-weight:700}
+  .chat-row{display:flex;gap:8px}.chat-row input{flex:1}
   /* selector de mazo */
   .deck-sel{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
   .deck-opt{flex:1;min-width:160px;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;cursor:pointer;display:flex;gap:10px;align-items:center;transition:all .12s}
@@ -130,6 +138,11 @@
         <div class="detail" id="detail"></div>
         <div class="legend" id="legend"></div>
         <div class="reading" id="reading"></div>
+        <div class="chat-wrap" id="chatWrap">
+          <div class="chat-lbl">Continúa la consulta</div>
+          <div class="chat-msgs" id="chatMsgs"></div>
+          <div class="chat-row"><input class="search" id="chatInput" placeholder="Pregunta algo más sobre tu tirada…" onkeydown="if(event.key==='Enter')enviarChat()"><button class="btn" id="chatBtn" onclick="enviarChat()">Enviar</button></div>
+        </div>
       </div></div>
     </section>
 
@@ -144,6 +157,11 @@
       <div class="qrow"><input class="search" id="cPreg" placeholder="¿Qué quieres consultar?"><button class="btn" onclick="consultaRapida()" id="cBtn">Consultar</button></div>
       <div id="cBoard"></div>
       <div class="reading" id="cReading"></div>
+      <div class="chat-wrap" id="cChatWrap">
+        <div class="chat-lbl">Continúa la consulta</div>
+        <div class="chat-msgs" id="cChatMsgs"></div>
+        <div class="chat-row"><input class="search" id="cChatInput" placeholder="Pregunta algo más sobre tu lectura…" onkeydown="if(event.key==='Enter')enviarChatC()"><button class="btn" id="cChatBtn" onclick="enviarChatC()">Enviar</button></div>
+      </div>
     </div></div></section>
   </main>
 </div>
@@ -151,6 +169,15 @@
 <script>
   let TIRADAS={}, MAZO=[], IMG={}, MBYNAME={}, DECKS={};
   let cur=null, drawn=[], selIdx=-1, picked=0, barajeando=false;
+  let lecturaActual='', chatHist=[], cLecturaActual='', cChatHist=[];
+  async function streamSSE(url, body, onToken){
+    const res=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    if(!res.ok||!res.body){ throw new Error('http '+res.status); }
+    const reader=res.body.getReader(), dec=new TextDecoder(); let buf='';
+    while(true){ const {value,done}=await reader.read(); if(done)break; buf+=dec.decode(value,{stream:true});
+      let i; while((i=buf.indexOf('\n\n'))>=0){ const ln=buf.slice(0,i).trim(); buf=buf.slice(i+2);
+        if(ln.startsWith('data:')){ const d=ln.slice(5).trim(); if(d==='[DONE]')return; try{const j=JSON.parse(d); if(j.token)onToken(j.token);}catch(e){} } } }
+  }
   let DECK=localStorage.getItem('tarot_deck')||'rws';
   let modo=localStorage.getItem('tarot_modo')||'manual';
   const DECK_META={rws:{label:'Rider-Waite-Smith',nota:''},marsella:{label:'Tarot de Marsella',nota:''},thoth:{label:'Tarot Thoth',nota:'Crowley/Harris'}};
@@ -205,6 +232,7 @@
     document.getElementById('backBtn').style.display=''; document.getElementById('tbTitle').textContent=cur.nombre; document.getElementById('tbDesc').textContent=cur.num_cartas+' cartas';
     document.getElementById('purpose').innerHTML=`<b>Para qué sirve</b><div class="de">${esc(cur.descripcion||'')}</div>${cur.fuente?`<div class="fu">${esc(cur.fuente)}</div>`:''}`;
     document.getElementById('reading').innerHTML=''; document.getElementById('detail').innerHTML='';
+    document.getElementById('chatWrap').classList.remove('on'); document.getElementById('chatMsgs').innerHTML=''; chatHist=[]; lecturaActual='';
     document.getElementById('readBtn').disabled=true;
     renderBoard();
   }
@@ -239,6 +267,7 @@
     for(let i=0;i<cur.posiciones.length;i++){ const j=Math.floor(Math.random()*pool.length); const carta=pool.splice(j,1)[0]; drawn.push({posicion:cur.posiciones[i].nombre, carta, invertida:Math.random()<0.28, shown:false}); }
     selIdx=-1; picked=0;
     document.getElementById('detail').innerHTML=''; document.getElementById('reading').innerHTML='';
+    document.getElementById('chatWrap').classList.remove('on'); document.getElementById('chatMsgs').innerHTML=''; chatHist=[]; lecturaActual='';
     document.getElementById('readBtn').disabled=true; renderBoard();
     barajear(()=>{ if(modo==='auto') repartirAuto(); else montonesManual(); });
   }
@@ -304,11 +333,30 @@
   async function leerTirada(){
     if(!drawn.length)return; const btn=document.getElementById('readBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Leyendo…';
     const r=document.getElementById('reading'); r.innerHTML='<div class="loading">Interpretando la tirada…</div>';
+    document.getElementById('chatWrap').classList.remove('on'); document.getElementById('chatMsgs').innerHTML=''; chatHist=[];
+    let raw='';
     try{
-      const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:(document.getElementById('preg').value.trim()||'Lectura general'),tirada:cur._id,cartas:drawn.map(d=>({posicion:d.posicion,carta:d.carta,invertida:d.invertida})),profundidad:'estandar',enfoque:cur.enfoque||'terapeutico',sistema:DECK})});
-      const d=await res.json(); r.innerHTML=md(d&&d.lectura?d.lectura:'No se pudo generar la lectura.');
-    }catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
+      await streamSSE('/tarot/lectura-stream',{pregunta:(document.getElementById('preg').value.trim()||'Lectura general'),tirada:cur._id,cartas:drawn.map(d=>({posicion:d.posicion,carta:d.carta,invertida:d.invertida})),profundidad:'estandar',enfoque:cur.enfoque||'terapeutico',sistema:DECK},
+        tok=>{ raw+=tok; r.innerHTML=md(raw); });
+      lecturaActual=raw;
+      if(raw.trim()){ document.getElementById('chatWrap').classList.add('on'); }
+      else { r.innerHTML='<p style="color:#dc2626">No se pudo generar la lectura.</p>'; }
+    }catch(e){ if(!raw.trim()) r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
+  }
+  async function enviarChat(){
+    const inp=document.getElementById('chatInput'); const q=(inp.value||'').trim(); if(!q||!lecturaActual)return;
+    inp.value=''; const msgs=document.getElementById('chatMsgs');
+    msgs.insertAdjacentHTML('beforeend',`<div class="cmsg u">${esc(q)}</div>`);
+    const a=document.createElement('div'); a.className='cmsg a'; a.innerHTML='<span class="loading" style="padding:0">…</span>'; msgs.appendChild(a); a.scrollIntoView({block:'nearest'});
+    const btn=document.getElementById('chatBtn'); btn.disabled=true; inp.disabled=true; let raw='';
+    try{
+      await streamSSE('/tarot/chat-stream',{pregunta:q,contexto_lectura:lecturaActual,historial:chatHist},
+        tok=>{ raw+=tok; a.innerHTML=md(raw); a.scrollIntoView({block:'nearest'}); });
+      if(raw.trim()){ chatHist.push({role:'user',content:q}); chatHist.push({role:'assistant',content:raw}); }
+      else a.innerHTML='<span style="color:#dc2626">No hubo respuesta.</span>';
+    }catch(e){ a.innerHTML='<span style="color:#dc2626">Error de conexión.</span>'; }
+    btn.disabled=false; inp.disabled=false; inp.focus();
   }
   function renderCartas(){
     const q=norm((document.getElementById('qCar')||{}).value||'');
@@ -333,9 +381,27 @@
     for(let i=0;i<3;i++){ const j=Math.floor(Math.random()*pool.length); cs.push({posicion:pos[i],carta:pool.splice(j,1)[0],invertida:Math.random()<0.28}); }
     document.getElementById('cBoard').innerHTML='<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:6px 0 14px">'+cs.map(c=>`<div style="text-align:center"><img src="${IMG[c.carta]||''}" style="width:96px;aspect-ratio:130/214;object-fit:cover;border-radius:8px;${c.invertida?'transform:rotate(180deg)':''}" onerror="this.style.opacity=.15"><div style="font-size:.72rem;color:var(--muted);margin-top:5px">${esc(c.posicion)}</div><div style="font-size:.76rem;font-weight:700">${esc(c.carta)}</div></div>`).join('')+'</div>';
     const r=document.getElementById('cReading'); r.innerHTML='<div class="loading">Interpretando…</div>';
-    try{ const res=await fetch('/tarot/lectura',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pregunta:q,tirada:'tres_cartas',cartas:cs,profundidad:'estandar',enfoque:'terapeutico',sistema:DECK})});
-      const d=await res.json(); r.innerHTML=md(d&&d.lectura?d.lectura:'No se pudo generar la lectura.'); }catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
+    document.getElementById('cChatWrap').classList.remove('on'); document.getElementById('cChatMsgs').innerHTML=''; cChatHist=[]; let raw='';
+    try{ await streamSSE('/tarot/lectura-stream',{pregunta:q,tirada:'tres_cartas',cartas:cs,profundidad:'estandar',enfoque:'terapeutico',sistema:DECK},
+        tok=>{ raw+=tok; r.innerHTML=md(raw); });
+      cLecturaActual=raw;
+      if(raw.trim()) document.getElementById('cChatWrap').classList.add('on');
+      else r.innerHTML='<p style="color:#dc2626">No se pudo generar la lectura.</p>';
+    }catch(e){ if(!raw.trim()) r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
+  }
+  async function enviarChatC(){
+    const inp=document.getElementById('cChatInput'); const q=(inp.value||'').trim(); if(!q||!cLecturaActual)return;
+    inp.value=''; const msgs=document.getElementById('cChatMsgs');
+    msgs.insertAdjacentHTML('beforeend',`<div class="cmsg u">${esc(q)}</div>`);
+    const a=document.createElement('div'); a.className='cmsg a'; a.innerHTML='<span class="loading" style="padding:0">…</span>'; msgs.appendChild(a); a.scrollIntoView({block:'nearest'});
+    const btn=document.getElementById('cChatBtn'); btn.disabled=true; inp.disabled=true; let raw='';
+    try{ await streamSSE('/tarot/chat-stream',{pregunta:q,contexto_lectura:cLecturaActual,historial:cChatHist},
+        tok=>{ raw+=tok; a.innerHTML=md(raw); a.scrollIntoView({block:'nearest'}); });
+      if(raw.trim()){ cChatHist.push({role:'user',content:q}); cChatHist.push({role:'assistant',content:raw}); }
+      else a.innerHTML='<span style="color:#dc2626">No hubo respuesta.</span>';
+    }catch(e){ a.innerHTML='<span style="color:#dc2626">Error de conexión.</span>'; }
+    btn.disabled=false; inp.disabled=false; inp.focus();
   }
   function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}
   cargar();
