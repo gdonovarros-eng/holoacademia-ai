@@ -368,3 +368,13 @@ body.holo-body {
   .holo-btn, .holo-no-print { display: none !important; }
   body.holo-body { background: white; color: black; }
 }
+
+/* ── SEGURIDAD MÓVIL GLOBAL ───────────────────────────────────────────────
+   Evita el scroll horizontal de la página (orbs/decorativos absolutos) y
+   hace responsivos medios y tablas en todas las páginas que cargan este CSS. */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video, canvas { max-width: 100%; height: auto; }
+@media (max-width: 600px) {
+  table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  button, .holo-btn, a.holo-btn { min-height: 42px; }
+}
