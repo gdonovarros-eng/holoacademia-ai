@@ -46,3 +46,7 @@ data/processed_library/audio/
 # de lucro; todos los derechos pertenecen a sus autores. Se versionan para el
 # módulo educativo de tarot.
 .gstack/
+
+# Bases de datos: nunca al repo (y menos a uno publico)
+*.db
+userdata/

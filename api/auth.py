@@ -42,8 +42,12 @@ PLANS: dict[str, dict] = {
     "admin":        {"sessions": 999999, "label": "Admin"},
 }
 
-ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL",    "admin@holoacademia.com")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "holo2024admin")
+# Credenciales de admin: SIN valor por defecto. Antes traían "holo2024admin"
+# hardcodeado en un repo PÚBLICO: quien leyera el código entraba como admin.
+# Si no están en el entorno, la cuenta de admin simplemente no existe.
+ADMIN_EMAIL    = os.getenv("ADMIN_EMAIL", "").strip()
+ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD", "").strip()
+ADMIN_ENABLED  = bool(ADMIN_EMAIL and ADMIN_PASSWORD)
 
 # ── DB helpers ────────────────────────────────────────────────────────────────
 
@@ -82,12 +86,16 @@ def init_db() -> None:
         row = conn.execute(
             "SELECT id FROM users WHERE plan = 'admin' LIMIT 1"
         ).fetchone()
-        if row is None:
+        if row is None and ADMIN_ENABLED:
             try:
                 create_user(ADMIN_EMAIL, ADMIN_PASSWORD, "Administrador", "admin")
                 logger.info("Admin user created: %s", ADMIN_EMAIL)
             except ValueError:
-                pass  # Already exists (race condition)
+                pass  # Ya existe (condición de carrera)
+        elif row is None:
+            logger.warning(
+                "No se creó cuenta de admin: falta ADMIN_EMAIL / ADMIN_PASSWORD en el entorno."
+            )
 
 
 # ── Password helpers ──────────────────────────────────────────────────────────
