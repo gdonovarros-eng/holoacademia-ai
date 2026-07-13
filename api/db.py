@@ -29,6 +29,13 @@ from pathlib import Path
 # ── Plan configuration ────────────────────────────────────────────────────────
 
 PLAN_LIMITS: dict[str, dict[str, int]] = {
+    # ── Planes vigentes (holoacademia.tv) ──
+    # Espejo de los cupos que ya tenían sus equivalentes viejos. Si quieres otros
+    # números, este es el único lugar donde se cambian.
+    "especialista": {"sinodal": 100, "terapeuta": 50, "pares": 50},   # antes: premium
+    "terapeuta":    {"sinodal": 65,  "terapeuta": 35, "pares": 35},   # antes: elite_pro
+    "aprendiz":     {"sinodal": 30,  "terapeuta": 20, "pares": 20},   # antes: iniciacion
+    # ── Planes anteriores (se respetan mientras existan suscriptores) ──
     "premium":      {"sinodal": 100, "terapeuta": 50, "pares": 50},
     "elite_pro":    {"sinodal": 65,  "terapeuta": 35, "pares": 35},
     "iniciacion":   {"sinodal": 30,  "terapeuta": 20, "pares": 20},

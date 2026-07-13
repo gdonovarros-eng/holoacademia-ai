@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import os
 import secrets
+import hmac
+import hashlib
+import time
 import logging
 import threading
 from functools import lru_cache
@@ -335,7 +338,31 @@ async def session_guard(request: Request, call_next):
     plan   = request.query_params.get("plan", "holoconexion").strip()
     cookie = request.cookies.get(_SESSION_COOKIE, "")
 
+    # ── Pase firmado desde holoacademia.tv (/api/copiloto-entrar) ──
+    # El flujo viejo mandaba el EMBED_SECRET tal cual en la URL del iframe: cualquiera
+    # podía leerlo del navegador y entrar como quien quisiera. Ahora .tv manda una
+    # FIRMA HMAC de "uid|plan|exp", válida 5 minutos y atada a ese miembro. El secreto
+    # nunca sale del servidor.
+    sig = request.query_params.get("sig", "")
+    exp = request.query_params.get("exp", "")
+    sig_ok = False
+    if sig and exp and uid and _EMBED_SECRET:
+        try:
+            if int(exp) >= int(time.time()):
+                esperado = hmac.new(
+                    _EMBED_SECRET.encode(),
+                    f"{uid}|{plan}|{exp}".encode(),
+                    hashlib.sha256,
+                ).hexdigest()
+                sig_ok = hmac.compare_digest(sig, esperado)
+        except (ValueError, TypeError):
+            sig_ok = False
+
+    # Flujo viejo (Wix Velo). Se conserva para no romper nada mientras migra, pero
+    # está OBSOLETO: expone el secreto en la URL. Quitar en cuanto Wix deje de usarlo.
     token_ok  = bool(token) and bool(uid) and secrets.compare_digest(token, _EMBED_SECRET)
+
+    token_ok  = token_ok or sig_ok
     cookie_ok = bool(cookie) and verify_session(cookie, _EMBED_SECRET) is not None
 
     if not token_ok and not cookie_ok:
