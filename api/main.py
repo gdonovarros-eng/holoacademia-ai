@@ -528,9 +528,12 @@ async def root_landing() -> FileResponse:
 
 
 @app.get("/landing", include_in_schema=False)
-async def landing_page() -> FileResponse:
-    """Landing page optimizada para embed en Wix (sin nav/footer duplicados)."""
-    return FileResponse(THERAPY_STATIC_DIR / "landing.html", headers=_no_cache_headers(allow_iframe=True))
+async def landing_page() -> RedirectResponse:
+    """RETIRADA. Era la página de venta vieja, pensada para embeberse en Wix, y todo
+    su argumento estaba construido sobre la palabra "IA" (25 menciones), que ya no se
+    usa en el copy. Esa función la cumple ahora holoacademia.tv/copiloto.
+    Nadie la enlazaba: solo existía la ruta."""
+    return RedirectResponse("https://holoacademia.tv/copiloto", status_code=301)
 
 
 @app.get("/intake", include_in_schema=False)
