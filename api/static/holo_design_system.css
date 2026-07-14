@@ -281,7 +281,7 @@ body.holo-body {
   color: var(--holo-text-muted);
 }
 .holo-badge-teal  { background: rgba(124, 58, 237, 0.12); color: var(--holo-teal-dark); }
-.holo-badge-amber { background: rgba(236, 72, 153, 0.12;  color: var(--holo-amber); }
+.holo-badge-amber { background: rgba(236, 72, 153, 0.12);  color: var(--holo-amber); }
 
 /* ── INPUTS ───────────────────────────────────────────────────────────── */
 .holo-input,

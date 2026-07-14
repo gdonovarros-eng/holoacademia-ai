@@ -70,7 +70,7 @@
 .hipotesis-card.top {
   border-color: #f472b6;
   background: linear-gradient(135deg, #fce7f3 0%, #ffffff 60%);
-  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.12;
+  box-shadow: 0 4px 14px rgba(244, 114, 182, 0.12);
 }
 .hipotesis-card.confirmed {
   border-color: #8b5cf6;
@@ -279,8 +279,8 @@
   border-bottom-right-radius: 4px;
 }
 .chat-msg.system {
-  background: rgba(244, 114, 182, 0.08;
-  border: 1px dashed rgba(244, 114, 182, 0.4;
+  background: rgba(244, 114, 182, 0.08);
+  border: 1px dashed rgba(244, 114, 182, 0.4);
   color: #be185d;
   font-size: 0.78rem;
   align-self: center;
@@ -328,7 +328,7 @@
 .ans-btn[data-resp="si"]:hover {
   background: #ede9fe;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.2;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.2);
 }
 .ans-btn[data-resp="no"] {
   border-color: #ec4899;
@@ -338,7 +338,7 @@
 .ans-btn[data-resp="no"]:hover {
   background: #fce7f3;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.2;
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.2);
 }
 .ans-btn[data-resp="no_se"] {
   border-color: #a78bfa;
@@ -480,7 +480,7 @@
   font-size: 0.65rem;
   font-weight: 600;
   color: #ec4899;
-  background: rgba(236, 72, 153, 0.1;
+  background: rgba(236, 72, 153, 0.1);
   padding: 2px 8px;
   border-radius: 999px;
   margin-top: 5px;

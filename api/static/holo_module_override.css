@@ -58,24 +58,24 @@ body.mod-page-teal {
 body.mod-page-sky {
   --acc: #7c3aed !important;
   --acc-soft: #c4b5fd !important;
-  --acc-bg: rgba(124, 58, 237, 0.08 !important;
-  --acc-border: rgba(124, 58, 237, 0.25 !important;
+  --acc-bg: rgba(124, 58, 237, 0.08 )!important;
+  --acc-border: rgba(124, 58, 237, 0.25 )!important;
 }
 
 /* Amber — Terapeuta (asistente en vivo) */
 body.mod-page-amber {
   --acc: #ec4899 !important;
   --acc-soft: #f9a8d4 !important;
-  --acc-bg: rgba(236, 72, 153, 0.08 !important;
-  --acc-border: rgba(236, 72, 153, 0.25 !important;
+  --acc-bg: rgba(236, 72, 153, 0.08 )!important;
+  --acc-border: rgba(236, 72, 153, 0.25 )!important;
 }
 
 /* Coral — Salud */
 body.mod-page-coral {
   --acc: #db2777 !important;
   --acc-soft: #f9a8d4 !important;
-  --acc-bg: rgba(219, 39, 119, 0.08 !important;
-  --acc-border: rgba(219, 39, 119, 0.25 !important;
+  --acc-bg: rgba(219, 39, 119, 0.08 )!important;
+  --acc-border: rgba(219, 39, 119, 0.25 )!important;
 }
 
 /* Aurora — Astrología */
@@ -90,8 +90,8 @@ body.mod-page-aurora {
 body.mod-page-sage {
   --acc: #7c3aed !important;
   --acc-soft: #c4b5fd !important;
-  --acc-bg: rgba(124, 58, 237, 0.08 !important;
-  --acc-border: rgba(124, 58, 237, 0.25 !important;
+  --acc-bg: rgba(124, 58, 237, 0.08 )!important;
+  --acc-border: rgba(124, 58, 237, 0.25 )!important;
 }
 
 /* Pink — Tarot */
@@ -106,8 +106,8 @@ body.mod-page-pink {
 body.mod-page-terra {
   --acc: #db2777 !important;
   --acc-soft: #f9a8d4 !important;
-  --acc-bg: rgba(219, 39, 119, 0.08 !important;
-  --acc-border: rgba(219, 39, 119, 0.25 !important;
+  --acc-bg: rgba(219, 39, 119, 0.08 )!important;
+  --acc-border: rgba(219, 39, 119, 0.25 )!important;
 }
 
 /* ═════════ COMPONENTES COMUNES ENCIMA DEL OVERRIDE ═════════ */

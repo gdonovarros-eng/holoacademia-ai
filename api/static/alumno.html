@@ -7,7 +7,7 @@
     --surface2: #f1f5f9;
     --border:   #e2e8f0;
     --acc:      #8b5cf6;
-    --acc-dim: rgba(139, 92, 246,0.1;
+    --acc-dim: rgba(139, 92, 246,0.1);
     --acc-dark: #7c3aed;
     --text:     #2e1065;
     --muted:    #8b5cf6;
@@ -134,7 +134,7 @@
  align-items: center;
  justify-content: center;
  font-size: 34px;
- border: 3px solid rgba(139, 92, 246,0.2;
+ border: 3px solid rgba(139, 92, 246,0.2);
   }
 
   .welcome h2 {
@@ -404,7 +404,7 @@
  badge.textContent = `${u.used}/${u.limit} sesiones`;
  badge.style.display = 'block';
  badge.style.color = !u.allowed ? '#ec4899' : pct >= 0.8 ? '#f472b6' : '#a78bfa';
- badge.style.borderColor = !u.allowed ? 'rgba(236, 72, 153,0.4' : pct >= 0.8 ? 'rgba(244, 114, 182,0.4' : 'rgba(255,255,255,0.1)';
+ badge.style.borderColor = !u.allowed ? 'rgba(236, 72, 153,0.4)' : pct >= 0.8 ? 'rgba(244, 114, 182,0.4)' : 'rgba(255,255,255,0.1)';
  if (!u.allowed) showPaywall(u.used, u.limit, data.plan_name);
       }
     } catch(e) {}

@@ -46,7 +46,7 @@
 }
 #therapy-form.holos-form .holos-bloque[open] { box-shadow: 0 4px 12px rgba(14,17,22,0.07); }
 #therapy-form.holos-form .holos-bloque:hover { border-color: #D4D4D4; }
-#therapy-form.holos-form .holos-bloque-clave[open] { border-color: rgba(236, 72, 153,0.4; }
+#therapy-form.holos-form .holos-bloque-clave[open] { border-color: rgba(236, 72, 153,0.4); }
 
 #therapy-form.holos-form .holos-bloque-head {
   cursor: pointer;

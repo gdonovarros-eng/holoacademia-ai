@@ -12,10 +12,10 @@
   --acc:         #db2777;
   --acc-dark:    #be185d;
   --gold:        #db2777;
-  --gold-bg: rgba(219, 39, 119,0.08;
-  --gold-border: rgba(219, 39, 119,0.30;
+  --gold-bg: rgba(219, 39, 119,0.08);
+  --gold-border: rgba(219, 39, 119,0.30);
   --radius: 16px;
-  --glow: rgba(219, 39, 119,0.12;
+  --glow: rgba(219, 39, 119,0.12);
 }
 
 html, body {
@@ -31,9 +31,9 @@ body::before {
  position: fixed;
  inset: 0;
  background:
- radial-gradient(ellipse at 15% 15%, rgba(167, 139, 250,0.07 0%, transparent 55%),
- radial-gradient(ellipse at 85% 75%, rgba(244, 114, 182,0.05 0%, transparent 55%),
- radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246,0.04 0%, transparent 70%);
+ radial-gradient(ellipse at 15% 15%, rgba(167, 139, 250,0.07 )0%, transparent 55%),
+ radial-gradient(ellipse at 85% 75%, rgba(244, 114, 182,0.05 )0%, transparent 55%),
+ radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246,0.04 )0%, transparent 70%);
  pointer-events: none;
  z-index: 0;
 }
@@ -65,7 +65,7 @@ body::before {
 .header-badge {
  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
  text-transform: uppercase; color: var(--acc);
- background: rgba(167, 139, 250,0.1; border: 1px solid rgba(167, 139, 250,0.25;
+ background: rgba(167, 139, 250,0.1); border: 1px solid rgba(167, 139, 250,0.25);
  border-radius: 20px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
 }
 
@@ -150,10 +150,10 @@ body::before {
 .signo-badge {
  display: none;
  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
- border: 1px solid rgba(167, 139, 250,0.3;
+ border: 1px solid rgba(167, 139, 250,0.3);
  border-radius: var(--radius); padding: 20px 24px;
  margin-bottom: 24px; text-align: center;
- box-shadow: 0 0 40px rgba(167, 139, 250,0.06;
+ box-shadow: 0 0 40px rgba(167, 139, 250,0.06);
 }
 .signo-badge.visible { display: flex; align-items: center; gap: 20px; text-align: left; }
 .signo-symbol { font-size: 3rem; line-height: 1; flex-shrink: 0; }
@@ -168,7 +168,7 @@ body::before {
  display: flex; flex-wrap: wrap; gap: 8px;
 }
 .signo-pill {
- background: rgba(167, 139, 250,0.12; border: 1px solid rgba(167, 139, 250,0.2;
+ background: rgba(167, 139, 250,0.12); border: 1px solid rgba(167, 139, 250,0.2);
  border-radius: 20px; padding: 2px 10px; font-size: 0.72rem; font-weight: 600;
  color: var(--acc);
 }
@@ -187,7 +187,7 @@ body::before {
 .status-bar.visible { display: flex; }
 .spinner {
  width: 16px; height: 16px; border-radius: 50%;
- border: 2px solid rgba(167, 139, 250,0.2;
+ border: 2px solid rgba(167, 139, 250,0.2);
  border-top-color: var(--acc);
  animation: spin 0.8s linear infinite; flex-shrink: 0;
 }
@@ -217,7 +217,7 @@ body::before {
 .output-body h2 {
  font-size: 1rem; font-weight: 800; color: var(--acc);
  margin: 24px 0 10px; padding-bottom: 8px;
- border-bottom: 1px solid rgba(167, 139, 250,0.15;
+ border-bottom: 1px solid rgba(167, 139, 250,0.15);
  display: flex; align-items: center; gap: 8px;
 }
 .output-body h2:first-child { margin-top: 0; }
@@ -236,7 +236,7 @@ body::before {
 
 /* ── ERROR ── */
 .error-box {
- display: none; background: rgba(236, 72, 153,0.08; border: 1px solid rgba(236, 72, 153,0.25;
+ display: none; background: rgba(236, 72, 153,0.08); border: 1px solid rgba(236, 72, 153,0.25);
  border-radius: 10px; padding: 14px 18px;
  color: #f9a8d4; font-size: 0.85rem; margin-bottom: 16px;
 }
@@ -253,10 +253,10 @@ body::before {
  display: flex; flex-direction: column; gap: 6px;
 }
 .sign-card:hover {
- border-color: rgba(167, 139, 250,0.3;
+ border-color: rgba(167, 139, 250,0.3);
  background: var(--surface2);
  transform: translateY(-2px);
- box-shadow: 0 6px 20px rgba(167, 139, 250,0.08;
+ box-shadow: 0 6px 20px rgba(167, 139, 250,0.08);
 }
 .sign-glyph { font-size: 1.8rem; line-height: 1; }
 .sign-cname { font-size: 0.95rem; font-weight: 800; color: var(--text); }
@@ -265,10 +265,10 @@ body::before {
  display: inline-block; font-size: 0.68rem; font-weight: 700;
  padding: 2px 8px; border-radius: 20px; margin-top: 2px;
 }
-.el-fuego { background: rgba(236, 72, 153,0.12; color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.2; }
-.el-tierra { background: rgba(139, 92, 246,0.10; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
-.el-aire   { background: rgba(139, 92, 246,0.10; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
-.el-agua   { background: rgba(139, 92, 246,0.12; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
+.el-fuego { background: rgba(236, 72, 153,0.12); color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.2); }
+.el-tierra { background: rgba(139, 92, 246,0.10); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
+.el-aire   { background: rgba(139, 92, 246,0.10); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
+.el-agua   { background: rgba(139, 92, 246,0.12); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
 
 /* ── SIGN DETAIL MODAL ── */
 .modal-overlay {
@@ -278,7 +278,7 @@ body::before {
 }
 .modal-overlay.open { display: flex; }
 .modal {
- background: var(--surface); border: 1px solid rgba(167, 139, 250,0.2;
+ background: var(--surface); border: 1px solid rgba(167, 139, 250,0.2);
  border-radius: 18px; padding: 28px; max-width: 580px; width: 100%;
  max-height: 80vh; overflow-y: auto;
  position: relative;
@@ -315,11 +315,11 @@ body::before {
 }
 .modal-list li {
  font-size: 0.78rem; padding: 3px 10px; border-radius: 20px;
- background: rgba(167, 139, 250,0.08; border: 1px solid rgba(167, 139, 250,0.15;
+ background: rgba(167, 139, 250,0.08); border: 1px solid rgba(167, 139, 250,0.15);
  color: var(--text);
 }
 .modal-list.challenges li {
- background: rgba(244, 114, 182,0.08; border-color: rgba(244, 114, 182,0.2; color: var(--gold);
+ background: rgba(244, 114, 182,0.08); border-color: rgba(244, 114, 182,0.2); color: var(--gold);
 }
 
 /* ── RESPONSIVE ── */
