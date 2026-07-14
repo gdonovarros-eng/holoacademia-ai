@@ -4,14 +4,14 @@
   :root {
     --bg:       #0b1120;
     --surface:  #111827;
-    --surface2: #1f2937;
+    --surface2: #2e1065;
     --border: rgba(255,255,255,0.07);
-    --acc:      #3b82f6;
-    --acc-dim: rgba(59,130,246,0.15);
+    --acc:      #8b5cf6;
+    --acc-dim: rgba(139, 92, 246,0.15;
     --text:     #f1f5f9;
-    --muted:    #94a3b8;
-    --user-bg:  #1e3a5f;
-    --ai-bg:    #1f2937;
+    --muted:    #a78bfa;
+    --user-bg:  #4c1d95;
+    --ai-bg:    #2e1065;
     --radius: 14px;
   }
 
@@ -35,8 +35,8 @@
 
   /* ── Badge de uso ── */
   #usageBadge { padding: 4px 10px; border-radius: 20px; background: var(--surface2); border: 1px solid var(--border); }
-  #usageBadge.warn  { color: #f59e0b; border-color: rgba(245,158,11,0.4); }
-  #usageBadge.limit { color: #ef4444; border-color: rgba(239,68,68,0.4); }
+  #usageBadge.warn  { color: #f472b6; border-color: rgba(244, 114, 182,0.4; }
+  #usageBadge.limit { color: #ec4899; border-color: rgba(236, 72, 153,0.4; }
 
   /* ── Modo embed (iframe en Wix) ── */
  body.embed-mode {
@@ -216,7 +216,7 @@
  color: var(--muted);
   }
 
-  .quick-btn:hover .qb-sub { color: rgba(59,130,246,0.7); }
+  .quick-btn:hover .qb-sub { color: rgba(139, 92, 246,0.7; }
 
   /* ── Burbujas ── */
   .msg-group {
@@ -246,7 +246,7 @@
 
   .msg-user .bubble {
  background: var(--user-bg);
- color: #e0f2fe;
+ color: #ede9fe;
  border-bottom-right-radius: 4px;
   }
 
@@ -264,7 +264,7 @@
   }
 
   .bubble .branch {
- color: #94a3b8;
+ color: #a78bfa;
  font-size: 0.85rem;
   }
 
@@ -312,7 +312,7 @@
   }
 
   .input-box:focus-within {
- border-color: rgba(59,130,246,0.4);
+ border-color: rgba(139, 92, 246,0.4;
   }
 
   .input-field {
@@ -348,7 +348,7 @@
   }
 
   .send-btn.ready { opacity: 1; }
-  .send-btn:hover.ready { background: #2563eb; transform: scale(1.05); }
+  .send-btn:hover.ready { background: #7c3aed; transform: scale(1.05); }
 
   .send-btn svg { width: 18px; height: 18px; fill: #fff; }
 
@@ -364,8 +364,8 @@
  font-size: 0.82rem;
  font-weight: 700;
  color: var(--acc);
- background: rgba(59,130,246,0.08);
- border: 1px solid rgba(59,130,246,0.25);
+ background: rgba(139, 92, 246,0.08;
+ border: 1px solid rgba(139, 92, 246,0.25;
  border-radius: 8px;
  padding: 8px 12px;
  margin: 12px 0 8px;
@@ -379,7 +379,7 @@
  text-transform: uppercase;
  letter-spacing: 0.08em;
  padding: 10px 0 4px;
- border-bottom: 1px solid rgba(59,130,246,0.15);
+ border-bottom: 1px solid rgba(139, 92, 246,0.15;
  margin-bottom: 4px;
   }
 
@@ -435,20 +435,20 @@
  border-radius: 20px;
  margin: 8px 0 4px;
   }
-  .conflict-bloque.rojo    { background: rgba(239,68,68,0.18); color: #fca5a5; border: 1px solid rgba(239,68,68,0.35); }
-  .conflict-bloque.naranja { background: rgba(249,115,22,0.18); color: #fdba74; border: 1px solid rgba(249,115,22,0.35); }
-  .conflict-bloque.amarillo{ background: rgba(234,179,8,0.18); color: #fde047; border: 1px solid rgba(234,179,8,0.35); }
-  .conflict-bloque.verde   { background: rgba(34,197,94,0.15); color: #86efac; border: 1px solid rgba(34,197,94,0.3); }
-  .conflict-bloque.azul    { background: rgba(59,130,246,0.18); color: #93c5fd; border: 1px solid rgba(59,130,246,0.35); }
-  .conflict-bloque.violeta { background: rgba(168,85,247,0.18); color: #d8b4fe; border: 1px solid rgba(168,85,247,0.35); }
-  .conflict-bloque.cafe    { background: rgba(180,120,60,0.2); color: #d4a574; border: 1px solid rgba(180,120,60,0.4); }
+  .conflict-bloque.rojo    { background: rgba(236, 72, 153,0.18; color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.35; }
+  .conflict-bloque.naranja { background: rgba(236, 72, 153,0.18; color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.35; }
+  .conflict-bloque.amarillo{ background: rgba(244, 114, 182,0.18; color: #fbcfe8; border: 1px solid rgba(244, 114, 182,0.35; }
+  .conflict-bloque.verde   { background: rgba(139, 92, 246,0.15; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.3; }
+  .conflict-bloque.azul    { background: rgba(139, 92, 246,0.18; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.35; }
+  .conflict-bloque.violeta { background: rgba(168,85,247,0.18); color: #c4b5fd; border: 1px solid rgba(168,85,247,0.35); }
+  .conflict-bloque.cafe    { background: rgba(236, 72, 153,0.2; color: #f472b6; border: 1px solid rgba(236, 72, 153,0.4; }
   .conflict-bloque.blanco  { background: rgba(255,255,255,0.1); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.25); }
 
   .conflict-note {
  font-size: 0.78rem;
- color: #fbbf24;
- background: rgba(251,191,36,0.08);
- border-left: 2px solid rgba(251,191,36,0.4);
+ color: #f9a8d4;
+ background: rgba(249, 168, 212,0.08;
+ border-left: 2px solid rgba(249, 168, 212,0.4;
  padding: 6px 10px;
  border-radius: 0 6px 6px 0;
  margin: 8px 0;
@@ -458,17 +458,17 @@
   .header-close {
  padding: 6px 12px;
  background: transparent;
- border: 1px solid rgba(239,68,68,0.3);
+ border: 1px solid rgba(236, 72, 153,0.3;
  border-radius: 8px;
  font-size: 0.78rem;
  font-weight: 600;
- color: #ef4444;
+ color: #ec4899;
  cursor: pointer;
  transition: all 0.15s;
  white-space: nowrap;
  font-family: inherit;
   }
-  .header-close:hover { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.6); }
+  .header-close:hover { background: rgba(236, 72, 153,0.1; border-color: rgba(236, 72, 153,0.6; }
 
   /* ── Modal de cierre ── */
   .modal-overlay {
@@ -548,7 +548,7 @@
  font-family: inherit;
  transition: all 0.15s;
   }
-  .btn-copy:hover { background: #2563eb; }
+  .btn-copy:hover { background: #7c3aed; }
 
   .btn-modal-close {
  padding: 10px 18px;
@@ -580,7 +580,7 @@
   .generating-dots span:nth-child(2) { animation-delay: 0.2s; }
   .generating-dots span:nth-child(3) { animation-delay: 0.4s; }
 </style></head><body class="mod-page-amber"><div class="app"><!-- Header unificado --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-amber"><svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Análisis en vivo</div><div class="holo-module-title" id="headerTitle">Asistente Terapéutico</div></div></div><div id="usageBadge" class="holo-module-badge" style="display:none;"></div><button class="header-close" onclick="abrirCierre()">Cerrar sesión</button><button class="header-new" onclick="nuevaSesion()">Nueva sesión</button></div></header><!-- Modal paywall (límite alcanzado) --><div class="modal-overlay hidden" id="modalPaywall" style="z-index:9999;"><div class="modal-box" style="text-align:center;max-width:400px;"><div style="font-size:2rem;margin-bottom:12px;"></div><div style="font-size:1.1rem;font-weight:700;margin-bottom:8px;">Límite mensual alcanzado</div><div id="paywallMsg" style="font-size:0.88rem;color:var(--muted);line-height:1.6;margin-bottom:20px;"></div><a href="https://www.holoacademia.com/miembros" target="_top"
- style="display:inline-block;background:#3b82f6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">Ver planes →
+ style="display:inline-block;background:#8b5cf6;color:#fff;font-weight:700;padding:10px 24px;border-radius:10px;text-decoration:none;">Ver planes →
  </a></div></div><!-- Modal de cierre de sesión --><div class="modal-overlay hidden" id="modalCierre"><div class="modal-box"><div class="modal-header"><div class="modal-title">Resumen de sesión</div><button class="btn-modal-close" onclick="cerrarModal()"></button></div><div class="modal-body" id="modalBody"><div class="generating-dots">Generando resumen<span></span><span></span><span></span></div></div><div class="modal-footer"><button class="btn-copy" id="btnCopy" onclick="copiarResumen()" style="display:none">Copiar resumen</button><button class="btn-modal-close" onclick="cerrarModal()">Cerrar</button></div></div></div><!-- Mensajes --><div class="messages" id="messages"><!-- Pantalla de redirección al cuestionario --><div class="welcome" id="welcome"><div class="welcome-icon"></div><h2>Registrando paciente…</h2><p>Cargando el cuestionario inicial para comenzar la sesión.</p></div></div><!-- Input --><div class="input-area"><div class="input-box"><textarea
  class="input-field"
  id="inputField"
@@ -669,7 +669,7 @@
  const welcome = document.getElementById('welcome');
  if (welcome) {
  welcome.innerHTML = `
- <div class="welcome-icon"></div><div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);border-radius:12px;padding:12px 18px;max-width:420px;text-align:left;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#3b82f6;margin-bottom:6px;">Paciente registrado</div><div style="font-size:1rem;font-weight:700;color:#f1f5f9;">${escHtml(nombre)}</div><div style="font-size:0.78rem;color:#94a3b8;margin-top:4px;">${escHtml((data?.paciente?.motivo || '').substring(0, 100))}${(data?.paciente?.motivo?.length || 0) >100 ? '…' : ''}</div></div><p style="color:#94a3b8;font-size:0.85rem;">Generando análisis diagnóstico inicial…</p>`;
+ <div class="welcome-icon"></div><div style="background:rgba(139, 92, 246,0.1;border:1px solid rgba(139, 92, 246,0.25;border-radius:12px;padding:12px 18px;max-width:420px;text-align:left;"><div style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#8b5cf6;margin-bottom:6px;">Paciente registrado</div><div style="font-size:1rem;font-weight:700;color:#f1f5f9;">${escHtml(nombre)}</div><div style="font-size:0.78rem;color:#a78bfa;margin-top:4px;">${escHtml((data?.paciente?.motivo || '').substring(0, 100))}${(data?.paciente?.motivo?.length || 0) >100 ? '…' : ''}</div></div><p style="color:#a78bfa;font-size:0.85rem;">Generando análisis diagnóstico inicial…</p>`;
         }
 
         // Limpiar localStorage
@@ -1042,7 +1042,7 @@
         }
       }
     } catch (err) {
- bubble.innerHTML = '<span style="color:#f87171">Error de conexión. Intenta de nuevo.</span>';
+ bubble.innerHTML = '<span style="color:#f472b6">Error de conexión. Intenta de nuevo.</span>';
     }
 
  if (fullResponse) {

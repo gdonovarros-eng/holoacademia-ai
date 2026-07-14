@@ -35,35 +35,35 @@
   /* Brand colors */
   --holo-teal:       #7c3aed;   /* CTA principal Mindvalley */
   --holo-teal-dark:  #5b21b6;
-  --holo-teal-light: #5EEAD4;
+  --holo-teal-light: #c4b5fd;
 
-  --holo-violet:       #6D5896;
-  --holo-violet-dark:  #4C3F71;
-  --holo-violet-light: #B19FD0;
+  --holo-violet:       #7c3aed;
+  --holo-violet-dark:  #5b21b6;
+  --holo-violet-light: #a78bfa;
 
-  --holo-amber:       #D97706;
-  --holo-amber-light: #F59E0B;
-  --holo-amber-soft:  #FBBF24;
+  --holo-amber:       #ec4899;
+  --holo-amber-light: #f472b6;
+  --holo-amber-soft:  #f9a8d4;
 
-  --holo-coral:       #DC2626;
-  --holo-coral-soft:  #F87171;
+  --holo-coral:       #db2777;
+  --holo-coral-soft:  #f472b6;
 
-  --holo-sage:        #4F7942;
-  --holo-sage-soft:   #7BAE6B;
+  --holo-sage:        #7c3aed;
+  --holo-sage-soft:   #a78bfa;
 
-  --holo-pink:        #C2185B;
+  --holo-pink:        #be185d;
   --holo-pink-soft:   #EC4899;
 
   /* Gradients clean (solo para image blocks de cards) */
-  --holo-grad-violet:    linear-gradient(135deg, #B19FD0 0%, #6D5896 100%);
-  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #7c3aed 100%);
-  --holo-grad-amber:     linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
-  --holo-grad-coral:     linear-gradient(135deg, #F87171 0%, #DC2626 100%);
-  --holo-grad-sage:      linear-gradient(135deg, #86EFAC 0%, #4F7942 100%);
-  --holo-grad-pink:      linear-gradient(135deg, #F472B6 0%, #C2185B 100%);
-  --holo-grad-sky:       linear-gradient(135deg, #93C5FD 0%, #1E40AF 100%);
-  --holo-grad-sunset:    linear-gradient(135deg, #FBBF24 0%, #F87171 50%, #C2185B 100%);
-  --holo-grad-aurora:    linear-gradient(135deg, #A5B4FC 0%, #C4B5FD 50%, #F0ABFC 100%);
+  --holo-grad-violet:    linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%);
+  --holo-grad-teal:      linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%);
+  --holo-grad-amber:     linear-gradient(135deg, #f9a8d4 0%, #ec4899 100%);
+  --holo-grad-coral:     linear-gradient(135deg, #f472b6 0%, #db2777 100%);
+  --holo-grad-sage:      linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%);
+  --holo-grad-pink:      linear-gradient(135deg, #F472B6 0%, #be185d 100%);
+  --holo-grad-sky:       linear-gradient(135deg, #c4b5fd 0%, #5b21b6 100%);
+  --holo-grad-sunset:    linear-gradient(135deg, #f9a8d4 0%, #f472b6 50%, #be185d 100%);
+  --holo-grad-aurora:    linear-gradient(135deg, #c4b5fd 0%, #C4B5FD 50%, #c4b5fd 100%);
 
   /* Tipografía sizes (escala moderna ajustada) */
   --holo-text-xs:   0.75rem;
@@ -281,7 +281,7 @@ body.holo-body {
   color: var(--holo-text-muted);
 }
 .holo-badge-teal  { background: rgba(124, 58, 237, 0.12); color: var(--holo-teal-dark); }
-.holo-badge-amber { background: rgba(217, 119, 6, 0.12);  color: var(--holo-amber); }
+.holo-badge-amber { background: rgba(236, 72, 153, 0.12;  color: var(--holo-amber); }
 
 /* ── INPUTS ───────────────────────────────────────────────────────────── */
 .holo-input,

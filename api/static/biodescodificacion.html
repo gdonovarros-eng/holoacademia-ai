@@ -1,19 +1,19 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biodescodificación · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--bg:#f5faf8;--surface:#fff;--surface2:#eef6f3;--border:#dce9e4;--acc:#0d9488;--acc-dim:rgba(13,148,136,.10);--acc-dark:#0f766e;--text:#13211d;--muted:#5d6f69;--sidebar:#13211d;--sidebar2:#1e322b}
+  :root{--bg:#f5faf8;--surface:#fff;--surface2:#eef6f3;--border:#dce9e4;--acc:#7c3aed;--acc-dim:rgba(124, 58, 237,.10;--acc-dark:#6d28d9;--text:#13211d;--muted:#5d6f69;--sidebar:#13211d;--sidebar2:#1e322b}
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
   .workspace{display:flex;height:100vh;overflow:hidden}
   .sidebar{width:252px;flex-shrink:0;background:var(--sidebar);color:#e4f0eb;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
   .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
-  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#14b8a6,#0d9488);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
-  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#8fb3aa;text-transform:uppercase;letter-spacing:.05em}
-  .sb-sec{font-size:.62rem;color:#7fa298;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
-  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#bcd4cc;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c4b5fd;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
   .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
   .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
-  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#7fa298;font-weight:700}.nav-item.active .ct{color:#cdeee7}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#a78bfa;font-weight:700}.nav-item.active .ct{color:#ddd6fe}
   .sb-foot{margin-top:auto;padding-top:12px}
-  .sb-home{display:flex;align-items:center;gap:8px;color:#8fb3aa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
   .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
   .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
@@ -27,12 +27,12 @@
   .count{font-size:.78rem;color:var(--muted);margin:6px 2px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
   .dcard{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .14s;border-left:4px solid var(--acc)}
-  .dcard:hover{box-shadow:0 8px 20px rgba(13,148,136,.13);transform:translateY(-2px)}
+  .dcard:hover{box-shadow:0 8px 20px rgba(124, 58, 237,.13;transform:translateY(-2px)}
   .dcard .nm{font-weight:800;font-size:.95rem;line-height:1.3}
   .dcard .sis{font-size:.72rem;color:var(--muted);margin-top:3px}
   .dcard .cf{font-size:.83rem;color:var(--text);margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .badge{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:8px}
-  .b-endo{background:#fef3c7;color:#92400e}.b-meso{background:#dbeafe;color:#1e40af}.b-ecto{background:#ede9fe;color:#5b21b6}.b-def{background:var(--surface2);color:var(--muted)}
+  .b-endo{background:#fce7f3;color:#be185d}.b-meso{background:#ede9fe;color:#5b21b6}.b-ecto{background:#ede9fe;color:#5b21b6}.b-def{background:var(--surface2);color:var(--muted)}
   .leyes,.capas,.fases{display:flex;flex-direction:column;gap:12px}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
   .card h3{font-size:1.05rem;font-weight:800;color:var(--acc-dark)}
@@ -50,7 +50,7 @@
   .modal-box{background:var(--surface);border-radius:16px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px}
   .modal-box h2{font-size:1.25rem;font-weight:800}.modal-box .sis{font-size:.78rem;color:var(--muted);margin-bottom:6px}
   .mb-sec{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:15px 0 4px}
-  .mb-sec.fa{color:#b45309}.mb-sec.fr{color:#0369a1}
+  .mb-sec.fa{color:#db2777}.mb-sec.fr{color:#6d28d9}
   .modal-box p{font-size:.9rem}.modal-box ul{padding-left:18px;font-size:.9rem}.modal-box li{margin:3px 0}
   .modal-box .x{float:right;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
   .preg{background:var(--acc-dim);border-radius:9px;padding:5px 11px;margin:4px 0;font-size:.88rem}
@@ -58,7 +58,7 @@
   .field input,.field textarea{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:.9rem;color:var(--text)}
   .field textarea{min-height:70px;resize:vertical}
   .caso-conf{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px;margin-bottom:7px}
-  .caso-conf .nm{font-weight:700;font-size:.85rem;flex:1}.caso-conf .rm{background:none;border:none;color:#dc2626;cursor:pointer;font-size:1.1rem}
+  .caso-conf .nm{font-weight:700;font-size:.85rem;flex:1}.caso-conf .rm{background:none;border:none;color:#db2777;cursor:pointer;font-size:1.1rem}
   .reading{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 22px;margin-top:16px}.reading:empty{display:none}
   .reading h2{font-size:1.05rem;color:var(--acc-dark);font-weight:800;margin:16px 0 6px}.reading h3{font-size:.95rem;font-weight:700;margin:12px 0 4px}.reading p{margin:7px 0;font-size:.9rem;line-height:1.7}.reading strong{font-weight:700}.reading ul,.reading ol{padding-left:20px}
   .loading{text-align:center;color:var(--muted);padding:30px}
@@ -346,8 +346,8 @@
     const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Consultando…';
     const r=document.getElementById('iaR'); r.innerHTML='<div class="loading">Analizando con Biodescodificación y NMG…</div>';
     try{ const res=await fetch('/therapeutic/biodescodificacion',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q,query:q})});
-      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#dc2626">No se pudo generar la respuesta.</p>'; }
-    catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
+      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#db2777">No se pudo generar la respuesta.</p>'; }
+    catch(e){ r.innerHTML='<p style="color:#db2777">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
   }
   function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}

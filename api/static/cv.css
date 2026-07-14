@@ -11,10 +11,10 @@
   --text: #f5f1e9;
   --text-soft: rgba(245, 241, 233, 0.76);
   --muted: rgba(245, 241, 233, 0.52);
-  --accent: #caa06a;
-  --accent-soft: rgba(202, 160, 106, 0.14);
-  --accent-strong: #e4c08c;
-  --teal: #85b1aa;
+  --accent: #f472b6;
+  --accent-soft: rgba(244, 114, 182, 0.14;
+  --accent-strong: #f9a8d4;
+  --teal: #a78bfa;
   --shadow: 0 24px 90px rgba(0, 0, 0, 0.38);
   --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.26);
   --radius-xl: 34px;
@@ -37,8 +37,8 @@ body {
   color: var(--text);
   font-family: "Manrope", "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at top left, rgba(202, 160, 106, 0.12), transparent 24%),
-    radial-gradient(circle at 84% 16%, rgba(133, 177, 170, 0.1), transparent 20%),
+    radial-gradient(circle at top left, rgba(244, 114, 182, 0.12, transparent 24%),
+    radial-gradient(circle at 84% 16%, rgba(167, 139, 250, 0.1, transparent 20%),
     linear-gradient(180deg, #04060a 0%, #06080d 42%, #080c12 100%);
 }
 
@@ -76,7 +76,7 @@ img {
   left: -90px;
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, rgba(202, 160, 106, 0.22), transparent 70%);
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.22, transparent 70%);
 }
 
 .ambient-orb-two {
@@ -84,7 +84,7 @@ img {
   top: 160px;
   width: 360px;
   height: 360px;
-  background: radial-gradient(circle, rgba(133, 177, 170, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.2, transparent 70%);
 }
 
 .ambient-grid,
@@ -147,8 +147,8 @@ img {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(202, 160, 106, 0.24);
-  background: rgba(202, 160, 106, 0.08);
+  border: 1px solid rgba(244, 114, 182, 0.24;
+  background: rgba(244, 114, 182, 0.08;
   color: var(--accent-strong);
   font-size: 0.84rem;
   font-weight: 800;
@@ -199,7 +199,7 @@ img {
 }
 
 .site-nav__link.is-active {
-  background: rgba(202, 160, 106, 0.12);
+  background: rgba(244, 114, 182, 0.12;
   color: var(--accent-strong);
 }
 
@@ -214,7 +214,7 @@ img {
 }
 
 .header-link--strong {
-  background: linear-gradient(135deg, #efdbbc, #c99a62 58%, #946839);
+  background: linear-gradient(135deg, #fbcfe8, #f472b6 58%, #db2777);
   color: #101318;
   border-color: transparent;
   font-weight: 800;
@@ -386,9 +386,9 @@ h3 {
 }
 
 .primary-btn {
-  background: linear-gradient(135deg, #f0ddc0, #cea36b 58%, #9c7042);
+  background: linear-gradient(135deg, #fbcfe8, #f472b6 58%, #ec4899);
   color: #11141a;
-  box-shadow: 0 18px 34px rgba(202, 160, 106, 0.24);
+  box-shadow: 0 18px 34px rgba(244, 114, 182, 0.24;
 }
 
 .ghost-btn {
@@ -443,7 +443,7 @@ h3 {
   padding: 10px;
   border-radius: 24px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(202, 160, 106, 0.24)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(244, 114, 182, 0.24),
     rgba(255, 255, 255, 0.04);
 }
 
@@ -511,9 +511,9 @@ h3 {
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  border: 1px solid rgba(202, 160, 106, 0.18);
+  border: 1px solid rgba(244, 114, 182, 0.18;
   background:
-    linear-gradient(180deg, rgba(202, 160, 106, 0.18), rgba(255, 255, 255, 0.03)),
+    linear-gradient(180deg, rgba(244, 114, 182, 0.18, rgba(255, 255, 255, 0.03)),
     rgba(255, 255, 255, 0.03);
   color: var(--accent-strong);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -538,7 +538,7 @@ h3 {
 .pillar-card:hover,
 .showcase-card:hover {
   transform: translateY(-2px);
-  border-color: rgba(202, 160, 106, 0.24);
+  border-color: rgba(244, 114, 182, 0.24;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 62%),
     rgba(255, 255, 255, 0.03);
@@ -670,8 +670,8 @@ h3 {
   padding: 22px 24px;
   border-radius: 22px;
   border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(202, 160, 106, 0.06);
-  color: #f0dfc3;
+  background: rgba(244, 114, 182, 0.06;
+  color: #fbcfe8;
   font-family: "Instrument Serif", Georgia, serif;
   font-size: clamp(1.45rem, 2.5vw, 2rem);
   font-style: italic;
@@ -756,7 +756,7 @@ h3 {
   left: 0;
   width: 2px;
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--accent), rgba(133, 177, 170, 0.85));
+  background: linear-gradient(180deg, var(--accent), rgba(167, 139, 250, 0.85);
 }
 
 .timeline-head {
@@ -816,7 +816,7 @@ h3 {
   margin-top: 20px;
   border-radius: 20px;
   background:
-    radial-gradient(circle at top left, rgba(202, 160, 106, 0.22), transparent 32%),
+    radial-gradient(circle at top left, rgba(244, 114, 182, 0.22, transparent 32%),
     linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
     rgba(255, 255, 255, 0.02);
   overflow: hidden;
@@ -841,7 +841,7 @@ h3 {
   height: 60%;
   background:
     linear-gradient(90deg, transparent 0 12%, rgba(255, 255, 255, 0.05) 12% 13%, transparent 13% 39%, rgba(255, 255, 255, 0.05) 39% 40%, transparent 40% 100%),
-    radial-gradient(circle at 78% 34%, rgba(133, 177, 170, 0.2), transparent 22%);
+    radial-gradient(circle at 78% 34%, rgba(167, 139, 250, 0.2, transparent 22%);
 }
 
 .contact-panel {

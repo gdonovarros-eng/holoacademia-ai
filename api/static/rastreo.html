@@ -6,22 +6,22 @@
   --border: rgba(0,0,0,0.09);
   --text: #1d1d1f;
   --muted: #6e6e73;
-  --acc: #007aff;
-  --acc-dim: rgba(0,122,255,0.1);
+  --acc: #7c3aed;
+  --acc-dim: rgba(124, 58, 237,0.1;
   --radius: 8px;
   --header-h: 52px;
   --col-izq: 220px;
   --col-der: 280px;
 
   /* tipo colors */
-  --c-bacteria: #ef4444;
-  --c-virus: #f97316;
-  --c-hongo: #eab308;
-  --c-parasito: #84cc16;
+  --c-bacteria: #ec4899;
+  --c-virus: #ec4899;
+  --c-hongo: #f472b6;
+  --c-parasito: #a78bfa;
   --c-emocional: #a78bfa;
-  --c-disfuncional: #60a5fa;
+  --c-disfuncional: #a78bfa;
   --c-especial: #f472b6;
-  --c-reservorio: #94a3b8;
+  --c-reservorio: #a78bfa;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -326,9 +326,9 @@ header h1 {
  transition: background 0.15s;
  flex-shrink: 0;
 }
-.btn-add:hover { background: rgba(0,122,255,0.2); }
+.btn-add:hover { background: rgba(124, 58, 237,0.2; }
 .btn-add.added {
- background: rgba(0,122,255,0.08);
+ background: rgba(124, 58, 237,0.08;
  border-color: var(--muted);
  color: var(--acc);
  cursor: default;
@@ -425,7 +425,7 @@ header h1 {
  border-radius: 4px;
  transition: color 0.15s, background 0.15s;
 }
-.btn-remove:hover { color: #ef4444; background: rgba(239,68,68,0.1); }
+.btn-remove:hover { color: #ec4899; background: rgba(236, 72, 153,0.1; }
 
 /* ── TIPO CHIPS ──────────────────────────────────── */
 .tipo-chip {
@@ -440,15 +440,15 @@ header h1 {
  flex-shrink: 0;
 }
 
-.tipo-bacteria   { background: rgba(239,68,68,0.15); color: #ef4444; }
-.tipo-virus      { background: rgba(249,115,22,0.15); color: #f97316; }
-.tipo-hongo      { background: rgba(234,179,8,0.15); color: #eab308; }
-.tipo-parasito   { background: rgba(132,204,22,0.15); color: #84cc16; }
+.tipo-bacteria   { background: rgba(236, 72, 153,0.15; color: #ec4899; }
+.tipo-virus      { background: rgba(236, 72, 153,0.15; color: #ec4899; }
+.tipo-hongo      { background: rgba(244, 114, 182,0.15; color: #f472b6; }
+.tipo-parasito   { background: rgba(167, 139, 250,0.15; color: #a78bfa; }
 .tipo-emocional  { background: rgba(167,139,250,0.15); color: #a78bfa; }
-.tipo-disfuncional { background: rgba(96,165,250,0.15); color: #60a5fa; }
+.tipo-disfuncional { background: rgba(167, 139, 250,0.15; color: #a78bfa; }
 .tipo-especial   { background: rgba(244,114,182,0.15); color: #f472b6; }
-.tipo-reservorio { background: rgba(148,163,184,0.15); color: #94a3b8; }
-.tipo-otro       { background: rgba(100,116,139,0.15); color: #94a3b8; }
+.tipo-reservorio { background: rgba(167, 139, 250,0.15; color: #a78bfa; }
+.tipo-otro       { background: rgba(139, 92, 246,0.15; color: #a78bfa; }
 
 /* ── LIGHTBOX ────────────────────────────────────── */
 #lightbox {
@@ -812,8 +812,8 @@ header h1 {
  margin-bottom: -1.5px;
 }
 #wizard-pares .wiz-tab.active {
- color: #007aff;
- border-bottom-color: #007aff;
+ color: #7c3aed;
+ border-bottom-color: #7c3aed;
 }
 #wizard-pares .wiz-tab:hover:not(.active) { color: #1d1d1f; }
 
@@ -857,7 +857,7 @@ header h1 {
  outline: none;
  transition: border-color .15s;
 }
-.tref-search input:focus { border-color: #007aff; }
+.tref-search input:focus { border-color: #7c3aed; }
 
 .tref-region {
  margin-bottom: 18px;
@@ -868,7 +868,7 @@ header h1 {
  text-transform: uppercase;
  letter-spacing: .07em;
  color: #fff;
- background: #007aff;
+ background: #7c3aed;
  border-radius: 9px 9px 0 0;
  padding: 8px 14px;
  display: flex;
@@ -878,7 +878,7 @@ header h1 {
  user-select: none;
  transition: background .15s;
 }
-.tref-region-hdr:hover { background: #0062cc; }
+.tref-region-hdr:hover { background: #6d28d9; }
 .tref-region-hdr .tref-toggle { margin-left: auto; font-size: .9rem; transition: transform .2s; }
 .tref-region.collapsed .tref-toggle { transform: rotate(-90deg); }
 
@@ -896,10 +896,10 @@ header h1 {
  font-weight: 700;
  text-transform: uppercase;
  letter-spacing: .06em;
- color: #007aff;
+ color: #7c3aed;
  background: #eff6ff;
  padding: 6px 14px;
- border-top: 1px solid #dbeafe;
+ border-top: 1px solid #ede9fe;
 }
 .tref-zona-hdr:first-child { border-top: none; }
 
@@ -940,7 +940,7 @@ table.tref-table td:nth-child(2) {
  white-space: nowrap;
  width: 40px;
 }
-table.tref-table td:nth-child(3) { color: #374151; }
+table.tref-table td:nth-child(3) { color: #5b21b6; }
 
 .tref-par-list { display: flex; flex-wrap: wrap; gap: 3px 8px; }
 .tref-par-item {
@@ -951,11 +951,11 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .tref-par-num {
  font-size: .63rem;
  font-weight: 700;
- color: #007aff;
+ color: #7c3aed;
  min-width: 14px;
 }
-.tref-par-name { font-size: .75rem; color: #374151; }
-.tref-par-item.highlight .tref-par-name { background: #fef08a; border-radius: 3px; padding: 0 2px; }
+.tref-par-name { font-size: .75rem; color: #5b21b6; }
+.tref-par-item.highlight .tref-par-name { background: #fce7f3; border-radius: 3px; padding: 0 2px; }
 .tref-no-results { padding: 20px; text-align: center; color: #6e6e73; font-size: .85rem; }
 
 /* breadcrumb */
@@ -969,7 +969,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
  min-height: 20px;
 }
 #wizard-pares .wiz-bc-sep { opacity: .4; }
-#wizard-pares .wiz-bc-item { cursor: pointer; color: #007aff; font-weight: 500; }
+#wizard-pares .wiz-bc-item { cursor: pointer; color: #7c3aed; font-weight: 500; }
 #wizard-pares .wiz-bc-item:hover { text-decoration: underline; }
 #wizard-pares .wiz-bc-cur { color: #1d1d1f; font-weight: 600; }
 
@@ -998,8 +998,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
  font-family: inherit;
 }
 #wizard-pares .wiz-opt:hover {
- border-color: #007aff;
- box-shadow: 0 0 0 3px rgba(0,122,255,.12);
+ border-color: #7c3aed;
+ box-shadow: 0 0 0 3px rgba(124, 58, 237,.12;
  transform: translateY(-1px);
 }
 #wizard-pares .wiz-opt .wn { font-size: .85rem; font-weight: 600; color: #1d1d1f; line-height: 1.2; }
@@ -1007,12 +1007,12 @@ table.tref-table td:nth-child(3) { color: #374151; }
 
 /* result card */
 #wizard-pares .wiz-result {
- background: #fff; border: 2px solid #22c55e;
+ background: #fff; border: 2px solid #8b5cf6;
  border-radius: 12px; padding: 16px 18px;
 }
 #wizard-pares .wiz-result-lbl {
  font-size: .63rem; font-weight: 700; text-transform: uppercase;
- letter-spacing: .08em; color: #22c55e; margin-bottom: 6px;
+ letter-spacing: .08em; color: #8b5cf6; margin-bottom: 6px;
 }
 #wizard-pares .wiz-result-name {
  font-size: 1.08rem; font-weight: 700; color: #1d1d1f;
@@ -1021,11 +1021,11 @@ table.tref-table td:nth-child(3) { color: #374151; }
 #wizard-pares .wiz-result-path { font-size: .7rem; color: #6e6e73; }
 #wizard-pares .wiz-result-actions { display: flex; gap: 8px; margin-top: 12px; }
 #wizard-pares .wiz-btn-confirm {
- flex: 1; background: #22c55e; color: #fff; border: none;
+ flex: 1; background: #8b5cf6; color: #fff; border: none;
  border-radius: 9px; padding: 11px; font-size: .85rem; font-weight: 700;
  cursor: pointer; transition: background .15s; font-family: inherit;
 }
-#wizard-pares .wiz-btn-confirm:hover { background: #16a34a; }
+#wizard-pares .wiz-btn-confirm:hover { background: #7c3aed; }
 #wizard-pares .wiz-btn-change {
  background: #e8e8ed; color: #1d1d1f; border: none;
  border-radius: 9px; padding: 11px 13px; font-size: .85rem; font-weight: 600;
@@ -1071,8 +1071,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
  white-space: nowrap;
 }
 .micro-tab.active {
- color: #ef4444;
- border-bottom-color: #ef4444;
+ color: #ec4899;
+ border-bottom-color: #ec4899;
 }
 .micro-tab:hover:not(.active) { color: #1d1d1f; }
 
@@ -1093,7 +1093,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
  text-transform: uppercase;
  letter-spacing: .07em;
  color: #fff;
- background: #ef4444;
+ background: #ec4899;
  border-radius: 9px 9px 0 0;
  padding: 8px 14px;
 }
@@ -1132,12 +1132,12 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .micro-item-num {
  font-size: .63rem;
  font-weight: 700;
- color: #94a3b8;
+ color: #a78bfa;
  min-width: 16px;
 }
 .micro-item-name {
  font-style: italic;
- color: #374151;
+ color: #5b21b6;
 }
 
 /* diagnóstico table */
@@ -1151,7 +1151,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
  border: 1.5px solid #e0e0e5;
 }
 .micro-diag-table th {
- background: #ef4444;
+ background: #ec4899;
  color: #fff;
  font-size: .72rem;
  font-weight: 700;
@@ -1170,13 +1170,13 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .micro-diag-table tr:hover td { background: #fef2f2; }
 .micro-diag-table td:first-child {
  font-weight: 700;
- color: #ef4444;
+ color: #ec4899;
  font-size: .88rem;
  width: 36px;
  text-align: center;
 }
 .micro-diag-table td:nth-child(2) { font-weight: 600; width: 80px; }
-.micro-diag-table td:nth-child(3) { color: #374151; }
+.micro-diag-table td:nth-child(3) { color: #5b21b6; }
 
 /* ── HOME: MAPA CORPORAL INTERACTIVO ─────────────────────────── */
 #rastreo-home {
@@ -1202,20 +1202,20 @@ table.tref-table td:nth-child(3) { color: #374151; }
 .instr-body li { margin-bottom: 0.15rem; }
 .instr-body p { font-size: 0.84rem; line-height: 1.7; color: #3a3a3c; margin-bottom: 0.5rem; }
 .instr-body p:last-child { margin-bottom: 0; }
-.instr-body strong { color: #007aff; }
+.instr-body strong { color: #7c3aed; }
 /* body map region dots */
 .bm-dot {
  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
 }
-.bm-dot-cabeza  { background: #007aff; }
-.bm-dot-cuello  { background: #34aadc; }
-.bm-dot-pecho   { background: #ff3b30; }
-.bm-dot-abdomen { background: #ff9500; }
-.bm-dot-pelvis  { background: #af52de; }
+.bm-dot-cabeza  { background: #7c3aed; }
+.bm-dot-cuello  { background: #8b5cf6; }
+.bm-dot-pecho   { background: #ec4899; }
+.bm-dot-abdomen { background: #f472b6; }
+.bm-dot-pelvis  { background: #8b5cf6; }
 .bm-dot-espalda { background: #8e8e93; }
-.bm-dot-brazos  { background: #34c759; }
-.bm-dot-piernas { background: #5ac8fa; }
-.bm-dot-extras  { background: #ff9f0a; }
+.bm-dot-brazos  { background: #a78bfa; }
+.bm-dot-piernas { background: #a78bfa; }
+.bm-dot-extras  { background: #f472b6; }
 
 /* ── BODY MAP — Apple light style ────────────────────────────────── */
 #bm-scanner {
@@ -1249,7 +1249,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-hud-dot {
  width: 6px; height: 6px; border-radius: 50%;
- background: #34c759;
+ background: #a78bfa;
  animation: bm-pulse 2.4s ease-in-out infinite;
 }
 @keyframes bm-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
@@ -1297,9 +1297,9 @@ table.tref-table td:nth-child(3) { color: #374151; }
  stroke-dasharray: 4 3;
  transition: stroke 0.2s, stroke-width 0.2s;
 }
-.bm-conn.hovered { stroke: rgba(0,122,255,0.8); stroke-width: 2; }
+.bm-conn.hovered { stroke: rgba(124, 58, 237,0.8; stroke-width: 2; }
 .bm-conn-post { stroke: rgba(0,0,0,0.35); stroke-dasharray: 4 3; }
-.bm-conn-post.hovered { stroke: rgba(100,116,139,0.8); }
+.bm-conn-post.hovered { stroke: rgba(139, 92, 246,0.8; }
 .bm-conn-dot { pointer-events: none; fill: rgba(0,0,0,0.0); }
 .bm-conn-dot-post { fill: rgba(0,0,0,0.0); }
 /* labels */
@@ -1315,7 +1315,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-label:hover, .bm-label.hovered {
  background: #fff;
- border-color: rgba(0,122,255,0.35);
+ border-color: rgba(124, 58, 237,0.35;
  box-shadow: none;
  transform: scale(1.03);
 }
@@ -1333,7 +1333,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
 }
 .bm-label.posterior { border-color: rgba(0,0,0,0.07); }
 .bm-label.posterior:hover, .bm-label.posterior.hovered {
- border-color: rgba(100,116,139,0.4);
+ border-color: rgba(139, 92, 246,0.4;
  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
 }
 .bm-label.posterior .bm-label-count { color: #8e8e93; }
@@ -1352,8 +1352,8 @@ table.tref-table td:nth-child(3) { color: #374151; }
  font-family: inherit;
 }
 .bm-extras-btn:hover {
- border-color: rgba(255,159,10,0.5);
- box-shadow: 0 4px 16px rgba(255,159,10,0.14);
+ border-color: rgba(244, 114, 182,0.5;
+ box-shadow: 0 4px 16px rgba(244, 114, 182,0.14;
 }
 .bm-extras-info { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
 .bm-extras-name { font-size: 0.76rem; font-weight: 600; color: #1d1d1f; }
@@ -1465,7 +1465,7 @@ table.tref-table td:nth-child(3) { color: #374151; }
  font-size: .73rem;
  font-weight: 700;
  letter-spacing: .04em;
- color: #374151;
+ color: #5b21b6;
  padding: 4px 0 2px;
  border-bottom: 1px dashed #e0e0e5;
  margin-bottom: 4px;
@@ -2075,7 +2075,7 @@ function buildInstructionList() {
  if (pointMaps.length) {
  const cards = pointMaps.map((pm, idx) => {
  const polLabel = polarityLabels[idx] || `Punto ${idx + 1}`;
- const polBg = idx === 0 ? '#1a1a1a' : (idx === 1 ? '#c41e3a' : '#5b4b8a');
+ const polBg = idx === 0 ? '#1a1a1a' : (idx === 1 ? '#be185d' : '#6d28d9');
  const mapImg = pm.map_zona || pm.map_bloque;
  const locTxt = pm.region ? `${pm.region} · ${pm.zona} · ${pm.bloque}` : '';
  return `
@@ -2411,7 +2411,7 @@ function mItems(arr) {
 /* helper: subgroup block */
 function mSubgroup(label, color, items) {
  return `
- <div class="micro-subgroup-hdr" style="background:${color}22;color:${color}">${escHtml(label)} <span style="font-weight:400;color:#94a3b8;font-size:.68rem">(${items.length})</span></div><div class="micro-items">${mItems(items)}</div>`;
+ <div class="micro-subgroup-hdr" style="background:${color}22;color:${color}">${escHtml(label)} <span style="font-weight:400;color:#a78bfa;font-size:.68rem">(${items.length})</span></div><div class="micro-items">${mItems(items)}</div>`;
 }
 
 /* helper: section wrapper */
@@ -2435,17 +2435,17 @@ function microBuildDiag() {
     [10, 'Lipo',   'Lipo-Fascial'],
   ];
  const rows = sistemas.map(([n, abbr, full]) =>
-    `<tr><td>${n}</td><td>${escHtml(abbr)}</td><td>${escHtml(full)}</td><td style="color:#94a3b8;font-size:.75rem">_____ %</td></tr>`
+    `<tr><td>${n}</td><td>${escHtml(abbr)}</td><td>${escHtml(full)}</td><td style="color:#a78bfa;font-size:.75rem">_____ %</td></tr>`
   ).join('');
 
  return `
  <div style="margin-bottom:8px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-bottom:10px">Diagnóstico Orgánico — 10 Sistemas
- </div><table class="micro-diag-table"><thead><tr><th>#</th><th>Abrev.</th><th>Sistema</th><th>%</th></tr></thead><tbody>${rows}</tbody></table></div><div style="background:#fff;border:1.5px solid #e0e0e5;border-radius:9px;padding:14px 16px;"><div style="font-size:.73rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Tabla Global de Microbios</div><div style="font-size:.82rem;color:#374151;line-height:1.8;"><div><strong>Bacterias Gram +</strong> — Cocos, Bacilos, Clostridios, Micobacterias</div><div><strong>Bacterias Gram −</strong> — Cocos, Bacilos entéricos, Espiroquetas, Chlamydias, Micoplasmas</div><div><strong>Parásitos</strong> — 30 organismos</div><div><strong>Hongos</strong> — 13 organismos</div><div><strong>Virus ADN</strong> — Grupos I, II, VII + Grupo III ARN bicatenario</div><div><strong>Virus ARN</strong> — Grupos IV, V, VI (monocatenarios)</div></div></div>`;
+ </div><table class="micro-diag-table"><thead><tr><th>#</th><th>Abrev.</th><th>Sistema</th><th>%</th></tr></thead><tbody>${rows}</tbody></table></div><div style="background:#fff;border:1.5px solid #e0e0e5;border-radius:9px;padding:14px 16px;"><div style="font-size:.73rem;font-weight:700;color:#ec4899;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Tabla Global de Microbios</div><div style="font-size:.82rem;color:#5b21b6;line-height:1.8;"><div><strong>Bacterias Gram +</strong> — Cocos, Bacilos, Clostridios, Micobacterias</div><div><strong>Bacterias Gram −</strong> — Cocos, Bacilos entéricos, Espiroquetas, Chlamydias, Micoplasmas</div><div><strong>Parásitos</strong> — 30 organismos</div><div><strong>Hongos</strong> — 13 organismos</div><div><strong>Virus ADN</strong> — Grupos I, II, VII + Grupo III ARN bicatenario</div><div><strong>Virus ARN</strong> — Grupos IV, V, VI (monocatenarios)</div></div></div>`;
 }
 
 // ── TAB 1: BACTERIAS GRAM + ───────────────────────────────────────────────
 function microBuildGramPos() {
- const green = '#10b981';
+ const green = '#8b5cf6';
 
  const enterococo = ['Enterococcus faecalis', 'Enterococcus faecium'];
  const estafilococo = ['S. aureus', 'S. albus', 'S. lugdunensis', 'S. haemolyticus', 'S. saprophyticus'];
@@ -2486,7 +2486,7 @@ function microBuildGramPos() {
 
 // ── TAB 2: BACTERIAS GRAM − ───────────────────────────────────────────────
 function microBuildGramNeg() {
- const amber = '#f59e0b';
+ const amber = '#f472b6';
 
  const cocosNegGen = ['Acinetobacter (Especies)', 'Francisella (Especies)', 'Brucella (Especies)', 'Neisseria'];
  const neisseria = ['N. gonorrhoeae', 'N. meningitidis', 'N. catarrhalis (Moraxella)'];
@@ -2568,8 +2568,8 @@ function microBuildParasitosHongos() {
 
 // ── TAB 4: VIRUS ──────────────────────────────────────────────────────────
 function microBuildVirus() {
- const blue = '#007aff';
- const cyan = '#06b6d4';
+ const blue = '#7c3aed';
+ const cyan = '#8b5cf6';
 
  function virusGrupoHdr(label, subLabel, color) {
  return `<div class="virus-grupo-hdr" style="background:${color}18;color:${color}">
@@ -2612,7 +2612,7 @@ function microBuildVirus() {
       ${virusFamilia('HEPADNAviridae', ['hepatitis B'])}
       ${virusFamilia('RETROvirus endógenos', ['HERVS'])}
 
-      ${virusGrupoHdr('Grupo III — ARN Bicatenario (BICAT)', '2 familias', '#6366f1')}
+      ${virusGrupoHdr('Grupo III — ARN Bicatenario (BICAT)', '2 familias', '#8b5cf6')}
       ${virusFamilia('CYSTOviridae', ['cystovirus'])}
       ${virusFamilia('REOviridae', [
         { sub: 'A', names: ['coltivirus', 'eyach', 'fiebre del Colorado', 'orbivirus'] },
@@ -2689,7 +2689,7 @@ function trefBuild() {
  const body = document.getElementById('tref-body');
  body.innerHTML = '';
 
- const regionColors = ['#007aff','#10b981','#f59e0b','#8b5cf6','#ef4444'];
+ const regionColors = ['#7c3aed','#8b5cf6','#f472b6','#8b5cf6','#ec4899'];
 
  wizDB.regiones.forEach((reg, ri) => {
  const section = document.createElement('div');

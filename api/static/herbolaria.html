@@ -1,20 +1,20 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Herbolaria · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-  :root{--bg:#f6faf4;--surface:#fff;--surface2:#eef5e9;--border:#dde9d4;--acc:#16a34a;--acc-dim:rgba(22,163,74,.10);--acc-dark:#15803d;--text:#16261a;--muted:#5e6f5e;--sidebar:#16261a;--sidebar2:#22372a}
+  :root{--bg:#f6faf4;--surface:#fff;--surface2:#eef5e9;--border:#dde9d4;--acc:#7c3aed;--acc-dim:rgba(124, 58, 237,.10;--acc-dark:#6d28d9;--text:#16261a;--muted:#5e6f5e;--sidebar:#16261a;--sidebar2:#22372a}
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
   .workspace{display:flex;height:100vh;overflow:hidden}
   .sidebar{width:252px;flex-shrink:0;background:var(--sidebar);color:#e6f0e6;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
   .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
-  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#22c55e,#16a34a);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
-  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#9bb59b;text-transform:uppercase;letter-spacing:.05em}
-  .sb-sec{font-size:.62rem;color:#86a386;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
   .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c2d6c2;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
   .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
   .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
-  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#86a386;font-weight:700}.nav-item.active .ct{color:#d6f0d6}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#a78bfa;font-weight:700}.nav-item.active .ct{color:#ede9fe}
   .nav-item.soon{opacity:.5;cursor:default}
   .sb-foot{margin-top:auto;padding-top:12px}
-  .sb-home{display:flex;align-items:center;gap:8px;color:#9bb59b;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
   .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
   .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
@@ -28,7 +28,7 @@
   .count{font-size:.78rem;color:var(--muted);margin:6px 2px}
   .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
   .gcard{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .14s;border-left:4px solid var(--acc)}
-  .gcard:hover{box-shadow:0 8px 20px rgba(22,163,74,.13);transform:translateY(-2px)}
+  .gcard:hover{box-shadow:0 8px 20px rgba(124, 58, 237,.13;transform:translateY(-2px)}
   .gcard .nm{font-weight:800;font-size:.96rem;line-height:1.25}
   .gcard .sub{font-size:.72rem;color:var(--muted);margin-top:2px}
   .gcard .cf{font-size:.83rem;color:var(--text);margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -37,7 +37,7 @@
   .modal-box{background:var(--surface);border-radius:16px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px}
   .modal-box h2{font-size:1.25rem;font-weight:800}.modal-box .sub{font-size:.78rem;color:var(--muted);margin-bottom:6px}
   .mb-sec{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:15px 0 4px}
-  .mb-sec.neg{color:#b45309}.mb-sec.pos{color:#15803d}
+  .mb-sec.neg{color:#db2777}.mb-sec.pos{color:#6d28d9}
   .modal-box p{font-size:.9rem}.modal-box ul{padding-left:18px;font-size:.9rem}.modal-box li{margin:3px 0}
   .modal-box .x{float:right;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
   .kw{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}.kw span{background:var(--surface2);border-radius:6px;padding:3px 9px;font-size:.76rem}
@@ -240,8 +240,8 @@
     const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Consultando…';
     const r=document.getElementById('iaR'); r.innerHTML='<div class="loading">Analizando con la biblioteca herbal…</div>';
     try{ const res=await fetch('/therapeutic/herbolaria',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q,query:q})});
-      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#dc2626">No se pudo generar la respuesta.</p>'; }
-    catch(e){ r.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'; }
+      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#db2777">No se pudo generar la respuesta.</p>'; }
+    catch(e){ r.innerHTML='<p style="color:#db2777">Error de conexión.</p>'; }
     btn.disabled=false; btn.textContent=t0;
   }
   function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}

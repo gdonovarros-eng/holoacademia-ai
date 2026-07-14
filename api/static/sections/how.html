@@ -7,13 +7,13 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
-  section { padding: 96px 5%; background: linear-gradient(160deg, #1E1B4B 0%, #2D1B69 100%); }
+  section { padding: 96px 5%; background: linear-gradient(160deg, #2e1065 0%, #2e1065 100%); }
   .inner { max-width: 1000px; margin: 0 auto; text-align: center; }
-  .tag { font-size: 12px; font-weight: 700; color: #F59E0B; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .tag { font-size: 12px; font-weight: 700; color: #f472b6; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
   h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 900; color: #fff; letter-spacing: -1px; margin-bottom: 16px; line-height: 1.15; }
   .sub { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 60px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.65; }
   .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
-  .connector { position: absolute; top: 28px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, rgba(124,58,237,0.6), rgba(245,158,11,0.6)); z-index: 0; transform-origin: left center; transform: scaleX(0); transition: transform 1.2s ease; }
+  .connector { position: absolute; top: 28px; left: 20%; right: 20%; height: 2px; background: linear-gradient(90deg, rgba(124,58,237,0.6), rgba(244, 114, 182,0.6); z-index: 0; transform-origin: left center; transform: scaleX(0); transition: transform 1.2s ease; }
   .connector.visible { transform: scaleX(1); }
   .step { padding: 0 28px; position: relative; z-index: 1; opacity: 0; transform: translateY(36px); transition: all 0.6s ease; }
   .step.visible { opacity: 1; transform: none; }

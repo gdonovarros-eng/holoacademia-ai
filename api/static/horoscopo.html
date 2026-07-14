@@ -9,13 +9,13 @@
   --text:        #0E1116;
   --muted:       #4A4F5C;
   --muted2:      #8B8F9A;
-  --acc:         #b45309;
-  --acc-dark:    #92400e;
-  --gold:        #b45309;
-  --gold-bg: rgba(180,83,9,0.08);
-  --gold-border: rgba(180,83,9,0.30);
+  --acc:         #db2777;
+  --acc-dark:    #be185d;
+  --gold:        #db2777;
+  --gold-bg: rgba(219, 39, 119,0.08;
+  --gold-border: rgba(219, 39, 119,0.30;
   --radius: 16px;
-  --glow: rgba(180,83,9,0.12);
+  --glow: rgba(219, 39, 119,0.12;
 }
 
 html, body {
@@ -31,9 +31,9 @@ body::before {
  position: fixed;
  inset: 0;
  background:
- radial-gradient(ellipse at 15% 15%, rgba(129,140,248,0.07) 0%, transparent 55%),
- radial-gradient(ellipse at 85% 75%, rgba(245,158,11,0.05) 0%, transparent 55%),
- radial-gradient(ellipse at 50% 50%, rgba(99,102,241,0.04) 0%, transparent 70%);
+ radial-gradient(ellipse at 15% 15%, rgba(167, 139, 250,0.07 0%, transparent 55%),
+ radial-gradient(ellipse at 85% 75%, rgba(244, 114, 182,0.05 0%, transparent 55%),
+ radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246,0.04 0%, transparent 70%);
  pointer-events: none;
  z-index: 0;
 }
@@ -65,7 +65,7 @@ body::before {
 .header-badge {
  font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
  text-transform: uppercase; color: var(--acc);
- background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.25);
+ background: rgba(167, 139, 250,0.1; border: 1px solid rgba(167, 139, 250,0.25;
  border-radius: 20px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
 }
 
@@ -106,7 +106,7 @@ body::before {
 }
 .hero h2 em {
  font-style: normal;
- background: linear-gradient(90deg, #818cf8, #f59e0b);
+ background: linear-gradient(90deg, #a78bfa, #f472b6);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto; }
@@ -150,10 +150,10 @@ body::before {
 .signo-badge {
  display: none;
  background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
- border: 1px solid rgba(129,140,248,0.3);
+ border: 1px solid rgba(167, 139, 250,0.3;
  border-radius: var(--radius); padding: 20px 24px;
  margin-bottom: 24px; text-align: center;
- box-shadow: 0 0 40px rgba(129,140,248,0.06);
+ box-shadow: 0 0 40px rgba(167, 139, 250,0.06;
 }
 .signo-badge.visible { display: flex; align-items: center; gap: 20px; text-align: left; }
 .signo-symbol { font-size: 3rem; line-height: 1; flex-shrink: 0; }
@@ -168,7 +168,7 @@ body::before {
  display: flex; flex-wrap: wrap; gap: 8px;
 }
 .signo-pill {
- background: rgba(129,140,248,0.12); border: 1px solid rgba(129,140,248,0.2);
+ background: rgba(167, 139, 250,0.12; border: 1px solid rgba(167, 139, 250,0.2;
  border-radius: 20px; padding: 2px 10px; font-size: 0.72rem; font-weight: 600;
  color: var(--acc);
 }
@@ -187,7 +187,7 @@ body::before {
 .status-bar.visible { display: flex; }
 .spinner {
  width: 16px; height: 16px; border-radius: 50%;
- border: 2px solid rgba(129,140,248,0.2);
+ border: 2px solid rgba(167, 139, 250,0.2;
  border-top-color: var(--acc);
  animation: spin 0.8s linear infinite; flex-shrink: 0;
 }
@@ -217,7 +217,7 @@ body::before {
 .output-body h2 {
  font-size: 1rem; font-weight: 800; color: var(--acc);
  margin: 24px 0 10px; padding-bottom: 8px;
- border-bottom: 1px solid rgba(129,140,248,0.15);
+ border-bottom: 1px solid rgba(167, 139, 250,0.15;
  display: flex; align-items: center; gap: 8px;
 }
 .output-body h2:first-child { margin-top: 0; }
@@ -236,9 +236,9 @@ body::before {
 
 /* ── ERROR ── */
 .error-box {
- display: none; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
+ display: none; background: rgba(236, 72, 153,0.08; border: 1px solid rgba(236, 72, 153,0.25;
  border-radius: 10px; padding: 14px 18px;
- color: #fca5a5; font-size: 0.85rem; margin-bottom: 16px;
+ color: #f9a8d4; font-size: 0.85rem; margin-bottom: 16px;
 }
 .error-box.visible { display: block; }
 
@@ -253,10 +253,10 @@ body::before {
  display: flex; flex-direction: column; gap: 6px;
 }
 .sign-card:hover {
- border-color: rgba(129,140,248,0.3);
+ border-color: rgba(167, 139, 250,0.3;
  background: var(--surface2);
  transform: translateY(-2px);
- box-shadow: 0 6px 20px rgba(129,140,248,0.08);
+ box-shadow: 0 6px 20px rgba(167, 139, 250,0.08;
 }
 .sign-glyph { font-size: 1.8rem; line-height: 1; }
 .sign-cname { font-size: 0.95rem; font-weight: 800; color: var(--text); }
@@ -265,10 +265,10 @@ body::before {
  display: inline-block; font-size: 0.68rem; font-weight: 700;
  padding: 2px 8px; border-radius: 20px; margin-top: 2px;
 }
-.el-fuego { background: rgba(239,68,68,0.12); color: #fca5a5; border: 1px solid rgba(239,68,68,0.2); }
-.el-tierra { background: rgba(34,197,94,0.10); color: #86efac; border: 1px solid rgba(34,197,94,0.2); }
-.el-aire   { background: rgba(59,130,246,0.10); color: #93c5fd; border: 1px solid rgba(59,130,246,0.2); }
-.el-agua   { background: rgba(99,102,241,0.12); color: #c4b5fd; border: 1px solid rgba(99,102,241,0.2); }
+.el-fuego { background: rgba(236, 72, 153,0.12; color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.2; }
+.el-tierra { background: rgba(139, 92, 246,0.10; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
+.el-aire   { background: rgba(139, 92, 246,0.10; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
+.el-agua   { background: rgba(139, 92, 246,0.12; color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2; }
 
 /* ── SIGN DETAIL MODAL ── */
 .modal-overlay {
@@ -278,7 +278,7 @@ body::before {
 }
 .modal-overlay.open { display: flex; }
 .modal {
- background: var(--surface); border: 1px solid rgba(129,140,248,0.2);
+ background: var(--surface); border: 1px solid rgba(167, 139, 250,0.2;
  border-radius: 18px; padding: 28px; max-width: 580px; width: 100%;
  max-height: 80vh; overflow-y: auto;
  position: relative;
@@ -315,11 +315,11 @@ body::before {
 }
 .modal-list li {
  font-size: 0.78rem; padding: 3px 10px; border-radius: 20px;
- background: rgba(129,140,248,0.08); border: 1px solid rgba(129,140,248,0.15);
+ background: rgba(167, 139, 250,0.08; border: 1px solid rgba(167, 139, 250,0.15;
  color: var(--text);
 }
 .modal-list.challenges li {
- background: rgba(245,158,11,0.08); border-color: rgba(245,158,11,0.2); color: var(--gold);
+ background: rgba(244, 114, 182,0.08; border-color: rgba(244, 114, 182,0.2; color: var(--gold);
 }
 
 /* ── RESPONSIVE ── */
@@ -335,17 +335,17 @@ body::before {
 /* ── LIGHT THEME OVERRIDES (textos claros sobre superficies claras/blancas) ── */
 /* Gradiente del hero sobre fondo blanco: índigo pálido → tonos legibles */
 .hero h2 em {
-  background: linear-gradient(90deg, #4f46e5, #b45309) !important;
+  background: linear-gradient(90deg, #7c3aed, #db2777) !important;
 }
 /* Error box: superficie roja muy tenue, texto coral pálido → rojo legible */
-.error-box { color: #dc2626 !important; }
+.error-box { color: #db2777 !important; }
 /* Element pills: fondos tenues de color sobre tarjeta blanca, texto pálido → tono saturado legible */
-.el-fuego  { color: #dc2626 !important; }   /* coral pálido → rojo */
-.el-tierra { color: #15803d !important; }   /* verde pálido → verde */
-.el-aire   { color: #2563eb !important; }   /* azul pálido → azul */
+.el-fuego  { color: #db2777 !important; }   /* coral pálido → rojo */
+.el-tierra { color: #6d28d9 !important; }   /* verde pálido → verde */
+.el-aire   { color: #7c3aed !important; }   /* azul pálido → azul */
 .el-agua   { color: #6d28d9 !important; }   /* púrpura pálido → púrpura */
 /* Pills/listas de desafíos: ámbar pálido sobre fondo tenue → ámbar legible */
-.modal-list.challenges li { color: #b45309 !important; }
+.modal-list.challenges li { color: #db2777 !important; }
 </style></head><body class="mod-page-terra"><!-- HEADER UNIFICADO --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-terra"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L21 9.5l-4.5 4.4 1.1 6.3L12 17l-5.6 3.2 1.1-6.3L3 9.5l6.5-1z"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Zodiacal · 12 signos</div><div class="holo-module-title">Horóscopo</div></div></div><span class="holo-module-badge">Copiloto</span></div></header><!-- MAIN --><main class="main"><!-- TABS --><div class="page-tabs"><button class="tab-btn active" onclick="switchTab('lectura')">Lectura Personal</button><button class="tab-btn" onclick="switchTab('signos')">Los 12 Signos</button></div><!-- TAB 1: LECTURA PERSONAL --><div id="tab-lectura" class="tab-panel active"><div class="hero"><div class="hero-eyebrow">Horóscopo · Astrología Zodiacal</div><h2>Tu lectura <em>personalizada</em></h2><p class="hero-sub">Ingresa tu fecha de nacimiento y recibe una lectura astrológica profunda basada en tu signo solar, energías actuales y guidance espiritual.</p></div><!-- FORMULARIO --><div class="form-card"><div class="form-grid"><div class="form-group full"><label class="form-label">Nombre completo <span>*</span></label><input id="inpNombre" class="form-input" type="text" placeholder="Ej. María García" autocomplete="off"></div><div class="form-group"><label class="form-label">Fecha de nacimiento <span>*</span></label><input id="inpFecha" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Tipo de lectura</label><select id="selTipo" class="form-select"><option value="completo">Completa (profunda)</option><option value="semanal">Semanal (enfocada)</option><option value="diario">Diaria (concisa)</option></select></div><div class="form-group"><label class="form-label">Hora de nacimiento <span class="opt-label">(opcional)</span></label><input id="inpHora" class="form-input" type="time" placeholder="HH:MM"><div class="form-hint">Enriquece la lectura con tránsitos exactos</div></div><div class="form-group"><label class="form-label">Lugar de nacimiento <span class="opt-label">(opcional)</span></label><input id="inpLugar" class="form-input" type="text" placeholder="Ej. Ciudad de México, México"></div></div><button id="btnGenerar" class="submit-btn" onclick="generarLectura()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Generar lectura horoscópica
  </button></div><!-- SIGNO BADGE --><div id="signoBadge" class="signo-badge"><div id="signoSymbol" class="signo-symbol"></div><div class="signo-info"><div id="signoName" class="signo-name">Aries</div><div class="signo-meta"><span id="signoElemento" class="signo-pill">Fuego</span><span id="signoModalidad" class="signo-pill gold">Cardinal</span></div></div></div><!-- STATUS --><div id="statusBar" class="status-bar"><div class="spinner"></div><span id="statusMsg">Calculando signo solar…</span></div><!-- ERROR --><div id="errorBox" class="error-box"></div><!-- OUTPUT --><div id="outputCard" class="output-card"><div class="output-header"><span class="output-title">Lectura Horoscópica</span><button class="copy-btn" onclick="copiarLectura()">Copiar</button></div><div id="outputBody" class="output-body"></div></div></div><!-- /tab-lectura --><!-- TAB 2: LOS 12 SIGNOS --><div id="tab-signos" class="tab-panel"><div id="zodiacGrid" class="zodiac-grid"></div></div></main><!-- MODAL DETALLE DE SIGNO --><div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)"><div class="modal"><button class="modal-close" onclick="closeModalBtn()">Cerrar</button><div class="modal-header"><div id="mdGlyph" class="modal-glyph"></div><div id="mdNombre" class="modal-signo-name">Aries</div><div class="modal-pills" id="mdPills"></div></div><div class="modal-section"><div class="modal-section-title">Perfil</div><div id="mdPerfil" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Fortalezas</div><ul id="mdFortalezas" class="modal-list"></ul></div><div class="modal-section"><div class="modal-section-title">Desafíos</div><ul id="mdDesafios" class="modal-list challenges"></ul></div><div class="modal-section"><div class="modal-section-title">Amor</div><div id="mdAmor" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Espiritualidad</div><div id="mdEspiritualidad" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Correspondencias</div><div id="mdCorrespondencias" class="modal-text"></div></div></div></div><script>
 // ─── Datos de los 12 signos (cargados desde el backend o embebidos aquí) ────────

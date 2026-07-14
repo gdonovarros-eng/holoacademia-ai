@@ -1,9 +1,9 @@
 <!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Tablas de Rastreo · Copiloto Holístico</title><style>
 :root{
   --bg:#0e0e12;--surface:#16161e;--card:#1e1e2a;--border:#2a2a3a;
-  --accent:#7c6df0;--accent2:#5b8fff;--green:#4caf7d;--red:#e05c5c;
-  --yellow:#f0c060;--orange:#f07c40;
-  --text:#e8e8f0;--muted:#7a7a9a;--tag-bg:#252535;
+  --accent:#8b5cf6;--accent2:#8b5cf6;--green:#8b5cf6;--red:#ec4899;
+  --yellow:#f9a8d4;--orange:#f472b6;
+  --text:#e8e8f0;--muted:#8b5cf6;--tag-bg:#252535;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
@@ -29,31 +29,31 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .sidebar-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;padding:4px 14px 8px}
 .cat-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 14px;background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;text-align:left;transition:all .15s;border-left:2px solid transparent}
 .cat-btn:hover{color:var(--text);background:rgba(255,255,255,.04)}
-.cat-btn.active{color:var(--accent);background:rgba(124,109,240,.08);border-left-color:var(--accent)}
+.cat-btn.active{color:var(--accent);background:rgba(139, 92, 246,.08;border-left-color:var(--accent)}
 .cat-count{margin-left:auto;background:var(--tag-bg);border-radius:10px;padding:1px 7px;font-size:.68rem;color:var(--muted)}
 .cat-btn.active .cat-count{color:var(--accent)}
 
 .tipo-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.dot-bacteria{background:#e05c5c}
-.dot-virus{background:#f07c40}
-.dot-hongo{background:#f0c060}
-.dot-parasito{background:#4caf7d}
-.dot-emocional{background:#7c6df0}
-.dot-disfuncional{background:#5b8fff}
-.dot-especial{background:#ff85b3}
-.dot-reservorio{background:#7ae0c0}
-.dot-desconocido{background:#7a7a9a}
-.dot-sales{background:#e0c87a}
-.dot-bach{background:#9de08a}
-.dot-vitaminas{background:#8ad4e0}
-.dot-creencias{background:#d08ae0}
-.dot-conflicto{background:#ff9f6b}
-.dot-homeopatico{background:#c0e0ff}
-.dot-chakra{background:#ffb3e6}
-.dot-elementos{background:#b3ffb3}
-.dot-aminoacidos{background:#ffd9b3}
-.dot-enzimas{background:#b3d9ff}
-.dot-miedos{background:#e0b3ff}
+.dot-bacteria{background:#ec4899}
+.dot-virus{background:#f472b6}
+.dot-hongo{background:#f9a8d4}
+.dot-parasito{background:#8b5cf6}
+.dot-emocional{background:#8b5cf6}
+.dot-disfuncional{background:#8b5cf6}
+.dot-especial{background:#f472b6}
+.dot-reservorio{background:#c4b5fd}
+.dot-desconocido{background:#8b5cf6}
+.dot-sales{background:#f9a8d4}
+.dot-bach{background:#c4b5fd}
+.dot-vitaminas{background:#c4b5fd}
+.dot-creencias{background:#a78bfa}
+.dot-conflicto{background:#f9a8d4}
+.dot-homeopatico{background:#ddd6fe}
+.dot-chakra{background:#f9a8d4}
+.dot-elementos{background:#ddd6fe}
+.dot-aminoacidos{background:#fbcfe8}
+.dot-enzimas{background:#ddd6fe}
+.dot-miedos{background:#c4b5fd}
 
 /* SISTEMA FILTER */
 .sis-filter{padding:10px 14px}
@@ -76,13 +76,13 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 
 .items-grid{display:flex;flex-direction:column;gap:6px}
 .item-row{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;transition:all .15s}
-.item-row:hover{border-color:var(--accent);background:rgba(124,109,240,.06)}
-.item-row.checked{border-color:var(--green);background:rgba(76,175,125,.08)}
+.item-row:hover{border-color:var(--accent);background:rgba(139, 92, 246,.06}
+.item-row.checked{border-color:var(--green);background:rgba(139, 92, 246,.08}
 .item-cb{width:16px;height:16px;accent-color:var(--green);cursor:pointer;margin-top:2px;flex-shrink:0}
 .item-body{flex:1;min-width:0}
 .item-nombre{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:3px}
 .item-condiciones{font-size:.75rem;color:var(--muted);line-height:1.45;margin-bottom:3px}
-.item-emocional{font-size:.72rem;color:#b8a8f0;font-style:italic;line-height:1.4}
+.item-emocional{font-size:.72rem;color:#c4b5fd;font-style:italic;line-height:1.4}
 .item-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
 .tag{font-size:.62rem;padding:2px 7px;border-radius:10px;background:var(--tag-bg);color:var(--muted)}
 .tag-tipo{text-transform:capitalize}
@@ -123,16 +123,16 @@ body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,san
 .static-table th{background:var(--tag-bg);color:var(--muted);font-weight:600;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
 .static-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.4}
 .static-table tr:hover td{background:rgba(255,255,255,.03)}
-.static-table tr.checked-row td{background:rgba(76,175,125,.07)}
+.static-table tr.checked-row td{background:rgba(139, 92, 246,.07}
 .num-cell{color:var(--muted);width:36px;font-size:.7rem}
 .nombre-cell{font-weight:600;color:var(--text);min-width:140px}
 .desc-cell{color:var(--muted)}
-.emoc-cell{color:#b8a8f0;font-style:italic}
+.emoc-cell{color:#c4b5fd;font-style:italic}
 .cb-cell{width:32px;text-align:center}
 .cb-cell input[type=checkbox]{accent-color:var(--green);width:14px;height:14px;cursor:pointer}
 
 /* Group headers inside static tables */
-.group-header{background:rgba(124,109,240,.1);color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px}
+.group-header{background:rgba(139, 92, 246,.1;color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px}
 
 @media(max-width:900px){
   .confirmed-panel{display:none}
@@ -379,11 +379,11 @@ const CHAKRAS_SECUNDARIOS = [
 ];
 
 const CINCO_ELEMENTOS = [
-  {n:1, nombre:'Madera',color:'#4caf7d', organos_yin:'Hígado', organos_yang:'Vesícula biliar', emocion_neg:'Enojo / Ira / Frustración', emocion_pos:'Amabilidad / Compasión', sentido:'Vista', sabor:'Ácido', estacion:'Primavera', tejido:'Tendones y ligamentos', manifestacion:'Uñas'},
-  {n:2, nombre:'Fuego', color:'#e05c5c', organos_yin:'Corazón / Pericardio', organos_yang:'Intestino delgado / Triple calentador', emocion_neg:'Alegría excesiva / Agitación', emocion_pos:'Amor / Gozo equilibrado', sentido:'Habla', sabor:'Amargo', estacion:'Verano', tejido:'Vasos sanguíneos', manifestacion:'Cutis'},
-  {n:3, nombre:'Tierra',color:'#f0c060', organos_yin:'Bazo / Páncreas', organos_yang:'Estómago', emocion_neg:'Preocupación / Obsesión / Rumiación', emocion_pos:'Reflexión equilibrada', sentido:'Gusto', sabor:'Dulce', estacion:'Inter-estaciones', tejido:'Músculos', manifestacion:'Labios'},
-  {n:4, nombre:'Metal', color:'#8ad4e0', organos_yin:'Pulmón', organos_yang:'Intestino grueso', emocion_neg:'Tristeza / Melancolía / Duelo', emocion_pos:'Integridad / Rectitud', sentido:'Olfato', sabor:'Picante', estacion:'Otoño', tejido:'Piel y vello', manifestacion:'Vello'},
-  {n:5, nombre:'Agua', color:'#5b8fff', organos_yin:'Riñón', organos_yang:'Vejiga', emocion_neg:'Miedo / Terror / Pavor', emocion_pos:'Sabiduría / Serenidad', sentido:'Oído', sabor:'Salado', estacion:'Invierno', tejido:'Huesos / Médula', manifestacion:'Cabello'},
+  {n:1, nombre:'Madera',color:'#8b5cf6', organos_yin:'Hígado', organos_yang:'Vesícula biliar', emocion_neg:'Enojo / Ira / Frustración', emocion_pos:'Amabilidad / Compasión', sentido:'Vista', sabor:'Ácido', estacion:'Primavera', tejido:'Tendones y ligamentos', manifestacion:'Uñas'},
+  {n:2, nombre:'Fuego', color:'#ec4899', organos_yin:'Corazón / Pericardio', organos_yang:'Intestino delgado / Triple calentador', emocion_neg:'Alegría excesiva / Agitación', emocion_pos:'Amor / Gozo equilibrado', sentido:'Habla', sabor:'Amargo', estacion:'Verano', tejido:'Vasos sanguíneos', manifestacion:'Cutis'},
+  {n:3, nombre:'Tierra',color:'#f9a8d4', organos_yin:'Bazo / Páncreas', organos_yang:'Estómago', emocion_neg:'Preocupación / Obsesión / Rumiación', emocion_pos:'Reflexión equilibrada', sentido:'Gusto', sabor:'Dulce', estacion:'Inter-estaciones', tejido:'Músculos', manifestacion:'Labios'},
+  {n:4, nombre:'Metal', color:'#c4b5fd', organos_yin:'Pulmón', organos_yang:'Intestino grueso', emocion_neg:'Tristeza / Melancolía / Duelo', emocion_pos:'Integridad / Rectitud', sentido:'Olfato', sabor:'Picante', estacion:'Otoño', tejido:'Piel y vello', manifestacion:'Vello'},
+  {n:5, nombre:'Agua', color:'#8b5cf6', organos_yin:'Riñón', organos_yang:'Vejiga', emocion_neg:'Miedo / Terror / Pavor', emocion_pos:'Sabiduría / Serenidad', sentido:'Oído', sabor:'Salado', estacion:'Invierno', tejido:'Huesos / Médula', manifestacion:'Cabello'},
 ];
 
 const AMINOACIDOS = [
@@ -575,7 +575,7 @@ function renderConflictologia(sysKey) {
 
  let total = Object.values(sys.subsystems).reduce((s, sub) =>s + sub.conflicts.length, 0);
 
- let html = `<div class="category-title" style="color:#ff9f6b">${escHtml(title)}</div><div class="category-sub">Conflictología psicosomática — ${total} conflictos en ${Object.keys(sys.subsystems).length} subsistemas</div>`;
+ let html = `<div class="category-title" style="color:#f9a8d4">${escHtml(title)}</div><div class="category-sub">Conflictología psicosomática — ${total} conflictos en ${Object.keys(sys.subsystems).length} subsistemas</div>`;
 
  for (const [slug, sub] of Object.entries(sys.subsystems)) {
     // Filter by query
@@ -587,7 +587,7 @@ function renderConflictologia(sysKey) {
  if (!conflicts.length) continue;
     }
 
- html += `<div style="margin-bottom:16px"><div style="font-size:.7rem;font-weight:700;color:#ff9f6b;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
+ html += `<div style="margin-bottom:16px"><div style="font-size:.7rem;font-weight:700;color:#f9a8d4;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
         ${escHtml(sub.label)} <span style="color:var(--muted);font-weight:400;text-transform:none">(${conflicts.length})</span></div><div class="items-grid">`;
 
  for (const c of conflicts) {
@@ -595,7 +595,7 @@ function renderConflictologia(sysKey) {
  const isChk = confirmed.some(x =>x.id === cid);
  const hasDesc = c.desc && c.desc !== c.nombre;
  html += `<div class="item-row ${isChk?'checked':''}" onclick="toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"><input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"/><div class="item-body"><div class="item-nombre">${escHtml(c.nombre)}</div>
-          ${hasDesc?`<div class="item-condiciones" style="color:#c8b8e8;font-style:italic">${escHtml(c.desc)}</div>`:''}
+          ${hasDesc?`<div class="item-condiciones" style="color:#c4b5fd;font-style:italic">${escHtml(c.desc)}</div>`:''}
  </div></div>`;
     }
  html += `</div></div>`;
@@ -642,9 +642,9 @@ function renderPairs(tipo) {
  reservorio:'Reservorios', desconocido:'Desconocidos'
   };
  const catColors = {
- bacteria:'#e05c5c',virus:'#f07c40',hongo:'#f0c060',parasito:'#4caf7d',
- emocional:'#7c6df0',disfuncional:'#5b8fff',especial:'#ff85b3',
- reservorio:'#7ae0c0',desconocido:'#7a7a9a'
+ bacteria:'#ec4899',virus:'#f472b6',hongo:'#f9a8d4',parasito:'#8b5cf6',
+ emocional:'#8b5cf6',disfuncional:'#8b5cf6',especial:'#f472b6',
+ reservorio:'#c4b5fd',desconocido:'#8b5cf6'
   };
  document.getElementById('categoryLabel').textContent = catNames[tipo] || tipo;
 
@@ -781,7 +781,7 @@ function renderStatic(cat) {
  c.cat.toLowerCase().includes(query)
     );
  const groups = [...new Set(data.map(c=>c.cat))];
- let html = `<div class="category-title" style="color:#d08ae0">Creencias Limitantes</div><div class="category-sub">${CREENCIAS.length} creencias — 8 áreas temáticas (BNE / Hellinger)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Creencia</th><th class="emoc-cell">Emoción subyacente</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#a78bfa">Creencias Limitantes</div><div class="category-sub">${CREENCIAS.length} creencias — 8 áreas temáticas (BNE / Hellinger)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Creencia</th><th class="emoc-cell">Emoción subyacente</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(c=>c.cat===g);
  if (!gItems.length) continue;
@@ -803,7 +803,7 @@ function renderStatic(cat) {
  m.cat.toLowerCase().includes(query)
     );
  const groups = [...new Set(MIEDOS_FOBIAS.map(m=>m.cat))];
- let html = `<div class="category-title" style="color:#e0b3ff">Miedos, Fobias y Nudos Psóricos</div><div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#c4b5fd">Miedos, Fobias y Nudos Psóricos</div><div class="category-sub">${MIEDOS_FOBIAS.length} ítems — 7 categorías</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Ítem</th><th class="desc-cell">Descripción</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(m=>m.cat===g);
  if (!gItems.length) continue;
@@ -821,7 +821,7 @@ function renderStatic(cat) {
  else if (cat === 'policrestos') {
  let data = POLICRESTOS;
  if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
- let html = `<div class="category-title" style="color:#c0e0ff">Policrestos Homeopáticos</div><div class="category-sub">${POLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#ddd6fe">Policrestos Homeopáticos</div><div class="category-sub">${POLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const p of data) {
  const id = 'pc_' + p.n;
  const chk = confirmed.some(c =>c.id === id);
@@ -834,7 +834,7 @@ function renderStatic(cat) {
  else if (cat === 'semipolicrestos') {
  let data = SEMIPOLICRESTOS;
  if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
- let html = `<div class="category-title" style="color:#c0e0ff">Semipolicrestos Homeopáticos</div><div class="category-sub">${SEMIPOLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#ddd6fe">Semipolicrestos Homeopáticos</div><div class="category-sub">${SEMIPOLICRESTOS.length} remedios — Farmacopea homeopática (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedio</th><th class="desc-cell">Indicación principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const p of data) {
  const id = 'spc_' + p.n;
  const chk = confirmed.some(c =>c.id === id);
@@ -851,7 +851,7 @@ function renderStatic(cat) {
  c.organos.toLowerCase().includes(query) ||
  c.emoc.toLowerCase().includes(query)
     );
- let html = `<div class="category-title" style="color:#ffb3e6">Chakras Primarios (7)</div><div class="category-sub">Centros energéticos mayores — sistema védico (HoloBiomagnetismo)</div>`;
+ let html = `<div class="category-title" style="color:#f9a8d4">Chakras Primarios (7)</div><div class="category-sub">Centros energéticos mayores — sistema védico (HoloBiomagnetismo)</div>`;
  for (const ck of data) {
  const id = 'ckp_' + ck.n;
  const chk = confirmed.some(c =>c.id === id);
@@ -865,7 +865,7 @@ function renderStatic(cat) {
  if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
  c.desc.toLowerCase().includes(query)
     );
- let html = `<div class="category-title" style="color:#ffb3e6">Chakras Secundarios (21)</div><div class="category-sub">Mini-chakras — sistema bioenergético HoloBiomagnetismo</div><table class="static-table"><thead><tr><th style="width:48px">#</th><th class="nombre-cell">Centro energético</th><th class="desc-cell">Significado y función</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#f9a8d4">Chakras Secundarios (21)</div><div class="category-sub">Mini-chakras — sistema bioenergético HoloBiomagnetismo</div><table class="static-table"><thead><tr><th style="width:48px">#</th><th class="nombre-cell">Centro energético</th><th class="desc-cell">Significado y función</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const ck of data) {
  const id = 'cks_' + ck.n.toString().replace(/[^a-z0-9]/gi,'');
  const chk = confirmed.some(c =>c.id === id);
@@ -882,11 +882,11 @@ function renderStatic(cat) {
  e.emocion_neg.toLowerCase().includes(query) ||
  e.emocion_pos.toLowerCase().includes(query)
     );
- let html = `<div class="category-title" style="color:#b3ffb3">5 Elementos (MTC / HoloBiomagnetismo)</div><div class="category-sub">Filosofía energética China (Neijing) — sistema de diagnóstico bioenergético</div>`;
+ let html = `<div class="category-title" style="color:#ddd6fe">5 Elementos (MTC / HoloBiomagnetismo)</div><div class="category-sub">Filosofía energética China (Neijing) — sistema de diagnóstico bioenergético</div>`;
  for (const el of data) {
  const id = '5el_' + el.n;
  const chk = confirmed.some(c =>c.id === id);
- html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')" style="border-left:3px solid ${el.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')"/><div class="item-body"><div class="item-nombre" style="color:${el.color};font-size:.95rem">${escHtml(el.nombre)}</div><div class="item-condiciones">Yin: <b>${escHtml(el.organos_yin)}</b> · Yang: <b>${escHtml(el.organos_yang)}</b></div><div class="item-condiciones">Estación: ${escHtml(el.estacion)} · Sabor: ${escHtml(el.sabor)} · Tejido: ${escHtml(el.tejido)}</div><div class="item-emocional"> ${escHtml(el.emocion_neg)}</div><div class="item-emocional" style="color:#9de08a"> ${escHtml(el.emocion_pos)}</div></div></div>`;
+ html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')" style="border-left:3px solid ${el.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elementos')"/><div class="item-body"><div class="item-nombre" style="color:${el.color};font-size:.95rem">${escHtml(el.nombre)}</div><div class="item-condiciones">Yin: <b>${escHtml(el.organos_yin)}</b> · Yang: <b>${escHtml(el.organos_yang)}</b></div><div class="item-condiciones">Estación: ${escHtml(el.estacion)} · Sabor: ${escHtml(el.sabor)} · Tejido: ${escHtml(el.tejido)}</div><div class="item-emocional"> ${escHtml(el.emocion_neg)}</div><div class="item-emocional" style="color:#c4b5fd"> ${escHtml(el.emocion_pos)}</div></div></div>`;
     }
  scroll.innerHTML = html;
   }
@@ -895,7 +895,7 @@ function renderStatic(cat) {
  let data = AMINOACIDOS;
  if (query) data = data.filter(a =>a.nombre.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query) || a.cat.toLowerCase().includes(query));
  const groups = [...new Set(AMINOACIDOS.map(a=>a.cat))];
- let html = `<div class="category-title" style="color:#ffd9b3">Aminoácidos</div><div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#fbcfe8">Aminoácidos</div><div class="category-sub">${AMINOACIDOS.length} aminoácidos — rastreo de deficiencias</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Aminoácido</th><th class="desc-cell">Función principal</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(a=>a.cat===g);
  if (!gItems.length) continue;
@@ -914,7 +914,7 @@ function renderStatic(cat) {
  let data = ENZIMAS;
  if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || e.cat.toLowerCase().includes(query));
  const groups = [...new Set(ENZIMAS.map(e=>e.cat))];
- let html = `<div class="category-title" style="color:#b3d9ff">Enzimas</div><div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ let html = `<div class="category-title" style="color:#ddd6fe">Enzimas</div><div class="category-sub">${ENZIMAS.length} enzimas — rastreo de actividad enzimática</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzima</th><th class="desc-cell">Función / Significado clínico</th><th class="cb-cell"></th></tr></thead><tbody>`;
  for (const g of groups) {
  const gItems = data.filter(e=>e.cat===g);
  if (!gItems.length) continue;

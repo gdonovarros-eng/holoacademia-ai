@@ -70,8 +70,8 @@ body.embed-mode { background: var(--bg); }
  letter-spacing: 0.1em;
  text-transform: uppercase;
  color: var(--acc);
- background: rgba(245,158,11,0.1);
- border: 1px solid rgba(245,158,11,0.25);
+ background: rgba(244, 114, 182,0.1;
+ border: 1px solid rgba(244, 114, 182,0.25;
  border-radius: 20px;
  padding: 3px 10px;
 }
@@ -98,7 +98,7 @@ body.embed-mode { background: var(--bg); }
  position: absolute;
  top: 0; left: 0; right: 0;
  height: 3px;
- background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);
+ background: linear-gradient(90deg, #f472b6, #f9a8d4, #f472b6);
 }
 
 .form-title {
@@ -160,10 +160,10 @@ select {
   -webkit-appearance: none;
  appearance: none;
 }
-input[type="text"]::placeholder { color: rgba(148,163,184,0.4); }
+input[type="text"]::placeholder { color: rgba(167, 139, 250,0.4; }
 input:focus, select:focus {
- border-color: rgba(245,158,11,0.5);
- box-shadow: 0 0 0 3px rgba(245,158,11,0.08);
+ border-color: rgba(244, 114, 182,0.5;
+ box-shadow: 0 0 0 3px rgba(244, 114, 182,0.08;
 }
 
 /* Select arrow */
@@ -218,13 +218,13 @@ select { padding-right: 32px; cursor: pointer; }
  transition: border-color 0.15s, background 0.15s;
  user-select: none;
 }
-.check-card:hover { border-color: rgba(245,158,11,0.35); background: rgba(245,158,11,0.03); }
+.check-card:hover { border-color: rgba(244, 114, 182,0.35; background: rgba(244, 114, 182,0.03; }
 .check-card input[type="checkbox"] { display: none; }
 .check-box {
  width: 18px;
  height: 18px;
  border-radius: 5px;
- border: 2px solid rgba(148,163,184,0.4);
+ border: 2px solid rgba(167, 139, 250,0.4;
  flex-shrink: 0;
  margin-top: 1px;
  display: flex;
@@ -243,7 +243,7 @@ select { padding-right: 32px; cursor: pointer; }
  font-size: 0.7rem;
  font-weight: 800;
 }
-.check-card.active { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.04); }
+.check-card.active { border-color: rgba(244, 114, 182,0.4; background: rgba(244, 114, 182,0.04; }
 .check-info { flex: 1; }
 .check-name {
  font-size: 0.83rem;
@@ -261,7 +261,7 @@ select { padding-right: 32px; cursor: pointer; }
 .btn-submit {
  width: 100%;
  padding: 14px;
- background: linear-gradient(135deg, #f59e0b, #d97706);
+ background: linear-gradient(135deg, #f472b6, #ec4899);
  border: none;
  border-radius: 12px;
  color: #0b1120;
@@ -278,7 +278,7 @@ select { padding-right: 32px; cursor: pointer; }
 .btn-submit:hover:not(:disabled) {
  opacity: 0.92;
  transform: translateY(-1px);
- box-shadow: 0 6px 20px rgba(245,158,11,0.3);
+ box-shadow: 0 6px 20px rgba(244, 114, 182,0.3;
 }
 .btn-submit:disabled {
  opacity: 0.5;
@@ -303,7 +303,7 @@ select { padding-right: 32px; cursor: pointer; }
  align-items: center;
  justify-content: space-between;
  gap: 12px;
- background: rgba(245,158,11,0.04);
+ background: rgba(244, 114, 182,0.04;
 }
 .result-header-left {
  display: flex;
@@ -316,8 +316,8 @@ select { padding-right: 32px; cursor: pointer; }
  font-weight: 500;
 }
 .result-status.streaming { color: var(--acc); }
-.result-status.done { color: #34d399; }
-.result-status.error { color: #f87171; }
+.result-status.done { color: #a78bfa; }
+.result-status.error { color: #f472b6; }
 
 .btn-copy {
  background: transparent;
@@ -347,7 +347,7 @@ select { padding-right: 32px; cursor: pointer; }
 .spinner {
  width: 14px;
  height: 14px;
- border: 2px solid rgba(245,158,11,0.3);
+ border: 2px solid rgba(244, 114, 182,0.3;
  border-top-color: var(--acc);
  border-radius: 50%;
  animation: spin 0.7s linear infinite;
@@ -368,20 +368,20 @@ select { padding-right: 32px; cursor: pointer; }
 
 /* Markdown styles */
 .md-content { line-height: 1.75; font-size: 0.9rem; color: var(--text); }
-.md-content h1 { font-size: 1.3rem; font-weight: 800; margin: 0 0 16px; color: #fbbf24; }
-.md-content h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px; color: #fcd34d; border-bottom: 1px solid rgba(245,158,11,0.15); padding-bottom: 6px; }
+.md-content h1 { font-size: 1.3rem; font-weight: 800; margin: 0 0 16px; color: #f9a8d4; }
+.md-content h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px; color: #f9a8d4; border-bottom: 1px solid rgba(244, 114, 182,0.15; padding-bottom: 6px; }
 .md-content h3 { font-size: 0.95rem; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
 .md-content p { margin-bottom: 12px; }
 .md-content ul, .md-content ol { padding-left: 22px; margin-bottom: 12px; }
 .md-content li { margin-bottom: 4px; }
-.md-content strong { color: #fbbf24; font-weight: 700; }
-.md-content em { color: #a5b4fc; }
+.md-content strong { color: #f9a8d4; font-weight: 700; }
+.md-content em { color: #c4b5fd; }
 .md-content hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
 .md-content blockquote {
  border-left: 3px solid var(--acc);
  margin: 12px 0;
  padding: 8px 16px;
- background: rgba(245,158,11,0.05);
+ background: rgba(244, 114, 182,0.05;
  border-radius: 0 8px 8px 0;
  color: var(--muted);
  font-style: italic;
@@ -395,7 +395,7 @@ select { padding-right: 32px; cursor: pointer; }
 }
 .md-content table { border-collapse: collapse; width: 100%; margin-bottom: 16px; font-size: 0.85rem; }
 .md-content th, .md-content td { border: 1px solid var(--border); padding: 7px 12px; text-align: left; }
-.md-content th { background: rgba(245,158,11,0.08); font-weight: 700; color: #fcd34d; }
+.md-content th { background: rgba(244, 114, 182,0.08; font-weight: 700; color: #f9a8d4; }
 .md-content tr:nth-child(even) { background: rgba(255,255,255,0.02); }
 
 /* Cursor de streaming */
@@ -429,7 +429,7 @@ select { padding-right: 32px; cursor: pointer; }
  align-items: center;
  justify-content: space-between;
  gap: 12px;
- background: rgba(245,158,11,0.04);
+ background: rgba(244, 114, 182,0.04;
 }
 .carta-tabs {
  display: flex;
@@ -447,10 +447,10 @@ select { padding-right: 32px; cursor: pointer; }
  transition: all 0.15s;
  font-family: inherit;
 }
-.carta-tab:hover { border-color: rgba(245,158,11,0.4); color: var(--text); }
+.carta-tab:hover { border-color: rgba(244, 114, 182,0.4; color: var(--text); }
 .carta-tab.active {
- background: rgba(245,158,11,0.12);
- border-color: rgba(245,158,11,0.4);
+ background: rgba(244, 114, 182,0.12;
+ border-color: rgba(244, 114, 182,0.4;
  color: var(--acc);
 }
 .carta-body {
@@ -478,7 +478,7 @@ select { padding-right: 32px; cursor: pointer; }
  font-size: 0.85rem;
 }
 .carta-error {
- color: #f87171;
+ color: #f472b6;
  font-size: 0.85rem;
  text-align: center;
  padding: 16px;
@@ -491,8 +491,8 @@ select { padding-right: 32px; cursor: pointer; }
  font-size: 0.82rem;
 }
 .pos-table th {
- background: rgba(245,158,11,0.08);
- color: #fcd34d;
+ background: rgba(244, 114, 182,0.08;
+ color: #f9a8d4;
  font-weight: 700;
  padding: 8px 14px;
  text-align: left;
@@ -515,11 +515,11 @@ select { padding-right: 32px; cursor: pointer; }
  border-radius: 4px;
  letter-spacing: 0.04em;
 }
-.pos-badge.dom  { background: rgba(52,211,153,0.15); color: #34d399; }
-.pos-badge.exal { background: rgba(251,191,36,0.15); color: #fbbf24; }
-.pos-badge.exil { background: rgba(248,113,113,0.15); color: #f87171; }
+.pos-badge.dom  { background: rgba(167, 139, 250,0.15; color: #a78bfa; }
+.pos-badge.exal { background: rgba(249, 168, 212,0.15; color: #f9a8d4; }
+.pos-badge.exil { background: rgba(244, 114, 182,0.15; color: #f472b6; }
 .pos-badge.caid { background: rgba(167,139,250,0.15); color: #a78bfa; }
-.pos-badge.retro { background: rgba(148,163,184,0.15); color: #94a3b8; }
+.pos-badge.retro { background: rgba(167, 139, 250,0.15; color: #a78bfa; }
 .pos-section {
  margin-top: 20px;
  padding-top: 16px;
@@ -571,12 +571,12 @@ select { padding-right: 32px; cursor: pointer; }
   to   { opacity: 1; transform: rotate(0deg) scale(1); }
 }
 .carta-svg-wrap svg { transform-origin: center center; }
-.planet-panel { margin-top: 16px; background: rgba(15,23,42,0.95); border: 1px solid rgba(248,113,180,0.3); border-radius: 12px; padding: 16px 20px; display: none; }
+.planet-panel { margin-top: 16px; background: rgba(46, 16, 101,0.95; border: 1px solid rgba(248,113,180,0.3); border-radius: 12px; padding: 16px 20px; display: none; }
 .planet-panel.visible { display: block; animation: fadeIn 0.25s ease; }
 .planet-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .planet-glyph { font-size: 28px; }
 .planet-name { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
-.planet-sign { font-size: 0.85rem; color: #94a3b8; }
+.planet-sign { font-size: 0.85rem; color: #a78bfa; }
 .planet-retro { background: rgba(248,113,180,0.2); color: #f472b6; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; }
 .planet-interp-btn { margin-top: 10px; padding: 8px 16px; background: linear-gradient(135deg,#ec4899,#8b5cf6); border: none; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
 .planet-interp-out { margin-top: 10px; font-size: 0.83rem; line-height: 1.6; color: #cbd5e1; }
@@ -590,12 +590,12 @@ select { padding-right: 32px; cursor: pointer; }
 .md-content th { color: #6d28d9 !important; }
 .pos-table th { color: #6d28d9 !important; }
 .result-status.streaming { color: #6d28d9 !important; }
-.result-status.done { color: #3f6212 !important; }
-.result-status.error { color: #dc2626 !important; }
-.carta-error { color: #dc2626 !important; }
-.pos-badge.dom  { color: #3f6212 !important; }
-.pos-badge.exal { color: #b45309 !important; }
-.pos-badge.exil { color: #dc2626 !important; }
+.result-status.done { color: #6d28d9 !important; }
+.result-status.error { color: #db2777 !important; }
+.carta-error { color: #db2777 !important; }
+.pos-badge.dom  { color: #6d28d9 !important; }
+.pos-badge.exal { color: #db2777 !important; }
+.pos-badge.exil { color: #db2777 !important; }
 .pos-badge.caid { color: #6d28d9 !important; }
 .pos-badge.retro { color: #4A4F5C !important; }
 </style></head><body class="mod-page-aurora"><!-- HEADER --><header class="header" id="appHeader"><a class="header-back" href="/astro-home" id="backBtn">← Astrología · Copiloto Holístico</a><div class="header-title"><span class="header-icon"></span><span class="header-name">Carta Natal & Revolución Solar</span><span class="header-badge">Astrología · Copiloto Holístico</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Datos de Nacimiento</div><div class="form-sub">Ingresa los datos del consultante para generar el análisis astrológico completo. Cuanto más precisa sea la hora, más exacto será el resultado.</div><form id="astroForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nombre del consultante</label><input type="text" id="nombre" name="nombre" placeholder="Ej. María García" required autocomplete="off"></div><div class="form-group"><label for="fecha">Fecha de nacimiento</label><input type="date" id="fecha" name="fecha" required></div><div class="form-group"><label for="hora">Hora de nacimiento</label><input type="time" id="hora" name="hora" required></div><div class="form-group full"><label for="lugar">Lugar de nacimiento</label><input type="text" id="lugar" name="lugar" placeholder="Ej. Ciudad de México, México" required autocomplete="off"></div><div class="form-group full"><label for="lugarActual">Lugar de residencia actual <span class="opt">(opcional)</span></label><input type="text" id="lugarActual" name="lugarActual" placeholder="Ej. Guadalajara, México" autocomplete="off"></div><div class="form-group full"><label for="profundidad">Profundidad del análisis</label><div class="select-wrap"><select id="profundidad" name="profundidad"><option value="basico">Básico — Carta natal + RS (más rápido)</option><option value="completo" selected>Completo — Natal + RS + RSP + Mensales</option></select></div></div></div><div class="opciones-title">Incluir en el análisis</div><div class="opciones-grid"><label class="check-card active" id="card-rsp"><input type="checkbox" id="incluirRsp" name="incluirRsp" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Revolución Solar Profecional</div><div class="check-desc">RSP: análisis del año a partir del cumpleaños solar de este año</div></div></label><label class="check-card active" id="card-mensal"><input type="checkbox" id="incluirMensal" name="incluirMensal" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Mensales</div><div class="check-desc">Análisis mensual del momento actual (RS Lunar)</div></div></label></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span>Generar análisis astrológico</span></button></form></div><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div class="result-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análisis Astrológico</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><div class="result-body"><div class="md-content" id="mdContent"></div></div></div><!-- CARTA NATAL SVG --><div class="carta-card" id="cartaCard"><div class="carta-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span style="font-size:0.9rem;font-weight:700;" id="cartaTitle">Carta Natal</span></div><div class="carta-tabs"><button class="carta-tab active" id="tabNatal" onclick="switchTab('natal')">Carta Natal</button><button class="carta-tab" id="tabRS" onclick="switchTab('rs')">Rev. Solar</button><button class="carta-tab" id="tabPos" onclick="switchTab('posiciones')">Posiciones</button><button class="carta-tab" id="tabInterp" onclick="switchTab('interpretacion')">Interpretación</button></div></div><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span id="cartaLoadingMsg">Generando carta natal...</span></div><!-- Carta SVG --><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div><!-- Tabla de posiciones --><div id="cartaPosiciones" style="display:none;width:100%;"></div><!-- Interpretación streaming --><div id="cartaInterpWrap" style="display:none;width:100%;"><div class="md-content" id="cartaInterpContent"></div></div><div id="planet-panel" class="planet-panel"><div class="planet-panel-header"><span class="planet-glyph" id="pp-glyph"></span><div><div class="planet-name" id="pp-name"></div><div class="planet-sign" id="pp-sign"></div></div><span class="planet-retro" id="pp-retro" style="display:none">&#x211E; Retrógrado</span></div><div id="pp-interp-out" class="planet-interp-out"></div><button class="planet-interp-btn" id="pp-btn">✨ Interpretar</button></div><div class="carta-error" id="cartaError" style="display:none;"></div></div></div></div><script>
@@ -717,7 +717,7 @@ select { padding-right: 32px; cursor: pointer; }
     panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     ppBtn.onclick = function() {
      if (!_cartaParams) return;
-     ppOut.innerHTML = '<span style="color:#94a3b8">Consultando Motor Astrológico...</span>';
+     ppOut.innerHTML = '<span style="color:#a78bfa">Consultando Motor Astrológico...</span>';
      var params = new URLSearchParams({ nombre: _cartaParams.nombre, fecha_nacimiento: _cartaParams.fecha, hora_nacimiento: _cartaParams.hora, lugar_nacimiento: _cartaParams.lugar, planetas: slug });
      var src = new EventSource('/astro/interpretacion-stream?' + params.toString());
      var buf = '';
@@ -1051,7 +1051,7 @@ select { padding-right: 32px; cursor: pointer; }
  resultStatus.textContent = 'Error';
  resultStatus.className = 'result-status error';
  statusBar.classList.add('hidden');
- mdContent.innerHTML = '<p style="color:#f87171;padding:8px 0;"> ' + obj.error + '</p>';
+ mdContent.innerHTML = '<p style="color:#f472b6;padding:8px 0;"> ' + obj.error + '</p>';
  btnSubmit.disabled = false;
  btnSubmit.querySelector('span:last-child').textContent = 'Reintentar';
           }

@@ -28,15 +28,15 @@
   .name { font-weight: 800; font-size: 16px; color: #111827; margin-bottom: 10px; line-height: 1.3; }
   .desc { font-size: 13.5px; color: #6B7280; line-height: 1.65; margin-bottom: 18px; }
   .bullets { margin-top: auto; border-top: 1px solid #F3F4F6; padding-top: 16px; display: flex; flex-direction: column; gap: 8px; }
-  .bullet { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #374151; }
+  .bullet { display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: #5b21b6; }
   .dot-outer { width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
   .dot-inner { width: 5px; height: 5px; border-radius: 50%; display: block; }
 
-  .banner { padding: 28px 36px; border-radius: 20px; background: linear-gradient(135deg, #1E1B4B 0%, #2D1B69 100%); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+  .banner { padding: 28px 36px; border-radius: 20px; background: linear-gradient(135deg, #2e1065 0%, #2e1065 100%); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
   .banner-title { font-weight: 800; font-size: 18px; color: #fff; margin-bottom: 6px; }
   .banner-sub { font-size: 14px; color: rgba(255,255,255,0.55); }
-  .banner-btn { padding: 13px 28px; border-radius: 10px; background: linear-gradient(135deg, #F59E0B, #D97706); color: #000; font-size: 14px; font-weight: 800; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(245,158,11,0.35); transition: all 0.2s; flex-shrink: 0; display: inline-block; }
-  .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(245,158,11,0.45); }
+  .banner-btn { padding: 13px 28px; border-radius: 10px; background: linear-gradient(135deg, #f472b6, #ec4899); color: #000; font-size: 14px; font-weight: 800; text-decoration: none; white-space: nowrap; box-shadow: 0 4px 16px rgba(244, 114, 182,0.35; transition: all 0.2s; flex-shrink: 0; display: inline-block; }
+  .banner-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244, 114, 182,0.45; }
 
   @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, 1fr); } .banner { flex-direction: column; text-align: center; } }
   @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
@@ -68,16 +68,16 @@ const MODULES = [
   { emoji: '🧲', name: 'Rastreo Asistido de Imanes', tag: 'Biomagnetismo', color: '#7C3AED',
     desc: 'El motor te guía par a par durante el rastreo biomagnético. Indica zonas de colocación, polaridad y tiempo de exposición según el caso clínico activo.',
     bullets: ['Guía de colocación par a par', 'Indicación de polaridad y tiempo', 'Registro del rastreo completo'] },
-  { emoji: '🔢', name: 'Módulo de Numerología', tag: 'Análisis personal', color: '#059669',
+  { emoji: '🔢', name: 'Módulo de Numerología', tag: 'Análisis personal', color: '#7c3aed',
     desc: 'Genera el mapa numerológico completo del paciente: número de misión de vida, camino del destino, talentos ocultos y ciclos personales activos.',
     bullets: ['Mapa numerológico completo', 'Ciclos personales y años universales', 'Integración con el perfil del paciente'] },
-  { emoji: '⭐', name: 'Astrología Médica', tag: 'Diagnóstico ampliado', color: '#D97706',
+  { emoji: '⭐', name: 'Astrología Médica', tag: 'Diagnóstico ampliado', color: '#ec4899',
     desc: 'Identifica las predisposiciones físicas y emocionales del paciente a partir de su carta natal. Conecta signos, casas y planetas con los órganos y sistemas del cuerpo.',
     bullets: ['Predisposiciones por signo y planeta', 'Relación astro-órgano sistémica', 'Complemento al diagnóstico holístico'] },
   { emoji: '🌙', name: 'Carta Natal y Astrología', tag: 'Autoconocimiento', color: '#6D28D9',
     desc: 'El motor interpreta la carta natal del paciente: ascendente, planetas en casas, aspectos y tránsitos actuales. Un perfil profundo de quién es y qué está viviendo.',
     bullets: ['Lectura de carta natal completa', 'Ascendente y planetas en casas', 'Tránsitos y ciclos actuales'] },
-  { emoji: '☀️', name: 'Horóscopo Terapéutico', tag: 'Seguimiento continuo', color: '#0891B2',
+  { emoji: '☀️', name: 'Horóscopo Terapéutico', tag: 'Seguimiento continuo', color: '#7c3aed',
     desc: 'Pronóstico energético semanal y mensual para el paciente basado en su carta natal. Una herramienta de seguimiento que añade valor a cada consulta de seguimiento.',
     bullets: ['Pronóstico semanal y mensual', 'Alertas de tránsitos relevantes', 'Entregable para el paciente'] },
 ];

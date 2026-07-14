@@ -3,7 +3,7 @@
   :root{
     --bg:#faf8fd; --surface:#fff; --surface2:#f4f1fa; --border:#e7e2f0;
     --acc:#7c3aed; --acc-dim:rgba(124,58,237,.10); --acc-dark:#6d28d9;
-    --text:#1e293b; --muted:#6b7280; --sidebar:#2a2440; --sidebar2:#352d4f;
+    --text:#2e1065; --muted:#6b7280; --sidebar:#2e1065; --sidebar2:#4c1d95;
   }
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
   .workspace{display:flex;height:100vh;overflow:hidden}
@@ -13,14 +13,14 @@
   .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0}
   .sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
   .sb-brand .t{font-size:.82rem;font-weight:800;line-height:1.2}
-  .sb-brand .s{font-size:.64rem;color:#a99fd0;text-transform:uppercase;letter-spacing:.05em}
-  .sb-sec{font-size:.62rem;color:#8c82b8;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
-  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#cfc9e8;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .sb-brand .s{font-size:.64rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#8b5cf6;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c4b5fd;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
   .nav-item:hover{background:var(--sidebar2);color:#fff}
   .nav-item.active{background:var(--acc);color:#fff}
   .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
   .sb-foot{margin-top:auto;padding-top:12px}
-  .sb-home{display:flex;align-items:center;gap:8px;color:#a99fd0;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}
   .sb-home:hover{background:var(--sidebar2);color:#fff}
   /* Main */
   .main{flex:1;display:flex;flex-direction:column;min-width:0}
@@ -208,7 +208,7 @@
     busy=true;inp.value='';inp.style.height='auto';addMsg('user',eh(t));const b=addMsg('ai',dots);
     try{const r=await fetch('/therapeutic/constelaciones',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:t,query:t})});
       const d=await r.json();b.innerHTML=md(d&&d.answer?d.answer:'No pude responder. Intenta de nuevo.');
-    }catch(e){b.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'}
+    }catch(e){b.innerHTML='<p style="color:#db2777">Error de conexión.</p>'}
     busy=false;M().scrollTop=M().scrollHeight;
   }
 
@@ -221,7 +221,7 @@
     btn.disabled=true;const t0=btn.textContent;btn.textContent='Leyendo el sistema…';res.innerHTML=dots;
     try{const r=await fetch('/therapeutic/genograma',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({datos,motivo})});
       const d=await r.json();res.innerHTML=md(d&&d.answer?d.answer:'No pude generar la lectura.');res.scrollIntoView({behavior:'smooth',block:'start'});
-    }catch(e){res.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'}
+    }catch(e){res.innerHTML='<p style="color:#db2777">Error de conexión.</p>'}
     btn.disabled=false;btn.textContent=t0;
   }
 
@@ -232,7 +232,7 @@
     btn.disabled=true;const t0=btn.textContent;btn.textContent='Generando…';res.innerHTML=dots;
     try{const r=await fetch('/therapeutic/herramienta',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({funcion:curTool,query:q})});
       const d=await r.json();res.innerHTML=md(d&&d.answer?d.answer:'No pude generar. Intenta de nuevo.');res.scrollIntoView({behavior:'smooth',block:'start'});
-    }catch(e){res.innerHTML='<p style="color:#dc2626">Error de conexión.</p>'}
+    }catch(e){res.innerHTML='<p style="color:#db2777">Error de conexión.</p>'}
     btn.disabled=false;btn.textContent=t0;
   }
 </script></body></html>
