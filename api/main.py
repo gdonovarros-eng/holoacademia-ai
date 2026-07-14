@@ -432,6 +432,47 @@ async def health() -> dict:
     return {"ok": True, "status": "up"}
 
 
+@app.get("/health/embed", include_in_schema=False)
+async def health_embed(request: Request) -> dict:
+    """Diagnóstico del enlace con holoacademia.tv.
+
+    NO revela el secreto: devuelve solo una HUELLA (SHA-256, primeros 12 hex) del
+    valor que este proceso tiene CARGADO EN MEMORIA. Si esa huella no coincide con la
+    de Cloudflare, el proceso está corriendo con un valor viejo (falta reiniciar) o
+    con otro distinto. También dice si la cookie que llega valida, y por qué no.
+    """
+    cookie = request.cookies.get(_SESSION_COOKIE, "")
+    huella = (
+        hashlib.sha256(_EMBED_SECRET.encode()).hexdigest()[:12] if _EMBED_SECRET else None
+    )
+
+    motivo = None
+    if not _EMBED_SECRET:
+        motivo = "EMBED_SECRET vacía: el candado está DESACTIVADO (entra cualquiera)"
+    elif not cookie:
+        motivo = "no llegó la cookie holo_sess"
+    elif verify_session(cookie, _EMBED_SECRET) is None:
+        try:
+            payload, _sig = cookie.rsplit(".", 1)
+            _uid, _plan = payload.split("|", 1)
+            motivo = (
+                f"plan '{_plan}' no existe en PLAN_LIMITS"
+                if _plan not in PLAN_LIMITS
+                else "la FIRMA no coincide (secreto distinto)"
+            )
+        except Exception:
+            motivo = "la cookie no tiene el formato uid|plan.firma"
+
+    return {
+        "huella_embed_secret": huella,
+        "largo_embed_secret": len(_EMBED_SECRET),
+        "planes_validos": sorted(PLAN_LIMITS.keys()),
+        "cookie_recibida": bool(cookie),
+        "cookie_valida": bool(cookie) and verify_session(cookie, _EMBED_SECRET) is not None,
+        "motivo": motivo,
+    }
+
+
 @app.get("/health/full")
 async def health_full() -> dict:
     """Health check completo — carga KB, assistant y teacher memory."""

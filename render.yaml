@@ -54,8 +54,28 @@ services:
       - key: THERAPEUTIC_ASSISTANT_USE_MODEL
         value: "true"
 
-      # ── Auth / Sesiones (Wix embed) ─────────────────────────────────────────────
+      # ── Auth / Sesiones ─────────────────────────────────────────────────────────
+      # EMBED_SECRET: secreto COMPARTIDO con holoacademia.tv (Cloudflare Pages).
+      # Debe tener EXACTAMENTE el mismo valor en los dos lados: con él, .tv firma la
+      # sesión del terapeuta y el Copiloto la valida.
+      # ⚠️ Si se deja vacía, el candado del Copiloto se DESACTIVA por completo
+      #    (session_guard deja pasar a cualquiera). No la dejes sin valor.
       - key: EMBED_SECRET
         sync: false
       - key: LOGIN_URL
-        value: https://www.holoacademia.com/miembros
+        value: https://holoacademia.tv/login.html
+
+      # ── Base de datos ───────────────────────────────────────────────────────────
+      # Consumo de cuotas del Copiloto. La MISMA Neon que usa el Hub.
+      # Sin esto cae a SQLite en el disco de Render, que es efímero: el consumo de
+      # todos los usuarios se borra en cada despliegue.
+      - key: DATABASE_URL
+        sync: false
+
+      # ── Admin (opcional) ────────────────────────────────────────────────────────
+      # Sin estas dos, no se crea cuenta de administrador. Antes había una contraseña
+      # por defecto escrita en el código de un repo público: dala por comprometida.
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
