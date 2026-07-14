@@ -74,7 +74,7 @@
 #therapy-form.holos-form .holos-bloque-num {
   width: 28px; height: 28px;
   border-radius: 6px;
-  background: #0EA5A4;
+  background: #7c3aed;
   color: #fff;
   display: inline-flex;
   align-items: center;
@@ -155,8 +155,8 @@
 #therapy-form.holos-form textarea:focus,
 #therapy-form.holos-form select:focus {
   outline: none;
-  border-color: #0EA5A4;
-  box-shadow: 0 0 0 3px rgba(14,165,164,0.12);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
   transform: none;
 }
 #therapy-form.holos-form textarea { resize: vertical; line-height: 1.5; }
@@ -194,7 +194,7 @@
   cursor: pointer;
   transition: all 0.15s;
 }
-#therapy-form.holos-form .secondary-btn:hover { border-color: #0EA5A4; color: #0EA5A4; }
+#therapy-form.holos-form .secondary-btn:hover { border-color: #7c3aed; color: #7c3aed; }
 #therapy-form.holos-form .collection-list { display: flex; flex-direction: column; gap: 10px; padding: 2px 0; }
 
 /* Items de colección (síntomas, hijos, etc.) */
@@ -221,7 +221,7 @@
 /* Acción final */
 #therapy-form.holos-form .holos-actions { margin-top: 16px; text-align: center; }
 #therapy-form.holos-form .holos-generar-btn {
-  background: #0EA5A4;
+  background: #7c3aed;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -233,7 +233,7 @@
   transition: all 0.25s cubic-bezier(0.22,1,0.36,1);
 }
 #therapy-form.holos-form .holos-generar-btn:hover {
-  background: #0F8281;
+  background: #5b21b6;
   transform: translateY(-1px);
   box-shadow: 0 12px 28px rgba(14,17,22,0.10);
 }
@@ -259,8 +259,8 @@
   font-family: inherit;
 }
 #therapy-form.holos-form .holos-rastreo-opt:hover {
-  border-color: #0EA5A4;
-  box-shadow: 0 6px 18px rgba(14,165,164,0.12);
+  border-color: #7c3aed;
+  box-shadow: 0 6px 18px rgba(124,58,237,0.12);
   transform: translateY(-2px);
 }
 #therapy-form.holos-form .holos-rastreo-opt-icon { font-size: 1.8rem; }
@@ -273,24 +273,24 @@
 #therapy-form.holos-form .holos-rastreo-head strong { display: block; font-size: 1rem; color: #0E1116; }
 #therapy-form.holos-form .holos-rastreo-head span { font-size: 0.8rem; color: #8B8F9A; }
 #therapy-form.holos-form .holos-rastreo-loading { display: flex; align-items: center; gap: 10px; color: #4A4F5C; font-size: 0.88rem; padding: 14px 0; }
-#therapy-form.holos-form .holos-spin { width: 16px; height: 16px; border: 2px solid #EAEAEA; border-top-color: #0EA5A4; border-radius: 50%; animation: holosSpin 0.8s linear infinite; }
+#therapy-form.holos-form .holos-spin { width: 16px; height: 16px; border: 2px solid #EAEAEA; border-top-color: #7c3aed; border-radius: 50%; animation: holosSpin 0.8s linear infinite; }
 @keyframes holosSpin { to { transform: rotate(360deg); } }
 #therapy-form.holos-form .holos-rastreo-aviso { font-size: 0.85rem; color: #4A4F5C; background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 10px; padding: 12px 14px; }
 
 /* Pares · checkboxes */
 #therapy-form.holos-form .holos-par-lista { display: flex; flex-direction: column; gap: 6px; }
 #therapy-form.holos-form .holos-par-check { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid #EAEAEA; border-radius: 9px; background: #FAFAFA; cursor: pointer; font-weight: 400; flex-direction: row; }
-#therapy-form.holos-form .holos-par-check:hover { border-color: #0EA5A4; }
+#therapy-form.holos-form .holos-par-check:hover { border-color: #7c3aed; }
 #therapy-form.holos-form .holos-par-check input { width: auto; flex: 0 0 auto; margin: 0; }
 #therapy-form.holos-form .holos-par-check.sm { padding: 7px 10px; }
-#therapy-form.holos-form .holos-par-check.ya { opacity: 0.6; border-color: rgba(14,165,164,0.4); background: rgba(14,165,164,0.06); cursor: default; }
+#therapy-form.holos-form .holos-par-check.ya { opacity: 0.6; border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); cursor: default; }
 #therapy-form.holos-form .holos-par-nom { font-size: 0.86rem; color: #0E1116; font-weight: 600; }
 #therapy-form.holos-form .holos-par-razon { font-size: 0.76rem; color: #8B8F9A; margin-left: auto; text-align: right; }
 
 #therapy-form.holos-form .holos-rastreo-acciones { display: flex; align-items: center; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
-#therapy-form.holos-form .holos-rastreo-btn { background: #0EA5A4; color: #fff; border: none; border-radius: 9px; padding: 11px 22px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-left: auto; transition: background 0.15s; }
-#therapy-form.holos-form .holos-rastreo-btn:hover { background: #0F8281; }
-#therapy-form.holos-form .holos-activos-count { font-size: 0.8rem; color: #0EA5A4; font-weight: 700; }
+#therapy-form.holos-form .holos-rastreo-btn { background: #7c3aed; color: #fff; border: none; border-radius: 9px; padding: 11px 22px; font-size: 0.9rem; font-weight: 700; cursor: pointer; margin-left: auto; transition: background 0.15s; }
+#therapy-form.holos-form .holos-rastreo-btn:hover { background: #5b21b6; }
+#therapy-form.holos-form .holos-activos-count { font-size: 0.8rem; color: #7c3aed; font-weight: 700; }
 
 #therapy-form.holos-form .holos-zonas-cont { display: flex; flex-direction: column; gap: 14px; max-height: 460px; overflow-y: auto; padding: 2px; }
 #therapy-form.holos-form .holos-zona-bloque { background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 10px; padding: 12px 14px; }
@@ -302,33 +302,33 @@
 #therapy-form.holos-form .holos-zona-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 @media (max-width: 680px) { #therapy-form.holos-form .holos-zona-grid { grid-template-columns: 1fr 1fr; } }
 #therapy-form.holos-form .holos-zona-card { display: flex; flex-direction: column; gap: 5px; text-align: left; background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 12px; padding: 16px 16px; cursor: pointer; font-family: inherit; transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s; }
-#therapy-form.holos-form .holos-zona-card:hover { border-color: #0EA5A4; box-shadow: 0 5px 16px rgba(14,165,164,0.12); transform: translateY(-2px); }
+#therapy-form.holos-form .holos-zona-card:hover { border-color: #7c3aed; box-shadow: 0 5px 16px rgba(124,58,237,0.12); transform: translateY(-2px); }
 #therapy-form.holos-form .holos-zona-card-nom { font-size: 0.95rem; font-weight: 700; color: #0E1116; }
 #therapy-form.holos-form .holos-zona-card-meta { font-size: 0.74rem; color: #8B8F9A; font-weight: 500; }
 
 #therapy-form.holos-form .holos-rastreo-bc { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: #8B8F9A; margin-bottom: 12px; flex-wrap: wrap; }
-#therapy-form.holos-form .holos-bc-link { background: none; border: none; padding: 0; font: inherit; font-size: 0.78rem; color: #0EA5A4; font-weight: 600; cursor: pointer; }
+#therapy-form.holos-form .holos-bc-link { background: none; border: none; padding: 0; font: inherit; font-size: 0.78rem; color: #7c3aed; font-weight: 600; cursor: pointer; }
 #therapy-form.holos-form .holos-bc-link:hover { text-decoration: underline; }
 #therapy-form.holos-form .holos-bc-sep { color: #D4D4D4; }
 
 #therapy-form.holos-form .holos-rastreo-footer { display: flex; align-items: center; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid #EAEAEA; flex-wrap: wrap; }
 #therapy-form.holos-form .holos-rastreo-estado { font-size: 0.82rem; color: #4A4F5C; font-weight: 500; }
-#therapy-form.holos-form .holos-rastreo-estado strong { color: #0EA5A4; font-weight: 800; }
+#therapy-form.holos-form .holos-rastreo-estado strong { color: #7c3aed; font-weight: 800; }
 #therapy-form.holos-form .holos-rastreo-footer .holos-rastreo-btn { margin-left: auto; }
 
 /* Rastreo por patógeno · búsqueda y lista de pares con agente/síntomas */
 #therapy-form.holos-form .holos-pat-search { margin-bottom: 12px; }
 #therapy-form.holos-form .holos-pat-lista { display: flex; flex-direction: column; gap: 6px; }
 #therapy-form.holos-form .holos-pat-item { display: flex; align-items: flex-start; gap: 11px; padding: 11px 13px; border: 1px solid #EAEAEA; border-radius: 10px; background: #FFFFFF; cursor: pointer; transition: border-color 0.15s; }
-#therapy-form.holos-form .holos-pat-item:hover { border-color: #0EA5A4; }
+#therapy-form.holos-form .holos-pat-item:hover { border-color: #7c3aed; }
 #therapy-form.holos-form .holos-pat-item input { width: auto; flex: 0 0 auto; margin: 3px 0 0; }
-#therapy-form.holos-form .holos-pat-item.ya { opacity: 0.6; border-color: rgba(14,165,164,0.4); background: rgba(14,165,164,0.06); cursor: default; }
+#therapy-form.holos-form .holos-pat-item.ya { opacity: 0.6; border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.06); cursor: default; }
 #therapy-form.holos-form .holos-pat-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-#therapy-form.holos-form .holos-pat-ag { font-size: 0.78rem; color: #0EA5A4; font-weight: 600; }
+#therapy-form.holos-form .holos-pat-ag { font-size: 0.78rem; color: #7c3aed; font-weight: 600; }
 #therapy-form.holos-form .holos-pat-sint { font-size: 0.74rem; color: #8B8F9A; font-weight: 400; }
 
 /* Mapa clínico (texto) */
 #therapy-form.holos-form .holos-mapa { background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 12px; padding: 18px 20px; font-size: 0.88rem; line-height: 1.6; color: #0E1116; }
-#therapy-form.holos-form .holos-mapa strong { color: #0F8281; }
+#therapy-form.holos-form .holos-mapa strong { color: #5b21b6; }
 #therapy-form.holos-form .holos-mapa li { margin: 3px 0 3px 18px; }
-#therapy-form.holos-form .holos-rastreo-ok { background: rgba(14,165,164,0.08); border: 1px solid rgba(14,165,164,0.3); border-radius: 10px; padding: 14px 16px; color: #0F8281; font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+#therapy-form.holos-form .holos-rastreo-ok { background: rgba(124,58,237,0.08); border: 1px solid rgba(124,58,237,0.3); border-radius: 10px; padding: 14px 16px; color: #5b21b6; font-size: 0.88rem; font-weight: 600; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }

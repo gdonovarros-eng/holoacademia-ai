@@ -33,8 +33,8 @@
   --holo-border-strong: #D4D4D4;
 
   /* Brand colors */
-  --holo-teal:       #0EA5A4;   /* CTA principal Mindvalley */
-  --holo-teal-dark:  #0F8281;
+  --holo-teal:       #7c3aed;   /* CTA principal Mindvalley */
+  --holo-teal-dark:  #5b21b6;
   --holo-teal-light: #5EEAD4;
 
   --holo-violet:       #6D5896;
@@ -56,7 +56,7 @@
 
   /* Gradients clean (solo para image blocks de cards) */
   --holo-grad-violet:    linear-gradient(135deg, #B19FD0 0%, #6D5896 100%);
-  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #0EA5A4 100%);
+  --holo-grad-teal:      linear-gradient(135deg, #5EEAD4 0%, #7c3aed 100%);
   --holo-grad-amber:     linear-gradient(135deg, #FCD34D 0%, #D97706 100%);
   --holo-grad-coral:     linear-gradient(135deg, #F87171 0%, #DC2626 100%);
   --holo-grad-sage:      linear-gradient(135deg, #86EFAC 0%, #4F7942 100%);
@@ -218,7 +218,7 @@ body.holo-body {
 .holo-btn-primary:hover:not(:disabled) {
   background: var(--holo-teal-dark);
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(14, 165, 164, 0.3);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.3);
 }
 
 /* Variant: dark (charcoal) */
@@ -280,7 +280,7 @@ body.holo-body {
   background: var(--holo-bg-muted);
   color: var(--holo-text-muted);
 }
-.holo-badge-teal  { background: rgba(14, 165, 164, 0.12); color: var(--holo-teal-dark); }
+.holo-badge-teal  { background: rgba(124, 58, 237, 0.12); color: var(--holo-teal-dark); }
 .holo-badge-amber { background: rgba(217, 119, 6, 0.12);  color: var(--holo-amber); }
 
 /* ── INPUTS ───────────────────────────────────────────────────────────── */
@@ -301,7 +301,7 @@ body.holo-body {
 .holo-input::placeholder, .holo-textarea::placeholder { color: var(--holo-text-subtle); }
 .holo-input:focus, .holo-textarea:focus, .holo-select:focus {
   border-color: var(--holo-teal);
-  box-shadow: 0 0 0 3px rgba(14, 165, 164, 0.10);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.10);
 }
 
 /* ── CONTENEDORES ─────────────────────────────────────────────────────── */

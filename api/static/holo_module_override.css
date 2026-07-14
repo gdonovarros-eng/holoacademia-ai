@@ -48,10 +48,10 @@ body.mod-page-violet {
 
 /* Teal — Rastreo */
 body.mod-page-teal {
-  --acc: #0EA5A4 !important;
+  --acc: #7c3aed !important;
   --acc-soft: #5EEAD4 !important;
-  --acc-bg: rgba(14, 165, 164, 0.08) !important;
-  --acc-border: rgba(14, 165, 164, 0.25) !important;
+  --acc-bg: rgba(124, 58, 237, 0.08) !important;
+  --acc-border: rgba(124, 58, 237, 0.25) !important;
 }
 
 /* Sky — Pares */

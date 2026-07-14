@@ -45,7 +45,7 @@ body::before { display: none !important; }
   box-shadow: none !important;
 }
 .hero-badge {
-  background: #0EA5A4 !important;
+  background: #7c3aed !important;
   color: #fff !important;
   box-shadow: none !important;
 }
@@ -71,14 +71,14 @@ body::before { display: none !important; }
 
 /* Botones primarios del shell → teal Mindvalley */
 .primary-btn {
-  background: #0EA5A4 !important;
+  background: #7c3aed !important;
   border: none !important;
   color: #fff !important;
   box-shadow: 0 4px 12px rgba(14,17,22,0.07) !important;
 }
-.primary-btn:hover { background: #0F8281 !important; }
+.primary-btn:hover { background: #5b21b6 !important; }
 .ghost-btn { color: #4A4F5C !important; border: 1px solid #D4D4D4 !important; }
-.ghost-btn:hover { border-color: #0EA5A4 !important; color: #0EA5A4 !important; }
+.ghost-btn:hover { border-color: #7c3aed !important; color: #7c3aed !important; }
 
 /* Cuadro Holos · tema blanco teal (sobrescribe el tema oscuro de therapy.css) */
 .ch-content { color: #2A2E37 !important; font-size: 0.95rem !important; line-height: 1.75 !important; }
@@ -86,9 +86,9 @@ body::before { display: none !important; }
 .ch-content strong { color: #0E1116 !important; }
 .ch-content li { color: #2A2E37 !important; }
 .ch-section-title {
-  color: #0F8281 !important;
-  background: rgba(14,165,164,0.09) !important;
-  border-left: 3px solid #0EA5A4 !important;
+  color: #5b21b6 !important;
+  background: rgba(124,58,237,0.09) !important;
+  border-left: 3px solid #7c3aed !important;
   border-radius: 0 8px 8px 0 !important;
   text-transform: none !important;
   letter-spacing: -0.01em !important;
@@ -114,7 +114,7 @@ body::before { display: none !important; }
   box-shadow: 0 1px 2px rgba(14,17,22,0.05) !important;
 }
 .ch-card-title {
-  background: #0EA5A4 !important;
+  background: #7c3aed !important;
   color: #FFFFFF !important;
   font-weight: 800 !important;
   font-size: 1rem !important;
@@ -134,18 +134,18 @@ body::before { display: none !important; }
 #caso-chat-panel .panel-head { margin-bottom: 4px; }
 .caso-chat-msgs { display: flex; flex-direction: column; gap: 12px; margin: 8px 0 14px; max-height: 460px; overflow-y: auto; }
 .caso-chat-msg { padding: 12px 15px; border-radius: 12px; font-size: 0.9rem; line-height: 1.6; max-width: 92%; }
-.caso-chat-msg.user { align-self: flex-end; background: #0EA5A4; color: #fff; border-bottom-right-radius: 4px; }
+.caso-chat-msg.user { align-self: flex-end; background: #7c3aed; color: #fff; border-bottom-right-radius: 4px; }
 .caso-chat-msg.bot { align-self: flex-start; background: #FAFAFA; border: 1px solid #EAEAEA; color: #2A2E37; border-bottom-left-radius: 4px; }
 .caso-chat-msg.bot strong { color: #0E1116; }
 .caso-chat-msg .ch-subsection-title { color: #0E1116; font-size: 0.9rem; font-weight: 700; margin: 10px 0 3px; }
 .caso-chat-input { display: flex; gap: 10px; align-items: flex-end; }
 .caso-chat-input textarea { flex: 1; background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 10px; padding: 11px 13px; font: inherit; font-size: 0.9rem; color: #0E1116; resize: vertical; min-height: 46px; }
-.caso-chat-input textarea:focus { outline: none; border-color: #0EA5A4; box-shadow: 0 0 0 3px rgba(14,165,164,0.12); }
+.caso-chat-input textarea:focus { outline: none; border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,0.12); }
 .caso-chat-input .primary-btn { white-space: nowrap; }
 
 /* Mapa biomagnético · galería de imágenes de colocación */
 .holos-mapas-galeria { margin: 0 0 16px; }
-.holos-mapas-cap { font-size: 0.82rem; font-weight: 700; color: #0F8281; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+.holos-mapas-cap { font-size: 0.82rem; font-weight: 700; color: #5b21b6; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
 .holos-mapas-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 680px) { .holos-mapas-grid { grid-template-columns: 1fr; } }
 .holos-mapa-fig { margin: 0; border: 1px solid #EAEAEA; border-radius: 12px; overflow: hidden; background: #fff; }
@@ -159,8 +159,8 @@ body::before { display: none !important; }
 
 /* Tools de deep-link (Carta Natal, Diario Lunar, Guía de Sueños) dentro de /therapy:
    el botón legacy era lavanda pálido sobre violeta translúcido. Sólido teal legible. */
-.vort-ia-btn { background: #0EA5A4 !important; border-color: #0EA5A4 !important; color: #FFFFFF !important; }
-.vort-ia-btn:hover { background: #0F8281 !important; color: #FFFFFF !important; }
+.vort-ia-btn { background: #7c3aed !important; border-color: #7c3aed !important; color: #FFFFFF !important; }
+.vort-ia-btn:hover { background: #5b21b6 !important; color: #FFFFFF !important; }
 
 /* Tools de deep-link: fondo del modal opaco para no mostrar la guía de protocolos detrás */
 #catalog-detail-overlay { background: #F8F6F1 !important; }
@@ -237,7 +237,7 @@ body::before { display: none !important; }
 /* Calendario del ciclo lunar */
 .luna-cal { margin: 22px 0 8px; }
 .luna-sec-label {
-  font-size: 0.78rem; font-weight: 700; color: #0F8281;
+  font-size: 0.78rem; font-weight: 700; color: #5b21b6;
   text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 12px;
 }
 .luna-cal-track {
@@ -246,18 +246,18 @@ body::before { display: none !important; }
 }
 .luna-cal-progress {
   position: absolute; left: 0; top: 0; height: 100%; border-radius: 999px;
-  background: linear-gradient(90deg, #b6a784, #0EA5A4);
+  background: linear-gradient(90deg, #b6a784, #7c3aed);
   animation: lunaProgreso 1.2s ease-out both;
 }
 @keyframes lunaProgreso { from { width: 0 !important; } }
 .luna-cal-hoy {
   position: absolute; top: 50%; transform: translate(-50%, -50%);
   width: 12px; height: 12px; border-radius: 50%;
-  background: #0EA5A4; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(14,17,22,0.25);
+  background: #7c3aed; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(14,17,22,0.25);
 }
 .luna-cal-hoy span {
   position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
-  font-size: 0.66rem; font-weight: 700; color: #0F8281; text-transform: uppercase; letter-spacing: 0.05em;
+  font-size: 0.66rem; font-weight: 700; color: #5b21b6; text-transform: uppercase; letter-spacing: 0.05em;
 }
 .luna-cal-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-top: 12px; }
 .luna-cal-item {
@@ -274,7 +274,7 @@ body::before { display: none !important; }
 .luna-desc { margin: 18px 0 12px; color: #2A2E37; font-size: 0.96rem; line-height: 1.7; }
 .luna-elem-box {
   margin: 0 0 16px; padding: 12px 16px; border-radius: 12px;
-  background: rgba(14,165,164,0.07); border-left: 3px solid #0EA5A4;
+  background: rgba(124,58,237,0.07); border-left: 3px solid #7c3aed;
   color: #2A2E37; font-size: 0.92rem; line-height: 1.6;
 }
 .luna-trabajo-section, .luna-evitar-section { margin: 14px 0; }

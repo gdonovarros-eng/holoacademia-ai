@@ -120,8 +120,8 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--holo-teal-dark);
-  background: rgba(14, 165, 164, 0.12);
-  border: 1px solid rgba(14, 165, 164, 0.25);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
   padding: 4px 10px;
   border-radius: 999px;
   flex-shrink: 0;
@@ -146,7 +146,7 @@
 
 /* ─── COLOR GRADS DEL ICONO POR MÓDULO ──────────────────────────────── */
 .mod-violet { --module-grad: linear-gradient(135deg, #B19FD0 0%, #6D5896 100%); }
-.mod-teal   { --module-grad: linear-gradient(135deg, #5EEAD4 0%, #0EA5A4 100%); }
+.mod-teal   { --module-grad: linear-gradient(135deg, #5EEAD4 0%, #7c3aed 100%); }
 .mod-sky    { --module-grad: linear-gradient(135deg, #93C5FD 0%, #2563EB 100%); }
 .mod-amber  { --module-grad: linear-gradient(135deg, #FCD34D 0%, #D97706 100%); }
 .mod-coral  { --module-grad: linear-gradient(135deg, #FCA5A5 0%, #DC2626 100%); }
