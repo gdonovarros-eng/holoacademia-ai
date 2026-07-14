@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biodescodificación · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biodescodificación · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#f5faf8;--surface:#fff;--surface2:#eef6f3;--border:#dce9e4;--acc:#0d9488;--acc-dim:rgba(13,148,136,.10);--acc-dark:#0f766e;--text:#13211d;--muted:#5d6f69;--sidebar:#13211d;--sidebar2:#1e322b}
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
@@ -110,7 +110,7 @@
     <div class="sb-sec">Clínica</div>
     <button class="nav-item" data-p="ficha" onclick="nav('ficha')"><svg viewBox="0 0 24 24"><path d="M9 2h6a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2zM7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 12h6M9 16h4"/></svg>Ficha de caso<span class="ct" id="ctCaso"></span></button>
     <div class="sb-sec">Asistente</div>
-    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consulta IA</button>
+    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consultar al Copiloto</button>
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
   <main class="main">
@@ -202,7 +202,7 @@
       duelos:['Embarazos y duelos','Abortos, pérdidas y duelos no resueltos, y su huella en el sistema.'],
       homonimos:['Yacente y homónimos','Las figuras transgeneracionales que cargan un programa ajeno.'],
       ficha:['Ficha de caso','Arma y guarda el caso. Imprime o exporta a PDF.'],
-      ia:['Consulta IA','Dos lecturas: Biodescodificación y NMG / 5 Leyes.']};
+      ia:['Consultar al Copiloto','Dos lecturas: Biodescodificación y NMG / 5 Leyes.']};
     document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
   }
   function renderChips(){

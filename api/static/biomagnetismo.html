@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biomagnetismo · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biomagnetismo · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#f6f9fc;--surface:#fff;--surface2:#eef3f9;--border:#e1e8f0;--acc:#2563eb;--acc-dim:rgba(37,99,235,.10);--acc-dark:#1d4ed8;--text:#1e293b;--muted:#64748b;--sidebar:#0f1e35;--sidebar2:#1a2c47}
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
@@ -126,7 +126,7 @@
     <div class="sb-sec">Sesión</div>
     <button class="nav-item" data-p="sesion" onclick="nav('sesion')"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Hoja de sesión<span class="ct" id="ctSes"></span></button>
     <div class="sb-sec">Asistente</div>
-    <button class="nav-item" data-p="chat" onclick="nav('chat')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consulta IA</button>
+    <button class="nav-item" data-p="chat" onclick="nav('chat')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consultar al Copiloto</button>
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
 
@@ -234,7 +234,7 @@
       cond:['Por condición','Sets de pares recomendados por cuadro clínico. Toca un punto para verlo en el atlas.'],
       proto:['Protocolos','Protocolos de trabajo estructurados, listos para consultar.'],
       sesion:['Hoja de sesión','Los pares que hallaste en el rastreo, en orden de impactación. Imprímela para el paciente.'],
-      chat:['Consulta IA','Razonamiento en clave de par y rastreo, anclado en el corpus.']};
+      chat:['Consultar al Copiloto','Razonamiento en clave de par y rastreo, anclado en el corpus.']};
     document.getElementById('tbTitle').textContent=T[p][0]; document.getElementById('tbDesc').textContent=T[p][1];
     document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
     if(p==='micro'&&!document.getElementById('gridMicro').childElementCount) renderMicro();
@@ -392,7 +392,7 @@
       <h1>Hoja de rastreo biomagnético</h1>
       <div class="ph">Paciente: <b>${esc(SES.pac||'—')}</b> &nbsp;·&nbsp; Fecha: ${esc(SES.fecha||'—')} &nbsp;·&nbsp; ${SES.pares.length} pares</div>
       <table><thead><tr><th>#</th><th>Punto de rastreo (+)</th><th>Impactación (−)</th><th>Agente</th><th>Tiempo / nota</th></tr></thead><tbody>${filas}</tbody></table>
-      <p style="margin-top:16px;font-size:11px;color:#555">Orden sugerido de impactación. Holoacadem-iA · Atlas de Biomagnetismo.</p>`;
+      <p style="margin-top:16px;font-size:11px;color:#555">Orden sugerido de impactación. Copiloto Holístico · Atlas de Biomagnetismo.</p>`;
     window.print();
   }
 

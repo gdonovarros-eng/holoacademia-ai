@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Herbolaria · Holoacadem-iA</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Herbolaria · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   :root{--bg:#f6faf4;--surface:#fff;--surface2:#eef5e9;--border:#dde9d4;--acc:#16a34a;--acc-dim:rgba(22,163,74,.10);--acc-dark:#15803d;--text:#16261a;--muted:#5e6f5e;--sidebar:#16261a;--sidebar2:#22372a}
   html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
@@ -73,7 +73,7 @@
     <button class="nav-item" data-p="mexicana" onclick="nav('mexicana')"><svg viewBox="0 0 24 24"><path d="M12 22V8M12 8C12 4 9 2 5 2c0 4 3 6 7 6zM12 8c0-3 3-5 7-5 0 4-3 5-7 5z"/></svg>Herbolaria mexicana<span class="ct" id="ctMex"></span></button>
     <button class="nav-item soon" title="Próximamente"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Materia médica<span class="ct">pronto</span></button>
     <div class="sb-sec">Asistente</div>
-    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consulta IA</button>
+    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Consultar al Copiloto</button>
     <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Volver al inicio</a></div>
   </aside>
   <main class="main">
@@ -139,7 +139,7 @@
       bach:['Flores de Bach','Las 38 flores + Rescate, por estado emocional.'],
       aztecas:['Elixires Aztecas','Esencias individuales y remedios combinados del set azteca.'],
       mexicana:['Herbolaria mexicana','Plantas medicinales tradicionales de México.'],
-      ia:['Consulta IA','Fitoterapia + herbolaria mexicana + flores, con seguridad.']};
+      ia:['Consultar al Copiloto','Fitoterapia + herbolaria mexicana + flores, con seguridad.']};
     document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
   }
   // ── Recetario ──
@@ -234,7 +234,7 @@
   }
   function cerrar(){ document.getElementById('modal').classList.remove('open'); }
   document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar()});
-  // ── IA ──
+  // ── Copiloto ──
   async function consultarIA(){
     const q=document.getElementById('iaQ').value.trim(); if(!q){alert('Describe la dolencia o necesidad.');return;}
     const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Consultando…';
