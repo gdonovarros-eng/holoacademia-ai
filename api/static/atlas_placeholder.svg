@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img" aria-label="Imagen en preparación">
+  <rect width="480" height="320" fill="#f3f5f7"/>
+  <rect x="0.5" y="0.5" width="479" height="319" fill="none" stroke="#e2e6ea" stroke-width="1"/>
+  <g fill="none" stroke="#b9c2cc" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="176" y="104" width="128" height="96" rx="10"/>
+    <circle cx="212" cy="140" r="12"/>
+    <path d="M180 196l40-40 32 28 24-20 24 24"/>
+  </g>
+  <text x="240" y="244" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="22" font-weight="800" fill="#7a8794">Imagen en preparación</text>
+  <text x="240" y="272" text-anchor="middle" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-size="15" font-weight="500" fill="#a4afba">Este punto se agregará al Atlas pronto</text>
+</svg>
