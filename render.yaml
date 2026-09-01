@@ -7,7 +7,7 @@ services:
   - type: web
     name: holoacademia-ai
     runtime: docker
-    plan: free
+    plan: starter
     dockerfilePath: ./Dockerfile
     dockerContext: .
     autoDeployTrigger: commit
