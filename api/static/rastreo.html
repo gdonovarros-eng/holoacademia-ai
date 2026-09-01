@@ -1486,6 +1486,16 @@ table.tref-table td:nth-child(3) { color: #5b21b6; }
  font-size: .78rem;
  margin: 2px 6px 2px 0;
 }
+#interp-section{margin-bottom:16px}
+.interp-body{border:1px solid var(--border);border-radius:10px;padding:14px 16px;line-height:1.55;font-size:0.9rem;color:var(--text,#222)}
+.interp-loading{color:var(--muted);font-size:0.85rem;padding:6px 0}
+.interp-body .interp-par{margin:16px 0 6px;font-size:0.95rem;font-weight:800;color:#0891b2;border-bottom:1px solid var(--border);padding-bottom:5px}
+.interp-body .interp-par:first-child{margin-top:0}
+.interp-body ul{margin:6px 0 10px;padding-left:18px}
+.interp-body li{margin:3px 0}
+.interp-body li strong,.interp-body p strong{color:var(--text,#111)}
+.interp-body p{margin:6px 0}
+.interp-body .interp-diag{margin:20px 0 8px;font-size:1rem;font-weight:800;color:#0f172a;background:#ecfeff;border-left:4px solid #0891b2;border-radius:0 10px 10px 0;padding:10px 14px}
 </style></head><body class="mod-page-teal"><!-- ── HEADER UNIFICADO ─────────────────────────────────────── --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Inicio</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-teal"><svg viewBox="0 0 24 24"><path d="M6 19v-8a6 6 0 0 1 12 0v8"/><line x1="4" y1="19" x2="8" y2="19"/><line x1="16" y1="19" x2="20" y2="19"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Sesión clínica</div><div class="holo-module-title">Rastreo de imanes</div></div></div><input type="text" id="global-search" placeholder="Buscar par, condición…" autocomplete="off"><button class="mobile-toggle" id="btn-toggle-confirm">Confirmados</button><button id="btn-finalizar" onclick="openModal()">Finalizar <span id="confirmed-badge">0</span></button></div></header><!-- ── MAIN GRID ──────────────────────────────────────────────── --><div class="main-grid"><!-- COL CENTRO --><main class="col-centro"><!-- ── HOME: MAPA CORPORAL ──────────────────────────────── --><div id="rastreo-home" class="visible"><!-- Introducción --><div class="instr-card"><div class="instr-hdr"><span>La lista más completa de pares biomagnéticos</span></div><div class="instr-body open"><p>Para comenzar tu rastreo, explora las regiones del mapa anatómico general.</p><p>Primera pregunta: <strong>¿Hay algún par que necesites de la Región 1?</strong>Si es así, haz clic en ella para explorar sus zonas de rastreo.</p></div></div><!-- Mapa corporal interactivo — HUD médico --><div class="bm-scanner-frame"><div id="bm-scanner"><!-- barra HUD superior --><div class="bm-hud-bar"><div class="bm-hud-dot"></div><span class="bm-hud-title">Mapa Anatómico · Toca una región</span><div class="bm-hud-dot"></div></div><!-- imagen anatómica base --><img src="/therapy-static/regiones/body_map.svg" id="body-img" alt="Mapa anatómico de rastreo biomagnético"><!--
  SVG overlay único:
  viewBox 860×630 = dimensiones del wrapper
@@ -1519,7 +1529,7 @@ table.tref-table td:nth-child(3) { color: #5b21b6; }
  onclick="selectBodyRegion('espalda')"><div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><div><span class="bm-label-region">Región 8</span><span class="bm-label-name">Espalda</span></div></div><span class="bm-label-count">68 pares · 2 zonas</span></div><div class="bm-label" id="lbl-brazos" style="top:308px; right:0"
  onclick="selectBodyRegion('brazos')"><div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><div><span class="bm-label-region">Región 7</span><span class="bm-label-name">Brazos</span></div></div><span class="bm-label-count">31 pares biomagnéticos</span></div><div class="bm-label" id="lbl-pelvis" style="top:438px; right:0"
  onclick="selectBodyRegion('pelvis')"><div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><div><span class="bm-label-region">Región 5</span><span class="bm-label-name">Pelvis</span></div></div><span class="bm-label-count">172 pares · 3 zonas</span></div><!-- Extras: bottom-right, no body connector --><div class="bm-label" id="lbl-extras" style="bottom:22px; right:0"
- onclick="selectBodyRegion('extras')"><div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div><span class="bm-label-count">24 pares · 2 zonas</span></div></div><!-- /#bm-scanner --></div><!-- /.bm-scanner-frame --></div><!-- /#rastreo-home --><!-- Vista wizard pares biomagnéticos --><div id="wizard-pares"><!-- Tab bar --><div class="wiz-tabs"><button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">Rastreo Guiado</button><button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">Tabla de Referencia</button></div><!-- Tab: rastreo guiado --><div class="wiz-inner" id="wizInner"><div class="wiz-bc" id="wizBc"></div><div class="wiz-label" id="wizLabel">Paso 1 de 4</div><div class="wiz-question" id="wizQuestion">¿En qué región del cuerpo?</div><div class="wiz-grid g2" id="wizGrid"></div></div><!-- Tab: tabla de referencia --><div id="tabla-ref"><div class="tref-search"><input type="text" id="trefSearch" placeholder="Buscar bloque o par…" oninput="trefFilter(this.value)" autocomplete="off"></div><div id="tref-body"></div><div class="tref-no-results" id="tref-no-results" style="display:none">No se encontraron resultados</div></div></div></main><!-- COL DERECHA --><aside class="col-der"><div class="col-der-header">Pares confirmados</div><div id="confirmed-list"><div class="confirmed-empty">Agrega pares biomagnéticos al rastreo</div></div></aside></div><!-- LIGHTBOX --><div id="lightbox"><button id="lightbox-close">Cerrar</button><img id="lightbox-img" src="" alt="Vista ampliada"></div><!-- FINALIZAR MODAL --><div id="modal-overlay"><div id="modal-box"><div class="modal-header"><h2>Mapa de Colocación de Imanes</h2><div class="modal-header-btns"><button class="modal-btn modal-btn-secondary" id="btn-print">Imprimir</button><button class="modal-btn modal-btn-primary" id="btn-nuevo-rastreo">Nuevo Rastreo</button><button class="modal-btn modal-btn-ghost" id="btn-close-modal"></button></div></div><div class="modal-body"><section id="mapas-section" style="display:none"><div class="modal-section-title">Mapas de Colocación</div><div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;"></div></section><section><div class="modal-section-title">Ubicación de Imanes por Par</div><div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;"></div></section></div></div></div><script>
+ onclick="selectBodyRegion('extras')"><div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Región 9</span><span class="bm-label-name">Extras</span></div></div><span class="bm-label-count">24 pares · 2 zonas</span></div></div><!-- /#bm-scanner --></div><!-- /.bm-scanner-frame --></div><!-- /#rastreo-home --><!-- Vista wizard pares biomagnéticos --><div id="wizard-pares"><!-- Tab bar --><div class="wiz-tabs"><button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">Rastreo Guiado</button><button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">Tabla de Referencia</button></div><!-- Tab: rastreo guiado --><div class="wiz-inner" id="wizInner"><div class="wiz-bc" id="wizBc"></div><div class="wiz-label" id="wizLabel">Paso 1 de 4</div><div class="wiz-question" id="wizQuestion">¿En qué región del cuerpo?</div><div class="wiz-grid g2" id="wizGrid"></div></div><!-- Tab: tabla de referencia --><div id="tabla-ref"><div class="tref-search"><input type="text" id="trefSearch" placeholder="Buscar bloque o par…" oninput="trefFilter(this.value)" autocomplete="off"></div><div id="tref-body"></div><div class="tref-no-results" id="tref-no-results" style="display:none">No se encontraron resultados</div></div></div></main><!-- COL DERECHA --><aside class="col-der"><div class="col-der-header">Pares confirmados</div><div id="confirmed-list"><div class="confirmed-empty">Agrega pares biomagnéticos al rastreo</div></div></aside></div><!-- LIGHTBOX --><div id="lightbox"><button id="lightbox-close">Cerrar</button><img id="lightbox-img" src="" alt="Vista ampliada"></div><!-- FINALIZAR MODAL --><div id="modal-overlay"><div id="modal-box"><div class="modal-header"><h2>Mapa de Colocación de Imanes</h2><div class="modal-header-btns"><button class="modal-btn modal-btn-secondary" id="btn-print">Imprimir</button><button class="modal-btn modal-btn-primary" id="btn-nuevo-rastreo">Nuevo Rastreo</button><button class="modal-btn modal-btn-ghost" id="btn-close-modal"></button></div></div><div class="modal-body"><section id="interp-section"><div class="modal-section-title">Significado de cada par y diagnóstico</div><div id="interp-body" class="interp-body"></div></section><section id="mapas-section" style="display:none"><div class="modal-section-title">Mapas de Colocación</div><div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;"></div></section><section><div class="modal-section-title">Ubicación de Imanes por Par</div><div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;"></div></section></div></div></div><script>
 'use strict';
 
 // ── CONFIG ────────────────────────────────────────────────────────────────
@@ -2000,7 +2010,59 @@ function updateBadge() {
 function openModal() {
  buildInstructionList();
  buildMapasGallery();
+ generarInterpretacion();
  document.getElementById('modal-overlay').classList.add('open');
+}
+
+// Markdown clínico → HTML (encabezados ###/##, negritas, viñetas, párrafos).
+function mdClinico(src) {
+ const lines = String(src || '').split('\n');
+ let html = '', inList = false;
+ const closeList = () => { if (inList) { html += '</ul>'; inList = false; } };
+ for (let raw of lines) {
+ let line = raw.replace(/\s+$/, '');
+ if (!line.trim()) { closeList(); continue; }
+ line = escHtml(line).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+ let m;
+ if ((m = line.match(/^#{3,}\s+(.*)/))) { closeList(); html += `<h4 class="interp-par">${m[1]}</h4>`; continue; }
+ if ((m = line.match(/^#{1,2}\s+(.*)/))) { closeList(); html += `<h3 class="interp-diag">${m[1]}</h3>`; continue; }
+ if ((m = line.match(/^[-•]\s+(.*)/))) { if (!inList) { html += '<ul>'; inList = true; } html += `<li>${m[1]}</li>`; continue; }
+ closeList(); html += `<p>${line}</p>`;
+  }
+ closeList();
+ return html;
+}
+
+// Interpretación con IA: significado de cada par + diagnóstico integrativo.
+async function generarInterpretacion() {
+ const body = document.getElementById('interp-body');
+ if (!body) return;
+ const pares = confirmedPairs.map(p =>p.nombre).filter(Boolean);
+ if (!pares.length) { body.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">Agrega pares para ver su significado y el diagnóstico.</p>`; return; }
+ body.innerHTML = `<div class="interp-loading">El Motor interpreta los pares y arma el diagnóstico…</div>`;
+ const lista = pares.map(x => '- ' + x).join('\n');
+ const prompt = `Eres el Motor Biomagnético de HoloacademIA. El terapeuta TERMINÓ el rastreo y confirmó estos pares:
+${lista}
+
+Entrega el CIERRE CLÍNICO del rastreo. La interpretación de cada par es información de REFERENCIA del método (su lectura estándar), NO un dato inventado: da la lectura clínica conocida y, si un par admite varias, ofrece la más probable según su órgano/tejido. No omitas ninguna sección por prudencia; el terapeuta necesita el significado y el diagnóstico, no solo las ubicaciones.
+
+Para CADA par, usa EXACTAMENTE este formato:
+### [Nombre del par]
+- **Significado del par:** qué conecta (órganos, tejidos o función) y qué representa clínicamente.
+- **Patógeno o conflicto asociado:** microorganismo, toxina o conflicto biológico más probable.
+- **Interpretación biológica y emocional:** lectura en clave de biodescodificación y Nueva Medicina Germánica (órgano, sentido biológico, emoción o conflicto de fondo).
+
+Al final, cierra con:
+## Diagnóstico integrativo
+La historia clínica que cuentan juntos los pares: patrón general, sistema u órgano dominante, conflicto emocional de fondo y hacia dónde apunta el tratamiento. 3 a 6 líneas, afirmativo y clínico. Sin advertencias ni descargos médicos.`;
+ try {
+ const r = await fetch('/therapeutic/holos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+ const data = await r.json().catch(() =>({}));
+ const html = mdClinico((data && data.answer) || '');
+ body.innerHTML = html.trim() ? html : `<p style="color:var(--muted);font-size:0.85rem;">No se pudo generar la interpretación. Cierra y vuelve a abrir el mapa.</p>`;
+  } catch (e) {
+ body.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">No se pudo generar la interpretación (revisa tu conexión e inténtalo de nuevo).</p>`;
+  }
 }
 
 function buildMapasGallery() {
