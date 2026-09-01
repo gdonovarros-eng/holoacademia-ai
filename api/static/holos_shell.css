@@ -152,6 +152,16 @@ body::before { display: none !important; }
 .holos-mapa-fig img { width: 100%; display: block; cursor: zoom-in; background: #FAFAFA; }
 .holos-mapa-fig figcaption { padding: 8px 12px; font-size: 0.8rem; color: #4A4F5C; border-top: 1px solid #EAEAEA; }
 .holos-mapa-fig figcaption strong { color: #0E1116; }
+
+/* Cierre clínico del rastreo (significado de cada par + diagnóstico) */
+.holos-mapa-clinico { line-height: 1.55; color: #2A2E38; }
+.holos-mapa-clinico .holos-mapa-par { margin: 18px 0 6px; font-size: 0.98rem; font-weight: 800; color: #5b21b6; border-bottom: 1px solid #EDE9FE; padding-bottom: 5px; }
+.holos-mapa-clinico .holos-mapa-par:first-child { margin-top: 2px; }
+.holos-mapa-clinico ul { margin: 6px 0 10px; padding-left: 18px; }
+.holos-mapa-clinico li { margin: 3px 0; }
+.holos-mapa-clinico li strong { color: #0E1116; }
+.holos-mapa-clinico p { margin: 6px 0; }
+.holos-mapa-clinico .holos-mapa-diag { margin: 22px 0 8px; font-size: 1.02rem; font-weight: 800; color: #0E1116; background: #F5F3FF; border-left: 4px solid #7c3aed; border-radius: 0 10px 10px 0; padding: 10px 14px; }
 .holos-mapas-nota { font-size: 0.78rem; color: #8B8F9A; font-style: italic; margin: 8px 0 0; }
 #holos-zoom-ov { position: fixed; inset: 0; background: rgba(14,17,22,0.86); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 24px; cursor: zoom-out; }
 #holos-zoom-ov.open { display: flex; }

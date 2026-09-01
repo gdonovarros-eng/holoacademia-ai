@@ -65,6 +65,37 @@
     return [...list.querySelectorAll('[data-field="pair_name"]')].map((i) => (i.value || "").trim()).filter(Boolean);
   }
 
+  // Pares confirmados CON su contexto (la nota del rastreo: zona/región/patógeno),
+  // para que el Motor cierre con significado y diagnóstico, no solo ubicaciones.
+  function paresConfirmadosDetalle() {
+    const list = fpList(); if (!list) return [];
+    return [...list.querySelectorAll('[data-field="pair_name"]')].map((inp) => {
+      const row = inp.closest("[data-pair-row], li, .found-pair, div") || inp.parentElement;
+      const nombre = (inp.value || "").trim();
+      const nota = (row && row.querySelector('[data-field="therapist_note"]')?.value || "").trim();
+      return { nombre, nota };
+    }).filter((x) => x.nombre);
+  }
+
+  // Markdown clínico → HTML (encabezados ###/##, negritas, viñetas, párrafos).
+  function mdClinico(src) {
+    const lines = String(src || "").split("\n");
+    let html = "", inList = false;
+    const closeList = () => { if (inList) { html += "</ul>"; inList = false; } };
+    for (let raw of lines) {
+      let line = raw.trimEnd();
+      if (!line.trim()) { closeList(); continue; }
+      line = line.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+      let m;
+      if ((m = line.match(/^#{3,}\s+(.*)/))) { closeList(); html += `<h4 class="holos-mapa-par">${m[1]}</h4>`; continue; }
+      if ((m = line.match(/^#{1,2}\s+(.*)/))) { closeList(); html += `<h3 class="holos-mapa-diag">${m[1]}</h3>`; continue; }
+      if ((m = line.match(/^[-•]\s+(.*)/))) { if (!inList) { html += "<ul>"; inList = true; } html += `<li>${m[1]}</li>`; continue; }
+      closeList(); html += `<p>${line}</p>`;
+    }
+    closeList();
+    return html;
+  }
+
   // ── CAMINO A · Sugerir según síntomas ──────────────────────────────────
   async function caminoSugerir() {
     const p = panel(); if (!p) return;
@@ -401,26 +432,37 @@ Sin numeración, sin texto adicional, sin advertencias.`;
   async function faseMapa() {
     const p = panel(); if (!p) return;
     const activos = paresConfirmados();
-    loading("El Motor genera el mapa clínico…");
-    const prompt = `Eres el Motor Biomagnético de HoloacademIA. El terapeuta confirmó estos pares en el rastreo:
-${activos.map((x) => "- " + x).join("\n")}
-Genera un MAPA CLÍNICO. Por cada par, en este formato exacto:
-**[Par]**
-- Ubicación: [polo norte] / [polo sur]
-- Patógeno o conflicto: ...
-- Interpretación emocional/biológica: ...
-- Orden de aplicación y tiempo de imán: ...
-Termina con una línea de síntesis del patrón general. Sin advertencias.`;
+    const detalle = paresConfirmadosDetalle();
+    if (!activos.length) { renderAviso("Aún no hay pares confirmados. Confirma al menos uno antes de cerrar el rastreo."); return; }
+    loading("El Motor interpreta los pares y arma el diagnóstico…");
+    const lista = detalle.map((d) => "- " + d.nombre + (d.nota ? ` (contexto del rastreo: ${d.nota})` : "")).join("\n");
+    const prompt = `Eres el Motor Biomagnético de HoloacademIA. El terapeuta TERMINÓ el rastreo y confirmó estos pares:
+${lista}
+
+Entrega el CIERRE CLÍNICO del rastreo. La interpretación de cada par es información de REFERENCIA del método (su lectura estándar), NO un dato inventado: da la lectura clínica conocida y, si un par admite varias, ofrece la más probable según su órgano/tejido y su ubicación. No omitas ninguna sección por prudencia; el terapeuta necesita el significado y el diagnóstico, no solo las ubicaciones.
+
+Para CADA par, usa EXACTAMENTE este formato:
+### [Nombre del par]
+- **Significado del par:** qué conecta (órganos, tejidos o función) y qué representa clínicamente.
+- **Patógeno o conflicto asociado:** microorganismo, toxina o conflicto biológico más probable.
+- **Interpretación biológica y emocional:** lectura en clave de biodescodificación y Nueva Medicina Germánica (órgano, sentido biológico, emoción o conflicto de fondo).
+- **Ubicación de polos:** polo norte / polo sur de referencia.
+- **Aplicación:** orden sugerido y tiempo aproximado de imán.
+
+Al final, cierra con:
+## Diagnóstico integrativo
+La historia clínica que cuenta el conjunto de pares: patrón general, sistema u órgano dominante, conflicto emocional de fondo y hacia dónde apunta el tratamiento. 3 a 6 líneas, afirmativo y clínico. Sin advertencias ni descargos médicos.`;
     try {
       const res = await window.postJson("/therapeutic/holos", { prompt });
-      const html = (res && res.answer || "").replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/^- (.+)$/gm, "<li>$1</li>").replace(/\n\n/g, "</p><p>").replace(/\n/g, "<br>");
+      const cuerpo = mdClinico((res && res.answer) || "");
+      if (!cuerpo.trim()) { renderAviso("El Motor no devolvió la interpretación. Intenta cerrar el rastreo de nuevo."); return; }
       p.innerHTML = `
-        <div class="holos-rastreo-head"><strong>Mapa clínico del rastreo</strong><span>${activos.length} pares · integrados al Cuadro Holos</span></div>
-        <div class="holos-mapa"><p>${html}</p></div>
+        <div class="holos-rastreo-head"><strong>Cierre clínico del rastreo</strong><span>${activos.length} ${activos.length === 1 ? "par" : "pares"} · significado y diagnóstico</span></div>
+        <div class="holos-mapa holos-mapa-clinico">${cuerpo}</div>
         <div class="holos-rastreo-acciones"><button type="button" class="secondary-btn" id="hr-m-nuevo">Nuevo rastreo</button></div>`;
       p.querySelector("#hr-m-nuevo")?.addEventListener("click", reset);
     } catch {
-      renderAviso("No se pudo generar el mapa, pero los pares quedaron confirmados en el cuadro.");
+      renderAviso("No se pudo generar el cierre, pero los pares quedaron confirmados en el cuadro.");
     }
   }
 
