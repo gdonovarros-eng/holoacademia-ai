@@ -1612,11 +1612,13 @@ function normAtlas(s) {
 // Imagen del atlas para un punto según su posición en el par:
 // idx 0 = primer punto = imán negro/negativo (−) = lado DERECHO
 // idx 1 = segundo punto = imán rojo/positivo (+) = lado IZQUIERDO
-function atlasImageFor(pt, idx) {
+function atlasImageFor(pt, idx, bipolar) {
  let b = normAtlas(pt);
  if (!b) return null;
   // Expandir abreviaturas de lado (izq/der) a la palabra completa
  b = b.replace(/\bizq(da|do|uierda|uierdo)?\b/g, 'izquierdo').replace(/\b(der|dcha|dcho|dere)\b/g, 'derecho');
+  // Doble polaridad (par A - A): UNA sola imagen con el nombre duplicado ("X X"), un solo imán
+ if (bipolar) return atlasIndex[b + ' ' + b] || atlasIndex[b] || null;
  const hasLado = /\b(derech[oa]|izquierd[oa])\b/.test(b);
   // Prueba una base contra el índice con varias variantes de lado (masc/fem), central y bipolar
  const tryKeys = (base, lados) => {
@@ -2180,8 +2182,10 @@ function buildInstructionList() {
  const cards = pointMaps.map((pm, idx) => {
  const polLabel = polarityLabels[idx] || `Punto ${idx + 1}`;
  const polBg = idx === 0 ? '#1a1a1a' : (idx === 1 ? '#be185d' : '#6d28d9');
-      // Prioridad: imagen precisa del Atlas Biomagnético (por punto+lado) → mapa de zona → placeholder
- const mapImg = atlasImageFor(pm.punto, idx) || pm.map_zona || pm.map_bloque;
+      // Prioridad: imagen precisa del Atlas Biomagnético → mapa de zona → placeholder.
+      // Si el par es bipolar (un solo punto tras dedup), se usa la imagen de doble polaridad.
+ const bip = pointMaps.length === 1;
+ const mapImg = atlasImageFor(pm.punto, idx, bip) || pm.map_zona || pm.map_bloque;
  const locTxt = pm.region ? `${pm.region} · ${pm.zona} · ${pm.bloque}` : '';
  return `
  <div class="point-map-card" data-point="${escHtml(pm.canonical)}"><div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div><div class="point-map-name"> ${escHtml(pm.canonical)}</div>
