@@ -1639,6 +1639,32 @@ function atlasImageFor(pt, idx, bipolar) {
  return tryKeys(b, lados);
 }
 
+// Imagen del manual (point_to_maps) para un punto por su nombre.
+function manualImageFor(pt) {
+ const e = pointToMaps[normalizePoint(pt)];
+ return (e && (e.map_zona || e.map_bloque)) || null;
+}
+// Barrido de columna: dorsal/lumbar/sacro/coxis → imagen de Espalda; cervical → Cuello.
+function spineRasImage(pt) {
+ const b = normAtlas(pt);
+ if (/\b(cervical|cervicales)\b/.test(b)) return '/api/mapas-anatomicos/Cuello.png';
+ if (/\b(dorsal|dorsales|lumbar|lumbares|sacro|coxis|coccix|columna|vertebral)\b/.test(b)) return '/api/mapas-anatomicos/Espalda.png';
+ return null;
+}
+// Resolutor unificado: atlas → manual → (si trae "/", cada mitad) → barrido de columna.
+function resolvePointImage(pt, idx, bipolar) {
+ let img = atlasImageFor(pt, idx, bipolar) || manualImageFor(pt);
+ if (img) return img;
+ if (/\//.test(pt)) {
+ for (const half of pt.split('/')) {
+ const h = half.trim(); if (!h) continue;
+ img = atlasImageFor(h, idx, false) || manualImageFor(h);
+ if (img) return img;
+    }
+  }
+ return spineRasImage(pt) || null;
+}
+
 // Normalizador idéntico al backend (sin acentos, lowercase, trim)
 function normalizePoint(s) {
  if (!s) return '';
@@ -2185,7 +2211,7 @@ function buildInstructionList() {
       // Prioridad: imagen precisa del Atlas Biomagnético → mapa de zona → placeholder.
       // Si el par es bipolar (un solo punto tras dedup), se usa la imagen de doble polaridad.
  const bip = pointMaps.length === 1;
- const mapImg = atlasImageFor(pm.punto, idx, bip) || pm.map_zona || pm.map_bloque;
+ const mapImg = resolvePointImage(pm.punto, idx, bip) || pm.map_zona || pm.map_bloque;
  const locTxt = pm.region ? `${pm.region} · ${pm.zona} · ${pm.bloque}` : '';
  return `
  <div class="point-map-card" data-point="${escHtml(pm.canonical)}"><div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div><div class="point-map-name"> ${escHtml(pm.canonical)}</div>
