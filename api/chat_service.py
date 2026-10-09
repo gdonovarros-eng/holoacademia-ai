@@ -783,6 +783,24 @@ EN_DIRECTIVE = (
     "Keep proper names of courses, authors and techniques as they are."
 )
 
+PT_DIRECTIVE = (
+    "\n\n=== IDIOMA ===\n"
+    "O aluno está usando a plataforma em português. Responda INTEIRAMENTE em português "
+    "nativo e natural (português do Brasil), não importa em que idioma estejam o material "
+    "do curso, o contexto ou a pergunta. Traduza para um português fluente qualquer material "
+    "de origem em espanhol; nunca mude para o espanhol. Mantenha os nomes próprios de cursos, "
+    "autores e técnicas como estão."
+)
+
+# Idioma normalizado -> directiva de respuesta. ES no lleva directiva (es el base).
+_LANG_DIRECTIVES = {"en": EN_DIRECTIVE, "pt": PT_DIRECTIVE}
+
+def _norm_lang(lang: str) -> str:
+    s = str(lang or "").lower()
+    if s.startswith("en"): return "en"
+    if s.startswith("pt"): return "pt"
+    return "es"
+
 def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") -> Generator[str, None, None]:
     """
     Genera la respuesta token a token como Server-Sent Events.
@@ -887,8 +905,9 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
     if context:
         system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
 
-    if str(lang or "").lower().startswith("en"):
-        system_prompt += EN_DIRECTIVE
+    _d = _LANG_DIRECTIVES.get(_norm_lang(lang))
+    if _d:
+        system_prompt += _d
 
     # Limitar historial a las últimas 12 interacciones (6 turnos)
     trimmed_history = history[-12:] if len(history) > 12 else history

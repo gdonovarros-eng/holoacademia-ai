@@ -326,19 +326,25 @@ _EN_PAGES = {
     "/herbolaria": ("herbolaria.html", True), "/horoscopo": ("horoscopo.html", True),
 }
 
-def _wants_en(request) -> bool:
-    lang = (request.query_params.get("lang") or request.cookies.get("holo_lang") or "")
-    return str(lang).lower().startswith("en")
+def _req_lang(request) -> str:
+    """Idioma pedido, normalizado a 'es' | 'en' | 'pt' (query ?lang o cookie holo_lang)."""
+    s = str(request.query_params.get("lang") or request.cookies.get("holo_lang") or "").lower()
+    if s.startswith("en"): return "en"
+    if s.startswith("pt"): return "pt"
+    return "es"
 
-def _en_fileresponse(path: str):
-    """Si corresponde servir la versión inglesa de `path`, devuelve su FileResponse; si no, None."""
+def _lang_fileresponse(path: str, lang: str):
+    """Si corresponde servir la versión traducida de `path` (en/pt) y existe, devuelve su
+    FileResponse; si no (o es español, o no hay archivo), None -> se sirve el español."""
+    if lang not in ("en", "pt"):
+        return None
     ent = _EN_PAGES.get(path)
     if not ent:
         return None
-    en_file = THERAPY_STATIC_DIR / (ent[0][:-5] + ".en.html")  # x.html -> x.en.html
-    if not en_file.exists():
+    f = THERAPY_STATIC_DIR / (ent[0][:-5] + f".{lang}.html")  # x.html -> x.<lang>.html
+    if not f.exists():
         return None
-    return FileResponse(en_file, headers=_no_cache_headers(allow_iframe=ent[1]))
+    return FileResponse(f, headers=_no_cache_headers(allow_iframe=ent[1]))
 
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
@@ -417,10 +423,10 @@ async def session_guard(request: Request, call_next):
             return HTMLResponse(html, status_code=200)
         return RedirectResponse(_LOGIN_REDIRECT, status_code=302)
 
-    # Inglés nativo: si el usuario está en inglés y existe la página EN, sírvela
-    # en lugar de la española (la cookie de sesión se aplica igual, más abajo).
-    en_resp = _en_fileresponse(path) if _wants_en(request) else None
-    response = en_resp if en_resp is not None else await call_next(request)
+    # Idioma nativo: si el usuario está en inglés/portugués y existe la página
+    # traducida, sírvela en lugar de la española (la cookie de sesión se aplica igual).
+    lang_resp = _lang_fileresponse(path, _req_lang(request))
+    response = lang_resp if lang_resp is not None else await call_next(request)
 
     if token_ok:
         # Primer acceso válido desde Wix — registrar/actualizar usuario
@@ -1068,9 +1074,9 @@ def _usage_blocked_stream(used: int, limit: int, plan: str):
 async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResponse:
     mode = payload.mode if payload.mode in ("terapeuta", "alumno", "pares") else "alumno"
     # Idioma: body.lang -> ?lang= -> cookie holo_lang -> ES por defecto.
-    lang = (payload.lang or request.query_params.get("lang")
-            or request.cookies.get("holo_lang") or "es").lower()
-    lang = "en" if lang.startswith("en") else "es"
+    _lraw = (payload.lang or request.query_params.get("lang")
+             or request.cookies.get("holo_lang") or "es").lower()
+    lang = "en" if _lraw.startswith("en") else ("pt" if _lraw.startswith("pt") else "es")
 
     # Verificar límite solo en el primer mensaje de la sesión (history vacío)
     if not payload.history and _EMBED_SECRET:
