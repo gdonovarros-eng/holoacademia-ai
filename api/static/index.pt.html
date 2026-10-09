@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copiloto Holístico · Holoacademia</title>
+<meta name="description" content="O copiloto do terapeuta holístico. Biomagnetismo, biodescodificação, astrologia, numerologia e tarô.">
+
+<!-- Design system -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5">
+
+<style>
+/* ═══════════════════════════════════════════════════════════════════════
+   ÍNDICE · v4 Mindvalley Clean
+   Blanco premium · fotos color block · tipografía simple · cero blur pesado
+   ═══════════════════════════════════════════════════════════════════════ */
+
+body.holo-body {
+  background: var(--holo-bg);
+}
+
+/* ─── HEADER · sticky simple ───────────────────────────────────────── */
+.idx-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid var(--holo-border);
+}
+.idx-header-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.idx-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+}
+.idx-brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--holo-grad-aurora);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+}
+.idx-brand-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--holo-text-strong);
+}
+.idx-brand-name span {
+  font-weight: 400;
+  color: var(--holo-text-muted);
+}
+.idx-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.idx-nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--holo-text-muted);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+.idx-nav-link:hover {
+  color: var(--holo-text-strong);
+  background: var(--holo-bg-soft);
+}
+
+/* ─── HERO · gran headline + subtitle + CTA ─────────────────────────── */
+.idx-hero {
+  position: relative;
+  padding: 80px 24px 60px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--holo-bg-cream) 0%, var(--holo-bg) 100%);
+}
+@media (max-width: 768px) {
+  .idx-hero { padding: 60px 20px 40px; }
+}
+.idx-hero-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.idx-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(124, 58, 237, 0.10);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--holo-teal-dark);
+  letter-spacing: 0.02em;
+  margin-bottom: 24px;
+  animation: holo-fade-in 0.5s ease both;
+}
+.idx-hero-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--holo-teal);
+}
+.idx-hero h1 {
+  font-size: clamp(2.5rem, 5.5vw, 4.75rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--holo-text-strong);
+  margin: 0 0 20px;
+  animation: holo-fade-up 0.6s ease both;
+}
+.idx-hero p {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  line-height: 1.55;
+  color: var(--holo-text-muted);
+  max-width: 640px;
+  margin: 0 auto 36px;
+  font-weight: 400;
+  animation: holo-fade-up 0.6s ease 0.1s both;
+}
+.idx-hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: holo-fade-up 0.6s ease 0.2s both;
+}
+.idx-hero-btn-primary {
+  background: var(--holo-teal);
+  color: #FFFFFF;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.idx-hero-btn-primary:hover {
+  background: var(--holo-teal-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.28);
+}
+.idx-hero-btn-primary svg { width: 16px; height: 16px; }
+
+.idx-hero-btn-ghost {
+  color: var(--holo-text);
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+.idx-hero-btn-ghost:hover {
+  background: var(--holo-bg-soft);
+}
+
+/* ─── SECTION HEAD ─────────────────────────────────────────────────── */
+.idx-section {
+  padding: 60px 24px;
+}
+@media (max-width: 768px) {
+  .idx-section { padding: 40px 16px; }
+}
+.idx-section-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+.idx-section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.idx-section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  margin-bottom: 8px;
+}
+.idx-section-title {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--holo-text-strong);
+  margin: 0;
+}
+.idx-section-sub {
+  font-size: 1rem;
+  color: var(--holo-text-muted);
+  max-width: 420px;
+  line-height: 1.55;
+}
+
+/* ─── CARDS · Mindvalley-style con cover image ───────────────────── */
+.idx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+@media (min-width: 1024px) {
+  .idx-grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .idx-grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+.idx-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--holo-bg);
+  border: 1px solid var(--holo-border);
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  animation: holo-fade-up 0.5s ease both;
+}
+.idx-card:hover {
+  transform: translateY(-4px);
+  border-color: transparent;
+  box-shadow: 0 12px 32px rgba(14, 17, 22, 0.10);
+}
+
+/* Cover · gradient block tipo Mindvalley */
+.idx-card-cover {
+  position: relative;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--card-grad, var(--holo-grad-violet));
+}
+.idx-card-cover-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 75% 70%, rgba(255, 255, 255, 0.12) 0%, transparent 40%);
+}
+.idx-card-cover-icon {
+  position: relative;
+  z-index: 2;
+  width: 56px;
+  height: 56px;
+  color: #FFFFFF;
+  opacity: 0.95;
+  transition: transform 0.4s ease;
+}
+.idx-card-cover-icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.idx-card:hover .idx-card-cover-icon {
+  transform: scale(1.08);
+}
+
+/* Card body */
+.idx-card-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.idx-card-category {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--holo-text-muted);
+  margin-bottom: 8px;
+}
+.idx-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--holo-text-strong);
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+.idx-card-desc {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--holo-text-muted);
+  margin: 0 0 20px;
+  flex: 1;
+}
+.idx-card-cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--holo-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  transition: gap 0.2s ease;
+}
+.idx-card-cta svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+.idx-card:hover .idx-card-cta { gap: 10px; }
+.idx-card:hover .idx-card-cta svg { transform: translateX(3px); }
+
+/* Color grads por categoría (cover) */
+.cov-violet { --card-grad: linear-gradient(135deg, #a78bfa 0%, #7c3aed 100%); }
+.cov-teal   { --card-grad: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%); }
+.cov-sky    { --card-grad: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%); }
+.cov-amber  { --card-grad: linear-gradient(135deg, #f9a8d4 0%, #ec4899 100%); }
+.cov-coral  { --card-grad: linear-gradient(135deg, #f9a8d4 0%, #db2777 100%); }
+.cov-pink   { --card-grad: linear-gradient(135deg, #F472B6 0%, #be185d 100%); }
+.cov-sage   { --card-grad: linear-gradient(135deg, #c4b5fd 0%, #7c3aed 100%); }
+.cov-terra  { --card-grad: linear-gradient(135deg, #f9a8d4 0%, #db2777 100%); }
+.cov-aurora { --card-grad: linear-gradient(135deg, #c4b5fd 0%, #C4B5FD 50%, #F472B6 100%); }
+
+/* Stagger fade-in para grid */
+.idx-grid > .idx-card:nth-child(1) { animation-delay: 0.05s; }
+.idx-grid > .idx-card:nth-child(2) { animation-delay: 0.10s; }
+.idx-grid > .idx-card:nth-child(3) { animation-delay: 0.15s; }
+.idx-grid > .idx-card:nth-child(4) { animation-delay: 0.20s; }
+.idx-grid > .idx-card:nth-child(5) { animation-delay: 0.25s; }
+
+/* ─── FEATURED · banner ancho central ─────────────────────────────── */
+.idx-featured {
+  margin: 40px 0;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1A1814 0%, #2A2316 100%);
+  color: #FFFFFF;
+  padding: 56px 48px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .idx-featured { grid-template-columns: 1fr; padding: 36px 24px; text-align: center; }
+}
+.idx-featured-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #f472b6;
+  margin-bottom: 12px;
+}
+.idx-featured h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+.idx-featured p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  max-width: 520px;
+  line-height: 1.55;
+}
+.idx-featured-cta {
+  background: #FFFFFF;
+  color: #0E1116;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease;
+  white-space: nowrap;
+}
+.idx-featured-cta:hover { transform: translateY(-1px); }
+.idx-featured-cta svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
+.idx-footer {
+  padding: 32px 24px;
+  border-top: 1px solid var(--holo-border);
+  background: var(--holo-bg-soft);
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--holo-text-muted);
+}
+.idx-footer-mark {
+  font-weight: 700;
+  color: var(--holo-text-strong);
+}
+
+/* ─── EMBED MODE ─────────────────────────────────────────────────── */
+body.embed-mode .idx-header { display: none; }
+body.embed-mode .idx-hero { padding-top: 50px; }
+</style>
+</head>
+<body class="holo-body">
+
+<!-- ─── HEADER ─── -->
+<header class="idx-header">
+  <div class="idx-header-inner">
+    <a class="idx-brand" href="#top">
+      <span class="idx-brand-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3v18M3 12h18"/>
+        </svg>
+      </span>
+      <span class="idx-brand-name"><img class="holohub-logo" src="/therapy-static/logo-holohub-dark.png" alt="Holo HUB · Holoacademia" style="height:34px;width:auto;display:block"></span>
+    </a>
+    <nav class="idx-nav">
+      <a class="idx-nav-link" href="#practica">Prática</a>
+      <a class="idx-nav-link" href="#protocolos">Protocolos</a>
+      <a class="idx-nav-link" href="#lecturas">Leituras</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="idx-hero" id="top">
+  <div class="idx-hero-inner">
+    <span class="idx-hero-eyebrow">
+      <span class="idx-hero-eyebrow-dot"></span>
+      O copiloto do terapeuta holístico
+    </span>
+    <h1>Uma sessão clínica melhor, todos os dias.</h1>
+    <p>Biomagnetismo, biodescodificação, astrologia, numerologia e tarô — reunidos em uma única plataforma feita para acompanhar sua prática desde a entrevista inicial até o protocolo final.</p>
+  </div>
+</section>
+
+<!-- ─── SECCIÓN 1 · PRÁCTICA CLÍNICA ─── -->
+<section class="idx-section" id="practica">
+  <div class="idx-section-inner">
+    <div class="idx-section-head">
+      <div>
+        <div class="idx-section-eyebrow">Núcleo clínico</div>
+        <h2 class="idx-section-title">Sua prática diária, com seu copiloto ao lado.</h2>
+      </div>
+    </div>
+
+    <!-- ===== TARJETA PRINCIPAL: el Asistente Terapéutico =====
+         Es el motor central del Copiloto (cruza todas las disciplinas y entrega el
+         Cuadro Holos), así que sale del grid y va arriba, a ancho completo y en el
+         morado oscuro del hero. El resto de motores son satélites de este. -->
+    <a class="idx-card idx-card-principal" href="/therapy">
+      <div class="idx-card-cover cov-violet">
+        <div class="idx-card-cover-pattern"></div>
+        <div class="idx-card-cover-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+      </div>
+      <div class="idx-card-body">
+        <div class="idx-card-category">O motor central · Análise ao vivo</div>
+        <h3 class="idx-card-title">Assistente Terapêutico</h3>
+        <p class="idx-card-desc"><strong>Método Holos.</strong> Questionário integral do paciente que cruza todas as disciplinas e entrega o Quadro Holos: biodescodificação do conflito e sua raiz transgeracional, mapa biomagnético, numerologia, mapa natal e tarô. Inclui chat para esclarecer dúvidas do caso.</p>
+        <span class="idx-card-cta">Abrir o Assistente <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+      </div>
+    </a>
+
+    <!-- El Sinodal (asesor de cursos) NO va aquí: vive en el menú de usuario de
+         holoacademia.tv, no dentro del Copiloto clínico. Su tarjeta se movió a /cuenta. -->
+    <div class="idx-grid idx-grid-3">
+
+      <a class="idx-card" href="/biodescodificacion">
+        <div class="idx-card-cover cov-teal">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3c0 1 .5 1.5 .5 2.5C9.5 9 8 9.5 8 11c0 1 .5 1.5.5 2.5C8.5 15 7 15.5 7 17a3 3 0 0 0 5 2.5A3 3 0 0 0 17 17c0-1.5-1.5-2-1.5-3.5 0-1 .5-1.5.5-2.5 0-1.5-1.5-2-1.5-3.5 0-1 .5-1.5.5-2.5a3 3 0 0 0-3-3z"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Motor especializado</div>
+          <h3 class="idx-card-title">Biodescodificação e NMG</h3>
+          <p class="idx-card-desc">Duas leituras por consulta: a de Biodescodificação (conflito, tonalidades, exemplos, transgeracional) e a da Nova Medicina Germânica e as 5 Leis Biológicas (camada embrionária, conflito biológico, fases, foco de Hamer). Ancorado em seu corpus especializado.</p>
+          <span class="idx-card-cta">Abrir motor <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/biomagnetismo">
+        <div class="idx-card-cover cov-sky">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="6" y1="3" x2="9" y2="3"/><line x1="15" y1="3" x2="18" y2="3"/><line x1="12" y1="15" x2="12" y2="21"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Motor especializado</div>
+          <h3 class="idx-card-title">Motor de Biomagnetismo</h3>
+          <p class="idx-card-desc">Raciocínio dedicado de par biomagnético e rastreamento: ponto de rastreamento e impactação, polos, patógeno ou disfunção associada, lógica de pH e localização dos ímãs. Ancorado no corpus de biomagnetismo.</p>
+          <span class="idx-card-cta">Abrir motor <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/constelaciones">
+        <div class="idx-card-cover cov-aurora">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5" cy="18" r="2.4"/><circle cx="19" cy="18" r="2.4"/><path d="M10.6 6.8 6.4 16M13.4 6.8 17.6 16M7.4 18h9.2"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Motor especializado</div>
+          <h3 class="idx-card-title">Constelações e Transgeracional</h3>
+          <p class="idx-card-desc">Leitura sistêmica do caso: Ordens do Amor, dinâmicas (exclusões, lealdades invisíveis, jacentes, segredos) e raiz transgeracional. Propõe frases curativas, exercícios e perguntas para o genograma.</p>
+          <span class="idx-card-cta">Abrir motor <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/rastreo">
+        <div class="idx-card-cover cov-teal">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M6 19v-8a6 6 0 0 1 12 0v8"/><line x1="4" y1="19" x2="8" y2="19"/><line x1="16" y1="19" x2="20" y2="19"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Sessão clínica</div>
+          <h3 class="idx-card-title">Rastreamento de Par Biomagnético</h3>
+          <p class="idx-card-desc">Mapa anatômico interativo com 9 regiões corporais. Marque os pares positivos durante o rastreamento, busque por condição e gere o relatório da sessão com mapas de colocação.</p>
+          <span class="idx-card-cta">Iniciar rastreamento <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURED BANNER ─── -->
+<section class="idx-section" style="padding-top: 0; padding-bottom: 0;">
+  <div class="idx-section-inner">
+    <div class="idx-featured">
+      <div>
+        <div class="idx-featured-eyebrow">Recomendado</div>
+        <h3>Comece pelo rastreamento de ímãs</h3>
+        <p>O mapa interativo do corpo permite registrar pares biomagnéticos por região e gerar o relatório completo da sessão em menos de cinco minutos.</p>
+      </div>
+      <a class="idx-featured-cta" href="/rastreo">
+        Abrir rastreamento
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SECCIÓN 2 · LECTURAS Y ANÁLISIS ─── -->
+<section class="idx-section" id="lecturas">
+  <div class="idx-section-inner">
+    <div class="idx-section-head">
+      <div>
+        <div class="idx-section-eyebrow">Leituras e análises</div>
+        <h2 class="idx-section-title">Astrologia, numerologia e tarô.</h2>
+      </div>
+      <div class="idx-section-sub">Interpretações profundas para acompanhar o trabalho terapêutico.</div>
+    </div>
+
+    <div class="idx-grid idx-grid-3">
+
+      <a class="idx-card" href="/salud">
+        <div class="idx-card-cover cov-coral">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Astrologia médica</div>
+          <h3 class="idx-card-title">Perfil de saúde</h3>
+          <p class="idx-card-desc">Vulnerabilidades orgânicas, sistemas que pedem cuidado e trânsitos de saúde atuais com base no mapa natal do consulente. Orientação clínica integrativa.</p>
+          <span class="idx-card-cta">Ver perfil <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/astro-home">
+        <div class="idx-card-cover cov-aurora">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">5 módulos integrados</div>
+          <h3 class="idx-card-title">Astrologia</h3>
+          <p class="idx-card-desc">Mapa natal, Revolução Solar, sinastria de casal, trânsitos planetários e progressões secundárias. Interpretação baseada em Volguine e na astrologia tradicional.</p>
+          <span class="idx-card-cta">Abrir módulo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/therapy?p=carta_natal">
+        <div class="idx-card-cover cov-violet">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Astrologia · Terapêutica</div>
+          <h3 class="idx-card-title">Mapa Natal</h3>
+          <p class="idx-card-desc">Gere o mapa natal do consulente com posições planetárias reais. Clique em cada planeta para obter sua interpretação terapêutica. Análise completa do perfil holístico com o Motor.</p>
+          <span class="idx-card-cta">Gerar mapa <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/therapy?p=diario_lunar">
+        <div class="idx-card-cover cov-sage">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Astrologia · Tempo real</div>
+          <h3 class="idx-card-title">Diário Lunar</h3>
+          <p class="idx-card-desc">Fase lunar atual com dados astronômicos reais (Swiss Ephemeris). Mostra a fase, o signo da Lua, o elemento e a orientação terapêutica para estruturar as sessões do dia.</p>
+          <span class="idx-card-cta">Ver a lua de hoje <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/therapy?p=sueno_terapeutico">
+        <div class="idx-card-cover cov-pink">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Oniroterapia · Motor</div>
+          <h3 class="idx-card-title">Guia dos Sonhos</h3>
+          <p class="idx-card-desc">Interpreta os sonhos do consulente a partir de 5 dimensões: psicossomática, transgeracional, MTC, numerologia e biodescodificação. O Motor integra todas as leituras em orientação terapêutica concreta.</p>
+          <span class="idx-card-cta">Interpretar sonho <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/numerologia">
+        <div class="idx-card-cover cov-sage">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><line x1="4" y1="9" x2="20" y2="9"/><line x1="4" y1="15" x2="20" y2="15"/><line x1="10" y1="3" x2="8" y2="21"/><line x1="16" y1="3" x2="14" y2="21"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Numerologia pitagórica</div>
+          <h3 class="idx-card-title">Numerologia</h3>
+          <p class="idx-card-desc">Perfil numerológico completo do consulente: número da vida, expressão, alma, personalidade, pináculos, ciclos pessoais e ano pessoal com interpretação clínica integrada.</p>
+          <span class="idx-card-cta">Calcular perfil <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/tarot">
+        <div class="idx-card-cover cov-pink">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5"/><line x1="6" y1="9" x2="18" y2="9"/><circle cx="12" cy="14.5" r="2"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">3 decks · 78 cartas</div>
+          <h3 class="idx-card-title">Tarô</h3>
+          <p class="idx-card-desc">Tiragens com interpretação terapêutica em streaming. Três decks visuais: Rider-Waite-Smith, Marselha e Thoth. Perfil tarológico pessoal e chat de acompanhamento.</p>
+          <span class="idx-card-cta">Fazer leitura <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="idx-card" href="/horoscopo">
+        <div class="idx-card-cover cov-terra">
+          <div class="idx-card-cover-pattern"></div>
+          <div class="idx-card-cover-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L21 9.5l-4.5 4.4 1.1 6.3L12 17l-5.6 3.2 1.1-6.3L3 9.5l6.5-1z"/></svg>
+          </div>
+        </div>
+        <div class="idx-card-body">
+          <div class="idx-card-category">Zodiacal · 12 signos</div>
+          <h3 class="idx-card-title">Horóscopo</h3>
+          <p class="idx-card-desc">Previsões zodiacais personalizadas por signo solar: perfil arquetípico, energias do dia, amor, trabalho, saúde e mensagem espiritual geradas para você.</p>
+          <span class="idx-card-cta">Ver horóscopo <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="idx-footer">
+  <div class="idx-section-inner">
+    <span class="idx-footer-mark">Copiloto Holístico</span> · Uso exclusivo para terapeutas certificados
+  </div>
+</footer>
+
+<script>
+(function() {
+  const p = new URLSearchParams(window.location.search);
+  if (!p.has('embed')) return;
+  document.body.classList.add('embed-mode');
+  document.querySelectorAll('a').forEach(function(a) {
+    if (a.getAttribute('href')?.startsWith('/')) a.target = '_top';
+  });
+  function sendHeight() {
+    window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+  }
+  sendHeight();
+  window.addEventListener('resize', sendHeight);
+})();
+</script>
+</body>
+</html>

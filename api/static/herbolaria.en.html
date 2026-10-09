@@ -1,0 +1,249 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Herbalism · Holistic Copilot</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f6faf4;--surface:#fff;--surface2:#eef5e9;--border:#dde9d4;--acc:#7c3aed;--acc-dim:rgba(124, 58, 237,.10);--acc-dark:#6d28d9;--text:#16261a;--muted:#5e6f5e;--sidebar:#16261a;--sidebar2:#22372a}
+  html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
+  .workspace{display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:252px;flex-shrink:0;background:var(--sidebar);color:#e6f0e6;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
+  .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c2d6c2;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
+  .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#a78bfa;font-weight:700}.nav-item.active .ct{color:#ede9fe}
+  .nav-item.soon{opacity:.5;cursor:default}
+  .sb-foot{margin-top:auto;padding-top:12px}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
+  .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
+  .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:block}
+  .scroller{padding:22px;max-width:1100px}
+  .search{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:11px 15px;font-family:inherit;font-size:.92rem;color:var(--text)}
+  .search:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-dim)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--muted)}
+  .chip.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .count{font-size:.78rem;color:var(--muted);margin:6px 2px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+  .gcard{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .14s;border-left:4px solid var(--acc)}
+  .gcard:hover{box-shadow:0 8px 20px rgba(124, 58, 237,.13);transform:translateY(-2px)}
+  .gcard .nm{font-weight:800;font-size:.96rem;line-height:1.25}
+  .gcard .sub{font-size:.72rem;color:var(--muted);margin-top:2px}
+  .gcard .cf{font-size:.83rem;color:var(--text);margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .badge{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:8px;background:var(--surface2);color:var(--acc-dark)}
+  .modal{position:fixed;inset:0;background:rgba(22,38,26,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:16px;max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px}
+  .modal-box h2{font-size:1.25rem;font-weight:800}.modal-box .sub{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+  .mb-sec{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:15px 0 4px}
+  .mb-sec.neg{color:#db2777}.mb-sec.pos{color:#6d28d9}
+  .modal-box p{font-size:.9rem}.modal-box ul{padding-left:18px;font-size:.9rem}.modal-box li{margin:3px 0}
+  .modal-box .x{float:right;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
+  .kw{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0}.kw span{background:var(--surface2);border-radius:6px;padding:3px 9px;font-size:.76rem}
+  .frase{background:var(--acc-dim);border-radius:9px;padding:5px 11px;margin:4px 0;font-size:.88rem}
+  textarea.search{min-height:90px;resize:vertical}
+  .btn{background:var(--acc);color:#fff;border:none;border-radius:11px;padding:11px 18px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+  .btn:hover{background:var(--acc-dark)}.btn:disabled{opacity:.5}
+  .reading{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 22px;margin-top:16px}.reading:empty{display:none}
+  .reading h2{font-size:1.05rem;color:var(--acc-dark);font-weight:800;margin:16px 0 6px}.reading h3{font-size:.95rem;font-weight:700;margin:12px 0 4px}.reading p{margin:7px 0;font-size:.9rem;line-height:1.7}.reading strong{font-weight:700}.reading ul,.reading ol{padding-left:20px}
+  .loading{text-align:center;color:var(--muted);padding:30px}.empty{color:var(--muted);padding:40px;text-align:center}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
+</style></head><body>
+<div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
+  <aside class="sidebar">
+    <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 22c0-6 0-9 4-13M12 22C12 11 7 7 3 6c0 7 3 12 9 13zm0-4c5-1 8-5 9-12-4 1-9 5-9 12z"/></svg></div><div><div class="t">Herbalism</div><div class="s">Phytotherapy · Bach · Mexico</div></div></div>
+    <div class="sb-sec">Clinical</div>
+    <button class="nav-item active" data-p="recetario" onclick="nav('recetario')"><svg viewBox="0 0 24 24"><path d="M9 2h6a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2zM7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 11h6M9 15h6"/></svg>Formulary<span class="ct" id="ctRec"></span></button>
+    <div class="sb-sec">Essences & flowers</div>
+    <button class="nav-item" data-p="bach" onclick="nav('bach')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 9V3M12 15v6M15 12h6M3 12h6M14.5 9.5l4-4M5.5 18.5l4-4M14.5 14.5l4 4M5.5 5.5l4 4"/></svg>Bach Flowers<span class="ct" id="ctBach"></span></button>
+    <button class="nav-item" data-p="aztecas" onclick="nav('aztecas')"><svg viewBox="0 0 24 24"><path d="M12 2l2.5 6.5L21 9l-5 4.5L17.5 21 12 17.3 6.5 21 8 13.5 3 9l6.5-.5z"/></svg>Aztec Elixirs<span class="ct" id="ctAz"></span></button>
+    <div class="sb-sec">Plant atlas</div>
+    <button class="nav-item" data-p="mexicana" onclick="nav('mexicana')"><svg viewBox="0 0 24 24"><path d="M12 22V8M12 8C12 4 9 2 5 2c0 4 3 6 7 6zM12 8c0-3 3-5 7-5 0 4-3 5-7 5z"/></svg>Mexican herbalism<span class="ct" id="ctMex"></span></button>
+    <button class="nav-item soon" title="Coming soon"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Materia medica<span class="ct">soon</span></button>
+    <div class="sb-sec">Assistant</div>
+    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Ask the Copilot</button>
+    <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Back to home</a></div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbT">Formulary by ailment</h1><p id="tbD">Search an ailment and get the concrete formula to treat it.</p></div></div>
+
+    <section class="panel active" id="panel-recetario"><div class="scroller">
+      <input class="search" id="qRec" placeholder="Search an ailment… (e.g. gastritis, anxiety, migraine, hypertension)" oninput="renderRec()">
+      <div class="chips" id="chipsRec"></div>
+      <div class="count" id="cntRec"></div>
+      <div class="grid" id="gridRec"></div>
+    </div></section>
+
+    <section class="panel" id="panel-bach"><div class="scroller">
+      <input class="search" id="qBach" placeholder="Search a flower or state… (e.g. fear, guilt, exhaustion)" oninput="renderBach()">
+      <div class="chips" id="chipsBach"></div>
+      <div class="count" id="cntBach"></div>
+      <div class="grid" id="gridBach"></div>
+    </div></section>
+
+    <section class="panel" id="panel-aztecas"><div class="scroller">
+      <input class="search" id="qAz" placeholder="Search an Aztec essence…" oninput="renderAz()">
+      <div class="chips" id="chipsAz"></div>
+      <div class="count" id="cntAz"></div>
+      <div class="grid" id="gridAz"></div>
+    </div></section>
+
+    <section class="panel" id="panel-mexicana"><div class="scroller">
+      <input class="search" id="qMex" placeholder="Search a plant… (common name, Nahuatl or use)" oninput="renderMex()">
+      <div class="count" id="cntMex"></div>
+      <div class="grid" id="gridMex"></div>
+    </div></section>
+
+    <section class="panel" id="panel-ia"><div class="scroller">
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">Describe the ailment or need. The answer integrates phytotherapy, Mexican herbalism and flowers, with preparation, dosage and safety, grounded in the library.</p>
+      <textarea class="search" id="iaQ" placeholder="E.g. Insomnia from anxiety in a 50-year-old woman; which plants and flowers?"></textarea>
+      <div style="margin-top:10px"><button class="btn" id="iaBtn" onclick="consultarIA()">Ask the engine</button></div>
+      <div class="reading" id="iaR"></div>
+    </div></section>
+  </main>
+</div>
+<div class="modal" id="modal" onclick="if(event.target===this)cerrar()"><div class="modal-box" id="modalBox"></div></div>
+<script>
+  let BACH=[], AZ=[], MEX=[], REC=[], fGrupoBach='todos', fTipoAz='todos', fSisRec='todos';
+  const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const J=o=>JSON.stringify(o).replace(/"/g,'&quot;');
+
+  async function cargar(){
+    try{ REC=Object.values(await(await fetch('/api/herb-recetario')).json()); }catch(e){}
+    document.getElementById('ctRec').textContent=REC.length; renderChipsRec(); renderRec();
+    try{ BACH=Object.values(await(await fetch('/api/herb-bach')).json()); }catch(e){}
+    try{ AZ=Object.values(await(await fetch('/api/herb-aztecas')).json()); }catch(e){}
+    try{ MEX=Object.values(await(await fetch('/api/herb-mexicana')).json()).sort((a,b)=>(a.nombre||'').localeCompare(b.nombre||'')); }catch(e){}
+    document.getElementById('ctBach').textContent=BACH.length; document.getElementById('ctAz').textContent=AZ.length; document.getElementById('ctMex').textContent=MEX.length;
+    renderChipsBach(); renderBach(); renderChipsAz(); renderAz(); renderMex();
+  }
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
+  function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
+    document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
+    document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
+    const T={recetario:['Formulary by ailment','Search an ailment and get the concrete formula to treat it.'],
+      bach:['Bach Flowers','The 38 flowers + Rescue, by emotional state.'],
+      aztecas:['Aztec Elixirs','Individual essences and combined remedies from the Aztec set.'],
+      mexicana:['Mexican herbalism','Traditional medicinal plants of Mexico.'],
+      ia:['Ask the Copilot','Phytotherapy + Mexican herbalism + flowers, safely.']};
+    document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
+  }
+  // ── Recetario ──
+  function renderChipsRec(){
+    const ss=[...new Set(REC.map(r=>r.sistema).filter(Boolean))];
+    document.getElementById('chipsRec').innerHTML=`<span class="chip ${fSisRec==='todos'?'active':''}" onclick="setSR('todos')">All</span>`+
+      ss.map(s=>`<span class="chip ${fSisRec===s?'active':''}" onclick="setSR(${J(s)})">${esc(s)}</span>`).join('');
+  }
+  function setSR(s){ fSisRec=s; renderChipsRec(); renderRec(); }
+  function renderRec(){
+    const q=norm((document.getElementById('qRec')||{}).value||'');
+    let r=REC; if(fSisRec!=='todos') r=r.filter(x=>x.sistema===fSisRec);
+    if(q) r=r.filter(x=>norm([x.padecimiento,x.descripcion,(x.plantas||[]).map(p=>p.nombre).join(' '),x.sistema].join(' ')).includes(q));
+    document.getElementById('cntRec').textContent=r.length+' de '+REC.length+' padecimientos';
+    document.getElementById('gridRec').innerHTML = r.length? r.map(x=>{const i=REC.indexOf(x);
+      return `<div class="gcard" onclick="abrirRec(${i})"><div class="nm">${esc(x.padecimiento)}</div><div class="sub">${esc(x.sistema||'')}</div><div class="cf">${esc((x.plantas||[]).slice(0,3).map(p=>(p.nombre||'').split(' (')[0]).join(', '))}</div><span class="badge">View formula</span></div>`;}).join('')
+      : '<div class="empty">The formulary is being generated. Check back in a moment.</div>';
+  }
+  function abrirRec(i){const x=REC[i];if(!x)return;
+    const plantas=(x.plantas||[]).map(p=>`<li><strong>${esc(p.nombre||'')}</strong>${p.accion?' — '+esc(p.accion):''}${p.para_que?`<br><span style="color:var(--muted);font-size:.85rem">${esc(p.para_que)}</span>`:''}</li>`).join('');
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(x.padecimiento)}</h2><div class="sub">${esc(x.sistema||'')}</div>
+      ${x.descripcion?`<p style="margin-top:6px">${esc(x.descripcion)}</p>`:''}
+      ${plantas?`<div class="mb-sec">Indicated plants</div><ul>${plantas}</ul>`:''}
+      ${x.formula?`<div class="mb-sec pos">Formula</div><div class="frase">${esc(x.formula)}</div>`:''}
+      ${x.preparacion?`<div class="mb-sec">Preparation, dosage and duration</div><p>${esc(x.preparacion)}</p>`:''}
+      ${x.flores?`<div class="mb-sec">Supporting flowers and essences</div><p>${esc(x.flores)}</p>`:''}
+      ${x.mexicana?`<div class="mb-sec">Mexican option</div><p>${esc(x.mexicana)}</p>`:''}
+      ${x.estilo_vida?`<div class="mb-sec">Lifestyle and diet</div><p>${esc(x.estilo_vida)}</p>`:''}
+      ${x.precauciones?`<div class="mb-sec neg">Precautions</div><p>${esc(x.precauciones)}</p>`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  // ── Bach ──
+  function renderChipsBach(){
+    const gs=[...new Set(BACH.map(b=>b.grupo).filter(Boolean))];
+    document.getElementById('chipsBach').innerHTML=`<span class="chip ${fGrupoBach==='todos'?'active':''}" onclick="setGB('todos')">All</span>`+
+      gs.map(g=>`<span class="chip ${fGrupoBach===g?'active':''}" onclick="setGB(${J(g)})">${esc(g)}</span>`).join('');
+  }
+  function setGB(g){ fGrupoBach=g; renderChipsBach(); renderBach(); }
+  function renderBach(){
+    const q=norm((document.getElementById('qBach')||{}).value||'');
+    let r=BACH; if(fGrupoBach!=='todos') r=r.filter(b=>b.grupo===fGrupoBach);
+    if(q) r=r.filter(b=>norm([b.nombre,b.nombre_en,b.estado_negativo,(b.palabras_clave||[]).join(' '),(b.senales||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntBach').textContent=r.length+' de '+BACH.length;
+    document.getElementById('gridBach').innerHTML=r.map(b=>{const i=BACH.indexOf(b);
+      return `<div class="gcard" onclick="abrirBach(${i})"><div class="nm">${esc(b.nombre)}</div><div class="sub">${esc(b.nombre_en||'')} · ${esc(b.grupo||'')}</div><div class="cf">${esc(b.estado_negativo||'')}</div></div>`;}).join('');
+  }
+  function abrirBach(i){const b=BACH[i];if(!b)return;
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(b.nombre)}</h2><div class="sub">${esc(b.nombre_en||'')} · ${esc(b.grupo||'')}</div>
+      <div class="mb-sec neg">State to transform</div><p>${esc(b.estado_negativo||'')}</p>
+      <div class="mb-sec pos">Toward</div><p>${esc(b.estado_positivo||'')}</p>
+      ${b.indicacion?`<div class="mb-sec">Indication</div><p>${esc(b.indicacion)}</p>`:''}
+      ${(b.palabras_clave||[]).length?`<div class="mb-sec">Keywords</div><div class="kw">${b.palabras_clave.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:''}
+      ${(b.senales||[]).length?`<div class="mb-sec">Typical signs</div>${b.senales.map(s=>`<div class="frase">${esc(s)}</div>`).join('')}`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  // ── Aztecas ──
+  function renderChipsAz(){
+    document.getElementById('chipsAz').innerHTML=['todos','individual','combinado'].map(t=>`<span class="chip ${fTipoAz===t?'active':''}" onclick="setTA('${t}')">${t==='todos'?'All':t==='individual'?'Individual':'Combined'}</span>`).join('');
+  }
+  function setTA(t){ fTipoAz=t; renderChipsAz(); renderAz(); }
+  function renderAz(){
+    const q=norm((document.getElementById('qAz')||{}).value||'');
+    let r=AZ; if(fTipoAz!=='todos') r=r.filter(a=>a.tipo===fTipoAz);
+    if(q) r=r.filter(a=>norm([a.nombre,a.cualidad,a.armoniza,(a.palabras_clave||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntAz').textContent=r.length+' de '+AZ.length;
+    document.getElementById('gridAz').innerHTML=r.map(a=>{const i=AZ.indexOf(a);
+      return `<div class="gcard" onclick="abrirAz(${i})"><div class="nm">${esc(a.nombre)}</div><div class="sub">${a.tipo==='combinado'?'Combined':'Individual'}${a.origen&&a.origen!=='Sin datos'?' · '+esc(a.origen):''}</div><div class="cf">${esc(a.cualidad||a.armoniza||'')}</div></div>`;}).join('');
+  }
+  function abrirAz(i){const a=AZ[i];if(!a)return;
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(a.nombre)}</h2><div class="sub">${a.tipo==='combinado'?'Combined remedy':'Individual essence'}${a.origen&&a.origen!=='Sin datos'?' · '+esc(a.origen):''}</div>
+      ${a.cualidad?`<div class="mb-sec pos">Quality it helps bring out</div><p>${esc(a.cualidad)}</p>`:''}
+      ${a.armoniza?`<div class="mb-sec">Harmonizes</div><p>${esc(a.armoniza)}</p>`:''}
+      ${a.indicacion?`<div class="mb-sec">Indication</div><p>${esc(a.indicacion)}</p>`:''}
+      ${(a.palabras_clave||[]).length?`<div class="mb-sec">Keywords</div><div class="kw">${a.palabras_clave.map(k=>`<span>${esc(k)}</span>`).join('')}</div>`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  // ── Mexicana ──
+  function renderMex(){
+    const q=norm((document.getElementById('qMex')||{}).value||'');
+    let r=MEX; if(q) r=r.filter(m=>norm([m.nombre,m.nahuatl,m.cientifico,(m.usos||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntMex').textContent=r.length+' de '+MEX.length+' plantas';
+    document.getElementById('gridMex').innerHTML=r.map(m=>{const i=MEX.indexOf(m);
+      return `<div class="gcard" onclick="abrirMex(${i})"><div class="nm">${esc(m.nombre)}</div><div class="sub">${[m.nahuatl,m.cientifico].filter(x=>x&&x!=='Sin datos').map(esc).join(' · ')}</div><div class="cf">${esc((m.usos||[]).slice(0,3).join(', '))}</div></div>`;}).join('');
+  }
+  function abrirMex(i){const m=MEX[i];if(!m)return;const dv=v=>v&&v!=='Sin datos';
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button><h2>${esc(m.nombre)}</h2><div class="sub">${[m.nahuatl,m.cientifico].filter(dv).map(esc).join(' · ')}</div>
+      ${dv(m.parte_usada)?`<div class="mb-sec">Part used</div><p>${esc(m.parte_usada)}</p>`:''}
+      ${(m.usos||[]).length?`<div class="mb-sec">Traditional uses</div><ul>${m.usos.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:''}
+      ${dv(m.preparacion)?`<div class="mb-sec">Preparation</div><p>${esc(m.preparacion)}</p>`:''}
+      ${dv(m.precaucion)?`<div class="mb-sec neg">Caution</div><p>${esc(m.precaucion)}</p>`:''}`;
+    document.getElementById('modal').classList.add('open');
+  }
+  function cerrar(){ document.getElementById('modal').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar()});
+  // ── Copiloto ──
+  async function consultarIA(){
+    const q=document.getElementById('iaQ').value.trim(); if(!q){alert('Describe the ailment or need.');return;}
+    const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Asking…';
+    const r=document.getElementById('iaR'); r.innerHTML='<div class="loading">Analyzing with the herbal library…</div>';
+    try{ const res=await fetch('/therapeutic/herbolaria',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q,query:q})});
+      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#db2777">The answer could not be generated.</p>'; }
+    catch(e){ r.innerHTML='<p style="color:#db2777">Connection error.</p>'; }
+    btn.disabled=false; btn.textContent=t0;
+  }
+  function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}
+  cargar();
+</script></body></html>

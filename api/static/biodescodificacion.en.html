@@ -1,0 +1,355 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bio-decoding · Holistic Copilot</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f5faf8;--surface:#fff;--surface2:#eef6f3;--border:#dce9e4;--acc:#7c3aed;--acc-dim:rgba(124, 58, 237,.10);--acc-dark:#6d28d9;--text:#13211d;--muted:#5d6f69;--sidebar:#13211d;--sidebar2:#1e322b}
+  html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
+  .workspace{display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:252px;flex-shrink:0;background:var(--sidebar);color:#e4f0eb;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
+  .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center}.sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#c4b5fd;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
+  .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#a78bfa;font-weight:700}.nav-item.active .ct{color:#ddd6fe}
+  .sb-foot{margin-top:auto;padding-top:12px}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
+  .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
+  .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:block}
+  .scroller{padding:22px;max-width:1100px}
+  .search{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:11px 15px;font-family:inherit;font-size:.92rem;color:var(--text)}
+  .search:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-dim)}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+  .chip{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--muted)}
+  .chip.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .count{font-size:.78rem;color:var(--muted);margin:6px 2px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+  .dcard{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;cursor:pointer;transition:all .14s;border-left:4px solid var(--acc)}
+  .dcard:hover{box-shadow:0 8px 20px rgba(124, 58, 237,.13);transform:translateY(-2px)}
+  .dcard .nm{font-weight:800;font-size:.95rem;line-height:1.3}
+  .dcard .sis{font-size:.72rem;color:var(--muted);margin-top:3px}
+  .dcard .cf{font-size:.83rem;color:var(--text);margin-top:7px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .badge{display:inline-block;font-size:.66rem;font-weight:700;padding:2px 8px;border-radius:999px;margin-top:8px}
+  .b-endo{background:#fce7f3;color:#be185d}.b-meso{background:#ede9fe;color:#5b21b6}.b-ecto{background:#ede9fe;color:#5b21b6}.b-def{background:var(--surface2);color:var(--muted)}
+  .leyes,.capas,.fases{display:flex;flex-direction:column;gap:12px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px}
+  .card h3{font-size:1.05rem;font-weight:800;color:var(--acc-dark)}
+  .card .res{font-weight:600;margin:4px 0 7px}.card .det{font-size:.9rem;color:var(--text)}
+  .num{display:inline-flex;width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;font-weight:800;font-size:.85rem;align-items:center;justify-content:center;margin-right:9px}
+  .kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:8px;font-size:.86rem}
+  .kv b{color:var(--acc-dark);font-weight:700;white-space:nowrap}
+  .timeline{position:relative;padding-left:26px}
+  .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:var(--border)}
+  .tstep{position:relative;margin-bottom:14px}
+  .tstep::before{content:"";position:absolute;left:-22px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--acc);border:2px solid var(--surface)}
+  .btn{background:var(--acc);color:#fff;border:none;border-radius:11px;padding:11px 18px;font-family:inherit;font-size:.9rem;font-weight:700;cursor:pointer}
+  .btn:hover{background:var(--acc-dark)}.btn.sec{background:var(--surface2);color:var(--text);border:1px solid var(--border)}.btn.sm{padding:7px 13px;font-size:.8rem;border-radius:9px}.btn:disabled{opacity:.5}
+  .modal{position:fixed;inset:0;background:rgba(19,33,29,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:16px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;padding:24px 26px}
+  .modal-box h2{font-size:1.25rem;font-weight:800}.modal-box .sis{font-size:.78rem;color:var(--muted);margin-bottom:6px}
+  .mb-sec{font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:15px 0 4px}
+  .mb-sec.fa{color:#db2777}.mb-sec.fr{color:#6d28d9}
+  .modal-box p{font-size:.9rem}.modal-box ul{padding-left:18px;font-size:.9rem}.modal-box li{margin:3px 0}
+  .modal-box .x{float:right;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted)}
+  .preg{background:var(--acc-dim);border-radius:9px;padding:5px 11px;margin:4px 0;font-size:.88rem}
+  .field{margin-bottom:12px}.field label{display:block;font-size:.74rem;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
+  .field input,.field textarea{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:9px 12px;font-family:inherit;font-size:.9rem;color:var(--text)}
+  .field textarea{min-height:70px;resize:vertical}
+  .caso-conf{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 12px;margin-bottom:7px}
+  .caso-conf .nm{font-weight:700;font-size:.85rem;flex:1}.caso-conf .rm{background:none;border:none;color:#db2777;cursor:pointer;font-size:1.1rem}
+  .reading{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 22px;margin-top:16px}.reading:empty{display:none}
+  .reading h2{font-size:1.05rem;color:var(--acc-dark);font-weight:800;margin:16px 0 6px}.reading h3{font-size:.95rem;font-weight:700;margin:12px 0 4px}.reading p{margin:7px 0;font-size:.9rem;line-height:1.7}.reading strong{font-weight:700}.reading ul,.reading ol{padding-left:20px}
+  .loading{text-align:center;color:var(--muted);padding:30px}
+  .empty{color:var(--muted);padding:30px;text-align:center}
+  .detail{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:16px 18px;margin-top:16px}.detail:empty{display:none}
+  .detail h3{font-size:1.05rem;font-weight:800;color:var(--acc-dark)}.detail .pos{font-size:.78rem;color:var(--muted);margin-bottom:4px}
+  .arch{display:flex;justify-content:center;flex-wrap:wrap;gap:5px;margin:10px 0}
+  .arch-lbl{text-align:center;font-size:.7rem;color:var(--muted);margin:4px 0}
+  .tooth{width:42px;height:52px;border:1px solid var(--border);border-radius:7px 7px 9px 9px;background:var(--surface);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:inherit;transition:all .12s;padding:2px}
+  .tooth:hover{border-color:var(--acc);transform:translateY(-2px)}
+  .tooth.sel{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .tooth .fdi{font-size:.62rem;font-weight:800}.tooth .ty{font-size:.55rem;opacity:.7;line-height:1}
+  .tooth.gap{margin-right:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:10px}
+  .intro{background:var(--acc-dim);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:14px;font-size:.92rem}
+  .claves li{margin:5px 0;font-size:.9rem}
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
+  @media print{.sidebar,.topbar,#printHide{display:none!important}.panel{display:none!important}#panel-ficha{display:block!important}.scroller{max-width:100%}}
+</style></head><body>
+<div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
+  <aside class="sidebar">
+    <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 3 2 5 2 8a5 5 0 0 0 10 0c0-3 2-5 2-8a7 7 0 0 0-7-7z"/><path d="M9 9h6M12 9v9"/></svg></div><div><div class="t">Bio-decoding</div><div class="s">+ GNM / 5 Laws</div></div></div>
+    <div class="sb-sec">Atlas</div>
+    <button class="nav-item active" data-p="dicc" onclick="nav('dicc')"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Biological dictionary<span class="ct" id="ctDicc"></span></button>
+    <button class="nav-item" data-p="leyes" onclick="nav('leyes')"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7l7-4 7 4"/></svg>The 5 Biological Laws<span class="ct">5</span></button>
+    <button class="nav-item" data-p="capas" onclick="nav('capas')"><svg viewBox="0 0 24 24"><path d="M3 7l9-4 9 4-9 4-9-4zM3 12l9 4 9-4M3 17l9 4 9-4"/></svg>Embryonic layers<span class="ct">4</span></button>
+    <button class="nav-item" data-p="fases" onclick="nav('fases')"><svg viewBox="0 0 24 24"><path d="M12 8v4l3 2M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18z"/></svg>Phases of disease<span class="ct">4</span></button>
+    <div class="sb-sec">Special maps</div>
+    <button class="nav-item" data-p="dientes" onclick="nav('dientes')"><svg viewBox="0 0 24 24"><path d="M7 3c-2 0-3 2-3 5 0 4 1 13 3 13 1.5 0 1.5-5 3-5s1.5 5 3 5c2 0 3-9 3-13 0-3-1-5-3-5-1.5 0-2 1-3 1S8.5 3 7 3z"/></svg>Dental map<span class="ct">32</span></button>
+    <button class="nav-item" data-p="lateralidad" onclick="nav('lateralidad')"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 8l-2 4 2 4M19 8l2 4-2 4"/></svg>Biological laterality</button>
+    <button class="nav-item" data-p="ciclos" onclick="nav('ciclos')"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v4h-4"/></svg>Biological cycles</button>
+    <button class="nav-item" data-p="proyecto" onclick="nav('proyecto')"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Project Purpose</button>
+    <button class="nav-item" data-p="dedos" onclick="nav('dedos')"><svg viewBox="0 0 24 24"><path d="M6 11V5a1.5 1.5 0 0 1 3 0v5m0 0V3.5a1.5 1.5 0 0 1 3 0V10m0 0V4.5a1.5 1.5 0 0 1 3 0V11m0 0V7a1.5 1.5 0 0 1 3 0v7a6 6 0 0 1-6 6h-1a6 6 0 0 1-5.2-3L4 16"/></svg>Fingers · hand and foot<span class="ct">10</span></button>
+    <button class="nav-item" data-p="piel" onclick="nav('piel')"><svg viewBox="0 0 24 24"><path d="M4 7c4-3 12-3 16 0M4 12c4-3 12-3 16 0M4 17c4-3 12-3 16 0"/></svg>Skin and moles</button>
+    <button class="nav-item" data-p="peso" onclick="nav('peso')"><svg viewBox="0 0 24 24"><path d="M12 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM7 7h10l3 13H4L7 7z"/></svg>Weight and fat</button>
+    <button class="nav-item" data-p="duelos" onclick="nav('duelos')"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5-7-11a7 7 0 0 1 14 0c0 6-7 11-7 11z"/></svg>Pregnancies and grief</button>
+    <button class="nav-item" data-p="homonimos" onclick="nav('homonimos')"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M11 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>Lying one and namesakes</button>
+    <div class="sb-sec">Clinic</div>
+    <button class="nav-item" data-p="ficha" onclick="nav('ficha')"><svg viewBox="0 0 24 24"><path d="M9 2h6a2 2 0 0 1 2 2H7a2 2 0 0 1 2-2zM7 4H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2M9 12h6M9 16h4"/></svg>Case file<span class="ct" id="ctCaso"></span></button>
+    <div class="sb-sec">Assistant</div>
+    <button class="nav-item" data-p="ia" onclick="nav('ia')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Ask the Copilot</button>
+    <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Back to home</a></div>
+  </aside>
+  <main class="main">
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbT">Biological dictionary</h1><p id="tbD">Symptom by symptom: conflict, biological meaning, embryonic layer, and the two phases.</p></div></div>
+
+    <section class="panel active" id="panel-dicc"><div class="scroller">
+      <input class="search" id="qD" placeholder="Search symptom, organ, or conflict… (e.g. rhinitis, thyroid, separation)" oninput="renderDicc()">
+      <div class="chips" id="chipsSis"></div>
+      <div class="count" id="cntD"></div>
+      <div class="grid" id="gridD"></div>
+    </div></section>
+
+    <section class="panel" id="panel-leyes"><div class="scroller"><div class="leyes" id="leyesBox"></div></div></section>
+    <section class="panel" id="panel-capas"><div class="scroller"><div class="capas" id="capasBox"></div></div></section>
+    <section class="panel" id="panel-fases"><div class="scroller"><div class="timeline fases" id="fasesBox"></div></div></section>
+
+    <section class="panel" id="panel-dientes"><div class="scroller">
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:6px">Each tooth encodes a conflict and is linked to an organ. Tap a tooth to see its reading. International tooth numbering (FDI).</p>
+      <div class="arch" id="archSup"></div>
+      <div class="arch-lbl">— midline · top: maxilla · bottom: mandible —</div>
+      <div class="arch" id="archInf"></div>
+      <div class="detail" id="dienteDet"></div>
+    </div></section>
+
+    <section class="panel" id="panel-lateralidad"><div class="scroller"><div id="latBox"></div></div></section>
+    <section class="panel" id="panel-ciclos"><div class="scroller"><div id="cicBox"></div></div></section>
+    <section class="panel" id="panel-proyecto"><div class="scroller"><div id="proyBox"></div></div></section>
+    <section class="panel" id="panel-dedos"><div class="scroller"><div id="dedosBox"></div></div></section>
+    <section class="panel" id="panel-piel"><div class="scroller"><div id="pielBox"></div></div></section>
+    <section class="panel" id="panel-peso"><div class="scroller"><div id="pesoBox"></div></div></section>
+    <section class="panel" id="panel-duelos"><div class="scroller"><div id="duelosBox"></div></div></section>
+    <section class="panel" id="panel-homonimos"><div class="scroller"><div id="homBox"></div></div></section>
+
+    <section class="panel" id="panel-ficha"><div class="scroller">
+      <div id="printHide" style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap">
+        <button class="btn sec sm" onclick="window.print()">Print / PDF</button>
+        <button class="btn sec sm" onclick="limpiarCaso()">Clear file</button>
+      </div>
+      <div class="field"><label>Client</label><input id="fConsult" oninput="saveCaso()"></div>
+      <div class="field"><label>Date</label><input id="fFecha" oninput="saveCaso()"></div>
+      <div class="field"><label>Reason for consultation / main symptom</label><textarea id="fMotivo" oninput="saveCaso()"></textarea></div>
+      <div class="mb-sec">Conflicts being worked on</div>
+      <div id="casoConf"></div>
+      <p class="count" id="casoHint">Add conflicts from the Biological dictionary (the "Add to file" button).</p>
+      <div class="field" style="margin-top:14px"><label>Questions worked / findings</label><textarea id="fPreg" oninput="saveCaso()"></textarea></div>
+      <div class="field"><label>Notes and follow-up</label><textarea id="fNotas" oninput="saveCaso()"></textarea></div>
+    </div></section>
+
+    <section class="panel" id="panel-ia"><div class="scroller">
+      <p style="color:var(--muted);font-size:.88rem;margin-bottom:12px">Describe the case or question. The answer comes in two readings: Bio-decoding and German New Medicine / 5 Laws, grounded in your library.</p>
+      <textarea class="search" id="iaQ" style="min-height:90px;resize:vertical" placeholder="E.g. A 40-year-old woman with chronic rhinitis that began after a forced move…"></textarea>
+      <div style="margin-top:10px"><button class="btn" id="iaBtn" onclick="consultarIA()">Consult the engine</button></div>
+      <div class="reading" id="iaR"></div>
+    </div></section>
+  </main>
+</div>
+<div class="modal" id="modal" onclick="if(event.target===this)cerrar()"><div class="modal-box" id="modalBox"></div></div>
+<script>
+  let DICC=[], REF={}, MAPAS={}, CASO={conflictos:[]}, fSis='todos';
+  const esc=s=>(s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const capaClass=c=>{const n=norm(c);return n.includes('endo')?'b-endo':n.includes('meso')?'b-meso':n.includes('ecto')?'b-ecto':'b-def'};
+
+  async function cargar(){
+    try{ const d=await(await fetch('/api/diccionario-biodesco')).json(); DICC=Object.values(d).sort((a,b)=>(a.sistema_label||'').localeCompare(b.sistema_label||'')||(a.nombre||'').localeCompare(b.nombre||'')); }catch(e){ DICC=[]; }
+    document.getElementById('ctDicc').textContent=DICC.length;
+    try{ REF=await(await fetch('/api/referencia-biodesco')).json(); }catch(e){ REF={}; }
+    try{ MAPAS=await(await fetch('/api/mapas-biodesco')).json(); }catch(e){ MAPAS={}; }
+    cargarCaso(); renderChips(); renderDicc(); renderLeyes(); renderCapas(); renderFases();
+    renderDientes(); renderLat(); renderCic(); renderProy();
+    renderDedos(); renderPiel(); renderPeso(); renderDuelos(); renderHom();
+  }
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
+  function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
+    document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
+    document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
+    const T={dicc:['Biological dictionary','Symptom by symptom: conflict, biological meaning, embryonic layer, and the two phases.'],
+      leyes:['The 5 Biological Laws','The framework that explains why the symptom makes sense.'],
+      capas:['Embryonic layers','Each tissue behaves according to its embryonic germ layer of origin.'],
+      fases:['Phases of disease','From shock to healing: the two phases and the epic crisis.'],
+      dientes:['Dental map','The 32 teeth: each one encodes a conflict and an organ.'],
+      lateralidad:['Biological laterality','Right-handed or left-handed: who or what each side of the body points to.'],
+      ciclos:['Memorized biological cycles','Why dates and ages repeat within the clan.'],
+      proyecto:['Project Purpose','What is inscribed in the child from desire through early childhood.'],
+      dedos:['Fingers of the hand and foot','Each finger encodes a conflict and a meridian.'],
+      piel:['Skin and moles','The boundary of contact: layers, zones, and the meaning of moles.'],
+      peso:['Weight and fat','The biological meaning of holding on to kilos, zone by zone.'],
+      duelos:['Pregnancies and grief','Miscarriages, losses, and unresolved grief, and their imprint on the system.'],
+      homonimos:['Lying one and namesakes','The transgenerational figures that carry a program not their own.'],
+      ficha:['Case file','Build and save the case. Print or export to PDF.'],
+      ia:['Ask the Copilot','Two readings: Bio-decoding and GNM / 5 Laws.']};
+    document.getElementById('tbT').textContent=T[p][0]; document.getElementById('tbD').textContent=T[p][1];
+  }
+  function renderChips(){
+    const sis=[...new Set(DICC.map(d=>d.sistema_label).filter(Boolean))].sort();
+    document.getElementById('chipsSis').innerHTML=`<span class="chip ${fSis==='todos'?'active':''}" onclick="setSis('todos')">All</span>`+
+      sis.map(s=>`<span class="chip ${fSis===s?'active':''}" onclick="setSis(${JSON.stringify(s).replace(/"/g,'&quot;')})">${esc(s)}</span>`).join('');
+  }
+  function setSis(s){ fSis=s; renderChips(); renderDicc(); }
+  function renderDicc(){
+    const q=norm((document.getElementById('qD')||{}).value||'');
+    let res=DICC;
+    if(fSis!=='todos') res=res.filter(d=>d.sistema_label===fSis);
+    if(q) res=res.filter(d=>norm([d.nombre,d.organo,d.conflicto,(d.sintomas||[]).join(' '),d.sistema_label].join(' ')).includes(q));
+    document.getElementById('cntD').textContent=res.length+' of '+DICC.length+' conflicts';
+    document.getElementById('gridD').innerHTML = res.length? res.map(d=>{
+      const idx=DICC.indexOf(d);
+      return `<div class="dcard" onclick="abrir(${idx})"><div class="nm">${esc(d.nombre)}</div><div class="sis">${esc(d.sistema_label||'')}${d.organo?' · '+esc(d.organo):''}</div><div class="cf">${esc(d.conflicto||'')}</div>${d.capa_embrionaria?`<span class="badge ${capaClass(d.capa_embrionaria)}">${esc(d.capa_embrionaria)}</span>`:''}</div>`;
+    }).join('') : '<div class="empty">No results.</div>';
+  }
+  function abrir(idx){ const d=DICC[idx]; if(!d)return;
+    const li=a=>(a||[]).map(x=>`<li>${esc(x)}</li>`).join('');
+    document.getElementById('modalBox').innerHTML=`<button class="x" onclick="cerrar()">×</button>
+      <h2>${esc(d.nombre)}</h2><div class="sis">${esc(d.sistema_label||'')}${d.subsistema_label?' · '+esc(d.subsistema_label):''}</div>
+      ${d.capa_embrionaria?`<span class="badge ${capaClass(d.capa_embrionaria)}">${esc(d.capa_embrionaria)}</span>`:''}
+      ${d.organo?`<div class="mb-sec">Organ / tissue</div><p>${esc(d.organo)}</p>`:''}
+      <div class="mb-sec">Conflict</div><p>${esc(d.conflicto||'')}</p>
+      ${d.sentido_biologico?`<div class="mb-sec">Biological meaning</div><p>${esc(d.sentido_biologico)}</p>`:''}
+      ${d.tipo_conflicto?`<div class="mb-sec">Type of conflict</div><p>${esc(d.tipo_conflicto)}</p>`:''}
+      ${d.fase_activa?`<div class="mb-sec fa">Active phase (sympathicotonia)</div><p>${esc(d.fase_activa)}</p>`:''}
+      ${d.fase_reparacion?`<div class="mb-sec fr">Repair phase (vagotonia)</div><p>${esc(d.fase_reparacion)}</p>`:''}
+      ${d.lateralidad?`<div class="mb-sec">Laterality</div><p>${esc(d.lateralidad)}</p>`:''}
+      ${(d.preguntas||[]).length?`<div class="mb-sec">Deprogramming questions</div>${d.preguntas.map(p=>`<div class="preg">${esc(p)}</div>`).join('')}`:''}
+      ${(d.sintomas||[]).length?`<div class="mb-sec">Related symptoms</div><ul>${li(d.sintomas)}</ul>`:''}
+      <div style="margin-top:18px"><button class="btn sm" onclick="addCaso(${idx})">Add to case file</button></div>`;
+    document.getElementById('modal').classList.add('open');
+  }
+  function cerrar(){ document.getElementById('modal').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrar()});
+  function renderLeyes(){
+    document.getElementById('leyesBox').innerHTML=(REF.leyes||[]).map(l=>`<div class="card"><h3><span class="num">${l.numero}</span>${esc(l.nombre)}</h3><div class="res">${esc(l.resumen)}</div><div class="det">${esc(l.detalle)}</div></div>`).join('');
+  }
+  function renderCapas(){
+    document.getElementById('capasBox').innerHTML=(REF.capas||[]).map(c=>`<div class="card"><h3><span class="badge ${capaClass(c.nombre)}" style="margin:0 8px 0 0">${esc(c.nombre)}</span></h3>
+      <div class="kv"><b>Brain control</b><span>${esc(c.control_cerebral)}</span><b>Theme</b><span>${esc(c.tema)}</span><b>Type of conflict</b><span>${esc(c.tipo_conflicto)}</span><b>Active phase</b><span>${esc(c.fase_activa)}</span><b>Repair phase</b><span>${esc(c.fase_reparacion)}</span><b>Examples</b><span>${esc(c.ejemplos)}</span></div></div>`).join('');
+  }
+  function renderFases(){
+    document.getElementById('fasesBox').innerHTML=(REF.fases||[]).map(f=>`<div class="tstep"><div class="card"><h3>${esc(f.nombre)}</h3><div class="det">${esc(f.descripcion)}</div>${(f.sintomas||[]).length?`<ul style="margin-top:6px;font-size:.88rem;color:var(--muted)">${f.sintomas.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:''}</div></div>`).join('');
+  }
+  // ── Mapas especiales ──
+  function toothAbbr(n){const t=(n||'').toLowerCase();return t.startsWith('incisivo central')?'CI':t.startsWith('incisivo')?'LI':t.startsWith('canino')?'C':t.startsWith('primer prem')?'1P':t.startsWith('segundo prem')?'2P':t.startsWith('primer molar')?'1M':t.startsWith('segundo molar')?'2M':'3M';}
+  function teethRow(nums,el){const D=MAPAS.dientes||{};
+    document.getElementById(el).innerHTML=nums.map((n,i)=>{const d=D[n];if(!d)return '';const gap=(i===7)?'gap':'';
+      return `<button class="tooth ${gap}" id="t${n}" onclick="selDiente('${n}')"><span class="fdi">${n}</span><span class="ty">${toothAbbr(d.nombre)}</span></button>`;}).join('');
+  }
+  function renderDientes(){
+    if(!MAPAS.dientes||!Object.keys(MAPAS.dientes).length){document.getElementById('archSup').innerHTML='<div class="empty">Dental map in preparation.</div>';return;}
+    teethRow(['18','17','16','15','14','13','12','11','21','22','23','24','25','26','27','28'],'archSup');
+    teethRow(['48','47','46','45','44','43','42','41','31','32','33','34','35','36','37','38'],'archInf');
+  }
+  function selDiente(n){const d=(MAPAS.dientes||{})[n];if(!d)return;
+    document.querySelectorAll('.tooth').forEach(t=>t.classList.remove('sel'));
+    const b=document.getElementById('t'+n); if(b)b.classList.add('sel');
+    document.getElementById('dienteDet').innerHTML=`<div class="pos">Tooth ${n} · ${esc(d.tipo||'')} ${esc(d.arcada||'')} ${esc(d.lado||'')}</div><h3>${esc(d.nombre)}</h3>
+      ${d.organo?`<div class="mb-sec">Organ / meridian</div><p>${esc(d.organo)}</p>`:''}
+      <div class="mb-sec">Conflict</div><p>${esc(d.conflicto||'')}</p>
+      ${d.significado?`<div class="mb-sec">Meaning</div><p>${esc(d.significado)}</p>`:''}
+      ${d.tema_relacional?`<div class="mb-sec">Points to</div><p>${esc(d.tema_relacional)}</p>`:''}
+      ${(d.sintomas||[]).length?`<div class="mb-sec">Associated dental problems</div><ul>${d.sintomas.map(s=>`<li>${esc(s)}</li>`).join('')}</ul>`:''}`;
+    document.getElementById('dienteDet').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function renderLat(){const l=MAPAS.lateralidad;const el=document.getElementById('latBox');if(!l){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    const lado=(t,o)=>`<div class="card"><h3>${t}</h3><div class="kv"><b>Right side</b><span>${esc(o.derecha||'')}</span><b>Left side</b><span>${esc(o.izquierda||'')}</span></div></div>`;
+    el.innerHTML=`<div class="intro">${esc(l.intro||'')}</div>
+      ${l.como_determinar?`<div class="card" style="margin-bottom:12px"><h3>How to determine laterality</h3><div class="det">${esc(l.como_determinar)}</div></div>`:''}
+      <div class="grid2">${lado('Right-handed person',l.diestro||{})}${lado('Left-handed person',l.zurdo||{})}</div>
+      ${(l.claves||[]).length?`<div class="card" style="margin-top:12px"><h3>Keys for the therapist</h3><ul class="claves">${l.claves.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>`:''}`;
+  }
+  function renderCic(){const c=MAPAS.ciclos;const el=document.getElementById('cicBox');if(!c){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(c.intro||'')}</div>
+      ${c.principio?`<div class="card" style="margin-bottom:12px"><h3>The principle</h3><div class="det">${esc(c.principio)}</div></div>`:''}
+      ${c.como_calcular?`<div class="card" style="margin-bottom:12px"><h3>How it is calculated</h3><div class="det">${esc(c.como_calcular)}</div></div>`:''}
+      ${c.ejemplo?`<div class="card" style="margin-bottom:12px"><h3>Clinical example</h3><div class="det">${esc(c.ejemplo)}</div></div>`:''}
+      ${(c.claves||[]).length?`<div class="card"><h3>Keys for the therapist</h3><ul class="claves">${c.claves.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}`;
+  }
+  function renderProy(){const p=MAPAS.proyecto_sentido;const el=document.getElementById('proyBox');if(!p){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      <div class="timeline">${(p.etapas||[]).map(e=>`<div class="tstep"><div class="card"><h3>${esc(e.etapa||'')}</h3><div class="pos">${esc(e.periodo||'')}</div><div class="det">${esc(e.que_se_programa||'')}</div></div></div>`).join('')}</div>
+      ${(p.claves||[]).length?`<div class="card" style="margin-top:12px"><h3>Keys for the therapist</h3><ul class="claves">${p.claves.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>`:''}`;
+  }
+  function clavesCard(arr){return (arr||[]).length?`<div class="card" style="margin-top:12px"><h3>Keys for the therapist</h3><ul class="claves">${arr.map(c=>`<li>${esc(c)}</li>`).join('')}</ul></div>`:'';}
+  function renderDedos(){const D=MAPAS.dedos||[];const el=document.getElementById('dedosBox');if(!D.length){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    const grupo=parte=>{const items=D.filter(d=>d.parte===parte);if(!items.length)return '';
+      return `<div class="mb-sec">${parte==='mano'?'Hand':'Foot'}</div><div class="grid">${items.map(d=>`<div class="card"><h3 style="font-size:.98rem">${esc(d.dedo)}</h3>${d.organo?`<div class="pos">${esc(d.organo)}</div>`:''}<p style="font-size:.88rem;margin-top:5px">${esc(d.conflicto||'')}</p>${d.significado?`<p style="font-size:.84rem;color:var(--muted);margin-top:5px">${esc(d.significado)}</p>`:''}${(d.sintomas||[]).length?`<div style="font-size:.78rem;color:var(--muted);margin-top:6px">${d.sintomas.map(esc).join(' · ')}</div>`:''}</div>`).join('')}</div>`;};
+    el.innerHTML=grupo('mano')+grupo('pie');
+  }
+  function renderPiel(){const p=MAPAS.piel;const el=document.getElementById('pielBox');if(!p){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.capas||[]).length?`<div class="mb-sec">The layers of the skin</div><div class="grid2">${p.capas.map(c=>`<div class="card"><h3 style="font-size:.98rem">${esc(c.capa)}</h3><p style="font-size:.88rem">${esc(c.conflicto||'')}</p>${c.ejemplos?`<p style="font-size:.82rem;color:var(--muted);margin-top:5px">${esc(c.ejemplos)}</p>`:''}</div>`).join('')}</div>`:''}
+      ${p.lunares?`<div class="card" style="margin-top:12px"><h3>Moles and spots</h3><div class="det">${esc(p.lunares)}</div></div>`:''}
+      ${(p.zonas||[]).length?`<div class="card" style="margin-top:12px"><h3>By body zone</h3><div class="kv">${p.zonas.map(z=>`<b>${esc(z.zona)}</b><span>${esc(z.significado)}</span>`).join('')}</div></div>`:''}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderPeso(){const p=MAPAS.peso;const el=document.getElementById('pesoBox');if(!p){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${p.principio?`<div class="card" style="margin-bottom:12px"><h3>The principle</h3><div class="det">${esc(p.principio)}</div></div>`:''}
+      ${(p.por_zona||[]).length?`<div class="card"><h3>By zone</h3><div class="kv">${p.por_zona.map(z=>`<b>${esc(z.zona)}</b><span>${esc(z.significado)}</span>`).join('')}</div></div>`:''}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderDuelos(){const p=MAPAS.duelos;const el=document.getElementById('duelosBox');if(!p){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.tipos||[]).map(t=>`<div class="card" style="margin-bottom:10px"><h3 style="font-size:.98rem">${esc(t.tipo)}</h3>${t.descripcion?`<p style="font-size:.88rem">${esc(t.descripcion)}</p>`:''}${t.efecto?`<div class="mb-sec">Imprint on the system</div><p style="font-size:.88rem">${esc(t.efecto)}</p>`:''}</div>`).join('')}
+      ${clavesCard(p.claves)}`;
+  }
+  function renderHom(){const p=MAPAS.homonimos;const el=document.getElementById('homBox');if(!p){el.innerHTML='<div class="empty">In preparation.</div>';return;}
+    el.innerHTML=`<div class="intro">${esc(p.intro||'')}</div>
+      ${(p.figuras||[]).map(f=>`<div class="card" style="margin-bottom:10px"><h3 style="font-size:.98rem">${esc(f.figura)}</h3>${f.descripcion?`<p style="font-size:.88rem">${esc(f.descripcion)}</p>`:''}${f.senal?`<div class="mb-sec">Signs it is being carried</div><p style="font-size:.88rem">${esc(f.senal)}</p>`:''}</div>`).join('')}
+      ${clavesCard(p.claves)}`;
+  }
+  function cargarCaso(){ try{ CASO=JSON.parse(localStorage.getItem('biodesco_caso'))||{conflictos:[]}; }catch(e){ CASO={conflictos:[]}; } if(!CASO.conflictos)CASO.conflictos=[];
+    document.getElementById('fConsult').value=CASO.consultante||''; document.getElementById('fFecha').value=CASO.fecha||'';
+    document.getElementById('fMotivo').value=CASO.motivo||''; document.getElementById('fPreg').value=CASO.preguntas||''; document.getElementById('fNotas').value=CASO.notas||'';
+    renderCaso();
+  }
+  function saveCaso(){ CASO.consultante=document.getElementById('fConsult').value; CASO.fecha=document.getElementById('fFecha').value;
+    CASO.motivo=document.getElementById('fMotivo').value; CASO.preguntas=document.getElementById('fPreg').value; CASO.notas=document.getElementById('fNotas').value;
+    localStorage.setItem('biodesco_caso',JSON.stringify(CASO));
+  }
+  function renderCaso(){
+    document.getElementById('ctCaso').textContent=CASO.conflictos.length||'';
+    document.getElementById('casoConf').innerHTML=CASO.conflictos.map((c,i)=>`<div class="caso-conf"><span class="badge ${capaClass(c.capa)}" style="margin:0">${esc(c.capa||'—')}</span><span class="nm">${esc(c.nombre)}</span><button class="rm" onclick="rmCaso(${i})">×</button></div>`).join('');
+    document.getElementById('casoHint').style.display=CASO.conflictos.length?'none':'';
+  }
+  function addCaso(idx){ const d=DICC[idx]; if(!d)return; if(CASO.conflictos.some(c=>c.slug===d.slug)){cerrar();nav('ficha');return;}
+    CASO.conflictos.push({slug:d.slug,nombre:d.nombre,sistema:d.sistema_label,capa:d.capa_embrionaria});
+    localStorage.setItem('biodesco_caso',JSON.stringify(CASO)); renderCaso(); cerrar(); nav('ficha');
+  }
+  function rmCaso(i){ CASO.conflictos.splice(i,1); localStorage.setItem('biodesco_caso',JSON.stringify(CASO)); renderCaso(); }
+  function limpiarCaso(){ if(!confirm('Clear the entire file?'))return; CASO={conflictos:[]}; localStorage.removeItem('biodesco_caso'); cargarCaso(); }
+  async function consultarIA(){
+    const q=document.getElementById('iaQ').value.trim(); if(!q){alert('Describe the case or question.');return;}
+    const btn=document.getElementById('iaBtn'); btn.disabled=true; const t0=btn.textContent; btn.textContent='Consulting…';
+    const r=document.getElementById('iaR'); r.innerHTML='<div class="loading">Analyzing with Bio-decoding and GNM…</div>';
+    try{ const res=await fetch('/therapeutic/biodescodificacion',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:q,query:q,lang:'en'})});
+      const d=await res.json(); r.innerHTML=d&&d.answer?md(d.answer):'<p style="color:#db2777">The answer could not be generated.</p>'; }
+    catch(e){ r.innerHTML='<p style="color:#db2777">Connection error.</p>'; }
+    btn.disabled=false; btn.textContent=t0;
+  }
+  function md(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of (t||'').split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;const tag=lv<3?'h2':'h3';h+=`<${tag}>${e(l.replace(/^#+ /,''))}</${tag}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'':`<p>${inl(e(l))}</p>`}cl();return h}
+  cargar();
+</script></body></html>

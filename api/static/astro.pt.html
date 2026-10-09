@@ -1,0 +1,1100 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mapa Natal · Astrologia · Copiloto Holístico</title><script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=2"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #FFFFFF;
+  --surface:  #FFFFFF;
+  --surface2: #FAFAFA;
+  --border: #EAEAEA;
+  --text:     #0E1116;
+  --muted:    #4A4F5C;
+  --acc:      #6d28d9;
+  --acc-dark: #5b21b6;
+  --radius: 16px;
+}
+
+html, body {
+ min-height: 100vh;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ background: var(--bg);
+ color: var(--text);
+}
+
+/* ── EMBED MODE ── */
+body.embed-mode { background: var(--bg); }
+
+/* ── HEADER ── */
+.header {
+ display: flex;
+ align-items: center;
+ gap: 14px;
+ padding: 18px 28px;
+ border-bottom: 1px solid var(--border);
+ background: rgba(11,17,32,0.9);
+ backdrop-filter: blur(12px);
+ position: sticky;
+ top: 0;
+ z-index: 100;
+}
+.header-back {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ font-size: 0.82rem;
+ font-weight: 600;
+ color: var(--muted);
+ text-decoration: none;
+ padding: 6px 12px;
+ border-radius: 8px;
+ border: 1px solid var(--border);
+ transition: all 0.15s;
+}
+.header-back:hover { color: var(--text); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+.header-title {
+ flex: 1;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+.header-icon {
+ font-size: 1.2rem;
+}
+.header-name {
+ font-size: 0.95rem;
+ font-weight: 700;
+ color: var(--text);
+}
+.header-badge {
+ font-size: 0.65rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--acc);
+ background: rgba(244, 114, 182,0.1);
+ border: 1px solid rgba(244, 114, 182,0.25);
+ border-radius: 20px;
+ padding: 3px 10px;
+}
+
+/* ── MAIN LAYOUT ── */
+.main {
+ max-width: 780px;
+ margin: 0 auto;
+ padding: 36px 24px 60px;
+}
+
+/* ── FORM CARD ── */
+.form-card {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 32px 28px;
+ margin-bottom: 24px;
+ position: relative;
+ overflow: hidden;
+}
+.form-card::before {
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 3px;
+ background: linear-gradient(90deg, #f472b6, #f9a8d4, #f472b6);
+}
+
+.form-title {
+ font-size: 1.05rem;
+ font-weight: 700;
+ margin-bottom: 6px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+.form-sub {
+ font-size: 0.82rem;
+ color: var(--muted);
+ margin-bottom: 28px;
+ line-height: 1.5;
+}
+
+.form-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 16px;
+}
+.form-group {
+ display: flex;
+ flex-direction: column;
+ gap: 6px;
+}
+.form-group.full { grid-column: 1 / -1; }
+
+label {
+ font-size: 0.75rem;
+ font-weight: 600;
+ color: var(--muted);
+ letter-spacing: 0.05em;
+ text-transform: uppercase;
+}
+label span.opt {
+ font-weight: 400;
+ text-transform: none;
+ letter-spacing: 0;
+ opacity: 0.6;
+ margin-left: 4px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select {
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: 11px 14px;
+ font-size: 0.88rem;
+ color: var(--text);
+ outline: none;
+ transition: border-color 0.15s, box-shadow 0.15s;
+ width: 100%;
+ font-family: inherit;
+  -webkit-appearance: none;
+ appearance: none;
+}
+input[type="text"]::placeholder { color: rgba(167, 139, 250,0.4); }
+input:focus, select:focus {
+ border-color: rgba(244, 114, 182,0.5);
+ box-shadow: 0 0 0 3px rgba(244, 114, 182,0.08);
+}
+
+/* Select arrow */
+.select-wrap {
+ position: relative;
+}
+.select-wrap::after {
+ content: '▾';
+ position: absolute;
+ right: 13px;
+ top: 50%;
+ transform: translateY(-50%);
+ color: var(--muted);
+ font-size: 0.8rem;
+ pointer-events: none;
+}
+select { padding-right: 32px; cursor: pointer; }
+
+/* ── OPCIONES ADICIONALES ── */
+.opciones-title {
+ font-size: 0.75rem;
+ font-weight: 700;
+ color: var(--muted);
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ margin: 22px 0 12px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+.opciones-title::after {
+ content: '';
+ flex: 1;
+ height: 1px;
+ background: var(--border);
+}
+.opciones-grid {
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 10px;
+ margin-bottom: 24px;
+}
+.check-card {
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ background: var(--surface2);
+ border: 1px solid var(--border);
+ border-radius: 10px;
+ padding: 14px 16px;
+ cursor: pointer;
+ transition: border-color 0.15s, background 0.15s;
+ user-select: none;
+}
+.check-card:hover { border-color: rgba(244, 114, 182,0.35); background: rgba(244, 114, 182,0.03); }
+.check-card input[type="checkbox"] { display: none; }
+.check-box {
+ width: 18px;
+ height: 18px;
+ border-radius: 5px;
+ border: 2px solid rgba(167, 139, 250,0.4);
+ flex-shrink: 0;
+ margin-top: 1px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ transition: all 0.15s;
+ background: transparent;
+}
+.check-card.active .check-box {
+ background: var(--acc);
+ border-color: var(--acc);
+}
+.check-card.active .check-box::after {
+ content: '';
+ color: #0b1120;
+ font-size: 0.7rem;
+ font-weight: 800;
+}
+.check-card.active { border-color: rgba(244, 114, 182,0.4); background: rgba(244, 114, 182,0.04); }
+.check-info { flex: 1; }
+.check-name {
+ font-size: 0.83rem;
+ font-weight: 700;
+ color: var(--text);
+ margin-bottom: 2px;
+}
+.check-desc {
+ font-size: 0.75rem;
+ color: var(--muted);
+ line-height: 1.4;
+}
+
+/* ── SUBMIT BUTTON ── */
+.btn-submit {
+ width: 100%;
+ padding: 14px;
+ background: linear-gradient(135deg, #f472b6, #ec4899);
+ border: none;
+ border-radius: 12px;
+ color: #0b1120;
+ font-size: 0.95rem;
+ font-weight: 800;
+ cursor: pointer;
+ transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ letter-spacing: 0.01em;
+}
+.btn-submit:hover:not(:disabled) {
+ opacity: 0.92;
+ transform: translateY(-1px);
+ box-shadow: 0 6px 20px rgba(244, 114, 182,0.3);
+}
+.btn-submit:disabled {
+ opacity: 0.5;
+ cursor: not-allowed;
+ transform: none;
+}
+
+/* ── RESULTADO CARD ── */
+.result-card {
+ display: none;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ overflow: hidden;
+}
+.result-card.visible { display: block; }
+
+.result-header {
+ padding: 18px 24px;
+ border-bottom: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 12px;
+ background: rgba(244, 114, 182,0.04);
+}
+.result-header-left {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+.result-status {
+ font-size: 0.8rem;
+ color: var(--muted);
+ font-weight: 500;
+}
+.result-status.streaming { color: var(--acc); }
+.result-status.done { color: #a78bfa; }
+.result-status.error { color: #f472b6; }
+
+.btn-copy {
+ background: transparent;
+ border: 1px solid var(--border);
+ border-radius: 8px;
+ padding: 6px 12px;
+ color: var(--muted);
+ font-size: 0.75rem;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
+}
+.btn-copy:hover { border-color: rgba(255,255,255,0.15); color: var(--text); }
+
+.status-bar {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ padding: 12px 24px;
+ border-bottom: 1px solid var(--border);
+ font-size: 0.8rem;
+ color: var(--muted);
+ background: var(--surface2);
+ min-height: 40px;
+}
+.status-bar.hidden { display: none; }
+.spinner {
+ width: 14px;
+ height: 14px;
+ border: 2px solid rgba(244, 114, 182,0.3);
+ border-top-color: var(--acc);
+ border-radius: 50%;
+ animation: spin 0.7s linear infinite;
+ flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── MARKDOWN OUTPUT ── */
+.result-body {
+ padding: 28px 32px;
+ max-height: 75vh;
+ overflow-y: auto;
+ scrollbar-width: thin;
+ scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+.result-body::-webkit-scrollbar { width: 4px; }
+.result-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+
+/* Markdown styles */
+.md-content { line-height: 1.75; font-size: 0.9rem; color: var(--text); }
+.md-content h1 { font-size: 1.3rem; font-weight: 800; margin: 0 0 16px; color: #f9a8d4; }
+.md-content h2 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px; color: #f9a8d4; border-bottom: 1px solid rgba(244, 114, 182,0.15); padding-bottom: 6px; }
+.md-content h3 { font-size: 0.95rem; font-weight: 700; margin: 20px 0 8px; color: var(--text); }
+.md-content p { margin-bottom: 12px; }
+.md-content ul, .md-content ol { padding-left: 22px; margin-bottom: 12px; }
+.md-content li { margin-bottom: 4px; }
+.md-content strong { color: #f9a8d4; font-weight: 700; }
+.md-content em { color: #c4b5fd; }
+.md-content hr { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+.md-content blockquote {
+ border-left: 3px solid var(--acc);
+ margin: 12px 0;
+ padding: 8px 16px;
+ background: rgba(244, 114, 182,0.05);
+ border-radius: 0 8px 8px 0;
+ color: var(--muted);
+ font-style: italic;
+}
+.md-content code {
+ background: rgba(255,255,255,0.07);
+ border-radius: 4px;
+ padding: 1px 6px;
+ font-size: 0.85em;
+ font-family: "SF Mono", "Fira Code", monospace;
+}
+.md-content table { border-collapse: collapse; width: 100%; margin-bottom: 16px; font-size: 0.85rem; }
+.md-content th, .md-content td { border: 1px solid var(--border); padding: 7px 12px; text-align: left; }
+.md-content th { background: rgba(244, 114, 182,0.08); font-weight: 700; color: #f9a8d4; }
+.md-content tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+
+/* Cursor de streaming */
+.cursor {
+ display: inline-block;
+ width: 2px;
+ height: 1em;
+ background: var(--acc);
+ border-radius: 1px;
+ animation: blink 0.8s ease infinite;
+ vertical-align: text-bottom;
+ margin-left: 2px;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* ── CARTA SVG CARD ── */
+.carta-card {
+ display: none;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ overflow: hidden;
+ margin-top: 20px;
+}
+.carta-card.visible { display: block; }
+
+.carta-header {
+ padding: 16px 24px;
+ border-bottom: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 12px;
+ background: rgba(244, 114, 182,0.04);
+}
+.carta-tabs {
+ display: flex;
+ gap: 6px;
+}
+.carta-tab {
+ padding: 6px 14px;
+ border-radius: 8px;
+ border: 1px solid var(--border);
+ background: transparent;
+ color: var(--muted);
+ font-size: 0.78rem;
+ font-weight: 600;
+ cursor: pointer;
+ transition: all 0.15s;
+ font-family: inherit;
+}
+.carta-tab:hover { border-color: rgba(244, 114, 182,0.4); color: var(--text); }
+.carta-tab.active {
+ background: rgba(244, 114, 182,0.12);
+ border-color: rgba(244, 114, 182,0.4);
+ color: var(--acc);
+}
+.carta-body {
+ padding: 24px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ min-height: 200px;
+}
+.carta-svg-wrap {
+ width: 100%;
+ max-width: 560px;
+ aspect-ratio: 1;
+}
+.carta-svg-wrap svg, .carta-svg-wrap img {
+ width: 100%;
+ height: 100%;
+}
+.carta-loading {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 12px;
+ color: var(--muted);
+ font-size: 0.85rem;
+}
+.carta-error {
+ color: #f472b6;
+ font-size: 0.85rem;
+ text-align: center;
+ padding: 16px;
+}
+
+/* ── TABLA DE POSICIONES ── */
+.pos-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: 0.82rem;
+}
+.pos-table th {
+ background: rgba(244, 114, 182,0.08);
+ color: #f9a8d4;
+ font-weight: 700;
+ padding: 8px 14px;
+ text-align: left;
+ border-bottom: 1px solid var(--border);
+ font-size: 0.72rem;
+ letter-spacing: 0.07em;
+ text-transform: uppercase;
+}
+.pos-table td {
+ padding: 8px 14px;
+ border-bottom: 1px solid rgba(255,255,255,0.04);
+ color: var(--text);
+}
+.pos-table tr:hover td { background: rgba(255,255,255,0.02); }
+.pos-badge {
+ display: inline-block;
+ font-size: 0.68rem;
+ font-weight: 700;
+ padding: 2px 7px;
+ border-radius: 4px;
+ letter-spacing: 0.04em;
+}
+.pos-badge.dom  { background: rgba(167, 139, 250,0.15); color: #a78bfa; }
+.pos-badge.exal { background: rgba(249, 168, 212,0.15); color: #f9a8d4; }
+.pos-badge.exil { background: rgba(244, 114, 182,0.15); color: #f472b6; }
+.pos-badge.caid { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.pos-badge.retro { background: rgba(167, 139, 250,0.15); color: #a78bfa; }
+.pos-section {
+ margin-top: 20px;
+ padding-top: 16px;
+ border-top: 1px solid var(--border);
+}
+.pos-section-title {
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 10px;
+}
+.pos-asp-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+ gap: 8px;
+}
+.pos-asp-item {
+ background: var(--surface2);
+ border-radius: 8px;
+ padding: 8px 12px;
+ font-size: 0.78rem;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+.pos-asp-symbol {
+ font-size: 1rem;
+ flex-shrink: 0;
+}
+.pos-asp-text { color: var(--muted); line-height: 1.3; }
+.pos-asp-text strong { color: var(--text); font-weight: 600; }
+
+/* interpretación dentro del panel carta */
+#cartaInterpWrap .md-content { font-size: 0.85rem; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .main { padding: 20px 16px 48px; }
+  .form-card { padding: 22px 18px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .opciones-grid { grid-template-columns: 1fr; }
+  .header { padding: 14px 16px; }
+  .result-body { padding: 18px 18px; }
+}
+@keyframes chartSpin {
+  from { opacity: 0; transform: rotate(-15deg) scale(0.85); }
+  to   { opacity: 1; transform: rotate(0deg) scale(1); }
+}
+.carta-svg-wrap svg { transform-origin: center center; }
+.planet-panel { margin-top: 16px; background: rgba(46, 16, 101,0.95); border: 1px solid rgba(248,113,180,0.3); border-radius: 12px; padding: 16px 20px; display: none; }
+.planet-panel.visible { display: block; animation: fadeIn 0.25s ease; }
+.planet-panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.planet-glyph { font-size: 28px; }
+.planet-name { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
+.planet-sign { font-size: 0.85rem; color: #a78bfa; }
+.planet-retro { background: rgba(248,113,180,0.2); color: #f472b6; border-radius: 4px; padding: 1px 6px; font-size: 0.75rem; font-weight: 700; }
+.planet-interp-btn { margin-top: 10px; padding: 8px 16px; background: linear-gradient(135deg,#ec4899,#8b5cf6); border: none; border-radius: 8px; color: #fff; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+.planet-interp-out { margin-top: 10px; font-size: 0.83rem; line-height: 1.6; color: #cbd5e1; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ── LIGHT-THEME OVERRIDES (textos sobre superficie clara/blanca) ── */
+.md-content h1 { color: #6d28d9 !important; }
+.md-content h2 { color: #6d28d9 !important; }
+.md-content strong { color: #0E1116 !important; }
+.md-content em { color: #6d28d9 !important; }
+.md-content th { color: #6d28d9 !important; }
+.pos-table th { color: #6d28d9 !important; }
+.result-status.streaming { color: #6d28d9 !important; }
+.result-status.done { color: #6d28d9 !important; }
+.result-status.error { color: #db2777 !important; }
+.carta-error { color: #db2777 !important; }
+.pos-badge.dom  { color: #6d28d9 !important; }
+.pos-badge.exal { color: #db2777 !important; }
+.pos-badge.exil { color: #db2777 !important; }
+.pos-badge.caid { color: #6d28d9 !important; }
+.pos-badge.retro { color: #4A4F5C !important; }
+</style></head><body class="mod-page-aurora"><!-- HEADER --><header class="header" id="appHeader"><a class="header-back" href="/astro-home" id="backBtn">← Astrologia · Copiloto Holístico</a><div class="header-title"><span class="header-icon"></span><span class="header-name">Mapa Natal & Revolução Solar</span><span class="header-badge">Astrologia · Copiloto Holístico</span></div></header><!-- MAIN --><div class="main"><!-- FORM --><div class="form-card"><div class="form-title">Dados de Nascimento</div><div class="form-sub">Insira os dados do consulente para gerar a análise astrológica completa. Quanto mais precisa for a hora, mais exato será o resultado.</div><form id="astroForm"><div class="form-grid"><div class="form-group full"><label for="nombre">Nome do consulente</label><input type="text" id="nombre" name="nombre" placeholder="Ex. María García" required autocomplete="off"></div><div class="form-group"><label for="fecha">Data de nascimento</label><input type="date" id="fecha" name="fecha" required></div><div class="form-group"><label for="hora">Hora de nascimento</label><input type="time" id="hora" name="hora" required></div><div class="form-group full"><label for="lugar">Local de nascimento</label><input type="text" id="lugar" name="lugar" placeholder="Ex. Cidade do México, México" required autocomplete="off"></div><div class="form-group full"><label for="lugarActual">Local de residência atual <span class="opt">(opcional)</span></label><input type="text" id="lugarActual" name="lugarActual" placeholder="Ex. Guadalajara, México" autocomplete="off"></div><div class="form-group full"><label for="profundidad">Profundidade da análise</label><div class="select-wrap"><select id="profundidad" name="profundidad"><option value="basico">Básico — Mapa natal + RS (mais rápido)</option><option value="completo" selected>Completo — Natal + RS + RSP + Mensais</option></select></div></div></div><div class="opciones-title">Incluir na análise</div><div class="opciones-grid"><label class="check-card active" id="card-rsp"><input type="checkbox" id="incluirRsp" name="incluirRsp" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Revolução Solar Progressada</div><div class="check-desc">RSP: análise do ano a partir do aniversário solar deste ano</div></div></label><label class="check-card active" id="card-mensal"><input type="checkbox" id="incluirMensal" name="incluirMensal" checked><div class="check-box"></div><div class="check-info"><div class="check-name">Mensais</div><div class="check-desc">Análise mensal do momento atual (RS Lunar)</div></div></label></div><button type="submit" class="btn-submit" id="btnSubmit"><span></span><span>Gerar análise astrológica</span></button></form></div><!-- RESULTADO --><div class="result-card" id="resultCard"><div class="result-header"><div class="result-header-left"><span style="font-size:1rem;"></span><span id="resultTitle" style="font-size:0.9rem;font-weight:700;">Análise Astrológica</span></div><div style="display:flex;align-items:center;gap:10px;"><span class="result-status" id="resultStatus"></span><button class="btn-copy" id="btnCopy" style="display:none;">Copiar</button></div></div><div class="status-bar" id="statusBar"><div class="spinner" id="spinner"></div><span id="statusMsg">Iniciando...</span></div><div class="result-body"><div class="md-content" id="mdContent"></div></div></div><!-- CARTA NATAL SVG --><div class="carta-card" id="cartaCard"><div class="carta-header"><div style="display:flex;align-items:center;gap:8px;"><span style="font-size:1rem;"></span><span style="font-size:0.9rem;font-weight:700;" id="cartaTitle">Mapa Natal</span></div><div class="carta-tabs"><button class="carta-tab active" id="tabNatal" onclick="switchTab('natal')">Mapa Natal</button><button class="carta-tab" id="tabRS" onclick="switchTab('rs')">Rev. Solar</button><button class="carta-tab" id="tabPos" onclick="switchTab('posiciones')">Posições</button><button class="carta-tab" id="tabInterp" onclick="switchTab('interpretacion')">Interpretação</button></div></div><div class="carta-body" id="cartaBody"><div class="carta-loading" id="cartaLoading"><div class="spinner"></div><span id="cartaLoadingMsg">Gerando mapa natal...</span></div><!-- Carta SVG --><div class="carta-svg-wrap" id="cartaSvgWrap" style="display:none;"></div><!-- Tabla de posiciones --><div id="cartaPosiciones" style="display:none;width:100%;"></div><!-- Interpretación streaming --><div id="cartaInterpWrap" style="display:none;width:100%;"><div class="md-content" id="cartaInterpContent"></div></div><div id="planet-panel" class="planet-panel"><div class="planet-panel-header"><span class="planet-glyph" id="pp-glyph"></span><div><div class="planet-name" id="pp-name"></div><div class="planet-sign" id="pp-sign"></div></div><span class="planet-retro" id="pp-retro" style="display:none">&#x211E; Retrógrado</span></div><div id="pp-interp-out" class="planet-interp-out"></div><button class="planet-interp-btn" id="pp-btn">✨ Interpretar</button></div><div class="carta-error" id="cartaError" style="display:none;"></div></div></div></div><script>
+(function() {
+
+  /* ── EMBED MODE ── */
+ const params = new URLSearchParams(window.location.search);
+ const isEmbed = params.has('embed');
+ if (isEmbed) {
+ document.body.classList.add('embed-mode');
+ document.getElementById('backBtn').target = '_top';
+ function sendHeight() {
+ window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+    }
+ sendHeight();
+ new ResizeObserver(sendHeight).observe(document.body);
+  }
+
+  /* ── CHECKBOX CARDS ── */
+  ['rsp','mensal'].forEach(function(key) {
+ var card = document.getElementById('card-' + key);
+ var chk  = document.getElementById('incluir' + key.charAt(0).toUpperCase() + key.slice(1));
+ card.addEventListener('click', function() {
+ chk.checked = !chk.checked;
+ card.classList.toggle('active', chk.checked);
+    });
+  });
+
+  /* ── FORM SUBMIT ── */
+ var form       = document.getElementById('astroForm');
+ var btnSubmit  = document.getElementById('btnSubmit');
+ var resultCard = document.getElementById('resultCard');
+ var resultTitle= document.getElementById('resultTitle');
+ var resultStatus=document.getElementById('resultStatus');
+ var statusBar  = document.getElementById('statusBar');
+ var statusMsg  = document.getElementById('statusMsg');
+ var spinner    = document.getElementById('spinner');
+ var mdContent  = document.getElementById('mdContent');
+ var btnCopy    = document.getElementById('btnCopy');
+ var cartaCard  = document.getElementById('cartaCard');
+ var cartaTitle = document.getElementById('cartaTitle');
+ var cartaLoading = document.getElementById('cartaLoading');
+ var cartaSvgWrap = document.getElementById('cartaSvgWrap');
+ var cartaError = document.getElementById('cartaError');
+
+ var rawText     = '';
+ var cursor      = null;
+ var currentSrc  = null;
+ var hadError    = false;
+ var _cartaParams = null;   // {nombre, fecha, hora, lugar} guardados para recargar carta
+ var _cartaTipo   = 'natal';
+
+  /* ── CARTA PANEL ── */
+ var _activeTab    = 'natal';
+ var _svgCache     = {};   // { natal: svgStr, rs: svgStr }
+ var _posCache     = null; // datos crudos JSON
+ var _interpLoaded = false;
+ var _interpStream = null;
+
+ var TABS = ['natal','rs','posiciones','interpretacion'];
+ var TAB_IDS = { natal:'tabNatal', rs:'tabRS', posiciones:'tabPos', interpretacion:'tabInterp' };
+
+ function cartaShowLoading(msg) {
+ document.getElementById('cartaLoadingMsg').textContent = msg || 'Carregando...';
+ cartaLoading.style.display       = 'flex';
+ cartaSvgWrap.style.display       = 'none';
+ document.getElementById('cartaPosiciones').style.display   = 'none';
+ document.getElementById('cartaInterpWrap').style.display   = 'none';
+ cartaError.style.display         = 'none';
+  }
+ function cartaShowError(msg) {
+ cartaLoading.style.display = 'none';
+ cartaError.textContent     = ' ' + msg;
+ cartaError.style.display   = 'block';
+  }
+ function cartaShowSvg(svg) {
+ cartaLoading.style.display = 'none';
+ cartaSvgWrap.innerHTML     = svg;
+ cartaSvgWrap.style.display = 'flex';
+ cartaSvgWrap.style.justifyContent = 'center';
+ var svgEl = cartaSvgWrap.querySelector('svg');
+ if (svgEl) { svgEl.style.animation = 'chartSpin 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards'; }
+ initChartInteractivity();
+  }
+ var PLANET_ES = {Sun:'Sol',Moon:'Lua',Mercury:'Mercúrio',Venus:'Vênus',Mars:'Marte',Jupiter:'Júpiter',Saturn:'Saturno',Uranus:'Urano',Neptune:'Netuno',Pluto:'Plutão',Chiron:'Quíron',Ascendant:'Ascendente',Medium_Coeli:'Meio-Céu'};
+ var PLANET_GLYPH = {Sun:'☉',Moon:'☽',Mercury:'☿',Venus:'♀',Mars:'♂',Jupiter:'♃',Saturn:'♄',Uranus:'♅',Neptune:'♆',Pluto:'♇',Chiron:'⚷',Ascendant:'AC',Medium_Coeli:'MC'};
+ var SIGNS_ES = {Ari:'Áries',Tau:'Touro',Gem:'Gêmeos',Can:'Câncer',Leo:'Leão',Vir:'Virgem',Lib:'Libra',Sco:'Escorpião',Sag:'Sagitário',Cap:'Capricórnio',Aqu:'Aquário',Pis:'Peixes'};
+ var HOUSES_ES = {First:'I',Second:'II',Third:'III',Fourth:'IV',Fifth:'V',Sixth:'VI',Seventh:'VII',Eighth:'VIII',Ninth:'IX',Tenth:'X',Eleventh:'XI',Twelfth:'XII'};
+ function houseRoman(houseStr) { var m = (houseStr||'').match(/^(\w+)_House/); return m ? (HOUSES_ES[m[1]]||m[1]) : ''; }
+ function initChartInteractivity() {
+  var svgEl = cartaSvgWrap.querySelector('svg');
+  if (!svgEl) return;
+  var points = svgEl.querySelectorAll('g[kr\\:node="ChartPoint"]');
+  var panel = document.getElementById('planet-panel');
+  var ppGlyph = document.getElementById('pp-glyph');
+  var ppName = document.getElementById('pp-name');
+  var ppSign = document.getElementById('pp-sign');
+  var ppRetro = document.getElementById('pp-retro');
+  var ppOut = document.getElementById('pp-interp-out');
+  var ppBtn = document.getElementById('pp-btn');
+  points.forEach(function(g) {
+   var slug = g.getAttribute('kr:slug') || '';
+   if (!PLANET_ES[slug]) return;
+   g.style.cursor = 'pointer';
+   g.style.transition = 'filter 0.2s';
+   g.addEventListener('mouseenter', function() { g.style.filter = 'drop-shadow(0 0 8px rgba(248,113,180,0.8))'; });
+   g.addEventListener('mouseleave', function() { g.style.filter = ''; });
+   g.addEventListener('click', function() {
+    var sign = SIGNS_ES[g.getAttribute('kr:sign')] || g.getAttribute('kr:sign') || '';
+    var house = houseRoman(g.getAttribute('kr:house'));
+    var deg = parseFloat(g.getAttribute('kr:signposition') || '0').toFixed(1);
+    var isRetro = g.getAttribute('kr:retrograde') === 'true';
+    ppGlyph.textContent = PLANET_GLYPH[slug] || '★';
+    ppName.textContent = PLANET_ES[slug];
+    ppSign.textContent = sign + ' ' + deg + '° · Casa ' + house;
+    ppRetro.style.display = isRetro ? 'inline' : 'none';
+    ppOut.innerHTML = '';
+    panel.classList.add('visible');
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    ppBtn.onclick = function() {
+     if (!_cartaParams) return;
+     ppOut.innerHTML = '<span style="color:#a78bfa">Consultando o Motor Astrológico...</span>';
+     var params = new URLSearchParams({ nombre: _cartaParams.nombre, fecha_nacimiento: _cartaParams.fecha, hora_nacimiento: _cartaParams.hora, lugar_nacimiento: _cartaParams.lugar, planetas: slug });
+     var src = new EventSource('/astro/interpretacion-stream?' + params.toString());
+     var buf = '';
+     src.onmessage = function(ev) { try { var d = JSON.parse(ev.data); if (d.text) { buf += d.text; ppOut.innerHTML = buf.replace(/\n/g,'<br>'); } if (d.done) src.close(); } catch(e) {} };
+     src.onerror = function() { src.close(); };
+    };
+   });
+  });
+ }
+ function cartaShowPos(html) {
+ cartaLoading.style.display = 'none';
+ var el = document.getElementById('cartaPosiciones');
+ el.innerHTML = html;
+ el.style.display = 'block';
+  }
+ function cartaShowInterp() {
+ cartaLoading.style.display = 'none';
+ document.getElementById('cartaInterpWrap').style.display = 'block';
+  }
+
+ function setActiveTab(tab) {
+ TABS.forEach(function(t) {
+ var el = document.getElementById(TAB_IDS[t]);
+ if (el) el.classList.toggle('active', t === tab);
+    });
+ _activeTab = tab;
+  }
+
+  /* ── Carta SVG (natal o RS) ── */
+ function loadSvgTab(tipo) {
+ if (_svgCache[tipo]) { cartaShowSvg(_svgCache[tipo]); return; }
+ cartaShowLoading(tipo === 'rs' ? 'Calculando Revolução Solar...' : 'Gerando mapa natal...');
+ var p   = _cartaParams;
+ var url = '/astro/carta?nombre=' + encodeURIComponent(p.nombre)
+            + '&fecha=' + encodeURIComponent(p.fecha)
+            + '&hora='  + encodeURIComponent(p.hora)
+            + '&lugar=' + encodeURIComponent(p.lugar)
+            + '&tipo='  + tipo;
+ fetch(url)
+      .then(function(r) { if (!r.ok) return r.text().then(function(t){throw new Error(t);}); return r.text(); })
+      .then(function(svg) { _svgCache[tipo] = svg; cartaShowSvg(svg); })
+      .catch(function(e) { cartaShowError('Erro ao carregar mapa: ' + e.message); });
+  }
+
+  /* ── Posiciones (tabla inmediata) ── */
+ var SIGNO_EMOJI = {
+    'Aries':'','Tauro':'','Géminis':'','Cáncer':'','Leo':'','Virgo':'',
+    'Libra':'','Escorpio':'','Sagitario':'','Capricornio':'','Acuario':'','Piscis':''
+  };
+ var ASP_SYMBOL = { 'conjunction':'','opposition':'','trine':'△','square':'□','sextile':'','quincunx':'' };
+ var PLANETA_ES = {
+ sun:'Sol',moon:'Lua',mercury:'Mercúrio',venus:'Vênus',mars:'Marte',
+ jupiter:'Júpiter',saturn:'Saturno',uranus:'Urano',neptune:'Netuno',
+ pluto:'Plutão',true_node:'Nodo Norte',chiron:'Quíron'
+  };
+ var DIG_CLASS = { domicilio:'dom', exaltación:'exal', exilio:'exil', caída:'caid' };
+
+ function loadPosTab() {
+ if (_posCache) { cartaShowPos(buildPosHtml(_posCache)); return; }
+ cartaShowLoading('Calculando posições...');
+ var p = _cartaParams;
+ var url = '/astro/datos-carta?nombre=' + encodeURIComponent(p.nombre)
+            + '&fecha=' + encodeURIComponent(p.fecha)
+            + '&hora='  + encodeURIComponent(p.hora)
+            + '&lugar=' + encodeURIComponent(p.lugar);
+ fetch(url)
+      .then(function(r) { if (!r.ok) return r.json().then(function(j){throw new Error(j.detail||'Erro');}); return r.json(); })
+      .then(function(data) { _posCache = data.natal; cartaShowPos(buildPosHtml(_posCache)); })
+      .catch(function(e) { cartaShowError('Erro ao carregar posições: ' + e.message); });
+  }
+
+ function buildPosHtml(natal) {
+ var planetas = natal.planetas || {};
+ var casas    = natal.casas    || {};
+ var aspectos = natal.aspectos || [];
+
+    // Tabla planetas
+ var rows = '';
+ Object.keys(planetas).forEach(function(pk) {
+ var pd  = planetas[pk];
+ var nom = PLANETA_ES[pk] || pk;
+ var sig = pd.signo || '?';
+ var emoji = SIGNO_EMOJI[sig] || '';
+ var grado = (pd.grado || 0).toFixed(1);
+ var casa  = pd.casa || '?';
+ var dig   = pd.dignidad || '';
+ var retro = pd.retrogrado;
+ var digBadge = dig ? '<span class="pos-badge ' + (DIG_CLASS[dig]||'') + '">' + dig + '</span>' : '';
+ var retroBadge = retro ? ' <span class="pos-badge retro">℞</span>' : '';
+ rows += '<tr><td><strong>' + nom + '</strong>' + retroBadge + '</td>'
+            + '<td>' + emoji + ' ' + sig + '</td>'
+            + '<td>' + grado + '°</td>'
+            + '<td>Casa ' + casa + '</td>'
+            + '<td>' + digBadge + '</td></tr>';
+    });
+
+    // Ángulos ASC/MC
+ var asc = casas[1] || {};
+ var mc  = casas[10] || {};
+ var angHtml = '<tr><td><strong>ASC</strong></td>'
+      + '<td>' + (SIGNO_EMOJI[asc.signo]||'') + ' ' + (asc.signo||'?') + '</td>'
+      + '<td>' + ((asc.grado||0).toFixed(1)) + '°</td><td>—</td><td></td></tr>'
+      + '<tr><td><strong>MC</strong></td>'
+      + '<td>' + (SIGNO_EMOJI[mc.signo]||'') + ' ' + (mc.signo||'?') + '</td>'
+      + '<td>' + ((mc.grado||0).toFixed(1)) + '°</td><td>—</td><td></td></tr>';
+
+    // Aspectos
+ var aspHtml = '';
+ if (aspectos.length) {
+ var items = aspectos.slice(0,16).map(function(a) {
+ var p1  = PLANETA_ES[a.planeta1] || a.planeta1;
+ var p2  = PLANETA_ES[a.planeta2] || a.planeta2;
+ var sym = ASP_SYMBOL[a.tipo] || a.tipo;
+ var orb = (a.orbe||0).toFixed(1);
+ return '<div class="pos-asp-item"><span class="pos-asp-symbol">' + sym + '</span>'
+             + '<span class="pos-asp-text"><strong>' + p1 + '</strong> · ' + p2 + '<br>'
+             + a.tipo + ' ' + orb + '°</span></div>';
+      }).join('');
+ aspHtml = '<div class="pos-section"><div class="pos-section-title">Aspectos principais</div>'
+              + '<div class="pos-asp-grid">' + items + '</div></div>';
+    }
+
+ return '<table class="pos-table">'
+      + '<thead><tr><th>Planeta</th><th>Signo</th><th>Grau</th><th>Casa</th><th>Dignidade</th></tr></thead>'
+      + '<tbody>' + rows + angHtml + '</tbody></table>'
+      + aspHtml;
+  }
+
+  /* ── Interpretación (streaming) ── */
+ function loadInterpTab() {
+ if (_interpLoaded) { cartaShowInterp(); return; }
+ cartaShowLoading('Iniciando interpretação...');
+ cartaShowInterp();   // mostrar contenedor vacío
+ var ic = document.getElementById('cartaInterpContent');
+ ic.innerHTML = '';
+ var p = _cartaParams;
+ var url = '/astro/interpretacion-stream?nombre=' + encodeURIComponent(p.nombre)
+            + '&fecha=' + encodeURIComponent(p.fecha)
+            + '&hora='  + encodeURIComponent(p.hora)
+            + '&lugar=' + encodeURIComponent(p.lugar);
+
+ var interpRaw = '';
+ var renderT   = null;
+ function scheduleRenderInterp() {
+ if (renderT) clearTimeout(renderT);
+ renderT = setTimeout(function() {
+ ic.innerHTML = marked.parse(interpRaw);
+      }, 80);
+    }
+
+ fetch(url)
+      .then(function(r) { if (!r.ok) return r.text().then(function(t){throw new Error(t);}); return r.body.getReader(); })
+      .then(function(reader) {
+ var dec = new TextDecoder(), buf = '';
+ function read() {
+ reader.read().then(function(chunk) {
+ if (chunk.done) return;
+ buf += dec.decode(chunk.value, {stream:true});
+ var lines = buf.split('\n'); buf = lines.pop();
+ lines.forEach(function(line) {
+ if (!line.startsWith('data: ')) return;
+ var d = line.slice(6).trim();
+ if (d === '[DONE]') {
+ ic.innerHTML = marked.parse(interpRaw);
+ _interpLoaded = true;
+ return;
+              }
+ try {
+ var obj = JSON.parse(d);
+ if (obj.status) {
+ document.getElementById('cartaLoadingMsg').textContent = obj.status;
+                } else if (obj.token) {
+ interpRaw += obj.token;
+ scheduleRenderInterp();
+                } else if (obj.error) {
+ cartaShowError(obj.error);
+                }
+              } catch(ex) {}
+            });
+ read();
+          }).catch(function(e) { cartaShowError('Erro no stream: ' + e.message); });
+        }
+ read();
+      })
+      .catch(function(e) { cartaShowError('Erro ao carregar interpretação: ' + e.message); });
+  }
+
+  /* ── Switch de tabs ── */
+ window.switchTab = function(tab) {
+ if (!_cartaParams) return;
+ setActiveTab(tab);
+ cartaTitle.textContent = {natal:'Mapa Natal', rs:'Revolução Solar', posiciones:'Posições Planetárias', interpretacion:'Interpretação'}[tab] || tab;
+ var cartaBody = document.getElementById('cartaBody');
+ cartaBody.style.opacity = '0';
+ cartaBody.style.transition = 'opacity 0.2s';
+ setTimeout(function() { cartaBody.style.opacity = '1'; }, 200);
+ if (tab === 'natal' || tab === 'rs') loadSvgTab(tab);
+ else if (tab === 'posiciones') loadPosTab();
+ else if (tab === 'interpretacion') loadInterpTab();
+  };
+
+ function loadCarta(tipo) {
+ if (!_cartaParams) return;
+ cartaCard.classList.add('visible');
+ setActiveTab(tipo || 'natal');
+ cartaTitle.textContent = 'Mapa Natal';
+ loadSvgTab('natal');
+ setTimeout(function() {
+ cartaCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+
+ form.addEventListener('submit', function(e) {
+ e.preventDefault();
+ if (currentSrc) { currentSrc.close(); currentSrc = null; }
+
+ var nombre       = document.getElementById('nombre').value.trim();
+ var fecha        = document.getElementById('fecha').value;
+ var hora         = document.getElementById('hora').value;
+ var lugar        = document.getElementById('lugar').value.trim();
+ var lugarActual  = document.getElementById('lugarActual').value.trim();
+ var profundidad  = document.getElementById('profundidad').value;
+ var incluirRsp   = document.getElementById('incluirRsp').checked;
+ var incluirMensal= document.getElementById('incluirMensal').checked;
+
+ if (!nombre || !fecha || !hora || !lugar) return;
+
+    // Guardar params para la carta
+ _cartaParams = { nombre: nombre, fecha: fecha, hora: hora, lugar: lugar };
+ _cartaTipo = 'natal';
+
+    // Reset UI
+ rawText = '';
+ hadError = false;
+ mdContent.innerHTML = '';
+ btnCopy.style.display = 'none';
+ cartaCard.classList.remove('visible');
+ resultCard.classList.add('visible');
+ resultTitle.textContent = nombre + ' · Análise Astrológica';
+ resultStatus.textContent = 'Calculando...';
+ resultStatus.className = 'result-status streaming';
+ statusBar.classList.remove('hidden');
+ spinner.style.display = 'block';
+ statusMsg.textContent = 'Preparando dados...';
+ btnSubmit.disabled = true;
+ btnSubmit.querySelector('span:last-child').textContent = 'Gerando...';
+
+    // Scroll to result
+ setTimeout(function() {
+ resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
+
+    // Build body
+ var body = {
+ nombre: nombre,
+ fecha_nacimiento: fecha,
+ hora_nacimiento: hora,
+ lugar_nacimiento: lugar,
+ profundidad: profundidad,
+ incluir_rsp: incluirRsp,
+ incluir_mensal: incluirMensal
+    };
+ if (lugarActual) body.lugar_actual = lugarActual;
+
+    // POST → SSE streaming
+ fetch('/astro/analisis-stream', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream' },
+ body: JSON.stringify(body)
+    }).then(function(res) {
+ if (!res.ok) throw new Error('Error ' + res.status);
+ var reader = res.body.getReader();
+ var decoder = new TextDecoder();
+ var buf = '';
+
+ function addCursor() {
+ removeCursor();
+ cursor = document.createElement('span');
+ cursor.className = 'cursor';
+ mdContent.appendChild(cursor);
+      }
+ function removeCursor() {
+ if (cursor && cursor.parentNode) cursor.parentNode.removeChild(cursor);
+ cursor = null;
+      }
+
+ function renderMarkdown() {
+ removeCursor();
+ mdContent.innerHTML = marked.parse(rawText);
+ if (resultStatus.classList.contains('streaming')) addCursor();
+      }
+
+ var renderTimer = null;
+ function scheduleRender() {
+ if (renderTimer) clearTimeout(renderTimer);
+ renderTimer = setTimeout(renderMarkdown, 60);
+      }
+
+ function processLine(line) {
+ if (!line.startsWith('data: ')) return;
+ var data = line.slice(6).trim();
+ if (data === '[DONE]') {
+ removeCursor();
+ if (!hadError) {
+ renderMarkdown();
+ resultStatus.textContent = 'Concluído';
+ resultStatus.className = 'result-status done';
+ btnCopy.style.display = 'inline-flex';
+            // Cargar carta natal automáticamente
+ setTimeout(function() { loadCarta('natal'); }, 400);
+          }
+ statusBar.classList.add('hidden');
+ btnSubmit.disabled = false;
+ btnSubmit.querySelector('span:last-child').textContent = 'Gerar análise astrológica';
+ if (isEmbed) {
+ setTimeout(function() {
+ window.parent.postMessage({ type: 'iframeHeight', height: document.body.scrollHeight }, '*');
+            }, 600);
+          }
+ return;
+        }
+ try {
+ var obj = JSON.parse(data);
+ if (obj.status) {
+ statusMsg.textContent = obj.status;
+          } else if (obj.token !== undefined) {
+ rawText += obj.token;
+ scheduleRender();
+          } else if (obj.error) {
+ hadError = true;
+ resultStatus.textContent = 'Erro';
+ resultStatus.className = 'result-status error';
+ statusBar.classList.add('hidden');
+ mdContent.innerHTML = '<p style="color:#f472b6;padding:8px 0;"> ' + obj.error + '</p>';
+ btnSubmit.disabled = false;
+ btnSubmit.querySelector('span:last-child').textContent = 'Tentar de novo';
+          }
+        } catch(ex) { /* ignore parse errors */ }
+      }
+
+ function read() {
+ reader.read().then(function(chunk) {
+ if (chunk.done) return;
+ buf += decoder.decode(chunk.value, { stream: true });
+ var lines = buf.split('\n');
+ buf = lines.pop();
+ lines.forEach(processLine);
+ read();
+        }).catch(function(err) {
+ console.error('Stream error:', err);
+ resultStatus.textContent = 'Erro de conexão';
+ resultStatus.className = 'result-status error';
+ statusBar.classList.add('hidden');
+ btnSubmit.disabled = false;
+ btnSubmit.querySelector('span:last-child').textContent = 'Tentar de novo';
+        });
+      }
+ read();
+
+    }).catch(function(err) {
+ console.error(err);
+ statusMsg.textContent = 'Erro ao conectar com o servidor.';
+ resultStatus.textContent = 'Erro';
+ resultStatus.className = 'result-status error';
+ spinner.style.display = 'none';
+ btnSubmit.disabled = false;
+ btnSubmit.querySelector('span:last-child').textContent = 'Tentar de novo';
+    });
+  });
+
+  /* ── COPY ── */
+ btnCopy.addEventListener('click', function() {
+ navigator.clipboard.writeText(rawText).then(function() {
+ btnCopy.textContent = 'Copiado!';
+ setTimeout(function() { btnCopy.textContent = 'Copiar'; }, 2000);
+    });
+  });
+
+})();
+</script></body></html>

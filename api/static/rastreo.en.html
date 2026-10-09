@@ -1,0 +1,3065 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><title>Magnet Scan · Holistic Copilot</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=2"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2"><style>
+:root {
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface2: #f2f2f7;
+  --border: rgba(0,0,0,0.09);
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --acc: #7c3aed;
+  --acc-dim: rgba(124, 58, 237,0.1);
+  --radius: 8px;
+  --header-h: 52px;
+  --col-izq: 220px;
+  --col-der: 280px;
+
+  /* tipo colors */
+  --c-bacteria: #ec4899;
+  --c-virus: #ec4899;
+  --c-hongo: #f472b6;
+  --c-parasito: #a78bfa;
+  --c-emocional: #a78bfa;
+  --c-disfuncional: #a78bfa;
+  --c-especial: #f472b6;
+  --c-reservorio: #a78bfa;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+ font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+ background: var(--bg);
+ color: var(--text);
+ height: 100dvh;
+ overflow: hidden;
+ display: flex;
+ flex-direction: column;
+}
+
+/* ── HEADER ───────────────────────────────────────── */
+header {
+ height: var(--header-h);
+ background: var(--surface);
+ border-bottom: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 0 16px;
+ flex-shrink: 0;
+ z-index: 10;
+}
+
+header h1 {
+ font-size: 1rem;
+ font-weight: 700;
+ color: var(--acc);
+ white-space: nowrap;
+}
+
+.home-btn {
+ color: var(--muted);
+ text-decoration: none;
+ font-size: 1.1rem;
+ padding: 4px 8px;
+ border-radius: 6px;
+ transition: color .2s, background .2s;
+ line-height: 1;
+ flex-shrink: 0;
+}
+.home-btn:hover { color: var(--text); background: rgba(0,0,0,0.05); }
+
+#global-search {
+ flex: 1;
+ max-width: 400px;
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ color: var(--text);
+ padding: 6px 12px;
+ font-size: 0.85rem;
+ outline: none;
+ transition: border-color 0.2s;
+}
+#global-search:focus { border-color: var(--acc); }
+#global-search::placeholder { color: var(--muted); }
+
+.spacer { flex: 1; }
+
+#btn-finalizar {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ background: var(--acc);
+ color: #ffffff;
+ border: none;
+ border-radius: var(--radius);
+ padding: 7px 14px;
+ font-size: 0.85rem;
+ font-weight: 700;
+ cursor: pointer;
+ transition: opacity 0.2s;
+ white-space: nowrap;
+}
+#btn-finalizar:hover { opacity: 0.85; }
+
+#confirmed-badge {
+ background: rgba(255,255,255,0.28);
+ color: #ffffff;
+ border-radius: 999px;
+ padding: 1px 7px;
+ font-size: 0.75rem;
+ font-weight: 800;
+ min-width: 20px;
+ text-align: center;
+}
+
+/* ── MAIN GRID ────────────────────────────────────── */
+.main-grid {
+ display: grid;
+ grid-template-columns: 1fr var(--col-der);
+ flex: 1;
+ overflow: hidden;
+}
+
+/* ── COL IZQUIERDA ───────────────────────────────── */
+.col-izq {
+ background: var(--surface);
+ border-right: 1px solid var(--border);
+ display: flex;
+ flex-direction: column;
+ overflow-y: auto;
+ padding: 12px 8px;
+ gap: 4px;
+}
+
+.col-izq-title {
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.08em;
+ color: var(--muted);
+ text-transform: uppercase;
+ padding: 4px 8px 8px;
+}
+
+.cat-chip {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ padding: 8px 10px;
+ border-radius: var(--radius);
+ cursor: pointer;
+ font-size: 0.82rem;
+ color: var(--text);
+ border: 1px solid transparent;
+ transition: background 0.15s, border-color 0.15s;
+ user-select: none;
+ line-height: 1.3;
+}
+.cat-chip:hover { background: var(--surface2); }
+.cat-chip.active {
+ background: var(--acc-dim);
+ border-color: var(--acc);
+ color: var(--acc);
+ font-weight: 600;
+}
+.cat-chip .cat-icon { font-size: 1rem; flex-shrink: 0; }
+.cat-chip .cat-label { flex: 1; }
+
+/* ── COL CENTRO ──────────────────────────────────── */
+.col-centro {
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+}
+
+/* image viewer */
+.image-viewer {
+ flex: 0 0 60%;
+ display: flex;
+ flex-direction: column;
+ border-bottom: 1px solid var(--border);
+ background: var(--bg);
+ overflow: hidden;
+}
+
+.image-viewer-header {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ padding: 8px 12px;
+ border-bottom: 1px solid var(--border);
+ font-size: 0.8rem;
+ color: var(--muted);
+ flex-shrink: 0;
+}
+
+.image-viewer-header strong { color: var(--text); }
+
+.image-nav-btn {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 6px;
+ color: var(--text);
+ cursor: pointer;
+ padding: 3px 10px;
+ font-size: 0.8rem;
+ transition: background 0.15s;
+}
+.image-nav-btn:hover { background: var(--surface2); }
+.image-nav-btn:disabled { opacity: 0.35; cursor: default; }
+
+.image-viewer-spacer { flex: 1; }
+
+.image-strip-wrap {
+ flex: 1;
+ overflow-x: auto;
+ overflow-y: hidden;
+ display: flex;
+ align-items: center;
+ padding: 10px 14px;
+ gap: 10px;
+ scrollbar-width: thin;
+ scrollbar-color: var(--muted) transparent;
+}
+
+.thumb {
+ flex-shrink: 0;
+ height: 100%;
+ max-height: 200px;
+ border-radius: 6px;
+ border: 2px solid transparent;
+ cursor: pointer;
+ object-fit: contain;
+ transition: border-color 0.15s, transform 0.15s;
+ background: var(--surface);
+}
+.thumb:hover { border-color: var(--acc); transform: scale(1.03); }
+.thumb.active { border-color: var(--acc); }
+
+.image-empty {
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ color: var(--muted);
+ font-size: 0.9rem;
+ gap: 8px;
+ padding: 20px;
+ text-align: center;
+}
+.image-empty .empty-icon { font-size: 2.5rem; }
+
+/* pair search */
+.pair-search-area {
+ flex: 0 0 40%;
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+ padding: 10px 14px;
+ gap: 8px;
+}
+
+.pair-search-area label {
+ font-size: 0.75rem;
+ font-weight: 600;
+ color: var(--muted);
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+}
+
+#pair-search-input {
+ width: 100%;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ color: var(--text);
+ padding: 7px 12px;
+ font-size: 0.85rem;
+ outline: none;
+ transition: border-color 0.2s;
+}
+#pair-search-input:focus { border-color: var(--acc); }
+#pair-search-input::placeholder { color: var(--muted); }
+
+#pair-results {
+ flex: 1;
+ overflow-y: auto;
+ display: flex;
+ flex-direction: column;
+ gap: 3px;
+ scrollbar-width: thin;
+ scrollbar-color: var(--muted) transparent;
+}
+
+.pair-row {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ padding: 6px 8px;
+ border-radius: 6px;
+ border: 1px solid transparent;
+ transition: background 0.12s;
+ cursor: default;
+}
+.pair-row:hover { background: var(--surface2); }
+
+.pair-row-name {
+ flex: 1;
+ font-size: 0.82rem;
+ color: var(--text);
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+}
+
+.btn-add {
+ background: var(--acc-dim);
+ border: 1px solid var(--acc);
+ border-radius: 6px;
+ color: var(--acc);
+ cursor: pointer;
+ font-size: 0.8rem;
+ font-weight: 700;
+ padding: 2px 9px;
+ transition: background 0.15s;
+ flex-shrink: 0;
+}
+.btn-add:hover { background: rgba(124, 58, 237,0.2); }
+.btn-add.added {
+ background: rgba(124, 58, 237,0.08);
+ border-color: var(--muted);
+ color: var(--acc);
+ cursor: default;
+}
+
+.pair-search-empty {
+ text-align: center;
+ color: var(--muted);
+ font-size: 0.82rem;
+ padding: 20px;
+}
+
+/* ── COL DERECHA ─────────────────────────────────── */
+.col-der {
+ background: var(--surface);
+ border-left: 1px solid var(--border);
+ display: flex;
+ flex-direction: column;
+ overflow: hidden;
+}
+
+.col-der-header {
+ padding: 10px 12px;
+ font-size: 0.75rem;
+ font-weight: 700;
+ letter-spacing: 0.07em;
+ color: var(--muted);
+ text-transform: uppercase;
+ border-bottom: 1px solid var(--border);
+ flex-shrink: 0;
+}
+
+#confirmed-list {
+ flex: 1;
+ overflow-y: auto;
+ padding: 10px 8px;
+ display: flex;
+ flex-direction: column;
+ gap: 6px;
+ scrollbar-width: thin;
+ scrollbar-color: var(--muted) transparent;
+}
+
+.confirmed-empty {
+ text-align: center;
+ color: var(--muted);
+ font-size: 0.8rem;
+ padding: 24px 12px;
+ line-height: 1.6;
+}
+
+.confirmed-card {
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 8px 10px;
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ position: relative;
+}
+
+.confirmed-card-top {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+}
+
+.confirmed-card-name {
+ font-size: 0.8rem;
+ font-weight: 600;
+ color: var(--text);
+ flex: 1;
+ line-height: 1.3;
+}
+
+.confirmed-card-sistema {
+ font-size: 0.72rem;
+ color: var(--muted);
+}
+
+.confirmed-card-bottom {
+ display: flex;
+ justify-content: flex-end;
+}
+
+.btn-remove {
+ background: none;
+ border: none;
+ color: var(--muted);
+ cursor: pointer;
+ font-size: 0.75rem;
+ padding: 2px 6px;
+ border-radius: 4px;
+ transition: color 0.15s, background 0.15s;
+}
+.btn-remove:hover { color: #ec4899; background: rgba(236, 72, 153,0.1); }
+
+/* ── TIPO CHIPS ──────────────────────────────────── */
+.tipo-chip {
+ display: inline-flex;
+ align-items: center;
+ padding: 1px 7px;
+ border-radius: 999px;
+ font-size: 0.68rem;
+ font-weight: 700;
+ letter-spacing: 0.03em;
+ white-space: nowrap;
+ flex-shrink: 0;
+}
+
+.tipo-bacteria   { background: rgba(236, 72, 153,0.15); color: #ec4899; }
+.tipo-virus      { background: rgba(236, 72, 153,0.15); color: #ec4899; }
+.tipo-hongo      { background: rgba(244, 114, 182,0.15); color: #f472b6; }
+.tipo-parasito   { background: rgba(167, 139, 250,0.15); color: #a78bfa; }
+.tipo-emocional  { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.tipo-disfuncional { background: rgba(167, 139, 250,0.15); color: #a78bfa; }
+.tipo-especial   { background: rgba(244,114,182,0.15); color: #f472b6; }
+.tipo-reservorio { background: rgba(167, 139, 250,0.15); color: #a78bfa; }
+.tipo-otro       { background: rgba(139, 92, 246,0.15); color: #a78bfa; }
+
+/* ── LIGHTBOX ────────────────────────────────────── */
+#lightbox {
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.88);
+ z-index: 100;
+ align-items: center;
+ justify-content: center;
+ padding: 20px;
+}
+#lightbox.open { display: flex; }
+
+#lightbox-img {
+ max-width: 90vw;
+ max-height: 88vh;
+ border-radius: 8px;
+ box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+ object-fit: contain;
+}
+
+#lightbox-close {
+ position: fixed;
+ top: 16px;
+ right: 20px;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ color: var(--text);
+ border-radius: 8px;
+ padding: 6px 14px;
+ cursor: pointer;
+ font-size: 0.9rem;
+ z-index: 101;
+}
+#lightbox-close:hover { background: var(--surface2); }
+
+/* ── FINALIZAR MODAL ──────────────────────────────── */
+#modal-overlay {
+ display: none;
+ position: fixed;
+ inset: 0;
+ background: rgba(0,0,0,0.82);
+ z-index: 200;
+ overflow-y: auto;
+ padding: 24px 16px;
+}
+#modal-overlay.open { display: block; }
+
+#modal-box {
+ max-width: 820px;
+ margin: 0 auto;
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: 12px;
+ overflow: hidden;
+}
+
+.modal-header {
+ padding: 18px 24px;
+ border-bottom: 1px solid var(--border);
+ display: flex;
+ align-items: center;
+ gap: 12px;
+}
+
+.modal-header h2 {
+ font-size: 1.1rem;
+ font-weight: 700;
+ flex: 1;
+}
+
+.modal-header-btns {
+ display: flex;
+ gap: 8px;
+}
+
+.modal-btn {
+ padding: 6px 14px;
+ border-radius: var(--radius);
+ font-size: 0.82rem;
+ font-weight: 600;
+ cursor: pointer;
+ border: 1px solid var(--border);
+ transition: background 0.15s;
+}
+.modal-btn-primary {
+ background: var(--acc);
+ color: #ffffff;
+ border-color: var(--acc);
+}
+.modal-btn-primary:hover { opacity: 0.85; }
+.modal-btn-secondary {
+ background: var(--surface2);
+ color: var(--text);
+}
+.modal-btn-secondary:hover { background: #e5e5ea; }
+.modal-btn-ghost {
+ background: transparent;
+ color: var(--muted);
+}
+.modal-btn-ghost:hover { background: rgba(0,0,0,0.05); color: var(--text); }
+
+.modal-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 24px; }
+
+.modal-section-title {
+ font-size: 0.8rem;
+ font-weight: 700;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 12px;
+}
+
+/* body map */
+.body-map-wrap {
+ display: flex;
+ justify-content: center;
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 16px;
+}
+.body-map-wrap img {
+ max-height: 320px;
+ object-fit: contain;
+ opacity: 0.85;
+}
+
+/* map inside instruction card */
+.instruction-map-wrap {
+ margin: 6px 0 4px;
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ overflow: hidden;
+ background: var(--surface);
+}
+.instruction-map-label {
+ font-size: 0.75rem;
+ color: var(--muted);
+ margin: 0;
+ padding: 6px 10px 4px;
+ border-bottom: 1px solid var(--border);
+}
+.instruction-map-img {
+ display: block;
+ max-width: 100%;
+ height: auto;
+ max-height: 520px;
+ cursor: zoom-in;
+ background: var(--bg);
+ padding: 8px;
+ box-sizing: border-box;
+ margin: 0 auto;
+}
+
+/* Grid de mapas por PUNTO (Negativo + Positivo lado a lado) */
+.point-maps-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 14px;
+ margin: 4px 0 0;
+}
+.point-map-card {
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ background: var(--surface);
+ overflow: hidden;
+ display: flex;
+ flex-direction: column;
+}
+.point-map-pol {
+ color: #fff;
+ font-size: 0.72rem;
+ font-weight: 700;
+ letter-spacing: 0.04em;
+ padding: 6px 10px;
+ text-align: center;
+ text-transform: uppercase;
+}
+.point-map-name {
+ font-size: 0.95rem;
+ font-weight: 600;
+ color: var(--text, #1a1a1a);
+ padding: 8px 10px 2px;
+}
+.point-map-loc {
+ font-size: 0.72rem;
+ color: var(--muted);
+ padding: 0 10px 6px;
+ border-bottom: 1px solid var(--border);
+}
+.point-map-img {
+ width: 100%;
+ max-height: 460px !important;
+ object-fit: contain;
+ background: #f7f7f7;
+ cursor: zoom-in;
+}
+.point-map-zoom-hint {
+ font-size: 0.65rem;
+ color: var(--muted);
+ text-align: center;
+ padding: 5px 8px 7px;
+ letter-spacing: 0.02em;
+}
+.point-map-noimg {
+ padding: 20px;
+ text-align: center;
+ color: var(--muted);
+ font-size: 0.8rem;
+ font-style: italic;
+}
+
+/* instruction cards */
+.instruction-card {
+ background: var(--bg);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 12px 14px 14px;
+ display: flex;
+ flex-direction: column;
+ gap: 6px;
+}
+
+.instruction-card-header {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+}
+
+.instruction-num {
+ background: var(--acc);
+ color: #ffffff;
+ border-radius: 50%;
+ width: 24px;
+ height: 24px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.75rem;
+ font-weight: 800;
+ flex-shrink: 0;
+}
+
+.instruction-card-name {
+ font-size: 0.95rem;
+ font-weight: 700;
+ color: var(--text);
+ flex: 1;
+}
+
+.instruction-detail {
+ font-size: 0.82rem;
+ color: var(--muted);
+ line-height: 1.55;
+ padding-left: 34px;
+}
+
+.instruction-detail strong { color: var(--text); }
+
+.instruction-row {
+ display: flex;
+ gap: 6px;
+ padding-left: 34px;
+ flex-wrap: wrap;
+ align-items: flex-start;
+}
+
+.instruction-label {
+ font-size: 0.78rem;
+ color: var(--muted);
+ white-space: nowrap;
+}
+
+.instruction-value {
+ font-size: 0.82rem;
+ color: var(--text);
+ line-height: 1.5;
+}
+
+/* ── PRINT STYLES ────────────────────────────────── */
+@media print {
+ body { background: white; color: #111; overflow: auto; height: auto; }
+ header, .main-grid { display: none; }
+  #modal-overlay { display: block !important; position: static; background: white; padding: 0; }
+  #modal-box { border: none; box-shadow: none; }
+  .modal-header-btns { display: none; }
+  .instruction-card { border: 1px solid #ddd; break-inside: avoid; }
+  .modal-section-title { color: #666; }
+  .instruction-detail, .instruction-value { color: #222; }
+  .instruction-label { color: #555; }
+  .tipo-chip { border: 1px solid currentColor; }
+}
+
+/* ── MOBILE ──────────────────────────────────────── */
+@media (max-width: 700px) {
+  .main-grid {
+ grid-template-columns: 1fr;
+ grid-template-rows: 1fr;
+  }
+  .col-izq, .col-der { display: none; }
+
+  .col-izq.drawer-open, .col-der.drawer-open {
+ display: flex;
+ position: fixed;
+ top: var(--header-h);
+ bottom: 0;
+ z-index: 50;
+ width: min(280px, 85vw);
+  }
+
+  .col-izq.drawer-open { left: 0; }
+  .col-der.drawer-open { right: 0; }
+
+  #btn-toggle-cat, #btn-toggle-confirm { display: flex; }
+}
+
+#btn-toggle-cat, #btn-toggle-confirm { display: none; }
+
+.mobile-toggle {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ color: var(--text);
+ padding: 5px 10px;
+ font-size: 0.78rem;
+ cursor: pointer;
+}
+
+/* ── WIZARD DE PARES BIOMAGNÉTICOS ───────────────── */
+#wizard-pares {
+ display: none;
+ flex: 1;
+ flex-direction: column;
+ overflow: hidden;
+ background: var(--bg);
+}
+#wizard-pares.active { display: flex; }
+
+/* tab bar */
+#wizard-pares .wiz-tabs {
+ display: flex;
+ gap: 0;
+ border-bottom: 1.5px solid #e0e0e5;
+ background: #fff;
+ flex-shrink: 0;
+}
+#wizard-pares .wiz-tab {
+ flex: 1;
+ padding: 11px 10px;
+ font-size: .82rem;
+ font-weight: 600;
+ font-family: inherit;
+ background: none;
+ border: none;
+ border-bottom: 2.5px solid transparent;
+ cursor: pointer;
+ color: #6e6e73;
+ transition: color .15s, border-color .15s;
+ margin-bottom: -1.5px;
+}
+#wizard-pares .wiz-tab.active {
+ color: #7c3aed;
+ border-bottom-color: #7c3aed;
+}
+#wizard-pares .wiz-tab:hover:not(.active) { color: #1d1d1f; }
+
+#wizard-pares .wiz-inner {
+ flex: 1;
+ overflow-y: auto;
+ padding: 18px 20px;
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+}
+#wizard-pares .wiz-inner.hidden { display: none; }
+
+/* ── TABLA DE REFERENCIA ── */
+#tabla-ref {
+ flex: 1;
+ overflow-y: auto;
+ display: none;
+ flex-direction: column;
+ gap: 0;
+ padding: 16px 18px 24px;
+}
+#tabla-ref.visible { display: flex; }
+
+.tref-search {
+ position: sticky;
+ top: 0;
+ z-index: 2;
+ background: var(--bg);
+ padding-bottom: 10px;
+}
+.tref-search input {
+ width: 100%;
+ padding: 8px 12px;
+ border: 1.5px solid #d0d0d5;
+ border-radius: 9px;
+ font-size: .85rem;
+ font-family: inherit;
+ background: #fff;
+ color: #1d1d1f;
+ outline: none;
+ transition: border-color .15s;
+}
+.tref-search input:focus { border-color: #7c3aed; }
+
+.tref-region {
+ margin-bottom: 18px;
+}
+.tref-region-hdr {
+ font-size: .78rem;
+ font-weight: 800;
+ text-transform: uppercase;
+ letter-spacing: .07em;
+ color: #fff;
+ background: #7c3aed;
+ border-radius: 9px 9px 0 0;
+ padding: 8px 14px;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ cursor: pointer;
+ user-select: none;
+ transition: background .15s;
+}
+.tref-region-hdr:hover { background: #6d28d9; }
+.tref-region-hdr .tref-toggle { margin-left: auto; font-size: .9rem; transition: transform .2s; }
+.tref-region.collapsed .tref-toggle { transform: rotate(-90deg); }
+
+.tref-region-body {
+ border: 1.5px solid #d0d0d5;
+ border-top: none;
+ border-radius: 0 0 9px 9px;
+ overflow: hidden;
+ background: #fff;
+}
+.tref-region.collapsed .tref-region-body { display: none; }
+
+.tref-zona-hdr {
+ font-size: .72rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: .06em;
+ color: #7c3aed;
+ background: #eff6ff;
+ padding: 6px 14px;
+ border-top: 1px solid #ede9fe;
+}
+.tref-zona-hdr:first-child { border-top: none; }
+
+table.tref-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: .78rem;
+}
+table.tref-table th {
+ background: #f0f0f5;
+ color: #6e6e73;
+ font-size: .66rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: .05em;
+ padding: 5px 10px;
+ text-align: left;
+ border-bottom: 1px solid #e0e0e5;
+}
+table.tref-table td {
+ padding: 6px 10px;
+ border-bottom: 1px solid #f0f0f5;
+ vertical-align: top;
+ color: #1d1d1f;
+ line-height: 1.4;
+}
+table.tref-table tr:last-child td { border-bottom: none; }
+table.tref-table tr:hover td { background: #f9f9fb; }
+table.tref-table td:first-child {
+ font-weight: 600;
+ color: #1d1d1f;
+ white-space: nowrap;
+ width: 130px;
+}
+table.tref-table td:nth-child(2) {
+ color: #6e6e73;
+ font-size: .7rem;
+ white-space: nowrap;
+ width: 40px;
+}
+table.tref-table td:nth-child(3) { color: #5b21b6; }
+
+.tref-par-list { display: flex; flex-wrap: wrap; gap: 3px 8px; }
+.tref-par-item {
+ display: inline-flex;
+ align-items: baseline;
+ gap: 3px;
+}
+.tref-par-num {
+ font-size: .63rem;
+ font-weight: 700;
+ color: #7c3aed;
+ min-width: 14px;
+}
+.tref-par-name { font-size: .75rem; color: #5b21b6; }
+.tref-par-item.highlight .tref-par-name { background: #fce7f3; border-radius: 3px; padding: 0 2px; }
+.tref-no-results { padding: 20px; text-align: center; color: #6e6e73; font-size: .85rem; }
+
+/* breadcrumb */
+#wizard-pares .wiz-bc {
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ flex-wrap: wrap;
+ font-size: .73rem;
+ color: #6e6e73;
+ min-height: 20px;
+}
+#wizard-pares .wiz-bc-sep { opacity: .4; }
+#wizard-pares .wiz-bc-item { cursor: pointer; color: #7c3aed; font-weight: 500; }
+#wizard-pares .wiz-bc-item:hover { text-decoration: underline; }
+#wizard-pares .wiz-bc-cur { color: #1d1d1f; font-weight: 600; }
+
+/* step label & question */
+#wizard-pares .wiz-label {
+ font-size: .66rem; font-weight: 700; letter-spacing: .08em;
+ color: #6e6e73; text-transform: uppercase;
+}
+#wizard-pares .wiz-question {
+ font-size: 1rem; font-weight: 700; color: #1d1d1f; margin-top: 3px;
+}
+
+/* options grid */
+#wizard-pares .wiz-grid {
+ display: grid; gap: 8px;
+}
+#wizard-pares .wiz-grid.g2 { grid-template-columns: 1fr 1fr; }
+#wizard-pares .wiz-grid.gauto { grid-template-columns: repeat(auto-fill,minmax(110px,1fr)); }
+
+#wizard-pares .wiz-opt {
+ background: #fff; border: 1.5px solid rgba(0,0,0,.08);
+ border-radius: 12px; padding: 12px 10px;
+ cursor: pointer; transition: all .15s; text-align: left;
+ display: flex; flex-direction: column; gap: 3px;
+ min-height: 56px; justify-content: center;
+ font-family: inherit;
+}
+#wizard-pares .wiz-opt:hover {
+ border-color: #7c3aed;
+ box-shadow: 0 0 0 3px rgba(124, 58, 237,.12);
+ transform: translateY(-1px);
+}
+#wizard-pares .wiz-opt .wn { font-size: .85rem; font-weight: 600; color: #1d1d1f; line-height: 1.2; }
+#wizard-pares .wiz-opt .ws { font-size: .68rem; color: #6e6e73; }
+
+/* result card */
+#wizard-pares .wiz-result {
+ background: #fff; border: 2px solid #8b5cf6;
+ border-radius: 12px; padding: 16px 18px;
+}
+#wizard-pares .wiz-result-lbl {
+ font-size: .63rem; font-weight: 700; text-transform: uppercase;
+ letter-spacing: .08em; color: #8b5cf6; margin-bottom: 6px;
+}
+#wizard-pares .wiz-result-name {
+ font-size: 1.08rem; font-weight: 700; color: #1d1d1f;
+ line-height: 1.3; margin-bottom: 4px;
+}
+#wizard-pares .wiz-result-path { font-size: .7rem; color: #6e6e73; }
+#wizard-pares .wiz-result-actions { display: flex; gap: 8px; margin-top: 12px; }
+#wizard-pares .wiz-btn-confirm {
+ flex: 1; background: #8b5cf6; color: #fff; border: none;
+ border-radius: 9px; padding: 11px; font-size: .85rem; font-weight: 700;
+ cursor: pointer; transition: background .15s; font-family: inherit;
+}
+#wizard-pares .wiz-btn-confirm:hover { background: #7c3aed; }
+#wizard-pares .wiz-btn-change {
+ background: #e8e8ed; color: #1d1d1f; border: none;
+ border-radius: 9px; padding: 11px 13px; font-size: .85rem; font-weight: 600;
+ cursor: pointer; transition: background .15s; font-family: inherit;
+}
+#wizard-pares .wiz-btn-change:hover { background: #d1d1d6; }
+
+/* ── VISTA MICROBIOS ─────────────────────────────────── */
+#microbios-view {
+ display: none;
+ flex: 1;
+ flex-direction: column;
+ overflow: hidden;
+ background: #f5f5f7;
+}
+#microbios-view.active { display: flex; }
+
+.micro-tabs {
+ display: flex;
+ gap: 0;
+ border-bottom: 1.5px solid #e0e0e5;
+ background: #fff;
+ flex-shrink: 0;
+ overflow-x: auto;
+ scrollbar-width: none;
+}
+.micro-tabs::-webkit-scrollbar { display: none; }
+
+.micro-tab {
+ flex: 1;
+ min-width: 120px;
+ padding: 11px 10px;
+ font-size: .82rem;
+ font-weight: 600;
+ font-family: inherit;
+ background: none;
+ border: none;
+ border-bottom: 2.5px solid transparent;
+ cursor: pointer;
+ color: #6e6e73;
+ transition: color .15s, border-color .15s;
+ margin-bottom: -1.5px;
+ white-space: nowrap;
+}
+.micro-tab.active {
+ color: #ec4899;
+ border-bottom-color: #ec4899;
+}
+.micro-tab:hover:not(.active) { color: #1d1d1f; }
+
+.micro-content {
+ flex: 1;
+ overflow-y: auto;
+ padding: 18px 20px 28px;
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
+}
+
+/* section headers */
+.micro-section { display: flex; flex-direction: column; gap: 10px; }
+.micro-section-hdr {
+ font-size: .78rem;
+ font-weight: 800;
+ text-transform: uppercase;
+ letter-spacing: .07em;
+ color: #fff;
+ background: #ec4899;
+ border-radius: 9px 9px 0 0;
+ padding: 8px 14px;
+}
+
+/* group & subgroup */
+.micro-group {
+ background: #fff;
+ border: 1.5px solid #e0e0e5;
+ border-top: none;
+ border-radius: 0 0 9px 9px;
+ overflow: hidden;
+ margin-bottom: 4px;
+}
+.micro-subgroup-hdr {
+ font-size: .72rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: .06em;
+ padding: 6px 14px;
+ border-top: 1px solid #e0e0e5;
+}
+.micro-subgroup-hdr:first-child { border-top: none; }
+
+.micro-items {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 4px 10px;
+ padding: 6px 14px 10px;
+}
+.micro-item {
+ display: inline-flex;
+ align-items: baseline;
+ gap: 3px;
+ font-size: .78rem;
+}
+.micro-item-num {
+ font-size: .63rem;
+ font-weight: 700;
+ color: #a78bfa;
+ min-width: 16px;
+}
+.micro-item-name {
+ font-style: italic;
+ color: #5b21b6;
+}
+
+/* diagnóstico table */
+.micro-diag-table {
+ width: 100%;
+ border-collapse: collapse;
+ font-size: .82rem;
+ background: #fff;
+ border-radius: 9px;
+ overflow: hidden;
+ border: 1.5px solid #e0e0e5;
+}
+.micro-diag-table th {
+ background: #ec4899;
+ color: #fff;
+ font-size: .72rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: .05em;
+ padding: 8px 12px;
+ text-align: left;
+}
+.micro-diag-table td {
+ padding: 7px 12px;
+ border-bottom: 1px solid #f0f0f5;
+ vertical-align: middle;
+ color: #1d1d1f;
+}
+.micro-diag-table tr:last-child td { border-bottom: none; }
+.micro-diag-table tr:hover td { background: #fef2f2; }
+.micro-diag-table td:first-child {
+ font-weight: 700;
+ color: #ec4899;
+ font-size: .88rem;
+ width: 36px;
+ text-align: center;
+}
+.micro-diag-table td:nth-child(2) { font-weight: 600; width: 80px; }
+.micro-diag-table td:nth-child(3) { color: #5b21b6; }
+
+/* ── HOME: MAPA CORPORAL INTERACTIVO ─────────────────────────── */
+#rastreo-home {
+ display: none; flex-direction: column; gap: 1rem;
+ padding: 1.2rem 1rem 1.5rem;
+ overflow-y: auto; flex: 1;
+}
+#rastreo-home.visible { display: flex; }
+.instr-card {
+ background: #ffffff; border: 1px solid rgba(0,0,0,0.08);
+ border-radius: 12px; overflow: hidden;
+ box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.instr-hdr {
+ display: flex; justify-content: space-between; align-items: center;
+ padding: 0.65rem 1rem; cursor: pointer; user-select: none;
+ font-weight: 600; font-size: 0.86rem; color: #1d1d1f;
+}
+.instr-hdr:hover { background: #f5f5f7; }
+.instr-body { display: none; padding: 0.75rem 1rem 1rem; border-top: 1px solid rgba(0,0,0,0.07); }
+.instr-body.open { display: block; }
+.instr-body ol { padding-left: 1.1rem; font-size: 0.84rem; line-height: 1.8; color: #3a3a3c; }
+.instr-body li { margin-bottom: 0.15rem; }
+.instr-body p { font-size: 0.84rem; line-height: 1.7; color: #3a3a3c; margin-bottom: 0.5rem; }
+.instr-body p:last-child { margin-bottom: 0; }
+.instr-body strong { color: #7c3aed; }
+/* body map region dots */
+.bm-dot {
+ width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+}
+.bm-dot-cabeza  { background: #7c3aed; }
+.bm-dot-cuello  { background: #8b5cf6; }
+.bm-dot-pecho   { background: #ec4899; }
+.bm-dot-abdomen { background: #f472b6; }
+.bm-dot-pelvis  { background: #8b5cf6; }
+.bm-dot-espalda { background: #8e8e93; }
+.bm-dot-brazos  { background: #a78bfa; }
+.bm-dot-piernas { background: #a78bfa; }
+.bm-dot-extras  { background: #f472b6; }
+
+/* ── BODY MAP — Apple light style ────────────────────────────────── */
+#bm-scanner {
+ position: relative;
+ width: min(860px, 100%);
+ height: 690px;
+ margin: 0 auto;
+ background: var(--bg);
+ border-radius: 18px;
+ border: none;
+ box-shadow: none;
+ overflow: hidden;
+}
+/* Wrapper que escala todo el scanner proporcionalmente en pantallas angostas */
+.bm-scanner-frame {
+ width: 100%;
+ display: flex;
+ justify-content: center;
+}
+#bm-scanner::before { display: none; }
+
+/* scanner title bar */
+.bm-hud-bar {
+ position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+ display: flex; align-items: center; gap: 8px;
+ z-index: 5; pointer-events: none;
+}
+.bm-hud-title {
+ font-size: 0.6rem; font-weight: 600; letter-spacing: 0.14em;
+ color: rgba(0,0,0,0.35); text-transform: uppercase;
+}
+.bm-hud-dot {
+ width: 6px; height: 6px; border-radius: 50%;
+ background: #a78bfa;
+ animation: bm-pulse 2.4s ease-in-out infinite;
+}
+@keyframes bm-pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+#body-img {
+ position: absolute;
+ height: 580px; width: auto;
+ left: 50%; transform: translateX(-50%);
+ top: 90px;
+ filter: drop-shadow(0 4px 18px rgba(0,0,0,0.1));
+ pointer-events: none;
+ z-index: 1;
+}
+/* region label number */
+.bm-label-region {
+ display: block;
+ font-size: 0.5rem; font-weight: 600;
+ letter-spacing: 0.08em; text-transform: uppercase;
+ color: var(--muted); margin-bottom: 1px;
+}
+
+
+#bm-overlay {
+ position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+ z-index: 3; overflow: visible;
+}
+/* zones */
+.bm-zone {
+ fill: rgba(0,0,0,0.001);
+ cursor: pointer;
+ pointer-events: all;
+ transition: fill 0.18s, stroke 0.18s;
+ stroke: transparent; stroke-width: 0;
+}
+.bm-zone:hover, .bm-zone.hovered {
+ fill: rgba(0,0,0,0.001) !important;
+ stroke: transparent !important;
+}
+/* region images hidden — src-swap approach, no overlay needed */
+.bm-region-img { display: none; }
+/* connector lines */
+.bm-conn {
+ stroke: rgba(0,0,0,0.45); stroke-width: 1.5;
+ fill: none; pointer-events: none;
+ stroke-dasharray: 4 3;
+ transition: stroke 0.2s, stroke-width 0.2s;
+}
+.bm-conn.hovered { stroke: rgba(124, 58, 237,0.8); stroke-width: 2; }
+.bm-conn-post { stroke: rgba(0,0,0,0.35); stroke-dasharray: 4 3; }
+.bm-conn-post.hovered { stroke: rgba(139, 92, 246,0.8); }
+.bm-conn-dot { pointer-events: none; fill: rgba(0,0,0,0.0); }
+.bm-conn-dot-post { fill: rgba(0,0,0,0.0); }
+/* labels */
+.bm-label {
+ position: absolute; z-index: 6;
+ width: 162px;
+ background: #ffffff;
+ border: 1px solid rgba(0,0,0,0.09);
+ border-radius: 10px; padding: 8px 11px;
+ cursor: pointer; user-select: none;
+ transition: background 0.16s, border-color 0.16s, box-shadow 0.16s, transform 0.14s;
+ box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+}
+.bm-label:hover, .bm-label.hovered {
+ background: #fff;
+ border-color: rgba(124, 58, 237,0.35);
+ box-shadow: none;
+ transform: scale(1.03);
+}
+.bm-label::before { display: none; }
+.bm-label-top { display: flex; align-items: center; gap: 6px; }
+.bm-label-name {
+ font-size: 0.72rem; font-weight: 600;
+ letter-spacing: 0.02em;
+ color: #1d1d1f;
+}
+.bm-label-count {
+ display: block; margin-top: 3px;
+ font-size: 0.6rem; letter-spacing: 0.02em;
+ color: #6e6e73;
+}
+.bm-label.posterior { border-color: rgba(0,0,0,0.07); }
+.bm-label.posterior:hover, .bm-label.posterior.hovered {
+ border-color: rgba(139, 92, 246,0.4);
+ box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+.bm-label.posterior .bm-label-count { color: #8e8e93; }
+/* Pares Especiales button */
+.bm-extras-row {
+ display: flex; justify-content: center; padding: 0 1rem;
+ margin-top: -0.25rem;
+}
+.bm-extras-btn {
+ display: flex; align-items: center; gap: 10px;
+ width: 100%; max-width: 860px;
+ background: #ffffff; border: 1px solid rgba(0,0,0,0.09);
+ border-radius: 12px; padding: 11px 18px; cursor: pointer;
+ box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+ transition: box-shadow 0.16s, border-color 0.16s;
+ font-family: inherit;
+}
+.bm-extras-btn:hover {
+ border-color: rgba(244, 114, 182,0.5);
+ box-shadow: 0 4px 16px rgba(244, 114, 182,0.14);
+}
+.bm-extras-info { flex: 1; display: flex; flex-direction: column; align-items: flex-start; gap: 2px; }
+.bm-extras-name { font-size: 0.76rem; font-weight: 600; color: #1d1d1f; }
+.bm-extras-sub  { font-size: 0.62rem; color: #6e6e73; }
+.bm-extras-arrow { font-size: 0.9rem; color: #6e6e73; }
+
+
+/* Escala TODO el scanner proporcionalmente cuando el viewport es más angosto que 860px.
+ Esto preserva la posición pixel-exacta de las etiquetas (Cabeza, Cuello, Pecho,
+ Abdomen, Brazos, Pelvis, Espalda, Piernas y Extras) sin cortar nada.
+ El factor de escala se calcula vía JS porque transform: scale() necesita un número
+ sin unidades. */
+.bm-scanner-frame {
+ position: relative;
+}
+#bm-scanner {
+ transform-origin: top center;
+ transition: transform 0.18s ease-out;
+}
+
+/* ── MOBILE BODY MAP — grid de 9 regiones ─────────────────────── */
+@media (max-width: 560px) {
+  #rastreo-home {
+ padding: 0.8rem 0.75rem 1rem;
+ gap: 0.75rem;
+  }
+
+  /* Convertir scanner en grid responsivo */
+  #bm-scanner {
+ height: auto !important;
+ overflow: visible !important;
+ background: transparent;
+ border-radius: 0;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 8px;
+ padding: 0;
+  }
+
+  /* Ocultar imagen y SVG */
+  #body-img, #bm-overlay, .bm-hud-bar { display: none !important; }
+
+  /* Convertir labels de absolute a static */
+  .bm-label {
+ position: static !important;
+ top: auto !important; bottom: auto !important;
+ left: auto !important; right: auto !important;
+ transform: none !important;
+ width: auto !important;
+ padding: 10px 8px !important;
+ border-radius: 12px !important;
+ display: flex;
+ flex-direction: column;
+ align-items: flex-start;
+ gap: 4px;
+ min-height: 64px;
+  }
+  .bm-label-top { gap: 5px; }
+  .bm-label-name { font-size: 0.72rem !important; font-weight: 700; }
+  .bm-label-count { font-size: 0.58rem !important; margin-top: 2px; line-height: 1.3; }
+  .bm-label-region { font-size: 0.48rem !important; }
+
+  /* Orden natural anatómico: Cabeza, Cuello, Pecho, Espalda, Abdomen, Brazos, Pelvis, Piernas, Extras */
+  #lbl-cabeza  { order: 1; }
+  #lbl-cuello  { order: 2; }
+  #lbl-pecho   { order: 3; }
+  #lbl-espalda { order: 4; }
+  #lbl-abdomen { order: 5; }
+  #lbl-brazos  { order: 6; }
+  #lbl-pelvis  { order: 7; }
+  #lbl-piernas { order: 8; }
+  #lbl-extras  { order: 9; }
+
+  /* Quitar row separada de extras (es parte del grid ahora) */
+  .bm-extras-row { display: none; }
+}
+
+/* virus tables */
+.virus-grupo {
+ background: #fff;
+ border: 1.5px solid #e0e0e5;
+ border-top: none;
+ border-radius: 0 0 9px 9px;
+ overflow: hidden;
+ margin-bottom: 4px;
+}
+.virus-grupo-hdr {
+ font-size: .72rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: .06em;
+ padding: 7px 14px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ border-top: 1px solid #e0e0e5;
+}
+.virus-grupo-hdr:first-child { border-top: none; }
+.virus-grupo-num {
+ font-size: .65rem;
+ background: rgba(0,0,0,0.08);
+ border-radius: 4px;
+ padding: 1px 5px;
+}
+.virus-familia {
+ padding: 0 14px 8px;
+}
+.virus-familia-hdr {
+ font-size: .73rem;
+ font-weight: 700;
+ letter-spacing: .04em;
+ color: #5b21b6;
+ padding: 4px 0 2px;
+ border-bottom: 1px dashed #e0e0e5;
+ margin-bottom: 4px;
+}
+.virus-subgrupo {
+ padding: 2px 0;
+}
+.virus-subgrupo-label {
+ font-size: .68rem;
+ font-weight: 600;
+ color: #6e6e73;
+ margin-right: 4px;
+}
+.virus-item-direct {
+ display: inline-flex;
+ align-items: baseline;
+ gap: 3px;
+ font-size: .78rem;
+ margin: 2px 6px 2px 0;
+}
+#interp-section{margin-bottom:16px}
+.interp-body{border:1px solid var(--border);border-radius:10px;padding:14px 16px;line-height:1.55;font-size:0.9rem;color:var(--text,#222)}
+.interp-loading{color:var(--muted);font-size:0.85rem;padding:6px 0}
+.interp-body .interp-par{margin:16px 0 6px;font-size:0.95rem;font-weight:800;color:#0891b2;border-bottom:1px solid var(--border);padding-bottom:5px}
+.interp-body .interp-par:first-child{margin-top:0}
+.interp-body ul{margin:6px 0 10px;padding-left:18px}
+.interp-body li{margin:3px 0}
+.interp-body li strong,.interp-body p strong{color:var(--text,#111)}
+.interp-body p{margin:6px 0}
+.interp-body .interp-diag{margin:20px 0 8px;font-size:1rem;font-weight:800;color:#0f172a;background:#ecfeff;border-left:4px solid #0891b2;border-radius:0 10px 10px 0;padding:10px 14px}
+</style></head><body class="mod-page-teal"><!-- ── HEADER UNIFICADO ─────────────────────────────────────── --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Home</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-teal"><svg viewBox="0 0 24 24"><path d="M6 19v-8a6 6 0 0 1 12 0v8"/><line x1="4" y1="19" x2="8" y2="19"/><line x1="16" y1="19" x2="20" y2="19"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Clinical session</div><div class="holo-module-title">Magnet scan</div></div></div><input type="text" id="global-search" placeholder="Search pair, condition…" autocomplete="off"><button class="mobile-toggle" id="btn-toggle-confirm">Confirmed</button><button id="btn-finalizar" onclick="openModal()">Finish <span id="confirmed-badge">0</span></button></div></header><!-- ── MAIN GRID ──────────────────────────────────────────────── --><div class="main-grid"><!-- COL CENTRO --><main class="col-centro"><!-- ── HOME: MAPA CORPORAL ──────────────────────────────── --><div id="rastreo-home" class="visible"><!-- Introducción --><div class="instr-card"><div class="instr-hdr"><span>The most complete list of biomagnetic pairs</span></div><div class="instr-body open"><p>To begin your scan, explore the regions of the general anatomical map.</p><p>First question: <strong>Is there any pair you need from Region 1?</strong>If so, click it to explore its scan zones.</p></div></div><!-- Mapa corporal interactivo — HUD médico --><div class="bm-scanner-frame"><div id="bm-scanner"><!-- barra HUD superior --><div class="bm-hud-bar"><div class="bm-hud-dot"></div><span class="bm-hud-title">Anatomical Map · Tap a region</span><div class="bm-hud-dot"></div></div><!-- imagen anatómica base --><img src="/therapy-static/regiones/body_map.svg" id="body-img" alt="Biomagnetic scan anatomical map"><!--
+ SVG overlay único:
+ viewBox 860×630 = dimensiones del wrapper
+ Las zonas usan <g transform>para mapear coordenadas originales 1086×1448
+ a posición real (image left≈212, top≈30, scale≈0.40)
+        --><svg id="bm-overlay" viewBox="0 0 860 690" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"><!-- ── CABEZA: línea vertical desde top-center ── --><line id="conn-cabeza" class="bm-conn" x1="430" y1="87" x2="430" y2="93"/><!-- ── LÍNEAS CONECTORAS izquierda ── --><line id="conn-cuello" class="bm-conn" x1="174" y1="193" x2="398" y2="193"/><line id="conn-pecho" class="bm-conn" x1="174" y1="275" x2="348" y2="275"/><line id="conn-abdomen" class="bm-conn" x1="174" y1="382" x2="340" y2="382"/><line id="conn-piernas" class="bm-conn" x1="174" y1="550" x2="336" y2="550"/><!-- ── LÍNEAS CONECTORAS derecha ── --><line id="conn-espalda" class="bm-conn bm-conn-post" x1="686" y1="235" x2="516" y2="235"/><line id="conn-brazos" class="bm-conn" x1="686" y1="330" x2="558" y2="330"/><line id="conn-pelvis" class="bm-conn" x1="686" y1="460" x2="516" y2="460"/><!-- Zones in wrapper coordinates (viewBox 860×690, body-img top=90) --><!-- HEAD --><ellipse class="bm-zone" data-region="cabeza"
+ cx="430" cy="145" rx="53" ry="52"
+ onclick="selectBodyRegion('cabeza')"/><!-- NECK --><ellipse class="bm-zone" data-region="cuello"
+ cx="430" cy="200" rx="32" ry="22"
+ onclick="selectBodyRegion('cuello')"/><!-- PECHO (collar to mid-chest) --><polygon class="bm-zone" data-region="pecho"
+ points="348,220 512,220 520,365 340,365"
+ onclick="selectBodyRegion('pecho')"/><!-- ABDOMEN --><polygon class="bm-zone" data-region="abdomen"
+ points="340,365 520,365 516,468 338,468"
+ onclick="selectBodyRegion('abdomen')"/><!-- PELVIS --><polygon class="bm-zone" data-region="pelvis"
+ points="338,468 516,468 512,532 336,532"
+ onclick="selectBodyRegion('pelvis')"/><!-- LEFT ARM --><polygon class="bm-zone" data-region="brazos"
+ points="302,220 350,220 346,520 300,520"
+ onclick="selectBodyRegion('brazos')"/><!-- RIGHT ARM --><polygon class="bm-zone" data-region="brazos"
+ points="510,220 558,220 556,520 512,520"
+ onclick="selectBodyRegion('brazos')"/><!-- LEGS (from hips to feet) --><polygon class="bm-zone" data-region="piernas"
+ points="336,532 512,532 508,678 334,678"
+ onclick="selectBodyRegion('piernas')"/><!-- ESPALDA (no-interaction from front — only via right-side label) --><polygon class="bm-zone" data-region="espalda"
+ points="340,190 520,190 516,438 338,438"
+ style="fill:transparent;stroke:transparent;pointer-events:none"
+ onclick="selectBodyRegion('espalda')"/></svg><!-- ── REGION HIGHLIGHT IMAGES — HTML img, z-index 2, toggled via JS ── --><!-- ── CABEZA: top center ── --><div class="bm-label" id="lbl-cabeza" style="top:35px; left:50%; transform:translateX(-50%)"
+ onclick="selectBodyRegion('cabeza')"><div class="bm-label-top"><span class="bm-dot bm-dot-cabeza"></span><div><span class="bm-label-region">Region 1</span><span class="bm-label-name">Head</span></div></div><span class="bm-label-count">223 pairs · 5 zones</span></div><!-- ── ETIQUETAS izquierda ── --><div class="bm-label" id="lbl-cuello" style="top:172px; left:0"
+ onclick="selectBodyRegion('cuello')"><div class="bm-label-top"><span class="bm-dot bm-dot-cuello"></span><div><span class="bm-label-region">Region 2</span><span class="bm-label-name">Neck</span></div></div><span class="bm-label-count">92 biomagnetic pairs</span></div><div class="bm-label" id="lbl-pecho" style="top:253px; left:0"
+ onclick="selectBodyRegion('pecho')"><div class="bm-label-top"><span class="bm-dot bm-dot-pecho"></span><div><span class="bm-label-region">Region 3</span><span class="bm-label-name">Chest</span></div></div><span class="bm-label-count">143 biomagnetic pairs</span></div><div class="bm-label" id="lbl-abdomen" style="top:360px; left:0"
+ onclick="selectBodyRegion('abdomen')"><div class="bm-label-top"><span class="bm-dot bm-dot-abdomen"></span><div><span class="bm-label-region">Region 4</span><span class="bm-label-name">Abdomen</span></div></div><span class="bm-label-count">256 pairs · 2 zones</span></div><div class="bm-label" id="lbl-piernas" style="top:528px; left:0"
+ onclick="selectBodyRegion('piernas')"><div class="bm-label-top"><span class="bm-dot bm-dot-piernas"></span><div><span class="bm-label-region">Region 6</span><span class="bm-label-name">Legs</span></div></div><span class="bm-label-count">48 biomagnetic pairs</span></div><!-- ── ETIQUETAS derecha ── --><div class="bm-label posterior" id="lbl-espalda" style="top:214px; right:0"
+ onclick="selectBodyRegion('espalda')"><div class="bm-label-top"><span class="bm-dot bm-dot-espalda"></span><div><span class="bm-label-region">Region 8</span><span class="bm-label-name">Back</span></div></div><span class="bm-label-count">68 pairs · 2 zones</span></div><div class="bm-label" id="lbl-brazos" style="top:308px; right:0"
+ onclick="selectBodyRegion('brazos')"><div class="bm-label-top"><span class="bm-dot bm-dot-brazos"></span><div><span class="bm-label-region">Region 7</span><span class="bm-label-name">Arms</span></div></div><span class="bm-label-count">31 biomagnetic pairs</span></div><div class="bm-label" id="lbl-pelvis" style="top:438px; right:0"
+ onclick="selectBodyRegion('pelvis')"><div class="bm-label-top"><span class="bm-dot bm-dot-pelvis"></span><div><span class="bm-label-region">Region 5</span><span class="bm-label-name">Pelvis</span></div></div><span class="bm-label-count">172 pairs · 3 zones</span></div><!-- Extras: bottom-right, no body connector --><div class="bm-label" id="lbl-extras" style="bottom:22px; right:0"
+ onclick="selectBodyRegion('extras')"><div class="bm-label-top"><span class="bm-dot bm-dot-extras"></span><div><span class="bm-label-region">Region 9</span><span class="bm-label-name">Extras</span></div></div><span class="bm-label-count">24 pairs · 2 zones</span></div></div><!-- /#bm-scanner --></div><!-- /.bm-scanner-frame --></div><!-- /#rastreo-home --><!-- Vista wizard pares biomagnéticos --><div id="wizard-pares"><!-- Tab bar --><div class="wiz-tabs"><button class="wiz-tab active" id="wizTabRastreo" onclick="wizSwitchTab('rastreo')">Guided Scan</button><button class="wiz-tab" id="wizTabTabla" onclick="wizSwitchTab('tabla')">Reference Table</button></div><!-- Tab: rastreo guiado --><div class="wiz-inner" id="wizInner"><div class="wiz-bc" id="wizBc"></div><div class="wiz-label" id="wizLabel">Step 1 of 4</div><div class="wiz-question" id="wizQuestion">Which region of the body?</div><div class="wiz-grid g2" id="wizGrid"></div></div><!-- Tab: tabla de referencia --><div id="tabla-ref"><div class="tref-search"><input type="text" id="trefSearch" placeholder="Search block or pair…" oninput="trefFilter(this.value)" autocomplete="off"></div><div id="tref-body"></div><div class="tref-no-results" id="tref-no-results" style="display:none">No results found</div></div></div></main><!-- COL DERECHA --><aside class="col-der"><div class="col-der-header">Confirmed pairs</div><div id="confirmed-list"><div class="confirmed-empty">Add biomagnetic pairs to the scan</div></div></aside></div><!-- LIGHTBOX --><div id="lightbox"><button id="lightbox-close">Close</button><img id="lightbox-img" src="" alt="Enlarged view"></div><!-- FINALIZAR MODAL --><div id="modal-overlay"><div id="modal-box"><div class="modal-header"><h2>Magnet Placement Map</h2><div class="modal-header-btns"><button class="modal-btn modal-btn-secondary" id="btn-print">Print</button><button class="modal-btn modal-btn-primary" id="btn-nuevo-rastreo">New Scan</button><button class="modal-btn modal-btn-ghost" id="btn-close-modal"></button></div></div><div class="modal-body"><section id="interp-section"><div class="modal-section-title">Meaning of each pair and diagnosis</div><div id="interp-body" class="interp-body"></div></section><section id="mapas-section" style="display:none"><div class="modal-section-title">Placement Maps</div><div id="mapas-gallery" style="display:flex;flex-direction:column;gap:10px;max-height:520px;overflow-y:auto;border-radius:10px;border:1px solid var(--border);padding:10px;"></div></section><section><div class="modal-section-title">Magnet Location by Pair</div><div id="instruction-list" style="display:flex;flex-direction:column;gap:12px;"></div></section></div></div></div><script>
+'use strict';
+
+// ── CONFIG ────────────────────────────────────────────────────────────────
+const CATEGORIES = [
+  { key: 'pares_biomagneticos', icon: '', label: 'Biomagnetic Pairs' },
+];
+
+const TIPO_CLASS = {
+ bacteria: 'tipo-bacteria',
+ virus: 'tipo-virus',
+ hongo: 'tipo-hongo',
+  'parásito': 'tipo-parasito',
+ parasito: 'tipo-parasito',
+ emocional: 'tipo-emocional',
+ disfuncional: 'tipo-disfuncional',
+ especial: 'tipo-especial',
+ reservorio: 'tipo-reservorio',
+};
+
+const PAIR_CATEGORIES = new Set(['pares_biomagneticos', 'microbios', 'holobiomag']);
+const LS_KEY = 'rastreo_session';
+
+// ── STATE ─────────────────────────────────────────────────────────────────
+let allPairs = [];
+let manifest = {};
+let activeCategory = null;
+let activeImages = [];
+let activeImageIdx = 0;
+let confirmedPairs = loadSession();
+let searchDebounce = null;
+let globalSearchDebounce = null;
+
+// ── SESSION PERSISTENCE ───────────────────────────────────────────────────
+function loadSession() {
+ try {
+ const raw = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
+ return sanitizeSession(raw);
+  } catch { return []; }
+}
+function saveSession() {
+ try { localStorage.setItem(LS_KEY, JSON.stringify(confirmedPairs)); } catch {}
+}
+// Limpia entradas viejas corruptas: sin nombre, o con _path "undefined › ..."
+function sanitizeSession(arr) {
+ if (!Array.isArray(arr)) return [];
+ let removed = 0;
+ const clean = arr.filter(p => {
+ if (!p || typeof p !== 'object') { removed++; return false; }
+    // Sin nombre real → descartar
+ if (!p.nombre || typeof p.nombre !== 'string' || !p.nombre.trim()) { removed++; return false; }
+ return true;
+  }).map(p => {
+    // Reparar _path corrupto
+ if (typeof p._path === 'string' && p._path.includes('undefined')) {
+ delete p._path;
+    }
+ return p;
+  });
+ if (removed >0) {
+ console.warn(`[rastreo] Sesión saneada: ${removed} entrada(s) corrupta(s) eliminada(s)`);
+ try { localStorage.setItem(LS_KEY, JSON.stringify(clean)); } catch {}
+  }
+ return clean;
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+// ── Enriquecimiento por par (clasificación + fichas Symbelia) ─────────────
+let pairClassifications = {};   // key -> {tipo, patogeno, enfermedades, ...}
+let pairFichas = {};            // key ->ficha_filename
+let pointToMaps = {};           // punto_normalizado -> {canonical, map_zona, map_bloque, ...}
+let atlasIndex = {};            // nombre_normalizado (con lado) -> url imagen del Atlas Biomagnético
+
+// Normaliza igual que el índice del atlas (acentos, dashes, quita 'ras'/'invertido').
+function normAtlas(s) {
+ if (!s) return '';
+ let x = String(s).normalize('NFD').split('').filter(c =>c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) >0x036f).join('');
+ x = x.toLowerCase().replace(/[-–—/]/g, ' ').replace(/\b(ras|invertido|inv)\b/g, '');
+ return x.replace(/\s+/g, ' ').trim();
+}
+// Imagen del atlas para un punto según su posición en el par:
+// idx 0 = primer punto = imán negro/negativo (−) = lado DERECHO
+// idx 1 = segundo punto = imán rojo/positivo (+) = lado IZQUIERDO
+function atlasImageFor(pt, idx, bipolar) {
+ let b = normAtlas(pt);
+ if (!b) return null;
+  // Expandir abreviaturas de lado (izq/der) a la palabra completa
+ b = b.replace(/\bizq(da|do|uierda|uierdo)?\b/g, 'izquierdo').replace(/\b(der|dcha|dcho|dere)\b/g, 'derecho');
+  // Doble polaridad (par A - A): UNA sola imagen con el nombre duplicado ("X X"), un solo imán
+ if (bipolar) return atlasIndex[b + ' ' + b] || atlasIndex[b] || null;
+ const hasLado = /\b(derech[oa]|izquierd[oa])\b/.test(b);
+  // Prueba una base contra el índice con varias variantes de lado (masc/fem), central y bipolar
+ const tryKeys = (base, lados) => {
+ base = base.replace(/\s+/g, ' ').trim();
+ for (const l of lados) { const k = (base + ' ' + l).trim(); if (atlasIndex[k]) return atlasIndex[k]; }
+ if (atlasIndex[base]) return atlasIndex[base];
+ if (atlasIndex[base + ' ' + base]) return atlasIndex[base + ' ' + base];
+ return null;
+  };
+ if (hasLado) {
+    // El punto ya trae su lado: úsalo (probando masculino y femenino)
+ const stripped = b.replace(/\b(derech[oa]|izquierd[oa])\b/g, '').trim();
+ const lados = /derech/.test(b) ? ['derecho', 'derecha'] : ['izquierdo', 'izquierda'];
+ return tryKeys(stripped, lados) || atlasIndex[b] || null;
+  }
+  // Sin lado explícito: por posición. idx 0 = negro/negativo = DERECHO; idx 1 = rojo/positivo = IZQUIERDO
+ const lados = idx === 0 ? ['derecho', 'derecha'] : ['izquierdo', 'izquierda'];
+ return tryKeys(b, lados);
+}
+
+// Imagen del manual (point_to_maps) para un punto por su nombre.
+function manualImageFor(pt) {
+ const e = pointToMaps[normalizePoint(pt)];
+ return (e && (e.map_zona || e.map_bloque)) || null;
+}
+// Barrido de columna: dorsal/lumbar/sacro/coxis → imagen de Espalda; cervical → Cuello.
+function spineRasImage(pt) {
+ const b = normAtlas(pt);
+ if (/\b(cervical|cervicales)\b/.test(b)) return '/api/mapas-anatomicos/Cuello.png';
+ if (/\b(dorsal|dorsales|lumbar|lumbares|sacro|coxis|coccix|columna|vertebral)\b/.test(b)) return '/api/mapas-anatomicos/Espalda.png';
+ return null;
+}
+// Resolutor unificado: atlas → manual → (si trae "/", cada mitad) → barrido de columna.
+function resolvePointImage(pt, idx, bipolar) {
+ let img = atlasImageFor(pt, idx, bipolar) || manualImageFor(pt);
+ if (img) return img;
+ if (/\//.test(pt)) {
+ for (const half of pt.split('/')) {
+ const h = half.trim(); if (!h) continue;
+ img = atlasImageFor(h, idx, false) || manualImageFor(h);
+ if (img) return img;
+    }
+  }
+ return spineRasImage(pt) || null;
+}
+
+// Normalizador idéntico al backend (sin acentos, lowercase, trim)
+function normalizePoint(s) {
+ if (!s) return '';
+ const base = String(s).normalize('NFD');
+ const noAccents = base.split('').filter(c =>c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) >0x036f).join('');
+ return noAccents.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+// Parsea "Pineal - Útero" → ["Pineal", "Útero"]; quita "(invertido)", "(RAS)"
+function splitPairPoints(pairName) {
+ if (!pairName) return [];
+ return String(pairName)
+    .split(/\s*[-–—]\s*/)
+    .map(p =>p.replace(/\s*\([^)]*\)\s*/g, '').trim())
+    .filter(Boolean);
+}
+
+// Para un par dado, devuelve array de {punto, canonical, map_zona, map_bloque, region, zona, bloque}
+// Si los dos puntos son el mismo (bipolar tipo "Pineal - Pineal") solo devuelve uno.
+function lookupPairMaps(pairName) {
+ const points = splitPairPoints(pairName);
+ const seen = new Set();
+ const out = [];
+ points.forEach(pt => {
+ const key = normalizePoint(pt);
+ if (!key || seen.has(key)) return;
+ seen.add(key);
+ const entry = pointToMaps[key];
+ if (entry) {
+ out.push({
+ punto: pt,
+ canonical: entry.canonical,
+ region: entry.region,
+ zona: entry.zona,
+ bloque: entry.bloque,
+ map_zona: entry.map_zona,
+ map_bloque: entry.map_bloque,
+      });
+    } else {
+      // Punto no indexado — devolver placeholder
+ out.push({ punto: pt, canonical: pt, map_zona: null, map_bloque: null });
+    }
+  });
+ return out;
+}
+
+function pairKey(region, zona, bloque, par) {
+ return `${region}|${zona}|${bloque}|${par}`;
+}
+
+async function init() {
+ renderCategories();
+ renderConfirmedList();
+ updateBadge();
+
+ const [pairsData, manifestData, clasifData, fichasData, pointMapsData] = await Promise.allSettled([
+ fetch('/api/pares-db').then(r =>r.json()),
+ fetch('/api/tablas-images').then(r =>r.json()),
+ fetch('/api/pares-clasificacion').then(r =>r.json()),
+ fetch('/api/pares-fichas-mapping').then(r =>r.json()),
+ fetch('/api/point-to-maps').then(r =>r.json()),
+  ]);
+
+  // 1) Clasificación por par (tipo, patógeno, enfermedades, transmisión)
+ if (clasifData.status === 'fulfilled' && clasifData.value && clasifData.value.clasificaciones) {
+ clasifData.value.clasificaciones.forEach(c => {
+ pairClassifications[pairKey(c.region, c.zona, c.bloque, c.par)] = {
+ tipo: c.tipo,
+ patogeno: c.patogeno_canonico || c.patogeno,
+ enfermedades: c.enfermedades_reales,
+ transmision: c.transmision,
+ descripcion: c.descripcion,
+ fuentes_count: c.fuentes_count,
+      };
+    });
+ console.log(`[rastreo] Cargadas ${clasifData.value.clasificaciones.length} clasificaciones`);
+  }
+
+  // 2) Mapeo fichas Symbelia
+ if (fichasData.status === 'fulfilled' && fichasData.value && fichasData.value.mappings) {
+ fichasData.value.mappings.forEach(m => {
+ pairFichas[pairKey(m.db_region, m.db_zona, m.db_bloque, m.db_par)] = m.ficha_file;
+    });
+ console.log(`[rastreo] Cargadas ${fichasData.value.mappings.length} fichas Symbelia`);
+  }
+
+  // 2.5) Índice punto → mapa anatómico
+ if (pointMapsData.status === 'fulfilled' && pointMapsData.value && pointMapsData.value.puntos) {
+ pointToMaps = pointMapsData.value.puntos;
+ console.log(`[rastreo] Cargados ${Object.keys(pointToMaps).length} puntos → mapas`);
+  }
+
+  // 2.6) Índice del Atlas Biomagnético (imágenes precisas por punto+lado)
+ try {
+ atlasIndex = await fetch('/therapy-static/atlas_index.json?v=1').then(r =>r.json()) || {};
+ console.log(`[rastreo] Atlas cargado: ${Object.keys(atlasIndex).length} imágenes`);
+  } catch (e) { atlasIndex = {}; }
+
+  // 3) DB principal (después de cargar clasificación para enriquecer)
+ if (pairsData.status === 'fulfilled') {
+ const d = pairsData.value;
+    // Construir wizDB con las 9 REGIONES UI (no las 5 DB internas)
+ wizDB = buildUiDB(d);
+ if (Array.isArray(d)) { allPairs = d; }
+ else if (d.pairs) { allPairs = d.pairs; }
+ else if (d.regiones) { allPairs = flattenPairs(d); }
+ console.log(`[rastreo] DB v${d.version || '?'} cargada con ${allPairs.length} pares (${wizDB.regiones.length} regiones UI)`);
+  }
+
+ if (manifestData.status === 'fulfilled' && manifestData.value.ok) {
+ manifest = manifestData.value.categories || {};
+  }
+
+ setupListeners();
+ wizInit();
+ selectCategory(CATEGORIES[0]);
+}
+
+function flattenPairs(db) {
+ const out = [];
+  (db.regiones || []).forEach(r => {
+    (r.zonas || []).forEach(z => {
+      (z.bloques || []).forEach(b => {
+        (b.pares || []).forEach((name, i) => {
+ const key = pairKey(r.nombre, z.nombre, b.nombre, name);
+ const clf = pairClassifications[key] || {};
+ out.push({
+ id: b.id + '_' + i,
+ nombre: name,
+ region: r.nombre,
+ zona: z.nombre,
+ bloque: b.nombre,
+ tipo: clf.tipo || null,
+ patogeno: clf.patogeno || null,
+ enfermedades: clf.enfermedades || null,
+ transmision: clf.transmision || null,
+ descripcion: clf.descripcion || null,
+ fuentes_count: clf.fuentes_count || 0,
+ ficha_file: pairFichas[key] || null,
+ condiciones: null,
+ sistemas_afectados: [],
+          });
+        });
+      });
+    });
+  });
+ return out;
+}
+
+// Helper para que cualquier vista pueda obtener metadata por par
+function getPairMeta(region, zona, bloque, par) {
+ const key = pairKey(region, zona, bloque, par);
+ return {
+ classification: pairClassifications[key] || {},
+ ficha_file: pairFichas[key] || null,
+  };
+}
+
+// ── Construye estructura UI (9 regiones) desde la DB (5 regiones internas) ──
+// Cada región UI tiene su numero (1-9), cada zona "1.1", cada bloque "1.1.1"
+const UI_REGIONS_DEF = [
+  // [numero, label_ui, [(db_region, db_zona), ...]]
+  [1, 'Head',    [['Cabeza','Coronilla'], ['Cabeza','Posterior'], ['Cabeza','Lateral'], ['Cabeza','Frente'], ['Cabeza','Rostro']]],
+  [2, 'Neck',    [['Cabeza','Cuello']]],
+  [3, 'Chest',   [['Tronco','Tórax']]],
+  [4, 'Abdomen', [['Tronco','Abdomen'], ['Tronco','Hepatitis']]],
+  [5, 'Back',    [['Tronco','Espalda'], ['Extras','Columna Vertebral']]],
+  [6, 'Pelvis',  [['Pelvis','Delantera'], ['Pelvis','Trasera'], ['Pelvis','Sexo']]],
+  [7, 'Arms',    [['Miembros','Brazo']]],
+  [8, 'Legs',    [['Miembros','Pierna']]],
+  [9, 'Extras',  [['Extras','Variables'], ['Extras','Ejes Corporales']]],
+];
+
+function buildUiDB(db) {
+ if (!db || !db.regiones) return { regiones: [] };
+  // Index DB zonas por (region, zona) ->objeto zona
+ const dbZonaIndex = {};
+ db.regiones.forEach(r => {
+    (r.zonas || []).forEach(z => {
+ dbZonaIndex[`${r.nombre}|${z.nombre}`] = { region: r, zona: z };
+    });
+  });
+
+ const uiRegiones = [];
+ UI_REGIONS_DEF.forEach(([num, label, sources]) => {
+ const zonas = [];
+ let zonaIdx = 1;
+ sources.forEach(([dbReg, dbZon]) => {
+ const refs = dbZonaIndex[`${dbReg}|${dbZon}`];
+ if (!refs) return;
+ const z = refs.zona;
+      // Cada bloque con su numero "x.y.z"
+ const bloques = (z.bloques || []).map((b, i) => ({
+ id: b.id,
+ nombre: b.nombre,
+ numero: `${num}.${zonaIdx}.${i + 1}`,
+ pares: b.pares || [],
+ db_region: dbReg,
+ db_zona: dbZon,
+      }));
+ const totalPares = bloques.reduce((a, b) =>a + b.pares.length, 0);
+ zonas.push({
+ id: z.id,
+ nombre: z.nombre,
+ numero: `${num}.${zonaIdx}`,
+ bloques: bloques,
+ total_pares: totalPares,
+ db_region: dbReg,
+ db_zona: dbZon,
+      });
+ zonaIdx++;
+    });
+ if (zonas.length) {
+ const totalPares = zonas.reduce((a, z) =>a + z.total_pares, 0);
+ uiRegiones.push({
+ id: num,
+ nombre: label,
+ numero: String(num),
+ zonas: zonas,
+ total_pares: totalPares,
+      });
+    }
+  });
+
+ return { version: db.version, regiones: uiRegiones };
+}
+
+// ── CATEGORIES ────────────────────────────────────────────────────────────
+function renderCategories() {
+ const list = document.getElementById('cat-list');
+ if (!list) return; // cat-list removed (single-category mode)
+ list.innerHTML = '';
+ CATEGORIES.forEach(cat => {
+ const chip = document.createElement('div');
+ chip.className = 'cat-chip';
+ chip.dataset.key = cat.key;
+ chip.innerHTML = `<span class="cat-label">${cat.label}</span>`;
+ chip.addEventListener('click', () =>selectCategory(cat));
+ list.appendChild(chip);
+  });
+}
+
+function selectCategory(cat) {
+ activeCategory = cat;
+ document.querySelectorAll('.cat-chip').forEach(c =>c.classList.toggle('active', c.dataset.key === cat.key)
+  );
+ showHome();
+}
+
+// ── IMAGES ────────────────────────────────────────────────────────────────
+function renderImageStrip() {
+ const strip = document.getElementById('image-strip');
+ const counter = document.getElementById('img-counter');
+ if (!strip) return;
+
+ if (!activeImages.length) {
+ strip.innerHTML = `<div class="image-empty"><div>No images for this category</div></div>`;
+ if (counter) counter.textContent = '—';
+ return;
+  }
+
+ const catDir = activeCategory.key;
+ strip.innerHTML = '';
+ activeImages.forEach((imgPath, i) => {
+ const url = imgPath.startsWith('http') ? imgPath : `/tablas-assets/${catDir}/${imgPath}`;
+ const img = document.createElement('img');
+ img.className = 'thumb' + (i === activeImageIdx ? ' active' : '');
+ img.src = url; img.alt = `Image ${i + 1}`; img.loading = 'lazy';
+ img.addEventListener('click', () =>openLightbox(url, i));
+ strip.appendChild(img);
+  });
+
+ if (counter) counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
+ const activeThumb = strip.children[activeImageIdx];
+ if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+}
+
+function navigateImage(delta) {
+ activeImageIdx = Math.max(0, Math.min(activeImages.length - 1, activeImageIdx + delta));
+ document.querySelectorAll('#image-strip .thumb').forEach((t, i) =>t.classList.toggle('active', i === activeImageIdx)
+  );
+ const counter = document.getElementById('img-counter');
+ if (counter) counter.textContent = `${activeImageIdx + 1} / ${activeImages.length}`;
+ const strip = document.getElementById('image-strip');
+ if (strip) {
+ const activeThumb = strip.children[activeImageIdx];
+ if (activeThumb) activeThumb.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
+}
+
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────
+function openLightbox(url) {
+ document.getElementById('lightbox-img').src = url;
+ document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+ document.getElementById('lightbox').classList.remove('open');
+}
+
+// ── PAIR SEARCH ───────────────────────────────────────────────────────────
+function tipoChip(tipo) {
+ const cls = TIPO_CLASS[tipo?.toLowerCase()] || 'tipo-otro';
+ return `<span class="tipo-chip ${cls}">${tipo || '?'}</span>`;
+}
+function isConfirmed(id) { return confirmedPairs.some(p =>p.id === id); }
+
+function renderPairResults(pairs) {
+ const container = document.getElementById('pair-results');
+ if (!pairs.length) { container.innerHTML = `<div class="pair-search-empty">No results</div>`; return; }
+ container.innerHTML = '';
+ pairs.slice(0, 80).forEach(pair => {
+ const confirmed = isConfirmed(pair.id);
+ const row = document.createElement('div');
+ row.className = 'pair-row';
+ row.innerHTML = `
+      ${tipoChip(pair.tipo)}
+ <span class="pair-row-name" title="${escHtml(pair.nombre)}">${escHtml(pair.nombre)}</span><button class="btn-add${confirmed ? ' added' : ''}" data-id="${pair.id}">${confirmed ? '' : '+'}</button>
+    `;
+ row.querySelector('.btn-add').addEventListener('click', () => { if (!confirmed) addPair(pair); });
+ container.appendChild(row);
+  });
+}
+
+function searchPairs(query) {
+ if (!query.trim()) {
+ document.getElementById('pair-results').innerHTML = `<div class="pair-search-empty">Type to search biomagnetic pairs</div>`;
+ return;
+  }
+ const q = query.toLowerCase();
+ const results = allPairs.filter(p =>p.nombre?.toLowerCase().includes(q) ||
+ p.tipo?.toLowerCase().includes(q) ||
+ p.condiciones?.toLowerCase().includes(q) ||
+    (Array.isArray(p.sistemas_afectados) && p.sistemas_afectados.some(s =>s.toLowerCase().includes(q)))
+  );
+ renderPairResults(results);
+}
+
+function searchGlobal(query) {
+ if (!query.trim()) { clearGlobalSearch(); return; }
+ document.getElementById('pair-search-input').value = query;
+ searchPairs(query);
+}
+function clearGlobalSearch() {
+ const pairInput = document.getElementById('pair-search-input');
+ if (!pairInput.value) {
+ document.getElementById('pair-results').innerHTML = `<div class="pair-search-empty">Type to search biomagnetic pairs</div>`;
+  }
+}
+
+// ── CONFIRMED PAIRS ───────────────────────────────────────────────────────
+function addPair(pair) {
+ if (isConfirmed(pair.id)) return;
+ confirmedPairs.push({ ...pair, _catKey: activeCategory?.key || null, _catLabel: activeCategory?.label || null });
+ saveSession(); renderConfirmedList(); updateBadge();
+ const q = document.getElementById('pair-search-input').value || document.getElementById('global-search').value;
+ if (q) searchPairs(q);
+}
+
+function addPairFromWizard(name, bloqueId, bloque, zona, region, path) {
+ const entry = {
+ id: 'wiz_' + Date.now(),
+ nombre: name,
+ tipo: null,
+ condiciones: null,
+ sistemas_afectados: [],
+ _catKey: 'pares_biomagneticos',
+ _catLabel: 'Biomagnetic Pairs',
+ _bloqueId: bloqueId,
+ _bloque: bloque,
+ _path: path,
+  };
+ confirmedPairs.push(entry);
+ saveSession(); renderConfirmedList(); updateBadge();
+}
+
+function removePair(id) {
+ confirmedPairs = confirmedPairs.filter(p =>p.id !== id);
+ saveSession(); renderConfirmedList(); updateBadge();
+ const q = document.getElementById('pair-search-input').value || document.getElementById('global-search').value;
+ if (q) searchPairs(q);
+}
+
+function renderConfirmedList() {
+ const list = document.getElementById('confirmed-list');
+ if (!confirmedPairs.length) {
+ list.innerHTML = `<div class="confirmed-empty">Add biomagnetic pairs to the scan</div>`;
+ return;
+  }
+ list.innerHTML = '';
+ confirmedPairs.forEach(pair => {
+ const sistemas = Array.isArray(pair.sistemas_afectados) && pair.sistemas_afectados.length
+      ? pair.sistemas_afectados.join(', ') : '';
+ const card = document.createElement('div');
+ card.className = 'confirmed-card';
+ card.innerHTML = `
+ <div class="confirmed-card-top">
+        ${pair.tipo ? tipoChip(pair.tipo) : ''}
+ <span class="confirmed-card-name">${escHtml(pair.nombre)}</span></div>
+      ${pair._path ? `<div class="confirmed-card-sistema">${escHtml(pair._path)}</div>` :
+ sistemas ? `<div class="confirmed-card-sistema">System: ${escHtml(sistemas)}</div>` : ''}
+ <div class="confirmed-card-bottom"><button class="btn-remove" data-id="${pair.id}">eliminar</button></div>
+    `;
+ card.querySelector('.btn-remove').addEventListener('click', () =>removePair(pair.id));
+ list.appendChild(card);
+  });
+}
+
+function updateBadge() {
+ document.getElementById('confirmed-badge').textContent = confirmedPairs.length;
+}
+
+// ── FINALIZAR MODAL ───────────────────────────────────────────────────────
+function openModal() {
+ buildInstructionList();
+ buildMapasGallery();
+ generarInterpretacion();
+ document.getElementById('modal-overlay').classList.add('open');
+}
+
+// Markdown clínico → HTML (encabezados ###/##, negritas, viñetas, párrafos).
+function mdClinico(src) {
+ const lines = String(src || '').split('\n');
+ let html = '', inList = false;
+ const closeList = () => { if (inList) { html += '</ul>'; inList = false; } };
+ for (let raw of lines) {
+ let line = raw.replace(/\s+$/, '');
+ if (!line.trim()) { closeList(); continue; }
+ line = escHtml(line).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+ let m;
+ if ((m = line.match(/^#{3,}\s+(.*)/))) { closeList(); html += `<h4 class="interp-par">${m[1]}</h4>`; continue; }
+ if ((m = line.match(/^#{1,2}\s+(.*)/))) { closeList(); html += `<h3 class="interp-diag">${m[1]}</h3>`; continue; }
+ if ((m = line.match(/^[-•]\s+(.*)/))) { if (!inList) { html += '<ul>'; inList = true; } html += `<li>${m[1]}</li>`; continue; }
+ closeList(); html += `<p>${line}</p>`;
+  }
+ closeList();
+ return html;
+}
+
+// Interpretation with the Engine: meaning of each pair + integrative diagnosis.
+async function generarInterpretacion() {
+ const body = document.getElementById('interp-body');
+ if (!body) return;
+ const pares = confirmedPairs.map(p =>p.nombre).filter(Boolean);
+ if (!pares.length) { body.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">Add pairs to see their meaning and the diagnosis.</p>`; return; }
+ body.innerHTML = `<div class="interp-loading">The Engine is interpreting the pairs and building the diagnosis…</div>`;
+ const lista = pares.map(x => '- ' + x).join('\n');
+ const prompt = `Eres el Motor Biomagnético de HoloacademIA. El terapeuta TERMINÓ el rastreo y confirmó estos pares:
+${lista}
+
+Entrega el CIERRE CLÍNICO del rastreo. La interpretación de cada par es información de REFERENCIA del método (su lectura estándar), NO un dato inventado: da la lectura clínica conocida y, si un par admite varias, ofrece la más probable según su órgano/tejido. No omitas ninguna sección por prudencia; el terapeuta necesita el significado y el diagnóstico, no solo las ubicaciones.
+
+Para CADA par, usa EXACTAMENTE este formato:
+### [Nombre del par]
+- **Significado del par:** qué conecta (órganos, tejidos o función) y qué representa clínicamente.
+- **Patógeno o conflicto asociado:** microorganismo, toxina o conflicto biológico más probable.
+- **Interpretación biológica y emocional:** lectura en clave de biodescodificación y Nueva Medicina Germánica (órgano, sentido biológico, emoción o conflicto de fondo).
+
+Al final, cierra con:
+## Diagnóstico integrativo
+La historia clínica que cuentan juntos los pares: patrón general, sistema u órgano dominante, conflicto emocional de fondo y hacia dónde apunta el tratamiento. 3 a 6 líneas, afirmativo y clínico. Sin advertencias ni descargos médicos.`;
+ try {
+ const r = await fetch('/therapeutic/holos', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ prompt }) });
+ const data = await r.json().catch(() =>({}));
+ const html = mdClinico((data && data.answer) || '');
+ body.innerHTML = html.trim() ? html : `<p style="color:var(--muted);font-size:0.85rem;">The interpretation could not be generated. Close and reopen the map.</p>`;
+  } catch (e) {
+ body.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">The interpretation could not be generated (check your connection and try again).</p>`;
+  }
+}
+
+function buildMapasGallery() {
+  // Only show manifest-based maps for non-biomagnetic categories
+  // (biomagnetic pair maps are shown inline inside each instruction card)
+ const allMapas = [];
+ const catKeys = [...new Set(confirmedPairs.filter(p =>p._catKey && p._catKey !== 'pares_biomagneticos').map(p =>p._catKey))];
+ catKeys.forEach(key => {
+ const mapas = (manifest[key] || {}).mapas || [];
+ mapas.forEach(filename =>allMapas.push({ url: `/tablas-assets/${key}/${filename}` }));
+  });
+
+ const section = document.getElementById('mapas-section');
+ const gallery = document.getElementById('mapas-gallery');
+ if (!allMapas.length) { section.style.display = 'none'; return; }
+ section.style.display = 'block';
+ gallery.innerHTML = '';
+ allMapas.forEach(({ url }) => {
+ const img = document.createElement('img');
+ img.src = url; img.style.cssText = 'width:100%;border-radius:8px;cursor:zoom-in;';
+ img.addEventListener('click', () =>openLightbox(url));
+ gallery.appendChild(img);
+  });
+}
+
+function closeModal() { document.getElementById('modal-overlay').classList.remove('open'); }
+
+function _normalizePairName(s) {
+  // strip accents, then lowercase, normalize dashes/spaces
+ const base = String(s || '').normalize('NFD');
+ const noAccents = base.split('').filter(c =>c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) >0x036f).join('');
+ return noAccents.toLowerCase().replace(/–/g, '-').replace(/\s+/g, ' ').trim();
+}
+
+function buildInstructionList() {
+ const container = document.getElementById('instruction-list');
+ if (!confirmedPairs.length) {
+ container.innerHTML = `<p style="color:var(--muted);font-size:0.85rem;">No confirmed pairs. Add pairs first.</p>`;
+ return;
+  }
+
+  // Build normalized lookup: pair name → full pair data (for wizard-added pairs missing interpretation)
+ const pairLookup = new Map();
+  (allPairs || []).forEach(p => { if (p.nombre) pairLookup.set(_normalizePairName(p.nombre), p); });
+
+ container.innerHTML = '';
+ confirmedPairs.forEach((pair, i) => {
+    // Enrich wizard pairs that are missing interpretation data
+ if (!pair.condiciones && !pair.tipo && pair.nombre) {
+ const full = pairLookup.get(_normalizePairName(pair.nombre));
+ if (full) {
+ pair = { ...pair, tipo: full.tipo, condiciones: full.condiciones,
+ significado_emocional: full.significado_emocional,
+ sistemas_afectados: full.sistemas_afectados };
+      }
+    }
+
+ const n = i + 1;
+ const isPair = !pair._catKey || PAIR_CATEGORIES.has(pair._catKey) ||
+      ['bacteria','virus','hongo','parásito','disfuncional','especial','reservorio','emocional'].includes(pair.tipo?.toLowerCase());
+ const card = document.createElement('div');
+ card.className = 'instruction-card';
+ if (isPair) {
+      // Buscar mapas por cada PUNTO del par (Pineal, Útero, etc.)
+ const pointMaps = lookupPairMaps(pair.nombre);
+      // Polaridades: el primer punto = NEGRO (Negativo), segundo = ROJO (Positivo)
+      // Si solo hay un punto único (bipolar tipo "Pineal - Pineal"), es BIPOLAR
+ const polarityLabels = pointMaps.length === 1
+        ? ['BIPOLAR (dual-polarity magnet)']
+        : ['BLACK MAGNET · Negative Pole (−)', 'RED MAGNET · Positive Pole (+)'];
+ let mapsHtml = '';
+ if (pointMaps.length) {
+ const cards = pointMaps.map((pm, idx) => {
+ const polLabel = polarityLabels[idx] || `Point ${idx + 1}`;
+ const polBg = idx === 0 ? '#1a1a1a' : (idx === 1 ? '#be185d' : '#6d28d9');
+      // Prioridad: imagen precisa del Atlas Biomagnético → mapa de zona → placeholder.
+      // Si el par es bipolar (un solo punto tras dedup), se usa la imagen de doble polaridad.
+ const bip = pointMaps.length === 1;
+ const mapImg = resolvePointImage(pm.punto, idx, bip) || pm.map_zona || pm.map_bloque;
+ const locTxt = pm.region ? `${pm.region} · ${pm.zona} · ${pm.bloque}` : '';
+ return `
+ <div class="point-map-card" data-point="${escHtml(pm.canonical)}"><div class="point-map-pol" style="background:${polBg}">${escHtml(polLabel)}</div><div class="point-map-name"> ${escHtml(pm.canonical)}</div>
+              ${mapImg ? `<img class="point-map-img instruction-map-img" src="${mapImg}" alt="Location: ${escHtml(pm.canonical)}" loading="lazy"><div class="point-map-zoom-hint">Toca para ampliar</div>` : `<img class="point-map-img point-map-ph" src="/therapy-static/atlas_placeholder.svg?v=1" alt="Image in preparation">`}
+ </div>
+          `;
+        }).join('');
+ mapsHtml = `<div class="point-maps-grid">${cards}</div>`;
+      }
+ card.innerHTML = `
+ <div class="instruction-card-header"><div class="instruction-num">${n}</div><span class="instruction-card-name">${escHtml(pair.nombre)}</span></div>
+        ${mapsHtml || `<img class="point-map-img point-map-ph" src="/therapy-static/atlas_placeholder.svg?v=1" alt="Image in preparation">`}
+      `;
+    } else {
+ const catName = pair._catLabel || pair._catKey || '';
+ card.innerHTML = `
+ <div class="instruction-card-header"><div class="instruction-num">${n}</div><span class="instruction-card-name">${catName ? escHtml(catName).toUpperCase() + ' — ' : ''}${escHtml(pair.nombre)}</span></div>
+        ${pair.condiciones ? `<div class="instruction-detail"><strong>Indication:</strong> ${escHtml(pair.condiciones)}</div>` : ''}
+ <div class="instruction-detail"><strong>How to use:</strong>Take 4 drops directly or in water, 3 times a day</div>
+        ${pair.significado_emocional ? `<div class="instruction-detail"><strong>Meaning:</strong> ${escHtml(pair.significado_emocional)}</div>` : ''}
+      `;
+    }
+ container.appendChild(card);
+  });
+}
+
+// ── HELPERS ───────────────────────────────────────────────────────────────
+function escHtml(str) {
+ if (!str) return '';
+ return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── LISTENERS ─────────────────────────────────────────────────────────────
+function setupListeners() {
+  // pair-search-input may not exist if left column is hidden — guard all lookups
+ const pairSearchInput = document.getElementById('pair-search-input');
+ if (pairSearchInput) {
+ pairSearchInput.addEventListener('input', e => {
+ clearTimeout(searchDebounce);
+ searchDebounce = setTimeout(() =>searchPairs(e.target.value), 200);
+    });
+  }
+ document.getElementById('global-search').addEventListener('input', e => {
+ clearTimeout(globalSearchDebounce);
+ globalSearchDebounce = setTimeout(() =>searchGlobal(e.target.value), 200);
+  });
+ document.getElementById('lightbox').addEventListener('click', e => {
+ if (e.target === document.getElementById('lightbox')) closeLightbox();
+  });
+ document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+ document.addEventListener('keydown', e => {
+ if (e.key === 'Escape') { closeLightbox(); closeModal(); }
+ if (document.getElementById('lightbox').classList.contains('open')) {
+ if (e.key === 'ArrowLeft') navigateImage(-1);
+ if (e.key === 'ArrowRight') navigateImage(+1);
+    }
+  });
+ document.getElementById('btn-finalizar').addEventListener('click', openModal);
+ document.getElementById('instruction-list').addEventListener('click', e => {
+ const img = e.target.closest('.instruction-map-img');
+ if (img && img.src) openLightbox(img.src);
+  });
+ document.getElementById('btn-close-modal').addEventListener('click', closeModal);
+ document.getElementById('modal-overlay').addEventListener('click', e => {
+ if (e.target === document.getElementById('modal-overlay')) closeModal();
+  });
+ document.getElementById('btn-print').addEventListener('click', () =>window.print());
+ document.getElementById('btn-nuevo-rastreo').addEventListener('click', () => {
+ if (confirm('Start a new scan? The confirmed pairs will be cleared.')) {
+ confirmedPairs = []; saveSession(); renderConfirmedList(); updateBadge(); closeModal();
+    }
+  });
+ document.getElementById('btn-toggle-confirm').addEventListener('click', () => {
+ document.querySelector('.col-der').classList.toggle('drawer-open');
+  });
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// ── WIZARD DE PARES BIOMAGNÉTICOS ─────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════
+
+let wizDB = null;
+let wizStep = 'region';   // region | zona | bloque | par | result
+let wizBodyMapKey = null; // UI region key selected from body map
+let wizRegion = null;
+let wizZona   = null;
+let wizBloque = null;
+let wizPar    = null;
+
+const BLOQUE_MAP = {
+ pineal:'p0040',corona:'p0040',callosidad:'p0040',parietal:'p0040',
+ bulbo:'p0041',occipital:'p0041',cerebelo:'p0041',
+ temporal:'p0042',auricula:'p0042',posterior_lat:'p0042',
+ sien:'p0042',mandibular:'p0042',parotida:'p0042',
+ frente_alta:'p0043',hipofisis:'p0043',frente_baja:'p0043',
+ ojo:'p0044',anillo_ocular:'p0044',pomulo:'p0044',nariz:'p0044',boca:'p0044',
+ garganta_central:'p0045',garganta_baja:'p0045',garganta_lateral:'p0045',
+ nuca:'p0046',
+ collar:'p0047',timo:'p0047',anahata:'p0047',pecho_bajo:'p0047',
+ cavidad:'p0047',diafragma:'p0047',corazon:'p0047',pecho_lateral:'p0047',pleura:'p0047',
+ hepatitis_b1:'p0048',hepatitis_b2:'p0048',hepatitis_b3:'p0048',
+ estomago:'p0049',piloro:'p0049',higado:'p0049',zona_hepatica:'p0049',
+ vesicula:'p0049',bazo:'p0049',pancreas:'p0049',ombligo:'p0049',
+ interseccion:'p0049',colon:'p0049',
+ dorsales:'p0051',espalda_alta:'p0051',homoplato:'p0051',
+ retrohepatico:'p0051',rinon:'p0051',espalda_baja:'p0051',
+ pubis:'p0052',cadera:'p0052',femur:'p0052',
+ sacro:'p0053',coxis:'p0053',trasero:'p0053',
+ femina_a:'p0054',femina_b:'p0054',macho:'p0052',
+ brazo_alto:'p0055',brazo_medio:'p0055',mano:'p0055',
+ pierna_alta:'p0056',pierna_media:'p0056',pierna_trasera:'p0056',pie:'p0056',
+ variables_a:'p0057',variables_b:'p0057',personalizado:'p0057',
+ predeterminados:'p0057',homologos:'p0057',
+ rastreo_cervical:'p0057',rastreo_dorsal:'p0057',rastreo_lumbar:'p0057',
+ rastreo_sacro:'p0057',rastreo_coxis:'p0057',
+ eje_vertical:'p0058',eje_horizontal:'p0058',eje_transverso:'p0058',
+  // v4.0 bloque aliases
+ hepatico_1:'p0048',hepatico_2:'p0048',hepatico_3:'p0048',
+ personalizados:'p0057',pares_generales:'p0057',traumatismo:'p0057',
+ posterior:'p0041',mastoides:'p0041',
+ cerebro:'p0040',hipotalamo:'p0040',amigdalas:'p0040',
+ suprarrenal:'p0049',conexiones_sistemicas:'p0049'
+};
+
+function normBloqueKey(s) {
+ if (!s) return '';
+ const base = String(s).normalize('NFD');
+ const noAccents = base.split('').filter(c =>c.charCodeAt(0) < 0x0300 || c.charCodeAt(0) >0x036f).join('');
+ return noAccents.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+}
+
+function getMapUrl(bloqueId) {
+ if (!bloqueId) return null;
+  // Try direct key, then normalized name
+ const page = BLOQUE_MAP[bloqueId] || BLOQUE_MAP[normBloqueKey(bloqueId)];
+ if (!page) return null;
+ return `/tablas-assets/pares_biomagneticos/HOLOBIOMAGNETISMO_PARTE_1_${page}.jpg`;
+}
+
+function wizInit() { /* DB loaded in init(); wizard renders on category select */ }
+
+function wizReset() {
+ wizBodyMapKey = null;
+ wizStep = 'region'; wizRegion = wizZona = wizBloque = wizPar = null;
+ showHome();
+}
+
+function wizRender() {
+ wizUpdateBc();
+ switch(wizStep) {
+ case 'region': wizRenderRegions(); break;
+ case 'zona': wizRenderZonas(); break;
+ case 'bloque': wizRenderBloques(); break;
+ case 'par': wizRenderPares(); break;
+ case 'result': wizRenderResult(); break;
+  }
+}
+
+function wizSetQ(label, question) {
+ document.getElementById('wizLabel').textContent = label;
+ document.getElementById('wizQuestion').textContent = question;
+}
+
+function wizGetGrid(cls) {
+ const g = document.getElementById('wizGrid');
+ g.className = 'wiz-grid ' + cls;
+ g.innerHTML = '';
+ return g;
+}
+
+function wizMakeBtn(name, sub) {
+ const btn = document.createElement('button');
+ btn.className = 'wiz-opt';
+ btn.innerHTML = `<div class="wn">${name}</div><div class="ws">${sub}</div>`;
+ return btn;
+}
+
+function wizRenderRegions() {
+ if (!wizDB || !wizDB.regiones) {
+ wizSetQ('Loading…', '');
+ document.getElementById('wizGrid').innerHTML = '';
+ return;
+  }
+ wizSetQ('Step 1 · Region', 'Which region of the body? (9 regions)');
+ const g = wizGetGrid('gauto');
+ wizDB.regiones.forEach(r => {
+ const sub = r.zonas.length + ' zone' + (r.zonas.length===1?'':'s') + ' · ' + r.total_pares + ' pairs';
+ const btn = wizMakeBtn(r.numero + '. ' + r.nombre, sub);
+ btn.onclick = () => { wizRegion = r; wizStep = 'zona'; wizBodyMapKey = null; wizRender(); };
+ g.appendChild(btn);
+  });
+}
+
+function wizRenderZonas() {
+ wizSetQ('Step 2 · Zone', 'Which zone of ' + wizRegion.numero + '. ' + wizRegion.nombre + '?');
+  // Si solo hay 1 zona, saltar directo a bloques
+ if (wizRegion.zonas.length === 1) {
+ wizZona = wizRegion.zonas[0];
+ wizStep = 'bloque';
+ wizRender();
+ return;
+  }
+ const cols = wizRegion.zonas.length <= 3 ? 'g2' : 'gauto';
+ const g = wizGetGrid(cols);
+ wizRegion.zonas.forEach(z => {
+ const nBloques = z.bloques.length;
+ const sub = nBloques + ' block' + (nBloques===1?'':'s') + ' · ' + z.total_pares + ' pairs';
+ const btn = wizMakeBtn(z.numero + ' ' + z.nombre, sub);
+ btn.onclick = () => { wizZona = z; wizStep = 'bloque'; wizRender(); };
+ g.appendChild(btn);
+  });
+}
+
+function wizRenderBloques() {
+ wizSetQ('Step 3 · Block', 'Which block within ' + wizZona.numero + ' ' + wizZona.nombre + '?');
+ const g = wizGetGrid('gauto');
+ wizZona.bloques.forEach(b => {
+ const nP = b.pares.length;
+ const btn = wizMakeBtn(b.numero + ' ' + b.nombre, nP + ' pair' + (nP===1?'':'s'));
+ btn.onclick = () => { wizBloque = b; wizStep = 'par'; wizRender(); };
+ g.appendChild(btn);
+  });
+}
+
+function wizRenderPares() {
+ wizSetQ('Step 4 · Pair', 'Which pair number?');
+ document.getElementById('wizLabel').textContent = wizBloque.nombre + ' · ' + wizBloque.pares.length + ' pairs';
+ const g = wizGetGrid('g2');
+ wizBloque.pares.forEach((parName, i) => {
+ const btn = wizMakeBtn('Pair ' + (i + 1), parName);
+ btn.onclick = () => { wizPar = i; wizStep = 'result'; wizRender(); };
+ g.appendChild(btn);
+  });
+}
+
+function wizRenderResult() {
+ const pairName = wizBloque.pares[wizPar];
+ const path = wizRegion.nombre + ' › ' + wizZona.nombre + ' › ' + wizBloque.nombre;
+ wizSetQ('Pair found', '');
+ document.getElementById('wizLabel').textContent = 'Pair #' + (wizPar + 1);
+
+ const g = document.getElementById('wizGrid');
+ g.className = 'wiz-grid';
+ g.innerHTML = '';
+
+ const card = document.createElement('div');
+ card.className = 'wiz-result';
+ card.innerHTML = `
+ <div class="wiz-result-lbl">Pair #${wizPar + 1} · ${escHtml(wizBloque.nombre)}</div><div class="wiz-result-name">${escHtml(pairName)}</div><div class="wiz-result-path">${escHtml(path)}</div><div class="wiz-result-actions"><button class="wiz-btn-confirm" id="wizBtnConfirm">Confirm pair</button><button class="wiz-btn-change" id="wizBtnChange">Change #</button></div>
+  `;
+ g.appendChild(card);
+
+ document.getElementById('wizBtnConfirm').onclick = () => {
+ addPairFromWizard(pairName, normBloqueKey(wizBloque.nombre), wizBloque.nombre, wizZona.nombre, wizRegion.nombre, path);
+ wizReset();
+  };
+ document.getElementById('wizBtnChange').onclick = () => { wizStep = 'par'; wizRender(); };
+}
+
+function wizUpdateBc() {
+ const bc = document.getElementById('wizBc');
+ bc.innerHTML = '';
+ const crumbs = [{ label: '← Map', target: 'region' }];
+ if (wizBodyMapKey && BODY_REGION_MAP[wizBodyMapKey] && wizZona) {
+    // Came from body map with direct zone — show UI label only
+ crumbs.push({ label: BODY_REGION_MAP[wizBodyMapKey].label, target: 'bloque' });
+  } else if (wizBodyMapKey && BODY_REGION_MAP[wizBodyMapKey] && wizRegion) {
+    // Came from body map but at zona selection step
+ crumbs.push({ label: BODY_REGION_MAP[wizBodyMapKey].label, target: 'zona' });
+ if (wizZona) crumbs.push({ label: wizZona.nombre, target: 'bloque' });
+  } else {
+ if (wizRegion) crumbs.push({ label: wizRegion.nombre, target: 'zona' });
+ if (wizZona) crumbs.push({ label: wizZona.nombre, target: 'bloque' });
+  }
+ if (wizBloque) crumbs.push({ label: wizBloque.nombre, target: 'par' });
+ if (wizStep === 'result') crumbs.push({ label: 'Pair #' + (wizPar+1), target: 'result' });
+
+ crumbs.forEach((c, i) => {
+ if (i >0) { const sep = document.createElement('span'); sep.className='wiz-bc-sep'; sep.textContent='›'; bc.appendChild(sep); }
+ const el = document.createElement('span');
+ const isCurrent = i === crumbs.length - 1;
+ el.className = isCurrent ? 'wiz-bc-cur' : 'wiz-bc-item';
+ el.textContent = c.label;
+ if (!isCurrent) el.onclick = () =>wizNavTo(c.target);
+ bc.appendChild(el);
+  });
+}
+
+function wizNavTo(target) {
+ if (target === 'region') { wizRegion = wizZona = wizBloque = wizPar = null; showHome(); return; }
+ wizStep = target;
+ if (target === 'zona')   { wizZona = wizBloque = wizPar = null; }
+ if (target === 'bloque') { wizBloque = wizPar = null; }
+ if (target === 'par')    { wizPar = null; }
+ wizRender();
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// ── MICROBIOS REFERENCE PANEL ─────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════════════════
+
+let microActiveTab = 0;
+let microBuilt = false;
+
+function microTab(idx) {
+ microActiveTab = idx;
+ for (let i = 0; i < 5; i++) {
+ document.getElementById('microTab' + i).classList.toggle('active', i === idx);
+  }
+ microRender();
+}
+
+function microRender() {
+ const el = document.getElementById('micro-content');
+ switch (microActiveTab) {
+ case 0: el.innerHTML = microBuildDiag(); break;
+ case 1: el.innerHTML = microBuildGramPos(); break;
+ case 2: el.innerHTML = microBuildGramNeg(); break;
+ case 3: el.innerHTML = microBuildParasitosHongos(); break;
+ case 4: el.innerHTML = microBuildVirus(); break;
+ default: el.innerHTML = '';
+  }
+}
+
+/* helper: numbered item list */
+function mItems(arr) {
+ return arr.map((n, i) =>
+    `<span class="micro-item"><span class="micro-item-num">${i+1}.</span><span class="micro-item-name">${escHtml(n)}</span></span>`
+  ).join('');
+}
+
+/* helper: subgroup block */
+function mSubgroup(label, color, items) {
+ return `
+ <div class="micro-subgroup-hdr" style="background:${color}22;color:${color}">${escHtml(label)} <span style="font-weight:400;color:#a78bfa;font-size:.68rem">(${items.length})</span></div><div class="micro-items">${mItems(items)}</div>`;
+}
+
+/* helper: section wrapper */
+function mSection(title, body) {
+ return `
+ <div class="micro-section"><div class="micro-section-hdr">${escHtml(title)}</div><div class="micro-group">${body}</div></div>`;
+}
+
+// ── TAB 0: DIAGNÓSTICO ORGÁNICO ──────────────────────────────────────────
+function microBuildDiag() {
+ const sistemas = [
+    [1,  'Neuro',  'Sistema Neurosensorial'],
+    [2,  'Endo',   'Endócrino-Metabólico'],
+    [3,  'Inmune', 'Inmunológico'],
+    [4,  'Cardio', 'Cardiovascular'],
+    [5,  'Respi',  'Respiratorio'],
+    [6,  'Diges',  'Digestivo'],
+    [7,  'Renal',  'Renal / Electrolítico-Excretor'],
+    [8,  'Repro',  'Reproductor'],
+    [9,  'Osteo',  'Osteomuscular'],
+    [10, 'Lipo',   'Lipo-Fascial'],
+  ];
+ const rows = sistemas.map(([n, abbr, full]) =>
+    `<tr><td>${n}</td><td>${escHtml(abbr)}</td><td>${escHtml(full)}</td><td style="color:#a78bfa;font-size:.75rem">_____ %</td></tr>`
+  ).join('');
+
+ return `
+ <div style="margin-bottom:8px"><div style="font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#6e6e73;margin-bottom:10px">Diagnóstico Orgánico — 10 Sistemas
+ </div><table class="micro-diag-table"><thead><tr><th>#</th><th>Abrev.</th><th>Sistema</th><th>%</th></tr></thead><tbody>${rows}</tbody></table></div><div style="background:#fff;border:1.5px solid #e0e0e5;border-radius:9px;padding:14px 16px;"><div style="font-size:.73rem;font-weight:700;color:#ec4899;text-transform:uppercase;letter-spacing:.07em;margin-bottom:8px">Tabla Global de Microbios</div><div style="font-size:.82rem;color:#5b21b6;line-height:1.8;"><div><strong>Bacterias Gram +</strong> — Cocos, Bacilos, Clostridios, Micobacterias</div><div><strong>Bacterias Gram −</strong> — Cocos, Bacilos entéricos, Espiroquetas, Chlamydias, Micoplasmas</div><div><strong>Parásitos</strong> — 30 organismos</div><div><strong>Hongos</strong> — 13 organismos</div><div><strong>Virus ADN</strong> — Grupos I, II, VII + Grupo III ARN bicatenario</div><div><strong>Virus ARN</strong> — Grupos IV, V, VI (monocatenarios)</div></div></div>`;
+}
+
+// ── TAB 1: BACTERIAS GRAM + ───────────────────────────────────────────────
+function microBuildGramPos() {
+ const green = '#8b5cf6';
+
+ const enterococo = ['Enterococcus faecalis', 'Enterococcus faecium'];
+ const estafilococo = ['S. aureus', 'S. albus', 'S. lugdunensis', 'S. haemolyticus', 'S. saprophyticus'];
+ const estreptococo = [
+    'S. pyogenes', 'S. agalactiae', 'S. milleri', 'S. mutans', 'S. pneumoniae',
+    'S. mitis', 'S. salivarius', 'S. bovis', 'S. anginosus', 'S. intermedius',
+    'S. dysgalactiae', 'S. viridans', 'S. C (Zooepidemicus)',
+  ];
+
+ const bacilosPos = [
+    'Gardnerella vaginalis', 'Listeria monocytogenes', 'Actinomyces israelii',
+    'Corynebacterium diphtheriae', 'Bacillus anthracis', 'Bacillus cereus',
+    'Erysipelothrix rhusiopathiae', 'Lactobacillus', 'Nocardia asteroides',
+    'Propionibacterium acnes', 'Rothia dentocariosa', 'Streptomyces',
+    'Clostridium difficile',
+  ];
+
+ const clostridios = [
+    'C. botulinum', 'C. difficile', 'C. perfringens', 'C. septicum', 'C. tetani',
+    'C. haemolyticum', 'C. novyi', 'C. sordellii', 'C. acetobutylicum', 'C. chauvoei',
+  ];
+
+ const micobacterias = [
+    'M. tuberculosis', 'M. africanum', 'M. bovis', 'M. leprae', 'M. avium',
+    'M. intracellulare', 'M. kansasii', 'M. marinum', 'M. scrofulaceum', 'M. ulcerans',
+    'M. fortuitum', 'M. chelonae', 'M. abscessus', 'M. smegmatis',
+  ];
+
+ return mSection('Cocos Gram (+)',
+ mSubgroup('Enterococo', green, enterococo) +
+ mSubgroup('Estafilococo', green, estafilococo) +
+ mSubgroup('Estreptococo', green, estreptococo)
+  ) +
+ mSection('Bacilos Gram (+)', mSubgroup('Bacilos Gram +', green, bacilosPos)) +
+ mSection('Clostridios', mSubgroup('Clostridios', green, clostridios)) +
+ mSection('Micobacterias', mSubgroup('Micobacterias', green, micobacterias));
+}
+
+// ── TAB 2: BACTERIAS GRAM − ───────────────────────────────────────────────
+function microBuildGramNeg() {
+ const amber = '#f472b6';
+
+ const cocosNegGen = ['Acinetobacter (Especies)', 'Francisella (Especies)', 'Brucella (Especies)', 'Neisseria'];
+ const neisseria = ['N. gonorrhoeae', 'N. meningitidis', 'N. catarrhalis (Moraxella)'];
+
+ const bartonella = ['B. bacilliformis', 'B. henselae', 'B. quintana', 'B. elizabethae'];
+ const burkholderia = ['B. cepacia', 'B. mallei', 'B. pseudomallei', 'B. oklahomensis'];
+ const hemofilus = ['H. influenzae', 'H. ducreyi', 'H. influenzae tipo B'];
+
+ const enterGeneral = [
+    'E. coli', 'H. pylori', 'K. oxytoca', 'K. pneumoniae',
+    'Prevotencia stuartii', 'Serratia fonticola', 'Serratia marcescens',
+  ];
+ const campilobacter = ['C. jejuni', 'C. coli', 'C. fetus'];
+ const enterobacter = ['E. aerogenes', 'E. cloacae', 'E. agglomerans', 'E. calcoaceticus'];
+ const salmonela = ['S. paratyphi', 'S. typhi', 'S. typhimurium'];
+ const shigela = ['S. boydii', 'S. dysenteriae', 'S. sonnei'];
+ const vibrio = ['V. cholerae', 'V. parahaemolyticus', 'V. vulnificus'];
+ const yersinia = ['Y. enterocolitica', 'Y. pestis', 'Y. pseudotuberculosis'];
+
+ const espiroqueta = [
+    'Borrelia burgdorferi', 'B. afzelii', 'B. garinii', 'B. hermsii', 'B. recurrentis',
+    'Leptospira interrogans', 'Treponema carateum', 'T. denticola', 'T. pallidum',
+  ];
+ const chlamydia = ['C. pneumoniae', 'C. psittaci', 'C. trachomatis'];
+ const micoplasmas = [
+    'M. hominis', 'M. fermentans', 'M. genitalium',
+    'M. incognitus', 'M. pneumoniae', 'Ureaplasma urealyticum',
+  ];
+
+ return mSection('Cocos Gram (−)',
+ mSubgroup('General', amber, cocosNegGen) +
+ mSubgroup('Neisseria', amber, neisseria)
+  ) +
+ mSection('Bacilos Gram (−)',
+ mSubgroup('Bartonella', amber, bartonella) +
+ mSubgroup('Burkholderia', amber, burkholderia) +
+ mSubgroup('Hemofilus', amber, hemofilus)
+  ) +
+ mSection('Bacilos Entéricos Gram (−)',
+ mSubgroup('General', amber, enterGeneral) +
+ mSubgroup('Campilobacter', amber, campilobacter) +
+ mSubgroup('Enterobacter', amber, enterobacter) +
+ mSubgroup('Salmonela', amber, salmonela) +
+ mSubgroup('Shigela', amber, shigela) +
+ mSubgroup('Vibrio', amber, vibrio) +
+ mSubgroup('Yersinia', amber, yersinia)
+  ) +
+ mSection('Espiroquetas', mSubgroup('Espiroquetas', amber, espiroqueta)) +
+ mSection('Chlamydias', mSubgroup('Chlamydia', amber, chlamydia)) +
+ mSection('Micoplasmas', mSubgroup('Micoplasmas', amber, micoplasmas));
+}
+
+// ── TAB 3: PARÁSITOS & HONGOS ────────────────────────────────────────────
+function microBuildParasitosHongos() {
+ const purple = '#8b5cf6';
+ const pink   = '#f472b6';
+
+ const parasitos = [
+    'acanthamoeba', 'acaros', 'babesia', 'balantidium coli', 'cisticercos',
+    'cryptosporidium', 'dientamoeba fragilis', 'entamoeba histolytica',
+    'enterobius vermicularis (oxiuros)', 'enterocytazon', 'fasciolopisis burski',
+    'filaria', 'giardia lamblia', 'isospora', 'leishmania', 'naegleria',
+    'onchocerca volvulus', 'parasitos intestinales', 'plasmodium falciparum',
+    'plasmodium malariae', 'plasmodium ovale', 'plasmodium vivax',
+    'sarcocystis', 'sarcoptes scabei', 'schistosoma', 'toxoplasma gondi',
+    'trichomonas', 'trypanosoma cruzi', 'tripanosoma gambiense', 'triquinella spiralis',
+  ];
+
+ const hongos = [
+    'aspergillus flavus', 'aspergillus niger', 'blastocistis hominis',
+    'candida albicans', 'coccidiodo inmitis', 'criptococcus neoformans',
+    'histoplasma capsulatum', 'malassezia furfur', 'micelo intestinal',
+    'microsporum canis', 'piedra negra', 'pneumocystis carinii', 'trichophyto',
+  ];
+
+ return mSection('Parásitos (30)', mSubgroup('Parásitos', purple, parasitos)) +
+ mSection('Hongos (13)', mSubgroup('Hongos', pink, hongos));
+}
+
+// ── TAB 4: VIRUS ──────────────────────────────────────────────────────────
+function microBuildVirus() {
+ const blue = '#7c3aed';
+ const cyan = '#8b5cf6';
+
+ function virusGrupoHdr(label, subLabel, color) {
+ return `<div class="virus-grupo-hdr" style="background:${color}18;color:${color}">
+      ${escHtml(label)}
+      ${subLabel ? `<span class="virus-grupo-num" style="background:${color}22;color:${color}">${escHtml(subLabel)}</span>` : ''}
+ </div>`;
+  }
+
+ function virusFamilia(nombre, items) {
+ const itemsHtml = items.map((item, i) => {
+ if (typeof item === 'string') {
+ return `<span class="virus-item-direct"><span class="micro-item-num">${i+1}.</span><span class="micro-item-name">${escHtml(item)}</span></span>`;
+      }
+      // {sub, names} subgrupo
+ return `<div class="virus-subgrupo"><span class="virus-subgrupo-label">${escHtml(item.sub)}:</span>
+        ${item.names.map((n,j) => `<span class="virus-item-direct"><span class="micro-item-num">${j+1}.</span><span class="micro-item-name">${escHtml(n)}</span></span>`).join('')}
+ </div>`;
+    }).join('');
+ return `<div class="virus-familia"><div class="virus-familia-hdr">${escHtml(nombre)}</div><div style="padding:4px 0;">${itemsHtml}</div></div>`;
+  }
+
+  // ── VIRUS ADN ──
+ const adnHtml = `
+ <div class="micro-section-hdr" style="background:${blue}">Virus ADN (Clasificación de Baltimore)</div><div class="virus-grupo">
+      ${virusGrupoHdr('Grupo I — ADN Bicatenario (BICAT)', '5 familias', blue)}
+      ${virusFamilia('ADENOviridae', ['Adenovirus'])}
+      ${virusFamilia('HERPESviridae', [
+        { sub: 'α (alfa)', names: ['herpes simple 1', 'herpes simple 2', 'herpesvirus 3 (Varicela zoster)'] },
+        { sub: 'β (beta)', names: ['herpesvirus 4 (Epstein-Barr / Mononucleosis)', 'herpesvirus 5 (Citomegalovirus)', 'herpesvirus 6 (Roseola)'] },
+        { sub: 'γ (gamma)', names: ['herpesvirus 7', 'herpesvirus 8 (Sarcoma de Kaposi)'] },
+      ])}
+      ${virusFamilia('MIMIviridae', ['mimivirus'])}
+      ${virusFamilia('PAPOVAviridae', ['papillomavirus', 'polyomavirus 1 al 14', 'virus JC'])}
+      ${virusFamilia('POXviridae', ['molusco contagioso', 'vaccinia', 'viruela'])}
+
+      ${virusGrupoHdr('Grupo II — ADN Monocatenario (MONOCAT)', '1 familia', blue)}
+      ${virusFamilia('PARVOviridae', ['parvovirus B19'])}
+
+      ${virusGrupoHdr('Grupo VII — ADN Bicatenario Retro (BICAT RETRO)', '2 familias', blue)}
+      ${virusFamilia('HEPADNAviridae', ['hepatitis B'])}
+      ${virusFamilia('RETROvirus endógenos', ['HERVS'])}
+
+      ${virusGrupoHdr('Grupo III — ARN Bicatenario (BICAT)', '2 familias', '#8b5cf6')}
+      ${virusFamilia('CYSTOviridae', ['cystovirus'])}
+      ${virusFamilia('REOviridae', [
+        { sub: 'A', names: ['coltivirus', 'eyach', 'fiebre del Colorado', 'orbivirus'] },
+        { sub: 'B', names: ['orthoreovirus', 'reovirus', 'rotavirus (A-H)', 'tribec'] },
+      ])}
+ </div>`;
+
+  // ── VIRUS ARN ──
+ const arnHtml = `
+ <div class="micro-section-hdr" style="background:${cyan};margin-top:8px">Virus ARN (Clasificación de Baltimore)</div><div class="virus-grupo">
+      ${virusGrupoHdr('Grupo IV — ARN Monocatenario + (MONOCAT+)', '7 familias', cyan)}
+      ${virusFamilia('ASTROviridae', ['astrovirus'])}
+      ${virusFamilia('CALICIviridae', ['calicivirus', 'norovirus (Norwalk)', 'sapovirus (Sapporo)'])}
+      ${virusFamilia('CORONAviridae', ['covid-19', 'mers', 'sars'])}
+      ${virusFamilia('FLAVIviridae', [
+        { sub: 'A', names: ['dengue', 'encefalitis de San Luis', 'encefalitis japonesa'] },
+        { sub: 'B', names: ['fiebre amarilla', 'hepatacivirus (Hepatitis C)', 'Kunjin'] },
+        { sub: 'C', names: ['Kyasanur', 'Usutu', 'virus del Nilo Occidental', 'zika'] },
+      ])}
+      ${virusFamilia('HEPEviridae', ['hepatitis E'])}
+      ${virusFamilia('PICORNAviridae', [
+        { sub: 'A', names: ['aftosa', 'cardiovirus'] },
+        { sub: 'B (enterovirus)', names: ['coxsackie A o B', 'echovirus', 'enterovirus', 'polio'] },
+        { sub: 'C', names: ['hepatovirus (Hepatitis A)', 'kobuvirus (Aichivirus)', 'parechovirus', 'rhinovirus (Sinusitis)'] },
+      ])}
+      ${virusFamilia('TOGAviridae', [
+        { sub: 'A', names: ['chikungunya', 'encefalitis equina venezolana', 'encefalomielitis equina del este/oeste'] },
+        { sub: 'B', names: ['Mayaro', "o'nyong-nyong", 'rubeola', 'Sindbis'] },
+        { sub: 'C', names: ['virus del Río Ross'] },
+      ])}
+
+      ${virusGrupoHdr('Grupo V — ARN Monocatenario − (MONOCAT−)', '8 familias', cyan)}
+      ${virusFamilia('ARENAviridae', ['junin', 'lassa', 'Tacaibé', 'virus coriomeningitis linfocítica'])}
+      ${virusFamilia('BORNAviridae', ['bornavirus'])}
+      ${virusFamilia('BUNYAviridae', [
+        { sub: 'A', names: ['encefalitis de La Crosse', 'fiebre de Oropuche', 'fiebre del valle del Rift'] },
+        { sub: 'B', names: ['hanta', 'Toscana', 'trivittatus'] },
+      ])}
+      ${virusFamilia('DELTAviridae', ['hepatitis D'])}
+      ${virusFamilia('FILOviridae', ['ébola', 'marburg'])}
+      ${virusFamilia('ORTHOMYXOviridae', ['influenza A', 'influenza B', 'influenza C', 'thogotovirus'])}
+      ${virusFamilia('PARAMYXOviridae', [
+        { sub: 'A', names: ['miosovirus parainfluenza', 'mumps parotidis', 'newcastle'] },
+        { sub: 'B', names: ['parainfluenza (1-4)', 'sarampión', 'sincitial respiratorio'] },
+      ])}
+      ${virusFamilia('RHABDOviridae', ['rabia'])}
+
+      ${virusGrupoHdr('Grupo VI — ARN Monocatenario Retro (MONOCAT Retro)', '1 familia', cyan)}
+      ${virusFamilia('RETROvirus', ['HTLV I', 'HTLV II'])}
+ </div>`;
+
+ return `<div style="display:flex;flex-direction:column;gap:0;">${adnHtml}${arnHtml}</div>`;
+}
+
+// ── TABLA DE REFERENCIA ───────────────────────────────────────────────────
+let wizCurrentTab = 'rastreo';
+
+function wizSwitchTab(tab) {
+ wizCurrentTab = tab;
+ document.getElementById('wizTabRastreo').classList.toggle('active', tab === 'rastreo');
+ document.getElementById('wizTabTabla').classList.toggle('active', tab === 'tabla');
+ document.getElementById('wizInner').classList.toggle('hidden', tab !== 'rastreo');
+ const tref = document.getElementById('tabla-ref');
+ if (tab === 'tabla') {
+ tref.classList.add('visible');
+ if (!tref.dataset.built) { trefBuild(); tref.dataset.built = '1'; }
+  } else {
+ tref.classList.remove('visible');
+  }
+}
+
+function trefBuild() {
+ if (!wizDB || !wizDB.regiones) return;
+ const body = document.getElementById('tref-body');
+ body.innerHTML = '';
+
+ const regionColors = ['#7c3aed','#8b5cf6','#f472b6','#8b5cf6','#ec4899'];
+
+ wizDB.regiones.forEach((reg, ri) => {
+ const section = document.createElement('div');
+ section.className = 'tref-region';
+ section.dataset.region = reg.nombre.toLowerCase();
+
+ const color = regionColors[ri % regionColors.length];
+ const totalPares = reg.zonas.reduce((a, z) =>a + z.bloques.reduce((b, bl) =>b + bl.pares.length, 0), 0);
+
+ section.innerHTML = `
+ <div class="tref-region-hdr" style="background:${color}" onclick="trefToggle(this.closest('.tref-region'))"><span>${reg.nombre}</span><span style="font-weight:400;opacity:.85;font-size:.72rem;margin-left:6px">${reg.zonas.length} zones · ${totalPares} pairs</span><span class="tref-toggle">▾</span></div><div class="tref-region-body"></div>
+    `;
+
+ const regionBody = section.querySelector('.tref-region-body');
+
+ reg.zonas.forEach(zona => {
+ const zHdr = document.createElement('div');
+ zHdr.className = 'tref-zona-hdr';
+ const zTotal = zona.bloques.reduce((a, b) =>a + b.pares.length, 0);
+ zHdr.textContent = `${zona.numero ? zona.numero + '. ' : ''}${zona.nombre}  —  ${zona.bloques.length} blocks · ${zTotal} pairs`;
+ regionBody.appendChild(zHdr);
+
+ const tbl = document.createElement('table');
+ tbl.className = 'tref-table';
+ tbl.innerHTML = '<thead><tr><th>Block</th><th>#</th><th>Pairs</th></tr></thead>';
+ const tbody = document.createElement('tbody');
+
+ zona.bloques.forEach(bloque => {
+ const tr = document.createElement('tr');
+ tr.dataset.bloque = bloque.nombre.toLowerCase();
+ const parList = bloque.pares.map((p, i) =>
+          `<span class="tref-par-item" data-par="${p.toLowerCase()}"><span class="tref-par-num">${i+1}.</span><span class="tref-par-name">${escHtml(p)}</span></span>`
+        ).join('');
+ tr.innerHTML = `
+ <td>${escHtml(bloque.numero ? bloque.numero + '. ' + bloque.nombre : bloque.nombre)}</td><td>${bloque.pares.length}</td><td><div class="tref-par-list">${parList}</div></td>
+        `;
+ tbody.appendChild(tr);
+      });
+
+ tbl.appendChild(tbody);
+ regionBody.appendChild(tbl);
+    });
+
+ body.appendChild(section);
+  });
+}
+
+function trefToggle(section) {
+ section.classList.toggle('collapsed');
+}
+
+function trefFilter(q) {
+ const term = q.trim().toLowerCase();
+ const body = document.getElementById('tref-body');
+ const noResults = document.getElementById('tref-no-results');
+ let anyVisible = false;
+
+ body.querySelectorAll('.tref-region').forEach(section => {
+ if (!term) {
+      // show all, remove highlights
+ section.classList.remove('collapsed');
+ section.style.display = '';
+ section.querySelectorAll('tr').forEach(r =>r.style.display = '');
+ section.querySelectorAll('.tref-par-item').forEach(el =>el.classList.remove('highlight'));
+ anyVisible = true;
+ return;
+    }
+
+ let regionVisible = false;
+ section.querySelectorAll('tr').forEach(tr => {
+ const bloqueText = (tr.dataset.bloque || '');
+ const parItems = tr.querySelectorAll('.tref-par-item');
+ let rowHasMatch = bloqueText.includes(term);
+
+ parItems.forEach(item => {
+ const match = (item.dataset.par || '').includes(term);
+ item.classList.toggle('highlight', match);
+ if (match) rowHasMatch = true;
+      });
+
+ tr.style.display = rowHasMatch ? '' : 'none';
+ if (rowHasMatch) regionVisible = true;
+    });
+
+ section.style.display = regionVisible ? '' : 'none';
+ if (regionVisible) {
+ section.classList.remove('collapsed');
+ anyVisible = true;
+    }
+  });
+
+ noResults.style.display = anyVisible ? 'none' : '';
+}
+
+// ── MAPA CORPORAL INTERACTIVO ─────────────────────────────────────────────
+
+// Mapea las keys del SVG corporal (cabeza, pecho, brazos…) a las 9 regiones UI
+// que vienen de buildUiDB(). Solo guardamos el label UI — el resto se busca por nombre.
+const BODY_REGION_MAP = {
+ cabeza:  { label: 'Head'    },
+ cuello:  { label: 'Neck'    },
+ pecho:   { label: 'Chest'   },
+ abdomen: { label: 'Abdomen' },
+ pelvis:  { label: 'Pelvis'  },
+ espalda: { label: 'Back'    },
+ brazos:  { label: 'Arms'    },
+ piernas: { label: 'Legs'    },
+ extras:  { label: 'Extras'  },
+};
+
+function showHome() {
+ document.getElementById('rastreo-home').classList.add('visible');
+ document.getElementById('wizard-pares').classList.remove('active');
+  // Recalculate map scale now that home is visible (clientWidth was 0 while hidden)
+ requestAnimationFrame(fitBodyMap);
+}
+
+function hideHome() {
+ document.getElementById('rastreo-home').classList.remove('visible');
+ document.getElementById('wizard-pares').classList.add('active');
+ wizSwitchTab('rastreo');
+}
+
+function selectBodyRegion(key) {
+ wizBodyMapKey = key;
+ const mapping = BODY_REGION_MAP[key];
+ if (!mapping) return;
+
+ if (wizDB && wizDB.regiones) {
+    // Buscar la región UI por su label (Cabeza, Cuello, Pecho, …, Extras)
+ const uiRegion = wizDB.regiones.find(r =>r.nombre === mapping.label);
+ if (uiRegion) {
+ wizRegion = uiRegion;
+ wizZona = null; wizBloque = null; wizPar = null;
+
+      // Si la región UI tiene una sola zona, saltar directo al paso Bloque
+ if (uiRegion.zonas.length === 1) {
+ wizZona = uiRegion.zonas[0];
+ wizStep = 'bloque';
+      } else {
+ wizStep = 'zona';
+      }
+ hideHome();
+ wizRender();
+ return;
+    }
+  }
+
+  // Fallback: wizard completo desde el inicio
+ hideHome();
+ wizStep = 'region';
+ wizRender();
+}
+
+const REGION_IMAGES = {
+ cabeza:  '/therapy-static/regiones/cabeza2.svg',
+ cuello:  '/therapy-static/regiones/cuello2.svg',
+ pecho:   '/therapy-static/regiones/pecho2.svg',
+ abdomen: '/therapy-static/regiones/abdomen2.svg',
+ pelvis:  '/therapy-static/regiones/pelvis2.svg',
+ piernas: '/therapy-static/regiones/piernas2.svg',
+ brazos:  '/therapy-static/regiones/brazos2.svg',
+ espalda: '/therapy-static/regiones/espalda2.svg',
+};
+const BM_DEFAULT_IMG = '/therapy-static/regiones/body_map.svg';
+// Preload all region images
+(function() {
+ Object.values(REGION_IMAGES).forEach(src => { const img = new Image(); img.src = src; });
+})();
+
+function _bmShow(key) {
+ const bodyImg = document.getElementById('body-img');
+ if (bodyImg && REGION_IMAGES[key]) bodyImg.src = REGION_IMAGES[key];
+ const lbl  = document.getElementById('lbl-'  + key);
+ const conn = document.getElementById('conn-' + key);
+ if (lbl) lbl.classList.add('hovered');
+ if (conn) conn.classList.add('hovered');
+}
+function _bmHide(key) {
+ const bodyImg = document.getElementById('body-img');
+ if (bodyImg) bodyImg.src = BM_DEFAULT_IMG;
+ const lbl  = document.getElementById('lbl-'  + key);
+ const conn = document.getElementById('conn-' + key);
+ if (lbl) lbl.classList.remove('hovered');
+ if (conn) conn.classList.remove('hovered');
+}
+function hoverBodyRegion(key)   { _bmShow(key); }
+function unhoverBodyRegion(key) { _bmHide(key); }
+
+function initBodyMapHover() {
+  // Direct event listeners on each SVG zone
+ document.querySelectorAll('.bm-zone[data-region]').forEach(zone => {
+ const key = zone.dataset.region;
+ zone.addEventListener('mouseenter', () =>_bmShow(key));
+ zone.addEventListener('mouseleave', () =>_bmHide(key));
+  });
+
+  // Direct event listeners on labels
+ document.querySelectorAll('.bm-label[id^="lbl-"]').forEach(lbl => {
+ const key = lbl.id.slice(4); // 'lbl-cabeza' → 'cabeza'
+ lbl.addEventListener('mouseenter', () =>_bmShow(key));
+ lbl.addEventListener('mouseleave', () =>_bmHide(key));
+  });
+}
+
+function toggleInstr() {
+ const body = document.getElementById('instr-body');
+ const chevron = document.getElementById('instr-chevron');
+ body.classList.toggle('open');
+ chevron.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+// ── ESCALADO RESPONSIVO DEL MAPA CORPORAL ─────────────────────────────────
+// El scanner está diseñado para 860×690 px. En pantallas más angostas,
+// escalamos TODO con transform: scale() para no cortar etiquetas.
+function fitBodyMap() {
+ const scanner = document.getElementById('bm-scanner');
+ const frame   = document.querySelector('.bm-scanner-frame');
+ if (!scanner || !frame) return;
+ const designW = 860;
+ const designH = 690;
+ const availW  = Math.max(frame.clientWidth - 8, 280); // 4px de margen a cada lado
+ const scale   = Math.min(1, availW / designW);
+ scanner.style.transform = `scale(${scale})`;
+  // Reserva la altura visual para que el flujo del documento siga después del mapa
+ frame.style.height = `${designH * scale}px`;
+}
+window.addEventListener('resize', fitBodyMap);
+// Llamar después de que init() haya montado el DOM y la imagen haya cargado
+window.addEventListener('load', fitBodyMap);
+setTimeout(fitBodyMap, 50);
+setTimeout(fitBodyMap, 300);
+
+// ── BOOT ──────────────────────────────────────────────────────────────────
+init();
+initBodyMapHover();
+fitBodyMap();
+</script></body></html>

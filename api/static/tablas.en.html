@@ -1,0 +1,1026 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Table Scanning · Holistic Copilot</title><style>
+:root{
+  --bg:#0e0e12;--surface:#16161e;--card:#1e1e2a;--border:#2a2a3a;
+  --accent:#8b5cf6;--accent2:#8b5cf6;--green:#8b5cf6;--red:#ec4899;
+  --yellow:#f9a8d4;--orange:#f472b6;
+  --text:#e8e8f0;--muted:#8b5cf6;--tag-bg:#252535;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--text);font-family:'Segoe UI',system-ui,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+
+/* HEADER */
+.app-header{display:flex;align-items:center;gap:12px;padding:12px 20px;background:var(--surface);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
+.app-header a{color:var(--muted);text-decoration:none;font-size:1.2rem;padding:4px 8px;border-radius:6px;transition:color .2s}
+.app-header a:hover{color:var(--text)}
+.app-header h1{font-size:1rem;font-weight:600;letter-spacing:.03em}
+.app-header span{color:var(--muted);font-size:.8rem}
+.header-right{margin-left:auto;display:flex;align-items:center;gap:10px}
+.stat-pill{background:var(--tag-bg);border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:.75rem;color:var(--muted)}
+.stat-pill b{color:var(--text)}
+
+/* LAYOUT */
+.main-layout{display:flex;flex:1;overflow:hidden;height:calc(100vh - 55px)}
+.sidebar{width:220px;min-width:180px;border-right:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow-y:auto}
+.content-area{flex:1;display:flex;flex-direction:column;overflow:hidden}
+.confirmed-panel{width:300px;min-width:240px;border-left:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column}
+
+/* SIDEBAR */
+.sidebar-section{padding:10px 0}
+.sidebar-label{font-size:.65rem;font-weight:700;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;padding:4px 14px 8px}
+.cat-btn{display:flex;align-items:center;gap:8px;width:100%;padding:7px 14px;background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;text-align:left;transition:all .15s;border-left:2px solid transparent}
+.cat-btn:hover{color:var(--text);background:rgba(255,255,255,.04)}
+.cat-btn.active{color:var(--accent);background:rgba(139, 92, 246,.08);border-left-color:var(--accent)}
+.cat-count{margin-left:auto;background:var(--tag-bg);border-radius:10px;padding:1px 7px;font-size:.68rem;color:var(--muted)}
+.cat-btn.active .cat-count{color:var(--accent)}
+
+.tipo-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-bacteria{background:#ec4899}
+.dot-virus{background:#f472b6}
+.dot-hongo{background:#f9a8d4}
+.dot-parasito{background:#8b5cf6}
+.dot-emocional{background:#8b5cf6}
+.dot-disfuncional{background:#8b5cf6}
+.dot-especial{background:#f472b6}
+.dot-reservorio{background:#c4b5fd}
+.dot-desconocido{background:#8b5cf6}
+.dot-sales{background:#f9a8d4}
+.dot-bach{background:#c4b5fd}
+.dot-vitaminas{background:#c4b5fd}
+.dot-creencias{background:#a78bfa}
+.dot-conflicto{background:#f9a8d4}
+.dot-homeopatico{background:#ddd6fe}
+.dot-chakra{background:#f9a8d4}
+.dot-elementos{background:#ddd6fe}
+.dot-aminoacidos{background:#fbcfe8}
+.dot-enzimas{background:#ddd6fe}
+.dot-miedos{background:#c4b5fd}
+
+/* SISTEMA FILTER */
+.sis-filter{padding:10px 14px}
+.sis-filter label{font-size:.7rem;color:var(--muted);display:block;margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.sis-filter select{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:5px 8px;font-size:.78rem}
+.sis-filter select:focus{outline:none;border-color:var(--accent)}
+
+/* SEARCH */
+.search-bar{padding:12px 16px;border-bottom:1px solid var(--border);background:var(--surface)}
+.search-bar input{width:100%;background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:8px;padding:8px 12px;font-size:.85rem}
+.search-bar input:focus{outline:none;border-color:var(--accent)}
+
+/* TABLE AREA */
+.table-scroll{flex:1;overflow-y:auto;padding:12px 16px}
+.table-scroll::-webkit-scrollbar{width:4px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+.category-title{font-size:1rem;font-weight:700;margin-bottom:4px;color:var(--text)}
+.category-sub{font-size:.75rem;color:var(--muted);margin-bottom:12px}
+
+.items-grid{display:flex;flex-direction:column;gap:6px}
+.item-row{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;transition:all .15s}
+.item-row:hover{border-color:var(--accent);background:rgba(139, 92, 246,.06)}
+.item-row.checked{border-color:var(--green);background:rgba(139, 92, 246,.08)}
+.item-cb{width:16px;height:16px;accent-color:var(--green);cursor:pointer;margin-top:2px;flex-shrink:0}
+.item-body{flex:1;min-width:0}
+.item-nombre{font-size:.85rem;font-weight:600;color:var(--text);margin-bottom:3px}
+.item-condiciones{font-size:.75rem;color:var(--muted);line-height:1.45;margin-bottom:3px}
+.item-emocional{font-size:.72rem;color:#c4b5fd;font-style:italic;line-height:1.4}
+.item-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
+.tag{font-size:.62rem;padding:2px 7px;border-radius:10px;background:var(--tag-bg);color:var(--muted)}
+.tag-tipo{text-transform:capitalize}
+
+/* EMPTY */
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-state svg{opacity:.3;margin-bottom:12px}
+.empty-state p{font-size:.85rem}
+
+/* CONFIRMED PANEL */
+.confirmed-panel .panel-header{padding:12px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.confirmed-panel .panel-header h3{font-size:.85rem;font-weight:700;color:var(--text)}
+.conf-count{background:var(--accent);color:#fff;border-radius:10px;padding:1px 8px;font-size:.72rem;font-weight:700}
+.confirmed-scroll{flex:1;overflow-y:auto;padding:10px}
+.confirmed-scroll::-webkit-scrollbar{width:4px}
+.confirmed-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.conf-item{background:var(--card);border:1px solid var(--green);border-radius:7px;padding:8px 10px;margin-bottom:6px;display:flex;gap:8px;align-items:flex-start}
+.conf-item-body{flex:1;min-width:0}
+.conf-nombre{font-size:.78rem;font-weight:600;margin-bottom:2px}
+.conf-sub{font-size:.68rem;color:var(--muted);line-height:1.4}
+.conf-remove{background:none;border:none;color:var(--muted);cursor:pointer;padding:2px 4px;border-radius:4px;font-size:.75rem;flex-shrink:0;transition:color .15s}
+.conf-remove:hover{color:var(--red)}
+.conf-empty{text-align:center;padding:40px 14px;color:var(--muted);font-size:.78rem;line-height:1.6}
+
+.panel-actions{padding:10px 12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:6px}
+.btn-copy{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:9px;font-size:.8rem;font-weight:600;cursor:pointer;width:100%;transition:opacity .15s}
+.btn-copy:hover{opacity:.85}
+.btn-clear{background:none;border:1px solid var(--border);color:var(--muted);border-radius:8px;padding:6px;font-size:.75rem;cursor:pointer;width:100%;transition:all .15s}
+.btn-clear:hover{border-color:var(--red);color:var(--red)}
+
+/* LOADING */
+.loading{text-align:center;padding:60px;color:var(--muted);font-size:.85rem}
+.spinner{display:inline-block;width:24px;height:24px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin-bottom:10px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Static table styles (Schüssler, Bach, Vitaminas, Creencias) */
+.static-table{width:100%;border-collapse:collapse;font-size:.78rem;margin-top:8px}
+.static-table th{background:var(--tag-bg);color:var(--muted);font-weight:600;padding:7px 10px;text-align:left;border-bottom:1px solid var(--border)}
+.static-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,.04);vertical-align:top;line-height:1.4}
+.static-table tr:hover td{background:rgba(255,255,255,.03)}
+.static-table tr.checked-row td{background:rgba(139, 92, 246,.07)}
+.num-cell{color:var(--muted);width:36px;font-size:.7rem}
+.nombre-cell{font-weight:600;color:var(--text);min-width:140px}
+.desc-cell{color:var(--muted)}
+.emoc-cell{color:#c4b5fd;font-style:italic}
+.cb-cell{width:32px;text-align:center}
+.cb-cell input[type=checkbox]{accent-color:var(--green);width:14px;height:14px;cursor:pointer}
+
+/* Group headers inside static tables */
+.group-header{background:rgba(139, 92, 246,.1);color:var(--accent);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px}
+
+@media(max-width:900px){
+  .confirmed-panel{display:none}
+}
+@media(max-width:640px){
+  .sidebar{width:160px}
+}
+</style></head><body><header class="app-header"><a href="https://www.holoacademia.com/asistenteia" title="Home">&#8592;</a><h1>Table Scanning</h1><span id="categoryLabel">Loading…</span><div class="header-right"><div class="stat-pill">Total selected: <b id="totalConf">0</b></div></div></header><div class="main-layout"><!-- SIDEBAR --><nav class="sidebar"><div class="sidebar-section"><div class="sidebar-label">Biomagnetic Pairs</div><button class="cat-btn active" data-cat="bacteria" onclick="selectCat(this)"><span class="tipo-dot dot-bacteria"></span>Bacteria<span class="cat-count" id="cnt-bacteria">0</span></button><button class="cat-btn" data-cat="virus" onclick="selectCat(this)"><span class="tipo-dot dot-virus"></span>Viruses<span class="cat-count" id="cnt-virus">0</span></button><button class="cat-btn" data-cat="hongo" onclick="selectCat(this)"><span class="tipo-dot dot-hongo"></span>Fungi<span class="cat-count" id="cnt-hongo">0</span></button><button class="cat-btn" data-cat="parasito" onclick="selectCat(this)"><span class="tipo-dot dot-parasito"></span>Parasites<span class="cat-count" id="cnt-parasito">0</span></button><button class="cat-btn" data-cat="emocional" onclick="selectCat(this)"><span class="tipo-dot dot-emocional"></span>Emotional<span class="cat-count" id="cnt-emocional">0</span></button><button class="cat-btn" data-cat="disfuncional" onclick="selectCat(this)"><span class="tipo-dot dot-disfuncional"></span>Dysfunctional<span class="cat-count" id="cnt-disfuncional">0</span></button><button class="cat-btn" data-cat="especial" onclick="selectCat(this)"><span class="tipo-dot dot-especial"></span>Special<span class="cat-count" id="cnt-especial">0</span></button><button class="cat-btn" data-cat="reservorio" onclick="selectCat(this)"><span class="tipo-dot dot-reservorio"></span>Reservoirs<span class="cat-count" id="cnt-reservorio">0</span></button><button class="cat-btn" data-cat="desconocido" onclick="selectCat(this)"><span class="tipo-dot dot-desconocido"></span>Unknown<span class="cat-count" id="cnt-desconocido">0</span></button></div><div class="sis-filter"><label>Filter by system</label><select id="sisFilter" onchange="applyFilters()"><option value="">All systems</option><option value="cardiovascular">Cardiovascular</option><option value="digestivo">Digestive</option><option value="endócrino">Endocrine</option><option value="genital">Genital</option><option value="linfático">Lymphatic</option><option value="neurológico">Neurological</option><option value="osteomuscular">Musculoskeletal</option><option value="piel">Skin</option><option value="renal_urinario">Renal / Urinary</option><option value="respiratorio">Respiratory</option></select></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Psychosomatic Conflictology</div><button class="cat-btn" data-cat="conflicto_respiratorio" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Respiratory<span class="cat-count" id="cnt-conf-respiratorio">0</span></button><button class="cat-btn" data-cat="conflicto_digestivo" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Digestive<span class="cat-count" id="cnt-conf-digestivo">0</span></button><button class="cat-btn" data-cat="conflicto_cardiovascular" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Cardiovascular<span class="cat-count" id="cnt-conf-cardiovascular">0</span></button><button class="cat-btn" data-cat="conflicto_locomotor" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Locomotor/Skeletal<span class="cat-count" id="cnt-conf-locomotor">0</span></button><button class="cat-btn" data-cat="conflicto_genital" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Reproductive<span class="cat-count" id="cnt-conf-genital">0</span></button><button class="cat-btn" data-cat="conflicto_urinario" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Urinary/Renal<span class="cat-count" id="cnt-conf-urinario">0</span></button><button class="cat-btn" data-cat="conflicto_endocrino" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Endocrine<span class="cat-count" id="cnt-conf-endocrino">0</span></button><button class="cat-btn" data-cat="conflicto_inmunologico" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Immune<span class="cat-count" id="cnt-conf-inmunologico">0</span></button><button class="cat-btn" data-cat="conflicto_piel" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Skin/Lipofascial<span class="cat-count" id="cnt-conf-piel">0</span></button><button class="cat-btn" data-cat="conflicto_neurosensorial" onclick="selectCat(this)"><span class="tipo-dot dot-conflicto"></span>Neurosensory<span class="cat-count" id="cnt-conf-neurosensorial">0</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Other Scans</div><button class="cat-btn" data-cat="sales" onclick="selectCat(this)"><span class="tipo-dot dot-sales"></span>Schüssler Salts<span class="cat-count">12</span></button><button class="cat-btn" data-cat="bach" onclick="selectCat(this)"><span class="tipo-dot dot-bach"></span>Bach Flower Remedies<span class="cat-count">39</span></button><button class="cat-btn" data-cat="vitaminas" onclick="selectCat(this)"><span class="tipo-dot dot-vitaminas"></span>Vitamins / Minerals<span class="cat-count">26</span></button><button class="cat-btn" data-cat="creencias" onclick="selectCat(this)"><span class="tipo-dot dot-creencias"></span>Limiting Beliefs<span class="cat-count">40</span></button><button class="cat-btn" data-cat="miedos" onclick="selectCat(this)"><span class="tipo-dot dot-miedos"></span>Fears / Phobias<span class="cat-count">35</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Homeopathy</div><button class="cat-btn" data-cat="policrestos" onclick="selectCat(this)"><span class="tipo-dot dot-homeopatico"></span>Polychrests<span class="cat-count">25</span></button><button class="cat-btn" data-cat="semipolicrestos" onclick="selectCat(this)"><span class="tipo-dot dot-homeopatico"></span>Semi-polychrests<span class="cat-count">36</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Energy Centers</div><button class="cat-btn" data-cat="chakras_primarios" onclick="selectCat(this)"><span class="tipo-dot dot-chakra"></span>Primary Chakras<span class="cat-count">7</span></button><button class="cat-btn" data-cat="chakras_secundarios" onclick="selectCat(this)"><span class="tipo-dot dot-chakra"></span>Secondary Chakras<span class="cat-count">21</span></button><button class="cat-btn" data-cat="cinco_elementos" onclick="selectCat(this)"><span class="tipo-dot dot-elementos"></span>5 Elements TCM<span class="cat-count">5</span></button></div><div class="sidebar-section" style="border-top:1px solid var(--border)"><div class="sidebar-label">Biochemistry</div><button class="cat-btn" data-cat="aminoacidos" onclick="selectCat(this)"><span class="tipo-dot dot-aminoacidos"></span>Amino Acids<span class="cat-count">20</span></button><button class="cat-btn" data-cat="enzimas" onclick="selectCat(this)"><span class="tipo-dot dot-enzimas"></span>Enzymes<span class="cat-count">18</span></button></div></nav><!-- CONTENT --><div class="content-area"><div class="search-bar"><input type="search" id="searchBox" placeholder=" Search by name, condition, emotion…" oninput="applyFilters()"/></div><div class="table-scroll" id="tableScroll"><div class="loading"><div class="spinner"></div><br>Loading database…</div></div></div><!-- CONFIRMED PANEL --><div class="confirmed-panel"><div class="panel-header"><h3>Confirmed scan</h3><span class="conf-count" id="confCount">0</span></div><div class="confirmed-scroll" id="confirmedScroll"><div class="conf-empty">Check items in the table to add them here.</div></div><div class="panel-actions"><button class="btn-copy" onclick="copiarConfirmados()">Copy list</button><button class="btn-clear" onclick="limpiarTodo()">Clear all</button></div></div></div><script>
+// ─── State ────────────────────────────────────────────────────────────────────
+let ALL_PAIRS = [];           // raw pairs from API
+let CONFLICTO_DB = {};        // conflictología db from API
+let currentCat = 'bacteria';  // selected category
+let confirmed = [];            // {id, nombre, tipo, cat, sub}
+
+// ─── Static datasets ─────────────────────────────────────────────────────────
+const SALES_SCHUSSLER = [
+  {n:1, nombre:'Calcarea Fluorica (Calc Fluor)', desc:'Elastic tissue, teeth, bones, varicose veins, hemorrhoids', emoc:'Insecurity, lack of inner firmness'},
+  {n:2, nombre:'Calcarea Phosphorica (Calc Phos)', desc:'Bone formation, digestion, growth, anemia', emoc:'Discontent, longing for novelty, restlessness'},
+  {n:3, nombre:'Calcarea Sulphurica (Calc Sulph)', desc:'Purification, chronic suppurations, acne, eczema', emoc:'Jealousy, excessive self-demand'},
+  {n:4, nombre:'Ferrum Phosphoricum (Ferr Phos)', desc:'First-stage inflammations, mild fever, anemia, weakness', emoc:'Irritability, emotional agitation'},
+  {n:5, nombre:'Kali Muriaticum (Kali Mur)', desc:'Mucous membranes, second inflammatory stage, congestion, catarrh', emoc:'Resignation, a feeling of heaviness'},
+  {n:6, nombre:'Kali Phosphoricum (Kali Phos)', desc:'Nervous system, mental exhaustion, depression, insomnia', emoc:'Nervous exhaustion, pessimism'},
+  {n:7, nombre:'Kali Sulphuricum (Kali Sulph)', desc:'Skin, mucous membranes, third inflammatory stage, yellow secretions', emoc:'Fear of change, inflexibility'},
+  {n:8, nombre:'Magnesia Phosphorica (Mag Phos)', desc:'Cramps, spasms, neuralgias, colic, migraines', emoc:'Tension, perfectionism, rigidity'},
+  {n:9, nombre:'Natrum Muriaticum (Nat Mur)', desc:'Fluid balance, dryness/excess fluids, migraines', emoc:'Repressed grief, emotional sensitivity'},
+  {n:10,nombre:'Natrum Phosphoricum (Nat Phos)', desc:'Acidity, acid-base metabolism, rheumatism, gout', emoc:'Unresolved conflicts, bitterness'},
+  {n:11,nombre:'Natrum Sulphuricum (Nat Sulph)', desc:'Liver, detoxification, moist asthma, gallbladder', emoc:'Deep sadness, a wish to die'},
+  {n:12,nombre:'Silicea (Silica)', desc:'Connective tissue, skin, hair, nails, abscesses', emoc:'Lack of confidence, extreme shyness'},
+];
+
+const BACH_FLOWERS = [
+  // Grupo 1 — Miedo
+  {g:'FEAR', n:1, nombre:'Rock Rose (Helianthemum)', desc:'Terror, panic, nightmares, extreme emergencies', emoc:'Paralyzing fear'},
+  {g:'FEAR', n:2, nombre:'Mimulus (Mimulus guttatus)', desc:'Known, everyday fears: heights, animals, illness', emoc:'Shyness, specific fear'},
+  {g:'FEAR', n:3, nombre:'Cherry Plum (Prunus cerasifera)', desc:'Fear of losing control, violent impulses, mental collapse', emoc:'Extreme desperation'},
+  {g:'FEAR', n:4, nombre:'Aspen (Populus tremula)', desc:'Vague fears, causeless apprehension, night terrors', emoc:'Diffuse anxiety, forebodings'},
+  {g:'FEAR', n:5, nombre:'Red Chestnut (Aesculus carnea)', desc:'Excessive fear for loved ones, catastrophizing', emoc:'Overprotection, worry'},
+  // Grupo 2 — Incertidumbre
+  {g:'UNCERTAINTY', n:6, nombre:'Cerato (Ceratostigma willmottiana)', desc:'Self-doubt, constantly seeks advice, does not trust oneself', emoc:'Lack of trust in intuition'},
+  {g:'UNCERTAINTY', n:7, nombre:'Scleranthus (Scleranthus annuus)', desc:'Indecision between two options, changeable mood, instability', emoc:'Wavering'},
+  {g:'UNCERTAINTY', n:8, nombre:'Gentian (Gentianella amarella)', desc:'Easily discouraged by obstacles, skepticism, doubt', emoc:'Mild pessimism'},
+  {g:'UNCERTAINTY', n:9, nombre:'Gorse (Ulex europaeus)', desc:'Total hopelessness, giving up, "it is not worth trying"', emoc:'Hopelessness'},
+  {g:'UNCERTAINTY', n:10,nombre:'Hornbeam (Carpinus betulus)', desc:'Morning mental fatigue, procrastination, exhaustion at the thought of duty', emoc:'Inertia'},
+  {g:'UNCERTAINTY', n:11,nombre:'Wild Oat (Bromus ramosus)', desc:'No direction in life, many talents without focus, dissatisfaction', emoc:'Lack of purpose'},
+  // Grupo 3 — Desinterés por el presente
+  {g:'LACK OF INTEREST', n:12,nombre:'Clematis (Clematis vitalba)', desc:'Daydreaming, escapism, poor concentration, lives in the future', emoc:'Reverie, disconnection'},
+  {g:'LACK OF INTEREST', n:13,nombre:'Honeysuckle (Lonicera caprifolium)', desc:'Nostalgic, lives in the past, constant yearning', emoc:'Nostalgia'},
+  {g:'LACK OF INTEREST', n:14,nombre:'Wild Rose (Rosa canina)', desc:'Resignation, apathy, accepts without struggle, lack of ambition', emoc:'Resignation'},
+  {g:'LACK OF INTEREST', n:15,nombre:'Olive (Olea europaea)', desc:'Total physical and mental exhaustion after prolonged effort', emoc:'Depletion'},
+  {g:'LACK OF INTEREST', n:16,nombre:'White Chestnut (Aesculus hippocastanum)', desc:'Repetitive thoughts, mental dialogues, rumination', emoc:'Mental obsession'},
+  {g:'LACK OF INTEREST', n:17,nombre:'Mustard (Sinapis arvensis)', desc:'Depression with no apparent cause, melancholy that comes and goes', emoc:'Sudden sadness'},
+  {g:'LACK OF INTEREST', n:18,nombre:'Chestnut Bud (Aesculus hippocastanum — brote)', desc:'Repeats mistakes, does not learn from experience', emoc:'Failure to learn'},
+  // Grupo 4 — Soledad
+  {g:'LONELINESS', n:19,nombre:'Water Violet (Hottonia palustris)', desc:'Pride, emotional distance, reserved, self-sufficient', emoc:'Aloof isolation'},
+  {g:'LONELINESS', n:20,nombre:'Impatiens (Impatiens glandulifera)', desc:'Impatience, irritability, needs everything to be fast', emoc:'Impatience'},
+  {g:'LONELINESS', n:21,nombre:'Heather (Calluna vulgaris)', desc:'Self-centered, talks a lot about oneself, needs company', emoc:'Relational narcissism'},
+  // Grupo 5 — Hipersensibilidad a influencias
+  {g:'HYPERSENSITIVITY', n:22,nombre:'Agrimony (Agrimonia eupatoria)', desc:'Hides problems behind false cheer, avoids conflict', emoc:'Cheerful mask'},
+  {g:'HYPERSENSITIVITY', n:23,nombre:'Centaury (Centaurium umbellatum)', desc:'Cannot say no, lets others take advantage, excessive compliance', emoc:'Submission'},
+  {g:'HYPERSENSITIVITY', n:24,nombre:'Walnut (Juglans regia)', desc:'Difficulty adapting, easily influenced, during life transitions', emoc:'Instability during change'},
+  {g:'HYPERSENSITIVITY', n:25,nombre:'Holly (Ilex aquifolium)', desc:'Envy, jealousy, hatred, suspicion, causeless anger', emoc:'Intense negative emotions'},
+  // Grupo 6 — Desaliento o desesperación
+  {g:'DESPONDENCY', n:26,nombre:'Larch (Larix decidua)', desc:'Low self-esteem, fear of failure, does not try', emoc:'Inferiority complex'},
+  {g:'DESPONDENCY', n:27,nombre:'Pine (Pinus sylvestris)', desc:'Excessive guilt, self-criticism, always apologizing', emoc:'Guilt'},
+  {g:'DESPONDENCY', n:28,nombre:'Elm (Ulmus procera)', desc:'Overwhelmed by responsibilities, doubts being able to cope', emoc:'Temporary overload'},
+  {g:'DESPONDENCY', n:29,nombre:'Sweet Chestnut (Castanea sativa)', desc:'Extreme anguish, the limit of bearable suffering, darkness', emoc:'Existential despair'},
+  {g:'DESPONDENCY', n:30,nombre:'Star of Bethlehem (Ornithogalum umbellatum)', desc:'Trauma, shock, grief, aftermath of bad news', emoc:'Unresolved trauma'},
+  {g:'DESPONDENCY', n:31,nombre:'Willow (Salix vitellina)', desc:'Resentment, bitterness, victimhood, "life is not fair"', emoc:'Resentment'},
+  {g:'DESPONDENCY', n:32,nombre:'Oak (Quercus robur)', desc:'A fighter who never rests, over-demands of oneself, does not ask for help', emoc:'Over-responsibility'},
+  {g:'DESPONDENCY', n:33,nombre:'Crab Apple (Malus sylvestris)', desc:'Self-disgust, obsession with cleanliness, impurity', emoc:'Self-loathing'},
+  // Grupo 7 — Preocupación excesiva por otros
+  {g:'OVER-CARE FOR OTHERS', n:34,nombre:'Chicory (Cichorium intybus)', desc:'Possessiveness, needs to be needed, subtle manipulation', emoc:'Possessive love'},
+  {g:'OVER-CARE FOR OTHERS', n:35,nombre:'Vervain (Verbena officinalis)', desc:'Fanaticism, over-enthusiasm, wants to convince everyone', emoc:'Ideological tension'},
+  {g:'OVER-CARE FOR OTHERS', n:36,nombre:'Vine (Vitis vinifera)', desc:'Authoritarianism, dominance, tyranny, inflexibility', emoc:'Excessive control'},
+  {g:'OVER-CARE FOR OTHERS', n:37,nombre:'Beech (Fagus sylvatica)', desc:'Intolerance, excessive criticism, hypersensitivity to others', emoc:'Judgment'},
+  {g:'OVER-CARE FOR OTHERS', n:38,nombre:'Rock Water (spring water)', desc:'Extreme self-demand, rigidity, self-denial, asceticism', emoc:'Inner rigidity'},
+  // Grupo especial — Urgencias
+  {g:'EMERGENCY', n:39,nombre:'Rescue Remedy (5 Flowers)', desc:'Acute crisis: shock, panic, emotional emergency, accident, recent trauma', emoc:'Emergency stabilization'},
+];
+
+const VITAMINAS = [
+  {n:1, nombre:'Vitamin A (Retinol)', desc:'Vision, mucous membranes, skin, immunity, bone growth'},
+  {n:2, nombre:'Vitamin B1 (Thiamine)', desc:'Energy metabolism, nervous system, heart'},
+  {n:3, nombre:'Vitamin B2 (Riboflavin)', desc:'Cellular metabolism, skin, mucous membranes, vision'},
+  {n:4, nombre:'Vitamin B3 (Niacin)', desc:'Skin, digestive and nervous systems, cholesterol'},
+  {n:5, nombre:'Vitamin B5 (Pantothenic acid)', desc:'Hormone synthesis, adrenal glands, energy'},
+  {n:6, nombre:'Vitamin B6 (Pyridoxine)', desc:'Neurotransmitters, immunity, protein metabolism'},
+  {n:7, nombre:'Vitamin B7 (Biotin)', desc:'Hair, nails, skin, fat/carbohydrate metabolism'},
+  {n:8, nombre:'Vitamin B9 (Folic acid)', desc:'Cell division, pregnancy, nervous system, anemia'},
+  {n:9, nombre:'Vitamin B12 (Cyanocobalamin)', desc:'Nervous system, red blood cell formation, DNA'},
+  {n:10,nombre:'Vitamin C (Ascorbic acid)', desc:'Collagen, immunity, antioxidant, wound healing'},
+  {n:11,nombre:'Vitamin D3 (Cholecalciferol)', desc:'Calcium/phosphorus, bones, immunity, mood'},
+  {n:12,nombre:'Vitamin E (Tocopherol)', desc:'Antioxidant, skin, fertility, cardiovascular system'},
+  {n:13,nombre:'Vitamin K2 (Menaquinone)', desc:'Coagulation, bone calcification, cardiovascular'},
+  {n:14,nombre:'Calcium', desc:'Bones, teeth, muscle contraction, coagulation'},
+  {n:15,nombre:'Magnesium', desc:'Over 300 enzymatic reactions, muscle, nerve, energy'},
+  {n:16,nombre:'Zinc', desc:'Immunity, wound healing, taste, smell, reproduction'},
+  {n:17,nombre:'Iron', desc:'Hemoglobin, O₂ transport, energy, immunity'},
+  {n:18,nombre:'Selenium', desc:'Antioxidant, thyroid, immunity, male fertility'},
+  {n:19,nombre:'Iodine', desc:'Thyroid, metabolism, brain development'},
+  {n:20,nombre:'Potassium', desc:'Electrolyte balance, heart, blood pressure'},
+  {n:21,nombre:'Copper', desc:'Connective tissue, immune and neurological systems'},
+  {n:22,nombre:'Manganese', desc:'Antioxidant (SOD), bones, metabolism'},
+  {n:23,nombre:'Chromium', desc:'Glucose metabolism, insulin, cholesterol'},
+  {n:24,nombre:'Omega-3 (EPA/DHA)', desc:'Cardiovascular, brain, inflammation, joints'},
+  {n:25,nombre:'Coenzyme Q10', desc:'Mitochondrial energy production, antioxidant'},
+  {n:26,nombre:'Probiotics / Lactobacillus', desc:'Gut microbiota, immunity, gut-brain axis'},
+];
+
+const CREENCIAS = [
+  {n:1, cat:'Self-esteem', nombre:'I am not enough', emoc:'Inadequacy, shame'},
+  {n:2, cat:'Self-esteem', nombre:'I do not deserve love / to be loved', emoc:'Abandonment, rejection'},
+  {n:3, cat:'Self-esteem', nombre:'I am a failure', emoc:'Deep shame'},
+  {n:4, cat:'Self-esteem', nombre:'I am bad / defective', emoc:'Chronic guilt'},
+  {n:5, cat:'Self-esteem', nombre:'I am worthless without achievements', emoc:'Over-demand on oneself'},
+  {n:6, cat:'Safety', nombre:'The world is dangerous', emoc:'Fear, hypervigilance'},
+  {n:7, cat:'Safety', nombre:'I cannot trust anyone', emoc:'Distrust, betrayal'},
+  {n:8, cat:'Safety', nombre:'If I show vulnerability I will be hurt', emoc:'Compulsive self-protection'},
+  {n:9, cat:'Safety', nombre:'I must control everything to be safe', emoc:'Control, anxiety'},
+  {n:10, cat:'Safety', nombre:'If I relax, something bad will happen', emoc:'Chronic vigilance'},
+  {n:11, cat:'Belonging', nombre:'I will always be excluded', emoc:'Loneliness, rejection'},
+  {n:12, cat:'Belonging', nombre:'I do not fit in anywhere', emoc:'Feeling alien, isolation'},
+  {n:13, cat:'Belonging', nombre:'To be loved I must be perfect', emoc:'Defensive perfectionism'},
+  {n:14, cat:'Belonging', nombre:'If I say what I feel they will abandon me', emoc:'Emotional repression'},
+  {n:15, cat:'Belonging', nombre:'I am alone in this', emoc:'Helplessness'},
+  {n:16, cat:'Power/Control', nombre:'I have no power over my life', emoc:'Learned helplessness'},
+  {n:17, cat:'Power/Control', nombre:'Things never change', emoc:'Hopelessness'},
+  {n:18, cat:'Power/Control', nombre:'I am a victim of circumstances', emoc:'Victimhood'},
+  {n:19, cat:'Power/Control', nombre:'I cannot refuse — I must please', emoc:'Submission'},
+  {n:20, cat:'Power/Control', nombre:'If I express anger, I will destroy everything', emoc:'Repression of anger'},
+  {n:21, cat:'Deservingness', nombre:'I do not deserve success / abundance', emoc:'Self-sabotage'},
+  {n:22, cat:'Deservingness', nombre:'Pleasure is sinful / dangerous', emoc:'Guilt over enjoyment'},
+  {n:23, cat:'Deservingness', nombre:'I must suffer to deserve', emoc:'Martyrdom'},
+  {n:24, cat:'Deservingness', nombre:'If I am too happy something bad will come', emoc:'Fear of happiness'},
+  {n:25, cat:'Deservingness', nombre:'I do not deserve to heal', emoc:'Identification with illness'},
+  {n:26, cat:'Family loyalty', nombre:'I must carry the pain of my family', emoc:'Unconscious loyalty'},
+  {n:27, cat:'Family loyalty', nombre:'I cannot surpass my parents', emoc:'Loyalty to failure'},
+  {n:28, cat:'Family loyalty', nombre:'I must repeat the fate of the clan', emoc:'Systemic repetition'},
+  {n:29, cat:'Family loyalty', nombre:'If I prosper, I betray my own', emoc:'Guilt over success'},
+  {n:30, cat:'Family loyalty', nombre:'Love hurts — always', emoc:'Attachment wound'},
+  {n:31, cat:'Body/Health', nombre:'My body is my enemy', emoc:'Somatic dissociation'},
+  {n:32, cat:'Body/Health', nombre:'Illness is my only way to rest', emoc:'Somatization'},
+  {n:33, cat:'Body/Health', nombre:'I cannot heal — it is genetic', emoc:'Biological fatalism'},
+  {n:34, cat:'Body/Health', nombre:'Pain defines me', emoc:'Identity in illness'},
+  {n:35, cat:'Body/Health', nombre:'If I heal, I will lose attention/care', emoc:'Secondary gain'},
+  {n:36, cat:'Spirituality', nombre:'God punished me / abandoned me', emoc:'Divine abandonment'},
+  {n:37, cat:'Spirituality', nombre:'I do not deserve divine grace', emoc:'Spiritual guilt'},
+  {n:38, cat:'Spirituality', nombre:'I am a bad person in essence', emoc:'Original sin'},
+  {n:39, cat:'Spirituality', nombre:'The universe conspires against me', emoc:'Cosmic paranoia'},
+  {n:40, cat:'Spirituality', nombre:'My traumas are karmic punishment', emoc:'Spiritual fatalism'},
+];
+
+const POLICRESTOS = [
+  {n:1, nombre:'Aconitum Napellus', desc:'Sudden fears, high fever of abrupt onset, extreme anxiety, palpitations'},
+  {n:2, nombre:'Árnica Montana', desc:'Injuries, blows, bruises, muscle fatigue, physical and emotional shock'},
+  {n:3, nombre:'Arsenicum Album', desc:'Perfectionist anxiety, burning diarrhea, exhaustion, fear of death'},
+  {n:4, nombre:'Belladona', desc:'Sudden high fever, red hot inflammations, delirium, convulsions'},
+  {n:5, nombre:'Bryonia Alba', desc:'Pains that worsen with movement, irritability, dry cough, joints'},
+  {n:6, nombre:'Calcárea Carbónica', desc:'Robust, cold, sweaty people; bones, teeth, slow metabolism'},
+  {n:7, nombre:'Carbo Vegetabilis', desc:'Extreme weakness, flatulence, poor circulation, vital collapse'},
+  {n:8, nombre:'Causticum', desc:'Progressive paralysis, chronic hoarseness, incontinence, burns'},
+  {n:9, nombre:'Chamomilla Vulgaris', desc:'Extreme irritability, intolerable pains, infant teething, colic'},
+  {n:10, nombre:'China Officinalis', desc:'Weakness from loss of fluids, periodic fevers, digestion, bleeding'},
+  {n:11, nombre:'Dulcamara', desc:'Ailments from cold and damp, rheumatism, colds, warts'},
+  {n:12, nombre:'Hepar Sulphuris Calcareum', desc:'Purulent infections, hypersensitivity to pain and cold, abscesses'},
+  {n:13, nombre:'Hyosciamus Niger', desc:'Pathological jealousy, disinhibited behavior, convulsions, insomnia'},
+  {n:14, nombre:'Ipecacuanha', desc:'Constant nausea, hemorrhages, spasmodic cough, uncontrollable vomiting'},
+  {n:15, nombre:'Lachesis', desc:'Jealousy, envy, talkativeness, circulatory problems, menopause'},
+  {n:16, nombre:'Lycopodium Clavatum', desc:'Insecurity disguised as arrogance, liver, digestion, baldness'},
+  {n:17, nombre:'Mercurius Solubilis', desc:'Mucous membrane infections, gums, night sweats, thermal instability'},
+  {n:18, nombre:'Nux Vomica', desc:'Overwork, irritability, constipation, overuse of stimulants'},
+  {n:19, nombre:'Phosphorus', desc:'Extreme sensitivity, hemorrhages, lungs, existential anxiety'},
+  {n:20, nombre:'Pulsatilla', desc:'Shyness, easy crying, mucus, female hormonal disorders'},
+  {n:21, nombre:'Rhus Toxicodendron', desc:'Pains that improve with movement, rheumatism, skin, herpes'},
+  {n:22, nombre:'Sepia Officinalis', desc:'Exhaustion, emotional indifference, organ prolapse, gynecology'},
+  {n:23, nombre:'Silicea Terra', desc:'Shyness, connective tissue weakness, fistulas, abscesses, skin and nails'},
+  {n:24, nombre:'Sulphur', desc:'Self-centeredness, itchy skin, excessive heat, general detoxification'},
+  {n:25, nombre:'Veratrum Album', desc:'Collapse, extreme coldness, cold sweat, violent diarrhea, delirium'},
+];
+
+const SEMIPOLICRESTOS = [
+  {n:1, nombre:'Antimonium Crudum', desc:'Irritability, white tongue, warts, childhood obesity'},
+  {n:2, nombre:'Antimonium Tartaricum', desc:'Bronchitis with mucus, drowsiness, lack of vital response'},
+  {n:3, nombre:'Aurum Metallicum', desc:'Deep depression, suicidal ideation, hypertension, bones'},
+  {n:4, nombre:'Baryta Carbónica', desc:'Developmental delay, childhood shyness, arteriosclerosis, tonsils'},
+  {n:5, nombre:'Cannabis Sativa', desc:'Urinary disorders, prostatitis, altered mental states'},
+  {n:6, nombre:'Cantharis', desc:'Burning cystitis, burns, bladder, heightened sexual desire'},
+  {n:7, nombre:'Cicuta Virosa', desc:'Convulsions, head trauma, neck stiffness'},
+  {n:8, nombre:'Coccus Cacti', desc:'Cough with viscous mucus, urolithiasis, gout'},
+  {n:9, nombre:'Coffea Cruda', desc:'Insomnia from an overactive mind, nervous excitability, dental pain'},
+  {n:10, nombre:'Colocynthis', desc:'Violent neuralgias, colic that improves with pressure, sciatica'},
+  {n:11, nombre:'Conium Maculatum', desc:'Ascending weakness, dizziness, glandular cancer, paralysis'},
+  {n:12, nombre:'Digitalis Purpurea', desc:'Heart failure, slow and irregular pulse, dropsy'},
+  {n:13, nombre:'Drosera Rotundifolia', desc:'Whooping cough, laryngitis, tuberculosis, larynx irritation'},
+  {n:14, nombre:'Ferrum Metallicum', desc:'Anemia, weakness with flushing, hemorrhages, arthritis'},
+  {n:15, nombre:'Graphites', desc:'Moist cracked skin, constipation, scars, obesity'},
+  {n:16, nombre:'Ignatia Amara', desc:'Grief, upset, sighing, hysteria, emotional lability'},
+  {n:17, nombre:'Iodum Metallicum', desc:'Weight loss despite hunger, goiter, swollen glands, heat'},
+  {n:18, nombre:'Kalmia Latifolia', desc:'Descending neuralgias, rheumatic heart disease'},
+  {n:19, nombre:'Ledum Palustre', desc:'Bites, puncture wounds, gout, relief from cold, eyes'},
+  {n:20, nombre:'Magnesia Carbónica', desc:'Nighttime pain, delicate children, milk intolerance'},
+  {n:21, nombre:'Magnesia Muriática', desc:'Liver, difficult digestion, spasms, insomnia from exhaustion'},
+  {n:22, nombre:'Natrum Carbonicum', desc:'Weakness from sun, heat intolerance, indigestion, shyness'},
+  {n:23, nombre:'Natrum Muriaticum', desc:'Held-back grief, dryness, migraine, recurrent cold sores'},
+  {n:24, nombre:'Nitricum Acidum', desc:'Painful fissures, warts, hemorrhages, body odor'},
+  {n:25, nombre:'Nux Moschata', desc:'Extreme drowsiness, fainting, dry mucous membranes, hysteria'},
+  {n:26, nombre:'Opium', desc:'Unconsciousness, severe constipation, stupor, noisy breathing'},
+  {n:27, nombre:'Petroleum', desc:'Cracks in skin and mucous membranes, motion sickness, winter eczema'},
+  {n:28, nombre:'Phosphoricum Acidum', desc:'Weakness from stress or grief, hair loss, acidity'},
+  {n:29, nombre:'Platinum Metallicum', desc:'Arrogance, genital hypersensitivity, neuralgias, pathological pride'},
+  {n:30, nombre:'Spigelia', desc:'Facial and cardiac neuralgias, palpitations, eye pain'},
+  {n:31, nombre:'Stannum Metallicum', desc:'Respiratory weakness, productive cough, exhaustion, slow paralysis'},
+  {n:32, nombre:'Staphysagria', desc:'Repressed anger, humiliation, abuse, post-operative states, prostatitis'},
+  {n:33, nombre:'Stramonium', desc:'Night terror, convulsions, fear of the dark, violence'},
+  {n:34, nombre:'Tartarus Emeticus', desc:'Mucus rales in the bronchi, intense weakness, drowsiness'},
+  {n:35, nombre:'Thuja Occidentalis', desc:'Warts, condylomas, fixed ideas, effects of vaccination'},
+  {n:36, nombre:'Zincum Metallicum', desc:'Extreme motor restlessness, restless legs, nervous exhaustion'},
+];
+
+const CHAKRAS_PRIMARIOS = [
+  {n:1, nombre:'Muladhara (Root)', color:'Red', elemento:'Tierra', aspecto:'Safety, survival', glandula:'Adrenals', organos:'Bones, blood, colon, legs, immune system', emoc:'Existential fear, anxiety, disconnection'},
+  {n:2, nombre:'Swadhistana (Sacral)', color:'Orange', elemento:'Agua', aspecto:'Creativity, sexuality', glandula:'Gonads', organos:'Kidneys, bladder, genitals, fluids, lymphatic system', emoc:'Guilt, rigidity, addictions, jealousy'},
+  {n:3, nombre:'Manipura (Plexus)', color:'Yellow',elemento:'Fuego', aspecto:'Personal power, will', glandula:'Pancreas', organos:'Stomach, liver, pancreas, small intestine', emoc:'Shame, powerlessness, repressed anger'},
+  {n:4, nombre:'Anahata (Heart)', color:'Green', elemento:'Aire', aspecto:'Unconditional love', glandula:'Thymus', organos:'Heart, lungs, arms, hands, circulation', emoc:'Emotional pain, resentment, loneliness'},
+  {n:5, nombre:'Vishuddha (Throat)',color:'Blue', elemento:'Éter', aspecto:'Communication, expression', glandula:'Thyroid', organos:'Throat, thyroid, neck, jaw, ears', emoc:'Lies, suppression of the voice, lack of authenticity'},
+  {n:6, nombre:'Ajna (Third eye)', color:'Indigo', elemento:'Luz', aspecto:'Intuition, clarity', glandula:'Pituitary', organos:'Eyes, brain, pineal gland, nervous system', emoc:'Confusion, lack of vision, denial'},
+  {n:7, nombre:'Sahasrara (Crown)', color:'Violet', elemento:'Sonido', aspecto:'Consciousness, divine connection', glandula:'Pineal', organos:'Central nervous system, brain', emoc:'Spiritual disconnection, attachment to ego'},
+];
+
+const CHAKRAS_SECUNDARIOS = [
+  {n:'1-2', nombre:'Soles of the feet (R1)', desc:'Grounding to the earth, security, firm posture, defining the path, The Mother'},
+  {n:'3-4', nombre:'Popliteal fossa (V40)', desc:'Toxic drainage in all the bodies. Weight and burden. The yoke of authority. Intolerance. Responsibility'},
+  {n:'5-6', nombre:'Gonads / Ischium (V36)', desc:'Hormones. Identity and sexual characteristics. The partner. The children'},
+  {n:'7', nombre:'Hepatic (H14 right)', desc:'Nutrients, digestion. Anger. Emotional repression. Frustration. Wood element'},
+  {n:'8', nombre:'Substernal (VC15)', desc:'Point of ruptures in the Etheric Web. Energy flow. Anguish, emptiness, anxiety, shortness of breath'},
+  {n:'9', nombre:'Interscapular (VG12)', desc:'Point of anguish, heart rhythm, circulation of emotional energy. D5'},
+  {n:'10-11',nombre:'Spleen, anterior and posterior (B21 / H14 left)', desc:'Receives Qi from the environment and distributes it to the first 5 primary chakras. Earth. Identity'},
+  {n:'12', nombre:'Thymus (VC20)', desc:'Vagus nerve, parasympathetic relaxation system. Universal love. Peace. Compassion. Gateway to the head'},
+  {n:'13-14',nombre:'Nipples (E17-18)', desc:'Entry/exit to the etheric field. Breasts, lungs. Will to live, mature love. Motherhood'},
+  {n:'15-16',nombre:'Palms of the hands (PC8)', desc:'Energy antennas. Creativity. Self-expression. Connection to the world. Transmission of healing energy'},
+  {n:'17-18',nombre:'Temporomandibular joint (E6)', desc:'Instinct. Freedom. Free will. Repressed anger. Dissatisfaction. Remorse. Injustice'},
+  {n:'19-20',nombre:'Eyes', desc:'Neurological access. Right eye = love. Left eye = will'},
+  {n:'21', nombre:'High altar (VG19)', desc:'Center of consciousness'},
+];
+
+const CINCO_ELEMENTOS = [
+  {n:1, nombre:'Wood',color:'#8b5cf6', organos_yin:'Liver', organos_yang:'Gallbladder', emocion_neg:'Anger / Rage / Frustration', emocion_pos:'Kindness / Compassion', sentido:'Sight', sabor:'Sour', estacion:'Spring', tejido:'Tendons and ligaments', manifestacion:'Nails'},
+  {n:2, nombre:'Fire', color:'#ec4899', organos_yin:'Heart / Pericardium', organos_yang:'Small intestine / Triple burner', emocion_neg:'Excessive joy / Agitation', emocion_pos:'Love / Balanced joy', sentido:'Speech', sabor:'Bitter', estacion:'Summer', tejido:'Blood vessels', manifestacion:'Complexion'},
+  {n:3, nombre:'Earth',color:'#f9a8d4', organos_yin:'Spleen / Pancreas', organos_yang:'Stomach', emocion_neg:'Worry / Obsession / Rumination', emocion_pos:'Balanced reflection', sentido:'Taste', sabor:'Sweet', estacion:'Between seasons', tejido:'Muscles', manifestacion:'Lips'},
+  {n:4, nombre:'Metal', color:'#c4b5fd', organos_yin:'Lung', organos_yang:'Large intestine', emocion_neg:'Sadness / Melancholy / Grief', emocion_pos:'Integrity / Righteousness', sentido:'Smell', sabor:'Pungent', estacion:'Autumn', tejido:'Skin and body hair', manifestacion:'Body hair'},
+  {n:5, nombre:'Water', color:'#8b5cf6', organos_yin:'Kidney', organos_yang:'Bladder', emocion_neg:'Fear / Terror / Dread', emocion_pos:'Wisdom / Serenity', sentido:'Hearing', sabor:'Salty', estacion:'Winter', tejido:'Bones / Marrow', manifestacion:'Hair'},
+];
+
+const AMINOACIDOS = [
+  // Esenciales
+  {n:1, cat:'Essential', nombre:'Histidine', desc:'Immune system, histamine production, hemoglobin synthesis'},
+  {n:2, cat:'Essential', nombre:'Isoleucine', desc:'Hemoglobin synthesis, blood sugar regulation, muscle energy'},
+  {n:3, cat:'Essential', nombre:'Leucine', desc:'Muscle protein synthesis, muscle recovery, blood glucose'},
+  {n:4, cat:'Essential', nombre:'Lysine', desc:'Collagen formation, calcium absorption, immunity, fat metabolism'},
+  {n:5, cat:'Essential', nombre:'Methionine', desc:'Liver detoxification, SAM synthesis, hair and nails'},
+  {n:6, cat:'Essential', nombre:'Phenylalanine', desc:'Synthesis of tyrosine, dopamine, norepinephrine, mood'},
+  {n:7, cat:'Essential', nombre:'Threonine', desc:'Collagen, elastin, immune system, liver function'},
+  {n:8, cat:'Essential', nombre:'Tryptophan', desc:'Synthesis of serotonin and melatonin, sleep, mood'},
+  {n:9, cat:'Essential', nombre:'Valine', desc:'Muscle growth, tissue repair, nervous system'},
+  // Semi-esenciales
+  {n:10, cat:'Semi-essential', nombre:'Arginine', desc:'Nitric oxide production, immune system, wound healing, circulation'},
+  {n:11, cat:'Semi-essential', nombre:'Cysteine', desc:'Glutathione synthesis, antioxidant, hair and nails, detoxification'},
+  {n:12, cat:'Semi-essential', nombre:'Glutamine', desc:'Intestinal fuel, immune system, muscle recovery'},
+  {n:13, cat:'Semi-essential', nombre:'Glycine', desc:'Collagen synthesis, inhibitory neurotransmitter, detoxification'},
+  {n:14, cat:'Semi-essential', nombre:'Proline', desc:'Collagen formation, wound healing, skin structure'},
+  {n:15, cat:'Semi-essential', nombre:'Tyrosine', desc:'Synthesis of dopamine, thyroxine, melanin, stress resilience'},
+  // No esenciales importantes
+  {n:16, cat:'Non-essential', nombre:'Alanine', desc:'Blood sugar regulation, muscle energy, immunity'},
+  {n:17, cat:'Non-essential', nombre:'Aspartic acid',desc:'Krebs cycle, nucleotide synthesis, ammonia detoxification'},
+  {n:18, cat:'Non-essential', nombre:'Glutamic acid',desc:'Excitatory neurotransmitter, GABA synthesis, brain energy'},
+  {n:19, cat:'Non-essential', nombre:'GABA', desc:'Inhibitory neurotransmitter, relaxation, anxiety, insomnia'},
+  {n:20, cat:'Non-essential', nombre:'Taurine', desc:'Cardiovascular system, liver, bile, nervous system, vision'},
+];
+
+const ENZIMAS = [
+  // Digestivas
+  {n:1, cat:'Digestive', nombre:'Amylase (salivary and pancreatic)', desc:'Carbohydrate digestion; elevated in pancreatitis'},
+  {n:2, cat:'Digestive', nombre:'Pancreatic lipase', desc:'Fat digestion; marker of pancreatitis'},
+  {n:3, cat:'Digestive', nombre:'Pepsin (Pepsinogen)', desc:'Protein digestion in the stomach (acidic pH)'},
+  {n:4, cat:'Digestive', nombre:'Trypsin / Chymotrypsin', desc:'Pancreatic protein digestion in the duodenum'},
+  {n:5, cat:'Digestive', nombre:'Lactase', desc:'Lactose digestion; deficiency = intolerance'},
+  {n:6, cat:'Digestive', nombre:'Sucrase / Maltase', desc:'Digestion of simple sugars in the small intestine'},
+  {n:7, cat:'Digestive', nombre:'Bromelain (pineapple)', desc:'Anti-inflammatory proteolytic enzyme, digestion'},
+  {n:8, cat:'Digestive', nombre:'Papain (papaya)', desc:'Proteolytic, anti-inflammatory, wound-healing'},
+  // Hepáticas / Metabólicas
+  {n:9, cat:'Hepatic', nombre:'ALT / SGPT (Alanine aminotransferase)', desc:'Marker of liver damage; elevated in hepatitis'},
+  {n:10, cat:'Hepatic', nombre:'AST / SGOT (Aspartate aminotransferase)',desc:'Liver and muscle damage; heart attack, hepatitis'},
+  {n:11, cat:'Hepatic', nombre:'Alkaline phosphatase (ALP)', desc:'Liver, bone, gallbladder; cholestasis'},
+  {n:12, cat:'Hepatic', nombre:'GGT (Gamma-glutamyl transferase)', desc:'Liver detoxification; alcohol consumption'},
+  {n:13, cat:'Hepatic', nombre:'LDH (Lactate dehydrogenase)', desc:'General tissue damage; hemolysis, infarction, neoplasia'},
+  // Antioxidantes
+  {n:14, cat:'Antioxidant', nombre:'SOD (Superoxide dismutase)', desc:'First-line antioxidant; neutralizes free radicals'},
+  {n:15, cat:'Antioxidant', nombre:'Catalase', desc:'Converts hydrogen peroxide into water and O₂'},
+  {n:16, cat:'Antioxidant', nombre:'Glutathione peroxidase (GPx)', desc:'Cellular protection, requires selenium, liver'},
+  // Metabólicas clave
+  {n:17, cat:'Metabolic', nombre:'ATP synthase', desc:'Energy (ATP) production in mitochondria'},
+  {n:18, cat:'Metabolic', nombre:'Hexokinase / Glucokinase', desc:'First step of glucose metabolism'},
+];
+
+const MIEDOS_FOBIAS = [
+  // Miedos comunes
+  {n:1, cat:'Common fear', nombre:'Fear of death', desc:'Dread of your own death or the loss of loved ones'},
+  {n:2, cat:'Common fear', nombre:'Fear of failure', desc:'Dread of not meeting expectations; avoids taking risks'},
+  {n:3, cat:'Common fear', nombre:'Fear of rejection', desc:'Avoids relationships to avoid being rejected'},
+  {n:4, cat:'Common fear', nombre:'Fear of abandonment', desc:'Anguish at the possibility of being left alone'},
+  {n:5, cat:'Common fear', nombre:'Fear of illness', desc:'Hypochondria, excessive monitoring of the body'},
+  {n:6, cat:'Common fear', nombre:'Fear of losing control', desc:'Anxiety in unpredictable situations'},
+  {n:7, cat:'Common fear', nombre:'Fear of the future', desc:'Catastrophic anticipation, paralyzing uncertainty'},
+  {n:8, cat:'Common fear', nombre:'Fear of the dark', desc:'Dread of the unknown hidden in the dark'},
+  // Nudos psóricos
+  {n:9, cat:'Psoric knot', nombre:'Archaic fear of being eliminated', desc:'Ancestral memory of clan survival'},
+  {n:10, cat:'Psoric knot', nombre:'Fear of not belonging to the group',desc:'Tribal terror of being expelled from the clan'},
+  {n:11, cat:'Psoric knot', nombre:'Transgenerational fear of hunger', desc:'Memory of scarcity in the ancestors'},
+  {n:12, cat:'Psoric knot', nombre:'Fear of betraying the lineage', desc:'Guilt over prospering more than the ancestors'},
+  // Fobias específicas
+  {n:13, cat:'Specific phobia', nombre:'Arachnophobia (spiders)', desc:'Irrational fear of spiders and arachnids'},
+  {n:14, cat:'Specific phobia', nombre:'Aerophobia (airplanes)', desc:'Irrational fear of flying'},
+  {n:15, cat:'Specific phobia', nombre:'Claustrophobia (enclosed spaces)', desc:'Anxiety in small or closed-in spaces'},
+  {n:16, cat:'Specific phobia', nombre:'Acrophobia (heights)', desc:'Extreme fear of being in high places'},
+  {n:17, cat:'Specific phobia', nombre:'Hematophobia (blood)', desc:'Fainting or terror at the sight of blood'},
+  {n:18, cat:'Specific phobia', nombre:'Animal phobia (zoophobia)',desc:'Irrational fear of specific animals'},
+  // Fobias sociales
+  {n:19, cat:'Social phobia', nombre:'Fear of public speaking', desc:'Intense anxiety before audiences'},
+  {n:20, cat:'Social phobia', nombre:'Fear of being watched/judged', desc:'Extreme social vigilance, shame'},
+  {n:21, cat:'Social phobia', nombre:'Fear of being evaluated/examined', desc:'Cognitive block during tests'},
+  {n:22, cat:'Social phobia', nombre:'Fear of crowds (agoraphobia)', desc:'Anxiety in open, crowded spaces'},
+  {n:23, cat:'Social phobia', nombre:'Fear of emotional intimacy', desc:'Avoids vulnerability in close relationships'},
+  // Miedos infantiles
+  {n:24, cat:'Childhood fear', nombre:'Fear of monsters/the dark', desc:'0-6 years: nighttime and imaginary fears'},
+  {n:25, cat:'Childhood fear', nombre:'Fear of separation', desc:'0-3 years: separation anxiety from the caregiver'},
+  {n:26, cat:'Childhood fear', nombre:'Fear of the supernatural', desc:'6-9 years: ghosts, spirits, powers'},
+  {n:27, cat:'Childhood fear', nombre:'Fear of academic failure', desc:'6-12 years: academic performance and assessment'},
+  // Defensas / emociones reactivas
+  {n:28, cat:'Psychological defense', nombre:'Compulsive overprotection', desc:'Hypervigilance over loved ones'},
+  {n:29, cat:'Psychological defense', nombre:'Excessive worry', desc:'Rumination and catastrophizing as control'},
+  {n:30, cat:'Psychological defense', nombre:'Excessive internalization', desc:'Emotional suppression as a defense mechanism'},
+  {n:31, cat:'Psychological defense', nombre:'Overacting', desc:'Emotional performance to avoid emptiness'},
+  // Estados a aumentar
+  {n:32, cat:'Therapeutic goal', nombre:'Happiness and joy', desc:'A genuine state of well-being to cultivate'},
+  {n:33, cat:'Therapeutic goal', nombre:'Optimism and confidence', desc:'Faith in your own resources and in the process'},
+  {n:34, cat:'Therapeutic goal', nombre:'Sense of safety', desc:'Grounding, earth, presence in the body'},
+  {n:35, cat:'Therapeutic goal', nombre:'Sense of humor', desc:'A light perspective on circumstances'},
+];
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+async function init() {
+  // Load pairs DB
+ try {
+ const r = await fetch('/api/pares-db');
+ const d = await r.json();
+ ALL_PAIRS = d.pairs || [];
+ const tipoMap = {};
+ for (const p of ALL_PAIRS) {
+ tipoMap[p.tipo] = (tipoMap[p.tipo] || 0) + 1;
+    }
+ for (const [tipo, cnt] of Object.entries(tipoMap)) {
+ const el = document.getElementById('cnt-' + tipo);
+ if (el) el.textContent = cnt;
+    }
+  } catch(e) {
+ ALL_PAIRS = [];
+  }
+
+  // Load conflictología DB
+ try {
+ const r = await fetch('/api/conflictologia-db');
+ const d = await r.json();
+ CONFLICTO_DB = d.systems || {};
+    // Set counts
+ const sysMap = {
+ respiratorio: 'respiratorio', digestivo: 'digestivo',
+ cardiovascular: 'cardiovascular', locomotor: 'locomotor',
+ genital: 'genital', urinario: 'urinario', endocrino: 'endocrino',
+ inmunologico: 'inmunologico', piel: 'piel', neurosensorial: 'neurosensorial'
+    };
+ for (const [key, slug] of Object.entries(sysMap)) {
+ const sys = CONFLICTO_DB[key];
+ if (!sys) continue;
+ const total = Object.values(sys.subsystems).reduce((s, sub) =>s + sub.conflicts.length, 0);
+ const el = document.getElementById('cnt-conf-' + slug);
+ if (el) el.textContent = total;
+    }
+  } catch(e) {
+ CONFLICTO_DB = {};
+  }
+
+ renderCurrent();
+}
+
+// ─── Category selection ───────────────────────────────────────────────────────
+function selectCat(btn) {
+ document.querySelectorAll('.cat-btn').forEach(b =>b.classList.remove('active'));
+ btn.classList.add('active');
+ currentCat = btn.dataset.cat;
+ document.getElementById('searchBox').value = '';
+ document.getElementById('sisFilter').value = '';
+ renderCurrent();
+}
+
+function renderCurrent() {
+ const staticCats = ['sales','bach','vitaminas','creencias','miedos',
+    'policrestos','semipolicrestos','chakras_primarios','chakras_secundarios',
+    'cinco_elementos','aminoacidos','enzimas'];
+ if (currentCat.startsWith('conflicto_')) {
+ renderConflictologia(currentCat.replace('conflicto_', ''));
+  } else if (staticCats.includes(currentCat)) {
+ renderStatic(currentCat);
+  } else {
+ renderPairs(currentCat);
+  }
+}
+
+// ─── Conflictología rendering ─────────────────────────────────────────────────
+function renderConflictologia(sysKey) {
+ document.getElementById('sisFilter').value = '';
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
+ const sys = CONFLICTO_DB[sysKey];
+
+ const sysLabels = {
+ respiratorio:'Respiratory System', digestivo:'Digestive System',
+ cardiovascular:'Cardiovascular System', locomotor:'Locomotor / Musculoskeletal System',
+ genital:'Reproductive System', urinario:'Urinary / Renal System',
+ endocrino:'Endocrine-Metabolic System', inmunologico:'Immune / Lymphatic System',
+ piel:'Lipofascial / Dermatological System', neurosensorial:'Neurosensory System'
+  };
+
+ const title = sysLabels[sysKey] || sysKey;
+ document.getElementById('categoryLabel').textContent = title;
+ const scroll = document.getElementById('tableScroll');
+
+ if (!sys || !sys.subsystems || Object.keys(sys.subsystems).length === 0) {
+ scroll.innerHTML = `<div class="empty-state"><p>No conflictology data for this system.</p></div>`;
+ return;
+  }
+
+ let total = Object.values(sys.subsystems).reduce((s, sub) =>s + sub.conflicts.length, 0);
+
+ let html = `<div class="category-title" style="color:#f9a8d4">${escHtml(title)}</div><div class="category-sub">Psychosomatic conflictology — ${total} conflicts in ${Object.keys(sys.subsystems).length} subsystems</div>`;
+
+ for (const [slug, sub] of Object.entries(sys.subsystems)) {
+    // Filter by query
+ let conflicts = sub.conflicts;
+ if (query) {
+ conflicts = conflicts.filter(c =>c.nombre.toLowerCase().includes(query) ||
+        (c.desc || '').toLowerCase().includes(query)
+      );
+ if (!conflicts.length) continue;
+    }
+
+ html += `<div style="margin-bottom:16px"><div style="font-size:.7rem;font-weight:700;color:#f9a8d4;text-transform:uppercase;letter-spacing:.07em;padding:8px 0 6px;border-bottom:1px solid var(--border);margin-bottom:6px">
+        ${escHtml(sub.label)} <span style="color:var(--muted);font-weight:400;text-transform:none">(${conflicts.length})</span></div><div class="items-grid">`;
+
+ for (const c of conflicts) {
+ const cid = 'conf_' + sysKey + '_' + btoa(encodeURIComponent(c.nombre)).replace(/[^a-z0-9]/gi,'').slice(0,16);
+ const isChk = confirmed.some(x =>x.id === cid);
+ const hasDesc = c.desc && c.desc !== c.nombre;
+ html += `<div class="item-row ${isChk?'checked':''}" onclick="toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"><input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();toggleConflicto('${cid}','${escHtml(c.nombre).replace(/'/g,"\\'")}','${sysKey}','${escHtml(sub.label).replace(/'/g,"\\'")}')"/><div class="item-body"><div class="item-nombre">${escHtml(c.nombre)}</div>
+          ${hasDesc?`<div class="item-condiciones" style="color:#c4b5fd;font-style:italic">${escHtml(c.desc)}</div>`:''}
+ </div></div>`;
+    }
+ html += `</div></div>`;
+  }
+
+ scroll.innerHTML = html;
+}
+
+function toggleConflicto(id, nombre, sysKey, subLabel) {
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
+  } else {
+ confirmed.push({ id, nombre, tipo: 'conflicto', cat: sysKey, sub: subLabel });
+  }
+ renderCurrent();
+ renderConfirmed();
+}
+
+// ─── Pairs rendering ──────────────────────────────────────────────────────────
+function applyFilters() {
+ renderCurrent();
+}
+
+function renderPairs(tipo) {
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
+ const sistema = document.getElementById('sisFilter').value;
+
+ let pairs = ALL_PAIRS.filter(p =>p.tipo === tipo);
+
+ if (sistema) {
+ pairs = pairs.filter(p => (p.sistemas_afectados || []).includes(sistema));
+  }
+ if (query) {
+ pairs = pairs.filter(p =>p.nombre.toLowerCase().includes(query) ||
+      (p.condiciones||'').toLowerCase().includes(query) ||
+      (p.significado_emocional||'').toLowerCase().includes(query)
+    );
+  }
+
+ const catNames = {
+ bacteria:'Bacteria', virus:'Viruses', hongo:'Fungi', parasito:'Parasites',
+ emocional:'Emotional', disfuncional:'Dysfunctional', especial:'Special',
+ reservorio:'Reservoirs', desconocido:'Unknown'
+  };
+ const catColors = {
+ bacteria:'#ec4899',virus:'#f472b6',hongo:'#f9a8d4',parasito:'#8b5cf6',
+ emocional:'#8b5cf6',disfuncional:'#8b5cf6',especial:'#f472b6',
+ reservorio:'#c4b5fd',desconocido:'#8b5cf6'
+  };
+ document.getElementById('categoryLabel').textContent = catNames[tipo] || tipo;
+
+ const scroll = document.getElementById('tableScroll');
+
+ if (!pairs.length) {
+ scroll.innerHTML = `
+ <div class="empty-state"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><p>No results for this search.</p></div>`;
+ return;
+  }
+
+ const color = catColors[tipo] || '#888';
+ let html = `
+ <div class="category-title" style="color:${color}">${catNames[tipo]||tipo}</div><div class="category-sub">${pairs.length} pair${pairs.length!==1?'s':''} found</div><div class="items-grid">`;
+
+ for (const p of pairs) {
+ const isChk = confirmed.some(c =>c.id === p.id);
+ const siss = (p.sistemas_afectados||[]).join(', ');
+ html += `
+ <div class="item-row ${isChk?'checked':''}" onclick="togglePair('${escId(p.id)}')"><input type="checkbox" class="item-cb" ${isChk?'checked':''} onclick="event.stopPropagation();togglePair('${escId(p.id)}')"/><div class="item-body"><div class="item-nombre">${escHtml(p.nombre)}</div>
+          ${p.condiciones?`<div class="item-condiciones">${escHtml(p.condiciones)}</div>`:''}
+          ${p.significado_emocional&&p.significado_emocional!==p.condiciones?`<div class="item-emocional"> ${escHtml(p.significado_emocional)}</div>`:''}
+ <div class="item-tags"><span class="tag tag-tipo" style="color:${color}">${p.tipo_raw||p.tipo}</span>
+            ${siss?`<span class="tag">${siss}</span>`:''}
+ </div></div></div>`;
+  }
+ html += '</div>';
+ scroll.innerHTML = html;
+}
+
+function escId(id) { return id.replace(/'/g,"\\'"); }
+
+// ─── Toggle pair ──────────────────────────────────────────────────────────────
+function togglePair(id) {
+ const pair = ALL_PAIRS.find(p =>p.id === id);
+ if (!pair) return;
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
+  } else {
+ confirmed.push({
+ id: pair.id,
+ nombre: pair.nombre,
+ tipo: pair.tipo,
+ cat: currentCat,
+ sub: pair.sistemas_afectados ? pair.sistemas_afectados.join(', ') : ''
+    });
+  }
+ renderCurrent();
+ renderConfirmed();
+}
+
+// ─── Static categories ────────────────────────────────────────────────────────
+function renderStatic(cat) {
+ document.getElementById('sisFilter').value = '';
+ const query = (document.getElementById('searchBox').value || '').toLowerCase();
+
+ const catTitles = {
+ sales: 'Schüssler Salts',
+ bach: 'Bach Flower Remedies',
+ vitaminas: 'Vitamins & Minerals',
+ creencias: 'Limiting Beliefs',
+ miedos: 'Fears and Phobias',
+ policrestos: 'Polychrests',
+ semipolicrestos: 'Semi-polychrests',
+ chakras_primarios: 'Primary Chakras',
+ chakras_secundarios: 'Secondary Chakras',
+ cinco_elementos: '5 Elements TCM',
+ aminoacidos: 'Amino Acids',
+ enzimas: 'Enzymes',
+  };
+ document.getElementById('categoryLabel').textContent = catTitles[cat] || cat;
+
+ const scroll = document.getElementById('tableScroll');
+
+ if (cat === 'sales') {
+ let data = SALES_SCHUSSLER;
+ if (query) data = data.filter(s =>s.nombre.toLowerCase().includes(query) ||
+ s.desc.toLowerCase().includes(query) ||
+ s.emoc.toLowerCase().includes(query)
+    );
+ let html = `<div class="category-title" style="color:var(--yellow)">Schüssler Salts</div><div class="category-sub">${data.length} tissue salts — Schüssler biochemical therapy</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Name</th><th class="desc-cell">Indications</th><th class="emoc-cell">Emotional resonance</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const s of data) {
+ const id = 'sales_' + s.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(s.nombre)}','sales','Schüssler Salts')"><td class="num-cell">${s.n}</td><td class="nombre-cell">${escHtml(s.nombre)}</td><td class="desc-cell">${escHtml(s.desc)}</td><td class="emoc-cell">${escHtml(s.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(s.nombre)}','sales','Schüssler Salts')"/></td></tr>`;
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'bach') {
+ let data = BACH_FLOWERS;
+ if (query) data = data.filter(b =>b.nombre.toLowerCase().includes(query) ||
+ b.desc.toLowerCase().includes(query) ||
+ b.emoc.toLowerCase().includes(query) ||
+ b.g.toLowerCase().includes(query)
+    );
+ const groups = [...new Set(data.map(b=>b.g))];
+ let html = `<div class="category-title" style="color:var(--green)">Bach Flower Remedies</div><div class="category-sub">${BACH_FLOWERS.length} flower remedies — 7 emotional groups</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Flower</th><th class="desc-cell">Profile</th><th class="emoc-cell">Key state</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(b=>b.g===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="5" class="group-header">Group: ${g}</td></tr>`;
+ for (const b of gItems) {
+ const id = 'bach_' + b.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(b.nombre)}','bach','Bach Flower Remedies')"><td class="num-cell">${b.n}</td><td class="nombre-cell">${escHtml(b.nombre)}</td><td class="desc-cell">${escHtml(b.desc)}</td><td class="emoc-cell">${escHtml(b.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(b.nombre)}','bach','Bach Flower Remedies')"/></td></tr>`;
+      }
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'vitaminas') {
+ let data = VITAMINAS;
+ if (query) data = data.filter(v =>v.nombre.toLowerCase().includes(query) ||
+ v.desc.toLowerCase().includes(query)
+    );
+ let html = `<div class="category-title" style="color:var(--accent2)">Vitamins & Minerals</div><div class="category-sub">${data.length} essential nutrients for deficiency scanning</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Nutrient</th><th class="desc-cell">Main function</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const v of data) {
+ const id = 'vit_' + v.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitamins/Minerals')"><td class="num-cell">${v.n}</td><td class="nombre-cell">${escHtml(v.nombre)}</td><td class="desc-cell">${escHtml(v.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(v.nombre)}','vitaminas','Vitamins/Minerals')"/></td></tr>`;
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'creencias') {
+ let data = CREENCIAS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.emoc.toLowerCase().includes(query) ||
+ c.cat.toLowerCase().includes(query)
+    );
+ const groups = [...new Set(data.map(c=>c.cat))];
+ let html = `<div class="category-title" style="color:#a78bfa">Limiting Beliefs</div><div class="category-sub">${CREENCIAS.length} beliefs — 8 thematic areas (BNE / Hellinger)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Belief</th><th class="emoc-cell">Underlying emotion</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(c=>c.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const c of gItems) {
+ const id = 'cre_' + c.n;
+ const chk = confirmed.some(cc =>cc.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Beliefs')"><td class="num-cell">${c.n}</td><td class="nombre-cell">${escHtml(c.nombre)}</td><td class="emoc-cell">${escHtml(c.emoc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(c.nombre)}','creencias','Beliefs')"/></td></tr>`;
+      }
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'miedos') {
+ let data = MIEDOS_FOBIAS;
+ if (query) data = data.filter(m =>m.nombre.toLowerCase().includes(query) ||
+ m.desc.toLowerCase().includes(query) ||
+ m.cat.toLowerCase().includes(query)
+    );
+ const groups = [...new Set(MIEDOS_FOBIAS.map(m=>m.cat))];
+ let html = `<div class="category-title" style="color:#c4b5fd">Fears, Phobias and Psoric Knots</div><div class="category-sub">${MIEDOS_FOBIAS.length} items — 7 categories</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Item</th><th class="desc-cell">Description</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(m=>m.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const m of gItems) {
+ const id = 'miedo_' + m.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Fears/Phobias')"><td class="num-cell">${m.n}</td><td class="nombre-cell">${escHtml(m.nombre)}</td><td class="desc-cell">${escHtml(m.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(m.nombre)}','miedos','Fears/Phobias')"/></td></tr>`;
+      }
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'policrestos') {
+ let data = POLICRESTOS;
+ if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+ let html = `<div class="category-title" style="color:#ddd6fe">Homeopathic Polychrests</div><div class="category-sub">${POLICRESTOS.length} remedies — Homeopathic pharmacopoeia (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedy</th><th class="desc-cell">Main indication</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const p of data) {
+ const id = 'pc_' + p.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Polychrests')"><td class="num-cell">${p.n}</td><td class="nombre-cell">${escHtml(p.nombre)}</td><td class="desc-cell">${escHtml(p.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','policrestos','Polychrests')"/></td></tr>`;
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'semipolicrestos') {
+ let data = SEMIPOLICRESTOS;
+ if (query) data = data.filter(p =>p.nombre.toLowerCase().includes(query) || p.desc.toLowerCase().includes(query));
+ let html = `<div class="category-title" style="color:#ddd6fe">Homeopathic Semi-polychrests</div><div class="category-sub">${SEMIPOLICRESTOS.length} remedies — Homeopathic pharmacopoeia (Copen / Hahnemann)</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Remedy</th><th class="desc-cell">Main indication</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const p of data) {
+ const id = 'spc_' + p.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semi-polychrests')"><td class="num-cell">${p.n}</td><td class="nombre-cell">${escHtml(p.nombre)}</td><td class="desc-cell">${escHtml(p.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(p.nombre)}','semipolicrestos','Semi-polychrests')"/></td></tr>`;
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'chakras_primarios') {
+ let data = CHAKRAS_PRIMARIOS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.aspecto.toLowerCase().includes(query) ||
+ c.organos.toLowerCase().includes(query) ||
+ c.emoc.toLowerCase().includes(query)
+    );
+ let html = `<div class="category-title" style="color:#f9a8d4">Primary Chakras (7)</div><div class="category-sub">Major energy centers — Vedic system (HoloBiomagnetism)</div>`;
+ for (const ck of data) {
+ const id = 'ckp_' + ck.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Primary Chakras')" style="border-left:3px solid ${ck.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_primarios','Primary Chakras')"/><div class="item-body"><div class="item-nombre">${ck.n}. ${escHtml(ck.nombre)}</div><div class="item-condiciones"> ${escHtml(ck.elemento)} ·  ${escHtml(ck.color)} ·  ${escHtml(ck.glandula)}</div><div class="item-condiciones">Aspect: ${escHtml(ck.aspecto)}</div><div class="item-condiciones">Organs: ${escHtml(ck.organos)}</div><div class="item-emocional"> ${escHtml(ck.emoc)}</div></div></div>`;
+    }
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'chakras_secundarios') {
+ let data = CHAKRAS_SECUNDARIOS;
+ if (query) data = data.filter(c =>c.nombre.toLowerCase().includes(query) ||
+ c.desc.toLowerCase().includes(query)
+    );
+ let html = `<div class="category-title" style="color:#f9a8d4">Secondary Chakras (21)</div><div class="category-sub">Mini-chakras — HoloBiomagnetism bioenergetic system</div><table class="static-table"><thead><tr><th style="width:48px">#</th><th class="nombre-cell">Energy center</th><th class="desc-cell">Meaning and function</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const ck of data) {
+ const id = 'cks_' + ck.n.toString().replace(/[^a-z0-9]/gi,'');
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Secondary Chakras')"><td class="num-cell">${ck.n}</td><td class="nombre-cell">${escHtml(ck.nombre)}</td><td class="desc-cell">${escHtml(ck.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(ck.nombre)}','chakras_secundarios','Secondary Chakras')"/></td></tr>`;
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'cinco_elementos') {
+ let data = CINCO_ELEMENTOS;
+ if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) ||
+ e.organos_yin.toLowerCase().includes(query) ||
+ e.emocion_neg.toLowerCase().includes(query) ||
+ e.emocion_pos.toLowerCase().includes(query)
+    );
+ let html = `<div class="category-title" style="color:#ddd6fe">5 Elements (TCM / HoloBiomagnetism)</div><div class="category-sub">Chinese energy philosophy (Neijing) — bioenergetic diagnostic system</div>`;
+ for (const el of data) {
+ const id = '5el_' + el.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<div class="item-row ${chk?'checked':''}" onclick="toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elements')" style="border-left:3px solid ${el.color}"><input type="checkbox" class="item-cb" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(el.nombre)}','cinco_elementos','5 Elements')"/><div class="item-body"><div class="item-nombre" style="color:${el.color};font-size:.95rem">${escHtml(el.nombre)}</div><div class="item-condiciones">Yin: <b>${escHtml(el.organos_yin)}</b> · Yang: <b>${escHtml(el.organos_yang)}</b></div><div class="item-condiciones">Season: ${escHtml(el.estacion)} · Flavor: ${escHtml(el.sabor)} · Tissue: ${escHtml(el.tejido)}</div><div class="item-emocional"> ${escHtml(el.emocion_neg)}</div><div class="item-emocional" style="color:#c4b5fd"> ${escHtml(el.emocion_pos)}</div></div></div>`;
+    }
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'aminoacidos') {
+ let data = AMINOACIDOS;
+ if (query) data = data.filter(a =>a.nombre.toLowerCase().includes(query) || a.desc.toLowerCase().includes(query) || a.cat.toLowerCase().includes(query));
+ const groups = [...new Set(AMINOACIDOS.map(a=>a.cat))];
+ let html = `<div class="category-title" style="color:#fbcfe8">Amino Acids</div><div class="category-sub">${AMINOACIDOS.length} amino acids — deficiency scanning</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Amino acid</th><th class="desc-cell">Main function</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(a=>a.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const a of gItems) {
+ const id = 'aa_' + a.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Amino Acids')"><td class="num-cell">${a.n}</td><td class="nombre-cell">${escHtml(a.nombre)}</td><td class="desc-cell">${escHtml(a.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(a.nombre)}','aminoacidos','Amino Acids')"/></td></tr>`;
+      }
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+
+ else if (cat === 'enzimas') {
+ let data = ENZIMAS;
+ if (query) data = data.filter(e =>e.nombre.toLowerCase().includes(query) || e.desc.toLowerCase().includes(query) || e.cat.toLowerCase().includes(query));
+ const groups = [...new Set(ENZIMAS.map(e=>e.cat))];
+ let html = `<div class="category-title" style="color:#ddd6fe">Enzymes</div><div class="category-sub">${ENZIMAS.length} enzymes — enzyme activity scanning</div><table class="static-table"><thead><tr><th class="num-cell">#</th><th class="nombre-cell">Enzyme</th><th class="desc-cell">Function / Clinical significance</th><th class="cb-cell"></th></tr></thead><tbody>`;
+ for (const g of groups) {
+ const gItems = data.filter(e=>e.cat===g);
+ if (!gItems.length) continue;
+ html += `<tr><td colspan="4" class="group-header">${g}</td></tr>`;
+ for (const e of gItems) {
+ const id = 'enz_' + e.n;
+ const chk = confirmed.some(c =>c.id === id);
+ html += `<tr class="${chk?'checked-row':''}" onclick="toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzymes')"><td class="num-cell">${e.n}</td><td class="nombre-cell">${escHtml(e.nombre)}</td><td class="desc-cell">${escHtml(e.desc)}</td><td class="cb-cell"><input type="checkbox" ${chk?'checked':''} onclick="event.stopPropagation();toggleStatic('${id}','${escHtml(e.nombre)}','enzimas','Enzymes')"/></td></tr>`;
+      }
+    }
+ html += '</tbody></table>';
+ scroll.innerHTML = html;
+  }
+}
+
+function toggleStatic(id, nombre, cat, catLabel) {
+ const idx = confirmed.findIndex(c =>c.id === id);
+ if (idx >= 0) {
+ confirmed.splice(idx, 1);
+  } else {
+ confirmed.push({ id, nombre, tipo: cat, cat, sub: catLabel });
+  }
+ renderCurrent();
+ renderConfirmed();
+}
+
+// ─── Confirmed panel ──────────────────────────────────────────────────────────
+function renderConfirmed() {
+ const scroll = document.getElementById('confirmedScroll');
+ const cnt = document.getElementById('confCount');
+ const total = document.getElementById('totalConf');
+ cnt.textContent = confirmed.length;
+ total.textContent = confirmed.length;
+
+ if (!confirmed.length) {
+ scroll.innerHTML = '<div class="conf-empty">Check items in the table to add them here.</div>';
+ return;
+  }
+
+  // Group by cat
+ const groups = {};
+ for (const c of confirmed) {
+ const g = c.sub || c.cat || 'Otros';
+ if (!groups[g]) groups[g] = [];
+ groups[g].push(c);
+  }
+
+ let html = '';
+ for (const [g, items] of Object.entries(groups)) {
+ html += `<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin:6px 0 4px;font-weight:700">${escHtml(g)}</div>`;
+ for (const item of items) {
+ html += `<div class="conf-item"><div class="conf-item-body"><div class="conf-nombre">${escHtml(item.nombre)}</div></div><button class="conf-remove" onclick="removeConfirmed('${item.id.replace(/'/g,"\\'")}')"></button></div>`;
+    }
+  }
+ scroll.innerHTML = html;
+}
+
+function removeConfirmed(id) {
+ confirmed = confirmed.filter(c =>c.id !== id);
+ renderCurrent();
+ renderConfirmed();
+}
+
+function limpiarTodo() {
+ if (!confirmed.length) return;
+ if (confirm(`Clear the ${confirmed.length} selected items?`)) {
+ confirmed = [];
+ renderCurrent();
+ renderConfirmed();
+  }
+}
+
+function copiarConfirmados() {
+ if (!confirmed.length) { alert('No items selected.'); return; }
+
+ const groups = {};
+ for (const c of confirmed) {
+ const g = c.sub || c.cat || 'Otros';
+ if (!groups[g]) groups[g] = [];
+ groups[g].push(c);
+  }
+
+ let text = ' CONFIRMED SCAN\n';
+ text += '━'.repeat(30) + '\n\n';
+ for (const [g, items] of Object.entries(groups)) {
+ text += `▸ ${g.toUpperCase()}\n`;
+ for (const item of items) {
+ text += `  • ${item.nombre}\n`;
+    }
+ text += '\n';
+  }
+ text += `Total: ${confirmed.length} item${confirmed.length!==1?'s':''}`;
+
+ navigator.clipboard.writeText(text).then(() => {
+ const btn = document.querySelector('.btn-copy');
+ btn.textContent = ' Copied!';
+ setTimeout(() =>btn.textContent = ' Copy list', 2000);
+  });
+}
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+function escHtml(s) {
+ if (!s) return '';
+ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ─── Boot ─────────────────────────────────────────────────────────────────────
+init();
+</script></body></html>

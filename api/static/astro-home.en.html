@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Astrology · Holistic Copilot</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=2"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2"><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #080b14;
+  --surface:   #0d1120;
+  --surface2:  #111827;
+  --border: rgba(255,255,255,0.08);
+  --text:      #f1f5f9;
+  --muted: rgba(255,255,255,0.45);
+  --gold:      #f472b6;
+  --gold-soft: rgba(244, 114, 182,0.15);
+  --radius: 18px;
+}
+
+html, body {
+ min-height: 100vh;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ background: var(--bg);
+ color: var(--text);
+ overflow-x: hidden;
+}
+
+/* ── Starfield ── */
+body::before {
+ content: '';
+ position: fixed;
+ inset: 0;
+ background:
+ radial-gradient(ellipse at 20% 20%, rgba(139,92,246,0.08) 0%, transparent 50%),
+ radial-gradient(ellipse at 80% 80%, rgba(244, 114, 182,0.06 )0%, transparent 50%),
+ radial-gradient(ellipse at 50% 0%, rgba(139, 92, 246,0.06 )0%, transparent 60%);
+ pointer-events: none;
+ z-index: 0;
+}
+
+/* ── NAV ── */
+.nav {
+ position: relative;
+ z-index: 10;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 20px 32px;
+ border-bottom: 1px solid var(--border);
+ background: rgba(8,11,20,0.8);
+ backdrop-filter: blur(12px);
+}
+.nav-back {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-size: 0.82rem;
+ color: var(--muted);
+ text-decoration: none;
+ transition: color 0.15s;
+}
+.nav-back:hover { color: var(--text); }
+.nav-back svg { width: 16px; height: 16px; }
+.nav-brand {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-size: 0.9rem;
+ font-weight: 700;
+ color: var(--gold);
+ letter-spacing: -0.01em;
+}
+.nav-brand-dot {
+ width: 8px; height: 8px;
+ border-radius: 50%;
+ background: var(--gold);
+ box-shadow: 0 0 10px rgba(244, 114, 182,0.6);
+ animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+ 0%, 100% { opacity: 1; transform: scale(1); }
+ 50%       { opacity: 0.6; transform: scale(0.85); }
+}
+.nav-badge {
+ font-size: 0.65rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: rgba(244, 114, 182,0.7);
+ background: rgba(244, 114, 182,0.1);
+ border: 1px solid rgba(244, 114, 182,0.2);
+ border-radius: 20px;
+ padding: 3px 10px;
+}
+
+/* ── HERO ── */
+.hero {
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ padding: 72px 24px 56px;
+ max-width: 680px;
+ margin: 0 auto;
+}
+.hero-icon {
+ font-size: 4rem;
+ line-height: 1;
+ margin-bottom: 24px;
+ filter: drop-shadow(0 0 28px rgba(244, 114, 182,0.4);
+ animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+ 0%, 100% { transform: translateY(0); }
+ 50%       { transform: translateY(-8px); }
+}
+.hero-eyebrow {
+ font-size: 0.72rem;
+ font-weight: 700;
+ letter-spacing: 0.2em;
+ text-transform: uppercase;
+ color: var(--gold);
+ margin-bottom: 16px;
+ opacity: 0.8;
+}
+.hero h1 {
+ font-size: clamp(2rem, 5vw, 3rem);
+ font-weight: 900;
+ line-height: 1.1;
+ letter-spacing: -0.03em;
+ margin-bottom: 18px;
+}
+.hero h1 span {
+ background: linear-gradient(90deg, #f472b6, #f9a8d4, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ background-clip: text;
+}
+.hero p {
+ font-size: 0.95rem;
+ color: var(--muted);
+ line-height: 1.7;
+ max-width: 500px;
+ margin: 0 auto;
+}
+
+/* ── DIVIDER ── */
+.section-divider {
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ font-size: 0.68rem;
+ font-weight: 700;
+ letter-spacing: 0.18em;
+ text-transform: uppercase;
+ color: var(--muted);
+ margin-bottom: 28px;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ max-width: 960px;
+ margin: 0 auto 28px;
+ padding: 0 24px;
+}
+.section-divider::before,
+.section-divider::after {
+ content: '';
+ flex: 1;
+ height: 1px;
+ background: var(--border);
+}
+
+/* ── TOOLS GRID ── */
+.tools-grid {
+ position: relative;
+ z-index: 1;
+ display: grid;
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ max-width: 960px;
+ margin: 0 auto;
+ padding: 0 24px 64px;
+}
+
+.tool-card {
+ background: var(--surface);
+ border: 1px solid var(--border);
+ border-radius: var(--radius);
+ padding: 28px 24px 24px;
+ text-decoration: none;
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+ transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+ position: relative;
+ overflow: hidden;
+ cursor: pointer;
+}
+.tool-card::after {
+ content: '';
+ position: absolute;
+ top: 0; left: 0; right: 0;
+ height: 2px;
+}
+.tool-card:not(.tool-soon):hover {
+ transform: translateY(-4px);
+ box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}
+.tool-card.tool-soon {
+ cursor: default;
+ opacity: 0.55;
+ pointer-events: none;
+}
+
+/* Natal */
+.tool-natal {
+ border-color: rgba(244, 114, 182,0.25);
+ background: linear-gradient(135deg, #0d1120 0%, #111827 100%);
+}
+.tool-natal:hover { border-color: rgba(244, 114, 182,0.5); box-shadow: 0 12px 40px rgba(244, 114, 182,0.12), 0 4px 20px rgba(0,0,0,0.4); }
+.tool-natal::after { background: linear-gradient(90deg, #f472b6, #f9a8d4); }
+.tool-natal::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(244, 114, 182,0.05), transparent 60%); pointer-events: none; }
+
+/* Sinastría */
+.tool-sinastria {
+ border-color: rgba(192,132,252,0.25);
+ background: linear-gradient(135deg, #0d1120 0%, #130d1e 100%);
+}
+.tool-sinastria:hover { border-color: rgba(192,132,252,0.5); box-shadow: 0 12px 40px rgba(192,132,252,0.12), 0 4px 20px rgba(0,0,0,0.4); }
+.tool-sinastria::after { background: linear-gradient(90deg, #ec4899, #a78bfa); }
+.tool-sinastria::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(192,132,252,0.05), transparent 60%); pointer-events: none; }
+
+/* Tránsitos */
+.tool-transitos {
+ border-color: rgba(139, 92, 246,0.2);
+ background: linear-gradient(135deg, #0d1120 0%, #2e1065 100%);
+}
+.tool-transitos:hover { border-color: rgba(139, 92, 246,0.5); box-shadow: 0 12px 40px rgba(139, 92, 246,0.12), 0 4px 20px rgba(0,0,0,0.4); }
+.tool-transitos::after { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.tool-transitos::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(139, 92, 246,0.05), transparent 60%); pointer-events: none; }
+
+/* Progresiones */
+.tool-progresiones {
+ border-color: rgba(139, 92, 246,0.2);
+ background: linear-gradient(135deg, #0d1120 0%, #0d1a15 100%);
+}
+.tool-progresiones:hover { border-color: rgba(139, 92, 246,0.5); box-shadow: 0 12px 40px rgba(139, 92, 246,0.12), 0 4px 20px rgba(0,0,0,0.4); }
+.tool-progresiones::after { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
+.tool-progresiones::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at top left, rgba(139, 92, 246,0.05), transparent 60%); pointer-events: none; }
+
+.tool-icon {
+ font-size: 2.2rem;
+ line-height: 1;
+}
+.tool-badge-row {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+}
+.tool-label {
+ font-size: 0.64rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--muted);
+}
+.soon-badge {
+ font-size: 0.6rem;
+ font-weight: 700;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: rgba(255,255,255,0.4);
+ background: rgba(255,255,255,0.06);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: 20px;
+ padding: 2px 8px;
+}
+.tool-title {
+ font-size: 1.4rem;
+ font-weight: 800;
+ letter-spacing: -0.02em;
+ line-height: 1.15;
+ color: var(--text);
+}
+.tool-desc {
+ font-size: 0.83rem;
+ color: var(--muted);
+ line-height: 1.6;
+ flex: 1;
+}
+.tool-features {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 6px;
+ border-top: 1px solid var(--border);
+ padding-top: 14px;
+}
+.tool-feat {
+ font-size: 0.72rem;
+ color: rgba(255,255,255,0.45);
+ background: rgba(255,255,255,0.05);
+ border: 1px solid rgba(255,255,255,0.08);
+ border-radius: 20px;
+ padding: 3px 10px;
+}
+.tool-cta {
+ font-size: 0.82rem;
+ font-weight: 700;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+ margin-top: 4px;
+ transition: gap 0.15s;
+}
+.tool-card:hover .tool-cta { gap: 8px; }
+.tool-natal .tool-cta    { color: #f9a8d4; }
+.tool-sinastria .tool-cta { color: #a78bfa; }
+
+/* ── FOOTER BACK ── */
+.footer-back {
+ position: relative;
+ z-index: 1;
+ text-align: center;
+ padding-bottom: 48px;
+}
+.footer-back a {
+ font-size: 0.8rem;
+ color: var(--muted);
+ text-decoration: none;
+ transition: color 0.15s;
+}
+.footer-back a:hover { color: var(--text); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 700px) {
+  .tools-grid {
+ grid-template-columns: 1fr;
+ gap: 16px;
+ padding: 0 16px 48px;
+  }
+  .nav { padding: 16px 20px; }
+  .hero { padding: 48px 16px 40px; }
+}
+</style></head><body class="mod-page-aurora"><!-- HEADER UNIFICADO --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back nav-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Home</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-aurora"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><ellipse cx="12" cy="12" rx="10" ry="3.5" transform="rotate(-25 12 12)"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">5 integrated modules</div><div class="holo-module-title">Astrology</div></div></div><span class="holo-module-badge">Premium</span></div></header><!-- HERO --><div class="hero"><div class="hero-icon"></div><div class="hero-eyebrow">Premium Astrology Engine</div><h1>Astro<br><span>logy</span></h1><p>Deep interpretation based on Volguine and Traditional Astrology. Natal chart, couple compatibility, transits and more — all with real-time analysis.</p></div><!-- TOOLS SECTION --><div class="section-divider">Select a module</div><div class="tools-grid"><!-- 1 · CARTA NATAL --><a class="tool-card tool-natal" href="/astro"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Personal Analysis</div></div><div class="tool-title">Natal Chart<br>& Solar Return</div><div class="tool-desc">Enter your date, time and place of birth. Get a complete natal analysis, Solar Return, PSR and Monthly charts with deep interpretation.
+ </div><div class="tool-features"><span class="tool-feat">SVG natal chart</span><span class="tool-feat">Solar Return</span><span class="tool-feat">PSR · Monthly</span><span class="tool-feat">Planetary positions</span><span class="tool-feat">Interpretation</span></div><div class="tool-cta">View my chart →</div></a><!-- 2 · SINASTRÍA --><a class="tool-card tool-sinastria" href="/sinastria"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Couple Compatibility</div></div><div class="tool-title">Synastry<br>& Compatibility</div><div class="tool-desc">Analyze the dynamic between two people: cross aspects between charts, a double synastry chart and an analysis of bonds, tensions and relational purpose.
+ </div><div class="tool-features"><span class="tool-feat">SVG double chart</span><span class="tool-feat">Cross aspects</span><span class="tool-feat">Relational analysis</span><span class="tool-feat">49+ aspects</span></div><div class="tool-cta">Analyze compatibility →</div></a><!-- 3 · TRÁNSITOS --><a class="tool-card tool-transitos" href="/transitos"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Current Cycles</div></div><div class="tool-title">Planetary<br>Transits</div><div class="tool-desc">Analyze the transits of the current sky over your natal chart. Identify key periods, activations and ongoing cycles of transformation.
+ </div><div class="tool-features"><span class="tool-feat">SVG transit chart</span><span class="tool-feat">Exact aspects</span><span class="tool-feat">Interpretation</span><span class="tool-feat">Any date</span></div><div class="tool-cta" style="color:#a78bfa;">View transits →</div></a><!-- 4 · PROGRESIONES --><a class="tool-card tool-progresiones" href="/progresiones"><div class="tool-icon"></div><div class="tool-badge-row"><div class="tool-label">Life Evolution</div></div><div class="tool-title">Secondary<br>Progressions</div><div class="tool-desc">Day-for-year progressed chart. Visualize inner evolution, the progressed lunar phase, life-cycle changes and exact aspects with deep interpretation.
+ </div><div class="tool-features"><span class="tool-feat">SVG progressed chart</span><span class="tool-feat">Progressed lunar phase</span><span class="tool-feat">Exact aspects</span><span class="tool-feat">Interpretation</span></div><div class="tool-cta" style="color:#a78bfa;">View progressions →</div></a></div><!-- FOOTER --><div class="footer-back"><a href="https://www.holoacademia.com/asistenteia">← Back to Holistic Copilot</a></div><script>
+(function() {
+ const p = new URLSearchParams(window.location.search);
+ if (!p.has('embed')) return;
+ document.querySelectorAll('a.tool-card').forEach(function(a) {
+ a.target = '_top';
+  });
+ document.querySelector('.nav-back').target = '_top';
+ document.querySelector('.footer-back a').target = '_top';
+})();
+</script></body></html>

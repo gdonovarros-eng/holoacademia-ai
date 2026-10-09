@@ -1,0 +1,581 @@
+<!DOCTYPE html><html lang="pt"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Horóscopo Zodiacal · Copiloto Holístico</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5"><link rel="stylesheet" href="/therapy-static/holo_module.css?v=2"><link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2"><script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script><style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #FFFFFF;
+  --surface:     #FFFFFF;
+  --surface2:    #FAFAFA;
+  --border: #EAEAEA;
+  --text:        #0E1116;
+  --muted:       #4A4F5C;
+  --muted2:      #8B8F9A;
+  --acc:         #db2777;
+  --acc-dark:    #be185d;
+  --gold:        #db2777;
+  --gold-bg: rgba(219, 39, 119,0.08);
+  --gold-border: rgba(219, 39, 119,0.30);
+  --radius: 16px;
+  --glow: rgba(219, 39, 119,0.12);
+}
+
+html, body {
+ min-height: 100vh;
+ font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+ background: var(--bg);
+ color: var(--text);
+}
+
+/* ── STAR BACKGROUND ── */
+body::before {
+ content: '';
+ position: fixed;
+ inset: 0;
+ background:
+ radial-gradient(ellipse at 15% 15%, rgba(167, 139, 250,0.07 )0%, transparent 55%),
+ radial-gradient(ellipse at 85% 75%, rgba(244, 114, 182,0.05 )0%, transparent 55%),
+ radial-gradient(ellipse at 50% 50%, rgba(139, 92, 246,0.04 )0%, transparent 70%);
+ pointer-events: none;
+ z-index: 0;
+}
+
+/* ── HEADER ── */
+.header {
+ display: flex;
+ align-items: center;
+ gap: 14px;
+ padding: 16px 28px;
+ border-bottom: 1px solid var(--border);
+ background: rgba(7,9,26,0.92);
+ backdrop-filter: blur(14px);
+ position: sticky;
+ top: 0;
+ z-index: 100;
+}
+.header-back {
+ display: flex; align-items: center; gap: 6px;
+ font-size: 0.82rem; font-weight: 600; color: var(--muted);
+ text-decoration: none; padding: 6px 12px;
+ border-radius: 8px; border: 1px solid var(--border);
+ transition: all 0.15s; white-space: nowrap;
+}
+.header-back:hover { color: var(--text); border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
+.header-title { flex: 1; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.header-icon { font-size: 1.25rem; flex-shrink: 0; }
+.header-name { font-size: 0.95rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.header-badge {
+ font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+ text-transform: uppercase; color: var(--acc);
+ background: rgba(167, 139, 250,0.1); border: 1px solid rgba(167, 139, 250,0.25);
+ border-radius: 20px; padding: 3px 10px; white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── TABS ── */
+.page-tabs {
+ display: flex; gap: 6px; margin-bottom: 28px;
+ background: var(--surface); border: 1px solid var(--border);
+ border-radius: 12px; padding: 5px;
+}
+.tab-btn {
+ flex: 1; padding: 8px 12px; border: none; background: transparent;
+ color: var(--muted); font-size: 0.82rem; font-weight: 600;
+ border-radius: 8px; cursor: pointer; transition: all 0.15s;
+}
+.tab-btn.active { background: var(--surface2); color: var(--text); box-shadow: 0 1px 4px rgba(0,0,0,0.3); }
+.tab-btn:hover:not(.active) { color: var(--text); background: rgba(255,255,255,0.04); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ── MAIN ── */
+.main {
+ max-width: 800px; margin: 0 auto;
+ padding: 32px 24px 60px;
+ position: relative; z-index: 1;
+}
+
+/* ── HERO ── */
+.hero {
+ text-align: center; padding: 20px 0 32px;
+}
+.hero-eyebrow {
+ font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+ text-transform: uppercase; color: var(--acc); margin-bottom: 14px;
+}
+.hero h2 {
+ font-size: clamp(1.5rem,3.5vw,2.2rem); font-weight: 800;
+ line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 12px;
+}
+.hero h2 em {
+ font-style: normal;
+ background: linear-gradient(90deg, #a78bfa, #f472b6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub { font-size: 0.9rem; color: var(--muted); line-height: 1.7; max-width: 500px; margin: 0 auto; }
+
+/* ── FORM ── */
+.form-card {
+ background: var(--surface); border: 1px solid var(--border);
+ border-radius: var(--radius); padding: 28px 28px 24px;
+ margin-bottom: 24px;
+}
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-label { font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; }
+.form-label span { color: var(--acc); }
+.form-input, .form-select {
+ background: var(--surface2); border: 1px solid var(--border);
+ border-radius: 10px; padding: 10px 14px;
+ color: var(--text); font-size: 0.88rem;
+ outline: none; transition: border-color 0.15s;
+ width: 100%;
+}
+.form-input:focus, .form-select:focus { border-color: var(--acc); }
+.form-input::placeholder { color: var(--muted); }
+.form-select option { background: var(--surface2); }
+.form-hint { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+.opt-label { font-size: 0.72rem; color: var(--muted); margin-left: 4px; }
+
+.submit-btn {
+ width: 100%; margin-top: 20px;
+ padding: 13px 24px; border: none; border-radius: 11px;
+ background: linear-gradient(135deg, var(--acc-dark), var(--acc));
+ color: #fff; font-size: 0.9rem; font-weight: 700;
+ cursor: pointer; transition: opacity 0.15s, transform 0.1s;
+ display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.submit-btn:hover:not(:disabled) { opacity: 0.9; transform: translateY(-1px); }
+.submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ── SIGNO BADGE ── */
+.signo-badge {
+ display: none;
+ background: linear-gradient(135deg, var(--surface) 0%, var(--surface2) 100%);
+ border: 1px solid rgba(167, 139, 250,0.3);
+ border-radius: var(--radius); padding: 20px 24px;
+ margin-bottom: 24px; text-align: center;
+ box-shadow: 0 0 40px rgba(167, 139, 250,0.06);
+}
+.signo-badge.visible { display: flex; align-items: center; gap: 20px; text-align: left; }
+.signo-symbol { font-size: 3rem; line-height: 1; flex-shrink: 0; }
+.signo-info { flex: 1; min-width: 0; }
+.signo-name {
+ font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em;
+ background: linear-gradient(90deg, var(--acc), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.signo-meta {
+ font-size: 0.8rem; color: var(--muted); margin-top: 4px;
+ display: flex; flex-wrap: wrap; gap: 8px;
+}
+.signo-pill {
+ background: rgba(167, 139, 250,0.12); border: 1px solid rgba(167, 139, 250,0.2);
+ border-radius: 20px; padding: 2px 10px; font-size: 0.72rem; font-weight: 600;
+ color: var(--acc);
+}
+.signo-pill.gold {
+ background: var(--gold-bg); border-color: var(--gold-border);
+ color: var(--gold);
+}
+
+/* ── STATUS ── */
+.status-bar {
+ display: none; align-items: center; gap: 10px;
+ padding: 12px 16px; margin-bottom: 16px;
+ background: var(--surface); border: 1px solid var(--border);
+ border-radius: 10px; font-size: 0.82rem; color: var(--muted);
+}
+.status-bar.visible { display: flex; }
+.spinner {
+ width: 16px; height: 16px; border-radius: 50%;
+ border: 2px solid rgba(167, 139, 250,0.2);
+ border-top-color: var(--acc);
+ animation: spin 0.8s linear infinite; flex-shrink: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── OUTPUT ── */
+.output-card {
+ display: none; background: var(--surface); border: 1px solid var(--border);
+ border-radius: var(--radius); padding: 28px;
+}
+.output-card.visible { display: block; }
+.output-header {
+ display: flex; align-items: center; justify-content: space-between;
+ margin-bottom: 20px; padding-bottom: 16px;
+ border-bottom: 1px solid var(--border);
+}
+.output-title { font-size: 0.82rem; font-weight: 700; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase; }
+.copy-btn {
+ font-size: 0.75rem; font-weight: 600; color: var(--muted);
+ background: var(--surface2); border: 1px solid var(--border);
+ border-radius: 7px; padding: 5px 12px; cursor: pointer;
+ transition: all 0.15s;
+}
+.copy-btn:hover { color: var(--text); border-color: rgba(255,255,255,0.15); }
+
+.output-body { font-size: 0.9rem; line-height: 1.75; color: var(--text); }
+.output-body h2 {
+ font-size: 1rem; font-weight: 800; color: var(--acc);
+ margin: 24px 0 10px; padding-bottom: 8px;
+ border-bottom: 1px solid rgba(167, 139, 250,0.15);
+ display: flex; align-items: center; gap: 8px;
+}
+.output-body h2:first-child { margin-top: 0; }
+.output-body h3 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin: 16px 0 8px; }
+.output-body p { margin-bottom: 12px; }
+.output-body strong { color: var(--text); font-weight: 700; }
+.output-body em { color: var(--gold); font-style: italic; }
+.output-body ul, .output-body ol { padding-left: 22px; margin-bottom: 12px; }
+.output-body li { margin-bottom: 6px; }
+.cursor-blink {
+ display: inline-block; width: 2px; height: 1em;
+ background: var(--acc); margin-left: 2px;
+ animation: blink 1s step-end infinite; vertical-align: text-bottom;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* ── ERROR ── */
+.error-box {
+ display: none; background: rgba(236, 72, 153,0.08); border: 1px solid rgba(236, 72, 153,0.25);
+ border-radius: 10px; padding: 14px 18px;
+ color: #f9a8d4; font-size: 0.85rem; margin-bottom: 16px;
+}
+.error-box.visible { display: block; }
+
+/* ── ZODIAC GRID (tab 2) ── */
+.zodiac-grid {
+ display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+}
+.sign-card {
+ background: var(--surface); border: 1px solid var(--border);
+ border-radius: 12px; padding: 18px 16px;
+ cursor: pointer; transition: all 0.15s;
+ display: flex; flex-direction: column; gap: 6px;
+}
+.sign-card:hover {
+ border-color: rgba(167, 139, 250,0.3);
+ background: var(--surface2);
+ transform: translateY(-2px);
+ box-shadow: 0 6px 20px rgba(167, 139, 250,0.08);
+}
+.sign-glyph { font-size: 1.8rem; line-height: 1; }
+.sign-cname { font-size: 0.95rem; font-weight: 800; color: var(--text); }
+.sign-dates { font-size: 0.72rem; color: var(--muted); }
+.sign-element {
+ display: inline-block; font-size: 0.68rem; font-weight: 700;
+ padding: 2px 8px; border-radius: 20px; margin-top: 2px;
+}
+.el-fuego { background: rgba(236, 72, 153,0.12); color: #f9a8d4; border: 1px solid rgba(236, 72, 153,0.2); }
+.el-tierra { background: rgba(139, 92, 246,0.10); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
+.el-aire   { background: rgba(139, 92, 246,0.10); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
+.el-agua   { background: rgba(139, 92, 246,0.12); color: #c4b5fd; border: 1px solid rgba(139, 92, 246,0.2); }
+
+/* ── SIGN DETAIL MODAL ── */
+.modal-overlay {
+ display: none; position: fixed; inset: 0;
+ background: rgba(0,0,0,0.7); backdrop-filter: blur(6px);
+ z-index: 200; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+ background: var(--surface); border: 1px solid rgba(167, 139, 250,0.2);
+ border-radius: 18px; padding: 28px; max-width: 580px; width: 100%;
+ max-height: 80vh; overflow-y: auto;
+ position: relative;
+}
+.modal-close {
+ position: absolute; top: 16px; right: 16px;
+ background: var(--surface2); border: 1px solid var(--border);
+ color: var(--muted); border-radius: 8px; padding: 5px 10px;
+ cursor: pointer; font-size: 0.8rem; font-weight: 700;
+ transition: all 0.12s;
+}
+.modal-close:hover { color: var(--text); }
+.modal-header { margin-bottom: 20px; }
+.modal-glyph { font-size: 2.5rem; margin-bottom: 6px; }
+.modal-signo-name {
+ font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em;
+ background: linear-gradient(90deg, var(--acc), var(--gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.modal-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.modal-pill {
+ font-size: 0.72rem; font-weight: 600; padding: 3px 10px;
+ border-radius: 20px; border: 1px solid var(--border);
+ background: var(--surface2); color: var(--muted);
+}
+.modal-section { margin-top: 18px; }
+.modal-section-title {
+ font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+ text-transform: uppercase; color: var(--acc); margin-bottom: 8px;
+}
+.modal-text { font-size: 0.87rem; line-height: 1.7; color: var(--muted); }
+.modal-list {
+ list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px;
+}
+.modal-list li {
+ font-size: 0.78rem; padding: 3px 10px; border-radius: 20px;
+ background: rgba(167, 139, 250,0.08); border: 1px solid rgba(167, 139, 250,0.15);
+ color: var(--text);
+}
+.modal-list.challenges li {
+ background: rgba(244, 114, 182,0.08); border-color: rgba(244, 114, 182,0.2); color: var(--gold);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .form-grid { grid-template-columns: 1fr; }
+  .zodiac-grid { grid-template-columns: repeat(2, 1fr); }
+  .signo-badge.visible { flex-direction: column; text-align: center; }
+  .main { padding: 24px 16px 48px; }
+  .header { padding: 14px 16px; }
+  .form-card { padding: 20px 16px; }
+}
+
+/* ── LIGHT THEME OVERRIDES (textos claros sobre superficies claras/blancas) ── */
+/* Gradiente del hero sobre fondo blanco: índigo pálido → tonos legibles */
+.hero h2 em {
+  background: linear-gradient(90deg, #7c3aed, #db2777) !important;
+}
+/* Error box: superficie roja muy tenue, texto coral pálido → rojo legible */
+.error-box { color: #db2777 !important; }
+/* Element pills: fondos tenues de color sobre tarjeta blanca, texto pálido → tono saturado legible */
+.el-fuego  { color: #db2777 !important; }   /* coral pálido → rojo */
+.el-tierra { color: #6d28d9 !important; }   /* verde pálido → verde */
+.el-aire   { color: #7c3aed !important; }   /* azul pálido → azul */
+.el-agua   { color: #6d28d9 !important; }   /* púrpura pálido → púrpura */
+/* Pills/listas de desafíos: ámbar pálido sobre fondo tenue → ámbar legible */
+.modal-list.challenges li { color: #db2777 !important; }
+</style></head><body class="mod-page-terra"><!-- HEADER UNIFICADO --><header class="holo-module-header"><div class="holo-module-header-inner"><a href="https://www.holoacademia.com/asistenteia" class="holo-module-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg><span>Início</span></a><div class="holo-module-identity"><div class="holo-module-icon mod-terra"><svg viewBox="0 0 24 24"><path d="M12 3l2.5 5.5L21 9.5l-4.5 4.4 1.1 6.3L12 17l-5.6 3.2 1.1-6.3L3 9.5l6.5-1z"/></svg></div><div class="holo-module-title-wrap"><div class="holo-module-category">Zodiacal · 12 signos</div><div class="holo-module-title">Horóscopo</div></div></div><span class="holo-module-badge">Copiloto</span></div></header><!-- MAIN --><main class="main"><!-- TABS --><div class="page-tabs"><button class="tab-btn active" onclick="switchTab('lectura')">Leitura Pessoal</button><button class="tab-btn" onclick="switchTab('signos')">Os 12 Signos</button></div><!-- TAB 1: LECTURA PERSONAL --><div id="tab-lectura" class="tab-panel active"><div class="hero"><div class="hero-eyebrow">Horóscopo · Astrologia Zodiacal</div><h2>Sua leitura <em>personalizada</em></h2><p class="hero-sub">Insira sua data de nascimento e receba uma leitura astrológica profunda baseada em seu signo solar, energias atuais e orientação espiritual.</p></div><!-- FORMULARIO --><div class="form-card"><div class="form-grid"><div class="form-group full"><label class="form-label">Nome completo <span>*</span></label><input id="inpNombre" class="form-input" type="text" placeholder="Ex. Maria Silva" autocomplete="off"></div><div class="form-group"><label class="form-label">Data de nascimento <span>*</span></label><input id="inpFecha" class="form-input" type="date"></div><div class="form-group"><label class="form-label">Tipo de leitura</label><select id="selTipo" class="form-select"><option value="completo">Completa (profunda)</option><option value="semanal">Semanal (focada)</option><option value="diario">Diária (concisa)</option></select></div><div class="form-group"><label class="form-label">Hora de nascimento <span class="opt-label">(opcional)</span></label><input id="inpHora" class="form-input" type="time" placeholder="HH:MM"><div class="form-hint">Enriquece a leitura com trânsitos exatos</div></div><div class="form-group"><label class="form-label">Local de nascimento <span class="opt-label">(opcional)</span></label><input id="inpLugar" class="form-input" type="text" placeholder="Ex. Cidade do México, México"></div></div><button id="btnGenerar" class="submit-btn" onclick="generarLectura()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Gerar leitura do horóscopo
+ </button></div><!-- SIGNO BADGE --><div id="signoBadge" class="signo-badge"><div id="signoSymbol" class="signo-symbol"></div><div class="signo-info"><div id="signoName" class="signo-name">Áries</div><div class="signo-meta"><span id="signoElemento" class="signo-pill">Fogo</span><span id="signoModalidad" class="signo-pill gold">Cardinal</span></div></div></div><!-- STATUS --><div id="statusBar" class="status-bar"><div class="spinner"></div><span id="statusMsg">Calculando o signo solar…</span></div><!-- ERROR --><div id="errorBox" class="error-box"></div><!-- OUTPUT --><div id="outputCard" class="output-card"><div class="output-header"><span class="output-title">Leitura do Horóscopo</span><button class="copy-btn" onclick="copiarLectura()">Copiar</button></div><div id="outputBody" class="output-body"></div></div></div><!-- /tab-lectura --><!-- TAB 2: LOS 12 SIGNOS --><div id="tab-signos" class="tab-panel"><div id="zodiacGrid" class="zodiac-grid"></div></div></main><!-- MODAL DETALLE DE SIGNO --><div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)"><div class="modal"><button class="modal-close" onclick="closeModalBtn()">Fechar</button><div class="modal-header"><div id="mdGlyph" class="modal-glyph"></div><div id="mdNombre" class="modal-signo-name">Áries</div><div class="modal-pills" id="mdPills"></div></div><div class="modal-section"><div class="modal-section-title">Perfil</div><div id="mdPerfil" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Pontos fortes</div><ul id="mdFortalezas" class="modal-list"></ul></div><div class="modal-section"><div class="modal-section-title">Desafios</div><ul id="mdDesafios" class="modal-list challenges"></ul></div><div class="modal-section"><div class="modal-section-title">Amor</div><div id="mdAmor" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Espiritualidade</div><div id="mdEspiritualidad" class="modal-text"></div></div><div class="modal-section"><div class="modal-section-title">Correspondências</div><div id="mdCorrespondencias" class="modal-text"></div></div></div></div><script>
+// ─── Datos de los 12 signos (cargados desde el backend o embebidos aquí) ────────
+
+const SIGNOS_STATIC = {
+  "Áries":       { glyph:"", fechas:"20 mar – 19 abr", elemento:"Fogo", modalidad:"Cardinal", regente:"Marte", perfil:"Áries abre o ciclo zodiacal com a energia do primeiro impulso vital. É o guerreiro, o pioneiro e o líder nato que age antes de pensar. Seu fogo primordial representa a força do começo, a coragem e a afirmação do eu. O nativo de Áries possui uma vitalidade transbordante e uma capacidade única de iniciar projetos e abrir novos caminhos.", fortalezas:["Coragem e decisão","Liderança natural","Iniciativa e empreendedorismo","Energia vital inesgotável","Honestidade direta"], desafios:["Impulsividade sem reflexão","Falta de perseverança","Irritabilidade diante de obstáculos","Dificuldade para ouvir"], amor:"No amor, Áries é apaixonado e direto. Apaixona-se rapidamente e com fogo intenso. Precisa de um parceiro que saiba acompanhar seu ritmo e não apague sua chama.", espiritualidad:"Seu caminho espiritual é a conquista de si mesmo: transformar a agressividade em coragem sagrada e o ego em vontade a serviço do bem.", cuerpo:["Cabeça","Rosto","Olhos","Mandíbula"], piedras:["Ametista","Diamante"], color:"Vermelho", compatible:["Leão","Sagitário","Gêmeos"] },
+  "Touro":       { glyph:"", fechas:"20 abr – 20 mai", elemento:"Terra", modalidad:"Fixo", regente:"Vênus", perfil:"Touro é a energia da consolidação e do prazer sensorial. O nativo constrói com paciência, valoriza o tangível e busca segurança em tudo: no amor, no lar e nos bens materiais. Sua natureza é fértil, generosa e profundamente conectada à Terra. Tem uma extraordinária capacidade de perseverar e criar beleza duradoura.", fortalezas:["Perseverança e constância","Senso prático e realista","Generosidade e lealdade","Amor pela beleza","Estabilidade emocional"], desafios:["Resistência à mudança","Teimosia e inflexibilidade","Possessividade nos relacionamentos","Materialismo excessivo"], amor:"No amor, Touro é sensual, leal e profundamente comprometido. Busca uma relação estável e duradoura. É afetuoso e cuida do parceiro com devoção genuína.", espiritualidad:"Seu caminho espiritual é a transmutação do desejo material em amor incondicional e a transformação da posse em abundância compartilhada.", cuerpo:["Pescoço","Garganta","Tireoide","Laringe"], piedras:["Esmeralda","Lápis-lazúli"], color:"Verde", compatible:["Virgem","Capricórnio","Câncer"] },
+  "Gêmeos":      { glyph:"", fechas:"21 mai – 20 jun", elemento:"Ar", modalidad:"Mutável", regente:"Mercúrio", perfil:"Gêmeos é o signo da dualidade e da mente ágil. O nativo vive na multiplicidade: curioso, comunicativo e adaptável, pode explorar simultaneamente múltiplos interesses e perspectivas. Seu elemento ar o impulsiona para a circulação de ideias, as conexões humanas e o aprendizado constante. É o eterno jovem que nunca perde a curiosidade diante da vida.", fortalezas:["Inteligência e agilidade mental","Comunicação brilhante","Adaptabilidade e flexibilidade","Senso de humor e criatividade","Capacidade de síntese"], desafios:["Dispersão e inconstância","Superficialidade nos relacionamentos","Dificuldade de compromisso","Ansiedade e inquietude"], amor:"No amor, Gêmeos precisa de estímulo intelectual constante. É encantador, divertido e variado. Busca um parceiro que seja também seu melhor interlocutor e companheiro de aventuras mentais.", espiritualidad:"Seu caminho espiritual passa pela integração de suas polaridades internas, unir mente e coração para encontrar a verdade além das palavras.", cuerpo:["Braços","Mãos","Ombros","Pulmões","Sistema nervoso"], piedras:["Ágata","Citrino"], color:"Amarelo", compatible:["Libra","Aquário","Áries"] },
+  "Câncer":      { glyph:"", fechas:"21 jun – 22 jul", elemento:"Água", modalidad:"Cardinal", regente:"Lua", perfil:"Câncer é o signo da alma profunda e da memória emocional. O nativo possui uma intuição extraordinária e uma sensibilidade que lhe permite perceber o que os outros não veem. Sua grande capacidade de cuidado e nutrição o torna o guardião do lar e da família. Como signo cardinal de água, Câncer inicia os ciclos emocionais e age a partir da profundidade do sentir.", fortalezas:["Intuição e sensibilidade profunda","Lealdade e proteção incondicional","Empatia e cuidado com os outros","Memória emocional e criatividade","Tenacidade silenciosa"], desafios:["Suscetibilidade a críticas","Apego ao passado e às pessoas","Oscilações de humor lunares","Dificuldade de soltar relacionamentos"], amor:"No amor, Câncer é profundamente fiel e dedicado. Precisa sentir-se seguro e protegido. Seu maior desejo é criar um lar cheio de amor onde possa nutrir quem ama.", espiritualidad:"Seu caminho espiritual é aprender a soltar o passado com amor, transcender a dependência emocional e ancorar sua sensibilidade como dom de cura.", cuerpo:["Peito","Estômago","Seios","Sistema digestivo"], piedras:["Pérola","Pedra da Lua"], color:"Branco prateado", compatible:["Escorpião","Peixes","Touro"] },
+  "Leão":        { glyph:"", fechas:"23 jul – 22 ago", elemento:"Fogo", modalidad:"Fixo", regente:"Sol", perfil:"Leão é o signo do coração e da criação. Governado pelo Sol, o nativo irradia vitalidade, generosidade e um magnetismo natural que atrai os outros. Sua missão é brilhar e fazer brilhar quem está ao seu redor. Tem uma vontade criadora excepcional e uma capacidade de liderança que nasce da autenticidade e da coragem do coração.", fortalezas:["Generosidade e nobreza de caráter","Liderança carismática","Criatividade e expressão artística","Lealdade aos entes queridos","Otimismo e vitalidade solar"], desafios:["Necessidade de reconhecimento","Orgulho e possível arrogância","Dificuldade de dividir o protagonismo","Teimosia diante da crítica"], amor:"No amor, Leão é apaixonado, leal e romântico. Ama com toda a grandeza de seu coração. Precisa de um parceiro que aprecie e celebre sua essência única.", espiritualidad:"Seu caminho espiritual é passar do ego ao coração: transformar a necessidade de reconhecimento na irradiação genuína do amor divino.", cuerpo:["Coração","Costas","Coluna vertebral","Circulação"], piedras:["Rubi","Topázio dourado"], color:"Ouro e laranja", compatible:["Áries","Sagitário","Libra"] },
+  "Virgem":      { glyph:"", fechas:"23 ago – 22 set", elemento:"Terra", modalidad:"Mutável", regente:"Mercúrio", perfil:"Virgem é o signo do discernimento e do serviço. O nativo tem uma mente analítica e ordenada que busca a perfeição e a utilidade em tudo. Seu elemento terra o conecta ao concreto, ao corpo e à saúde. É o mestre dos detalhes, o curador do cotidiano e o guardião dos processos que mantêm a vida em ordem.", fortalezas:["Análise e pensamento preciso","Serviço desinteressado","Atenção aos detalhes","Capacidade de melhoria contínua","Honestidade e ética"], desafios:["Hipercrítica consigo mesmo","Ansiedade e preocupação","Dificuldade de delegar","Perfeccionismo paralisante"], amor:"No amor, Virgem é discreto e dedicado nos detalhes. Não proclama seu amor aos gritos, mas o demonstra em cada gesto de cuidado. Precisa sentir que é útil e valorizado pelo parceiro.", espiritualidad:"Seu caminho espiritual é a aceitação da imperfeição como parte da perfeição divina, e o serviço como expressão do amor sagrado.", cuerpo:["Intestino delgado","Sistema nervoso","Pâncreas","Sistema digestivo"], piedras:["Jade","Cornalina"], color:"Azul-marinho", compatible:["Touro","Capricórnio","Escorpião"] },
+  "Libra":       { glyph:"", fechas:"23 set – 22 out", elemento:"Ar", modalidad:"Cardinal", regente:"Vênus", perfil:"Libra é o signo da harmonia e da justiça. O nativo tem um senso inato de estética, equilíbrio e relações justas. Diplomático por natureza, busca constantemente o meio-termo que satisfaça todas as partes. Seu elemento ar lhe dá a capacidade de ver múltiplas perspectivas e criar pontes onde outros só veem divisão.", fortalezas:["Diplomacia e tato","Senso estético refinado","Capacidade de mediação","Charme natural","Senso de justiça"], desafios:["Indecisão crônica","Evitar conflitos necessários","Dependência do outro","Dificuldade de agir sozinho"], amor:"No amor, Libra é o mais romântico do zodíaco. Floresce no relacionamento e busca uma união baseada na beleza, no respeito mútuo e na complementaridade ideal.", espiritualidad:"Seu caminho espiritual é aprender a encontrar o centro em si mesmo antes de buscá-lo no outro, e converter a busca da harmonia em paz interior.", cuerpo:["Rins","Bexiga","Região lombar","Suprarrenais"], piedras:["Opala","Quartzo rosa"], color:"Verde-menta e rosa", compatible:["Gêmeos","Aquário","Leão"] },
+  "Escorpião":   { glyph:"", fechas:"23 out – 21 nov", elemento:"Água", modalidad:"Fixo", regente:"Plutão", perfil:"Escorpião é o signo da transformação e do poder. O nativo é um investigador das profundezas que não se detém diante de nada em sua busca pela verdade. Com uma intensidade emocional sem igual, é capaz de morrer e renascer várias vezes ao longo da vida. Sua força não é visível, mas é invencível. É o alquimista do zodíaco.", fortalezas:["Intensidade e profundidade emocional","Poder de transformação","Intuição penetrante","Lealdade absoluta","Determinação inabalável"], desafios:["Ciúme e possessividade","Tendência à manipulação","Dificuldade de perdoar","Sigilo excessivo"], amor:"No amor, Escorpião ama com uma intensidade total e exclusiva. Entrega tudo de si e exige o mesmo. A traição é sua ferida mais profunda; a fidelidade, seu tesouro mais precioso.", espiritualidad:"Seu caminho espiritual é a transformação do poder pessoal em poder a serviço do amor, a cura das feridas da alma e a maestria sobre a morte do ego.", cuerpo:["Órgãos sexuais","Bexiga","Cólon","Sistema reprodutor"], piedras:["Obsidiana","Granada"], color:"Vermelho escuro e preto", compatible:["Câncer","Peixes","Virgem"] },
+  "Sagitário":   { glyph:"", fechas:"22 nov – 21 dez", elemento:"Fogo", modalidad:"Mutável", regente:"Júpiter", perfil:"Sagitário é o signo do buscador e do filósofo. O nativo tem um espírito livre e uma sede insaciável de conhecimento, aventura e significado. Governado por Júpiter, o planeta da expansão, tudo em Sagitário é grande: seus planos, seu otimismo, sua generosidade e seu amor pela liberdade. É o eterno peregrino que encontra a pátria no horizonte.", fortalezas:["Otimismo e entusiasmo contagiante","Amor pela liberdade e pela aventura","Busca filosófica e espiritual","Generosidade e abertura mental","Fé e visão de longo prazo"], desafios:["Excesso de confiança","Falta de detalhe e acompanhamento","Tendência ao dogmatismo","Dificuldade com o compromisso"], amor:"No amor, Sagitário precisa de um parceiro que seja também seu companheiro de aventuras e crescimento. A liberdade é seu oxigênio: o amor que a respeita é o que dura.", espiritualidad:"Seu caminho espiritual é converter a busca externa em jornada interna, descobrindo que a verdade mais profunda não está no horizonte, mas no coração.", cuerpo:["Quadris","Coxas","Nervo ciático","Fígado"], piedras:["Turquesa","Lápis-lazúli"], color:"Azul índigo e violeta", compatible:["Áries","Leão","Aquário"] },
+  "Capricórnio": { glyph:"", fechas:"22 dez – 19 jan", elemento:"Terra", modalidad:"Cardinal", regente:"Saturno", perfil:"Capricórnio é o signo da maestria e da realização por meio do esforço sustentado. O nativo tem uma determinação silenciosa e uma disciplina excepcional que lhe permitem escalar as montanhas mais altas com paciência e método. Governado por Saturno, aprende que a verdadeira grandeza se constrói tijolo por tijolo, e que a responsabilidade é a forma mais elevada de liberdade.", fortalezas:["Ambição estruturada e disciplina","Responsabilidade e maturidade","Tenacidade e perseverança","Senso prático excepcional","Capacidade organizativa"], desafios:["Rigidez diante do espontâneo","Frieza emocional aparente","Perfeccionismo paralisante","Dificuldade de descansar"], amor:"No amor, Capricórnio é leal, sério e comprometido. Pode parecer reservado, mas sua entrega é total quando confia. Ama demonstrando com atos e construindo o futuro a dois.", espiritualidad:"Seu caminho espiritual é aprender que o sucesso mais verdadeiro é interior, e que o amor a serviço dos outros é o cume mais alto que pode escalar.", cuerpo:["Joelhos","Articulações","Ossos","Pele"], piedras:["Ônix","Granada"], color:"Preto e marrom escuro", compatible:["Touro","Virgem","Peixes"] },
+  "Aquário":     { glyph:"", fechas:"20 jan – 18 fev", elemento:"Ar", modalidad:"Fixo", regente:"Urano", perfil:"Aquário é o signo do visionário e do reformador. O nativo vive adiantado em relação à sua época: suas ideias são originais, seus valores são universais e sua missão transcende o pessoal. Governado por Urano, o planeta da revolução, Aquário rompe estruturas para construir um mundo mais justo, livre e fraterno. É o guardião dos ideais da humanidade.", fortalezas:["Originalidade e inovação","Pensamento humanitário","Independência e autenticidade","Visão de futuro","Amizade profunda e leal"], desafios:["Distância emocional","Teimosia em suas ideias","Dificuldade com a intimidade","Tendência ao caos criativo"], amor:"No amor, Aquário valoriza profundamente a amizade e a liberdade dentro da relação. Precisa de um parceiro que seja seu cúmplice intelectual e respeite seu espaço vital.", espiritualidad:"Seu caminho espiritual é integrar o amor pela humanidade com o amor pelo indivíduo concreto, aprendendo que a revolução mais importante começa no coração.", cuerpo:["Tornozelos","Panturrilhas","Sistema circulatório","Sistema nervoso"], piedras:["Ametista","Água-marinha"], color:"Azul elétrico e violeta", compatible:["Gêmeos","Libra","Sagitário"] },
+  "Peixes":      { glyph:"", fechas:"19 fev – 20 mar", elemento:"Água", modalidad:"Mutável", regente:"Netuno", perfil:"Peixes é o signo do misticismo e da compaixão universal. O nativo tem uma sensibilidade extraordinária que lhe permite perceber as dimensões invisíveis da realidade. Como último signo do zodíaco, Peixes carrega em si a experiência de todos os demais: por isso sua empatia é sem fronteiras e seu amor é oceânico. É o sonhador, o artista e o curador do zodíaco.", fortalezas:["Empatia e compaixão profunda","Criatividade artística e imaginação","Intuição e percepção extrassensorial","Amor incondicional","Espiritualidade e conexão com o sagrado"], desafios:["Tendência à evasão","Dificuldade de estabelecer limites","Suscetibilidade emocional","Autoengano idealizado"], amor:"No amor, Peixes se entrega completamente, às vezes mais do que é saudável. Precisa de um parceiro que valorize sua sensibilidade e o ajude a manter os pés no chão sem perder sua magia.", espiritualidad:"Seu caminho espiritual é a integração do mundo espiritual e do material, aprender a dar com limites saudáveis e converter sua compaixão em serviço sem se dissolver no outro.", cuerpo:["Pés","Sistema linfático","Sistema imunológico","Glândula pineal"], piedras:["Água-marinha","Ametista"], color:"Verde-mar e violeta suave", compatible:["Câncer","Escorpião","Capricórnio"] },
+};
+
+const GLYPHS_MAP = {
+  "Áries":"","Touro":"","Gêmeos":"","Câncer":"","Leão":"","Virgem":"",
+  "Libra":"","Escorpião":"","Sagitário":"","Capricórnio":"","Aquário":"","Peixes":""
+};
+
+const ELEMENTO_CLASS = {
+  "Fogo":"el-fuego","Terra":"el-tierra","Ar":"el-aire","Água":"el-agua"
+};
+
+// ─── TABS ─────────────────────────────────────────────────────────────────────
+function switchTab(tab) {
+ document.querySelectorAll('.tab-btn').forEach((b,i) => {
+ b.classList.toggle('active', (i === 0 && tab==='lectura') || (i === 1 && tab==='signos'));
+  });
+ document.getElementById('tab-lectura').classList.toggle('active', tab==='lectura');
+ document.getElementById('tab-signos').classList.toggle('active', tab==='signos');
+ if (tab === 'signos') renderZodiacGrid();
+}
+
+// ─── ZODIAC GRID ──────────────────────────────────────────────────────────────
+function renderZodiacGrid() {
+ const grid = document.getElementById('zodiacGrid');
+ if (grid.children.length >0) return; // ya renderizado
+ const order = ["Áries","Touro","Gêmeos","Câncer","Leão","Virgem","Libra","Escorpião","Sagitário","Capricórnio","Aquário","Peixes"];
+ order.forEach(nombre => {
+ const s = SIGNOS_STATIC[nombre];
+ const card = document.createElement('div');
+ card.className = 'sign-card';
+ card.innerHTML = `
+ <div class="sign-glyph">${s.glyph}</div><div class="sign-cname">${nombre}</div><div class="sign-dates">${s.fechas}</div><span class="sign-element ${ELEMENTO_CLASS[s.elemento]}">${s.elemento} · ${s.modalidad}</span>
+    `;
+ card.onclick = () =>openSignModal(nombre);
+ grid.appendChild(card);
+  });
+}
+
+function openSignModal(nombre) {
+ const s = SIGNOS_STATIC[nombre];
+ document.getElementById('mdGlyph').textContent     = s.glyph;
+ document.getElementById('mdNombre').textContent    = nombre;
+ document.getElementById('mdPerfil').textContent    = s.perfil;
+ document.getElementById('mdAmor').textContent      = s.amor;
+ document.getElementById('mdEspiritualidad').textContent = s.espiritualidad;
+ document.getElementById('mdCorrespondencias').textContent =
+    `Regente: ${s.regente} · Cores: ${s.color} · Pedras: ${s.piedras.join(', ')} · Corpo: ${s.cuerpo.join(', ')}`;
+
+  // Pills
+ const pills = document.getElementById('mdPills');
+ pills.innerHTML = `
+ <span class="modal-pill">${s.elemento}</span><span class="modal-pill">${s.modalidad}</span><span class="modal-pill">Regente: ${s.regente}</span><span class="modal-pill">${s.fechas}</span>
+  `;
+
+  // Fortalezas
+ const fl = document.getElementById('mdFortalezas');
+ fl.innerHTML = s.fortalezas.map(f => `<li>${f}</li>`).join('');
+
+  // Desafíos
+ const dl = document.getElementById('mdDesafios');
+ dl.innerHTML = s.desafios.map(d => `<li>${d}</li>`).join('');
+
+ document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal(e) {
+ if (e.target === document.getElementById('modalOverlay')) {
+ document.getElementById('modalOverlay').classList.remove('open');
+  }
+}
+function closeModalBtn() {
+ document.getElementById('modalOverlay').classList.remove('open');
+}
+
+// ─── GENERAR LECTURA ──────────────────────────────────────────────────────────
+let fullText = '';
+
+async function generarLectura() {
+ const nombre = document.getElementById('inpNombre').value.trim();
+ const fecha  = document.getElementById('inpFecha').value;
+ const hora   = document.getElementById('inpHora').value.trim() || null;
+ const lugar  = document.getElementById('inpLugar').value.trim() || null;
+ const tipo   = document.getElementById('selTipo').value;
+
+  // Validar
+ if (!nombre) { showError('Por favor, insira seu nome.'); return; }
+ if (!fecha)  { showError('Por favor, insira sua data de nascimento.'); return; }
+
+ hideError();
+ hideOutput();
+ hideBadge();
+
+ setBtnDisabled(true);
+ showStatus('Calculando o signo solar…');
+ fullText = '';
+
+ try {
+ const resp = await fetch('/horoscopo/lectura-stream', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({ nombre, fecha_nacimiento: fecha, hora_nacimiento: hora, lugar_nacimiento: lugar, tipo }),
+    });
+
+ if (!resp.ok) {
+ const err = await resp.json().catch(() => ({ detail: `HTTP ${resp.status}` }));
+ throw new Error(err.detail || `HTTP ${resp.status}`);
+    }
+
+ const reader  = resp.body.getReader();
+ const decoder = new TextDecoder();
+ let buf     = '';
+ let streaming = false;
+
+ while (true) {
+ const { done, value } = await reader.read();
+ if (done) break;
+ buf += decoder.decode(value, { stream: true });
+
+ const lines = buf.split('\n');
+ buf = lines.pop();
+
+ for (const line of lines) {
+ if (!line.startsWith('data: ')) continue;
+ const raw = line.slice(6).trim();
+ if (raw === '[DONE]') break;
+
+ let ev;
+ try { ev = JSON.parse(raw); } catch { continue; }
+
+ if (ev.status) {
+ showStatus(ev.status);
+        }
+
+ if (ev.signo) {
+ showBadge(ev.signo, ev.elemento || '', ev.modalidad || '');
+ showStatus('Gerando sua leitura personalizada…');
+        }
+
+ if (ev.token) {
+ if (!streaming) {
+ hideStatus();
+ showOutput();
+ streaming = true;
+          }
+ fullText += ev.token;
+ document.getElementById('outputBody').innerHTML =
+ marked.parse(fullText) + '<span class="cursor-blink"></span>';
+        }
+
+ if (ev.error) {
+ throw new Error(ev.error);
+        }
+      }
+    }
+
+    // Limpieza final
+ hideStatus();
+ if (fullText) {
+ document.getElementById('outputBody').innerHTML = marked.parse(fullText);
+    }
+
+  } catch (e) {
+ hideStatus();
+ showError('Erro: ' + e.message);
+  } finally {
+ setBtnDisabled(false);
+  }
+}
+
+// ─── UI HELPERS ───────────────────────────────────────────────────────────────
+function showBadge(signo, elemento, modalidad) {
+ const badge = document.getElementById('signoBadge');
+ document.getElementById('signoSymbol').textContent = GLYPHS_MAP[signo] || '';
+ document.getElementById('signoName').textContent   = signo;
+ document.getElementById('signoElemento').textContent  = elemento;
+ document.getElementById('signoModalidad').textContent = modalidad;
+ badge.classList.add('visible');
+}
+function hideBadge() { document.getElementById('signoBadge').classList.remove('visible'); }
+
+function showStatus(msg) {
+ document.getElementById('statusMsg').textContent = msg;
+ document.getElementById('statusBar').classList.add('visible');
+}
+function hideStatus() { document.getElementById('statusBar').classList.remove('visible'); }
+
+function showOutput() { document.getElementById('outputCard').classList.add('visible'); }
+function hideOutput() {
+ document.getElementById('outputCard').classList.remove('visible');
+ document.getElementById('outputBody').innerHTML = '';
+}
+
+function showError(msg) {
+ const box = document.getElementById('errorBox');
+ box.textContent = msg;
+ box.classList.add('visible');
+}
+function hideError() { document.getElementById('errorBox').classList.remove('visible'); }
+
+function setBtnDisabled(v) { document.getElementById('btnGenerar').disabled = v; }
+
+function copiarLectura() {
+ navigator.clipboard.writeText(fullText).then(() => {
+ const btn = document.querySelector('.copy-btn');
+ btn.textContent = ' Copiado';
+ setTimeout(() =>btn.textContent = 'Copiar', 2000);
+  });
+}
+
+// ─── EMBED MODE ───────────────────────────────────────────────────────────────
+(function() {
+ if (!new URLSearchParams(window.location.search).has('embed')) return;
+ document.body.classList.add('embed-mode');
+ document.querySelectorAll('a').forEach(a =>a.target = '_top');
+})();
+</script></body></html>

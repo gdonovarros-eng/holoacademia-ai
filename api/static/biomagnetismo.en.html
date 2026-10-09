@@ -1,0 +1,408 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Biomagnetism · Holistic Copilot</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{--bg:#f6f9fc;--surface:#fff;--surface2:#eef3f9;--border:#e1e8f0;--acc:#7c3aed;--acc-dim:rgba(124, 58, 237,.10);--acc-dark:#6d28d9;--text:#2e1065;--muted:#8b5cf6;--sidebar:#2e1065;--sidebar2:#2e1065}
+  html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,system-ui,sans-serif;font-size:15px;line-height:1.6}
+  .workspace{display:flex;height:100vh;overflow:hidden}
+  .sidebar{width:250px;flex-shrink:0;background:var(--sidebar);color:#e3ecf7;display:flex;flex-direction:column;padding:16px 12px;overflow-y:auto}
+  .sb-brand{display:flex;align-items:center;gap:10px;padding:6px 8px 14px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:8px}
+  .sb-brand .ic{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#8b5cf6,#7c3aed);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .sb-brand .ic svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2}
+  .sb-brand .t{font-size:.85rem;font-weight:800}.sb-brand .s{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.05em}
+  .sb-sec{font-size:.62rem;color:#a78bfa;text-transform:uppercase;letter-spacing:.08em;padding:14px 10px 6px;font-weight:700}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:10px 12px;border-radius:10px;cursor:pointer;color:#ddd6fe;font-size:.86rem;font-weight:600;transition:all .14s;border:none;background:none;width:100%;text-align:left;font-family:inherit}
+  .nav-item:hover{background:var(--sidebar2);color:#fff}.nav-item.active{background:var(--acc);color:#fff}
+  .nav-item svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+  .nav-item .ct{margin-left:auto;font-size:.68rem;color:#a78bfa;font-weight:700}.nav-item.active .ct{color:#ddd6fe}
+  .sb-foot{margin-top:auto;padding-top:12px}
+  .sb-home{display:flex;align-items:center;gap:8px;color:#a78bfa;text-decoration:none;font-size:.8rem;padding:9px 12px;border-radius:9px}.sb-home:hover{background:var(--sidebar2);color:#fff}
+  .main{flex:1;display:flex;flex-direction:column;min-width:0}
+  .topbar{padding:14px 22px;border-bottom:1px solid var(--border);background:var(--surface);flex-shrink:0;display:flex;align-items:center;gap:12px}
+  .topbar h1{font-size:1.05rem;font-weight:800;letter-spacing:-.02em}.topbar p{font-size:.8rem;color:var(--muted)}
+  .panel{flex:1;overflow-y:auto;display:none}.panel.active{display:flex;flex-direction:column}
+  .scroller{flex:1;overflow-y:auto;padding:18px 22px}
+  /* búsqueda + filtros */
+  .searchrow{position:sticky;top:0;background:var(--bg);padding-bottom:12px;z-index:5}
+  .search{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:12px;padding:11px 15px;font-family:inherit;font-size:.92rem;color:var(--text)}
+  .search:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--acc-dim)}
+  .filters{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .filt{border:1px solid var(--border);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.78rem;cursor:pointer;color:var(--muted);font-family:inherit;display:flex;align-items:center;gap:5px}
+  .filt.active{background:var(--acc);color:#fff;border-color:var(--acc)}
+  .count{font-size:.78rem;color:var(--muted);margin:4px 2px 12px}
+  /* cards */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:13px;padding:14px 16px;border-left:4px solid var(--cc,#a78bfa)}
+  .pair{display:flex;align-items:center;gap:8px;font-weight:800;font-size:.95rem;flex-wrap:wrap}
+  .pole{display:inline-flex;align-items:center;gap:5px}
+  .pole .dot{width:9px;height:9px;border-radius:50%}.dot.pos{background:#db2777}.dot.neg{background:#7c3aed}
+  .arrow{color:var(--muted)}
+  .cat-badge{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;display:inline-block;margin-top:8px}
+  .agente{font-size:.82rem;color:var(--muted);margin-top:6px}.agente b{color:var(--text)}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+  .chip{background:var(--surface2);border-radius:6px;padding:3px 9px;font-size:.74rem;color:#6d28d9}
+  .notas{font-size:.82rem;color:#6d28d9;margin-top:9px;line-height:1.55}
+  .fichain{font-size:.83rem;margin-top:7px}.fichain b{color:var(--text)}
+  .linkbtn{margin-top:10px;background:var(--acc-dim);color:var(--acc-dark);border:none;border-radius:8px;padding:7px 12px;font-size:.78rem;font-weight:700;cursor:pointer;font-family:inherit}
+  .empty{text-align:center;color:var(--muted);padding:40px;font-size:.9rem}
+  /* chat */
+  .messages{flex:1;overflow-y:auto;padding:20px 18px;display:flex;flex-direction:column;gap:6px}
+  .msg{display:flex;gap:9px;margin-bottom:8px;align-items:flex-start}.msg-user{flex-direction:row-reverse}
+  .av{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px}
+  .msg-ai .av{background:var(--acc-dim)}.msg-user .av{background:var(--acc)}.av svg{width:14px;height:14px;stroke-width:2;fill:none}.msg-ai .av svg{stroke:var(--acc)}.msg-user .av svg{stroke:#fff}
+  .bubble{max-width:80%;padding:11px 15px;border-radius:15px;font-size:.9rem;line-height:1.7;word-break:break-word}
+  .msg-user .bubble{background:var(--acc);color:#fff;border-top-right-radius:4px}.msg-ai .bubble{background:var(--surface);border:1px solid var(--border);border-top-left-radius:4px}
+  .bubble h2{font-size:1rem;font-weight:800;margin:12px 0 5px}.bubble h3{font-size:.92rem;font-weight:700;margin:10px 0 3px}.bubble ul,.bubble ol{padding-left:19px;margin:6px 0}.bubble strong{font-weight:700}
+  .welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;text-align:center;gap:14px;padding:24px}
+  .welcome .wic{width:60px;height:60px;border-radius:50%;background:var(--acc-dim);display:flex;align-items:center;justify-content:center}.welcome .wic svg{width:28px;height:28px;stroke:var(--acc);fill:none;stroke-width:2}
+  .welcome h2{font-size:1.2rem;font-weight:800}.welcome p{color:var(--muted);max-width:420px;font-size:.88rem}
+  .input-area{padding:12px 18px 16px;border-top:1px solid var(--border);background:var(--surface)}
+  .input-box{display:flex;gap:10px;align-items:flex-end;background:var(--bg);border:1.5px solid var(--border);border-radius:14px;padding:9px 9px 9px 15px}.input-box:focus-within{border-color:var(--acc)}
+  .input-box textarea{flex:1;background:none;border:none;outline:none;font-family:inherit;font-size:.9rem;resize:none;max-height:130px;min-height:22px;color:var(--text)}
+  .send{width:36px;height:36px;flex-shrink:0;background:var(--acc);border:none;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center}.send svg{width:17px;height:17px;fill:#fff}.send:hover{background:var(--acc-dark)}
+  .typing{display:inline-flex;gap:5px;padding:6px 0}.typing span{width:8px;height:8px;background:var(--border);border-radius:50%;animation:p 1.2s infinite}.typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
+  @keyframes p{0%,80%,100%{opacity:.3;transform:scale(.85)}40%{opacity:1;transform:scale(1)}}
+  .loading{text-align:center;color:var(--muted);padding:30px}
+  .card.click{cursor:pointer;transition:box-shadow .14s,transform .14s}.card.click:hover{box-shadow:0 6px 18px rgba(124, 58, 237,.12);transform:translateY(-1px)}
+  /* condición */
+  .cond-group{margin-bottom:8px}.cond-group h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 2px 8px}
+  .cond-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 16px;margin-bottom:10px}
+  .cond-card .ct{font-weight:800;font-size:.95rem;margin-bottom:8px;text-transform:capitalize}
+  .pt{display:inline-block;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:5px 11px;font-size:.8rem;margin:0 6px 6px 0;cursor:pointer;color:#5b21b6}
+  .pt:hover{border-color:var(--acc);background:var(--acc-dim);color:var(--acc-dark)}
+  /* modal ficha */
+  .modal{position:fixed;inset:0;background:rgba(46, 16, 101,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:var(--surface);border-radius:16px;max-width:720px;width:100%;max-height:90vh;overflow-y:auto;padding:0}
+  .modal-head{position:sticky;top:0;background:var(--surface);padding:18px 22px 14px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;border-radius:16px 16px 0 0}
+  .modal-head .x{margin-left:auto;background:var(--surface2);border:none;border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:1.1rem;color:var(--muted);flex-shrink:0}
+  .modal-body{padding:18px 22px 26px}
+  .mb-sec{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc-dark);font-weight:800;margin:18px 0 6px}
+  .mb-sec:first-child{margin-top:0}
+  .loc{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.loc{grid-template-columns:1fr}}
+  .loc-pt{border:1px solid var(--border);border-radius:10px;padding:10px;background:var(--bg)}
+  .loc-pt .nm{font-weight:700;font-size:.86rem}.loc-pt .rz{font-size:.78rem;color:var(--muted);margin:2px 0 6px}
+  .loc-pt img{width:100%;border-radius:8px;display:block;background:#fff;border:1px solid var(--border)}
+  .ref{border-left:3px solid var(--acc);background:var(--acc-dim);border-radius:0 8px 8px 0;padding:8px 12px;margin:7px 0;font-size:.82rem}
+  .ref b{color:var(--text)}
+  /* sesión */
+  .ses-meta{display:grid;grid-template-columns:2fr 1fr;gap:10px;margin-bottom:14px}
+  .ses-add{margin-top:14px;background:var(--acc-dim);color:var(--acc-dark);border:none;border-radius:9px;padding:9px 14px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit}
+  .ses-row{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:11px 13px;margin-bottom:8px}
+  .ses-n{width:26px;height:26px;border-radius:50%;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;flex-shrink:0}
+  .ses-info{flex:1;min-width:0}.ses-info .pn{font-weight:700;font-size:.9rem}.ses-info .pa{font-size:.76rem;color:var(--muted)}
+  .ses-ctrl{display:flex;gap:4px}.ses-ctrl button{background:var(--surface2);border:1px solid var(--border);border-radius:7px;width:28px;height:28px;cursor:pointer;color:var(--muted);font-size:.9rem}
+  .ses-ctrl button:hover{border-color:var(--acc);color:var(--acc)}
+  .ses-actions{display:flex;gap:10px;margin:16px 0}
+  .ses-actions .btn{width:auto;flex:1}.btn.sec{background:var(--surface2);color:var(--text);border:1px solid var(--border)}
+  #printArea{display:none}
+  @media print{
+    body *{visibility:hidden}
+    #printArea,#printArea *{visibility:visible}
+    #printArea{display:block;position:absolute;left:0;top:0;width:100%;padding:24px;color:#000}
+    #printArea h1{font-size:18px;margin-bottom:4px}#printArea .ph{color:#444;font-size:12px;margin-bottom:16px}
+    #printArea table{width:100%;border-collapse:collapse}#printArea th,#printArea td{border:1px solid #999;padding:7px 9px;text-align:left;font-size:12px}
+    #printArea th{background:#eee}
+  }
+  .hamb{display:none;background:none;border:none;cursor:pointer;padding:4px;margin-right:2px;flex-shrink:0}
+  .hamb svg{width:24px;height:24px;stroke:var(--text);fill:none;stroke-width:2}
+  .sb-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:55}
+  @media(max-width:760px){
+    .sidebar{position:fixed;top:0;left:0;bottom:0;width:250px;height:100%;z-index:60;transform:translateX(-100%);transition:transform .25s ease;box-shadow:2px 0 18px rgba(0,0,0,.35)}
+    .sidebar.open{transform:translateX(0)}
+    .sb-backdrop.on{display:block}
+    .hamb{display:inline-flex}
+    .topbar{position:sticky;top:0;z-index:40}
+    .scroller{padding:16px}
+  }
+</style></head><body>
+<div class="workspace">
+  <div class="sb-backdrop" id="sbBackdrop" onclick="toggleSidebar(false)"></div>
+  <aside class="sidebar">
+    <div class="sb-brand"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="12" y1="15" x2="12" y2="21"/></svg></div><div><div class="t">Biomagnetism</div><div class="s">Clinical atlas</div></div></div>
+    <div class="sb-sec">Atlas</div>
+    <button class="nav-item active" data-p="pares" onclick="nav('pares')"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="18" r="3"/><path d="M9 6h6a3 3 0 0 1 3 3v6"/></svg>Biomagnetic pairs<span class="ct" id="ctPares"></span></button>
+    <button class="nav-item" data-p="micro" onclick="nav('micro')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>Microbes and pathogens<span class="ct" id="ctMicro"></span></button>
+    <button class="nav-item" data-p="cond" onclick="nav('cond')"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>By condition<span class="ct" id="ctCond"></span></button>
+    <button class="nav-item" data-p="proto" onclick="nav('proto')"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>Protocols<span class="ct" id="ctProto"></span></button>
+    <div class="sb-sec">Session</div>
+    <button class="nav-item" data-p="sesion" onclick="nav('sesion')"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Session sheet<span class="ct" id="ctSes"></span></button>
+    <div class="sb-sec">Assistant</div>
+    <button class="nav-item" data-p="chat" onclick="nav('chat')"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>Ask the Copilot</button>
+    <div class="sb-foot"><a class="sb-home" href="/"><svg viewBox="0 0 24 24" style="width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>Back to home</a></div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar"><button class="hamb" onclick="toggleSidebar()" aria-label="Menu"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button><div><h1 id="tbTitle">Biomagnetic pairs</h1><p id="tbDesc">Search any pair by name, agent, symptom, or organ. Scan point (+) and impaction (−).</p></div></div>
+
+    <!-- PARES -->
+    <section class="panel active" id="panel-pares"><div class="scroller">
+      <div class="searchrow">
+        <input class="search" id="qPares" placeholder="Search pair, agent, symptom, or organ… (e.g. stomach, helicobacter, kidney)" oninput="renderPares()">
+        <div class="filters" id="filtPares"></div>
+      </div>
+      <div class="count" id="cntPares"></div>
+      <div class="grid" id="gridPares"></div>
+    </div></section>
+
+    <!-- MICROBIOS -->
+    <section class="panel" id="panel-micro"><div class="scroller">
+      <div class="searchrow"><input class="search" id="qMicro" placeholder="Search microbe or pathogen… (e.g. Epstein, candida, helicobacter)" oninput="renderMicro()"></div>
+      <div class="count" id="cntMicro"></div>
+      <div class="grid" id="gridMicro"></div>
+    </div></section>
+
+    <!-- POR CONDICIÓN -->
+    <section class="panel" id="panel-cond"><div class="scroller">
+      <div class="searchrow"><input class="search" id="qCond" placeholder="Search condition… (e.g. respiratory, digestive, skin)" oninput="renderCond()"></div>
+      <div class="count" id="cntCond"></div>
+      <div id="listCond"></div>
+    </div></section>
+
+    <!-- PROTOCOLOS -->
+    <section class="panel" id="panel-proto"><div class="scroller">
+      <div class="searchrow"><input class="search" id="qProto" placeholder="Search protocol… (e.g. scan, tumoral, transgenerational)" oninput="renderProto()"></div>
+      <div class="count" id="cntProto"></div>
+      <div class="grid" id="gridProto"></div>
+    </div></section>
+
+    <!-- HOJA DE SESIÓN -->
+    <section class="panel" id="panel-sesion"><div class="scroller"><div style="max-width:760px;margin:0 auto">
+      <div class="ses-meta">
+        <input class="search" id="sesPac" placeholder="Patient name" oninput="saveSes()">
+        <input class="search" id="sesFecha" type="date" oninput="saveSes()">
+      </div>
+      <div id="sesList"></div>
+      <div class="ses-actions">
+        <button class="btn" onclick="printSession()">Print sheet</button>
+        <button class="btn sec" onclick="limpiarSes()">Clear session</button>
+      </div>
+      <p style="color:var(--muted);font-size:.82rem">Add pairs from the Atlas (the "Add to session sheet" button on each pair's card). The list order is the impaction order.</p>
+    </div></div></section>
+
+    <!-- CHAT -->
+    <section class="panel" id="panel-chat">
+      <div class="messages" id="messages"><div class="welcome" id="welcome">
+        <div class="wic"><svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="12" y1="15" x2="12" y2="21"/></svg></div>
+        <h2>Biomagnetism consultation</h2><p>It reasons in terms of pairs and scanning. To look up specific pairs or pathogens, use the Atlas (it's instant).</p>
+      </div></div>
+      <div class="input-area"><div class="input-box"><textarea id="chatIn" rows="1" placeholder="Ask about a condition, pathogen, or scan…" onkeydown="ck(event)" oninput="ai(this)"></textarea><button class="send" onclick="enviarChat()"><svg viewBox="0 0 24 24"><path d="M2 21L23 12 2 3 2 10l15 2-15 2z"/></svg></button></div></div>
+    </section>
+  </main>
+</div>
+<div class="modal" id="modal" onclick="if(event.target===this)cerrarDetalle()"><div class="modal-box" id="modalBox"></div></div>
+<div id="printArea"></div>
+<script>
+  let PARES=[], CATS={}, MICRO=[], PROTO=[], PBYID={}, CLUSTERS=[], PUNTOS={}, REFS={};
+  const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  const keyPar=(a,b)=>norm(a).replace(/[^a-z0-9]/g,'')+'|'+norm(b).replace(/[^a-z0-9]/g,'');
+  let filtCat='';
+
+  async function cargar(){
+    try{
+      const d=await (await fetch('/api/pares/catalogo')).json();
+      PARES=d.pares||[]; (d.categorias||[]).forEach(c=>CATS[c.id]=c);
+      PARES.forEach(p=>PBYID[p.id]=p);
+      document.getElementById('ctPares').textContent=PARES.length;
+      // filtros de categoría
+      const fc=document.getElementById('filtPares');
+      fc.innerHTML=`<button class="filt active" data-c="" onclick="setCat('')">All</button>`+
+        (d.categorias||[]).map(c=>`<button class="filt" data-c="${c.id}" onclick="setCat('${c.id}')" style="--cc:${c.color}">${c.icono||''} ${c.nombre}</button>`).join('');
+      renderPares();
+    }catch(e){ document.getElementById('gridPares').innerHTML='<div class="empty">The atlas could not be loaded.</div>'; }
+    try{ const m=await (await fetch('/api/patogenos-biomag')).json(); MICRO=m.entries||[]; document.getElementById('ctMicro').textContent=MICRO.length; }catch(e){}
+    try{ const p=await (await fetch('/api/protocolos-biomag')).json(); PROTO=p.protocols||[]; document.getElementById('ctProto').textContent=PROTO.length; }catch(e){}
+    try{ const pm=await (await fetch('/api/point-to-maps')).json(); PUNTOS=pm.puntos||{}; }catch(e){}
+    try{ const rf=await (await fetch('/api/pares-referencias')).json(); (rf.matches||[]).forEach(m=>{const par=(m.par||'').split(/\s*[-—]\s*/);if(par.length>=2)REFS[keyPar(par[0],par.slice(1).join('-'))]=m.referencias||[]}); }catch(e){}
+    try{ const cl=await (await fetch('/api/clusters-biomag')).json();
+      Object.entries(cl).forEach(([bk,bv])=>{ if(bk.startsWith('bloque')&&bv&&typeof bv==='object') Object.entries(bv).forEach(([cond,pts])=>{ if(Array.isArray(pts)) CLUSTERS.push({cond,pts}); }); });
+      document.getElementById('ctCond').textContent=CLUSTERS.length; renderCond();
+    }catch(e){}
+    badgeSes();
+  }
+  function lookupPunto(nombre){
+    const n=norm(nombre).replace(/\(.*?\)/g,'').replace(/[^a-z0-9 ]/g,'').trim();
+    for(const [k,v] of Object.entries(PUNTOS)){ if(norm(v.canonical||k)===n||norm(k)===n) return v; }
+    for(const [k,v] of Object.entries(PUNTOS)){ if(n&&(norm(v.canonical||'').includes(n)||n.includes(norm(v.canonical||'')))) return v; }
+    return null;
+  }
+
+  function toggleSidebar(force){ const sb=document.querySelector('.sidebar'),bd=document.getElementById('sbBackdrop'); const o=force===undefined?!sb.classList.contains('open'):force; sb.classList.toggle('open',o); sb.style.transform=(window.innerWidth<=760)?(o?'translateX(0)':'translateX(-100%)'):''; if(bd)bd.classList.toggle('on',o); }
+  function nav(p){
+    if(window.innerWidth<=760) toggleSidebar(false);
+    document.querySelectorAll('.nav-item').forEach(b=>b.classList.toggle('active',b.dataset.p===p));
+    const T={pares:['Biomagnetic pairs','Search any pair by name, agent, symptom, or organ. Tap a pair to see its card.'],
+      micro:['Microbes and pathogens','Clinical cards: diseases, transmission, treatment. Find the pairs for each agent.'],
+      cond:['By condition','Recommended pair sets by clinical condition. Tap a point to see it in the atlas.'],
+      proto:['Protocols','Structured working protocols, ready to consult.'],
+      sesion:['Session sheet','The pairs you found during the scan, in impaction order. Print it for the patient.'],
+      chat:['Ask the Copilot','Reasoning in terms of pairs and scanning, grounded in the corpus.']};
+    document.getElementById('tbTitle').textContent=T[p][0]; document.getElementById('tbDesc').textContent=T[p][1];
+    document.querySelectorAll('.panel').forEach(s=>s.classList.toggle('active',s.id==='panel-'+p));
+    if(p==='micro'&&!document.getElementById('gridMicro').childElementCount) renderMicro();
+    if(p==='proto'&&!document.getElementById('gridProto').childElementCount) renderProto();
+    if(p==='sesion') renderSes();
+  }
+  function setCat(c){ filtCat=c; document.querySelectorAll('#filtPares .filt').forEach(b=>b.classList.toggle('active',b.dataset.c===c)); renderPares(); }
+
+  // ── Atlas de Pares ──────────────────────────────────────────
+  function renderPares(){
+    const q=norm(document.getElementById('qPares').value);
+    let res=PARES;
+    if(filtCat) res=res.filter(p=>p.categoria===filtCat);
+    if(q){ res=res.filter(p=>{
+      const hay=norm([p.nombre,p.agente,p.positivo,p.negativo,(p.sintomas||[]).join(' '),(p.condiciones||[]).join(' '),(p.keywords||[]).join(' '),p.notas].join(' '));
+      return q.split(/\s+/).every(w=>hay.includes(w));
+    }); }
+    document.getElementById('cntPares').textContent=`${res.length} pairs${res.length>120?' · showing 120, refine your search':''}`;
+    const g=document.getElementById('gridPares');
+    if(!res.length){ g.innerHTML='<div class="empty">No results. Try another term.</div>'; return; }
+    g.innerHTML=res.slice(0,120).map(cardPar).join('');
+  }
+  function cardPar(p){
+    const c=CATS[p.categoria]||{nombre:p.categoria,color:'#8b5cf6',icono:''};
+    const sints=(p.condiciones&&p.condiciones.length?p.condiciones:p.sintomas||[]).slice(0,6);
+    return `<div class="card click" style="--cc:${c.color}" onclick="openDetail('${p.id}')">
+      <div class="pair"><span class="pole"><span class="dot pos"></span>${esc(p.positivo)}</span><span class="arrow">⟷</span><span class="pole"><span class="dot neg"></span>${esc(p.negativo)}</span></div>
+      <span class="cat-badge" style="background:${c.color}">${c.icono||''} ${c.nombre}</span>
+      ${p.agente?`<div class="agente">Agent: <b>${esc(p.agente)}</b></div>`:''}
+      ${sints.length?`<div class="chips">${sints.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>`:''}
+      ${p.notas?`<div class="notas">${esc(p.notas).slice(0,260)}</div>`:''}
+    </div>`;
+  }
+  function verParesDeAgente(a){ nav('pares'); setCat(''); document.getElementById('qPares').value=a; renderPares(); window.scrollTo(0,0); }
+
+  // ── Ficha de detalle del par ────────────────────────────────
+  function locHtml(nombre,polo){
+    const v=lookupPunto(nombre);
+    let img='';
+    if(v){ if(v.map_bloque) img+=`<img src="${v.map_bloque}" onerror="this.style.display='none'" alt="">`;
+           else if(v.map_zona) img+=`<img src="${v.map_zona}" onerror="this.style.display='none'" alt="">`; }
+    const rz=v?`${esc(v.region||'')}${v.zona?' · '+esc(v.zona):''}`:'Location not catalogued';
+    return `<div class="loc-pt"><div class="nm"><span class="dot ${polo}"></span> ${esc(nombre)}</div><div class="rz">${rz}</div>${img}</div>`;
+  }
+  function openDetail(id){
+    const p=PBYID[id]; if(!p)return;
+    const c=CATS[p.categoria]||{nombre:p.categoria,color:'#8b5cf6',icono:''};
+    const sints=(p.condiciones&&p.condiciones.length?p.condiciones:p.sintomas||[]);
+    const refs=REFS[keyPar(p.positivo,p.negativo)]||[];
+    const refHtml=refs.length?refs.slice(0,8).map(r=>`<div class="ref">${r.tipo?`<b>${esc(r.tipo)}</b> · `:''}${esc(r.patogeno||'')}${r.descripcion?'<br>'+esc(r.descripcion):''}${r.source?`<br><span style="color:var(--muted);font-size:.75rem">${esc(r.source)}</span>`:''}</div>`).join(''):'<p style="color:var(--muted);font-size:.85rem">No references catalogued for this pair.</p>';
+    document.getElementById('modalBox').innerHTML=`
+      <div class="modal-head">
+        <div><div class="pair">${esc(p.positivo)} <span class="arrow">⟷</span> ${esc(p.negativo)}</div>
+        <span class="cat-badge" style="background:${c.color}">${c.icono||''} ${c.nombre}</span></div>
+        <button class="x" onclick="cerrarDetalle()">✕</button>
+      </div>
+      <div class="modal-body">
+        <button class="ses-add" onclick="addToSession('${p.id}')">+ Add to session sheet</button>
+        ${p.agente?`<div class="mb-sec">Agent</div><div>${esc(p.agente)}</div>`:''}
+        <div class="mb-sec">Magnet location and placement</div>
+        <div class="loc">${locHtml(p.positivo,'pos')}${locHtml(p.negativo,'neg')}</div>
+        ${sints.length?`<div class="mb-sec">Symptoms and conditions</div><div class="chips">${sints.map(s=>`<span class="chip">${esc(s)}</span>`).join('')}</div>`:''}
+        ${p.notas?`<div class="mb-sec">Notes</div><div class="notas">${esc(p.notas)}</div>`:''}
+        <div class="mb-sec">References</div>${refHtml}
+      </div>`;
+    document.getElementById('modal').classList.add('open');
+  }
+  function cerrarDetalle(){ document.getElementById('modal').classList.remove('open'); }
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')cerrarDetalle()});
+
+  // ── Por condición ───────────────────────────────────────────
+  function renderCond(){
+    const q=norm((document.getElementById('qCond')||{}).value||'');
+    let res=CLUSTERS; if(q) res=res.filter(c=>norm(c.cond).includes(q));
+    const el=document.getElementById('listCond'); if(!el)return;
+    document.getElementById('cntCond').textContent=`${res.length} conditions`;
+    if(!res.length){ el.innerHTML='<div class="empty">No results.</div>'; return; }
+    el.innerHTML=res.map(c=>`<div class="cond-card"><div class="ct">${esc(c.cond.replace(/_/g,' ').toLowerCase())}</div>
+      <div>${c.pts.map(pt=>`<span class="pt" onclick="verParesDeAgente('${esc(String(pt).replace(/\(.*?\)/g,'').replace(/'/g,'').trim())}')">${esc(pt)}</span>`).join('')}</div></div>`).join('');
+  }
+
+  // ── Microbios ───────────────────────────────────────────────
+  function renderMicro(){
+    const q=norm(document.getElementById('qMicro').value);
+    let res=MICRO; if(q) res=res.filter(m=>norm([m.nombre,m.categoria,m.tipo,m.enfermedades_reales,m.nota].join(' ')).includes(q));
+    document.getElementById('cntMicro').textContent=`${res.length} pathogens`;
+    const g=document.getElementById('gridMicro');
+    if(!res.length){ g.innerHTML='<div class="empty">No results.</div>'; return; }
+    g.innerHTML=res.slice(0,150).map(m=>{
+      const nm=esc((m.nombre||'').replace(/^[IVX]+\s+/,''));
+      return `<div class="card" style="--cc:#7c3aed">
+        <div class="pair" style="font-size:.92rem">${nm}</div>
+        ${m.categoria?`<span class="cat-badge" style="background:#7c3aed">${esc(m.categoria)}</span>`:''}
+        ${m.enfermedades_reales?`<div class="fichain"><b>Diseases:</b> ${esc(m.enfermedades_reales)}</div>`:''}
+        ${m.transmision?`<div class="fichain"><b>Transmission:</b> ${esc(m.transmision)}</div>`:''}
+        ${m.tratamiento_medico?`<div class="fichain"><b>Medical treatment:</b> ${esc(m.tratamiento_medico)}</div>`:''}
+        ${m.nota?`<div class="notas">${esc(m.nota).slice(0,240)}</div>`:''}
+        <button class="linkbtn" onclick="verParesDeAgente('${esc((m.nombre||'').replace(/^[IVX]+\s+/,'').replace(/'/g,''))}')">View pairs for this agent →</button>
+      </div>`;
+    }).join('');
+  }
+
+  // ── Protocolos ──────────────────────────────────────────────
+  function renderProto(){
+    const q=norm(document.getElementById('qProto').value);
+    let res=PROTO; if(q) res=res.filter(p=>norm([p.nombre,p.categoria,p.objetivo,(p.aliases||[]).join(' ')].join(' ')).includes(q));
+    document.getElementById('cntProto').textContent=`${res.length} protocols`;
+    const g=document.getElementById('gridProto');
+    if(!res.length){ g.innerHTML='<div class="empty">No results.</div>'; return; }
+    g.innerHTML=res.map(p=>{
+      const cu=Array.isArray(p.cuando_usarlo)?p.cuando_usarlo:(p.cuando_usarlo?[p.cuando_usarlo]:[]);
+      const pasos=p.pasos||p.procedimiento||p.como_aplicar||null;
+      const pa=Array.isArray(pasos)?pasos:(pasos?[pasos]:[]);
+      return `<div class="card" style="--cc:#7c3aed;grid-column:1/-1">
+        <div class="pair" style="font-size:.98rem">${esc(p.nombre)}</div>
+        ${p.categoria?`<span class="cat-badge" style="background:#7c3aed">${esc(p.categoria)}</span>`:''}
+        ${p.objetivo?`<div class="notas"><b>Objective:</b> ${esc(p.objetivo)}</div>`:''}
+        ${cu.length?`<div class="fichain"><b>When to use it:</b></div><ul style="margin:4px 0 0 18px;font-size:.83rem;color:#6d28d9">${cu.slice(0,6).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:''}
+        ${pa.length?`<div class="fichain" style="margin-top:8px"><b>Steps:</b></div><ol style="margin:4px 0 0 18px;font-size:.83rem;color:#6d28d9">${pa.slice(0,12).map(x=>`<li>${esc(typeof x==='string'?x:JSON.stringify(x))}</li>`).join('')}</ol>`:''}
+      </div>`;
+    }).join('');
+  }
+
+  function esc(s){ return (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+  // ── Hoja de sesión ──────────────────────────────────────────
+  let SES={pac:'',fecha:'',pares:[]};
+  try{ const s=JSON.parse(localStorage.getItem('biomag_ses')||'null'); if(s)SES=s; }catch(e){}
+  function saveSes(){ SES.pac=(document.getElementById('sesPac')||{}).value||SES.pac; SES.fecha=(document.getElementById('sesFecha')||{}).value||SES.fecha; localStorage.setItem('biomag_ses',JSON.stringify(SES)); }
+  function badgeSes(){ const b=document.getElementById('ctSes'); if(b)b.textContent=SES.pares.length||''; }
+  function addToSession(id){ const p=PBYID[id]; if(!p)return; if(SES.pares.find(x=>x.id===id)){ alert('That pair is already on the sheet.'); return; }
+    SES.pares.push({id:p.id,positivo:p.positivo,negativo:p.negativo,agente:p.agente,categoria:p.categoria});
+    localStorage.setItem('biomag_ses',JSON.stringify(SES)); badgeSes(); renderSes();
+    const btn=event&&event.target; if(btn){btn.textContent='✓ Added to the session';btn.disabled=true;}
+  }
+  function rmSes(i){ SES.pares.splice(i,1); localStorage.setItem('biomag_ses',JSON.stringify(SES)); badgeSes(); renderSes(); }
+  function mvSes(i,d){ const j=i+d; if(j<0||j>=SES.pares.length)return; [SES.pares[i],SES.pares[j]]=[SES.pares[j],SES.pares[i]]; localStorage.setItem('biomag_ses',JSON.stringify(SES)); renderSes(); }
+  function limpiarSes(){ if(!confirm('Clear the session sheet?'))return; SES={pac:'',fecha:'',pares:[]}; localStorage.setItem('biomag_ses',JSON.stringify(SES)); document.getElementById('sesPac').value=''; document.getElementById('sesFecha').value=''; badgeSes(); renderSes(); }
+  function renderSes(){
+    const el=document.getElementById('sesList'); if(!el)return;
+    if(document.getElementById('sesPac')&&!document.getElementById('sesPac').value) document.getElementById('sesPac').value=SES.pac||'';
+    if(document.getElementById('sesFecha')&&!document.getElementById('sesFecha').value) document.getElementById('sesFecha').value=SES.fecha||'';
+    if(!SES.pares.length){ el.innerHTML='<div class="empty">No pairs added yet. Find them in the Atlas and tap "Add to session sheet".</div>'; return; }
+    el.innerHTML=SES.pares.map((p,i)=>{const c=CATS[p.categoria]||{nombre:p.categoria||'',color:'#8b5cf6'};
+      return `<div class="ses-row"><div class="ses-n">${i+1}</div>
+        <div class="ses-info"><div class="pn"><span class="dot pos"></span>${esc(p.positivo)} ⟷ <span class="dot neg"></span>${esc(p.negativo)}</div><div class="pa">${esc(p.agente||'')} ${c.nombre?'· '+esc(c.nombre):''}</div></div>
+        <div class="ses-ctrl"><button onclick="mvSes(${i},-1)" title="Move up">↑</button><button onclick="mvSes(${i},1)" title="Move down">↓</button><button onclick="rmSes(${i})" title="Remove">✕</button></div></div>`;
+    }).join('');
+  }
+  function printSession(){
+    saveSes();
+    if(!SES.pares.length){ alert('The sheet is empty.'); return; }
+    const filas=SES.pares.map((p,i)=>`<tr><td>${i+1}</td><td>${esc(p.positivo)}</td><td>${esc(p.negativo)}</td><td>${esc(p.agente||'')}</td><td style="width:120px"></td></tr>`).join('');
+    document.getElementById('printArea').innerHTML=`
+      <h1>Biomagnetic scan sheet</h1>
+      <div class="ph">Patient: <b>${esc(SES.pac||'—')}</b> &nbsp;·&nbsp; Date: ${esc(SES.fecha||'—')} &nbsp;·&nbsp; ${SES.pares.length} pairs</div>
+      <table><thead><tr><th>#</th><th>Scan point (+)</th><th>Impaction (−)</th><th>Agent</th><th>Time / note</th></tr></thead><tbody>${filas}</tbody></table>
+      <p style="margin-top:16px;font-size:11px;color:#555">Suggested impaction order. Holistic Copilot · Biomagnetism Atlas.</p>`;
+    window.print();
+  }
+
+  // ── Chat ────────────────────────────────────────────────────
+  let busy=false;const M=()=>document.getElementById('messages'),W=()=>document.getElementById('welcome');
+  function ai(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,130)+'px'}
+  function ck(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();enviarChat()}}
+  function mdb(t){const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');const inl=s=>s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');let h='',il=false;const cl=()=>{if(il){h+='</ul>';il=false}};for(let l of t.split('\n')){if(/^#{1,3} /.test(l)){cl();const lv=l.match(/^#+/)[0].length;h+=`<h${lv<3?2:3}>${e(l.replace(/^#+ /,''))}</h${lv<3?2:3}>`;continue}if(/^[-*•] /.test(l)){if(!il){h+='<ul>';il=true}h+=`<li>${inl(e(l.replace(/^[-*•] /,'')))}</li>`;continue}cl();h+=l.trim()===''?'<br>':`<p>${inl(e(l))}</p>`}cl();return h}
+  function addMsg(role,html){W().style.display='none';const d=document.createElement('div');d.className='msg msg-'+role;const a=role==='user'?'<svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg>':'<svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="12" y1="15" x2="12" y2="21"/></svg>';d.innerHTML=`<div class="av">${a}</div><div class="bubble">${html}</div>`;M().appendChild(d);M().scrollTop=M().scrollHeight;return d.querySelector('.bubble')}
+  async function enviarChat(){const inp=document.getElementById('chatIn');const t=inp.value.trim();if(!t||busy)return;busy=true;inp.value='';inp.style.height='auto';addMsg('user',esc(t));const b=addMsg('ai','<div class="typing"><span></span><span></span><span></span></div>');try{const r=await fetch('/therapeutic/biomagnetismo',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt:t,query:t,lang:'en'})});const d=await r.json();b.innerHTML=mdb(d&&d.answer?d.answer:'I could not answer.');}catch(e){b.innerHTML='<p style="color:#db2777">Connection error.</p>'}busy=false;M().scrollTop=M().scrollHeight}
+
+  cargar();
+</script></body></html>

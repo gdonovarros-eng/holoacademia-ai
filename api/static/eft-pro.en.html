@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" class="holo-html">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EFT PRO · Holistic Copilot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/therapy-static/holo_design_system.css?v=5">
+<link rel="stylesheet" href="/therapy-static/holo_module.css?v=2">
+<link rel="stylesheet" href="/therapy-static/holo_module_override.css?v=2">
+<style>
+:root {
+  --acc: #8b5cf6;
+  --acc-bg: rgba(139, 92, 246,0.08);
+  --acc-border: rgba(139, 92, 246,0.25);
+  --acc-grad: linear-gradient(135deg, #c4b5fd 0%, #8b5cf6 100%);
+}
+body.holo-body { background: var(--holo-bg); color: var(--holo-text); }
+
+.eft-page { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+
+/* Hero */
+.eft-hero { text-align: center; margin-bottom: 32px; }
+.eft-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; background: var(--acc-bg);
+  border: 1px solid var(--acc-border); border-radius: 999px;
+  font-size: 0.75rem; font-weight: 600; color: #5b21b6;
+  margin-bottom: 20px;
+}
+.eft-eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #8b5cf6; }
+.eft-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800;
+  line-height: 1.05; letter-spacing: -0.03em; color: #0E1116;
+  margin: 0 0 14px;
+}
+.eft-hero h1 em {
+  font-style: italic;
+  background: var(--acc-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.eft-hero p {
+  font-size: 1rem; line-height: 1.55; color: #4A4F5C;
+  max-width: 640px; margin: 0 auto;
+}
+
+/* Toolbar consultante */
+.eft-toolbar {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 16px;
+  padding: 20px 24px; display: grid;
+  grid-template-columns: 1fr 1fr auto; gap: 16px; margin-bottom: 24px;
+  align-items: center;
+}
+@media (max-width: 768px) { .eft-toolbar { grid-template-columns: 1fr; } }
+.eft-toolbar label {
+  display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: #6E6B62; margin-bottom: 6px;
+}
+.eft-toolbar input {
+  width: 100%; font-family: inherit; font-size: 0.95rem; font-weight: 500;
+  color: #0E1116; background: transparent; border: 0;
+  border-bottom: 1.5px solid #EAEAEA; padding: 6px 0; outline: none;
+  transition: border-color 0.15s;
+}
+.eft-toolbar input:focus { border-bottom-color: var(--acc); }
+
+/* Botones acción */
+.eft-btn {
+  font-family: inherit; font-size: 0.85rem; font-weight: 600;
+  padding: 10px 20px; border-radius: 10px; border: 0;
+  cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+}
+.eft-btn-primary { background: var(--acc-grad); color: #FFFFFF; }
+.eft-btn-primary:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139, 92, 246,0.28); }
+.eft-btn-secondary { background: #F4F4F5; color: #0E1116; border: 1px solid #EAEAEA; }
+.eft-btn-secondary:hover { background: #E5E3DE; }
+
+/* Stepper visual */
+.eft-stepper {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 14px;
+  padding: 14px; margin-bottom: 24px;
+}
+.eft-step-pill {
+  flex: 1; min-width: 80px;
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  padding: 10px 6px; border-radius: 10px; cursor: pointer;
+  background: #FAFAFA; border: 1px solid #EAEAEA;
+  transition: all 0.15s ease; text-align: center;
+}
+.eft-step-pill:hover { border-color: var(--acc-border); }
+.eft-step-pill.active {
+  background: var(--acc-bg); border-color: var(--acc);
+}
+.eft-step-pill.completed {
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.3);
+}
+.eft-step-pill-num {
+  font-size: 0.85rem; font-weight: 800; color: #6E6B62;
+  width: 26px; height: 26px; border-radius: 50%;
+  background: #FFFFFF; border: 1px solid #EAEAEA;
+  display: flex; align-items: center; justify-content: center;
+}
+.eft-step-pill.active .eft-step-pill-num {
+  background: var(--acc); color: #FFFFFF; border-color: transparent;
+}
+.eft-step-pill.completed .eft-step-pill-num {
+  background: #8b5cf6; color: #FFFFFF; border-color: transparent;
+}
+.eft-step-pill-label {
+  font-size: 0.72rem; font-weight: 600; color: #4A4F5C; line-height: 1.2;
+}
+
+/* Card del paso activo */
+.eft-step-card {
+  background: #FFFFFF; border: 1px solid #EAEAEA; border-radius: 18px;
+  padding: 32px; margin-bottom: 24px;
+  display: grid; grid-template-columns: 1fr 320px; gap: 32px;
+}
+@media (max-width: 920px) {
+  .eft-step-card { grid-template-columns: 1fr; padding: 24px; }
+}
+.eft-step-main { min-width: 0; }
+.eft-step-num {
+  display: inline-block;
+  font-family: var(--holo-font-display);
+  font-size: 3rem; font-weight: 800; line-height: 1;
+  background: var(--acc-grad);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.03em; margin-bottom: 4px;
+}
+.eft-step-name {
+  font-size: 1.75rem; font-weight: 800; color: #0E1116;
+  letter-spacing: -0.02em; line-height: 1.1; margin: 0 0 16px;
+}
+.eft-step-objective {
+  background: var(--acc-bg); border: 1px solid var(--acc-border);
+  border-radius: 12px; padding: 14px 16px; margin-bottom: 20px;
+  font-size: 0.92rem; line-height: 1.55; color: #5b21b6;
+}
+.eft-step-objective::before {
+  content: 'Objective · ';
+  font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase;
+  font-size: 0.7rem; color: #8b5cf6;
+}
+.eft-step-instructions {
+  list-style: none; padding: 0; margin: 0 0 20px;
+}
+.eft-step-instructions li {
+  display: flex; gap: 12px;
+  padding: 14px 16px; background: #FAFAFA;
+  border: 1px solid #EAEAEA; border-radius: 12px;
+  margin-bottom: 8px;
+  font-size: 0.94rem; line-height: 1.5; color: #0E1116;
+}
+.eft-step-instructions li::before {
+  content: attr(data-letter);
+  flex-shrink: 0; width: 26px; height: 26px;
+  border-radius: 6px; background: var(--acc); color: #FFFFFF;
+  font-size: 0.75rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.eft-step-quote {
+  background: #FFF; border-left: 4px solid var(--acc);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px; margin: 12px 0;
+  font-size: 0.9rem; line-height: 1.55; color: #4A4F5C;
+  font-style: italic;
+}
+
+/* Sidebar derecho · notas + timer */
+.eft-sidebar { display: flex; flex-direction: column; gap: 16px; }
+.eft-sidebar-card {
+  background: #FAFAFA; border: 1px solid #EAEAEA;
+  border-radius: 14px; padding: 16px;
+}
+.eft-sidebar-title {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: #6E6B62; margin: 0 0 10px;
+}
+.eft-notes {
+  width: 100%; min-height: 100px; font-family: inherit; font-size: 0.88rem;
+  color: #0E1116; background: #FFFFFF; border: 1px solid #EAEAEA;
+  border-radius: 10px; padding: 10px 12px; outline: none;
+  resize: vertical; line-height: 1.5;
+}
+.eft-notes:focus { border-color: var(--acc); }
+
+/* Timer */
+.eft-timer { text-align: center; }
+.eft-timer-display {
+  font-family: var(--holo-font-display);
+  font-size: 2.5rem; font-weight: 800; color: #0E1116;
+  font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
+  line-height: 1; margin: 8px 0 14px;
+}
+.eft-timer-actions { display: flex; gap: 8px; justify-content: center; }
+.eft-timer-btn {
+  font-family: inherit; font-size: 0.78rem; font-weight: 600;
+  padding: 8px 14px; border-radius: 8px; border: 1px solid #EAEAEA;
+  background: #FFFFFF; color: #0E1116; cursor: pointer;
+  transition: all 0.15s;
+}
+.eft-timer-btn:hover { border-color: var(--acc); color: var(--acc); }
+.eft-timer-btn.active { background: var(--acc); color: #FFFFFF; border-color: transparent; }
+
+/* USM scale (intensidad emocional) */
+.usm-card { padding: 14px 16px; }
+.usm-scale {
+  display: grid; grid-template-columns: repeat(11, 1fr); gap: 2px;
+  margin-top: 8px;
+}
+.usm-cell {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+  border: 1px solid #EAEAEA; border-radius: 6px; cursor: pointer;
+  font-size: 0.74rem; font-weight: 700; color: #6E6B62;
+  background: #FFFFFF; transition: all 0.12s;
+}
+.usm-cell:hover { border-color: var(--acc); color: var(--acc); }
+.usm-cell.active {
+  background: var(--acc); color: #FFFFFF; border-color: transparent;
+}
+.usm-low { background: rgba(139, 92, 246,0.08); }
+.usm-mid { background: rgba(244, 114, 182,0.08); }
+.usm-high { background: rgba(219, 39, 119,0.08); }
+
+/* Navegación entre pasos */
+.eft-nav {
+  display: flex; justify-content: space-between; gap: 12px;
+  margin-bottom: 32px;
+}
+.eft-nav-btn {
+  font-family: inherit; font-size: 0.9rem; font-weight: 600;
+  padding: 12px 22px; border-radius: 12px;
+  cursor: pointer; transition: all 0.15s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.eft-nav-btn svg {
+  width: 16px; height: 16px;
+  stroke: currentColor; fill: none; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+.eft-nav-prev {
+  background: #F4F4F5; color: #0E1116; border: 1px solid #EAEAEA;
+}
+.eft-nav-prev:hover { background: #E5E3DE; }
+.eft-nav-next {
+  background: var(--acc-grad); color: #FFFFFF; border: 0;
+}
+.eft-nav-next:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(139, 92, 246,0.3); }
+.eft-nav-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+
+/* Fuentes (créditos) */
+.eft-sources {
+  background: #FAFAFA; border: 1px solid #EAEAEA; border-radius: 14px;
+  padding: 18px 22px;
+}
+.eft-sources-title {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.10em;
+  text-transform: uppercase; color: #6E6B62; margin: 0 0 10px;
+}
+.eft-sources ul {
+  list-style: none; padding: 0; margin: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 6px;
+}
+.eft-sources li {
+  font-size: 0.82rem; color: #4A4F5C; line-height: 1.5;
+}
+.eft-sources li strong { color: #0E1116; font-weight: 600; }
+
+/* Status */
+.eft-status {
+  position: fixed; bottom: 24px; right: 24px;
+  background: #0E1116; color: #FFFFFF;
+  padding: 12px 20px; border-radius: 999px;
+  font-size: 0.85rem; font-weight: 600;
+  box-shadow: 0 8px 24px rgba(14,17,22,0.3);
+  display: none; align-items: center; gap: 8px; z-index: 1000;
+}
+.eft-status.visible { display: inline-flex; }
+.eft-status::before {
+  content: ''; width: 8px; height: 8px;
+  border-radius: 50%; background: #8b5cf6;
+}
+</style>
+</head>
+<body class="holo-body mod-page-teal">
+
+<!-- Header unificado -->
+<header class="holo-module-header">
+  <div class="holo-module-header-inner">
+    <a href="https://www.holoacademia.com/asistenteia" class="holo-module-back">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Home</span>
+    </a>
+    <div class="holo-module-identity">
+      <div class="holo-module-icon mod-teal">
+        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M22 12v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div class="holo-module-title-wrap">
+        <div class="holo-module-category">Protocol · 10 steps</div>
+        <div class="holo-module-title">EFT PRO</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="eft-page">
+
+  <!-- Hero -->
+  <section class="eft-hero">
+    <span class="eft-eyebrow">
+      <span class="eft-eyebrow-dot"></span>
+      Emotional Freedom Techniques · Advanced Protocol
+    </span>
+    <h1>Guided protocol, <em>step by step</em></h1>
+    <p>EFT PRO integrates Tapping (EFT/TFT) + Ericksonian Hypnosis + NLP + Biodecoding. The system guides you during the session with instructions, suggested phrases, a timer and an emotional intensity log.</p>
+  </section>
+
+  <!-- Toolbar consultante -->
+  <div class="eft-toolbar">
+    <div>
+      <label for="eft-consultante">Client</label>
+      <input type="text" id="eft-consultante" placeholder="Client's name…" />
+    </div>
+    <div>
+      <label for="eft-fecha">Session date</label>
+      <input type="date" id="eft-fecha" />
+    </div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="eft-btn eft-btn-secondary" onclick="resetSession()">Reset</button>
+      <button class="eft-btn eft-btn-primary" onclick="saveSession()">Save session</button>
+    </div>
+  </div>
+
+  <!-- Stepper -->
+  <div class="eft-stepper" id="eftStepper"></div>
+
+  <!-- Card del paso activo -->
+  <div class="eft-step-card" id="eftStepCard"></div>
+
+  <!-- Nav -->
+  <div class="eft-nav">
+    <button class="eft-nav-btn eft-nav-prev" id="btnPrev" onclick="goStep(-1)">
+      <svg viewBox="0 0 24 24"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+      Paso anterior
+    </button>
+    <button class="eft-nav-btn eft-nav-next" id="btnNext" onclick="goStep(1)">
+      Siguiente paso
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+
+  <!-- Créditos / Fuentes -->
+  <div class="eft-sources">
+    <div class="eft-sources-title">Traditions integrated in this protocol</div>
+    <ul>
+      <li><strong>Roger Callahan</strong> · TFT (Thought Field Therapy)</li>
+      <li><strong>Gary Craig</strong> · Original EFT</li>
+      <li><strong>Milton Erickson · James Braid</strong> · Hypnosis</li>
+      <li><strong>Bandler & Grinder</strong> · NLP</li>
+      <li><strong>Hamer · Sabbah · Lagardet · Sellam · Flèche</strong> · Biodecoding</li>
+      <li><strong>Huang Di Nei Jing</strong> · Traditional Chinese Medicine</li>
+    </ul>
+  </div>
+
+</main>
+
+<div class="eft-status" id="eftStatus">Saved</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   EFT PRO · 10 pasos guiados
+   Protocolo integrado de terapia holística
+   ═══════════════════════════════════════════════════════════════════════ */
+
+const STEPS = [
+  {
+    num: 1,
+    name: 'Detailed interview',
+    short: 'Interview',
+    objective: 'Gather information to guide the client\'s journey toward themselves without activating their conscious mind too much, so the unconscious emerges and the hidden emotions come to light.',
+    instructions: [
+      { letter: 'A', text: 'Review the origin of the conflict · when it appeared, what was happening around it.' },
+      { letter: 'B', text: 'Review significant details · people involved, place, age, family/social context.' },
+      { letter: 'C', text: 'Review the critical conflict · the moment that weighs most or repeats most.' },
+      { letter: 'D', text: 'Review post-conflict life · how it changed, what was reorganized, what was left pending.' },
+    ],
+  },
+  {
+    num: 2,
+    name: 'Trance induction',
+    short: 'Trance',
+    objective: 'Lead the brain to lower its brainwave frequency and allow the unconscious mind to emerge and reveal information.',
+    instructions: [
+      { letter: 'A', text: 'Induction with hypnotic language · bring attention to the body\'s automatic processes: heartbeat, pulse, breathing, ambient sensation.' },
+      { letter: 'B', text: 'Systematic relaxation · feet, ankles, calves, knees, thighs, glutes, belly, back, shoulders, neck, face, forehead.' },
+      { letter: 'C', text: 'Set up the visualization (preparation).' },
+    ],
+    quote: '"…Every emotion that arises with our projections, we let it flow through the body, without holding it back, without repressing it, without judging it…"',
+  },
+  {
+    num: 3,
+    name: 'Time travel',
+    short: 'Journey',
+    objective: 'Relive the experience to detect the hidden emotions and deep felt-senses.',
+    instructions: [
+      { letter: 'A', text: 'Take the mind to the origin of the conflict.' },
+      { letter: 'B', text: 'Take the mind to the significant later events.' },
+      { letter: 'C', text: 'Take the mind to the critical point (the moment of greatest charge).' },
+      { letter: 'D', text: 'Take the mind to post-conflict life.' },
+    ],
+  },
+  {
+    num: 4,
+    name: 'Tune into the conflict',
+    short: 'Tune in',
+    objective: 'Identify the conflict to release precisely, both energetically and psychologically.',
+    instructions: [
+      { letter: 'A', text: 'Define the main emotion (maximum 2) or the most intense felt-sense.' },
+      { letter: 'B', text: 'Locate where it is felt in the body.' },
+      { letter: 'C', text: 'Rate the intensity (SUD 0-10).' },
+      { letter: 'D', text: 'Raise the bioenergetic circuit.' },
+    ],
+    quote: '"…Of all the emotions that arose, which is the most intense? The one that weighs most? Is there another one just as intense? Give them the name that best identifies them — it might be anger… sadness… anguish… perhaps another…"\n\n"In what part of your body do you feel them? Could it be the head, the chest, the abdomen, perhaps another place?"\n\n"From 1 to 10, with 10 being the maximum intensity, what rating do you give them?"',
+    hasUsm: true,
+  },
+  {
+    num: 5,
+    name: 'Vent the contained energy',
+    short: 'Vent',
+    objective: 'Begin to release what is repressed in the unconscious, psychologically and energetically.',
+    instructions: [
+      { letter: 'A', text: 'Amplify the emotion.' },
+      { letter: 'B', text: 'Vent through breathing · inhale deeply through the nose, exhale through the mouth, feeling how the emotion leaves.' },
+    ],
+    quote: '"Expand that emotion to the maximum, allow yourself to be flooded by it…"\n\n"Inhale deeply through your nose, and exhale through your mouth… when you exhale, feel how the emotion leaves, releases from your body."',
+  },
+  {
+    num: 6,
+    name: 'Outbound TAPS on major points',
+    short: 'TAPS out',
+    objective: 'Release the mental and emotional body deeply, broadening the focus to every nuance of the experience.',
+    instructions: [
+      { letter: 'A', text: 'Start with the Karate Point (PK) — the only point that is located and rubbed, repeat the ANL ×3.' },
+      { letter: 'B', text: 'Repeat the ANL (NeuroLinguistic Agreement) while tapping (TAPS) each point.' },
+      { letter: 'C', text: 'Psychological Reversal points: ANL ×3 (Conscious: "I want" / Unconscious: "I don\'t want").' },
+      { letter: 'D', text: 'Major points: ANL ×1 — the ANL "nuance" the experience.' },
+    ],
+    quote: '"Even though I feel [emotion] because of [reason], I deeply and completely love and accept myself just as I am."',
+  },
+  {
+    num: 7,
+    name: '9 Gamut sequence',
+    short: '9 Gamut',
+    objective: 'Take the program to the whole brain.',
+    instructions: [
+      { letter: 'A', text: 'Tap (TAPS) the Gamut point (between the 4th and 5th finger on the back of the hand).' },
+      { letter: 'B', text: 'Do not repeat the ANL during this sequence.' },
+      { letter: 'C', text: 'While tapping: close the eyes, open the eyes, look down-right, look down-left, roll the eyes in a circle, roll them the other way, hum a song, count from 1 to 5, hum again.' },
+    ],
+  },
+  {
+    num: 8,
+    name: 'Return TAPS · Reframe',
+    short: 'TAPS back',
+    objective: 'Release the mental and emotional body deeply, broadening the focus to every nuance of the experience. Reframe and program resources.',
+    instructions: [
+      { letter: 'A', text: 'Repeat the ANL on the reversal points (×3) and major points (×1).' },
+      { letter: 'B', text: 'Reframe the experience · give it constructive context and a learning lesson.' },
+      { letter: 'C', text: 'Program Resources on some points (Confidence, patience, strength, forgiveness, freedom).' },
+      { letter: 'D', text: 'Let go of the need for the mutation · while giving thanks and honoring.' },
+    ],
+    quote: '"Within you arises [resource: confidence/patience/strength…] to let go of/forgive/release this conflict."\n\n"From this moment on, this symptom becomes unnecessary because I understand its reason for being, I give thanks and honor what it has brought, and from this moment on I release it in harmony…"',
+  },
+  {
+    num: 9,
+    name: 'Energetic closure',
+    short: 'Closure',
+    objective: 'Finish releasing the conflict energetically and psychologically.',
+    instructions: [
+      { letter: 'A', text: 'Tap E36 (Su San Li) while venting the emotion · inhale and carry the energy of the breath to the place where it was held.' },
+      { letter: 'B', text: 'Say the ANL ×1.' },
+      { letter: 'C', text: 'Exhale + energetic combing of meridians + expel to the ground.' },
+      { letter: 'D', text: 'Lower the bioenergetic circuit.' },
+    ],
+  },
+  {
+    num: 10,
+    name: 'Recalibration',
+    short: 'Recalibrate',
+    objective: 'Check whether the handling of the conflict was successful and, if not, complete the process.',
+    instructions: [
+      { letter: 'A', text: 'Re-tuning · reconnect with the emotion.' },
+      { letter: 'B', text: 'Adjust · if the emotion has intensity ≥4, repeat from Step 6.' },
+      { letter: 'C', text: 'If it is at 3 or below, finish.' },
+      { letter: 'D', text: 'In case of grief, apply the "Last Tear" protocol before another session.' },
+    ],
+    quote: '"Reconnect with the emotion… What level is it at, from 0 to 10?"',
+    hasUsm: true,
+  },
+];
+
+// Estado de la sesión
+let state = {
+  consultante: '',
+  fecha: '',
+  currentStep: 0,
+  notes: {},          // paso → texto de notas
+  usm: {},            // paso → valor 0-10
+  completed: new Set(),
+  startedAt: null,
+};
+
+// ─── Render stepper ───
+function renderStepper() {
+  const c = document.getElementById('eftStepper');
+  c.innerHTML = '';
+  STEPS.forEach((s, idx) => {
+    const pill = document.createElement('div');
+    pill.className = 'eft-step-pill';
+    if (idx === state.currentStep) pill.classList.add('active');
+    if (state.completed.has(idx)) pill.classList.add('completed');
+    pill.innerHTML = `
+      <div class="eft-step-pill-num">${s.num}</div>
+      <div class="eft-step-pill-label">${s.short}</div>
+    `;
+    pill.onclick = () => { state.currentStep = idx; renderAll(); };
+    c.appendChild(pill);
+  });
+}
+
+// ─── Render paso activo ───
+function renderStepCard() {
+  const s = STEPS[state.currentStep];
+  const c = document.getElementById('eftStepCard');
+  const noteVal = state.notes[state.currentStep] || '';
+  const usmVal = state.usm[state.currentStep];
+
+  let usmHtml = '';
+  if (s.hasUsm) {
+    let cells = '';
+    for (let n = 0; n <= 10; n++) {
+      const cls = (n <= 3 ? 'usm-low' : n <= 6 ? 'usm-mid' : 'usm-high');
+      const active = (usmVal === n ? ' active' : '');
+      cells += `<div class="usm-cell ${cls}${active}" onclick="setUSM(${n})">${n}</div>`;
+    }
+    usmHtml = `
+      <div class="eft-sidebar-card usm-card">
+        <div class="eft-sidebar-title">Emotional intensity · SUD ${usmVal !== undefined ? '· ' + usmVal : ''}</div>
+        <div class="usm-scale">${cells}</div>
+      </div>
+    `;
+  }
+
+  c.innerHTML = `
+    <div class="eft-step-main">
+      <div class="eft-step-num">${String(s.num).padStart(2, '0')}</div>
+      <h2 class="eft-step-name">${escapeHtml(s.name)}</h2>
+      <div class="eft-step-objective">${escapeHtml(s.objective)}</div>
+      <ul class="eft-step-instructions">
+        ${s.instructions.map(i => `<li data-letter="${i.letter}">${escapeHtml(i.text)}</li>`).join('')}
+      </ul>
+      ${s.quote ? `<div class="eft-step-quote">${escapeHtml(s.quote).replace(/\n/g, '<br><br>')}</div>` : ''}
+    </div>
+
+    <div class="eft-sidebar">
+
+      <div class="eft-sidebar-card">
+        <div class="eft-sidebar-title">Step timer</div>
+        <div class="eft-timer">
+          <div class="eft-timer-display" id="timerDisplay">00:00</div>
+          <div class="eft-timer-actions">
+            <button class="eft-timer-btn" id="timerBtn" onclick="toggleTimer()">Start</button>
+            <button class="eft-timer-btn" onclick="resetTimer()">Reset</button>
+          </div>
+        </div>
+      </div>
+
+      ${usmHtml}
+
+      <div class="eft-sidebar-card">
+        <div class="eft-sidebar-title">Step notes</div>
+        <textarea class="eft-notes" placeholder="Observations, detected emotions, hypotheses…" id="stepNotes" oninput="state.notes[state.currentStep] = this.value">${escapeHtml(noteVal)}</textarea>
+      </div>
+
+      <button class="eft-btn eft-btn-secondary" onclick="markCompleted()" style="width:100%;">
+        ${state.completed.has(state.currentStep) ? '✓ Step completed' : 'Mark as completed'}
+      </button>
+
+    </div>
+  `;
+
+  // Update nav buttons
+  document.getElementById('btnPrev').disabled = state.currentStep === 0;
+  document.getElementById('btnNext').disabled = state.currentStep === STEPS.length - 1;
+  document.getElementById('btnNext').innerHTML = state.currentStep === STEPS.length - 1
+    ? `Finish <svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>`
+    : `Next step <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+}
+
+function setUSM(n) {
+  state.usm[state.currentStep] = n;
+  renderStepCard();
+}
+
+function markCompleted() {
+  if (state.completed.has(state.currentStep)) {
+    state.completed.delete(state.currentStep);
+  } else {
+    state.completed.add(state.currentStep);
+  }
+  renderAll();
+}
+
+function goStep(delta) {
+  const next = state.currentStep + delta;
+  if (next < 0 || next >= STEPS.length) return;
+  // Marcar el actual como completado al avanzar
+  if (delta > 0) state.completed.add(state.currentStep);
+  resetTimer();
+  state.currentStep = next;
+  renderAll();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Timer
+let timerInterval = null;
+let timerSeconds = 0;
+function toggleTimer() {
+  const btn = document.getElementById('timerBtn');
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+    btn.textContent = 'Resume';
+    btn.classList.remove('active');
+  } else {
+    timerInterval = setInterval(() => {
+      timerSeconds++;
+      updateTimerDisplay();
+    }, 1000);
+    btn.textContent = 'Pause';
+    btn.classList.add('active');
+  }
+}
+function resetTimer() {
+  if (timerInterval) clearInterval(timerInterval);
+  timerInterval = null;
+  timerSeconds = 0;
+  const btn = document.getElementById('timerBtn');
+  if (btn) {
+    btn.textContent = 'Start';
+    btn.classList.remove('active');
+  }
+  updateTimerDisplay();
+}
+function updateTimerDisplay() {
+  const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+  const s = (timerSeconds % 60).toString().padStart(2, '0');
+  const el = document.getElementById('timerDisplay');
+  if (el) el.textContent = `${m}:${s}`;
+}
+
+// Save / load
+function saveSession() {
+  state.consultante = document.getElementById('eft-consultante').value;
+  state.fecha = document.getElementById('eft-fecha').value;
+  if (!state.consultante.trim()) {
+    alert('Enter the client\'s name before saving.');
+    return;
+  }
+  const saved = JSON.parse(localStorage.getItem('holoacademia_eft_pro') || '[]');
+  const record = {
+    id: 'eft_' + Date.now(),
+    saved_at: new Date().toISOString(),
+    consultante: state.consultante,
+    fecha: state.fecha,
+    currentStep: state.currentStep,
+    notes: state.notes,
+    usm: state.usm,
+    completed: Array.from(state.completed),
+  };
+  saved.unshift(record);
+  if (saved.length > 50) saved.pop();
+  localStorage.setItem('holoacademia_eft_pro', JSON.stringify(saved));
+  showStatus('Session saved · ' + state.consultante);
+}
+
+function resetSession() {
+  if (!confirm('Reset the session? Unsaved notes and progress will be deleted.')) return;
+  state = {
+    consultante: '',
+    fecha: '',
+    currentStep: 0,
+    notes: {},
+    usm: {},
+    completed: new Set(),
+    startedAt: null,
+  };
+  document.getElementById('eft-consultante').value = '';
+  resetTimer();
+  renderAll();
+}
+
+function showStatus(msg) {
+  const el = document.getElementById('eftStatus');
+  el.textContent = msg;
+  el.classList.add('visible');
+  setTimeout(() => el.classList.remove('visible'), 2500);
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function renderAll() {
+  renderStepper();
+  renderStepCard();
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('eft-fecha').value = today;
+  state.fecha = today;
+  document.getElementById('eft-consultante').addEventListener('input', e => state.consultante = e.target.value);
+  document.getElementById('eft-fecha').addEventListener('input', e => state.fecha = e.target.value);
+  renderAll();
+});
+</script>
+
+</body>
+</html>
