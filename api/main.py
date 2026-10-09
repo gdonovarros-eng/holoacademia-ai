@@ -306,6 +306,40 @@ _LOGIN_REDIRECT  = os.getenv("LOGIN_URL", "https://www.holoacademia.com/asistent
 
 _PROTECTED_PATHS = {"/", "/intake", "/terapeuta", "/alumno", "/biodescodificacion", "/biomagnetismo", "/constelaciones", "/pares", "/tablas", "/rastreo", "/astro", "/astro-home", "/sinastria", "/transitos", "/progresiones", "/salud", "/numerologia", "/tarot", "/herbolaria", "/horoscopo", "/holograma", "/eft-pro", "/creencias", "/emociones-atrapadas", "/guia-clinica"}
 
+# Páginas con versión inglesa nativa. ruta -> (archivo, permite_iframe).
+# El servidor sirve el "<x>.en.html" cuando llega lang=en y el archivo existe;
+# si aún no existe, cae al español (aditivo y seguro).
+_EN_PAGES = {
+    "/": ("index.html", True), "/intake": ("intake.html", False),
+    "/terapeuta": ("terapeuta.html", True), "/alumno": ("alumno.html", False),
+    "/biodescodificacion": ("biodescodificacion.html", False),
+    "/biomagnetismo": ("biomagnetismo.html", False),
+    "/constelaciones": ("constelaciones.html", False), "/pares": ("pares.html", False),
+    "/tablas": ("tablas.html", False), "/rastreo": ("rastreo.html", False),
+    "/astro": ("astro.html", True), "/astro-home": ("astro-home.html", True),
+    "/sinastria": ("sinastria.html", True), "/transitos": ("transitos.html", True),
+    "/progresiones": ("progresiones.html", True), "/salud": ("salud.html", True),
+    "/numerologia": ("numerologia.html", True), "/holograma": ("holograma.html", True),
+    "/eft-pro": ("eft-pro.html", True), "/creencias": ("creencias.html", True),
+    "/emociones-atrapadas": ("emociones-atrapadas.html", True),
+    "/guia-clinica": ("guia-clinica.html", True), "/tarot": ("tarot.html", True),
+    "/herbolaria": ("herbolaria.html", True), "/horoscopo": ("horoscopo.html", True),
+}
+
+def _wants_en(request) -> bool:
+    lang = (request.query_params.get("lang") or request.cookies.get("holo_lang") or "")
+    return str(lang).lower().startswith("en")
+
+def _en_fileresponse(path: str):
+    """Si corresponde servir la versión inglesa de `path`, devuelve su FileResponse; si no, None."""
+    ent = _EN_PAGES.get(path)
+    if not ent:
+        return None
+    en_file = THERAPY_STATIC_DIR / (ent[0][:-5] + ".en.html")  # x.html -> x.en.html
+    if not en_file.exists():
+        return None
+    return FileResponse(en_file, headers=_no_cache_headers(allow_iframe=ent[1]))
+
 
 def _get_session_user(request: Request) -> tuple[str, str] | None:
     """
@@ -383,7 +417,10 @@ async def session_guard(request: Request, call_next):
             return HTMLResponse(html, status_code=200)
         return RedirectResponse(_LOGIN_REDIRECT, status_code=302)
 
-    response = await call_next(request)
+    # Inglés nativo: si el usuario está en inglés y existe la página EN, sírvela
+    # en lugar de la española (la cookie de sesión se aplica igual, más abajo).
+    en_resp = _en_fileresponse(path) if _wants_en(request) else None
+    response = en_resp if en_resp is not None else await call_next(request)
 
     if token_ok:
         # Primer acceso válido desde Wix — registrar/actualizar usuario
@@ -996,6 +1033,7 @@ class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=4000)
     history: list[dict] = Field(default_factory=list)
     mode: str = Field(default="alumno")
+    lang: str = Field(default="")
 
 
 # ── Endpoints de uso ───────────────────────────────────────────────────────────
@@ -1029,6 +1067,10 @@ def _usage_blocked_stream(used: int, limit: int, plan: str):
 @app.post("/chat", include_in_schema=False)
 async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResponse:
     mode = payload.mode if payload.mode in ("terapeuta", "alumno", "pares") else "alumno"
+    # Idioma: body.lang -> ?lang= -> cookie holo_lang -> ES por defecto.
+    lang = (payload.lang or request.query_params.get("lang")
+            or request.cookies.get("holo_lang") or "es").lower()
+    lang = "en" if lang.startswith("en") else "es"
 
     # Verificar límite solo en el primer mensaje de la sesión (history vacío)
     if not payload.history and _EMBED_SECRET:
@@ -1044,7 +1086,7 @@ async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResp
                 )
 
     return StreamingResponse(
-        stream_chat(payload.message, payload.history, mode),
+        stream_chat(payload.message, payload.history, mode, lang=lang),
         media_type="text/event-stream",
         headers={
             "Cache-Control": "no-cache",

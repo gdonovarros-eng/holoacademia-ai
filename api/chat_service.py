@@ -775,11 +775,20 @@ def _is_explicit_table_request(message: str) -> bool:
     return any(k in msg for k in keywords)
 
 
-def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, None, None]:
+EN_DIRECTIVE = (
+    "\n\n=== LANGUAGE ===\n"
+    "The student is using the platform in English. Reply ENTIRELY in natural, native English, "
+    "no matter what language the course material, the context or the question is in. "
+    "Translate any Spanish source material into fluent English in your answer; never switch to Spanish. "
+    "Keep proper names of courses, authors and techniques as they are."
+)
+
+def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") -> Generator[str, None, None]:
     """
     Genera la respuesta token a token como Server-Sent Events.
     Cada evento tiene el formato:  data: {"text": "..."}
     Al terminar envía:             data: [DONE]
+    `lang="en"` hace que el asistente responda en inglés nativo.
     """
     client = _get_client()
     if client is None:
@@ -877,6 +886,9 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
     context = _get_context(message, timeout=ctx_timeout)
     if context:
         system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
+
+    if str(lang or "").lower().startswith("en"):
+        system_prompt += EN_DIRECTIVE
 
     # Limitar historial a las últimas 12 interacciones (6 turnos)
     trimmed_history = history[-12:] if len(history) > 12 else history
