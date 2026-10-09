@@ -653,9 +653,11 @@ def set_shared_kb(kb) -> None:
 
 # ── Búsqueda de contexto en la base de conocimiento ──────────────────────────
 
-def _get_context(message: str) -> str:
+def _get_context(message: str, timeout: float = 9.0) -> str:
     """Busca fragmentos relevantes para el chat (Sinodal/terapeuta).
-    Prioriza Neon (todo el conocimiento, incl. libros); si no está, cae al KB local."""
+    Prioriza Neon (todo el conocimiento, incl. libros); si no está, cae al KB local.
+    `timeout` es el margen de espera; el Sinodal usa uno mayor para absorber el
+    cold-start de Neon (free tier se suspende al estar inactivo)."""
     import threading
 
     result: dict = {"ctx": ""}
@@ -683,7 +685,7 @@ def _get_context(message: str) -> str:
 
     t = threading.Thread(target=_search, daemon=True)
     t.start()
-    t.join(timeout=9.0)  # margen para embedding + cold-start de Neon (free tier duerme)
+    t.join(timeout=timeout)  # margen para embedding + cold-start de Neon (free tier duerme)
     return result["ctx"]
 
 
@@ -868,7 +870,11 @@ def stream_chat(message: str, history: list[dict], mode: str) -> Generator[str, 
             f"Una sola pregunta MS por respuesta."
         )
 
-    context = _get_context(message)
+    # El Sinodal (alumno) es académico: tolera unos segundos extra con tal de
+    # leer las transcripciones aunque Neon venga de reposo. El terapeuta es una
+    # sesión en vivo, así que mantiene un margen corto.
+    ctx_timeout = 16.0 if mode == "alumno" else 9.0
+    context = _get_context(message, timeout=ctx_timeout)
     if context:
         system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
 
