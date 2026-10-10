@@ -13,8 +13,20 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
+from api.chat_service import _holos_directive
+
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/astro", tags=["Astrología"])
+
+
+def _apply_lang(http_request: Request) -> None:
+    """Fija el idioma del request (query ?lang o cookie holo_lang) para que los
+    motores respondan en es/en/pt. Debe llamarse al inicio del handler (mismo hilo)."""
+    try:
+        from api.chat_service import set_holos_lang
+        set_holos_lang(http_request.query_params.get("lang") or http_request.cookies.get("holo_lang") or "es")
+    except Exception:
+        pass
 
 
 # ─── Schemas ─────────────────────────────────────────────────────────────────────
@@ -74,6 +86,7 @@ async def analisis_astrologico(
 
     Retorna un análisis narrativo completo en español redactado por IA.
     """
+    _apply_lang(request)
     # Control de uso (usa el mismo sistema de sesión de Holoacademia)
     from api.main import _get_session_user, _DB_PATH, _EMBED_SECRET
     from api.db import try_consume, PLAN_NAMES
@@ -133,6 +146,7 @@ async def analisis_astrologico_stream(
     Versión streaming del análisis astrológico.
     Calcula primero los datos (sin streaming) y luego emite el reporte token a token.
     """
+    _apply_lang(request)
     import json
     from api.astro.calculator import (
         get_natal_data, get_solar_return, get_rsp, get_mensal,
@@ -198,7 +212,7 @@ async def analisis_astrologico_stream(
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.7,
                 max_tokens=6000,
                 stream=True,
@@ -331,6 +345,7 @@ async def datos_carta(
 
 @router.get("/interpretacion-stream")
 async def interpretacion_stream(
+    http_request: Request,
     nombre: str = "Consultante",
     fecha: str = "",
     hora: str = "12:00",
@@ -340,6 +355,7 @@ async def interpretacion_stream(
     Genera una interpretación planeta a planeta de la carta natal en streaming SSE.
     Más concisa que el análisis completo — enfocada en el perfil de personalidad.
     """
+    _apply_lang(http_request)
     import datetime
     import json
     from api.astro.engine import _geocode
@@ -432,7 +448,7 @@ Responde solo en español."""
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.65,
                 max_tokens=4000,
                 stream=True,
@@ -525,7 +541,8 @@ async def carta_sinastria_svg(payload: SinastriaRequest):
 
 
 @router.post("/sinastria-stream")
-async def sinastria_stream(payload: SinastriaRequest):
+async def sinastria_stream(payload: SinastriaRequest, http_request: Request):
+    _apply_lang(http_request)
     import datetime, json
     from api.astro.engine import _geocode
     from api.astro.calculator import get_natal_data
@@ -614,7 +631,7 @@ Tono empático, profundo, orientado al crecimiento. Solo en español."""
             from api.astro.engine import _get_llm_client
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
-                model=model, messages=[{"role":"user","content":prompt}],
+                model=model, messages=[{"role":"user","content":prompt + _holos_directive()}],
                 temperature=0.7, max_tokens=5000, stream=True, timeout=120.0,
             )
             for chunk in stream:
@@ -788,11 +805,12 @@ async def transitos_data(
 
 
 @router.post("/transitos-stream")
-async def transitos_stream(payload: TransitosRequest):
+async def transitos_stream(payload: TransitosRequest, http_request: Request):
     """
     SSE: calcula tránsitos del día (o fecha dada) sobre la carta natal
     y genera interpretación IA de los tránsitos activos más importantes.
     """
+    _apply_lang(http_request)
     import datetime, json
     from api.astro.engine import _geocode
     from api.astro.calculator import get_natal_data
@@ -897,7 +915,7 @@ Tono empático, directo y orientado al crecimiento. Solo en español."""
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.65,
                 max_tokens=5000,
                 stream=True,
@@ -1107,8 +1125,9 @@ async def progresiones_data(
 
 
 @router.post("/progresiones-stream")
-async def progresiones_stream(payload: ProgresionesRequest):
+async def progresiones_stream(payload: ProgresionesRequest, http_request: Request):
     """SSE: calcula la carta progresada y genera interpretación IA."""
+    _apply_lang(http_request)
     import datetime, json
     from api.astro.engine import _geocode
     from api.astro.calculator import get_natal_data
@@ -1206,7 +1225,7 @@ Tono empático, profundo, orientado al crecimiento. Solo en español."""
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.65,
                 max_tokens=5000,
                 stream=True,
@@ -1283,11 +1302,12 @@ _CASA_SALUD = {
 
 
 @router.post("/salud-stream")
-async def salud_stream(payload: SaludRequest):
+async def salud_stream(payload: SaludRequest, http_request: Request):
     """
     SSE: análisis astrológico de salud — vulnerabilidades constitucionales,
     sistemas orgánicos a cuidar y tránsitos de salud actuales.
     """
+    _apply_lang(http_request)
     import datetime, json
     from api.astro.engine import _geocode
     from api.astro.calculator import get_natal_data
@@ -1480,7 +1500,7 @@ async def salud_stream(payload: SaludRequest):
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.6,
                 max_tokens=6000,
                 stream=True,

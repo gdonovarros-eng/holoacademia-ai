@@ -17,8 +17,20 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
+from api.chat_service import _holos_directive
+
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/tarot", tags=["Tarot"])
+
+
+def _apply_lang(http_request: Request) -> None:
+    """Fija el idioma del request (query ?lang o cookie holo_lang) para que los
+    motores respondan en es/en/pt. Debe llamarse al inicio del handler (mismo hilo)."""
+    try:
+        from api.chat_service import set_holos_lang
+        set_holos_lang(http_request.query_params.get("lang") or http_request.cookies.get("holo_lang") or "es")
+    except Exception:
+        pass
 
 
 # ─── Schemas ──────────────────────────────────────────────────────────────────
@@ -76,6 +88,7 @@ async def lectura_tarot(
     Incluye perfil tarótico del consultante (si hay fecha de nacimiento)
     y la lectura narrativo-terapéutica de las cartas.
     """
+    _apply_lang(request)
     from api.main import _get_session_user, _DB_PATH, _EMBED_SECRET
     from api.db import try_consume, PLAN_NAMES
 
@@ -140,6 +153,7 @@ async def lectura_tarot_stream(
     4. {"token": "..."} × N  — tokens del LLM
     5. [DONE]
     """
+    _apply_lang(request)
     import json
     import datetime as dt
 
@@ -185,7 +199,7 @@ async def lectura_tarot_stream(
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.76,
                 max_tokens=5500,
                 stream=True,
@@ -360,6 +374,7 @@ async def chat_sobre_lectura(
       {"token": "..."} × N
       [DONE]
     """
+    _apply_lang(request)
     import json
 
     async def _stream():
@@ -376,7 +391,7 @@ async def chat_sobre_lectura(
                 "con la pregunta original. Responde en español, en formato Markdown cuando sea útil."
             )
 
-            messages = [{"role": "system", "content": sistema}]
+            messages = [{"role": "system", "content": sistema + _holos_directive()}]
 
             # Agregar historial previo
             for msg in payload.historial[-10:]:  # máximo 10 turnos de contexto

@@ -17,8 +17,20 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
+from api.chat_service import _holos_directive
+
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/numerology", tags=["Numerología"])
+
+
+def _apply_lang(http_request: Request) -> None:
+    """Fija el idioma del request (query ?lang o cookie holo_lang) para que los
+    motores respondan en es/en/pt. Debe llamarse al inicio del handler (mismo hilo)."""
+    try:
+        from api.chat_service import set_holos_lang
+        set_holos_lang(http_request.query_params.get("lang") or http_request.cookies.get("holo_lang") or "es")
+    except Exception:
+        pass
 
 
 # ─── Schemas ──────────────────────────────────────────────────────────────────
@@ -68,6 +80,7 @@ async def analisis_numerologico(
     Desafíos, Ciclos de vida, Ciclos personales (Año/Mes/Día Personal),
     Deudas Kármicas, Potencias y Carencias.
     """
+    _apply_lang(request)
     from api.main import _get_session_user, _DB_PATH, _EMBED_SECRET
     from api.db import try_consume, PLAN_NAMES
 
@@ -119,6 +132,7 @@ async def analisis_numerologico_stream(
     request: Request,
 ):
     """Análisis numerológico en streaming SSE."""
+    _apply_lang(request)
     import json, datetime
 
     async def _stream():
@@ -151,7 +165,7 @@ async def analisis_numerologico_stream(
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.72,
                 max_tokens=5500,
                 stream=True,
@@ -229,8 +243,9 @@ async def numero_de_casa(numero: str):
 
 
 @router.post("/compatibilidad-stream")
-async def compatibilidad_stream(payload: CompatibilidadRequest):
+async def compatibilidad_stream(payload: CompatibilidadRequest, http_request: Request):
     """SSE: análisis de compatibilidad numerológica entre dos personas."""
+    _apply_lang(http_request)
     import json, datetime
 
     async def _stream():
@@ -302,7 +317,7 @@ Tono empático y orientado al crecimiento. Solo en español."""
             client, model = _get_llm_client()
             stream = client.chat.completions.create(
                 model=model,
-                messages=[{"role": "user", "content": prompt}],
+                messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.72,
                 max_tokens=4000,
                 stream=True,

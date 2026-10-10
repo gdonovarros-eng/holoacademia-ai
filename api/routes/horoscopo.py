@@ -15,8 +15,20 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 
+from api.chat_service import _holos_directive
+
 logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/horoscopo", tags=["Horóscopo"])
+
+
+def _apply_lang(http_request: Request) -> None:
+    """Fija el idioma del request (query ?lang o cookie holo_lang) para que los
+    motores respondan en es/en/pt. Debe llamarse al inicio del handler (mismo hilo)."""
+    try:
+        from api.chat_service import set_holos_lang
+        set_holos_lang(http_request.query_params.get("lang") or http_request.cookies.get("holo_lang") or "es")
+    except Exception:
+        pass
 
 
 # ─── Sistema de prompt ────────────────────────────────────────────────────────
@@ -107,6 +119,7 @@ async def lectura_horoscopo(
     Incluye: Perfil del Signo, Energías Actuales, Amor y Relaciones,
     Trabajo y Propósito, Salud y Cuerpo, Mensaje Espiritual.
     """
+    _apply_lang(request)
     from api.main import _get_session_user, _DB_PATH, _EMBED_SECRET
     from api.db import try_consume, PLAN_NAMES
 
@@ -162,7 +175,7 @@ async def lectura_horoscopo(
         response = client.chat.completions.create(
             model=model,
             messages=[
-                {"role": "system", "content": _SYSTEM_PROMPT},
+                {"role": "system", "content": _SYSTEM_PROMPT + _holos_directive()},
                 {"role": "user",   "content": prompt},
             ],
             temperature=0.72,
@@ -200,6 +213,7 @@ async def lectura_horoscopo_stream(
     request: Request,
 ):
     """Lectura horoscópica en streaming SSE — endpoint principal para el frontend."""
+    _apply_lang(request)
 
     # Validar sesión antes de crear el generador para poder devolver HTTP 429
     from api.main import _get_session_user, _DB_PATH, _EMBED_SECRET
@@ -265,7 +279,7 @@ async def lectura_horoscopo_stream(
             stream = client.chat.completions.create(
                 model=model,
                 messages=[
-                    {"role": "system", "content": _SYSTEM_PROMPT},
+                    {"role": "system", "content": _SYSTEM_PROMPT + _holos_directive()},
                     {"role": "user",   "content": prompt},
                 ],
                 temperature=0.72,

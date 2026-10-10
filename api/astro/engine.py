@@ -64,10 +64,11 @@ def _get_llm_client():
 def _call_llm(prompt: str) -> str:
     """Llama al LLM y retorna el texto generado."""
     client, model = _get_llm_client()
+    from api.chat_service import _holos_directive
     try:
         response = client.chat.completions.create(
             model=model,
-            messages=[{"role": "user", "content": prompt}],
+            messages=[{"role": "user", "content": prompt + _holos_directive()}],
             temperature=0.7,
             max_tokens=6000,
             timeout=120.0,
