@@ -801,6 +801,19 @@ def _norm_lang(lang: str) -> str:
     if s.startswith("pt"): return "pt"
     return "es"
 
+import contextvars
+# Idioma del request actual para los motores que NO pasan por stream_chat
+# (Cuadro Holos, biodesco, herbolaria, biomagnetismo, constelaciones, genograma).
+# Lo fija el router por petición; el generador lo lee en el mismo hilo.
+_HOLOS_LANG = contextvars.ContextVar("holos_lang", default="es")
+
+def set_holos_lang(lang: str) -> None:
+    try: _HOLOS_LANG.set(_norm_lang(lang))
+    except Exception: pass
+
+def _holos_directive() -> str:
+    return _LANG_DIRECTIVES.get(_HOLOS_LANG.get()) or ""
+
 def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") -> Generator[str, None, None]:
     """
     Genera la respuesta token a token como Server-Sent Events.
@@ -967,14 +980,17 @@ Entrega exactamente el análisis que el terapeuta te pide, con la estructura y l
 Cuando el material o los datos del caso sean escasos para algún punto, NO rellenes con frases como "no hay información" ni repitas disculpas en cada sección. Razona con seguridad desde la lógica de las disciplinas y el órgano o conflicto implicado, entregando una lectura afirmativa y útil. No inventes datos concretos que no tengas (pares biomagnéticos, fechas, cifras, posiciones exactas); a lo sumo, marca con una frase breve lo que conviene confirmar con el paciente."""
 
 
-def generar_respuesta_holos(prompt: str) -> dict:
+def generar_respuesta_holos(prompt: str, lang: str = "es") -> dict:
     """Llama al LLM con razonamiento terapéutico libre para el Cuadro Holos.
-    No pasa por el motor académico (que está restringido al contenido del curso)."""
+    No pasa por el motor académico (que está restringido al contenido del curso).
+    `lang="en"|"pt"` hace que la lectura salga en ese idioma nativo."""
     client = _get_client()
     if client is None:
         return {"answer": "", "ok": False, "error": "llm_no_configurado"}
+    _eff = _norm_lang(lang)
+    system = HOLOS_SYSTEM_PROMPT + ((_LANG_DIRECTIVES.get(_eff) if _eff in ("en", "pt") else _holos_directive()) or "")
     messages = [
-        {"role": "system", "content": HOLOS_SYSTEM_PROMPT},
+        {"role": "system", "content": system},
         {"role": "user", "content": prompt or ""},
     ]
     try:
@@ -1189,7 +1205,7 @@ def _generar_con_sistema(system_prompt: str, prompt: str, etiqueta: str, tempera
         resp = client.chat.completions.create(
             model=holos_model,
             messages=[
-                {"role": "system", "content": system_prompt},
+                {"role": "system", "content": system_prompt + _holos_directive()},
                 {"role": "user", "content": prompt or ""},
             ],
             max_tokens=tope,

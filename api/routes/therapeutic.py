@@ -3,7 +3,7 @@ from __future__ import annotations
 import logging
 import time
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
 from pydantic import BaseModel
 
 from api.schemas.therapeutic import TherapeuticRequest, TherapeuticResponse
@@ -13,6 +13,16 @@ from api.services.therapeutic_service import run_therapeutic_analysis
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/therapeutic", tags=["Therapeutic"])
+
+
+def _apply_lang(http_request: Request) -> None:
+    """Fija el idioma del request (query ?lang o cookie holo_lang) para que los
+    motores respondan en es/en/pt. Debe llamarse al inicio del handler (mismo hilo)."""
+    try:
+        from api.chat_service import set_holos_lang
+        set_holos_lang(http_request.query_params.get("lang") or http_request.cookies.get("holo_lang") or "es")
+    except Exception:
+        pass
 
 
 class HolosRequest(BaseModel):
@@ -64,9 +74,10 @@ _BIODESCO_COURSE_IDS = ["libros-biodescodificacion"]
 
 
 @router.post("/biodescodificacion", response_model=HolosResponse)
-def motor_biodescodificacion(request: BiodescoRequest) -> HolosResponse:
+def motor_biodescodificacion(request: BiodescoRequest, http_request: Request) -> HolosResponse:
     """Motor dedicado de Biodescodificación: razona en clave de descodificación
     biológica, anclado únicamente en el corpus de libros de biodescodificación."""
+    _apply_lang(http_request)
     from api.chat_service import generar_respuesta_biodescodificacion
 
     started = time.monotonic()
@@ -111,8 +122,9 @@ _HERBOLARIA_COURSE_IDS = [
 
 
 @router.post("/herbolaria", response_model=HolosResponse)
-def motor_herbolaria(request: BiodescoRequest) -> HolosResponse:
+def motor_herbolaria(request: BiodescoRequest, http_request: Request) -> HolosResponse:
     """Motor dedicado de Herbolaria/Fitoterapia/Terapia floral, anclado al corpus herbal."""
+    _apply_lang(http_request)
     from api.chat_service import generar_respuesta_herbolaria
 
     started = time.monotonic()
@@ -138,9 +150,10 @@ def motor_herbolaria(request: BiodescoRequest) -> HolosResponse:
 
 
 @router.post("/biomagnetismo", response_model=HolosResponse)
-def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
+def motor_biomagnetismo(request: BiodescoRequest, http_request: Request) -> HolosResponse:
     """Motor dedicado de Biomagnetismo: razona en clave de par biomagnético y
     rastreo, anclado únicamente en el corpus de biomagnetismo."""
+    _apply_lang(http_request)
     from api.chat_service import generar_respuesta_biomagnetismo
 
     started = time.monotonic()
@@ -166,9 +179,10 @@ def motor_biomagnetismo(request: BiodescoRequest) -> HolosResponse:
 
 
 @router.post("/constelaciones", response_model=HolosResponse)
-def motor_constelaciones(request: BiodescoRequest) -> HolosResponse:
+def motor_constelaciones(request: BiodescoRequest, http_request: Request) -> HolosResponse:
     """Motor dedicado de Constelaciones Familiares y Transgeneracional, anclado
     en su corpus (Órdenes del Amor, dinámicas sistémicas, psicogenealogía)."""
+    _apply_lang(http_request)
     from api.chat_service import generar_respuesta_constelaciones
 
     started = time.monotonic()
@@ -225,9 +239,10 @@ _FUNC_INSTR = {
 
 
 @router.post("/herramienta", response_model=HolosResponse)
-def herramienta_constelaciones(request: HerramientaRequest) -> HolosResponse:
+def herramienta_constelaciones(request: HerramientaRequest, http_request: Request) -> HolosResponse:
     """Herramientas del workspace de Constelaciones: protocolo, ejercicios,
     diccionario y frases sanadoras, ancladas en el corpus."""
+    _apply_lang(http_request)
     from api.chat_service import _generar_con_sistema, CONSTELACIONES_SYSTEM_PROMPT
 
     started = time.monotonic()
@@ -264,9 +279,10 @@ class GenogramaRequest(BaseModel):
 
 
 @router.post("/genograma", response_model=HolosResponse)
-def motor_genograma(request: GenogramaRequest) -> HolosResponse:
+def motor_genograma(request: GenogramaRequest, http_request: Request) -> HolosResponse:
     """Lee un genograma capturado en el formulario y devuelve análisis sistémico,
     raíz transgeneracional, protocolo de trabajo y ejercicios."""
+    _apply_lang(http_request)
     from api.chat_service import generar_genograma
 
     started = time.monotonic()
@@ -306,9 +322,10 @@ def rag_status() -> dict:
 
 
 @router.post("/holos", response_model=HolosResponse)
-def generar_cuadro_holos(request: HolosRequest) -> HolosResponse:
+def generar_cuadro_holos(request: HolosRequest, http_request: Request) -> HolosResponse:
     """Genera el Cuadro Holos con razonamiento terapéutico libre (no pasa por
     el motor académico). Si llega `query`, se ancla en el material propio (RAG)."""
+    _apply_lang(http_request)
     from api.chat_service import generar_respuesta_holos
 
     started = time.monotonic()
