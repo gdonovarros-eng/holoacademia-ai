@@ -1057,14 +1057,27 @@ async def api_usage(request: Request):
 
 # ── Chat con streaming + control de límites ────────────────────────────────────
 
-def _usage_blocked_stream(used: int, limit: int, plan: str):
-    """SSE stream que notifica al cliente que el límite mensual fue alcanzado."""
+def _usage_blocked_stream(used: int, limit: int, plan: str, lang: str = "es"):
+    """SSE stream que notifica al cliente que el límite mensual fue alcanzado (es/en/pt)."""
     plan_name = PLAN_NAMES.get(plan, plan)
-    msg = (
-        f"⛔ **Límite mensual alcanzado**\n\n"
-        f"Has usado {used} de {limit} sesiones de este mes en tu plan **{plan_name}**.\n\n"
-        f"Actualiza tu suscripción en Holoacademia para continuar."
-    )
+    if lang == "en":
+        msg = (
+            f"⛔ **Monthly limit reached**\n\n"
+            f"You've used {used} of {limit} sessions this month on your **{plan_name}** plan.\n\n"
+            f"Upgrade your subscription at Holoacademia to continue."
+        )
+    elif lang == "pt":
+        msg = (
+            f"⛔ **Limite mensal atingido**\n\n"
+            f"Você usou {used} de {limit} sessões neste mês no seu plano **{plan_name}**.\n\n"
+            f"Atualize a sua assinatura na Holoacademia para continuar."
+        )
+    else:
+        msg = (
+            f"⛔ **Límite mensual alcanzado**\n\n"
+            f"Has usado {used} de {limit} sesiones de este mes en tu plan **{plan_name}**.\n\n"
+            f"Actualiza tu suscripción en Holoacademia para continuar."
+        )
     import json
     yield f"data: {json.dumps({'token': msg})}\n\n"
     yield "data: [DONE]\n\n"
@@ -1086,7 +1099,7 @@ async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResp
             allowed, used, limit = try_consume(_DB_PATH, user_id, mode)
             if not allowed:
                 return StreamingResponse(
-                    _usage_blocked_stream(used, limit, plan),
+                    _usage_blocked_stream(used, limit, plan, lang),
                     media_type="text/event-stream",
                     headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
                 )
