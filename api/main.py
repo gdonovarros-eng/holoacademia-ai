@@ -1096,6 +1096,11 @@ async def chat_endpoint(request: Request, payload: ChatRequest) -> StreamingResp
         sess = _get_session_user(request)
         if sess:
             user_id, plan = sess
+            # Asegura la fila de uso con el plan de la sesión. El Copiloto entra por
+            # el proxy con cookie firmada (no por el token de Wix), así que sin esto
+            # la fila no existe y try_consume devolvería (False,0,0) bloqueando el chat.
+            try: upsert_user(_DB_PATH, user_id, plan)
+            except Exception: pass
             allowed, used, limit = try_consume(_DB_PATH, user_id, mode)
             if not allowed:
                 return StreamingResponse(
