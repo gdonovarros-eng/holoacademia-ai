@@ -55,6 +55,7 @@ from api.routes.astro import router as astro_router
 from api.routes.numerology import router as numerology_router
 from api.routes.tarot import router as tarot_router
 from api.routes.horoscopo import router as horoscopo_router
+from api.routes.consumer import router as consumer_router
 from api.therapy_engine import analyze_case
 from api.therapy_report_engine import build_therapy_report
 from api.therapy_reasoner import build_therapy_reasoning
@@ -277,6 +278,7 @@ app.include_router(astro_router)
 app.include_router(numerology_router)
 app.include_router(tarot_router)
 app.include_router(horoscopo_router)
+app.include_router(consumer_router)
 
 app.add_middleware(
     CORSMiddleware,
