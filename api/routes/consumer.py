@@ -641,6 +641,70 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
     return {"ok": True, "answer": "\n\n".join(partes)}
 
 
+# ════════════════════════════════════════════════════════════════════════════
+#  AFINADOR DEL DHS — mini-entrevista adaptativa (Modo Entrevista del Método
+#  Holos) que se corre DESPUÉS del informe para precisar el DHS. Una pregunta a
+#  la vez (las 4 INs: inesperado, intenso, insoluble, individual), y al final
+#  re-sintetiza el conflicto ya afinado.
+# ════════════════════════════════════════════════════════════════════════════
+
+def _hist_txt(history: list) -> str:
+    partes = []
+    for h in (history or []):
+        if not isinstance(h, dict):
+            continue
+        q = str(h.get("q", "")).strip()
+        a = str(h.get("a", "")).strip()
+        if q or a:
+            partes.append(f"P: {q}\nR: {a}")
+    return "\n".join(partes) or "(aún no hay respuestas)"
+
+
+def _entrevista_next(inputs: dict, history: list, lang: str) -> str:
+    sintoma = _g(inputs, "sintomas") or _g(inputs, "sintoma") or "tu síntoma"
+    dhs = _g(inputs, "dhs_frase")
+    prompt = f"""{_HOLOS_VOZ}
+Eres guía de entrevista del Método Holos. Estás afinando el DHS: el instante exacto que disparó el conflicto detrás de «{sintoma}». {('La persona ya dijo que lo vivió así: "' + dhs + '". ') if dhs else ''}Trabajas el anclaje (qué pasaba justo antes de que apareciera) y las 4 INs: INESPERADO, INTENSO, INSOLUBLE, INDIVIDUAL (si lo vivió en soledad).
+
+REGLAS ESTRICTAS:
+- Haz UNA sola pregunta, breve, cálida, en 2ª persona, lista para responderse en voz alta.
+- Sigue el hilo de la última respuesta; nunca repitas una pregunta ya hecha.
+- No hagas dos preguntas. No des explicaciones, análisis ni diagnóstico. Sin preámbulos.
+
+ENTREVISTA HASTA AHORA:
+{_hist_txt(history)}
+
+Si con lo que ya tienes el DHS queda claro en sus 4 INs, responde EXACTAMENTE la palabra: LISTO
+Si no, devuelve SOLO la siguiente pregunta (sin comillas ni prefijos)."""
+    r = generar_respuesta_holos(prompt, lang)
+    return (r.get("answer") or "").strip() if r.get("ok") else ""
+
+
+def _entrevista_sintesis(inputs: dict, history: list, lang: str) -> str:
+    ctx = _construir_ecosistema(inputs)
+    prompt = f"""{_HOLOS_VOZ}
+Eres el Motor de Biodescodificación. Con el ECOSISTEMA y las respuestas de la entrevista de afinado, precisa el DHS y el conflicto: ya no una hipótesis general, sino la TONALIDAD EXACTA.
+
+ECOSISTEMA
+{ctx or "  - (pocos datos; trabaja con la entrevista)"}
+
+ENTREVISTA DE AFINADO DEL DHS:
+{_hist_txt(history)}
+
+Entrega SOLO estas secciones (usa ## y ###):
+
+## Tu DHS, afinado
+El instante exacto y el sentir preciso, integrando las 4 INs (inesperado, intenso, insoluble, individual). Cierra con UNA frase en primera persona que capture el conflicto.
+
+## El conflicto, ahora preciso
+La tonalidad exacta del conflicto del órgano/tejido, más afinada que el análisis inicial, y por qué estas respuestas la precisan.
+
+## Tu siguiente paso
+Un ejercicio concreto para liberar ESE conflicto afinado, y una invitación suave a grabarlo con la hipnosis personalizada (Método REMA)."""
+    r = generar_respuesta_holos(prompt, lang)
+    return (r.get("answer") or "").strip() if r.get("ok") else ""
+
+
 def _texto_inputs(inputs: dict) -> str:
     """Convierte el formulario de la persona en un bloque de texto para el prompt."""
     if not isinstance(inputs, dict):
@@ -727,6 +791,35 @@ async def generate(req: GenReq, request: Request):
     if not r.get("ok"):
         return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
     return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
+
+
+class EntrevistaReq(BaseModel):
+    lang: str = Field(default="es")
+    inputs: dict = Field(default_factory=dict)
+    history: list = Field(default_factory=list)
+
+
+@router.post("/holos-entrevista")
+async def holos_entrevista(req: EntrevistaReq, request: Request):
+    """Afinador del DHS: una pregunta a la vez; al completar las 4 INs (o al tope
+    de turnos) devuelve la síntesis del conflicto afinado."""
+    if not _authorized(request):
+        raise HTTPException(status_code=401, detail="no_autorizado")
+    try:
+        set_holos_lang(req.lang)
+    except Exception:
+        pass
+    history = [h for h in (req.history or []) if isinstance(h, dict)]
+    MAX_TURNS = 5
+    if len(history) < MAX_TURNS:
+        q = _entrevista_next(req.inputs, history, req.lang)
+        qn = (q or "").strip()
+        if qn and qn.upper().rstrip(".") != "LISTO":
+            return JSONResponse({"ok": True, "done": False, "pregunta": qn})
+    s = _entrevista_sintesis(req.inputs, history, req.lang)
+    if not s:
+        return JSONResponse({"ok": False, "error": "sintesis_fallida"}, status_code=502)
+    return JSONResponse({"ok": True, "done": True, "sintesis": s})
 
 
 @router.get("/health")
