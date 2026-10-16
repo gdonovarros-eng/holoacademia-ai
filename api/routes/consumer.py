@@ -239,6 +239,86 @@ def _genograma(inputs: dict) -> str:
     return txt
 
 
+def _coincidencias(inputs: dict) -> list:
+    """Calcula de forma DETERMINISTA (de las fechas) las coincidencias del clan:
+    dobles / gemelos simbólicos (mismo día y mes), síndrome de aniversario,
+    yacentes / reposiciones y clusters de muertes. Reutiliza el motor real
+    (_collect_family_date_insights) del Método Holos. El LLM solo las interpreta."""
+    try:
+        from api.therapy_engine import _collect_family_date_insights
+    except Exception as exc:
+        logger.warning("consumer holos coincidencias import: %s", exc)
+        return []
+
+    g = lambda k: _g(inputs, k)
+
+    def persona(nombre, nac, murio):
+        return {"full_name": nombre, "birth_date": nac, "death_date": murio}
+
+    def coll_list(key):
+        out = []
+        items = inputs.get(key) if isinstance(inputs, dict) else None
+        if isinstance(items, list):
+            for it in items:
+                if isinstance(it, dict) and str(it.get("nombre", "")).strip():
+                    out.append({
+                        "full_name": str(it.get("nombre")).strip(),
+                        "birth_date": str(it.get("nac", "")).strip(),
+                        "death_date": str(it.get("murio", "")).strip(),
+                    })
+        return out
+
+    case = {
+        "consultant": {"full_name": g("nombre") or "el consultante", "birth_date": g("fecha_nacimiento")},
+        "parents": {
+            "father": persona(g("padre_nombre"), g("padre_nac"), g("padre_murio")),
+            "mother": persona(g("madre_nombre"), g("madre_nac"), g("madre_murio")),
+        },
+        "grandparents": {
+            "paternal_grandfather": persona(g("abuelo_pat_nombre"), g("abuelo_pat_nac"), g("abuelo_pat_murio")),
+            "paternal_grandmother": persona(g("abuela_pat_nombre"), g("abuela_pat_nac"), g("abuela_pat_murio")),
+            "maternal_grandfather": persona(g("abuelo_mat_nombre"), g("abuelo_mat_nac"), g("abuelo_mat_murio")),
+            "maternal_grandmother": persona(g("abuela_mat_nombre"), g("abuela_mat_nac"), g("abuela_mat_murio")),
+        },
+        "current_partner": persona(g("pareja_nombre"), g("pareja_nac"), ""),
+        "children": coll_list("hijos"),
+        "siblings": coll_list("hermanos"),
+    }
+
+    out = []
+    try:
+        out = list(_collect_family_date_insights(case) or [])
+    except Exception as exc:
+        logger.warning("consumer holos insights: %s", exc)
+    # Repeticiones de nombres entre el consultante y el clan (doble por nombre).
+    try:
+        import unicodedata
+        def _norm(s):
+            s = unicodedata.normalize("NFD", str(s or "")).encode("ascii", "ignore").decode().lower()
+            return s.split()[0] if s.split() else ""
+        yo = _norm(g("nombre"))
+        if yo:
+            nombres = []
+            for lbl, key in [("padre","padre_nombre"),("madre","madre_nombre"),
+                             ("abuelo paterno","abuelo_pat_nombre"),("abuela paterna","abuela_pat_nombre"),
+                             ("abuelo materno","abuelo_mat_nombre"),("abuela materna","abuela_mat_nombre")]:
+                if _norm(g(key)) == yo:
+                    nombres.append(lbl)
+            for it in (inputs.get("hermanos") or []) + (inputs.get("hijos") or []):
+                if isinstance(it, dict) and _norm(it.get("nombre")) == yo:
+                    nombres.append("otro miembro del clan")
+            if nombres:
+                out.append(f"El consultante comparte nombre con {', '.join(nombres[:4])}; conviene revisar doble simbólico por nombre: lealtad, misión heredada o lugar que se repite.")
+    except Exception:
+        pass
+    # Dedupe preservando orden.
+    visto, limpio = set(), []
+    for c in out:
+        if c and c not in visto:
+            visto.add(c); limpio.append(c)
+    return limpio
+
+
 def _construir_ecosistema(inputs: dict) -> str:
     """Arma el ECOSISTEMA del caso con el mismo layout del Cuadro Holos real."""
     g = lambda k: _g(inputs, k)
@@ -343,7 +423,14 @@ def _resumen_caso(inputs: dict) -> str:
     )
 
 
-def _prompt_nucleo(ctx: str) -> str:
+def _prompt_nucleo(ctx: str, coincidencias: list | None = None) -> str:
+    coinc_txt = ""
+    if coincidencias:
+        coinc_txt = (
+            "\n\nCOINCIDENCIAS OBJETIVAS DETECTADAS (ya calculadas a partir de las fechas del clan; "
+            "interprétalas, NO recalcules ni inventes otras):\n"
+            + "\n".join(f"- {c}" for c in coincidencias)
+        )
     return f"""{_HOLOS_VOZ}
 Eres el Motor de Biodescodificación de HoloacademIA, terapeuta experto.
 
@@ -356,7 +443,7 @@ MÉTODO (síguelo internamente):
 4. PROGRAMACIÓN: proyecto-sentido y transgeneracional (repeticiones del clan: nombres, edades/fechas de muerte, enfermedades, secretos, pérdidas de territorio, lugar entre hermanos, dobles/yacentes).
 
 ECOSISTEMA DE LA PERSONA
-{ctx or "  - Datos insuficientes; trabaja con lo disponible y di qué conviene precisar."}
+{ctx or "  - Datos insuficientes; trabaja con lo disponible y di qué conviene precisar."}{coinc_txt}
 
 Entrega EXACTAMENTE estas secciones (usa ## y ###). Si falta un dato clave, dilo y formula hipótesis; no rellenes con vaguedades.
 
@@ -372,6 +459,9 @@ Lee el árbol CONCRETO entregado en clave sistémica y transgeneracional. Identi
 - Órdenes del amor alterados: pertenencia (¿hay excluidos?), jerarquía/orden (¿alguien tomó un lugar que no le toca?), equilibrio entre dar y recibir.
 - Dinámicas sistémicas: lealtades invisibles, identificaciones con un excluido o un muerto, asuntos pendientes, dobles y yacentes, secretos familiares.
 Nombra el patrón que se repite y la lealtad que sostiene el síntoma, y conéctalo con el conflicto. Si falta info, di qué conviene averiguar para completar el genograma.
+
+## Coincidencias y dobles simbólicos
+Toma UNA POR UNA las COINCIDENCIAS OBJETIVAS DETECTADAS (dobles o gemelos simbólicos por fecha o por nombre, síndrome de aniversario, yacentes, reposiciones, clusters de muertes) e interprétalas para tu caso: qué lealtad, duelo o misión heredada revelan y cómo se conectan con tu síntoma. Si no se detectó ninguna coincidencia objetiva, dilo con naturalidad y explica qué fechas (nacimientos y muertes del clan) permitirían encontrarlas.
 
 ## Proyecto-sentido
 Qué pudo programar tu sensibilidad a este conflicto, con lo disponible o como hipótesis.
@@ -497,8 +587,10 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
         _g(inputs, "dhs_frase"),
     ] if x).strip() or resumen
 
+    coincidencias = _coincidencias(inputs)
+
     def sec_nucleo():
-        return _run_holos(_prompt_nucleo(ctx), query=rag_query)
+        return _run_holos(_prompt_nucleo(ctx, coincidencias), query=rag_query)
 
     def sec_areas():
         return _run_holos(_prompt_areas(ctx, resumen), query=rag_query)
