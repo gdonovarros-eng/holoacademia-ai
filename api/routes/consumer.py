@@ -268,8 +268,9 @@ def _coincidencias(inputs: dict) -> list:
                     })
         return out
 
+    _yo = (g("nombre") + " (tú)") if g("nombre") else "tú (la persona que consulta)"
     case = {
-        "consultant": {"full_name": g("nombre") or "el consultante", "birth_date": g("fecha_nacimiento")},
+        "consultant": {"full_name": _yo, "birth_date": g("fecha_nacimiento")},
         "parents": {
             "father": persona(g("padre_nombre"), g("padre_nac"), g("padre_murio")),
             "mother": persona(g("madre_nombre"), g("madre_nac"), g("madre_murio")),
@@ -427,8 +428,9 @@ def _prompt_nucleo(ctx: str, coincidencias: list | None = None) -> str:
     coinc_txt = ""
     if coincidencias:
         coinc_txt = (
-            "\n\nCOINCIDENCIAS OBJETIVAS DETECTADAS (ya calculadas a partir de las fechas del clan; "
-            "interprétalas, NO recalcules ni inventes otras):\n"
+            "\n\nCOINCIDENCIAS OBJETIVAS DETECTADAS (HECHOS ya calculados a partir de las fechas y nombres del clan; "
+            "'(tú)' marca a la persona que consulta. Interprétalas como ciertas: NO las niegues, no las contradigas, "
+            "no recalcules ni inventes otras):\n"
             + "\n".join(f"- {c}" for c in coincidencias)
         )
     return f"""{_HOLOS_VOZ}
@@ -461,7 +463,7 @@ Lee el árbol CONCRETO entregado en clave sistémica y transgeneracional. Identi
 Nombra el patrón que se repite y la lealtad que sostiene el síntoma, y conéctalo con el conflicto. Si falta info, di qué conviene averiguar para completar el genograma.
 
 ## Coincidencias y dobles simbólicos
-Toma UNA POR UNA las COINCIDENCIAS OBJETIVAS DETECTADAS (dobles o gemelos simbólicos por fecha o por nombre, síndrome de aniversario, yacentes, reposiciones, clusters de muertes) e interprétalas para tu caso: qué lealtad, duelo o misión heredada revelan y cómo se conectan con tu síntoma. Si no se detectó ninguna coincidencia objetiva, dilo con naturalidad y explica qué fechas (nacimientos y muertes del clan) permitirían encontrarlas.
+Toma UNA POR UNA las COINCIDENCIAS OBJETIVAS DETECTADAS (dobles o gemelos simbólicos por fecha o por nombre, síndrome de aniversario, yacentes, reposiciones, clusters de muertes) e interprétalas para tu caso: qué lealtad, duelo o misión heredada revelan y cómo se conectan con tu síntoma. Respeta literalmente quién es quién (la marca '(tú)' es la persona que consulta); trata cada coincidencia como un hecho verificado y NO la niegues ni la contradigas. Si la lista de coincidencias detectadas está vacía, dilo con naturalidad y explica qué fechas (nacimientos y muertes del clan) permitirían encontrarlas.
 
 ## Proyecto-sentido
 Qué pudo programar tu sensibilidad a este conflicto, con lo disponible o como hipótesis.
