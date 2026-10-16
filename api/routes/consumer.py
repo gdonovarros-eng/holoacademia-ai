@@ -179,6 +179,66 @@ def _bloque(titulo: str, filas: list) -> str:
     return (f"{titulo}:\n" + "\n".join(ls)) if ls else ""
 
 
+def _genograma(inputs: dict) -> str:
+    """Compone el árbol estructurado (miembros + fechas + colecciones) como texto,
+    igual que getTherapeuticPayload del Método Holos real. De aquí lee el motor las
+    repeticiones, el síndrome de aniversario, dobles y yacentes."""
+    g = lambda k: _g(inputs, k)
+    partes = []
+
+    def miembro(rol, nombre, nac, murio):
+        if not nombre:
+            return
+        extra = []
+        if nac:
+            extra.append(f"n. {nac}")
+        if murio:
+            extra.append(f"f. {murio}")
+        partes.append(f"{rol}: {nombre}" + (f" ({', '.join(extra)})" if extra else ""))
+
+    miembro("padre", g("padre_nombre"), g("padre_nac"), g("padre_murio"))
+    miembro("madre", g("madre_nombre"), g("madre_nac"), g("madre_murio"))
+    miembro("abuelo paterno", g("abuelo_pat_nombre"), g("abuelo_pat_nac"), g("abuelo_pat_murio"))
+    miembro("abuela paterna", g("abuela_pat_nombre"), g("abuela_pat_nac"), g("abuela_pat_murio"))
+    miembro("abuelo materno", g("abuelo_mat_nombre"), g("abuelo_mat_nac"), g("abuelo_mat_murio"))
+    miembro("abuela materna", g("abuela_mat_nombre"), g("abuela_mat_nac"), g("abuela_mat_murio"))
+
+    pn = g("pareja_nombre")
+    if pn:
+        extra = []
+        if g("pareja_nac"):
+            extra.append(f"n. {g('pareja_nac')}")
+        if g("pareja_anios"):
+            extra.append(f"{g('pareja_anios')} años juntos")
+        partes.append(f"pareja actual: {pn}" + (f" ({', '.join(extra)})" if extra else ""))
+
+    def coleccion(rol, key):
+        items = inputs.get(key) if isinstance(inputs, dict) else None
+        if not isinstance(items, list):
+            return
+        for it in items:
+            if not isinstance(it, dict):
+                continue
+            nombre = str(it.get("nombre", "")).strip()
+            if not nombre:
+                continue
+            extra = []
+            if str(it.get("nac", "")).strip():
+                extra.append(f"n. {str(it.get('nac')).strip()}")
+            if str(it.get("murio", "")).strip():
+                extra.append(f"f. {str(it.get('murio')).strip()}")
+            partes.append(f"{rol}: {nombre}" + (f" ({', '.join(extra)})" if extra else ""))
+
+    coleccion("hijo/a", "hijos")
+    coleccion("hermano/a", "hermanos")
+
+    nota = g("family_notes")
+    txt = "; ".join(partes)
+    if nota:
+        txt = (txt + ". " + nota) if txt else nota
+    return txt
+
+
 def _construir_ecosistema(inputs: dict) -> str:
     """Arma el ECOSISTEMA del caso con el mismo layout del Cuadro Holos real."""
     g = lambda k: _g(inputs, k)
@@ -241,7 +301,7 @@ def _construir_ecosistema(inputs: dict) -> str:
             ["Muertes marcantes (edad/fecha)", g("muertes_clan")],
             ["Pérdidas de patrimonio/territorio/migraciones", g("perdidas_clan")],
             ["Secretos / no-dichos", g("secretos_clan")],
-            ["Genograma (notas y miembros)", g("family_notes")],
+            ["Genograma (árbol con fechas)", _genograma(inputs)],
         ]),
         _bloque("ESTADO EMOCIONAL", [
             ["Nivel de estrés", g("estres_nivel")],
