@@ -55,6 +55,18 @@ def _fecha(lang: str) -> str:
     return f"{hoy.day} de {meses[hoy.month]} de {hoy.year}"
 
 
+def _fmt_fecha(iso: str, lang: str) -> str:
+    try:
+        parts = [int(x) for x in str(iso).split("T")[0].split("-")[:3]]
+        y, m, d = parts[0], parts[1], parts[2]
+        meses = _MESES.get(lang, _MESES["es"])
+        if lang == "en":
+            return f"{meses[m]} {d}, {y}"
+        return f"{d} de {meses[m]} de {y}"
+    except Exception:
+        return str(iso or "")
+
+
 def _inline(s: str) -> str:
     s = (s or "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     s = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
@@ -94,12 +106,11 @@ def _decorate(canvas, doc):
         canvas.saveState(); canvas.translate(cx, cy); canvas.rotate(45)
         canvas.rect(-2.2, -2.2, 4.4, 4.4, stroke=0, fill=1)
         canvas.restoreState()
-    # Pie: filete + texto + folio
-    lbl = _LABELS.get(getattr(doc, "lang", "es"), _LABELS["es"])
+    # Pie: filete + folio (sin marca)
     canvas.setStrokeColor(FAINT); canvas.setLineWidth(0.5)
-    canvas.line(mi + 12 * mm, mo + 7 * mm, w - mi - 12 * mm, mo + 7 * mm)
-    canvas.setFont("Times-Italic", 8.5); canvas.setFillColor(FAINT)
-    canvas.drawCentredString(w / 2, mo + 2.6 * mm, lbl["foot"] + "   ·   " + str(doc.page))
+    canvas.line(mi + 26 * mm, mo + 7 * mm, w - mi - 26 * mm, mo + 7 * mm)
+    canvas.setFont("Times-Italic", 9); canvas.setFillColor(FAINT)
+    canvas.drawCentredString(w / 2, mo + 2.6 * mm, str(doc.page))
     canvas.restoreState()
 
 
@@ -134,6 +145,8 @@ def _styles():
                                textColor=ACCENT, alignment=TA_CENTER, spaceAfter=1),
         "date": ParagraphStyle("date", fontName="Times-Italic", fontSize=10, leading=13,
                                textColor=FAINT, alignment=TA_CENTER, spaceAfter=8),
+        "birth": ParagraphStyle("birth", fontName="Times-Italic", fontSize=10.5, leading=14,
+                                textColor=FAINT, alignment=TA_CENTER, spaceBefore=1, spaceAfter=2),
         "h1": ParagraphStyle("h1", fontName="Times-Bold", fontSize=15.5, leading=19,
                              textColor=ACCENT, alignment=TA_CENTER, spaceBefore=18, spaceAfter=9),
         "h2": ParagraphStyle("h2", fontName="Times-Bold", fontSize=12.5, leading=16,
@@ -150,20 +163,16 @@ def _styles():
     }
 
 
-def _flowables(content: str, nombre: str, lang: str, title: str):
+def _flowables(content: str, nombre: str, lang: str, title: str, fecha_nac: str = ""):
     S = _styles()
-    lbl = _LABELS.get(lang, _LABELS["es"])
     out = []
-    # Encabezado tipo carta
-    out.append(Paragraph(lbl["sello"], S["brand"]))
-    out.append(HRFlowable(width="38%", thickness=0.7, color=FAINT, spaceBefore=4, spaceAfter=8,
-                          hAlign="CENTER"))
-    out.append(Paragraph(_inline(title or "Tu Método Holos"), S["title"]))
-    if nombre:
-        out.append(Paragraph(lbl["prep"], S["prep"]))
-        out.append(Paragraph(_inline(nombre), S["name"]))
-    out.append(Paragraph(_fecha(lang), S["date"]))
-    out.append(HRFlowable(width="62%", thickness=0.6, color=ACCENT, spaceBefore=2, spaceAfter=10,
+    # Encabezado: nombre completo + fecha de nacimiento (sin marca)
+    cabecera = (nombre or "").strip() or (title or "")
+    out.append(Spacer(1, 4))
+    out.append(Paragraph(_inline(cabecera), S["title"]))
+    if fecha_nac:
+        out.append(Paragraph(_fmt_fecha(fecha_nac, lang), S["birth"]))
+    out.append(HRFlowable(width="52%", thickness=0.7, color=ACCENT, spaceBefore=8, spaceAfter=13,
                           hAlign="CENTER"))
 
     for raw in (content or "").split("\n"):
@@ -187,28 +196,26 @@ def _flowables(content: str, nombre: str, lang: str, title: str):
             else:
                 out.append(Paragraph(_inline(line), S["body"]))
 
-    out.append(Spacer(1, 10))
-    out.append(Paragraph(lbl["cierre"], S["cierre"]))
-    out.append(Paragraph("<i>Holoacademia</i>", S["name"]))
-    out.append(Spacer(1, 4))
-    seal = Seal(lang); seal.hAlign = "CENTER"
-    out.append(seal)
+    out.append(Spacer(1, 14))
+    out.append(HRFlowable(width="20%", thickness=0.6, color=FAINT, spaceBefore=2, spaceAfter=2,
+                          hAlign="CENTER"))
     return out
 
 
-def build_carta_pdf(content: str, nombre: str = "", lang: str = "es", title: str = "") -> bytes:
+def build_carta_pdf(content: str, nombre: str = "", lang: str = "es", title: str = "",
+                    fecha_nac: str = "") -> bytes:
     lang = lang if lang in ("es", "en", "pt") else "es"
     buf = io.BytesIO()
     w, h = A4
     doc = BaseDocTemplate(
         buf, pagesize=A4,
         leftMargin=26 * mm, rightMargin=26 * mm, topMargin=28 * mm, bottomMargin=26 * mm,
-        title=(title or "Tu Método Holos"), author="Holoacademia",
+        title=((nombre or "").strip() or title or "Informe"), author="",
     )
     doc.lang = lang
     frame = Frame(doc.leftMargin, doc.bottomMargin,
                   w - doc.leftMargin - doc.rightMargin,
                   h - doc.topMargin - doc.bottomMargin, id="body")
     doc.addPageTemplates([PageTemplate(id="carta", frames=[frame], onPage=_decorate)])
-    doc.build(_flowables(content, nombre, lang, title))
+    doc.build(_flowables(content, nombre, lang, title, fecha_nac))
     return buf.getvalue()

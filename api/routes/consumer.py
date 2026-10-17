@@ -159,9 +159,12 @@ entrega una lectura de numerología personal con encabezados ##:
 # Voz de consumidor: igual al motor real pero hablándole a la persona (tú).
 _HOLOS_VOZ = (
     "Es un motor propio: no cites maestros, autores ni cursos. Sin emojis. "
-    "Sin descargos médicos dentro del texto. Tono clínico pero cálido y cercano, "
-    "claro y concreto. Te diriges DIRECTAMENTE a la persona en segunda persona (tú); "
-    "NUNCA uses las palabras 'paciente' ni 'terapeuta', háblale a ella."
+    "Sin descargos médicos dentro del texto. "
+    "Tono cálido, cercano y profundamente empático, como un terapeuta que acompaña "
+    "con sensibilidad, SIN perder claridad ni objetividad. Antes de explicar, valida "
+    "con ternura lo que la persona siente; nombra lo difícil con delicadeza. "
+    "Te diriges DIRECTAMENTE a la persona en segunda persona (tú); NUNCA uses las "
+    "palabras 'paciente', 'terapeuta' ni 'el/la consultante' — háblale a ella por 'tú'."
 )
 
 
@@ -312,9 +315,23 @@ def _coincidencias(inputs: dict) -> list:
                 out.append(f"El consultante comparte nombre con {', '.join(nombres[:4])}; conviene revisar doble simbólico por nombre: lealtad, misión heredada o lugar que se repite.")
     except Exception:
         pass
-    # Dedupe preservando orden.
+    # Limpieza a 2ª persona + quitar la cola de "conviene..." (es solo una pista
+    # interna; el motor debe INTERPRETAR, no copiarla).
+    import re as _re
+
+    def _limpia(c):
+        c = _re.sub(r";?\s*conviene[^.;]*\.?\s*$", ".", c, flags=_re.I)
+        c = (c.replace("El nacimiento del consultante queda cerca", "Tu nacimiento quedó cerca")
+               .replace("En orden fraterno, el consultante queda como", "En el orden entre tus hermanos, tú ocupas el lugar de")
+               .replace("El consultante comparte", "Tú compartes")
+               .replace("del consultante", "tuyo")
+               .replace("el consultante", "tú")
+               .replace("al consultante", "a ti"))
+        return c.strip()
+
     visto, limpio = set(), []
     for c in out:
+        c = _limpia(c)
         if c and c not in visto:
             visto.add(c); limpio.append(c)
     return limpio
@@ -463,7 +480,7 @@ Lee el árbol CONCRETO entregado en clave sistémica y transgeneracional. Identi
 Nombra el patrón que se repite y la lealtad que sostiene el síntoma, y conéctalo con el conflicto. Si falta info, di qué conviene averiguar para completar el genograma.
 
 ## Coincidencias y dobles simbólicos
-Toma UNA POR UNA las COINCIDENCIAS OBJETIVAS DETECTADAS (dobles o gemelos simbólicos por fecha o por nombre, síndrome de aniversario, yacentes, reposiciones, clusters de muertes) e interprétalas para tu caso: qué lealtad, duelo o misión heredada revelan y cómo se conectan con tu síntoma. Respeta literalmente quién es quién (la marca '(tú)' es la persona que consulta); trata cada coincidencia como un hecho verificado y NO la niegues ni la contradigas. Si la lista de coincidencias detectadas está vacía, dilo con naturalidad y explica qué fechas (nacimientos y muertes del clan) permitirían encontrarlas.
+Para CADA una de las COINCIDENCIAS OBJETIVAS DETECTADAS (dobles o gemelos simbólicos por fecha o por nombre, síndrome de aniversario, yacentes, reposiciones, clusters de muertes) escribe un PÁRRAFO COMPLETO, cálido y empático que explique en profundidad qué significa para ti: qué lealtad, duelo o misión heredada revela, qué pudiste estar cargando sin saberlo y cómo se conecta con tu síntoma y tu historia. NUNCA copies ni enuncies la coincidencia "en seco" ni uses frases tipo "conviene explorar/revisar": desarrolla la explicación como lo haría un terapeuta que te acompaña. Respeta literalmente quién es quién (la marca '(tú)' es la persona que consulta); trata cada coincidencia como un hecho verificado y NO la niegues ni la contradigas. Si la lista está vacía, dilo con naturalidad y explica qué fechas (nacimientos y muertes del clan) permitirían encontrar estas conexiones.
 
 ## Proyecto-sentido
 Qué pudo programar tu sensibilidad a este conflicto, con lo disponible o como hipótesis.
@@ -498,6 +515,40 @@ def _prompt_astro(natal, resumen: str) -> str:
             f"carta natal (no recalcules):\n{d}\n\nCaso: {resumen}\n\nEntrega una lectura de astrología "
             "médica: qué zonas u órganos y qué patrones emocionales sugiere la carta (Sol, Luna, ascendente, "
             "planetas en tensión), y cómo se vinculan con tu síntoma y el conflicto decodificado.")
+
+
+def _prompt_astro_solar(signo: str, resumen: str) -> str:
+    return (f"{_HOLOS_VOZ}\nEres el Motor de Astrología Médica. Aún no tenemos hora y lugar de "
+            f"nacimiento, así que haces una lectura COMPLETA basada en tu signo solar: {signo}.\n\n"
+            f"Caso: {resumen}\n\nEntrega una lectura de astrología médica rica y cálida con estos "
+            "subtítulos (###): \n"
+            "### Tu signo y tu cuerpo\nqué zonas, órganos y sistemas rige tu signo solar y a qué "
+            "desequilibrios tiende.\n"
+            "### Tu patrón emocional\nla forma en que tu signo vive y procesa las emociones, y cómo "
+            "se relaciona con tu conflicto y tu síntoma.\n"
+            "### Tus recursos\nlas fortalezas de tu signo que puedes apoyar para sostener tu proceso.\n"
+            "### Para afinar tu carta\nexplica, con calidez, que con tu hora y lugar de nacimiento se "
+            "podría calcular tu carta natal completa (Luna, ascendente, planetas) para una lectura aún "
+            "más precisa.")
+
+
+def _prompt_horoscopo(signo: str, resumen: str, hoy: str) -> str:
+    return (f"{_HOLOS_VOZ}\nEres el Motor de Horóscopo Terapéutico. Para tu signo ({signo}) y tu "
+            f"momento actual ({hoy}), entrega un horóscopo TERAPÉUTICO: no predicciones, sino una "
+            "lectura del clima emocional de esta etapa y cómo acompañarte en tu proceso.\n\n"
+            f"Caso: {resumen}\n\nCon ### por área:\n### Tu energía ahora\n### Amor y vínculos\n"
+            "### Trabajo y propósito\n### Tu bienestar y tu cuerpo\n### Tu enfoque para estos días\n"
+            "Conéctalo con tu conflicto y tu proceso de liberación; tono cálido y alentador.")
+
+
+def _prompt_transitos(signo: str, resumen: str, hoy: str) -> str:
+    return (f"{_HOLOS_VOZ}\nEres el Motor de Tránsitos Planetarios. Para tu signo solar ({signo}) y el "
+            f"periodo actual ({hoy}), explica los TRÁNSITOS más relevantes y qué mueven en ti a nivel "
+            "emocional, de forma clara para alguien sin conocimientos de astrología.\n\n"
+            f"Caso: {resumen}\n\nCon ### por tránsito o tema (2 a 4): nombra el tránsito en lenguaje "
+            "sencillo, qué remueve o invita a soltar/transformar, y cómo aprovecharlo en tu proceso de "
+            "liberación emocional. Cierra con una invitación cálida para este periodo. Habla en "
+            "tendencias y posibilidades, nunca como un destino fijo.")
 
 
 def _prompt_tarot(perfil, resumen: str) -> str:
@@ -616,6 +667,37 @@ Instrucciones:
 - Nada de diagnóstico ni promesas de cura; es trabajo emocional y de desarrollo personal."""
 
 
+# ─── Bonos de la landing (Nivel 1) ──────────────────────────────────────────────
+def _prompt_diccionario(inputs: dict) -> str:
+    g = lambda k: _g(inputs, k)
+    sint = g("sintomas") or g("sintoma") or g("motivo")
+    return (f"{_HOLOS_VOZ}\nEres el Motor de Biodescodificación. Entrega el BONO 'Diccionario del "
+            f"Síntoma' para esta persona.\n\nSu síntoma o malestar: {sint}\n\nCon ### por entrada:\n"
+            f"### {sint}\nEl significado emocional (sentido biológico) de ESTE síntoma, en lenguaje "
+            "sencillo y cálido, con el tipo de conflicto que suele estar detrás.\n"
+            "Luego añade 2 o 3 entradas más (###) de síntomas RELACIONADOS o cercanos al suyo, cada "
+            "uno con su significado emocional breve, para que tenga un pequeño diccionario útil. "
+            "Nada de diagnóstico; es una guía de lectura emocional.")
+
+
+def _prompt_respiracion(resumen: str) -> str:
+    return (f"{_HOLOS_VOZ}\nEntrega el BONO 'Respiración guiada', un ejercicio de respiración para "
+            "acompañar a la persona en los momentos de más carga emocional, pensado para SU conflicto.\n\n"
+            f"Caso: {resumen}\n\nEscribe un guion de respiración consciente, cálido y pausado, en 2ª "
+            "persona, que la persona pueda leer y seguir sola (3 a 5 minutos). Da el paso a paso del "
+            "ritmo (inhalar, sostener, exhalar), qué imaginar o soltar en cada exhalación conectado a "
+            "su carga emocional, y cómo cerrar. Marca pausas con '(pausa)'.")
+
+
+def _prompt_actos(resumen: str) -> str:
+    return (f"{_HOLOS_VOZ}\nEntrega el BONO 'Guía de actos simbólicos': gestos sencillos para integrar "
+            "y cerrar el trabajo emocional de SU conflicto.\n\n"
+            f"Caso: {resumen}\n\nPropón de 3 a 4 actos simbólicos concretos y fáciles (###), cada uno "
+            "con para qué sirve en su caso y cómo hacerlo paso a paso (por ejemplo: escribir y soltar "
+            "una carta, un objeto que represente lo que suelta, un gesto de devolver una carga, un "
+            "pequeño ritual de cierre). Cálido y respetuoso, sin nada esotérico ni promesas.")
+
+
 def _calc_numerologia(inputs: dict):
     try:
         import datetime
@@ -642,6 +724,16 @@ def _calc_natal(inputs: dict):
     except Exception as exc:
         logger.warning("consumer holos natal calc: %s", exc)
         return None
+
+
+def _calc_signo(inputs: dict):
+    try:
+        from api.astro.horoscopo_knowledge import get_signo_solar
+        f = _g(inputs, "fecha_nacimiento")
+        return get_signo_solar(f) if f else ""
+    except Exception as exc:
+        logger.warning("consumer holos signo calc: %s", exc)
+        return ""
 
 
 def _calc_tarot(inputs: dict):
@@ -711,32 +803,62 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
     def sec_areas():
         return _run_holos(_prompt_areas(ctx, resumen), query=rag_query)
 
+    def sec_diccionario():
+        return _run_holos(_prompt_diccionario(inputs), query=rag_query)
+
+    def sec_respiracion():
+        return _run_holos(_prompt_respiracion(resumen))
+
+    def sec_actos():
+        return _run_holos(_prompt_actos(resumen))
+
     def sec_numerologia():
         datos = _calc_numerologia(inputs)
         return _run_holos(_prompt_numerologia(datos, resumen)) if datos else ""
 
     def sec_astro():
-        natal = _calc_natal(inputs)
-        return _run_holos(_prompt_astro(natal, resumen)) if natal else ""
+        # Carta natal completa si hay hora + lugar; si no, astrología médica por signo solar.
+        if fecha and hora and lugar:
+            natal = _calc_natal(inputs)
+            if natal:
+                return _run_holos(_prompt_astro(natal, resumen))
+        signo = _calc_signo(inputs)
+        if signo:
+            return _run_holos(_prompt_astro_solar(signo, resumen))
+        return ""
 
     def sec_tarot():
         perfil = _calc_tarot(inputs)
         return _run_holos(_prompt_tarot(perfil, resumen)) if perfil else ""
 
+    import datetime as _dt
+    _hoy = _dt.date.today().strftime("%B %Y")
+
+    def sec_horoscopo():
+        signo = _calc_signo(inputs)
+        return _run_holos(_prompt_horoscopo(signo, resumen, _hoy)) if signo else ""
+
+    def sec_transitos():
+        signo = _calc_signo(inputs)
+        return _run_holos(_prompt_transitos(signo, resumen, _hoy)) if signo else ""
+
     tareas = [
         ("Tu conflicto, decodificado", sec_nucleo),
+        ("Diccionario del Síntoma", sec_diccionario),
         ("Tus protocolos de liberación emocional", sec_protocolos),
+        ("Guía de actos simbólicos", sec_actos),
+        ("Respiración guiada", sec_respiracion),
         ("Lectura por áreas de tu vida", sec_areas),
     ]
     if fecha:
         tareas.append(("Tu numerología", sec_numerologia))
-    if fecha and hora and lugar:
-        tareas.append(("Tu carta natal", sec_astro))
-    if fecha:
+        tareas.append(("Tu astrología", sec_astro))
+        tareas.append(("Tu horóscopo terapéutico", sec_horoscopo))
+        tareas.append(("Tus tránsitos planetarios", sec_transitos))
         tareas.append(("Tu tarot", sec_tarot))
 
     resultados = [None] * len(tareas)
-    with ThreadPoolExecutor(max_workers=len(tareas)) as ex:
+    with ThreadPoolExecutor(max_workers=min(5, len(tareas))) as ex:
         futs = {ex.submit(t[1]): i for i, t in enumerate(tareas)}
         for fut in futs:
             i = futs[fut]
@@ -940,6 +1062,7 @@ async def holos_entrevista(req: EntrevistaReq, request: Request):
 class PdfReq(BaseModel):
     lang: str = Field(default="es")
     nombre: str = Field(default="")
+    fecha_nac: str = Field(default="")
     title: str = Field(default="Tu Método Holos")
     content: str = Field(default="")
 
@@ -955,7 +1078,8 @@ async def consumer_pdf(req: PdfReq, request: Request):
     try:
         import base64
         from api.pdf_carta import build_carta_pdf
-        data = build_carta_pdf(req.content, req.nombre or "", req.lang or "es", req.title or "Tu Método Holos")
+        data = build_carta_pdf(req.content, req.nombre or "", req.lang or "es",
+                               req.title or "Tu Método Holos", req.fecha_nac or "")
         return JSONResponse({"ok": True, "filename": "Metodo-Holos.pdf",
                              "pdf_base64": base64.b64encode(data).decode("ascii")})
     except Exception as exc:
