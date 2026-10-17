@@ -937,6 +937,32 @@ async def holos_entrevista(req: EntrevistaReq, request: Request):
     return JSONResponse({"ok": True, "done": True, "sintesis": s})
 
 
+class PdfReq(BaseModel):
+    lang: str = Field(default="es")
+    nombre: str = Field(default="")
+    title: str = Field(default="Tu Método Holos")
+    content: str = Field(default="")
+
+
+@router.post("/pdf")
+async def consumer_pdf(req: PdfReq, request: Request):
+    """Genera el PDF 'carta antigua' de la entrega. Devuelve base64 para que el
+    frontend (.tv) lo adjunte al correo del comprador."""
+    if not _authorized(request):
+        raise HTTPException(status_code=401, detail="no_autorizado")
+    if not (req.content or "").strip():
+        return JSONResponse({"ok": False, "error": "sin_contenido"}, status_code=400)
+    try:
+        import base64
+        from api.pdf_carta import build_carta_pdf
+        data = build_carta_pdf(req.content, req.nombre or "", req.lang or "es", req.title or "Tu Método Holos")
+        return JSONResponse({"ok": True, "filename": "Metodo-Holos.pdf",
+                             "pdf_base64": base64.b64encode(data).decode("ascii")})
+    except Exception as exc:
+        logger.exception("consumer pdf: %s", exc)
+        return JSONResponse({"ok": False, "error": "pdf_fallido"}, status_code=500)
+
+
 @router.get("/health")
 async def health():
     return {"ok": True, "productos": list(_PRODUCTOS.keys()) + list(_PAQUETES.keys())}
