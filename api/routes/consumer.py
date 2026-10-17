@@ -842,12 +842,9 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
         signo = _calc_signo(inputs)
         return _run_holos(_prompt_transitos(signo, resumen, _hoy)) if signo else ""
 
+    # Orden: análisis y lecturas → protocolos (justo antes del final) → BONOS al final.
     tareas = [
         ("Tu conflicto, decodificado", sec_nucleo),
-        ("Diccionario del Síntoma", sec_diccionario),
-        ("Tus protocolos de liberación emocional", sec_protocolos),
-        ("Guía de actos simbólicos", sec_actos),
-        ("Respiración guiada", sec_respiracion),
         ("Lectura por áreas de tu vida", sec_areas),
     ]
     if fecha:
@@ -856,6 +853,12 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
         tareas.append(("Tu horóscopo terapéutico", sec_horoscopo))
         tareas.append(("Tus tránsitos planetarios", sec_transitos))
         tareas.append(("Tu tarot", sec_tarot))
+    # Protocolos: antes del final.
+    tareas.append(("Tus protocolos de liberación emocional", sec_protocolos))
+    # Bonos: al final.
+    tareas.append(("Diccionario del Síntoma", sec_diccionario))
+    tareas.append(("Respiración guiada", sec_respiracion))
+    tareas.append(("Guía de actos simbólicos", sec_actos))
 
     resultados = [None] * len(tareas)
     with ThreadPoolExecutor(max_workers=min(5, len(tareas))) as ex:
