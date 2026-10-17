@@ -509,6 +509,113 @@ def _prompt_tarot(perfil, resumen: str) -> str:
             "señalan y qué sombra trabajar. Conéctalo con el cuadro.")
 
 
+# ─── Protocolos de liberación emocional (del curso + técnicas de fuera) ─────────
+_PROTO_CACHE = None
+# Curados: emocionalmente enfocados y AUTO-APLICABLES por el público (sin rastreo,
+# sin imanes, sin lo esotérico que no encaja en un producto de salud emocional).
+_PROTO_WHITELIST = {
+    "eft_pro", "eft_transgeneracional", "carta_telepatica_parental", "sepelio_simbolico",
+    "inclusion_excluidos", "extraccion_recursos", "liberacion_traumas", "estres_postraumatico",
+    "protocolo_miedos", "protocolo_fobias", "coraza_energetica", "reimpronta_tierra",
+    "reimpronta_metal", "memorias_celulares", "sublimacion_transgen",
+    "liberacion_impronta_transgeneracional", "metodo_onirologico",
+}
+
+
+def _load_protocolos() -> list:
+    global _PROTO_CACHE
+    if _PROTO_CACHE is not None:
+        return _PROTO_CACHE
+    import json
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))      # api/routes
+        root = os.path.dirname(os.path.dirname(here))          # raíz del repo
+        path = os.path.join(root, "data", "procedural_protocols_db.json")
+        with open(path, encoding="utf-8") as f:
+            d = json.load(f)
+        _PROTO_CACHE = d.get("protocols", []) if isinstance(d, dict) else []
+    except Exception as exc:
+        logger.warning("consumer protocolos load: %s", exc)
+        _PROTO_CACHE = []
+    return _PROTO_CACHE
+
+
+def _protocolos_relevantes(inputs: dict, k: int = 6) -> list:
+    import re, unicodedata
+    protos = [p for p in _load_protocolos() if p.get("id") in _PROTO_WHITELIST]
+    if not protos:
+        return []
+    g = lambda key: _g(inputs, key)
+    query = " ".join([
+        g("sintomas") or g("sintoma"), g("motivo"), g("dhs_frase"), g("dhs_impacto"),
+        g("emociones_frecuentes"), g("no_perdona"), g("contexto_emocional"), g("duelos"),
+    ])
+    trans = any(g(x) for x in ("padre_murio", "madre_murio", "enfermedades_repetidas",
+                               "muertes_clan", "secretos_clan", "nombres_repetidos",
+                               "perdidas_clan", "duelos")) or bool(
+        isinstance(inputs, dict) and (inputs.get("hermanos") or inputs.get("hijos")))
+
+    def norm(s):
+        return unicodedata.normalize("NFD", s or "").encode("ascii", "ignore").decode().lower()
+
+    qtokens = set(re.findall(r"[a-z]{4,}", norm(query)))
+    scored = []
+    for p in protos:
+        blob = norm((p.get("objetivo", "") or "") + " " + " ".join(p.get("cuando_usarlo", []) or []))
+        ptokens = set(re.findall(r"[a-z]{4,}", blob))
+        score = len(qtokens & ptokens)
+        if trans and p.get("categoria") == "transgeneracional":
+            score += 1
+        if p.get("id") in ("eft_pro", "carta_telepatica_parental", "sepelio_simbolico"):
+            score += 2  # staples de autoaplicación para el público
+        scored.append((score, p))
+    scored.sort(key=lambda x: -x[0])
+    sel = [p for _s, p in scored[:k]]
+    # EFT PRO siempre disponible como base de autoaplicación
+    if not any(p.get("id") == "eft_pro" for p in sel):
+        eft = next((p for p in protos if p.get("id") == "eft_pro"), None)
+        if eft:
+            sel = sel[:k - 1] + [eft]
+    return sel
+
+
+def _protocolos_txt(protos: list) -> str:
+    out = []
+    for p in protos:
+        lines = [f"PROTOCOLO: {p.get('nombre','')}",
+                 f"Objetivo: {p.get('objetivo','')}",
+                 "Cuándo: " + "; ".join((p.get("cuando_usarlo", []) or [])[:3])]
+        pasos = (p.get("pasos", []) or [])[:8]
+        if pasos:
+            lines.append("Pasos:")
+            for s in pasos:
+                lines.append(f"  {s.get('orden','')}. {s.get('titulo','')}: {s.get('instruccion','')}")
+        fr = p.get("frases_sanadoras", []) or []
+        if fr:
+            lines.append("Frases sanadoras: " + " | ".join(fr[:4]))
+        out.append("\n".join(lines))
+    return "\n\n".join(out)
+
+
+def _prompt_protocolos(ctx: str, resumen: str, protos_txt: str) -> str:
+    return f"""{_HOLOS_VOZ}
+Eres el Motor Terapéutico. Entrega TUS PROTOCOLOS DE LIBERACIÓN EMOCIONAL: ejercicios concretos que la persona pueda hacer SOLA en casa para liberar la carga emocional de SU conflicto.
+
+Caso: {resumen}
+ECOSISTEMA (resumen)
+{(ctx or '')[:1400]}
+
+PROTOCOLOS DEL MÉTODO (material propio; adáptalos a autoaplicación, sin terapeuta, sin rastreo ni imanes):
+{protos_txt}
+
+Instrucciones:
+- Elige los 4 o 5 protocolos MÁS pertinentes a este conflicto y adáptalos PASO A PASO para que la persona los haga sola, en 2ª persona.
+- Personaliza las frases sanadoras al conflicto EXACTO de la persona (no genéricas).
+- Usa ### por cada protocolo: su nombre, para qué le sirve en su caso, y los pasos numerados y claros.
+- Cierra con "### También puedes probar": 1 o 2 técnicas reconocidas de liberación emocional de fuera del método (p. ej. escritura expresiva, respiración consciente, anclaje) que complementen.
+- Nada de diagnóstico ni promesas de cura; es trabajo emocional y de desarrollo personal."""
+
+
 def _calc_numerologia(inputs: dict):
     try:
         import datetime
@@ -594,6 +701,13 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
     def sec_nucleo():
         return _run_holos(_prompt_nucleo(ctx, coincidencias), query=rag_query)
 
+    protos = _protocolos_relevantes(inputs)
+
+    def sec_protocolos():
+        if not protos:
+            return ""
+        return _run_holos(_prompt_protocolos(ctx, resumen, _protocolos_txt(protos)), query=rag_query)
+
     def sec_areas():
         return _run_holos(_prompt_areas(ctx, resumen), query=rag_query)
 
@@ -611,6 +725,7 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
 
     tareas = [
         ("Tu conflicto, decodificado", sec_nucleo),
+        ("Tus protocolos de liberación emocional", sec_protocolos),
         ("Lectura por áreas de tu vida", sec_areas),
     ]
     if fecha:
