@@ -28,7 +28,7 @@ salud_*_current_tmp.html
 
 # ── Archivos > 100MB (bloqueados por GitHub) ─────────────────
 pares_biomagnéticos_v4.pdf
-data/embeddings/library_vectors.npy
+# library_vectors.npy ahora se versiona vía Git LFS (ver .gitattributes)
 
 # ── Proyectos separados (deberían tener sus propios repos) ──
 Cotizador web AP/
