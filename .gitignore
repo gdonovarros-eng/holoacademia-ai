@@ -50,3 +50,7 @@ data/processed_library/audio/
 # Bases de datos: nunca al repo (y menos a uno publico)
 *.db
 userdata/
+
+# Intermedios de ingesta de subtítulos (ya fusionados en library_chunks.jsonl)
+data/chunks/subtitle_chunks.jsonl
+data/chunks/subtitle_chunks_clean.jsonl

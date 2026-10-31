@@ -1,7 +1,7 @@
 {
   "model": "text-embedding-3-small",
-  "chunks_path": "/Users/m2/Documents/New project/data/chunks/library_chunks.jsonl",
-  "vectors_path": "/Users/m2/Documents/New project/data/embeddings/library_vectors.npy",
-  "count": 8825,
+  "chunks_path": "/Users/m2/Desktop/holoacademia-ai/data/chunks/library_chunks.jsonl",
+  "vectors_path": "/Users/m2/Desktop/holoacademia-ai/data/embeddings/library_vectors.npy",
+  "count": 18984,
   "dimensions": 1536
 }

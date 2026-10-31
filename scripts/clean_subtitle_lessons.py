@@ -79,10 +79,18 @@ def limpia_ia(client, fragmento):
     return (r.choices[0].message.content or "").strip()
 
 def main():
+    # Carga la llave desde donde ya vive en la Mac (nadie la ve; el script la usa solo).
     if load_dotenv:
-        load_dotenv(BASE / ".env")
+        for cand in [BASE / ".env",
+                     Path(os.path.expanduser("~/.config/holo/subs.env")),
+                     Path(os.path.expanduser("~/.holo-subs/repo/.env"))]:
+            try:
+                if cand.exists():
+                    load_dotenv(cand, override=False)
+            except Exception:
+                pass
     if not os.getenv("OPENAI_API_KEY", "").strip():
-        print("ERROR: falta OPENAI_API_KEY en .env"); sys.exit(1)
+        print("ERROR: no encontré OPENAI_API_KEY (ni en .env del repo ni en ~/.config/holo/subs.env)"); sys.exit(1)
     client = OpenAI()
     limit = int(sys.argv[1]) if len(sys.argv) > 1 else 0
     out = sys.argv[2] if len(sys.argv) > 2 else str(BASE / "data" / "chunks" / "subtitle_chunks_clean.jsonl")
