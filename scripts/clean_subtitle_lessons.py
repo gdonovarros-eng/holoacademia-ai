@@ -58,16 +58,13 @@ def trocea(text, n=CHUNK):
     out = ventanas(text, n)
     return out
 
+MAP_PATH = BASE / "data" / "video_course_map.json"
+
 def carga_mapa():
-    mapa = {}
-    with open(CSV_PATH, encoding="utf-8-sig") as f:
-        for row in csv.DictReader(f, delimiter=";"):
-            m = re.search(r"/video/([0-9a-fA-F]+_[0-9a-fA-F]+)/", (row.get("URL") or ""))
-            if m:
-                mapa[m.group(1)] = {"curso": (row.get("CURSO") or "").strip(),
-                                    "modulo": (row.get("MODULO") or "").strip(),
-                                    "linea": (row.get("LINEA") or "").strip().title()}
-    return mapa
+    # Mapa completo video->curso (100% cobertura) generado por el repo tv.
+    m = json.load(open(MAP_PATH, encoding="utf-8"))
+    return {fid: {"curso": v.get("course_name", ""), "modulo": "", "linea": v.get("linea", "")}
+            for fid, v in m.items()}
 
 SYS = ("Eres editor de contenido educativo. Recibes la TRANSCRIPCIÓN hablada de una clase "
        "(con relleno, logística, saludos, bromas, cortes). Devuelve SOLO los apuntes de estudio "

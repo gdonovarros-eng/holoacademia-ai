@@ -50,22 +50,13 @@ def trocea(text, n=CHUNK):
         chunks.append(buf.strip())
     return chunks
 
+MAP_PATH = os.path.join(BASE, "data", "video_course_map.json")
+
 def carga_mapa():
-    mapa = {}
-    with open(CSV_PATH, encoding="utf-8-sig") as f:
-        r = csv.DictReader(f, delimiter=";")
-        for row in r:
-            url = (row.get("URL") or "").strip()
-            m = re.search(r"/video/([0-9a-fA-F]+_[0-9a-fA-F]+)/", url)
-            if not m:
-                continue
-            vid = m.group(1)
-            mapa[vid] = {
-                "curso": (row.get("CURSO") or "").strip(),
-                "modulo": (row.get("MODULO") or "").strip(),
-                "linea": (row.get("LINEA") or "").strip().title(),
-            }
-    return mapa
+    # Mapa completo video->curso (tools/build_video_course_map.py del repo tv, 100% cobertura).
+    m = json.load(open(MAP_PATH, encoding="utf-8"))
+    return {fid: {"curso": v.get("course_name", ""), "modulo": "", "linea": v.get("linea", "")}
+            for fid, v in m.items()}
 
 def main():
     subs_dir = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_SUBS
