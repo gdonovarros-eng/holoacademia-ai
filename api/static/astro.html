@@ -718,10 +718,10 @@ select { padding-right: 32px; cursor: pointer; }
     ppBtn.onclick = function() {
      if (!_cartaParams) return;
      ppOut.innerHTML = '<span style="color:#a78bfa">Consultando Motor Astrológico...</span>';
-     var params = new URLSearchParams({ nombre: _cartaParams.nombre, fecha_nacimiento: _cartaParams.fecha, hora_nacimiento: _cartaParams.hora, lugar_nacimiento: _cartaParams.lugar, planetas: slug });
+     var params = new URLSearchParams({ nombre: _cartaParams.nombre, fecha: _cartaParams.fecha, hora: _cartaParams.hora, lugar: _cartaParams.lugar, planeta: slug });
      var src = new EventSource('/astro/interpretacion-stream?' + params.toString());
      var buf = '';
-     src.onmessage = function(ev) { try { var d = JSON.parse(ev.data); if (d.text) { buf += d.text; ppOut.innerHTML = buf.replace(/\n/g,'<br>'); } if (d.done) src.close(); } catch(e) {} };
+     src.onmessage = function(ev) { if (ev.data === '[DONE]') { src.close(); return; } try { var d = JSON.parse(ev.data); if (d.token) { buf += d.token; ppOut.innerHTML = (window.marked ? marked.parse(buf) : buf.replace(/\n/g,'<br>')); } else if (d.error) { ppOut.textContent = d.error; src.close(); } } catch(e) {} };
      src.onerror = function() { src.close(); };
     };
    });

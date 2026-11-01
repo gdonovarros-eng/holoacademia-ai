@@ -350,9 +350,11 @@ async def interpretacion_stream(
     fecha: str = "",
     hora: str = "12:00",
     lugar: str = "",
+    planeta: str = "",
 ):
     """
     Genera una interpretación planeta a planeta de la carta natal en streaming SSE.
+    Con ?planeta=<slug> (sun, moon, venus…) interpreta solo ese planeta (botón «toca un planeta»).
     Más concisa que el análisis completo — enfocada en el perfil de personalidad.
     """
     _apply_lang(http_request)
@@ -418,6 +420,7 @@ async def interpretacion_stream(
                     asp_lines.append(f"  {p1} {tipo} {p2} (orbe {orbe:.1f}°)")
                 aspectos_str = "\n".join(asp_lines)
 
+            foco = NOMBRE_PLANETA.get(planeta, "") if planeta in planetas else ""
             prompt = f"""Eres un astrólogo experto de tradición clásica. Analiza la carta natal de {nombre} e interpreta cada posición planetaria de forma clara y directa para un terapeuta holístico.
 
 CARTA NATAL DE {nombre.upper()}
@@ -443,6 +446,14 @@ INSTRUCCIONES:
 - Al final añade una sección ## Síntesis con el patrón central del mapa natal en 3-4 frases
 
 Responde solo en español."""
+            if foco:
+                prompt = prompt.split("INSTRUCCIONES:")[0] + f"""INSTRUCCIONES:
+- Interpreta SOLO {foco} en su signo y casa: qué energía expresa, cómo la vive, qué aprendizaje o tensión genera
+- Menciona sus aspectos de la lista (si tiene) y, si está retrógrado o tiene dignidad, su impacto
+- Usa EXACTAMENTE las posiciones de arriba, sin cambiar ni inventar ninguna
+- Lenguaje directo, empático y orientado al crecimiento personal, en 2 a 4 párrafos cortos, sin encabezados
+
+Responde solo en español."""
 
             from api.astro.engine import _get_llm_client
             client, model = _get_llm_client()
@@ -450,7 +461,7 @@ Responde solo en español."""
                 model=model,
                 messages=[{"role": "user", "content": prompt + _holos_directive()}],
                 temperature=0.65,
-                max_tokens=4000,
+                max_tokens=900 if foco else 4000,
                 stream=True,
                 timeout=120.0,
             )
