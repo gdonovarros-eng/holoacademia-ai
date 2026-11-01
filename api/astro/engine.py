@@ -186,12 +186,22 @@ def _geocode(city_str: str) -> tuple[float, float, str]:
                   ", espana", ", spain", ", venezuela", ", ecuador", ", bolivia"]:
         key = key.replace(noise, "")
     key = key.strip()
-    # Búsqueda exacta primero, luego parcial
+    # Búsqueda exacta primero (completa y luego cada parte separada por coma)
     if key in _CITY_COORDS:
         return _CITY_COORDS[key]
-    for k, v in _CITY_COORDS.items():
-        if k in key or key in k:
-            return v
+    for parte in (p.strip() for p in key.split(",")):
+        if parte in _CITY_COORDS:
+            return _CITY_COORDS[parte]
+    # Luego por palabra completa, la ciudad más larga gana: así "Los Angeles,
+    # California" no cae en "cali" (Colombia) por contener esas letras.
+    import re
+    hits = [k for k in _CITY_COORDS if re.search(r"\b" + re.escape(k) + r"\b", key)]
+    if hits:
+        return _CITY_COORDS[max(hits, key=len)]
+    if len(key) >= 4:
+        for k, v in _CITY_COORDS.items():
+            if key in k:
+                return v
     raise ValueError(
         f"Ciudad '{city_str}' no encontrada en el geocodificador. "
         "Por favor escribe el nombre de la ciudad principal más cercana "

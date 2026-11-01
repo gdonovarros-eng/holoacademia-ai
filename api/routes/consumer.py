@@ -133,9 +133,11 @@ encabezados ##:
 ## Tu esencia (Sol)
 ## Tu mundo emocional (Luna)
 ## Cómo te muestras (Ascendente, si hay hora)
+## Tus planetas personales (Mercurio, Venus y Marte)
 ## Tus talentos
 ## Tu camino de crecimiento
-Si falta la hora, dilo con naturalidad y trabaja con el resto."""
+Usa EXACTAMENTE las posiciones de «Datos calculados»: nunca cambies un signo ni inventes una
+posición que no esté ahí. Si falta la hora, dilo con naturalidad y trabaja con el resto."""
 
 NUMER_CONSUMER = ENTERTAIN + """
 
@@ -766,17 +768,26 @@ def _calc_numerologia(inputs: dict):
         return None
 
 
-def _calc_natal(inputs: dict):
+def _calc_natal(inputs: dict, hora_forzada: str = ""):
+    """Carta natal real. Sin hora calcula a las 12:00 y marca sin_hora (las casas y el
+    ascendente se quitan porque dependen de la hora)."""
     try:
         import datetime
         from api.astro.engine import _geocode
         from api.astro.calculator import get_natal_data
         nombre = _g(inputs, "nombre") or "Consultante"
         d = datetime.date.fromisoformat(_g(inputs, "fecha_nacimiento"))
-        hora = _g(inputs, "hora_nacimiento") or "12:00"
+        hora_real = _g(inputs, "hora_nacimiento")
+        hora = hora_forzada or hora_real or "12:00"
         h, m = [int(x) for x in hora.split(":")[:2]]
         lat, lng, tz_str = _geocode(_g(inputs, "lugar_nacimiento"))
-        return get_natal_data(nombre, d.year, d.month, d.day, h, m, lat, lng, tz_str)
+        natal = get_natal_data(nombre, d.year, d.month, d.day, h, m, lat, lng, tz_str)
+        if not hora_real and not hora_forzada:
+            natal["sin_hora"] = True
+            natal["casas"] = {}
+            for p in (natal.get("planetas") or {}).values():
+                p.pop("casa", None)
+        return natal
     except Exception as exc:
         logger.warning("consumer holos natal calc: %s", exc)
         return None
@@ -1116,7 +1127,70 @@ def _datos_tarot_especial(inputs: dict) -> str:
     return "\n".join(filas)
 
 
+_ASPECTOS_NATALES = (("conjunción", 0, 8), ("oposición", 180, 8), ("trígono", 120, 7),
+                     ("cuadratura", 90, 7), ("sextil", 60, 5))
+
+
+def _datos_carta_natal(inputs: dict) -> str:
+    """Posiciones reales para la Carta Natal pagada (antes la IA las adivinaba)."""
+    natal = _calc_natal(inputs)
+    if not natal:
+        signo = _calc_signo(inputs)
+        return ("No se pudo calcular la carta (no ubicamos la ciudad o la fecha). "
+                + (f"Solo es seguro su Sol en {signo}. " if signo else "")
+                + "NO inventes posiciones de Luna, Ascendente ni otros planetas: habla del Sol y "
+                  "explica con naturalidad que para lo demás hace falta su ciudad de nacimiento.")
+    pl = natal.get("planetas") or {}
+    filas = []
+    for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn",
+              "uranus", "neptune", "pluto", "true_node", "chiron"):
+        p = pl.get(k)
+        if not p:
+            continue
+        extra = f", casa {p['casa']}" if p.get("casa") else ""
+        extra += ", retrógrado" if p.get("retrogrado") and k != "true_node" else ""
+        filas.append(f"{_PLANETAS_ES[k]} en {p.get('signo', '')} ({int(p.get('grado', 0))}°{extra})")
+    casas = natal.get("casas") or {}
+    if casas.get(1):
+        filas.append(f"Ascendente en {casas[1]['signo']} ({int(casas[1].get('grado', 0))}°)")
+    if casas.get(10):
+        filas.append(f"Medio Cielo en {casas[10]['signo']}")
+    if natal.get("sin_hora"):
+        # Sin hora no sabemos el momento del día: si un planeta (casi siempre la Luna)
+        # cambió de signo ese día, damos los dos posibles.
+        ini = (_calc_natal(inputs, hora_forzada="00:00") or {}).get("planetas") or {}
+        fin = (_calc_natal(inputs, hora_forzada="23:59") or {}).get("planetas") or {}
+        for k in ("sun", "moon", "mercury", "venus", "mars"):
+            a, b = ini.get(k, {}).get("signo"), fin.get(k, {}).get("signo")
+            if a and b and a != b:
+                filas.append(f"OJO: sin la hora, {_PLANETAS_ES[k]} puede estar en {a} o en {b} "
+                             "(cambió de signo ese día); menciona ambas posibilidades")
+        filas.append("Sin hora de nacimiento: NO hay Ascendente ni casas; no los inventes")
+
+    def dist(a, b):
+        d = abs(a - b) % 360
+        return min(d, 360 - d)
+    personales = ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn")
+    asp = []
+    claves = [k for k in personales if k in pl]
+    for i, a in enumerate(claves):
+        for b in claves[i + 1:]:
+            if natal.get("sin_hora") and "moon" in (a, b):
+                continue  # la Luna se mueve demasiado para afirmar aspectos sin hora
+            dd = dist(pl[a].get("abs_pos", 0), pl[b].get("abs_pos", 0))
+            for nombre, ang, orbe in _ASPECTOS_NATALES:
+                if abs(dd - ang) <= orbe:
+                    asp.append((abs(dd - ang), f"{_PLANETAS_ES[a]} en {nombre} con {_PLANETAS_ES[b]}"))
+                    break
+    asp.sort()
+    texto = "Posiciones reales calculadas (efemérides):\n" + "\n".join(filas)
+    if asp:
+        texto += "\nAspectos principales: " + "; ".join(t for _, t in asp[:8])
+    return texto
+
+
 _DATOS_CALCULADOS = {
+    "carta-natal": _datos_carta_natal,
     "pareja": _datos_pareja,
     "tu-anio": _datos_anio,
     "tarot-especial": _datos_tarot_especial,
