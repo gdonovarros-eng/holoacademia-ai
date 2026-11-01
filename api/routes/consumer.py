@@ -4,7 +4,8 @@ Motor Copiloto "modo consumidor" para la landing de campaña (/promo).
 Entrega directa al PÚBLICO GENERAL (no terapeutas):
 - Método Holos  → mapa emocional + protocolos de liberación
 - Método REMA   → guion de hipnosis personalizada
-- Lecturas      → tarot, horóscopo, carta natal (astrología), numerología
+- Lecturas      → tarot, horóscopo, carta natal (astrología), numerología,
+                  compatibilidad de pareja, tu año, tarot especial, sueños
 - Paquetes      → combinaciones de lecturas
 
 Lo llama el backend de holoacademia.tv (/api/promo-deliver) DESPUÉS de verificar
@@ -145,6 +146,61 @@ entrega una lectura de numerología personal con encabezados ##:
 ## Tus retos
 ## Tu año personal
 ## Un consejo práctico"""
+
+PAREJA_CONSUMER = ENTERTAIN + """
+
+Eres un astrólogo y numerólogo cercano que lee la compatibilidad de dos personas. Recibes los
+datos de ambas y, cuando existen, sus posiciones planetarias y números calculados: básate en
+esos datos y no inventes posiciones. Habla a quien pidió la lectura (tú) y llama a la otra
+persona por su nombre. Entrega con encabezados ##:
+## Lo que los une
+## Cómo se aman (Venus y Marte)
+## Cómo se entienden (Luna y Mercurio)
+## Sus puntos de roce
+## Sus números juntos
+## Un consejo para la relación
+Habla de tendencias y de cómo cuidar el vínculo; nunca sentencies si la relación funcionará o no."""
+
+ANIO_CONSUMER = ENTERTAIN + """
+
+Eres un astrólogo cercano que lee el año que viene de una persona. Recibes su carta natal y los
+tránsitos calculados mes a mes de los planetas lentos (Júpiter, Saturno, Urano, Neptuno, Plutón):
+básate SOLO en esos datos y no inventes fechas ni aspectos. Entrega con encabezados ##:
+## El tema de tu año
+## Tus meses clave
+Un párrafo por cada mes que tenga tránsitos relevantes, con el nombre del mes y el año.
+## Amor y vínculos
+## Trabajo y propósito
+## Tu consejo para el año
+Si un mes no tiene tránsitos relevantes, agrúpalo con otros en una frase."""
+
+TAROT_ESPECIAL_CONSUMER = ENTERTAIN + """
+
+Eres un lector de Tarot cercano. Recibes la pregunta de la persona, la tirada elegida y las
+cartas que salieron en cada posición (ya sorteadas: no cambies ninguna). Entrega con
+encabezados ##:
+## Tu tirada
+Nombre de la tirada y qué responde.
+## Carta por carta
+Un párrafo por posición: el nombre de la posición, la carta (y si salió invertida) y su mensaje
+para la pregunta.
+## El mensaje completo
+Cómo se leen todas juntas.
+## Tu consejo"""
+
+SUENOS_CONSUMER = ENTERTAIN + """
+
+Eres un intérprete de sueños cercano. Lee el sueño de la persona como un mensaje simbólico de su
+mundo interior: personajes, lugares, objetos, colores y emociones. No interpretes el sueño como
+señal de enfermedad ni hables del cuerpo o de la salud. Entrega con encabezados ##:
+## Lo que tu sueño cuenta
+## Sus símbolos
+Los 3 a 6 símbolos principales y lo que suelen representar.
+## Lo que mueve en ti
+La emoción central y cómo se conecta con tu momento actual.
+## Una pregunta para ti
+Una o dos preguntas para reflexionar.
+## Un pequeño ejercicio"""
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -954,6 +1010,9 @@ def _texto_inputs(inputs: dict) -> str:
         "pregunta": "Pregunta o intención", "signo": "Signo", "fecha_nacimiento": "Fecha de nacimiento",
         "hora_nacimiento": "Hora de nacimiento", "lugar_nacimiento": "Lugar de nacimiento",
         "conflicto": "Conflicto emocional detectado",
+        "nombre_2": "Nombre de la otra persona", "fecha_nacimiento_2": "Su fecha de nacimiento",
+        "hora_nacimiento_2": "Su hora de nacimiento", "lugar_nacimiento_2": "Su lugar de nacimiento",
+        "sueno": "El sueño", "emocion": "Cómo se sintió al despertar", "tirada": "Tirada elegida",
     }
     partes = []
     for k, v in inputs.items():
@@ -961,6 +1020,107 @@ def _texto_inputs(inputs: dict) -> str:
             continue
         partes.append(f"{etiquetas.get(k, k)}: {str(v).strip()[:1500]}")
     return "\n".join(partes)
+
+
+# ─── Datos calculados para las lecturas nuevas (pareja, año, tarot especial) ──
+_PLANETAS_ES = {
+    "sun": "Sol", "moon": "Luna", "mercury": "Mercurio", "venus": "Venus", "mars": "Marte",
+    "jupiter": "Júpiter", "saturn": "Saturno", "uranus": "Urano", "neptune": "Neptuno",
+    "pluto": "Plutón", "true_node": "Nodo Norte", "chiron": "Quirón",
+}
+
+
+def _natal_txt(natal: dict | None, planetas=("sun", "moon", "mercury", "venus", "mars")) -> str:
+    if not natal:
+        return "(posiciones no disponibles)"
+    pl = natal.get("planetas") or {}
+    filas = [f"{_PLANETAS_ES.get(k, k)} en {pl[k].get('signo', '')}" for k in planetas if k in pl]
+    asc = (natal.get("casas") or {}).get(1)
+    if asc:
+        filas.append(f"Ascendente en {asc.get('signo', '')}")
+    return ", ".join(filas)
+
+
+def _numeros_txt(num: dict | None) -> str:
+    if not num:
+        return "(números no disponibles)"
+    n, nac = num.get("nombre") or {}, num.get("nacimiento") or {}
+    return (f"misión {nac.get('mision', '?')}, alma {nac.get('alma', '?')}, "
+            f"expresión {n.get('expresion', '?')}, impulso {n.get('impulso', '?')}")
+
+
+def _segunda_persona(inputs: dict) -> dict:
+    return {k: _g(inputs, k + "_2") for k in ("nombre", "fecha_nacimiento", "hora_nacimiento", "lugar_nacimiento")}
+
+
+def _datos_pareja(inputs: dict) -> str:
+    otra = _segunda_persona(inputs)
+    return (f"Tú ({_g(inputs, 'nombre') or 'tú'}): {_natal_txt(_calc_natal(inputs))}. "
+            f"Números: {_numeros_txt(_calc_numerologia(inputs))}.\n"
+            f"{otra['nombre'] or 'La otra persona'}: {_natal_txt(_calc_natal(otra))}. "
+            f"Números: {_numeros_txt(_calc_numerologia(otra))}.")
+
+
+_MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+             "septiembre", "octubre", "noviembre", "diciembre"]
+
+
+def _datos_anio(inputs: dict) -> str:
+    """Tránsitos de los planetas lentos sobre la carta natal, el día 15 de cada mes."""
+    import datetime
+    natal = _calc_natal(inputs)
+    if not natal:
+        return "(no se pudieron calcular los tránsitos)"
+    try:
+        from api.astro.calculator import get_natal_data
+        from api.routes.astro import _transit_aspects
+    except Exception as exc:
+        logger.warning("consumer año imports: %s", exc)
+        return f"Carta natal: {_natal_txt(natal)}."
+    lentos = {"jupiter", "saturn", "uranus", "neptune", "pluto"}
+    personales = {"sun", "moon", "mercury", "venus", "mars"}
+    hoy = datetime.date.today()
+    filas = [f"Carta natal: {_natal_txt(natal)}."]
+    for i in range(1, 13):  # los 12 meses siguientes
+        y, m = hoy.year + (hoy.month - 1 + i) // 12, (hoy.month - 1 + i) % 12 + 1
+        try:
+            tr = get_natal_data("t", y, m, 15, 12, 0, natal["lat"], natal["lng"], natal["tz"])
+            asp = [a for a in _transit_aspects(natal, tr)
+                   if a["planeta_transito"] in lentos and a["planeta_natal"] in personales][:4]
+        except Exception as exc:
+            logger.warning("consumer año tránsito %s-%s: %s", y, m, exc)
+            continue
+        txt = "; ".join(f"{_PLANETAS_ES[a['planeta_transito']]} {a['aspecto']} a tu "
+                        f"{_PLANETAS_ES[a['planeta_natal']]}" for a in asp) or "sin tránsitos relevantes"
+        filas.append(f"{_MESES_ES[m - 1]} {y}: {txt}")
+    return "\n".join(filas)
+
+
+# Tiradas que se venden al público (catálogo completo en api/tarot/knowledge.py).
+TIRADAS_ESPECIALES = ("cruz_celtica", "espejo_relacion", "decision", "proposito_alma", "rueda_del_anio")
+
+
+def _datos_tarot_especial(inputs: dict) -> str:
+    import random
+    from api.tarot.knowledge import TIRADAS, ARCANOS_MAYORES, ARCANOS_MENORES
+    clave = _g(inputs, "tirada")
+    if clave not in TIRADAS_ESPECIALES:
+        clave = "cruz_celtica"
+    t = TIRADAS[clave]
+    azar = random.SystemRandom()
+    cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
+    filas = [f"Tirada: {t['nombre']}"]
+    for pos, carta in zip(t["posiciones"], cartas):
+        inv = " (invertida)" if azar.random() < 0.25 else ""
+        filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
+    return "\n".join(filas)
+
+
+_DATOS_CALCULADOS = {
+    "pareja": _datos_pareja,
+    "tu-anio": _datos_anio,
+    "tarot-especial": _datos_tarot_especial,
+}
 
 
 # product → (system_prompt, max_tokens)
@@ -971,7 +1131,12 @@ _PRODUCTOS = {
     "horoscopo":     (HOROSCOPO_CONSUMER, 1600),
     "carta-natal":   (ASTRO_CONSUMER, 2400),
     "numerologia":   (NUMER_CONSUMER, 1800),
+    "pareja":        (PAREJA_CONSUMER, 2400),
+    "tu-anio":       (ANIO_CONSUMER, 2800),
+    "tarot-especial":(TAROT_ESPECIAL_CONSUMER, 2600),
+    "suenos":        (SUENOS_CONSUMER, 1800),
 }
+_LECTURAS = ("tarot", "horoscopo", "carta-natal", "numerologia", "pareja", "tu-anio", "tarot-especial", "suenos")
 # Paquetes = varias lecturas, una tras otra.
 _PAQUETES = {
     "pack-claridad": ["carta-natal", "horoscopo", "tarot"],
@@ -980,7 +1145,7 @@ _PAQUETES = {
 
 
 class GenReq(BaseModel):
-    product: str = Field(..., description="holos | rema | tarot | horoscopo | carta-natal | numerologia | pack-*")
+    product: str = Field(..., description="holos | rema | tarot | horoscopo | carta-natal | numerologia | pareja | tu-anio | tarot-especial | suenos | pack-*")
     lang: str = Field(default="es")
     inputs: dict = Field(default_factory=dict)
 
@@ -991,7 +1156,13 @@ def _generar_uno(product: str, inputs: dict) -> dict:
         return {"ok": False, "error": "producto_invalido", "answer": ""}
     system, max_tokens = sys_tok
     prompt = _texto_inputs(inputs) or "(sin datos adicionales)"
-    temp = 0.6 if product in ("tarot", "horoscopo", "carta-natal", "numerologia") else 0.5
+    calc = _DATOS_CALCULADOS.get(product)
+    if calc:
+        try:
+            prompt += "\n\nDatos calculados (no los cambies):\n" + calc(inputs)
+        except Exception as exc:
+            logger.warning("consumer %s datos: %s", product, exc)
+    temp = 0.6 if product in _LECTURAS else 0.5
     return _generar_con_sistema(system, prompt, f"consumer:{product}", temp, max_tokens=max_tokens)
 
 

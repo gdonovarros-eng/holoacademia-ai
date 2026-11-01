@@ -177,10 +177,13 @@ def _geocode(city_str: str) -> tuple[float, float, str]:
     Retorna (lat, lng, tz_str) para una ciudad.
     Lanza ValueError si la ciudad no está en el catálogo.
     """
-    key = city_str.lower().strip()
+    import unicodedata
+    # Sin acentos: el catálogo usa "ciudad de mexico" y la gente escribe "México"
+    key = unicodedata.normalize("NFKD", city_str.lower().strip())
+    key = "".join(ch for ch in key if not unicodedata.combining(ch))
     # Eliminar palabras genéricas como país para búsqueda más limpia
     for noise in [", mexico", ", colombia", ", argentina", ", chile", ", peru",
-                  ", españa", ", spain", ", venezuela", ", ecuador", ", bolivia"]:
+                  ", espana", ", spain", ", venezuela", ", ecuador", ", bolivia"]:
         key = key.replace(noise, "")
     key = key.strip()
     # Búsqueda exacta primero, luego parcial
