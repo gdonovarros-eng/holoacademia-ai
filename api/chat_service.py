@@ -730,6 +730,46 @@ def _user_said_no(message: str) -> bool:
     return False
 
 
+# Guardrail de máxima prioridad: se antepone a TODOS los prompts. Ataca las quejas
+# reales ("no responde lo que pregunta", "inconsistencias", "dice lo que quiere").
+GUARDRAIL = (
+    "REGLA #1 — RESPONDE LO QUE TE PREGUNTAN. Cuando el terapeuta te hace una pregunta "
+    "directa (una duda, «¿qué es…?», «¿cómo…?», «¿por qué…?», «explícame…», «¿qué opinas "
+    "de…?»), contéstala de forma directa, clara y al grano, sin cambiar de tema y sin volcar "
+    "protocolos o tablas que en esa pregunta no te pidieron. (Cuando en cambio describe a un "
+    "paciente, escribe un síntoma o avanza el protocolo, actúa con normalidad según tu rol.)\n"
+    "REGLA #2 — HONESTIDAD. Si no sabes algo o no tienes el dato, dilo en una línea; NUNCA "
+    "inventes datos, nombres, cifras ni pares. Es mejor decir «no tengo ese dato» que alucinar.\n"
+    "REGLA #3 — COHERENCIA. Mantente consistente con lo que ya dijiste en esta misma "
+    "conversación; no te contradigas de un mensaje al siguiente.\n\n"
+)
+
+
+def _es_pregunta_directa(message: str) -> bool:
+    """¿El terapeuta está PREGUNTANDO algo (no describiendo a un paciente ni
+    reportando la MS ni mandando datos de sesión)? Si es así, no se le debe
+    secuestrar la respuesta con tablas/protocolo: hay que contestarle."""
+    m = (message or "").strip().lower()
+    if not m:
+        return False
+    # Los mensajes de flujo de sesión NO son preguntas libres.
+    if m.startswith("═══") or m.startswith("⬛"):
+        return False
+    # Reporte de la MS (sí/no cortos) tampoco.
+    if _user_confirmed_yes(message) or _user_said_no(message):
+        return False
+    if "?" in m or "¿" in m:
+        return True
+    arranques = (
+        "que es", "qué es", "como ", "cómo ", "por que", "por qué", "cual ", "cuál ",
+        "explica", "explicame", "explícame", "puedes", "podrias", "podrías", "dime ",
+        "me puedes", "diferencia entre", "para que sirve", "para qué sirve",
+        "que significa", "qué significa", "que opinas", "qué opinas", "recomiendame",
+        "recomiéndame", "ayudame a entender", "ayúdame a entender",
+    )
+    return any(m.startswith(a) for a in arranques)
+
+
 def _get_sistema_from_last_ai_message(history: list[dict]) -> Optional[str]:
     """
     Busca el sistema en el último mensaje del asistente (cuando preguntó sobre él).
@@ -834,6 +874,14 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
     else:
         system_prompt = ALUMNO_SYSTEM
 
+    # Guardrail de máxima prioridad al frente de todo (responder la pregunta,
+    # no inventar, no contradecirse).
+    system_prompt = GUARDRAIL + system_prompt
+
+    # ¿Es una pregunta directa del terapeuta? Entonces NO se le secuestra la
+    # respuesta con tablas/protocolo: se le contesta.
+    es_pregunta = _es_pregunta_directa(message)
+
     # ── Para el modo terapeuta: inyectar tabla cuando se identifica el sistema ──
     tabla_a_emitir = ""
     sistema_sesion = None
@@ -846,7 +894,7 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
 
     es_peticion_tabla = _is_explicit_table_request(message)
 
-    if mode == "terapeuta" and not en_narrativa:
+    if mode == "terapeuta" and not en_narrativa and not es_pregunta:
         # 1. Intentar detección fina: síntoma específico → subsistema concreto
         sintoma_result = detect_sintoma(message)
         if not sintoma_result:
@@ -879,7 +927,7 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
                 sistema_sesion = sistema_historial
                 tabla_a_emitir = get_conflict_table(sistema_sesion)
 
-    if mode == "terapeuta" and not en_narrativa and sistema_sesion and not usuario_dijo_no:
+    if mode == "terapeuta" and not en_narrativa and not es_pregunta and sistema_sesion and not usuario_dijo_no:
         # Añadir referencia completa al AI (para que sepa qué sistema/subsistema está activo)
         if subsistema_sesion:
             tabla_ref = get_subsystem_table(sistema_sesion, subsistema_sesion)
@@ -916,7 +964,11 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
     ctx_timeout = 16.0 if mode == "alumno" else 9.0
     context = _get_context(message, timeout=ctx_timeout)
     if context:
-        system_prompt += f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---"
+        system_prompt += (
+            f"\n\n--- CONTEXTO DEL MANUAL ---\n{context}\n---\n"
+            "Usa este material SOLO si responde la pregunta. Si no viene al caso, "
+            "respóndela con tu propio conocimiento y no fuerces estos fragmentos."
+        )
 
     _d = _LANG_DIRECTIVES.get(_norm_lang(lang))
     if _d:
@@ -940,13 +992,14 @@ def stream_chat(message: str, history: list[dict], mode: str, lang: str = "es") 
         is_presession = message.startswith('═══ DATOS PRE-SESIÓN')
         is_cierre    = message.startswith('⬛ CIERRE DE SESIÓN')
         max_tokens   = 2500 if (is_presession or is_cierre) else 1000
-        temperature  = 0.5 if is_presession else (0.3 if is_cierre else 0.4)
+        # Temperatura más baja = más consistente y menos "dice lo que quiere".
+        temperature  = 0.4 if is_presession else 0.3
     elif mode == "pares":
         max_tokens = 800
-        temperature = 0.3
+        temperature = 0.25
     else:
         max_tokens = 2400   # alumno (Sinodal): respuestas más extensas y profundas
-        temperature = 0.55
+        temperature = 0.4
 
     try:
         stream = client.chat.completions.create(
@@ -1001,7 +1054,7 @@ def generar_respuesta_holos(prompt: str, lang: str = "es") -> dict:
             model=holos_model,
             messages=messages,
             max_tokens=int(os.getenv("HOLOS_MAX_TOKENS", "3500")),
-            temperature=0.5,
+            temperature=0.4,
         )
         text = (resp.choices[0].message.content or "").strip()
         return {"answer": text, "ok": bool(text)}
