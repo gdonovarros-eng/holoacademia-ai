@@ -224,29 +224,31 @@ def _geocode_online(city_str: str):
         import requests
     except Exception:
         return None
-    # El primer segmento antes de la coma suele ser la ciudad; probamos ambos
-    # y en los tres idiomas de la campaña por si el nombre viene localizado.
+    # Open-Meteo hace fuzzy-match por nombre sin importar el idioma (el parámetro
+    # 'language' solo cambia el nombre devuelto), así que basta UNA llamada por
+    # candidato. Probamos el texto completo y, si trae coma, la ciudad sola.
     candidatos = [name]
     if "," in name:
-        candidatos.append(name.split(",")[0].strip())
+        c = name.split(",")[0].strip()
+        if c and c != name:
+            candidatos.append(c)
     for cand in candidatos:
-        for lang in ("es", "en", "pt"):
-            try:
-                r = requests.get(
-                    "https://geocoding-api.open-meteo.com/v1/search",
-                    params={"name": cand, "count": 1, "language": lang, "format": "json"},
-                    headers={"User-Agent": "holoacademia-astro/1.0"},
-                    timeout=8,
-                )
-                res = (r.json() or {}).get("results") or []
-                if res:
-                    g = res[0]
-                    lat = float(g["latitude"])
-                    lng = float(g["longitude"])
-                    tz = g.get("timezone") or _tz_from_lon(lng)
-                    return (lat, lng, tz)
-            except Exception:
-                continue
+        try:
+            r = requests.get(
+                "https://geocoding-api.open-meteo.com/v1/search",
+                params={"name": cand, "count": 1, "language": "es", "format": "json"},
+                headers={"User-Agent": "holoacademia-astro/1.0"},
+                timeout=6,
+            )
+            res = (r.json() or {}).get("results") or []
+            if res:
+                g = res[0]
+                lat = float(g["latitude"])
+                lng = float(g["longitude"])
+                tz = g.get("timezone") or _tz_from_lon(lng)
+                return (lat, lng, tz)
+        except Exception:
+            continue
     return None
 
 
