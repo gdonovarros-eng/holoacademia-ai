@@ -4,6 +4,7 @@ numpy>=1.26,<3
 python-dotenv>=1.0.1,<2
 uvicorn[standard]==0.30.6
 pytz>=2024.1
+requests>=2.31,<3          # geocoder mundial (Open-Meteo) y llamadas HTTP
 psycopg2-binary>=2.9.9,<3  # conexión a Supabase (RAG: índice de conocimiento)
 reportlab>=4.0,<5          # PDF "carta antigua" de la entrega del consumidor
 

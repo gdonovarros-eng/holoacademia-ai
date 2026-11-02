@@ -7,6 +7,7 @@ from __future__ import annotations
 import datetime
 import os
 import logging
+from functools import lru_cache
 from typing import Optional
 
 from .calculator import (
@@ -172,27 +173,25 @@ _CITY_COORDS: dict[str, tuple[float, float, str]] = {
     "dallas": (32.7767, -96.7970, "America/Chicago"),
 }
 
-def _geocode(city_str: str) -> tuple[float, float, str]:
-    """
-    Retorna (lat, lng, tz_str) para una ciudad.
-    Lanza ValueError si la ciudad no está en el catálogo.
-    """
+def _normalize_key(city_str: str) -> str:
+    """minúsculas, sin acentos y sin el país al final: 'México, MX' → 'mexico'."""
     import unicodedata
-    # Sin acentos: el catálogo usa "ciudad de mexico" y la gente escribe "México"
     key = unicodedata.normalize("NFKD", city_str.lower().strip())
     key = "".join(ch for ch in key if not unicodedata.combining(ch))
-    # Eliminar palabras genéricas como país para búsqueda más limpia
     for noise in [", mexico", ", colombia", ", argentina", ", chile", ", peru",
                   ", espana", ", spain", ", venezuela", ", ecuador", ", bolivia"]:
         key = key.replace(noise, "")
-    key = key.strip()
-    # Búsqueda exacta primero (completa y luego cada parte separada por coma)
+    return key.strip()
+
+
+def _geocode_local(key: str):
+    """Catálogo offline de ciudades comunes. Devuelve (lat, lng, tz) o None."""
     if key in _CITY_COORDS:
         return _CITY_COORDS[key]
     for parte in (p.strip() for p in key.split(",")):
         if parte in _CITY_COORDS:
             return _CITY_COORDS[parte]
-    # Luego por palabra completa, la ciudad más larga gana: así "Los Angeles,
+    # Por palabra completa, la ciudad más larga gana: así "Los Angeles,
     # California" no cae en "cali" (Colombia) por contener esas letras.
     import re
     hits = [k for k in _CITY_COORDS if re.search(r"\b" + re.escape(k) + r"\b", key)]
@@ -202,10 +201,71 @@ def _geocode(city_str: str) -> tuple[float, float, str]:
         for k, v in _CITY_COORDS.items():
             if key in k:
                 return v
+    return None
+
+
+def _tz_from_lon(lng: float) -> str:
+    """Último recurso: zona horaria aproximada por longitud (Etc/GMT, signo invertido)."""
+    off = max(-12, min(14, int(round(float(lng) / 15.0))))
+    return "UTC" if off == 0 else "Etc/GMT%+d" % (-off)
+
+
+@lru_cache(maxsize=8192)
+def _geocode_online(city_str: str):
+    """
+    Geocoder mundial (Open-Meteo): acepta cualquier ciudad en cualquier idioma
+    (es/en/pt y más) y devuelve (lat, lng, tz_IANA). Gratis, sin API key.
+    Cacheado en memoria. Devuelve None si no resuelve o no hay red.
+    """
+    name = (city_str or "").strip()
+    if len(name) < 2:
+        return None
+    try:
+        import requests
+    except Exception:
+        return None
+    # El primer segmento antes de la coma suele ser la ciudad; probamos ambos
+    # y en los tres idiomas de la campaña por si el nombre viene localizado.
+    candidatos = [name]
+    if "," in name:
+        candidatos.append(name.split(",")[0].strip())
+    for cand in candidatos:
+        for lang in ("es", "en", "pt"):
+            try:
+                r = requests.get(
+                    "https://geocoding-api.open-meteo.com/v1/search",
+                    params={"name": cand, "count": 1, "language": lang, "format": "json"},
+                    headers={"User-Agent": "holoacademia-astro/1.0"},
+                    timeout=8,
+                )
+                res = (r.json() or {}).get("results") or []
+                if res:
+                    g = res[0]
+                    lat = float(g["latitude"])
+                    lng = float(g["longitude"])
+                    tz = g.get("timezone") or _tz_from_lon(lng)
+                    return (lat, lng, tz)
+            except Exception:
+                continue
+    return None
+
+
+def _geocode(city_str: str) -> tuple[float, float, str]:
+    """
+    Retorna (lat, lng, tz_str) para una ciudad. Primero el catálogo offline
+    (rápido, ciudades comunes); si no está, el geocoder mundial de Open-Meteo
+    (cualquier ciudad del mundo, cualquier idioma). Lanza ValueError si nada resuelve.
+    """
+    local = _geocode_local(_normalize_key(city_str))
+    if local:
+        return local
+    online = _geocode_online(city_str.strip())
+    if online:
+        return online
     raise ValueError(
-        f"Ciudad '{city_str}' no encontrada en el geocodificador. "
-        "Por favor escribe el nombre de la ciudad principal más cercana "
-        "(ej: 'Ciudad de México', 'Buenos Aires', 'Madrid', 'Bogotá')."
+        f"Ciudad '{city_str}' no encontrada. "
+        "Revisa la ortografía o escribe la ciudad principal más cercana "
+        "(ej: 'Ciudad de México', 'Buenos Aires', 'Madrid', 'São Paulo')."
     )
 
 
