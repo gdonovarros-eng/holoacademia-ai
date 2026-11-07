@@ -82,15 +82,20 @@ class _Conn:
 
 # ── Plan configuration ────────────────────────────────────────────────────────
 
+# Cupo "ilimitado": la página de planes vende Especialista como "Todo ilimitado".
+# Se guarda como número (el consumo atómico compara contra él) y /api/usage lo
+# marca como unlimited para que la interfaz muestre "Ilimitado".
+ILIMITADO = 1_000_000
+
 PLAN_LIMITS: dict[str, dict[str, int]] = {
     # ── Planes vigentes (holoacademia.tv) ──
     # Espejo de los cupos que ya tenían sus equivalentes viejos. Si quieres otros
     # números, este es el único lugar donde se cambian.
-    "especialista": {"sinodal": 100, "terapeuta": 50, "pares": 50},   # antes: premium
+    "especialista": {"sinodal": ILIMITADO, "terapeuta": ILIMITADO, "pares": ILIMITADO},   # antes: premium
     "terapeuta":    {"sinodal": 65,  "terapeuta": 35, "pares": 35},   # antes: elite_pro
     "aprendiz":     {"sinodal": 30,  "terapeuta": 20, "pares": 20},   # antes: iniciacion
     # ── Planes anteriores (se respetan mientras existan suscriptores) ──
-    "premium":      {"sinodal": 100, "terapeuta": 50, "pares": 50},
+    "premium":      {"sinodal": ILIMITADO, "terapeuta": ILIMITADO, "pares": ILIMITADO},  # .tv manda aquí a Especialista
     "elite_pro":    {"sinodal": 65,  "terapeuta": 35, "pares": 35},
     "iniciacion":   {"sinodal": 30,  "terapeuta": 20, "pares": 20},
     "medida":       {"sinodal": 10,  "terapeuta": 10, "pares": 10},
@@ -252,7 +257,8 @@ def get_usage(db_path: Path, user_id: str) -> dict:
         "plan_name": PLAN_NAMES.get(plan, plan),
         "month": month,
         "usage": {
-            k: {"used": used[k], "limit": limits[k], "allowed": used[k] < limits[k]}
+            k: {"used": used[k], "limit": limits[k], "allowed": used[k] < limits[k],
+                "unlimited": limits[k] >= ILIMITADO}
             for k in ("sinodal", "terapeuta", "pares")
         },
     }

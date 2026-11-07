@@ -608,8 +608,9 @@
  if (!u) return;
  const badge = document.getElementById('usageBadge');
  if (badge) {
- const pct = u.limit >0 ? u.used / u.limit : 1;
+ const pct = u.unlimited ? 0 : (u.limit >0 ? u.used / u.limit : 1);
  badge.textContent = `${u.used}/${u.limit} sessions`;
+ if (u.unlimited) badge.textContent = 'Unlimited';
  badge.style.display = 'block';
  if (!u.allowed) {
  badge.classList.add('limit');

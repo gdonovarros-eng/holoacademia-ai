@@ -400,8 +400,9 @@
  if (!u) return;
  const badge = document.getElementById('usageBadge');
  if (badge) {
- const pct = u.limit >0 ? u.used / u.limit : 1;
+ const pct = u.unlimited ? 0 : (u.limit >0 ? u.used / u.limit : 1);
  badge.textContent = `${u.used}/${u.limit} sessões`;
+ if (u.unlimited) badge.textContent = 'Ilimitado';
  badge.style.display = 'block';
  badge.style.color = !u.allowed ? '#ec4899' : pct >= 0.8 ? '#f472b6' : '#a78bfa';
  badge.style.borderColor = !u.allowed ? 'rgba(236, 72, 153,0.4)' : pct >= 0.8 ? 'rgba(244, 114, 182,0.4)' : 'rgba(255,255,255,0.1)';
