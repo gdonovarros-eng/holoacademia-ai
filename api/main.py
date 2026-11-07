@@ -28,7 +28,7 @@ PAIR_VISUALS_DIR = BASE_DIR / "data" / "pair_visuals"
 THERAPY_LOGO_PATH = BASE_DIR / "data" / "LOGO-IA.png"
 
 from fastapi import FastAPI, Request, Response
-from fastapi.responses import FileResponse, RedirectResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, RedirectResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import ConfigDict
@@ -358,6 +358,20 @@ def _get_session_user(request: Request) -> tuple[str, str] | None:
     if not cookie or not _EMBED_SECRET:
         return None
     return verify_session(cookie, _EMBED_SECRET)
+
+
+@app.middleware("http")
+async def motor_guard(request: Request, call_next):
+    """
+    El motor terapéutico (/therapeutic/*) gasta modelo en cada llamada: solo
+    responde con la cookie de sesión firmada (la que pone el proxy de .tv o la
+    que se emite al abrir el Copiloto). Sin firma -> 401. /rag-status sigue abierto.
+    """
+    path = request.url.path
+    if (_EMBED_SECRET and request.method == "POST" and path.startswith("/therapeutic/")
+            and _get_session_user(request) is None):
+        return JSONResponse({"ok": False, "error": "no_autorizado"}, status_code=401)
+    return await call_next(request)
 
 
 @app.middleware("http")
