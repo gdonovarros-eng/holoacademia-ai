@@ -247,7 +247,15 @@ señal de enfermedad ni hables del cuerpo o de la salud. Entrega con encabezados
 ## Sus símbolos
 Los 3 a 6 símbolos principales y lo que suelen representar.
 ## Lo que mueve en ti
-La emoción central y cómo se conecta con tu momento actual.
+La emoción central y cómo se conecta con tu momento actual (usa lo que la persona contó de su vida,
+si lo contó, y si el sueño se repite, qué puede estar insistiendo en mostrarle).
+## Tu familia en el sueño
+Si aparecen familiares, casas de la infancia, abuelos o lugares de origen: qué lealtades o
+mandatos familiares podría estar mostrando el sueño, como posibilidad para reflexionar (nunca
+afirmes secretos, culpas ni hechos de la familia). Si no aparece nada familiar, omite el apartado.
+## Los números de tu sueño
+Solo si vienen números en «Datos calculados»: qué simbolizan y, si viene su camino de vida, cómo se
+relacionan con él. Si no hay números, omite el apartado.
 ## Una pregunta para ti
 Una o dos preguntas para reflexionar.
 ## Un pequeño ejercicio"""
@@ -1145,7 +1153,8 @@ def _texto_inputs(inputs: dict) -> str:
         "conflicto": "Conflicto emocional detectado",
         "nombre_2": "Nombre de la otra persona", "fecha_nacimiento_2": "Su fecha de nacimiento",
         "hora_nacimiento_2": "Su hora de nacimiento", "lugar_nacimiento_2": "Su lugar de nacimiento",
-        "sueno": "El sueño", "emocion": "Cómo se sintió al despertar", "tirada": "Tirada elegida",
+        "sueno": "El sueño", "emocion": "Cómo se sintió al despertar", "contexto": "Lo que está viviendo ahora",
+        "recurrente": "¿Se repite este sueño?", "tirada": "Tirada elegida",
     }
     partes = []
     for k, v in inputs.items():
@@ -1548,10 +1557,46 @@ def _datos_carta_natal(inputs: dict) -> str:
     return texto
 
 
+_NUM_PALABRAS = {"uno": 1, "una": 1, "dos": 2, "tres": 3, "cuatro": 4, "cinco": 5, "seis": 6, "siete": 7, "ocho": 8,
+                  "nueve": 9, "diez": 10, "once": 11, "doce": 12, "trece": 13, "veinte": 20, "cien": 100,
+                  "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+                  "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, "um": 1, "três": 3, "quatro": 4, "sete": 7, "oito": 8, "nove": 9, "dez": 10}
+
+
+def _reducir(n: int) -> int:
+    """Reducción numerológica conservando los maestros 11, 22 y 33."""
+    while n > 9 and n not in (11, 22, 33):
+        n = sum(int(c) for c in str(n))
+    return n
+
+
+def _datos_suenos(inputs: dict) -> str:
+    """Números que aparecen en el sueño (con su reducción) y el camino de vida si dio su fecha: la
+    dimensión «Numerología y ciclos» de la Guía de Sueños del Hub, sin que el modelo haga cuentas."""
+    import datetime
+    texto = (_g(inputs, "sueno") + " " + _g(inputs, "contexto")).lower()
+    nums = [int(x) for x in re.findall(r"\b\d{1,4}\b", texto)]
+    nums += [_NUM_PALABRAS[w] for w in re.findall(r"[a-záéíóúñ]+", texto) if w in _NUM_PALABRAS and w not in ("una", "uno", "um")]
+    filas = []
+    vistos = []
+    for n in nums:
+        if n not in vistos and n > 0:
+            vistos.append(n)
+    if vistos:
+        filas.append("Números en el sueño: " + ", ".join(f"{n}" + (f" (se reduce a {_reducir(n)})" if _reducir(n) != n else "") for n in vistos[:8]))
+    try:
+        f = datetime.date.fromisoformat(_g(inputs, "fecha_nacimiento"))
+        filas.append(f"Camino de vida de la persona: {_reducir(sum(int(c) for c in f.strftime('%Y%m%d')))}")
+    except Exception:
+        pass
+    return "\n".join(filas) or "(sin números en el sueño)"
+
+
 _DATOS_CALCULADOS = {
     "tarot": _datos_tarot,
     "numerologia": _datos_numerologia,
     "horoscopo": _datos_horoscopo,
+    "suenos": _datos_suenos,
     "carta-natal": _datos_carta_natal,
     "pareja": _datos_pareja,
     "tu-anio": _datos_anio,
