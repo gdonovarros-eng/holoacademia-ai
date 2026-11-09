@@ -127,15 +127,20 @@ Presenta La Muerte, La Torre o El Diablo como cambio, sacudida o apego, nunca co
 
 HOROSCOPO_CONSUMER = ENTERTAIN + """
 
-Eres un astrólogo cercano. Con el signo de la persona y el CIELO REAL DE HOY (vienen en «Datos
-calculados»: no los cambies), entrega un horóscopo personalizado para su momento actual. Ancla cada
-apartado en al menos una posición real del cielo de hoy (por ejemplo, dónde está la Luna o Venus) y
-cómo toca a su signo. Encabezados ##:
-## Tu energía ahora
+Eres un astrólogo cercano. Con el signo de la persona, el perfil de su signo y el CIELO REAL
+(vienen en «Datos calculados»: no los cambies), entrega su horóscopo para el PERIODO indicado
+(hoy, esta semana o este mes). Ancla cada apartado en al menos una posición o fecha real del cielo
+y en cómo toca a su signo (usa sus casas solares). El perfil del signo sirve para personalizar el
+tono y los ejemplos, sin recitarlo. Encabezados ##:
+## Tu energía [de hoy / de la semana / del mes]
 ## Amor y vínculos
 ## Trabajo y dinero
 ## Bienestar
-## Tu enfoque de la semana"""
+Solo emocional y de hábitos (descanso, ritmo, ánimo); nada de partes del cuerpo ni dolencias.
+## [Si es la semana:] Tu semana día a día
+Una línea por día con lo que marca la Luna ese día. [Si es el mes:] ## Tus fechas clave del mes,
+con las fechas del calendario (lunas nueva y llena, cambios de signo y retrogradaciones) y qué
+aprovechar en cada una. [Si es hoy:] ## Tu enfoque de hoy, una acción concreta para el día."""
 
 ASTRO_CONSUMER = ENTERTAIN + """
 
@@ -1353,20 +1358,81 @@ def _datos_numerologia(inputs: dict) -> str:
     return "\n".join(filas)
 
 
+_SIGNOS_ES = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario",
+              "Capricornio", "Acuario", "Piscis"]
+
+
+def _perfil_signo(signo: str) -> str:
+    """El perfil del signo del motor de horóscopo del Hub, sin lo de cuerpo y salud (las lecturas
+    públicas no hablan de órganos)."""
+    try:
+        from api.astro.horoscopo_knowledge import build_horoscopo_context
+        txt = build_horoscopo_context(signo)
+    except Exception:
+        return ""
+    if txt.startswith("[ERROR]"):
+        return ""
+    fuera, out = False, []
+    for linea in txt.splitlines():
+        if linea.startswith("--- "):
+            fuera = "SALUD" in linea or "COMPATIBILIDAD" in linea
+        if fuera or linea.startswith(("Cuerpo:", "Color:", "Piedras:", "Metal:")):
+            continue
+        out.append(linea)
+    return "\n".join(out)
+
+
+def _calendario_cielo(desde, dias: int) -> list[str]:
+    """Día por día (a mediodía, hora de CDMX): signo de la Luna, lunas nueva/llena/cuartos y los
+    cambios de signo o de sentido (retrógrado/directo) de Sol a Saturno."""
+    import datetime
+    from api.astro.calculator import get_natal_data
+    fases = ((0, "Luna nueva"), (90, "Cuarto creciente"), (180, "Luna llena"), (270, "Cuarto menguante"))
+    out, prev = [], None
+    for d in range(-1, dias + 1):   # desde ayer, para no perder lo que pasa hoy
+        f = desde + datetime.timedelta(days=d)
+        pl = get_natal_data("t", f.year, f.month, f.day, 12, 0, 19.4326, -99.1332, "America/Mexico_City").get("planetas") or {}
+        elong = (pl["moon"]["abs_pos"] - pl["sun"]["abs_pos"]) % 360
+        if prev is not None:
+            notas = []
+            fecha = f"{f.day} de {_MESES_ES[f.month - 1]}"
+            if pl["moon"]["signo"] != prev["moon"]["signo"]:
+                notas.append(f"la Luna entra en {pl['moon']['signo']}")
+            for grados, nombre in fases:   # la fase ocurre entre ayer y hoy
+                a, b = (prev["_elong"] - grados) % 360, (elong - grados) % 360
+                if a > 300 and b < 60:
+                    notas.append(f"{nombre} en {pl['moon']['signo']}")
+            for k in ("sun", "mercury", "venus", "mars", "jupiter", "saturn"):
+                if pl[k]["signo"] != prev[k]["signo"]:
+                    notas.append(f"{_PLANETAS_ES[k]} entra en {pl[k]['signo']}")
+                if bool(pl[k].get("retrogrado")) != bool(prev[k].get("retrogrado")):
+                    notas.append(f"{_PLANETAS_ES[k]} se vuelve {'retrógrado' if pl[k].get('retrogrado') else 'directo'}")
+            out.append(f"{fecha}: Luna en {pl['moon']['signo']}" + (" · " + "; ".join(notas) if notas else ""))
+        pl["_elong"] = elong
+        prev = pl
+    return out
+
+
 def _datos_horoscopo(inputs: dict) -> str:
-    """Signo de la persona + el cielo REAL de hoy (antes no calculaba nada)."""
+    """Signo, perfil del signo (motor del Hub) y el cielo REAL del periodo: hoy, la semana o el mes."""
     import datetime
     signo = _calc_signo(inputs) or _g(inputs, "signo")
-    filas = [f"Signo solar de la persona: {signo or '(no indicado)'}", f"Fecha de hoy: {datetime.date.today().isoformat()}"]
-    SIGNOS = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"]
-    AREAS = ["identidad e imagen", "dinero y recursos", "comunicación y entorno cercano", "hogar y familia", "creatividad, placer e hijos",
-             "trabajo diario y salud de hábitos", "pareja y socios", "intimidad y recursos compartidos", "viajes, estudios y creencias",
-             "carrera y metas", "amistades y proyectos", "descanso y mundo interior"]
+    tipo = {"semana": "semana", "semanal": "semana", "mes": "mes", "mensual": "mes"}.get(_g(inputs, "tipo").lower(), "hoy")
+    hoy = datetime.date.today()
+    periodo = {"hoy": f"HOY ({hoy.isoformat()})", "semana": f"ESTA SEMANA (del {hoy.isoformat()} al {(hoy + datetime.timedelta(days=6)).isoformat()})",
+               "mes": f"LO QUE QUEDA DEL MES (del {hoy.day} de {_MESES_ES[hoy.month - 1]} a fin de mes, {hoy.year})"}[tipo]
+    filas = [f"Signo solar de la persona: {signo or '(no indicado)'}", f"PERIODO DEL HORÓSCOPO: {periodo}"]
     norm = lambda x: x.lower().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
-    idx = next((i for i, n in enumerate(SIGNOS) if norm(n) == norm(signo or "")), None)
+    idx = next((i for i, n in enumerate(_SIGNOS_ES) if norm(n) == norm(signo or "")), None)
     if idx is not None:
+        AREAS = ["identidad e imagen", "dinero y recursos", "comunicación y entorno cercano", "hogar y familia", "creatividad, placer e hijos",
+                 "trabajo diario y salud de hábitos", "pareja y socios", "intimidad y recursos compartidos", "viajes, estudios y creencias",
+                 "carrera y metas", "amistades y proyectos", "descanso y mundo interior"]
         filas.append("Casas solares para su signo (usa SOLO estas al decir qué área toca cada signo; Escorpio, Leo, etc. NO son su signo): "
-                     + "; ".join(f"{SIGNOS[(idx + k) % 12]} = casa {k + 1} ({AREAS[k]})" for k in range(12)))
+                     + "; ".join(f"{_SIGNOS_ES[(idx + k) % 12]} = casa {k + 1} ({AREAS[k]})" for k in range(12)))
+        perfil = _perfil_signo(_SIGNOS_ES[idx])
+        if perfil:
+            filas.append(perfil)
     try:
         from api.astro.calculator import get_transits_today
         tr = get_transits_today(19.4326, -99.1332, "America/Mexico_City")
@@ -1374,6 +1440,12 @@ def _datos_horoscopo(inputs: dict) -> str:
         filas.append("Cielo de hoy (posiciones reales): " + ", ".join(
             f"{_PLANETAS_ES.get(k, k)} en {pl[k].get('signo', '')}" + (" retrógrado" if pl[k].get("retrogrado") else "")
             for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn") if k in pl))
+        if tipo != "hoy":
+            dias = 6 if tipo == "semana" else (datetime.date(hoy.year + hoy.month // 12, hoy.month % 12 + 1, 1) - hoy).days - 1
+            cal = _calendario_cielo(hoy, max(dias, 1))
+            if tipo == "mes":   # en el mes solo los días con algo; en la semana, todos
+                cal = [c for c in cal if " · " in c]
+            filas.append("Calendario real del periodo:\n" + "\n".join(cal))
     except Exception as exc:
         logger.warning("consumer horoscopo cielo: %s", exc)
     return "\n".join(filas)
