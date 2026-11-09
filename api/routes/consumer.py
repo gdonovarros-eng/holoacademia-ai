@@ -118,7 +118,12 @@ Nombra cada carta en su posición (y si salió invertida) y qué dice sobre la p
 El mensaje central que forman juntas para tu pregunta.
 ## Lo que te favorece
 ## Lo que conviene soltar
-## Un consejo para los próximos días"""
+## Un consejo para los próximos días
+Las palabras clave, la sombra y la pregunta de cada carta vienen del motor de tarot: úsalas para
+interpretar, sin copiarlas como lista. Usa en la lectura la pregunta de la carta que más ayude.
+Si viene el «PERFIL TARÓTICO» (carta de personalidad, del alma, año personal), dedícale un párrafo
+breve en «## Tus cartas personales», justo antes del consejo; si no viene, omite ese apartado.
+Presenta La Muerte, La Torre o El Diablo como cambio, sacudida o apego, nunca como amenaza."""
 
 HOROSCOPO_CONSUMER = ENTERTAIN + """
 
@@ -217,7 +222,12 @@ Un párrafo por posición: el nombre de la posición, la carta (y si salió inve
 para la pregunta.
 ## El mensaje completo
 Cómo se leen todas juntas.
-## Tu consejo"""
+## Tu consejo
+Las palabras clave, la sombra y la pregunta de cada carta vienen del motor de tarot: úsalas para
+interpretar, sin copiarlas como lista. Usa en la lectura la pregunta de la carta que más ayude.
+Si viene el «PERFIL TARÓTICO» (carta de personalidad, del alma, año personal), dedícale un párrafo
+breve en «## Tus cartas personales», justo antes del consejo; si no viene, omite ese apartado.
+Presenta La Muerte, La Torre o El Diablo como cambio, sacudida o apego, nunca como amenaza."""
 
 SUENOS_CONSUMER = ENTERTAIN + """
 
@@ -1130,7 +1140,7 @@ def _texto_inputs(inputs: dict) -> str:
     }
     partes = []
     for k, v in inputs.items():
-        if v is None or str(v).strip() == "":
+        if k in ("cartas", "sistema") or v is None or str(v).strip() == "":
             continue
         partes.append(f"{etiquetas.get(k, k)}: {str(v).strip()[:1500]}")
     return "\n".join(partes)
@@ -1250,27 +1260,70 @@ def _datos_anio(inputs: dict) -> str:
 TIRADAS_ESPECIALES = ("cruz_celtica", "espejo_relacion", "decision", "proposito_alma", "rueda_del_anio")
 
 
-def _tirar(clave: str) -> str:
-    """Saca cartas reales al azar para las posiciones de la tirada (sin repetir) y las devuelve
-    como texto para el prompt: el modelo interpreta ESAS cartas, no inventa la tirada."""
-    import random
+# Tiradas que puede elegir quien compra la Lectura de Tarot (las cortas; las profundas son del Tarot especial).
+TIRADAS_TAROT = ("tres_cartas", "situacion_consejo", "si_o_no", "cruz_simple", "nueva_relacion", "profesion", "abundancia")
+
+
+def _cartas_elegidas(inputs: dict, n: int) -> list[tuple[str, bool]] | None:
+    """Cartas que la persona sacó en la mesa de la entrega (barajó y eligió de los montones, o se
+    repartieron solas). Solo se aceptan si son cartas reales del mazo, sin repetir y en el número
+    exacto de posiciones; si no, el motor saca las suyas."""
+    from api.tarot.knowledge import ARCANOS_MAYORES, ARCANOS_MENORES
+    cartas = inputs.get("cartas") if isinstance(inputs, dict) else None
+    if not isinstance(cartas, list) or len(cartas) != n:
+        return None
+    mazo = set(ARCANOS_MAYORES) | set(ARCANOS_MENORES)
+    out = []
+    for c in cartas:
+        nombre = str((c or {}).get("carta", "")).strip() if isinstance(c, dict) else ""
+        if nombre not in mazo:
+            return None
+        out.append((nombre, bool(c.get("invertida"))))
+    return out if len({n for n, _ in out}) == len(out) else None
+
+
+def _tirar(clave: str, inputs: dict | None = None) -> str:
+    """Las cartas de la tirada en sus posiciones, con lo que el motor de tarot del Hub sabe de cada
+    una (palabras clave o sombra si salió invertida, y su pregunta), más el perfil tarótico si hay
+    fecha de nacimiento. Usa las cartas que la persona eligió; si no las hay, las saca al azar."""
+    import random, datetime
     from api.tarot.knowledge import TIRADAS, ARCANOS_MAYORES, ARCANOS_MENORES
+    from api.tarot.prompt_builder import _palabras_carta, _pregunta_terapeutica_carta, _bloque_perfil
+    inputs = inputs or {}
     t = TIRADAS[clave]
-    azar = random.SystemRandom()
-    cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
-    filas = [f"Tirada: {t['nombre']}"]
-    for pos, carta in zip(t["posiciones"], cartas):
-        inv = " (carta invertida)" if azar.random() < 0.25 else ""
-        filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
+    cartas = _cartas_elegidas(inputs, len(t["posiciones"]))
+    if not cartas:
+        azar = random.SystemRandom()
+        cartas = [(c, azar.random() < 0.25) for c in
+                  azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))]
+    mazo = {"marsella": "Tarot de Marsella"}.get(_g(inputs, "sistema"), "Rider-Waite-Smith")
+    filas = [f"Tirada: {t['nombre']} · Mazo: {mazo}"]
+    for pos, (carta, inv) in zip(t["posiciones"], cartas):
+        filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{' (carta invertida)' if inv else ''}")
+        kw = _palabras_carta(carta, inv)
+        if kw:
+            filas.append(f"   {'Sombra' if inv else 'Palabras clave'}: {kw}")
+        pt = _pregunta_terapeutica_carta(carta)
+        if pt:
+            filas.append(f"   Pregunta de la carta: {pt}")
+    try:
+        from api.tarot.calculator import calcular_perfil_tarot
+        f = datetime.date.fromisoformat(_g(inputs, "fecha_nacimiento"))
+        filas.append(_bloque_perfil(calcular_perfil_tarot(dia=f.day, mes=f.month, anio=f.year)))
+    except Exception:
+        pass
     return "\n".join(filas)
 
 
 def _datos_tarot(inputs: dict) -> str:
-    """Lectura de Tarot sencilla (8-nov-2026): antes no sacaba ninguna carta y el texto era genérico.
-    Por defecto, tres cartas; acepta otra tirada de la biblioteca si viene en «tirada»."""
-    from api.tarot.knowledge import TIRADAS
+    """Lectura de Tarot: la persona elige una tirada corta (por defecto, tres cartas)."""
     clave = _g(inputs, "tirada")
-    return _tirar(clave if clave in TIRADAS else "tres_cartas")
+    return _tirar(clave if clave in TIRADAS_TAROT else "tres_cartas", inputs)
+
+
+def _datos_tarot_especial(inputs: dict) -> str:
+    clave = _g(inputs, "tirada")
+    return _tirar(clave if clave in TIRADAS_ESPECIALES else "cruz_celtica", inputs)
 
 
 def _datos_numerologia(inputs: dict) -> str:
@@ -1323,22 +1376,6 @@ def _datos_horoscopo(inputs: dict) -> str:
             for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn") if k in pl))
     except Exception as exc:
         logger.warning("consumer horoscopo cielo: %s", exc)
-    return "\n".join(filas)
-
-
-def _datos_tarot_especial(inputs: dict) -> str:
-    import random
-    from api.tarot.knowledge import TIRADAS, ARCANOS_MAYORES, ARCANOS_MENORES
-    clave = _g(inputs, "tirada")
-    if clave not in TIRADAS_ESPECIALES:
-        clave = "cruz_celtica"
-    t = TIRADAS[clave]
-    azar = random.SystemRandom()
-    cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
-    filas = [f"Tirada: {t['nombre']}"]
-    for pos, carta in zip(t["posiciones"], cartas):
-        inv = " (carta invertida)" if azar.random() < 0.25 else ""
-        filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
     return "\n".join(filas)
 
 
