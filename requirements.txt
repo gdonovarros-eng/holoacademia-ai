@@ -11,4 +11,4 @@ reportlab>=4.0,<5          # PDF "carta antigua" de la entrega del consumidor
 # Astrología — requieren plan Render con ≥2 GB RAM (Standard)
 # Comentar si se despliega en Free/Starter para evitar OOM
 pyswisseph>=2.10.3
-kerykeion>=5.12.0
+kerykeion>=5.12.0,<6   # v6 eliminó AstrologicalSubject: no subir sin migrar

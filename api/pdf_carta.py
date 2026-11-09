@@ -199,7 +199,19 @@ def _flowables(content: str, nombre: str, lang: str, title: str, fecha_nac: str 
     out.append(Spacer(1, 14))
     out.append(HRFlowable(width="20%", thickness=0.6, color=FAINT, spaceBefore=2, spaceAfter=2,
                           hAlign="CENTER"))
+    # Aviso fijo (auditoría 8-nov-2026): el PDF es lo que circula y no llevaba ninguno.
+    out.append(Paragraph(_inline(_AVISO.get(lang, _AVISO["es"])), S["cierre"]))
     return out
+
+
+_AVISO = {
+    "es": "Contenido educativo, de desarrollo personal y de orientación. No es diagnóstico ni tratamiento médico "
+          "o psicológico y no sustituye la atención de un profesional de la salud. No abandones ningún tratamiento.",
+    "en": "Educational, personal-development and guidance content. It is not a medical or psychological diagnosis "
+          "or treatment and does not replace care from a health professional. Do not stop any treatment.",
+    "pt": "Conteúdo educativo, de desenvolvimento pessoal e de orientação. Não é diagnóstico nem tratamento médico "
+          "ou psicológico e não substitui o atendimento de um profissional de saúde. Não abandone nenhum tratamento.",
+}
 
 
 def build_carta_pdf(content: str, nombre: str = "", lang: str = "es", title: str = "",

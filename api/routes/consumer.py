@@ -64,7 +64,8 @@ ENTERTAIN = (
     "ENCUADRE: lectura con fines de orientación y entretenimiento, para el público "
     "general. Tono cálido, cercano y práctico; en segunda persona. No digas que eres "
     "una IA. No uses emojis. No hagas afirmaciones médicas, financieras ni legales "
-    "deterministas; habla en términos de tendencias y posibilidades."
+    "deterministas; habla en términos de tendencias y posibilidades. No menciones órganos, partes del "
+    "cuerpo ni enfermedades: el bienestar se trata como descanso, ánimo y autocuidado."
 )
 
 
@@ -107,18 +108,23 @@ Habla de liberar la carga emocional y de bienestar, nunca de curar enfermedades.
 
 TAROT_CONSUMER = ENTERTAIN + """
 
-Eres un lector de Tarot cercano. Con la pregunta o intención de la persona (y su fecha de
-nacimiento si la da), entrega una lectura cálida y útil con encabezados ##:
+Eres un lector de Tarot cercano. Con la pregunta o intención de la persona y las CARTAS QUE
+SALIERON en su tirada (vienen en «Datos calculados»: no las cambies ni inventes otras), entrega una
+lectura cálida y útil con encabezados ##:
+## Tus cartas
+Nombra cada carta en su posición (y si salió invertida) y qué dice sobre la pregunta, una por una.
 ## Tu lectura
-El mensaje central para tu pregunta.
+El mensaje central que forman juntas para tu pregunta.
 ## Lo que te favorece
 ## Lo que conviene soltar
 ## Un consejo para los próximos días"""
 
 HOROSCOPO_CONSUMER = ENTERTAIN + """
 
-Eres un astrólogo cercano. Con el signo o la fecha de nacimiento de la persona, entrega un
-horóscopo personalizado para su momento actual, con encabezados ##:
+Eres un astrólogo cercano. Con el signo de la persona y el CIELO REAL DE HOY (vienen en «Datos
+calculados»: no los cambies), entrega un horóscopo personalizado para su momento actual. Ancla cada
+apartado en al menos una posición real del cielo de hoy (por ejemplo, dónde está la Luna o Venus) y
+cómo toca a su signo. Encabezados ##:
 ## Tu energía ahora
 ## Amor y vínculos
 ## Trabajo y dinero
@@ -134,15 +140,23 @@ encabezados ##:
 ## Tu mundo emocional (Luna)
 ## Cómo te muestras (Ascendente, si hay hora)
 ## Tus planetas personales (Mercurio, Venus y Marte)
+## Tus aspectos más fuertes
+Interpreta los 5 aspectos más exactos de la lista (los primeros), con lenguaje sencillo.
+## Júpiter, Saturno y tu Nodo
+Dónde crece tu vida (Júpiter), dónde maduras (Saturno) y tu camino de evolución (Nodo Norte;
+el Nodo Sur está en el signo opuesto: interprétalo con el sentido de ESE signo).
 ## Tus talentos
 ## Tu camino de crecimiento
-Usa EXACTAMENTE las posiciones de «Datos calculados»: nunca cambies un signo ni inventes una
-posición que no esté ahí. Si falta la hora, dilo con naturalidad y trabaja con el resto."""
+Usa EXACTAMENTE las posiciones de «Datos calculados» y menciona los grados: nunca cambies un signo
+ni inventes una posición o un aspecto que no esté ahí. Si falta la hora, dilo con naturalidad y
+trabaja con el resto."""
 
 NUMER_CONSUMER = ENTERTAIN + """
 
 Eres un numerólogo cercano. Con el nombre completo y la fecha de nacimiento de la persona,
-entrega una lectura de numerología personal con encabezados ##:
+entrega una lectura de numerología personal con encabezados ##. Usa EXACTAMENTE los números de
+«Datos calculados» (misión = número de vida, año personal en los ciclos de hoy); no los recalcules ni
+cambies, y menciona cada número que interpretes:
 ## Tu número de vida
 ## Tus fortalezas
 ## Tus retos
@@ -158,23 +172,31 @@ persona por su nombre. Entrega con encabezados ##:
 ## Lo que los une
 ## Cómo se aman (Venus y Marte)
 ## Cómo se entienden (Luna y Mercurio)
+## Sus aspectos más fuertes
+Interpreta los aspectos más exactos de la «Sinastría calculada» (los primeros de la lista), uno por uno.
 ## Sus puntos de roce
+Solo los que salen de cuadraturas u oposiciones reales de la sinastría; no inventes otros.
 ## Sus números juntos
 ## Un consejo para la relación
-Habla de tendencias y de cómo cuidar el vínculo; nunca sentencies si la relación funcionará o no."""
+Habla de tendencias y de cómo cuidar el vínculo; nunca sentencies si la relación funcionará o no.
+No repitas la misma idea en dos secciones."""
 
 ANIO_CONSUMER = ENTERTAIN + """
 
 Eres un astrólogo cercano que lee el año que viene de una persona. Recibes su carta natal y los
 tránsitos calculados mes a mes de los planetas lentos (Júpiter, Saturno, Urano, Neptuno, Plutón):
 básate SOLO en esos datos y no inventes fechas ni aspectos. Entrega con encabezados ##:
+## Tu respuesta
+Si la persona hizo una pregunta (viene en sus datos), respóndela aquí de forma directa con los
+tránsitos del año. Si no hizo pregunta, omite este apartado.
 ## El tema de tu año
 ## Tus meses clave
 Un párrafo por cada mes que tenga tránsitos relevantes, con el nombre del mes y el año.
 ## Amor y vínculos
 ## Trabajo y propósito
 ## Tu consejo para el año
-Si un mes no tiene tránsitos relevantes, agrúpalo con otros en una frase."""
+Si un mes no tiene tránsitos relevantes, agrúpalo con otros en una frase. No repitas la misma
+frase mes tras mes («Plutón sigue transformando…»): di qué cambia en cada mes."""
 
 TAROT_ESPECIAL_CONSUMER = ENTERTAIN + """
 
@@ -222,7 +244,18 @@ _HOLOS_VOZ = (
     "con sensibilidad, SIN perder claridad ni objetividad. Antes de explicar, valida "
     "con ternura lo que la persona siente; nombra lo difícil con delicadeza. "
     "Te diriges DIRECTAMENTE a la persona en segunda persona (tú); NUNCA uses las "
-    "palabras 'paciente', 'terapeuta' ni 'el/la consultante' — háblale a ella por 'tú'."
+    "palabras 'paciente', 'terapeuta' ni 'el/la consultante' — háblale a ella por 'tú'. "
+    # Auditoría 8-nov-2026 del informe al público: secciones que repetían todo el análisis,
+    # listas de órganos sin síntoma físico, citas a Hamer/NMG y 9 aperturas iguales.
+    "REGLAS DEL INFORME AL PÚBLICO (mandan sobre cualquier otra instrucción): entrega SOLO lo que "
+    "pide esta sección, sin resúmenes, «análisis integrales» ni apartados extra; no nombres a Hamer, "
+    "la Nueva Medicina Germánica, la medicina tradicional china, el biomagnetismo ni la astrología médica; "
+    "no enumeres órganos, enfermedades ni molestias físicas que la persona no haya mencionado, y nunca "
+    "hables de diagnóstico, de pH ni de tratar el cuerpo; no abras con «Comprendo» o «Entiendo "
+    "profundamente»; cita su frase textual a lo sumo una vez; si falta un dato, no lo menciones "
+    "(nada de «sin ella…» ni «no tenemos…»); respeta quién es quién en la familia (línea materna o paterna). "
+    "Sé concreto: entre 250 y 450 palabras en esta sección (el informe completo no debe pasar de unas "
+    "5,000 palabras), salvo que la sección pida explícitamente más apartados."
 )
 
 
@@ -352,6 +385,28 @@ def _coincidencias(inputs: dict) -> list:
         out = list(_collect_family_date_insights(case) or [])
     except Exception as exc:
         logger.warning("consumer holos insights: %s", exc)
+    # Reposición / yacente (8-nov-2026): alguien del clan murió poco ANTES de que nacieras. El motor
+    # genérico lo reportaba como «aniversario»; aquí va con los días exactos y en primer lugar.
+    try:
+        import datetime as _d
+        nac = _d.date.fromisoformat(g("fecha_nacimiento"))
+        prev = []
+        for lbl, base in [("tu padre", "padre"), ("tu madre", "madre"), ("tu abuelo paterno", "abuelo_pat"), ("tu abuela paterna", "abuela_pat"),
+                          ("tu abuelo materno", "abuelo_mat"), ("tu abuela materna", "abuela_mat")]:
+            m = g(base + "_murio")
+            if not m:
+                continue
+            dias = (nac - _d.date.fromisoformat(m)).days
+            if 0 <= dias <= 548:
+                quien = f"{g(base + '_nombre')} ({lbl})" if g(base + "_nombre") else lbl
+                cuando = f"{dias} días" if dias < 60 else f"unos {round(dias / 30.4)} meses"
+                prev.append(f"Naciste {cuando} después de la muerte de {quien}: posible hijo/a de reposición o yacente "
+                            f"(llegaste a la familia en pleno duelo por esa persona).")
+                if g(base + "_nombre"):   # el «aniversario» de esa misma muerte ya queda cubierto aquí
+                    out = [c for c in out if not ("aniversario de muerte de " + g(base + "_nombre")) in c]
+        out = prev + out
+    except Exception:
+        pass
     # Repeticiones de nombres entre el consultante y el clan (doble por nombre).
     try:
         import unicodedata
@@ -599,14 +654,39 @@ def _prompt_horoscopo(signo: str, resumen: str, hoy: str) -> str:
             "Conéctalo con tu conflicto y tu proceso de liberación; tono cálido y alentador.")
 
 
-def _prompt_transitos(signo: str, resumen: str, hoy: str) -> str:
+def _prompt_transitos(signo: str, resumen: str, hoy: str, datos: str = "") -> str:
     return (f"{_HOLOS_VOZ}\nEres el Motor de Tránsitos Planetarios. Para tu signo solar ({signo}) y el "
             f"periodo actual ({hoy}), explica los TRÁNSITOS más relevantes y qué mueven en ti a nivel "
             "emocional, de forma clara para alguien sin conocimientos de astrología.\n\n"
-            f"Caso: {resumen}\n\nCon ### por tránsito o tema (2 a 4): nombra el tránsito en lenguaje "
+            + (f"TRÁNSITOS REALES CALCULADOS (úsalos tal cual; no inventes posiciones ni otros tránsitos):\n{datos}\n\n" if datos else
+               "No hay tránsitos calculados: no afirmes en qué signo está ningún planeta hoy.\n\n")
+            + f"Caso: {resumen}\n\nCon ### por tránsito o tema (2 a 4): nombra el tránsito en lenguaje "
             "sencillo, qué remueve o invita a soltar/transformar, y cómo aprovecharlo en tu proceso de "
             "liberación emocional. Cierra con una invitación cálida para este periodo. Habla en "
             "tendencias y posibilidades, nunca como un destino fijo.")
+
+
+def _tránsitos_hoy(inputs: dict) -> str:
+    """Cielo de hoy y sus aspectos a la carta natal (si hay fecha, hora y lugar)."""
+    import datetime
+    natal = _calc_natal(inputs)
+    if not natal:
+        return ""
+    try:
+        from api.astro.calculator import get_natal_data
+        from api.routes.astro import _transit_aspects
+        h = datetime.date.today()
+        tr = get_natal_data("t", h.year, h.month, h.day, 12, 0, natal["lat"], natal["lng"], natal["tz"])
+        pl = tr.get("planetas") or {}
+        cielo = ", ".join(f"{_PLANETAS_ES[k]} en {pl[k].get('signo', '')}" + (" retrógrado" if pl[k].get("retrogrado") else "")
+                          for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto") if k in pl)
+        asp = [a for a in _transit_aspects(natal, tr) if a["planeta_transito"] != "moon"][:6]
+        txt = "; ".join(f"{_PLANETAS_ES.get(a['planeta_transito'], a['planeta_transito'])} {a['aspecto']} a tu "
+                        f"{_PLANETAS_ES.get(a['planeta_natal'], a['planeta_natal'])} (orbe {a['orbe']}°)" for a in asp)
+        return f"Cielo de hoy ({h.isoformat()}): {cielo}.\nAspectos a tu carta: {txt or 'ninguno cerrado'}."
+    except Exception as exc:
+        logger.warning("consumer holos tránsitos hoy: %s", exc)
+        return ""
 
 
 def _prompt_tarot(perfil, resumen: str) -> str:
@@ -718,10 +798,10 @@ PROTOCOLOS DEL MÉTODO (material propio; adáptalos a autoaplicación, sin terap
 {protos_txt}
 
 Instrucciones:
-- Elige los 4 o 5 protocolos MÁS pertinentes a este conflicto y adáptalos PASO A PASO para que la persona los haga sola, en 2ª persona.
+- Elige los 3 protocolos MÁS pertinentes a este conflicto y adáptalos PASO A PASO para que la persona los haga sola, en 2ª persona, con un máximo de 8 pasos cada uno. Termina SIEMPRE cada protocolo (nunca dejes un paso o un encabezado vacío).
 - Personaliza las frases sanadoras al conflicto EXACTO de la persona (no genéricas).
 - Usa ### por cada protocolo: su nombre, para qué le sirve en su caso, y los pasos numerados y claros.
-- Cierra con "### También puedes probar": 1 o 2 técnicas reconocidas de liberación emocional de fuera del método (p. ej. escritura expresiva, respiración consciente, anclaje) que complementen.
+- Cierra con "### También puedes probar": 1 técnica reconocidas de liberación emocional de fuera del método (p. ej. escritura expresiva, respiración consciente, anclaje) que complementen.
 - Nada de diagnóstico ni promesas de cura; es trabajo emocional y de desarrollo personal."""
 
 
@@ -903,29 +983,31 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
 
     def sec_horoscopo():
         signo = _calc_signo(inputs)
-        return _run_holos(_prompt_horoscopo(signo, resumen, _hoy)) if signo else ""
+        return _run_holos(_prompt_horoscopo(signo, resumen, _hoy) + "\n\n" + _datos_horoscopo(inputs)
+                          + "\nAncla cada apartado en el cielo real de hoy (de la lista); no inventes otras posiciones.") if signo else ""
 
     def sec_transitos():
         signo = _calc_signo(inputs)
-        return _run_holos(_prompt_transitos(signo, resumen, _hoy)) if signo else ""
+        return _run_holos(_prompt_transitos(signo, resumen, _hoy, _tránsitos_hoy(inputs))) if signo else ""
 
     # Orden: análisis y lecturas → protocolos (justo antes del final) → BONOS al final.
+    T = _TITULOS_HOLOS.get((lang or "es")[:2], _TITULOS_HOLOS["es"])
     tareas = [
-        ("Tu conflicto, decodificado", sec_nucleo),
-        ("Lectura por áreas de tu vida", sec_areas),
+        (T["nucleo"], sec_nucleo),
+        (T["areas"], sec_areas),
     ]
     if fecha:
-        tareas.append(("Tu numerología", sec_numerologia))
-        tareas.append(("Tu astrología", sec_astro))
-        tareas.append(("Tu horóscopo terapéutico", sec_horoscopo))
-        tareas.append(("Tus tránsitos planetarios", sec_transitos))
-        tareas.append(("Tu tarot", sec_tarot))
+        tareas.append((T["numerologia"], sec_numerologia))
+        tareas.append((T["astro"], sec_astro))
+        tareas.append((T["horoscopo"], sec_horoscopo))
+        tareas.append((T["transitos"], sec_transitos))
+        tareas.append((T["tarot"], sec_tarot))
     # Protocolos: antes del final.
-    tareas.append(("Tus protocolos de liberación emocional", sec_protocolos))
+    tareas.append((T["protocolos"], sec_protocolos))
     # Bonos: al final.
-    tareas.append(("Diccionario del Síntoma", sec_diccionario))
-    tareas.append(("Respiración guiada", sec_respiracion))
-    tareas.append(("Guía de actos simbólicos", sec_actos))
+    tareas.append((T["diccionario"], sec_diccionario))
+    tareas.append((T["respiracion"], sec_respiracion))
+    tareas.append((T["actos"], sec_actos))
 
     resultados = [None] * len(tareas)
     with ThreadPoolExecutor(max_workers=min(5, len(tareas))) as ex:
@@ -937,6 +1019,13 @@ def _generar_holos_cuadro(inputs: dict, lang: str) -> dict:
             except Exception as exc:
                 logger.warning("consumer holos seccion %s: %s", tareas[i][0], exc)
                 resultados[i] = ""
+
+    for i, (titulo, fn) in enumerate(tareas):
+        if not resultados[i]:
+            try:
+                resultados[i] = fn()
+            except Exception as exc:
+                logger.warning("consumer holos reintento %s: %s", titulo, exc)
 
     partes = []
     for (titulo, _), texto in zip(tareas, resultados):
@@ -1064,12 +1153,37 @@ def _segunda_persona(inputs: dict) -> dict:
     return {k: _g(inputs, k + "_2") for k in ("nombre", "fecha_nacimiento", "hora_nacimiento", "lugar_nacimiento")}
 
 
+def _sinastria(a: dict | None, b: dict | None, nombre_b: str) -> str:
+    """Aspectos entre la carta de una persona y la de la otra (orbe ≤ 6°), del más exacto al menos."""
+    if not a or not b:
+        return "(sin sinastría: falta la carta de alguna de las dos personas)"
+    pa, pb = a.get("planetas") or {}, b.get("planetas") or {}
+    ks = ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto")
+    aspectos = (("conjunción", 0, 6), ("oposición", 180, 6), ("trígono", 120, 5), ("cuadratura", 90, 5), ("sextil", 60, 4))
+    out = []
+    for x in ks:
+        for y in ks:
+            if x not in pa or y not in pb or (x in ("uranus", "neptune", "pluto") and y in ("uranus", "neptune", "pluto")):
+                continue
+            d = abs(pa[x].get("abs_pos", 0) - pb[y].get("abs_pos", 0)) % 360
+            d = min(d, 360 - d)
+            for nom, ang, orbe in aspectos:
+                if abs(d - ang) <= orbe:
+                    out.append((abs(d - ang), f"tu {_PLANETAS_ES[x]} en {nom} con {_PLANETAS_ES[y]} de {nombre_b} (orbe {abs(d - ang):.1f}°)"))
+                    break
+    out.sort()
+    return "; ".join(t for _, t in out[:12]) or "(sin aspectos cerrados entre las cartas)"
+
+
 def _datos_pareja(inputs: dict) -> str:
     otra = _segunda_persona(inputs)
-    return (f"Tú ({_g(inputs, 'nombre') or 'tú'}): {_natal_txt(_calc_natal(inputs))}. "
+    na, nb = _calc_natal(inputs), _calc_natal(otra)
+    nombre_b = otra["nombre"] or "la otra persona"
+    return (f"Tú ({_g(inputs, 'nombre') or 'tú'}): {_natal_txt(na)}. "
             f"Números: {_numeros_txt(_calc_numerologia(inputs))}.\n"
-            f"{otra['nombre'] or 'La otra persona'}: {_natal_txt(_calc_natal(otra))}. "
-            f"Números: {_numeros_txt(_calc_numerologia(otra))}.")
+            f"{nombre_b}: {_natal_txt(nb)}. "
+            f"Números: {_numeros_txt(_calc_numerologia(otra))}.\n"
+            f"Sinastría calculada (aspectos entre sus cartas, del más exacto al menos exacto): {_sinastria(na, nb, nombre_b)}.")
 
 
 _MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -1089,7 +1203,8 @@ def _datos_anio(inputs: dict) -> str:
         logger.warning("consumer año imports: %s", exc)
         return f"Carta natal: {_natal_txt(natal)}."
     lentos = {"jupiter", "saturn", "uranus", "neptune", "pluto"}
-    personales = {"sun", "moon", "mercury", "venus", "mars"}
+    # Incluye tus planetas lentos: a los ~40 años llegan los tránsitos de la mitad de la vida.
+    personales = {"sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"}
     hoy = datetime.date.today()
     filas = [f"Carta natal: {_natal_txt(natal)}."]
     for i in range(1, 13):  # los 12 meses siguientes
@@ -1097,7 +1212,8 @@ def _datos_anio(inputs: dict) -> str:
         try:
             tr = get_natal_data("t", y, m, 15, 12, 0, natal["lat"], natal["lng"], natal["tz"])
             asp = [a for a in _transit_aspects(natal, tr)
-                   if a["planeta_transito"] in lentos and a["planeta_natal"] in personales][:4]
+                   if a["planeta_transito"] in lentos and a["planeta_natal"] in personales
+                   and not (a["aspecto"] == "conjunción" and a["orbe"] > 2)][:5]
         except Exception as exc:
             logger.warning("consumer año tránsito %s-%s: %s", y, m, exc)
             continue
@@ -1109,6 +1225,67 @@ def _datos_anio(inputs: dict) -> str:
 
 # Tiradas que se venden al público (catálogo completo en api/tarot/knowledge.py).
 TIRADAS_ESPECIALES = ("cruz_celtica", "espejo_relacion", "decision", "proposito_alma", "rueda_del_anio")
+
+
+def _tirar(clave: str) -> str:
+    """Saca cartas reales al azar para las posiciones de la tirada (sin repetir) y las devuelve
+    como texto para el prompt: el modelo interpreta ESAS cartas, no inventa la tirada."""
+    import random
+    from api.tarot.knowledge import TIRADAS, ARCANOS_MAYORES, ARCANOS_MENORES
+    t = TIRADAS[clave]
+    azar = random.SystemRandom()
+    cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
+    filas = [f"Tirada: {t['nombre']}"]
+    for pos, carta in zip(t["posiciones"], cartas):
+        inv = " (invertida)" if azar.random() < 0.25 else ""
+        filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
+    return "\n".join(filas)
+
+
+def _datos_tarot(inputs: dict) -> str:
+    """Lectura de Tarot sencilla (8-nov-2026): antes no sacaba ninguna carta y el texto era genérico.
+    Por defecto, tres cartas; acepta otra tirada de la biblioteca si viene en «tirada»."""
+    from api.tarot.knowledge import TIRADAS
+    clave = _g(inputs, "tirada")
+    return _tirar(clave if clave in TIRADAS else "tres_cartas")
+
+
+def _datos_numerologia(inputs: dict) -> str:
+    """Números calculados con la calculadora propia (antes los sumaba el modelo y podía equivocarse)."""
+    num = _calc_numerologia(inputs)
+    if not num:
+        return "(no se pudieron calcular los números: falta el nombre completo o la fecha)"
+    n, nac = num.get("nombre") or {}, num.get("nacimiento") or {}
+    cp = num.get("ciclos_personales") or {}
+    filas = [
+        f"Nombre usado: {n.get('original', '')}",
+        f"Misión (camino de vida): {nac.get('mision')}  ·  Alma: {nac.get('alma')}  ·  Karma: {nac.get('karma')}",
+        f"Expresión: {n.get('expresion')}  ·  Impulso del alma (vocales): {n.get('impulso')}  ·  Impresión (consonantes): {n.get('impresion')}",
+    ]
+    if cp:
+        filas.append("Ciclos personales de hoy: " + ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in cp.items() if not isinstance(v, (dict, list))))
+    if num.get("deudas_karmicas"):
+        filas.append(f"Deudas kármicas: {num['deudas_karmicas']}")
+    if num.get("pinaculos"):
+        filas.append(f"Pináculos: {num['pinaculos']}")
+    return "\n".join(filas)
+
+
+def _datos_horoscopo(inputs: dict) -> str:
+    """Signo de la persona + el cielo REAL de hoy (antes no calculaba nada)."""
+    import datetime
+    signo = _calc_signo(inputs) or _g(inputs, "signo")
+    filas = [f"Signo solar de la persona: {signo or '(no indicado)'}", f"Fecha de hoy: {datetime.date.today().isoformat()}"]
+    try:
+        from api.astro.calculator import get_transits_today
+        tr = get_transits_today(19.4326, -99.1332, "America/Mexico_City")
+        pl = tr.get("planetas") or {}
+        filas.append("Cielo de hoy (posiciones reales): " + ", ".join(
+            f"{_PLANETAS_ES.get(k, k)} en {pl[k].get('signo', '')}" + (" retrógrado" if pl[k].get("retrogrado") else "")
+            for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn") if k in pl))
+    except Exception as exc:
+        logger.warning("consumer horoscopo cielo: %s", exc)
+    return "\n".join(filas)
 
 
 def _datos_tarot_especial(inputs: dict) -> str:
@@ -1170,26 +1347,40 @@ def _datos_carta_natal(inputs: dict) -> str:
     def dist(a, b):
         d = abs(a - b) % 360
         return min(d, 360 - d)
-    personales = ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn")
+    cuerpos = {k: pl[k].get("abs_pos", 0) for k in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn",
+                                                      "uranus", "neptune", "pluto") if k in pl}
+    if casas.get(1) and not natal.get("sin_hora") and casas[1].get("abs_pos") is not None:
+        cuerpos["asc"] = casas[1]["abs_pos"]
+    nom = dict(_PLANETAS_ES, asc="Ascendente")
+    lentos = {"uranus", "neptune", "pluto"}
     asp = []
-    claves = [k for k in personales if k in pl]
+    claves = list(cuerpos)
     for i, a in enumerate(claves):
         for b in claves[i + 1:]:
             if natal.get("sin_hora") and "moon" in (a, b):
                 continue  # la Luna se mueve demasiado para afirmar aspectos sin hora
-            dd = dist(pl[a].get("abs_pos", 0), pl[b].get("abs_pos", 0))
+            if a in lentos and b in lentos:
+                continue  # aspectos generacionales: los comparte toda una generación
+            dd = dist(cuerpos[a], cuerpos[b])
             for nombre, ang, orbe in _ASPECTOS_NATALES:
                 if abs(dd - ang) <= orbe:
-                    asp.append((abs(dd - ang), f"{_PLANETAS_ES[a]} en {nombre} con {_PLANETAS_ES[b]}"))
+                    o = abs(dd - ang)
+                    asp.append((o, f"{nom[a]} en {nombre} con {nom[b]} (orbe {o:.1f}°)"))
                     break
     asp.sort()
     texto = "Posiciones reales calculadas (efemérides):\n" + "\n".join(filas)
+    if pl.get("true_node") and pl["true_node"].get("abs_pos") is not None:
+        signos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"]
+        texto += f"\nNodo Sur en {signos[int(((pl['true_node']['abs_pos'] + 180) % 360) // 30)]} (opuesto al Nodo Norte)."
     if asp:
-        texto += "\nAspectos principales: " + "; ".join(t for _, t in asp[:8])
+        texto += "\nAspectos, del más exacto al menos exacto: " + "; ".join(t for _, t in asp[:10])
     return texto
 
 
 _DATOS_CALCULADOS = {
+    "tarot": _datos_tarot,
+    "numerologia": _datos_numerologia,
+    "horoscopo": _datos_horoscopo,
     "carta-natal": _datos_carta_natal,
     "pareja": _datos_pareja,
     "tu-anio": _datos_anio,
@@ -1218,18 +1409,48 @@ _PAQUETES = {
 }
 
 
+_TITULOS_HOLOS = {
+    "es": {"nucleo": "Tu conflicto, decodificado", "areas": "Lectura por áreas de tu vida", "numerologia": "Tu numerología",
+           "astro": "Tu astrología", "horoscopo": "Tu horóscopo terapéutico", "transitos": "Tus tránsitos planetarios",
+           "tarot": "Tu tarot", "protocolos": "Tus protocolos de liberación emocional", "diccionario": "Diccionario emocional",
+           "respiracion": "Respiración guiada", "actos": "Guía de actos simbólicos"},
+    "en": {"nucleo": "Your conflict, decoded", "areas": "Reading by areas of your life", "numerologia": "Your numerology",
+           "astro": "Your astrology", "horoscopo": "Your therapeutic horoscope", "transitos": "Your planetary transits",
+           "tarot": "Your tarot", "protocolos": "Your emotional release protocols", "diccionario": "Emotional dictionary",
+           "respiracion": "Guided breathing", "actos": "Guide to symbolic acts"},
+    "pt": {"nucleo": "Seu conflito, decodificado", "areas": "Leitura por áreas da sua vida", "numerologia": "Sua numerologia",
+           "astro": "Sua astrologia", "horoscopo": "Seu horóscopo terapêutico", "transitos": "Seus trânsitos planetários",
+           "tarot": "Seu tarô", "protocolos": "Seus protocolos de liberação emocional", "diccionario": "Dicionário emocional",
+           "respiracion": "Respiração guiada", "actos": "Guia de atos simbólicos"},
+}
+
+# Idioma y estilo obligatorios de las lecturas (8-nov-2026): el horóscopo en inglés salía en español,
+# todas empezaban con «¡Hola!» y relleno, y asumían que la persona es mujer.
+_IDIOMA = {"es": "español neutro de Latinoamérica", "en": "English (natural, native)", "pt": "português do Brasil (natural, nativo)"}
+
+
+def _reglas_lectura(lang: str, inputs: dict) -> str:
+    l = (lang or "es")[:2]
+    sexo = _g(inputs, "sexo").lower()
+    genero = ("La persona es mujer: usa femenino." if sexo in ("mujer", "femenino", "female", "woman", "f", "mulher", "feminino")
+              else "La persona es hombre: usa masculino." if sexo in ("hombre", "masculino", "male", "man", "m", "homem")
+              else "No sabes el género de la persona: escribe con formas neutras (sin «valorada/valorado», «atrapada/atrapado»).")
+    return (f"IDIOMA OBLIGATORIO: escribe TODO (títulos incluidos) en {_IDIOMA.get(l, _IDIOMA['es'])}, aunque estas "
+            f"instrucciones estén en español. ESTILO: empieza directo con la lectura, sin saludo («¡Hola!») ni frases de "
+            f"relleno; nada de afirmaciones deterministas («va a pasar», «es inminente»): habla de tendencias. {genero}\n\n")
+
 class GenReq(BaseModel):
     product: str = Field(..., description="holos | rema | tarot | horoscopo | carta-natal | numerologia | pareja | tu-anio | tarot-especial | suenos | pack-*")
     lang: str = Field(default="es")
     inputs: dict = Field(default_factory=dict)
 
 
-def _generar_uno(product: str, inputs: dict) -> dict:
+def _generar_uno(product: str, inputs: dict, lang: str = "es") -> dict:
     sys_tok = _PRODUCTOS.get(product)
     if not sys_tok:
         return {"ok": False, "error": "producto_invalido", "answer": ""}
     system, max_tokens = sys_tok
-    prompt = _texto_inputs(inputs) or "(sin datos adicionales)"
+    prompt = _reglas_lectura(lang, inputs) + (_texto_inputs(inputs) or "(sin datos adicionales)")
     calc = _DATOS_CALCULADOS.get(product)
     if calc:
         try:
@@ -1269,7 +1490,7 @@ async def generate(req: GenReq, request: Request):
     if product in _PAQUETES:
         secciones = []
         for sub in _PAQUETES[product]:
-            r = _generar_uno(sub, req.inputs)
+            r = _generar_uno(sub, req.inputs, req.lang)
             if r.get("ok"):
                 secciones.append(r.get("answer", ""))
         if not secciones:
@@ -1279,7 +1500,7 @@ async def generate(req: GenReq, request: Request):
     if product not in _PRODUCTOS:
         raise HTTPException(status_code=400, detail="producto_invalido")
 
-    r = _generar_uno(product, req.inputs)
+    r = _generar_uno(product, req.inputs, req.lang)
     if not r.get("ok"):
         return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
     return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
