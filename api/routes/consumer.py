@@ -1589,6 +1589,14 @@ def _datos_suenos(inputs: dict) -> str:
         filas.append(f"Camino de vida de la persona: {_reducir(sum(int(c) for c in f.strftime('%Y%m%d')))}")
     except Exception:
         pass
+    # El modelo se salta los apartados condicionales: se le dice cuáles van, según lo que trae el sueño
+    if vistos:
+        filas.append("OBLIGATORIO: escribe el apartado «## Los números de tu sueño».")
+    familia = ("abuel", "madre", "mamá", "padre", "papá", "herman", "tío", "tía", "prim", "hij", "familia", "infancia",
+               "grandm", "grandf", "mother", "father", "mom", "dad", "brother", "sister", "family", "childhood",
+               "avó", "avô", "mãe", "pai", "irmã", "irmão", "família", "infância")
+    if any(w in texto for w in familia):
+        filas.append("OBLIGATORIO: escribe el apartado «## Tu familia en el sueño».")
     return "\n".join(filas) or "(sin números en el sueño)"
 
 
