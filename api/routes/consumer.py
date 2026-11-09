@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import os
 import logging
+import re
 from typing import Optional
 
 from fastapi import APIRouter, Request, HTTPException
@@ -192,6 +193,9 @@ tránsitos del año. Si no hizo pregunta, omite este apartado.
 ## El tema de tu año
 ## Tus meses clave
 Un párrafo por cada mes que tenga tránsitos relevantes, con el nombre del mes y el año.
+## Tu tránsito de la mitad de la vida
+Solo si los datos traen «TRÁNSITOS DE LA MITAD DE LA VIDA»: un párrafo sobre qué significan juntos
+esos tránsitos (Urano, Neptuno o Plutón sobre sí mismos), con sus meses. Si no vienen, omite el apartado.
 ## Amor y vínculos
 ## Trabajo y propósito
 ## Tu consejo para el año
@@ -257,6 +261,7 @@ _HOLOS_VOZ = (
     "hables de diagnóstico, de pH ni de tratar el cuerpo; no abras con «Comprendo» o «Entiendo "
     "profundamente»; cita su frase textual a lo sumo una vez; si falta un dato, no lo menciones "
     "(nada de «sin ella…» ni «no tenemos…»); respeta quién es quién en la familia (línea materna o paterna); "
+    "no uses «sanar» ni «sanación» (di «resolver», «transformar», «trabajar»); "
     "no nombres capas embrionarias (endodermo, mesodermo…) ni puntos de acupuntura (E36, etc.); no uses "
     "«Querida» ni aperturas empáticas: valida en una frase y entra al contenido; no repitas la frase del DHS "
     "ni «la separación de tus padres» si ya se explicó en otra sección; cuando un dato sí está, úsalo "
@@ -407,7 +412,8 @@ def _coincidencias(inputs: dict) -> list:
             if 0 <= dias <= 548:
                 quien = f"{g(base + '_nombre')} ({lbl})" if g(base + "_nombre") else lbl
                 cuando = f"{dias} días" if dias < 60 else f"unos {round(dias / 30.4)} meses"
-                prev.append(f"Naciste {cuando} después de la muerte de {quien}: posible hijo/a de reposición o yacente "
+                hijo = {"mujer": "hija", "hombre": "hijo"}.get((g("sexo") or "").strip().lower(), "hijo/a")
+                prev.append(f"Naciste {cuando} después de la muerte de {quien}: posible {hijo} de reposición o yacente "
                             f"(llegaste a la familia en pleno duelo por esa persona).")
                 if g(base + "_nombre"):   # el «aniversario» de esa misma muerte ya queda cubierto aquí
                     out = [c for c in out if not ("aniversario de muerte de " + g(base + "_nombre")) in c]
@@ -1177,10 +1183,11 @@ def _sinastria(a: dict | None, b: dict | None, nombre_b: str) -> str:
             d = min(d, 360 - d)
             for nom, ang, orbe in aspectos:
                 if abs(d - ang) <= orbe:
-                    out.append((abs(d - ang), f"tu {_PLANETAS_ES[x]} en {nom} con {_PLANETAS_ES[y]} de {nombre_b} (orbe {abs(d - ang):.1f}°)"))
+                    peso = 2 if {x, y} & {"uranus", "neptune", "pluto"} else 1 if {x, y} & {"jupiter", "saturn"} else 0
+                    out.append(((peso, abs(d - ang)), f"tu {_PLANETAS_ES[x]} en {nom} con {_PLANETAS_ES[y]} de {nombre_b} (orbe {abs(d - ang):.1f}°)"))
                     break
     out.sort()
-    return "; ".join(t for _, t in out[:12]) or "(sin aspectos cerrados entre las cartas)"
+    return "; ".join(t for _, t in out[:12]) or "(sin aspectos cerrados entre las cartas)"  # personales primero
 
 
 def _datos_pareja(inputs: dict) -> str:
@@ -1191,7 +1198,7 @@ def _datos_pareja(inputs: dict) -> str:
             f"Números: {_numeros_txt(_calc_numerologia(inputs))}.\n"
             f"{nombre_b}: {_natal_txt(nb)}. "
             f"Números: {_numeros_txt(_calc_numerologia(otra))}.\n"
-            f"Sinastría calculada (aspectos entre sus cartas, del más exacto al menos exacto): {_sinastria(na, nb, nombre_b)}.")
+            f"Sinastría calculada (aspectos entre sus cartas: primero los de planetas personales, que pesan más; cada grupo del más exacto al menos): {_sinastria(na, nb, nombre_b)}.")
 
 
 _MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
@@ -1215,6 +1222,7 @@ def _datos_anio(inputs: dict) -> str:
     personales = {"sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto"}
     hoy = datetime.date.today()
     filas = [f"Carta natal: {_natal_txt(natal)}."]
+    mitad = {}
     for i in range(1, 13):  # los 12 meses siguientes
         y, m = hoy.year + (hoy.month - 1 + i) // 12, (hoy.month - 1 + i) % 12 + 1
         try:
@@ -1228,6 +1236,13 @@ def _datos_anio(inputs: dict) -> str:
         txt = "; ".join(f"{_PLANETAS_ES[a['planeta_transito']]} {a['aspecto']} a tu "
                         f"{_PLANETAS_ES[a['planeta_natal']]}" for a in asp) or "sin tránsitos relevantes"
         filas.append(f"{_MESES_ES[m - 1]} {y}: {txt}")
+        for a in asp:
+            if a["planeta_transito"] == a["planeta_natal"] and a["planeta_transito"] in ("uranus", "neptune", "pluto"):
+                mitad.setdefault(f"{_PLANETAS_ES[a['planeta_transito']]} {a['aspecto']} a tu {_PLANETAS_ES[a['planeta_natal']]}",
+                                 []).append(f"{_MESES_ES[m - 1]} {y}")
+    if mitad:
+        filas.append("TRÁNSITOS DE LA MITAD DE LA VIDA (escribe el apartado «## Tu tránsito de la mitad de la vida»): "
+                     + "; ".join(f"{k} ({v[0]}" + (f" a {v[-1]})" if len(v) > 1 else ")") for k, v in mitad.items()))
     return "\n".join(filas)
 
 
@@ -1245,7 +1260,7 @@ def _tirar(clave: str) -> str:
     cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
     filas = [f"Tirada: {t['nombre']}"]
     for pos, carta in zip(t["posiciones"], cartas):
-        inv = " (invertida)" if azar.random() < 0.25 else ""
+        inv = " (carta invertida)" if azar.random() < 0.25 else ""
         filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
     return "\n".join(filas)
 
@@ -1322,7 +1337,7 @@ def _datos_tarot_especial(inputs: dict) -> str:
     cartas = azar.sample(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES), len(t["posiciones"]))
     filas = [f"Tirada: {t['nombre']}"]
     for pos, carta in zip(t["posiciones"], cartas):
-        inv = " (invertida)" if azar.random() < 0.25 else ""
+        inv = " (carta invertida)" if azar.random() < 0.25 else ""
         filas.append(f"{pos['id']}. {pos['nombre']} ({pos['descripcion']}): {carta}{inv}")
     return "\n".join(filas)
 
@@ -1488,6 +1503,14 @@ def _generar_uno(product: str, inputs: dict, lang: str = "es") -> dict:
     return _generar_con_sistema(system, prompt, f"consumer:{product}", temp, max_tokens=max_tokens)
 
 
+_APERTURA = re.compile(r"^(Comprendo|Entiendo|Es comprensible|Puedo imaginar|Sé lo difícil)\b[^.!?\n]*[.!?]\s*", re.M)
+
+
+def _pulir(texto: str) -> str:
+    """Quita la frase de apertura empática al inicio de un párrafo («Comprendo que te sientes…»)."""
+    return re.sub(r"\n{3,}", "\n\n", _APERTURA.sub("", texto or ""))
+
+
 @router.post("/generate")
 async def generate(req: GenReq, request: Request):
     if not _authorized(request):
@@ -1505,14 +1528,14 @@ async def generate(req: GenReq, request: Request):
         r = _generar_holos_cuadro(req.inputs, req.lang)
         if not r.get("ok"):
             return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
-        return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
+        return JSONResponse({"ok": True, "product": product, "content": _pulir(r.get("answer", ""))})
 
     # Adelanto gratis del test (embudo): conflicto probable + emoción raíz, sin el resto.
     if product == "holos-parcial":
         r = _generar_holos_parcial(req.inputs, req.lang)
         if not r.get("ok") or not r.get("answer"):
             return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
-        return JSONResponse({"ok": True, "product": product, "content": r["answer"]})
+        return JSONResponse({"ok": True, "product": product, "content": _pulir(r["answer"])})
 
     if product in _PAQUETES:
         secciones = []
@@ -1522,7 +1545,7 @@ async def generate(req: GenReq, request: Request):
                 secciones.append(r.get("answer", ""))
         if not secciones:
             return JSONResponse({"ok": False, "product": product, "error": "generacion_fallida", "content": ""}, status_code=502)
-        return JSONResponse({"ok": True, "product": product, "content": "\n\n---\n\n".join(secciones)})
+        return JSONResponse({"ok": True, "product": product, "content": _pulir("\n\n---\n\n".join(secciones))})
 
     if product not in _PRODUCTOS:
         raise HTTPException(status_code=400, detail="producto_invalido")
@@ -1530,7 +1553,7 @@ async def generate(req: GenReq, request: Request):
     r = _generar_uno(product, req.inputs, req.lang)
     if not r.get("ok"):
         return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
-    return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
+    return JSONResponse({"ok": True, "product": product, "content": _pulir(r.get("answer", ""))})
 
 
 # ─── Análisis parcial del test gratis (embudo Holos, 8-nov-2026) ────────────────
