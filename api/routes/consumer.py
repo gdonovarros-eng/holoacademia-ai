@@ -1272,15 +1272,17 @@ def _revolucion_solar(natal: dict, hoy) -> list[str]:
         # la que cubre más de los próximos 12 meses: la del siguiente cumpleaños si llega en menos de medio año
         anio = siguiente if (datetime.date(siguiente, nac.month, dia) - hoy).days < 183 else ultimo
         rs = get_solar_return(natal["planetas"]["sun"]["abs_pos"], anio, natal["lat"], natal["lng"], natal["tz"])
+        sin_salud = lambda t: " ".join(f for f in re.split(r"(?<=[.;])\s+", t or "")   # las lecturas públicas no hablan de salud
+                                        if not re.search(r"salud|enferm|cuerpo|órgano|cirug|accident", f, re.I))
         asc = ((rs.get("casas") or {}).get(1) or {}).get("signo")
         pl = rs.get("planetas") or {}
         out = [f"REVOLUCIÓN SOLAR (cumpleaños del {rs.get('fecha')}, rige hasta el siguiente cumpleaños; escribe «## Tu revolución solar»):"]
         if asc:
-            out.append(f"  Ascendente del año en {asc}: {ASC_ANUAL_POR_SIGNO.get(asc, '')}")
+            out.append(f"  Ascendente del año en {asc}: {sin_salud(ASC_ANUAL_POR_SIGNO.get(asc, ''))}")
         for k in ("sun", "moon"):
             casa = (pl.get(k) or {}).get("casa")
             if casa:
-                out.append(f"  {_PLANETAS_ES[k]} del año en la casa {casa}: {(PLANETA_EN_CASA_RS.get(k) or {}).get(casa, '')}")
+                out.append(f"  {_PLANETAS_ES[k]} del año en la casa {casa}: {sin_salud((PLANETA_EN_CASA_RS.get(k) or {}).get(casa, ''))}")
         return out
     except Exception as exc:
         logger.warning("consumer año revolución solar: %s", exc)
