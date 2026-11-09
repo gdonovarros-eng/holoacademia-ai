@@ -1259,6 +1259,13 @@ async def generate(req: GenReq, request: Request):
             return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
         return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
 
+    # Adelanto gratis del test (embudo): conflicto probable + emoción raíz, sin el resto.
+    if product == "holos-parcial":
+        r = _generar_holos_parcial(req.inputs, req.lang)
+        if not r.get("ok") or not r.get("answer"):
+            return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
+        return JSONResponse({"ok": True, "product": product, "content": r["answer"]})
+
     if product in _PAQUETES:
         secciones = []
         for sub in _PAQUETES[product]:
@@ -1276,6 +1283,69 @@ async def generate(req: GenReq, request: Request):
     if not r.get("ok"):
         return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
     return JSONResponse({"ok": True, "product": product, "content": r.get("answer", "")})
+
+
+# ─── Análisis parcial del test gratis (embudo Holos, 8-nov-2026) ────────────────
+# El anuncio lleva a la primera parte del test (6 preguntas); al dejar sus datos la
+# persona recibe ESTO: una parte fuerte del análisis (conflicto probable y emoción
+# raíz), sin genograma, sin lectura energética y sin protocolos, que se venden en la
+# lectura completa (/promo/holos).
+_AREA_TXT = {"cuerpo": "su cuerpo / bienestar", "pareja": "la pareja", "trabajo": "el trabajo y el dinero",
+             "familia": "la familia", "otra": "otra área de su vida"}
+_DESDE_TXT = {"reciente": "menos de 6 meses", "medio": "entre 6 meses y 2 años", "cronico": "más de 2 años",
+              "nose": "no lo sabe con certeza"}
+
+
+def _prompt_parcial(inputs: dict) -> str:
+    g = lambda k: _g(inputs, k)
+    caso = (
+        f"- Lo que vive o quiere entender (sus palabras): {g('motivo') or '-'}\n"
+        f"- Área donde más lo siente: {_AREA_TXT.get(g('area'), g('area') or '-')}\n"
+        f"- Desde cuándo: {_DESDE_TXT.get(g('inicio'), g('inicio') or '-')}\n"
+        f"- Qué pasaba en su vida cuando empezó: {g('evento_inicio') or '-'}\n"
+        f"- Cómo lo vivió por dentro: {g('dhs_frase') or '-'}\n"
+        f"- ¿Alguien de su familia vivió algo parecido?: {g('familia') or '-'}"
+    )
+    return f"""{_HOLOS_VOZ}
+Eres el Motor de Biodescodificación de Holoacademia. Nunca te presentes como inteligencia artificial.
+La persona acaba de responder la PRIMERA PARTE del test del Método Holos. Le entregas un adelanto REAL y
+profundo de su análisis: que sienta que alguien por fin entendió lo que vive. Habla de situaciones de vida
+(pareja, dinero, familia, cuerpo) como conflictos emocionales; NUNCA prometas curar ni hables de enfermedades
+como algo que se elimina.
+
+SUS RESPUESTAS
+{caso}
+
+Entrega EXACTAMENTE estas secciones (usa ##), en total entre 320 y 450 palabras:
+
+## Lo que hay detrás de lo que vives
+El conflicto emocional más probable, leído desde la biodescodificación, conectado con SUS palabras y con el
+momento en que empezó. Ofrece 2 matices posibles, no uno solo.
+
+## Tu emoción raíz
+La emoción que sostiene el conflicto (usa cómo lo vivió por dentro) y por qué se repite, en lenguaje sencillo.
+
+## Lo que ya se asoma en tu historia familiar
+Un párrafo breve: si respondió que alguien de su familia vivió algo parecido, qué podría estar repitiéndose o
+qué lealtad podría haber; si no, qué suele esconderse en el árbol en casos como el suyo. Déjalo como
+hipótesis: para confirmarlo hacen falta las fechas y los nombres del clan, que se trabajan en el análisis completo.
+
+No incluyas protocolos, ejercicios, lectura energética, astrología ni numerología. No cierres con ventas
+ni con descargos: eso lo agrega la página."""
+
+
+def _generar_holos_parcial(inputs: dict, lang: str) -> dict:
+    if not (_g(inputs, "motivo") or _g(inputs, "sintoma")):
+        return {"ok": False, "error": "faltan_datos_base", "answer": ""}
+    prompt = _prompt_parcial(inputs)
+    query = " ".join(x for x in [_g(inputs, "motivo"), _g(inputs, "evento_inicio"), _g(inputs, "dhs_frase")] if x)
+    try:
+        from api.routes.therapeutic import _inyectar_material
+        prompt, _f = _inyectar_material(prompt, query)
+    except Exception as exc:  # nunca romper por el RAG
+        logger.warning("consumer holos-parcial RAG: %s", exc)
+    r = generar_respuesta_holos(prompt, lang)
+    return {"ok": bool(r.get("ok")), "answer": (r.get("answer") or "").strip(), "error": r.get("error")}
 
 
 class EntrevistaReq(BaseModel):
