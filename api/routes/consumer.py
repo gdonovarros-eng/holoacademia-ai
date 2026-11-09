@@ -174,9 +174,15 @@ entrega una lectura de numerología personal con encabezados ##. Usa EXACTAMENTE
 cambies, y menciona cada número que interpretes:
 ## Tu número de vida
 ## Tus fortalezas
+Incluye los números que se repiten en tu nombre y el plano de expresión más fuerte.
 ## Tus retos
+Incluye los números que faltan en tu nombre (qué te cuesta más) y el número kármico si lo hay.
+## Tu etapa de vida
+El pináculo y el desafío de la etapa en la que estás según tu edad, y cuándo empieza la siguiente.
 ## Tu año personal
-## Un consejo práctico"""
+Y el mes personal en el que estás.
+## Un consejo práctico
+Usa los significados del motor del Hub para dar el sentido de cada número, con tus palabras."""
 
 PAREJA_CONSUMER = ENTERTAIN + """
 
@@ -192,6 +198,10 @@ Interpreta los aspectos más exactos de la «Sinastría calculada» (los primero
 ## Sus puntos de roce
 Solo los que salen de cuadraturas u oposiciones reales de la sinastría; no inventes otros.
 ## Sus números juntos
+Sus caminos de vida (si se complementan o se tensan), cómo se perciben (personalidad de cada uno) y
+qué buscan por dentro (deseo del corazón).
+## Su momento actual
+El año personal de cada uno: si están en fases que se acompañan o que van a ritmos distintos.
 ## Un consejo para la relación
 Habla de tendencias y de cómo cuidar el vínculo; nunca sentencies si la relación funcionará o no.
 No repitas la misma idea en dos secciones."""
@@ -207,6 +217,10 @@ tránsitos del año. Si no hizo pregunta, omite este apartado.
 ## El tema de tu año
 ## Tus meses clave
 Un párrafo por cada mes que tenga tránsitos relevantes, con el nombre del mes y el año.
+## Tu revolución solar
+Con la «REVOLUCIÓN SOLAR» de los datos: qué tono le da al año su Ascendente y qué áreas se
+encienden según las casas del Sol y la Luna. Lenguaje sencillo; habla de tendencias, no de certezas
+(«año de máximo éxito» se dice «año que favorece…»).
 ## Tu tránsito de la mitad de la vida
 Solo si los datos traen «TRÁNSITOS DE LA MITAD DE LA VIDA»: un párrafo sobre qué significan juntos
 esos tránsitos (Urano, Neptuno o Plutón sobre sí mismos), con sus meses. Si no vienen, omite el apartado.
@@ -1187,8 +1201,18 @@ def _numeros_txt(num: dict | None) -> str:
     if not num:
         return "(números no disponibles)"
     n, nac = num.get("nombre") or {}, num.get("nacimiento") or {}
-    return (f"camino de vida {nac.get('mision', '?')}, número del día {nac.get('alma', '?')}, "
-            f"expresión {n.get('expresion', '?')}, deseo del corazón (vocales) {n.get('impulso', '?')}")
+    r, cp = num.get("resumen") or {}, num.get("ciclos_personales") or {}
+    try:
+        from api.numerology.prompt_builder import _nombre_num
+    except Exception:
+        _nombre_num = lambda v: ""
+    def x(v):
+        nom = _nombre_num(v) if isinstance(v, int) else ""
+        return f"{v} ({nom})" if nom else f"{v}"
+    return (f"camino de vida {x(nac.get('mision', '?'))}, número del día {x(nac.get('alma', '?'))}, "
+            f"expresión {x(n.get('expresion', '?'))}, deseo del corazón (vocales) {x(n.get('impulso', '?'))}, "
+            f"personalidad (consonantes) {x(n.get('impresion', '?'))}, vibración latente {x(r.get('latente', '?'))}, "
+            f"año personal {cp.get('año_personal', '?')}")
 
 
 def _segunda_persona(inputs: dict) -> dict:
@@ -1233,6 +1257,36 @@ _MESES_ES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "ag
              "septiembre", "octubre", "noviembre", "diciembre"]
 
 
+def _revolucion_solar(natal: dict, hoy) -> list[str]:
+    """La revolución solar del motor de astrología del Hub (Volguine): la carta del cumpleaños que
+    abarca la mayor parte de los próximos 12 meses, con el significado de su Ascendente y de las casas
+    donde caen el Sol y la Luna. Se calcula en el lugar de nacimiento."""
+    import datetime
+    try:
+        from api.astro.calculator import get_solar_return
+        from api.astro.knowledge import ASC_ANUAL_POR_SIGNO, PLANETA_EN_CASA_RS
+        nac = datetime.date.fromisoformat(natal["fecha"]) if isinstance(natal.get("fecha"), str) else None
+        dia = min(nac.day, 28) if nac.month == 2 else nac.day
+        cumple = datetime.date(hoy.year, nac.month, dia)
+        ultimo, siguiente = (hoy.year, hoy.year + 1) if cumple <= hoy else (hoy.year - 1, hoy.year)
+        # la que cubre más de los próximos 12 meses: la del siguiente cumpleaños si llega en menos de medio año
+        anio = siguiente if (datetime.date(siguiente, nac.month, dia) - hoy).days < 183 else ultimo
+        rs = get_solar_return(natal["planetas"]["sun"]["abs_pos"], anio, natal["lat"], natal["lng"], natal["tz"])
+        asc = ((rs.get("casas") or {}).get(1) or {}).get("signo")
+        pl = rs.get("planetas") or {}
+        out = [f"REVOLUCIÓN SOLAR (cumpleaños del {rs.get('fecha')}, rige hasta el siguiente cumpleaños; escribe «## Tu revolución solar»):"]
+        if asc:
+            out.append(f"  Ascendente del año en {asc}: {ASC_ANUAL_POR_SIGNO.get(asc, '')}")
+        for k in ("sun", "moon"):
+            casa = (pl.get(k) or {}).get("casa")
+            if casa:
+                out.append(f"  {_PLANETAS_ES[k]} del año en la casa {casa}: {(PLANETA_EN_CASA_RS.get(k) or {}).get(casa, '')}")
+        return out
+    except Exception as exc:
+        logger.warning("consumer año revolución solar: %s", exc)
+        return []
+
+
 def _datos_anio(inputs: dict) -> str:
     """Tránsitos de los planetas lentos sobre la carta natal, el día 15 de cada mes."""
     import datetime
@@ -1268,6 +1322,7 @@ def _datos_anio(inputs: dict) -> str:
             if a["planeta_transito"] == a["planeta_natal"] and a["planeta_transito"] in ("uranus", "neptune", "pluto"):
                 mitad.setdefault(f"{_PLANETAS_ES[a['planeta_transito']]} {a['aspecto']} a tu {_PLANETAS_ES[a['planeta_natal']]}",
                                  []).append(f"{_MESES_ES[m - 1]} {y}")
+    filas += _revolucion_solar(natal, hoy)
     if mitad:
         filas.append("TRÁNSITOS DE LA MITAD DE LA VIDA (escribe el apartado «## Tu tránsito de la mitad de la vida»): "
                      + "; ".join(f"{k} ({v[0]}" + (f" a {v[-1]})" if len(v) > 1 else ")") for k, v in mitad.items()))
@@ -1366,8 +1421,45 @@ def _datos_numerologia(inputs: dict) -> str:
         filas.append("Números kármicos (reto a trabajar): " + "; ".join(
             f"{d.get('codigo')} en el {donde.get(d.get('fuente'), d.get('fuente'))} — {d.get('tema')}"
             for d in num["deudas_karmicas"] if isinstance(d, dict)))
-    if num.get("pinaculos"):
-        filas.append(f"Pináculos: {num['pinaculos']}")
+    # Etapa de vida actual: pináculo y desafío según la edad (los ciclos del numeroscopio del Hub)
+    import datetime
+    try:
+        edad = (datetime.date.today() - datetime.date(nac["anio"], nac["mes"], nac["dia"])).days // 365
+        pin, des, cic = num.get("pinaculos") or [], num.get("desafios") or [], num.get("ciclos") or []
+        for i, c in enumerate(cic[:4]):
+            hasta = c.get("hasta")
+            if i < len(pin) and (hasta is None or edad <= int(hasta)):
+                filas.append(f"Edad: {edad}. Etapa actual: pináculo {pin[i]} y desafío {des[i] if i < len(des) else '?'} "
+                             f"(de los {c.get('desde')} a los {hasta if hasta is not None else 'en adelante'} años)"
+                             + (f"; la siguiente etapa empieza a los {cic[i + 1].get('desde')} con pináculo {pin[i + 1]}" if i + 1 < min(len(cic), len(pin)) else ""))
+                break
+    except Exception:
+        pass
+    pc = num.get("potencias_carencias") or {}
+    if pc.get("potencias") or pc.get("carencias"):
+        filas.append(f"Números fuertes en el nombre (se repiten): {pc.get('potencias') or '—'} · números que faltan en el nombre: {pc.get('carencias') or 'ninguno'}")
+    try:
+        from api.numerology.calculator import calcular_planos
+        pl = calcular_planos(n.get("original", ""))
+        filas.append("Planos de expresión: " + ", ".join(f"{k} {v.get('nivel')}" for k, v in pl.items()))
+    except Exception:
+        pass
+    if num.get("vibracion_latente"):
+        filas.append(f"Vibración latente (expresión + camino de vida): {num['vibracion_latente']}")
+    # Significado de cada número según el motor de numerología del Hub
+    try:
+        from api.numerology.prompt_builder import _SIGNIFICADOS, _AÑO_PERS_DESC
+        usados = []
+        for v in (nac.get("mision"), nac.get("alma"), nac.get("karma"), n.get("expresion"), n.get("impulso"), n.get("impresion"), cp.get("año_personal")):
+            if v in _SIGNIFICADOS and v not in usados:
+                usados.append(v)
+        filas.append("Significado de cada número (motor del Hub): " + " | ".join(
+            f"{v} = {_SIGNIFICADOS[v].get('nombre')}: {_SIGNIFICADOS[v].get('palabras')}" for v in usados))
+        ap = cp.get("año_personal")
+        if ap and _AÑO_PERS_DESC.get(str(ap)) or _AÑO_PERS_DESC.get(ap):
+            filas.append(f"Año personal {ap}: {_AÑO_PERS_DESC.get(str(ap)) or _AÑO_PERS_DESC.get(ap)}")
+    except Exception:
+        pass
     return "\n".join(filas)
 
 
@@ -1756,6 +1848,7 @@ async def rueda(req: RuedaReq, request: Request):
     inp = req.inputs or {}
     if not _g(inp, "hora_nacimiento") or not _g(inp, "fecha_nacimiento") or not _g(inp, "lugar_nacimiento"):
         return JSONResponse({"ok": False, "error": "faltan_datos"})
+    pareja = all(_g(inp, k + "_2") for k in ("fecha_nacimiento", "hora_nacimiento", "lugar_nacimiento"))
     try:
         import datetime, warnings
         from api.astro.engine import _geocode
@@ -1767,8 +1860,16 @@ async def rueda(req: RuedaReq, request: Request):
             warnings.simplefilter("ignore")
             from kerykeion import KerykeionChartSVG
             subj = _kerykeion_subject((_g(inp, "nombre") or "Carta natal")[:40], d.year, d.month, d.day, h, m, lat, lng, tz_str)
-            svg = KerykeionChartSVG(subj, chart_type="Natal", theme="dark",
-                                    chart_language={"en": "EN", "pt": "PT"}.get(req.lang, "ES")).makeWheelOnlyTemplate()
+            idioma = {"en": "EN", "pt": "PT"}.get(req.lang, "ES")
+            if pareja:
+                d2 = datetime.date.fromisoformat(_g(inp, "fecha_nacimiento_2"))
+                h2, m2 = [int(x) for x in _g(inp, "hora_nacimiento_2").split(":")[:2]]
+                lat2, lng2, tz2 = _geocode(_g(inp, "lugar_nacimiento_2"))
+                subj2 = _kerykeion_subject((_g(inp, "nombre_2") or "Pareja")[:40], d2.year, d2.month, d2.day, h2, m2, lat2, lng2, tz2)
+                svg = KerykeionChartSVG(subj, chart_type="Synastry", second_obj=subj2, theme="dark",
+                                        chart_language=idioma).makeWheelOnlyTemplate()
+            else:
+                svg = KerykeionChartSVG(subj, chart_type="Natal", theme="dark", chart_language=idioma).makeWheelOnlyTemplate()
         return JSONResponse({"ok": True, "svg": svg.replace("viewBox='75 25 530 530'", "viewBox='50 0 580 580'")})
     except Exception as exc:
         logger.warning("consumer rueda: %s", exc)
