@@ -252,6 +252,41 @@ Si viene el «PERFIL TARÓTICO» (carta de personalidad, del alma, año personal
 breve en «## Tus cartas personales», justo antes del consejo; si no viene, omite ese apartado.
 Presenta La Muerte, La Torre o El Diablo como cambio, sacudida o apego, nunca como amenaza."""
 
+CARTA_DIA_CONSUMER = ENTERTAIN + """
+
+Eres un lector de Tarot cercano. Recibes la CARTA DEL DÍA que la persona sacó hoy (viene en «Datos
+calculados», con sus palabras clave o su sombra si salió invertida): no la cambies. Entrega algo breve
+(120 a 180 palabras) con encabezados ##:
+## Tu carta de hoy
+Qué energía trae esta carta para hoy, en lenguaje sencillo.
+## Para hoy
+Una sola acción o actitud concreta para el día.
+Si es La Muerte, La Torre o El Diablo, preséntala como cambio, sacudida o apego, nunca como amenaza."""
+
+TRANSITOS_MES_CONSUMER = ENTERTAIN + """
+
+Eres un astrólogo cercano. Con la carta natal de la persona, los tránsitos de ESTE MES sobre su carta
+y el calendario real del cielo del mes (vienen en «Datos calculados»: no los cambies ni inventes),
+entrega su lectura del mes con encabezados ##:
+## El tono de tu mes
+## Tus fechas clave
+Las fechas del calendario que más la tocan (lunas, cambios de signo, retrogradaciones), con su día.
+## Amor y vínculos
+## Trabajo y propósito
+## Tu consejo del mes
+Nombra cada tránsito con el planeta natal que toca. Habla de tendencias, nunca de certezas."""
+
+NUMERO_MES_CONSUMER = ENTERTAIN + """
+
+Eres un numerólogo cercano. Con los números REALES de la persona y su MES PERSONAL de este mes
+(vienen en «Datos calculados»: no los recalcules), entrega su lectura del mes con encabezados ##:
+## Tu mes personal
+Qué número de mes vive y qué energía trae, dentro de su año personal.
+## Qué aprovechar
+## Qué cuidar
+## Tu consejo del mes
+Breve (300 a 450 palabras), cálido y práctico."""
+
 SUENOS_CONSUMER = ENTERTAIN + """
 
 Eres un intérprete de sueños cercano. Lee el sueño de la persona como un mensaje simbólico de su
@@ -1694,11 +1729,69 @@ def _datos_suenos(inputs: dict) -> str:
     return "\n".join(filas) or "(sin números en el sueño)"
 
 
+def _datos_carta_dia(inputs: dict) -> str:
+    """La carta que la persona sacó hoy (la elige su mesa o el envío del día), con lo que el motor de
+    tarot del Hub sabe de ella."""
+    from api.tarot.knowledge import ARCANOS_MAYORES, ARCANOS_MENORES
+    from api.tarot.prompt_builder import _palabras_carta, _pregunta_terapeutica_carta
+    carta = _g(inputs, "carta")
+    if carta not in set(ARCANOS_MAYORES) | set(ARCANOS_MENORES):
+        import random
+        carta = random.SystemRandom().choice(list(ARCANOS_MAYORES) + list(ARCANOS_MENORES))
+    inv = str(inputs.get("invertida", "")).lower() in ("true", "1", "si", "sí")
+    filas = [f"Carta del día: {carta}{' (carta invertida)' if inv else ''}"]
+    kw = _palabras_carta(carta, inv)
+    if kw:
+        filas.append(f"{'Sombra' if inv else 'Palabras clave'}: {kw}")
+    pt = _pregunta_terapeutica_carta(carta)
+    if pt:
+        filas.append(f"Pregunta de la carta: {pt}")
+    return "\n".join(filas)
+
+
+def _datos_transitos_mes(inputs: dict) -> str:
+    """Tránsitos de este mes sobre la carta natal (día 15) y el calendario real del cielo del mes."""
+    import datetime
+    natal = _calc_natal(inputs)
+    if not natal:
+        return "(no se pudo calcular la carta: falta la fecha o el lugar de nacimiento)"
+    hoy = datetime.date.today()
+    filas = [f"Carta natal: {_natal_txt(natal)}.", f"MES DE LA LECTURA: {_MESES_ES[hoy.month - 1]} {hoy.year}"]
+    try:
+        from api.astro.calculator import get_natal_data
+        from api.routes.astro import _transit_aspects
+        tr = get_natal_data("t", hoy.year, hoy.month, 15, 12, 0, natal["lat"], natal["lng"], natal["tz"])
+        asp = [a for a in _transit_aspects(natal, tr)
+               if a["planeta_transito"] in ("sun", "mercury", "venus", "mars", "jupiter", "saturn", "uranus", "neptune", "pluto")
+               and a["planeta_natal"] in ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn")
+               and a.get("orbe", 9) <= 3][:8]
+        if asp:
+            filas.append("Tránsitos del mes sobre su carta: " + "; ".join(
+                f"{_PLANETAS_ES[a['planeta_transito']]} {a['aspecto']} a tu {_PLANETAS_ES[a['planeta_natal']]}" for a in asp))
+        ultimo = (datetime.date(hoy.year + hoy.month // 12, hoy.month % 12 + 1, 1) - datetime.timedelta(days=1)).day
+        cal = [c for c in _calendario_cielo(datetime.date(hoy.year, hoy.month, 1), ultimo - 1) if " · " in c]
+        filas.append("Calendario real del mes:\n" + "\n".join(cal))
+    except Exception as exc:
+        logger.warning("consumer transitos-mes: %s", exc)
+    return "\n".join(filas)
+
+
+def _datos_numero_mes(inputs: dict) -> str:
+    """Los números de la persona y su mes personal de este mes."""
+    base = _datos_numerologia(inputs)
+    num = _calc_numerologia(inputs) or {}
+    cp = num.get("ciclos_personales") or {}
+    return base + (f"\nMES DE LA LECTURA: mes personal {cp.get('mes_personal')} dentro del año personal {cp.get('año_personal')}" if cp else "")
+
+
 _DATOS_CALCULADOS = {
     "tarot": _datos_tarot,
     "numerologia": _datos_numerologia,
     "horoscopo": _datos_horoscopo,
     "suenos": _datos_suenos,
+    "carta-dia": _datos_carta_dia,
+    "transitos-mes": _datos_transitos_mes,
+    "numero-mes": _datos_numero_mes,
     "carta-natal": _datos_carta_natal,
     "pareja": _datos_pareja,
     "tu-anio": _datos_anio,
@@ -1718,8 +1811,13 @@ _PRODUCTOS = {
     "tu-anio":       (ANIO_CONSUMER, 2800),
     "tarot-especial":(TAROT_ESPECIAL_CONSUMER, 2600),
     "suenos":        (SUENOS_CONSUMER, 1800),
+    # Entregas de las suscripciones de lecturas (9-nov-2026)
+    "carta-dia":     (CARTA_DIA_CONSUMER, 700),
+    "transitos-mes": (TRANSITOS_MES_CONSUMER, 2200),
+    "numero-mes":    (NUMERO_MES_CONSUMER, 1400),
 }
-_LECTURAS = ("tarot", "horoscopo", "carta-natal", "numerologia", "pareja", "tu-anio", "tarot-especial", "suenos")
+_LECTURAS = ("tarot", "horoscopo", "carta-natal", "numerologia", "pareja", "tu-anio", "tarot-especial", "suenos",
+             "carta-dia", "transitos-mes", "numero-mes")
 # Paquetes = varias lecturas, una tras otra.
 _PAQUETES = {
     "pack-claridad": ["carta-natal", "horoscopo", "tarot"],
