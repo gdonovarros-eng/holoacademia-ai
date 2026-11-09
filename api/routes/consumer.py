@@ -156,6 +156,10 @@ Interpreta los 5 aspectos más exactos de la lista (los primeros), con lenguaje 
 ## Júpiter, Saturno y tu Nodo
 Dónde crece tu vida (Júpiter), dónde maduras (Saturno) y tu camino de evolución (Nodo Norte;
 el Nodo Sur está en el signo opuesto: interprétalo con el sentido de ESE signo).
+## Tu balance de elementos
+Con el balance calculado: qué elemento domina, cuál falta y qué significa en lo cotidiano (sin
+hablar del cuerpo). Si un planeta está en domicilio, exaltación, detrimento o caída, explícalo en su
+apartado con lenguaje sencillo (fuerte y natural, o que pide más esfuerzo).
 ## Tus talentos
 ## Tu camino de crecimiento
 Usa EXACTAMENTE las posiciones de «Datos calculados» y menciona los grados: nunca cambies un signo
@@ -1473,6 +1477,8 @@ def _datos_carta_natal(inputs: dict) -> str:
             continue
         extra = f", casa {p['casa']}" if p.get("casa") else ""
         extra += ", retrógrado" if p.get("retrogrado") and k != "true_node" else ""
+        if p.get("dignidad") in ("domicilio", "exaltación", "detrimento", "caída"):
+            extra += f", en {p['dignidad']}"
         filas.append(f"{_PLANETAS_ES[k]} en {p.get('signo', '')} ({int(p.get('grado', 0))}°{extra})")
     casas = natal.get("casas") or {}
     if casas.get(1):
@@ -1515,6 +1521,24 @@ def _datos_carta_natal(inputs: dict) -> str:
                     asp.append((o, f"{nom[a]} en {nombre} con {nom[b]} (orbe {o:.1f}°)"))
                     break
     asp.sort()
+    # Balance de elementos y modalidades: Sol a Saturno (y el Ascendente si hay hora); el Sol, la Luna
+    # y el Ascendente cuentan doble, como en el motor del Hub.
+    ELEM = {"Aries": "Fuego", "Leo": "Fuego", "Sagitario": "Fuego", "Tauro": "Tierra", "Virgo": "Tierra", "Capricornio": "Tierra",
+            "Géminis": "Aire", "Libra": "Aire", "Acuario": "Aire", "Cáncer": "Agua", "Escorpio": "Agua", "Piscis": "Agua"}
+    MODO = {"Aries": "cardinal", "Cáncer": "cardinal", "Libra": "cardinal", "Capricornio": "cardinal", "Tauro": "fija", "Leo": "fija",
+            "Escorpio": "fija", "Acuario": "fija", "Géminis": "mutable", "Virgo": "mutable", "Sagitario": "mutable", "Piscis": "mutable"}
+    peso = [(pl[k].get("signo"), 2 if k in ("sun", "moon") else 1) for k in
+            ("sun", "moon", "mercury", "venus", "mars", "jupiter", "saturn") if k in pl]
+    if casas.get(1) and not natal.get("sin_hora"):
+        peso.append((casas[1].get("signo"), 2))
+    el, mo = {}, {}
+    for sg, w in peso:
+        if sg in ELEM:
+            el[ELEM[sg]] = el.get(ELEM[sg], 0) + w
+            mo[MODO[sg]] = mo.get(MODO[sg], 0) + w
+    tot = sum(el.values()) or 1
+    filas.append("Balance de elementos: " + ", ".join(f"{e} {round(100 * el.get(e, 0) / tot)}%" for e in ("Fuego", "Tierra", "Aire", "Agua"))
+                 + " · modalidades: " + ", ".join(f"{m} {round(100 * mo.get(m, 0) / tot)}%" for m in ("cardinal", "fija", "mutable")))
     texto = "Posiciones reales calculadas (efemérides):\n" + "\n".join(filas)
     if pl.get("true_node") and pl["true_node"].get("abs_pos") is not None:
         signos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"]
@@ -1663,6 +1687,39 @@ async def generate(req: GenReq, request: Request):
     if not r.get("ok"):
         return JSONResponse({"ok": False, "product": product, "error": r.get("error") or "generacion_fallida", "content": ""}, status_code=502)
     return JSONResponse({"ok": True, "product": product, "content": _pulir(r.get("answer", ""))})
+
+
+class RuedaReq(BaseModel):
+    lang: str = "es"
+    inputs: dict = Field(default_factory=dict)
+
+
+@router.post("/rueda")
+async def rueda(req: RuedaReq, request: Request):
+    """La rueda de la carta natal del motor de astrología del Hub (Kerykeion, tema oscuro), para
+    mostrarla arriba de la Carta Natal comprada. Solo con hora: sin ella las casas serían falsas."""
+    if not _authorized(request):
+        raise HTTPException(status_code=401, detail="no_autorizado")
+    inp = req.inputs or {}
+    if not _g(inp, "hora_nacimiento") or not _g(inp, "fecha_nacimiento") or not _g(inp, "lugar_nacimiento"):
+        return JSONResponse({"ok": False, "error": "faltan_datos"})
+    try:
+        import datetime, warnings
+        from api.astro.engine import _geocode
+        from api.astro.calculator import _kerykeion_subject
+        d = datetime.date.fromisoformat(_g(inp, "fecha_nacimiento"))
+        h, m = [int(x) for x in _g(inp, "hora_nacimiento").split(":")[:2]]
+        lat, lng, tz_str = _geocode(_g(inp, "lugar_nacimiento"))
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            from kerykeion import KerykeionChartSVG
+            subj = _kerykeion_subject((_g(inp, "nombre") or "Carta natal")[:40], d.year, d.month, d.day, h, m, lat, lng, tz_str)
+            svg = KerykeionChartSVG(subj, chart_type="Natal", theme="dark",
+                                    chart_language={"en": "EN", "pt": "PT"}.get(req.lang, "ES")).makeWheelOnlyTemplate()
+        return JSONResponse({"ok": True, "svg": svg.replace("viewBox='75 25 530 530'", "viewBox='50 0 580 580'")})
+    except Exception as exc:
+        logger.warning("consumer rueda: %s", exc)
+        return JSONResponse({"ok": False, "error": "no_se_pudo"})
 
 
 # ─── Análisis parcial del test gratis (embudo Holos, 8-nov-2026) ────────────────
