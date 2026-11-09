@@ -196,7 +196,10 @@ Un párrafo por cada mes que tenga tránsitos relevantes, con el nombre del mes 
 ## Trabajo y propósito
 ## Tu consejo para el año
 Si un mes no tiene tránsitos relevantes, agrúpalo con otros en una frase. No repitas la misma
-frase mes tras mes («Plutón sigue transformando…»): di qué cambia en cada mes."""
+frase mes tras mes («Plutón sigue transformando…»): di qué cambia en cada mes. Nombra cada tránsito
+con el planeta natal que toca («Urano en conjunción con tu Venus, de julio a noviembre de 2027»).
+Si aparecen tránsitos de un planeta lento a sí mismo (Neptuno a tu Neptuno, Plutón a tu Plutón,
+Urano a tu Urano), dedícales un párrafo propio: son los de la mitad de la vida."""
 
 TAROT_ESPECIAL_CONSUMER = ENTERTAIN + """
 
@@ -253,7 +256,11 @@ _HOLOS_VOZ = (
     "no enumeres órganos, enfermedades ni molestias físicas que la persona no haya mencionado, y nunca "
     "hables de diagnóstico, de pH ni de tratar el cuerpo; no abras con «Comprendo» o «Entiendo "
     "profundamente»; cita su frase textual a lo sumo una vez; si falta un dato, no lo menciones "
-    "(nada de «sin ella…» ni «no tenemos…»); respeta quién es quién en la familia (línea materna o paterna). "
+    "(nada de «sin ella…» ni «no tenemos…»); respeta quién es quién en la familia (línea materna o paterna); "
+    "no nombres capas embrionarias (endodermo, mesodermo…) ni puntos de acupuntura (E36, etc.); no uses "
+    "«Querida» ni aperturas empáticas: valida en una frase y entra al contenido; no repitas la frase del DHS "
+    "ni «la separación de tus padres» si ya se explicó en otra sección; cuando un dato sí está, úsalo "
+    "en afirmativo (nada de «si ella vivió…»). "
     "Sé concreto: entre 250 y 450 palabras en esta sección (el informe completo no debe pasar de unas "
     "5,000 palabras), salvo que la sección pida explícitamente más apartados."
 )
@@ -569,7 +576,7 @@ Eres el Motor de Biodescodificación de Holoacademia, terapeuta experto. Nunca e
 Tu tarea NO es listar disciplinas. Tu tarea es DESCUBRIR EL CONFLICTO: de dónde viene, leído desde la biodescodificación, y anclarlo en el genograma. Razona del cuerpo al conflicto y del conflicto a su raíz transgeneracional.
 
 MÉTODO (síguelo internamente):
-1. El órgano/tejido afectado define el TIPO de conflicto según su capa embrionaria: endodermo = supervivencia arcaica ("el bocado"); mesodermo antiguo = protección; mesodermo nuevo = desvalorización; ectodermo = relación social (separación, territorio/cólera, miedo, identidad).
+1. (Solo si la persona reportó un síntoma FÍSICO; si lo que vive es una situación de vida, decodifica desde esa situación y NO menciones órganos ni capas embrionarias en el texto.) El órgano/tejido afectado define el TIPO de conflicto según su capa embrionaria: endodermo = supervivencia arcaica ("el bocado"); mesodermo antiguo = protección; mesodermo nuevo = desvalorización; ectodermo = relación social (separación, territorio/cólera, miedo, identidad).
 2. El DHS es el instante desencadenante vivido como dramático, inesperado y en soledad. Lo que decodifica es el SENTIR EXACTO (usa la frase textual de la persona).
 3. La tonalidad precisa indica cuál conflicto del órgano se activó.
 4. PROGRAMACIÓN: proyecto-sentido y transgeneracional (repeticiones del clan: nombres, edades/fechas de muerte, enfermedades, secretos, pérdidas de territorio, lugar entre hermanos, dobles/yacentes).
@@ -580,7 +587,7 @@ ECOSISTEMA DE LA PERSONA
 Entrega EXACTAMENTE estas secciones (usa ## y ###). Si falta un dato clave, dilo y formula hipótesis; no rellenes con vaguedades.
 
 ## El conflicto decodificado
-Nombra el órgano/tejido y su capa embrionaria, y de ahí el sentido biológico. Cruza con la frase del DHS y la tonalidad exacta. Cierra con UNA frase precisa del conflicto.
+Si hay síntoma físico, explica su sentido biológico en lenguaje sencillo (sin nombrar capas embrionarias); si no, el sentido de la situación que vive. Cruza con la frase del DHS y la tonalidad exacta. Cierra con UNA frase precisa del conflicto.
 
 ## El instante desencadenante (DHS)
 El momento exacto, cómo lo viviste, y por qué activó esta tonalidad.
@@ -813,8 +820,9 @@ def _prompt_diccionario(inputs: dict) -> str:
             f"Síntoma' para esta persona.\n\nSu síntoma o malestar: {sint}\n\nCon ### por entrada:\n"
             f"### {sint}\nEl significado emocional (sentido biológico) de ESTE síntoma, en lenguaje "
             "sencillo y cálido, con el tipo de conflicto que suele estar detrás.\n"
-            "Luego añade 2 o 3 entradas más (###) de síntomas RELACIONADOS o cercanos al suyo, cada "
-            "uno con su significado emocional breve, para que tenga un pequeño diccionario útil. "
+            "Luego añade 2 o 3 entradas más (###) de EMOCIONES o situaciones relacionadas con lo que ella "
+            "misma escribió (por ejemplo, sentirse no valorada, cobrar menos de lo que vale), cada una con su "
+            "significado breve. No agregues síntomas físicos que no mencionó. "
             "Nada de diagnóstico; es una guía de lectura emocional.")
 
 
@@ -1145,8 +1153,8 @@ def _numeros_txt(num: dict | None) -> str:
     if not num:
         return "(números no disponibles)"
     n, nac = num.get("nombre") or {}, num.get("nacimiento") or {}
-    return (f"misión {nac.get('mision', '?')}, alma {nac.get('alma', '?')}, "
-            f"expresión {n.get('expresion', '?')}, impulso {n.get('impulso', '?')}")
+    return (f"camino de vida {nac.get('mision', '?')}, número del día {nac.get('alma', '?')}, "
+            f"expresión {n.get('expresion', '?')}, deseo del corazón (vocales) {n.get('impulso', '?')}")
 
 
 def _segunda_persona(inputs: dict) -> dict:
@@ -1259,13 +1267,19 @@ def _datos_numerologia(inputs: dict) -> str:
     cp = num.get("ciclos_personales") or {}
     filas = [
         f"Nombre usado: {n.get('original', '')}",
-        f"Misión (camino de vida): {nac.get('mision')}  ·  Alma: {nac.get('alma')}  ·  Karma: {nac.get('karma')}",
-        f"Expresión: {n.get('expresion')}  ·  Impulso del alma (vocales): {n.get('impulso')}  ·  Impresión (consonantes): {n.get('impresion')}",
+        f"Misión o camino de vida (suma de toda la fecha): {nac.get('mision')}",
+        f"Número del día de nacimiento (talento natural): {nac.get('alma')}  ·  Número del mes (lección a aprender): {nac.get('karma')}",
+        f"Expresión (todas las letras del nombre): {n.get('expresion')}  ·  Deseo del corazón (vocales): {n.get('impulso')}  ·  Personalidad (consonantes): {n.get('impresion')}",
+        "Usa estos nombres exactamente (no llames «alma» al número del día ni lo confundas con el deseo del corazón). No hables de vidas pasadas.",
     ]
     if cp:
         filas.append("Ciclos personales de hoy: " + ", ".join(f"{k.replace('_', ' ')} {v}" for k, v in cp.items() if not isinstance(v, (dict, list))))
     if num.get("deudas_karmicas"):
-        filas.append(f"Deudas kármicas: {num['deudas_karmicas']}")
+        donde = {"alma": "día de nacimiento", "karma": "mes de nacimiento", "mision": "camino de vida",
+                 "expresion": "expresión", "impulso": "deseo del corazón", "impresion": "personalidad"}
+        filas.append("Números kármicos (reto a trabajar): " + "; ".join(
+            f"{d.get('codigo')} en el {donde.get(d.get('fuente'), d.get('fuente'))} — {d.get('tema')}"
+            for d in num["deudas_karmicas"] if isinstance(d, dict)))
     if num.get("pinaculos"):
         filas.append(f"Pináculos: {num['pinaculos']}")
     return "\n".join(filas)
@@ -1276,6 +1290,15 @@ def _datos_horoscopo(inputs: dict) -> str:
     import datetime
     signo = _calc_signo(inputs) or _g(inputs, "signo")
     filas = [f"Signo solar de la persona: {signo or '(no indicado)'}", f"Fecha de hoy: {datetime.date.today().isoformat()}"]
+    SIGNOS = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"]
+    AREAS = ["identidad e imagen", "dinero y recursos", "comunicación y entorno cercano", "hogar y familia", "creatividad, placer e hijos",
+             "trabajo diario y salud de hábitos", "pareja y socios", "intimidad y recursos compartidos", "viajes, estudios y creencias",
+             "carrera y metas", "amistades y proyectos", "descanso y mundo interior"]
+    norm = lambda x: x.lower().replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u")
+    idx = next((i for i, n in enumerate(SIGNOS) if norm(n) == norm(signo or "")), None)
+    if idx is not None:
+        filas.append("Casas solares para su signo (usa SOLO estas al decir qué área toca cada signo; Escorpio, Leo, etc. NO son su signo): "
+                     + "; ".join(f"{SIGNOS[(idx + k) % 12]} = casa {k + 1} ({AREAS[k]})" for k in range(12)))
     try:
         from api.astro.calculator import get_transits_today
         tr = get_transits_today(19.4326, -99.1332, "America/Mexico_City")
@@ -1359,7 +1382,7 @@ def _datos_carta_natal(inputs: dict) -> str:
         for b in claves[i + 1:]:
             if natal.get("sin_hora") and "moon" in (a, b):
                 continue  # la Luna se mueve demasiado para afirmar aspectos sin hora
-            if a in lentos and b in lentos:
+            if {a, b} <= (lentos | {"jupiter", "saturn"}):
                 continue  # aspectos generacionales: los comparte toda una generación
             dd = dist(cuerpos[a], cuerpos[b])
             for nombre, ang, orbe in _ASPECTOS_NATALES:
@@ -1434,10 +1457,14 @@ def _reglas_lectura(lang: str, inputs: dict) -> str:
     sexo = _g(inputs, "sexo").lower()
     genero = ("La persona es mujer: usa femenino." if sexo in ("mujer", "femenino", "female", "woman", "f", "mulher", "feminino")
               else "La persona es hombre: usa masculino." if sexo in ("hombre", "masculino", "male", "man", "m", "homem")
-              else "No sabes el género de la persona: escribe con formas neutras (sin «valorada/valorado», «atrapada/atrapado»).")
+              else ("No sabes el género de la persona: NO uses adjetivos ni participios con género referidos a ella "
+                    "(ni «limitado/limitada», «reconocido/reconocida», «atrapado/atrapada», «tú mismo/misma»); "
+                    "reformula con verbos y sustantivos («sentir límites», «que reconozcan tu trabajo», «sentirte sin salida»)."))
     return (f"IDIOMA OBLIGATORIO: escribe TODO (títulos incluidos) en {_IDIOMA.get(l, _IDIOMA['es'])}, aunque estas "
-            f"instrucciones estén en español. ESTILO: empieza directo con la lectura, sin saludo («¡Hola!») ni frases de "
-            f"relleno; nada de afirmaciones deterministas («va a pasar», «es inminente»): habla de tendencias. {genero}\n\n")
+            f"instrucciones y los datos estén en español; traduce también los nombres de planetas y signos (en inglés: "
+            f"Mars, Jupiter, Moon…; en portugués: Lua, Mercúrio, Marte…). ESTILO: empieza directo con la lectura, sin "
+            f"saludo («¡Hola!», «Aquí tienes…») ni frases de relleno. Nunca afirmes el futuro como seguro («serán "
+            f"reconocidos», «te impulsará», «es inminente»): usa «podría», «tiende a», «es buen momento para». {genero}\n\n")
 
 class GenReq(BaseModel):
     product: str = Field(..., description="holos | rema | tarot | horoscopo | carta-natal | numerologia | pareja | tu-anio | tarot-especial | suenos | pack-*")
