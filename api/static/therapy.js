@@ -1592,7 +1592,7 @@ async function rastreoInterpretarIA(containerEl, textoRastreo) {
     if (response && response.answer) {
       containerEl.innerHTML = `<div class="rastreo-interpret-result">
         <p class="rastreo-interpret-label">🧠 Interpretación del Motor Terapéutico</p>
-        <div class="rastreo-interpret-body">${escapeHtml(response.answer).replace(/\n/g, "<br>")}</div>
+        <div class="rastreo-interpret-body"><p>${mdHolos(escapeHtml(response.answer))}</p></div>
       </div>`;
     } else {
       containerEl.innerHTML = `<p class="status error">No se pudo obtener interpretación.</p>`;
